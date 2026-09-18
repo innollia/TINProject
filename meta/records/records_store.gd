@@ -9,6 +9,12 @@ const THEMES: Dictionary = {
 	"last_echo": {"name": "마지막 메아리", "background": "261c35", "surface": "3c2b50", "accent": "dab1ff", "text": "fff5ff"},
 	"return_cradle": {"name": "귀환의 요람", "background": "302118", "surface": "493326", "accent": "ffd29c", "text": "fff8e9"},
 	"maintenance_cut": {"name": "정비 구역", "background": "292615", "surface": "403b24", "accent": "f5e78b", "text": "fffdeb"},
+	"glyph_gallery": {"name": "접힌 기호관", "background": "241b35", "surface": "463557", "accent": "ffd58a", "text": "fff5ff"},
+	"switchboard_choir": {"name": "합창 교환대", "background": "132a30", "surface": "25474d", "accent": "71c6b5", "text": "efffff"},
+	"rain_lift": {"name": "빗물 승강장", "background": "101b25", "surface": "243640", "accent": "d49a57", "text": "edf8ff"},
+	"borrowed_title": {"name": "빌린 오후", "background": "382936", "surface": "593f52", "accent": "ffc7a1", "text": "fff4df"},
+	"glasshouse_return": {"name": "비 그친 온실", "background": "173b35", "surface": "37665b", "accent": "d9f4c7", "text": "f3ffed"},
+	"teacup_orbit": {"name": "찻잔 궤도", "background": "311f2b", "surface": "503444", "accent": "ffe2a8", "text": "fff8e9"},
 }
 
 var entries: Array[Dictionary] = []

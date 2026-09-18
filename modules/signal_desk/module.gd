@@ -92,9 +92,13 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 				return false
 			frequency = int(amount)
 		&"inspect", &"cancel":
-			inspections = mini(inspections + 1, 9999)
-			_message.text = "책상 표찰: 90은 왼쪽 틈, 100은 가운데 배달, 110은 오른쪽 보관함."
-			requested.emit(&"observation", {"id": "signal_desk.route_plate", "text": "기호 배달국 표찰에 90·왼쪽·확인은 틈, 100·가운데는 앞으로, 110·오른쪽은 우편 보관함이라고 적혀 있었다."})
+			if station == 2 and deliveries >= 3:
+				_request_sent = true
+				requested.emit(&"portal", {"exit": "side"})
+			else:
+				inspections = mini(inspections + 1, 9999)
+				_message.text = "책상 표찰: 90은 왼쪽 틈, 100은 가운데 배달, 110은 오른쪽 보관함."
+				requested.emit(&"observation", {"id": "signal_desk.route_plate", "text": "기호 배달국 표찰에 90·왼쪽·확인은 틈, 100·가운데는 앞으로, 110·오른쪽은 우편 보관함이라고 적혀 있었다."})
 		&"confirm":
 			if frequency != FREQUENCIES[station]:
 				_message.text = "기호가 고개를 갸웃합니다. 자리의 숫자와 주파수를 맞춰 주세요."
@@ -102,7 +106,7 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 				var parcel_index: int = deliveries % PARCELS.size()
 				deliveries = mini(deliveries + 1, 9999)
 				var parcel: String = PARCELS[parcel_index]
-				_message.text = "배달 %d: %s가 오른쪽 보관함에 도착했습니다." % [deliveries, parcel]
+				_message.text = ("배달 %d: %s가 도착했습니다. X를 누르면 뒤편 기호관으로 이어집니다." if deliveries >= 3 else "배달 %d: %s가 오른쪽 보관함에 도착했습니다.") % [deliveries, parcel]
 				requested.emit(&"observation", {"id": "signal_desk.delivery_%d" % parcel_index, "text": "110에 맞춰 %s를 보관함에 넣었다. 오늘의 %d번째 배달이었다." % [parcel, deliveries]})
 			else:
 				_request_sent = true

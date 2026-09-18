@@ -145,8 +145,11 @@ func test_desk_routes_have_only_registered_exits() -> void:
 		assert_true(String(_requests.back()["payload"]["text"]).contains("%d번째" % (delivery + 1)))
 	assert_eq(_requests[0]["payload"]["id"], _requests[3]["payload"]["id"])
 	assert_eq(_terminal_count(), 0)
-	assert_true(game.execute_command(&"reset"))
+	assert_true(game.execute_command(&"inspect"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "side"}})
+	assert_false(game.execute_command(&"inspect"))
 	_requests.clear()
+	game = _spawn(&"signal_desk")
 	assert_true(game.execute_command(&"confirm"))
 	assert_eq(_requests, [{"kind": &"portal", "payload": {"exit": "forward"}}])
 

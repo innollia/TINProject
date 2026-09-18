@@ -3,14 +3,20 @@ extends Node
 signal readiness_changed(is_ready: bool)
 
 const MetaLayerScript = preload("res://meta/meta_layer.gd")
-const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut"]
-const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut"]
+const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit"]
+const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit"]
 const ROUTES: Dictionary = {
-	"signal_desk": {"forward": "relay_quay", "hidden": "maintenance_cut"},
+	"signal_desk": {"forward": "relay_quay", "hidden": "maintenance_cut", "side": "glyph_gallery"},
 	"relay_quay": {"forward": "last_echo", "back": "signal_desk"},
 	"last_echo": {"back": "relay_quay"},
 	"return_cradle": {"forward": "signal_desk", "hidden": "maintenance_cut"},
 	"maintenance_cut": {"forward": "last_echo", "back": "return_cradle"},
+	"glyph_gallery": {"forward": "switchboard_choir"},
+	"switchboard_choir": {"forward": "rain_lift"},
+	"rain_lift": {"forward": "borrowed_title", "back": "switchboard_choir"},
+	"borrowed_title": {"forward": "glasshouse_return"},
+	"glasshouse_return": {"forward": "teacup_orbit", "hidden": "borrowed_title"},
+	"teacup_orbit": {"forward": "signal_desk"},
 }
 
 @export var catalog: Array[ModuleManifest] = []
