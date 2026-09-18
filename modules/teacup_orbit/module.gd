@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 		_held[ACTIONS[index]] = pressed
 		if pressed and not previous:
 			if index == 4: execute_command(&"turn")
-			elif index == 5: execute_command(&"reset")
+			elif index == 5: execute_command(&"side" if turns >= 3 else &"reset")
 
 func execute_command(command: StringName, _payload: Dictionary = {}) -> bool:
 	if not _can_input(): return false
@@ -60,6 +60,10 @@ func execute_command(command: StringName, _payload: Dictionary = {}) -> bool:
 				_status.text = "일곱 바퀴. 차는 멀쩡했고 문만 열렸다."
 				_request_sent = true
 				requested.emit(&"portal", {"exit": "forward"})
+		&"side":
+			if turns < 3: return false
+			_request_sent = true
+			requested.emit(&"portal", {"exit": "side"})
 		_:
 			return false
 	_refresh()
@@ -88,7 +92,7 @@ func _refresh() -> void:
 	if _cup == null: return
 	var angle: float = float(turns) * TAU / 7.0
 	_cup.position = Vector2(541, 282) + Vector2(cos(angle) * 180, sin(angle) * 105)
-	_status.text = "%d바퀴. %s" % [turns, "차는 아직 뜨겁다." if turns < 7 else "문이 열렸다."]
+	_status.text = "%d바퀴. %s" % [turns, "X를 누르면 찻잔 아래 시계방으로 내려간다." if turns >= 3 and turns < 7 else ("차는 아직 뜨겁다." if turns < 7 else "문이 열렸다.")]
 
 func _label(words: String, at: Vector2, font_size: int, tint: Color, centered: bool = false) -> Label:
 	var label := Label.new()

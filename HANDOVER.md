@@ -1,4 +1,4 @@
-# 핸드오버 — 사이클 2 구현 완료 / 다음 작업 재개용
+# 핸드오버 — 사이클 3 진행 중 / 다음 작업 재개용
 
 작성 시각: 2026-09-18. 세 서브에이전트(union2/3/4) 병렬 구현 후 전체 검증 통과.
 
@@ -11,9 +11,9 @@
 | **엔진/프로젝트** | Godot 4.7.2 stable, `C:\projects\TINProject`, 메인 씬 `app/app_root.tscn` |
 | **핵심 아키텍처** | 영속 AppRoot + ModuleDirector, 모듈 격리(모듈 간 직접 참조 금지), 불투명 버전 JSON 저장, autoload/EventBus 금지 |
 | **기존 데모(회귀 기준)** | `click_counter`, `box_mover`, `room_3d` — **무수정 보존**, 통합 테스트 639 checks 유지 |
-| **신규 구현 모듈** | 12개: 사이클 1의 6개 + 사이클 2 `glyph_gallery`, `switchboard_choir`, `rain_lift`, `borrowed_title`, `glasshouse_return`, `teacup_orbit` |
+| **신규 구현 모듈** | 13개: 사이클 1·2의 12개 + 사이클 3 `numberless_clock` |
 | **신규 시스템** | 기록 v1(전역 관찰·수동 정리·테마 수집), 죽음·귀환·지름길 검증, 프로필·체크포인트, 공용 메뉴/저널/클리커 |
-| **검증 상태** | `import` → 통합 러너(639/639) → GUT(64/64, 2,758 assertions) → smoke — **전부 통과(종료 코드 0, SCRIPT ERROR 0)** |
+| **검증 상태** | `import` → 통합 러너(639/639) → GUT(70/70, 2,890 assertions) → smoke — **전부 통과(종료 코드 0, SCRIPT ERROR 0)** |
 | **git** | 사용자 승인 후 저장소 초기화·첫 커밋 완료. |
 
 ---
@@ -32,6 +32,7 @@
 | **신체 연속성·비성적 단순 실루엣** | `first_entry`·`last_echo`·`return_cradle` `_apply_identity` | 머리카락 3종·피부색 3종 조합, 폴리곤 프리미티브 |
 | **두 번째 세트 「접힌 오후」** | `glyph_gallery`→`switchboard_choir`→`rain_lift`→`borrowed_title`→`glasshouse_return`→`teacup_orbit` | 2D/3D 혼합, 다른 게임 저장 화면 위 걷기, 개그 구간 뒤 원래 배달국으로 귀환 |
 | **플래그 없는 지식 해법 2개** | 교환대 아래→왼쪽→위, 온실 아래→위→아래 | 단서를 못 봐도 아는 플레이어는 신선한 상태에서 즉시 통과 가능 |
+| **교차 세트 지식 재사용** | `numberless_clock` | 기호관의 아래→왼쪽→위 규칙을 찻잔 궤도 아래 시계방에서 다시 사용 |
 
 ---
 

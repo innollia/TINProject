@@ -15,6 +15,7 @@ const THEMES: Dictionary = {
 	"borrowed_title": {"name": "빌린 오후", "background": "382936", "surface": "593f52", "accent": "ffc7a1", "text": "fff4df"},
 	"glasshouse_return": {"name": "비 그친 온실", "background": "173b35", "surface": "37665b", "accent": "d9f4c7", "text": "f3ffed"},
 	"teacup_orbit": {"name": "찻잔 궤도", "background": "311f2b", "surface": "503444", "accent": "ffe2a8", "text": "fff8e9"},
+	"numberless_clock": {"name": "숫자 없는 시계", "background": "172238", "surface": "2d4263", "accent": "ffd07c", "text": "f4f8ff"},
 }
 
 var entries: Array[Dictionary] = []
