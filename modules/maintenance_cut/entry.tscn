@@ -1,0 +1,137 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://modules/maintenance_cut/module.gd" id="1_script"]
+
+[sub_resource type="Environment" id="Environment_cut"]
+background_mode = 1
+background_color = Color(0.015, 0.045, 0.065, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.34, 0.68, 0.75, 1)
+ambient_light_energy = 0.7
+
+[sub_resource type="BoxMesh" id="Box_floor"]
+size = Vector3(4.6, 0.2, 12)
+
+[sub_resource type="StandardMaterial3D" id="Material_floor"]
+albedo_color = Color(0.055, 0.15, 0.19, 1)
+roughness = 0.65
+metallic = 0.35
+
+[sub_resource type="StyleBoxFlat" id="Style_hud"]
+bg_color = Color(0.02, 0.04, 0.055, 0.97)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.85, 0.8, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[node name="MaintenanceCut" type="Node"]
+script = ExtResource("1_script")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="World"]
+current = true
+fov = 58.0
+near = 0.1
+far = 70.0
+
+[node name="Environment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_cut")
+
+[node name="ColdLight" type="DirectionalLight3D" parent="World"]
+rotation_degrees = Vector3(-62, 24, 0)
+light_color = Color(0.5, 0.87, 1, 1)
+light_energy = 1.25
+shadow_enabled = true
+
+[node name="InspectionLight" type="OmniLight3D" parent="World"]
+position = Vector3(0, 3.2, 0)
+light_color = Color(1, 0.64, 0.31, 1)
+light_energy = 3.0
+omni_range = 9.0
+
+[node name="Floor" type="MeshInstance3D" parent="World"]
+position = Vector3(0, -0.1, 0)
+mesh = SubResource("Box_floor")
+material_override = SubResource("Material_floor")
+
+[node name="Walker" type="Node3D" parent="World"]
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="HUD"]
+layout_mode = 1
+anchor_right = 1.0
+offset_left = 22.0
+offset_top = 166.0
+offset_right = -22.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_hud")
+
+[node name="Margin" type="MarginContainer" parent="HUD/Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="Rows" type="VBoxContainer" parent="HUD/Panel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Title" type="Label" parent="HUD/Panel/Margin/Rows"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.97, 0.89, 1)
+theme_override_font_sizes/font_size = 25
+text = "정비 샛길  /  차가운 빛의 지름길"
+
+[node name="Status" type="Label" parent="HUD/Panel/Margin/Rows"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.97, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "중앙 점검판을 확인하거나 안쪽 문으로 계속 걸으세요."
+autowrap_mode = 2
+
+[node name="Bottom" type="PanelContainer" parent="HUD"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -99.0
+offset_right = -22.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_hud")
+
+[node name="Margin" type="MarginContainer" parent="HUD/Bottom"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="Hint" type="Label" parent="HUD/Bottom/Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.97, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "방향키 걷기 · Z 상호작용 · X + 좌우 시점"
+autowrap_mode = 2

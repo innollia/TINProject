@@ -1,0 +1,151 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://app/app_root.gd" id="1_app"]
+[ext_resource type="Script" path="res://core/services/module_director/module_director.gd" id="2_director"]
+[ext_resource type="Script" path="res://core/services/save_service/save_service.gd" id="3_save"]
+[ext_resource type="Script" path="res://core/services/settings_service/settings_service.gd" id="4_settings"]
+[ext_resource type="Script" path="res://core/services/input_router/input_router.gd" id="5_input"]
+[ext_resource type="Script" path="res://core/services/transition_service/transition_service.gd" id="6_transition"]
+[ext_resource type="Script" path="res://core/services/audio_service/audio_service.gd" id="7_audio"]
+[ext_resource type="Script" path="res://meta/meta_layer.gd" id="8_meta"]
+[ext_resource type="Script" path="res://core/contracts/module_manifest.gd" id="9_manifest"]
+[ext_resource type="Resource" path="res://modules/click_counter/module_manifest.tres" id="10_counter"]
+[ext_resource type="Resource" path="res://modules/box_mover/module_manifest.tres" id="11_box"]
+[ext_resource type="Resource" path="res://modules/room_3d/module_manifest.tres" id="12_room"]
+
+[node name="AppRoot" type="Node"]
+script = ExtResource("1_app")
+catalog = Array[ExtResource("9_manifest")]([ExtResource("10_counter"), ExtResource("11_box"), ExtResource("12_room")])
+
+[node name="Core" type="Node" parent="."]
+
+[node name="ModuleDirector" type="Node" parent="Core"]
+script = ExtResource("2_director")
+
+[node name="SaveService" type="Node" parent="Core"]
+script = ExtResource("3_save")
+
+[node name="SettingsService" type="Node" parent="Core"]
+script = ExtResource("4_settings")
+
+[node name="InputRouter" type="Node" parent="Core"]
+script = ExtResource("5_input")
+
+[node name="TransitionService" type="Node" parent="Core"]
+script = ExtResource("6_transition")
+
+[node name="AudioService" type="Node" parent="Core"]
+script = ExtResource("7_audio")
+
+[node name="MetaLayer" type="Node" parent="."]
+script = ExtResource("8_meta")
+
+[node name="ModuleHost" type="Node" parent="."]
+
+[node name="UIHost" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="UI" type="Control" parent="UIHost"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Shell" type="PanelContainer" parent="UIHost/UI"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+
+[node name="Rows" type="VBoxContainer" parent="UIHost/UI/Shell"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Controls" type="HBoxContainer" parent="UIHost/UI/Shell/Rows"]
+layout_mode = 2
+
+[node name="ModuleSelector" type="OptionButton" parent="UIHost/UI/Shell/Rows/Controls"]
+custom_minimum_size = Vector2(240, 32)
+layout_mode = 2
+disabled = true
+
+[node name="Switch" type="Button" parent="UIHost/UI/Shell/Rows/Controls"]
+layout_mode = 2
+disabled = true
+text = "Switch module"
+
+[node name="Save" type="Button" parent="UIHost/UI/Shell/Rows/Controls"]
+layout_mode = 2
+disabled = true
+text = "Save"
+
+[node name="Load" type="Button" parent="UIHost/UI/Shell/Rows/Controls"]
+layout_mode = 2
+disabled = true
+text = "Load"
+
+[node name="Pause" type="Button" parent="UIHost/UI/Shell/Rows/Controls"]
+layout_mode = 2
+disabled = true
+text = "Pause (P)"
+
+[node name="Reset" type="Button" parent="UIHost/UI/Shell/Rows/Controls"]
+layout_mode = 2
+disabled = true
+text = "Reset module"
+
+[node name="Settings" type="HBoxContainer" parent="UIHost/UI/Shell/Rows"]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="UIHost/UI/Shell/Rows/Settings"]
+layout_mode = 2
+text = "Master volume"
+
+[node name="Volume" type="HSlider" parent="UIHost/UI/Shell/Rows/Settings"]
+custom_minimum_size = Vector2(240, 28)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SaveSettings" type="Button" parent="UIHost/UI/Shell/Rows/Settings"]
+layout_mode = 2
+disabled = true
+text = "Save settings"
+
+[node name="Narrator" type="Label" parent="UIHost/UI/Shell/Rows"]
+layout_mode = 2
+text = "Preparing module..."
+text_overrun_behavior = 3
+
+[node name="Status" type="Label" parent="UIHost/UI/Shell/Rows"]
+layout_mode = 2
+text = "Starting shell..."
+text_overrun_behavior = 3
+
+[node name="TransitionOverlay" type="ColorRect" parent="UIHost/UI"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="DebugRoot" type="CanvasLayer" parent="."]
+layer = 101
+visible = false
+
+[node name="Label" type="Label" parent="DebugRoot"]
+offset_left = 850.0
+offset_top = 4.0
+offset_right = 1148.0
+offset_bottom = 28.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 13
+text = "Loaded: 0"
+horizontal_alignment = 2

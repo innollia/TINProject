@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://modules/box_mover/module.gd" id="1_module"]
+
+[node name="BoxMover" type="Node"]
+script = ExtResource("1_module")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Backdrop" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.09, 0.12, 1)
+
+[node name="Bounds" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16, 0.2, 0.3, 1)
+
+[node name="Box" type="ColorRect" parent="UI/Bounds"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 104.0
+offset_bottom = 104.0
+color = Color(0.25, 0.65, 1, 1)
+
+[node name="HintLabel" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -44.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Move with WASD or arrow keys"
+horizontal_alignment = 1

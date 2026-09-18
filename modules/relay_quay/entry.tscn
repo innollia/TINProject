@@ -1,0 +1,148 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://modules/relay_quay/module.gd" id="1_script"]
+
+[sub_resource type="Environment" id="Environment_quay"]
+background_mode = 1
+background_color = Color(0.025, 0.035, 0.05, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.52, 0.65, 0.76, 1)
+ambient_light_energy = 0.65
+
+[sub_resource type="BoxMesh" id="Box_floor"]
+size = Vector3(10.6, 0.2, 12)
+
+[sub_resource type="StandardMaterial3D" id="Material_floor"]
+albedo_color = Color(0.15, 0.17, 0.19, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="Box_gate"]
+size = Vector3(3.3, 2.5, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="Material_gate"]
+albedo_color = Color(0.42, 0.26, 0.15, 1)
+roughness = 0.8
+
+[sub_resource type="StyleBoxFlat" id="Style_hud"]
+bg_color = Color(0.025, 0.035, 0.05, 0.96)
+border_width_left = 3
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.77, 0.53, 0.3, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[node name="RelayQuay" type="Node"]
+script = ExtResource("1_script")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="World"]
+current = true
+fov = 58.0
+near = 0.1
+far = 80.0
+
+[node name="Environment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_quay")
+
+[node name="Sun" type="DirectionalLight3D" parent="World"]
+rotation_degrees = Vector3(-52, -28, 0)
+light_color = Color(1, 0.77, 0.52, 1)
+light_energy = 1.35
+shadow_enabled = true
+
+[node name="Fill" type="OmniLight3D" parent="World"]
+position = Vector3(2.5, 3, -2.5)
+light_color = Color(0.35, 0.76, 1, 1)
+light_energy = 2.0
+omni_range = 7.0
+
+[node name="Floor" type="MeshInstance3D" parent="World"]
+position = Vector3(0, -0.1, 0)
+mesh = SubResource("Box_floor")
+material_override = SubResource("Material_floor")
+
+[node name="Gate" type="MeshInstance3D" parent="World"]
+position = Vector3(0, 1.25, -5.4)
+mesh = SubResource("Box_gate")
+material_override = SubResource("Material_gate")
+
+[node name="Walker" type="Node3D" parent="World"]
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="HUD"]
+layout_mode = 1
+anchor_right = 1.0
+offset_left = 22.0
+offset_top = 166.0
+offset_right = -22.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_hud")
+
+[node name="Margin" type="MarginContainer" parent="HUD/Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="Rows" type="VBoxContainer" parent="HUD/Panel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="Title" type="Label" parent="HUD/Panel/Margin/Rows"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.51, 1)
+theme_override_font_sizes/font_size = 25
+text = "중계 안뜰  /  작은 배달"
+
+[node name="Status" type="Label" parent="HUD/Panel/Margin/Rows"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.95, 0.97, 1)
+theme_override_font_sizes/font_size = 18
+text = "오른쪽 선반에서 부품을 수령하세요."
+autowrap_mode = 2
+
+[node name="Bottom" type="PanelContainer" parent="HUD"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -99.0
+offset_right = -22.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Style_hud")
+
+[node name="Margin" type="MarginContainer" parent="HUD/Bottom"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="Hint" type="Label" parent="HUD/Bottom/Margin"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.97, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "방향키 걷기 · Z 상호작용 · X + 좌우 시점"
+autowrap_mode = 2

@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://modules/click_counter/module.gd" id="1_module"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_count"]
+font_size = 40
+
+[node name="ClickCounter" type="Node"]
+script = ExtResource("1_module")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Center" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rows" type="VBoxContainer" parent="UI/Center"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CountLabel" type="Label" parent="UI/Center/Rows"]
+layout_mode = 2
+text = "Count: 0 / 10"
+horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_count")
+
+[node name="IncrementButton" type="Button" parent="UI/Center/Rows"]
+layout_mode = 2
+custom_minimum_size = Vector2(240, 52)
+text = "Click (+1)"
+focus_mode = 0
