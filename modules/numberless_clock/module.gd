@@ -48,7 +48,7 @@ func _process(_delta: float) -> void:
 		if pressed and not previous:
 			if index < 4: execute_command(&"hand", {"direction": ["left", "right", "up", "down"][index]})
 			elif index == 4: execute_command(&"confirm")
-			else: execute_command(&"clear")
+			else: execute_command(&"clear") if not hands.is_empty() else execute_command(&"side")
 
 func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 	if not _can_input(): return false
@@ -60,6 +60,9 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 			if hands.size() == 3: hands.clear()
 			hands.append(direction)
 		&"clear": hands.clear()
+		&"side":
+			_request_sent = true
+			requested.emit(&"portal", {"exit": "side"})
 		&"confirm":
 			if hands == SOLUTION:
 				_status.text = "세 기호가 오래전 전시관과 같은 방향으로 기울었다."

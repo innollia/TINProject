@@ -93,3 +93,39 @@ func test_disabled_clock_rejects_all_changes() -> void:
 	assert_false(game.execute_command(&"hand", {"direction": "down"}))
 	assert_false(game.execute_command(&"confirm"))
 	assert_eq(game.save_state(), {"hands": [], "failures": 0})
+
+func test_clock_empty_cancel_opens_shadow_ferry_side_route() -> void:
+	var game := _spawn(&"numberless_clock")
+	assert_true(game.execute_command(&"side"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "side"}})
+
+func test_shadow_ferry_manifest_state_and_real_3d() -> void:
+	var manifest := load("res://modules/shadow_ferry/module_manifest.tres") as ModuleManifest
+	assert_eq(manifest.id, &"shadow_ferry")
+	assert_eq(manifest.input_actions.size(), 6)
+	var game := _spawn(&"shadow_ferry")
+	assert_not_null(game.get_node_or_null("World") as Node3D)
+	assert_not_null(game.find_child("Boat", true, false) as Node3D)
+	var defaults: Dictionary = game.save_state()
+	assert_true(SaveService.is_json_safe(defaults))
+	assert_eq(game.migrate_save(0, defaults), defaults)
+	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
+	assert_eq(game.save_state(), defaults)
+
+func test_shadow_ferry_longest_shadow_crosses_without_timing() -> void:
+	var game := _spawn(&"shadow_ferry")
+	assert_true(game.execute_command(&"cross"))
+	assert_eq(game.save_state(), {"dock": 1, "crossings": 1})
+	assert_true(String(_requests[-2]["payload"]["text"]).contains("가장 긴 그림자"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
+
+func test_shadow_ferry_wrong_dock_and_disabled_input_are_local() -> void:
+	var game := _spawn(&"shadow_ferry")
+	assert_true(game.execute_command(&"move", {"step": -1}))
+	assert_true(game.execute_command(&"cross"))
+	assert_eq(game.save_state(), {"dock": 0, "crossings": 1})
+	assert_eq(_requests.size(), 0)
+	game.context.input_enabled = false
+	assert_false(game.execute_command(&"move", {"step": 1}))
+	assert_false(game.execute_command(&"back"))
+	assert_eq(game.save_state(), {"dock": 0, "crossings": 1})
