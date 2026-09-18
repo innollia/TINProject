@@ -21,6 +21,7 @@ const THEMES: Dictionary = {
 	"wrong_weather": {"name": "틀린 일기예보", "background": "22233d", "surface": "3b3d62", "accent": "8ed8ff", "text": "f0e9ff"},
 	"quiet_locker": {"name": "조용한 사물함", "background": "241f28", "surface": "514454", "accent": "f2cf9b", "text": "f6e8db"},
 	"memory_customs": {"name": "기억 세관", "background": "132d31", "surface": "285158", "accent": "ffd18a", "text": "e7fff9"},
+	"paper_moon_clinic": {"name": "종이달 진료소", "background": "251f3b", "surface": "44385f", "accent": "ffe6a3", "text": "fff0c7"},
 }
 
 var entries: Array[Dictionary] = []

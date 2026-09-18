@@ -3,8 +3,8 @@ extends Node
 signal readiness_changed(is_ready: bool)
 
 const MetaLayerScript = preload("res://meta/meta_layer.gd")
-const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs"]
-const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs"]
+const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic"]
+const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic"]
 const ROUTES: Dictionary = {
 	"signal_desk": {"forward": "relay_quay", "hidden": "maintenance_cut", "side": "glyph_gallery"},
 	"relay_quay": {"forward": "last_echo", "back": "signal_desk"},
@@ -22,7 +22,8 @@ const ROUTES: Dictionary = {
 	"receipt_orchard": {"forward": "wrong_weather", "back": "shadow_ferry"},
 	"wrong_weather": {"forward": "quiet_locker", "back": "receipt_orchard"},
 	"quiet_locker": {"forward": "memory_customs", "back": "wrong_weather"},
-	"memory_customs": {"forward": "signal_desk", "back": "quiet_locker"},
+	"memory_customs": {"forward": "paper_moon_clinic", "back": "quiet_locker"},
+	"paper_moon_clinic": {"forward": "signal_desk", "back": "memory_customs"},
 }
 
 @export var catalog: Array[ModuleManifest] = []

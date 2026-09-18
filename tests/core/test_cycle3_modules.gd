@@ -264,3 +264,35 @@ func test_memory_customs_wrong_stamp_can_be_corrected_and_input_disables() -> vo
 	assert_false(game.execute_command(&"stamp"))
 	assert_false(game.execute_command(&"back"))
 	assert_eq(game.save_state()["changes"], 1)
+
+func test_paper_moon_clinic_manifest_state_and_migration() -> void:
+	var manifest := load("res://modules/paper_moon_clinic/module_manifest.tres") as ModuleManifest
+	assert_eq(manifest.id, &"paper_moon_clinic")
+	assert_eq(manifest.input_actions.size(), 6)
+	var game := _spawn(&"paper_moon_clinic")
+	var defaults: Dictionary = game.save_state()
+	assert_true(SaveService.is_json_safe(defaults))
+	assert_eq(game.migrate_save(0, defaults), defaults)
+	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
+	assert_eq(game.save_state(), defaults)
+	assert_eq(game.migrate_save(0, {"selected": INF, "inspected": [true, 1]}), defaults)
+
+func test_paper_moon_clinic_three_findings_open_return() -> void:
+	var game := _spawn(&"paper_moon_clinic")
+	for index: int in range(3):
+		assert_true(game.execute_command(&"inspect"))
+		if index < 2: assert_true(game.execute_command(&"select", {"step": 1}))
+	assert_eq(game.save_state()["inspected"], [true, true, true])
+	assert_eq(_requests.size(), 3)
+	assert_true(game.execute_command(&"inspect"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
+
+func test_paper_moon_clinic_back_and_disabled_input() -> void:
+	var game := _spawn(&"paper_moon_clinic")
+	assert_true(game.execute_command(&"back"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "back"}})
+	game.load_state({})
+	game.context.input_enabled = false
+	assert_false(game.execute_command(&"select", {"step": 1}))
+	assert_false(game.execute_command(&"inspect"))
+	assert_eq(game.save_state(), {"selected": 0, "inspected": [false, false, false]})
