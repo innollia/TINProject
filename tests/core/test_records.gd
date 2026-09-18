@@ -105,7 +105,7 @@ func test_observations_from_known_places_never_collect_or_select_themes() -> voi
 	var store := RecordsStore.new()
 	for id: String in RecordsStore.THEMES:
 		store.observe(StringName(id), {"id": "fact", "text": "장소에서 발견한 사실"})
-	assert_eq(store.entries.size(), 15)
+	assert_eq(store.entries.size(), 16)
 	assert_eq(store.collected_themes.size(), 0)
 	assert_eq(store.active_theme, "")
 	assert_eq(store.current_theme, "")
@@ -138,7 +138,7 @@ func test_observation_payload_rejects_missing_extra_and_wrong_types() -> void:
 func test_visits_collect_only_aesthetic_themes_and_manual_choice_ends_on_visit() -> void:
 	var store := RecordsStore.new()
 	watch_signals(store)
-	assert_eq(RecordsStore.THEMES.size(), 15)
+	assert_eq(RecordsStore.THEMES.size(), 16)
 	assert_false(store.select_theme("signal_desk"))
 	store.visit(&"signal_desk")
 	assert_eq(store.active_theme, "signal_desk")
@@ -160,7 +160,7 @@ func test_visits_collect_only_aesthetic_themes_and_manual_choice_ends_on_visit()
 	assert_signal_emit_count(store, "changed", 4)
 	for id: String in RecordsStore.THEMES:
 		store.visit(StringName(id))
-	assert_eq(store.collected_themes.size(), 15)
+	assert_eq(store.collected_themes.size(), 16)
 	assert_eq(store.entries.size(), 0)
 	assert_eq(store.notes.size(), 0)
 	assert_eq(store.capture().size(), 6, "Only journal state exists; no gameplay counters, locks, inventory, or learnt flags")

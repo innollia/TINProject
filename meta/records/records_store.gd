@@ -19,6 +19,7 @@ const THEMES: Dictionary = {
 	"shadow_ferry": {"name": "그림자 나룻배", "background": "101925", "surface": "26394b", "accent": "f4c675", "text": "f3f8ff"},
 	"receipt_orchard": {"name": "영수증 과수원", "background": "183126", "surface": "35533d", "accent": "fff3b0", "text": "f3ffe8"},
 	"wrong_weather": {"name": "틀린 일기예보", "background": "22233d", "surface": "3b3d62", "accent": "8ed8ff", "text": "f0e9ff"},
+	"quiet_locker": {"name": "조용한 사물함", "background": "241f28", "surface": "514454", "accent": "f2cf9b", "text": "f6e8db"},
 }
 
 var entries: Array[Dictionary] = []

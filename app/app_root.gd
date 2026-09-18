@@ -3,8 +3,8 @@ extends Node
 signal readiness_changed(is_ready: bool)
 
 const MetaLayerScript = preload("res://meta/meta_layer.gd")
-const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather"]
-const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather"]
+const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker"]
+const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker"]
 const ROUTES: Dictionary = {
 	"signal_desk": {"forward": "relay_quay", "hidden": "maintenance_cut", "side": "glyph_gallery"},
 	"relay_quay": {"forward": "last_echo", "back": "signal_desk"},
@@ -20,7 +20,8 @@ const ROUTES: Dictionary = {
 	"numberless_clock": {"forward": "signal_desk", "side": "shadow_ferry"},
 	"shadow_ferry": {"forward": "receipt_orchard", "back": "numberless_clock"},
 	"receipt_orchard": {"forward": "wrong_weather", "back": "shadow_ferry"},
-	"wrong_weather": {"forward": "signal_desk", "back": "receipt_orchard"},
+	"wrong_weather": {"forward": "quiet_locker", "back": "receipt_orchard"},
+	"quiet_locker": {"forward": "signal_desk", "back": "wrong_weather"},
 }
 
 @export var catalog: Array[ModuleManifest] = []

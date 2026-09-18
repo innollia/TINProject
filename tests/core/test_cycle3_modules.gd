@@ -198,3 +198,36 @@ func test_wrong_weather_wrong_report_back_and_disabled_input() -> void:
 	assert_false(game.execute_command(&"select", {"step": 1}))
 	assert_false(game.execute_command(&"confirm"))
 	assert_eq(game.save_state(), {"selected": 0, "reports": 0})
+
+func test_quiet_locker_manifest_state_and_migration() -> void:
+	var manifest := load("res://modules/quiet_locker/module_manifest.tres") as ModuleManifest
+	assert_eq(manifest.id, &"quiet_locker")
+	assert_eq(manifest.input_actions.size(), 6)
+	var game := _spawn(&"quiet_locker")
+	var defaults: Dictionary = game.save_state()
+	assert_true(SaveService.is_json_safe(defaults))
+	assert_eq(game.migrate_save(0, defaults), defaults)
+	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
+	assert_eq(game.save_state(), defaults)
+	assert_eq(game.migrate_save(0, {"selected": INF, "inspected": [true, 1, false]}), defaults)
+
+func test_quiet_locker_all_three_traces_open_return() -> void:
+	var game := _spawn(&"quiet_locker")
+	for index: int in range(3):
+		assert_true(game.execute_command(&"inspect"))
+		if index < 2: assert_true(game.execute_command(&"select", {"step": 1}))
+	assert_eq(game.save_state()["inspected"], [true, true, true])
+	assert_eq(_requests.size(), 3)
+	assert_true(String(_requests[1]["payload"]["text"]).contains("준호"))
+	assert_true(game.execute_command(&"inspect"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
+
+func test_quiet_locker_back_and_disabled_input() -> void:
+	var game := _spawn(&"quiet_locker")
+	assert_true(game.execute_command(&"back"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "back"}})
+	game.load_state({})
+	game.context.input_enabled = false
+	assert_false(game.execute_command(&"select", {"step": 1}))
+	assert_false(game.execute_command(&"inspect"))
+	assert_eq(game.save_state(), {"selected": 0, "inspected": [false, false, false]})
