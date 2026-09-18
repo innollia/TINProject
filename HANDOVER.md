@@ -11,9 +11,9 @@
 | **엔진/프로젝트** | Godot 4.7.2 stable, `C:\projects\TINProject`, 메인 씬 `app/app_root.tscn` |
 | **핵심 아키텍처** | 영속 AppRoot + ModuleDirector, 모듈 격리(모듈 간 직접 참조 금지), 불투명 버전 JSON 저장, autoload/EventBus 금지 |
 | **기존 데모(회귀 기준)** | `click_counter`, `box_mover`, `room_3d` — **무수정 보존**, 통합 테스트 639 checks 유지 |
-| **신규 구현 모듈** | 17개: 사이클 1·2의 12개 + 사이클 3 신규 5개(`numberless_clock`부터 `quiet_locker`까지) |
+| **신규 구현 모듈** | 18개: 사이클 1·2의 12개 + 사이클 3 신규 6개(`numberless_clock`부터 `memory_customs`까지) |
 | **신규 시스템** | 기록 v1(전역 관찰·수동 정리·테마 수집), 죽음·귀환·지름길 검증, 프로필·체크포인트, 공용 메뉴/저널/클리커 |
-| **검증 상태** | `import` → 통합 러너(639/639) → GUT(83/83, 3,379 assertions) → smoke — **전부 통과(종료 코드 0, SCRIPT ERROR 0)** |
+| **검증 상태** | `import` → 통합 러너(639/639) → GUT(86/86, 3,500 assertions) → smoke — **전부 통과(종료 코드 0, SCRIPT ERROR 0)** |
 | **git** | 사용자 승인 후 저장소 초기화·첫 커밋 완료. |
 
 ---
@@ -37,6 +37,7 @@
 | **배열형 2D 공간** | `receipt_orchard` | 비→차→달 영수증 단서대로 종이 열매를 맞추고 신호 기록실로 귀환 |
 | **관찰 코미디 공간** | `wrong_weather` | 위로 오르는 빗방울을 보고 가장 덜 틀린 예보를 골라 송출 |
 | **동료 흔적 탐색 공간** | `quiet_locker` | 세 사물함을 자유 순서로 살피며 준호의 생활 흔적을 기록, 아이템 획득 없음 |
+| **몸+기억 경계 선택** | `memory_customs` | 네 통과표 중 몸과 기억만 도장 찍어 경계를 통과, 해금 플래그 없음 |
 
 ---
 
@@ -140,6 +141,6 @@ $p = Start-Process -FilePath $exe -ArgumentList '--headless --path C:\projects\T
 > 5. 기록 기능은 처음부터 전부 제공, 테마 수집만 해금.  
 > 6. 공통 성장 재화/인벤토리/능력치 **없음**.  
 > 7. 메타 해설(게임 구조 설명 대사) **금지**.  
-> 8. 기존 데모 3개·639 checks·GUT 83/83 **회귀 0** 유지.
+> 8. 기존 데모 3개·639 checks·GUT 86/86 **회귀 0** 유지.
 
 다음 작업자는 위 계약만 지키면 `modules/<new_id>/` 아래 자유 구현 후 `app_root.gd` 카탈로그 등록 요청만 하면 됩니다. 계약·앱 통합 담당이 0.5h 내로 등록·검증 완료해 줍니다.

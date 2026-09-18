@@ -231,3 +231,36 @@ func test_quiet_locker_back_and_disabled_input() -> void:
 	assert_false(game.execute_command(&"select", {"step": 1}))
 	assert_false(game.execute_command(&"inspect"))
 	assert_eq(game.save_state(), {"selected": 0, "inspected": [false, false, false]})
+
+func test_memory_customs_manifest_state_and_migration() -> void:
+	var manifest := load("res://modules/memory_customs/module_manifest.tres") as ModuleManifest
+	assert_eq(manifest.id, &"memory_customs")
+	assert_eq(manifest.input_actions.size(), 6)
+	var game := _spawn(&"memory_customs")
+	var defaults: Dictionary = game.save_state()
+	assert_true(SaveService.is_json_safe(defaults))
+	assert_eq(game.migrate_save(0, defaults), defaults)
+	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
+	assert_eq(game.save_state(), defaults)
+	assert_eq(game.migrate_save(0, {"stamps": [true, 1], "changes": INF}), defaults)
+
+func test_memory_customs_body_and_memory_pass_without_unlock_flag() -> void:
+	var game := _spawn(&"memory_customs")
+	assert_false(game.save_state().has("unlocked"))
+	assert_true(game.execute_command(&"stamp"))
+	assert_true(game.execute_command(&"move", {"x": 1, "y": 0}))
+	assert_true(game.execute_command(&"stamp"))
+	assert_eq(game.save_state()["stamps"], [true, true, false, false])
+	assert_true(String(_requests[-2]["payload"]["text"]).contains("몸과 기억"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
+
+func test_memory_customs_wrong_stamp_can_be_corrected_and_input_disables() -> void:
+	var game := _spawn(&"memory_customs")
+	assert_true(game.execute_command(&"move", {"x": 0, "y": 1}))
+	assert_true(game.execute_command(&"stamp"))
+	assert_eq(game.save_state()["stamps"], [false, false, true, false])
+	assert_eq(_requests.size(), 0)
+	game.context.input_enabled = false
+	assert_false(game.execute_command(&"stamp"))
+	assert_false(game.execute_command(&"back"))
+	assert_eq(game.save_state()["changes"], 1)
