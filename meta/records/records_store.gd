@@ -22,6 +22,7 @@ const THEMES: Dictionary = {
 	"quiet_locker": {"name": "조용한 사물함", "background": "241f28", "surface": "514454", "accent": "f2cf9b", "text": "f6e8db"},
 	"memory_customs": {"name": "기억 세관", "background": "132d31", "surface": "285158", "accent": "ffd18a", "text": "e7fff9"},
 	"paper_moon_clinic": {"name": "종이달 진료소", "background": "251f3b", "surface": "44385f", "accent": "ffe6a3", "text": "fff0c7"},
+	"afterimage_aquarium": {"name": "잔상 수족관", "background": "102938", "surface": "19516a", "accent": "9cecff", "text": "e4faff"},
 }
 
 var entries: Array[Dictionary] = []

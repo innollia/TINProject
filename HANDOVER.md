@@ -11,9 +11,9 @@
 | **엔진/프로젝트** | Godot 4.7.2 stable, `C:\projects\TINProject`, 메인 씬 `app/app_root.tscn` |
 | **핵심 아키텍처** | 영속 AppRoot + ModuleDirector, 모듈 격리(모듈 간 직접 참조 금지), 불투명 버전 JSON 저장, autoload/EventBus 금지 |
 | **기존 데모(회귀 기준)** | `click_counter`, `box_mover`, `room_3d` — **무수정 보존**, 통합 테스트 639 checks 유지 |
-| **신규 구현 모듈** | 19개: 사이클 1·2의 12개 + 사이클 3 신규 7개(`numberless_clock`부터 `paper_moon_clinic`까지) |
+| **신규 구현 모듈** | 20개: 사이클 1·2의 12개 + 사이클 3 신규 8개(`numberless_clock`부터 `afterimage_aquarium`까지) |
 | **신규 시스템** | 기록 v1(전역 관찰·수동 정리·테마 수집), 죽음·귀환·지름길 검증, 프로필·체크포인트, 공용 메뉴/저널/클리커 |
-| **검증 상태** | `import` → 통합 러너(639/639) → GUT(89/89, 3,621 assertions) → smoke — **전부 통과(종료 코드 0, SCRIPT ERROR 0)** |
+| **검증 상태** | `import` → 통합 러너(639/639) → GUT(92/92, 3,740 assertions) → smoke — **전부 통과(종료 코드 0, SCRIPT ERROR 0)** |
 | **git** | 사용자 승인 후 저장소 초기화·첫 커밋 완료. |
 
 ---
@@ -39,6 +39,7 @@
 | **동료 흔적 탐색 공간** | `quiet_locker` | 세 사물함을 자유 순서로 살피며 준호의 생활 흔적을 기록, 아이템 획득 없음 |
 | **몸+기억 경계 선택** | `memory_customs` | 네 통과표 중 몸과 기억만 도장 찍어 경계를 통과, 해금 플래그 없음 |
 | **순서 자유 진찰 공간** | `paper_moon_clinic` | 종이달의 세 증상을 자유 순서로 진찰하고 각각 관찰 기록 생성 |
+| **잔상 방향 판별** | `afterimage_aquarium` | 세 수조 중 물고기와 잔상이 반대 방향인 곳을 정적 관찰로 선택 |
 
 ---
 
@@ -142,6 +143,6 @@ $p = Start-Process -FilePath $exe -ArgumentList '--headless --path C:\projects\T
 > 5. 기록 기능은 처음부터 전부 제공, 테마 수집만 해금.  
 > 6. 공통 성장 재화/인벤토리/능력치 **없음**.  
 > 7. 메타 해설(게임 구조 설명 대사) **금지**.  
-> 8. 기존 데모 3개·639 checks·GUT 89/89 **회귀 0** 유지.
+> 8. 기존 데모 3개·639 checks·GUT 92/92 **회귀 0** 유지.
 
 다음 작업자는 위 계약만 지키면 `modules/<new_id>/` 아래 자유 구현 후 `app_root.gd` 카탈로그 등록 요청만 하면 됩니다. 계약·앱 통합 담당이 0.5h 내로 등록·검증 완료해 줍니다.

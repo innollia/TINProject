@@ -296,3 +296,35 @@ func test_paper_moon_clinic_back_and_disabled_input() -> void:
 	assert_false(game.execute_command(&"select", {"step": 1}))
 	assert_false(game.execute_command(&"inspect"))
 	assert_eq(game.save_state(), {"selected": 0, "inspected": [false, false, false]})
+
+func test_afterimage_aquarium_manifest_state_and_migration() -> void:
+	var manifest := load("res://modules/afterimage_aquarium/module_manifest.tres") as ModuleManifest
+	assert_eq(manifest.id, &"afterimage_aquarium")
+	assert_eq(manifest.input_actions.size(), 6)
+	var game := _spawn(&"afterimage_aquarium")
+	var defaults: Dictionary = game.save_state()
+	assert_true(SaveService.is_json_safe(defaults))
+	assert_eq(game.migrate_save(0, defaults), defaults)
+	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
+	assert_eq(game.save_state(), defaults)
+	assert_eq(game.migrate_save(0, {"selected": INF, "attempts": -2}), defaults)
+
+func test_afterimage_aquarium_opposite_pair_opens_forward() -> void:
+	var game := _spawn(&"afterimage_aquarium")
+	assert_true(game.execute_command(&"select", {"step": 1}))
+	assert_true(game.execute_command(&"confirm"))
+	assert_eq(game.save_state(), {"selected": 1, "attempts": 1})
+	assert_true(String(_requests[-2]["payload"]["text"]).contains("반대 방향"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
+
+func test_afterimage_aquarium_wrong_back_and_disabled_input() -> void:
+	var game := _spawn(&"afterimage_aquarium")
+	assert_true(game.execute_command(&"confirm"))
+	assert_eq(game.save_state(), {"selected": 0, "attempts": 1})
+	assert_eq(_requests.size(), 0)
+	assert_true(game.execute_command(&"back"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "back"}})
+	game.load_state({})
+	game.context.input_enabled = false
+	assert_false(game.execute_command(&"confirm"))
+	assert_eq(game.save_state(), {"selected": 0, "attempts": 0})
