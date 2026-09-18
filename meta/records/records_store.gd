@@ -17,6 +17,7 @@ const THEMES: Dictionary = {
 	"teacup_orbit": {"name": "찻잔 궤도", "background": "311f2b", "surface": "503444", "accent": "ffe2a8", "text": "fff8e9"},
 	"numberless_clock": {"name": "숫자 없는 시계", "background": "172238", "surface": "2d4263", "accent": "ffd07c", "text": "f4f8ff"},
 	"shadow_ferry": {"name": "그림자 나룻배", "background": "101925", "surface": "26394b", "accent": "f4c675", "text": "f3f8ff"},
+	"receipt_orchard": {"name": "영수증 과수원", "background": "183126", "surface": "35533d", "accent": "fff3b0", "text": "f3ffe8"},
 }
 
 var entries: Array[Dictionary] = []

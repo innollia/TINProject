@@ -3,8 +3,8 @@ extends Node
 signal readiness_changed(is_ready: bool)
 
 const MetaLayerScript = preload("res://meta/meta_layer.gd")
-const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry"]
-const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry"]
+const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard"]
+const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard"]
 const ROUTES: Dictionary = {
 	"signal_desk": {"forward": "relay_quay", "hidden": "maintenance_cut", "side": "glyph_gallery"},
 	"relay_quay": {"forward": "last_echo", "back": "signal_desk"},
@@ -18,7 +18,8 @@ const ROUTES: Dictionary = {
 	"glasshouse_return": {"forward": "teacup_orbit", "hidden": "borrowed_title"},
 	"teacup_orbit": {"forward": "signal_desk", "side": "numberless_clock"},
 	"numberless_clock": {"forward": "signal_desk", "side": "shadow_ferry"},
-	"shadow_ferry": {"forward": "signal_desk", "back": "numberless_clock"},
+	"shadow_ferry": {"forward": "receipt_orchard", "back": "numberless_clock"},
+	"receipt_orchard": {"forward": "signal_desk", "back": "shadow_ferry"},
 }
 
 @export var catalog: Array[ModuleManifest] = []
