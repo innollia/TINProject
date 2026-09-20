@@ -1,7 +1,7 @@
 extends GameModule
 
 const ACTIONS: Array[StringName] = [&"violet_case_left", &"violet_case_right", &"violet_case_up", &"violet_case_down", &"violet_case_confirm", &"violet_case_cancel"]
-const MODE_NAMES: Array[String] = ["현장 조사", "증거 기록", "추리 입력"]
+const MODE_NAMES: Array[String] = ["현장 조사", "증거 기록", "추리 입력", "사건 재구성"]
 const HOTSPOTS: Array[String] = ["신호 열쇠", "잠긴 창문", "바닥의 이름표"]
 const FINDINGS: Array[String] = [
 	"신호 열쇠 왼쪽 홈에 보랏빛 잉크와 가는 쇳가루가 함께 묻어 있다. 시계공 작업대에서 보던 잉크다.",
@@ -19,6 +19,7 @@ var focus: int = 0
 var inspected: Array[bool] = [false, false, false]
 var answers: Array[int] = [0, 0, 0]
 var mistakes: int = 0
+var solved: bool = false
 var _held: Dictionary = {}
 var _request_sent: bool = false
 var _background: ColorRect
@@ -158,6 +159,8 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 				return false
 			if mode == 2:
 				answers[focus] = posmod(answers[focus] + int(step), 3)
+			elif mode == 3:
+				return false
 			else:
 				focus = posmod(focus + int(step), 3)
 		&"vertical":
@@ -166,11 +169,15 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 				return false
 			if mode == 2:
 				focus = posmod(focus + int(step), 3)
+			elif mode == 3:
+				mode = 2
 			else:
 				mode = posmod(mode + int(step), 3)
 		&"confirm":
 			if mode == 2:
 				_submit()
+			elif mode == 3:
+				_finish_case()
 			elif not inspected[focus]:
 				inspected[focus] = true
 				_status.text = FINDINGS[focus]
@@ -178,7 +185,9 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 			elif mode == 1:
 				_status.text = "이미 기록한 단서다. 세 문장을 연결해 보세요."
 		&"back":
-			if mode != 0:
+			if mode == 3:
+				mode = 2
+			elif mode != 0:
 				mode = 0
 			else:
 				_request_sent = true
@@ -193,16 +202,23 @@ func _submit() -> void:
 		_status.text = "아직 읽지 않은 증거가 있다. 현장 조사로 돌아가세요."
 		return
 	if answers == SOLUTION:
-		_status.text = "세 문장이 맞물렸다. 서윤의 이름이 신호 안에서 되돌아왔다."
-		requested.emit(&"observation", {"id": "violet_case.solution", "text": "서윤은 보랏빛 잉크로 신호를 복제해 자기 이름을 되찾으려 했다."})
-		_request_sent = true
-		requested.emit(&"portal", {"exit": "forward"})
+		solved = true
+		mode = 3
+		focus = 0
+		_status.text = "세 문장이 맞물렸다. Z로 사건을 닫고 귀환하세요."
 	else:
 		mistakes = mini(mistakes + 1, 9999)
 		_status.text = "추리가 어긋났다. 기록을 다시 읽고 세 칸을 고쳐 쓰세요."
 
+func _finish_case() -> void:
+	if not solved:
+		return
+	requested.emit(&"observation", {"id": "violet_case.solution", "text": "서윤은 보랏빛 잉크로 신호를 복제해 자기 이름을 되찾으려 했다."})
+	_request_sent = true
+	requested.emit(&"portal", {"exit": "forward"})
+
 func save_state() -> Dictionary:
-	return {"mode": mode, "focus": focus, "inspected": inspected.duplicate(), "answers": answers.duplicate(), "mistakes": mistakes}
+	return {"mode": mode, "focus": focus, "inspected": inspected.duplicate(), "answers": answers.duplicate(), "mistakes": mistakes, "solved": solved}
 
 func load_state(state: Dictionary) -> void:
 	var clean := _normalize(state)
@@ -211,6 +227,7 @@ func load_state(state: Dictionary) -> void:
 	inspected.assign(clean["inspected"])
 	answers.assign(clean["answers"])
 	mistakes = int(clean["mistakes"])
+	solved = bool(clean["solved"])
 	_request_sent = false
 	_held.clear()
 	_refresh()
@@ -239,7 +256,7 @@ func _normalize(data: Dictionary) -> Dictionary:
 			candidate_answers.append(clampi(int(value), 0, 2))
 		if candidate_answers.size() == 3:
 			clean_answers = candidate_answers
-	return {"mode": _integer(data.get("mode"), 0, 0, 2), "focus": _integer(data.get("focus"), 0, 0, 2), "inspected": clean_inspected, "answers": clean_answers, "mistakes": _integer(data.get("mistakes"), 0, 0, 9999)}
+	return {"mode": _integer(data.get("mode"), 0, 0, 3), "focus": _integer(data.get("focus"), 0, 0, 2), "inspected": clean_inspected, "answers": clean_answers, "mistakes": _integer(data.get("mistakes"), 0, 0, 9999), "solved": data.get("solved") if data.get("solved") is bool else false}
 
 func _integer(value: Variant, fallback: int, minimum: int, maximum: int) -> int:
 	if not value is int and not value is float or not is_finite(float(value)):
@@ -254,7 +271,7 @@ func _refresh() -> void:
 		return
 	_mode_label.text = MODE_NAMES[mode]
 	for index: int in range(3):
-		_hotspot_cards[index].color = Color("725d8c") if index == focus and mode != 2 else Color("3b3050")
+		_hotspot_cards[index].color = Color("725d8c") if index == focus and mode < 2 else Color("3b3050")
 		_hotspot_marks[index].text = "기록 완료" if inspected[index] else "미확인"
 		_hotspot_marks[index].add_theme_color_override("font_color", Color("ffd88c") if inspected[index] else Color("bca9ca"))
 	if mode == 0:
@@ -263,16 +280,21 @@ func _refresh() -> void:
 	elif mode == 1:
 		_notebook_title.text = "증거 기록 · %d/3" % inspected.count(true)
 		_notebook_body.text = FINDINGS[focus] if inspected[focus] else "아직 확인하지 않은 흔적이다. 현장 조사로 돌아가 Z를 누르세요."
-	else:
+	elif mode == 2:
 		_notebook_title.text = "추리 입력 · " + ANSWER_NAMES[focus]
 		_notebook_body.text = "세 단서가 가리키는 범인, 수법, 동기를 한 줄씩 맞춰 보세요. 오답은 기록되지만 사건은 다시 풀 수 있습니다."
+	else:
+		_notebook_title.text = "사건 재구성"
+		_notebook_body.text = "서윤 · 시계공\n\n보랏빛 잉크로 신호를 복제해 자기 이름을 되찾으려 했다.\n\n이 기록을 닫으면 다음 신호가 열린다."
 	for index: int in range(3):
-		_answer_cards[index].visible = mode == 2
-		_answer_labels[index].visible = mode == 2
-		_answer_cards[index].color = Color("806b9e") if index == focus else Color("4c3d61")
+		_answer_cards[index].visible = mode == 2 or mode == 3
+		_answer_labels[index].visible = mode == 2 or mode == 3
+		_answer_cards[index].color = Color("806b9e") if mode == 2 and index == focus else Color("4c3d61")
 		_answer_labels[index].text = "%s  ·  %s" % [ANSWER_NAMES[index], _answer_text(index, answers[index])]
 	if mode == 2:
 		_status.text = "칸 %d/3 · ←→ 답 선택 · Z 판정 · 오답 %d회" % [focus + 1, mistakes]
+	elif mode == 3:
+		_status.text = "Z 사건 닫기 · X 추리로 돌아가기"
 
 func _answer_text(slot: int, value: int) -> String:
 	if slot == 0: return SUSPECTS[value]

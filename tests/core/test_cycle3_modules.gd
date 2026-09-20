@@ -409,7 +409,7 @@ func test_violet_case_manifest_state_and_migration() -> void:
 	assert_eq(game.migrate_save(0, defaults), defaults)
 	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
 	assert_eq(game.save_state(), defaults)
-	assert_eq(game.migrate_save(0, {"mode": INF, "focus": -2, "inspected": [true, 1], "answers": [0, INF, 9]}), defaults)
+	assert_eq(game.migrate_save(0, {"mode": INF, "focus": -2, "inspected": [true, 1], "answers": [0, INF, 9], "solved": "yes"}), defaults)
 
 func test_violet_case_records_three_clues_before_the_final_deduction() -> void:
 	var game := _spawn(&"violet_case")
@@ -430,6 +430,10 @@ func test_violet_case_correct_three_part_deduction_opens_forward() -> void:
 	assert_true(game.execute_command(&"vertical", {"step": 1}))
 	assert_true(game.execute_command(&"vertical", {"step": 1}))
 	assert_true(game.execute_command(&"move", {"step": 1}))
+	assert_true(game.execute_command(&"confirm"))
+	assert_eq(game.save_state()["mode"], 3)
+	assert_true(game.save_state()["solved"])
+	assert_eq(_requests.size(), 3)
 	assert_true(game.execute_command(&"confirm"))
 	assert_true(String(_requests[-2]["payload"]["text"]).contains("신호를 복제"))
 	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
