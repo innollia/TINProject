@@ -179,7 +179,7 @@
 - `memory_customs` 뒤에는 세 증상을 순서 자유로 살피는 `paper_moon_clinic`이 이어진다.
 - `paper_moon_clinic` 뒤에는 물고기와 잔상의 방향을 비교하는 `afterimage_aquarium`이 이어진다.
 - `afterimage_aquarium` 뒤에는 자기 그림자를 비추는 등대를 고르는 `paper_lighthouse`가 이어진다.
-- `paper_lighthouse` 뒤에는 대화 선택과 답장을 다루는 비주얼 노벨형 `lost_signal_vn`이 이어진다.
+- `paper_lighthouse` 뒤에는 두 단계의 대화 선택과 답장을 다루는 비주얼 노벨형 `lost_signal_vn`이 이어진다.
 - `lost_signal_vn` 뒤에는 증거 세 개로 범인·수법·동기를 맞히는 `violet_case`가 이어진다.
 - 사이클 3 신규 11개를 달성했으며 현재 누적 수는 데모 3개를 포함해 26개다.
 - Godot 공식 문서와 Asset Library를 조사해 26개 기능 어댑터, 에디터 플러그인, 비주얼 노벨 템플릿을 `docs/GODOT_INTEGRATIONS.md`와 `addons/tin_integrations/`에 추가했다.

@@ -372,7 +372,7 @@ func test_lost_signal_vn_manifest_state_and_migration() -> void:
 	assert_eq(game.migrate_save(0, defaults), defaults)
 	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
 	assert_eq(game.save_state(), defaults)
-	assert_eq(game.migrate_save(0, {"line": INF, "choice": -3, "trust": INF, "finished": "yes"}), defaults)
+	assert_eq(game.migrate_save(0, {"line": INF, "choice": -3, "second_choice": INF, "trust": INF, "finished": "yes"}), defaults)
 
 func test_lost_signal_vn_branch_reaches_a_recorded_reply() -> void:
 	var game := _spawn(&"lost_signal_vn")
@@ -381,8 +381,11 @@ func test_lost_signal_vn_branch_reaches_a_recorded_reply() -> void:
 	assert_true(game.execute_command(&"choose", {"step": 1}))
 	assert_true(game.execute_command(&"advance"))
 	assert_true(game.execute_command(&"advance"))
+	assert_true(game.execute_command(&"choose", {"step": 1}))
 	assert_true(game.execute_command(&"advance"))
-	assert_eq(game.save_state(), {"line": 5, "choice": 1, "trust": 0, "finished": true})
+	assert_true(game.execute_command(&"advance"))
+	assert_true(game.execute_command(&"advance"))
+	assert_eq(game.save_state(), {"line": 7, "choice": 1, "second_choice": 1, "trust": 0, "finished": true})
 	assert_true(String(_requests[0]["payload"]["text"]).contains("다음 신호"))
 	assert_true(game.execute_command(&"advance"))
 	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
@@ -394,7 +397,7 @@ func test_lost_signal_vn_back_and_disabled_input() -> void:
 	game.load_state({})
 	game.context.input_enabled = false
 	assert_false(game.execute_command(&"advance"))
-	assert_eq(game.save_state(), {"line": 0, "choice": 0, "trust": 0, "finished": false})
+	assert_eq(game.save_state(), {"line": 0, "choice": 0, "second_choice": 0, "trust": 0, "finished": false})
 
 func test_violet_case_manifest_state_and_migration() -> void:
 	var manifest := load("res://modules/violet_case/module_manifest.tres") as ModuleManifest
