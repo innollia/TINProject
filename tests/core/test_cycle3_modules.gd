@@ -496,3 +496,40 @@ func test_after_signal_back_and_disabled_input() -> void:
 	assert_false(game.execute_command(&"select", {"step": 1}))
 	assert_false(game.execute_command(&"confirm"))
 	assert_eq(game.save_state(), {"selected": 0, "inspected": [false, false, false]})
+
+func test_return_address_manifest_state_and_migration() -> void:
+	var manifest := load("res://modules/return_address/module_manifest.tres") as ModuleManifest
+	assert_eq(manifest.id, &"return_address")
+	assert_eq(manifest.input_actions.size(), 6)
+	var game := _spawn(&"return_address")
+	var defaults: Dictionary = game.save_state()
+	assert_true(SaveService.is_json_safe(defaults))
+	assert_eq(game.migrate_save(0, defaults), defaults)
+	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
+	assert_eq(game.save_state(), defaults)
+	assert_eq(game.migrate_save(0, {"focus": INF, "parts": [0, 1], "attempts": -4, "solved": "yes"}), defaults)
+
+func test_return_address_reassembles_the_three_words_and_opens_forward() -> void:
+	var game := _spawn(&"return_address")
+	assert_true(game.execute_command(&"choose", {"step": 1}))
+	assert_true(game.execute_command(&"seal"))
+	assert_eq(game.save_state()["attempts"], 1)
+	assert_eq(_requests.size(), 0)
+	assert_true(game.execute_command(&"choose", {"step": -1}))
+	assert_true(game.execute_command(&"focus", {"step": 1}))
+	assert_true(game.execute_command(&"focus", {"step": 1}))
+	assert_true(game.execute_command(&"seal"))
+	assert_true(game.save_state()["solved"])
+	assert_eq(_requests.size(), 2)
+	assert_true(String(_requests[0]["payload"]["text"]).contains("창문"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
+
+func test_return_address_back_and_disabled_input() -> void:
+	var game := _spawn(&"return_address")
+	assert_true(game.execute_command(&"back"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "back"}})
+	game.load_state({})
+	game.context.input_enabled = false
+	assert_false(game.execute_command(&"choose", {"step": 1}))
+	assert_false(game.execute_command(&"seal"))
+	assert_eq(game.save_state(), {"focus": 0, "parts": [0, 0, 0], "attempts": 0, "solved": false})

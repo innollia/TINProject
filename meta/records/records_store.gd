@@ -27,6 +27,7 @@ const THEMES: Dictionary = {
 	"lost_signal_vn": {"name": "분실된 신호", "background": "17263d", "surface": "293a61", "accent": "d9c7ff", "text": "f4f0ff"},
 	"violet_case": {"name": "자정의 보랏빛 사건", "background": "191625", "surface": "3b3050", "accent": "e6b6ff", "text": "f7e9ff"},
 	"after_signal": {"name": "신호가 지나간 뒤", "background": "211b2a", "surface": "493445", "accent": "f0c9a2", "text": "fff0ce"},
+	"return_address": {"name": "돌아갈 주소", "background": "1c2630", "surface": "3b4b51", "accent": "f6e4bd", "text": "eef4ed"},
 }
 
 var entries: Array[Dictionary] = []
