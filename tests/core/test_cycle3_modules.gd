@@ -460,3 +460,39 @@ func test_violet_case_wrong_deduction_back_and_disabled_input() -> void:
 	game.context.input_enabled = false
 	assert_false(game.execute_command(&"confirm"))
 	assert_eq(game.save_state()["mistakes"], 0)
+
+func test_after_signal_manifest_state_and_migration() -> void:
+	var manifest := load("res://modules/after_signal/module_manifest.tres") as ModuleManifest
+	assert_eq(manifest.id, &"after_signal")
+	assert_eq(manifest.input_actions.size(), 6)
+	var game := _spawn(&"after_signal")
+	var defaults: Dictionary = game.save_state()
+	assert_true(SaveService.is_json_safe(defaults))
+	assert_eq(game.migrate_save(0, defaults), defaults)
+	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
+	assert_eq(game.save_state(), defaults)
+	assert_eq(game.migrate_save(0, {"selected": INF, "inspected": [true, 1]}), defaults)
+
+func test_after_signal_reads_all_traces_before_returning_forward() -> void:
+	var game := _spawn(&"after_signal")
+	assert_true(game.execute_command(&"confirm"))
+	assert_true(game.execute_command(&"select", {"step": 1}))
+	assert_true(game.execute_command(&"confirm"))
+	assert_true(game.execute_command(&"select", {"step": 1}))
+	assert_true(game.execute_command(&"confirm"))
+	assert_eq(game.save_state(), {"selected": 2, "inspected": [true, true, true]})
+	assert_eq(_requests.size(), 3)
+	assert_true(String(_requests[1]["payload"]["text"]).contains("보랏빛"))
+	assert_true(game.execute_command(&"confirm"))
+	assert_eq(_requests[-2]["payload"]["text"], "신호가 지나간 뒤에도 답장은 남아 있었다. 다음 신호에는 돌아갈 주소가 적혀 있었다.")
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
+
+func test_after_signal_back_and_disabled_input() -> void:
+	var game := _spawn(&"after_signal")
+	assert_true(game.execute_command(&"back"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "back"}})
+	game.load_state({})
+	game.context.input_enabled = false
+	assert_false(game.execute_command(&"select", {"step": 1}))
+	assert_false(game.execute_command(&"confirm"))
+	assert_eq(game.save_state(), {"selected": 0, "inspected": [false, false, false]})

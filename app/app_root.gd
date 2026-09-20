@@ -3,8 +3,8 @@ extends Node
 signal readiness_changed(is_ready: bool)
 
 const MetaLayerScript = preload("res://meta/meta_layer.gd")
-const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic", &"afterimage_aquarium", &"paper_lighthouse", &"lost_signal_vn", &"violet_case"]
-const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic", &"afterimage_aquarium", &"paper_lighthouse", &"lost_signal_vn", &"violet_case"]
+const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic", &"afterimage_aquarium", &"paper_lighthouse", &"lost_signal_vn", &"violet_case", &"after_signal"]
+const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic", &"afterimage_aquarium", &"paper_lighthouse", &"lost_signal_vn", &"violet_case", &"after_signal"]
 const ROUTES: Dictionary = {
 	"signal_desk": {"forward": "relay_quay", "hidden": "maintenance_cut", "side": "glyph_gallery"},
 	"relay_quay": {"forward": "last_echo", "back": "signal_desk"},
@@ -27,7 +27,8 @@ const ROUTES: Dictionary = {
 	"afterimage_aquarium": {"forward": "paper_lighthouse", "back": "paper_moon_clinic"},
 	"paper_lighthouse": {"forward": "lost_signal_vn", "back": "afterimage_aquarium"},
 	"lost_signal_vn": {"forward": "violet_case", "back": "paper_lighthouse"},
-	"violet_case": {"forward": "signal_desk", "back": "lost_signal_vn"},
+	"violet_case": {"forward": "after_signal", "back": "lost_signal_vn"},
+	"after_signal": {"forward": "signal_desk", "back": "violet_case"},
 }
 
 @export var catalog: Array[ModuleManifest] = []

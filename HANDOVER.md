@@ -1,6 +1,6 @@
 # 핸드오버 — 사이클 3 진행 중 / 다음 작업 재개용
 
-작성 시각: 2026-09-18. 세 서브에이전트(union2/3/4) 병렬 구현 후 전체 검증 통과.
+작성 시각: 2026-09-21. 단독 작업으로 후일담 모듈을 추가한 뒤 전체 검증 통과.
 
 ---
 
@@ -11,9 +11,9 @@
 | **엔진/프로젝트** | Godot 4.7.2 stable, `C:\projects\TINProject`, 메인 씬 `app/app_root.tscn` |
 | **핵심 아키텍처** | 영속 AppRoot + ModuleDirector, 모듈 격리(모듈 간 직접 참조 금지), 불투명 버전 JSON 저장, autoload/EventBus 금지 |
 | **기존 데모(회귀 기준)** | `click_counter`, `box_mover`, `room_3d` — **무수정 보존**, 통합 테스트 639 checks 유지 |
-| **신규 구현 모듈** | 23개: 사이클 1·2의 12개 + 사이클 3 신규 11개(`numberless_clock`부터 `violet_case`까지) |
+| **신규 구현 모듈** | 24개: 사이클 1·2의 12개 + 사이클 3 신규 12개(`numberless_clock`부터 `after_signal`까지) |
 | **신규 시스템** | 기록 v1(전역 관찰·수동 정리·테마 수집), 죽음·귀환·지름길 검증, 프로필·체크포인트, 공용 메뉴/저널/클리커 |
-| **검증 상태** | `import` → 통합 러너(639/639) → GUT(107/107, 4,165 assertions) → smoke — **전부 통과(종료 코드 0, SCRIPT ERROR 0)** |
+| **검증 상태** | `import` → 통합 러너(639/639) → GUT(110/110, 4,295 assertions) → smoke — **전부 통과(종료 코드 0, SCRIPT ERROR 0)** |
 | **git** | 사용자 승인 후 저장소 초기화·첫 커밋 완료. |
 
 ---
@@ -43,6 +43,7 @@
 | **자기 그림자 관찰** | `paper_lighthouse` | 세 등대 중 자기 그림자를 비추는 곳을 정적 관찰로 선택 |
 | **비주얼 노벨 단편** | `lost_signal_vn` | 두 단계 대화 분기·신뢰 수치·관찰 기록·저장을 한 장면에 결합 |
 | **추리 조사** | `violet_case` | 세 증거 조사 → 범인·수법·동기 판정 → 사건 재구성 확인 → 귀환 |
+| **사건 후일담** | `after_signal` | 접힌 답장·우편함·창문을 모두 읽고 다음 주소를 확인한 뒤 기록실로 귀환 |
 | **Godot 통합 팩** | `addons/tin_integrations/` | 26개 런타임 어댑터·에디터 플러그인·VN 템플릿. 전역 오토로드 없음 |
 
 ---
@@ -110,6 +111,10 @@ func change_module(id, restore_snapshot=false, arrival={}, identity={}, discard_
 | Iris Xe 실기 측정 | 완료 | 1152×720: 첫 진입 25~26 FPS/320.3 MiB, 중계 안뜰 37~39 FPS/402.9 MiB. setup 1.691초, load 0.171초 |
 | 배치 증산 | 완료 | 신규 6개, 누적 12 신규 + 3 데모 = 15개. 신규 6개 테마와 GL 캡처 포함 |
 
+### 5.3 사이클 3 현재 기준점
+
+`paper_lighthouse` → `lost_signal_vn` → `violet_case` → `after_signal` → `signal_desk` 라우트가 연결되어 있다. `after_signal`은 사건 해결 뒤 의미를 부여하는 종결부이지 전체 엔딩은 아니며, 다음 작업도 모듈 격리·불투명 저장·관찰 기록·실제 입력·시각 검증 계약을 유지한다.
+
 ---
 
 ## 6. 알려진 제한·미완료(사이클 1 범위 밖)
@@ -147,6 +152,6 @@ $p = Start-Process -FilePath $exe -ArgumentList '--headless --path C:\projects\T
 > 5. 기록 기능은 처음부터 전부 제공, 테마 수집만 해금.  
 > 6. 공통 성장 재화/인벤토리/능력치 **없음**.  
 > 7. 메타 해설(게임 구조 설명 대사) **금지**.  
-> 8. 기존 데모 3개·639 checks·GUT 107/107 **회귀 0** 유지.
+> 8. 기존 데모 3개·639 checks·GUT 110/110 **회귀 0** 유지.
 
 다음 작업자는 위 계약만 지키면 `modules/<new_id>/` 아래 자유 구현 후 `app_root.gd` 카탈로그 등록 요청만 하면 됩니다. 계약·앱 통합 담당이 0.5h 내로 등록·검증 완료해 줍니다.

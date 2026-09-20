@@ -26,6 +26,7 @@ const THEMES: Dictionary = {
 	"paper_lighthouse": {"name": "종이등대", "background": "25202e", "surface": "3b3048", "accent": "ffd36e", "text": "fff0ce"},
 	"lost_signal_vn": {"name": "분실된 신호", "background": "17263d", "surface": "293a61", "accent": "d9c7ff", "text": "f4f0ff"},
 	"violet_case": {"name": "자정의 보랏빛 사건", "background": "191625", "surface": "3b3050", "accent": "e6b6ff", "text": "f7e9ff"},
+	"after_signal": {"name": "신호가 지나간 뒤", "background": "211b2a", "surface": "493445", "accent": "f0c9a2", "text": "fff0ce"},
 }
 
 var entries: Array[Dictionary] = []
