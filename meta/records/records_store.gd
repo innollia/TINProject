@@ -23,6 +23,9 @@ const THEMES: Dictionary = {
 	"memory_customs": {"name": "기억 세관", "background": "132d31", "surface": "285158", "accent": "ffd18a", "text": "e7fff9"},
 	"paper_moon_clinic": {"name": "종이달 진료소", "background": "251f3b", "surface": "44385f", "accent": "ffe6a3", "text": "fff0c7"},
 	"afterimage_aquarium": {"name": "잔상 수족관", "background": "102938", "surface": "19516a", "accent": "9cecff", "text": "e4faff"},
+	"paper_lighthouse": {"name": "종이등대", "background": "25202e", "surface": "3b3048", "accent": "ffd36e", "text": "fff0ce"},
+	"lost_signal_vn": {"name": "분실된 신호", "background": "17263d", "surface": "293a61", "accent": "d9c7ff", "text": "f4f0ff"},
+	"violet_case": {"name": "자정의 보랏빛 사건", "background": "191625", "surface": "3b3050", "accent": "e6b6ff", "text": "f7e9ff"},
 }
 
 var entries: Array[Dictionary] = []

@@ -328,3 +328,128 @@ func test_afterimage_aquarium_wrong_back_and_disabled_input() -> void:
 	game.context.input_enabled = false
 	assert_false(game.execute_command(&"confirm"))
 	assert_eq(game.save_state(), {"selected": 0, "attempts": 0})
+
+func test_paper_lighthouse_manifest_state_and_migration() -> void:
+	var manifest := load("res://modules/paper_lighthouse/module_manifest.tres") as ModuleManifest
+	assert_eq(manifest.id, &"paper_lighthouse")
+	assert_eq(manifest.input_actions.size(), 6)
+	var game := _spawn(&"paper_lighthouse")
+	var defaults: Dictionary = game.save_state()
+	assert_true(SaveService.is_json_safe(defaults))
+	assert_eq(game.migrate_save(0, defaults), defaults)
+	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
+	assert_eq(game.save_state(), defaults)
+	assert_eq(game.migrate_save(0, {"selected": INF, "attempts": -2}), defaults)
+
+func test_paper_lighthouse_self_light_opens_forward() -> void:
+	var game := _spawn(&"paper_lighthouse")
+	assert_true(game.execute_command(&"confirm"))
+	assert_eq(game.save_state(), {"selected": 0, "attempts": 1})
+	assert_true(String(_requests[-2]["payload"]["text"]).contains("자기 그림자"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
+
+func test_paper_lighthouse_wrong_back_and_disabled_input() -> void:
+	var game := _spawn(&"paper_lighthouse")
+	assert_true(game.execute_command(&"select", {"step": 1}))
+	assert_true(game.execute_command(&"confirm"))
+	assert_eq(game.save_state(), {"selected": 1, "attempts": 1})
+	assert_eq(_requests.size(), 0)
+	assert_true(game.execute_command(&"back"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "back"}})
+	game.load_state({})
+	game.context.input_enabled = false
+	assert_false(game.execute_command(&"select", {"step": 1}))
+	assert_false(game.execute_command(&"confirm"))
+	assert_eq(game.save_state(), {"selected": 0, "attempts": 0})
+
+func test_lost_signal_vn_manifest_state_and_migration() -> void:
+	var manifest := load("res://modules/lost_signal_vn/module_manifest.tres") as ModuleManifest
+	assert_eq(manifest.id, &"lost_signal_vn")
+	assert_eq(manifest.input_actions.size(), 6)
+	var game := _spawn(&"lost_signal_vn")
+	var defaults: Dictionary = game.save_state()
+	assert_true(SaveService.is_json_safe(defaults))
+	assert_eq(game.migrate_save(0, defaults), defaults)
+	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
+	assert_eq(game.save_state(), defaults)
+	assert_eq(game.migrate_save(0, {"line": INF, "choice": -3, "trust": INF, "finished": "yes"}), defaults)
+
+func test_lost_signal_vn_branch_reaches_a_recorded_reply() -> void:
+	var game := _spawn(&"lost_signal_vn")
+	assert_true(game.execute_command(&"advance"))
+	assert_true(game.execute_command(&"advance"))
+	assert_true(game.execute_command(&"choose", {"step": 1}))
+	assert_true(game.execute_command(&"advance"))
+	assert_true(game.execute_command(&"advance"))
+	assert_true(game.execute_command(&"advance"))
+	assert_eq(game.save_state(), {"line": 5, "choice": 1, "trust": 0, "finished": true})
+	assert_true(String(_requests[0]["payload"]["text"]).contains("다음 신호"))
+	assert_true(game.execute_command(&"advance"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
+
+func test_lost_signal_vn_back_and_disabled_input() -> void:
+	var game := _spawn(&"lost_signal_vn")
+	assert_true(game.execute_command(&"back"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "back"}})
+	game.load_state({})
+	game.context.input_enabled = false
+	assert_false(game.execute_command(&"advance"))
+	assert_eq(game.save_state(), {"line": 0, "choice": 0, "trust": 0, "finished": false})
+
+func test_violet_case_manifest_state_and_migration() -> void:
+	var manifest := load("res://modules/violet_case/module_manifest.tres") as ModuleManifest
+	assert_eq(manifest.id, &"violet_case")
+	assert_eq(manifest.input_actions.size(), 6)
+	var game := _spawn(&"violet_case")
+	var defaults: Dictionary = game.save_state()
+	assert_true(SaveService.is_json_safe(defaults))
+	assert_eq(game.migrate_save(0, defaults), defaults)
+	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
+	assert_eq(game.save_state(), defaults)
+	assert_eq(game.migrate_save(0, {"mode": INF, "focus": -2, "inspected": [true, 1], "answers": [0, INF, 9]}), defaults)
+
+func test_violet_case_records_three_clues_before_the_final_deduction() -> void:
+	var game := _spawn(&"violet_case")
+	for index: int in range(3):
+		assert_true(game.execute_command(&"confirm"))
+		if index < 2: assert_true(game.execute_command(&"move", {"step": 1}))
+	assert_eq(game.save_state()["inspected"], [true, true, true])
+	assert_eq(_requests.size(), 3)
+	assert_true(String(_requests[1]["payload"]["text"]).contains("복제"))
+
+func test_violet_case_correct_three_part_deduction_opens_forward() -> void:
+	var game := _spawn(&"violet_case")
+	for index: int in range(3):
+		assert_true(game.execute_command(&"confirm"))
+		if index < 2: assert_true(game.execute_command(&"move", {"step": 1}))
+	assert_true(game.execute_command(&"vertical", {"step": 1}))
+	assert_true(game.execute_command(&"vertical", {"step": 1}))
+	assert_true(game.execute_command(&"vertical", {"step": 1}))
+	assert_true(game.execute_command(&"vertical", {"step": 1}))
+	assert_true(game.execute_command(&"move", {"step": 1}))
+	assert_true(game.execute_command(&"confirm"))
+	assert_true(String(_requests[-2]["payload"]["text"]).contains("신호를 복제"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
+
+func test_violet_case_wrong_deduction_back_and_disabled_input() -> void:
+	var game := _spawn(&"violet_case")
+	for index: int in range(3):
+		assert_true(game.execute_command(&"confirm"))
+		if index < 2: assert_true(game.execute_command(&"move", {"step": 1}))
+	assert_true(game.execute_command(&"vertical", {"step": 1}))
+	assert_true(game.execute_command(&"vertical", {"step": 1}))
+	assert_true(game.execute_command(&"vertical", {"step": 1}))
+	assert_true(game.execute_command(&"vertical", {"step": 1}))
+	assert_true(game.execute_command(&"move", {"step": 1}))
+	assert_true(game.execute_command(&"vertical", {"step": 1}))
+	assert_true(game.execute_command(&"move", {"step": 1}))
+	assert_true(game.execute_command(&"confirm"))
+	assert_eq(game.save_state()["mistakes"], 1)
+	assert_eq(_requests.size(), 3)
+	assert_true(game.execute_command(&"back"))
+	assert_true(game.execute_command(&"back"))
+	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "back"}})
+	game.load_state({})
+	game.context.input_enabled = false
+	assert_false(game.execute_command(&"confirm"))
+	assert_eq(game.save_state()["mistakes"], 0)
