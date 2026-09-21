@@ -16,7 +16,7 @@
 | 계획 | 대상 | 목표 |
 |---|---|---|
 | 01_EXISTING_MODULES.md | violet_case / paper_moon_clinic / quiet_locker | 기존 얕은 모듈을 1회성 선택에서 여러 상호작용 묶음으로 확장 |
-| 02_REINCARNATOR_GAME.md | 신규 게임형 모듈 계획 | 고정 인생목표를 세계 상태 조작으로 예상 밖에 달성하는 탐험 어드벤처 |
+| 02_REINCARNATOR_GAME.md | 신규 게임형 모듈 계획 | 물건·NPC·환경을 직접 조작해 기괴한 인생목표를 예상 밖에 달성하는 systemic sandbox |
 | 03_TEXTILE_REVOLT.md | 신규 게임형 모듈 후보 | 이불 반란 세계관을 탐색/추리 가능한 실제 게임 공간으로 구성 |
 | BACKLOG.md | 나머지 아이디어 | 후속 모듈/장면/괴담/개그 후보 보존 |
 
@@ -25,7 +25,7 @@
 1. `violet_case` — 사건 1개 → 사건 묶음
 2. `paper_moon_clinic` — 증상 카드 3개 → 환자/증상 기록 묶음
 3. `quiet_locker` — 필수 3칸 → 선택 상호작용 다수
-4. 환생 왕녀 Life-Goal World Adventure 첫 수직 슬라이스
+4. 환생 왕녀 Life-Goal Systemic Sandbox 첫 수직 슬라이스
 5. 이불 반란 모듈 첫 수직 슬라이스
 
 이 순서는 세계관 중요도가 아니라 **현재 코드에서 실제 분량 증가를 빨리 체감할 수 있는 순서**다.
