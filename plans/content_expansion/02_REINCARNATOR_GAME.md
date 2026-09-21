@@ -1194,7 +1194,7 @@ InteractionVariant는 필요할 때:
 
 # 18. 오픈소스 베이스
 
-## 18.1 1차 참고/부분 포팅 — GDQuest Godot Open RPG 0.4.0
+## 18.1 이동/지역 전환 참고 — GDQuest Godot Open RPG 0.4.0
 
 repository:
 `gdquest-demos/godot-open-rpg`
@@ -1211,46 +1211,79 @@ commit:
 Godot:
 4.4+
 
-확인한 유용한 구조:
-- `src/field/cutscenes/interaction.gd`
-- `src/field/cutscenes/templates/area_transitions/area_transition.gd`
-- `src/field/gamepieces/controllers/player_controller.gd`
-- `src/field/map.gd`
+가져올 가치:
+- player movement 구조
+- interaction range 감지 아이디어
+- area transition lifecycle
 
 ### 판정
 
-**전체 프로젝트 vendoring 금지.**
+**이 게임의 핵심 베이스로는 부족하다.**
 
 이유:
-- Player / Camera / CombatEvents / FieldEvents / Gameboard 등 전역 의존이 많음
-- 전투 시스템까지 포함
-- TIN의 autoload 금지 및 ModuleContext 입력 계약과 충돌
+- 중심이 RPG field/cutscene 구조
+- Player/Camera/CombatEvents/FieldEvents/Gameboard 전역 의존
+- 물건을 계속 옮기고 NPC가 반응하는 systemic toybox는 제공하지 않음
 
-### 가져올 가치가 있는 것
+따라서 이동과 공간 전환 패턴만 참고하고 전체 vendoring 금지.
 
-코드 직접 복사 전에 파일별 라이선스 고지를 보존하며 다음 패턴만 포팅 후보:
+## 18.2 물체 조작 참고 — HarmonyHoney/tiny_crate2
 
-- interaction area가 플레이어 인접 상태를 감지하는 방식
-- interaction target selection
-- area transition lifecycle
-- map/field를 분리하는 구조
+repository:
+`HarmonyHoney/tiny_crate2`
 
-### 새로 작성할 것
+license:
+MIT
 
-- TIN용 player controller
-- WorldState
-- PredicateEvaluator
-- EffectExecutor
-- InteractionResolver
-- LifeGoalEvaluator
-- WorldReactionSystem
-- MemorySealSystem
+commit:
+`ec138031f1a3792d1287f2d4be06e9218e079c87`
 
-## 18.2 Popochiu
+Godot:
+3.5.2
 
-현재 TIN에는 이미 Popochiu의 hotspot/inventory/room 개념을 조사해 만든 `TinIntegrationKit`이 있다.
+유용 후보:
+- actor/object 이동 표현
+- box/interactable 처리
+- door/contact 구조
+- movement helper
 
-따라서 이 모듈을 위해 Popochiu 전체 addon을 다시 설치하지 않는다.
+문제:
+- Godot 3
+- autoload 다수
+- 이 게임에 필요한 NPC reaction/ownership/routine 없음
+
+### 채택 방식
+
+전체 import 금지.
+
+실제 포팅 후보 파일을 Phase 0에서 다시 읽고:
+- 물체 들기/밀기/충돌에 직접 도움 되는 코드만 포팅
+- autoload/Input/global scene routing 제거
+- Godot 4.7.2로 변환
+
+## 18.3 기존 TIN Physics Toolbox와의 관계
+
+`plans/game_modules/03_PHYSICS_TOOLBOX.md`가 먼저 구현되어 있고
+그 안의 object capability / reset / tool interaction이 실제로 안정적이면,
+이 모듈이 **두 번째 실제 재사용 사례**가 된다.
+
+그때만:
+- 공통 object capability
+- stable entity id
+- snapshot/reset 일부
+
+를 `shared/domain`으로 승격할지 검토한다.
+
+아직 구현되지 않았거나 API가 맞지 않으면
+이 문서 때문에 미리 shared abstraction을 만들지 않는다.
+
+## 18.4 Popochiu
+
+TIN에는 이미 Popochiu 계열 hotspot/inventory 아이디어를 반영한 `TinIntegrationKit`이 있다.
+
+이번 모듈을 위해 Popochiu 전체 addon 추가 금지.
+
+대화/history 등 이미 있는 기능만 재사용한다.
 
 ---
 
@@ -1266,6 +1299,9 @@ modules/<REINCARNATOR_MODULE_ID>/
     world_state.gd
     predicate.gd
     effect.gd
+    object_definition.gd
+    npc_definition.gd
+    npc_reaction_rule.gd
     interaction_definition.gd
     interaction_variant.gd
     reaction_definition.gd
@@ -1279,6 +1315,12 @@ modules/<REINCARNATOR_MODULE_ID>/
   systems/
     predicate_evaluator.gd
     effect_executor.gd
+    object_registry.gd
+    carry_system.gd
+    placement_system.gd
+    object_action_system.gd
+    npc_routine_system.gd
+    npc_reaction_system.gd
     interaction_resolver.gd
     reaction_system.gd
     goal_evaluator.gd
@@ -1287,16 +1329,20 @@ modules/<REINCARNATOR_MODULE_ID>/
     memory_seal_system.gd
     text_leak_system.gd
     save_codec.gd
+    content_validator.gd
 
   field/
     player_controller.gd
     interaction_sensor.gd
-    interactable.gd
+    carry_anchor.gd
+    interactable_object.gd
+    npc_actor.gd
     area_exit.gd
     location_host.gd
 
   ui/
-    interaction_menu.gd
+    contextual_action_ui.gd
+    bark_label.gd
     dialogue_panel.gd
     goal_panel.gd
     inventory_panel.gd
@@ -1304,6 +1350,8 @@ modules/<REINCARNATOR_MODULE_ID>/
     text_leak_overlay.gd
 
   content/
+    objects/
+    npcs/
     locations/
       home.tres
       village.tres
@@ -1320,12 +1368,51 @@ modules/<REINCARNATOR_MODULE_ID>/
     outskirts.tscn
 ```
 
+## 19.1 물체 조작 구현 범위
+
+첫 버전에서 실제 물리 시뮬레이션이 반드시 필요한 것:
+- 던진 물체의 위치 변화
+- 밀기/당기기
+- 공룡/큰 물체 collision
+- 바닥에 놓인 물건과 NPC 감지
+
+완전한 유체/rope/복잡한 rigidbody simulation은 필요 없음.
+
+`pour`는 1차에서:
+- source container volume state 감소
+- target object/container wet/liquid state 증가
+
+처럼 **상태 기반**으로 구현 가능.
+
+즉 손맛은 물체 조작에서 만들되
+저지능 구현 모델에게 불필요한 물리엔진 과제를 떠넘기지 않는다.
+
+## 19.2 저장해야 하는 물체 상태
+
+```text
+entity_id
+location_id
+position
+rotation_if_needed
+container_id | null
+held_by | null
+state{}
+enabled
+```
+
+모든 장식물을 저장하지 않는다.
+
+**gameplay-relevant object만 stable entity id를 가짐.**
+
 테스트:
 
 ```text
 tests/core/
   test_reincarnator_predicates.gd
   test_reincarnator_effects.gd
+  test_reincarnator_objects.gd
+  test_reincarnator_carry.gd
+  test_reincarnator_npc_reactions.gd
   test_reincarnator_interactions.gd
   test_reincarnator_reactions.gd
   test_reincarnator_goals.gd
@@ -1399,183 +1486,205 @@ module.gd는 오케스트레이션만 한다.
 
 # 22. 구현 단계 — 저지능 모델용 작업 분해
 
-## Phase 0 — 베이스 읽기
+## Phase 0 — 베이스 감사
 
-읽을 것:
-- TIN GameModule contract
-- ModuleContext
-- SaveService 규칙
-- GDQuest Open RPG의 interaction / area transition / player controller
+읽기:
+- TIN GameModule / ModuleContext / save 계약
+- Open RPG movement/area transition
+- Tiny Crate 2에서 실제 포팅 후보
+- Physics Toolbox가 구현돼 있으면 해당 object/reset API
 
 산출물:
-- `docs/reincarnator_base_audit.md`
+`docs/reincarnator_base_audit.md`
 
-반드시 기록:
-- 실제 포팅 파일
-- 구조 참고만 한 파일
-- 버린 전역 의존
+## Phase 1 — WorldState / Predicate / Effect
 
-## Phase 1 — 순수 domain
+씬 없이 순수 데이터 테스트.
+
+Gate:
+- 잘못된 ID/타입 실패
+- JSON-safe
+- deterministic
+
+## Phase 2 — Object Registry + Carry/Place
+
+먼저 **말 없는 방**을 만든다.
+
+방 안:
+- 플레이어
+- 상자/컵/도구 등 gameplay object 6개
+- 바닥/선반/용기
 
 구현:
-- WorldState
-- Predicate
-- Effect
-- evaluator/executor
-
-이 단계에서는 scene/UI 금지.
-
-Gate:
-- unit tests 통과
-
-## Phase 2 — Interaction
-
-구현:
-- InteractionDefinition
-- Resolver
-- variant priority
-- once
-- effects
+- 집기
+- 내려놓기
+- 특정 surface/container에 놓기
+- 밀기
+- 간단한 던지기
 
 Gate:
-- 같은 target이 world state에 따라 세 variant를 정확히 선택
+- 5분 동안 NPC/대화 없이 물건만 갖고 놀 수 있음
+- save/load 후 중요 물건 위치 복원
 
-## Phase 3 — Reaction + Goal
+## Phase 3 — Object Action
 
-구현:
-- ReactionSystem
-- GoalEvaluator
-
-Gate:
-- A interaction → reaction → B state 변경
-- fixture goal 자동 완료
-- goal 완료 중복 없음
-
-## Phase 4 — Field
-
-구현:
-- top-down player
-- interaction sensor
-- location host
-- area exit
+추가:
+- open/close
+- insert/remove
+- pour(state based)
+- feed
+- show/give
+- mount/dismount interface
 
 Gate:
-- home test scene에서 이동/조사/대화/사용
-- input disabled 시 완전 정지
+- 같은 물건 하나가 최소 3개의 서로 다른 action context에서 동작
 
-## Phase 5 — Travel
+## Phase 4 — NPC Routine / Reaction
 
-3 location 연결.
+NPC 1명 + 물체 4개짜리 테스트 방.
 
-Gate:
-- 왕복
-- spawn point
-- 이전 world state 유지
-- 다른 장소 reaction 화면 반영
-
-## Phase 6 — Memory / Text leak
+반드시 구현:
+- NPC가 물건 발견
+- 물건 집어 원위치
+- 플레이어가 다른 물건으로 attention 변경
+- 비워진 공간을 플레이어가 이용
 
 Gate:
-- 평범한 action 후 crisis predicate 성립
-- memory fragment 자동 해금
-- 새 interaction variant 등장
-- text leak 원인과 memory system을 코드상 분리
+- NPC에게 말을 걸 필요 없이 3단계 chain 발생
 
-## Phase 7 — 실제 사용자 콘텐츠
+## Phase 5 — Interaction + World Reaction + Goal
 
-순서:
-1. 아침 문장
-2. 양치/귀이개
-3. 시나
-4. 집 optional interactions
-5. 마을 반응
-6. 외곽
-7. 공룡/감자 후보 콘텐츠
-
-정식 이름/미정 설정을 모델이 임의 확정하지 않는다.
-
-## Phase 8 — 콘텐츠 밀도
-
-각 location의 minimum density 채움.
+기존 InteractionDefinition을 object/NPC systems와 연결.
 
 Gate:
-- 필수 상호작용만 직선으로 따라가도 작동
-- 옆길 탐색 시 플레이 시간이 의미 있게 늘어남
-- optional content를 안 봐도 진행 가능
+- object action
+→ NPC reaction
+→ world effect
+→ 다른 object state
+→ fixture LifeGoal 자동 완료
+
+까지 한 chain으로 작동.
+
+## Phase 6 — Home Toybox
+
+실제 사용자 콘텐츠:
+- text leak
+- 화장실
+- 귀이개/칫솔
+- 시나 reaction
+- 부엌/장바구니
+
+Gate:
+- 2분 이상 대화 없음
+- 양치 사건을 제외하고도 10분 정도 조작 가능
+
+## Phase 7 — Village Clockwork
+
+추가:
+- 상점 물건
+- 우물
+- 수호신
+- 마구간
+- 외눈 학생
+- 주민 routines
+
+Gate:
+- NPC reaction chain 3개
+- 동일 물건 재사용 2곳+
+- 수호신 object-state 변화
+
+## Phase 8 — Dinosaur / Potato Obstacle
+
+공룡 자체를 공간 변수로 구현.
+감자 장애물 2해법+.
+
+## Phase 9 — Memory/Text Leak/Save
+
+마지막에 서사 시스템 연결.
+
+기억/대화부터 먼저 만들지 않는다.
+
+## Phase 10 — 콘텐츠 밀도 검수
+
+새 대사 추가보다:
+- object
+- reaction
+- chain
+- alternate use
+
+누락을 먼저 채운다.
 
 ---
 
 # 23. 테스트 세부
 
-## Predicate
+## Object
+
+- grab/drop
+- place surface/container
+- throw 후 stable state
+- push/pull
+- open/close
+- insert/remove
+- pour state transfer
+- feed accept/reject
+- same object multiple contexts
+- invalid target no-op
+
+## NPC Reaction
+
+- object enters attention range
+- ownership reaction
+- return object
+- activity interrupted/resumed
+- alternate attention target
+- player never talks but NPC chain progresses
+- reaction loop cap
+
+## Predicate / Effect
 
 - all/any/not
 - missing key
-- counter numeric normalize
-- state
-- relation
-- inventory
-- visited
-
-## Effect
-
-- idempotent fact
-- counter
-- item add/remove
+- state/relation/item
 - invalid effect 거부
 - JSON-safe
 
-## Interaction
-
-- priority
-- requirements
-- once
-- fallback variant
-- state 변경 후 variant 변경
-
-## Reaction
+## World Reaction
 
 - cross-location reaction
 - once
 - reaction chain
-- 무한 reaction loop 감지
-
-반드시 reaction chain 최대 실행 수를 둔다.
-예: 한 commit당 64 reaction 초과 시 오류 처리.
+- 최대 64 chain cap
 
 ## Goal
 
-- 처음 false
-- world 변화 후 true
-- 중복 완료 없음
-- any-of solution
-- visible goal과 test fixture 분리
+- false→world chain→true
+- duplicate completion 없음
+- direct/indirect solution
+- dev fixture 제거 검사
 
 ## Memory
 
 - crisis 전 해금 없음
 - crisis 성립 시 자동 해금
-- 같은 crisis 재실행 없음
 - save/load
-- memory fragment가 없으면 안전하게 넘어감
+- 대화 없이도 crisis가 world state로 발동 가능
 
 ## Field
 
-- movement
-- collision
-- interaction range
-- action menu
-- pause/input disable
-- transition 중 입력 없음
+- input disabled
+- carrying 중 transition 처리
+- mounted/unmounted collision
+- NPC와 object collision deadlock 없음
 
 ## Save
 
-- 각 location에서 round-trip
-- interaction 직후
-- reaction 직후
-- goal 완료 직후
-- memory release 직후
-- stale content sanitize
+- gameplay object 위치
+- container 관계
+- NPC routine state 중 필요한 최소값
+- 수호신 state
+- 공룡 위치/탑승 상태
+- mid-chain 저장 후 안전 복원
 
 ---
 
@@ -1778,8 +1887,6 @@ TIN의 ModuleDirector를 location 이동에 사용하지 않는다.
 
 즉 한 컷신보다 "그 뒤 마을 전체를 다시 갖고 놀 때 달라진 반응"이 본체.
 
-### 혈밍아웃 장면 구조
-
 정확한 계기와 장소는 미정.
 
 장면이 시작되면 플레이어가:
@@ -1882,7 +1989,7 @@ TIN의 ModuleDirector를 location 이동에 사용하지 않는다.
 
 ---
 
-## 29.3 외눈 교복 귀환자 — 25~45분 선택 대화/탐색 묶음
+## 29.3 외눈 교복 귀환자 — 25~45분 반응형 상호작용 묶음
 
 ### [USER]
 
@@ -1896,28 +2003,19 @@ TIN의 ModuleDirector를 location 이동에 사용하지 않는다.
 
 이 캐릭터를 "설정 설명 NPC"로 두지 않는다.
 
-처음엔 평범하게 마을에 있음.
+핵심은 **무엇을 보여주거나 주변에서 어떤 상황을 만들었을 때 행동이 달라지는가**다.
 
-#### 첫 만남
-- 자신을 귀환자라고 말함
-- 학교에서 돌아왔다고 함
-- 설명을 길게 하지 않음
+첫 구현 반응 세트:
+- 평범한 마을 물건을 보여주면 무심한 반응
+- 교복/학교와 연결될 법한 물건을 보여주면 자세히 봄
+- text leak과 겹치는 낯선 단어/표식을 보여주면 반응 정지 또는 짧은 확인
+- 공룡을 근처에 데려오면 위치를 바꿈
+- 수호신이 특정 외형 단계일 때 사당 근처 행동 변화
+- 왕녀 관련 물건을 보게 되면 평범한 학생 반응과 다른 짧은 태도 변화
 
-#### 두 번째 만남
-다른 위치에 있음.
-- 그쪽 학교의 사소한 생활 규칙 하나
-- 여기와 비교
+대화는 이 반응 뒤 1~2줄씩 붙는 수준이 기본.
 
-#### 세 번째 만남
-플레이어가 마을에서 특정 학교 관련 물건/표지/책을 조사한 뒤라면 새로운 대화.
-
-#### 네 번째 이후
-항상 새로운 lore를 주지 않는다.
-- 밥
-- 숙제
-- 교복
-- 집
-같은 평범한 얘기도 함.
+긴 이세계 학교 이야기는 플레이어가 여러 반응을 이미 본 뒤 선택적으로 한 번만 열리게 한다.
 
 **다른 세계의 존재를 증명하는 열쇠 NPC로 만들지 않는다.**
 
