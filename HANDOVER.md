@@ -111,6 +111,20 @@ func change_module(id, restore_snapshot=false, arrival={}, identity={}, discard_
 
 ---
 
+## 4.2 콘텐츠 증설 계획
+
+2026-09-21 사용자 아이디어 덤프를 `plans/content_expansion/`에 배치했다.
+
+- `INDEX.md` — 기존 모듈 확장 / 신규 게임형 모듈 / 백로그 배치 원칙
+- `01_EXISTING_MODULES.md` — `violet_case`, `paper_moon_clinic`, `quiet_locker` 중심의 즉시 분량 증설
+- `02_REINCARNATOR_ROAD.md` — 환생 왕녀·이상한 인생 목표·공룡/감자 여행 게임형 모듈
+- `03_TEXTILE_REVOLT.md` — 이불 반란·베개 기억장치·직물 첩보 세계 게임형 모듈
+- `BACKLOG.md` — 사막 바늘, 괴담 인력소, 태어나기 전 정책 투표, 저작권 협회, 탑, 공룡 문화권, 개그 seed 등 후속 보존
+
+**콘텐츠 단계의 우선순위는 기존 얕은 모듈의 실제 상호작용 수와 선택 콘텐츠를 먼저 늘리는 것**이다. 아이디어 하나마다 새 모듈을 만들지 않는다.
+
+---
+
 ## 5. 즉시 재개 가능한 다음 작업(우선순위)
 
 ### 5.1 git 기준점
