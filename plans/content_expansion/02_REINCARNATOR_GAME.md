@@ -635,7 +635,34 @@ trusted
 
 ---
 
-# 14. 첫 35~60분 수직 슬라이스
+# 14. 단기 동기 — 퀘스트 로그 없이 길을 잃지 않게 하기
+
+인생목표는 너무 장기적이므로 그것만으로 매 순간 행동 방향을 제공하지 않는다.
+
+대신 각 location은 **즉시 눈에 보이는 문제/이상현상/호기심거리 1~3개**를 가진다.
+
+예:
+- 누군가 뭔가를 못 하고 있음
+- 평소와 다른 물체 상태
+- 갈 수 있는데 이유가 이상한 길
+- 대화 중 나온 장소/사람
+- 눈앞에서 벌어지는 작은 사고
+
+중요:
+- UI에 "서브퀘스트 3/7"로 등록하지 않음
+- objective marker 없음
+- 완료 체크리스트 없음
+- NPC 대사, 환경, 지도 변화로만 다음 가능성을 암시
+
+플레이어가 막히면 다른 location을 가도 된다.
+
+이 구조의 역할:
+- **인생목표 = 장기 방향과 큰 놀람**
+- **지역의 문제/호기심 = 30초~10분 단기 동기**
+
+---
+
+# 15. 첫 35~60분 수직 슬라이스
 
 중요: 아래는 **Scene 1→2→3의 직선 진행표가 아니다.**
 
@@ -732,7 +759,7 @@ trusted
 
 ---
 
-# 15. 콘텐츠 밀도 규칙
+# 16. 콘텐츠 밀도 규칙
 
 게임이 30분짜리 컷신 묶음이 되는 것을 막는다.
 
@@ -758,9 +785,9 @@ trusted
 
 ---
 
-# 16. 오픈소스 베이스
+# 17. 오픈소스 베이스
 
-## 16.1 1차 참고/부분 포팅 — GDQuest Godot Open RPG 0.4.0
+## 17.1 1차 참고/부분 포팅 — GDQuest Godot Open RPG 0.4.0
 
 repository:
 `gdquest-demos/godot-open-rpg`
@@ -812,7 +839,7 @@ Godot:
 - WorldReactionSystem
 - MemorySealSystem
 
-## 16.2 Popochiu
+## 17.2 Popochiu
 
 현재 TIN에는 이미 Popochiu의 hotspot/inventory/room 개념을 조사해 만든 `TinIntegrationKit`이 있다.
 
@@ -820,7 +847,7 @@ Godot:
 
 ---
 
-# 17. 파일 구조
+# 18. 파일 구조
 
 ```text
 modules/<REINCARNATOR_MODULE_ID>/
@@ -903,7 +930,7 @@ tests/core/
 
 ---
 
-# 18. module.gd 책임
+# 19. module.gd 책임
 
 module.gd는 오케스트레이션만 한다.
 
@@ -925,7 +952,7 @@ module.gd는 오케스트레이션만 한다.
 
 ---
 
-# 19. 저장 schema v1
+# 20. 저장 schema v1
 
 ```json
 {
@@ -963,7 +990,7 @@ module.gd는 오케스트레이션만 한다.
 
 ---
 
-# 20. 구현 단계 — 저지능 모델용 작업 분해
+# 21. 구현 단계 — 저지능 모델용 작업 분해
 
 ## Phase 0 — 베이스 읽기
 
@@ -1071,7 +1098,7 @@ Gate:
 
 ---
 
-# 21. 테스트 세부
+# 22. 테스트 세부
 
 ## Predicate
 
@@ -1145,7 +1172,7 @@ Gate:
 
 ---
 
-# 22. "멋진 게임" 판정 게이트
+# 23. "멋진 게임" 판정 게이트
 
 시스템이 작동하는 것만으로 완료 처리하지 않는다.
 
@@ -1166,7 +1193,7 @@ Gate:
 
 ---
 
-# 23. 명시적 금지
+# 24. 명시적 금지
 
 - Scene 1→2→3→4 식 직선 컷신 진행을 "게임"이라고 부르기
 - 여행 거리를 플레이 시간으로 부풀리기
@@ -1183,7 +1210,66 @@ Gate:
 
 ---
 
-# 24. 이후 콘텐츠가 늘어나는 방식
+# 25. 콘텐츠 검증기
+
+데이터 기반 구조는 저지능 모델이 문자열 ID를 틀리기 쉽다.  
+따라서 구현 초기에 `content_validator.gd`를 만든다.
+
+검사 대상:
+
+- 중복 interaction_id
+- 존재하지 않는 target_id
+- 존재하지 않는 location_id
+- route의 from/to 누락
+- Predicate가 참조하는 미등록 state key
+- Effect가 잘못된 타입의 값을 쓰는 경우
+- goal이 존재하지 않는 id를 참조
+- reaction cycle 가능성
+- crisis의 memory fragment 누락
+- 같은 once id 중복
+- 시작 location 없음
+
+개발/테스트에서는 invalid content를 **조용히 무시하지 말고 실패**시킨다.
+
+release load에서 오래된 save의 unknown content id는 sanitize 가능하지만,
+작성 중인 content definition 자체의 오류는 테스트 실패로 잡는다.
+
+## ID registry
+
+최소한 다음 registry를 content load 시 만든다.
+
+```text
+location_ids
+target_ids
+interaction_ids
+reaction_ids
+goal_ids
+crisis_ids
+item_ids
+known_state_keys
+```
+
+임의 문자열 오타가 새로운 state key로 자동 생성되지 않게 한다.
+
+---
+
+# 26. TIN 모듈 경계
+
+이 게임 안의 `home → village → outskirts` 이동은 **하나의 GameModule 내부 location 전환**이다.
+
+TIN의 ModuleDirector를 location 이동에 사용하지 않는다.
+
+- 내부 location은 module local
+- 다른 TIN 게임으로 넘어갈 때만 `requested("portal")`
+- module-local inventory/reputation/world facts를 AppRoot/global에 노출하지 않음
+- module-local item은 다른 게임으로 전달하지 않음
+- 재진입 시 이 모듈의 저장을 어떻게 복원할지는 TIN의 기존 module save 계약을 따름
+
+몸과 기억만 게임 경계를 통과한다는 프로젝트 원칙과 충돌하지 않게 한다.
+
+---
+
+# 27. 이후 콘텐츠가 늘어나는 방식
 
 이 구조가 완성되면 새 콘텐츠 추가는 시스템 코드를 거의 수정하지 않고:
 
