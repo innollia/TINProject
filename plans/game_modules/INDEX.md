@@ -23,7 +23,11 @@
 4. **샘플 콘텐츠와 시스템을 분리한다.**
    - 샘플은 시스템 검증용이다.
    - 샘플 하나가 동작한다고 모듈 완료로 판정하지 않는다.
-5. **TIN 계약을 유지한다.**
+5. **게임형 모듈 하나는 하나의 게임이다.**
+   - 30분~8시간 분량을 서로 독립된 미니게임/scenario로 채우지 않는다.
+   - 콘텐츠가 늘어날수록 기존 플레이 문법·상태·도구·지식이 더 많이 재사용되어야 한다.
+   - 일회성 변칙은 허용하지만 별도 규칙 설명/별도 런타임이 콘텐츠 대부분을 차지하면 실패다.
+6. **TIN 계약을 유지한다.**
    - 다른 모듈 직접 참조 금지.
    - 승인 없는 autoload/EventBus 금지.
    - 입력은 ModuleContext 경유.
@@ -38,6 +42,7 @@
 | 02_DEDUCTION_CASEWORK.md | The Case of the Golden Idol | 증거 데이터 모델·추론 슬롯·부분 판정·사건 교체 |
 | 03_PHYSICS_TOOLBOX.md | Mosa Lina | 물리 상호작용·도구 능력·오브젝트 조합·안전한 reset |
 | 04_TIME_LOOP.md | In Stars and Time | loop-local/persistent 상태 분리·tick·reset·이벤트 재현 |
+| 05_ODD_ROAD_ADVENTURE.md | West of Loathing | 하나의 지속적인 어드벤처 문법으로 지역·아이템·NPC·괴상한 사건을 대량 수용 |
 
 ## 구현 순서
 
@@ -49,6 +54,7 @@
 2. PHYSICS_TOOLBOX
 3. TIME_LOOP
 4. DEDUCTION_CASEWORK
+5. ODD_ROAD_ADVENTURE
 
 이는 게임 내 등장 순서가 아니다.
 
