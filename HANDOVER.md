@@ -106,6 +106,7 @@ func change_module(id, restore_snapshot=false, arrival={}, identity={}, discard_
 - `02_DEDUCTION_CASEWORK.md` — Golden Idol 레퍼런스, 추리/사건 재구성 엔진
 - `03_PHYSICS_TOOLBOX.md` — Mosa Lina 레퍼런스, 물리 도구 샌드박스
 - `04_TIME_LOOP.md` — In Stars and Time 레퍼런스, 시간루프 상태 시스템
+- `05_ODD_ROAD_ADVENTURE.md` — West of Loathing 계열, 하나의 지속적인 어드벤처 문법으로 지역·아이템·NPC·기묘한 사건을 대량 수용
 
 공통 원칙은 **Adopt → Adapt → Build**다. 공개 구현을 먼저 조사하고 라이선스/버전/전역 의존성을 확인한 뒤 재사용 가능한 subsystem은 가져오며, 부족한 부분만 직접 구현한다.
 
