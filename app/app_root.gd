@@ -79,6 +79,12 @@ var _records_save_queued: bool = false
 var _last_process_mode: Node.ProcessMode = Node.PROCESS_MODE_INHERIT
 var _load_started_usec: int = 0
 var _last_load_ms: float = 0.0
+var _shared_bar: HBoxContainer
+var _context_hud: PanelContainer
+var _context_title: Label
+var _context_meta: Label
+var _context_status: Label
+var _context_hint: Label
 var _menu: PanelContainer
 var _journal: PanelContainer
 var _menu_button: Button
@@ -90,6 +96,8 @@ var _quit_button: Button
 var _journal_close: Button
 var _settings_label: Label
 var _menu_volume: HSlider
+var _menu_title: Label
+var _menu_hint: Label
 var _quit_dialog: ConfirmationDialog
 var _notice: Label
 
@@ -221,12 +229,15 @@ func _process(_delta: float) -> void:
 	if _menu_button != null:
 		_menu_button.disabled = blocked
 		_journal_button.disabled = blocked
+	_sync_shared_ui_visibility()
 	if paused and not router.locked:
 		router.set_locked(true)
 
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
+		var focused: Control = get_viewport().gui_get_focus_owner()
+		var editing_text: bool = focused is LineEdit or focused is TextEdit
 		if event.keycode == KEY_ESCAPE:
 			get_viewport().set_input_as_handled()
 			if _quit_dialog != null and _quit_dialog.visible:
@@ -234,12 +245,11 @@ func _input(event: InputEvent) -> void:
 			else:
 				_toggle_pause()
 		elif event.keycode == KEY_J:
-			var focused: Control = get_viewport().gui_get_focus_owner()
-			if focused is LineEdit or focused is TextEdit:
+			if editing_text:
 				return
 			get_viewport().set_input_as_handled()
 			toggle_journal()
-		elif dev_shell and event.is_action_pressed(&"meta_pause", false):
+		elif not editing_text and _shared_bar != null and _shared_bar.visible and (event.keycode == KEY_P or event.is_action_pressed(&"meta_pause", false)):
 			get_viewport().set_input_as_handled()
 			_toggle_pause()
 
@@ -285,7 +295,7 @@ func _identity() -> Dictionary:
 func _change_module(id: StringName, restore_snapshot: bool = false, discard_current: bool = false) -> Error:
 	_operation_pending = true
 	_load_started_usec = Time.get_ticks_usec()
-	status.text = "Loading module..."
+	_set_status("Loading module...")
 	var previous: Dictionary = saves.export_data()
 	var error: Error = await director.change_module(id, restore_snapshot, _arrival(), _identity(), discard_current)
 	if error != OK:
@@ -295,7 +305,7 @@ func _change_module(id: StringName, restore_snapshot: bool = false, discard_curr
 	if error != OK:
 		_fail("Could not switch module.", error)
 	else:
-		status.text = "Module ready."
+		_set_status("Module ready.")
 	return error
 
 
@@ -334,7 +344,7 @@ func save_progress(path: String = "") -> Error:
 	if error != OK:
 		saves.import_data(previous)
 	else:
-		status.text = "Progress saved."
+		_set_status("Progress saved.")
 	_operation_pending = false
 	return error
 
@@ -354,7 +364,7 @@ func _on_load_pressed() -> void:
 		return
 	var error: Error = await restore_progress()
 	if error == ERR_FILE_NOT_FOUND:
-		status.text = "No saved progress yet. Use Save first."
+		_set_status("No saved progress yet. Use Save first.")
 	elif error != OK:
 		_fail("Could not load progress; current module retained.", error)
 
@@ -434,7 +444,7 @@ func _restore_progress_internal(path: String) -> Error:
 		_suppress_records_save = false
 	else:
 		meta_layer.restore(saves.global_state)
-		status.text = "Progress loaded."
+		_set_status("Progress loaded.")
 	if records_overlay != null:
 		records_overlay.call("refresh")
 	_restoring = false
@@ -553,6 +563,8 @@ func _toggle_pause() -> void:
 		_journal.hide()
 		_quit_dialog.hide()
 		_set_paused(false)
+		if _shared_bar != null and _shared_bar.visible:
+			_menu_button.grab_focus()
 	else:
 		_set_paused(true)
 		_menu.show()
@@ -565,6 +577,8 @@ func toggle_journal() -> void:
 	if _journal.visible:
 		_journal.hide()
 		_set_paused(false)
+		if _shared_bar != null and _shared_bar.visible:
+			_journal_button.grab_focus()
 	else:
 		_menu.hide()
 		_quit_dialog.hide()
@@ -579,9 +593,9 @@ func _on_reset_pressed() -> void:
 	if not _can_operate():
 		return
 	if director.execute_command(&"reset"):
-		status.text = "Current module reset. Saved progress is unchanged until Save."
+		_set_status("Current module reset. Saved progress is unchanged until Save.")
 	else:
-		status.text = "This module does not support reset."
+		_set_status("This module does not support reset.")
 
 
 func _on_volume_changed(value: float) -> void:
@@ -606,7 +620,7 @@ func _on_save_settings_pressed() -> void:
 	if error != OK:
 		_fail("Could not save settings.", error)
 	else:
-		status.text = "Volume setting saved."
+		_set_status("Volume setting saved.")
 
 
 func set_language(value: String) -> bool:
@@ -629,6 +643,8 @@ func _on_module_changed(id: StringName) -> void:
 		meta_layer.describe_module(id, catalog[index].display_name)
 	else:
 		meta_layer.describe_module(id, String(id))
+	_update_context_hud(id)
+	_sync_shared_ui_visibility()
 	if not _restoring and records_store != null and SET_IDS.has(id):
 		_suppress_records_save = true
 		records_store.call("visit", id)
@@ -637,7 +653,7 @@ func _on_module_changed(id: StringName) -> void:
 
 func _on_module_finished(result: ModuleResult) -> void:
 	if result == null:
-		status.text = "Module returned an empty result."
+		_set_status("Module returned an empty result.")
 		return
 	meta_layer.record_result(result)
 	saves.global_state = meta_layer.capture(saves.global_state)
@@ -645,6 +661,12 @@ func _on_module_finished(result: ModuleResult) -> void:
 
 func _on_narration_changed(text: String) -> void:
 	narrator.text = text
+
+
+func _set_status(text: String) -> void:
+	status.text = text
+	if _context_status != null:
+		_context_status.text = text
 
 
 func _catalog_index(id: StringName) -> int:
@@ -700,26 +722,44 @@ func _build_shared_ui() -> void:
 	font.font_names = PackedStringArray(["Malgun Gothic", "Noto Sans CJK KR", "Noto Sans KR"])
 	font.allow_system_fallback = true
 	ui.add_theme_font_override("font", font)
-	var bar := HBoxContainer.new()
-	bar.name = "SharedBar"
-	ui.add_child(bar)
-	bar.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
-	bar.offset_left = -280.0
-	bar.offset_right = -12.0
-	bar.offset_top = 154.0 if dev_shell else 12.0
-	bar.offset_bottom = bar.offset_top + 40.0
-	_menu_button = _button(bar, "Menu", _toggle_pause)
-	_journal_button = _button(bar, "Journal (J)", toggle_journal)
+	_shared_bar = HBoxContainer.new()
+	_shared_bar.name = "SharedBar"
+	_shared_bar.add_theme_constant_override("separation", 8)
+	ui.add_child(_shared_bar)
+	_shared_bar.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
+	_shared_bar.offset_left = -280.0
+	_shared_bar.offset_right = -12.0
+	_shared_bar.offset_top = 12.0
+	_shared_bar.offset_bottom = 52.0
+	_menu_button = _button(_shared_bar, "Menu", _toggle_pause)
+	_journal_button = _button(_shared_bar, "Journal (J)", toggle_journal)
+	_build_context_hud(ui, font)
 	_menu = PanelContainer.new()
 	_menu.name = "SharedMenu"
 	ui.add_child(_menu)
 	_menu.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_menu.mouse_filter = Control.MOUSE_FILTER_STOP
 	var center := CenterContainer.new()
 	_menu.add_child(center)
+	var card := PanelContainer.new()
+	card.custom_minimum_size = Vector2(420, 0)
+	card.add_theme_stylebox_override("panel", _ui_box(Color("152331"), Color("6e9bb8"), 1))
+	center.add_child(card)
+	var margin := MarginContainer.new()
+	for side: String in ["left", "top", "right", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, 24)
+	card.add_child(margin)
 	var rows := VBoxContainer.new()
-	rows.custom_minimum_size = Vector2(380, 0)
 	rows.add_theme_constant_override("separation", 16)
-	center.add_child(rows)
+	margin.add_child(rows)
+	_menu_title = Label.new()
+	_menu_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_menu_title.add_theme_font_size_override("font_size", 24)
+	rows.add_child(_menu_title)
+	_menu_hint = Label.new()
+	_menu_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_menu_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	rows.add_child(_menu_hint)
 	_resume_button = _button(rows, "Resume", _toggle_pause)
 	_settings_label = Label.new()
 	rows.add_child(_settings_label)
@@ -766,6 +806,14 @@ func _button(parent: Node, text: String, callback: Callable) -> Button:
 	var button := Button.new()
 	button.text = text
 	button.custom_minimum_size.y = 38.0
+	button.focus_mode = Control.FOCUS_ALL
+	button.accessibility_name = text
+	button.tooltip_text = text
+	button.add_theme_font_size_override("font_size", 17)
+	button.add_theme_stylebox_override("normal", _ui_box(Color("1b3040"), Color("5c8298"), 1))
+	button.add_theme_stylebox_override("hover", _ui_box(Color("294b5b"), Color("9fe6ff"), 2))
+	button.add_theme_stylebox_override("pressed", _ui_box(Color("10222e"), Color("9fe6ff"), 2))
+	button.add_theme_stylebox_override("focus", _ui_box(Color("294b5b"), Color("fff0a8"), 3))
 	parent.add_child(button)
 	button.pressed.connect(callback)
 	return button
@@ -775,6 +823,8 @@ func _update_shared_text() -> void:
 	if _menu_button == null:
 		return
 	var korean: bool = language == "ko"
+	_menu_title.text = "메뉴" if korean else "Menu"
+	_menu_hint.text = "Esc 또는 P · 계속하기   J · 기록 열기" if korean else "Esc or P · resume   J · open journal"
 	_menu_button.text = "메뉴 (Esc)" if korean else "Menu (Esc)"
 	_journal_button.text = "기록 (J)" if korean else "Journal (J)"
 	_resume_button.text = "계속" if korean else "Resume"
@@ -788,6 +838,9 @@ func _update_shared_text() -> void:
 	_quit_dialog.ok_button_text = "종료" if korean else "Quit"
 	_quit_dialog.cancel_button_text = "취소" if korean else "Cancel"
 	_notice.text = "클릭에는 보상이 없습니다. 기록과 외형은 그대로 남습니다." if korean else "Clicks have no rewards. Records and identity remain unchanged."
+	_menu_button.accessibility_name = _menu_button.text
+	_journal_button.accessibility_name = _journal_button.text
+	_update_context_hud(director.current_id)
 
 
 func _on_menu_volume_changed(value: float) -> void:
@@ -828,6 +881,81 @@ func _confirm_quit() -> void:
 
 
 func _fail(message: String, error: Error) -> void:
-	status.text = "%s (%s)" % [message, error_string(error)]
+	_set_status("%s (%s)" % [message, error_string(error)])
 	if _notice != null:
 		_notice.text = status.text
+
+
+func _build_context_hud(ui: Control, font: SystemFont) -> void:
+	_context_hud = PanelContainer.new()
+	_context_hud.name = "ContextHud"
+	_context_hud.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_context_hud.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
+	_context_hud.offset_left = 16.0
+	_context_hud.offset_top = 12.0
+	_context_hud.offset_right = 370.0
+	_context_hud.offset_bottom = 116.0
+	_context_hud.add_theme_stylebox_override("panel", _ui_box(Color("12212e"), Color("6e9bb8"), 1))
+	ui.add_child(_context_hud)
+	var margin := MarginContainer.new()
+	for side: String in ["left", "top", "right", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, 12)
+	_context_hud.add_child(margin)
+	var rows := VBoxContainer.new()
+	rows.add_theme_constant_override("separation", 2)
+	margin.add_child(rows)
+	_context_title = Label.new()
+	_context_title.add_theme_font_override("font", font)
+	_context_title.add_theme_font_size_override("font_size", 20)
+	_context_title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	rows.add_child(_context_title)
+	_context_meta = Label.new()
+	_context_meta.add_theme_font_override("font", font)
+	_context_meta.add_theme_font_size_override("font_size", 13)
+	rows.add_child(_context_meta)
+	_context_status = Label.new()
+	_context_status.add_theme_font_override("font", font)
+	_context_status.add_theme_font_size_override("font_size", 13)
+	_context_status.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	rows.add_child(_context_status)
+	_context_hint = Label.new()
+	_context_hint.add_theme_font_override("font", font)
+	_context_hint.add_theme_font_size_override("font_size", 12)
+	_context_hint.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	rows.add_child(_context_hint)
+	_sync_shared_ui_visibility()
+
+
+func _sync_shared_ui_visibility() -> void:
+	if _shared_bar == null:
+		return
+	var show_navigation: bool = dev_shell or (bool(profile.get("started", false)) and director.current_id != &"first_entry")
+	_shared_bar.visible = show_navigation
+	_context_hud.visible = show_navigation
+
+
+func _update_context_hud(id: StringName) -> void:
+	if _context_title == null:
+		return
+	var index: int = _catalog_index(id)
+	var display_name: String = String(id)
+	if index >= 0:
+		display_name = catalog[index].display_name
+	_context_title.text = display_name
+	var korean: bool = language == "ko"
+	var position_text: String = "%02d / %02d" % [index + 1, maxi(catalog.size(), 1)] if index >= 0 else "-- / --"
+	_context_meta.text = ("공간 %s · 자동 저장" if korean else "Space %s · autosave") % position_text
+	_context_hint.text = "Esc/P 메뉴 · J 기록 · 방향키 이동 · Z 확인 · X 뒤로" if korean else "Esc/P menu · J journal · arrows move · Z confirm · X back"
+
+
+func _ui_box(background: Color, border: Color, width: int) -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = background
+	style.border_color = border
+	style.set_border_width_all(width)
+	style.set_corner_radius_all(8)
+	style.content_margin_left = 10
+	style.content_margin_right = 10
+	style.content_margin_top = 6
+	style.content_margin_bottom = 6
+	return style

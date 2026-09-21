@@ -16,7 +16,7 @@
 | 저장 | 버전 있는 JSON-safe 모듈 상태 + global profile/records |
 | 전역 UI | 상단 UI, Save/Load, pause, reset, 기록, 설정 |
 | 기록 | 자동 observation + 수동 메모/태그 + 테마 |
-| 마지막 기록 검증 | 통합 러너 639/639, GUT 130/130 / 4,671 assertions, smoke 통과 |
+| 마지막 기록 검증 | 통합 러너 639/639, GUT 131/131 / 4,684 assertions, smoke 통과 |
 
 위 테스트 수치는 마지막 전체 검증 기록이다. 새 코드 변경 후에는 `AGENTS.md`의 전체 검증을 다시 실행한다.
 

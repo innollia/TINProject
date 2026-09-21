@@ -327,6 +327,31 @@ func test_checkpoint_language_and_overlays() -> void:
 	assert_eq(app.save_progress("user://save.json"), ERR_INVALID_PARAMETER)
 
 
+func test_shared_navigation_hud_and_pause_hotkey_follow_intro() -> void:
+	app.dev_shell = false
+	app.profile = {"intro_seen": false, "shape": 0, "color": 0, "started": false}
+	assert_eq(await app._change_module(&"first_entry"), OK)
+	await _settle()
+	assert_false(app._shared_bar.visible, "First entry keeps its own navigation controls")
+	assert_false(app._context_hud.visible, "First entry keeps the shared HUD out of the way")
+	var pause_event := InputEventKey.new()
+	pause_event.keycode = KEY_P
+	pause_event.physical_keycode = KEY_P
+	pause_event.pressed = true
+	app._input(pause_event)
+	assert_false(app.paused, "Hidden shared navigation does not steal P during first entry")
+	app.profile["started"] = true
+	assert_eq(await app._change_module(&"signal_desk"), OK)
+	await _settle()
+	assert_true(app._shared_bar.visible)
+	assert_true(app._context_hud.visible)
+	assert_eq(app._context_title.text, "기호 배달국")
+	app._input(pause_event)
+	assert_true(app.paused, "P pauses outside the development shell")
+	app._input(pause_event)
+	assert_false(app.paused, "P resumes outside the development shell")
+
+
 func test_restore_roundtrip_and_legacy_records_retention() -> void:
 	app.dev_shell = false
 	await _request(&"start", {"shape": 1, "color": 2})
