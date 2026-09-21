@@ -9,9 +9,84 @@
 
 ## 0. 기존 베이스 우선 사용
 
-### TIN 내부에서 이미 존재하는 기능
+### 1차 채택 베이스 — YuriSizov/tutorial-gui-of-golden-idol
 
-`TinIntegrationKit`에 이미 다음 기능이 있다.
+- repository: `YuriSizov/tutorial-gui-of-golden-idol`
+- Godot **4.3**
+- GDScript
+- MIT
+- pinned commit: `1bf788a4f75ff71fb69facbd28a60c29b24380f9`
+- 프로젝트 목적 자체가 **The Case of the Golden Idol의 핵심 GUI 메커니즘을 Godot 4에서 재구성하는 것**
+- 원작 실제 코드를 리버스 엔지니어링한 구현은 아니며, 플레이어에게 공개된 동작을 바탕으로 재구성한 튜토리얼 프로젝트
+
+확인된 재사용 후보:
+- `globals/Controller.gd`
+- `gui/components/SourceClueEffect.gd`
+- `gui/components/SourceDocument.gd`
+- `gui/components/DossierBlankEffect.gd`
+- `gui/components/DossierDocument.gd`
+- `gui/layout/WordBank.gd`
+- 관련 scene/resource
+
+튜토리얼이 이미 다루는 핵심:
+- 문서 안에서 clue word 수집
+- word bank
+- dossier blank
+- drag-and-drop
+- result validation
+- RichTextLabel/RichTextEffect 기반 authoring
+
+### 채택 원칙
+
+이 프로젝트를 **GUI/interaction 베이스로 실제 사용**한다.
+
+가져올 것:
+- clue 표시/수집 구조
+- word bank entry 흐름
+- blank slot interaction
+- drag-and-drop interaction
+- dossier document rendering
+- validation UI 연결 방식
+
+그대로 가져오지 않을 것:
+- 원본 프로젝트의 Main/controller 조립 구조
+- 원본 theme/font/assets
+- 원본 예제 문구/콘텐츠
+- TIN과 충돌하는 전역 상태 소유
+
+TIN 쪽에서 새로 보강할 것:
+- 사건 데이터 모델
+- evidence/fact/term schema
+- 여러 사건 교체 가능한 loader
+- typed deduction slot
+- contradiction/incomplete/valid-wrong/solved 판정
+- save/load/migration
+- TinIntegrationKit evidence/history/checkpoint 연결
+- ModuleContext 입력 및 GameModule lifecycle
+- stale content sanitize
+- 사건 2개 이상으로 genericity 검증
+
+### 원본 게임 리버스 엔지니어링의 위치
+
+**기본 개발 경로에서 제외한다.**
+
+튜토리얼 베이스로 구현 가능한 범위는 원본 리버스 엔지니어링 자료를 볼 필요가 없다.
+다음 중 하나가 실제 blocker로 확인될 때만 원본 동작 분석을 추가한다.
+
+- 튜토리얼에 없는 복잡한 clue grouping/word semantics
+- 원작 특유의 다중 dossier 구조가 필요한 경우
+- validation feedback 세부 동작이 설계상 반드시 필요한 경우
+- drag/drop/focus/selection의 미묘한 UX를 그대로 분석해야 하는 경우
+
+즉 기본 순서는:
+
+`tutorial-gui-of-golden-idol 채택 → TIN 적응 → 부족한 subsystem 직접 구현`
+
+이며, 원본 리버스 엔지니어링은 마지막 참고 수단이다.
+
+### 중복 방지
+
+TIN 내부 `TinIntegrationKit`에 이미 다음이 있다.
 
 - `evidence_add`
 - `evidence_has_all`
@@ -21,22 +96,8 @@
 - `checkpoint_save/load`
 - `capture/restore`
 
-따라서 이 기능을 다시 범용 시스템으로 구현하지 않는다.
+따라서 이 기능을 범용 시스템으로 다시 만들지 않는다.
 
-단, 현재 evidence 기능은 **id→payload 저장** 수준이므로 Golden Idol형 추론 엔진을 대신하지 않는다.
-
-### 외부 후보
-
-Dialogue Manager:
-- repository: `nathanhoad/godot_dialogue_manager`
-- MIT
-- 현재 main은 Godot 4.6+
-- 조사 시점 HEAD: `934ff537cee96e1484a2430066b685283999d40c`
-
-TIN에는 이미 Dialogue Manager류 기능을 내부 경량 어댑터로 이식한 상태다. **이번 모듈 때문에 외부 addon을 추가하지 않는 것을 기본값**으로 한다.
-
-구현 시작 시 deduction/case-board 전용 permissive 프로젝트를 최소 3개 더 조사한다.
-적합한 데이터 모델이나 UI component가 있으면 모듈 내부에만 도입한다.
 
 ---
 
