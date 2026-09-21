@@ -117,7 +117,7 @@ func change_module(id, restore_snapshot=false, arrival={}, identity={}, discard_
 
 - `INDEX.md` — 기존 모듈 확장 / 신규 게임형 모듈 / 백로그 배치 원칙
 - `01_EXISTING_MODULES.md` — `violet_case`, `paper_moon_clinic`, `quiet_locker` 중심의 즉시 분량 증설
-- `02_REINCARNATOR_GAME.md` — 환생 왕녀 설정을 `탐색 → 세계 상태 변화 → 다른 지역 반응 → 인생목표 판정`의 시스템 게임으로 재설계한 상세 계획
+- `02_REINCARNATOR_GAME.md` — 환생 왕녀 설정을 물건·NPC·환경 직접 조작 → 연쇄 반응 → 인생목표 사후 판정으로 굴러가는 systemic sandbox로 재설계한 상세 계획
 - `03_TEXTILE_REVOLT.md` — 이불 반란·베개 기억장치·직물 첩보 세계 게임형 모듈
 - `BACKLOG.md` — 사막 바늘, 괴담 인력소, 태어나기 전 정책 투표, 저작권 협회, 탑, 공룡 문화권, 개그 seed 등 후속 보존
 
