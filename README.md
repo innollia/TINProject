@@ -7,7 +7,7 @@ There Is No Game: Wrong Dimension 스타일의 장르 혼합 메타 게임 프�
 - 영속 AppRoot 셸 + ModuleHost의 현재 모듈만 교체
 - 데모 모듈 3개: `click_counter`, `box_mover`, `room_3d`
 - 코어 서비스: 저장(불투명 JSON 봉투), 입력 라우팅, 화면 전환, 설정, 오디오
-- 통합 테스트 러너(639 checks) + GUT 9.7.1 코어 계약 테스트
+- 통합 테스트 러너(644 checks) + GUT 9.7.1 코어 계약 테스트
 - 설계 철학: `docs/DESIGN_PHILOSOPHY.md`
 - 사용자 확정: `PROJECT_DECISIONS.md`
 - AI 작업 규칙: `AGENTS.md`

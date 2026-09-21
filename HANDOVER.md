@@ -16,7 +16,7 @@
 | 저장 | 버전 있는 JSON-safe 모듈 상태 + global profile/records |
 | 전역 UI | 상단 UI, Save/Load, pause, reset, 기록, 설정 |
 | 기록 | 자동 observation + 수동 메모/태그 + 테마 |
-| 마지막 기록 검증 | 통합 러너 639/639, GUT 131/131 / 4,684 assertions, smoke 통과 |
+| 마지막 기록 검증 | 통합 러너 644/644, GUT 131/131 / 4,684 assertions, smoke 통과 |
 
 위 테스트 수치는 마지막 전체 검증 기록이다. 새 코드 변경 후에는 `AGENTS.md`의 전체 검증을 다시 실행한다.
 
@@ -212,6 +212,16 @@ $p = Start-Process -FilePath $exe -ArgumentList '--headless --path C:\projects\T
 - 미래 schema는 거부
 
 상세 계약은 `docs/MODULE_CONTRACT.md`.
+
+> **핵심 불변식:**  
+> 1. 모듈은 목적지 ID·다른 모듈 상태·전역 저장·autoload 모름.  
+> 2. `requested` 시그널로만 앱과 통신. `finished`는 완료만.  
+> 3. `context.arrival/identity_view`는 읽기 전용 깊은 복사.  
+> 4. 죽음 귀환은 세션 상태 초기화, 기록/프로필/정체성 보존.  
+> 5. 기록 기능은 처음부터 전부 제공, 테마 수집만 해금.  
+> 6. 공통 성장 재화/인벤토리/능력치 **없음**.  
+> 7. 메타 해설(게임 구조 설명 대사) **금지**.  
+> 8. 기존 데모 3개·644 checks·GUT 131/131 **회귀 0** 유지.
 
 ## 4. 소유권
 

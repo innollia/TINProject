@@ -65,6 +65,16 @@ func save_file(path: String = "user://save.json") -> Error:
 	return error
 
 func load_file(path: String = "user://save.json") -> Error:
+	var error: Error = _load_file_once(path)
+	if error == OK:
+		return OK
+	if error != ERR_FILE_NOT_FOUND and error != ERR_PARSE_ERROR:
+		return error
+	var backup_error: Error = _load_file_once(path + ".bak")
+	return OK if backup_error == OK else error
+
+
+func _load_file_once(path: String) -> Error:
 	if not FileAccess.file_exists(path):
 		return ERR_FILE_NOT_FOUND
 	var file := FileAccess.open(path, FileAccess.READ)

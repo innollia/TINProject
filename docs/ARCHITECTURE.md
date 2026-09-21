@@ -43,9 +43,9 @@ AppRoot는 끝까지 유지한다. 모듈 전환은 호스트 자식을 명시�
 
 ## 저장과 전환
 
-SaveService는 format_version/current_module/global/modules 봉투만 이해한다. modules에는 schema_version/state가 있다. 전역 진행은 global.progression이다. JSON 문자열 키, 유한 숫자, 배열, 사전, bool/null만 저장한다. 모듈 상태는 깊은 복사한다. 쓰기는 tmp → 기존 파일 bak → 교체 순서이며 백업 파일은 남긴다. 자동 백업 복구는 아직 제공하지 않는다.
+SaveService는 format_version/current_module/global/modules 봉투만 이해한다. modules에는 schema_version/state가 있다. 전역 진행은 global.progression이다. JSON 문자열 키, 유한 숫자, 배열, 사전, bool/null만 저장한다. 모듈 상태는 깊은 복사한다. 쓰기는 tmp → 기존 파일 bak → 교체 순서이며 백업 파일은 남긴다. 본 파일이 없거나 JSON 파싱에 실패하면 남아 있는 백업 봉투를 한 번 시도한다.
 
-파일 Load 실패는 기존 메모리를 보존한다. 앱 restore_progress는 기존 봉투를 보관하고, 읽기 성공 후 director.change_module(id, true)를 호출하여 현재 실행 상태가 로드된 상태를 덮어쓰지 않게 한다. 알 수 없는 ID/미래 스키마/잘못된 진입 씬은 기존 모듈을 유지하고 봉투를 복구한다. 모듈 enter/load_state 내부의 임의 런타임 오류까지 롤백하는 구조는 아니다. 모듈 계약 테스트로 방지한다.
+파일 Load 실패는 기존 메모리를 보존한다. 본 파일이 없거나 JSON 파싱에 실패하면 남아 있는 `.bak` 봉투를 한 번 시도하고, 미래 스키마·잘못된 봉투는 자동으로 낮추지 않는다. 앱 restore_progress는 기존 봉투를 보관하고, 읽기 성공 후 director.change_module(id, true)를 호출하여 현재 실행 상태가 로드된 상태를 덮어쓰지 않게 한다. 알 수 없는 ID/미래 스키마/잘못된 진입 씬은 기존 모듈을 유지하고 봉투를 복구한다. 모듈 enter/load_state 내부의 임의 런타임 오류까지 롤백하는 구조는 아니다. 모듈 계약 테스트로 방지한다.
 
 SettingsService는 ConfigFile 볼륨 설정, AudioService는 Master 아래 Music/SFX/UI/Voice와 영속 음악 플레이어를 소유한다. 장르 효과음은 모듈 소유다. 실제 BGM/음성 자산은 아직 없다.
 

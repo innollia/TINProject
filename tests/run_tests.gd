@@ -297,6 +297,12 @@ func _test_save_service() -> void:
 	_check(_same(saves.export_data(), expected), "JSON disk roundtrip preserves envelope")
 	_check(saves.save_file(path) == OK, "JSON atomic overwrite")
 	_check(saves.load_file(path) == OK and _same(saves.export_data(), expected), "JSON overwrite remains readable")
+	saves.global_state = {"changed": true}
+	_check(saves.save_file(path) == OK, "JSON overwrite keeps a backup")
+	saves.global_state = {"lost": true}
+	if _write_text(path, "{broken"):
+		_check(saves.load_file(path) == OK, "corrupt main save recovers from backup")
+		_check(_same(saves.export_data(), expected), "backup recovery restores the prior envelope")
 	var detached: Dictionary = saves.get_module_state(&"click_counter")
 	detached["state"]["count"] = 99
 	_check(_same(saves.export_data(), expected), "get module state is a detached snapshot")
