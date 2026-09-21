@@ -5,6 +5,7 @@
 작업 절차·검증: `AGENTS.md`
 
 ## 1. 현재 구현 상태
+> **2026-09-21 해석 교정:** 현재 구현 모듈은 소규모 모듈과 게임형 모듈을 구분해 읽는다. 기존 사용자 설계와 기존 모듈은 명시적 철회 없이 폐기·동결하지 않는다. '준호'는 임시 구현명이다.
 
 | 구분 | 내용 |
 |---|---|
@@ -156,6 +157,34 @@ change_module(id, restore_snapshot=false, arrival={}, identity={}, discard_curre
 
 ---
 
+## 4.1 게임형 모듈 상세 계획
+
+게임형 모듈은 콘텐츠를 먼저 채우지 않고 시스템 기반부터 만든다. 구현 시작점은 `plans/game_modules/INDEX.md`다.
+
+현재 상세 계획:
+- `01_RULE_REWRITE.md` — Baba Is You 레퍼런스, 규칙 재작성 엔진
+- `02_DEDUCTION_CASEWORK.md` — Golden Idol 레퍼런스, 추리/사건 재구성 엔진
+- `03_PHYSICS_TOOLBOX.md` — Mosa Lina 레퍼런스, 물리 도구 샌드박스
+- `04_TIME_LOOP.md` — In Stars and Time 레퍼런스, 시간루프 상태 시스템
+
+공통 원칙은 **Adopt → Adapt → Build**다. 공개 구현을 먼저 조사하고 라이선스/버전/전역 의존성을 확인한 뒤 재사용 가능한 subsystem은 가져오며, 부족한 부분만 직접 구현한다.
+
+---
+
+## 4.2 콘텐츠 증설 계획
+
+2026-09-21 사용자 아이디어 덤프를 `plans/content_expansion/`에 배치했다.
+
+- `INDEX.md` — 기존 모듈 확장 / 신규 게임형 모듈 / 백로그 배치 원칙
+- `01_EXISTING_MODULES.md` — `violet_case`, `paper_moon_clinic`, `quiet_locker` 중심의 즉시 분량 증설
+- `02_REINCARNATOR_ROAD.md` — 환생 왕녀·이상한 인생 목표·공룡/감자 여행 게임형 모듈
+- `03_TEXTILE_REVOLT.md` — 이불 반란·베개 기억장치·직물 첩보 세계 게임형 모듈
+- `BACKLOG.md` — 사막 바늘, 괴담 인력소, 태어나기 전 정책 투표, 저작권 협회, 탑, 공룡 문화권, 개그 seed 등 후속 보존
+
+**콘텐츠 단계의 우선순위는 기존 얕은 모듈의 실제 상호작용 수와 선택 콘텐츠를 먼저 늘리는 것**이다. 아이디어 하나마다 새 모듈을 만들지 않는다.
+
+---
+
 ## 5. 즉시 재개 가능한 다음 작업(우선순위)
 
 ### 5.1 git 기준점
@@ -294,3 +323,4 @@ $p = Start-Process -FilePath $exe -ArgumentList '--headless --path C:\projects\T
 - 주요 화면은 상용 게임 레퍼런스를 실제로 확인한 뒤 구현
 
 대형 신규 모듈 계획도 동일한 시각 계약을 포함한다. 기능 시스템만 만든 뒤 화면을 나중 문제로 미루는 방식으로 완료 처리하지 않는다.
+다음 작업자는 `PROJECT_DECISIONS.md` 0절의 **소규모 모듈 / 게임형 모듈 규모 구분**을 먼저 적용한다. 기존 모듈은 필요하면 그대로 재사용·조합·확장한다. 소규모 모듈 하나를 억지로 독립 게임으로 완결하지 말고, 게임형 모듈을 만들 때는 30분~8시간 규모의 밀도 있는 콘텐츠 잠재력을 별도로 설계한다. 지식 기반 요소를 표방할 때만 `docs/KNOWLEDGE_BASED_DESIGN.md` 기준을 적용한다.

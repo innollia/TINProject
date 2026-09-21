@@ -387,7 +387,6 @@ Tiny Crate 2를 사용할 경우:
 - player.gd에 모든 object/tool 로직이 몰림
 - Tiny Crate 2 전체 autoload 구조를 TIN에 이식
 - 물리 콘텐츠 하나만 동작하고 두 번째 level definition이 안 됨
-
 ## 시각 구현 계약 — 2026-09-22
 
 ### 1차 레퍼런스

@@ -373,7 +373,6 @@ load 시:
 - undo가 위치만 되돌리고 transform/property state를 망침
 - 씬 노드 위치가 진실이고 domain state가 없음
 - 외부 무라이선스 Baba clone 코드를 복사함
-
 ## 시각 구현 계약 — 2026-09-22
 
 ### 1차 레퍼런스

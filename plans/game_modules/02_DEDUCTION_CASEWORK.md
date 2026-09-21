@@ -464,7 +464,6 @@ ESC:
 - 두 번째 사건 추가에 engine 코드 수정 필요
 - TinIntegrationKit에 이미 있는 evidence/history/checkpoint를 또 범용 구현
 - 외부 addon을 편하다는 이유만으로 autoload와 함께 설치
-
 ## 시각 구현 계약 — 2026-09-22
 
 ### 1차 레퍼런스

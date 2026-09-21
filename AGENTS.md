@@ -43,6 +43,9 @@
 - 게임형 모듈 설계는 `docs/DESIGN_PHILOSOPHY.md`를 따른다.
 - 구현 계획은 해당 모듈 고유 시스템·파일·상태·테스트만 기록하고 공통 설계 철학을 반복하지 않는다.
 - 외부 subsystem은 `docs/DESIGN_PHILOSOPHY.md`의 Adopt → Adapt → Build 원칙을 따르고, 계획서에는 실제 조사 결과만 기록한다.
+- 새 모듈은 실제 인디게임 하나를 기준 레퍼런스로 먼저 지정하고, `PROJECT_DECISIONS.md` 또는 해당 계획서에 레퍼런스명·가져올 핵심 루프·우리 게임의 변형 경계를 기록한다. 원작의 자산·문구·고유 캐릭터는 복제하지 않는다.
+- **게임형 모듈은 콘텐츠보다 시스템을 먼저 완성한다.** 샘플 레벨·사건·루프는 시스템 검증용 최소 콘텐츠로 취급하고, 이후 30분~8시간 규모 authored content를 데이터 추가로 확장할 수 있는 상태 모델·데이터 형식·입력·저장·reset·테스트를 우선한다.
+- **Adopt → Adapt → Build 순서를 강제한다.** 어려운 subsystem을 처음부터 새로 만들기 전에 현재 TIN 내부 구현, 공개 GitHub, Godot Asset Library를 조사한다. permissive license와 구조가 적합하면 vendoring/포팅하고, 구조가 안 맞으면 필요한 subsystem만 추출하며, 사용할 수 없을 때만 직접 구현한다.
 - 외부 베이스 조사 시 최소 repository/commit 또는 tag/license/Godot version/가져올 파일/버릴 파일/autoload·global dependency/포팅 난도를 계획서에 기록한다. **LICENSE가 확인되지 않는 코드는 복사하지 않는다.**
 - 외부 코드 때문에 TIN 전체 아키텍처를 바꾸지 않는다. autoload, EventBus, 전역 저장, Input singleton 의존은 모듈 로컬 계약으로 걷어내고 외부 코드를 TIN 계약 안에 가둔다.
 - 상세 게임형 모듈 계획은 `plans/game_modules/INDEX.md`와 개별 계획서를 따른다. 작업 모델은 자기 계획 파일과 필수 계약 문서만 읽고 구현할 수 있을 정도로 파일·상태·API·실패 경로·테스트를 구체화한다.

@@ -297,7 +297,6 @@ fictional disaster seed:
 - 빈 찻잔인지 확인
 같은 쓸모없는 상호작용 추가.
 정답/보상으로 만들지 않는다.
-
 ## 시각 증설 규칙 — 2026-09-22
 
 이 문서의 콘텐츠 증설은 plans/visual_overhaul/INDEX.md와 함께 수행한다.
