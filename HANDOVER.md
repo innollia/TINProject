@@ -97,6 +97,20 @@ func change_module(id, restore_snapshot=false, arrival={}, identity={}, discard_
 
 ---
 
+## 4.1 게임형 모듈 상세 계획
+
+게임형 모듈은 콘텐츠를 먼저 채우지 않고 시스템 기반부터 만든다. 구현 시작점은 `plans/game_modules/INDEX.md`다.
+
+현재 상세 계획:
+- `01_RULE_REWRITE.md` — Baba Is You 레퍼런스, 규칙 재작성 엔진
+- `02_DEDUCTION_CASEWORK.md` — Golden Idol 레퍼런스, 추리/사건 재구성 엔진
+- `03_PHYSICS_TOOLBOX.md` — Mosa Lina 레퍼런스, 물리 도구 샌드박스
+- `04_TIME_LOOP.md` — In Stars and Time 레퍼런스, 시간루프 상태 시스템
+
+공통 원칙은 **Adopt → Adapt → Build**다. 공개 구현을 먼저 조사하고 라이선스/버전/전역 의존성을 확인한 뒤 재사용 가능한 subsystem은 가져오며, 부족한 부분만 직접 구현한다.
+
+---
+
 ## 5. 즉시 재개 가능한 다음 작업(우선순위)
 
 ### 5.1 git 기준점
