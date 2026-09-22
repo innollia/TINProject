@@ -464,3 +464,34 @@ ESC:
 - 두 번째 사건 추가에 engine 코드 수정 필요
 - TinIntegrationKit에 이미 있는 evidence/history/checkpoint를 또 범용 구현
 - 외부 addon을 편하다는 이유만으로 autoload와 함께 설치
+
+## 시각 구현 계약 — 2026-09-22
+
+### 1차 레퍼런스
+The Case of the Golden Idol의 조사 화면과 deduction/dossier 화면.
+
+참조:
+- 조사 장면과 추론 문서가 서로 다른 작업 모드로 명확히 느껴지는 구조
+- 과도한 마커 없이 조사 지점을 찾게 하는 화면 밀도
+- word bank가 강한 기능을 가지되 장면보다 먼저 보이지 않는 계층
+- 문서/슬롯/단어가 텍스트 중심으로 정리되는 방식
+
+### 화면 산출물
+1. scene inspection
+2. hotspot focus/inspection
+3. evidence detail
+4. term bank
+5. deduction incomplete
+6. contradiction/valid-wrong feedback
+7. solved transition
+
+### at-icons
+- 인물, 가구, 흔적, 배경 소품은 collage
+- 돋보기/문서/사람 icon을 hotspot/UI로 사용 금지
+- hotspot은 구도, hover 변화, 오브젝트 애니메이션, 커서 반응으로 표시
+- word bank/deduction slot은 text UI만 사용
+
+조사 모드에서는 장면이 화면 대부분을 차지하고 필요할 때만 텍스트 패널을 연다. 모든 패널 상시 노출형 에디터 레이아웃은 금지.
+
+### 완료 스크린샷
+사건별 조사 장면 1장, evidence 열림 1장, deduction incomplete 1장, solved 직전 1장을 1152×720로 검수한다.

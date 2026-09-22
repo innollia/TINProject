@@ -400,3 +400,29 @@ raw InputEvent 저장 금지.
 - 테스트가 실제 시간을 기다림
 - 루프마다 노드/신호가 누적
 - GPL Torn 코드를 라이선스 검토 없이 복사
+
+## 시각 구현 계약 — 2026-09-22
+
+### 1차 레퍼런스
+In Stars and Time의 실제 방 화면, 대화 화면, 반복 진입 장면.
+
+참조:
+- 같은 장소가 유지되면서 작은 차이가 강하게 읽히는 구성
+- 대화 시 캐릭터와 텍스트의 시선 순서
+- 루프 정보를 상시 HUD 숫자로 설명하지 않고 장면 변화와 문장으로 체감시키는 방식
+
+### 화면 산출물
+1. loop start
+2. normal room
+3. dialogue
+4. persistent change가 있는 같은 방
+5. death/reset 직전
+6. loop restart 직후
+
+### at-icons
+- 캐릭터, 가구, 방 장식은 collage
+- loop count, memory, state에 icon badge 금지
+- 반복에서 바뀌는 핵심 소품은 silhouette/배치/색 변화로 구분
+
+### 완료 스크린샷
+같은 장소 loop A/B, dialogue, reset 전후를 1152×720로 나란히 검수한다.

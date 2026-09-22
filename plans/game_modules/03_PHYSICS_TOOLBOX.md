@@ -387,3 +387,31 @@ Tiny Crate 2를 사용할 경우:
 - player.gd에 모든 object/tool 로직이 몰림
 - Tiny Crate 2 전체 autoload 구조를 TIN에 이식
 - 물리 콘텐츠 하나만 동작하고 두 번째 level definition이 안 됨
+
+## 시각 구현 계약 — 2026-09-22
+
+### 1차 레퍼런스
+Mosa Lina의 실제 플레이 화면.
+
+참조:
+- 플레이 공간이 거의 전 화면을 차지
+- 도구와 물체가 실루엣만으로 구분
+- 작은 HUD 의존도
+- 실패 후 빠른 재시도 리듬
+
+### 화면 산출물
+1. level entry
+2. tool acquire/select
+3. tool use
+4. chain interaction
+5. failure/reset
+6. solved
+
+### at-icons
+- 플레이어, 물체, 장치, 지형 장식은 collage
+- tool icon을 HUD slot에 넣지 않음
+- 현재 tool 표시는 짧은 text 또는 실제 월드 오브젝트 표현
+- 원래 의미가 도구인 icon을 그대로 같은 도구로 사용 금지
+
+### 완료 스크린샷
+각 샘플 레벨 entry / interaction / failure / solved를 1152×720로 확인한다.

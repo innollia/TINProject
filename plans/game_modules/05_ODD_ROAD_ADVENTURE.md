@@ -414,3 +414,31 @@ location/event/NPC/item/knowledge 데이터 추가.
 - 아이템·NPC·지식 중 둘 이상이 재사용됨
 - save/load round-trip
 - TIN module contract 회귀 없음
+
+## 시각 구현 계약 — 2026-09-22
+
+### 1차 레퍼런스
+West of Loathing의 실제 탐험, 대화, 지역 이동 화면.
+
+참조:
+- 적은 색과 단순한 선으로도 장소·캐릭터 개성이 강하게 읽히는 구성
+- 화면 속 기묘한 사물 자체가 농담이 되는 방식
+- 대화 선택지가 월드를 압도하지 않는 단순 text UI
+- 같은 게임 문법을 유지하며 장소마다 시각적 농담이 늘어나는 방식
+
+### 화면 산출물
+1. road/exploration
+2. town/interior
+3. NPC talk
+4. item/world interaction
+5. route transition
+6. unusual event
+
+### at-icons
+- 이 모듈은 collage를 적극 사용
+- 캐릭터와 건물은 기본적으로 2종 이상의 서로 무관한 원본 조각을 조합
+- 원본 icon 의미가 그대로 보이는 표지판식 사용 금지
+- 대화 선택지, 지역 이동, 상태 UI에는 icon 금지
+
+### 완료 스크린샷
+야외 / 실내 / 대화 / 기묘한 이벤트를 각각 1152×720로 검수하고 같은 게임이면서 서로 다른 장소로 읽혀야 한다.

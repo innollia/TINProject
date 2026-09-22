@@ -373,3 +373,35 @@ load 시:
 - undo가 위치만 되돌리고 transform/property state를 망침
 - 씬 노드 위치가 진실이고 domain state가 없음
 - 외부 무라이선스 Baba clone 코드를 복사함
+
+## 시각 구현 계약 — 2026-09-22
+
+### 1차 레퍼런스
+Baba Is You의 실제 플레이 화면.
+
+참조:
+- 보드가 화면의 절대적인 주인공인 구성
+- 규칙 단어와 월드 오브젝트가 같은 공간 규칙 안에 있다는 즉시성
+- 작은 수의 색과 강한 실루엣
+- 규칙이 바뀐 직후 무엇이 달라졌는지 설명문 없이 읽히는 피드백
+
+복제 금지: 원작 픽셀 자산, 레벨, 캐릭터/단어 디자인.
+
+### 화면 산출물
+1. entry
+2. normal turn
+3. rule rewrite 직후
+4. property change 직후
+5. win/defeat
+6. undo/reset 피드백
+
+보드가 기본 화면 대부분을 차지한다. 개발용 HUD는 두지 않는다.
+
+### at-icons
+- noun object, 캐릭터, 장애물은 at-icons 조각을 재조립한 월드 스프라이트
+- 원본 아이콘 하나를 그대로 noun 그림으로 쓰지 않음
+- word token은 텍스트가 게임 월드 자체이므로 허용
+- HUD, undo, reset, win 상태에 icon 사용 금지
+
+### 완료 스크린샷
+sample 01 시작 / 규칙 깨짐 / 규칙 재구성 / WIN 직전, sample 02 복수 YOU 상태를 1152×720로 확인한다.
