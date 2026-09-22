@@ -1,5 +1,7 @@
 # 기존 모듈 콘텐츠 증설
 
+공통 설계 원칙: `docs/DESIGN_PHILOSOPHY.md`
+
 ## A. violet_case — 사건 1개짜리 화면에서 "사건 파일 묶음"으로
 
 현재 문제:
