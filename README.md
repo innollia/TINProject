@@ -8,7 +8,10 @@ There Is No Game: Wrong Dimension 스타일의 장르 혼합 메타 게임 프�
 - 데모 모듈 3개: `click_counter`, `box_mover`, `room_3d`
 - 코어 서비스: 저장(불투명 JSON 봉투), 입력 라우팅, 화면 전환, 설정, 오디오
 - 통합 테스트 러너(639 checks) + GUT 9.7.1 코어 계약 테스트
-- AI 작업 규칙: `AGENTS.md`, `docs/`
+- 설계 철학: `docs/DESIGN_PHILOSOPHY.md`
+- 사용자 확정: `PROJECT_DECISIONS.md`
+- AI 작업 규칙: `AGENTS.md`
+- 현재 구현 상태: `HANDOVER.md`
 
 ## 실행
 
@@ -32,7 +35,7 @@ core/    contracts(계약) + services(저장/입력/전환/설정/오디오/dire
 meta/    진행도, 내레이터 문구
 modules/<id>/  독립 장르 모듈. 서로 참조 금지
 tests/   통합 러너 + GUT 코어 계약 테스트
-docs/    ARCHITECTURE, MODULE_CONTRACT, CODE_STYLE, decisions
+docs/    DESIGN_PHILOSOPHY, ARCHITECTURE, MODULE_CONTRACT, CODE_STYLE, decisions
 ```
 
 ## 새 모듈 추가
