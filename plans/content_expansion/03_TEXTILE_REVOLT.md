@@ -1,5 +1,7 @@
 # 신규 게임형 모듈 후보 — 이불 반란
 
+공통 설계 원칙: `docs/DESIGN_PHILOSOPHY.md`
+
 작업명: **TEXTILE_REVOLT**  
 정식 이름/모듈 ID 미정.
 
