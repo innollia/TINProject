@@ -21,3 +21,9 @@
 4. 다음 게임형 모듈은 `plans/game_modules/` 후보와 전체 아이디어 풀을 함께 보고 선택
 
 구현 완료된 계획은 이 폴더에 보존하지 않고 삭제한다.
+
+## 시각 기준
+
+콘텐츠 증설은 텍스트 상호작용 수만 늘리는 작업이 아니다. 기존 모듈에 새 조사물·사건·오브젝트를 넣을 때도 docs/VISUAL_DIRECTION.md와 plans/visual_overhaul/INDEX.md를 따른다.
+
+새 월드 오브젝트는 가능한 경우 res://addons/at-icons/를 원래 의미와 무관한 collage 재료로 재조립한다. UI에는 icon을 사용하지 않는다.
