@@ -2,6 +2,12 @@
 
 공통 설계 원칙: `docs/DESIGN_PHILOSOPHY.md`
 
+## 진행 상태
+
+- `violet_case`: 완료. Case 01 회귀를 보존하면서 Case 02·03, 사건별 상태 저장, 사건 선택, 확정 기록/미확정 이론 분리를 구현했다.
+- `paper_moon_clinic`: 미구현
+- `quiet_locker`: 미구현
+
 ## A. violet_case — 사건 1개짜리 화면에서 "사건 파일 묶음"으로
 
 현재 문제:
