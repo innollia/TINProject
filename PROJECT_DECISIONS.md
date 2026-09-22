@@ -1,7 +1,7 @@
 # TINProject — 프로젝트 전체 확정 결정사항 (단일 출처)
 
 작성: 2026-09-18. 최초 프롬프트 확정 방향 + 구현 중 추가 확정 + 사이클 1 계획 반영.  
-**이 문서가 프로젝트 전체의 '헌법' 역할**을 합니다. 새 작업자·에이전트는 이 파일 + `HANDOVER.md` + `PLAN_CYCLE1.md` 세 개만 읽으면 됩니다.
+**이 문서는 사용자 확정 결정의 단일 출처**다. 새 작업자·에이전트는 `PROJECT_DECISIONS.md` + `docs/DESIGN_PHILOSOPHY.md` + `AGENTS.md` + `HANDOVER.md`를 기준으로 작업한다.
 
 ---
 
