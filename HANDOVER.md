@@ -170,3 +170,18 @@ change_module(id, restore_snapshot=false, arrival={}, identity={}, discard_curre
 
 완료된 계획서나 과거 사이클 계획은 검증 근거로 사용하지 않는다.  
 현재 코드·테스트 결과가 기준이다.
+
+## 8. 현재 시각 개편 트랙
+
+기능 구현 상태와 별개로 현재 화면 품질은 개편 대상으로 본다. 기존 모듈 다수가 네모, Label, 단순 프리미티브 중심으로 작성되어 있으며 이를 완성 아트로 간주하지 않는다.
+
+새 기준:
+- docs/VISUAL_DIRECTION.md
+- plans/visual_overhaul/INDEX.md
+- 사용자 제공 MIT 에셋 경로: res://addons/at-icons/
+- at-icons는 월드 아트 콜라주 재료로만 사용
+- UI 아이콘 금지
+- 원래 아이콘 의미 그대로 사용 금지
+- 주요 화면은 상용 게임 레퍼런스를 실제로 확인한 뒤 구현
+
+대형 신규 모듈 계획도 동일한 시각 계약을 포함한다. 기능 시스템만 만든 뒤 화면을 나중 문제로 미루는 방식으로 완료 처리하지 않는다.
