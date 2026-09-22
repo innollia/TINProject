@@ -352,6 +352,69 @@ func test_shared_navigation_hud_and_pause_hotkey_follow_intro() -> void:
 	assert_false(app.paused, "P resumes outside the development shell")
 
 
+func test_settings_library_browses_all_games_and_returns_or_switches() -> void:
+	assert_eq(await app._change_module(&"signal_desk"), OK)
+	app._toggle_pause()
+	assert_true(app.paused)
+	await app._open_library()
+	assert_eq(app.director.current_id, &"game_library")
+	assert_false(app.paused)
+	assert_false(app._menu.visible)
+	assert_eq(app.director.current_module._buttons.size(), app.catalog.size() - 2)
+	assert_eq(app.director.current_module.context.arrival["games"].size(), app.catalog.size() - 2)
+	var expected: Array[String] = []
+	for folder: String in DirAccess.get_directories_at("res://modules"):
+		if folder not in ["first_entry", "game_library"] and FileAccess.file_exists("res://modules/%s/module_manifest.tres" % folder):
+			expected.append(folder)
+	expected.sort()
+	var actual: Array[String] = []
+	for game: Dictionary in app.director.current_module.context.arrival["games"]:
+		actual.append(game["id"])
+	actual.sort()
+	assert_eq(actual, expected)
+	for id: StringName in [&"click_counter", &"box_mover", &"room_3d"]:
+		assert_true(app.director.current_module.context.arrival["games"].any(func(game: Dictionary) -> bool: return game["id"] == String(id)))
+	assert_eq(app.director.current_module.context.arrival["current"], "signal_desk")
+	app.director.current_module.call("_show_all")
+	assert_true(app.director.current_module._all.visible)
+	assert_eq(app.director.current_module._grid_buttons.size(), app.catalog.size() - 2)
+	app.director.current_module.call("_back")
+	assert_true(app.director.current_module._home.visible)
+	app.director.current_module.requested.emit(&"library_select", {"id": "first_entry"})
+	await _settle()
+	assert_eq(app.director.current_id, &"game_library")
+	app.director.current_module.call("_back")
+	await _settle()
+	assert_eq(app.director.current_id, &"signal_desk")
+	assert_true(app.paused)
+	assert_true(app._menu.visible)
+	await app._open_library()
+	app.director.current_module._buttons[1].pressed.emit()
+	await _settle()
+	assert_eq(app.director.current_id, &"relay_quay")
+	assert_false(app.paused)
+	app._toggle_pause()
+	await app._open_library()
+	var escape := InputEventKey.new()
+	escape.keycode = KEY_ESCAPE
+	escape.pressed = true
+	app._input(escape)
+	await _settle()
+	assert_eq(app.director.current_id, &"relay_quay")
+	assert_true(app.paused)
+	await app._open_library()
+	app.director.current_module._buttons[-1].pressed.emit()
+	await _settle()
+	assert_eq(app.director.current_id, &"room_3d")
+	app.dev_shell = false
+	app.profile["started"] = true
+	var demo_path: String = _path("library_demo")
+	assert_eq(app.save_progress(demo_path), OK)
+	assert_eq(await app._change_module(&"signal_desk"), OK)
+	assert_eq(await app.restore_progress(demo_path), OK)
+	assert_eq(app.director.current_id, &"room_3d")
+
+
 func test_restore_roundtrip_and_legacy_records_retention() -> void:
 	app.dev_shell = false
 	await _request(&"start", {"shape": 1, "color": 2})

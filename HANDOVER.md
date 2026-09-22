@@ -3,21 +3,20 @@
 설계 철학: `docs/DESIGN_PHILOSOPHY.md`  
 사용자 확정사항: `PROJECT_DECISIONS.md`  
 작업 절차·검증: `AGENTS.md`
+갱신: 2026-09-22. `odd_road_adventure` 1차 시스템 슬라이스와 `game_library` UI 모듈을 연결하고 전체 검증 통과.
 
 ## 1. 현재 구현 상태
 > **2026-09-21 해석 교정:** 현재 구현 모듈은 소규모 모듈과 게임형 모듈을 구분해 읽는다. 기존 사용자 설계와 기존 모듈은 명시적 철회 없이 폐기·동결하지 않는다. '준호'는 임시 구현명이다.
 
 | 구분 | 내용 |
 |---|---|
-| 엔진 | Godot 4.7.2 stable / GDScript / GL Compatibility |
-| 메인 씬 | `app/app_root.tscn` |
-| 구조 | 영속 AppRoot + ModuleDirector + ModuleHost |
-| 데모 | `click_counter`, `box_mover`, `room_3d` |
-| 신규 모듈 | 29개 구현 |
-| 저장 | 버전 있는 JSON-safe 모듈 상태 + global profile/records |
-| 전역 UI | 상단 UI, Save/Load, pause, reset, 기록, 설정 |
-| 기록 | 자동 observation + 수동 메모/태그 + 테마 |
-| 마지막 기록 검증 | 통합 러너 644/644, GUT 131/131 / 4,684 assertions, smoke 통과 |
+| **엔진/프로젝트** | Godot 4.7.2 stable, `C:\projects\TINProject`, 메인 씬 `app/app_root.tscn` |
+| **핵심 아키텍처** | 영속 AppRoot + ModuleDirector, 모듈 격리(모듈 간 직접 참조 금지), 불투명 버전 JSON 저장, autoload/EventBus 금지 |
+| **기존 데모(회귀 기준)** | `click_counter`, `box_mover`, `room_3d` — **무수정 보존**, 통합 테스트 644 checks 유지 |
+| **신규 구현 모듈** | 플레이 콘텐츠 30개: 사이클 1·2의 12개 + 사이클 3 신규 13개 + 사이클 4 신규 4개 + `odd_road_adventure` 1차 시스템 슬라이스. 별도 UI 모듈 `game_library` 추가 |
+| **신규 시스템** | 기록 v1(전역 관찰·수동 정리·테마 수집), 죽음·귀환·지름길 검증, 프로필·체크포인트, 공용 메뉴/저널/클리커, 게임 목록 |
+| **검증 상태** | `import` → 통합 러너(644/644) → GUT(137/137, 4,798 assertions) → smoke — **전부 통과(종료 코드 0, SCRIPT ERROR 0)** |
+| **git** | 사용자 승인 후 저장소 초기화·첫 커밋 완료. |
 
 위 테스트 수치는 마지막 전체 검증 기록이다. 새 코드 변경 후에는 `AGENTS.md`의 전체 검증을 다시 실행한다.
 
@@ -38,6 +37,7 @@
 | **기록: 항상 열리는 비물질 UI(J키), 테마 수집만 해금** | `meta/records/` + `records_overlay` | 자동 관찰(`observation`), 수동 메모/태그(`add_note`), 5작품 테마 수집, 편집/삭제 가능 |
 | **동료(준호) 신뢰·재회·흔적** | `last_echo`, `return_cradle` | 메타 해설 없이 세계관 내 대사로만 지원 |
 | **설정 속 무의미 클리커** | `app/app_root.gd` `_on_useless_click` | 보상·진입 조건 연결 없음 |
+| **설정 속 게임 목록** | `modules/game_library/` + `app/app_root.gd` | Esc 설정에서 진입, HOME 가로 커버와 전체 소프트웨어 격자에서 플레이 모듈 29개+데모 3개 열람·선택. `first_entry`와 목록 모듈은 제외. 돌아가면 이전 게임의 설정으로 복귀. 목록 자체는 진행 저장 대상 아님 |
 | **신체 연속성·비성적 단순 실루엣** | `first_entry`·`last_echo`·`return_cradle` `_apply_identity` | 머리카락 3종·피부색 3종 조합, 폴리곤 프리미티브 |
 | **두 번째 세트 「접힌 오후」** | `glyph_gallery`→`switchboard_choir`→`rain_lift`→`borrowed_title`→`glasshouse_return`→`teacup_orbit` | 2D/3D 혼합, 다른 게임 저장 화면 위 걷기, 개그 구간 뒤 원래 배달국으로 귀환 |
 | **플래그 없는 지식 해법 2개** | 교환대 아래→왼쪽→위, 온실 아래→위→아래 | 단서를 못 봐도 아는 플레이어는 신선한 상태에서 즉시 통과 가능 |
@@ -58,6 +58,7 @@
 | **사건기록** | `dedution_casework` | 세 현장 기록 → 사건 순서 복원 → 범인·수법·동기 판정 |
 | **물리 도구** | `physics_toolbox` | 실제 `RigidBody2D` 세 물체에 밀대·고정자·스프링을 적용하고 힘 전달을 재검증 |
 | **시간 반복** | `time_loop` | 세 박자를 반복 관찰하고 기억을 유지한 채 다음 루프 경로를 판정 |
+| **기묘한 로드** | `odd_road_adventure` | 4개 지역을 같은 조사 문법으로 왕복하며 아이템·NPC·지식·지역 상태를 재사용 |
 | **Godot 통합 팩** | `addons/tin_integrations/` | 26개 런타임 어댑터·에디터 플러그인·VN 템플릿. 전역 오토로드 없음 |
 
 ### 기존 세트/소규모 모듈
@@ -99,7 +100,6 @@
 ```gdscript
 signal finished(result: ModuleResult)
 signal requested(kind: StringName, payload: Dictionary)
-
 func enter(context: ModuleContext) -> void
 func exit() -> void
 func save_state() -> Dictionary
@@ -107,6 +107,8 @@ func load_state(state: Dictionary) -> void
 func migrate_save(old_version: int, data: Dictionary) -> Dictionary
 func execute_command(command: StringName, payload: Dictionary = {}) -> bool
 ```
+- `kind` 표준: `portal {exit}`, `died {}`, `observation {id,text}`, `checkpoint {intro_seen}`, `start {shape,color}`, `menu {}`, `language {}`, `library_back {}`, `library_select {id}`
+- `finished`는 **진짜 완료**만 사용(포털·죽음·관찰은 `finished` 금지)
 
 - `finished`: 실제 완료에만 사용
 - 앱 이동/관찰/죽음 등은 `requested`
@@ -138,6 +140,8 @@ change_module(id, restore_snapshot=false, arrival={}, identity={}, discard_curre
 - `profile`: `{intro_seen, shape, color, started}` — `user://save.json` 봉투의 `global.profile`에 저장.
 - `records_store`(RefCounted): `observe/visit/capture/restore/add_note/select_theme` API.
 - `records_overlay`(Control): `setup(store)`, `refresh()`, `close_requested` 시그널.
+- `game_library`: Esc 일시정지 메뉴의 버튼으로 진입한다. 처음 시작 완료 전에는 버튼이 비활성화된다. X는 전체 목록에서 HOME으로, HOME에서 설정으로 돌아가고 Esc는 설정으로 돌아간다. 게임 선택 후 해당 모듈로 전환·저장한다.
+- UI 참고: [Nintendo Switch HOME 공식 화면](https://www.nintendo.com/jp/topics/article/d6f6f057-188e-46b4-b1e8-e68f536c0065). 현재 TIN 팔레트는 배경 `#F4F4F4`, 글자 `#363636`, 선택 테두리 `#00C6DF`, 프로필 포인트 `#E60012`이며 원본 이미지·아이콘을 가져오지 않았다.
 
 ### 입력 액션 네이밍 규칙(앱이 바인딩)
 - 기존: `click_counter_confirm`, `box_mover_left/right/up/down`, `room_3d_rotate`
@@ -203,7 +207,7 @@ change_module(id, restore_snapshot=false, arrival={}, identity={}, discard_curre
 
 ### 5.3 사이클 3 현재 기준점
 
-`paper_lighthouse` → `lost_signal_vn` → `violet_case` → `after_signal` → `return_address` → `rule_rewriting` → `dedution_casework` → `physics_toolbox` → `time_loop` → `signal_desk` 라우트가 연결되어 있다. 사이클 4는 규칙 재작성·사건 추리·실제 물리 도구·시간 반복을 각각 독립 모듈로 추가했으며, 다음 작업도 모듈 격리·불투명 저장·관찰 기록·실제 입력·시각 검증 계약을 유지한다.
+`paper_lighthouse` → `lost_signal_vn` → `violet_case` → `after_signal` → `return_address` → `rule_rewriting` → `dedution_casework` → `physics_toolbox` → `time_loop` → `odd_road_adventure` → `signal_desk` 라우트가 연결되어 있다. 사이클 4는 규칙 재작성·사건 추리·실제 물리 도구·시간 반복을 각각 독립 모듈로 추가했고, 05는 동일 런타임 안의 지역·인벤토리·NPC·사건·지식 상태를 검증하는 1차 슬라이스로 추가했다. 다음 작업도 모듈 격리·불투명 저장·관찰 기록·실제 입력·시각 검증 계약을 유지한다.
 
 ---
 
@@ -215,6 +219,7 @@ change_module(id, restore_snapshot=false, arrival={}, identity={}, discard_curre
 - **공용 테마 시스템(전역 Theme 리소스)**: 각 모듈/기록이 자체 팔레트 사용.
 - **성능 여유**: Intel Iris Xe 1152×720 실제 창에서 첫 진입 25~26 FPS, 중계 안뜰 37~39 FPS로 측정되어 60 FPS는 보장하지 않는다.
 - **프로필/기록 별도 저장 파일(`entry_profile.json`)**: 현재는 메인 봉투 `global.profile` + `global.records`로 통합 저장(분리 불필요 판정).
+- **게임 목록 커버**: Nintendo Switch HOME의 배치·색상·포커스 구조를 참고한 TIN 전용 문자 커버다. 게임별 완성 삽화는 아직 없다.
 
 ---
 
@@ -250,7 +255,7 @@ $p = Start-Process -FilePath $exe -ArgumentList '--headless --path C:\projects\T
 > 5. 기록 기능은 처음부터 전부 제공, 테마 수집만 해금.  
 > 6. 공통 성장 재화/인벤토리/능력치 **없음**.  
 > 7. 메타 해설(게임 구조 설명 대사) **금지**.  
-> 8. 기존 데모 3개·644 checks·GUT 131/131 **회귀 0** 유지.
+> 8. 기존 데모 3개·644 checks·기존 GUT 131/131 **회귀 0** 유지. 신규 05와 게임 목록 포함 GUT는 137/137.
 
 ## 4. 소유권
 

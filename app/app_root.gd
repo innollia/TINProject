@@ -3,8 +3,8 @@ extends Node
 signal readiness_changed(is_ready: bool)
 
 const MetaLayerScript = preload("res://meta/meta_layer.gd")
-const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic", &"afterimage_aquarium", &"paper_lighthouse", &"lost_signal_vn", &"violet_case", &"after_signal", &"return_address", &"rule_rewriting", &"dedution_casework", &"physics_toolbox", &"time_loop"]
-const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic", &"afterimage_aquarium", &"paper_lighthouse", &"lost_signal_vn", &"violet_case", &"after_signal", &"return_address", &"rule_rewriting", &"dedution_casework", &"physics_toolbox", &"time_loop"]
+const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic", &"afterimage_aquarium", &"paper_lighthouse", &"lost_signal_vn", &"violet_case", &"after_signal", &"return_address", &"rule_rewriting", &"dedution_casework", &"physics_toolbox", &"time_loop", &"odd_road_adventure"]
+const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic", &"afterimage_aquarium", &"paper_lighthouse", &"lost_signal_vn", &"violet_case", &"after_signal", &"return_address", &"rule_rewriting", &"dedution_casework", &"physics_toolbox", &"time_loop", &"odd_road_adventure", &"click_counter", &"box_mover", &"room_3d", &"game_library"]
 const ROUTES: Dictionary = {
 	"signal_desk": {"forward": "relay_quay", "hidden": "maintenance_cut", "side": "glyph_gallery"},
 	"relay_quay": {"forward": "last_echo", "back": "signal_desk"},
@@ -33,7 +33,8 @@ const ROUTES: Dictionary = {
 	"rule_rewriting": {"forward": "dedution_casework", "back": "return_address"},
 	"dedution_casework": {"forward": "physics_toolbox", "back": "rule_rewriting"},
 	"physics_toolbox": {"forward": "time_loop", "back": "dedution_casework"},
-	"time_loop": {"forward": "signal_desk", "back": "physics_toolbox"},
+	"time_loop": {"forward": "odd_road_adventure", "back": "physics_toolbox"},
+	"odd_road_adventure": {"forward": "signal_desk", "back": "time_loop"},
 }
 
 @export var catalog: Array[ModuleManifest] = []
@@ -100,6 +101,8 @@ var _menu_title: Label
 var _menu_hint: Label
 var _quit_dialog: ConfirmationDialog
 var _notice: Label
+var _library_button: Button
+var _library_origin: StringName = &""
 
 
 func _ready() -> void:
@@ -229,6 +232,7 @@ func _process(_delta: float) -> void:
 	if _menu_button != null:
 		_menu_button.disabled = blocked
 		_journal_button.disabled = blocked
+		_library_button.disabled = blocked or (not dev_shell and not bool(profile.get("started", false)))
 	_sync_shared_ui_visibility()
 	if paused and not router.locked:
 		router.set_locked(true)
@@ -242,10 +246,12 @@ func _input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			if _quit_dialog != null and _quit_dialog.visible:
 				_quit_dialog.hide()
+			elif director.current_id == &"game_library":
+				_leave_library(&"")
 			else:
 				_toggle_pause()
 		elif event.keycode == KEY_J:
-			if editing_text:
+			if editing_text or director.current_id == &"game_library":
 				return
 			get_viewport().set_input_as_handled()
 			toggle_journal()
@@ -262,6 +268,8 @@ func _configure_module_actions() -> void:
 		&"box_mover_right": [KEY_D, KEY_RIGHT],
 		&"box_mover_up": [KEY_W, KEY_UP],
 		&"box_mover_down": [KEY_S, KEY_DOWN],
+		&"odd_road_adventure_inventory": [KEY_I],
+		&"odd_road_adventure_notes": [KEY_N],
 	}
 	for id: StringName in NORMAL_IDS:
 		bindings[StringName("%s_left" % id)] = [KEY_LEFT]
@@ -292,12 +300,14 @@ func _identity() -> Dictionary:
 	return {"shape": int(profile["shape"]), "color": int(profile["color"])}
 
 
-func _change_module(id: StringName, restore_snapshot: bool = false, discard_current: bool = false) -> Error:
+func _change_module(id: StringName, restore_snapshot: bool = false, discard_current: bool = false, extra_arrival: Dictionary = {}) -> Error:
 	_operation_pending = true
 	_load_started_usec = Time.get_ticks_usec()
 	_set_status("Loading module...")
 	var previous: Dictionary = saves.export_data()
-	var error: Error = await director.change_module(id, restore_snapshot, _arrival(), _identity(), discard_current)
+	var arrival: Dictionary = _arrival()
+	arrival.merge(extra_arrival, true)
+	var error: Error = await director.change_module(id, restore_snapshot, arrival, _identity(), discard_current)
 	if error != OK:
 		saves.import_data(previous)
 	_last_load_ms = float(Time.get_ticks_usec() - _load_started_usec) / 1000.0
@@ -418,7 +428,7 @@ func _restore_progress_internal(path: String) -> Error:
 			error = ERR_DOES_NOT_EXIST
 		elif not _validate_global(saves.global_state):
 			error = ERR_INVALID_DATA
-		elif not dev_shell and (not bool(saves.global_state["profile"]["started"]) or not SET_IDS.has(saves.current_module)):
+		elif not dev_shell and (not bool(saves.global_state["profile"]["started"]) or not _is_library_game(saves.current_module)):
 			if not bool(saves.global_state["profile"]["started"]) and saves.current_module == &"first_entry":
 				error = OK
 			else:
@@ -461,7 +471,7 @@ func _on_module_requested(kind: StringName, payload: Dictionary) -> void:
 		return
 	if not _valid_request(kind, payload, director.current_id):
 		return
-	var exclusive: bool = kind in [&"portal", &"died", &"start", &"menu", &"language"]
+	var exclusive: bool = kind in [&"portal", &"died", &"start", &"menu", &"language", &"library_back", &"library_select"]
 	if exclusive:
 		_request_pending = true
 	_dispatch_request.call_deferred(kind, payload.duplicate(true), source.get_instance_id(), director.current_id, _generation, exclusive)
@@ -481,6 +491,10 @@ func _valid_request(kind: StringName, payload: Dictionary, source: StringName) -
 			return source == &"first_entry" and not bool(profile["started"]) and payload.get("shape") is int and payload.get("color") is int and _valid_integer(payload["shape"]) and _valid_integer(payload["color"])
 		&"menu", &"language":
 			return payload.is_empty()
+		&"library_back":
+			return source == &"game_library" and payload.is_empty() and not _library_origin.is_empty()
+		&"library_select":
+			return source == &"game_library" and payload.get("id") is String and _is_library_game(StringName(payload["id"]))
 	return false
 
 
@@ -523,6 +537,10 @@ func _dispatch_request(kind: StringName, payload: Dictionary, source_instance: i
 			_toggle_pause()
 		&"language":
 			set_language("en" if language == "ko" else "ko")
+		&"library_back":
+			await _leave_library(&"")
+		&"library_select":
+			await _leave_library(StringName(payload["id"]))
 
 
 func _return_after_death() -> Error:
@@ -569,6 +587,41 @@ func _toggle_pause() -> void:
 		_set_paused(true)
 		_menu.show()
 		_resume_button.grab_focus()
+
+
+func _open_library() -> void:
+	if not paused or not _menu.visible or _operation_pending or director.busy or (not dev_shell and not bool(profile.get("started", false))):
+		return
+	_library_origin = director.current_id
+	var entries: Array[Dictionary] = []
+	for manifest: ModuleManifest in catalog:
+		if manifest != null and _is_library_game(manifest.id):
+			entries.append({"id": String(manifest.id), "name": manifest.display_name})
+	_menu.hide()
+	_set_paused(false)
+	if await _change_module(&"game_library", false, false, {"games": entries, "current": String(_library_origin)}) != OK:
+		_library_origin = &""
+		_set_paused(true)
+		_menu.show()
+		_library_button.grab_focus()
+
+
+func _leave_library(target: StringName) -> void:
+	if director.current_id != &"game_library" or _library_origin.is_empty() or _operation_pending or director.busy:
+		return
+	var returning: bool = target.is_empty()
+	var destination: StringName = _library_origin if returning else target
+	if not returning and not _is_library_game(target):
+		return
+	if await _change_module(destination) != OK:
+		return
+	_library_origin = &""
+	if returning:
+		_set_paused(true)
+		_menu.show()
+		_library_button.grab_focus()
+	else:
+		_persist_action()
 
 
 func toggle_journal() -> void:
@@ -676,6 +729,10 @@ func _catalog_index(id: StringName) -> int:
 	return -1
 
 
+func _is_library_game(id: StringName) -> bool:
+	return id != &"first_entry" and id != &"game_library" and _catalog_index(id) >= 0
+
+
 func _setup_records() -> void:
 	var path: String = "res://meta/records/records_store.gd"
 	if not ResourceLoader.exists(path):
@@ -761,6 +818,7 @@ func _build_shared_ui() -> void:
 	_menu_hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	rows.add_child(_menu_hint)
 	_resume_button = _button(rows, "Resume", _toggle_pause)
+	_library_button = _button(rows, "Game library", _open_library)
 	_settings_label = Label.new()
 	rows.add_child(_settings_label)
 	_menu_volume = HSlider.new()
@@ -828,6 +886,7 @@ func _update_shared_text() -> void:
 	_menu_button.text = "메뉴 (Esc)" if korean else "Menu (Esc)"
 	_journal_button.text = "기록 (J)" if korean else "Journal (J)"
 	_resume_button.text = "계속" if korean else "Resume"
+	_library_button.text = "게임 목록" if korean else "Game library"
 	_settings_label.text = "설정 · 전체 음량" if korean else "Settings · Master volume"
 	_language_button.text = "언어: 한국어 / English" if korean else "Language: English / 한국어"
 	_clicker_button.text = ("쓸모없는 클릭: %d" if korean else "Useless clicks: %d") % useless_clicks
@@ -929,7 +988,8 @@ func _build_context_hud(ui: Control, font: SystemFont) -> void:
 func _sync_shared_ui_visibility() -> void:
 	if _shared_bar == null:
 		return
-	var show_navigation: bool = dev_shell or (bool(profile.get("started", false)) and director.current_id != &"first_entry")
+	$UIHost/UI/Shell.visible = dev_shell and director.current_id != &"game_library"
+	var show_navigation: bool = director.current_id != &"game_library" and (dev_shell or (bool(profile.get("started", false)) and director.current_id != &"first_entry"))
 	_shared_bar.visible = show_navigation
 	_context_hud.visible = show_navigation
 

@@ -2,7 +2,7 @@ extends SceneTree
 
 func _initialize() -> void:
 	var args: PackedStringArray = OS.get_cmdline_user_args()
-	if args.size() != 4:
+	if args.size() != 4 and args.size() != 5:
 		quit(2)
 		return
 	var width: int = int(args[1])
@@ -21,6 +21,15 @@ func _initialize() -> void:
 		context.module_id = &"visual_capture"
 		context.input_enabled = true
 		context.identity_view = {"shape": 1, "color": 1}
+		if args[0].contains("game_library"):
+			var games: Array[Dictionary] = []
+			for folder: String in DirAccess.get_directories_at("res://modules"):
+				if folder == "game_library" or folder == "first_entry":
+					continue
+				var manifest: ModuleManifest = load("res://modules/%s/module_manifest.tres" % folder)
+				if manifest != null:
+					games.append({"id": String(manifest.id), "name": manifest.display_name})
+			context.arrival = {"language": "ko", "current": "signal_desk", "games": games}
 		scene.context = context
 	root.add_child(scene)
 	await process_frame
@@ -30,6 +39,13 @@ func _initialize() -> void:
 		else:
 			scene.load_state({})
 		scene.enter(scene.context)
+		if args.size() == 5 and args[4] == "all" and args[0].contains("game_library"):
+			scene.call("_show_all")
+		if args.size() == 5 and args[4] == "last" and args[0].contains("game_library"):
+			(scene.get("_buttons") as Array)[-1].grab_focus()
+		if args.size() == 5 and args[4] == "all_last" and args[0].contains("game_library"):
+			scene.call("_show_all")
+			(scene.get("_grid_buttons") as Array)[-1].grab_focus()
 	await process_frame
 	await process_frame
 	var image: Image = root.get_texture().get_image()
