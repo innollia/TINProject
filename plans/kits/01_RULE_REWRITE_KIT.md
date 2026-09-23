@@ -8,15 +8,38 @@
 
 이 Kit의 Reference Game은 독립 작품을 늘리기 위한 것이 아니라 parser/evaluator/movement/history/presentation/content pipeline이 실제 플레이에서 함께 작동함을 검증한다.
 
-## 1. Primary Reference
+## 1. Primary Reference — 하나
 
 **Baba Is You — Hempuli Oy**
 
-Reference source:
-- Steam store / screenshots: https://store.steampowered.com/app/736260/Baba_Is_You/
-- 확인할 상태: 평상시 보드, word block과 object가 같은 격자에 있는 화면, 규칙 파괴/재구성 직후, 여러 YOU, 실패/재시도, 레벨 전환
+공식 reference:
+- Steam: https://store.steampowered.com/app/736260/Baba_Is_You/
 
-### 반드시 따라갈 것
+공식 설명에서 확인되는 핵심:
+- 규칙 자체가 상호작용 가능한 block으로 존재한다.
+- block 조작으로 현재 level의 작동 규칙이 바뀐다.
+- 200개가 넘는 level이 같은 중심 문법을 여러 방식으로 변주한다.
+
+이 Kit에서 가져올 것은 바로 이 **공간 안의 규칙 조각 → 즉시 world rule 재평가 → 여러 authored level로 변주** 구조다.
+
+### 1.1 상태별 실제 화면 증거
+
+구현 시작 전에 Steam media/trailer 또는 동일한 공식/신뢰 가능한 실제 플레이 자료에서 아래 상태를 각각 확인하고 작업 메모에 캡처/타임코드를 남긴다.
+
+| 상태 | 확인할 것 | TIN 적용 |
+|---|---|---|
+| first playable board | board가 화면에서 차지하는 비율, cell 규격 | 보드가 절대적 focal point |
+| normal turn | object/word의 cell alignment | 정각 grid |
+| word push | 밀기 전후 위치와 한 턴 감각 | 한 입력 = 한 grid step |
+| rule broken/reformed | 문장 변화와 world 변화의 거리/순서 | 원인 문장→영향 object |
+| multiple controllables | 같은 property가 여러 object에 적용되는 표현 | multi-YOU |
+| blocked/failure | 실패가 보드를 덮지 않는 방식 | 작은 현장 feedback |
+| undo/reset | 실험을 빨리 되돌리는 흐름 | toolbar 없이 action으로 접근 |
+| level transition | 한 level의 규칙과 다음 level의 독립 | data-driven level loader |
+
+이 표의 실제 캡처/타임코드가 없으면 presentation 구현을 시작하지 않는다.
+
+### 1.2 강하게 따라갈 것
 
 - 모든 핵심 플레이가 정각 격자에서 읽히는 보드 구조
 - word와 object가 같은 cell 규칙을 공유하는 즉시성
@@ -27,7 +50,7 @@ Reference source:
 - 플레이 공간이 화면의 주인공이고 HUD가 거의 없는 정보 위계
 - 셀 하나의 위치관계가 판단에 중요하므로 ASCII/비정각 텍스트 보드로 축약하지 않음
 
-### 복제하지 않을 것
+### 1.3 복제하지 않을 것
 
 - 원작 캐릭터/오브젝트 아트
 - 원작 고유 레벨 배치
@@ -140,11 +163,11 @@ runtime:
 - 방향키/Z/X 설명문 금지
 - debug turn/rule label 금지
 
-undo/reset/나가기는 Primary Reference처럼 퍼즐을 가리지 않는 최소 접근만 둔다. 상시 toolbar를 만들지 않는다.
+undo/reset/나가기는 보드를 가리는 상시 toolbar를 만들지 않는다. 필요한 물리 키는 장르 전환 Input Bubble에서 학습한다.
 
 ## 7. Input
 
-Reference Game 기본 action:
+Reference Game intent:
 - up/down/left/right
 - undo
 - reset
@@ -152,7 +175,11 @@ Reference Game 기본 action:
 
 물리 키는 앱 InputMap에서 매핑하고 domain에는 전달하지 않는다.
 
-TIN의 다른 장르에서 이 Kit로 진입하면서 필요한 물리 키 집합이 바뀌면 `docs/KIT_WORKFLOW.md`의 Input Bubble을 사용한다.
+이 Kit로 진입하는 전환에서 이전 장르와 required physical key set이 다르면 Input Bubble이:
+- 계속 필요한 기존 키를 복구
+- 새 키를 아래에서 올림
+- 더 이상 필요 없는 키를 popped 흔적으로 유지
+한다.
 
 ## 8. 저장/복구
 
@@ -233,9 +260,12 @@ TIN의 다른 장르에서 이 Kit로 진입하면서 필요한 물리 키 집�
 
 ## 13. 완료 증거
 
+- 상태별 Primary Reference 캡처/타임코드 기록
 - 8개+ authored level
 - 실측 플레이 10분+
 - 720p/FHD/QHD 캡처
 - parser/movement/save 테스트 통과
 - 새 9번째 level을 data만 추가해 동작시키는 검증
-- 사용자 플레이 검토 준비 완료
+- 사용자 플레이 **검토 준비 완료**
+
+사용자 실제 검토 전에는 최종 완성이라고 쓰지 않는다.
