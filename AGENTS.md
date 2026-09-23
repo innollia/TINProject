@@ -2,68 +2,220 @@
 
 ## 환경
 
-- Godot **4.7.2 stable**, typed GDScript, GL Compatibility. 엔진 변경은 승인받는다.
-- 실행 파일: `C:\Program Files (x86)\Steam\steamapps\common\Godot Engine\godot.windows.opt.tools.64.exe`
-- 프로젝트: `C:\projects\TINProject\project.godot`. 메인 씬은 `app/app_root.tscn`이다.
-- GUT **9.7.1**을 `addons/gut`에 고정했다. 원본 tag `v9.7.1`, commit `aeb5d4f3f7f0a6c9b5e178876d6c99b791fda605`. 테스트 의존성이며 게임 실행에 필요하지 않다.
-- Ponytail 스킬을 `.opencode/skills/ponytail/`에 고정했다. 원본 https://github.com/dietrichgebert/ponytail commit `e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156`, MIT. 이 스킬은 opencode가 자동 로드한다.
+- Godot **4.7.2 stable**, typed GDScript, GL Compatibility.
+- 프로젝트: `C:\projects\TINProject\project.godot`
+- 메인 씬: `app/app_root.tscn`
+- GUT 9.7.1 고정.
+- Ponytail이 활성 상태면 코딩 작업에 사다리(ladder)를 적용하되, 아래 TIN 경계·검증·계획 게이트를 줄이지 않는다.
 
-## 작업 경계
+## 가장 먼저 읽기
 
-- Ponytail이 활성 상태면 코딩 작업에 사다리(ladder)를 적용한다. 이 프로젝트의 경계는 사다리보다 우선한다: 모듈 격리, 계약, 검증 명령은 줄이지 않는다. 검증·저장·입력 안전망은 ponytail이 줄여도 되는 것이 아니다.
-- AppRoot는 유지하고 ModuleHost 자식만 교체한다. 모듈끼리는 서로의 존재를 몰라야 한다.
-- core는 modules/app/meta 구현을 참조하지 않는다. 모듈은 core/contracts와 실제 필요한 shared/domain만 참조한다.
-- `/root` 탐색, 서비스 로케이터, 전역 EventBus, 승인 없는 autoload 추가를 금지한다.
-- 필요한 외부 기능은 ModuleContext로 명시적으로 주입한다. 현재 컨텍스트에는 모듈 ID와 입력만 있다. 필요하지 않은 서비스 참조를 미리 추가하지 않는다.
-- 입력 폴링은 컨텍스트를 사용한다. 버튼 콜백도 input_enabled를 확인한다. 자식 process_mode는 INHERIT를 유지한다.
-- 저장은 버전 있는 불투명 JSON이다. 상태 의미와 이관은 모듈 소유다.
-- 두 번째 실제 재사용 사례가 생기기 전에는 shared 추상화를 만들지 않는다.
-- 한 작업자는 한 소유 범위를 맡고, 같은 파일을 동시에 수정하지 않는다. API 변경은 조율한다.
-- 무관한 폴더 수정·리팩터링, 승인 없는 패키지 추가, 요청 없는 커밋을 하지 않는다.
-- 요청 없는 코드 주석을 추가하지 않는다. `.godot/`는 제외하고 소스 `.uid`는 보존한다.
+Kit 또는 게임 화면 작업 전:
+1. `CONTEXT.md`
+2. `PROJECT_DECISIONS.md`
+3. `docs/DESIGN_PHILOSOPHY.md`
+4. `docs/KIT_WORKFLOW.md`
+5. `docs/VISUAL_DIRECTION.md`
+6. `docs/UI_WORKFLOW.md`
+7. 해당 `plans/kits/*.md`
 
-## 설계 원칙
+런타임 계약 변경이면 추가:
+- `docs/ARCHITECTURE.md`
+- `docs/MODULE_CONTRACT.md`
 
-게임/콘텐츠 설계 철학의 단일 출처는 `docs/DESIGN_PHILOSOPHY.md`다.
+## 프로젝트 해석
 
-게임형 모듈 계획·콘텐츠 확장·레퍼런스 선택 전에 먼저 읽는다.
-이 파일에는 철학을 중복 기록하지 않고 작업 절차만 둔다.
+TINProject는 여러 독립 게임의 모음이 아니다. **한 게임 안에서 장르가 바뀌는 게임**이다.
 
-UI가 포함된 모든 계획·구현·수정은 `docs/UI_WORKFLOW.md`와 `docs/VISUAL_DIRECTION.md`를 함께 읽는다. 셸·기록·게임 목록과 기존 콘텐츠 증설에도 적용한다. 계획에는 화면별 입력 데이터·표시 상태·의도·포커스 복귀·실패 경로·소유 파일·검증 증거를 남긴다. 공통 원칙은 계획마다 복사하지 않는다.
+`Kit`는 장르 시스템 계획 단위다.  
+`GameModule`은 런타임 교체 단위다.
 
-보고서의 공통 컴포넌트/서비스 예시는 선제 구현 목록이 아니다. 모듈 로컬 우선, 두 실제 사용처 확인 후 공유, UI 아이콘 금지, ModuleContext 입력, 기존 AppRoot/Director와 GUT 경계를 유지한다.
+모듈 수/사이클 수/신규 게임 수를 성과로 세지 않는다.
 
-이 경계를 이유로 UI 패턴을 일반론으로 축소하지 않는다. `docs/UI_REFERENCE_ADAPTATIONS.md`와 해당 게임/셸의 구체 적용 절을 읽고 Reference → 화면 구조/interaction → TIN 상태 → adaptation을 구현한다. 외부 UI 구조의 적극 채택과 shared/global service 여부는 별개 판단이다.
+## 현재 whitelist
 
-문서만 변경한 작업은 링크·내용 일관성·비문서 변경 여부를 검증하고 엔진/시각 검증과 구분해 보고한다. 코드 변경 시에는 기존 기준선과 아래 전체 검증 절차를 그대로 적용한다.
+새 작업의 기반 후보:
+- `modules/first_entry/**` — 시작/입력 학습 로직
+- `modules/rule_rewriting/**` — 규칙 시스템 기반
+- `modules/odd_road_adventure/**` — 어드벤처 시스템 기반
+- `modules/game_library/**` — 개발/탐색용 목록 UI
 
+그 외 기존 플레이 모듈은 **Retired Prototype**이다.
 
----
+Retired Prototype에서:
+- 아이디어를 재사용하지 않는다.
+- 대사를 재사용하지 않는다.
+- UI를 참고하지 않는다.
+- “이미 구현돼 있으니 고친다”를 기본값으로 삼지 않는다.
+- 새 Kit에 필요한 subsystem이 있을 때만 코드 단위로 재검증한다.
 
-## 작업 방식
+Git 이력이 보존 역할을 한다. 박물관 폴더를 새로 만들지 않는다.
 
-- "이어서 작업"처럼 범위가 열린 요청은 `HANDOVER.md`와 계획서를 후보 목록으로 사용하되, **사용자 확정 설계를 과거라는 이유로 폐기하지 않는다**. 현재 코드·테스트에서 이미 구현됐는지 확인한 뒤 미완료 산출물을 정한다.
-- 설계 질의(`/grill`류) 전에 `PROJECT_DECISIONS.md`와 관련 계획서를 대조한다. 이미 사용자 답이 있는 질문은 반복하지 않는다. 현재 사용자의 `몰라/모름`은 명시적 철회가 아닌 이상 기존 사용자 확정값을 취소하지 않는다.
-- 문서에서 **사용자 확정 / AI 기본값 / 구현 기록 / 미정**의 출처를 구분한다. AI가 임의로 만든 이름·라우트·수치를 사용자 설정으로 재서술하지 않는다.
-- 변경 전에 관련 테스트를 먼저 실행해 기준선을 남긴다. 기존 실패와 새 회귀를 구분하고, 기존 실패를 발견하면 원인을 확인하기 전까지 새 기능 범위를 넓히지 않는다.
-- Antigravity나 서브에이전트에는 소유 파일, 산출물, 금지 범위, 검증 명령이 포함된 하나의 독립 작업만 맡긴다. 같은 파일을 주 작업자와 동시에 수정하지 않는다.
-- 위임 도구의 성공 상태만으로 작업 완료를 판단하지 않는다. 응답 본문, 실제 파일 변경, 테스트 결과 중 확인 가능한 산출물이 없으면 위임 결과는 없는 것으로 본다. 빈 결과는 범위를 좁혀 한 번만 재시도하고, 다시 비면 로컬 작업으로 전환한다.
-- 게임형 모듈 설계는 `docs/DESIGN_PHILOSOPHY.md`를 따른다.
-- 구현 계획은 해당 모듈 고유 시스템·파일·상태·테스트만 기록하고 공통 설계 철학을 반복하지 않는다.
-- 외부 subsystem은 `docs/DESIGN_PHILOSOPHY.md`의 Adopt → Adapt → Build 원칙을 따르고, 계획서에는 실제 조사 결과만 기록한다.
-- 새 모듈은 실제 인디게임 하나를 기준 레퍼런스로 먼저 지정하고, `PROJECT_DECISIONS.md` 또는 해당 계획서에 레퍼런스명·가져올 핵심 루프·우리 게임의 변형 경계를 기록한다. 원작의 자산·문구·고유 캐릭터는 복제하지 않는다.
-- **게임형 모듈은 콘텐츠보다 시스템을 먼저 완성한다.** 샘플 레벨·사건·루프는 시스템 검증용 최소 콘텐츠로 취급하고, 이후 30분~8시간 규모 authored content를 데이터 추가로 확장할 수 있는 상태 모델·데이터 형식·입력·저장·reset·테스트를 우선한다.
-- **Adopt → Adapt → Build 순서를 강제한다.** 어려운 subsystem을 처음부터 새로 만들기 전에 현재 TIN 내부 구현, 공개 GitHub, Godot Asset Library를 조사한다. permissive license와 구조가 적합하면 vendoring/포팅하고, 구조가 안 맞으면 필요한 subsystem만 추출하며, 사용할 수 없을 때만 직접 구현한다.
-- 외부 베이스 조사 시 최소 repository/commit 또는 tag/license/Godot version/가져올 파일/버릴 파일/autoload·global dependency/포팅 난도를 계획서에 기록한다. **LICENSE가 확인되지 않는 코드는 복사하지 않는다.**
-- 외부 코드 때문에 TIN 전체 아키텍처를 바꾸지 않는다. autoload, EventBus, 전역 저장, Input singleton 의존은 모듈 로컬 계약으로 걷어내고 외부 코드를 TIN 계약 안에 가둔다.
-- 상세 게임형 모듈 계획은 `plans/game_modules/INDEX.md`와 개별 계획서를 따른다. 작업 모델은 자기 계획 파일과 필수 계약 문서만 읽고 구현할 수 있을 정도로 파일·상태·API·실패 경로·테스트를 구체화한다.
-- 단순 3선택·단일 순서 입력·정답 하나만 맞히는 일회성 퍼즐은 새 모듈의 완료 기준으로 삼지 않는다. 레퍼런스의 규칙 학습, 상태 변화, 복수 판정 또는 상호작용하는 하위 시스템을 구현하고, 오답·재검토·저장 복원 경로까지 테스트한다.
-- 인계 문서의 수치와 구현 설명은 현재 코드·테스트보다 우선하지 않는다. 불일치를 발견하면 코드 계약과 사용자 의도를 기준으로 판정하고, 완료 시 관련 인계 문서의 상태·테스트 수치도 함께 갱신한다.
-- `/goal`은 검증 가능한 산출물 단위로 운영한다. 필수 검증이나 시각 확인이 남았으면 완료 처리하지 않고, 확인 불가 사유와 남은 확인 항목을 명시한다.
+## 계획 게이트
 
-## 완료 전 검증
+**계획서가 완성되기 전에는 Kit 구현을 시작하지 않는다.**
 
-PowerShell에서 아래를 순서대로 실행한다. GUI 실행 파일이므로 반드시 `Start-Process -Wait -PassThru`로 종료를 기다린다. 실패 시 멈추고 출력의 SCRIPT ERROR/ERROR도 확인한다. 엔진 import가 GDScript 파싱·타입 검사이며 별도 외부 lint 도구는 도입하지 않았다.
+계획서는 `docs/KIT_WORKFLOW.md`의 필수 항목을 모두 가져야 한다.
+
+특히:
+- Primary Reference 하나
+- 실제 화면/플레이 출처
+- 따라갈 시스템/UX
+- 10분+ Reference Game
+- authored content 단위
+- 상태/데이터 모델
+- 입력/저장/복구
+- 720p/FHD/QHD
+- 수동 플레이 과제
+- 금지 shortcut
+- 완료 증거
+
+`알아서`, `게임답게`, `레퍼런스 느낌으로`, `적당히` 같은 문장이 구현 결정을 대신하면 계획 미완성이다.
+
+## Primary Reference 규칙
+
+Kit마다 Primary Reference는 정확히 하나다.
+
+구현 전에 실제 화면과 플레이를 확인한다. 작품명을 알고 있다는 이유로 기억에서 구현하지 않는다.
+
+레퍼런스가 필요한데 외부 자료를 확인하지 못했으면:
+- 임의로 채우지 않는다.
+- 화면 구현을 시작하지 않는다.
+- 확인이 필요한 상태를 계획에 남긴다.
+
+여러 게임의 UI/시스템을 평균내지 않는다. Secondary Reference는 사용자가 명시적으로 허용한 특정 확장점에만 쓴다.
+
+## Reference Game
+
+각 Kit는 최소 10분 이상 플레이 가능한 Reference Game으로 검증한다.
+
+10분을 다음으로 채우지 않는다:
+- 긴 이동
+- 대기
+- 같은 입력 반복
+- 대사만 늘리기
+- 적 HP만 늘리기
+
+같은 Kit 시스템에 서로 다른 authored content를 여러 번 넣어야 한다.
+
+새 콘텐츠 추가 때문에 parser/combat/save/registry 등 core system을 반복 수정하면 Kit 미완성이다.
+
+전용 에디터 툴은 완료조건이 아니다.
+
+## 시스템 경계
+
+- AppRoot는 유지하고 ModuleHost 자식만 교체한다.
+- 모듈끼리는 서로의 존재를 모른다.
+- core는 구체 modules/app/meta 구현을 참조하지 않는다.
+- 모듈은 필요한 core/contracts와 주입된 ModuleContext만 사용한다.
+- `/root` 탐색, 서비스 로케이터, 범용 EventBus, 승인 없는 autoload 추가 금지.
+- 입력 폴링은 ModuleContext를 사용한다.
+- 저장은 버전 있는 JSON-safe 상태다.
+- 두 번째 실제 사용처 전에는 shared 추상화를 만들지 않는다.
+- 외부 코드 때문에 TIN 전체 아키텍처를 바꾸지 않는다.
+
+Kit 전체를 안정된 외부용 공개 API로 만들지 않는다.
+
+## 화면과 UI
+
+기본값은 **아무것도 띄우지 않는 것**이다.
+
+상시 HUD를 추가하려면 Primary Reference와 게임 상태에서 항상 필요한 정보라는 근거가 있어야 한다.
+
+금지:
+- 좌상단 공간/자동저장/키설명 뭉치
+- 우상단 Menu/Journal 버튼
+- 개발 툴바
+- debug label의 release 노출
+- 장문 조작 설명
+- placeholder ColorRect/Label을 월드 오브젝트로 완료 처리
+- 버튼 목록으로 월드 플레이를 대체
+- 무엇을 선택 중인지 알 수 없는 focus
+
+Shell은 호출 전까지 시각적 존재감 0. Esc 메뉴는 Esc를 누를 때만 보인다.
+
+## Input Bubble
+
+새 장르 구간에서 필요한 물리 키가 달라질 때 `docs/KIT_WORKFLOW.md`의 Input Bubble 계약을 따른다.
+
+핵심:
+- 움직이는 무늬 배경
+- 키마다 고정된 가상 grid cell
+- 새 키는 아래에서 올라와 정착
+- 다음 구간에서도 필요한 터진 키는 복구
+- 필요 없는 키는 터진 흔적으로 유지
+- 실제 키를 누르면 해당 방울이 터짐
+- 설명문으로 기능을 해설하지 않음
+- 리바인딩 시 실제 바인딩 표시
+
+`first_entry`를 보존한다는 뜻은 현재 설명문/presentation을 그대로 보존한다는 뜻이 아니다. 시작 로직만 whitelist다.
+
+## at-icons
+
+`res://addons/at-icons/`는 모든 Kit Reference Game의 월드 아트 기본 재료다.
+
+- UI 아이콘 사용 금지.
+- 원래 pictogram 의미 그대로 사용 금지.
+- 주요 오브젝트는 여러 조각을 조합.
+- crop/rotation/mirror/non-uniform scale/overlap/color 변형 적극 사용.
+- 3D Kit에서도 Sprite3D/plane/cutout 등 장르에 맞게 사용 가능.
+
+원본 asset은 덮어쓰지 않는다.
+
+## UI 보고서 적용
+
+사용자가 제공한 UI 연구 보고서의 핵심을 적용한다:
+- 정보 우선순위와 상호작용 규칙을 외형보다 우선
+- 상태와 표현 분리
+- focus를 첫 클래스 상태로 취급
+- Container/anchor 기반 반응형
+- 입력 장치와 해상도 검수
+- AI 생성 UI를 자동 테스트 + 실제 실행으로 검증
+
+그러나 보고서의 예시 컴포넌트/서비스/게임 사례 목록을 자동 구현 목록으로 승격하지 않는다. Kit의 Primary Reference가 구체 화면 문법의 우선권을 가진다.
+
+## 해상도
+
+필수 수동 검수:
+- 1280×720
+- 1920×1080
+- 2560×1440
+
+현재 `project.godot`의 과거 1152×720 설정은 지원 완료 근거가 아니다.
+
+검수:
+- UI 겹침/잘림 없음
+- focus 표시 유지
+- 월드 플레이 영역 유지
+- 격자형 게임은 셀 비율 유지
+- 긴 문자열/최대 데이터
+- 메뉴 open/close 복귀
+
+## 외부 subsystem
+
+Adopt → Adapt → Build:
+1. 현재 TIN 내부 구현 확인
+2. 공개 GitHub / Godot Asset Library / 공식 demo 조사
+3. license/version/global dependency 확인
+4. 맞으면 필요한 subsystem만 채택
+5. 맞지 않으면 구조만 참고
+6. 그래도 없으면 직접 구현
+
+LICENSE가 확인되지 않는 코드는 복사하지 않는다.
+
+## 작업 소유권
+
+- 한 작업자는 한 소유 범위.
+- 같은 파일 동시 수정 금지.
+- 무관한 폴더 리팩터링 금지.
+- 승인 없는 패키지 추가 금지.
+- 요청 없는 커밋 금지.
+- 요청 없는 코드 주석 추가 금지.
+- `.godot/` 제외, 소스 `.uid` 보존.
+
+## 완료 전 자동 검증
+
+PowerShell에서 순서대로:
 
 ```powershell
 $GodotExe = 'C:\Program Files (x86)\Steam\steamapps\common\Godot Engine\godot.windows.opt.tools.64.exe'
@@ -77,39 +229,29 @@ $p = Start-Process -FilePath $GodotExe -ArgumentList '--headless --path C:\proje
 $p.ExitCode
 ```
 
-영향받은 씬도 실행하고 변경 내용을 검토한다. 저장 테스트는 고유한 `user://tin_tests_*` 파일만 생성·정리하며 실제 save.json을 덮어쓰지 않는다. 테스트 통과는 목표 저사양 PC의 프레임 예산이나 화면 품질을 보증하지 않는다. 새 장르 추가 시 계약 테스트와 해당 장르 입력·상태 테스트를 함께 확장한다.
+실패 시 멈추고 기존 실패와 신규 회귀를 구분한다.
 
-## 시각 구현 절차 — 필수
+## Kit 완료 전 수동 검증
 
-시각 작업과 신규 모듈 작업은 docs/VISUAL_DIRECTION.md를 함께 따른다.
+자동 검증 뒤:
+1. Primary Reference 상태별 화면과 비교
+2. Reference Game을 처음부터 끝까지 플레이
+3. 실측 플레이타임 확인
+4. authored content 추가 시 core 무수정 확인
+5. 720p/FHD/QHD 실행 캡처
+6. 입력 전/후, 실패/성공, save/load/reset 확인
+7. placeholder/상시 HUD/설명문 검색
+8. at-icons가 원래 pictogram으로 읽히는 사용 검색
 
-### 구현 전에
-1. 계획서에 적힌 상용 게임 레퍼런스의 실제 화면을 확인한다. 작품명만 알고 기억으로 구현하지 않는다.
-2. 현재 TIN 화면을 1152×720 기준으로 캡처해 baseline을 남긴다.
-3. 구현할 화면마다 플레이어가 처음 보는 장면, 1차 초점, 월드/UI 경계, 입력 전·후, focus/선택, 실패/성공/전환 상태를 확인한다.
-4. res://addons/at-icons/를 사용하는 작업은 실제 checkout에 경로와 MIT 라이선스 원문이 있는지 확인한다. 없으면 다른 아이콘 세트를 임의로 대체하지 않는다.
+사용자 직접 플레이 검토 전에는 **검토 준비 완료**까지만 선언한다.
 
-### at-icons 사용
-- UI에 사용 금지.
-- 원래 의미의 픽토그램으로 사용 금지.
-- 캐릭터, 건물, 가구, 배경, 기계, 생물 등 월드 아트의 콜라주 재료로 사용.
-- 소스 에셋 자체는 덮어쓰기보다 모듈 로컬 scene에서 조합.
-- 반복 조합이 두 번째 실제 사례에서 확인되기 전에는 공용 composer를 만들지 않는다.
+## 문서 작업
 
-### UI
-- 버튼/탭/상태/입력 힌트는 텍스트와 레이아웃으로 해결한다.
-- 개발 도구 같은 상단 툴바, 의미 없는 박스 나열, 아이콘 버튼 행을 기본 UI로 만들지 않는다.
-- 플레이 공간보다 UI가 먼저 보이면 계획서의 레퍼런스 화면과 다시 비교한다.
-- 디버그용 라벨과 상태 텍스트는 release 화면에서 제거한다.
+문서만 변경한 작업은:
+- 링크 무결성
+- active 문서 간 용어 일치
+- Retired Prototype이 다시 구현 입력으로 노출되지 않는지
+- 계획 경로가 `plans/kits/`로 정리됐는지
+를 확인한다.
 
-### 시각 완료 검증
-기존 import → 통합 러너 → GUT → smoke 검증 뒤에 다음을 추가한다.
-
-1. 영향받은 모든 주요 화면을 1152×720로 직접 실행
-2. 계획서의 레퍼런스와 나란히 놓고 정보 계층·여백·초점·월드 밀도 비교
-3. 입력 전/후, 실패/성공, 전환 상태 확인
-4. placeholder ColorRect/Label이 세계 오브젝트 역할로 남았는지 검색
-5. UI에 아이콘이 들어갔는지 확인
-6. at-icons 원본 하나가 원래 뜻 그대로 읽히는 사용이 있는지 확인
-
-테스트가 통과해도 위 시각 검증이 남아 있으면 완료가 아니다.
+문서 변경만 했으면서 게임 실행/시각 검수를 완료했다고 쓰지 않는다.
