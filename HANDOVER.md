@@ -11,11 +11,14 @@ TINProject는 여러 미니게임/모듈을 많이 만드는 프로젝트가 아
 새 작업자는 다음 순서로 읽는다:
 1. `CONTEXT.md`
 2. `PROJECT_DECISIONS.md`
-3. `docs/DESIGN_PHILOSOPHY.md`
-4. `docs/KIT_WORKFLOW.md`
-5. `AGENTS.md`
-6. `plans/kits/INDEX.md`
-7. 작업 대상 `plans/kits/*.md`
+3. `docs/GRILLING_STATE.md`
+4. `docs/DESIGN_PHILOSOPHY.md`
+5. `docs/KIT_WORKFLOW.md`
+6. `AGENTS.md`
+7. `plans/kits/INDEX.md`
+8. 작업 대상 `plans/kits/*.md`
+
+현재 `docs/GRILLING_STATE.md`는 ACTIVE다. 새 채팅에서 project-wide grilling을 이어갈 때 이미 Settled된 루트 질문을 반복하지 말고 Current Frontier에서 시작한다. 기존 `plans/kits/` 파일은 이번 grilling 동안 그대로 둔다.
 
 ## 2. 현재 코드 whitelist
 
