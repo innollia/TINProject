@@ -1,10 +1,12 @@
 # 배치 00 — Baseline / at-icons 투입 준비
 
+UI 작업 계약: [UI_WORKFLOW](../../docs/UI_WORKFLOW.md). UI 변경이 있는 실행 계획은 화면별 계약과 검수 증거를 구체화한다. 후보/아이디어는 구현 계획 승격 시 적용한다.
+
 ## 목적
 시각 개편 전에 현재 화면과 에셋 사용 경계를 고정한다.
 
 ## A. baseline
-AppRoot, records overlay, settings/pause, 28개 모듈 첫 화면을 1152×720로 캡처한다.
+AppRoot, records overlay, settings/pause, catalog의 34개 모듈 첫 화면을 1152×720로 캡처한다. first_entry는 `manifest.tres`를 사용하므로 `module_manifest.tres` 검색에서 누락하지 않는다. game_library HOME/전체목록과 게임형 5종의 결과/실패/복원 상태를 포함한다.
 
 ## B. at-icons 확인
 - res://addons/at-icons/ 존재 확인

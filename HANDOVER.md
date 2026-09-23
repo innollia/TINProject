@@ -3,7 +3,7 @@
 설계 철학: `docs/DESIGN_PHILOSOPHY.md`  
 사용자 확정사항: `PROJECT_DECISIONS.md`  
 작업 절차·검증: `AGENTS.md`
-갱신: 2026-09-22. `violet_case`를 3건 사건 파일 묶음으로 확장하고 전체 검증 통과.
+갱신: 2026-09-23. 구현본 보완으로 다섯 시스템 수직 슬라이스와 D1 사건 Resource 추출을 보강했다. R1은 authored JSON 격자·multi-YOU·문장 재평가에서 변환·MOVE·DEFEAT/WIN 순서까지 확장했고, save v4가 facing/failed/변환 상태를 보존한다. 기존 save가 없다는 사용자 확인에 따라 v4 이전 상태는 초기화한다. 두 번째 레벨은 테스트 진입만 연결됐으며 플레이어용 level route와 최종 보드 시각 검수는 남아 있다.
 
 ## 1. 현재 구현 상태
 > **2026-09-21 해석 교정:** 현재 구현 모듈은 소규모 모듈과 게임형 모듈을 구분해 읽는다. 기존 사용자 설계와 기존 모듈은 명시적 철회 없이 폐기·동결하지 않는다. '준호'는 임시 구현명이다.
@@ -15,7 +15,7 @@
 | **기존 데모(회귀 기준)** | `click_counter`, `box_mover`, `room_3d` — **무수정 보존**, 통합 테스트 644 checks 유지 |
 | **신규 구현 모듈** | 플레이 콘텐츠 30개: 사이클 1·2의 12개 + 사이클 3 신규 13개 + 사이클 4 신규 4개 + `odd_road_adventure` 1차 시스템 슬라이스. 별도 UI 모듈 `game_library` 추가 |
 | **신규 시스템** | 기록 v1(전역 관찰·수동 정리·테마 수집), 죽음·귀환·지름길 검증, 프로필·체크포인트, 공용 메뉴/저널/클리커, 게임 목록 |
-| **검증 상태** | `import` → 통합 러너(644/644) → GUT(139/139, 4,849 assertions) → smoke — **전부 통과(종료 코드 0, SCRIPT ERROR 0)** |
+| **검증 상태** | `import` → 통합 러너(644/644) → GUT(160/160, 5,121 assertions) → smoke — **전부 통과(종료 코드 0)** |
 | **git** | 사용자 승인 후 저장소 초기화·첫 커밋 완료. |
 
 위 테스트 수치는 마지막 전체 검증 기록이다. 새 코드 변경 후에는 `AGENTS.md`의 전체 검증을 다시 실행한다.
@@ -54,11 +54,11 @@
 | **추리 조사** | `violet_case` | 3건 사건 파일 선택, 사건별 증거 조사·상태 저장 → 범인·수법·동기 판정 → 확정 기록과 미확정 이론 분리 → 귀환 |
 | **사건 후일담** | `after_signal` | 접힌 답장·우편함·창문을 모두 읽고 다음 주소를 확인한 뒤 기록실로 귀환 |
 | **주소 해독** | `return_address` | 세 흔적의 첫 단어를 주소 세 칸에 옮겨 봉인하고 기록실로 귀환 |
-| **규칙 재작성** | `rule_rewriting` | 세 표찰을 관찰하고 두 규칙을 다시 써 방의 반응을 재판정 |
-| **사건기록** | `dedution_casework` | 세 현장 기록 → 사건 순서 복원 → 범인·수법·동기 판정 |
-| **물리 도구** | `physics_toolbox` | 실제 `RigidBody2D` 세 물체에 밀대·고정자·스프링을 적용하고 힘 전달을 재검증 |
-| **시간 반복** | `time_loop` | 세 박자를 반복 관찰하고 기억을 유지한 채 다음 루프 경로를 판정 |
-| **기묘한 로드** | `odd_road_adventure` | 4개 지역을 같은 조사 문법으로 왕복하며 아이템·NPC·지식·지역 상태를 재사용 |
+| **규칙 재작성** | `rule_rewriting` | 세 표찰→격자 시험실. parser·multi-YOU·PUSH/STOP·NOUN 변환·MOVE·DEFEAT 우선·undo와 save v4 동작. `crossing_02`는 테스트 진입만 있음. level UI route와 보드 시각 검수는 남음 |
+| **사건기록** | `dedution_casework` | 두 Resource 사건 파일, 가변 3/4칸 판정표, 선택 간 모순, ID 기반 저장·복원 및 v2 이관. 조사 문서·어휘 상호작용은 다음 단계 |
+| **물리 도구** | `physics_toolbox` | `RigidBody2D` 세 물체에 두 배치 경로를 적용하고 위치·접촉·목표 영역을 검증. 목표 밖 snapshot은 실패로 유지 |
+| **시간 반복** | `time_loop` | persistent 기억과 loop-local 관찰/세계 상태를 분리하고, 재관찰 뒤 alternate 경로까지 판정 |
+| **기묘한 로드** | `odd_road_adventure` | 4개 지역을 같은 조사 문법으로 왕복하며 아이템·NPC·지식·지역 상태를 재사용. 기존 경로와 붉은 실 우회 경로를 보존 |
 | **Godot 통합 팩** | `addons/tin_integrations/` | 26개 런타임 어댑터·에디터 플러그인·VN 템플릿. 전역 오토로드 없음 |
 
 ### 기존 세트/소규모 모듈
@@ -255,7 +255,7 @@ $p = Start-Process -FilePath $exe -ArgumentList '--headless --path C:\projects\T
 > 5. 기록 기능은 처음부터 전부 제공, 테마 수집만 해금.  
 > 6. 공통 성장 재화/인벤토리/능력치 **없음**.  
 > 7. 메타 해설(게임 구조 설명 대사) **금지**.  
-> 8. 기존 데모 3개·644 checks·기존 GUT 131/131 **회귀 0** 유지. `violet_case` 사건 묶음 포함 전체 GUT는 139/139이다.
+> 8. 기존 데모 3개·644 checks·기존 GUT 131/131 **회귀 0** 유지. `violet_case` 사건 묶음 직후 GUT는 139/139, D1 데이터 추출 직후는 148/148, R1 parser 기초 추가 후는 152/152였다. R1 JSON 격자·parser/solver·runtime·v3 저장 연결 후 기존 세이브가 없다는 사용자 결정에 맞춰 v2 보존 fixture/migration을 제거했다. unknown-level 상태 정규화 버그를 수정한 뒤 전체 순서 검증은 import 0 → 통합 644/644 → GUT 160/160(5,121 assertions) → smoke 0으로 통과했다.
 
 ## 4. 소유권
 
@@ -271,6 +271,15 @@ $p = Start-Process -FilePath $exe -ArgumentList '--headless --path C:\projects\T
 모듈 작업은 기본적으로 해당 `modules/<id>/**`와 전용 테스트 안에서 끝낸다.
 
 ## 5. 활성 계획
+
+### 구현본 보완 — 2026-09-22
+
+진입점: `plans/implementation_improvements/INDEX.md`.
+사용자가 지적한 핵심 문제는 구현된 게임들이 얕은 미니게임에 머무른다는 것이다. 최우선은 `03_GAMEPLAY_DEPTH.md`의 플레이 29개별 재설계와 게임성 게이트다. 콘텐츠 수·그림 교체만으로 완료 처리하지 않는다. 구체 파일·저장 이관·실패 경로는 기존 game_modules 5종과 보완 계획 01/02에 추가했다. 사용자 확정 라우트·소재는 유지하며 새 게임성 제안은 AI 제안으로 구분했다.
+
+이번 작업에서 `rule_rewriting`, `dedution_casework`, `physics_toolbox`, `time_loop`, `odd_road_adventure`의 모듈 코드·manifest·회귀 테스트를 수정했다. 사건 모듈은 두 Resource 사건, 3/4개 슬롯, 선택 간 모순 및 slot/term/event ID 기반 복원을 지원한다. 물리 모듈은 두 배치 경로와 위치·접촉·목표 영역을 저장하며, 루프 모듈은 persistent/loop-local 상태와 재관찰 조건부 우회를 저장하고, 로드 모듈은 붉은 실 우회 경로와 원자적 실패를 저장한다. 2026-09-23 D1 데이터 추출 및 네 번째 판정 행의 긴 텍스트 배치 보정 후 import→통합 644/644→GUT 148/148(5,047 assertions)→smoke를 순서대로 실행해 모두 종료 코드 0, SCRIPT ERROR/ERROR 없음을 확인했다. 1152×720 캡처에서 네 번째 행이 패널 안에 표시됨을 확인했지만, 현재 장면은 개발용 Control 화면이다. The Case of the Golden Idol 실제 화면 대조와 release 표현은 남아 있으며, 다섯 수직 슬라이스를 장시간 authored content나 완전한 공용 엔진 완료로 표시하지 않는다.
+
+2026-09-23 R1 이전 단계 기록: `RuleGridEntity`/`RuleGridState` codec, JSON level loader, authored grids, multi-YOU solver, runtime parser/movement/undo와 save v3를 추가했다. 이후 기존 세이브가 없다는 사용자 확인에 맞춰 이전 상태 보존 이관은 제거했다. 이 기록 당시 전체 검증은 import 0 → 통합 644/644 → GUT 160/160(5,121 assertions) → smoke 0이었다. R1의 텍스트 보드는 1152×720에서 잘림이 없었지만 개발 placeholder이고, 실제 레퍼런스 대조·보드 시각화·상호작용별 화면 검수는 남아 있다.
 
 ### 게임형 모듈
 
@@ -298,8 +307,8 @@ $p = Start-Process -FilePath $exe -ArgumentList '--headless --path C:\projects\T
 - 완전한 i18n: 미구현
 - 정식 아트/오디오: 대부분 미구현
 - Intel Iris Xe 1152×720 기준 과거 측정에서 60 FPS 미보장
-- 게임형 대형 모듈 5종 계획: 아직 구현 전
-- 콘텐츠 증설 계획: `violet_case` 1차 완료. `paper_moon_clinic`, `quiet_locker`는 미구현
+- 게임형 대형 모듈 5종: 기존 실행 프로토타입/로드 4지역 슬라이스 존재. 상세 계획의 시스템 깊이·데이터 확장성·콘텐츠·시각 완료는 미완료
+- 콘텐츠 증설 계획: `violet_case` 1차 완료. `paper_moon_clinic`, `quiet_locker` 기본 모듈은 구현됐고 환자/선택 사물 깊이 보완은 미구현
 
 ## 7. 검증
 
@@ -329,3 +338,16 @@ $p = Start-Process -FilePath $exe -ArgumentList '--headless --path C:\projects\T
 
 대형 신규 모듈 계획도 동일한 시각 계약을 포함한다. 기능 시스템만 만든 뒤 화면을 나중 문제로 미루는 방식으로 완료 처리하지 않는다.
 다음 작업자는 `PROJECT_DECISIONS.md` 0절의 **소규모 모듈 / 게임형 모듈 규모 구분**을 먼저 적용한다. 기존 모듈은 필요하면 그대로 재사용·조합·확장한다. 소규모 모듈 하나를 억지로 독립 게임으로 완결하지 말고, 게임형 모듈을 만들 때는 30분~8시간 규모의 밀도 있는 콘텐츠 잠재력을 별도로 설계한다. 지식 기반 요소를 표방할 때만 `docs/KNOWLEDGE_BASED_DESIGN.md` 기준을 적용한다.
+
+## 2026-09-22 UI 보고서 문서 반영
+
+- 사용자 요청에 따라 설계 철학 17절과 [UI_WORKFLOW](docs/UI_WORKFLOW.md)를 연결하고 AGENTS·시각 기준·계획 진입점·게임형 5종·셸 계획을 보완했다.
+- 후속 구현은 각 계획의 UI 계약과 U3(배율/모션/입력 검수 기반)를 적용한다. 게임성 보완 우선순위와 기존 사용자 설계는 유지한다.
+- 이번 작업은 문서 반영이다. 게임 모듈·테스트 코드를 변경하거나 엔진/시각 검수를 새로 수행한 기록이 아니다. 위 기존 테스트 수치의 날짜/범위를 이번 UI 지원 검증으로 해석하지 않는다.
+
+## 2026-09-22 구체 UI 연구 적용 보강 / 유령 저택 신규 계획
+
+- 이전 UI 문서의 AAA 사례를 보조 교훈으로 한정하던 표현을 수정했다. [적용 지도](docs/UI_REFERENCE_ADAPTATIONS.md)는 네 게임 분석과 보고서의 장르/컴포넌트 사례 전체를 실제 계획 또는 비대상 사유에 연결한다.
+- 게임형 01~05, 셸 U4, 기존 조작대/사이클 3, 진료 C1에 배치·선택→상세→취소·문맥 피드백·모션 강도와 검수 과제를 추가했다. 원작 분석과 TIN 적용안을 구별한다.
+- 사용자 추가 요청에 따라 [유령 저택의 밤 행렬](plans/game_modules/06_GHOST_PROCESSION.md)을 신규 문서 계획으로 추가했다. 동굴→저택→서재→위장→행렬→정문의 사용자 메모를 시스템·UI·저장/부분 reset·검증 계획으로 구체화했다. 실제 코드/씬/등록은 없다.
+- 이번 변경은 문서만이다. 기존 게임 테스트 수치나 화면 완료 상태를 새 UI/신규 모듈 지원의 증거로 갱신하지 않는다.

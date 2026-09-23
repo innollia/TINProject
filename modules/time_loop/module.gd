@@ -8,19 +8,32 @@ const EVENT_TEXT: Array[String] = [
 	"둘째 박자에 종이 울리고, 그 진동이 바닥의 선을 바꾼다.",
 	"셋째 박자에 그림자가 건너가며 다음 루프의 문이 보인다."
 ]
-const SOLUTION: Array[int] = [0, 1, 2]
-const SOLVED_TEXT: String = "창문·종·그림자의 순서를 기억한 뒤 다음 루프의 문을 열었다."
+const REVISIT_TEXT: Array[String] = [
+	"다시 열린 창문은 빛을 벽이 아니라 바닥의 손잡이에 남긴다.",
+	"다시 울린 종은 같은 소리가 아니라 앞 루프의 진동을 숨긴 박자를 드러낸다.",
+	"다시 건넌 그림자는 문을 열지 않고, 다음 루프에서 먼저 볼 위치를 가리킨다."
+]
+const ROUTE_SOLUTIONS: Array[Array] = [[0, 1, 2], [2, 0, 1]]
+const SOLVED_TEXT: Array[String] = [
+	"창문·종·그림자의 순서를 기억한 뒤 다음 루프의 문을 열었다.",
+	"그림자를 먼저 기억하고 창문·종의 흔적을 되짚어, 이미 본 방을 다른 경로로 통과했다."
+]
 
 var mode: int = 0
 var focus: int = 0
 var beat: int = 0
 var known: Array[bool] = [false, false, false]
+var loop_observed: Array[bool] = [false, false, false]
+var world_state: Array[bool] = [false, false, false]
+var revisit_counts: Array[int] = [0, 0, 0]
 var route: Array[int] = [0, 0, 0]
 var loops: int = 0
 var resets: int = 0
 var attempts: int = 0
 var mistakes: int = 0
 var solved: bool = false
+var route_status: String = ""
+var route_variant: int = -1
 var _message: String = ""
 var _held: Dictionary = {}
 var _request_sent: bool = false
@@ -175,6 +188,8 @@ func _observe_or_rewind() -> void:
 		loops = mini(loops + 1, 9999)
 		resets = mini(resets + 1, 9999)
 		beat = 0
+		loop_observed = [false, false, false]
+		world_state = [false, false, false]
 		if known.all(func(value: bool) -> bool: return value):
 			mode = 1
 			focus = 0
@@ -186,33 +201,68 @@ func _observe_or_rewind() -> void:
 		mistakes = mini(mistakes + 1, 9999)
 		_message = "아직 그 박자가 아니다. 다음 되감기에서 다시 맞춰 보자."
 	else:
-		if not known[focus]:
+		var was_known: bool = known[focus]
+		if not was_known:
 			known[focus] = true
 			requested.emit(&"observation", {"id": "time_loop.event_%d" % focus, "text": EVENT_TEXT[focus]})
-		_message = EVENT_TEXT[focus]
+			_message = EVENT_TEXT[focus]
+		else:
+			revisit_counts[focus] = mini(revisit_counts[focus] + 1, 9999)
+			requested.emit(&"observation", {"id": "time_loop.event_%d.revisit_%d" % [focus, revisit_counts[focus]], "text": REVISIT_TEXT[focus]})
+			_message = REVISIT_TEXT[focus]
+		loop_observed[focus] = true
+		world_state[focus] = true
 		beat = posmod(beat + 1, 3)
 		if beat == 0: loops = mini(loops + 1, 9999)
 
 func _evaluate_route() -> void:
 	attempts = mini(attempts + 1, 9999)
-	if route == SOLUTION:
+	route_variant = -1
+	for index: int in range(ROUTE_SOLUTIONS.size()):
+		if route == ROUTE_SOLUTIONS[index]:
+			route_variant = index
+			break
+	if route_variant == 1 and revisit_counts.reduce(func(total: int, value: int) -> int: return total + value, 0) < 1:
+		route_status = "needs_revisit"
+		mistakes = mini(mistakes + 1, 9999)
+		_message = "이 경로는 이미 본 사건을 다른 박자로 다시 확인해야 열린다. 방으로 돌아가 재관찰하자."
+		return
+	if route_variant >= 0:
 		solved = true
 		mode = 2
 		focus = 0
+		route_status = "solved"
 		_message = "기억한 세 박자가 문을 여는 순서와 맞았다. Z로 루프를 닫자."
 	else:
 		mistakes = mini(mistakes + 1, 9999)
+		route_status = "valid_but_wrong"
 		_message = "문이 다른 박자에서 닫혔다. 되감지 않고 경로를 다시 고칠 수 있다."
 
 func _finish() -> void:
 	if not solved:
 		return
 	_request_sent = true
-	requested.emit(&"observation", {"id": "time_loop.solved", "text": SOLVED_TEXT})
+	requested.emit(&"observation", {"id": "time_loop.route_%d.solved" % route_variant, "text": SOLVED_TEXT[route_variant]})
 	requested.emit(&"portal", {"exit": "forward"})
 
 func save_state() -> Dictionary:
-	return {"mode": mode, "focus": focus, "beat": beat, "known": known.duplicate(), "route": route.duplicate(), "loops": loops, "resets": resets, "attempts": attempts, "mistakes": mistakes, "solved": solved}
+	return {
+		"mode": mode,
+		"focus": focus,
+		"beat": beat,
+		"known": known.duplicate(),
+		"loop_observed": loop_observed.duplicate(),
+		"world_state": world_state.duplicate(),
+		"revisit_counts": revisit_counts.duplicate(),
+		"route": route.duplicate(),
+		"loops": loops,
+		"resets": resets,
+		"attempts": attempts,
+		"mistakes": mistakes,
+		"solved": solved,
+		"route_status": route_status,
+		"route_variant": route_variant
+	}
 
 func load_state(state: Dictionary) -> void:
 	var clean := _normalize(state)
@@ -220,12 +270,17 @@ func load_state(state: Dictionary) -> void:
 	focus = int(clean["focus"])
 	beat = int(clean["beat"])
 	known.assign(clean["known"])
+	loop_observed.assign(clean["loop_observed"])
+	world_state.assign(clean["world_state"])
+	revisit_counts.assign(clean["revisit_counts"])
 	route.assign(clean["route"])
 	loops = int(clean["loops"])
 	resets = int(clean["resets"])
 	attempts = int(clean["attempts"])
 	mistakes = int(clean["mistakes"])
 	solved = bool(clean["solved"])
+	route_status = String(clean["route_status"])
+	route_variant = int(clean["route_variant"])
 	_message = ""
 	_request_sent = false
 	_held.clear()
@@ -244,6 +299,9 @@ func _normalize(data: Dictionary) -> Dictionary:
 				break
 			candidate.append(value)
 		if candidate.size() == 3: clean_known = candidate
+	var clean_loop_observed: Array[bool] = _normalize_bools(data.get("loop_observed"))
+	var clean_world_state: Array[bool] = _normalize_bools(data.get("world_state"))
+	var clean_revisit_counts: Array[int] = _normalize_ints(data.get("revisit_counts"))
 	var clean_route: Array[int] = [0, 0, 0]
 	if data.get("route") is Array and data["route"].size() == 3:
 		var candidate_route: Array[int] = []
@@ -255,7 +313,45 @@ func _normalize(data: Dictionary) -> Dictionary:
 		if candidate_route.size() == 3: clean_route = candidate_route
 	var clean_mode: int = _integer(data.get("mode"), 0, 0, 2)
 	var focus_max: int = 2 if clean_mode == 1 else 3
-	return {"mode": clean_mode, "focus": _integer(data.get("focus"), 0, 0, focus_max), "beat": _integer(data.get("beat"), 0, 0, 2), "known": clean_known, "route": clean_route, "loops": _integer(data.get("loops"), 0, 0, 9999), "resets": _integer(data.get("resets"), 0, 0, 9999), "attempts": _integer(data.get("attempts"), 0, 0, 9999), "mistakes": _integer(data.get("mistakes"), 0, 0, 9999), "solved": data.get("solved") if data.get("solved") is bool else false}
+	return {
+		"mode": clean_mode,
+		"focus": _integer(data.get("focus"), 0, 0, focus_max),
+		"beat": _integer(data.get("beat"), 0, 0, 2),
+		"known": clean_known,
+		"loop_observed": clean_loop_observed,
+		"world_state": clean_world_state,
+		"revisit_counts": clean_revisit_counts,
+		"route": clean_route,
+		"loops": _integer(data.get("loops"), 0, 0, 9999),
+		"resets": _integer(data.get("resets"), 0, 0, 9999),
+		"attempts": _integer(data.get("attempts"), 0, 0, 9999),
+		"mistakes": _integer(data.get("mistakes"), 0, 0, 9999),
+		"solved": data.get("solved") if data.get("solved") is bool else false,
+		"route_status": data.get("route_status") if data.get("route_status") is String else "",
+		"route_variant": _integer(data.get("route_variant"), -1, -1, 1)
+	}
+
+func _normalize_bools(value: Variant) -> Array[bool]:
+	var values: Array[bool] = [false, false, false]
+	if not value is Array or value.size() != 3:
+		return values
+	var candidate: Array[bool] = []
+	for item: Variant in value:
+		if not item is bool:
+			return values
+		candidate.append(item)
+	return candidate
+
+func _normalize_ints(value: Variant) -> Array[int]:
+	var values: Array[int] = [0, 0, 0]
+	if not value is Array or value.size() != 3:
+		return values
+	var candidate: Array[int] = []
+	for item: Variant in value:
+		if not item is int and not item is float or not is_finite(float(item)):
+			return values
+		candidate.append(clampi(int(item), 0, 9999))
+	return candidate
 
 func _integer(value: Variant, fallback: int, minimum: int, maximum: int) -> int:
 	if not value is int and not value is float or not is_finite(float(value)):
@@ -272,21 +368,21 @@ func _refresh() -> void:
 	_clock_label.text = "루프 %d · 박자 %d/3" % [loops, beat + 1]
 	for index: int in range(3):
 		_event_cards[index].color = Color("795c4d") if mode == 0 and index == focus else Color("38516a")
-		_event_marks[index].text = "기억함" if known[index] else "기억 안 함"
-		_event_marks[index].add_theme_color_override("font_color", Color("f0cd8b") if known[index] else Color("acbfca"))
+		_event_marks[index].text = "이번 루프 확인" if loop_observed[index] else ("기억함" if known[index] else "기억 안 함")
+		_event_marks[index].add_theme_color_override("font_color", Color("f0cd8b") if loop_observed[index] else (Color("d6c08a") if known[index] else Color("acbfca")))
 		_route_rows[index].color = Color("806b55") if mode == 1 and index == focus else Color("4a4260")
 		_route_labels[index].text = "%d박자  ·  %s" % [index + 1, EVENT_NAMES[route[index]]]
 	if mode == 0:
 		if focus == 3:
-			_body.text = "Z를 누르면 박자가 처음으로 돌아갑니다. 기억한 사건은 다음 루프에도 남습니다."
+			_body.text = "Z를 누르면 이번 루프의 방만 처음으로 돌아갑니다. 기억과 재관찰 기록은 남습니다."
 		else:
-			_body.text = EVENT_TEXT[focus] if known[focus] else "현재 박자에 일어나는 사건을 맞혀 기록하세요. 틀리면 다음 루프에서 다시 확인할 수 있습니다."
+			_body.text = REVISIT_TEXT[focus] if loop_observed[focus] and revisit_counts[focus] > 0 else (EVENT_TEXT[focus] if known[focus] else "현재 박자에 일어나는 사건을 맞혀 기록하세요. 틀리면 다음 루프에서 다시 확인할 수 있습니다.")
 	elif mode == 1:
 		_body.text = "세 번의 관찰에서 남은 순서를 위에서부터 옮기세요. 오답 뒤에도 경로를 다시 고칠 수 있습니다."
 	else:
-		_body.text = "창문이 열리고, 종이 울리고, 그림자가 건넌 순서가 다음 문을 움직였다."
+		_body.text = SOLVED_TEXT[route_variant] if route_variant >= 0 else "창문이 열리고, 종이 울리고, 그림자가 건넌 순서가 다음 문을 움직였다."
 	if _message.is_empty():
-		_status.text = "기억 %d/3 · 되감기 %d회 · 판정 %d회 · 오답 %d회" % [known.count(true), resets, attempts, mistakes]
+		_status.text = "기억 %d/3 · 이번 루프 %d/3 · 재관찰 %d회 · 되감기 %d회 · 판정 %d회 · 오답 %d회" % [known.count(true), loop_observed.count(true), revisit_counts.reduce(func(total: int, value: int) -> int: return total + value, 0), resets, attempts, mistakes]
 	else:
 		_status.text = _message
 

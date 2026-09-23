@@ -1,16 +1,20 @@
 # 기존 모듈 콘텐츠 증설
 
+UI 작업 계약: [UI_WORKFLOW](../../docs/UI_WORKFLOW.md). UI 변경이 있는 실행 계획은 화면별 계약과 검수 증거를 구체화한다. 후보/아이디어는 구현 계획 승격 시 적용한다.
+
 공통 설계 원칙: `docs/DESIGN_PHILOSOPHY.md`
 
 ## 진행 상태
 
+2026-09-22 보강: [게임별 플레이 재설계](../implementation_improvements/03_GAMEPLAY_DEPTH.md)를 먼저 적용한다. 아래 환자/사물/짧은 상호작용 수는 소재 제안이며 게임성 완료 기준이 아니다. 파일·상태·이관·실패 경로는 [콘텐츠 보완 명세](../implementation_improvements/01_CONTENT_AND_CONTINUITY.md)에 추가했다.
+
 - `violet_case`: 완료. Case 01 회귀를 보존하면서 Case 02·03, 사건별 상태 저장, 사건 선택, 확정 기록/미확정 이론 분리를 구현했다.
-- `paper_moon_clinic`: 미구현
-- `quiet_locker`: 미구현
+- `paper_moon_clinic`: 기존 3증상 모듈 구현, 환자별 검사 시스템과 증설 미구현
+- `quiet_locker`: 기존 3사물함 모듈 구현, 선택 사물·재조사 증설 미구현
 
 ## A. violet_case — 사건 1개짜리 화면에서 "사건 파일 묶음"으로
 
-현재 문제:
+증설 전 문제(현재는 3사건 구현, 이 절은 소재 원문과 대조할 때만 사용):
 - hotspot 3개
 - 범인/수법/동기 3칸
 - 정답 1개

@@ -46,6 +46,7 @@ const TARGETS: Dictionary = {
 const DEFAULT_WORLD_FLAGS: Dictionary = {
 	"needle_open": false,
 	"shrine_fed": false,
+	"station_threaded": false,
 	"station_open": false,
 }
 const DEFAULT_LOCATION_STATES: Dictionary = {
@@ -61,6 +62,7 @@ const DEFAULT_NPC_STATES: Dictionary = {
 const DEFAULT_EVENT_STATES: Dictionary = {
 	"needle_open": false,
 	"shrine_fed": false,
+	"station_threaded": false,
 	"station_open": false,
 }
 const DEFAULT_ROUTE_STATES: Dictionary = {
@@ -84,6 +86,10 @@ var npc_states: Dictionary = DEFAULT_NPC_STATES.duplicate(true)
 var event_states: Dictionary = DEFAULT_EVENT_STATES.duplicate(true)
 var route_states: Dictionary = DEFAULT_ROUTE_STATES.duplicate(true)
 var interactions: int = 0
+var resolution_attempts: int = 0
+var resolution_status: String = ""
+var event_history: Array[String] = []
+var path_variant: int = -1
 var solved: bool = false
 var _message: String = ""
 var _held: Dictionary = {}
@@ -215,6 +221,10 @@ func save_state() -> Dictionary:
 		"event_states": event_states.duplicate(true),
 		"route_states": route_states.duplicate(true),
 		"interactions": interactions,
+		"resolution_attempts": resolution_attempts,
+		"resolution_status": resolution_status,
+		"event_history": event_history.duplicate(),
+		"path_variant": path_variant,
 		"solved": solved,
 	}
 
@@ -235,6 +245,10 @@ func load_state(state: Dictionary) -> void:
 	event_states = clean["event_states"].duplicate(true)
 	route_states = clean["route_states"].duplicate(true)
 	interactions = int(clean["interactions"])
+	resolution_attempts = int(clean["resolution_attempts"])
+	resolution_status = String(clean["resolution_status"])
+	event_history.assign(clean["event_history"])
+	path_variant = int(clean["path_variant"])
 	solved = bool(clean["solved"])
 	_request_sent = false
 	_held.clear()
@@ -324,6 +338,8 @@ func _interact() -> void:
 
 func _use_selected_item() -> void:
 	if inventory.is_empty():
+		resolution_attempts = mini(resolution_attempts + 1, 9999)
+		resolution_status = "rejected"
 		_message = "가방이 비어 있다. 먼저 주변에서 물건을 찾아야 한다."
 		_refresh()
 		return
@@ -333,27 +349,54 @@ func _use_selected_item() -> void:
 	var context_id: String = "%s:%s" % [_location_id(), target_id]
 	if item_id == "red_luck_bug" and target_id == "hole" and current_location == 1:
 		if bool(event_states["needle_open"]):
+			resolution_status = "already_resolved"
 			_message = "바늘구멍은 이미 붉은 길을 기억하고 있다."
 		else:
 			event_states["needle_open"] = true
 			world_flags["needle_open"] = true
 			_add_used_context(context_id)
+			_record_event("needle_open")
 			_add_knowledge("needle_rule")
 			_add_note("붉은 행운벌레를 바늘구멍에 다시 사용하면 사당으로 가는 길이 열린다.")
 			_sync_routes()
+			resolution_status = "applied"
 			_message = "바늘구멍 안의 방이 열렸다. 멀리서 사당의 종이 한 번 울렸다."
 	elif item_id == "red_luck_bug" and target_id == "altar" and current_location == 2:
 		if bool(event_states["shrine_fed"]):
+			resolution_status = "already_resolved"
 			_message = "수호신은 이미 행운벌레의 귀환을 기다리고 있다."
 		else:
 			event_states["shrine_fed"] = true
 			world_flags["shrine_fed"] = true
 			_add_used_context(context_id)
+			_record_event("shrine_fed")
 			_add_knowledge("shrine_rule")
 			_add_note("수호신은 제물을 먹고도 행운벌레가 돌아올 길을 남겨 두었다.")
 			_sync_routes()
+			resolution_status = "applied"
 			_message = "수호신이 배를 두드렸다. 빈 역으로 가는 표지판이 생겼다."
+	elif item_id == "red_thread" and target_id == "gate" and current_location == 3:
+		var guide: Dictionary = npc_states["guide"]
+		if String(guide["relationship"]) != "trusted":
+			resolution_attempts = mini(resolution_attempts + 1, 9999)
+			resolution_status = "rejected"
+			_message = "붉은 실은 안내인의 이름을 모르면 역의 문을 묶지 못한다."
+		elif bool(event_states["station_threaded"]):
+			resolution_status = "already_resolved"
+			_message = "붉은 실이 이미 빈 역의 문과 안내인의 기록을 묶고 있다."
+		else:
+			event_states["station_threaded"] = true
+			world_flags["station_threaded"] = true
+			_add_used_context(context_id)
+			_record_event("station_threaded")
+			_add_knowledge("station_rule")
+			_add_note("붉은 실을 안내인의 이름과 묶자 사당을 거치지 않은 역의 우회로가 생겼다.")
+			_sync_routes()
+			resolution_status = "applied"
+			_message = "붉은 실이 역의 문을 묶었다. 사당을 거치지 않은 우회 노선이 잠깐 열린다."
 	else:
+		resolution_attempts = mini(resolution_attempts + 1, 9999)
+		resolution_status = "rejected"
 		_message = "%s에는 %s를 쓸 일이 아직 없다." % [String(target.get("label", "여기")), _item_name(item_id)]
 	_refresh()
 
@@ -388,19 +431,24 @@ func _talk_keeper() -> void:
 
 func _open_station() -> void:
 	var guide: Dictionary = npc_states["guide"]
+	var classic_ready: bool = bool(event_states["needle_open"]) and bool(event_states["shrine_fed"]) and String(guide["relationship"]) == "trusted"
+	var threaded_ready: bool = bool(event_states["station_threaded"]) and String(guide["relationship"]) == "trusted"
 	if not bool(event_states["needle_open"]):
 		_message = "역무원 없는 문에는 바늘구멍의 붉은 빛이 먼저 필요하다."
 		return
-	if not bool(event_states["shrine_fed"]):
+	if not classic_ready and not threaded_ready and not bool(event_states["shrine_fed"]):
 		_message = "문은 열렸지만 손수레가 움직이지 않는다. 사당 쪽 기록이 비어 있다."
 		return
-	if String(guide["relationship"]) != "trusted":
+	if not classic_ready and not threaded_ready:
 		_message = "문이 길 안내인의 이름을 묻는다. 바늘에서 그와 다시 이야기해야 한다."
 		return
 	if not bool(event_states["station_open"]):
 		event_states["station_open"] = true
 		world_flags["station_open"] = true
+		path_variant = 1 if threaded_ready and not classic_ready else 0
+		_record_event("station_open")
 		_add_note("바늘, 사당, 안내인의 기록이 빈 역에서 하나의 노선이 되었다.")
+		resolution_status = "applied"
 		_message = "손수레가 목적지를 기억했다. Z를 한 번 더 눌러 다음 공간으로 간다."
 		solved = true
 		mode = MODE_DONE
@@ -411,7 +459,8 @@ func _finish() -> void:
 	if not solved:
 		return
 	_request_sent = true
-	requested.emit(&"observation", {"id": "odd_road_adventure.solved", "text": "바늘과 사당과 안내인의 기록이 하나의 길이 되었다."})
+	var text := "바늘과 사당과 안내인의 기록이 하나의 길이 되었다." if path_variant == 0 else "바늘과 안내인의 기록을 붉은 실로 묶어 사당을 건너뛴 우회로를 만들었다."
+	requested.emit(&"observation", {"id": "odd_road_adventure.path_%d.solved" % path_variant, "text": text})
 	requested.emit(&"portal", {"exit": "forward"})
 
 func _observe_once(observation_id: String, text: String, knowledge_id: String, note: String) -> void:
@@ -448,6 +497,10 @@ func _mark_seen(target_id: String) -> void:
 func _add_used_context(context_id: String) -> void:
 	if not used_contexts.has(context_id):
 		used_contexts.append(context_id)
+
+func _record_event(event_id: String) -> void:
+	if not event_history.has(event_id):
+		event_history.append(event_id)
 
 func _add_knowledge(value: String) -> void:
 	if KNOWLEDGE_IDS.has(value) and not knowledge.has(value):
@@ -515,6 +568,7 @@ func _normalize(data: Dictionary) -> Dictionary:
 	clean_routes["needle_shrine"] = bool(clean_events["needle_open"])
 	var guide: Dictionary = clean_npcs["guide"]
 	clean_routes["shrine_station"] = bool(clean_events["shrine_fed"]) or String(guide["relationship"]) == "trusted"
+	var clean_history: Array[String] = _string_array(data.get("event_history"), ["needle_open", "shrine_fed", "station_threaded", "station_open"])
 	return {
 		"current_location": clean_location,
 		"focus": clean_focus,
@@ -531,6 +585,10 @@ func _normalize(data: Dictionary) -> Dictionary:
 		"event_states": clean_events,
 		"route_states": clean_routes,
 		"interactions": _integer(data.get("interactions"), 0, 0, 9999),
+		"resolution_attempts": _integer(data.get("resolution_attempts"), 0, 0, 9999),
+		"resolution_status": data.get("resolution_status") if data.get("resolution_status") is String else "",
+		"event_history": clean_history,
+		"path_variant": _integer(data.get("path_variant"), -1, -1, 1),
 		"solved": data.get("solved") is bool and bool(data["solved"]),
 	}
 
@@ -648,7 +706,8 @@ func _default_status() -> String:
 		return "이전에 얻은 지식과 사건의 결과를 다시 확인합니다."
 	if mode == MODE_DONE:
 		return "같은 길이 다음 공간으로 이어졌다. Z로 이동합니다."
-	return "길 안내인, 바늘, 사당의 기록을 순서와 상관없이 이어 보세요."
+	var event_count: int = event_history.size()
+	return "길 안내인, 바늘, 사당의 기록을 순서와 상관없이 이어 보세요. 해결 사건 %d개 · 시도 %d회" % [event_count, resolution_attempts]
 
 func _label(words: String, at: Vector2, font_size: int, tint: Color) -> Label:
 	var label := Label.new()

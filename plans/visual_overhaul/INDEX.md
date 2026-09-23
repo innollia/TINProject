@@ -1,18 +1,22 @@
 # 기존 작업물 시각 개편 — 인덱스
 
+UI 작업 계약: [UI_WORKFLOW](../../docs/UI_WORKFLOW.md). UI 변경이 있는 실행 계획은 화면별 계약과 검수 증거를 구체화한다. 후보/아이디어는 구현 계획 승격 시 적용한다.
+
 공통 기준:
 - docs/VISUAL_DIRECTION.md
 - PROJECT_DECISIONS.md
 - AGENTS.md
 
-목표는 기존 게임 로직을 갈아엎는 것이 아니라 기능이 이미 있는 28개 모듈과 AppRoot를 "기능 데모 화면"에서 "게임 화면"으로 끌어올리는 것이다.
+현재 AppRoot catalog는 34개 모듈이다(플레이 29 + first_entry + game_library + 데모 3). 이 트랙은 화면을 담당하며, 게임성 보완은 [게임별 플레이 재설계](../implementation_improvements/03_GAMEPLAY_DEPTH.md)와 함께 진행한다. 화면만 교체하고 얕은 정답 입력 구조를 완료품으로 유지하지 않는다.
 
 ## 순서
 1. 00_BASELINE_ASSET_PIPELINE.md
 2. 01_APP_ENTRY.md
 3. 02_ROUTE_SETS.md
 4. 03_CYCLE3.md
-5. 04_DEMOS_3D.md
+5. 게임형 5종은 각 game_modules 계획의 시스템·화면을 함께 검수
+6. game_library와 누락 상태는 [셸·시각 검수 보완](../implementation_improvements/02_SHELL_AND_VISUAL_ACCEPTANCE.md)
+7. 04_DEMOS_3D.md는 데모 무수정 회귀/현황 확인만 수행
 
 같은 shared/app 파일을 여러 작업자가 동시에 수정하지 않는다.
 

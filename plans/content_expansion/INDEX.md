@@ -1,5 +1,7 @@
 # 콘텐츠 증설 계획 — 인덱스
 
+UI 작업 계약: [UI_WORKFLOW](../../docs/UI_WORKFLOW.md). UI 변경이 있는 실행 계획은 화면별 계약과 검수 증거를 구체화한다. 후보/아이디어는 구현 계획 승격 시 적용한다.
+
 공통 설계 원칙: `docs/DESIGN_PHILOSOPHY.md`  
 작업 절차: `AGENTS.md`
 
@@ -15,12 +17,14 @@
 
 ## 현재 우선순위
 
-1. `violet_case` 콘텐츠 증설
-2. `paper_moon_clinic` 콘텐츠 증설
-3. `quiet_locker` 콘텐츠 증설
+1. [게임별 플레이 재설계](../implementation_improvements/03_GAMEPLAY_DEPTH.md)의 게임성 검증. 사건/환자/물건 수 증가를 먼저 하지 않는다.
+2. `paper_moon_clinic` 검사 상태 모델 보완 후 환자 증설
+3. `quiet_locker` 재조사·관계 반응 보완 후 사물 증설
 4. 다음 게임형 모듈은 `plans/game_modules/` 후보와 전체 아이디어 풀을 함께 보고 선택
 
 구현 완료된 계획은 이 폴더에 보존하지 않고 삭제한다.
+
+`violet_case` 3사건 증설은 구현됐다. 남은 Case 03 판정·이관·시각 검증은 [후속 작업 C0](../implementation_improvements/01_CONTENT_AND_CONTINUITY.md)로 진행한다. 기존 확장 소재는 보존하되 완료 작업을 재구현하지 않는다.
 
 ## 시각 기준
 

@@ -1,5 +1,7 @@
 # 신규 게임형 모듈 후보 — 이불 반란
 
+UI 작업 계약: [UI_WORKFLOW](../../docs/UI_WORKFLOW.md). UI 변경이 있는 실행 계획은 화면별 계약과 검수 증거를 구체화한다. 후보/아이디어는 구현 계획 승격 시 적용한다.
+
 공통 설계 원칙: `docs/DESIGN_PHILOSOPHY.md`
 
 작업명: **TEXTILE_REVOLT**  

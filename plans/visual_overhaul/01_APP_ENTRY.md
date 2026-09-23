@@ -1,5 +1,7 @@
 # 배치 01 — AppRoot / 전역 UI / first_entry
 
+UI 작업 계약: [UI_WORKFLOW](../../docs/UI_WORKFLOW.md). UI 변경이 있는 실행 계획은 화면별 계약과 검수 증거를 구체화한다. 후보/아이디어는 구현 계획 승격 시 적용한다.
+
 ## AppRoot와 전역 UI
 
 1차 레퍼런스: There Is No Game: Wrong Dimension.

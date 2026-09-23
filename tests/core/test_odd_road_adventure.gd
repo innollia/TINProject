@@ -63,7 +63,7 @@ func _open_shrine(game: GameModule) -> void:
 func test_manifest_state_and_stale_id_migration() -> void:
 	var manifest := load("res://modules/odd_road_adventure/module_manifest.tres") as ModuleManifest
 	assert_eq(manifest.id, &"odd_road_adventure")
-	assert_eq(manifest.save_version, 1)
+	assert_eq(manifest.save_version, 2)
 	assert_eq(manifest.input_actions.size(), 8)
 	var game := _spawn()
 	var defaults: Dictionary = game.save_state()
@@ -127,6 +127,39 @@ func test_npc_reappears_and_location_state_is_persistent() -> void:
 	assert_eq(game.save_state()["npc_states"]["guide"]["visits"], 2)
 	assert_eq(game.save_state()["npc_states"]["guide"]["location"], "needle")
 	assert_eq(game.save_state()["npc_states"]["guide"]["relationship"], "trusted")
+
+func test_threaded_station_route_bypasses_shrine_after_guide_reunion() -> void:
+	var game := _spawn()
+	_pick_bug(game)
+	_open_needle(game)
+	assert_true(game.execute_command(&"select", {"step": 1}))
+	assert_true(game.execute_command(&"select", {"step": 1}))
+	_confirm(game)
+	assert_true(game.execute_command(&"select", {"step": -1}))
+	_confirm(game)
+	assert_true(game.save_state()["npc_states"]["guide"]["relationship"] == "trusted")
+	assert_true(game.execute_command(&"travel", {"step": 1}))
+	assert_true(game.execute_command(&"travel", {"step": 1}))
+	assert_true(game.execute_command(&"inventory"))
+	assert_true(game.execute_command(&"select", {"step": 1}))
+	_confirm(game)
+	assert_true(game.execute_command(&"inventory"))
+	_confirm(game)
+	assert_true(game.save_state()["solved"])
+	assert_eq(game.save_state()["path_variant"], 1)
+	assert_true(game.save_state()["event_states"]["station_threaded"])
+	assert_false(game.save_state()["event_states"]["shrine_fed"])
+
+func test_rejected_item_resolution_is_atomic() -> void:
+	var game := _spawn()
+	_pick_bug(game)
+	var before: Dictionary = JSON.parse_string(JSON.stringify(game.save_state()))
+	assert_true(game.execute_command(&"inventory"))
+	assert_true(game.execute_command(&"confirm"))
+	var after: Dictionary = game.save_state()
+	assert_eq(after["inventory"], before["inventory"])
+	assert_eq(after["event_states"], before["event_states"])
+	assert_eq(after["resolution_status"], "rejected")
 
 func test_reset_back_unknown_and_disabled_input() -> void:
 	var game := _spawn()

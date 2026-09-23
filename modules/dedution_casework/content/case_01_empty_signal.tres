@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="DeductionCaseDefinition" load_steps="16" format=3]
+
+[ext_resource type="Script" path="res://modules/dedution_casework/domain/deduction_case.gd" id="1_case"]
+[ext_resource type="Script" path="res://modules/dedution_casework/domain/deduction_slot.gd" id="2_slot"]
+[ext_resource type="Script" path="res://modules/dedution_casework/domain/deduction_term.gd" id="3_term"]
+
+[sub_resource type="Resource" id="term_culprit_maru"]
+script = ExtResource("3_term")
+term_id = &"maru"
+display_name = "마루 · 뱃사공"
+
+[sub_resource type="Resource" id="term_culprit_seoyun"]
+script = ExtResource("3_term")
+term_id = &"seoyun"
+display_name = "서윤 · 시계공"
+
+[sub_resource type="Resource" id="term_culprit_yeonhwa"]
+script = ExtResource("3_term")
+term_id = &"yeonhwa"
+display_name = "연화 · 합창단원"
+
+[sub_resource type="Resource" id="term_method_turn_sign"]
+script = ExtResource("3_term")
+term_id = &"turn_sign"
+display_name = "표지판을 돌려 길을 감춤"
+
+[sub_resource type="Resource" id="term_method_switch_envelope"]
+script = ExtResource("3_term")
+term_id = &"switch_envelope"
+display_name = "푸른 가루 봉투를 바꿔치기"
+
+[sub_resource type="Resource" id="term_method_hang_bottle"]
+script = ExtResource("3_term")
+term_id = &"hang_bottle"
+display_name = "빈 신호병을 창문에 걸기"
+
+[sub_resource type="Resource" id="term_motive_delay_delivery"]
+script = ExtResource("3_term")
+term_id = &"delay_delivery"
+display_name = "다음 배달을 늦추기"
+
+[sub_resource type="Resource" id="term_motive_erase_name"]
+script = ExtResource("3_term")
+term_id = &"erase_name"
+display_name = "자기 이름을 지우기"
+
+[sub_resource type="Resource" id="term_motive_hide_chorus"]
+script = ExtResource("3_term")
+term_id = &"hide_chorus"
+display_name = "비밀 합창을 들키지 않기"
+[sub_resource type="Resource" id="slot_culprit"]
+script = ExtResource("2_slot")
+slot_id = &"culprit"
+label = "누가"
+options = Array[ExtResource("3_term")]([SubResource("term_culprit_maru"), SubResource("term_culprit_seoyun"), SubResource("term_culprit_yeonhwa")])
+solution_id = &"seoyun"
+
+[sub_resource type="Resource" id="slot_method"]
+script = ExtResource("2_slot")
+slot_id = &"method"
+label = "어떻게"
+options = Array[ExtResource("3_term")]([SubResource("term_method_turn_sign"), SubResource("term_method_switch_envelope"), SubResource("term_method_hang_bottle")])
+solution_id = &"switch_envelope"
+
+[sub_resource type="Resource" id="slot_motive"]
+script = ExtResource("2_slot")
+slot_id = &"motive"
+label = "왜"
+options = Array[ExtResource("3_term")]([SubResource("term_motive_delay_delivery"), SubResource("term_motive_erase_name"), SubResource("term_motive_hide_chorus")])
+solution_id = &"erase_name"
+[resource]
+script = ExtResource("1_case")
+case_id = &"empty_signal"
+title = "빈 신호 사건"
+scene_ids = Array[StringName]([&"turned_sign", &"wet_glove", &"empty_bottle"])
+scene_names = Array[String](["부서진 표지판", "젖은 장갑", "빈 신호병"])
+findings = Array[String](["표지판의 나사는 안쪽에서 풀렸다. 누군가 출구를 막으려 한 것이 아니라 방향을 바꾸려 했다.", "장갑 안쪽에 푸른 가루가 남았다. 물에 젖기 전부터 봉투를 만진 사람의 흔적이다.", "신호병은 비어 있지만 심지는 따뜻하다. 마지막 신호는 병이 아니라 창문 쪽으로 옮겨졌다."])
+details = Array[String](["나사 자국은 바깥에서 억지로 뜯긴 것이 아니라 안쪽 공구가 만든 반대 방향의 흔적이다.", "푸른 가루는 장갑 겉면이 아니라 손가락 사이에만 남아 봉투를 쥔 동작을 가리킨다.", "심지의 열은 마지막 신호가 병 안에 머물지 않았다는 사실과 맞물린다."])
+event_ids = Array[StringName]([&"sign_changed", &"envelope_hidden", &"signal_moved"])
+event_names = Array[String](["표지판 방향을 바꿈", "봉투를 숨김", "창문으로 신호를 옮김"])
+timeline_solution = Array[StringName]([&"sign_changed", &"envelope_hidden", &"signal_moved"])
+answer_slots = Array[ExtResource("2_slot")]([SubResource("slot_culprit"), SubResource("slot_method"), SubResource("slot_motive")])
+minimum_rechecks = 0
+solved_text = "서윤은 푸른 가루가 묻은 봉투를 바꿔치기해 자기 이름을 지우려 했다."
