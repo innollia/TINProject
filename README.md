@@ -1,51 +1,61 @@
 # TINProject
 
-There Is No Game: Wrong Dimension 스타일의 장르 혼합 메타 게임 프로토타입. Godot 4.7.2 / GDScript.
+Godot 4.7.2 / GDScript 기반의 **한 게임 내부 장르 전환 프로젝트**.
 
-## 무엇이 있나
+TINProject의 목표는 여러 미니게임을 많이 만드는 것이 아니다. 한 게임이 FPS → 2D 추리 → 3D 퍼즐 → 클리커처럼 장르를 바꿀 때, 필요한 장르 시스템을 즉시 꺼내 쓸 수 있도록 **Kit**를 미리 만들어 두는 것이다.
 
-- 영속 AppRoot 셸 + ModuleHost의 현재 모듈만 교체
-- 데모 모듈 3개: `click_counter`, `box_mover`, `room_3d`
-- 코어 서비스: 저장(불투명 JSON 봉투), 입력 라우팅, 화면 전환, 설정, 오디오
-- 통합 테스트 러너(644 checks) + GUT 9.7.1 코어 계약 테스트
-- 설계 철학: `docs/DESIGN_PHILOSOPHY.md`
+## 먼저 읽기
+
+- 용어: `CONTEXT.md`
 - 사용자 확정: `PROJECT_DECISIONS.md`
+- 설계 철학: `docs/DESIGN_PHILOSOPHY.md`
+- Kit 작업 계약: `docs/KIT_WORKFLOW.md`
 - AI 작업 규칙: `AGENTS.md`
-- 현재 구현 상태: `HANDOVER.md`
+- 현재 상태: `HANDOVER.md`
+- Kit 계획: `plans/kits/INDEX.md`
+
+## 런타임 구조
+
+```text
+AppRoot
+├── Core
+├── MetaLayer
+├── ModuleHost
+│   └── 현재 GameModule
+├── UIHost
+└── DebugRoot
+```
+
+`GameModule`은 런타임 교체 단위이고 `Kit`는 장르 시스템 계획 단위다. 둘은 같은 말이 아니다.
+
+## 현재 보존 후보
+
+- `modules/first_entry/` — 시작/입력 학습 로직
+- `modules/rule_rewriting/` — 규칙 재작성 시스템 기반
+- `modules/odd_road_adventure/` — 탐험/아이템/NPC/사건 시스템 기반
+- `modules/game_library/` — 개발/탐색용 게임 목록 UI
+
+그 외 기존 플레이 모듈은 Retired Prototype이며 새 설계의 기반으로 사용하지 않는다. 코드 삭제는 별도 구현 작업에서 진행한다.
+
+## Kit 기준
+
+Kit마다:
+- Primary Reference 하나
+- 실제 레퍼런스 화면/플레이 조사
+- 핵심 시스템 + UX 구현
+- 10분 이상 Reference Game
+- 여러 authored content가 같은 core를 재사용
+- 1280×720 / 1920×1080 / 2560×1440 검수
+- 사용자 플레이 검토 준비
+가 필요하다.
 
 ## 실행
 
-Godot 4.7.2로 `project.godot` 열고 F5. 창 1152×720.
-
-## 테스트
-
-`AGENTS.md`의 검증 명령 참고. 핵심은:
-
-```powershell
-$GodotExe = 'C:\Program Files (x86)\Steam\steamapps\common\Godot Engine\godot.windows.opt.tools.64.exe'
-$p = Start-Process -FilePath $GodotExe -ArgumentList '--headless --path C:\projects\TINProject --script res://tests/run_tests.gd' -NoNewWindow -Wait -PassThru
-$p.ExitCode
-```
-
-## 구조
-
-```
-app/     영속 셸 조립, 카탈록, 전역 UI
-core/    contracts(계약) + services(저장/입력/전환/설정/오디오/director)
-meta/    진행도, 내레이터 문구
-modules/<id>/  독립 장르 모듈. 서로 참조 금지
-tests/   통합 러너 + GUT 코어 계약 테스트
-docs/    DESIGN_PHILOSOPHY, ARCHITECTURE, MODULE_CONTRACT, CODE_STYLE, decisions
-```
-
-## 새 모듈 추가
-
-1. `modules/<id>/`에 `module_manifest.tres`, `entry.tscn`, `module.gd` 생성(`tests`의 기존 모듈 참고)
-2. `app/app_root.tscn`의 카탈로그에 manifest 추가, 전용 키가 필요하면 앱 입력 바인딩에 추가
-3. 기존 모듈과 core는 수정하지 않는다. 계약은 `docs/MODULE_CONTRACT.md`
+Godot 4.7.2로 `project.godot`을 연다. 현재 프로젝트 설정은 과거 1152×720 기준이 남아 있으며, 새 문서 기준의 720p/FHD/QHD 지원은 후속 구현 작업이다.
 
 ## 라이선스 및 서드파티
 
 - 게임 코드: 프로젝트 자체 코드(라이선스 미정)
-- `addons/gut`: GUT 9.7.1 (MIT, github.com/bitwes/Gut)
-- `.opencode/skills/ponytail`: Ponytail 스킬 (MIT, github.com/dietrichgebert/ponytail, commit e3ba2aa)
+- `addons/gut`: GUT 9.7.1 (MIT)
+- `addons/at-icons`: 월드 아트 조립 재료
+- `.opencode/skills/ponytail`: MIT
