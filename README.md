@@ -8,6 +8,7 @@ TINProject의 목표는 여러 미니게임을 많이 만드는 것이 아니다
 
 - 용어: `CONTEXT.md`
 - 사용자 확정: `PROJECT_DECISIONS.md`
+- 현재 그릴링 상태/다음 질문: `docs/GRILLING_STATE.md`
 - 설계 철학: `docs/DESIGN_PHILOSOPHY.md`
 - Kit 작업 계약: `docs/KIT_WORKFLOW.md`
 - UI 작업 계약: `docs/UI_WORKFLOW.md`
