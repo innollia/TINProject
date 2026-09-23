@@ -6,25 +6,48 @@
 
 한 게임 안에서 **2D 탐험/대화/아이템 기반 어드벤처 장르**로 전환할 때 즉시 쓸 기반을 만든다.
 
-## 1. Primary Reference
+## 1. Primary Reference — 하나
 
 **West of Loathing — Asymmetric**
 
-Reference source:
-- Steam store / screenshots: https://store.steampowered.com/app/597220/West_of_Loathing/
-- 확인할 상태: 지역 탐험, NPC와 대화, 상호작용 가능한 사물, 장소 전환, 인벤토리/아이템 사용, 재방문 변화
+공식 reference:
+- Steam: https://store.steampowered.com/app/597220/West_of_Loathing/
 
-### 반드시 따라갈 것
+공식 설명에서 확인되는 핵심:
+- 넓은 탐험 공간 안에 quests/puzzles/characters가 섞여 있다.
+- 장소를 돌아다니며 인물과 사건을 만나고 조사하는 장르다.
+- 하나의 단순한 시각 언어 안에서 많은 authored 상황을 증산한다.
+
+이 Kit에서 가져올 것은 **월드 탐험 → 대상 조사/대화 → 아이템/지식/사건 상태 변화 → 다른 장소/재방문에서 결과 반영** 구조다.
+
+### 1.1 상태별 실제 화면 증거
+
+구현 시작 전에 Steam media/trailer 또는 동일한 공식/신뢰 가능한 실제 플레이 자료에서 아래 상태를 각각 확인하고 작업 메모에 캡처/타임코드를 남긴다.
+
+| 상태 | 확인할 것 | TIN 적용 |
+|---|---|---|
+| exploration | 플레이어/배경/상호작용물 비율 | 장소가 화면의 주인공 |
+| interactable approach | 대상이 월드에서 어떻게 읽히는지 | 버튼 목록 대신 월드 affordance |
+| NPC talk | 월드와 대화 UI의 비율 | 필요한 영역만 열기 |
+| item/inventory | 탐험과 inventory의 전환 | 호출 시만 표시 |
+| location transition | 출구/장소 이동의 피드백 | route state와 scene 교체 분리 |
+| revisited place | 상태 변화가 장소에 반영되는 방식 | 재방문 presentation |
+| unavailable use | 실패가 월드를 덮지 않는 방식 | 대상 가까이 짧은 feedback |
+| return to play | UI 닫은 뒤 조작 복귀 | focus/input 복원 |
+
+이 표의 실제 캡처/타임코드가 없으면 presentation 구현을 시작하지 않는다.
+
+### 1.2 강하게 따라갈 것
 
 - 장소가 화면의 주인공이고 UI가 그 위를 덮지 않는 구성
 - 캐릭터/사물/출구가 텍스트 버튼 목록이 아니라 월드에서 읽히는 방식
 - 짧고 반복 가능한 이동·조사·대화 문법
 - NPC 대화가 월드와 분리된 개발도구 화면처럼 보이지 않는 정보 위계
-- 한 장소의 기묘한 시각 요소 자체가 상호작용과 농담을 전달하는 방식
+- 한 장소의 기묘한 시각 요소 자체가 상호작용과 분위기를 전달하는 방식
 - 인벤토리는 필요할 때 열고 닫으며 탐험 화면을 상시 잠식하지 않음
 - 재방문했을 때 사건/NPC/사물이 실제 화면에서 달라짐
 
-### 복제하지 않을 것
+### 1.3 복제하지 않을 것
 
 - 원작 stick-figure 캐릭터 디자인
 - 원작 서부 배경/고유 농담/문구
@@ -116,11 +139,12 @@ AdventureState:
 
 ## 5. 콘텐츠 추가 규칙
 
-새 location을 추가할 때:
+새 location:
 - registry data + scene + authored interactables만 추가
 - module core 수정 금지
 
-새 NPC/item/event도 definition과 필요한 authored scene/content만 추가한다.
+새 NPC/item/event:
+- definition + 필요한 authored scene/content만 추가
 
 validator:
 - duplicate ID
@@ -161,7 +185,15 @@ Kit 기본 intent:
 - inventory
 - 필요 시 notes
 
-새 물리 키가 처음 요구되는 장르 전환에서는 Input Bubble을 사용한다. 게임 화면에서 장문 조작 설명을 하지 않는다.
+물리 키는 InputMap/ModuleContext에서 해석한다.
+
+이 Kit로 진입하는 전환에서 required physical key set이 달라지면 Input Bubble이:
+- 계속 필요한 기존 키를 복구
+- 새 키를 아래에서 올림
+- 더 이상 필요 없는 키를 popped 흔적으로 유지
+한다.
+
+게임 화면에서 장문 조작 설명을 하지 않는다.
 
 ## 8. 상태 변화와 실패
 
@@ -240,13 +272,14 @@ load 뒤:
 - module.gd에 콘텐츠 ID 배열/대사/사건을 계속 추가
 - ColorRect/Label을 월드 사물로 사용
 - 인벤토리를 항상 열어둠
-- 상시 shell HUD
+- 상시 Shell HUD
 - 조작 설명 overlay
 - 10분을 이동거리/대사량만으로 채움
 - 하나의 scripted route만 존재하면서 “어드벤처 시스템 완료” 선언
 
 ## 14. 완료 증거
 
+- 상태별 Primary Reference 캡처/타임코드 기록
 - 4개+ location
 - 3명+ 반복 NPC
 - 4개+ item
@@ -254,4 +287,6 @@ load 뒤:
 - 10분+ 실측 플레이
 - authored content 추가 시 core 무수정 증거
 - 720p/FHD/QHD 캡처
-- 사용자 플레이 검토 준비 완료
+- 사용자 플레이 **검토 준비 완료**
+
+사용자 실제 검토 전에는 최종 완성이라고 쓰지 않는다.
