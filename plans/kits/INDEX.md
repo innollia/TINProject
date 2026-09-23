@@ -2,7 +2,8 @@
 
 공통 용어: `CONTEXT.md`  
 공통 작업 계약: `docs/KIT_WORKFLOW.md`  
-설계 철학: `docs/DESIGN_PHILOSOPHY.md`
+설계 철학: `docs/DESIGN_PHILOSOPHY.md`  
+새 계획 템플릿: [TEMPLATE.md](TEMPLATE.md)
 
 ## 현재 whitelist
 
@@ -13,14 +14,28 @@
 
 `first_entry`는 Kit가 아니라 TINProject의 시작/입력 학습 흐름이다. 현재 로직은 보존 후보지만 presentation은 새 Input Bubble 계약에 맞춰 별도 개편한다.
 
-## 상태 해석
+`game_library`는 개발/탐색용 목록 UI다. Kit나 게임 콘텐츠 수에 포함하지 않는다.
 
-옛 `plans/game_modules/`, `plans/content_expansion/`, `plans/visual_overhaul/`, `plans/implementation_improvements/`의 계획은 현 방향의 구현 입력으로 사용하지 않는다.
+## 삭제한 옛 계획 체계
 
-새 Kit 계획을 만들 때는 이 인덱스에 추가하기 전에:
+2026-09-23 방향 재설정에서 아래 계획 파일들은 저장소에서 삭제했다.
+
+- `plans/game_modules/`
+- `plans/content_expansion/`
+- `plans/visual_overhaul/`
+- `plans/implementation_improvements/`
+- `PLAN_CYCLE4.md`
+
+Git 이력에만 남는다. 새 작업자는 이 과거 계획을 구현 입력이나 아이디어 저장소로 복구하지 않는다.
+
+## 새 Kit 계획 생성 게이트
+
+인덱스에 추가하기 전에:
+
 1. Primary Reference 하나를 고른다.
 2. 실제 화면/플레이 자료를 조사한다.
-3. `docs/KIT_WORKFLOW.md`의 계획서 필수 항목을 채운다.
-4. Reference Game이 10분 이상이며 authored content 확장성을 검증하는지 확인한다.
+3. [TEMPLATE.md](TEMPLATE.md)를 복사해 빈칸을 모두 채운다.
+4. `docs/KIT_WORKFLOW.md`의 금지 shortcut/완료 증거와 충돌하지 않는지 확인한다.
+5. Reference Game이 10분 이상이며 여러 authored content가 같은 core를 재사용하는지 계획 단계에서 증명한다.
 
 Kit 수량 목표는 없다.
