@@ -4,8 +4,6 @@
 
 ## 1. 방향 재설정
 
-프로젝트 해석을 전면 교정했다.
-
 TINProject는 여러 미니게임/모듈을 많이 만드는 프로젝트가 아니다.
 
 **한 게임 내부에서 장르가 자유롭게 바뀔 수 있도록 장르별 Kit를 미리 구축하는 프로젝트**다.
@@ -17,6 +15,7 @@ TINProject는 여러 미니게임/모듈을 많이 만드는 프로젝트가 아
 4. `docs/KIT_WORKFLOW.md`
 5. `AGENTS.md`
 6. `plans/kits/INDEX.md`
+7. 작업 대상 `plans/kits/*.md`
 
 ## 2. 현재 코드 whitelist
 
@@ -36,29 +35,33 @@ TINProject는 여러 미니게임/모듈을 많이 만드는 프로젝트가 아
 
 위 whitelist 외 기존 플레이 모듈은 전부 Retired Prototype이다.
 
-현재 문서 작업에서는 **코드를 삭제하지 않았다**.
+현재 **문서/계획 작업만 수행했으며 실제 게임모듈 코드는 삭제하거나 수정하지 않았다.**
 
-후속 구현 작업에서:
+후속 구현 작업에서 별도 범위로:
 - catalog 제거
 - obsolete route/test 정리
 - module code 삭제
-를 별도 범위로 수행한다.
+를 수행한다.
 
 Retired Prototype의 아이디어·대사·UI는 새 Kit 계획에 재사용하지 않는다.
 
 ## 4. 계획 체계
 
-기존:
+옛 계획 파일은 2026-09-23 저장소에서 삭제했다.
+
+삭제:
 - `plans/game_modules/`
 - `plans/content_expansion/`
 - `plans/visual_overhaul/`
 - `plans/implementation_improvements/`
 - `PLAN_CYCLE4.md`
+- 옛 `docs/odd_road_base_audit.md`
 
-는 현 방향의 구현 입력에서 제거한다.
+Git 이력에는 남지만 새 구현 입력으로 복구하지 않는다.
 
 새 진입점:
 - `plans/kits/INDEX.md`
+- `plans/kits/TEMPLATE.md`
 - `plans/kits/01_RULE_REWRITE_KIT.md`
 - `plans/kits/02_ODD_ROAD_KIT.md`
 
@@ -124,9 +127,9 @@ Primary Reference의:
 
 기존 전체 테스트 통과 기록은 **과거 코드 기준선**으로만 본다.
 
-문서 방향 재설정만 수행했기 때문에 이번 작업에서 엔진 테스트/시각 검수는 새로 실행한 것으로 기록하지 않는다.
+이번 작업은 문서 방향 재설정이므로 엔진 테스트/시각 검수를 새로 실행했다고 기록하지 않는다.
 
-Retired Prototype 삭제와 Shell/Input Bubble/Kit 구현을 시작하면 새 기준선부터 다시 측정한다.
+Retired Prototype 삭제와 Shell/Input Bubble/Kit 코드 구현을 시작하면 새 기준선을 다시 측정한다.
 
 ## 10. 다음 구현 작업 후보
 
@@ -136,6 +139,6 @@ Retired Prototype 삭제와 Shell/Input Bubble/Kit 구현을 시작하면 새 �
 - 상시 Shell HUD 제거
 - Input Bubble 구현 교정
 - Rule Rewrite Kit 계획대로 presentation/reference game 재구축
-- Odd Road Kit data/registry 분리 + reference game 재구축
+- Odd Road Kit data/registry 분리 + Reference Game 재구축
 
 문서가 먼저다. 구현은 `docs/KIT_WORKFLOW.md`와 각 Kit 계획의 빈칸이 없는 상태에서 시작한다.
