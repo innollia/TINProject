@@ -1,8 +1,14 @@
 # 아키텍처
 
-## 영속 셸
+## 1. 목적
 
-Godot 4.7.2 stable / GDScript / GL Compatibility. `project.godot`에서 `app/app_root.tscn`을 직접 시작한다. 1152×720 논리 해상도에 canvas_items stretch를 사용한다. Autoload는 없다.
+런타임은 **한 게임 안에서 장르가 바뀌는 것**을 지원한다.
+
+`GameModule`은 교체 가능한 실행 단위이고 `Kit`는 특정 장르 시스템을 미리 완성해 두는 개발 단위다. 둘은 같은 개념이 아니다.
+
+## 2. 영속 AppRoot
+
+Godot 4.7.2 stable / GDScript / GL Compatibility.
 
 ```text
 AppRoot
@@ -20,37 +26,119 @@ AppRoot
 └── DebugRoot
 ```
 
-AppRoot는 끝까지 유지한다. 모듈 전환은 호스트 자식을 명시적으로 exit/remove/free한 뒤 새 모듈 하나만 붙인다. 전체 씬 교체, runtime plugin, 기본 SubViewport는 사용하지 않는다.
+AppRoot는 유지하고 ModuleHost의 현재 GameModule만 교체한다.
 
-## 의존성과 소유권
+전체 씬 교체를 기본값으로 삼지 않는다. 모듈은 다른 모듈의 존재를 모른다.
 
-- app → core/services, core/contracts, meta. 구체 manifest 카탈로그와 데모 입력 키 바인딩은 조립 지점인 app 소유다.
-- core/services → core/contracts. core에는 장르 ID, 구체 모듈 경로, 장르별 동작이 없다.
-- modules → core/contracts. 다른 모듈/app/meta 노드나 전역 서비스를 직접 찾지 않는다.
-- meta → core/contracts. 완료 횟수와 결과, 간단한 내레이터 문구를 관리한다.
-- shared는 두 모듈 이상에서 실제 재사용이 확인된 뒤 만든다. 지금은 필요 없어 만들지 않았다.
-- 모듈의 씬·HUD·물리·카메라·장르 상태·리소스는 해당 `modules/<id>/` 안에 둔다.
+## 3. Shell은 기술적으로 영속, 시각적으로는 비영속
 
-새 모듈은 manifest와 GameModule 진입 씬을 제공하고 앱 카탈로그에 등록한다. 전용 키가 필요하면 앱의 바인딩에 추가한다. 기존 모듈과 core를 수정하지 않는다. 테스트의 설치 모듈 목록/장르별 기대값은 새 사례에 맞춰 확장한다.
+영속 Shell은 저장/설정/전환 수명을 유지하기 위한 기술 구조다.
 
-## 실행 가능한 데모
+플레이 화면에 상시 Shell HUD를 띄우지 않는다.
 
-- click_counter: 버튼/Enter로 10까지 증가, 완료 결과 한 번 발행.
-- box_mover: WASD/방향키로 경계 안의 상자 이동.
-- room_3d: 조명·바닥·큐브·카메라, 버튼/Enter로 회전.
+금지:
+- 현재 공간명 상시 표시
+- 자동 저장 상태 상시 표시
+- 키설명 상시 표시
+- Menu/Journal 상시 버튼
 
-공통 HUD는 첫 진입 전용 UI와 겹치지 않도록 시작 후에만 표시하며, 현재 공간·진행 위치·자동 저장 상태·입력 힌트를 제공한다. 공통 메뉴는 선택/전환, Save/Load, P/Escape 일시정지, reset 명령, Master 볼륨 저장을 제공한다. 모듈 자식은 process_mode를 상속한다. 정지/전환 동안 모듈 처리와 입력을 차단하되 셸은 살아 있다. 완료 후 자동 이동은 하지 않는다.
+Esc 메뉴 등은 사용자가 호출했을 때만 나타난다. 닫으면 원래 GameModule의 화면과 focus로 돌아간다.
 
-## 저장과 전환
+DebugRoot는 개발 빌드/검수에서만 사용하고 release 플레이 화면의 일부로 취급하지 않는다.
 
-SaveService는 format_version/current_module/global/modules 봉투만 이해한다. modules에는 schema_version/state가 있다. 전역 진행은 global.progression이다. JSON 문자열 키, 유한 숫자, 배열, 사전, bool/null만 저장한다. 모듈 상태는 깊은 복사한다. 쓰기는 tmp → 기존 파일 bak → 교체 순서이며 백업 파일은 남긴다. 본 파일이 없거나 JSON 파싱에 실패하면 남아 있는 백업 봉투를 한 번 시도한다.
+## 4. 의존성과 소유권
 
-파일 Load 실패는 기존 메모리를 보존한다. 본 파일이 없거나 JSON 파싱에 실패하면 남아 있는 `.bak` 봉투를 한 번 시도하고, 미래 스키마·잘못된 봉투는 자동으로 낮추지 않는다. 앱 restore_progress는 기존 봉투를 보관하고, 읽기 성공 후 director.change_module(id, true)를 호출하여 현재 실행 상태가 로드된 상태를 덮어쓰지 않게 한다. 알 수 없는 ID/미래 스키마/잘못된 진입 씬은 기존 모듈을 유지하고 봉투를 복구한다. 모듈 enter/load_state 내부의 임의 런타임 오류까지 롤백하는 구조는 아니다. 모듈 계약 테스트로 방지한다.
+- app → core/services, core/contracts, meta, manifest 조립
+- core/services → core/contracts
+- modules → core/contracts + module-local 구현
+- meta → core/contracts
+- modules 간 직접 참조 금지
+- core가 구체 module ID/경로/장르 동작을 알지 않음
+- shared는 두 실제 사용처에서 동일 계약이 확인된 뒤에만 추출
 
-SettingsService는 ConfigFile 볼륨 설정, AudioService는 Master 아래 Music/SFX/UI/Voice와 영속 음악 플레이어를 소유한다. 장르 효과음은 모듈 소유다. 실제 BGM/음성 자산은 아직 없다.
+Kit 전체를 공용 framework로 승격하지 않는다.
 
-## 검증과 한계
+## 5. GameModule과 Kit
 
-`AGENTS.md`에 엔진 파싱·통합 러너·GUT·smoke 명령을 고정했다. 테스트는 반복 전환, 상태 roundtrip, 입력 격리, 정지/재개, 완료 중복, 손상/미래 저장, 로드 덮어쓰기 회귀, 설정/오디오를 검사한다. DebugRoot는 로드된 모듈 수와 최근 앱 전환 시간을 표시한다.
+### GameModule
+런타임 교체 단위:
+- enter/exit
+- save/load
+- ModuleContext input
+- requested/finished
 
-목표 저사양 장치의 GPU/CPU/메모리 예산, 수동 UI 검수, 실제 콘텐츠/현지화/음성, 패키징·배포는 이 베이스의 완료 범위가 아니다. 성능 문제 확인 전 threaded loader나 공통 물리 추상화를 만들지 않는다.
+### Kit
+개발/설계 단위:
+- 장르 핵심 system
+- authored content format
+- presentation
+- 10분+ Reference Game
+- Primary Reference 기반 UX
+- 테스트/검수
+
+하나의 Kit가 여러 GameModule을 사용할 수 있다.
+
+## 6. Input 전환
+
+새 장르 구간에서 필요한 물리 키 집합이 달라지면 App/전환층은 `docs/KIT_WORKFLOW.md`의 Input Bubble을 사용할 수 있다.
+
+Input Bubble은 GameModule 안의 상시 키설명 HUD가 아니다.
+
+- 필요한 기존 키 복구
+- 새 키 상승
+- 필요 없는 키는 popped 흔적 유지
+- 실제 키 입력으로 bubble pop
+
+입력 의미 자체는 각 GameModule의 InputMap action과 ModuleContext가 소유한다.
+
+## 7. 저장과 전환
+
+SaveService는 전역 봉투와 module state를 저장한다.
+
+module state:
+- versioned
+- JSON-safe
+- 의미/이관은 module 소유
+
+전환:
+1. 현재 module 입력 차단
+2. 필요한 상태 capture
+3. exit
+4. remove/free
+5. 새 context 생성
+6. 새 module attach/load/enter
+7. transition 완료
+8. input 활성화
+
+장르 전환 연출이 Input Bubble을 포함하더라도 module domain state와 분리한다.
+
+## 8. 해상도
+
+현재 project setting의 과거 기준값은 지원 범위를 뜻하지 않는다.
+
+새 화면의 필수 검수:
+- 1280×720
+- 1920×1080
+- 2560×1440
+
+UI는 anchor/Container 중심으로 대응한다. grid/board 등 게임 규칙상 좌표가 중요한 월드는 별도 계산을 사용한다.
+
+## 9. 개발/탐색용 game_library
+
+`modules/game_library/`는 Nintendo OS 계열 레퍼런스를 따라 만든 개발/탐색용 목록 UI로 취급한다.
+
+이 도구는:
+- 여러 GameModule을 빠르게 열어 검수하는 데 사용할 수 있다.
+- Kit나 게임 콘텐츠 수에 포함하지 않는다.
+- 플레이 중 상시 HUD로 노출하지 않는다.
+
+## 10. Retired Prototype
+
+현재 whitelist 바깥의 기존 플레이 모듈은 Retired Prototype이다.
+
+런타임에 남아 있더라도:
+- 신규 Kit 설계의 기준이 아님
+- 현재 품질 기준의 완료 사례가 아님
+- 아이디어/대사/UI의 source of truth가 아님
+
+코드 삭제는 별도 구현 작업에서 진행한다.
