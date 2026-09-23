@@ -281,6 +281,10 @@ $p = Start-Process -FilePath $exe -ArgumentList '--headless --path C:\projects\T
 
 2026-09-23 R1 이전 단계 기록: `RuleGridEntity`/`RuleGridState` codec, JSON level loader, authored grids, multi-YOU solver, runtime parser/movement/undo와 save v3를 추가했다. 이후 기존 세이브가 없다는 사용자 확인에 맞춰 이전 상태 보존 이관은 제거했다. 이 기록 당시 전체 검증은 import 0 → 통합 644/644 → GUT 160/160(5,121 assertions) → smoke 0이었다. R1의 텍스트 보드는 1152×720에서 잘림이 없었지만 개발 placeholder이고, 실제 레퍼런스 대조·보드 시각화·상호작용별 화면 검수는 남아 있다.
 
+2026-09-23 R1 turn mechanics: module-local `RuleEvaluator` now applies object-only NOUN transforms once per entity per turn, gives multi-output transforms deterministic derived IDs, and `RuleMovementSolver.plan_move_auto` simulates stable ID-ordered MOVE steps, one-step pushes and blocked turnarounds without mutating source state. Manual move → parse → transform → MOVE → optional word reparse/remaining transform → DEFEAT-before-WIN now commits as one undo snapshot. YOU tokens are not controllable objects; losing YOU by breaking a sentence is recoverable control loss, while DEFEAT removing all YOU objects records `failed`. Entity facing and transformed/missing/derived object state are validated and persisted in manifest/state v4; older formats start fresh, per the no-existing-saves decision.
+
+`crossing_02` now demonstrates `LAMP IS ROCK`, `LAMP IS PUSH`, `ROCK IS MOVE`, and `FLAG IS WIN` + `FLAG IS DEFEAT`. Module tests load it directly through `active_level_id`; the player-facing level selection route is still not connected. Validation after the final changes: Godot import 0 → integration runner 644/644 (exit 0) → GUT 167/167 (5,194 assertions, exit 0) → 180-frame smoke (exit 0). R1-specific GUT is 26/26. The mechanic additions do not complete the development placeholder UI or its Baba Is You reference comparison and 1152×720 state-by-state visual review.
+
 ### 게임형 모듈
 
 `plans/game_modules/INDEX.md`
