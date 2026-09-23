@@ -10,14 +10,27 @@
 
 ## 가장 먼저 읽기
 
-Kit 또는 게임 화면 작업 전:
+설계 인터뷰, 계획, Kit 또는 게임 화면 작업 전:
 1. `CONTEXT.md`
 2. `PROJECT_DECISIONS.md`
-3. `docs/DESIGN_PHILOSOPHY.md`
-4. `docs/KIT_WORKFLOW.md`
-5. `docs/VISUAL_DIRECTION.md`
-6. `docs/UI_WORKFLOW.md`
-7. 해당 `plans/kits/*.md`
+3. `docs/GRILLING_STATE.md`
+4. `docs/DESIGN_PHILOSOPHY.md`
+5. `docs/KIT_WORKFLOW.md`
+6. `docs/VISUAL_DIRECTION.md`
+7. `docs/UI_WORKFLOW.md`
+8. 해당 `plans/kits/*.md`
+
+### Grilling bootstrap
+
+`docs/GRILLING_STATE.md`의 상태가 ACTIVE이면:
+- Settled 항목을 다시 묻지 않는다.
+- Rejected 항목을 새 정보 없이 다시 제안하지 않는다.
+- 질문은 Current Frontier에서만 시작한다.
+- 사실/코드 상태는 에이전트가 조사하고, 설계 선택만 사용자에게 묻는다.
+- 새 결정이 나오면 해당 라운드 안에서 state 문서와 정본 문서에 반영한다.
+- project-wide grilling 종료와 사용자 shared-understanding 확인 전에는 기존 `plans/kits/`를 수정하거나 새 Kit 계획서를 작성하지 않는다.
+
+문서 간 모순을 발견하면 전체 결정을 재질문하지 말고 충돌한 항목만 정확히 제시한다.
 
 런타임 계약 변경이면 추가:
 - `docs/ARCHITECTURE.md`
