@@ -10,9 +10,12 @@ TINProject의 목표는 여러 미니게임을 많이 만드는 것이 아니다
 - 사용자 확정: `PROJECT_DECISIONS.md`
 - 설계 철학: `docs/DESIGN_PHILOSOPHY.md`
 - Kit 작업 계약: `docs/KIT_WORKFLOW.md`
+- UI 작업 계약: `docs/UI_WORKFLOW.md`
+- 시각 기준: `docs/VISUAL_DIRECTION.md`
 - AI 작업 규칙: `AGENTS.md`
 - 현재 상태: `HANDOVER.md`
 - Kit 계획: `plans/kits/INDEX.md`
+- 새 Kit 계획 템플릿: `plans/kits/TEMPLATE.md`
 
 ## 런타임 구조
 
@@ -48,6 +51,16 @@ Kit마다:
 - 1280×720 / 1920×1080 / 2560×1440 검수
 - 사용자 플레이 검토 준비
 가 필요하다.
+
+새 계획은 `plans/kits/TEMPLATE.md`를 사용하며 빈칸이 남으면 구현하지 않는다.
+
+## UI 기본값
+
+- 상시 Shell HUD 없음
+- Esc 메뉴는 호출 시에만 표시
+- 장문 키설명 없음
+- 장르 입력 프로필 전환은 Input Bubble로 학습
+- `addons/at-icons`는 월드 아트 조립 재료, UI 아이콘이 아님
 
 ## 실행
 
