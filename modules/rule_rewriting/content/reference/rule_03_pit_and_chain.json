@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "id": "rule_03_pit_and_chain",
+  "title": "돌 사슬과 웅덩이",
+  "width": 13,
+  "height": 10,
+  "entities": [
+    {
+      "id": "you_1",
+      "kind": "MOTH",
+      "x": 1,
+      "y": 1,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "MOTH",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "you_2",
+      "kind": "IS",
+      "x": 2,
+      "y": 1,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "you_3",
+      "kind": "YOU",
+      "x": 3,
+      "y": 1,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "YOU",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "you_4",
+      "kind": "AND",
+      "x": 4,
+      "y": 1,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "AND",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "you_5",
+      "kind": "NOT",
+      "x": 5,
+      "y": 1,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "NOT",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "you_6",
+      "kind": "SINK",
+      "x": 6,
+      "y": 1,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "SINK",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "rock_1",
+      "kind": "ROCK",
+      "x": 1,
+      "y": 2,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "ROCK",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "rock_2",
+      "kind": "IS",
+      "x": 2,
+      "y": 2,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "rock_3",
+      "kind": "PUSH",
+      "x": 3,
+      "y": 2,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "PUSH",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "basin_1",
+      "kind": "BASIN",
+      "x": 1,
+      "y": 3,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "BASIN",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "basin_2",
+      "kind": "IS",
+      "x": 2,
+      "y": 3,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "basin_3",
+      "kind": "SINK",
+      "x": 3,
+      "y": 3,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "SINK",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "win_1",
+      "kind": "RUNE",
+      "x": 1,
+      "y": 4,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "RUNE",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "win_2",
+      "kind": "IS",
+      "x": 2,
+      "y": 4,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "win_3",
+      "kind": "WIN",
+      "x": 3,
+      "y": 4,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "WIN",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "moth",
+      "kind": "MOTH",
+      "x": 2,
+      "y": 7,
+      "is_word": false
+    },
+    {
+      "id": "rock_a",
+      "kind": "ROCK",
+      "x": 4,
+      "y": 7,
+      "is_word": false
+    },
+    {
+      "id": "rock_b",
+      "kind": "ROCK",
+      "x": 5,
+      "y": 7,
+      "is_word": false
+    },
+    {
+      "id": "basin",
+      "kind": "BASIN",
+      "x": 7,
+      "y": 7,
+      "is_word": false
+    },
+    {
+      "id": "rune",
+      "kind": "RUNE",
+      "x": 10,
+      "y": 7,
+      "is_word": false
+    }
+  ],
+  "starts_in_3d": false,
+  "completion_condition": "win_contact",
+  "art_recipe_id": "recipe_rule_03_pit_and_chain"
+}

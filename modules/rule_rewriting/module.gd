@@ -1,189 +1,139 @@
 extends GameModule
 
 const ACTIONS: Array[StringName] = [
-	&"rule_rewriting_left",
-	&"rule_rewriting_right",
-	&"rule_rewriting_up",
-	&"rule_rewriting_down",
-	&"rule_rewriting_confirm",
-	&"rule_rewriting_cancel"
+	&"rule_rewriting_left", &"rule_rewriting_right", &"rule_rewriting_up", &"rule_rewriting_down",
+	&"rule_rewriting_confirm", &"rule_rewriting_cancel", &"rule_rewriting_undo", &"rule_rewriting_reset",
+	&"rule_rewriting_forward", &"rule_rewriting_turn_left", &"rule_rewriting_turn_right",
+	&"rule_rewriting_cycle_3d_subject", &"rule_rewriting_open_inventory", &"rule_rewriting_cycle_metrix",
+	&"rule_rewriting_place", &"rule_rewriting_hotbar_1", &"rule_rewriting_hotbar_2",
+	&"rule_rewriting_hotbar_3", &"rule_rewriting_hotbar_4", &"rule_rewriting_hotbar_5",
+	&"rule_rewriting_hotbar_6", &"rule_rewriting_hotbar_7", &"rule_rewriting_hotbar_8",
+	&"rule_rewriting_hotbar_9"
 ]
-const DEFAULT_LEVEL_ID: StringName = &"signal_room_01"
-const MODE_NAMES: Array[String] = ["관찰실", "격자 실험", "귀환 준비", "실험 실패"]
-const CLUES: Array[String] = [
-	"바닥 표찰의 명사는 방 안의 같은 이름을 가리킨다.",
-	"단어도 밀 수 있다. 문장을 끊으면 그 문장의 규칙은 즉시 사라진다.",
-	"세 표찰을 읽고 나면 네 문장이 놓인 시험실로 들어갈 수 있다."
-]
-const CLUE_NAMES: Array[String] = ["바닥 표찰", "문턱 표찰", "기록판"]
 const MAX_HISTORY: int = 64
-const MAX_COUNTER: int = 9999
-const SOLVED_TEXT: String = "깃발의 WIN 규칙에 닿았다. 이 방의 문법으로 다른 공간도 다시 시험할 수 있다."
-const FAILED_TEXT: String = "모든 YOU 대상이 DEFEAT와 겹쳤다. 취소로 이 턴을 되돌릴 수 있다."
+const MAX_COUNTER: int = 999999
+const SAVE_VERSION: int = 5
+const MAX_WORD_FIXED_POINT_STEPS: int = 128
 
-var mode: int = 0
-var focus: int = 0
-var observed: Array[bool] = [false, false, false]
-var active_level_id: StringName = DEFAULT_LEVEL_ID
+var board_id: StringName = &""
 var grid_state: RuleGridState
 var rule_set: RuleSet = RuleSet.new()
 var solved: bool = false
 var failed: bool = false
-var board_turns: int = 0
-var board_attempts: int = 0
+var turn_index: int = 0
+var selected_3d_subject_id: String = ""
+var selected_metrix_id: String = ""
+var hotbar_slot: int = 0
+var completed_board_ids: Array[String] = []
+var metrix_shapes: Array[Dictionary] = []
+
 var _undo_stack: Array[Dictionary] = []
+var _held_entity_id: String = ""
+var _held_origin: Vector2i = Vector2i(-1, -1)
+var _focused_slot: int = 0
+var _stack_focus: int = 0
+var _camera_quadrant: int = 0
+var _inventory_open: bool = false
 var _message: String = ""
-var _held: Dictionary = {}
+var _held_actions: Dictionary = {}
 var _request_sent: bool = false
-var _background: ColorRect
-var _mode_label: Label
-var _world_label: Label
-var _status: Label
-var _clue_cards: Array[ColorRect] = []
-var _clue_marks: Array[Label] = []
-var _rule_rows: Array[ColorRect] = []
-var _rule_labels: Array[Label] = []
+var _view: RuleBoardView
+var _pending_rule_feedback_ids: Array[String] = []
+var _metrix_geometry_cache_key: String = ""
+var _cached_metrix_shapes: Array[Dictionary] = []
 
 
 func _ready() -> void:
-	var level := RuleLevelLoader.load_level(DEFAULT_LEVEL_ID)
-	grid_state = level["state"] as RuleGridState
-	_rebuild_rules()
-	_background = ColorRect.new()
-	_background.color = Color("17252b")
-	_background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_background.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(_background)
-	_label("규칙 재작성실", Vector2(60, 40), 40, Color("f4e2ad"))
-	_label("문장을 밀면, 방의 규칙과 움직임이 다시 계산된다", Vector2(64, 96), 20, Color("b6d0c5"))
-	_mode_label = _label("관찰실", Vector2(64, 132), 18, Color("e5b96c"))
-	var room := ColorRect.new()
-	room.color = Color("263e45")
-	room.position = Vector2(60, 178)
-	room.size = Vector2(610, 350)
-	room.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_background.add_child(room)
-	_label("반응하는 방", Vector2(88, 194), 24, Color("f4e2ad"))
-	_world_label = _label("", Vector2(88, 234), 16, Color("d9ebe1"))
-	_world_label.size = Vector2(555, 276)
-	_world_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	for index: int in range(3):
-		var card := ColorRect.new()
-		card.position = Vector2(700, 178 + index * 52)
-		card.size = Vector2(390, 42)
-		card.color = Color("31515a")
-		card.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		_background.add_child(card)
-		_clue_cards.append(card)
-		var title := _label(CLUE_NAMES[index], card.position + Vector2(14, 8), 17, Color("f4e2ad"))
-		title.size.x = 170
-		var mark := _label("미확인", card.position + Vector2(250, 8), 16, Color("a8c4b8"))
-		mark.size.x = 124
-		mark.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		_clue_marks.append(mark)
-	var rules_panel := ColorRect.new()
-	rules_panel.color = Color("302c40")
-	rules_panel.position = Vector2(700, 350)
-	rules_panel.size = Vector2(390, 178)
-	rules_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_background.add_child(rules_panel)
-	_label("현재 성립한 문장", Vector2(728, 366), 21, Color("f4e2ad"))
-	for index: int in range(4):
-		var row := ColorRect.new()
-		row.position = Vector2(728, 402 + index * 27)
-		row.size = Vector2(334, 24)
-		row.color = Color("4b4260")
-		row.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		_background.add_child(row)
-		_rule_rows.append(row)
-		var rule_label := _label("", row.position + Vector2(8, 2), 15, Color("f5e9ff"))
-		rule_label.size = Vector2(318, 22)
-		_rule_labels.append(rule_label)
-	_label("방향키 이동   확인 현재 문장 조사   취소 되돌리기/귀환", Vector2(64, 568), 18, Color("e5c68b"))
-	_status = _label("세 표찰을 읽고, 격자 안의 단어와 대상을 직접 움직여 보세요.", Vector2(64, 624), 18, Color("b6d0c5"))
-	_status.size = Vector2(1030, 54)
-	_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	_refresh()
+	_view = RuleBoardView.new()
+	_view.name = "RuleRewritePresentation"
+	_view.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_view.command_requested.connect(_on_view_command)
+	add_child(_view)
+	load_state({})
 
 
 func enter(value: ModuleContext) -> void:
 	super.enter(value)
-	_held.clear()
 	_request_sent = false
+	_held_actions.clear()
 	_refresh()
 
 
 func exit() -> void:
-	_held.clear()
+	_held_actions.clear()
+	_held_entity_id = ""
+	_inventory_open = false
 	super.exit()
 
 
 func _process(_delta: float) -> void:
 	if not _can_input():
-		_held.clear()
+		_held_actions.clear()
 		return
-	for index: int in range(ACTIONS.size()):
-		var pressed: bool = context.is_action_pressed(ACTIONS[index])
-		var previous: bool = bool(_held.get(ACTIONS[index], false))
-		_held[ACTIONS[index]] = pressed
+	for action: StringName in ACTIONS:
+		var pressed := context.is_action_pressed(action)
+		var previous: bool = bool(_held_actions.get(action, false))
+		_held_actions[action] = pressed
 		if pressed and not previous:
-			if index == 0:
-				execute_command(&"move", {"direction": Vector2i.LEFT})
-			elif index == 1:
-				execute_command(&"move", {"direction": Vector2i.RIGHT})
-			elif index == 2:
-				execute_command(&"move", {"direction": Vector2i.UP})
-			elif index == 3:
-				execute_command(&"move", {"direction": Vector2i.DOWN})
-			elif index == 4:
-				execute_command(&"confirm")
-			else:
-				execute_command(&"back")
+			_execute_action(action)
 
 
 func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 	if not _can_input():
 		return false
 	match command:
-		&"reset":
-			load_state({})
 		&"move":
+			if solved:
+				return false
 			var direction := _read_direction(payload)
 			if direction == Vector2i.ZERO:
 				return false
-			if mode == 0:
-				focus = posmod(focus + _focus_step(direction), CLUE_NAMES.size())
-			elif mode == 1:
-				_move_controlled(direction)
+			if _inventory_open:
+				_move_inventory_focus(direction)
 			else:
+				_move_you(direction)
+		&"forward":
+			if solved:
 				return false
-		&"cycle":
-			var step: Variant = payload.get("step")
-			if step != -1 and step != 1:
+			_move_3d_forward()
+		&"turn_left":
+			_turn_camera(-1)
+		&"turn_right":
+			_turn_camera(1)
+		&"cycle_3d_subject":
+			_cycle_3d_subject()
+		&"open_inventory":
+			_toggle_inventory()
+		&"cycle_metrix":
+			_cycle_metrix()
+		&"hotbar":
+			_set_hotbar_slot(int(payload.get("slot", -1)))
+		&"inventory_slot":
+			_inventory_slot_action(int(payload.get("slot", -1)))
+		&"place":
+			if solved:
 				return false
-			if mode == 0:
-				focus = posmod(focus + int(step), CLUE_NAMES.size())
-			elif mode == 1:
-				return false
-			else:
-				return false
-		&"confirm":
-			if mode == 0:
-				_observe_or_open_board()
-			elif mode == 1:
-				_inspect_rules()
-			elif mode == 2:
-				_finish()
-			else:
-				return false
-		&"back":
-			if mode == 0:
-				_request_exit("back")
-			elif not _undo():
-				_request_exit("back")
+			_place_hotbar_entity(payload)
 		&"undo":
-			if mode == 0 or not _undo():
+			_undo()
+		&"reset":
+			_reset_board()
+		&"confirm":
+			if solved:
+				_advance_board()
+			elif _inventory_open:
+				_inventory_slot_action(_focused_slot)
+			else:
 				return false
+		&"cancel", &"back":
+			if _held_entity_id != "":
+				_held_entity_id = ""
+				_held_origin = Vector2i(-1, -1)
+				_message = "물건을 원래 칸에 두었다."
+			elif _inventory_open:
+				_inventory_open = false
+			else:
+				_request_exit("back")
 		_:
 			return false
 	_refresh()
@@ -192,388 +142,1108 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 
 func save_state() -> Dictionary:
 	return {
-		"state_format": 4,
-		"mode": mode,
-		"focus": focus,
-		"observed": observed.duplicate(),
-		"active_level_id": String(active_level_id),
-		"grid": grid_state.to_dictionary(),
+		"state_format": SAVE_VERSION,
+		"board_schema_version": RuleLevelLoader.BOARD_SCHEMA_VERSION,
+		"board_id": String(board_id),
+		"grid": grid_state.to_dictionary() if grid_state != null else {},
 		"solved": solved,
 		"failed": failed,
-		"board_turns": board_turns,
-		"board_attempts": board_attempts,
+		"turn_index": turn_index,
+		"selected_3d_subject_id": selected_3d_subject_id,
+		"selected_metrix_id": selected_metrix_id,
+		"hotbar_slot": hotbar_slot,
+		"completed_board_ids": completed_board_ids.duplicate(),
 		"undo_stack": _undo_stack.duplicate(true)
 	}
 
 
 func load_state(state: Dictionary) -> void:
 	var clean := _normalize_state(state)
-	mode = int(clean["mode"])
-	focus = int(clean["focus"])
-	observed.assign(clean["observed"])
-	active_level_id = StringName(clean["active_level_id"])
+	board_id = StringName(clean["board_id"])
 	grid_state = RuleGridState.from_dictionary(clean["grid"])
 	solved = bool(clean["solved"])
 	failed = bool(clean["failed"])
-	board_turns = int(clean["board_turns"])
-	board_attempts = int(clean["board_attempts"])
+	turn_index = int(clean["turn_index"])
+	selected_3d_subject_id = String(clean["selected_3d_subject_id"])
+	selected_metrix_id = String(clean["selected_metrix_id"])
+	hotbar_slot = int(clean["hotbar_slot"])
+	completed_board_ids.assign(clean["completed_board_ids"])
 	_undo_stack.clear()
 	for snapshot: Variant in clean["undo_stack"]:
 		_undo_stack.append(snapshot)
+	_held_entity_id = ""
+	_held_origin = Vector2i(-1, -1)
+	_focused_slot = 0
+	_stack_focus = 0
+	_camera_quadrant = 0
+	_inventory_open = false
 	_message = ""
 	_request_sent = false
-	_held.clear()
-	_rebuild_rules()
+	_rebuild_derived()
 	_refresh()
 
 
-func migrate_save(old_version: int, _data: Dictionary) -> Dictionary:
-	if old_version >= 4:
-		return _normalize_state(_data)
-	return _default_state()
+func migrate_save(old_version: int, data: Dictionary) -> Dictionary:
+	if old_version < SAVE_VERSION:
+		return _default_state()
+	return _normalize_state(data)
 
 
-func _observe_or_open_board() -> void:
-	if not observed[focus]:
-		observed[focus] = true
-		_message = CLUES[focus]
-		requested.emit(&"observation", {"id": "rule_rewriting.clue_%d" % focus, "text": CLUES[focus]})
-	elif observed.all(func(value: bool) -> bool: return value):
-		mode = 1
-		focus = 0
-		_message = "세 표찰을 읽었다. 방향키로 모든 YOU를 움직이고, 단어를 밀어 문장을 바꿔 보자."
-	else:
-		_message = "아직 읽지 않은 표찰이 있다."
+func _execute_action(action: StringName) -> void:
+	match action:
+		&"rule_rewriting_left": execute_command(&"move", {"direction": Vector2i.LEFT})
+		&"rule_rewriting_right": execute_command(&"move", {"direction": Vector2i.RIGHT})
+		&"rule_rewriting_up": execute_command(&"move", {"direction": Vector2i.UP})
+		&"rule_rewriting_down": execute_command(&"move", {"direction": Vector2i.DOWN})
+		&"rule_rewriting_confirm": execute_command(&"confirm")
+		&"rule_rewriting_cancel": execute_command(&"cancel")
+		&"rule_rewriting_undo": execute_command(&"undo")
+		&"rule_rewriting_reset": execute_command(&"reset")
+		&"rule_rewriting_forward": execute_command(&"forward")
+		&"rule_rewriting_turn_left": execute_command(&"turn_left")
+		&"rule_rewriting_turn_right": execute_command(&"turn_right")
+		&"rule_rewriting_cycle_3d_subject": execute_command(&"cycle_3d_subject")
+		&"rule_rewriting_open_inventory": execute_command(&"open_inventory")
+		&"rule_rewriting_cycle_metrix": execute_command(&"cycle_metrix")
+		&"rule_rewriting_place": execute_command(&"place")
+		_:
+			for index: int in range(9):
+				if action == StringName("rule_rewriting_hotbar_%d" % (index + 1)):
+					execute_command(&"hotbar", {"slot": index})
+					break
 
 
-func _move_controlled(direction: Vector2i) -> void:
-	var controlled_ids: Array[String] = []
-	for entity: RuleGridEntity in grid_state.entities:
-		if not entity.is_word and rule_set.has_property(entity.kind, &"YOU"):
-			controlled_ids.append(entity.id)
-	if controlled_ids.is_empty():
-		board_attempts = mini(board_attempts + 1, MAX_COUNTER)
-		_message = "현재 성립한 YOU 문장이 없다. X로 되돌려 문장을 복구할 수 있다."
+func _on_view_command(command: StringName, payload: Dictionary) -> void:
+	if not _can_input():
 		return
+	execute_command(command, payload)
+
+
+func _move_you(direction: Vector2i) -> void:
+	var controlled_ids := _you_ids()
+	if controlled_ids.is_empty():
+		_message = ""
+		return
+	_apply_player_intent(controlled_ids, direction)
+
+
+func _move_3d_forward() -> void:
+	var subject := _selected_3d_subject()
+	if subject == null:
+		return
+	if _inventory_open:
+		return
+	var directions: Array[Vector2i] = [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]
+	_apply_player_intent([subject.id], directions[_camera_quadrant])
+
+
+func _apply_player_intent(controlled_ids: Array[String], direction: Vector2i) -> void:
 	var before := _board_snapshot()
+	var before_rule_set := rule_set
 	var before_rules := _rule_signature()
 	var plan := RuleMovementSolver.plan_move_many(grid_state, rule_set, controlled_ids, direction)
-	if not bool(plan["can_move"]):
-		board_attempts = mini(board_attempts + 1, MAX_COUNTER)
-		_message = "이동이 막혔다. 밀어낼 수 없는 대상이나 방의 경계가 있다."
+	if not bool(plan.get("can_move", false)):
+		_message = ""
 		return
-	for move: Dictionary in plan["moves"]:
-		var entity := _find_entity(String(move["entity_id"]))
-		if entity != null:
-			entity.position = move["to"]
-			entity.facing = direction
-	board_turns = mini(board_turns + 1, MAX_COUNTER)
-	_rebuild_rules()
+	_apply_moves(plan.get("moves", []))
+	for entity_id: String in controlled_ids:
+		var actor := _find_entity(entity_id)
+		if actor != null:
+			actor.facing = direction
 	var processed_transform_ids: Dictionary = {}
+	_rebuild_derived()
 	var transform_result := RuleEvaluator.apply_transformations(grid_state, rule_set, processed_transform_ids)
-	if not bool(transform_result["valid"]):
-		_restore_board(before)
-		board_attempts = mini(board_attempts + 1, MAX_COUNTER)
-		_message = "변환 상태를 계산할 수 없어 이번 이동을 취소했다."
+	if not bool(transform_result.get("valid", false)):
+		_restore_snapshot(before)
 		return
-	_rebuild_rules()
+	var transformed_ids: Array = transform_result.get("changed_ids", [])
+	var created_ids: Array = transform_result.get("created_ids", [])
+	if not transformed_ids.is_empty() or not created_ids.is_empty():
+		_rebuild_derived()
 	var auto_plan := RuleMovementSolver.plan_move_auto(grid_state, rule_set)
-	if not bool(auto_plan["valid"]):
-		_restore_board(before)
-		board_attempts = mini(board_attempts + 1, MAX_COUNTER)
-		_message = "자동 이동을 계산할 수 없어 이번 이동을 취소했다."
+	if not bool(auto_plan.get("valid", false)):
+		_restore_snapshot(before)
 		return
-	for move: Dictionary in auto_plan["moves"]:
-		var entity := _find_entity(String(move["entity_id"]))
-		if entity != null:
-			entity.position = move["to"]
-			entity.facing = move["facing_to"]
-	if bool(auto_plan["word_moved"]):
-		_rebuild_rules()
+	_apply_moves(auto_plan.get("moves", []))
+	if bool(auto_plan.get("word_moved", false)):
+		_rebuild_derived()
 		transform_result = RuleEvaluator.apply_transformations(grid_state, rule_set, processed_transform_ids)
-		if not bool(transform_result["valid"]):
-			_restore_board(before)
-			board_attempts = mini(board_attempts + 1, MAX_COUNTER)
-			_message = "변환 상태를 계산할 수 없어 이번 이동을 취소했다."
+		if not bool(transform_result.get("valid", false)):
+			_restore_snapshot(before)
 			return
-		_rebuild_rules()
-	var outcome := _resolve_interactions()
-	_commit_board_action(before)
-	if outcome == &"failed":
-		_message = FAILED_TEXT
-	elif outcome == &"solved":
-		_message = SOLVED_TEXT
-	elif before_rules != _rule_signature():
-		_message = "밀린 단어로 문장이 달라졌다. 방의 규칙이 즉시 다시 계산됐다."
+		transformed_ids = transform_result.get("changed_ids", [])
+		created_ids = transform_result.get("created_ids", [])
+		if not transformed_ids.is_empty() or not created_ids.is_empty():
+			_rebuild_derived()
+	_resolve_interactions()
+	_commit_intent(before)
+	if _rule_signature() != before_rules:
+		_pending_rule_feedback_ids = _rule_change_feedback_ids(
+			before["grid"], before_rule_set, grid_state, rule_set
+		)
+		_message = ""
 	else:
-		_message = "움직일 수 있는 YOU 대상과 밀리는 단어가 함께 이동했다."
+		_pending_rule_feedback_ids.clear()
+		_message = ""
 
 
-func _inspect_rules() -> void:
-	board_attempts = mini(board_attempts + 1, MAX_COUNTER)
-	if rule_set.sentences.is_empty():
-		_message = "현재 성립한 문장이 없다. 밀린 단어의 위치를 살펴보자."
+func _apply_moves(moves: Variant) -> void:
+	if not moves is Array:
 		return
-	var rule_text := PackedStringArray()
-	for sentence: RuleSentence in rule_set.sentences:
-		rule_text.append("%s IS %s" % [String(sentence.subject), String(sentence.predicate)])
-	_message = "현재 성립한 문장: %s" % " / ".join(rule_text)
-
-
-func _resolve_interactions() -> StringName:
-	var defeated_ids: Dictionary = {}
-	for actor: RuleGridEntity in grid_state.entities:
-		if actor.is_word or not rule_set.has_property(actor.kind, &"YOU"):
+	for move_value: Variant in moves:
+		if not move_value is Dictionary:
 			continue
-		for target: RuleGridEntity in grid_state.entities:
-			if target.is_word or target.position != actor.position:
-				continue
-			if rule_set.has_property(target.kind, &"DEFEAT"):
-				defeated_ids[actor.id] = true
-				break
-	if not defeated_ids.is_empty():
+		var entity := _find_entity(String(move_value.get("entity_id", "")))
+		if entity == null:
+			continue
+		var destination: Variant = move_value.get("to")
+		if destination is Vector2i:
+			entity.position = destination
+		var facing: Variant = move_value.get("facing_to")
+		if facing is Vector2i:
+			entity.facing = facing
+		elif move_value.get("direction") is Vector2i:
+			entity.facing = move_value["direction"]
+
+
+func _resolve_interactions() -> void:
+	var result: Dictionary = RuleEvaluator.resolve_contacts(grid_state, rule_set)
+	if not bool(result.get("valid", false)):
+		return
+	var removed_ids: Dictionary = {}
+	for entity_id: String in result.get("removed_ids", []):
+		removed_ids[entity_id] = true
+	var spawn_result := _append_has_spawns(result.get("has_spawns", []))
+	if not removed_ids.is_empty():
 		var survivors: Array[RuleGridEntity] = []
 		for entity: RuleGridEntity in grid_state.entities:
-			if not defeated_ids.has(entity.id):
+			if not removed_ids.has(entity.id):
 				survivors.append(entity)
 		grid_state.entities = survivors
-		_rebuild_rules()
-	var controlled: Array[RuleGridEntity] = []
-	for entity: RuleGridEntity in grid_state.entities:
-		if not entity.is_word and rule_set.has_property(entity.kind, &"YOU"):
-			controlled.append(entity)
-	if not defeated_ids.is_empty() and controlled.is_empty():
-		_set_failed()
-		return &"failed"
-	if controlled.is_empty():
-		return &"none"
-	for actor: RuleGridEntity in controlled:
-		if rule_set.has_property(actor.kind, &"WIN"):
-			_set_solved()
-			return &"solved"
-		for target: RuleGridEntity in grid_state.entities:
-			if target.is_word or target.position != actor.position:
-				continue
-			if rule_set.has_property(target.kind, &"WIN"):
-				_set_solved()
-				return &"solved"
-	return &"none"
-
-
-func _set_solved() -> void:
+	if not removed_ids.is_empty() or bool(spawn_result.get("changed", false)):
+		_rebuild_derived()
+	failed = bool(result.get("failed", false)) and _you_ids().is_empty()
+	solved = bool(result.get("won", false)) and not failed
 	if failed:
+		_inventory_open = false
+		_held_entity_id = ""
+		_held_origin = Vector2i(-1, -1)
+	if solved:
+		_mark_completed()
+
+
+func _append_has_spawns(value: Variant) -> Dictionary:
+	if not value is Array:
+		return {"changed": false}
+	var next_serial := 0
+	var used_ids: Dictionary = {}
+	for entity: RuleGridEntity in grid_state.entities:
+		if entity == null:
+			continue
+		used_ids[entity.id] = true
+		next_serial = maxi(next_serial, entity.creation_serial + 1)
+	var changed := false
+	for descriptor: Variant in value:
+		if not descriptor is Dictionary:
+			continue
+		var source_id := String(descriptor.get("source_id", ""))
+		var kind := StringName(String(descriptor.get("kind", "")))
+		var position: Variant = descriptor.get("position")
+		var facing: Variant = descriptor.get("facing")
+		if source_id.is_empty() or not RuleLevelLoader.OBJECT_CATALOG.has(kind) \
+			or not position is Vector2i or not facing is Vector2i \
+			or not _inside_board(position):
+			continue
+		var entity := RuleGridEntity.new()
+		var id_prefix := "has::%s::%d::%s" % [source_id, mini(turn_index + 1, MAX_COUNTER), String(kind)]
+		entity.id = id_prefix
+		var suffix := 1
+		while used_ids.has(entity.id):
+			entity.id = "%s::%d" % [id_prefix, suffix]
+			suffix += 1
+		entity.kind = kind
+		entity.position = position
+		entity.facing = facing
+		var layer_value: Variant = descriptor.get("layer", 0)
+		if RuleGridEntity._is_integer(layer_value):
+			entity.layer = int(layer_value)
+		entity.creation_serial = next_serial
+		next_serial += 1
+		used_ids[entity.id] = true
+		grid_state.entities.append(entity)
+		changed = true
+	return {"changed": changed}
+
+
+func _turn_camera(turns: int) -> void:
+	if not _is_3d_mode():
 		return
-	solved = true
-	mode = 2
+	_camera_quadrant = posmod(_camera_quadrant + turns, 4)
+	_message = ""
+	_refresh()
 
 
-func _set_failed() -> void:
-	failed = true
+func _cycle_3d_subject() -> void:
+	var subjects := _three_d_you_entities()
+	if subjects.is_empty():
+		return
+	var current_index := 0
+	for index: int in range(subjects.size()):
+		if subjects[index].id == selected_3d_subject_id:
+			current_index = index
+			break
+	selected_3d_subject_id = subjects[posmod(current_index + 1, subjects.size())].id
+	_message = ""
+	_refresh()
+
+
+func _toggle_inventory() -> void:
+	if not _is_3d_mode():
+		return
+	if _inventory_open:
+		_inventory_open = false
+		_held_entity_id = ""
+		_held_origin = Vector2i(-1, -1)
+		_message = ""
+		return
+	var available := _available_inventories()
+	if available.is_empty():
+		_message = ""
+		return
+	_inventory_open = true
+	_focused_slot = clampi(_focused_slot, 0, maxi(0, _slot_count(_selected_metrix()) - 1))
+	_message = ""
+
+
+func _cycle_metrix() -> void:
+	var available := _available_inventories()
+	if available.is_empty():
+		return
+	var index := 0
+	for candidate: Dictionary in available:
+		if String(candidate["id"]) == selected_metrix_id:
+			index = available.find(candidate)
+			break
+	selected_metrix_id = String(available[posmod(index + 1, available.size())]["id"])
+	_focused_slot = 0
+	_held_entity_id = ""
+	_message = ""
+	_refresh()
+
+
+func _set_hotbar_slot(slot: int) -> void:
+	if slot < 0 or slot > 8:
+		return
+	hotbar_slot = slot
+	_message = ""
+	_refresh()
+
+
+func _move_inventory_focus(direction: Vector2i) -> void:
+	var shape := _selected_metrix()
+	var slots := _shape_slots(shape)
+	if slots.is_empty():
+		return
+	var width := maxi(1, int(shape["bounds"].size.x) - 2)
+	var height := maxi(1, int(shape["bounds"].size.y) - 2)
+	var cell := Vector2i(_focused_slot % width, _focused_slot / width)
+	cell += direction
+	cell.x = posmod(cell.x, width)
+	cell.y = posmod(cell.y, height)
+	_focused_slot = mini(cell.y * width + cell.x, slots.size() - 1)
+	_refresh()
+
+
+func _inventory_slot_action(slot_index: int) -> void:
+	var slots := _shape_slots(_selected_metrix())
+	if slot_index < 0 or slot_index >= slots.size():
+		return
+	_focused_slot = slot_index
+	var slot: Dictionary = slots[slot_index]
+	var cell_value: Variant = slot.get("cell")
+	if not cell_value is Vector2i:
+		return
+	var contents := _slot_entity_ids(slot)
+	if _held_entity_id.is_empty():
+		if contents.is_empty():
+			_stack_focus = 0
+			_message = ""
+			_refresh()
+			return
+		var entity_index := posmod(_stack_focus, contents.size())
+		_held_entity_id = contents[entity_index]
+		_stack_focus = 0
+		var selected := _find_entity(_held_entity_id)
+		if selected != null:
+			_held_origin = selected.position
+		_message = ""
+		_refresh()
+		return
+	var held := _find_entity(_held_entity_id)
+	if held == null:
+		_held_entity_id = ""
+		_held_origin = Vector2i(-1, -1)
+		_refresh()
+		return
+	if held.position == cell_value:
+		_stack_focus += 1
+		var same_cell := _entities_at(cell_value)
+		if not same_cell.is_empty():
+			_stack_focus = posmod(_stack_focus, same_cell.size())
+			_held_entity_id = same_cell[_stack_focus].id
+		_refresh()
+		return
+	var before := _board_snapshot()
+	var target_ids := _slot_entity_ids(slot)
+	if target_ids.has(_held_entity_id):
+		_held_entity_id = ""
+		_held_origin = Vector2i(-1, -1)
+		_refresh()
+		return
+	var occupant_id: String = String(target_ids.front()) if not target_ids.is_empty() else ""
+	if not occupant_id.is_empty():
+		var occupant: RuleGridEntity = _find_entity(occupant_id)
+		if occupant != null:
+			occupant.position = _held_origin
+	held.position = cell_value
+	_held_entity_id = ""
+	_held_origin = Vector2i(-1, -1)
+	_rebuild_derived()
+	_resolve_interactions()
+	_commit_intent(before)
+	_message = ""
+	_refresh()
+
+
+func _place_hotbar_entity(payload: Dictionary) -> void:
+	if not _is_3d_mode() or _inventory_open:
+		return
+	var slots := _shape_slots(_selected_metrix())
+	if hotbar_slot >= slots.size():
+		return
+	var ids := _slot_entity_ids(slots[hotbar_slot])
+	if ids.is_empty():
+		return
+	var entity := _find_entity(ids.front())
+	var subject := _selected_3d_subject()
+	if entity == null or subject == null:
+		return
+	var target: Vector2i = payload.get("cell", Vector2i(-1, -1))
+	if target == Vector2i(-1, -1):
+		var directions: Array[Vector2i] = [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]
+		target = subject.position + directions[_camera_quadrant]
+	if not _inside_board(target):
+		return
+	for other: RuleGridEntity in _entities_at(target):
+		if other.id == entity.id:
+			continue
+		if _has_property(other, &"STOP") or _has_property(other, &"PUSH"):
+			return
+	var before := _board_snapshot()
+	entity.position = target
+	_rebuild_derived()
+	_resolve_interactions()
+	_commit_intent(before)
+	_message = ""
+	_refresh()
+
+
+func _undo() -> void:
+	if _undo_stack.is_empty():
+		return
+	var snapshot: Dictionary = _undo_stack.pop_back()
+	if not _restore_snapshot(snapshot):
+		_undo_stack.clear()
+		return
+	_message = ""
+	_refresh()
+
+
+func _reset_board() -> void:
+	var preserved_completed := completed_board_ids.duplicate()
+	preserved_completed.erase(String(board_id))
+	var level := RuleLevelLoader.load_level(board_id)
+	if not bool(level.get("ok", false)):
+		return
+	grid_state = level["state"] as RuleGridState
 	solved = false
-	mode = 3
+	failed = false
+	turn_index = 0
+	selected_3d_subject_id = ""
+	selected_metrix_id = ""
+	hotbar_slot = 0
+	completed_board_ids.assign(preserved_completed)
+	_undo_stack.clear()
+	_inventory_open = false
+	_held_entity_id = ""
+	_rebuild_derived()
+	_message = ""
+	_refresh()
 
 
-func _request_exit(exit_id: String) -> void:
-	_request_sent = true
-	requested.emit(&"portal", {"exit": exit_id})
-
-
-func _finish() -> void:
-	if not solved:
+func _advance_board() -> void:
+	var ids := _progression_board_ids()
+	var index := ids.find(board_id)
+	if index >= 0 and index + 1 < ids.size():
+		var next_id := ids[index + 1]
+		var completed := completed_board_ids.duplicate()
+		var level := RuleLevelLoader.load_level(next_id)
+		if not bool(level.get("ok", false)):
+			return
+		board_id = next_id
+		grid_state = level["state"] as RuleGridState
+		solved = false
+		failed = false
+		turn_index = 0
+		selected_3d_subject_id = ""
+		selected_metrix_id = ""
+		hotbar_slot = 0
+		completed_board_ids.assign(completed)
+		_undo_stack.clear()
+		_rebuild_derived()
+		_message = ""
+		_refresh()
 		return
-	_request_sent = true
-	requested.emit(&"observation", {"id": "rule_rewriting.solved", "text": SOLVED_TEXT})
-	requested.emit(&"portal", {"exit": "forward"})
+	_request_exit("forward")
 
 
-func _commit_board_action(before: Dictionary) -> void:
+func _progression_board_ids() -> Array[StringName]:
+	var result: Array[StringName] = []
+	for board_id_value: StringName in RuleLevelLoader.list_level_ids():
+		if String(board_id_value).begins_with("rule_"):
+			result.append(board_id_value)
+	return result
+
+
+func _commit_intent(before: Dictionary) -> void:
 	if _board_snapshot() == before:
 		return
+	turn_index = mini(turn_index + 1, MAX_COUNTER)
 	_undo_stack.append(before)
 	if _undo_stack.size() > MAX_HISTORY:
 		_undo_stack.pop_front()
 
 
-func _undo() -> bool:
-	if _undo_stack.is_empty():
-		return false
-	var snapshot: Dictionary = _undo_stack.pop_back()
-	if not _restore_board(snapshot):
-		_undo_stack.clear()
-		return false
-	_message = "격자와 성립한 문장을 한 턴 전으로 되돌렸다."
-	return true
-
-
 func _board_snapshot() -> Dictionary:
 	return {
-		"mode": mode,
+		"board_id": String(board_id),
 		"grid": grid_state.to_dictionary(),
 		"solved": solved,
 		"failed": failed,
-		"board_turns": board_turns,
-		"board_attempts": board_attempts
+		"turn_index": turn_index,
+		"selected_3d_subject_id": selected_3d_subject_id,
+		"selected_metrix_id": selected_metrix_id,
+		"hotbar_slot": hotbar_slot,
+		"completed_board_ids": completed_board_ids.duplicate()
 	}
 
 
-func _restore_board(snapshot: Dictionary) -> bool:
-	var level := RuleLevelLoader.load_level(active_level_id)
-	var restored := _normalize_snapshot(snapshot, level["state"])
-	if restored.is_empty():
+func _restore_snapshot(snapshot: Dictionary) -> bool:
+	var normalized := _normalize_snapshot(snapshot, board_id)
+	if normalized.is_empty():
 		return false
-	mode = int(restored["mode"])
-	grid_state = RuleGridState.from_dictionary(restored["grid"])
-	solved = bool(restored["solved"])
-	failed = bool(restored["failed"])
-	board_turns = int(restored["board_turns"])
-	board_attempts = int(restored["board_attempts"])
-	_rebuild_rules()
+	board_id = StringName(normalized["board_id"])
+	grid_state = RuleGridState.from_dictionary(normalized["grid"])
+	solved = bool(normalized["solved"])
+	failed = bool(normalized["failed"])
+	turn_index = int(normalized["turn_index"])
+	selected_3d_subject_id = String(normalized["selected_3d_subject_id"])
+	selected_metrix_id = String(normalized["selected_metrix_id"])
+	hotbar_slot = int(normalized["hotbar_slot"])
+	completed_board_ids.assign(normalized["completed_board_ids"])
+	_rebuild_derived()
 	return true
 
 
 func _default_state() -> Dictionary:
-	var level := RuleLevelLoader.load_level(DEFAULT_LEVEL_ID)
-	var default_grid: RuleGridState = level["state"]
+	var ids := RuleLevelLoader.list_level_ids()
+	if ids.is_empty():
+		return {"state_format": SAVE_VERSION}
+	var first_id := ids[0]
+	var level := RuleLevelLoader.load_level(first_id)
+	if not bool(level.get("ok", false)):
+		return {"state_format": SAVE_VERSION}
+	var initial_grid := level["state"] as RuleGridState
 	return {
-		"state_format": 4,
-		"mode": 0,
-		"focus": 0,
-		"observed": [false, false, false],
-		"active_level_id": String(DEFAULT_LEVEL_ID),
-		"grid": default_grid.to_dictionary(),
+		"state_format": SAVE_VERSION,
+		"board_schema_version": RuleLevelLoader.BOARD_SCHEMA_VERSION,
+		"board_id": String(first_id),
+		"grid": initial_grid.to_dictionary(),
 		"solved": false,
 		"failed": false,
-		"board_turns": 0,
-		"board_attempts": 0,
+		"turn_index": 0,
+		"selected_3d_subject_id": "",
+		"selected_metrix_id": "",
+		"hotbar_slot": 0,
+		"completed_board_ids": [],
 		"undo_stack": []
 	}
 
 
 func _normalize_state(data: Dictionary) -> Dictionary:
-	if data.get("state_format") != 4:
-		return _default_state()
-	var clean_observed: Array[bool] = [false, false, false]
-	if data.get("observed") is Array and data["observed"].size() == 3:
-		var candidate: Array[bool] = []
-		for value: Variant in data["observed"]:
-			if not value is bool:
-				candidate.clear()
-				break
-			candidate.append(value)
-		if candidate.size() == 3:
-			clean_observed = candidate
-	var requested_level := StringName(String(data.get("active_level_id", DEFAULT_LEVEL_ID)))
-	var level := RuleLevelLoader.load_level(requested_level)
-	if not bool(level["ok"]):
-		return _default_state()
-	var clean_grid := RuleGridState.from_dictionary(data.get("grid"))
-	var level_grid: RuleGridState = level["state"]
-	if clean_grid == null or not _grid_matches_level(clean_grid, level_grid):
-		clean_grid = RuleGridState.from_dictionary(level_grid.to_dictionary())
-	var clean_mode := _integer(data.get("mode"), 0, 0, 3)
+	var defaults := _default_state()
+	var format_value: Variant = data.get("state_format")
+	var schema_value: Variant = data.get("board_schema_version")
+	if not RuleGridEntity._is_integer(format_value) or int(format_value) != SAVE_VERSION \
+		or not RuleGridEntity._is_integer(schema_value) or int(schema_value) != RuleLevelLoader.BOARD_SCHEMA_VERSION:
+		return defaults
+	var ids := RuleLevelLoader.list_level_ids()
+	if ids.is_empty():
+		return defaults
+	var requested_id := StringName(String(data.get("board_id", String(ids[0]))))
+	if not ids.has(requested_id):
+		requested_id = ids[0]
+	var level := RuleLevelLoader.load_level(requested_id)
+	if not bool(level.get("ok", false)):
+		requested_id = ids[0]
+		level = RuleLevelLoader.load_level(requested_id)
+	if not bool(level.get("ok", false)):
+		return defaults
+	var authored := level["state"] as RuleGridState
+	var candidate := RuleGridState.from_dictionary(data.get("grid"))
+	if candidate == null or not _grid_matches_level(candidate, authored):
+		candidate = RuleGridState.from_dictionary(authored.to_dictionary())
+	var clean_failed: bool = data.get("failed") if data.get("failed") is bool else false
+	var clean_solved: bool = data.get("solved") if data.get("solved") is bool else false
+	if clean_failed:
+		clean_solved = false
+	var completed := _normalize_completed(data.get("completed_board_ids", []), ids)
 	var clean_history: Array[Dictionary] = []
 	if data.get("undo_stack") is Array:
 		for value: Variant in data["undo_stack"]:
-			var snapshot := _normalize_snapshot(value, level_grid)
+			var snapshot := _normalize_snapshot(value, requested_id)
 			if not snapshot.is_empty():
 				clean_history.append(snapshot)
 		if clean_history.size() > MAX_HISTORY:
 			clean_history = clean_history.slice(clean_history.size() - MAX_HISTORY)
-	var is_solved: bool = data.get("solved") if data.get("solved") is bool else false
-	var is_failed: bool = data.get("failed") if data.get("failed") is bool else false
-	if is_failed:
-		is_solved = false
-		clean_mode = 3
-	elif is_solved:
-		clean_mode = 2
-	elif clean_mode == 2 or clean_mode == 3:
-		clean_mode = 1
+	var selected_subject := String(data.get("selected_3d_subject_id", ""))
+	if _find_entity_in(candidate, selected_subject) == null:
+		selected_subject = ""
+	var selected_metrix := String(data.get("selected_metrix_id", ""))
 	return {
-		"state_format": 4,
-		"mode": clean_mode,
-		"focus": _integer(data.get("focus"), 0, 0, CLUE_NAMES.size() - 1),
-		"observed": clean_observed,
-		"active_level_id": String(requested_level),
-		"grid": clean_grid.to_dictionary(),
-		"solved": is_solved,
-		"failed": is_failed,
-		"board_turns": _integer(data.get("board_turns"), 0, 0, MAX_COUNTER),
-		"board_attempts": _integer(data.get("board_attempts"), 0, 0, MAX_COUNTER),
+		"state_format": SAVE_VERSION,
+		"board_schema_version": RuleLevelLoader.BOARD_SCHEMA_VERSION,
+		"board_id": String(requested_id),
+		"grid": candidate.to_dictionary(),
+		"solved": clean_solved,
+		"failed": clean_failed,
+		"turn_index": _integer(data.get("turn_index"), 0, 0, MAX_COUNTER),
+		"selected_3d_subject_id": selected_subject,
+		"selected_metrix_id": selected_metrix,
+		"hotbar_slot": _integer(data.get("hotbar_slot"), 0, 0, 8),
+		"completed_board_ids": completed,
 		"undo_stack": clean_history
 	}
 
 
-func _normalize_snapshot(value: Variant, level_grid: RuleGridState) -> Dictionary:
+func _normalize_snapshot(value: Variant, fallback_board_id: StringName) -> Dictionary:
 	if not value is Dictionary:
 		return {}
-	var raw_grid := RuleGridState.from_dictionary(value.get("grid"))
-	if raw_grid == null or not _grid_matches_level(raw_grid, level_grid):
+	var snapshot_id := StringName(String(value.get("board_id", String(fallback_board_id))))
+	if snapshot_id != fallback_board_id or not RuleLevelLoader.list_level_ids().has(snapshot_id):
 		return {}
-	var clean_mode := _integer(value.get("mode"), 1, 1, 3)
-	var is_solved: bool = value.get("solved") if value.get("solved") is bool else false
-	var is_failed: bool = value.get("failed") if value.get("failed") is bool else false
-	if is_failed:
-		is_solved = false
-		clean_mode = 3
-	elif is_solved:
-		clean_mode = 2
-	elif clean_mode == 2 or clean_mode == 3:
-		clean_mode = 1
+	var level := RuleLevelLoader.load_level(snapshot_id)
+	if not bool(level.get("ok", false)):
+		return {}
+	var authored := level["state"] as RuleGridState
+	var candidate := RuleGridState.from_dictionary(value.get("grid"))
+	if candidate == null or not _grid_matches_level(candidate, authored):
+		return {}
+	var clean_failed: bool = value.get("failed") if value.get("failed") is bool else false
+	var clean_solved: bool = value.get("solved") if value.get("solved") is bool else false
+	if clean_failed:
+		clean_solved = false
 	return {
-		"mode": clean_mode,
-		"grid": raw_grid.to_dictionary(),
-		"solved": is_solved,
-		"failed": is_failed,
-		"board_turns": _integer(value.get("board_turns"), 0, 0, MAX_COUNTER),
-		"board_attempts": _integer(value.get("board_attempts"), 0, 0, MAX_COUNTER)
+		"board_id": String(snapshot_id),
+		"grid": candidate.to_dictionary(),
+		"solved": clean_solved,
+		"failed": clean_failed,
+		"turn_index": _integer(value.get("turn_index"), 0, 0, MAX_COUNTER),
+		"selected_3d_subject_id": String(value.get("selected_3d_subject_id", "")),
+		"selected_metrix_id": String(value.get("selected_metrix_id", "")),
+		"hotbar_slot": _integer(value.get("hotbar_slot"), 0, 0, 8),
+		"completed_board_ids": _normalize_completed(value.get("completed_board_ids", []), RuleLevelLoader.list_level_ids())
 	}
+
+
+func _normalize_completed(value: Variant, available: Array[StringName]) -> Array[String]:
+	var result: Array[String] = []
+	if not value is Array:
+		return result
+	for item: Variant in value:
+		if not item is String:
+			continue
+		var item_id := StringName(item)
+		if available.has(item_id) and not result.has(String(item_id)):
+			result.append(String(item_id))
+	return result
 
 
 func _grid_matches_level(candidate: RuleGridState, authored: RuleGridState) -> bool:
 	if candidate.width != authored.width or candidate.height != authored.height:
 		return false
-	var authored_by_id: Dictionary = {}
-	var authored_nouns: Dictionary = {}
+	var original_by_id: Dictionary = {}
 	for original: RuleGridEntity in authored.entities:
-		authored_by_id[original.id] = original
-		if original.is_word and original.word_role == &"noun":
-			authored_nouns[original.word_value] = true
-	var candidate_by_id: Dictionary = {}
+		original_by_id[original.id] = original
+	var seen: Dictionary = {}
 	for entity: RuleGridEntity in candidate.entities:
-		if entity == null or entity.id.is_empty() or candidate_by_id.has(entity.id):
+		if entity == null or seen.has(entity.id):
 			return false
-		candidate_by_id[entity.id] = entity
-		if authored_by_id.has(entity.id):
-			var original: RuleGridEntity = authored_by_id[entity.id]
+		seen[entity.id] = true
+		if original_by_id.has(entity.id):
+			var original: RuleGridEntity = original_by_id[entity.id]
 			if original.is_word:
 				if not entity.is_word or entity.kind != original.kind \
-					or entity.word_role != original.word_role or entity.word_value != original.word_value \
-					or entity.base_tags != original.base_tags:
+					or entity.word_role != original.word_role or entity.word_value != original.word_value:
 					return false
-			elif entity.is_word or not authored_nouns.has(entity.kind) \
-				or entity.base_tags != original.base_tags:
+			elif entity.is_word or not RuleLevelLoader.OBJECT_CATALOG.has(entity.kind):
 				return false
-		elif entity.is_word or not entity.id.begins_with("transform::") \
-			or not authored_nouns.has(entity.kind):
+		elif entity.is_word or not _is_valid_generated_entity_id(entity.id, entity.kind) \
+			or not RuleLevelLoader.OBJECT_CATALOG.has(entity.kind):
 			return false
 	for original: RuleGridEntity in authored.entities:
-		if original.is_word and not candidate_by_id.has(original.id):
+		if original.is_word and not seen.has(original.id):
 			return false
 	return true
 
 
-func _rebuild_rules() -> void:
+func _is_valid_generated_entity_id(entity_id: String, kind: StringName) -> bool:
+	if entity_id.begins_with("transform::"):
+		return true
+	if not entity_id.begins_with("has::"):
+		return false
+	var kind_suffix := "::" + String(kind)
+	var generated_id := entity_id
+	if not generated_id.ends_with(kind_suffix):
+		var collision_separator := generated_id.rfind("::")
+		if collision_separator < 0:
+			return false
+		var collision_suffix := generated_id.substr(collision_separator + 2)
+		if not collision_suffix.is_valid_int() or int(collision_suffix) < 1:
+			return false
+		generated_id = generated_id.substr(0, collision_separator)
+	if not generated_id.ends_with(kind_suffix):
+		return false
+	generated_id = generated_id.substr(0, generated_id.length() - kind_suffix.length())
+	var turn_separator := generated_id.rfind("::")
+	if turn_separator < 0:
+		return false
+	var turn_text := generated_id.substr(turn_separator + 2)
+	if not turn_text.is_valid_int() or int(turn_text) < 1 or int(turn_text) > MAX_COUNTER:
+		return false
+	var source_id := generated_id.substr("has::".length(), turn_separator - "has::".length())
+	return not source_id.is_empty()
+
+
+func _rebuild_derived() -> void:
 	if grid_state == null:
 		rule_set = RuleSet.new()
+		metrix_shapes.clear()
 		return
-	rule_set = RuleParser.parse(grid_state.width, grid_state.height, grid_state.entities)
+	rule_set = _resolve_word_rules()
+	var subjects := _three_d_you_entities()
+	if not subjects.is_empty():
+		var selected_exists := false
+		for subject: RuleGridEntity in subjects:
+			if subject.id == selected_3d_subject_id:
+				selected_exists = true
+		if not selected_exists:
+			selected_3d_subject_id = subjects[0].id
+	else:
+		selected_3d_subject_id = ""
+	metrix_shapes.clear()
+	var geometry_signature := _metrix_geometry_signature()
+	if geometry_signature != _metrix_geometry_cache_key:
+		_cached_metrix_shapes = RuleMetrixResolver.resolve(grid_state, _has_metrix_rule())
+		_metrix_geometry_cache_key = geometry_signature
+	var raw_shapes: Array[Dictionary] = []
+	for cached_shape: Dictionary in _cached_metrix_shapes:
+		raw_shapes.append(cached_shape.duplicate(true))
+	var active_restriction := _has_metrix_property_rule(&"ACTIVE")
+	for shape: Dictionary in raw_shapes:
+		var probe := _metrix_probe(shape)
+		if not _inside_rule_matches(shape, probe):
+			continue
+		var inv_enabled := _shape_has_property(shape, probe, &"INV")
+		var active := not active_restriction or _shape_has_property(shape, probe, &"ACTIVE")
+		var owner_ids := _shape_owner_ids(shape, probe)
+		shape["inventory"] = inv_enabled and not owner_ids.is_empty() and active
+		shape["owner_ids"] = owner_ids
+		metrix_shapes.append(shape)
+	var available := _available_inventories()
+	if available.is_empty():
+		_inventory_open = false
+		_held_entity_id = ""
+		if _selected_3d_subject() != null:
+			selected_metrix_id = ""
+	else:
+		var still_valid := false
+		for shape: Dictionary in available:
+			if String(shape["id"]) == selected_metrix_id:
+				still_valid = true
+		if not still_valid:
+			selected_metrix_id = String(available[0]["id"])
 
 
-func _rule_signature() -> Array[String]:
-	var signature: Array[String] = []
+func _metrix_geometry_signature() -> String:
+	var metrix_active := _has_metrix_rule()
+	var parts: Array = [grid_state.width, grid_state.height, metrix_active]
+	if not metrix_active:
+		return JSON.stringify(parts)
+	for entity: RuleGridEntity in grid_state.entities:
+		if entity == null:
+			parts.append(null)
+			continue
+		parts.append([
+			entity.id, String(entity.kind), entity.position.x, entity.position.y, entity.is_word
+		])
+	return JSON.stringify(parts)
+
+
+func _resolve_word_rules() -> RuleSet:
+	var physical_rules := RuleParser.parse(grid_state.width, grid_state.height, grid_state.entities)
+	var disabled_word_sources: Dictionary = {}
+	var step_limit := mini(MAX_WORD_FIXED_POINT_STEPS, maxi(1, grid_state.entities.size() + 1))
+	for resolve_pass: int in range(maxi(1, grid_state.entities.size() + 1)):
+		var current_rules := physical_rules
+		var signatures: Array[String] = []
+		var promoted_by_state: Array[Dictionary] = []
+		var restart_from_physical := false
+		for step: int in range(step_limit):
+			var current_signature := _rule_resolution_signature(current_rules)
+			signatures.append(current_signature)
+			var parse_input := _word_parse_input(current_rules, disabled_word_sources)
+			promoted_by_state.append(parse_input["promoted_ids"])
+			var next_rules := RuleParser.parse(
+				grid_state.width,
+				grid_state.height,
+				parse_input["entities"]
+			)
+			var next_signature := _rule_resolution_signature(next_rules)
+			if next_signature == current_signature:
+				return next_rules
+			var repeated_at := signatures.find(next_signature)
+			if repeated_at >= 0:
+				var next_input := _word_parse_input(next_rules, disabled_word_sources)
+				var cycle_sources := _varying_word_sources(promoted_by_state, repeated_at, next_input["promoted_ids"])
+				if cycle_sources.is_empty():
+					return physical_rules
+				for source_id: String in cycle_sources.keys():
+					disabled_word_sources[source_id] = true
+				restart_from_physical = true
+				break
+			current_rules = next_rules
+		if not restart_from_physical:
+			return physical_rules
+	return physical_rules
+
+
+func _word_parse_input(rules: RuleSet, disabled_sources: Dictionary) -> Dictionary:
+	var entities: Array[RuleGridEntity] = []
+	entities.assign(grid_state.entities)
+	var promoted_ids: Dictionary = {}
+	for entity: RuleGridEntity in grid_state.entities:
+		if entity == null or entity.is_word or disabled_sources.has(entity.id) \
+			or entity.base_tags.has(&"WORD") or entity.runtime_tags.has(&"WORD") \
+			or not RuleEvaluator.has_property(entity, &"WORD", rules, grid_state):
+			continue
+		var token := RuleGridEntity.new()
+		token.id = entity.id
+		token.kind = entity.kind
+		token.position = entity.position
+		token.facing = entity.facing
+		token.layer = entity.layer
+		token.creation_serial = entity.creation_serial
+		token.is_word = true
+		token.word_role = &"noun"
+		token.word_value = entity.kind
+		entities.append(token)
+		promoted_ids[entity.id] = true
+	return {"entities": entities, "promoted_ids": promoted_ids}
+
+
+func _varying_word_sources(
+	states: Array[Dictionary],
+	start_index: int,
+	next_state: Dictionary
+) -> Dictionary:
+	var all_sources: Dictionary = {}
+	var common_sources: Dictionary = {}
+	var initialized := false
+	var state_count := states.size() + 1
+	for state_index: int in range(start_index, state_count):
+		var sources: Dictionary = next_state if state_index == states.size() else states[state_index]
+		for source_id: Variant in sources.keys():
+			all_sources[String(source_id)] = true
+		if not initialized:
+			common_sources = sources.duplicate()
+			initialized = true
+		else:
+			for source_id: Variant in common_sources.keys():
+				if not sources.has(source_id):
+					common_sources.erase(source_id)
+	var varying_sources: Dictionary = {}
+	for source_id: Variant in all_sources.keys():
+		if not common_sources.has(source_id):
+			varying_sources[String(source_id)] = true
+	return varying_sources
+
+
+func _rule_resolution_signature(rules: RuleSet) -> String:
+	var signatures: Array[String] = []
+	for sentence: RuleSentence in rules.sentences:
+		var source_ids := sentence.source_entity_ids.duplicate()
+		source_ids.sort()
+		var condition_parts: Array[String] = []
+		for condition: Dictionary in sentence.conditions:
+			condition_parts.append("%s:%s:%s" % [
+				String(condition.get("kind", "")),
+				String(condition.get("target", "")),
+				str(bool(condition.get("negated", false)))
+			])
+		signatures.append("%s|%s|%s|%s|%s|%s|%s|%s" % [
+			String(sentence.subject), str(sentence.subject_is_negated),
+			String(sentence.operator), String(sentence.predicate_role),
+			String(sentence.predicate), str(sentence.is_negated),
+			";".join(condition_parts), ";".join(source_ids)
+		])
+	signatures.sort()
+	return "\n".join(signatures)
+
+
+func _has_metrix_rule() -> bool:
 	for sentence: RuleSentence in rule_set.sentences:
-		signature.append("%s IS %s" % [String(sentence.subject), String(sentence.predicate)])
-	return signature
+		if sentence.operator == &"INSIDE_IS" and sentence.subject == &"BOX" \
+			and sentence.predicate == &"METRIX":
+			return true
+	return false
+
+
+func _has_metrix_property_rule(property: StringName) -> bool:
+	for sentence: RuleSentence in rule_set.sentences:
+		if sentence.operator == &"IS" and sentence.subject == &"METRIX" \
+			and sentence.predicate_role == &"property" and sentence.predicate == property:
+			return true
+	return false
+
+
+func _inside_rule_matches(shape: Dictionary, probe: RuleGridEntity) -> bool:
+	var positive := false
+	var negative := false
+	for sentence: RuleSentence in rule_set.sentences:
+		if sentence.operator != &"INSIDE_IS" or sentence.subject != &"BOX" or sentence.predicate != &"METRIX":
+			continue
+		if not _shape_conditions_match(shape, probe, sentence.conditions):
+			continue
+		if sentence.is_negated:
+			negative = true
+		else:
+			positive = true
+	return positive and not negative
+
+
+func _metrix_probe(shape: Dictionary) -> RuleGridEntity:
+	var probe := RuleGridEntity.new()
+	probe.id = String(shape.get("id", "metrix_probe"))
+	probe.kind = &"METRIX"
+	var bounds: Variant = shape.get("bounds")
+	if bounds is Rect2i:
+		probe.position = bounds.position + Vector2i(bounds.size.x / 2, bounds.size.y / 2)
+	return probe
+
+
+func _shape_has_property(shape: Dictionary, probe: RuleGridEntity, property: StringName) -> bool:
+	var positive := false
+	var negative := false
+	for sentence: RuleSentence in rule_set.sentences:
+		if sentence.operator != &"IS" or sentence.predicate_role != &"property" \
+			or sentence.predicate != property:
+			continue
+		var subject_matches := sentence.subject == probe.kind
+		if sentence.subject_is_negated:
+			subject_matches = not subject_matches
+		if not subject_matches or not _shape_conditions_match(shape, probe, sentence.conditions):
+			continue
+		if sentence.is_negated:
+			negative = true
+		else:
+			positive = true
+	return positive and not negative
+
+
+func _shape_owner_ids(shape: Dictionary, probe: RuleGridEntity) -> Array[String]:
+	var explicit_rule_applies := false
+	var positive_ids: Dictionary = {}
+	var negative_ids: Dictionary = {}
+	for sentence: RuleSentence in rule_set.sentences:
+		if sentence.operator != &"OWNS" or sentence.predicate != &"METRIX":
+			continue
+		var subject_matches := sentence.subject == probe.kind
+		if sentence.subject_is_negated:
+			subject_matches = not subject_matches
+		if not subject_matches or not _shape_conditions_match(shape, probe, sentence.conditions):
+			continue
+		explicit_rule_applies = true
+		for entity: RuleGridEntity in grid_state.entities:
+			if entity == null or entity.is_word:
+				continue
+			var owner_matches := entity.kind == sentence.subject
+			if sentence.subject_is_negated:
+				owner_matches = not owner_matches
+			if not owner_matches:
+				continue
+			if sentence.is_negated:
+				negative_ids[entity.id] = true
+			else:
+				positive_ids[entity.id] = true
+	var result: Array[String] = []
+	if not explicit_rule_applies:
+		return _you_ids()
+	for owner_id: Variant in positive_ids.keys():
+		if not negative_ids.has(owner_id):
+			result.append(String(owner_id))
+	result.sort()
+	return result
+
+
+func _shape_conditions_match(shape: Dictionary, probe: RuleGridEntity, conditions: Array[Dictionary]) -> bool:
+	if conditions.is_empty():
+		return true
+	var footprint: Array[Vector2i] = []
+	for key: String in ["boundary_cells", "interior_cells"]:
+		var cells: Variant = shape.get(key, [])
+		if not cells is Array:
+			continue
+		for cell: Variant in cells:
+			if cell is Vector2i and not footprint.has(cell):
+				footprint.append(cell)
+	if footprint.is_empty():
+		footprint.append(probe.position)
+	for condition: Dictionary in conditions:
+		var matched := false
+		for cell: Vector2i in footprint:
+			var cell_probe := RuleGridEntity.new()
+			cell_probe.id = probe.id
+			cell_probe.kind = probe.kind
+			cell_probe.position = cell
+			cell_probe.facing = probe.facing
+			if RuleEvaluator._conditions_match(cell_probe, [condition], grid_state):
+				matched = true
+				break
+		if not matched:
+			return false
+	return true
+
+
+func _available_inventories() -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	var selected_subject := _selected_3d_subject()
+	for shape: Dictionary in metrix_shapes:
+		if not bool(shape.get("inventory", false)):
+			continue
+		var owner_ids: Variant = shape.get("owner_ids", [])
+		if selected_subject != null and (not owner_ids is Array or not owner_ids.has(selected_subject.id)):
+			continue
+		result.append(shape)
+	result.sort_custom(func(left: Dictionary, right: Dictionary) -> bool: return String(left["id"]) < String(right["id"]))
+	return result
+
+
+func _selected_metrix() -> Dictionary:
+	for shape: Dictionary in metrix_shapes:
+		if String(shape.get("id", "")) == selected_metrix_id:
+			return shape
+	return {}
+
+
+func _shape_slots(shape: Dictionary) -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	var raw: Variant = shape.get("slots", [])
+	if not raw is Array:
+		return result
+	for value: Variant in raw:
+		if value is Dictionary:
+			result.append(value)
+	return result
+
+
+func _slot_count(shape: Dictionary) -> int:
+	return _shape_slots(shape).size()
+
+
+func _slot_entity_ids(slot: Dictionary) -> Array[String]:
+	var result: Array[String] = []
+	var value: Variant = slot.get("entity_ids", [])
+	if not value is Array:
+		return result
+	for item: Variant in value:
+		if item is String and _find_entity(item) != null:
+			result.append(item)
+	return result
+
+
+func _is_3d_mode() -> bool:
+	return _selected_3d_subject() != null
+
+
+func _selected_3d_subject() -> RuleGridEntity:
+	for entity: RuleGridEntity in _three_d_you_entities():
+		if entity.id == selected_3d_subject_id:
+			return entity
+	var subjects := _three_d_you_entities()
+	return subjects[0] if not subjects.is_empty() else null
+
+
+func _three_d_you_entities() -> Array[RuleGridEntity]:
+	var result: Array[RuleGridEntity] = []
+	for entity: RuleGridEntity in _you_entities():
+		if _has_property(entity, &"3D"):
+			result.append(entity)
+	result.sort_custom(_entity_less)
+	return result
+
+
+func _you_entities() -> Array[RuleGridEntity]:
+	var result: Array[RuleGridEntity] = []
+	if grid_state == null:
+		return result
+	for entity: RuleGridEntity in grid_state.entities:
+		if not entity.is_word and _has_property(entity, &"YOU"):
+			result.append(entity)
+	result.sort_custom(_entity_less)
+	return result
+
+
+func _you_ids() -> Array[String]:
+	var result: Array[String] = []
+	for entity: RuleGridEntity in _you_entities():
+		result.append(entity.id)
+	return result
+
+
+func _has_property(entity: RuleGridEntity, property: StringName) -> bool:
+	return RuleEvaluator.has_property(entity, property, rule_set, grid_state)
+
+
+func _entity_less(left: RuleGridEntity, right: RuleGridEntity) -> bool:
+	if left.position.x != right.position.x:
+		return left.position.x < right.position.x
+	if left.position.y != right.position.y:
+		return left.position.y < right.position.y
+	if left.layer != right.layer:
+		return left.layer < right.layer
+	if left.creation_serial != right.creation_serial:
+		return left.creation_serial < right.creation_serial
+	return left.id < right.id
+
+
+func _entities_at(cell: Vector2i) -> Array[RuleGridEntity]:
+	var result: Array[RuleGridEntity] = []
+	for entity: RuleGridEntity in grid_state.entities:
+		if entity.position == cell:
+			result.append(entity)
+	result.sort_custom(_entity_less)
+	return result
 
 
 func _find_entity(entity_id: String) -> RuleGridEntity:
@@ -581,28 +1251,150 @@ func _find_entity(entity_id: String) -> RuleGridEntity:
 
 
 func _find_entity_in(state: RuleGridState, entity_id: String) -> RuleGridEntity:
+	if state == null or entity_id.is_empty():
+		return null
 	for entity: RuleGridEntity in state.entities:
 		if entity.id == entity_id:
 			return entity
 	return null
 
 
+func _commit_completed_board() -> void:
+	var value := String(board_id)
+	if not completed_board_ids.has(value):
+		completed_board_ids.append(value)
+
+
+func _mark_completed() -> void:
+	_commit_completed_board()
+
+
+func _rule_signature() -> Array[String]:
+	var signatures: Array[String] = []
+	for sentence: RuleSentence in rule_set.sentences:
+		signatures.append(_rule_meaning_key(sentence))
+	signatures.sort()
+	return signatures
+
+
+func _rule_change_feedback_ids(
+	before_grid: Dictionary,
+	before_rules: RuleSet,
+	after_grid: RuleGridState,
+	after_rules: RuleSet
+) -> Array[String]:
+	var before_state := RuleGridState.from_dictionary(before_grid)
+	var changed_ids: Dictionary = {}
+	var before_sources := _rule_sources_by_meaning(before_rules)
+	var after_sources := _rule_sources_by_meaning(after_rules)
+	var meanings: Dictionary = {}
+	for meaning: Variant in before_sources.keys():
+		meanings[meaning] = true
+	for meaning: Variant in after_sources.keys():
+		meanings[meaning] = true
+	for meaning_value: Variant in meanings.keys():
+		var meaning := String(meaning_value)
+		var old_ids: Dictionary = before_sources.get(meaning, {})
+		var new_ids: Dictionary = after_sources.get(meaning, {})
+		if old_ids.is_empty() == new_ids.is_empty():
+			continue
+		for source_id: Variant in old_ids.keys():
+			changed_ids[String(source_id)] = true
+		for source_id: Variant in new_ids.keys():
+			changed_ids[String(source_id)] = true
+	var changed_meanings: Dictionary = {}
+	for meaning_value: Variant in meanings.keys():
+		var meaning := String(meaning_value)
+		if before_sources.has(meaning) != after_sources.has(meaning):
+			changed_meanings[meaning] = true
+	var changed_properties: Dictionary = {}
+	for sentence: RuleSentence in before_rules.sentences:
+		if changed_meanings.has(_rule_meaning_key(sentence)) \
+			and sentence.predicate_role == &"property":
+			changed_properties[sentence.predicate] = true
+	for sentence: RuleSentence in after_rules.sentences:
+		if changed_meanings.has(_rule_meaning_key(sentence)) \
+			and sentence.predicate_role == &"property":
+			changed_properties[sentence.predicate] = true
+	var changed_property_names: Array[StringName] = []
+	for property_value: Variant in changed_properties.keys():
+		changed_property_names.append(StringName(property_value))
+	var before_by_id: Dictionary = {}
+	for entity: RuleGridEntity in before_state.entities:
+		if entity != null and not entity.is_word:
+			before_by_id[entity.id] = entity
+	var after_by_id: Dictionary = {}
+	for entity: RuleGridEntity in after_grid.entities:
+		if entity != null and not entity.is_word:
+			after_by_id[entity.id] = entity
+	for entity_id_value: Variant in after_by_id.keys():
+		var entity_id := String(entity_id_value)
+		var after_entity: RuleGridEntity = after_by_id[entity_id]
+		if not before_by_id.has(entity_id):
+			changed_ids[entity_id] = true
+			continue
+		var before_entity: RuleGridEntity = before_by_id[entity_id]
+		if before_entity.kind != after_entity.kind:
+			changed_ids[entity_id] = true
+			continue
+		if not changed_property_names.is_empty() \
+			and _entity_property_signature(before_entity, before_rules, before_state, changed_property_names) \
+			!= _entity_property_signature(after_entity, after_rules, after_grid, changed_property_names):
+			changed_ids[entity_id] = true
+	var result: Array[String] = []
+	for entity_id: Variant in changed_ids.keys():
+		if _find_entity(String(entity_id)) != null:
+			result.append(String(entity_id))
+	result.sort()
+	return result
+
+
+func _rule_sources_by_meaning(rules: RuleSet) -> Dictionary:
+	var result: Dictionary = {}
+	if rules == null:
+		return result
+	for sentence: RuleSentence in rules.sentences:
+		var meaning := _rule_meaning_key(sentence)
+		var sources: Dictionary = result.get(meaning, {})
+		for source_id: String in sentence.source_entity_ids:
+			sources[source_id] = true
+		result[meaning] = sources
+	return result
+
+
+func _rule_meaning_key(sentence: RuleSentence) -> String:
+	return JSON.stringify([
+		String(sentence.subject), sentence.subject_is_negated,
+		String(sentence.operator), String(sentence.predicate_role),
+		String(sentence.predicate), sentence.is_negated, sentence.conditions
+	])
+
+
+func _entity_property_signature(
+	entity: RuleGridEntity,
+	rules: RuleSet,
+	state: RuleGridState,
+	properties: Array[StringName]
+) -> Array[String]:
+	var result: Array[String] = []
+	for property: StringName in properties:
+		if RuleEvaluator.has_property(entity, property, rules, state):
+			result.append(String(property))
+	return result
+
+
 func _read_direction(payload: Dictionary) -> Vector2i:
-	var value: Variant = payload.get("direction")
-	if value is Vector2i:
-		if absi(value.x) + absi(value.y) == 1:
-			return value
-		return Vector2i.ZERO
-	var step: Variant = payload.get("step")
-	if step == -1:
-		return Vector2i.LEFT
-	if step == 1:
-		return Vector2i.RIGHT
-	return Vector2i.ZERO
+	var direction: Variant = payload.get("direction")
+	if direction is Vector2i and absi(direction.x) + absi(direction.y) == 1:
+		return direction
+	match payload.get("step"):
+		-1: return Vector2i.LEFT
+		1: return Vector2i.RIGHT
+		_: return Vector2i.ZERO
 
 
-func _focus_step(direction: Vector2i) -> int:
-	return -1 if direction.x < 0 or direction.y < 0 else 1
+func _inside_board(cell: Vector2i) -> bool:
+	return grid_state != null and cell.x >= 0 and cell.y >= 0 and cell.x < grid_state.width and cell.y < grid_state.height
 
 
 func _integer(value: Variant, fallback: int, minimum: int, maximum: int) -> int:
@@ -615,72 +1407,31 @@ func _can_input() -> bool:
 	return context != null and context.input_enabled and not _request_sent
 
 
+func _request_exit(exit_id: String) -> void:
+	_request_sent = true
+	requested.emit(&"portal", {"exit": exit_id})
+
+
 func _refresh() -> void:
-	if _status == null:
+	if _view == null:
 		return
-	_mode_label.text = MODE_NAMES[mode]
-	for index: int in range(CLUE_NAMES.size()):
-		_clue_cards[index].color = Color("725b4a") if mode == 0 and index == focus else Color("31515a")
-		_clue_marks[index].text = "기록 완료" if observed[index] else "미확인"
-		_clue_marks[index].add_theme_color_override("font_color", Color("f2d28b") if observed[index] else Color("a8c4b8"))
-	var shown_count: int = mini(rule_set.sentences.size(), _rule_labels.size())
-	for index: int in range(_rule_labels.size()):
-		var visible_rule: bool = index < shown_count
-		_rule_rows[index].visible = visible_rule
-		_rule_labels[index].visible = visible_rule
-		if not visible_rule:
-			continue
-		var sentence: RuleSentence = rule_set.sentences[index]
-		_rule_labels[index].text = "%s IS %s" % [String(sentence.subject), String(sentence.predicate)]
-		_rule_rows[index].color = Color("4b4260")
-	_world_label.text = _board_text() if mode > 0 else "세 표찰을 읽으면 문장이 놓인 격자를 살펴볼 수 있다."
-	if not _message.is_empty():
-		_status.text = _message
-	elif mode == 1:
-		_status.text = "문장 %d개 · 이동 %d회 · 되돌리기 %d회" % [rule_set.sentences.size(), board_turns, _undo_stack.size()]
-	elif mode == 2:
-		_status.text = "격자가 해결됐다. 확인을 눌러 앞으로 가거나 X로 마지막 움직임을 되돌린다."
-	elif mode == 3:
-		_status.text = FAILED_TEXT
-	else:
-		_status.text = "표찰 %d/3 · 아래 기록판에서 현재 성립한 문장을 확인하세요." % observed.count(true)
-
-
-func _board_text() -> String:
-	var cells: Dictionary = {}
-	for entity: RuleGridEntity in grid_state.entities:
-		var key: Vector2i = entity.position
-		var priority: int = 3 if entity.is_word else (2 if rule_set.has_property(entity.kind, &"YOU") else 1)
-		var current: Dictionary = cells.get(key, {})
-		if current.is_empty() or priority > int(current["priority"]):
-			cells[key] = {"priority": priority, "text": _cell_text(entity)}
-	var lines := PackedStringArray()
-	for y: int in range(grid_state.height):
-		var row := PackedStringArray()
-		for x: int in range(grid_state.width):
-			var value: Dictionary = cells.get(Vector2i(x, y), {})
-			row.append(String(value.get("text", " · ")))
-		lines.append(" ".join(row))
-	return "격자: %s\n%s" % [String(active_level_id), "\n".join(lines)]
-
-
-func _cell_text(entity: RuleGridEntity) -> String:
-	if entity.is_word:
-		return String(entity.word_value).left(3).rpad(3)
-	if rule_set.has_property(entity.kind, &"YOU"):
-		return " @ "
-	if entity.kind == &"WALL":
-		return "###"
-	return (" " + String(entity.kind).left(1) + " ")
-
-
-func _label(words: String, at: Vector2, font_size: int, tint: Color) -> Label:
-	var label := Label.new()
-	label.text = words
-	label.position = at
-	label.size = Vector2(1000, 60)
-	label.add_theme_font_size_override("font_size", font_size)
-	label.add_theme_color_override("font_color", tint)
-	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(label)
-	return label
+	_view.show_state(
+		grid_state,
+		rule_set,
+		metrix_shapes,
+		selected_metrix_id,
+		selected_3d_subject_id,
+		_is_3d_mode(),
+		_inventory_open,
+		_focused_slot,
+		_held_entity_id,
+		hotbar_slot,
+		_camera_quadrant,
+		failed,
+		solved,
+		_message,
+		context == null or context.input_enabled
+	)
+	if not _pending_rule_feedback_ids.is_empty():
+		_view.show_rule_change_feedback(_pending_rule_feedback_ids)
+		_pending_rule_feedback_ids.clear()

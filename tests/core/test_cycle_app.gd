@@ -327,7 +327,7 @@ func test_checkpoint_language_and_overlays() -> void:
 	assert_eq(app.save_progress("user://save.json"), ERR_INVALID_PARAMETER)
 
 
-func test_shared_navigation_hud_and_pause_hotkey_follow_intro() -> void:
+func test_shell_navigation_and_context_hud_stay_hidden_in_play() -> void:
 	app.dev_shell = false
 	app.profile = {"intro_seen": false, "shape": 0, "color": 0, "started": false}
 	assert_eq(await app._change_module(&"first_entry"), OK)
@@ -343,13 +343,21 @@ func test_shared_navigation_hud_and_pause_hotkey_follow_intro() -> void:
 	app.profile["started"] = true
 	assert_eq(await app._change_module(&"signal_desk"), OK)
 	await _settle()
-	assert_true(app._shared_bar.visible)
-	assert_true(app._context_hud.visible)
-	assert_eq(app._context_title.text, "기호 배달국")
+	assert_false(app.get_node("UIHost/UI/Shell").visible)
+	assert_false(app._shared_bar.visible)
+	assert_false(app._context_hud.visible)
 	app._input(pause_event)
-	assert_true(app.paused, "P pauses outside the development shell")
-	app._input(pause_event)
-	assert_false(app.paused, "P resumes outside the development shell")
+	assert_false(app.paused, "P leaves the game running")
+	var escape_event := InputEventKey.new()
+	escape_event.keycode = KEY_ESCAPE
+	escape_event.physical_keycode = KEY_ESCAPE
+	escape_event.pressed = true
+	app._input(escape_event)
+	assert_true(app.paused, "Escape opens the shared menu")
+	assert_true(app._menu.visible, "The menu appears only after Escape")
+	app._input(escape_event)
+	assert_false(app.paused, "Escape closes the shared menu")
+	assert_false(app._menu.visible)
 
 
 func test_settings_library_browses_all_games_and_returns_or_switches() -> void:

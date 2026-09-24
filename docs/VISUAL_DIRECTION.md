@@ -4,6 +4,8 @@
 
 화면은 기능 데모가 아니라 **Primary Reference를 실제로 플레이 가능한 수준으로 재현한 Reference Game**이어야 한다.
 
+사용자가 제공한 두 이미지는 게임 전체의 아트 스타일 참고다. [A·B 이미지와 적용 범위](research/visual_reference/STYLE_AND_CAMERA_REFERENCE.md)를 공통 세계 아트의 붓질·질감·실루엣 비교에 사용한다. 이 자료는 Kit별 Primary Reference의 화면·조작 기준과 구분하며, 월드 자산은 `at-icons` 조각의 변형·조합으로 제작한다.
+
 완료로 인정하지 않는다:
 - 네모 몇 개와 Label로 장소를 대신
 - 버튼 목록으로 플레이를 대신
@@ -15,6 +17,8 @@
 ## 2. Primary Reference는 하나
 
 각 Kit는 실제 게임 하나를 Primary Reference로 둔다.
+
+보고서의 사례를 인용하면 [UI_REFERENCE_SOURCES.md](UI_REFERENCE_SOURCES.md)의 원 URL을 그대로 기록하고, 실제 비교한 화면/캡처는 구분한다. Primary Reference와 Secondary Reference의 선택 규칙은 [UI_REFERENCE_ADAPTATIONS.md](UI_REFERENCE_ADAPTATIONS.md)를 따른다.
 
 구현 전:
 1. 실제 플레이 화면을 본다.

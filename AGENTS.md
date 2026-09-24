@@ -18,7 +18,8 @@
 5. `docs/KIT_WORKFLOW.md`
 6. `docs/VISUAL_DIRECTION.md`
 7. `docs/UI_WORKFLOW.md`
-8. 해당 `plans/kits/*.md`
+8. `docs/UI_REFERENCE_SOURCES.md`와 `docs/UI_REFERENCE_ADAPTATIONS.md`
+9. 해당 `plans/kits/*.md`
 
 ### Grilling bootstrap
 
@@ -186,6 +187,8 @@ Shell은 호출 전까지 시각적 존재감 0. Esc 메뉴는 Esc를 누를 때
 - AI 생성 UI를 자동 테스트 + 실제 실행으로 검증
 
 그러나 보고서의 예시 컴포넌트/서비스/게임 사례 목록을 자동 구현 목록으로 승격하지 않는다. Kit의 Primary Reference가 구체 화면 문법의 우선권을 가진다.
+
+보고서에 직접 적힌 URL을 인용할 때는 `docs/UI_REFERENCE_SOURCES.md`의 문자열을 그대로 보존한다. 실제 비교한 화면 URL/캡처는 별도로 기록한다.
 
 ## 해상도
 

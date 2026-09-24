@@ -2,6 +2,8 @@
 
 이 문서는 사용자가 제공한 「고도엔진 기반 바이브코딩 게임 UI 심층 연구 보고서」를 TINProject에 적용하는 실행 규칙이다.
 
+보고서에 직접 적힌 웹 URL의 정본은 [UI_REFERENCE_SOURCES.md](UI_REFERENCE_SOURCES.md)다. 보고서 URL은 그대로 보존하고 실제 확인한 화면 URL과 캡처는 별도로 기록한다. [UI_REFERENCE_ADAPTATIONS.md](UI_REFERENCE_ADAPTATIONS.md)는 사례를 Kit에 적용하는 경계를 정한다.
+
 구체 장르 화면의 최우선 기준은 각 Kit의 **Primary Reference 하나**다. 이 문서는 그 레퍼런스를 제대로 구현하고 검수하기 위한 공통 UI 계약을 제공한다.
 
 ## 1. 기본 원칙
@@ -50,6 +52,7 @@ Shell은 호출 전까지 보이지 않는다.
 | 항목 | 내용 |
 |---|---|
 | Reference state | 실제 원작의 어떤 화면/상태인지 |
+| Source evidence | 보고서 URL을 사용한다면 정본 URL과 실제 확인한 화면 URL/캡처를 각각 기록 |
 | Focal point | 처음 눈에 들어오는 것 |
 | World/UI ratio | 플레이 공간과 UI의 비율 |
 | Persistent info | 항상 보이는 것 |

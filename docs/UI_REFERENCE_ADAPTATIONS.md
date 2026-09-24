@@ -2,6 +2,8 @@
 
 이 문서는 사용자가 제공한 UI 연구 보고서의 사례를 TINProject에서 **어떻게 오용하지 않을지** 정한다.
 
+보고서에 직접 적힌 웹 URL은 [UI_REFERENCE_SOURCES.md](UI_REFERENCE_SOURCES.md)에 보존한다. URL의 존재만으로 실제 게임 화면을 확인했다고 기록하지 않는다.
+
 ## 1. Primary Reference가 우선
 
 각 Kit에는 Primary Reference 하나만 둔다.

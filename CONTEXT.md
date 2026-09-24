@@ -23,8 +23,14 @@ Kit 하나에 지정하는 **단 하나의 기준 게임**. 인기 itch.io 게�
 ## GameModule
 AppRoot의 ModuleHost에 들어가는 **런타임 교체 단위**. Kit나 완성 게임과 같은 말이 아니다. 하나의 Kit가 여러 GameModule을 사용할 수도 있고, 하나의 GameModule이 한 Kit의 Reference Game을 담을 수도 있다.
 
+## 뭉탱이
+TINProject 본편에서 여러 Kit의 장르 구간이 하나의 구간 묶음을 이루는 단위. 뭉탱이마다 그 안에서 공통으로 유지할 물건·신체 상태 등의 범위가 다를 수 있다.
+
 ## Authored Content
 Kit의 시스템 위에 추가되는 레벨, 사건, 맵, 적, 퍼즐, 대화, 아이템, NPC, 배치 데이터 등. 새 Authored Content를 추가할 때 핵심 시스템 로직을 수정하지 않는 것이 Kit 완성의 핵심 증거다.
+
+## METRIX
+Rule Rewrite Kit에서 BOX INSIDE IS METRIX 규칙으로 닫힌 BOX 테두리가 성립할 때 나타나는 복합 오브젝트. 유효한 테두리마다 별도로 존재하며, 인벤토리 여부는 추가 규칙으로 정한다.
 
 ## Input Bubble
 새 장르 구간으로 넘어갈 때 키바인드를 글로 설명하지 않고 학습시키는 **뽁뽁이 형태의 입력 전환 연출**.

@@ -255,9 +255,6 @@ func _input(event: InputEvent) -> void:
 				return
 			get_viewport().set_input_as_handled()
 			toggle_journal()
-		elif not editing_text and _shared_bar != null and _shared_bar.visible and (event.keycode == KEY_P or event.is_action_pressed(&"meta_pause", false)):
-			get_viewport().set_input_as_handled()
-			_toggle_pause()
 
 
 func _configure_module_actions() -> void:
@@ -272,12 +269,31 @@ func _configure_module_actions() -> void:
 		&"odd_road_adventure_notes": [KEY_N],
 	}
 	for id: StringName in NORMAL_IDS:
+		if id == &"rule_rewriting":
+			continue
 		bindings[StringName("%s_left" % id)] = [KEY_LEFT]
 		bindings[StringName("%s_right" % id)] = [KEY_RIGHT]
 		bindings[StringName("%s_up" % id)] = [KEY_UP]
 		bindings[StringName("%s_down" % id)] = [KEY_DOWN]
 		bindings[StringName("%s_confirm" % id)] = [KEY_Z]
 		bindings[StringName("%s_cancel" % id)] = [KEY_X]
+	bindings[&"rule_rewriting_left"] = [KEY_LEFT]
+	bindings[&"rule_rewriting_right"] = [KEY_RIGHT]
+	bindings[&"rule_rewriting_up"] = [KEY_UP]
+	bindings[&"rule_rewriting_down"] = [KEY_DOWN]
+	bindings[&"rule_rewriting_confirm"] = [KEY_ENTER]
+	bindings[&"rule_rewriting_cancel"] = [KEY_BACKSPACE]
+	bindings[&"rule_rewriting_forward"] = [KEY_W]
+	bindings[&"rule_rewriting_turn_left"] = [KEY_A]
+	bindings[&"rule_rewriting_turn_right"] = [KEY_D]
+	bindings[&"rule_rewriting_cycle_3d_subject"] = [KEY_S]
+	bindings[&"rule_rewriting_open_inventory"] = [KEY_E]
+	bindings[&"rule_rewriting_cycle_metrix"] = [KEY_TAB]
+	bindings[&"rule_rewriting_undo"] = [KEY_Z]
+	bindings[&"rule_rewriting_reset"] = [KEY_R]
+	var hotbar_keys: Array[int] = [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9]
+	for slot: int in range(hotbar_keys.size()):
+		bindings[StringName("rule_rewriting_hotbar_%d" % (slot + 1))] = [hotbar_keys[slot]]
 	for action: StringName in bindings:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -286,6 +302,12 @@ func _configure_module_actions() -> void:
 			key.physical_keycode = code
 			if not InputMap.action_has_event(action, key):
 				InputMap.action_add_event(action, key)
+	if not InputMap.has_action(&"rule_rewriting_place"):
+		InputMap.add_action(&"rule_rewriting_place")
+	var place_mouse := InputEventMouseButton.new()
+	place_mouse.button_index = MOUSE_BUTTON_RIGHT
+	if not InputMap.action_has_event(&"rule_rewriting_place", place_mouse):
+		InputMap.action_add_event(&"rule_rewriting_place", place_mouse)
 
 
 func _can_operate() -> bool:
@@ -882,7 +904,7 @@ func _update_shared_text() -> void:
 		return
 	var korean: bool = language == "ko"
 	_menu_title.text = "메뉴" if korean else "Menu"
-	_menu_hint.text = "Esc 또는 P · 계속하기   J · 기록 열기" if korean else "Esc or P · resume   J · open journal"
+	_menu_hint.text = "Esc · 계속하기   J · 기록 열기" if korean else "Esc · resume   J · open journal"
 	_menu_button.text = "메뉴 (Esc)" if korean else "Menu (Esc)"
 	_journal_button.text = "기록 (J)" if korean else "Journal (J)"
 	_resume_button.text = "계속" if korean else "Resume"
@@ -989,9 +1011,8 @@ func _sync_shared_ui_visibility() -> void:
 	if _shared_bar == null:
 		return
 	$UIHost/UI/Shell.visible = dev_shell and director.current_id != &"game_library"
-	var show_navigation: bool = director.current_id != &"game_library" and (dev_shell or (bool(profile.get("started", false)) and director.current_id != &"first_entry"))
-	_shared_bar.visible = show_navigation
-	_context_hud.visible = show_navigation
+	_shared_bar.visible = false
+	_context_hud.visible = false
 
 
 func _update_context_hud(id: StringName) -> void:

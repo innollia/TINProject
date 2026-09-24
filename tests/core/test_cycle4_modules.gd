@@ -1,6 +1,11 @@
 extends GutTest
 
 const SUFFIXES: Array[String] = ["left", "right", "up", "down", "confirm", "cancel"]
+const RULE_SUFFIXES: Array[String] = [
+	"left", "right", "up", "down", "confirm", "cancel", "undo", "reset", "forward",
+	"turn_left", "turn_right", "cycle_3d_subject", "open_inventory", "cycle_metrix", "place",
+	"hotbar_1", "hotbar_2", "hotbar_3", "hotbar_4", "hotbar_5", "hotbar_6", "hotbar_7", "hotbar_8", "hotbar_9"
+]
 
 var _owned_actions: Array[StringName] = []
 var _requests: Array[Dictionary] = []
@@ -24,7 +29,7 @@ func _spawn() -> GameModule:
 	var injected := ModuleContext.new()
 	injected.module_id = &"rule_rewriting"
 	injected.input_enabled = true
-	for suffix: String in SUFFIXES:
+	for suffix: String in RULE_SUFFIXES:
 		var action := StringName("rule_rewriting_%s" % suffix)
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
@@ -37,239 +42,109 @@ func _spawn() -> GameModule:
 	game.requested.connect(func(kind: StringName, payload: Dictionary) -> void: _requests.append({"kind": kind, "payload": payload.duplicate(true)}))
 	return game
 
-func _observe_all(game: GameModule) -> void:
-	assert_true(game.execute_command(&"move", {"step": -1}))
-	assert_true(game.execute_command(&"confirm"))
-	assert_true(game.execute_command(&"move", {"step": -1}))
-	assert_true(game.execute_command(&"confirm"))
-	assert_true(game.execute_command(&"move", {"step": -1}))
-	assert_true(game.execute_command(&"confirm"))
-	assert_true(game.execute_command(&"confirm"))
-
-func _load_crossing(game: GameModule) -> Dictionary:
-	var level := RuleLevelLoader.load_level(&"crossing_02")
-	assert_true(level["ok"])
-	var state: Dictionary = game.save_state()
-	state["active_level_id"] = "crossing_02"
-	state["grid"] = (level["state"] as RuleGridState).to_dictionary()
-	state["mode"] = 1
-	state["observed"] = [true, true, true]
-	state["solved"] = false
-	state["failed"] = false
-	state["undo_stack"] = []
-	game.load_state(state)
-	return game.save_state()
-
-func _move_saved_entity(grid: Dictionary, entity_id: String, cell: Vector2i) -> void:
-	for entity: Dictionary in grid["entities"]:
-		if entity["id"] == entity_id:
-			entity["x"] = cell.x
-			entity["y"] = cell.y
-			return
-
-func _face_saved_entity(grid: Dictionary, entity_id: String, direction: Vector2i) -> void:
-	for entity: Dictionary in grid["entities"]:
-		if entity["id"] == entity_id:
-			entity["facing_x"] = direction.x
-			entity["facing_y"] = direction.y
-			return
-
-func _entity_value(grid: Dictionary, entity_id: String, key: String) -> Variant:
-	for entity: Dictionary in grid["entities"]:
-		if entity["id"] == entity_id:
-			return entity.get(key)
-	return null
-
-func _canonicalize_json_numbers(value: Variant) -> Variant:
-	if value is Dictionary:
-		var result: Dictionary = {}
-		for key: Variant in value:
-			result[key] = _canonicalize_json_numbers(value[key])
-		return result
-	if value is Array:
-		var result: Array = []
-		for item: Variant in value:
-			result.append(_canonicalize_json_numbers(item))
-		return result
-	if value is float and is_finite(value) and float(value) == floorf(float(value)):
-		return int(value)
-	return value
-
 func test_rule_rewriting_manifest_state_and_migration() -> void:
 	var manifest := load("res://modules/rule_rewriting/module_manifest.tres") as ModuleManifest
 	assert_eq(manifest.id, &"rule_rewriting")
-	assert_eq(manifest.save_version, 4)
-	assert_eq(manifest.input_actions.size(), 6)
+	assert_eq(manifest.save_version, 5)
+	assert_eq(manifest.input_actions.size(), RULE_SUFFIXES.size())
 	var game := _spawn()
 	var defaults: Dictionary = game.save_state()
 	assert_true(SaveService.is_json_safe(defaults))
-	assert_eq(defaults["state_format"], 4)
-	assert_eq(defaults["active_level_id"], "signal_room_01")
-	assert_eq(game.migrate_save(4, defaults), defaults)
-	assert_eq(game.migrate_save(3, defaults), game.migrate_save(0, {}))
-	assert_eq(game.migrate_save(2, {"mode": 3, "solved": true, "player_position": 6}), defaults)
+	assert_eq(defaults["state_format"], 5)
+	assert_eq(defaults["board_id"], String(RuleLevelLoader.list_level_ids()[0]))
+	assert_false(defaults.has("observed"))
+	assert_false(defaults.has("mode"))
+	assert_eq(game.migrate_save(5, defaults), defaults)
+	assert_eq(game.migrate_save(4, defaults), game.migrate_save(0, {}))
+	assert_eq(game.migrate_save(3, {"mode": 3, "solved": true, "player_position": 6}), defaults)
 	game.load_state(JSON.parse_string(JSON.stringify(defaults)))
 	assert_eq(game.save_state(), defaults)
-	game.load_state({"state_format": 4, "mode": INF, "observed": [true, 1], "solved": "yes"})
+	game.load_state({"state_format": 5, "board_id": "bogus", "turn_index": INF, "solved": "yes"})
 	assert_eq(game.save_state(), defaults)
-	game.load_state({"state_format": 3, "mode": 3, "solved": true})
+	game.load_state({"state_format": 4, "mode": 3, "solved": true})
 	assert_eq(game.save_state(), defaults)
 
-func test_rule_rewriting_observes_grid_rules_and_opens_forward_on_win() -> void:
-	var game := _spawn()
-	_observe_all(game)
-	assert_eq(game.save_state()["observed"], [true, true, true])
-	assert_eq(_requests.size(), 3)
-	assert_eq(game.save_state()["mode"], 1)
-	var rules: RuleSet = game.get("rule_set")
-	assert_true(rules.has_property(&"BABA", &"YOU"))
-	assert_true(rules.has_property(&"ROCK", &"PUSH"))
-	assert_true(rules.has_property(&"WALL", &"STOP"))
-	assert_true(rules.has_property(&"FLAG", &"WIN"))
-	for _step: int in range(6):
-		assert_true(game.execute_command(&"move", {"direction": Vector2i.RIGHT}))
-	assert_true(game.execute_command(&"move", {"direction": Vector2i.UP}))
-	assert_true(game.execute_command(&"move", {"direction": Vector2i.RIGHT}))
-	assert_true(game.save_state()["solved"])
-	assert_eq(game.save_state()["mode"], 2)
-	assert_true(game.execute_command(&"confirm"))
-	assert_true(String(_requests[-2]["payload"]["text"]).contains("깃발의 WIN"))
-	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "forward"}})
+func _first_you(game: GameModule) -> RuleGridEntity:
+	var state := game.get("grid_state") as RuleGridState
+	var rules := game.get("rule_set") as RuleSet
+	for entity: RuleGridEntity in state.entities:
+		if not entity.is_word and rules.has_property(entity.kind, &"YOU"):
+			return entity
+	return null
 
-func test_rule_rewriting_word_moves_reparse_rules_and_undo_restores_control() -> void:
+func _rule_grid_positions(state: RuleGridState) -> Dictionary:
+	var result: Dictionary = {}
+	for entity: RuleGridEntity in state.entities:
+		result[entity.id] = entity.position
+	return result
+
+func test_rule_rewriting_starts_on_first_authored_board_and_moves_without_a_gate() -> void:
 	var game := _spawn()
-	_observe_all(game)
-	var initial: Dictionary = game.save_state()
-	var grid: Dictionary = initial["grid"]
-	_move_saved_entity(grid, "baba", Vector2i(6, 5))
-	initial["grid"] = grid
-	game.load_state(initial)
-	assert_true(game.execute_command(&"move", {"direction": Vector2i.UP}))
-	grid = game.save_state()["grid"]
-	assert_eq(_position_of(grid, "baba"), Vector2i(6, 4))
-	assert_eq(_position_of(grid, "word_flag"), Vector2i(6, 3))
-	assert_eq(_position_of(grid, "word_baba"), Vector2i(1, 1))
-	var rules: RuleSet = game.get("rule_set")
-	assert_false(rules.has_property(&"FLAG", &"WIN"))
-	assert_false(game.save_state()["failed"])
-	assert_eq(game.save_state()["mode"], 1)
+	var before: Dictionary = game.save_state()
+	assert_eq(before["board_id"], String(RuleLevelLoader.list_level_ids()[0]))
+	var you := _first_you(game)
+	assert_not_null(you)
+	var initial_position := you.position
+	var moved := false
+	for direction: Vector2i in [Vector2i.RIGHT, Vector2i.LEFT, Vector2i.UP, Vector2i.DOWN]:
+		game.execute_command(&"move", {"direction": direction})
+		you = game.call("_find_entity", you.id) as RuleGridEntity
+		if you.position != initial_position:
+			moved = true
+			break
+	assert_true(moved, "the first authored board should accept a direct YOU move")
+	assert_gt(game.save_state()["turn_index"], 0)
+
+func test_rule_rewriting_undo_and_save_roundtrip_keep_the_physical_board() -> void:
+	var game := _spawn()
+	var you := _first_you(game)
+	assert_not_null(you)
+	var you_id := you.id
+	var initial_position := you.position
+	for direction: Vector2i in [Vector2i.RIGHT, Vector2i.LEFT, Vector2i.UP, Vector2i.DOWN]:
+		game.execute_command(&"move", {"direction": direction})
+		you = game.call("_find_entity", you_id) as RuleGridEntity
+		if you != null and you.position != initial_position:
+			break
+	assert_not_null(you)
+	assert_ne(you.position, initial_position)
 	var snapshot: Dictionary = JSON.parse_string(JSON.stringify(game.save_state()))
-	assert_true(game.execute_command(&"undo"))
-	rules = game.get("rule_set")
-	assert_true(rules.has_property(&"FLAG", &"WIN"))
-	assert_eq(game.save_state()["board_turns"], 0)
+	assert_true(SaveService.is_json_safe(snapshot))
 	game.load_state(snapshot)
-	rules = game.get("rule_set")
-	assert_false(rules.has_property(&"FLAG", &"WIN"))
+	var restored_state := RuleGridState.from_dictionary(game.save_state()["grid"])
+	assert_eq(_rule_grid_positions(restored_state), _rule_grid_positions(RuleGridState.from_dictionary(snapshot["grid"])))
+	assert_eq(int(game.save_state()["turn_index"]), int(snapshot["turn_index"]))
+	assert_eq((game.get("_undo_stack") as Array).size(), (snapshot["undo_stack"] as Array).size())
 	assert_true(game.execute_command(&"undo"))
-	rules = game.get("rule_set")
-	assert_true(rules.has_property(&"FLAG", &"WIN"))
+	assert_eq(game.save_state()["turn_index"], 0)
+	var restored := RuleGridState.from_dictionary(game.save_state()["grid"])
+	var restored_you: RuleGridEntity = null
+	for entity: RuleGridEntity in restored.entities:
+		if entity.id == you_id:
+			restored_you = entity
+			break
+	assert_not_null(restored_you)
+	assert_eq(restored_you.position, initial_position)
 
-func _position_of(grid: Dictionary, entity_id: String) -> Vector2i:
-	for entity: Dictionary in grid["entities"]:
-		if entity["id"] == entity_id:
-			return Vector2i(int(entity["x"]), int(entity["y"]))
-	return Vector2i(-1, -1)
-
-func test_rule_rewriting_save_roundtrip_keeps_grid_and_undo() -> void:
+func test_rule_rewriting_restart_exit_and_disabled_input() -> void:
 	var game := _spawn()
-	_observe_all(game)
-	assert_true(game.execute_command(&"move", {"direction": Vector2i.RIGHT}))
-	assert_true(game.execute_command(&"move", {"direction": Vector2i.RIGHT}))
-	var mid_board: Dictionary = JSON.parse_string(JSON.stringify(game.save_state()))
-	assert_true(game.execute_command(&"undo"))
-	assert_eq(_position_of(game.save_state()["grid"], "baba"), Vector2i(2, 6))
-	game.load_state(mid_board)
-	assert_eq(_position_of(game.save_state()["grid"], "baba"), Vector2i(3, 6))
-	assert_eq(game.save_state()["undo_stack"].size(), 2)
-	var restored: Dictionary = _canonicalize_json_numbers(game.save_state())
-	var expected: Dictionary = _canonicalize_json_numbers(mid_board)
-	assert_eq(restored, expected)
-	var damaged_history: Dictionary = mid_board.duplicate(true)
-	damaged_history["undo_stack"][0]["grid"]["entities"][0]["kind"] = "UNAUTHORED"
-	game.load_state(damaged_history)
-	assert_eq(_position_of(game.save_state()["grid"], "baba"), Vector2i(3, 6))
-	assert_eq(game.save_state()["undo_stack"].size(), 1)
-	assert_true(game.execute_command(&"undo"))
-	assert_eq(_position_of(game.save_state()["grid"], "baba"), Vector2i(2, 6))
-	var damaged_grid: Dictionary = mid_board.duplicate(true)
-	damaged_grid["active_level_id"] = "unknown_level"
-	game.load_state(damaged_grid)
-	assert_eq(game.save_state()["active_level_id"], "signal_room_01")
-	assert_eq(game.save_state()["grid"], game.migrate_save(0, {})["grid"])
-
-func test_rule_rewriting_back_and_disabled_input() -> void:
-	var game := _spawn()
-	assert_true(game.execute_command(&"back"))
+	var defaults: Dictionary = game.save_state()
+	game.execute_command(&"move", {"direction": Vector2i.RIGHT})
+	assert_true(game.execute_command(&"reset"))
+	assert_eq(game.save_state()["grid"], defaults["grid"])
+	assert_true(game.execute_command(&"cancel"))
 	assert_eq(_requests.back(), {"kind": &"portal", "payload": {"exit": "back"}})
-	game.load_state({})
+	game.load_state(defaults)
 	var before: Dictionary = game.save_state()
 	game.context.input_enabled = false
 	assert_false(game.execute_command(&"move", {"step": 1}))
 	assert_false(game.execute_command(&"confirm"))
 	assert_eq(game.save_state(), before)
 
-func test_rule_rewriting_crossing_transforms_moves_and_roundtrips_dynamic_state() -> void:
+func test_rule_rewriting_real_input_selects_a_hotbar_slot() -> void:
 	var game := _spawn()
-	var state := _load_crossing(game)
-	var grid: Dictionary = state["grid"]
-	_move_saved_entity(grid, "baba", Vector2i(3, 5))
-	_face_saved_entity(grid, "wall", Vector2i.UP)
-	_face_saved_entity(grid, "rock", Vector2i.DOWN)
-	state["grid"] = grid
-	game.load_state(state)
-	var rules: RuleSet = game.get("rule_set")
-	assert_eq(rules.transforms_for(&"LAMP"), [&"ROCK"])
-	assert_true(rules.has_property(&"LAMP", &"PUSH"))
-	assert_true(rules.has_property(&"ROCK", &"MOVE"))
-	assert_true(rules.has_property(&"FLAG", &"WIN"))
-	assert_true(rules.has_property(&"FLAG", &"DEFEAT"))
-
-	assert_true(game.execute_command(&"move", {"direction": Vector2i.RIGHT}))
-	var transformed: Dictionary = game.save_state()
-	grid = transformed["grid"]
-	assert_eq(_entity_value(grid, "wall", "kind"), "ROCK")
-	assert_eq(_position_of(grid, "wall"), Vector2i(6, 5))
-	assert_eq(_position_of(grid, "rock"), Vector2i(7, 5))
-	assert_eq(_position_of(grid, "baba"), Vector2i(4, 5))
-	assert_eq(_entity_value(grid, "wall", "facing_x"), 1)
-	assert_eq(_entity_value(grid, "wall", "facing_y"), 0)
-	assert_eq(_entity_value(grid, "rock", "facing_x"), 1)
-	assert_eq(_position_of(grid, "word_lamp"), Vector2i(1, 4))
-	assert_true(SaveService.is_json_safe(transformed))
-
-	var roundtrip: Dictionary = JSON.parse_string(JSON.stringify(transformed))
-	game.load_state(roundtrip)
-	assert_eq(_entity_value(game.save_state()["grid"], "wall", "kind"), "ROCK")
-	assert_eq(_entity_value(game.save_state()["grid"], "wall", "facing_x"), 1)
-	assert_true(game.execute_command(&"undo"))
-	grid = game.save_state()["grid"]
-	assert_eq(_entity_value(grid, "wall", "kind"), "LAMP")
-	assert_eq(_position_of(grid, "wall"), Vector2i(4, 5))
-	assert_eq(_position_of(grid, "rock"), Vector2i(5, 5))
-	assert_eq(_entity_value(grid, "wall", "facing_x"), 0)
-	assert_eq(_entity_value(grid, "wall", "facing_y"), -1)
-	assert_eq(_entity_value(grid, "rock", "facing_x"), 0)
-	assert_eq(_entity_value(grid, "rock", "facing_y"), 1)
-
-func test_rule_rewriting_defeat_precedes_win_and_undo_restores_actor() -> void:
-	var game := _spawn()
-	var state := _load_crossing(game)
-	var grid: Dictionary = state["grid"]
-	_move_saved_entity(grid, "flag", Vector2i(2, 6))
-	state["grid"] = grid
-	game.load_state(state)
-	assert_true(game.execute_command(&"move", {"direction": Vector2i.RIGHT}))
-	assert_eq(game.save_state()["mode"], 3)
-	assert_true(game.save_state()["failed"])
-	assert_false(game.save_state()["solved"])
-	assert_eq(_position_of(game.save_state()["grid"], "baba"), Vector2i(-1, -1))
-	assert_true(game.execute_command(&"undo"))
-	assert_eq(game.save_state()["mode"], 1)
-	assert_false(game.save_state()["failed"])
-	assert_eq(_position_of(game.save_state()["grid"], "baba"), Vector2i(1, 6))
-	assert_eq(_position_of(game.save_state()["grid"], "flag"), Vector2i(2, 6))
-
+	_tap(game, &"rule_rewriting_hotbar_2")
+	assert_eq(game.save_state()["hotbar_slot"], 1)
 func _spawn_case() -> GameModule:
 	var packed := load("res://modules/dedution_casework/entry.tscn") as PackedScene
 	var game := packed.instantiate() as GameModule
@@ -691,8 +566,8 @@ func test_time_loop_back_and_disabled_input() -> void:
 
 func test_cycle4_real_input_reaches_each_module_once_per_press() -> void:
 	var rule_game := _spawn()
-	_tap(rule_game, &"rule_rewriting_right")
-	assert_eq(rule_game.save_state()["focus"], 1)
+	_tap(rule_game, &"rule_rewriting_hotbar_2")
+	assert_eq(rule_game.save_state()["hotbar_slot"], 1)
 
 	var case_game := _spawn_case()
 	_tap(case_game, &"dedution_casework_confirm")

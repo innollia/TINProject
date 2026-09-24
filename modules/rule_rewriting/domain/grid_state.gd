@@ -1,6 +1,8 @@
 class_name RuleGridState
 extends RefCounted
 
+const SERIALIZATION_SCHEMA_VERSION: int = 1
+
 var width: int
 var height: int
 var entities: Array[RuleGridEntity] = []
@@ -13,7 +15,12 @@ func to_dictionary() -> Dictionary:
 	ordered.sort_custom(func(a: RuleGridEntity, b: RuleGridEntity) -> bool: return a.id < b.id)
 	for entity: RuleGridEntity in ordered:
 		serialized_entities.append(entity.to_dictionary())
-	return {"width": width, "height": height, "entities": serialized_entities}
+	return {
+		"schema_version": SERIALIZATION_SCHEMA_VERSION,
+		"width": width,
+		"height": height,
+		"entities": serialized_entities
+	}
 
 
 static func from_dictionary(data: Variant) -> RuleGridState:
@@ -22,7 +29,10 @@ static func from_dictionary(data: Variant) -> RuleGridState:
 	var width_value: Variant = data.get("width")
 	var height_value: Variant = data.get("height")
 	var entity_values: Variant = data.get("entities")
+	var schema_value: Variant = data.get("schema_version", SERIALIZATION_SCHEMA_VERSION)
 	if not RuleGridEntity._is_integer(width_value) or not RuleGridEntity._is_integer(height_value) \
+		or not RuleGridEntity._is_integer(schema_value) \
+		or int(schema_value) != SERIALIZATION_SCHEMA_VERSION \
 		or int(width_value) < 1 or int(width_value) > 32 \
 		or int(height_value) < 1 or int(height_value) > 32 \
 		or not entity_values is Array:
@@ -38,6 +48,8 @@ static func from_dictionary(data: Variant) -> RuleGridState:
 			or entity.position.x < 0 or entity.position.y < 0 \
 			or entity.position.x >= state.width or entity.position.y >= state.height:
 			return null
+		if value is Dictionary and not value.has("creation_serial"):
+			entity.creation_serial = state.entities.size()
 		ids[entity.id] = true
 		state.entities.append(entity)
 	return state

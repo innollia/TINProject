@@ -12,6 +12,8 @@ TINProject의 목표는 여러 미니게임을 많이 만드는 것이 아니다
 - 설계 철학: `docs/DESIGN_PHILOSOPHY.md`
 - Kit 작업 계약: `docs/KIT_WORKFLOW.md`
 - UI 작업 계약: `docs/UI_WORKFLOW.md`
+- UI 연구 보고서의 원 URL: `docs/UI_REFERENCE_SOURCES.md`
+- UI 사례 적용 경계: `docs/UI_REFERENCE_ADAPTATIONS.md`
 - 시각 기준: `docs/VISUAL_DIRECTION.md`
 - AI 작업 규칙: `AGENTS.md`
 - 현재 상태: `HANDOVER.md`

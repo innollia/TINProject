@@ -1,271 +1,238 @@
-# Kit 01 — Rule Rewrite
+# Kit 01 — Rule Rewrite 실행 계획
 
-공통 계약: `docs/KIT_WORKFLOW.md`
+상태: 구현 중. 사용자 추가 결정인 1인칭 기본 시점은 계약에 반영했으나 입력 방식과 실제 구현·검수는 남았다.
 
-## 0. Kit 목적
+구현 중 방향 점검과 미해결 증거: [2026-09-24 점검 기록](../../docs/research/rule_rewrite/DIRECTION_REVIEW_2026-09-24.md). 현재 작업과 남은 검증은 [구현 현황](../../docs/research/rule_rewrite/IMPLEMENTATION_STATUS_2026-09-24.md)에 기록한다. 3분 고찰 뒤 구현을 재개했으며, 점검 기록의 검증 게이트를 따른다.
+Primary Reference: **Baba Is You** (Hempuli Oy).
+Secondary Reference: **Minecraft**, 오직 3D 인벤토리와 핫바 확장에 한정한다.
+공통 계약: [Kit 개발 계약](../../docs/KIT_WORKFLOW.md), [사용자 결정](../../PROJECT_DECISIONS.md).
 
-한 게임 안에서 **격자형 규칙 재작성 퍼즐 장르**로 전환해야 할 때 즉시 사용할 기반을 만든다.
+## 0. 목적과 경계
 
-이 Kit의 Reference Game은 독립 작품을 늘리기 위한 것이 아니라 parser/evaluator/movement/history/presentation/content pipeline이 실제 플레이에서 함께 작동함을 검증한다.
+TIN 본편에서 규칙 재작성 퍼즐 장르로 바뀔 때 사용할 깊은 장르 시스템을 만든다. Reference Game은 한 화면 안에서 물리 단어를 밀어 규칙을 바꾸는 원작의 문법과 화면 정보 구조를 강하게 따르며, BOX 테두리에서 생기는 METRIX와 인벤토리, 3D 핫바를 TIN 고유 확장으로 검증한다.
 
-## 1. Primary Reference — 하나
+- GameModule은 기존 rule_rewriting ID를 유지한다. AppRoot와 ModuleHost 교체 계약은 유지한다.
+- 이번 Kit는 본편의 뭉탱이 간 상태 인계나 다른 Kit의 인벤토리를 만들지 않는다. 내부 아이템 상태는 나중에 명시적 인계가 가능하도록 안정된 ID와 JSON 값으로 표현한다.
+- Reference Game의 진행은 바로 퍼즐 보드부터 시작한다. 지도·챕터·스테이지 탐색 시스템과 세 표찰 관찰 관문을 만들지 않는다.
+- 이미 해법을 아는 플레이어는 첫 입력부터 그 해법을 실행할 수 있다. 발견 플래그나 대기 시간으로 해법을 잠그지 않는다.
+- 원작의 고유 레벨 배치, 캐릭터 그림, 이름, 문구, 팔레트와 픽셀 자산을 복제하지 않는다.
 
-**Baba Is You — Hempuli Oy**
+## 1. 근거와 따라갈 범위
 
-공식 reference:
-- Steam: https://store.steampowered.com/app/736260/Baba_Is_You/
+규칙·어휘의 조사 정본은 [레퍼런스 보고서](../../docs/research/RULE_REWRITE_REFERENCE_REPORT.md), 모드의 기술·권리 검토는 [모드 생태계 보고서](../../docs/research/RULE_REWRITE_MOD_ECOSYSTEM_REPORT.md)다. 실제 화면 근거와 이 계획의 사용 범위는 아래와 같다.
 
-공식 설명에서 확인되는 핵심:
-- 규칙 자체가 상호작용 가능한 block으로 존재한다.
-- block 조작으로 현재 level의 작동 규칙이 바뀐다.
-- 200개가 넘는 level이 같은 중심 문법을 여러 방식으로 변주한다.
+| 상태 | 실제 자료 | 계획에 적용할 관찰 | 적용하지 않을 추측 |
+|---|---|---|---|
+| 첫 보드·평상시 | [실제 플레이 영상 E01](https://www.youtube.com/watch?v=SfNlJkJEEOw), [사용자 U09](../../docs/research/rule_rewrite/user_capture_09.jpg) | 어두운 바탕에 정각 보드와 단어·물체가 화면의 주인공. 규칙은 보드 안에서 읽힌다. | 영상 컷만으로 키 반복 속도나 정확한 셀 치수를 확정하지 않는다. |
+| 단어 밀기·규칙 변화 | 보고서 S1, S9–S16, S21 및 U09 | 단어와 물체가 같은 격자를 점유하고, 문장 변화가 같은 보드의 물체에 즉시 반영된다. | 원작의 모든 속성 조합을 이미 검증한 것으로 취급하지 않는다. |
+| 조작 대상 상실 | [사용자 U10](../../docs/research/rule_rewrite/user_capture_10.jpg) | 보드를 남긴 채 상단에 Undo와 Restart의 큰 회복 안내가 나온다. 모바일 손짓 그림은 입력 장치별 표현이다. | 모바일 하단 터치 버튼을 데스크톱에 상시 붙이지 않는다. |
+| 레벨 진입·전환 | [사용자 U08](../../docs/research/rule_rewrite/user_capture_08.jpg), [U02](../../docs/research/rule_rewrite/user_capture_02.jpg) | 짧은 안개/가림 전환과 제목의 등장 순서를 화면 비교 대상으로 삼는다. | 이번 Kit에 원작의 맵·챕터 구조를 들여오지 않는다. |
+| 일반 메뉴·입력 힌트 | 영상 E02, U09 | 화면 중심은 보드다. Undo/Reset/메뉴는 입력 장치가 필요할 때만 드러난다. | 영상의 작은 키 힌트를 모든 보드의 영구 HUD로 일반화하지 않는다. |
+| 3D 인벤토리 | [사용자 Minecraft 캡처](../../docs/research/rule_rewrite/minecraft_inventory_user.png) | 칸 경계가 선명한 가변 아이템 격자, 선택 슬롯, 하단 9칸 핫바, 아이템 개수 표기. | 갑옷·제작 2×2·레시피 버튼은 이 Kit의 기능이 아니다. 캡처 한 장은 월드 위 핫바의 정확한 위치나 배치 애니메이션을 증명하지 않는다. |
+| 원작 3D 조작 | 레퍼런스 보고서 S24 | 같은 보드 상태를 3D 투영하고 3D 대상을 선택해 조작한다. 복수 3D 대상과 기존 YOU의 공존을 지원한다. | 별도 FPS GameModule이나 Minecraft 세계 물리로 해석하지 않는다. |
 
-이 Kit에서 가져올 것은 바로 이 **공간 안의 규칙 조각 → 즉시 world rule 재평가 → 여러 authored level로 변주** 구조다.
+TIN 화면 결정: 2D 보드는 U09와 E01의 공간 비율·가독성을 기준으로 만들고, 3D의 인벤토리 창은 사용자 Minecraft 캡처의 슬롯 정보 구조를 따른다. 3D 플레이 화면의 핫바는 같은 9칸 행을 화면 하단 중앙에 놓는다. 이는 추가 원본 화면의 관찰 사실이 아니라 **TIN 확장 화면의 명시적 배치 결정**이다. 2D에서는 인벤토리 창과 핫바를 숨기고 보드 안의 물체만 보여 준다.
 
-### 1.1 상태별 실제 화면 증거
+## 2. 현재 코드 판정과 파일 소유권
 
-구현 시작 전에 Steam media/trailer 또는 동일한 공식/신뢰 가능한 실제 플레이 자료에서 아래 상태를 각각 확인하고 작업 메모에 캡처/타임코드를 남긴다.
+현재 [parser](../../modules/rule_rewriting/systems/rule_parser.gd)는 가로·세로 세 단어의 NOUN IS NOUN/PROPERTY만 파싱한다. [movement](../../modules/rule_rewriting/systems/movement_solver.gd)는 PUSH/STOP/MOVE 중심이고 ID 정렬로 복수 YOU 이동을 합친다. [level loader](../../modules/rule_rewriting/systems/level_loader.gd)는 두 ID를 코드의 고정 표에 둔다. [module](../../modules/rule_rewriting/module.gd)은 관찰 관문과 문자 보드·설명문을 소유한다. 저장 형식은 4이고 Undo 최대 64다. 이는 재사용 후보를 찾는 출발점일 뿐, 새 문법의 완료 증거가 아니다.
 
-| 상태 | 확인할 것 | TIN 적용 |
+| 소유 범위 | 작업 |
+|---|---|
+| modules/rule_rewriting/domain | 물리 entity, 보드, 규칙 AST, 복합 도형, inventory projection, 턴 스냅샷의 모듈 로컬 데이터 모델 |
+| modules/rule_rewriting/systems | 문장 파싱, 규칙 재평가, 형상 인식, 이동·상호작용, 저장 코덱, 레벨 로더 |
+| modules/rule_rewriting/presentation | 2D 보드, 3D 투영, 3D 인벤토리/핫바, 회복 안내의 상태 투영 |
+| modules/rule_rewriting/content | 보드 JSON과 콘텐츠 인덱스; 새 퍼즐은 이 영역만 추가 |
+| tests/core 및 필요 시 tests/modules | 파서·도형·턴·저장·모듈 경계의 행동 테스트 |
+
+기존 class/file을 보존할지는 실제 계약에 맞춰 결정한다. 특히 화면의 Label/ColorRect 보드는 폐기한다. 다른 모듈이나 core에 Rule Rewrite 전용 Inventory, Player, EventBus를 올리지 않는다.
+
+## 3. 실행 어휘와 문법 범위
+
+위키의 전체 명사·동사·속성·조건 목록은 조사 인덱스로 유지한다. Reference Game에서 실행할 문법은 다음 표로 고정한다. 새 단어를 등록할 때 파서 알고리즘을 수정하지 않도록 토큰 역할과 효과 handler를 분리한다. 등록되지 않은 단어는 작성 데이터 검증에서 거부하고, 보드에서 조용히 무효 규칙처럼 보여 주지 않는다.
+
+| 계층 | 이번 Kit에서 실행 |
+|---|---|
+| 기본 문장 | 수평 좌→우, 수직 위→아래; NOUN IS PROPERTY, NOUN IS NOUN, NOUN HAS NOUN; 같은 칸 여러 단어의 모든 유효 조합 |
+| 결합·부정 | 주어/서술어의 AND, 대상/속성 앞 NOT, 같은 의미의 중복 문장; 부정은 일치하는 긍정 효과를 제거 |
+| 조건 | ON, NEAR, FACING. 조건은 해당 물리 대상별로 평가하고 문장 자체의 존재와 대상 적용 결과를 구별 |
+| 명사 | authored object catalog의 명사, TEXT, METRIX. 예제에서는 BABA 대신 독자 캐릭터 명사를 사용하되 같은 문법 역할을 가진다 |
+| 조작·이동 | YOU, YOU2, PUSH, STOP, PULL, MOVE, SHIFT, SWAP, 3D |
+| 접촉·결과 | WIN, DEFEAT, SINK, HOT/MELT, OPEN/SHUT, WEAK, SAFE, FLOAT |
+| 메타 | WORD, 물리 텍스트의 규칙 참여와 물체→단어 참여 |
+| TIN 확장 | BOX INSIDE IS METRIX, METRIX IS INV, METRIX IS ACTIVE, OWNER-NOUN OWNS METRIX 및 선택적 ON 조건 |
+
+MAKE, WRITE, TELE, MORE, 방향 속성 및 위키의 나머지 단어는 조사 카탈로그에 남기되 이번 Reference Game의 실행 계약에는 넣지 않는다. 콘텐츠가 이들을 요구하면 “등록만 하고 무효”로 처리하지 않고 계획의 범위·테스트·플레이 과제를 먼저 변경한다. 핵심은 세 단어를 몇 개 늘리는 것이 아니라 문장 조합, 재평가, 물리 상호작용, Undo가 함께 작동하는 기반이다.
+
+파서 입력은 물리 텍스트 entity와 WORD가 활성화한 물체다. 출력 Rule AST는 주어 selector, 조건, 연산자, 서술어, 부정 여부, 모든 출처 entity ID를 보존한다. 같은 의미의 여러 문장은 효과가 중복 적용되지 않아도 출처는 모두 남겨 active text 시각화와 규칙 파괴 후 재평가에 사용한다. 서로 다른 긍정 변환 결과는 하나를 고르지 않고 모두 생성한다.
+
+WORD의 자기지지나 BOX→METRIX→WORD→BOX 식 순환은 물리 텍스트에서 시작하는 최소 고정점 반복으로 평가한다. 반복 중 규칙 서명이 되돌아오는 순환을 감지하면 순환을 만든 파생 규칙만 비활성화하고 물리 텍스트 규칙은 유지한다. 이 경우 턴을 멈추거나 이전 턴의 임의 규칙표를 남기지 않는다. 회귀 보드에서 유효/무효 출처를 확인한다.
+
+## 4. METRIX 형상과 재귀의 의미
+
+**BOX INSIDE IS METRIX**는 물리 단어만으로 우선 성립할 수 있는 네 토큰 규칙이다. 파서는 아직 존재하지 않는 METRIX 객체를 전제로 이 문장을 찾지 않는다. 규칙이 유효하면 형상 탐색기가 현재 보드에서 가능한 모든 속 빈 직사각형을 찾고, 각 경계를 파생 METRIX 개체로 만든다. 따라서 “METRIX가 먼저 있어야 IS 규칙이 성립한다”는 순환이 없다.
+
+| 조건 | 계약 |
+|---|---|
+| 최소 크기 | 바깥 폭·높이 각각 3칸 이상, 안쪽에 적어도 1칸 존재 |
+| 경계 | 네 변의 모든 셀에 BOX가 있어야 한다. 출입구 셀에는 BOX 대신 DOOR를 둘 수 있다. DOOR는 같은 변의 두 BOX 사이를 잇는 1칸 문턱이고 코너를 대체하지 않는다. 열린 DOOR를 통과할 수 있어도 경계 셀로 남는다 |
+| 내부 | 경계 제외 좌표만 인벤토리 슬롯 후보. 내부에 BOX나 텍스트가 있어도 후보 직사각형의 유효성을 없애지 않는다 |
+| 후보 수 | 유효한 직사각형을 전부 만든다. 공유 벽·겹침·중첩을 이유로 하나를 임의 선택하지 않는다 |
+| 정체성 | 경계를 이루는 물리 entity ID 집합과 좌표 범위로 파생 ID를 만든다. 같은 경계가 이동하면 ID가 유지되고 구성원이 바뀌면 새 파생 개체다 |
+| 해체 | BOX INSIDE IS METRIX 규칙이 깨지거나 경계가 더 이상 유효하지 않으면 파생 개체만 사라진다. 물리 BOX/DOOR와 내용물은 보드에 남는다 |
+
+문이 있는 테두리도 성립 후 안으로 들어가 물체와 텍스트를 조작할 수 있다. 문턱 자체는 내부 슬롯이 아니다. 경계와 내부가 겹친 물체는 하나의 물리 entity이며 복제하지 않는다.
+
+하나의 BOX/DOOR가 여러 METRIX 경계에 공유되면 그 METRIX들은 **강체 이동 연결 성분**이 된다. 공유 조각을 밀면 연결 성분 전체가 같은 방향으로 한 칸 이동한다. 어느 한 경계가 막히면 그 연결 성분의 이동 전체가 실패한다. 공유하지 않고 공간만 겹치는 METRIX들은 별도 개체·별도 인벤토리로 유지한다. 한 물체가 두 내부에 들어가면 두 인벤토리는 동일 물리 ID를 참조한다. 한쪽에서 꺼내거나 파괴하면 다른 쪽에서도 사라지며 복제되지 않는다.
+
+경계 BOX가 PUSH이거나 METRIX 자체가 PUSH일 때 경계를 밀면 전체 이동을 시도한다. 외부 이동 가능성은 이동하는 연결 성분의 **목적지 경계**에 대해서만 검사한다. 내부 물건의 외부 STOP/PUSH 충돌은 METRIX 이동을 막지 않는다. 경계가 이동에 성공하면 내부 물건과 내부에 있는 YOU도 운반한다. 각 가로줄/세로줄에서 내부 물건을 이동 방향의 안쪽 벽 쪽으로 밀어 붙이되, 같은 줄 물건의 기존 앞뒤 순서를 유지하고 빈 내부 슬롯을 가능한 한 반대편에 남긴다. 한 셀에 겹친 물건은 같은 묶음으로 정렬하고, 안에 다시 METRIX가 있으면 그 경계는 강체로 유지한다. 합치기/파괴는 일어나지 않는다. 물건이 도착한 셀의 일반 접촉 효과는 이동이 끝난 뒤 평가한다. 움직인 단어가 새 문장을 만들거나 끊으면 같은 턴의 뒤 단계에서 규칙을 다시 계산한다.
+
+## 5. 인벤토리·소유·활성 선택
+
+METRIX는 형상만으로 인벤토리가 되지 않는다. **METRIX IS INV**가 적용된 파생 개체마다 독립 인벤토리다. 슬롯은 안쪽 좌표에 일대일 대응한다. UI는 물리 entity ID와 보드 좌표를 읽어 그리며 별도 아이템 사본이나 개수 원본을 가지지 않는다.
+
+- 규칙이 없는 기본 소유자는 현재 YOU 집합이다. 여러 YOU는 같은 해당 METRIX를 공유한다.
+- TIN 확장 문장 **OWNER-NOUN OWNS METRIX**가 성립하면 해당 noun의 현재 개체 집합이 소유자가 된다. 여러 소유 문장의 결과는 합집합이다. 소유자가 사라지면 내용물은 유지되지만 해당 소유자의 UI 접근은 사라진다. 소유 규칙을 깨면 기본 YOU 소유로 돌아간다.
+- 소유 METRIX가 여럿이면 인벤토리를 합치지 않는다. 기본적으로 전부 선택 가능하다. 소유 대상에 ACTIVE 규칙이 하나라도 적용되면 그 ACTIVE 집합만 선택 가능하다. 조건이 붙은 문장의 METRIX 공간 판정은 경계와 내부를 합친 footprint에 적용한다. 집합 안에 둘 이상이면 플레이어가 순환 선택한다. 마지막으로 고른 파생 ID가 남아 있으면 유지하고, 사라졌으면 안정된 경계 ID 순서의 첫 대상을 고른다. 이 정렬은 **UI focus**만 결정하며 물체의 유효성이나 규칙 결과를 고르지 않는다.
+- 소유 문장에 특정 인벤토리를 지정해야 하면 **OWNER-NOUN OWNS METRIX ON NOUN**으로 오른쪽 METRIX의 footprint에 놓인 NOUN을 조건으로 삼는다. 조건이 없으면 모든 METRIX에 적용된다. 이 문법은 물리 ID를 텍스트에 직접 적는 편법 없이 서로 다른 인벤토리의 소유권을 바꾼다.
+- INV/ACTIVE/OWNS 문장이 턴 중 바뀌면 같은 턴의 결과 화면에서 접근·선택 가능 목록을 갱신한다. 선택 대상이 사라지면 다음 유효 ID로 focus를 옮기고, 대상이 하나도 없으면 열린 인벤토리 창을 닫아 3D 시점으로 돌아간다. 물건은 규칙 변화 때문에 순간이동하거나 삭제되지 않는다.
+- 보드에서 문을 통해 들어와 물건을 밀거나 꺼내면 UI 슬롯이 즉시 갱신된다. 3D UI에서 물건을 옮기면 같은 물리 entity의 좌표가 바뀌며 다음 규칙 재평가 대상이 된다.
+- 열린 인벤토리는 방향키/Tab이나 마우스로 슬롯을 고른다. 확인/클릭 한 번으로 그 칸의 물건 하나를 집고, 다른 슬롯에서 다시 확인하면 같은 ID를 그 좌표로 이동한다. 차 있는 칸이면 두 물건의 좌표를 맞바꾼다. 취소는 집기 전 원래 좌표로 되돌리고 창을 닫는다. 집기만 한 UI 중간 상태는 턴이 아니며, 내려놓아 물리 좌표가 바뀐 때 Undo 한 단계를 만든다. 한 셀에 물건이 여러 개면 그 셀 안의 ID를 순환 선택한다.
+- 2D에서는 인벤토리와 핫바 창이 숨고, 내용물은 보드에 그대로 보인다. 3D에서는 선택된 3D 시점 주체가 소유한 활성 INV의 하단 핫바가 보인다. 3D 대상이 여럿이면 시점 변경에 따라 접근 가능 인벤토리도 다시 계산한다.
+- 핫바는 Minecraft 캡처처럼 9칸 행이다. 현재 인벤토리 내부를 행 우선으로 읽은 첫 9칸에 대응한다. 안쪽 칸이 9개보다 적으면 남는 칸은 비활성 빈 칸이다. 9칸 이후 아이템은 열린 인벤토리 창에서만 선택한다. 아이템 stack은 동일 물리 ID의 복제가 아니므로 같은 칸에 쌓인 entity 각각을 목록으로 표시하고 하나를 꺼내면 하나의 ID만 이동한다.
+- ROCK 등 배치 가능한 물건을 선택하고 배치 intent를 주면 선택한 물리 entity를 3D 시점의 격자 ray가 처음 만나는 면 바로 앞의 셀로 옮긴다. 면을 만나지 못하면 시점 바로 앞의 첫 셀을 목표로 한다. 목표가 경계 밖이거나 현재 속성 규칙상 놓을 수 없는 셀이면 상태 변화 없이 짧은 불가 피드백을 낸다. 성공하면 인벤토리 칸은 즉시 비고 3D 세계에 같은 ID가 나타난다. 이 배치가 METRIX 경계나 문장을 만들거나 깨뜨리는 것도 허용하며 곧바로 재평가한다. 배치와 뒤따른 문법 변화는 Undo 한 단계다.
+
+## 6. 상태 모델과 턴 순서
+
+물리 상태: board 크기, 안정 entity ID, kind, x/y, 방향, word 역할/값, layer, 생성 순번, 필요한 module-local item metadata.
+파생 상태: AST/활성 규칙, 속성 색인, METRIX 경계·내부·소유 목록, 3D 가시 대상과 카메라. 파생 상태는 물리 상태에서 다시 만들 수 있어야 한다.
+UI 상태: 열린 창, focus 슬롯, hotbar 선택 칸, 현재 선택한 METRIX ID. 화면 노드가 물리 상태를 소유하지 않는다.
+
+한 번의 player intent에 다음 순서를 적용한다.
+
+1. ModuleContext가 허용한 입력만 받는다. 2D 방향 입력은 현재 YOU 전체, 3D 입력은 선택된 3D 시점 대상에 전달한다.
+2. 입력 전 물리 상태와 진행 상태를 Undo 후보로 깊은 복사한다.
+3. 현재 규칙에서 조작 대상과 이동 요구를 계산한다. 원작 위키의 priority 자료에 맞춰 초기 객체 순서는 열 우선·행 우선·같은 셀 layer·생성 순번으로 명시하고, 단순 문자열 ID 정렬을 게임 규칙으로 사용하지 않는다.
+4. PUSH/PULL/STOP, 복수 YOU의 부분 차단, 공유 경계의 원자 이동을 해결한다. 각 YOU는 같은 입력을 받지만 한 YOU가 막혀도 움직일 수 있는 다른 YOU까지 무조건 취소하지 않는다. 하나의 METRIX 연결 성분 안에서는 부분 이동이 없다.
+5. 물리 이동·단어 이동을 적용하고 문장을 재파싱한다. 같은 턴 뒤 단계는 새 규칙을 읽는다.
+6. NOUN IS NOUN 변환의 모든 유효 결과를 만들고, WORD/METRIX 파생 규칙을 고정점까지 재평가한다. 생성물 ID와 출처를 기록한다. 고정점 순환은 3절의 규칙대로 분리한다.
+7. MOVE/SHIFT와 자동 이동을 순서대로 해결하고 다시 규칙을 평가한다. 물리 텍스트가 움직였으면 활성 표시도 갱신한다.
+8. SINK, HOT/MELT, OPEN/SHUT, WEAK, DEFEAT 등 접촉을 해결한다. 같은 접촉에서 제거된 YOU는 WIN에 참여하지 않는다. 생존 YOU와 WIN의 접촉을 마지막에 판정한다. 원작의 세부 우선순위가 출처와 충돌하면 재현 보드로 확인한 뒤 이 표를 수정한다.
+9. 성공·조작 대상 상실·활성 인벤토리 변화·3D 전환을 확정한다. 전체 intent 결과가 유효할 때만 Undo 후보를 쌓는다. 실패한 이동과 창 focus 이동은 물리 Undo 단계를 만들지 않는다.
+10. 물리 상태에서 2D/3D 화면·인벤토리·오디오 cue를 갱신한다. tween이 끝나기 전에 다음 입력이 와도 도메인 턴은 직렬로 처리한다.
+
+원작에서 확인하지 못한 속성 조합은 추측성 일반 collision 코드로 처리하지 않는다. 각 지원 속성의 조합 규칙을 작은 대조 보드와 테스트로 확정한다. NOUN IS NOUN의 복수 결과는 같은 출처에서 여러 entity로 갈라지며 새 ID는 출처 ID·턴·결과 noun에 따라 결정적으로 만든다. 자기 변환은 불필요한 복제를 만들지 않는다.
+
+## 7. Authored Content와 10분+ Reference Game
+
+콘텐츠 단위는 **독립 퍼즐 보드**다. content/index.json은 순서와 파일 경로만 갖고, 각 board JSON은 schema_version, stable id, width/height, 시작 entity 목록, 표시 제목, 3D 시작 여부, 완료 조건과 사용할 독자 아트 recipe ID를 가진다. 원작 레벨 배치를 복사하지 않는다. 로더는 명사·word 역할·ID 중복·셀 범위·DOOR 경계 메타데이터를 검증한다. 새 board는 JSON과 인덱스 한 줄만 추가하고 parser/movement/save/registry의 알고리즘은 건드리지 않는다.
+
+Reference Game은 아래 **14개 authored 보드**를 처음부터 바로 연속 플레이한다. 각 보드는 이미 아는 규칙을 빠르게 결합하는 과제이며 힌트 발견·대기·긴 이동으로 시간을 채우지 않는다. 개별 보드의 예상 45–90초는 작성 가설이고 완료 조건은 실제 처음부터 끝까지 10분 이상 측정한 기록이다. 10분 미만이면 서로 다른 조합 보드를 추가하거나 기존 보드의 유의미한 상호작용을 보강한다.
+
+| 보드 | 주된 플레이 과제 | 이전 규칙의 재사용 |
 |---|---|---|
-| first playable board | board가 화면에서 차지하는 비율, cell 규격 | 보드가 절대적 focal point |
-| normal turn | object/word의 cell alignment | 정각 grid |
-| word push | 밀기 전후 위치와 한 턴 감각 | 한 입력 = 한 grid step |
-| rule broken/reformed | 문장 변화와 world 변화의 거리/순서 | 원인 문장→영향 object |
-| multiple controllables | 같은 property가 여러 object에 적용되는 표현 | multi-YOU |
-| blocked/failure | 실패가 보드를 덮지 않는 방식 | 작은 현장 feedback |
-| undo/reset | 실험을 빨리 되돌리는 흐름 | toolbar 없이 action으로 접근 |
-| level transition | 한 level의 규칙과 다음 level의 독립 | data-driven level loader |
+| 01 | YOU/PUSH/STOP 문장을 직접 움직여 통로 만들기 | 즉시 재평가 |
+| 02 | WIN을 다른 대상에 붙여 도착점 바꾸기 | 문장 파괴·복구 |
+| 03 | AND/NOT으로 같은 위치의 두 성질을 분리하기 | PUSH 사슬 |
+| 04 | 복수 YOU 중 하나만 막힌 상황에서 나머지로 단어 옮기기 | 01–03 |
+| 05 | NOUN IS NOUN의 복수 결과와 WORD로 규칙 재료 만들기 | 복수 결과·재파싱 |
+| 06 | HAS와 DEFEAT, Undo로 제거 뒤 생성물 이용하기 | 결과 순서 |
+| 07 | MOVE/SHIFT/STOP을 재조합해 움직이는 길 열기 | 부분 차단 |
+| 08 | OPEN/SHUT와 SAFE/FLOAT를 조합해 접촉 해결하기 | 조건 ON/NEAR |
+| 09 | BOX·DOOR로 첫 폐사각형을 완성하고 BOX INSIDE IS METRIX 성립시키기 | 01–08 문장 조작 |
+| 10 | 한 BOX 규칙으로 두 METRIX를 동시에 만들고 공유 벽의 전체 이동 확인하기 | 복수 결과·원자 이동 |
+| 11 | METRIX IS INV를 만들고 문으로 내부에 들어가 ROCK을 넣고 빼기 | 보드/슬롯 동일 상태 |
+| 12 | METRIX를 밀어 내용물을 안쪽 벽에 정렬하고 경계 충돌만 검사하기 | 07·11 |
+| 13 | 독자 주인공 명사의 IS 3D를 성립시켜 인벤토리·핫바에서 ROCK을 배치해 문장 완성하기 | 09–12 |
+| 14 | 두 인벤토리를 분리하고 OWNS/ACTIVE 규칙을 바꿔 3D에서 올바른 물건을 꺼내기 | 모든 확장의 재조합 |
 
-이 표의 실제 캡처/타임코드가 없으면 presentation 구현을 시작하지 않는다.
+각 보드의 목표는 보드 안 WIN 규칙으로 표현한다. 레벨 진행은 해결 뒤 짧은 전환으로 다음 보드를 여는 선형 목록이며 챕터 맵이나 도감은 없다. 재진입은 해당 보드의 authored 초기 상태로 시작한다. 이전 보드의 해법 지식은 플레이어에게 남지만 강제 재발견 절차는 없다. 같은 board ID의 저장된 진행을 명시적으로 이어 할 때만 현재 물리 상태를 복원한다.
 
-### 1.2 강하게 따라갈 것
+## 8. 화면·아트·입력
 
-- 모든 핵심 플레이가 정각 격자에서 읽히는 보드 구조
-- word와 object가 같은 cell 규칙을 공유하는 즉시성
-- 한 입력 = 한 턴의 명확한 이동 감각
-- 규칙 문장의 공간적 가독성
-- PUSH/STOP/YOU/WIN/DEFEAT 등 property 변화가 곧바로 월드에 반영되는 인과
-- undo/reset이 퍼즐 실험을 방해하지 않는 접근성
-- 플레이 공간이 화면의 주인공이고 HUD가 거의 없는 정보 위계
-- 셀 하나의 위치관계가 판단에 중요하므로 ASCII/비정각 텍스트 보드로 축약하지 않음
+### 화면 상태
 
-### 1.3 복제하지 않을 것
+| 상태 | 화면과 focus | 입력 후 피드백 |
+|---|---|---|
+| 2D 기본 | 화면 중심 정각 보드, 단어/물체의 현재 셀과 활성 문장이 읽힌다. 상시 규칙 목록·키 설명 없음 | 이동은 한 셀, 문장 성립/파괴는 해당 단어와 영향 물체에 짧은 변화 표시 |
+| 겹친 물체·단어 | 한 셀의 모든 물체를 가림 없이 구별할 layer/offset 표시. 선택은 마우스 hover 없이 키보드로 접근 | 선택된 후보의 셀·종류가 짧게 드러남 |
+| 이동 불가 | 보드는 그대로, 막힌 경계/대상에 작은 현장 반응 | 턴·Undo 기록은 늘지 않음 |
+| YOU 전부 상실 | U10처럼 보드를 유지하고 Undo/Restart 회복 선택을 상단에 명확히 표시 | Undo로 직전 상태, Restart로 현재 보드 초기 |
+| 성공 | WIN 접촉 위치가 먼저 반응하고 짧은 완료 cue 뒤 다음 보드로 전환 | Undo를 누르면 전환 확정 전 마지막 턴 복원 |
+| 3D 기본 | `IS 3D` 성립 시 이미지 C를 참고한 DOOM식 1인칭 전방 시점으로 시작. 같은 그리드 상태를 보여 주고 하단 중앙 9칸 핫바를 표시 | 선택 칸·배치 목표가 보이고, 키로 기존 3인칭 보드 시점에 전환 가능 |
+| 3D 3인칭 | 기존 원근 보드 시점을 보존하고 같은 물리 보드·물건 ID·인벤토리를 표현 | 시점 전환만으로 물리 턴·Undo 기록을 만들지 않음 |
+| 3D 인벤토리 열림 | 사용자 Minecraft 캡처의 격자 슬롯/핫바 구조. 실제 METRIX 내부 크기를 반영한 가변 격자. 제작/갑옷 기능 없음 | 선택 물건 ID·수량과 배치 가능 여부, 취소 시 이전 3D focus 복귀 |
+| 메뉴 | Esc 호출 때만 Shell 메뉴. 보드 입력 차단 | 닫으면 직전 2D/3D focus와 선택 인벤토리 복귀 |
 
-- 원작 캐릭터/오브젝트 아트
-- 원작 고유 레벨 배치
-- 원작 문구/스테이지 이름
-- 원작 팔레트와 픽셀 자산의 직접 복제
+월드 자산은 res://addons/at-icons/의 서로 무관한 조각을 2개 이상 결합해 캐릭터, BOX/DOOR, ROCK, 목표물을 만든다. crop·회전·미러·겹침·비균일 배율·색 변형으로 원래 pictogram 의미를 지운다. 글자는 단어 타일로 읽히게 자체 타이포그래피를 사용한다. at-icons 원본을 UI 슬롯 아이콘으로 쓰지 않는다. 슬롯의 물건 미리보기는 완성된 월드 오브젝트 표현을 같은 ID에서 축소 렌더한다. 3D는 동일 recipe의 cutout/Sprite3D 또는 면 조합을 사용해 물리 entity ID를 유지한다.
 
-## 2. 현재 코드 판정
+보드는 viewport의 가용 폭·높이에서 동일한 셀 크기를 계산하고 정각을 유지한다. Reference Game authored 보드는 최대 18×14로 제한해 720p에서 문장 식별성을 확보한다. 엔진 데이터 모델의 최대 32×32 허용 여부와 화면 검수의 합격은 별개다. 1280×720, 1920×1080, 2560×1440에서 일반/긴 단어/겹침/최대 인벤토리/메뉴/실패/3D를 실제 캡처한다. 3D 인벤토리는 Container와 anchor로 배치하고 보드 좌표를 Control 좌표의 진실로 삼지 않는다.
 
-살릴 수 있는 후보:
-- `domain/grid_entity.gd`
-- `domain/grid_state.gd`
-- `domain/rule_sentence.gd`
-- `domain/rule_set.gd`
-- `systems/level_loader.gd`
-- `systems/movement_solver.gd`
-- `systems/rule_parser.gd`
-- `systems/rule_evaluator.gd`
-- 현재 save/undo/transform 동작
+### 입력 intent
 
-재검증 조건:
-- sample level ID 전용 분기 없음
-- presentation node를 판정에 사용하지 않음
-- 새 noun/property를 넣기 위해 movement/evaluator의 장르 공통 코드를 고치지 않음
-- JSON level만 바꿔 여러 레벨을 로드할 수 있음
+| 맥락 | 기본 물리 입력 | 도메인 intent |
+|---|---|---|
+| 2D | 방향키 | 같은 방향의 YOU 전체에 한 턴 |
+| 공통 | Z, R, Esc | Undo, 현재 보드 Restart, Shell 메뉴 |
+| 3D | 이동 키 배치는 추가 확정 필요 | 1인칭 시작·키로 3인칭 전환은 확정. 1인칭 이동을 격자 턴으로 할지 자유 이동으로 할지 사용자 응답 전에는 임의로 고정하지 않음 |
+| 3D 인벤토리 | E, Tab, 숫자 1–9, 휠 또는 좌/우 | 창 열기/닫기, 소유한 활성 METRIX 순환, 핫바 슬롯 선택 |
+| 3D 배치 | 주 입력/클릭 | 선택 물리 물건을 유효한 격자 목표에 배치 |
+| 창 focus | 방향키/Tab/확인/취소 | 슬롯 이동·선택·원래 시점 복귀 |
 
-버릴 것으로 간주:
-- 현재 `module.gd`의 ColorRect/Label 기반 보드 표현
-- 상단/하단 설명문 중심 UI
-- 정각 셀로 읽히지 않는 텍스트/ASCII식 표현
-- 세 표찰 조사 같은 Reference Game 앞단의 임시 콘텐츠
+ModuleContext의 허용 action과 input_enabled를 모든 키·버튼 callback에 적용한다. rebind 값은 Input Bubble과 메뉴에 실제 바인딩으로 표시한다. 장르 전환 시 새 물리 키는 아래에서 올라오고, 계속 필요한 키는 복구되며, 필요 없는 키는 터진 흔적으로 남는다. 설명문으로 동작을 대신하지 않는다.
 
-## 3. Reference Game 분량
+## 9. 저장·Undo·Reset·실패 복구
 
-최소 **10분 이상**.
+모듈 저장 버전을 5로 올린다. JSON-safe 봉투에는 board ID, board schema version, 물리 entity 배열, 생성 순번, 해결/실패 상태, 턴 인덱스, 선택된 3D 대상 ID, 선택된 METRIX ID, 핫바 슬롯, 진행한 board ID 목록, Undo 스냅샷을 넣는다. 파생 규칙표·METRIX 내부 목록·렌더 노드·열린 메뉴·hover/tween은 저장하지 않고 로드 때 재계산한다. 4형식의 옛 관찰실 저장은 신 Reference Game 첫 보드로 명시적으로 이관하고, 그 옛 단서/ASCII 상태를 새 보드에 혼합하지 않는다.
 
-콘텐츠 단위는 **level**이다. 최소 8개 authored level을 만든다. 플레이테스트에서 10분을 못 넘으면 레벨을 늘리거나 퍼즐 구성을 보강한다.
+Undo 한 단계는 한 물리 intent의 전체 결과다. 사람 이동, 밀린 단어, 규칙 재평가, 변환/생성/제거, METRIX의 연결 성분 이동과 내용물 정렬, 3D 배치, 소유·활성 변화, 성공/실패가 모두 함께 돌아간다. 창 열기, focus/핫바 칸 변경, 막힌 입력은 Undo 기록을 만들지 않는다. Undo 깊이는 적어도 현재 64턴을 유지하고 save/load 뒤에도 유효한 기록을 복구한다. 스냅샷은 완료된 턴 경계에서만 저장한다. Restart는 현재 board JSON을 다시 읽고 현재 보드의 Undo만 비우며 이전 보드의 완료 목록은 보존한다. 진행 전환 뒤 이전 보드의 Undo를 다음 보드에 붙이지 않는다.
 
-레벨군:
-1. YOU / PUSH / STOP 소개
-2. 문장 끊기와 복구
-3. WIN 위치 재해석
-4. 복수 YOU
-5. NOUN IS NOUN 변환
-6. MOVE와 방향 반전
-7. DEFEAT와 WIN 우선순위
-8. 여러 규칙을 동시에 재작성하는 종합
+손상된 저장은 JSON 형식·버전·board ID·entity ID 유일성·좌표·word 역할·METRIX 파생 재계산 결과를 검증한다. invalid current board는 해당 authored 초기 보드로 복구하고, 알 수 없는 board ID는 첫 보드로 복구한다. 조용한 부분 로드로 아이템 ID가 복제되지 않게 한다. 마지막 YOU가 사라져도 Undo/Restart/Esc가 작동한다.
 
-각 레벨은 같은 loader/parser/evaluator/movement/history를 사용한다. 특정 레벨 때문에 core system에 분기를 추가하면 실패다.
+## 10. 구현 순서와 게이트
 
-## 4. 데이터 모델
+1. **코드 감사와 대조 보드**: 기존 parser/movement/save 중 재사용 가능한 순수 함수만 남긴다. 원작 자료에서 복수 YOU 부분 차단, WORD 순환, 접촉 우선순위를 최소 보드로 확인해 기대 상태를 테스트에 기록한다.
+2. **물리 상태·콘텐츠 로더**: content/index.json과 schema validator, 안정 ID, JSON-safe codec을 만든다. 임시 관찰실 관문을 제거한다.
+3. **문법·재평가**: AND/NOT/조건/겹친 단어/IS/HAS/WORD와 규칙 출처 인덱스를 구현하고, 변경이 없는 고정점에서 끝나게 한다.
+4. **이동·상호작용**: 복수 YOU 우선순위, PUSH/PULL/STOP/MOVE/SHIFT/SWAP, 접촉·변환을 물리 상태에서 계산한다.
+5. **METRIX·인벤토리**: 전 직사각형 탐색, DOOR, 공유 경계 연결 성분, 내부 정렬, INV/OWNS/ACTIVE, 물리 ID 기반 슬롯을 구현한다.
+6. **2D/3D 표현과 입력**: 사용자 캡처와 E01–E03를 대조하며 보드·실패 안내·3D 투영·핫바·인벤토리를 붙인다. 월드 art는 at-icons를 재조립한다.
+7. **14개 보드 저작과 측정**: 앞 보드의 문법이 뒤 보드에서 다시 쓰이는지 확인하고, 데이터 추가만으로 마지막 보드를 넣는다.
+8. **회귀·실행·화면 QA**: 자동 검증 후 전 구간 수동 플레이, 실측 시간, 세 해상도 캡처, Primary Reference 나란히 비교.
 
-level data:
-- stable level id
-- width / height
-- entities[]
-- spawn/facing
-- word metadata
-- optional presentation metadata
+단계 3–5가 끝날 때까지 2D/3D 화면으로 시스템의 정답을 대신 증명하지 않는다. 단계 6 이후에는 테스트만으로 완료를 선언하지 않는다.
 
-entity:
-- stable id
-- kind
-- integer grid x/y
-- facing
-- is_word
-- word_role
-- word_value
-- base tags
+## 11. 자동 테스트와 수동 과제
 
-runtime:
-- current level id
-- grid state
-- evaluated RuleSet
-- solved / failed
-- turn index
-- undo stack
+자동 테스트의 필수 사례:
 
-씬 노드 위치는 진실이 아니다.
+1. 가로/세로·겹친 단어·AND/NOT·조건·부정 우선·규칙 출처.
+2. 단어 이동으로 만들어진 규칙이 같은 턴 뒤 단계에 적용되고, 끊긴 규칙이 즉시 사라짐.
+3. 복수 YOU 중 하나가 막히고 다른 하나가 이동하는 보드, PUSH/PULL 연쇄, 이동 우선순위.
+4. 복수 NOUN 변환, 자기 변환, WORD 자기지지 차단, 파생 규칙 순환 종료.
+5. BOX와 DOOR의 직사각형 인정/거부, 두 도형 모두 생성, 공유 경계 전체 이동 및 막힘 원자성.
+6. METRIX 이동 중 내용물 순서·벽 부착·외부 경계 충돌, 내부 단어 이동 후 재평가.
+7. 서로 겹친 두 INV가 같은 물리 ID를 참조하며 한쪽에서 꺼내면 둘 다 갱신됨.
+8. 복수 YOU 공유 소유, OWNS/ACTIVE 전환, 2D↔3D 상태 유지, 핫바 배치 성공/불가.
+9. 실패와 WIN 동시 접촉, 마지막 YOU 상실 뒤 Undo/Restart, 성공 직전 Undo.
+10. save/load 뒤 같은 입력의 동일 결과, Undo chain 유지, 손상 저장 복구, 새 board JSON 추가 시 core 무수정.
+11. ModuleContext input_enabled=false, exit/re-entry, 다른 모듈 비참조, Shell 닫힘 뒤 focus 복귀.
 
-## 5. 턴 처리
+수동 플레이는 보드 01부터 14까지 설명문 없이 연속 진행한다. 관찰자는 첫 유효 입력까지 시간, 오조작, 규칙 변화 인지, 실수 후 복귀, 3D 인벤토리와 보드의 동일성 이해를 기록한다. 11에서 문으로 들어가 내부 물건을 옮기고, 10에서 두 METRIX를 동시에 움직이고, 12에서 안쪽 벽 정렬을 눈으로 확인하고, 13에서 ROCK을 배치해 문장을 완성하고, 14에서 소유/ACTIVE 규칙을 깨고 복구해야 한다. 10분 이상은 실제 시간을 재서 기록한다.
 
-1. ModuleContext에서 action 확인
-2. 방향 intent 생성
-3. 현재 RuleSet의 YOU 집합 계산
-4. 전체 movement plan 계산
-5. state mutation
-6. word 위치 변화 시 parser 재평가
-7. NOUN→NOUN transform
-8. property 갱신
-9. MOVE 처리
-10. DEFEAT
-11. 살아남은 YOU의 WIN
-12. snapshot 확정
-13. presentation 갱신
+자동 검증은 AGENTS.md에 적힌 순서로 editor import → tests/run_tests.gd → GUT tests/core → headless 180 frames를 실행한다. 실패하면 기존 실패와 이번 회귀를 구분한다. 그 뒤 720p/FHD/QHD에서 일반·최대 정보·실패·성공·3D·메뉴를 직접 캡처한다.
 
-부분 이동/부분 transform이 남으면 실패다.
+## 12. 금지 shortcut과 완료 증거
 
-## 6. Presentation
+금지: 세 단어 IS 파서에 레벨별 예외를 덧대기, 첫 유효 BOX 사각형만 고르기, 인벤토리 UI에 아이템 사본 만들기, 3D를 독립 게임으로 만들기, 물리 아이템의 2D↔3D 전환에서 ID 교체, ASCII/ColorRect+Label 월드 보드, 상시 규칙표·키 설명·Shell HUD, 원작 자산·레벨 복제, 라이선스 미확인 모드 코드 복사, 새 board마다 core 분기 추가.
 
-보드는 **정각 cell**로 렌더한다.
+검토 준비 완료의 제출물:
 
-- cell pixel size는 viewport에서 계산하되 x/y가 같은 크기
-- board 전체가 화면의 1차 초점
-- object와 word 모두 cell 중심 정렬
-- word는 실제 텍스트 타일로 표현 가능
-- noun object는 at-icons 조각을 2개 이상 재조립해 sprite로 만든다
-- 원본 icon의 픽토그램 의미가 먼저 읽히지 않게 변형
-- rule 변화 직후 원인 문장과 영향을 받은 object만 짧게 피드백
-- 별도 “현재 규칙 목록” 상시 패널 금지
-- 방향키/Z/X 설명문 금지
-- debug turn/rule label 금지
+- 원작 자료 ID와 TIN 캡처를 상태별로 나란히 놓은 비교표.
+- 14개 이상 authored board의 데이터와 **실측 10분 이상** 연속 플레이 기록.
+- 15번째 보드를 JSON/index와 art recipe만 추가해 실행한 기록. parser·movement·save codec 수정이 없어야 한다.
+- 자동 테스트 결과와 720p/FHD/QHD 실행 캡처.
+- 2D/3D, 복수 YOU, METRIX 두 개, 문 출입, 내용물 운반, 소유·활성 변화, Undo/Restart/save/load/재진입의 수동 과제 결과.
+- placeholder/상시 HUD/원본 pictogram 오용 검사 결과.
 
-undo/reset/나가기는 보드를 가리는 상시 toolbar를 만들지 않는다. 필요한 물리 키는 장르 전환 Input Bubble에서 학습한다.
-
-## 7. Input
-
-Reference Game intent:
-- up/down/left/right
-- undo
-- reset
-- pause
-
-물리 키는 앱 InputMap에서 매핑하고 domain에는 전달하지 않는다.
-
-이 Kit로 진입하는 전환에서 이전 장르와 required physical key set이 다르면 Input Bubble이:
-- 계속 필요한 기존 키를 복구
-- 새 키를 아래에서 올림
-- 더 이상 필요 없는 키를 popped 흔적으로 유지
-한다.
-
-## 8. 저장/복구
-
-필수:
-- active level id
-- grid/entity state
-- facing
-- transform state
-- solved/failed
-- turn index
-- undo snapshots
-
-검증:
-- save → load 뒤 같은 입력에 같은 결과
-- transform 뒤 save/load
-- multi-YOU
-- MOVE
-- DEFEAT/WIN
-- undo chain
-- malformed level은 해당 authored default로 안전 복구
-- unknown level id는 명시된 초기 level로 복구
-
-## 9. 해상도
-
-실제 캡처:
-- 1280×720
-- 1920×1080
-- 2560×1440
-
-세 해상도에서:
-- cell이 정각
-- board가 잘리지 않음
-- word가 겹치지 않음
-- 가장 긴 word token도 cell 규칙을 깨지 않음
-- 최소 UI가 보드를 가리지 않음
-
-## 10. 자동 테스트
-
-- parser horizontal/vertical/overlap/invalid
-- push chain
-- blocked movement atomicity
-- multiple YOU
-- property add/remove immediate effect
-- noun transform
-- MOVE
-- DEFEAT before WIN
-- undo/reset
-- save/load
-- 8개 level load
-- level data 추가만으로 registry가 확장되는지
-
-## 11. 수동 플레이 과제
-
-사용자는 설명문 없이:
-1. 조작 가능한 대상을 찾는다.
-2. word를 밀어 규칙을 바꾼다.
-3. 규칙 변화가 object에 반영됐음을 알아차린다.
-4. 실수 후 undo한다.
-5. reset한다.
-6. 최소 8개 level을 연속 플레이한다.
-
-관찰할 것:
-- 셀 위치를 헷갈리는가
-- 무엇이 YOU인지 읽히는가
-- 규칙 변경 원인/결과가 붙어 보이는가
-- UI가 보드보다 먼저 보이는가
-- 설명문이 없어도 실험이 가능한가
-
-## 12. 금지 shortcut
-
-- ASCII 보드
-- 비정각 grid
-- ColorRect+Label을 object 완성 표현으로 사용
-- 레벨별 if/match 분기
-- 해답/다음 규칙을 HUD가 알려줌
-- 상시 키바인드 문장
-- “테스트가 통과했으므로 화면 완료” 판정
-
-## 13. 완료 증거
-
-- 상태별 Primary Reference 캡처/타임코드 기록
-- 8개+ authored level
-- 실측 플레이 10분+
-- 720p/FHD/QHD 캡처
-- parser/movement/save 테스트 통과
-- 새 9번째 level을 data만 추가해 동작시키는 검증
-- 사용자 플레이 **검토 준비 완료**
-
-사용자 실제 검토 전에는 최종 완성이라고 쓰지 않는다.
+이 증거가 모두 모인 뒤에만 사용자 직접 플레이 **검토 준비 완료**라고 부른다. 사용자의 실제 플레이 검토 전에는 Kit의 최종 완성을 선언하지 않는다.

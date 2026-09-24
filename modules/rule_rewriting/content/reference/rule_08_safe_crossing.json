@@ -1,0 +1,632 @@
+{
+  "schema_version": 1,
+  "id": "rule_08_safe_crossing",
+  "title": "안전한 접촉",
+  "width": 16,
+  "height": 10,
+  "entities": [
+    {
+      "id": "you_1",
+      "kind": "MOTH",
+      "x": 1,
+      "y": 1,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "MOTH",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "you_2",
+      "kind": "IS",
+      "x": 2,
+      "y": 1,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "you_3",
+      "kind": "YOU",
+      "x": 3,
+      "y": 1,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "YOU",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "safe_1",
+      "kind": "ON",
+      "x": 1,
+      "y": 2,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "ON",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "safe_2",
+      "kind": "PAD",
+      "x": 2,
+      "y": 2,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "PAD",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "safe_3",
+      "kind": "MOTH",
+      "x": 3,
+      "y": 2,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "MOTH",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "safe_4",
+      "kind": "IS",
+      "x": 4,
+      "y": 2,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "safe_5",
+      "kind": "SAFE",
+      "x": 5,
+      "y": 2,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "SAFE",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "float_1",
+      "kind": "NEAR",
+      "x": 1,
+      "y": 3,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "NEAR",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "float_2",
+      "kind": "LAMP",
+      "x": 2,
+      "y": 3,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "LAMP",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "float_3",
+      "kind": "MOTH",
+      "x": 3,
+      "y": 3,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "MOTH",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "float_4",
+      "kind": "IS",
+      "x": 4,
+      "y": 3,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "float_5",
+      "kind": "FLOAT",
+      "x": 5,
+      "y": 3,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "FLOAT",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "open_1",
+      "kind": "KEY",
+      "x": 1,
+      "y": 4,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "KEY",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "open_2",
+      "kind": "IS",
+      "x": 2,
+      "y": 4,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "open_3",
+      "kind": "OPEN",
+      "x": 3,
+      "y": 4,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "OPEN",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "open_and",
+      "kind": "AND",
+      "x": 4,
+      "y": 4,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "AND",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "open_push",
+      "kind": "PUSH",
+      "x": 5,
+      "y": 4,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "PUSH",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "shut_1",
+      "kind": "GATE",
+      "x": 1,
+      "y": 5,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "GATE",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "shut_2",
+      "kind": "IS",
+      "x": 2,
+      "y": 5,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "shut_3",
+      "kind": "SHUT",
+      "x": 3,
+      "y": 5,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "SHUT",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "gate_stop_1",
+      "kind": "GATE",
+      "x": 5,
+      "y": 0,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "GATE",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "gate_stop_2",
+      "kind": "IS",
+      "x": 6,
+      "y": 0,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "gate_stop_3",
+      "kind": "STOP",
+      "x": 7,
+      "y": 0,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "STOP",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "lamp_push_1",
+      "kind": "LAMP",
+      "x": 9,
+      "y": 0,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "LAMP",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "lamp_push_2",
+      "kind": "IS",
+      "x": 10,
+      "y": 0,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "lamp_push_3",
+      "kind": "PUSH",
+      "x": 11,
+      "y": 0,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "PUSH",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "lamp_float_1",
+      "kind": "LAMP",
+      "x": 9,
+      "y": 2,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "LAMP",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "lamp_float_2",
+      "kind": "IS",
+      "x": 10,
+      "y": 2,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "lamp_float_3",
+      "kind": "FLOAT",
+      "x": 11,
+      "y": 2,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "FLOAT",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "key_float_1",
+      "kind": "NEAR",
+      "x": 8,
+      "y": 1,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "NEAR",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "key_float_2",
+      "kind": "LAMP",
+      "x": 9,
+      "y": 1,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "LAMP",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "key_float_3",
+      "kind": "KEY",
+      "x": 10,
+      "y": 1,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "KEY",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "key_float_4",
+      "kind": "IS",
+      "x": 11,
+      "y": 1,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "key_float_5",
+      "kind": "FLOAT",
+      "x": 12,
+      "y": 1,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "FLOAT",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "hot_1",
+      "kind": "LAVA",
+      "x": 1,
+      "y": 6,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "LAVA",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "hot_2",
+      "kind": "IS",
+      "x": 2,
+      "y": 6,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "hot_3",
+      "kind": "HOT",
+      "x": 3,
+      "y": 6,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "HOT",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "melt_1",
+      "kind": "MOTH",
+      "x": 1,
+      "y": 9,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "MOTH",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "melt_2",
+      "kind": "IS",
+      "x": 2,
+      "y": 9,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "melt_3",
+      "kind": "MELT",
+      "x": 3,
+      "y": 9,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "MELT",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "sink_1",
+      "kind": "POOL",
+      "x": 1,
+      "y": 7,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "POOL",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "sink_2",
+      "kind": "IS",
+      "x": 2,
+      "y": 7,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "sink_3",
+      "kind": "SINK",
+      "x": 3,
+      "y": 7,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "SINK",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "win_1",
+      "kind": "STAR",
+      "x": 1,
+      "y": 0,
+      "is_word": true,
+      "word_role": "noun",
+      "word_value": "STAR",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "win_2",
+      "kind": "IS",
+      "x": 2,
+      "y": 0,
+      "is_word": true,
+      "word_role": "operator",
+      "word_value": "IS",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "win_3",
+      "kind": "WIN",
+      "x": 3,
+      "y": 0,
+      "is_word": true,
+      "word_role": "property",
+      "word_value": "WIN",
+      "base_tags": [
+        "PUSH"
+      ]
+    },
+    {
+      "id": "moth",
+      "kind": "MOTH",
+      "x": 2,
+      "y": 8,
+      "is_word": false
+    },
+    {
+      "id": "pad",
+      "kind": "PAD",
+      "x": 5,
+      "y": 8,
+      "is_word": false
+    },
+    {
+      "id": "lamp",
+      "kind": "LAMP",
+      "x": 11,
+      "y": 6,
+      "is_word": false
+    },
+    {
+      "id": "key",
+      "kind": "KEY",
+      "x": 12,
+      "y": 8,
+      "is_word": false
+    },
+    {
+      "id": "gate",
+      "kind": "GATE",
+      "x": 13,
+      "y": 8,
+      "is_word": false
+    },
+    {
+      "id": "lava",
+      "kind": "LAVA",
+      "x": 11,
+      "y": 8,
+      "is_word": false
+    },
+    {
+      "id": "pool",
+      "kind": "POOL",
+      "x": 5,
+      "y": 8,
+      "is_word": false
+    },
+    {
+      "id": "star",
+      "kind": "STAR",
+      "x": 13,
+      "y": 8,
+      "is_word": false
+    }
+  ],
+  "starts_in_3d": false,
+  "completion_condition": "win_contact",
+  "art_recipe_id": "recipe_rule_08_safe_crossing"
+}
