@@ -15,7 +15,7 @@ project-wide 상태: **COMPLETE — 사용자 shared understanding 확인 완료
 - K1 확정: 인벤토리 문법 확장. 실제 BOX 오브젝트로 속 빈 사각형을 만들고 `BOX INSIDE IS METRIX`를 성립시키면 각 유효 사각형이 복합 오브젝트가 된다. 원작 어휘 전체 목록은 조사 입력으로 유지하며 이번 Reference Game의 실행 범위는 Kit 계획서에 명시했다.
 - K2 확정: 인게임 퍼즐에 집중. 지금 지도·챕터·스테이지 구분 체계를 확장하지 않는다.
 - K3 확정: 이미 아는 규칙을 빠르게 조합해 시스템을 검증하는 Reference Game. 고난도 퍼즐에서 오래 고민하게 하는 것을 우선 목표로 삼지 않는다.
-- K4 확정: BABA IS 3D와 인벤토리·핫바. Minecraft를 해당 확장점에만 Secondary Reference로 허용. 3D에서 핫바를 통해 선택한 오브젝트를 공간에 배치한다. 원작 3D 동작은 레퍼런스 보고서의 사실 조사를 사용하며, 사용자에게 사실을 묻지 않는다.
+- K4 확정: BABA IS 3D와 인벤토리·핫바. Minecraft를 해당 확장점에만 Secondary Reference로 허용. 3D에서 핫바를 통해 선택한 오브젝트를 공간에 배치한다. 1인칭은 격자 턴으로 이동하고(W 전방 한 칸, A/D 90도 회전), V로 1인칭/3인칭을 전환하며 회전·시점 전환은 물리 턴/Undo를 만들지 않는다. 원작 3D 동작은 레퍼런스 보고서의 사실 조사를 사용하며, 사용자에게 사실을 묻지 않는다.
 
 최근 확정:
 - 사용자가 Minecraft 인벤토리 화면 캡처 한 장을 제공했고 추가 캡처는 없다고 밝혔다. 해당 이미지는 docs/research/rule_rewrite/minecraft_inventory_user.png에 보존했다. 인게임 핫바 위치는 원본 관찰이 아니라 Kit 계획의 명시적 화면 결정이다.

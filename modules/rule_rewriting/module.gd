@@ -1078,10 +1078,7 @@ func _shape_owner_ids(shape: Dictionary, probe: RuleGridEntity) -> Array[String]
 	for sentence: RuleSentence in rule_set.sentences:
 		if sentence.operator != &"OWNS" or sentence.predicate != &"METRIX":
 			continue
-		var subject_matches := sentence.subject == probe.kind
-		if sentence.subject_is_negated:
-			subject_matches = not subject_matches
-		if not subject_matches or not _shape_conditions_match(shape, probe, sentence.conditions):
+		if not _shape_conditions_match(shape, probe, sentence.conditions):
 			continue
 		explicit_rule_applies = true
 		for entity: RuleGridEntity in grid_state.entities:
