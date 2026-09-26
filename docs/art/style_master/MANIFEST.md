@@ -30,7 +30,6 @@ Style Master는:
 
 최초 calibration은 production 캐릭터의 복잡한 정체성 조건을 제거한 단순 피사체로 수행한다. A-only, B-only, A+B Compact Visual Contract를 서로 독립적인 생성 시도로 비교한다.
 
-사용자 운영 결정: 각 이미지 생성 시도는 현재 ChatGPT 대화의 **서로 다른 conversation branch**에서 실행한다. branch 간 승인되지 않은 생성 결과를 암묵적으로 상속하지 않는다.
 
 ## 현재 실행 계획
 
