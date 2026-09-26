@@ -91,7 +91,56 @@ TIN에서 허용하는 기계적 후처리는 다음과 같다.
 - GPT 출력은 최종 그림이며 허용된 기계적 후처리만 적용한다.
 - 실제 게임 화면에서 최종 승인한다.
 
-## 9. 원 보고서가 제시한 출처
+## 9. 2026-09-26 추가 조사 — 생성 경계에서 생기는 정보 손실
+
+이번 재조사는 현재 OpenAI 공식 가이드와 최근 실무 사례를 기준으로 했다.
+
+### 긴 정본과 긴 생성 프롬프트는 같은 것이 아니다
+
+OpenAI Academy의 2026-04-10 이미지 생성 가이드는 좋은 이미지 프롬프트가 길 필요가 없고 많은 경우 **1–3개의 명확한 문장**이면 충분하다고 설명한다. 여러 이미지를 넣을 때도 작은 세트가 관리하기 쉽고, 결과 개선은 큰 재작성보다 작은 표적 수정으로 반복하는 방식을 권한다.
+
+- https://openai.com/academy/image-generation/
+
+TIN 적용:
+- Art Bible과 프로젝트 정본은 길어도 된다.
+- 정본 전체를 매번 생성 프롬프트로 직렬화하지 않는다.
+- 실제 생성에는 Compact Visual Contract와 필요한 이미지 원본만 넣는다.
+
+### reference에는 역할을 주되, 합성된 목표 픽셀도 만든다
+
+OpenAI의 현재 Image Prompting 가이드는 여러 입력을 쓸 때 각 이미지가 subject/style/clothing/background 중 무엇을 통제하는지 명시하라고 한다. 동시에 style transfer 예시는 한 장의 입력을 실제 스타일 기준으로 주고 새 subject를 별도로 설명하는 매우 단순한 형태다.
+
+- https://developers.openai.com/api/docs/guides/image-prompting
+
+TIN 적용:
+- A/B의 역할 분리는 유지한다.
+- 그러나 production마다 A/B 두 장의 추상적 역할을 다시 합성시키지 않는다.
+- A/B를 합성해 사용자가 승인한 Style Master 한 장을 만든 뒤, production에서는 그 픽셀 목표를 우선 사용한다.
+
+### 생성 도구 자체의 prompt rewrite를 독립 변수로 본다
+
+OpenAI의 Image Generation tool 문서는 Responses API의 이미지 생성 도구에서 메인 GPT 모델이 이미지 생성 성능을 높이기 위해 프롬프트를 자동 수정할 수 있고, API에서는 `revised_prompt`를 확인할 수 있다고 설명한다.
+
+- https://developers.openai.com/api/docs/guides/tools-image-generation
+
+따라서 긴 프로젝트 문맥이 이미지 모델에 그대로 전달된다고 가정하지 않는다. 생성 경계는 **lossy compiler**처럼 취급한다.
+
+TIN 적용:
+- `revised_prompt`가 노출되는 API/도구에서는 원 요청과 함께 기록한다.
+- 노출되지 않는 ChatGPT 표면에서는 핵심 시각 불변식이 rewrite 뒤에도 살아남도록 생성 계약 자체를 짧고 관찰 가능하게 만든다.
+- 스타일 실패가 반복되면 "문서를 더 길게"보다 "생성 경계에 실제로 전달될 최소 계약이 무엇인가"를 먼저 검증한다.
+
+### community evidence는 보조로만 사용
+
+2026-05의 r/aigamedev 논의에서도 style guide/reference를 반복 공급하라는 실무 조언과, reference image가 style보다 원본의 구체 요소를 끌고 오는 문제가 동시에 보고됐다. 이는 공식 규칙이 아니라 경험담이지만, A/B의 구체 모티프 유출을 검사해야 하는 이유와 맞는다.
+
+- https://www.reddit.com/r/aigamedev/comments/1tobieh/how_do_you_manage_consistency_and_coherence/
+
+2026-09의 prompt-engineering 커뮤니티 사례도 강한 prompt에서 reference scope와 load-bearing constraint를 제한하고, 긴 exclusion list보다 구체적인 optical description을 쓰는 패턴을 보고했다. 재구성 자료이므로 공식 근거로 승격하지 않는다.
+
+- https://www.reddit.com/r/PromptEngineering/comments/1wcbfjw/i_recovered_the_prompts_behind_openais_own_gpt/
+
+## 10. 원 보고서가 제시한 출처
 
 아래 URL은 공유 대화의 첫 조사 보고서에 제시된 문자열을 보존한 것이다. 이 문서를 작성하면서 각 페이지의 현재 내용을 다시 독립 검증한 것은 아니다.
 
