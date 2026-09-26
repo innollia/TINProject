@@ -73,64 +73,55 @@ assets/art/<project_id>/
 
 배경 brief는 각 오브젝트를 `증거·직접 상호작용`, `길찾기·상황 이해`, `분위기` 중 하나로 명시한다.
 
-## 4. Style Master bootstrap
+## 4. Generator Style-Fidelity Gate
 
-### 4.1 왜 별도 단계가 필요한가
+Gold Standard와 Style Master는 **스타일을 획득하는 장치가 아니다.** 생성기가 원본 레퍼런스의 화풍을 직접 따라갈 수 있다는 사실이 먼저 증명된 뒤, 이미 성공한 화풍을 반복하기 위한 일관성 기준으로만 사용한다.
 
-A와 B는 서로 다른 역할을 가진 원본 Style Reference다. 텍스트가 A와 B를 각각 해설하더라도 **두 역할이 합쳐진 목표 이미지는 자동으로 존재하지 않는다.**
+### 4.1 첫 게이트
 
-자산군 Gold Standard가 0장인 상태에서 production 캐릭터를 곧바로 생성하면 모델은:
-- A/B의 제한된 스타일 역할을 합성하고
-- 새 캐릭터 정체성을 맞추고
-- 의상·소품·구도·기술 조건까지 동시에 해결해야 한다.
+새 이미지 도구/모델을 생산 파이프라인에 넣기 전에 A/B 원본으로 다음만 검증한다.
 
-이 상태에서 일반적인 애니/콘셉트 아트 prior로 회귀하는 것을 정상 bootstrap으로 취급하지 않는다.
+1. 원본을 style/reference 입력으로 사용한 새 피사체 생성
+2. 원본을 편집해 색 또는 한 가지 내용 요소만 바꾸기
+3. 결과를 원본과 나란히 보고 렌더링 과정의 보존 여부 판정
 
-### 4.2 production 진입 조건
+통과 기준은 "비슷한 분위기"가 아니다.
 
-전역 Style Master가 아직 없으면, **스타일 적합성이 중요한 production 자산을 반복 생성하며 Style Master를 대신하지 않는다.**
+- 얼굴 면 분할 방식
+- 선의 굵기·압력·끊김
+- 내부 붓질의 크기와 방향
+- 머리카락 큰 덩어리 처리
+- 인물/배경의 밀도 계층
 
-먼저:
-1. 실제 A와 B 원본을 입력한다.
-2. production 세계관·캐릭터와 무관한 단순한 성인 인물 또는 단순 피사체를 사용한다.
-3. 정체성 조건은 최소화하고 스타일 불변식만 시험한다.
-4. 결과를 A/B와 나란히 비교한다.
-5. 사용자가 한 후보를 Style Master로 명시 승인한다.
+이 항목이 원본과 같은 계열의 렌더링 과정으로 보이지 않으면 해당 도구/모델은 **style-critical production에 부적합**으로 기록한다.
 
-사용자가 탐색용 production 후보를 직접 요청한 경우는 만들 수 있지만, 그것을 Style Master나 Gold Standard의 대체물로 취급하지 않는다.
+### 4.2 실패 시
 
-### 4.3 첫 calibration 세트
+게이트에 실패한 생성기로:
+- Style Master를 새로 만들지 않는다.
+- 실패 결과를 다시 reference로 넣어 재귀적으로 "스타일을 학습"시키려 하지 않는다.
+- Gold Standard를 쌓아 해결하려 하지 않는다.
+- production 캐릭터를 계속 재생성하며 우연한 성공을 기다리지 않는다.
 
-최초 bootstrap에서는 같은 단순 피사체로 최소 다음 차이를 분리해 본다.
+대신 **reference-style 전용 제어가 더 강한 다른 도구/모델**로 넘어간다.
 
-- A만 + 짧은 스타일 지시
-- B만 + 짧은 스타일 지시
-- A+B + Compact Visual Contract
-- 필요할 때만 기존 장문 직렬화 프롬프트를 control로 한 장
+### 4.3 Style Master와 Gold Standard의 역할
 
-목적은 가장 예쁜 그림 고르기가 아니다. 다음을 구분하는 것이다.
+Generator Style-Fidelity Gate를 통과한 뒤에만 Style Master를 선택적으로 만든다.
 
-- A의 얼굴 중앙 구조와 큰 명암 면이 실제로 전이되는가
-- B의 선 압력·끊김과 의상 구조가 실제로 전이되는가
-- A+B를 함께 넣었을 때 일반 평균풍으로 희석되는가
-- 장문 텍스트가 레퍼런스의 시각 신호를 덮는가
+- Style Master: 이미 검증된 생성기의 전역 렌더 문법을 한 장으로 고정하는 편의 기준
+- Gold Standard: 특정 자산군에서 이미 성공한 production 결과의 일관성 기준
 
-각 결과는 서로의 생성 컨텍스트를 암묵적으로 물려받지 않는다.
+둘 다 원본 A/B보다 상위의 스타일 근거가 아니며, 원본을 제대로 못 따라가는 생성기의 fidelity를 높여 주는 장치가 아니다.
 
-### 4.4 승인과 사용
-
-사용자가 승인한 Style Master는:
-- A/B를 대체하거나 폐기하지 않는다.
-- A/B의 허용된 역할을 합쳐 놓은 **첫 번째 실제 픽셀 목표**다.
-- 이후 production에서는 해당 Style Master를 가장 직접적인 스타일 목표로 넣고, A/B는 원래 역할을 검증하는 상위 원본으로 유지한다.
-- 프로젝트/자산군 Gold Standard와 구분한다. Style Master는 전역 렌더 문법, Gold Standard는 특정 자산군의 실제 production 기준을 맡는다.
+현재 도구 조사와 다음 검증 순서는 `docs/research/visual_reference/STYLE_REFERENCE_TOOL_SURVEY_2026-09-26.md`를 따른다.
 
 ## 5. Compact Visual Contract
 
 모든 생성 요청은 정본 문서를 읽고 판단한 뒤, 생성 모델에는 아래만 압축해서 전달한다.
 
 1. **Use case / output** — 자산 용도, 크기, 알파·레이어 등 실제 출력 조건
-2. **Pixel target** — 승인 Style Master, 활성 Gold Standard, 편집 원본 중 실제 이미지 입력
+2. **Pixel target** — 실제 A/B 원본, 게이트를 통과한 도구에서만 승인 Style Master/Gold Standard, 편집 원본 중 필요한 실제 이미지 입력
 3. **Style invariants** — 이번 자산에서 눈으로 확인 가능한 핵심 4~7개
 4. **Identity anchors** — 결과를 바꾸는 캐릭터·소품·장면 특징만
 5. **Composition / hierarchy** — 카메라, 초점, 정보 밀도
@@ -155,8 +146,8 @@ A와 B는 서로 다른 역할을 가진 원본 Style Reference다. 텍스트가
 각 생성 작업에는 필요한 입력을 다시 명시적으로 넣는다.
 
 1. 실제 A/B 원본 중 필요한 것
-2. 승인 Style Master가 있으면 그 이미지
-3. 해당 자산군의 활성 Gold Standard
+2. 현재 생성기가 Style-Fidelity Gate를 통과했다면 승인 Style Master
+3. 현재 생성기가 Style-Fidelity Gate를 통과했다면 해당 자산군의 활성 Gold Standard
 4. Compact Visual Contract
 5. 편집이면 원본 이미지와 유지할 영역
 
@@ -167,7 +158,7 @@ A와 B는 서로 다른 역할을 가진 원본 Style Reference다. 텍스트가
 production 캐릭터에서 스타일과 정체성을 처음부터 같은 난이도로 밀어 넣지 않는다.
 
 기본 순서:
-1. **style lock** — Style Master와 핵심 실루엣/색 관계를 우선해 스타일 문법을 맞춘다.
+1. **style lock** — 먼저 원본 A/B에 대해 Generator Style-Fidelity Gate를 통과한 생성기를 사용하고, 그 뒤에만 Style Master 또는 Gold Standard와 핵심 실루엣/색 관계를 사용한다.
 2. **identity correction** — 얼굴 특징, 정확한 장식 수, 소품, 손 습관처럼 정체성 오류를 국소 편집 또는 제한된 재생성으로 조인다.
 3. **technical correction** — 알파, 여백, 피벗, 레이어와 같은 기계 조건을 맞춘다.
 
@@ -191,7 +182,7 @@ production 캐릭터에서 스타일과 정체성을 처음부터 같은 난이�
 - 승격, 기존 기준 교체, 기준 폐기는 사용자의 명시적 승인으로만 확정한다.
 - 교체 후보가 승인되기 전에는 기존 기준이 계속 유효하다.
 - MANIFEST에는 승인 파일, 적용 범위, 승인 근거가 된 사용자 결정, 대체한 기준을 기록한다.
-- Gold Standard가 0장이라는 사실은 production을 무한 맨땅 생성하는 허가가 아니다. 먼저 전역 Style Master bootstrap을 닫는다.
+- Gold Standard가 0장이라는 사실은 production을 무한 맨땅 생성하는 허가가 아니다. 먼저 Generator Style-Fidelity Gate를 통과한 생성기를 확보한다.
 
 ## 10. 하드 게이트
 
