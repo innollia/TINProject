@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.player_noticed
+// situation: the player is seen by something
+// render: --seconds 1.10 --rate 48000 --bpm 96 --no-default-bank
+n"d3" |> sine(@.freq) * adsr(@.gate, 0.06, 0.20, 0.70, 0.30) |> out(%)

@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.shelter_enter
+// situation: the player crosses into shelter
+// render: --seconds 0.90 --rate 48000 --bpm 84 --no-default-bank
+n"c3 g3" as e |> tri(e.freq) * adsr(e.gate, 0.03, 0.16, 0.30, 0.22) * e.vel |> out(%)

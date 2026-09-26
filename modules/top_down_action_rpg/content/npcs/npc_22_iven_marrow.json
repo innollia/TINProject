@@ -1,0 +1,165 @@
+{
+    "schema_version":  1,
+    "id":  "npc_22_iven_marrow",
+    "display_name":  "Iven Marrow",
+    "roster_kind":  "support",
+    "public_role":  "weave yard instructor who grades an outdoor fold and takes the credit back",
+    "private_role":  "cannot tell whether leaving failed folds on the wall is the rule or his own neglect",
+    "desire":  "wants the residue on the wall to be evidence instead of an apology",
+    "fear":  "that the wall is the only record of what his students actually cannot do",
+    "contradiction":  "grades a fold he could not pass himself and files the difference as a training gap",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_r8_weave_yard"
+                                    ],
+                       "can":  [
+                                   "grade_fold",
+                                   "reclaim_sheet",
+                                   "revoke_credit",
+                                   "mark_residue"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+
+                                       ],
+                            "denies":  [
+
+                                       ],
+                            "denied_by_effect_id":  "eff_r8_course_index_printed"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s024",
+                                             "seed_s125"
+                                         ],
+                               "does_not_know":  [
+                                                     "seed_s122"
+                                                 ],
+                               "never_learns":  [
+                                                    "seed_s135"
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_grade_both_columns",
+                                             "verb_reclaim_the_sheet",
+                                             "verb_leave_the_wall",
+                                             "verb_scrape_the_maker_cut"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "personal_collapse",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_grade_both_columns",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_r8_weave_yard",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_reclaim_the_sheet",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_weave_yard",
+                                                                            "choice_id":  "ch_reclaim_the_sheet"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_weave_yard",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_leave_the_wall",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_weave_yard",
+                                                                            "choice_id":  "ch_leave_the_wall"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_weave_yard",
+                                  "presentation_class":  "neutral"
+                              },
+                              {
+                                  "verb_id":  "verb_scrape_the_maker_cut",
+                                  "availability":  {
+                                                       "clock_at_least":  {
+                                                                              "clock_id":  "clock_contamination",
+                                                                              "stage_index":  2
+                                                                          }
+                                                   },
+                                  "opens":  "conv_r8_weave_yard",
+                                  "presentation_class":  "extreme"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_04_sable_support"
+                         ],
+    "clock_ids":  [
+                      "clock_personal_collapse",
+                      "clock_contamination"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  "enc_r8_fold_that_refuses_the_hand"
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "conversion_condition":  {
+
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "",
+                                              "encounter_modifier":  0
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_r8_course_index_printed"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_r8_concentration_registered"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "conditional",
+                    "condition":  {
+                                      "clock_irreversible":  {
+                                                                 "clock_id":  "clock_personal_collapse"
+                                                             }
+                                  },
+                    "moves_to_region_id":  "region_h0_undersign_exchange"
+                },
+    "appearance":  {
+                       "body_key":  "body_yard_instructor",
+                       "portrait_key":  "portrait_iven_marrow",
+                       "voice_key":  "voice_iven_marrow"
+                   },
+    "mana_profile":  "concentration_reactive",
+    "oneoff_dialogue_seed_ids":  [
+                                     "seed_s024",
+                                     "seed_s065",
+                                     "seed_s125"
+                                 ],
+    "cross_link_ids":  [
+                           "region_r8_folding_school",
+                           "npc_04_sable_halm",
+                           "npc_23_turo_bex",
+                           "clock_contamination"
+                       ],
+    "removal":  "temporary",
+    "seed_ids":  [
+                     "seed_s024",
+                     "seed_s065",
+                     "seed_s125",
+                     "seed_s133",
+                     "seed_s150"
+                 ]
+}

@@ -1,0 +1,75 @@
+{
+    "schema_version":  1,
+    "id":  "rec_r3_hospice_respawn",
+    "display_name":  "Hospice Bell Restart",
+    "kind":  "respawn",
+    "trigger":  {
+                    "kind":  "encounter_failure",
+                    "encounter_id":  "enc_the_bell_that_counts_late",
+                    "condition":  {
+
+                                  }
+                },
+    "preserves":  [
+                      "region_id",
+                      "region_state",
+                      "clock_stages",
+                      "npc_states"
+                  ],
+    "discards":  [
+                     "encounter_progress",
+                     "current_phase",
+                     "linked_actor_state",
+                     "combat_transient",
+                     "scheduler_cursor",
+                     "pending_effect_queue",
+                     "presentation_transient"
+                 ],
+    "self_layers_restored":  [
+                                 "body"
+                             ],
+    "self_layers_not_restored":  [
+                                     "memory",
+                                     "role",
+                                     "belief",
+                                     "institution",
+                                     "desire",
+                                     "social_recognition"
+                                 ],
+    "respawn":  {
+                    "region_id":  "region_r3_bellhouse_hospice",
+                    "prop_id":  "prop_r3_mercy_engine_valve",
+                    "encounter_id":  "enc_the_bell_that_counts_late",
+                    "reset_prop_ids":  [
+                                           "prop_r3_mercy_engine_valve",
+                                           "prop_r3_vow_ledger_desk"
+                                       ]
+                },
+    "cost":  {
+                 "continuity_pressure_delta":  2,
+                 "resource_costs":  {
+                                        "hp":  10
+                                    },
+                 "axis_deltas":  {
+                                     "continuity_pressure":  2,
+                                     "recognition_drift":  1
+                                 },
+                 "world_effect_ids":  [
+
+                                      ]
+             },
+    "entry_effect_ids":  [
+                             "eff_r3_return_registry_handoff"
+                         ],
+    "cooldown":  {
+                     "kind":  "per_death",
+                     "count":  1
+                 },
+    "authored_debt":  {
+                         "debt_id":  "d_r3_respawn_name_not_filed",
+                         "description":  "the hospice restarts a body without filing a name, so the restart is not a returned person in any register"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

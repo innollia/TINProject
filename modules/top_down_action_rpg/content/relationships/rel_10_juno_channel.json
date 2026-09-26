@@ -1,0 +1,221 @@
+{
+    "schema_version":  1,
+    "id":  "rel_10_juno_channel",
+    "target_npc_id":  "npc_10_juno_caster",
+    "channel":  "professional",
+    "start_state_id":  "rs_juno_sourced",
+    "states":  [
+                   {
+                       "state_id":  "rs_juno_sourced",
+                       "order":  0,
+                       "label":  "treated as a source or a subject",
+                       "entry_effect_ids":  [
+
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "guarded"
+                   },
+                   {
+                       "state_id":  "rs_juno_verified",
+                       "order":  1,
+                       "label":  "verified against a second witness",
+                       "entry_effect_ids":  [
+                                                "eff_h0_arrival_declaration_filed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_h0_crier"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_h0_crier_thread"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "operational"
+                   },
+                   {
+                       "state_id":  "rs_juno_joint_edit",
+                       "order":  2,
+                       "label":  "both of you hold the edit key",
+                       "entry_effect_ids":  [
+                                                "eff_h0_arrival_declaration_filed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_h0_crier",
+                                        "port_r4_censor"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_h0_crier_thread"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  null
+                                           },
+                       "dialogue_policy":  "candid"
+                   },
+                   {
+                       "state_id":  "rs_juno_fixed_subject",
+                       "order":  3,
+                       "label":  "the public copy fixed the subject",
+                       "entry_effect_ids":  [
+                                                "eff_r1_return_registry_logs_name"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "hostile"
+                   }
+               ],
+    "transitions":  [
+                        {
+                            "transition_id":  "t_01",
+                            "from_state_id":  "rs_juno_sourced",
+                            "to_state_id":  "rs_juno_verified",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_crier_thread",
+                                                                            "choice_id":  "ch_verify_before_forwarding"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_h0_arrival_declaration_filed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_02",
+                            "from_state_id":  "rs_juno_verified",
+                            "to_state_id":  "rs_juno_joint_edit",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_crier_thread",
+                                                                            "choice_id":  "ch_publish_the_edit_history"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_h0_arrival_declaration_filed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_03",
+                            "from_state_id":  "rs_juno_verified",
+                            "to_state_id":  "rs_juno_sourced",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_crier_thread",
+                                                                            "choice_id":  "ch_withhold_for_one_cycle"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  8
+                        },
+                        {
+                            "transition_id":  "t_04",
+                            "from_state_id":  "rs_juno_joint_edit",
+                            "to_state_id":  "rs_juno_fixed_subject",
+                            "via":  "effect",
+                            "requires_condition":  {
+                                                       "clock_irreversible":  {
+                                                                                  "clock_id":  "clock_public_record"
+                                                                              }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_return_registry_logs_name"
+                                           ],
+                            "is_irreversible":  true,
+                            "priority":  5
+                        }
+                    ],
+    "axes":  {
+                 "trust":  1,
+                 "fear":  0,
+                 "debt":  0,
+                 "recognition":  0,
+                 "attachment":  0
+             },
+    "axis_rules":  [
+                       {
+                           "key":  "public_category_splits_three_ways",
+                           "condition":  {
+                                             "choice_taken":  {
+                                                                  "conversation_id":  "conv_h0_crier_thread",
+                                                                  "choice_id":  "ch_publish_the_edit_history"
+                                                              }
+                                         },
+                           "sets":  {
+                                        "recognition_drift":  2
+                                    }
+                       }
+                   ],
+    "exclusions":  {
+                       "max_final_state":  1,
+                       "conflicting_final_state_ids":  [
+                                                           "rs_juno_fixed_subject"
+                                                       ]
+                   },
+    "romance":  {
+                    "allowed":  false,
+                    "explicit_content":  false,
+                    "gate_state_ids":  [
+
+                                       ],
+                    "consent_beat_effect_ids":  [
+
+                                                ]
+                },
+    "seed_ids":  [
+                     "seed_s047",
+                     "seed_s048",
+                     "seed_s056",
+                     "seed_s114",
+                     "seed_s125"
+                 ]
+}

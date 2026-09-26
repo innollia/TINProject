@@ -1,0 +1,6 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: dsc.breath_critical
+// situation: air is nearly gone
+// render: --seconds 0.90 --rate 48000 --bpm 132 --no-default-bank
+// bracket subdivision; see tools/nkido_pipeline/README.md, unverified constructs.
+n"[a3 a3 a3 a3]" as e |> saw(e.freq) * adsr(e.gate, 0.02, 0.06, 0.20, 0.06) * e.vel |> out(%)

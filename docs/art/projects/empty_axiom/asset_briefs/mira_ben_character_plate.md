@@ -5,9 +5,11 @@
 상태: 사용자 피드백용 `candidate`
 용도: Stage 1 인물의 사건 전 기본 외형과 식별 5점 확인. 실제 사건 화면이나 승인된 게임 자산이 아니다.
 
+**현재 제작 대상 아님:** 이 문서는 과거 검토판 명세로 보존한다. 사용자의 배경 없는 Golden Idol 인물 요청에는 [Stage 1 합성용 인물 명세](mira_ben_stage01_cutout.md)를 사용한다. 아래 불투명 배경·확대 컷·사건 전 상태를 게임용 인물에 전용하지 않는다.
+
 ## 입력 정본
 
-- `docs/art/PERSONAL_STYLE_CORE.md` 버전 `0.1`
+- `docs/art/PERSONAL_STYLE_CORE.md` 버전 `0.2`
 - `docs/art/projects/empty_axiom/PROJECT_ART_LAYER.md`
 - `docs/golden_idol_story/`의 13 비주얼 제작 바이블, 13A-1 미라 벤, 13A-4 사건 상태
 - 스타일 원본 `docs/research/visual_reference/user_style_A.png`, `user_style_B.png` (각자의 제한된 역할만)

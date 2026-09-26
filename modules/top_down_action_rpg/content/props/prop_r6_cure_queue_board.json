@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "prop_r6_cure_queue_board",
+  "display_name": "Cure Queue Board",
+  "region_id": "region_r6_gristmarket_ward",
+  "placement": {
+    "anchor_key": "r6_cure_queue_board",
+    "layer": "wall",
+    "visible_from": "any"
+  },
+  "initial_state_id": "ps_numbered",
+  "states": [
+    {
+      "state_id": "ps_numbered",
+      "label": "a queue number decides treatment before a symptom does",
+      "visible": true,
+      "art_key": "prop_r6_queue_numbered",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_reassigned",
+      "label": "the queue was reassigned by the organ, not by the clinic",
+      "visible": true,
+      "art_key": "prop_r6_queue_reassigned",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r6_organ_quorum_filed"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_cure_queue",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r6_cure_queue_board",
+            "state_id": "ps_numbered"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r6_cure_queue_board",
+            "state_id": "ps_reassigned"
+          }
+        }
+      ]
+    },
+    "opens": "doc_r6_cure_debt_ledger",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s041",
+    "seed_s092"
+  ]
+}

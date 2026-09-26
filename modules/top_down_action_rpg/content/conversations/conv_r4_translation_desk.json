@@ -1,0 +1,113 @@
+{
+    "schema_version": 1,
+    "id": "conv_r4_translation_desk",
+    "display_name": "Translation Desk",
+    "region_id": "region_r4_crownwell_archive",
+    "speaker_npc_id": "npc_01_ilyra_senn",
+    "entry_condition": {
+        "region_visited": {
+            "region_id": "region_h0_undersign_exchange"
+        }
+    },
+    "priority": 24,
+    "pages": [
+        {
+            "page_id": "pg_receipt_before_name",
+            "speaker": "npc",
+            "presentation_class": "official",
+            "text": "The receipt number comes before the name. The number is the part of you I can still defend in a year.",
+            "advance": "auto"
+        },
+        {
+            "page_id": "pg_layered_original",
+            "speaker": "world",
+            "presentation_class": "narration",
+            "text": "Two translation slips sit under the desk on the same low-level stack, and the sentences underneath them do not agree.",
+            "advance": "wait"
+        },
+        {
+            "page_id": "pg_filing_makes_binding",
+            "speaker": "npc",
+            "presentation_class": "confidential",
+            "text": "Filing a translation does not report the meaning. It makes the meaning the one that counts, and the other sentence stops being a sentence.",
+            "advance": "auto"
+        }
+    ],
+    "choices": [
+        {
+            "choice_id": "ch_file_one_translation",
+            "text": "File the archive sentence and let the school sentence stay a translation without a receipt.",
+            "semantic_tags": ["bureaucratic", "cooperative"],
+            "presentation_class": "neutral",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r4_translation_precedence_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_file_the_care_outcome",
+            "text": "Enter the hospice care outcome as an archive category and hand the patient end of it to the return registry.",
+            "semantic_tags": ["cooperative", "careful"],
+            "presentation_class": "neutral",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r4_care_outcome_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_classify_the_operator_memory",
+            "text": "Classify the previous operator memory as an archive holding and close the request without a body.",
+            "semantic_tags": ["bureaucratic", "evasive"],
+            "presentation_class": "unavailable",
+            "availability": {
+                "prop_state_is": {
+                    "prop_id": "prop_r4_low_level_stacks",
+                    "state_id": "ps_filed"
+                }
+            },
+            "unavailable_reason": "prop_r4_low_level_stacks",
+            "irreversibility": "reversible",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r4_operator_memory_classified",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_sign_the_empty_slot",
+            "text": "Write the school craft name into the empty glossary slot and title the crown fragment while the desk is unoccupied.",
+            "semantic_tags": ["destructive", "irreversible"],
+            "presentation_class": "extreme",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r4_glossary_slot_filled",
+            "one_shot": true,
+            "hint_surface": "none"
+        }
+    ],
+    "on_complete": {
+        "effect_ids": [
+            "eff_r4_translation_precedence_filed"
+        ]
+    },
+    "on_abort": {
+        "effect_ids": []
+    },
+    "revisit": "state_dependent",
+    "alt_conversation_ids": [
+        "conv_h0_glossary_counter"
+    ],
+    "seed_ids": [
+        "seed_s018",
+        "seed_s050",
+        "seed_s059",
+        "seed_s073"
+    ]
+}

@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: phy.impact_hard
+// situation: a hard object collides, high hardness tier
+// render: --seconds 0.60 --rate 48000 --bpm 108 --no-default-bank
+n"c4 g3 c2" as e |> tri(e.freq) * adsr(e.gate, 0.001, 0.10, 0.20, 0.10) * e.vel |> out(%)

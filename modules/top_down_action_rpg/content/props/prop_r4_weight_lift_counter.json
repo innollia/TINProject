@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "prop_r4_weight_lift_counter",
+  "display_name": "Weight Lift Counter",
+  "region_id": "region_r4_crownwell_archive",
+  "placement": {
+    "anchor_key": "r4_weight_lift_counter",
+    "layer": "prop",
+    "visible_from": "adjacent"
+  },
+  "initial_state_id": "ps_idle",
+  "states": [
+    {
+      "state_id": "ps_idle",
+      "label": "the counter shows access priority, not the weight of a fact",
+      "visible": true,
+      "art_key": "prop_r4_counter_idle",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_spent",
+      "label": "three weights are spent and the public floor is closing",
+      "visible": true,
+      "art_key": "prop_r4_counter_spent",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r4_crown_stair_opened"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_weight_counter",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r4_weight_lift_counter",
+            "state_id": "ps_idle"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r4_weight_lift_counter",
+            "state_id": "ps_spent"
+          }
+        }
+      ]
+    },
+    "opens": "conv_r4_weight_lift",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s058",
+    "seed_s043"
+  ]
+}

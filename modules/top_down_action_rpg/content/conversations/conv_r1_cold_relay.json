@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r1_cold_relay",
+    "display_name":  "Cold Relay Triage",
+    "region_id":  "region_r1_returning_kiln",
+    "speaker_npc_id":  "npc_13_tovan_reed",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_13_tovan_triage",
+                                                                                   "target_npc_id":  "npc_13_tovan_reed",
+                                                                                   "state_id":  "rs_tovan_used"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_r1_wrong_return_hearing",
+                                                                    "choice_id":  "ch_carry_the_claimant"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  12,
+    "pages":  [
+                  {
+                      "page_id":  "pg_triage",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "What can this body still do. That is the only question I ask before the second one.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_stretcher",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "The relay is warm. Everything that touches it for a full cycle keeps the warmth.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_bypass",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "I can keep the function. I cannot promise the next self reads the same.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_ask_before_the_bypass",
+                        "text":  "Make him state the bypass and its cost before anyone is cut open.",
+                        "semantic_tags":  [
+                                              "care",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_ash_debt_opens_chute",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_carry_them_out",
+                        "text":  "Take the stretcher and walk the survivor out through the chute.",
+                        "semantic_tags":  [
+                                              "care",
+                                              "protective"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_ash_debt_opens_chute",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_refuse_the_quota",
+                        "text":  "Refuse the clinic quota and sort the queue by what the body can still do.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_ash_debt_opens_chute",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_sort_by_employability",
+                        "text":  "Let the queue be sorted by who the clinic can employ afterwards.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r1_return_registry_logs_name",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+                                           "eff_r1_ash_debt_opens_chute"
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r1_wrong_return_hearing"
+                             ],
+    "seed_ids":  [
+                     "seed_s014",
+                     "seed_s085",
+                     "seed_s109"
+                 ]
+}

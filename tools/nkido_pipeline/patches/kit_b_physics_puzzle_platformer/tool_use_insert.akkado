@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: phy.tool_use_insert
+// situation: a tool seats or threads something, light class
+// render: --seconds 0.32 --rate 48000 --bpm 112 --no-default-bank
+n"e5" |> tri(@.freq) * adsr(@.gate, 0.001, 0.03, 0.0, 0.0) |> out(%)

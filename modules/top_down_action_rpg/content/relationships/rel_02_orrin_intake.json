@@ -1,0 +1,223 @@
+{
+    "schema_version":  1,
+    "id":  "rel_02_orrin_intake",
+    "target_npc_id":  "npc_02_orrin_kest",
+    "channel":  "care",
+    "start_state_id":  "rs_orrin_screened",
+    "states":  [
+                   {
+                       "state_id":  "rs_orrin_screened",
+                       "order":  0,
+                       "label":  "held as a returner",
+                       "entry_effect_ids":  [
+
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "guarded"
+                   },
+                   {
+                       "state_id":  "rs_orrin_sheltered",
+                       "order":  1,
+                       "label":  "the exception has two names",
+                       "entry_effect_ids":  [
+                                                "eff_r1_wrong_return_witnessed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r1_intake"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_r1_intake_desk"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "operational"
+                   },
+                   {
+                       "state_id":  "rs_orrin_released",
+                       "order":  2,
+                       "label":  "released on a proven mismatch",
+                       "entry_effect_ids":  [
+                                                "eff_r1_wrong_return_witnessed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r1_intake",
+                                        "port_crown_seat"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_r1_intake_desk"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  true,
+                                               "encounter_modifier":  1,
+                                               "granted_by_effect_ids":  [
+                                                                             "eff_r1_wrong_return_witnessed"
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "candid"
+                   },
+                   {
+                       "state_id":  "rs_orrin_quarantined",
+                       "order":  3,
+                       "label":  "filed as a wrongful class",
+                       "entry_effect_ids":  [
+                                                "eff_r1_return_registry_logs_name"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "hostile"
+                   }
+               ],
+    "transitions":  [
+                        {
+                            "transition_id":  "t_01",
+                            "from_state_id":  "rs_orrin_screened",
+                            "to_state_id":  "rs_orrin_sheltered",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r1_intake_desk",
+                                                                            "choice_id":  "ch_declare_the_layer"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_wrong_return_witnessed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_02",
+                            "from_state_id":  "rs_orrin_sheltered",
+                            "to_state_id":  "rs_orrin_released",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r1_intake_desk",
+                                                                            "choice_id":  "ch_release_the_signature"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_wrong_return_witnessed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_03",
+                            "from_state_id":  "rs_orrin_sheltered",
+                            "to_state_id":  "rs_orrin_screened",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r1_intake_desk",
+                                                                            "choice_id":  "ch_refuse_the_own_signature"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  8
+                        },
+                        {
+                            "transition_id":  "t_04",
+                            "from_state_id":  "rs_orrin_released",
+                            "to_state_id":  "rs_orrin_quarantined",
+                            "via":  "effect",
+                            "requires_condition":  {
+                                                       "clock_irreversible":  {
+                                                                                  "clock_id":  "clock_institutional_response"
+                                                                              }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_return_registry_logs_name"
+                                           ],
+                            "is_irreversible":  true,
+                            "priority":  5
+                        }
+                    ],
+    "axes":  {
+                 "trust":  1,
+                 "fear":  0,
+                 "debt":  0,
+                 "recognition":  1,
+                 "attachment":  0
+             },
+    "axis_rules":  [
+                       {
+                           "key":  "exceptions_signed_by_two",
+                           "condition":  {
+                                             "choice_taken":  {
+                                                                  "conversation_id":  "conv_r1_intake_desk",
+                                                                  "choice_id":  "ch_release_the_signature"
+                                                              }
+                                         },
+                           "sets":  {
+                                        "protocol_legitimacy":  1
+                                    }
+                       }
+                   ],
+    "exclusions":  {
+                       "max_final_state":  1,
+                       "conflicting_final_state_ids":  [
+                                                           "rs_orrin_quarantined"
+                                                       ]
+                   },
+    "romance":  {
+                    "allowed":  false,
+                    "explicit_content":  false,
+                    "gate_state_ids":  [
+
+                                       ],
+                    "consent_beat_effect_ids":  [
+
+                                                ]
+                },
+    "seed_ids":  [
+                     "seed_s004",
+                     "seed_s011",
+                     "seed_s031",
+                     "seed_s046",
+                     "seed_s107"
+                 ]
+}

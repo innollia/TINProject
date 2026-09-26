@@ -1,0 +1,113 @@
+{
+    "schema_version": 1,
+    "id": "conv_r5_boot_contract",
+    "display_name": "Boot Contract Board",
+    "region_id": "region_r5_glasswing_ordinal",
+    "speaker_npc_id": "npc_14_eda_marrow",
+    "entry_condition": {
+        "region_visited": {
+            "region_id": "region_h0_undersign_exchange"
+        }
+    },
+    "priority": 26,
+    "pages": [
+        {
+            "page_id": "pg_permit_first",
+            "speaker": "npc",
+            "presentation_class": "official",
+            "text": "The permit is the body. The boot only tells the body what the permit already decided it may do.",
+            "advance": "auto"
+        },
+        {
+            "page_id": "pg_unsigned_board",
+            "speaker": "world",
+            "presentation_class": "narration",
+            "text": "The contract board is unsigned and the cradle behind it is empty, and the rack is still sealed with its receipt folded inside.",
+            "advance": "wait"
+        },
+        {
+            "page_id": "pg_name_after_capability",
+            "speaker": "npc",
+            "presentation_class": "confidential",
+            "text": "The capability lands tonight and the name lands whenever the hearing sits. Between those two facts the recipient is a thing that works.",
+            "advance": "auto"
+        }
+    ],
+    "choices": [
+        {
+            "choice_id": "ch_stage_the_permit_split",
+            "text": "Stage the permit on the board so the foundry half and the school half are two lawful acts on two lines.",
+            "semantic_tags": ["careful", "bureaucratic"],
+            "presentation_class": "neutral",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r5_supply_permit_split_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_issue_the_rack_receipt",
+            "text": "Issue the sealed rack against the receipt and count the parts out loud in front of the board.",
+            "semantic_tags": ["cooperative", "careful"],
+            "presentation_class": "neutral",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r5_supply_rack_issued",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_hold_the_boot_for_a_name",
+            "text": "Hold the boot on the cradle until the recipient has a legal body name to be called by.",
+            "semantic_tags": ["protective", "careful"],
+            "presentation_class": "unavailable",
+            "availability": {
+                "prop_state_is": {
+                    "prop_id": "prop_r5_boot_contract_board",
+                    "state_id": "ps_staged"
+                }
+            },
+            "unavailable_reason": "prop_r5_boot_contract_board",
+            "irreversibility": "reversible",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r5_gantry_cradle_loaded",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_sign_the_work_permit",
+            "text": "Sign the work permit in the name of the operator category so the shift has something to roster against tonight.",
+            "semantic_tags": ["destructive", "coercive"],
+            "presentation_class": "extreme",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r5_name_hearing_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        }
+    ],
+    "on_complete": {
+        "effect_ids": [
+            "eff_r5_supply_rack_issued"
+        ]
+    },
+    "on_abort": {
+        "effect_ids": []
+    },
+    "revisit": "state_dependent",
+    "alt_conversation_ids": [
+        "conv_r4_translation_desk"
+    ],
+    "seed_ids": [
+        "seed_s020",
+        "seed_s023",
+        "seed_s042",
+        "seed_s140"
+    ]
+}

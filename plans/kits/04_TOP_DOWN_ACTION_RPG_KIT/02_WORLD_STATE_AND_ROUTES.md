@@ -1,5 +1,11 @@
 # Kit 04 — 월드 상태와 라우트
 
+## 환경 제작 결정 — 2026-09-26
+
+[13](13_LAYERED_ENVIRONMENT_PRODUCTION.md)의 큰 배경+분리 레이어를 기본으로 한다. 이 문서의 9개 region·18개 edge·내부 route·랜드마크·state-driven revisit가 지도 정본이다. 그림 크기나 crop 경계는 새 region/route가 아니며, 한 region을 배경 한 장에 축소하지 않는다.
+
+지역별 공간 묶음은 13 §6에 모두 대응한다. 제작자는 그 묶음 안에서 실제 연결되는 장면 구역의 bounds·출입·walkable 영역을 먼저 고정한 뒤 그림을 만든다. 모서리를 tile grid에 맞추기 위해 authored 지형을 바꾸지 않는다. 물높이·phase·문·승강기 변화는 gameplay state와 별도 시각 차분을 함께 갖는다. 현재 H0 샘플의 제안 배치를 기존 domain 좌표로 자동 승격하지 않는다.
+
 상태: 계획 문서. 구현·이미지 제작·다른 문서 변경은 이 파일의 범위가 아니다.  
 입력 정본: `docs/research/top_down_action_rpg/PLAN_RESOLUTION.md`(문서 간 충돌의 canonical 해석), `docs/research/top_down_action_rpg/WORLD_CONSTITUTION.md`, `docs/research/top_down_action_rpg/IDEA_LEDGER.md`, `plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/README.md`  
 Primary Reference: **BLACK SOULS 2 하나**. 다른 게임의 맵·UI·분위기를 혼합하지 않는다.

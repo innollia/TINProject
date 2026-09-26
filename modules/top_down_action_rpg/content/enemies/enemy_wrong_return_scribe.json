@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "id": "enemy_wrong_return_scribe",
+  "display_name": "Wrong-Return Scribe",
+  "role": {
+    "base_region_id": "region_r1_returning_kiln",
+    "region_secondary": "region_r3_bellhouse_hospice",
+    "region_role": "recovery_reentry",
+    "institution_id": "institution_return_registry",
+    "role_tags": [
+      "recorder",
+      "abstract"
+    ]
+  },
+  "body": {
+    "body_class": "abstract",
+    "silhouette_key": "sil_wrong_return_scribe",
+    "scale_class": "human",
+    "stateful_body": "none",
+    "motion_signature": "entry_add_sweep"
+  },
+  "stats": {
+    "max_hp": 70,
+    "agility": 12,
+    "action_slots": 1,
+    "resource_pool": {
+      "mp": 6,
+      "equipment_charge": 0
+    }
+  },
+  "condition_bar": {
+    "kind": "condition_progress",
+    "max_value": 100,
+    "start_value": 0,
+    "advance_on": [
+      "window_elapsed"
+    ],
+    "advance_per_source": 25,
+    "decrease_on_phase_enter": 0
+  },
+  "baseline_action_ids": [
+    "act_fold_wall_measure",
+    "act_registry_paper_shove"
+  ],
+  "signature_action_id": "act_wrong_return_scribe_entry_add",
+  "telegraph": {
+    "signature_tell_key": "tell_wrong_return_scribe_entry_add",
+    "channels": [
+      "pose",
+      "numeric_bar"
+    ]
+  },
+  "status_profile": {
+    "innate_status_ids": [],
+    "resistant_status_ids": [
+      "st_misfolded"
+    ],
+    "immune_status_ids": [
+      "st_recorded"
+    ]
+  },
+  "break_profile": {
+    "breakable": false,
+    "break_source_action_ids": [],
+    "on_break_status_ids": [],
+    "on_break_effect_ids": []
+  },
+  "reward": {
+    "equipment_ids": [],
+    "item_ids": [
+      "item_blank_return_form"
+    ],
+    "resource_delta": {
+      "mp": 1
+    }
+  },
+  "aftermath": {
+    "effect_ids": [
+      "eff_r1_wrong_return_witnessed"
+    ],
+    "region_state_tag": "r1_scribe_entry_added"
+  },
+  "lore_ref": "seed_s010",
+  "seed_ids": [
+    "seed_s010",
+    "seed_s044",
+    "seed_s100"
+  ]
+}

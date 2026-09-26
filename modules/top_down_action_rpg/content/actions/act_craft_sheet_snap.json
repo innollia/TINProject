@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "id": "act_craft_sheet_snap",
+  "display_name": "craft sheet snap",
+  "order": 9,
+  "owner": "enemy",
+  "category": "magic",
+  "defense_mode": "none",
+  "lifecycle": "instant",
+  "intent": {
+    "target_mode": "ONE_ENEMY",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 1,
+    "action_slot_cost": 1,
+    "resource_costs": {
+      "mp": 2
+    },
+    "cooldown_windows": 1
+  },
+  "telegraph": {
+    "channels": [
+      "pose",
+      "vfx"
+    ],
+    "windows_before_active": 0,
+    "tell_key": "tell_craft_sheet_snap"
+  },
+  "damage_payload": {
+    "delivery": "magical",
+    "shape": "fixed",
+    "base_value": 6,
+    "affinity": "none",
+    "hit_policy": "roll",
+    "hit_modifier": 0,
+    "evasion_policy": "roll",
+    "critical_policy": "never",
+    "dodge_pressure": 4,
+    "guard_ignore": false,
+    "breaks_guard": false,
+    "break_damage": 0,
+    "dodgeable": true,
+    "break_damage_kinds": [],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {
+      "status_id": "st_medium_residue",
+      "chance_permille": 500,
+      "target": "target"
+    }
+  ],
+  "reactions": {
+    "valid_reaction_ids": [
+      "act_guard_set",
+      "act_dodge_shift"
+    ],
+    "forbidden_response_ids": [
+      "act_break_poise"
+    ]
+  },
+  "counters": {
+    "valid": [
+      "guard",
+      "dodge",
+      "status_counter"
+    ],
+    "forbidden": [
+      "break"
+    ],
+    "breakable": false
+  },
+  "presentation": {
+    "icon_key": "act_craft_sheet_snap"
+  },
+  "seed_ids": [
+    "seed_s130",
+    "seed_s146",
+    "seed_s160"
+  ]
+}

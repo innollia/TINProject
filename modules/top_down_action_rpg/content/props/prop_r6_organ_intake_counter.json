@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "prop_r6_organ_intake_counter",
+  "display_name": "Organ Intake Counter",
+  "region_id": "region_r6_gristmarket_ward",
+  "placement": {
+    "anchor_key": "r6_organ_intake_counter",
+    "layer": "prop",
+    "visible_from": "same_room"
+  },
+  "initial_state_id": "ps_open",
+  "states": [
+    {
+      "state_id": "ps_open",
+      "label": "organ, patient and replacement part each get a different form",
+      "visible": true,
+      "art_key": "prop_r6_counter_open",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_split",
+      "label": "the counter now files one body under three signatures",
+      "visible": true,
+      "art_key": "prop_r6_counter_split",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r6_residue_recovery_filed"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_intake_counter",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r6_organ_intake_counter",
+            "state_id": "ps_open"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r6_organ_intake_counter",
+            "state_id": "ps_split"
+          }
+        }
+      ]
+    },
+    "opens": "conv_r6_organ_intake",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s038",
+    "seed_s098",
+    "seed_s132"
+  ]
+}

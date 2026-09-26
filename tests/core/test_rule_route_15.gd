@@ -23,11 +23,13 @@ func test_index_order_schema_and_ids_include_rule_15() -> void:
 	var parsed_index := RuleLevelLoader.parse_index(index_value)
 	assert_true(parsed_index["ok"])
 	var entries: Array = parsed_index["entries"]
-	assert_eq(entries.size(), 17)
+	assert_eq(entries.size(), 18)
 	assert_eq(entries[14]["id"], "rule_15_relay")
 	assert_eq(entries[14]["path"], "reference/rule_15_relay.json")
-	assert_eq(entries[15]["id"], "signal_room_01")
-	assert_eq(entries[16]["id"], "crossing_02")
+	assert_eq(entries[15]["id"], "rule_16_overlap_rules")
+	assert_eq(entries[15]["path"], "reference/rule_16_overlap_rules.json")
+	assert_eq(entries[16]["id"], "signal_room_01")
+	assert_eq(entries[17]["id"], "crossing_02")
 
 	var loaded := RuleLevelLoader.load_level(BOARD_ID)
 	assert_true(loaded["ok"])

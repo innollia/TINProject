@@ -1,7 +1,7 @@
 # 《빈 공리》 프로젝트 아트 층
 
 프로젝트 ID: `empty_axiom`
-적용 코어: `docs/art/PERSONAL_STYLE_CORE.md` 버전 `0.1`
+적용 코어: `docs/art/PERSONAL_STYLE_CORE.md` 버전 `0.3`
 범위: Golden Idol 형식의 《빈 공리》 인물·공간·소품 이미지.
 
 ## 세계와 정서
@@ -27,3 +27,5 @@
 ## 활성 자산군
 
 - `character_plates`: 인물 동일성 검토용. 현재 승인된 Gold Standard는 없다. 후보는 사용자 검토 전까지 기준 이미지가 아니다.
+- `investigation_characters`: 조사 장면에 합성할 투명 배경 인물. 인물 1명·사건 상태 1개·포즈 1개가 제작 단위다. 캐릭터판의 배경·확대 컷을 포함하지 않는다. 첫 대상은 [Stage 1 미라](asset_briefs/mira_ben_stage01_cutout.md)이며 렌즈집은 손에 든 상태로 확정했다. 카메라·배치 규격과 새 생성 경로를 준비한다.
+

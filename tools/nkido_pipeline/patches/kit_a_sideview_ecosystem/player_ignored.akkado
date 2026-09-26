@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.player_ignored
+// situation: the player stays unseen and nothing reacts
+// render: --seconds 1.60 --rate 48000 --bpm 72 --no-default-bank
+n"a2" |> sine(@.freq) * adsr(@.gate, 0.25, 0.20, 0.45, 0.45) |> out(%)

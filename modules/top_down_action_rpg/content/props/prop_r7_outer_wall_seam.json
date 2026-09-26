@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "prop_r7_outer_wall_seam",
+  "display_name": "Outer Wall Seam",
+  "region_id": "region_r7_hollow_orchard",
+  "placement": {
+    "anchor_key": "r7_outer_wall_seam",
+    "layer": "wall",
+    "visible_from": "any"
+  },
+  "initial_state_id": "ps_sealed",
+  "states": [
+    {
+      "state_id": "ps_sealed",
+      "label": "the seam reads the phase before it reads the person",
+      "visible": true,
+      "art_key": "prop_r7_seam_sealed",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_reported",
+      "label": "the seam has been reported as an observation point",
+      "visible": true,
+      "art_key": "prop_r7_seam_reported",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r7_wall_mandate_filed"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_wall_seam",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r7_outer_wall_seam",
+            "state_id": "ps_sealed"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r7_outer_wall_seam",
+            "state_id": "ps_reported"
+          }
+        }
+      ]
+    },
+    "opens": "doc_r7_wall_phase_ledger",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s010",
+    "seed_s076",
+    "seed_s111"
+  ]
+}

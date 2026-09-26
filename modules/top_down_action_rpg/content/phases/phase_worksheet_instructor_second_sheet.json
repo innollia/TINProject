@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "phase_worksheet_instructor_second_sheet",
+  "display_name": "Second Sheet",
+  "owner_enemy_id": "enemy_worksheet_instructor",
+  "index": 1,
+  "trigger": {
+    "kind": "hp_ratio",
+    "hp_ratio_at": 55
+  },
+  "enter": {
+    "effect_ids": [
+      "eff_r8_course_index_printed"
+    ],
+    "status_ids": [
+      "st_misfolded"
+    ],
+    "invulnerable_windows": 0
+  },
+  "overrides": {
+    "action_add_ids": [
+      "act_craft_sheet_snap"
+    ],
+    "action_remove_ids": [],
+    "stat_overrides": {
+      "agility": 11
+    },
+    "resistance_add_status_ids": [
+      "st_misfolded"
+    ],
+    "resistance_remove_status_ids": [],
+    "signature_action_id": "act_worksheet_instructor_grade_mark",
+    "telegraph_gain_windows": 1
+  },
+  "roster": {
+    "add_enemy_ids": [
+      "enemy_residue_cantor"
+    ],
+    "remove_enemy_ids": [],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "owner_dead"
+  },
+  "next_phase_id": "phase_worksheet_instructor_final_mark",
+  "seed_ids": [
+    "seed_s091",
+    "seed_s142",
+    "seed_s145"
+  ]
+}

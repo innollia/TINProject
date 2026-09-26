@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.sleep
+// situation: the player sleeps
+// render: --seconds 2.20 --rate 48000 --bpm 60 --no-default-bank
+n"a2" |> sine(@.freq) * adsr(@.gate, 0.60, 0.30, 0.80, 0.60) |> out(%)

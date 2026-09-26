@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "phase_mana_triage_surrogate_replacement_signed",
+  "display_name": "Replacement Signed",
+  "owner_enemy_id": "enemy_mana_triage_surrogate",
+  "index": 2,
+  "trigger": {
+    "kind": "previous_phase_complete"
+  },
+  "enter": {
+    "effect_ids": [
+      "eff_r3_consent_record_filed"
+    ],
+    "status_ids": [
+      "st_concentration_load"
+    ],
+    "invulnerable_windows": 0
+  },
+  "overrides": {
+    "action_add_ids": [
+      "act_cantor_void_gash"
+    ],
+    "action_remove_ids": [
+      "act_scheduled_intervention_step"
+    ],
+    "stat_overrides": {
+      "agility": 12
+    },
+    "resistance_add_status_ids": [
+      "st_concentration_load"
+    ],
+    "resistance_remove_status_ids": [
+      "st_medium_residue"
+    ],
+    "signature_action_id": "act_mana_triage_substitute",
+    "telegraph_gain_windows": 0
+  },
+  "roster": {
+    "add_enemy_ids": [
+      "enemy_latency_bell_ringer"
+    ],
+    "remove_enemy_ids": [
+      "enemy_ash_hound"
+    ],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "owner_dead"
+  },
+  "next_phase_id": null,
+  "seed_ids": [
+    "seed_s004",
+    "seed_s028",
+    "seed_s104"
+  ]
+}

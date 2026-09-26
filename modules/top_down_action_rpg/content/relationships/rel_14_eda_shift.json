@@ -1,0 +1,223 @@
+{
+    "schema_version":  1,
+    "id":  "rel_14_eda_shift",
+    "target_npc_id":  "npc_14_eda_marrow",
+    "channel":  "professional",
+    "start_state_id":  "rs_eda_counted",
+    "states":  [
+                   {
+                       "state_id":  "rs_eda_counted",
+                       "order":  0,
+                       "label":  "counted as one more pair of hands",
+                       "entry_effect_ids":  [
+
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "guarded"
+                   },
+                   {
+                       "state_id":  "rs_eda_mobilized",
+                       "order":  1,
+                       "label":  "on the shift roster",
+                       "entry_effect_ids":  [
+                                                "eff_r8_course_index_printed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r5_labor"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_r8_labor_desk"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "operational"
+                   },
+                   {
+                       "state_id":  "rs_eda_responsible",
+                       "order":  2,
+                       "label":  "the strike cost in your own name",
+                       "entry_effect_ids":  [
+                                                "eff_r8_ash_choir_defeated"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r5_labor",
+                                        "port_r8_course_record"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_r8_labor_desk"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  true,
+                                               "encounter_modifier":  1,
+                                               "granted_by_effect_ids":  [
+                                                                             "eff_r8_ash_choir_defeated"
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "candid"
+                   },
+                   {
+                       "state_id":  "rs_eda_efficienced",
+                       "order":  3,
+                       "label":  "the floor chosen over the people",
+                       "entry_effect_ids":  [
+                                                "eff_r8_concentration_registered"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "hostile"
+                   }
+               ],
+    "transitions":  [
+                        {
+                            "transition_id":  "t_01",
+                            "from_state_id":  "rs_eda_counted",
+                            "to_state_id":  "rs_eda_mobilized",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_labor_desk",
+                                                                            "choice_id":  "ch_call_the_whole_shift"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r8_course_index_printed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_02",
+                            "from_state_id":  "rs_eda_mobilized",
+                            "to_state_id":  "rs_eda_responsible",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_labor_desk",
+                                                                            "choice_id":  "ch_move_credit_to_labour"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r8_ash_choir_defeated"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_03",
+                            "from_state_id":  "rs_eda_mobilized",
+                            "to_state_id":  "rs_eda_counted",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_labor_desk",
+                                                                            "choice_id":  "ch_withhold_one_service"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  8
+                        },
+                        {
+                            "transition_id":  "t_04",
+                            "from_state_id":  "rs_eda_responsible",
+                            "to_state_id":  "rs_eda_efficienced",
+                            "via":  "effect",
+                            "requires_condition":  {
+                                                       "clock_irreversible":  {
+                                                                                  "clock_id":  "clock_resource_collapse"
+                                                                              }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r8_concentration_registered"
+                                           ],
+                            "is_irreversible":  true,
+                            "priority":  5
+                        }
+                    ],
+    "axes":  {
+                 "trust":  1,
+                 "fear":  0,
+                 "debt":  1,
+                 "recognition":  0,
+                 "attachment":  0
+             },
+    "axis_rules":  [
+                       {
+                           "key":  "craft_credit_moved_to_labour",
+                           "condition":  {
+                                             "choice_taken":  {
+                                                                  "conversation_id":  "conv_r8_labor_desk",
+                                                                  "choice_id":  "ch_move_credit_to_labour"
+                                                              }
+                                         },
+                           "sets":  {
+                                        "resource_scarcity":  1
+                                    }
+                       }
+                   ],
+    "exclusions":  {
+                       "max_final_state":  1,
+                       "conflicting_final_state_ids":  [
+                                                           "rs_eda_efficienced"
+                                                       ]
+                   },
+    "romance":  {
+                    "allowed":  false,
+                    "explicit_content":  false,
+                    "gate_state_ids":  [
+
+                                       ],
+                    "consent_beat_effect_ids":  [
+
+                                                ]
+                },
+    "seed_ids":  [
+                     "seed_s039",
+                     "seed_s041",
+                     "seed_s090",
+                     "seed_s120",
+                     "seed_s137"
+                 ]
+}

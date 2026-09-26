@@ -1,0 +1,6 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: phy.tool_use_scrape
+// situation: a tool is dragged or levered, mid class
+// render: --seconds 0.70 --rate 48000 --bpm 84 --no-default-bank
+// bracket subdivision; see tools/nkido_pipeline/README.md, unverified constructs.
+n"[a2 a2]" as e |> saw(e.freq) * adsr(e.gate, 0.06, 0.12, 0.55, 0.18) * e.vel |> out(%)

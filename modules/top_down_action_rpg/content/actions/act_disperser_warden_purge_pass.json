@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "id": "act_disperser_warden_purge_pass",
+  "display_name": "disperser warden purge pass",
+  "order": 11,
+  "owner": "enemy",
+  "category": "magic",
+  "defense_mode": "none",
+  "lifecycle": "instant",
+  "intent": {
+    "target_mode": "ONE_ENEMY",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 0,
+    "resource_costs": {},
+    "cooldown_windows": 2
+  },
+  "telegraph": {
+    "channels": [
+      "vfx",
+      "numeric_bar"
+    ],
+    "windows_before_active": 0,
+    "tell_key": "tell_disperser_warden_purge_pass"
+  },
+  "damage_payload": {
+    "delivery": "magical",
+    "shape": "guaranteed",
+    "base_value": 0,
+    "affinity": "none",
+    "hit_policy": "guaranteed",
+    "hit_modifier": 0,
+    "evasion_policy": "disabled",
+    "critical_policy": "never",
+    "dodge_pressure": 0,
+    "guard_ignore": true,
+    "breaks_guard": false,
+    "break_damage": 0,
+    "dodgeable": false,
+    "break_damage_kinds": [],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {
+      "status_id": "st_misfolded",
+      "chance_permille": 1000,
+      "target": "target"
+    },
+    {
+      "status_id": "st_medium_residue",
+      "chance_permille": 1000,
+      "target": "self"
+    }
+  ],
+  "reactions": {
+    "valid_reaction_ids": [
+      "act_weave_sheet_lay"
+    ],
+    "forbidden_response_ids": [
+      "act_break_poise"
+    ]
+  },
+  "counters": {
+    "valid": [
+      "status_counter",
+      "noncombat",
+      "break"
+    ],
+    "forbidden": [
+      "guard",
+      "resource_lock"
+    ],
+    "breakable": true
+  },
+  "craft": {
+    "craft_family": "rigid_fold",
+    "concentration_source": "hybrid",
+    "concentration_requirement": 420,
+    "body_profile_requirements": [
+      "retention_high_emission_low",
+      "sensory_misclassification"
+    ],
+    "medium_options": [
+      "res_medium_blank"
+    ],
+    "tool_options": [
+      "curved_awl"
+    ],
+    "shape_or_pattern": "open_purge_sweep",
+    "preparation_turns": 0,
+    "waste": {
+      "st_misfolded": 1
+    },
+    "failure_status_id": "st_medium_residue",
+    "environment_effect": {
+      "clock_writes": [
+        {
+          "ticks": 1,
+          "clock_id": "clock_contamination"
+        }
+      ]
+    },
+    "social_recording": "res_craft_credit"
+  },
+  "presentation": {
+    "icon_key": "act_disperser_warden_purge_pass"
+  },
+  "seed_ids": [
+    "seed_s029",
+    "seed_s097",
+    "seed_s123"
+  ]
+}

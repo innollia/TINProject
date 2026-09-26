@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_h0_crier_thread",
+    "display_name":  "Crier Thread",
+    "region_id":  "region_h0_undersign_exchange",
+    "speaker_npc_id":  "npc_10_juno_caster",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_10_juno_channel",
+                                                                                   "target_npc_id":  "npc_10_juno_caster",
+                                                                                   "state_id":  "rs_juno_fixed_subject"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_h0_return_desk",
+                                                                    "choice_id":  "ch_index_return"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  15,
+    "pages":  [
+                  {
+                      "page_id":  "pg_thread",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "The channel is neutral. That is not the same as the channel being careful.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_screenshot",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "A screenshot is already three forwards old and nobody in it agreed to be pictured.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_edit_line",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "I cut one line out of that image the night it was taken. I still have the cut line.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_verify_before_forwarding",
+                        "text":  "Get a second witness or a physical trace before anything is posted.",
+                        "semantic_tags":  [
+                                              "careful",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_publish_the_edit_history",
+                        "text":  "Publish her own edit history next to the screenshot.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "costly"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_withhold_for_one_cycle",
+                        "text":  "Ask her to hold the channel for one cycle without a post.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_forward_it_as_is",
+                        "text":  "Forward it as it is and let the group sort out the category.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r1_return_registry_logs_name",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+                                           "eff_h0_arrival_declaration_filed"
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_h0_return_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s047",
+                     "seed_s048",
+                     "seed_s114"
+                 ]
+}

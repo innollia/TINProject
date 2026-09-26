@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: dsc.resource_collect
+// situation: the player picks something up
+// render: --seconds 0.45 --rate 48000 --bpm 120 --no-default-bank
+n"c5 e5" as e |> tri(e.freq) * adsr(e.gate, 0.002, 0.09, 0.15, 0.05) * e.vel |> out(%)

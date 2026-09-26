@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r8_labor_desk",
+    "display_name":  "Labor Desk",
+    "region_id":  "region_r8_folding_school",
+    "speaker_npc_id":  "npc_14_eda_marrow",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_14_eda_shift",
+                                                                                   "target_npc_id":  "npc_14_eda_marrow",
+                                                                                   "state_id":  "rs_eda_efficienced"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_r8_course_index_desk",
+                                                                    "choice_id":  "ch_register_measurement"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  13,
+    "pages":  [
+                  {
+                      "page_id":  "pg_shift",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "Name the shift, the hours, and who pays when the hours run long.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_course_credit",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "A course credit chit sits on the desk with a labor hour written on the back of it.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_collective",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "If I give you the individual number, the floor will ask me why everyone else does not have one.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_call_the_whole_shift",
+                        "text":  "Ask her to call the whole shift and publish the cost of the hours.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "costly"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_move_credit_to_labour",
+                        "text":  "Move the craft credit onto foundry labor hours and let the school see the swap.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "protective"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_withhold_one_service",
+                        "text":  "Withhold one non-essential service until the ration holds.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_choose_efficiency",
+                        "text":  "Choose the efficient shift and leave the unsafe floor on its own.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r8_concentration_registered",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+                                           "eff_r8_course_index_printed"
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r8_course_index_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s039",
+                     "seed_s041",
+                     "seed_s120"
+                 ]
+}

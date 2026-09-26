@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "prop_r6_drainage_pump",
+  "display_name": "Drainage Hand Pump",
+  "region_id": "region_r6_gristmarket_ward",
+  "placement": {
+    "anchor_key": "r6_drainage_pump",
+    "layer": "hazard",
+    "visible_from": "adjacent"
+  },
+  "initial_state_id": "ps_dry",
+  "states": [
+    {
+      "state_id": "ps_dry",
+      "label": "the pump is dry and the dark is impassable",
+      "visible": true,
+      "art_key": "prop_r6_pump_dry",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_primed",
+      "label": "the pump is primed and the dark answers to a quorum",
+      "visible": true,
+      "art_key": "prop_r6_pump_primed",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r6_pump_primed"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_prime_the_hand_pump",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r6_drainage_pump",
+            "state_id": "ps_dry"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r6_drainage_pump",
+            "state_id": "ps_primed"
+          }
+        }
+      ]
+    },
+    "opens": "conv_r6_drainage_dark",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s031",
+    "seed_s079",
+    "seed_s080"
+  ]
+}

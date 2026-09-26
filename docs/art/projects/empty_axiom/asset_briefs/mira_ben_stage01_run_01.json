@@ -1,0 +1,138 @@
+{
+  "asset_id": "mira_ben_stage01_injured_cutout",
+  "status": "excluded_by_user_model_policy",
+  "approval": "not_approved",
+  "eligible_as_reference": false,
+  "exclusion_reason": "User excluded Qwen models from further testing and production.",
+  "request": {
+    "workspace_id": "d1d3c25e-e590-46cb-a6db-2a6eb4673a71",
+    "base_model_id": "qwen-image-edit-2511",
+    "width": 832,
+    "height": 1248,
+    "batch_size": 1,
+    "quality": "medium",
+    "num_inference_steps": 40,
+    "seed": 260927,
+    "session_name": "TIN Golden Idol Mira cutout 01",
+    "guidance_files": [
+      {
+        "file_id": "b13c3913-552c-43f4-a6d1-adfe0b96cfec",
+        "type": "init_image"
+      },
+      {
+        "file_id": "efb33a18-433d-4c17-91bc-80923207934f",
+        "type": "reference_image"
+      }
+    ],
+    "prompt": "Replace the subject and composition with ONE new adult character, Mira Ben, a 26-year-old slim researcher for a hand-drawn 2D investigation game. Show her entire seated body, head and both shoes, with 5% empty margins. Slightly elevated three-quarter view showing her LEFT cheek and ear; she faces screen right, seated on the floor with bent knees and torso leaning back. Her LEFT hand holds a small transparent cracked lens case over her lap; RIGHT hand rests low at her right side. BOTH eyes are covered by plain emergency bandages. Short dark brown bob ending below ears, exactly TWO parallel silver pins behind LEFT ear. Muted leaf-green knit sweater, cream collar, worn off-white lab coat with faint disinfectant marks on sleeve, plain charcoal trousers, low black lace-up shoes. Her stylized adult head is slightly enlarged, hands expressive. Use image 1 ONLY for the visible lower face's sharp central plane division, 2-3 painted light/shadow masses, rough directional interior brush strokes and broad painted hair masses. Use image 2 ONLY for irregular dark colored structural lines, changing line pressure and breaks, readable collar/sleeve/coat overlaps and silhouette. Do not copy either source character, hair color, clothing, pose, symbols or background. Exclude flowers, leaves, hearts, stars, extra eyes, bows. NO photorealism, photographic skin, smooth airbrush shading, individual hair strands or 3D render. Flat solid light grey background for mechanical removal. No room, furniture, floor texture, cast shadow, border, inset views, text or signature. Keep all rough painted texture INSIDE the character silhouette."
+  },
+  "run": {
+    "inference_id": "db39b931-2b5c-4df0-a17f-14578f397cc8",
+    "status": "IN_PROGRESS",
+    "estimated_price_creative_units": 0.9,
+    "created_at": "2026-09-26T10:04:51.671756+00:00",
+    "session_id": "c0bbbac6-8a9c-406c-bf3a-d9e99d0c4f16",
+    "parameters_adjusted": false,
+    "parameters_adjusted_warning": null,
+    "poll_interval_seconds": 10,
+    "base_model_id": "qwen-image-edit-2511",
+    "reference_set_contributions": [],
+    "reference_sets_degraded": false,
+    "reference_sets_warning": null
+  },
+  "settings_basis": {
+    "model": "Multi-image instruction editing; unproven for these A/B references. Community comparison shows task-dependent results, not universal superiority.",
+    "steps": "40 requested from Qwen official model-card example; backend execution details not exposed.",
+    "cfg_sampler": "Not overridden: Layer mapping to true_cfg_scale/scheduler not confirmed.",
+    "seed": "Arbitrary reproducibility seed.",
+    "dimensions": "Layer supported 2:3 ~1MP; one image for cost control.",
+    "pose": "Production choice for candidate, not an observed original-game camera.",
+    "background": "Flat temporary background, mechanical removal planned."
+  },
+  "sources": [
+    "https://huggingface.co/Qwen/Qwen-Image-Edit-2511",
+    "https://www.reddit.com/r/StableDiffusion/comments/1wo4e1s/qwenimage_21_vs_qwenimageedit_2511_21_is_not/",
+    "https://layer.ai/docs/models/qwen-qwen-image-edit-2511"
+  ],
+  "result": {
+    "inference_id": "db39b931-2b5c-4df0-a17f-14578f397cc8",
+    "status": "COMPLETE",
+    "completed_at": "2026-09-26T10:05:06.530413+00:00",
+    "outputs": [
+      {
+        "file_id": "2ea647b6-d5d0-45e4-b885-f3b942b884a9",
+        "url": "https://media.app.layer.ai/workspaces/d1d3c25e-e590-46cb-a6db-2a6eb4673a71/files/2ea647b6-d5d0-45e4-b885-f3b942b884a9/replace_the_subject_and_composition_with_one_new_adult_character_mira-2026-09-26-100451.png",
+        "content_type": "image/png",
+        "preview_url": "https://media.app.layer.ai/workspaces/d1d3c25e-e590-46cb-a6db-2a6eb4673a71/files/2ea647b6-d5d0-45e4-b885-f3b942b884a9/replace_the_subject_and_composition_with_one_new_adult_character_mira-2026-09-26-100451_200.png",
+        "width": 832,
+        "height": 1248,
+        "duration_seconds": null,
+        "file_size_bytes": 1049861
+      }
+    ],
+    "actual_price_creative_units": 0.891,
+    "error": null,
+    "base_model_id": "qwen-image-edit-2511",
+    "reference_set_contributions": [],
+    "reference_sets_degraded": false,
+    "reference_sets_warning": null
+  },
+  "background_removal": {
+    "request": {
+      "workspace_id": "d1d3c25e-e590-46cb-a6db-2a6eb4673a71",
+      "base_model_id": "birefnet-v2",
+      "batch_size": 1,
+      "width": 832,
+      "height": 1248,
+      "session_id": "c0bbbac6-8a9c-406c-bf3a-d9e99d0c4f16",
+      "guidance_files": [
+        {
+          "file_id": "2ea647b6-d5d0-45e4-b885-f3b942b884a9",
+          "type": "init_image"
+        }
+      ]
+    },
+    "run": {
+      "inference_id": "30198e39-1758-4f47-b394-27443021bd7a",
+      "status": "IN_PROGRESS",
+      "estimated_price_creative_units": 0.1,
+      "created_at": "2026-09-26T10:06:42.171507+00:00",
+      "session_id": "c0bbbac6-8a9c-406c-bf3a-d9e99d0c4f16",
+      "parameters_adjusted": false,
+      "parameters_adjusted_warning": null,
+      "poll_interval_seconds": 10,
+      "base_model_id": "birefnet-v2",
+      "reference_set_contributions": [],
+      "reference_sets_degraded": false,
+      "reference_sets_warning": null
+    },
+    "result": {
+      "inference_id": "30198e39-1758-4f47-b394-27443021bd7a",
+      "status": "COMPLETE",
+      "completed_at": "2026-09-26T10:06:47.678210+00:00",
+      "outputs": [
+        {
+          "file_id": "cbe7b68b-87c7-4483-9ccb-418aba0bfb1b",
+          "url": "https://media.app.layer.ai/workspaces/d1d3c25e-e590-46cb-a6db-2a6eb4673a71/files/cbe7b68b-87c7-4483-9ccb-418aba0bfb1b/image-generation-2026-09-26-100642.png",
+          "content_type": "image/png",
+          "preview_url": "https://media.app.layer.ai/workspaces/d1d3c25e-e590-46cb-a6db-2a6eb4673a71/files/cbe7b68b-87c7-4483-9ccb-418aba0bfb1b/image-generation-2026-09-26-100642_200.png",
+          "width": 832,
+          "height": 1248,
+          "duration_seconds": null,
+          "file_size_bytes": 773946
+        }
+      ],
+      "actual_price_creative_units": 0.1,
+      "error": null,
+      "base_model_id": "birefnet-v2",
+      "reference_set_contributions": [],
+      "reference_sets_degraded": false,
+      "reference_sets_warning": null
+    }
+  },
+  "total_cost_cu": 0.991,
+  "observed_content_deviations": [
+    "Faces screen left instead of requested screen right.",
+    "Hairpin count and cream shirt collar need user review; not approved."
+  ]
+}

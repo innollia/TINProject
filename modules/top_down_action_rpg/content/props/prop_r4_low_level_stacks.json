@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "prop_r4_low_level_stacks",
+  "display_name": "Low-Level Stacks",
+  "region_id": "region_r4_crownwell_archive",
+  "placement": {
+    "anchor_key": "r4_low_level_stacks",
+    "layer": "wall",
+    "visible_from": "same_room"
+  },
+  "initial_state_id": "ps_intact",
+  "states": [
+    {
+      "state_id": "ps_intact",
+      "label": "the floor text repeats one sentence and refuses translation",
+      "visible": true,
+      "art_key": "prop_r4_stacks_intact",
+      "collides": false,
+      "interactable": false,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_filed",
+      "label": "one floor has hardened into a canonical local law",
+      "visible": true,
+      "art_key": "prop_r4_stacks_filed",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r4_translation_precedence_filed"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_examine_stacks",
+    "availability": {
+      "prop_state_is": {
+        "prop_id": "prop_r4_low_level_stacks",
+        "state_id": "ps_filed"
+      }
+    },
+    "opens": "doc_r4_contradictory_translation",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s060",
+    "seed_s073",
+    "seed_s078"
+  ]
+}

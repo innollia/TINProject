@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_h0_route_board",
+    "display_name":  "Route Board",
+    "region_id":  "region_h0_undersign_exchange",
+    "speaker_npc_id":  "npc_07_bryn_oskel",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_07_bryn_route",
+                                                                                   "target_npc_id":  "npc_07_bryn_oskel",
+                                                                                   "state_id":  "rs_bryn_abandoned"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_h0_return_desk",
+                                                                    "choice_id":  "ch_withhold_category"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  13,
+    "pages":  [
+                  {
+                      "page_id":  "pg_chalk",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "Distance, cost, and how many people come back. In that order, and I will not repeat it for you.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_faded_chalk",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "An older line of chalk crosses the new one and neither has been wiped.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_sample_jar",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "If you carry my sample out of here, that stretch stays shut behind me.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_mark_the_safe_segment",
+                        "text":  "Mark the segment you can actually walk and pay for it in chalk.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "careful"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_ash_debt_opens_chute",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_open_one_way",
+                        "text":  "Let him open the one-way line and go through with the group.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "costly"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_ash_debt_opens_chute",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_keep_the_old_line",
+                        "text":  "Leave his older line on the board and walk his new one anyway.",
+                        "semantic_tags":  [
+                                              "evasive",
+                                              "bureaucratic"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_ash_debt_opens_chute",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_reuse_the_sealed_line",
+                        "text":  "Reuse the sealed line without telling anyone whose line it was.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r1_return_registry_logs_name",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_h0_return_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s062",
+                     "seed_s117",
+                     "seed_s124"
+                 ]
+}

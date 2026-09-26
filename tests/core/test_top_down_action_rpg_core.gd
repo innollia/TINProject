@@ -25,7 +25,42 @@ const SAVE_ROOT_KEYS: Array[String] = [
 	"state_format", "save_version", "run_id", "content_revision",
 	"field", "combat", "player", "world", "recovery", "progression", "transaction", "commit_log",
 ]
-const EXPECTED_FILE_COUNT: int = 64
+const EXPECTED_FILE_COUNT: int = 313
+const EXPECTED_RECORD_COUNT: int = 472
+const EXPECTED_KIND_COUNTS: Dictionary = {
+	"ledger": 1, "seeds": 160, "effects": 57, "statuses": 6, "actions": 38,
+	"equipment": 6, "items": 2, "clocks": 6, "relationships": 15, "recovery": 7,
+	"props": 31, "regions": 9, "npcs": 21, "conversations": 26, "documents": 14,
+	"phases": 17, "enemies": 19, "encounters": 37,
+}
+const CANONICAL_KIND_FLOORS: Dictionary = {
+	"seeds": 160, "regions": 9, "npcs": 21, "clocks": 6, "items": 2, "equipment": 6,
+	"statuses": 6, "actions": 38, "relationships": 15, "recovery": 7,
+}
+const CANONICAL_REGION_NODES: int = 9
+const CANONICAL_ROUTE_EDGES: int = 18
+const CANONICAL_EVENT_CLUSTERS: int = 9
+const CANONICAL_EQUIPMENT_FLOOR_ROLES: int = 6
+const CANONICAL_MANA_PROFILE_FLOOR: int = 4
+const CANONICAL_CORE_NPCS: int = 14
+const CANONICAL_SUPPORT_NPCS: int = 7
+const SEED_DENOMINATOR: int = 160
+const SEED_CORE_RANGE: int = 120
+const SEED_MAGIC_SUPPLEMENT_RANGE: int = 40
+const SEED_QUOTA_RATIO_PERMILLE: int = 600
+const SEED_GATE_MINIMUM_RETAINED: int = 96
+const SEED_PREFERRED_PLANNED: int = 120
+const SEED_GATE_KEYS: Array[String] = [
+	"g1_local_rule", "g2_surface_removed_variant", "g3_two_cross_links",
+	"g4_immediate_consequence", "g5_delayed_consequence", "g6_needed_by_npc_region_or_system",
+	"g7_name_swap_still_specific", "g8_not_weirdness_only",
+]
+const CANONICAL_REGION_IDS: Array[String] = [
+	"region_h0_undersign_exchange", "region_r1_returning_kiln", "region_r2_siltglass_commons",
+	"region_r3_bellhouse_hospice", "region_r4_crownwell_archive", "region_r5_glasswing_ordinal",
+	"region_r6_gristmarket_ward", "region_r7_hollow_orchard", "region_r8_folding_school",
+]
+const RETIRED_ROUTE_EDGE_IDS: Array[String] = ["route_e02_folding_school_dispatch"]
 const PROBE_ENCOUNTER_ID: String = "enc_core_probe"
 const PROBE_DOCUMENT_ID: String = "doc_core_probe"
 const PROBE_CONVERSATION_ID: String = "conv_core_probe"
@@ -496,38 +531,180 @@ func test_catalog_loads_with_zero_errors_and_first_slice_content() -> void:
 			deferred[entry.detail] = true
 	for floor_code: String in TopDownActionRpgContentLoader.DEFERRED_FLOORS:
 		assert_true(deferred.has(floor_code), floor_code)
-	var expected_counts: Dictionary = {
-		"ledger": 1, "seeds": 1, "effects": 7, "statuses": 2, "actions": 13,
-		"equipment": 2, "items": 2, "clocks": 6, "relationships": 4, "recovery": 2,
-		"props": 6, "regions": 3, "npcs": 4, "conversations": 3, "documents": 1,
-		"phases": 1, "enemies": 3, "encounters": 3,
-	}
 	var counts: Dictionary = _catalog.to_dict()["counts"]
 	assert_eq(counts.size(), TopDownActionRpgContentLoader.KIND_ORDER.size())
-	for kind_name: String in expected_counts:
-		assert_eq(int(counts[kind_name]), int(expected_counts[kind_name]), kind_name)
+	for kind_name: String in TopDownActionRpgContentLoader.KIND_ORDER:
+		assert_true(EXPECTED_KIND_COUNTS.has(kind_name), kind_name)
+		assert_true(CANONICAL_KIND_FLOORS.has(kind_name) or kind_name in ["ledger", "effects", "props", "conversations", "documents", "phases", "enemies", "encounters"], kind_name)
+	var indexed_record_total: int = 0
+	for kind_name: String in EXPECTED_KIND_COUNTS:
+		assert_eq(int(counts[kind_name]), int(EXPECTED_KIND_COUNTS[kind_name]), kind_name)
+		indexed_record_total += int(EXPECTED_KIND_COUNTS[kind_name])
+	assert_eq(indexed_record_total, EXPECTED_RECORD_COUNT)
+	for kind_name: String in CANONICAL_KIND_FLOORS:
+		assert_gte(int(counts[kind_name]), int(CANONICAL_KIND_FLOORS[kind_name]), kind_name)
 	assert_eq(_catalog.file_count, EXPECTED_FILE_COUNT)
+	assert_eq(indexed_record_total - SEED_DENOMINATOR + 1, EXPECTED_FILE_COUNT)
+	assert_eq(_catalog.ids_of_kind("regions"), CANONICAL_REGION_IDS)
+	assert_eq(_catalog.ids_of_kind("regions").size(), CANONICAL_REGION_NODES)
+	_region_topology_floors_are_canonical()
+	_seed_ledger_denominator_is_160_96_120()
 	var required_ids: Array[String] = [
-		"region_h0_undersign_exchange", "region_r1_returning_kiln", "region_r8_folding_school",
+		"region_h0_undersign_exchange", "region_r1_returning_kiln", "region_r2_siltglass_commons",
+		"region_r3_bellhouse_hospice", "region_r4_crownwell_archive", "region_r5_glasswing_ordinal",
+		"region_r6_gristmarket_ward", "region_r7_hollow_orchard", "region_r8_folding_school",
 		"clock_institutional_response", "clock_contamination", "clock_public_record",
 		"clock_resource_collapse", "clock_personal_collapse", "clock_crown_alignment",
 		"npc_01_ilyra_senn", "npc_05_nera_voss", "npc_11_cael_ren", "npc_20_mira_vask",
-		"enemy_ash_hound", "enemy_ember_clerk", "enemy_fold_wall",
+		"npc_02_orrin_kest", "npc_14_eda_marrow", "npc_26_cael_orin",
+		"enemy_ash_hound", "enemy_ember_clerk", "enemy_fold_wall", "enemy_residue_cantor",
 		"enc_r1_ash_choir", "enc_r1_door_role_test", "enc_r8_fold_that_refuses_the_hand",
+		"enc_r8_medium_store_quarantine", "enc_triage_conflict", "enc_the_clone_census",
+		"enc_the_last_safe_water", "enc_the_siltglass_toll", "enc_translation_drift",
 		"act_ash_sweep", "act_weave_lash", "act_file_return_form", "act_guard_set",
 		"act_dodge_shift", "act_break_poise", "act_ash_hound_lunge", "act_fold_wall_verdict",
-		"doc_r1_wrong_return_log", "equipment_ash_bound_stick", "equipment_kiln_ledger_seal",
+		"act_fold_wall_measure", "act_cantor_overflow", "act_cantor_sheet_lay",
+		"act_cantor_void_gash", "act_disperse_reading", "act_fold_brace",
+		"act_void_cut_gash", "act_weave_sheet_lay",
+		"doc_r1_wrong_return_log", "doc_r2_circulation_ledger", "doc_r3_mana_profile_triage_board",
+		"doc_r4_glossary_slot_register", "doc_r5_supply_rack_receipt", "doc_r6_cure_debt_ledger",
+		"doc_r7_wall_phase_ledger",
+		"prop_r1_ash_garden_thread", "prop_r1_wrong_return_door", "prop_r3_mercy_engine_valve",
+		"prop_r5_supply_rack", "prop_r6_organ_intake_counter", "prop_r7_outer_wall_seam",
+		"prop_r8_cut_chamber_wall", "prop_r8_medium_store_shelf",
+		"equipment_ash_bound_stick", "equipment_kiln_ledger_seal", "equipment_r6_residue_veil",
+		"equipment_r7_wall_charter", "equipment_r8_fold_brace", "equipment_rr_habit_loop",
 		"item_ash_thread_spool", "item_blank_return_form",
+		"st_recorded", "st_concentration_load", "st_medium_residue", "st_misfolded",
+		"st_overflowed", "st_contract_bound",
+		"rel_01_ilyra_record", "rel_04_sable_support", "rel_10_juno_channel",
+		"rel_14_eda_shift", "rel_20_mira_curriculum",
 		"rec_r1_kiln_reentry", "rec_r8_course_repeat", "phase_fold_wall_second_hearing",
+		"phase_cantor_contract_press", "phase_cantor_first_lay",
 		"conv_h0_return_desk", "conv_r1_wrong_return_hearing", "conv_r8_course_index_desk",
+		"conv_r2_water_round", "conv_r3_intake_triage", "conv_r5_boot_contract",
+		"conv_r6_organ_intake", "conv_r7_wall_phase_survey", "conv_r8_medium_workspace",
+		"eff_r1_ash_debt_opens_chute", "eff_r3_return_registry_handoff", "eff_r6_ash_chute_opened",
+		"eff_r2_water_recognition_filed", "eff_r4_crown_stair_opened", "eff_r7_crown_precedence_filed",
+		"seed_s001", "seed_s120", "seed_s121", "seed_s160",
 	]
 	for record_id: String in required_ids:
 		assert_true(_catalog.has(record_id), record_id)
+	for retired_edge: String in RETIRED_ROUTE_EDGE_IDS:
+		assert_false(bool(_catalog.has(retired_edge)), retired_edge)
+		assert_false(_region_edge_ids().has(retired_edge), retired_edge)
+	assert_true(_region_edge_ids().has("route_e06_quiet_ward_passage"))
+	assert_true(_region_edge_ids().has("route_e07_ash_chute"))
 	assert_eq(String(_catalog.record(_catalog.entry_region_id).get("region_role", "")), TopDownActionRpgContentLoader.HUB_REGION_ROLE)
 	assert_eq(_catalog.kind_of("act_ash_sweep"), "actions")
 	assert_eq(_catalog.kind_of("seed_ledger"), "ledger")
+	assert_eq(_catalog.kind_of("seed_s001"), "seeds")
+	assert_eq(_catalog.kind_of("seed_s160"), "seeds")
 	assert_eq(_catalog.record("rec_missing_probe").size(), 0)
-	assert_eq(_catalog.ids_of_kind("regions"), ["region_h0_undersign_exchange", "region_r1_returning_kiln", "region_r8_folding_school"])
+
+
+func _region_edge_ids() -> Dictionary:
+	var edge_ids: Dictionary = {}
+	for region_id: String in _catalog.ids_of_kind("regions"):
+		var region: Dictionary = _catalog.record(region_id)
+		edge_ids[String((region.get("entry", {}) as Dictionary).get("edge_id", ""))] = true
+		for exit_entry: Variant in region.get("exits", []):
+			if exit_entry is Dictionary:
+				edge_ids[String(exit_entry.get("edge_id", ""))] = true
+	return edge_ids
+
+
+func _region_topology_floors_are_canonical() -> void:
+	var edge_ids: Dictionary = {}
+	var gate_ids: Dictionary = {}
+	var cluster_ids: Dictionary = {}
+	for region_id: String in _catalog.ids_of_kind("regions"):
+		var region: Dictionary = _catalog.record(region_id)
+		var entry: Dictionary = region.get("entry", {})
+		assert_true(entry is Dictionary, region_id)
+		if String(entry.get("edge_id", "")).is_empty() == false:
+			edge_ids[String(entry["edge_id"])] = true
+		if String(entry.get("gate_id", "")).is_empty() == false:
+			gate_ids[String(entry["gate_id"])] = true
+		for exit_entry: Variant in region.get("exits", []):
+			assert_true(exit_entry is Dictionary, region_id)
+			if not exit_entry is Dictionary:
+				continue
+			edge_ids[String(exit_entry.get("edge_id", ""))] = true
+			gate_ids[String(exit_entry.get("gate_id", ""))] = true
+		var cluster: Dictionary = region.get("initial_cluster", {})
+		assert_true(cluster is Dictionary, region_id)
+		if cluster is Dictionary and not (cluster as Dictionary).is_empty():
+			cluster_ids[String(cluster.get("cluster_id", ""))] = true
+	assert_eq(edge_ids.size(), CANONICAL_ROUTE_EDGES)
+	assert_eq(cluster_ids.size(), CANONICAL_EVENT_CLUSTERS)
+	assert_eq(_catalog.ids_of_kind("regions").size(), cluster_ids.size())
+	assert_true(gate_ids.has("gate_g0_arrival_declaration"))
+	assert_true(gate_ids.has("gate_g1_ash_debt"))
+	assert_false(gate_ids.has("gate_g9"), "gate_g9")
+	for gate_id: String in gate_ids:
+		assert_true(TopDownActionRpgContentLoader.gate_is_declared(_catalog, gate_id), gate_id)
+	var floor_roles: Dictionary = {}
+	for equipment_id: String in _catalog.ids_of_kind("equipment"):
+		floor_roles[String(_catalog.record(equipment_id).get("floor_role", ""))] = true
+	assert_eq(floor_roles.size(), CANONICAL_EQUIPMENT_FLOOR_ROLES)
+	var mana_profiles: Dictionary = {}
+	var roster_counts: Dictionary = {}
+	for npc_id: String in _catalog.ids_of_kind("npcs"):
+		var npc_record: Dictionary = _catalog.record(npc_id)
+		mana_profiles[String(npc_record.get("mana_profile", ""))] = true
+		var roster_kind: String = String(npc_record.get("roster_kind", ""))
+		roster_counts[roster_kind] = int(roster_counts.get(roster_kind, 0)) + 1
+	assert_gte(mana_profiles.size(), CANONICAL_MANA_PROFILE_FLOOR)
+	assert_eq(roster_counts.keys().size(), 2)
+	assert_eq(int(roster_counts.get("core", 0)), CANONICAL_CORE_NPCS)
+	assert_eq(int(roster_counts.get("support", 0)), CANONICAL_SUPPORT_NPCS)
+	assert_eq(int(roster_counts.get("core", 0)) + int(roster_counts.get("support", 0)), int(EXPECTED_KIND_COUNTS["npcs"]))
+
+
+func _seed_ledger_denominator_is_160_96_120() -> void:
+	var ledger: Dictionary = _catalog.record("seed_ledger")
+	var denominator: Dictionary = ledger.get("denominator", {})
+	assert_true(denominator is Dictionary, "denominator")
+	assert_eq(int(denominator.get("extracted_units", 0)), SEED_DENOMINATOR)
+	assert_eq(String(denominator.get("unit_rule", "")), "independent_idea_unit")
+	assert_eq(bool(denominator.get("line_count_is_not_denominator", false)), true)
+	assert_eq((denominator.get("excluded_from_denominator", []) as Array).size(), 5)
+	var quota: Dictionary = ledger.get("quota", {})
+	assert_true(quota is Dictionary, "quota")
+	assert_eq(int(quota.get("ratio_permille", 0)), SEED_QUOTA_RATIO_PERMILLE)
+	assert_eq(int(quota.get("minimum_retained", 0)), SEED_GATE_MINIMUM_RETAINED)
+	assert_eq(int(quota.get("preferred_planned", 0)), SEED_PREFERRED_PLANNED)
+	assert_eq(
+		int(quota.get("minimum_retained", 0)),
+		int(floor(float(SEED_DENOMINATOR * SEED_QUOTA_RATIO_PERMILLE) / 1000.0))
+	)
+	assert_eq(String(quota.get("gate_status_token", "")), "planned_retained")
+	assert_eq(String(quota.get("post_review_status_token", "")), "used")
+	assert_eq(bool(quota.get("post_review_counts_toward_gate", true)), false)
+	var seed_ids: Array = _catalog.ids_of_kind("seeds")
+	assert_eq(seed_ids.size(), SEED_DENOMINATOR)
+	var retained: int = 0
+	for seed_id: String in seed_ids:
+		var seed: Dictionary = _catalog.record(seed_id)
+		assert_eq(String(seed.get("status", "")), "planned_retained", seed_id)
+		var gates: Dictionary = seed.get("anti_generic_gates", {})
+		assert_eq(gates.size(), SEED_GATE_KEYS.size(), seed_id)
+		for gate_key: String in SEED_GATE_KEYS:
+			assert_eq(bool(gates.get(gate_key, false)), true, seed_id + " " + gate_key)
+		var risk: Dictionary = seed.get("generic_risk_test", {})
+		assert_eq(bool(risk.get("name_only_reskin", true)), false, seed_id)
+		assert_eq(bool(risk.get("justified_by_weirdness_only", true)), false, seed_id)
+		assert_false(String(risk.get("notes", "")).is_empty(), seed_id)
+		var link_a: Dictionary = seed.get("cross_link_a", {})
+		var link_b: Dictionary = seed.get("cross_link_b", {})
+		assert_ne(String(link_a.get("kind", "")), String(link_b.get("kind", "")), seed_id)
+		assert_ne(String(link_a.get("id", "")), String(link_b.get("id", "")), seed_id)
+		assert_eq(bool(seed.get("provenance", {}).get("no_original_wording_copied", false)), true, seed_id)
+		assert_true(TopDownActionRpgContentLoader.is_json_safe(seed), seed_id)
+		retained += 1
+	assert_gte(retained, SEED_GATE_MINIMUM_RETAINED)
+	assert_gte(retained, SEED_PREFERRED_PLANNED)
 
 
 func test_catalog_ids_and_vocabularies_are_closed() -> void:
@@ -1292,7 +1469,7 @@ func test_field_focus_interact_and_route_traversal() -> void:
 	var field := TopDownActionRpgFieldController.new()
 	assert_true(field.setup(game_state, _catalog))
 	assert_eq(StringName(game_state.region_id()), &"region_h0_undersign_exchange")
-	assert_eq(field.interactables.size(), 4)
+	assert_eq(field.interactables.size(), 8)
 	assert_eq(field.clusters.size(), 1)
 	assert_eq(String(field.clusters[0].starting_conversation_id), "conv_h0_return_desk")
 	assert_eq((field.clusters[0].npc_ids as Array).size(), 4)
@@ -1336,9 +1513,10 @@ func test_field_focus_interact_and_route_traversal() -> void:
 	assert_eq(passage.repeat_policy, "persistent")
 	var out_of_reach: Dictionary = field.interact()
 	assert_eq(String(out_of_reach.get("result", "")), "interacted")
-	field.game_state.set_field_actor(0.0, 0.0, 0)
+	field.game_state.set_field_actor(9.0, 9.0, 0)
 	var blocked: Dictionary = field.interact()
 	assert_eq(String(blocked.get("result", "")), "skipped_out_of_reach")
+	assert_eq(String(blocked.get("interactable_id", "")), "prop_h0_counterweight_map")
 	field.game_state.set_field_actor(focused.position.x, focused.position.y, 0)
 	var interacted: Dictionary = field.interact()
 	assert_eq(String(interacted.get("result", "")), "interacted")
@@ -1353,7 +1531,14 @@ func test_field_focus_interact_and_route_traversal() -> void:
 	assert_eq(field.blocked_reason, "skipped_already_used")
 	assert_eq(String(field.traverse("route_missing_probe").get("result", "")), "skipped_no_route")
 	var edges: Array = field.available_edges()
-	assert_eq(edges.size(), 1)
+	assert_eq(edges.size(), 5)
+	var edge_ids: Array = []
+	for edge: Dictionary in edges:
+		edge_ids.append(String(edge.get("edge_id", "")))
+	assert_eq(edge_ids, [
+		"route_e01_ash_stair", "route_e02_sluice_road", "route_e03_mercy_causeway",
+		"route_e04_crownwell_ascent", "route_e05_foundry_tram",
+	])
 	assert_eq(String((edges[0] as Dictionary).get("edge_id", "")), "route_e01_ash_stair")
 	assert_eq(String((edges[0] as Dictionary).get("route_state", "")), "open")
 	assert_eq(field.route_state("route_e01_ash_stair"), "open")
@@ -1365,17 +1550,48 @@ func test_field_focus_interact_and_route_traversal() -> void:
 	assert_eq(String(game_state.field.get("anchor_id", "")), "route_e01_ash_stair_return")
 	assert_eq(int((game_state.world["regions"]["region_r1_returning_kiln"] as Dictionary).get("visit_count", 0)), 1)
 	assert_eq(String(game_state.field.get("active_interaction_id", "!")), "")
-	assert_eq(field.interactables.size(), 6)
-	assert_eq(field.route_state("route_e02_folding_school_dispatch"), "conditional")
-	var locked_route: Dictionary = field.traverse("route_e02_folding_school_dispatch")
+	assert_eq(field.interactables.size(), 8)
+	var kiln: Dictionary = _catalog.record("region_r1_returning_kiln")
+	var quiet_ward: Dictionary = {}
+	for exit_entry: Dictionary in (kiln.get("exits", []) as Array):
+		if String(exit_entry.get("edge_id", "")) == "route_e06_quiet_ward_passage":
+			quiet_ward = exit_entry
+	assert_false(quiet_ward.is_empty(), "route_e06_quiet_ward_passage")
+	assert_eq(String(quiet_ward.get("to_region_id", "")), "region_r3_bellhouse_hospice")
+	assert_eq(String(quiet_ward.get("gate_id", "")), "gate_g1_ash_debt")
+	assert_eq(String(quiet_ward.get("route_state", "")), "conditional")
+	assert_eq(String(quiet_ward.get("unlock_effect_id", "")), "eff_r3_return_registry_handoff")
+	assert_eq(quiet_ward.get("resource_keys", []), ["res_ash_thread"])
+	assert_eq(String(quiet_ward.get("field_activation", "")), "STORY_FORCED")
+	assert_true(TopDownActionRpgContentLoader.ENCOUNTER_FIELD_ACTIVATIONS.has(String(quiet_ward.get("field_activation", ""))))
+	assert_true(TopDownActionRpgContentLoader.FIELD_RESOURCE_KEYS.has("res_ash_thread"))
+	assert_true(((kiln.get("resource_flow", {}) as Dictionary).get("scarce_keys", []) as Array).has("res_ash_thread"))
+	var quiet_ward_condition: Dictionary = quiet_ward.get("requires_condition", {}) as Dictionary
+	assert_eq(quiet_ward_condition, {"route_open": {"gate_id": "gate_g1_ash_debt"}})
+	assert_eq(TopDownActionRpgContentLoader.evaluate_condition(quiet_ward_condition, game_state, _catalog), false)
+	assert_eq(field.route_state("route_e06_quiet_ward_passage"), "conditional")
+	var retired_dispatch: Dictionary = field.traverse("route_e02_folding_school_dispatch")
+	assert_eq(String(retired_dispatch.get("result", "")), "skipped_no_route")
+	assert_eq(String(game_state.region_id()), "region_r1_returning_kiln")
+	var locked_route: Dictionary = field.traverse("route_e06_quiet_ward_passage")
 	assert_eq(String(locked_route.get("result", "")), "route_locked")
 	assert_eq(String(locked_route.get("gate_id", "")), "gate_g1_ash_debt")
 	assert_eq(String(game_state.region_id()), "region_r1_returning_kiln")
-	assert_eq(game_state.set_prop_state("prop_r1_ash_garden_thread", "ps_spent"), true)
-	var unlocked: Dictionary = field.traverse("route_e02_folding_school_dispatch")
+	assert_eq(field.blocked_reason, "route_locked")
+	assert_eq(game_state.route_state("route_e06_quiet_ward_passage"), "locked")
+	var applied: Array = TopDownActionRpgContentLoader.apply_effect(_catalog.record("eff_r1_ash_debt_opens_chute"), game_state, _catalog)
+	assert_eq(applied.size(), 3)
+	for operation: Dictionary in applied:
+		assert_eq(String(operation.get("result", "")), "applied")
+	assert_eq(String(game_state.route_state("route_e06_quiet_ward_passage")), "open")
+	assert_eq(String(game_state.prop_state("prop_r1_ash_garden_thread")), "ps_spent")
+	assert_eq(TopDownActionRpgContentLoader.evaluate_condition(quiet_ward_condition, game_state, _catalog), true)
+	assert_eq(field.route_state("route_e06_quiet_ward_passage"), "open")
+	var unlocked: Dictionary = field.traverse("route_e06_quiet_ward_passage")
 	assert_eq(String(unlocked.get("result", "")), "traversed")
-	assert_eq(String(unlocked.get("region_id", "")), "region_r8_folding_school")
-	assert_eq(String(game_state.region_id()), "region_r8_folding_school")
+	assert_eq(String(unlocked.get("region_id", "")), "region_r3_bellhouse_hospice")
+	assert_eq(String(game_state.region_id()), "region_r3_bellhouse_hospice")
+	assert_eq(String(game_state.field.get("anchor_id", "")), "route_e03_mercy_causeway_return")
 	assert_eq(TopDownActionRpgContentLoader.gate_is_declared(_catalog, "gate_g1_ash_debt"), true)
 	assert_eq(TopDownActionRpgContentLoader.gate_is_declared(_catalog, "gate_g9_missing"), false)
 	assert_eq(game_state.set_route_state("route_e01_ash_stair", "not_a_state", "ev"), false)
@@ -1383,7 +1599,7 @@ func test_field_focus_interact_and_route_traversal() -> void:
 	assert_eq(game_state.route_state("route_missing_probe"), "locked")
 	var snapshot: Dictionary = field.field_snapshot()
 	assert_true(TopDownActionRpgContentLoader.is_json_safe(snapshot))
-	assert_eq(String(snapshot.get("region_id", "")), "region_r8_folding_school")
+	assert_eq(String(snapshot.get("region_id", "")), "region_r3_bellhouse_hospice")
 	assert_eq((snapshot["clusters"] as Array).size(), 1)
 
 
@@ -1871,9 +2087,9 @@ func test_recovery_kinds_are_closed_and_crown_alignment_is_a_world_write() -> vo
 	assert_eq(String(_catalog.record("rec_r8_course_repeat").get("kind", "")), "checkpoint")
 	assert_eq(String(_catalog.record("rec_r1_kiln_reentry").get("kind", "")), "institutional_reentry")
 	var by_kind: Dictionary = recovery.recovery_definitions_by_kind()
-	assert_eq(by_kind.size(), 2)
-	assert_eq(bool(by_kind.has("checkpoint")), true)
-	assert_eq(bool(by_kind.has("institutional_reentry")), true)
+	assert_eq(by_kind.size(), 7)
+	for recovery_kind: String in ["checkpoint", "respawn", "clone", "reincarnation", "loop", "immortality", "institutional_reentry"]:
+		assert_true(bool(by_kind.has(recovery_kind)), recovery_kind)
 	assert_eq(bool(by_kind.has("crown_alignment")), false)
 	var crown_game: TopDownActionRpgGameState = _new_game_state()
 	var crown_recovery := TopDownActionRpgRecoveryController.new()
@@ -1935,7 +2151,13 @@ func test_data_only_authored_change_needs_no_core_modification() -> void:
 		assert_eq(joined.contains(token), false, token)
 	assert_eq(_catalog.file_count, EXPECTED_FILE_COUNT)
 	var base_actions: int = _catalog.count_of_kind("actions")
-	assert_eq(base_actions, 13)
+	assert_eq(base_actions, int(EXPECTED_KIND_COUNTS["actions"]))
+	assert_gte(base_actions, int(CANONICAL_KIND_FLOORS["actions"]))
+	var base_seeds: int = _catalog.count_of_kind("seeds")
+	assert_eq(base_seeds, SEED_DENOMINATOR)
+	assert_eq(base_seeds, SEED_CORE_RANGE + SEED_MAGIC_SUPPLEMENT_RANGE)
+	assert_true(_catalog.ids_of_kind("seeds").has("seed_s120"))
+	assert_true(_catalog.ids_of_kind("seeds").has("seed_s121"))
 	var new_id: String = "act_core_probe_data_only"
 	assert_eq(TopDownActionRpgContentLoader.is_stable_id(new_id), true)
 	assert_eq(bool(_catalog.has(new_id)), false)

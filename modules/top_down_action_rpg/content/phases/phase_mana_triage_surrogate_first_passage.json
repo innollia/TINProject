@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "phase_mana_triage_surrogate_first_passage",
+  "display_name": "First Passage",
+  "owner_enemy_id": "enemy_mana_triage_surrogate",
+  "index": 1,
+  "trigger": {
+    "kind": "hp_ratio",
+    "hp_ratio_at": 70
+  },
+  "enter": {
+    "effect_ids": [
+      "eff_r3_trial_value_read"
+    ],
+    "status_ids": [
+      "st_medium_residue"
+    ],
+    "invulnerable_windows": 1
+  },
+  "overrides": {
+    "action_add_ids": [
+      "act_scheduled_intervention_step"
+    ],
+    "action_remove_ids": [],
+    "stat_overrides": {
+      "agility": 9
+    },
+    "resistance_add_status_ids": [
+      "st_medium_residue"
+    ],
+    "resistance_remove_status_ids": [],
+    "signature_action_id": "act_mana_triage_substitute",
+    "telegraph_gain_windows": 1
+  },
+  "roster": {
+    "add_enemy_ids": [
+      "enemy_ash_hound"
+    ],
+    "remove_enemy_ids": [],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "owner_dead"
+  },
+  "next_phase_id": "phase_mana_triage_surrogate_replacement_signed",
+  "seed_ids": [
+    "seed_s004",
+    "seed_s028",
+    "seed_s104"
+  ]
+}

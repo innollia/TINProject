@@ -1,0 +1,185 @@
+{
+    "schema_version":  1,
+    "id":  "npc_07_bryn_oskel",
+    "display_name":  "Bryn Oskel",
+    "roster_kind":  "core",
+    "public_role":  "frontier guide who marks a passage and samples what sits behind it",
+    "private_role":  "holds the only route knowledge that still works and has already lost one team with it",
+    "desire":  "wants to walk a group back out and never have to open the way again",
+    "fear":  "that the moment a map of him exists the map is filed instead of him",
+    "contradiction":  "warns everyone about the anomaly and then charges for the only safe line through it",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_r7_survey"
+                                    ],
+                       "can":  [
+                                   "mark_route",
+                                   "take_sample",
+                                   "open_passage",
+                                   "lure_anomaly",
+                                   "seal_passage"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+
+                                       ],
+                            "denies":  [
+                                           "gate_g1_ash_debt"
+                                       ],
+                            "denied_by_effect_id":  "eff_r1_ash_debt_opens_chute"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s062",
+                                             "seed_s064"
+                                         ],
+                               "does_not_know":  [
+                                                     "seed_s009"
+                                                 ],
+                               "never_learns":  [
+                                                    "seed_s124"
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_ask_for_a_marked_line",
+                                             "verb_read_the_survey_sample",
+                                             "verb_open_the_passage",
+                                             "verb_stand_in_the_door_test",
+                                             "verb_seal_the_passage"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "resource_scarcity",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_ask_for_a_marked_line",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_h0_route_board",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_read_the_survey_sample",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_route_board",
+                                                                            "choice_id":  "ch_mark_the_safe_segment"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_h0_route_board",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_open_the_passage",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_route_board",
+                                                                            "choice_id":  "ch_open_one_way"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_h0_route_board",
+                                  "presentation_class":  "neutral"
+                              },
+                              {
+                                  "verb_id":  "verb_stand_in_the_door_test",
+                                  "availability":  {
+                                                       "prop_state_is":  {
+                                                                             "prop_id":  "prop_r1_wrong_return_door",
+                                                                             "state_id":  "ps_intact"
+                                                                         }
+                                                   },
+                                  "opens":  "enc_r1_door_role_test",
+                                  "presentation_class":  "extreme"
+                              },
+                              {
+                                  "verb_id":  "verb_seal_the_passage",
+                                  "availability":  {
+                                                       "clock_at_least":  {
+                                                                              "clock_id":  "clock_resource_collapse",
+                                                                              "stage_index":  2
+                                                                          }
+                                                   },
+                                  "opens":  "conv_h0_route_board",
+                                  "presentation_class":  "hostile"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_07_bryn_route"
+                         ],
+    "clock_ids":  [
+                      "clock_resource_collapse",
+                      "clock_contamination",
+                      "clock_institutional_response"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  "enc_r1_door_role_test"
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "conversion_condition":  {
+
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "eff_r1_ash_debt_opens_chute",
+                                              "encounter_modifier":  1
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_r1_ash_debt_opens_chute"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_r1_return_registry_logs_name"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "permanent",
+                    "condition":  {
+
+                                  },
+                    "moves_to_region_id":  "region_r1_returning_kiln"
+                },
+    "appearance":  {
+                       "body_key":  "body_frontier_guide",
+                       "portrait_key":  "portrait_bryn_oskel",
+                       "voice_key":  "voice_bryn_oskel"
+                   },
+    "mana_profile":  "concentration_reactive",
+    "oneoff_dialogue_seed_ids":  [
+                                     "seed_s117"
+                                 ],
+    "cross_link_ids":  [
+                           "region_h0_undersign_exchange",
+                           "region_r1_returning_kiln",
+                           "npc_08_meral_dune",
+                           "npc_13_tovan_reed",
+                           "enc_r1_door_role_test",
+                           "clock_resource_collapse"
+                       ],
+    "removal":  "death",
+    "seed_ids":  [
+                     "seed_s009",
+                     "seed_s010",
+                     "seed_s015",
+                     "seed_s018",
+                     "seed_s062",
+                     "seed_s064",
+                     "seed_s067",
+                     "seed_s093",
+                     "seed_s096",
+                     "seed_s117",
+                     "seed_s124",
+                     "seed_s130",
+                     "seed_s154"
+                 ]
+}

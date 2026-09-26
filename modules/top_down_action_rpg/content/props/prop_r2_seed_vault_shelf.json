@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "prop_r2_seed_vault_shelf",
+  "display_name": "Seed Vault Shelf",
+  "region_id": "region_r2_siltglass_commons",
+  "placement": {
+    "anchor_key": "r2_seed_vault",
+    "layer": "prop",
+    "visible_from": "same_room"
+  },
+  "initial_state_id": "ps_counted",
+  "states": [
+    {
+      "state_id": "ps_counted",
+      "label": "three cases for four households on the list",
+      "visible": true,
+      "art_key": "prop_r2_shelf_counted",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_reissued",
+      "label": "the keeper has reissued a case without a household name",
+      "visible": true,
+      "art_key": "prop_r2_shelf_reissued",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r2_seed_vault_ledger_read"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_seed_ledger",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r2_seed_vault_shelf",
+            "state_id": "ps_counted"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r2_seed_vault_shelf",
+            "state_id": "ps_reissued"
+          }
+        }
+      ]
+    },
+    "opens": "doc_r2_seed_vault_ledger",
+    "return_focus": "prop"
+  },
+  "hidden_until_condition": {
+    "not": {
+      "prop_state_is": {
+        "prop_id": "prop_r2_seed_vault_shelf",
+        "state_id": "ps_counted"
+      }
+    }
+  },
+  "seed_ids": [
+    "seed_s067",
+    "seed_s106"
+  ]
+}

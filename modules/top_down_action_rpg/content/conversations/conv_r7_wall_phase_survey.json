@@ -1,0 +1,113 @@
+{
+    "schema_version": 1,
+    "id": "conv_r7_wall_phase_survey",
+    "display_name": "Wall Phase Survey",
+    "region_id": "region_r7_hollow_orchard",
+    "speaker_npc_id": "npc_07_bryn_oskel",
+    "entry_condition": {
+        "region_visited": {
+            "region_id": "region_r2_siltglass_commons"
+        }
+    },
+    "priority": 30,
+    "pages": [
+        {
+            "page_id": "pg_wall_reports",
+            "speaker": "npc",
+            "presentation_class": "official",
+            "text": "The wall does not guard the crown. The wall reports which category the crown is filed under this week and the map is redrawn from the report.",
+            "advance": "auto"
+        },
+        {
+            "page_id": "pg_sealed_seam",
+            "speaker": "world",
+            "presentation_class": "narration",
+            "text": "The outer seam is sealed with a survey band over it, and the phase ledger behind the band lists a line for every ring that has not asked yet.",
+            "advance": "wait"
+        },
+        {
+            "page_id": "pg_mandate_unfiled",
+            "speaker": "npc",
+            "presentation_class": "confidential",
+            "text": "Nobody has filed whether the wall holds the crown in or pushes it out. Until that line exists, every ring I survey is surveyed into a question nobody answered.",
+            "advance": "auto"
+        }
+    ],
+    "choices": [
+        {
+            "choice_id": "ch_file_the_boundary_witness",
+            "text": "File the boundary witness with the seed sample as the only survey permit the wall accepts.",
+            "semantic_tags": ["cooperative", "careful"],
+            "presentation_class": "neutral",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r7_boundary_witness_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_file_the_wall_mandate",
+            "text": "File the mandate line and state that the wall holds the crown position instead of moving it.",
+            "semantic_tags": ["bureaucratic", "cooperative"],
+            "presentation_class": "neutral",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r7_wall_mandate_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_match_the_verge_phase",
+            "text": "Match the verge cut to the phase the wall is reporting and take the shelter shortcut back through the cut.",
+            "semantic_tags": ["protective", "careful"],
+            "presentation_class": "unavailable",
+            "availability": {
+                "prop_state_is": {
+                    "prop_id": "prop_r7_storm_verge_cut",
+                    "state_id": "ps_phase_matched"
+                }
+            },
+            "unavailable_reason": "prop_r7_storm_verge_cut",
+            "irreversibility": "reversible",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r7_boundary_shortcut_opened",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_file_the_crown_shadow",
+            "text": "File the crown shadow manifest so the unclaimed position is read as a hold and the ring votes against it.",
+            "semantic_tags": ["destructive", "coercive"],
+            "presentation_class": "extreme",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r7_crown_precedence_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        }
+    ],
+    "on_complete": {
+        "effect_ids": [
+            "eff_r7_boundary_witness_filed"
+        ]
+    },
+    "on_abort": {
+        "effect_ids": []
+    },
+    "revisit": "state_dependent",
+    "alt_conversation_ids": [
+        "conv_r4_translation_desk"
+    ],
+    "seed_ids": [
+        "seed_s001",
+        "seed_s010",
+        "seed_s055",
+        "seed_s076"
+    ]
+}

@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "id": "act_circulator_stack_collect",
+  "display_name": "circulator stack collect",
+  "order": 8,
+  "owner": "enemy",
+  "category": "magic",
+  "defense_mode": "none",
+  "lifecycle": "instant",
+  "intent": {
+    "target_mode": "ONE_ENEMY",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 1,
+    "action_slot_cost": 1,
+    "resource_costs": {
+      "mp": 4
+    },
+    "cooldown_windows": 2
+  },
+  "telegraph": {
+    "channels": [
+      "field_prop",
+      "numeric_bar"
+    ],
+    "windows_before_active": 0,
+    "tell_key": "tell_circulator_stack_collect"
+  },
+  "damage_payload": {
+    "delivery": "magical",
+    "shape": "fixed",
+    "base_value": 6,
+    "affinity": "none",
+    "hit_policy": "roll",
+    "hit_modifier": 0,
+    "evasion_policy": "roll",
+    "critical_policy": "never",
+    "dodge_pressure": 4,
+    "guard_ignore": false,
+    "breaks_guard": false,
+    "break_damage": 0,
+    "dodgeable": true,
+    "break_damage_kinds": [],
+    "self_damage": 0,
+    "lifesteal": 7,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {
+      "status_id": "st_overflowed",
+      "chance_permille": 600,
+      "target": "target"
+    }
+  ],
+  "reactions": {
+    "valid_reaction_ids": [
+      "act_ash_sweep"
+    ],
+    "forbidden_response_ids": [
+      "act_dodge_shift"
+    ]
+  },
+  "counters": {
+    "valid": [
+      "resource_lock",
+      "break",
+      "status_counter"
+    ],
+    "forbidden": [
+      "escape",
+      "phase_advance"
+    ],
+    "breakable": true
+  },
+  "craft": {
+    "craft_family": "weave_scroll",
+    "concentration_source": "field",
+    "concentration_requirement": 380,
+    "body_profile_requirements": [
+      "retention_balanced",
+      "retention_low_emission_high"
+    ],
+    "medium_options": [
+      "res_circulation_slot"
+    ],
+    "tool_options": [
+      "bone_rule"
+    ],
+    "shape_or_pattern": "closed_stack_pull",
+    "preparation_turns": 1,
+    "waste": {
+      "res_circulation_slot": 1
+    },
+    "failure_status_id": "st_overflowed",
+    "environment_effect": {
+      "clock_writes": [
+        {
+          "ticks": 1,
+          "clock_id": "clock_resource_collapse"
+        }
+      ]
+    },
+    "social_recording": "res_circulation_slot"
+  },
+  "presentation": {
+    "icon_key": "act_circulator_stack_collect"
+  },
+  "seed_ids": [
+    "seed_s022",
+    "seed_s033",
+    "seed_s096"
+  ]
+}

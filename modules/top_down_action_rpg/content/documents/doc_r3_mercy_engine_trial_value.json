@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "doc_r3_mercy_engine_trial_value",
+  "display_name": "Mercy Engine Trial Value",
+  "region_id": "region_r3_bellhouse_hospice",
+  "availability": {
+    "condition": {},
+    "reached_by": "prop"
+  },
+  "reached_by_ref": "prop_r3_mercy_engine_valve",
+  "pages": [
+    {
+      "page_id": "pg_deleted_value",
+      "lines": [
+        "stage two, fast: arrival to bell, four minutes",
+        "stage two, stable: arrival to bell, nine minutes",
+        "the seven minute difference is not signed by a name",
+        "category: maintenance trial"
+      ],
+      "presentation": "plain",
+      "corruption_rules": []
+    },
+    {
+      "page_id": "pg_restored_value",
+      "lines": [
+        "stage two, fast: arrival to bell, four minutes",
+        "stage two, stable: arrival to bell, nine minutes",
+        "the seven minute difference belongs to the ward",
+        "category: maintenance trial"
+      ],
+      "presentation": "corrupted",
+      "corruption_rules": [
+        {
+          "rule_id": "cr_owner_word",
+          "mode": "replace_token",
+          "trigger": {
+            "clock_at_least": {
+              "clock_id": "clock_contamination",
+              "stage_index": 2
+            }
+          },
+          "severity": 2,
+          "line_index": 2,
+          "token_index": 5,
+          "text_note": "the owner word of the difference is replaced by an institution"
+        }
+      ]
+    }
+  ],
+  "reading": {
+    "background_mode": "dim_world",
+    "world_visible_ratio": 0.35,
+    "advance": "page",
+    "max_lines_per_page": 9,
+    "min_font_size": 20,
+    "requires_advance_affordance": true
+  },
+  "post_read": {
+    "effect_ids": [
+      "eff_r3_trial_value_read"
+    ],
+    "once": false
+  },
+  "revisit": "allowed",
+  "seed_ids": [
+    "seed_s027",
+    "seed_s088",
+    "seed_s013"
+  ],
+  "owner_npc_id": "npc_04_sable_halm"
+}

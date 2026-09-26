@@ -1,0 +1,166 @@
+{
+    "schema_version":  1,
+    "id":  "npc_26_cael_orin",
+    "display_name":  "Cael Orin",
+    "roster_kind":  "support",
+    "public_role":  "inventor kept in the art column of the school register and on no course list",
+    "private_role":  "is the only living witness to who ordered the unassigned stock column",
+    "desire":  "wants the class that was invented to keep the name of the person who invented it",
+    "fear":  "that the order stays unattributed and the classification reads as a natural fact",
+    "contradiction":  "refuses to be taught because teaching is the only thing the school is allowed to do with him",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_r8_testimony"
+                                    ],
+                       "can":  [
+                                   "testify_to_shape",
+                                   "produce_old_margin",
+                                   "name_the_order",
+                                   "refuse_the_class"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+
+                                       ],
+                            "denies":  [
+
+                                       ],
+                            "denied_by_effect_id":  "eff_h0_arrival_declaration_filed"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s125",
+                                             "seed_s137"
+                                         ],
+                               "does_not_know":  [
+                                                     "seed_s141"
+                                                 ],
+                               "never_learns":  [
+                                                    "seed_s147"
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_take_the_testimony",
+                                             "verb_name_the_order",
+                                             "verb_keep_him_in_the_art_column",
+                                             "verb_enrol_him_as_a_student"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "public_record",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_take_the_testimony",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_r8_art_testimony",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_name_the_order",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_art_testimony",
+                                                                            "choice_id":  "ch_name_the_order"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_art_testimony",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_keep_him_in_the_art_column",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_art_testimony",
+                                                                            "choice_id":  "ch_keep_him_in_the_art_column"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_art_testimony",
+                                  "presentation_class":  "neutral"
+                              },
+                              {
+                                  "verb_id":  "verb_enrol_him_as_a_student",
+                                  "availability":  {
+                                                       "clock_at_least":  {
+                                                                              "clock_id":  "clock_public_record",
+                                                                              "stage_index":  3
+                                                                          }
+                                                   },
+                                  "opens":  "conv_r8_art_testimony",
+                                  "presentation_class":  "extreme"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_06_tamas_term",
+                             "rel_10_juno_channel"
+                         ],
+    "clock_ids":  [
+                      "clock_public_record"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  "enc_r8_fold_that_refuses_the_hand"
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "conversion_condition":  {
+
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "",
+                                              "encounter_modifier":  0
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_h0_arrival_declaration_filed"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_r1_return_registry_logs_name"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "conditional",
+                    "condition":  {
+                                      "clock_irreversible":  {
+                                                                 "clock_id":  "clock_public_record"
+                                                             }
+                                  },
+                    "moves_to_region_id":  "region_h0_undersign_exchange"
+                },
+    "appearance":  {
+                       "body_key":  "body_unassigned_inventor",
+                       "portrait_key":  "portrait_cael_orin",
+                       "voice_key":  "voice_cael_orin"
+                   },
+    "mana_profile":  "sensory_misclassification",
+    "oneoff_dialogue_seed_ids":  [
+                                     "seed_s125",
+                                     "seed_s110",
+                                     "seed_s036"
+                                 ],
+    "cross_link_ids":  [
+                           "region_r8_folding_school",
+                           "npc_06_tamas_quill",
+                           "npc_10_juno_caster",
+                           "npc_20_mira_vask",
+                           "clock_public_record"
+                       ],
+    "removal":  "temporary",
+    "seed_ids":  [
+                     "seed_s036",
+                     "seed_s110",
+                     "seed_s125",
+                     "seed_s137",
+                     "seed_s141"
+                 ]
+}

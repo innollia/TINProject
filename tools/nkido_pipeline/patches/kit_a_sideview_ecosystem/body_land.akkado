@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.body_land
+// situation: the whole creature body hits the ground after a fall
+// render: --seconds 0.70 --rate 48000 --bpm 84 --no-default-bank
+n"c2" |> saw(@.freq) * adsr(@.gate, 0.006, 0.30, 0.10, 0.12) |> out(%)

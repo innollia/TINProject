@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r8_circulation_board",
+    "display_name":  "Circulation Board",
+    "region_id":  "region_r8_folding_school",
+    "speaker_npc_id":  "npc_25_jano_fesk",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_08_meral_ration",
+                                                                                   "target_npc_id":  "npc_08_meral_dune",
+                                                                                   "state_id":  "rs_meral_individual_claim"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_r8_course_index_desk",
+                                                                    "choice_id":  "ch_register_measurement"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  18,
+    "pages":  [
+                  {
+                      "page_id":  "pg_reading",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "A reading is only usable if someone can say where it was taken and by whose hand.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_two_provenances",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "The schedule has two provenance columns and the second one was written in a different year.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_lower_number",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "A lower dispersal number is my job to file. Nobody at this desk is told where the cost lands.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_trace_the_provenance",
+                        "text":  "Have him trace one reading back to the node that produced it.",
+                        "semantic_tags":  [
+                                              "careful",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_publish_both_provenances",
+                        "text":  "Make the board print both provenance columns side by side.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "costly"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_file_the_lower_reading",
+                        "text":  "File the lower reading and let the cost stay in another column.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_erase_the_old_column",
+                        "text":  "Erase the old provenance column and sign the schedule alone.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r8_concentration_registered",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+                                           "eff_r8_course_index_printed"
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r8_course_index_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s065",
+                     "seed_s125",
+                     "seed_s126"
+                 ]
+}

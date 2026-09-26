@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "prop_r4_crown_fragment_plinth",
+  "display_name": "Crown Fragment Plinth",
+  "region_id": "region_r4_crownwell_archive",
+  "placement": {
+    "anchor_key": "r4_crown_fragment_plinth",
+    "layer": "prop",
+    "visible_from": "same_room"
+  },
+  "initial_state_id": "ps_object",
+  "states": [
+    {
+      "state_id": "ps_object",
+      "label": "five fragments rest on the plinth and cast five shadows",
+      "visible": true,
+      "art_key": "prop_r4_plinth_object",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_titled",
+      "label": "the shadow has been filed separately from the object",
+      "visible": true,
+      "art_key": "prop_r4_plinth_titled",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r4_operator_memory_classified"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_record_the_fragment_shadow",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r4_crown_fragment_plinth",
+            "state_id": "ps_object"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r4_crown_fragment_plinth",
+            "state_id": "ps_titled"
+          }
+        }
+      ]
+    },
+    "opens": "doc_r4_crown_shadow_manifest",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s052",
+    "seed_s001",
+    "seed_s116"
+  ]
+}

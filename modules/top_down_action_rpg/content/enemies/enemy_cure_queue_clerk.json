@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "id": "enemy_cure_queue_clerk",
+  "display_name": "Cure Queue Clerk",
+  "role": {
+    "base_region_id": "region_r6_gristmarket_ward",
+    "region_role": "organ_authority_negotiation",
+    "institution_id": "institution_gristmarket_ward",
+    "role_tags": [
+      "queue",
+      "clerk"
+    ]
+  },
+  "body": {
+    "body_class": "humanoid",
+    "silhouette_key": "sil_cure_queue_clerk",
+    "scale_class": "human",
+    "stateful_body": "open_close",
+    "motion_signature": "queue_enqueue"
+  },
+  "stats": {
+    "max_hp": 90,
+    "agility": 11,
+    "action_slots": 1,
+    "resource_pool": {
+      "mp": 8,
+      "equipment_charge": 0
+    }
+  },
+  "condition_bar": {
+    "kind": "condition_progress",
+    "max_value": 100,
+    "start_value": 0,
+    "advance_on": [
+      "hp_damage_taken",
+      "window_elapsed"
+    ],
+    "advance_per_source": 18,
+    "decrease_on_phase_enter": 0
+  },
+  "baseline_action_ids": [
+    "act_registry_paper_shove",
+    "act_ember_clerk_refile"
+  ],
+  "signature_action_id": "act_cure_queue_clerk_enqueue",
+  "telegraph": {
+    "signature_tell_key": "tell_cure_queue_clerk_enqueue",
+    "channels": [
+      "pose",
+      "field_prop"
+    ]
+  },
+  "status_profile": {
+    "innate_status_ids": [
+      "st_concentration_load"
+    ],
+    "resistant_status_ids": [
+      "st_medium_residue"
+    ],
+    "immune_status_ids": []
+  },
+  "break_profile": {
+    "breakable": true,
+    "break_source_action_ids": [
+      "act_break_poise"
+    ],
+    "on_break_status_ids": [
+      "st_misfolded"
+    ],
+    "on_break_effect_ids": [
+      "eff_r6_medicine_ferry_opened"
+    ]
+  },
+  "reward": {
+    "equipment_ids": [],
+    "item_ids": [
+      "item_ash_thread_spool"
+    ],
+    "resource_delta": {
+      "mp": 1
+    }
+  },
+  "aftermath": {
+    "effect_ids": [
+      "eff_r6_medicine_ferry_opened"
+    ],
+    "region_state_tag": "r6_queue_advanced"
+  },
+  "lore_ref": "seed_s027",
+  "seed_ids": [
+    "seed_s027",
+    "seed_s088",
+    "seed_s118"
+  ]
+}

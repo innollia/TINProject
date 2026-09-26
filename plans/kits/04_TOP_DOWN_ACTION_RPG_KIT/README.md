@@ -1,11 +1,15 @@
 # Kit 04 — Top-down Action-RPG
 
+> 2026-09-26: 기존 Kit를 제작 기반으로 사용하는 새 콘텐츠 재기획 인터뷰 진행 중. 기존 세계관·인물·사건은 새 콘텐츠의 승인 정본이 아니다. [현재 사용자 결정과 인터뷰 상태](docs/GRILLING_STATE.md)를 먼저 읽는다. 구현·이미지 제작 재개를 의미하지 않는다.
+
 공통 계약: `docs/KIT_WORKFLOW.md`  
 세계 헌장: `docs/research/top_down_action_rpg/WORLD_CONSTITUTION.md`  
 아이디어 원장: `docs/research/top_down_action_rpg/IDEA_LEDGER.md`  
 Primary Reference: **BLACK SOULS 2 하나**
 
 ## 0. Kit 목적
+
+새 콘텐츠 작업 입구: [15 새 World 초안](15_NEW_WORLD.md). 이 문서는 기존 제작 계약을 사용하며 구세계의 교체 구현 지시가 아니다. 지도·사건·독립 집필 규칙은 [새 세계 제작 정본](world_new/00_MAP_AND_AUTHORING.md)을 따른다.
 
 TINProject의 한 게임 안에서 top-down command/target RPG 구간으로 전환하기 위한 기반이다. field exploration, action scheduling, Guard/Dodge/Break, status, equipment, NPC interaction cluster, recovery, multi-clock world state를 한 Kit로 묶는다.
 
@@ -27,6 +31,7 @@ Reference Game은 한 보스·한 맵 demo가 아니다. 여러 region, NPC clus
 | [10_TESTS_AND_ACCEPTANCE.md](10_TESTS_AND_ACCEPTANCE.md) | automated tests, manual play, 720p/FHD/QHD, evidence and forbidden shortcuts |
 | [11_EXTERNAL_CODE_DECISIONS.md](11_EXTERNAL_CODE_DECISIONS.md) | godot-jrpg and external dependency decision |
 | [12_MAGIC_THEORY.md](12_MAGIC_THEORY.md) | concentration craft, weave/fold/void portal, magic institutions and magic-era module |
+| [13_LAYERED_ENVIRONMENT_PRODUCTION.md](13_LAYERED_ENVIRONMENT_PRODUCTION.md) | 큰 장면 배경, clean base, 가림·소품·상태 레이어, 지역별 제작 범위, 샘플 선행 검수 |
 
 ## 2. Settled design constraints
 
@@ -45,6 +50,8 @@ Reference Game은 한 보스·한 맵 demo가 아니다. 여러 region, NPC clus
 - 앨리스와 원작 고유 skin은 사용하지 않는다.
 - at-icons 조립은 현행 제작 기준으로 사용하지 않는다.
 - 이미지 생성/editing은 명시적 자산 제작 요청이 있을 때만 수행한다.
+- field 카메라는 지면 기준 하향각 60°의 정사영 탑다운이다. 수직에서 30° 기울어지며 방위는 고정한다. 완전 수직 90° 시점이 아니다.
+- 2026-09-26 사용자 요청으로 Kit 04 이미지 샘플 제작이 허용됐다. 배경은 타일 필수가 아닌 큰 장면 그림과 분리 레이어가 기본이다. 문서 갱신 → 샘플 → 검수 → 사용자 검토 후 양산 순서를 따른다. 상세 계약은 13이 소유한다.
 
 ## 3. Implementation order
 
@@ -57,6 +64,8 @@ Reference Game은 한 보스·한 맵 demo가 아니다. 여러 region, NPC clus
 7. authored content를 추가하며 core 수정 여부를 측정한다.
 8. 자동 테스트, 실제 플레이, 해상도 캡처를 실행한다.
 9. 사용자 플레이 검토 전에는 `검토 준비 완료`까지만 선언한다.
+
+환경 자산은 13의 구역 brief와 레이어 샘플을 먼저 검수한다. 지역 하나를 그림 한 장으로 축소하거나, 이번 H0 샘플을 Reference Game 완료로 세지 않는다.
 
 ## 4. Hard prohibitions
 

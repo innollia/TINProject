@@ -1,5 +1,13 @@
 # 06 — Authored Content and Data
 
+## 환경 presentation 데이터 보충 — 2026-09-26
+
+큰 배경과 분리 레이어의 제작 계약은 [13](13_LAYERED_ENVIRONMENT_PRODUCTION.md) §7이다. 기존 content kind·stable ID·region/prop state와 art key는 유지한다. 이미지 bundle을 domain kind로 추가하거나 현행 JSON에 미구현 key를 일괄 삽입하지 않는다.
+
+module-local presentation manifest가 area bounds, source density, PNG 경로, crop, world origin, pivot, depth, 기존 prop/state와의 연결을 소유한다. `art_world_*`는 단일 image가 아니라 region bundle을 찾는다. domain은 image path나 색을 읽지 않고, resolved state를 presentation이 기존 variant와 연결한다. 그림의 alpha/밝기에서 collision을 생성하지 않는다.
+
+후속 presentation 검증에는 manifest version·중복 layer ID·실재 경로·source rect 범위·양의 density·anchor 범위·foreign prop/state 참조·variant 누락·state 우선순위 충돌을 포함한다. 이는 이 문서의 domain catalog_report와 구분하는 자산 보고서다. 이 보충은 **계획**이며 현재 loader에 위 검증이 구현됐다는 뜻이 아니다.
+
 공통 계약: `docs/KIT_WORKFLOW.md`  
 세계 헌장: `docs/research/top_down_action_rpg/WORLD_CONSTITUTION.md`  
 아이디어 원장: `docs/research/top_down_action_rpg/IDEA_LEDGER.md`  

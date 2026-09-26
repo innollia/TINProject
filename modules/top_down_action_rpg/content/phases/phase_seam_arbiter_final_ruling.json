@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "phase_seam_arbiter_final_ruling",
+  "display_name": "Final Ruling",
+  "owner_enemy_id": "enemy_seam_arbiter",
+  "index": 2,
+  "trigger": {
+    "kind": "previous_phase_complete"
+  },
+  "enter": {
+    "effect_ids": [
+      "eff_r7_crown_precedence_filed"
+    ],
+    "status_ids": [
+      "st_concentration_load"
+    ],
+    "invulnerable_windows": 0
+  },
+  "overrides": {
+    "action_add_ids": [
+      "act_ash_hound_lunge"
+    ],
+    "action_remove_ids": [
+      "act_ember_clerk_refile"
+    ],
+    "stat_overrides": {
+      "agility": 10
+    },
+    "resistance_add_status_ids": [
+      "st_concentration_load"
+    ],
+    "resistance_remove_status_ids": [
+      "st_recorded"
+    ],
+    "signature_action_id": "act_seam_arbiter_boundary_ruling",
+    "telegraph_gain_windows": 0
+  },
+  "roster": {
+    "add_enemy_ids": [
+      "enemy_ash_hound"
+    ],
+    "remove_enemy_ids": [
+      "enemy_ember_clerk"
+    ],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "owner_dead"
+  },
+  "next_phase_id": null,
+  "seed_ids": [
+    "seed_s051",
+    "seed_s054",
+    "seed_s102"
+  ]
+}

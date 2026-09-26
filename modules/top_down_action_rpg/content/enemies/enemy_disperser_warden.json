@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "enemy_disperser_warden",
+  "display_name": "Disperser Warden",
+  "role": {
+    "base_region_id": "region_r2_siltglass_commons",
+    "region_role": "resource_allocation",
+    "institution_id": "institution_circulation_office",
+    "role_tags": [
+      "purge",
+      "custodian"
+    ]
+  },
+  "body": {
+    "body_class": "humanoid",
+    "silhouette_key": "sil_disperser_warden",
+    "scale_class": "human",
+    "stateful_body": "open_close",
+    "motion_signature": "purge_pass"
+  },
+  "stats": {
+    "max_hp": 88,
+    "agility": 13,
+    "action_slots": 1,
+    "resource_pool": {
+      "mp": 9,
+      "equipment_charge": 0
+    }
+  },
+  "condition_bar": {
+    "kind": "condition_progress",
+    "max_value": 100,
+    "start_value": 0,
+    "advance_on": [
+      "hp_damage_taken",
+      "window_elapsed"
+    ],
+    "advance_per_source": 15,
+    "decrease_on_phase_enter": 0
+  },
+  "baseline_action_ids": [
+    "act_craft_sheet_snap"
+  ],
+  "signature_action_id": "act_disperser_warden_purge_pass",
+  "telegraph": {
+    "signature_tell_key": "tell_disperser_warden_purge_pass",
+    "channels": [
+      "vfx",
+      "numeric_bar"
+    ]
+  },
+  "status_profile": {
+    "innate_status_ids": [
+      "st_medium_residue"
+    ],
+    "resistant_status_ids": [
+      "st_misfolded"
+    ],
+    "immune_status_ids": []
+  },
+  "break_profile": {
+    "breakable": true,
+    "break_source_action_ids": [
+      "act_break_poise"
+    ],
+    "on_break_status_ids": [
+      "st_medium_residue"
+    ],
+    "on_break_effect_ids": [
+      "eff_r2_disperser_reading_filed"
+    ]
+  },
+  "phase_ids": [
+    "phase_disperser_warden_second_housing"
+  ],
+  "reward": {
+    "equipment_ids": [],
+    "item_ids": [
+      "item_ash_thread_spool"
+    ],
+    "resource_delta": {
+      "mp": 1
+    }
+  },
+  "aftermath": {
+    "effect_ids": [
+      "eff_r2_disperser_reading_filed"
+    ],
+    "region_state_tag": "r2_dispenser_purged"
+  },
+  "lore_ref": "seed_s029",
+  "seed_ids": [
+    "seed_s029",
+    "seed_s097",
+    "seed_s123"
+  ]
+}

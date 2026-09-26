@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r8_medium_store",
+    "display_name":  "Medium Store Counter",
+    "region_id":  "region_r8_folding_school",
+    "speaker_npc_id":  "npc_21_halen_osk",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_04_sable_support",
+                                                                                   "target_npc_id":  "npc_04_sable_halm",
+                                                                                   "state_id":  "rs_sable_overridden"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_r8_course_index_desk",
+                                                                    "choice_id":  "ch_register_measurement"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  14,
+    "pages":  [
+                  {
+                      "page_id":  "pg_shelf",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "Blanks and sheets are counted by the floor, not by the sheet. Which floor do you want written on your chit?",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_two_counts",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "Two tallies of the same shelf disagree by exactly one reused sheet.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_conflict",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "If I make the numbers agree, one of us stops being the record. I would rather keep both.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_count_the_shelf_together",
+                        "text":  "Have him count the shelf with you and write down both tallies.",
+                        "semantic_tags":  [
+                                              "careful",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_set_the_exchange_ratio",
+                        "text":  "Fix the exchange ratio between credit and material in writing.",
+                        "semantic_tags":  [
+                                              "bureaucratic",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_leave_the_conflict",
+                        "text":  "Leave the conflict record standing and take only what is uncontested.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_reconcile_to_one_number",
+                        "text":  "Force both tallies into one number and close the dispute.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r8_concentration_registered",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+                                           "eff_r8_course_index_printed"
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r8_course_index_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s019",
+                     "seed_s125",
+                     "seed_s145"
+                 ]
+}

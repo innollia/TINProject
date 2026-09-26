@@ -1,0 +1,113 @@
+{
+    "schema_version": 1,
+    "id": "conv_r3_intake_triage",
+    "display_name": "Intake Triage",
+    "region_id": "region_r3_bellhouse_hospice",
+    "speaker_npc_id": "npc_04_sable_halm",
+    "entry_condition": {
+        "region_visited": {
+            "region_id": "region_h0_undersign_exchange"
+        }
+    },
+    "priority": 22,
+    "pages": [
+        {
+            "page_id": "pg_interval_first",
+            "speaker": "npc",
+            "presentation_class": "official",
+            "text": "The bell decides the interval, not the body. Seven minutes between the strike and the work, and the seven minutes are not negotiable at the desk.",
+            "advance": "auto"
+        },
+        {
+            "page_id": "pg_latency_bell",
+            "speaker": "world",
+            "presentation_class": "narration",
+            "text": "The latency bell has been restruck twice and each restrike is filed as a fresh first strike.",
+            "advance": "wait"
+        },
+        {
+            "page_id": "pg_missing_stage",
+            "speaker": "npc",
+            "presentation_class": "confidential",
+            "text": "There was a faster stage in the log and it has no category now. Those minutes belong to nobody and I still have to write a time on the sheet.",
+            "advance": "auto"
+        }
+    ],
+    "choices": [
+        {
+            "choice_id": "ch_write_the_measured_interval",
+            "text": "Write the interval you actually measured on the sheet and sign the sheet with the time.",
+            "semantic_tags": ["careful", "cooperative"],
+            "presentation_class": "neutral",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r3_latency_receipt_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_split_vow_from_patient",
+            "text": "Open the vow ledger and put the consent line on a page that does not carry the patient name.",
+            "semantic_tags": ["protective", "careful"],
+            "presentation_class": "neutral",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r3_vow_ledger_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_profile_the_body_first",
+            "text": "Run the mana profile on the body before the care role signs anything at all.",
+            "semantic_tags": ["bureaucratic", "protective"],
+            "presentation_class": "unavailable",
+            "availability": {
+                "prop_state_is": {
+                    "prop_id": "prop_r3_mercy_engine_valve",
+                    "state_id": "ps_throttled"
+                }
+            },
+            "unavailable_reason": "prop_r3_mercy_engine_valve",
+            "irreversibility": "reversible",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r3_mana_profile_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_log_the_care_role",
+            "text": "Enter the care role in the patient signature box and let the desk read it back as consent.",
+            "semantic_tags": ["destructive", "coercive"],
+            "presentation_class": "extreme",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r3_consent_record_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        }
+    ],
+    "on_complete": {
+        "effect_ids": [
+            "eff_r3_latency_receipt_filed"
+        ]
+    },
+    "on_abort": {
+        "effect_ids": []
+    },
+    "revisit": "state_dependent",
+    "alt_conversation_ids": [
+        "conv_r1_intake_desk"
+    ],
+    "seed_ids": [
+        "seed_s013",
+        "seed_s027",
+        "seed_s045",
+        "seed_s088"
+    ]
+}

@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "id": "act_boot_contract_holder_binding_clause",
+  "display_name": "boot contract holder binding clause",
+  "order": 21,
+  "owner": "enemy",
+  "category": "unique",
+  "defense_mode": "none",
+  "lifecycle": "instant",
+  "intent": {
+    "target_mode": "ONE_ENEMY",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 1,
+    "action_slot_cost": 1,
+    "resource_costs": {
+      "mp": 4
+    },
+    "cooldown_windows": 2
+  },
+  "telegraph": {
+    "channels": [
+      "pose",
+      "sound",
+      "numeric_bar"
+    ],
+    "windows_before_active": 1,
+    "tell_key": "tell_boot_contract_holder_binding_clause"
+  },
+  "damage_payload": {
+    "delivery": "magical",
+    "shape": "fixed",
+    "base_value": 10,
+    "affinity": "none",
+    "hit_policy": "roll",
+    "hit_modifier": 0,
+    "evasion_policy": "roll",
+    "critical_policy": "never",
+    "dodge_pressure": 6,
+    "guard_ignore": false,
+    "breaks_guard": true,
+    "break_damage": 18,
+    "dodgeable": true,
+    "break_damage_kinds": [
+      "hp_damage"
+    ],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {
+      "status_id": "st_concentration_load",
+      "chance_permille": 600,
+      "target": "target"
+    }
+  ],
+  "break_spec": {
+    "stacks": 2,
+    "status_ids": [
+      "st_contract_bound"
+    ],
+    "effect_ids": [
+      "eff_r5_name_hearing_filed"
+    ],
+    "requires_target_breakable": true
+  },
+  "hooks": {
+    "on_break": [
+      "eff_r5_name_hearing_filed"
+    ]
+  },
+  "reactions": {
+    "valid_reaction_ids": [
+      "act_break_poise",
+      "act_fold_brace"
+    ],
+    "forbidden_response_ids": [
+      "act_guard_set"
+    ]
+  },
+  "counters": {
+    "valid": [
+      "break",
+      "status_counter",
+      "guard"
+    ],
+    "forbidden": [
+      "resource_lock",
+      "phase_advance"
+    ],
+    "breakable": true
+  },
+  "presentation": {
+    "icon_key": "act_boot_contract_holder_binding_clause"
+  },
+  "seed_ids": [
+    "seed_s142",
+    "seed_s143",
+    "seed_s158"
+  ]
+}

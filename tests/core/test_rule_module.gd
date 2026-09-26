@@ -251,8 +251,8 @@ func test_undo_history_survives_a_json_safe_save_roundtrip() -> void:
 func test_reference_progression_stops_before_legacy_compatibility_boards() -> void:
 	var game := _spawn()
 	var progression := game.call("_progression_board_ids") as Array[StringName]
-	assert_eq(progression.size(), 15)
-	assert_eq(RuleLevelLoader.list_level_ids().size(), 17)
+	assert_eq(progression.size(), 16)
+	assert_eq(RuleLevelLoader.list_level_ids().size(), 18)
 	var last_id: StringName = progression.back()
 	var last_level: Dictionary = RuleLevelLoader.load_level(last_id)
 	var state: Dictionary = game.save_state()

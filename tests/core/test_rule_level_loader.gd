@@ -3,10 +3,10 @@ extends GutTest
 
 func test_index_keeps_authored_order_and_load_level_api_compatibility() -> void:
 	var ids := RuleLevelLoader.list_level_ids()
-	assert_eq(ids.size(), 17)
+	assert_eq(ids.size(), 18)
 	assert_eq(ids[0], &"rule_01_open_gate")
-	assert_eq(ids[15], &"signal_room_01")
-	assert_eq(ids[16], &"crossing_02")
+	assert_eq(ids[16], &"signal_room_01")
+	assert_eq(ids[17], &"crossing_02")
 
 	var first := RuleLevelLoader.load_level(&"signal_room_01")
 	var second := RuleLevelLoader.load_level(&"crossing_02")

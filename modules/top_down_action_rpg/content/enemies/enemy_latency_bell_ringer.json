@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "id": "enemy_latency_bell_ringer",
+  "display_name": "Latency Bell Ringer",
+  "role": {
+    "base_region_id": "region_r3_bellhouse_hospice",
+    "region_role": "intervention_scheduling",
+    "institution_id": "institution_bellhouse",
+    "role_tags": [
+      "scheduler",
+      "debt"
+    ]
+  },
+  "body": {
+    "body_class": "humanoid",
+    "silhouette_key": "sil_latency_bell_ringer",
+    "scale_class": "human",
+    "stateful_body": "open_close",
+    "motion_signature": "bell_ringing"
+  },
+  "stats": {
+    "max_hp": 92,
+    "agility": 10,
+    "action_slots": 1,
+    "resource_pool": {
+      "mp": 12,
+      "equipment_charge": 0
+    }
+  },
+  "condition_bar": {
+    "kind": "condition_progress",
+    "max_value": 100,
+    "start_value": 0,
+    "advance_on": [
+      "window_elapsed"
+    ],
+    "advance_per_source": 20,
+    "decrease_on_phase_enter": 0
+  },
+  "baseline_action_ids": [
+    "act_scheduled_intervention_step"
+  ],
+  "signature_action_id": "act_latency_bell_ringing",
+  "telegraph": {
+    "signature_tell_key": "tell_latency_bell_ringing",
+    "channels": [
+      "sound",
+      "numeric_bar",
+      "pose"
+    ]
+  },
+  "status_profile": {
+    "innate_status_ids": [
+      "st_concentration_load"
+    ],
+    "resistant_status_ids": [
+      "st_recorded"
+    ],
+    "immune_status_ids": [
+      "st_misfolded"
+    ]
+  },
+  "break_profile": {
+    "breakable": true,
+    "break_source_action_ids": [
+      "act_break_poise"
+    ],
+    "on_break_status_ids": [
+      "st_recorded"
+    ],
+    "on_break_effect_ids": [
+      "eff_r3_latency_receipt_filed"
+    ]
+  },
+  "linked_actors": [
+    {
+      "enemy_id": "enemy_ash_hound",
+      "role": "decoy",
+      "timing": "encounter_start",
+      "on_owner_death": "survive",
+      "on_actor_death": "none",
+      "is_true_target": false,
+      "max_count": 2
+    }
+  ],
+  "reward": {
+    "equipment_ids": [],
+    "item_ids": [
+      "item_blank_return_form"
+    ],
+    "resource_delta": {
+      "mp": 2
+    }
+  },
+  "aftermath": {
+    "effect_ids": [
+      "eff_r3_latency_receipt_filed"
+    ],
+    "region_state_tag": "r3_bell_rung"
+  },
+  "lore_ref": "seed_s013",
+  "seed_ids": [
+    "seed_s013",
+    "seed_s034",
+    "seed_s103"
+  ]
+}

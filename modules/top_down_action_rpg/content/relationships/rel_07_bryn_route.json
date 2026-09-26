@@ -1,0 +1,223 @@
+{
+    "schema_version":  1,
+    "id":  "rel_07_bryn_route",
+    "target_npc_id":  "npc_07_bryn_oskel",
+    "channel":  "professional",
+    "start_state_id":  "rs_bryn_guided",
+    "states":  [
+                   {
+                       "state_id":  "rs_bryn_guided",
+                       "order":  0,
+                       "label":  "walked as a guide",
+                       "entry_effect_ids":  [
+
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "guarded"
+                   },
+                   {
+                       "state_id":  "rs_bryn_shared",
+                       "order":  1,
+                       "label":  "route shared in both directions",
+                       "entry_effect_ids":  [
+                                                "eff_r1_ash_debt_opens_chute"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r7_survey"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_h0_route_board"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "operational"
+                   },
+                   {
+                       "state_id":  "rs_bryn_delegated",
+                       "order":  2,
+                       "label":  "he handed the next line to you",
+                       "entry_effect_ids":  [
+                                                "eff_r1_ash_debt_opens_chute"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r7_survey",
+                                        "port_r2_settlement"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_h0_route_board"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  true,
+                                               "encounter_modifier":  1,
+                                               "granted_by_effect_ids":  [
+                                                                             "eff_r1_ash_debt_opens_chute"
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "candid"
+                   },
+                   {
+                       "state_id":  "rs_bryn_abandoned",
+                       "order":  3,
+                       "label":  "his sealed line reused behind him",
+                       "entry_effect_ids":  [
+                                                "eff_r1_return_registry_logs_name"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "hostile"
+                   }
+               ],
+    "transitions":  [
+                        {
+                            "transition_id":  "t_01",
+                            "from_state_id":  "rs_bryn_guided",
+                            "to_state_id":  "rs_bryn_shared",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_route_board",
+                                                                            "choice_id":  "ch_mark_the_safe_segment"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_ash_debt_opens_chute"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_02",
+                            "from_state_id":  "rs_bryn_shared",
+                            "to_state_id":  "rs_bryn_delegated",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_route_board",
+                                                                            "choice_id":  "ch_open_one_way"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_ash_debt_opens_chute"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_03",
+                            "from_state_id":  "rs_bryn_shared",
+                            "to_state_id":  "rs_bryn_guided",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_route_board",
+                                                                            "choice_id":  "ch_keep_the_old_line"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  8
+                        },
+                        {
+                            "transition_id":  "t_04",
+                            "from_state_id":  "rs_bryn_delegated",
+                            "to_state_id":  "rs_bryn_abandoned",
+                            "via":  "effect",
+                            "requires_condition":  {
+                                                       "clock_irreversible":  {
+                                                                                  "clock_id":  "clock_resource_collapse"
+                                                                              }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_return_registry_logs_name"
+                                           ],
+                            "is_irreversible":  true,
+                            "priority":  5
+                        }
+                    ],
+    "axes":  {
+                 "trust":  1,
+                 "fear":  0,
+                 "debt":  1,
+                 "recognition":  0,
+                 "attachment":  0
+             },
+    "axis_rules":  [
+                       {
+                           "key":  "route_opened_one_way",
+                           "condition":  {
+                                             "choice_taken":  {
+                                                                  "conversation_id":  "conv_h0_route_board",
+                                                                  "choice_id":  "ch_open_one_way"
+                                                              }
+                                         },
+                           "sets":  {
+                                        "continuity_pressure":  1
+                                    }
+                       }
+                   ],
+    "exclusions":  {
+                       "max_final_state":  1,
+                       "conflicting_final_state_ids":  [
+                                                           "rs_bryn_abandoned"
+                                                       ]
+                   },
+    "romance":  {
+                    "allowed":  false,
+                    "explicit_content":  false,
+                    "gate_state_ids":  [
+
+                                       ],
+                    "consent_beat_effect_ids":  [
+
+                                                ]
+                },
+    "seed_ids":  [
+                     "seed_s009",
+                     "seed_s062",
+                     "seed_s067",
+                     "seed_s117",
+                     "seed_s154"
+                 ]
+}

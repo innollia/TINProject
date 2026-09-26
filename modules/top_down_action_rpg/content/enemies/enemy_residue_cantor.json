@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "id": "enemy_residue_cantor",
+  "display_name": "Residue Cantor",
+  "role": {
+    "base_region_id": "region_r8_folding_school",
+    "region_secondary": "region_r1_returning_kiln",
+    "region_role": "magic_training_craft_labor",
+    "institution_id": "institution_mag_academy",
+    "role_tags": [
+      "craft_labor",
+      "medium_handler"
+    ]
+  },
+  "body": {
+    "body_class": "cluster",
+    "silhouette_key": "sil_residue_cantor",
+    "scale_class": "human",
+    "stateful_body": "split_merge",
+    "motion_signature": "residue_lay"
+  },
+  "stats": {
+    "max_hp": 95,
+    "agility": 8,
+    "action_slots": 1,
+    "resource_pool": {
+      "mp": 12,
+      "equipment_charge": 0
+    }
+  },
+  "condition_bar": {
+    "kind": "condition_progress",
+    "max_value": 100,
+    "start_value": 0,
+    "advance_on": [
+      "status_applied",
+      "window_elapsed"
+    ],
+    "advance_per_source": 15,
+    "decrease_on_phase_enter": 0
+  },
+  "baseline_action_ids": [
+    "act_cantor_sheet_lay"
+  ],
+  "signature_action_id": "act_cantor_overflow",
+  "telegraph": {
+    "signature_tell_key": "tell_cantor_overflow",
+    "channels": [
+      "pose",
+      "vfx",
+      "numeric_bar"
+    ]
+  },
+  "status_profile": {
+    "innate_status_ids": [
+      "st_medium_residue"
+    ],
+    "resistant_status_ids": [
+      "st_concentration_load"
+    ],
+    "immune_status_ids": []
+  },
+  "break_profile": {
+    "breakable": true,
+    "break_source_action_ids": [
+      "act_break_poise"
+    ],
+    "on_break_status_ids": [
+      "st_medium_residue"
+    ],
+    "on_break_effect_ids": [
+      "eff_r8_concentration_registered"
+    ]
+  },
+  "reward": {
+    "equipment_ids": [],
+    "item_ids": [
+      "item_ash_thread_spool"
+    ],
+    "resource_delta": {
+      "mp": 1
+    }
+  },
+  "aftermath": {
+    "effect_ids": [
+      "eff_r8_concentration_registered"
+    ],
+    "region_state_tag": "concentration_filed"
+  },
+  "phase_ids": [
+    "phase_cantor_first_lay",
+    "phase_cantor_contract_press"
+  ],
+  "lore_ref": "seed_s001",
+  "seed_ids": [
+    "seed_s001"
+  ]
+}

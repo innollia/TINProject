@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.creature_alert
+// situation: a creature notices movement
+// render: --seconds 0.60 --rate 48000 --bpm 120 --no-default-bank
+n"c4 e4 g4" |> tri(@.freq) * adsr(@.gate, 0.01, 0.08, 0.35, 0.10) |> out(%)

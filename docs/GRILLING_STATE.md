@@ -1,11 +1,53 @@
 # TINProject — Grilling State
 
-현재 상태: **COMPLETE — 프로젝트 공통 GPT 이미지 자산 기반 Q1–Q32 반영 및 사용자 shared understanding 확인 완료**
-Top-down Action-RPG 상태: **PLAN COMPLETE — 분할 계획·중앙 해석·magic supplement 검토 통과. 구현·검증 실행 단계**
+현재 상태: **ACTIVE — Stone Story RPG Kit 방향 확정(2026-09-26). 조사 자료 수집 대기**
+Stone Story RPG Kit 상태: **BLOCKED — 조사 자료 미수집. 구현 착수 불가**
+Top-down Action-RPG 상태: **SUPERSEDED — 방향 결정 대기. 파일은 보존**
 Rule Rewrite 구현 상태: **COMPLETE — Kit별 grilling 및 계획서 작성 완료. 구현·자동 회귀·외부 해상도 캡처 진행 중**
 구현 중 발견한 불일치와 재개 조건: [Rule Rewrite 방향 점검](research/rule_rewrite/DIRECTION_REVIEW_2026-09-24.md).
-project-wide 상태: **COMPLETE — 사용자 shared understanding 확인 완료**
-갱신: 2026-09-25
+project-wide 상태: **COMPLETE — 사용자 shared understanding 확인 완료. 단, 코드 전용 비주얼 적용 범위는 미확정**
+갱신: 2026-09-26
+
+## Stone Story RPG Kit 방향 (2026-09-26)
+
+사용자가 새 방향을 확정했다. 정본은 `PROJECT_DECISIONS.md` §21.
+
+### Settled
+
+- SSR1: 목표는 Stone Story RPG와 유사한 게임이다.
+- SSR2: 이미지 작업을 전부 코드로 작성한 절차적 애니메이션으로 대체한다. 이 Kit은 이미지 자산 파일을 쓰지 않는다.
+- SSR3: 분위기·스토리·내용의 source는 Ena: Dream BBQ다.
+- SSR4: 시스템은 Stone Story RPG (main) + Dark Souls 3 (sub)다.
+- SSR5: 분량은 Stone Story RPG 규모다.
+- SSR6: 자료조사는 전부 사용자가 수행한다. 에이전트는 외부 조사를 하지 않고 부족한 자료를 요청한다.
+- SSR7: 사용자가 제공하는 1만자 이상 원문은 `docs/research/stone_story_rpg/00_user_dumps/`에 수정 없이 보관한다.
+- SSR8: Primary Reference는 Stone Story RPG 하나다.
+- SSR9: Dark Souls 3는 Sub Reference이며 확정된 확장점에만 쓴다.
+- SSR10: Ena: Dream BBQ는 시스템 레퍼런스가 아니다.
+- SSR11: `docs/VISUAL_DIRECTION.md`, `docs/IMAGE_ASSET_WORKFLOW.md`, `docs/art/**`, IMG1–IMG25는 이 Kit에 적용되지 않는다.
+
+### Current Frontier
+
+**사용자 제공 조사 자료 대기.** 자료가 오면 `docs/research/stone_story_rpg/`의 해당 폴더로 분리하고
+`plans/kits/05_STONE_STORY_RPG_KIT.md`의 `MISSING` 항목을 채운다.
+
+사용자 응답이 필요한 미확정 결정 (`PROJECT_DECISIONS.md` §21.1):
+
+1. Kit 슬롯 — 04(BLACK SOULS 2)를 대체하는가, 별도 슬롯인가. 04의 미커밋 구현을 어떻게 처리하는가.
+2. 코드 전용 비주얼 — 이 Kit 한정인가, 프로젝트 전체인가.
+3. 완료 기준 — "Stone Story RPG 규모"와 10분+ Reference Game 기준의 관계.
+4. Dark Souls 3 확장점 선택.
+5. 코드 전용 비주얼의 목표 해상도·픽셀 밀도·카메라 줌 수준.
+
+### 조사 진행도
+
+| 범위 | 상태 | 근거 |
+|---|---|---|
+| S1–S14 Stone Story RPG 상태별 실증 | MISSING | 사용자 자료 대기 |
+| E1–E5 Ena: Dream BBQ | MISSING | 사용자 자료 대기 |
+| P1–P5 절차 비주얼 | MISSING | 사용자 자료 대기 |
+| Dark Souls 3 확장점 | 미확정 | 확장점 선택 필요 |
+
 
 ## GPT 이미지 자산 기반 grilling
 

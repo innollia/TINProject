@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: phy.impact_soft
+// situation: a soft object collides, low hardness tier
+// render: --seconds 0.30 --rate 48000 --bpm 96 --no-default-bank
+n"c3" |> sine(@.freq) * adsr(@.gate, 0.002, 0.10, 0.0, 0.0) |> out(%)

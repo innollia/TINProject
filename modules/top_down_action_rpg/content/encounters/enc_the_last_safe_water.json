@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "id": "enc_the_last_safe_water",
+  "display_name": "The Last Safe Water",
+  "context": {
+    "region_id": "region_r2_siltglass_commons",
+    "region_secondary": "region_r7_hollow_orchard",
+    "region_role": "resource_allocation",
+    "depth_band": 0,
+    "story_stage": "late",
+    "time_of_day": "institutional"
+  },
+  "activation": {
+    "kind": "boss_gate",
+    "gate_id": "gate_g2_water_recognition",
+    "eligibility": {
+      "clock_at_least": {
+        "clock_id": "clock_resource_collapse",
+        "stage_index": 2
+      }
+    },
+    "warning": {
+      "channel": "sound",
+      "windows_before": 2
+    }
+  },
+  "visibility": {
+    "visible_in_field": false,
+    "shown_on_map": false
+  },
+  "roster": [
+    {
+      "entry_id": "slot_a",
+      "enemy_id": "enemy_circulator_stacker",
+      "count": 1,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 1,
+      "spawn_at": "start"
+    },
+    {
+      "entry_id": "slot_b",
+      "enemy_id": "enemy_disperser_warden",
+      "count": 1,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 2,
+      "spawn_at": "start"
+    },
+    {
+      "entry_id": "slot_c",
+      "enemy_id": "enemy_seam_arbiter",
+      "count": 2,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 3,
+      "spawn_at": "phase_enter"
+    }
+  ],
+  "target_priority": [
+    {
+      "enemy_id": "enemy_circulator_stacker",
+      "role": "true_actor",
+      "priority": 1,
+      "only_when": {}
+    },
+    {
+      "enemy_id": "enemy_disperser_warden",
+      "role": "support",
+      "priority": 2,
+      "only_when": {}
+    },
+    {
+      "enemy_id": "enemy_seam_arbiter",
+      "role": "support",
+      "priority": 3,
+      "only_when": {}
+    }
+  ],
+  "target_roles": [
+    {
+      "role": "record",
+      "surface_id": "doc_r2_seed_vault_ledger",
+      "descendants_only": true
+    },
+    {
+      "role": "resource_node",
+      "surface_id": "res_circulation_slot",
+      "descendants_only": false
+    },
+    {
+      "role": "route",
+      "surface_id": "gate_g7_boundary_witness",
+      "descendants_only": false
+    }
+  ],
+  "group": {
+    "group_id": "GRP-ARPG-04",
+    "anchor_enemy_id": "enemy_circulator_stacker",
+    "link_policy": "consumed_to_thirst_locked",
+    "phase_wave": 1,
+    "status_policy": [
+      "st_recorded"
+    ],
+    "resource_budget": {
+      "mp": 0,
+      "hp": 0,
+      "stamina": 0
+    },
+    "reward_policy": {
+      "effect_id": "eff_r2_water_recognition_filed"
+    }
+  },
+  "allow": {
+    "escape": false,
+    "skip": false
+  },
+  "clock_pressure": [
+    {
+      "clock_id": "clock_resource_collapse",
+      "ticks_on_start": 1,
+      "ticks_per_window": 1,
+      "ticks_on_end": 1
+    },
+    {
+      "clock_id": "clock_crown_alignment",
+      "ticks_on_start": 0,
+      "ticks_per_window": 1,
+      "ticks_on_end": 0
+    }
+  ],
+  "outcome": {
+    "on_victory": {
+      "effect_ids": [
+        "eff_r2_seed_vault_sample_filed"
+      ]
+    },
+    "on_escape": {
+      "effect_ids": []
+    },
+    "on_failure": {
+      "effect_ids": [
+        "eff_r2_emergency_convoy_rostered"
+      ],
+      "death_policy": "respawn_checkpoint"
+    },
+    "on_parley": {
+      "effect_ids": [
+        "eff_r2_water_recognition_filed"
+      ]
+    }
+  },
+  "world_effect": {
+    "region_state_tag": "r2_last_safe_water",
+    "prop_state_ids": [
+      "prop_r2_root_bridge_anchor",
+      "prop_r2_seed_vault_shelf"
+    ],
+    "unlock_gate_ids": [
+      "gate_g7_boundary_witness"
+    ]
+  },
+  "repeat": {
+    "policy": "once",
+    "reset_policy": "none",
+    "cooldown_windows": 0,
+    "depth_scaling": {
+      "per_band": {},
+      "max_bands": 0
+    }
+  },
+  "base_encounter_id": null,
+  "variant_overrides": {},
+  "remix_eligibility": {
+    "condition": {
+      "clock_at_least": {
+        "clock_id": "clock_crown_alignment",
+        "stage_index": 1
+      }
+    },
+    "requires_depth_band_min": 0,
+    "requires_postgame": false
+  },
+  "lore_ref": "seed_s126",
+  "seed_ids": [
+    "seed_s126",
+    "seed_s093",
+    "seed_s064",
+    "seed_s005"
+  ]
+}

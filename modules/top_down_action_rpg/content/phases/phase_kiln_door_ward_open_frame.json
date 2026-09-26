@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "phase_kiln_door_ward_open_frame",
+  "display_name": "Open Frame",
+  "owner_enemy_id": "enemy_kiln_door_ward",
+  "index": 2,
+  "trigger": {
+    "kind": "previous_phase_complete"
+  },
+  "enter": {
+    "effect_ids": [
+      "eff_r1_ash_debt_opens_chute"
+    ],
+    "status_ids": [
+      "st_misfolded"
+    ],
+    "invulnerable_windows": 0
+  },
+  "overrides": {
+    "action_add_ids": [],
+    "action_remove_ids": [
+      "act_registry_paper_shove"
+    ],
+    "stat_overrides": {
+      "agility": 8
+    },
+    "resistance_add_status_ids": [],
+    "resistance_remove_status_ids": [
+      "st_concentration_load"
+    ],
+    "signature_action_id": "act_kiln_door_ward_seal",
+    "telegraph_gain_windows": 0
+  },
+  "roster": {
+    "add_enemy_ids": [],
+    "remove_enemy_ids": [
+      "enemy_wrong_return_scribe"
+    ],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "reduce_owner_hp_to",
+    "hp_ratio_at": 15
+  },
+  "next_phase_id": null,
+  "seed_ids": [
+    "seed_s017",
+    "seed_s031",
+    "seed_s038"
+  ]
+}

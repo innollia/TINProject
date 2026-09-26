@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r8_cut_chamber",
+    "display_name":  "Cut Chamber Contract Desk",
+    "region_id":  "region_r8_folding_school",
+    "speaker_npc_id":  "npc_23_turo_bex",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_07_bryn_route",
+                                                                                   "target_npc_id":  "npc_07_bryn_oskel",
+                                                                                   "state_id":  "rs_bryn_abandoned"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_r8_course_index_desk",
+                                                                    "choice_id":  "ch_withhold_measurement"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  16,
+    "pages":  [
+                  {
+                      "page_id":  "pg_shape",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "The shape decides the destination. The contract only decides what the destination owes us afterwards.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_reserve_sheet",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "There is a margin on an old sheet in my coat that the curriculum has no box for.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_two_ledgers",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "A frontier ledger and a chamber ledger describe the same cut in two different shapes.",
+                      "advance":  "wait"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_compare_the_two_ledgers",
+                        "text":  "Have him read the frontier ledger against the chamber ledger line by line.",
+                        "semantic_tags":  [
+                                              "careful",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_file_the_contract",
+                        "text":  "Make him file the contract with the shape named and the obligation open.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "costly"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_leave_the_tally_open",
+                        "text":  "Leave the tally unfiled and keep the sheet in his coat.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_close_the_tally",
+                        "text":  "Close the tally in the chamber\u0027s name so the frontier copy stops mattering.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r8_concentration_registered",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+                                           "eff_r8_course_index_printed"
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r8_course_index_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s101",
+                     "seed_s125",
+                     "seed_s154"
+                 ]
+}

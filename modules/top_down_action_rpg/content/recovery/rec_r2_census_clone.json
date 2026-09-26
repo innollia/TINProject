@@ -1,0 +1,75 @@
+{
+    "schema_version":  1,
+    "id":  "rec_r2_census_clone",
+    "display_name":  "Census Third Count",
+    "kind":  "clone",
+    "trigger":  {
+                    "kind":  "encounter_failure",
+                    "encounter_id":  "enc_the_clone_census",
+                    "condition":  {
+
+                                  }
+                },
+    "preserves":  [
+                      "region_id",
+                      "region_state",
+                      "clock_stages",
+                      "npc_states",
+                      "document_reads",
+                      "relationship_states"
+                  ],
+    "discards":  [
+                     "encounter_progress",
+                     "current_phase",
+                     "linked_actor_state",
+                     "combat_transient",
+                     "scheduler_cursor",
+                     "pending_effect_queue",
+                     "presentation_transient"
+                 ],
+    "self_layers_restored":  [
+                                 "body",
+                                 "memory",
+                                 "role"
+                             ],
+    "self_layers_not_restored":  [
+                                     "belief",
+                                     "institution",
+                                     "desire",
+                                     "social_recognition"
+                                 ],
+    "respawn":  {
+                    "region_id":  "region_r2_siltglass_commons",
+                    "prop_id":  "prop_r2_circulator_stack",
+                    "reset_prop_ids":  [
+                                           "prop_r2_circulator_stack"
+                                       ]
+                },
+    "cost":  {
+                 "continuity_pressure_delta":  2,
+                 "resource_costs":  {
+
+                                    },
+                 "axis_deltas":  {
+                                     "continuity_pressure":  2,
+                                     "recognition_drift":  1
+                                 },
+                 "world_effect_ids":  [
+                                         "eff_r2_census_third_count_filed"
+                                     ]
+             },
+    "entry_effect_ids":  [
+
+                         ],
+    "cooldown":  {
+                     "kind":  "per_encounter",
+                     "count":  1
+                 },
+    "authored_debt":  {
+                         "debt_id":  "d_r2_third_count_standing",
+                         "description":  "the third count is filed as a separate entry, and the source body is not allowed to be edited back toward it"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: phy.object_release
+// situation: the player lets go of a movable object
+// render: --seconds 0.28 --rate 48000 --bpm 108 --no-default-bank
+n"g4" |> tri(@.freq) * adsr(@.gate, 0.001, 0.05, 0.0, 0.0) |> out(%)

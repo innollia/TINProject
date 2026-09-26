@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "phase_crown_fragment_echo_second_recital",
+  "display_name": "Second Recital",
+  "owner_enemy_id": "enemy_crown_fragment_echo",
+  "index": 2,
+  "trigger": {
+    "kind": "previous_phase_complete"
+  },
+  "enter": {
+    "effect_ids": [
+      "eff_r4_operator_memory_classified"
+    ],
+    "status_ids": [
+      "st_overflowed"
+    ],
+    "invulnerable_windows": 0
+  },
+  "overrides": {
+    "action_add_ids": [],
+    "action_remove_ids": [
+      "act_fold_wall_measure"
+    ],
+    "stat_overrides": {
+      "agility": 9
+    },
+    "resistance_add_status_ids": [
+      "st_overflowed"
+    ],
+    "resistance_remove_status_ids": [
+      "st_concentration_load"
+    ],
+    "signature_action_id": "act_crown_fragment_echo_recital",
+    "telegraph_gain_windows": 0
+  },
+  "roster": {
+    "add_enemy_ids": [
+      "enemy_ember_clerk"
+    ],
+    "remove_enemy_ids": [
+      "enemy_glossary_arbiter"
+    ],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "reduce_owner_hp_to",
+    "hp_ratio_at": 18
+  },
+  "next_phase_id": null,
+  "seed_ids": [
+    "seed_s051",
+    "seed_s052",
+    "seed_s108"
+  ]
+}

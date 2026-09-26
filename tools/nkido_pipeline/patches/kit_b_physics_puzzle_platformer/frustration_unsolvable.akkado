@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: phy.frustration_unsolvable
+// situation: the player has hit a wall with no remaining move
+// render: --seconds 1.20 --rate 48000 --bpm 72 --no-default-bank
+n"a2 b2" as e |> saw(e.freq) * adsr(e.gate, 0.03, 0.14, 0.50, 0.24) * e.vel |> out(%)

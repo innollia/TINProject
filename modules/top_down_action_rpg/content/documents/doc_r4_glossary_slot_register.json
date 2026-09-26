@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "doc_r4_glossary_slot_register",
+  "display_name": "Glossary Slot Register",
+  "region_id": "region_r4_crownwell_archive",
+  "availability": {
+    "condition": {},
+    "reached_by": "prop"
+  },
+  "reached_by_ref": "prop_r4_glossary_slot",
+  "pages": [
+    {
+      "page_id": "pg_empty_slot",
+      "lines": [
+        "slot one: craft term, source untranslated",
+        "slot two: empty, the archive has not read the school name",
+        "slot three: crown fragment term, held under seal",
+        "category: glossary"
+      ],
+      "presentation": "plain",
+      "corruption_rules": []
+    },
+    {
+      "page_id": "pg_two_lines",
+      "lines": [
+        "slot one: craft term, source untranslated",
+        "the school name and the archive word both stay in the slot",
+        "slot three: crown fragment term, held under seal",
+        "category: glossary"
+      ],
+      "presentation": "corrupted",
+      "corruption_rules": [
+        {
+          "rule_id": "cr_split_line",
+          "mode": "shatter_line",
+          "trigger": {
+            "clock_at_least": {
+              "clock_id": "clock_public_record",
+              "stage_index": 4
+            }
+          },
+          "severity": 3,
+          "line_index": 1,
+          "text_note": "The archive keeps the split visible as two untranslated entries."
+        }
+      ]
+    }
+  ],
+  "reading": {
+    "background_mode": "dim_world",
+    "world_visible_ratio": 0.35,
+    "advance": "page",
+    "max_lines_per_page": 9,
+    "min_font_size": 20,
+    "requires_advance_affordance": true
+  },
+  "post_read": {
+    "effect_ids": [
+      "eff_r4_glossary_slot_filled"
+    ],
+    "once": false
+  },
+  "revisit": "allowed",
+  "seed_ids": [
+    "seed_s147",
+    "seed_s144",
+    "seed_s075"
+  ]
+}

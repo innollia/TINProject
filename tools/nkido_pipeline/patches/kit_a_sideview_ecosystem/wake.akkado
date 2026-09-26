@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.wake
+// situation: the player wakes up
+// render: --seconds 1.20 --rate 48000 --bpm 96 --no-default-bank
+n"a2 c3" as e |> sine(e.freq) * adsr(e.gate, 0.05, 0.12, 0.45, 0.18) * e.vel |> out(%)

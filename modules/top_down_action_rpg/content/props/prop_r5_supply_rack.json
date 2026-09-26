@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "prop_r5_supply_rack",
+  "display_name": "Supply Rack",
+  "region_id": "region_r5_glasswing_ordinal",
+  "placement": {
+    "anchor_key": "r5_supply_rack",
+    "layer": "prop",
+    "visible_from": "same_room"
+  },
+  "initial_state_id": "ps_sealed",
+  "states": [
+    {
+      "state_id": "ps_sealed",
+      "label": "medium, fold sheet and blade are counted under the ordinal seal",
+      "visible": true,
+      "art_key": "prop_r5_rack_sealed",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_issued",
+      "label": "the rack is released against a permit the school has never seen",
+      "visible": true,
+      "art_key": "prop_r5_rack_issued",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r5_supply_rack_issued"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_supply_rack",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r5_supply_rack",
+            "state_id": "ps_sealed"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r5_supply_rack",
+            "state_id": "ps_issued"
+          }
+        }
+      ]
+    },
+    "opens": "doc_r5_supply_rack_receipt",
+    "return_focus": "prop"
+  },
+  "hidden_until_condition": {
+    "not": {
+      "prop_state_is": {
+        "prop_id": "prop_r5_supply_rack",
+        "state_id": "ps_sealed"
+      }
+    }
+  },
+  "seed_ids": [
+    "seed_s140",
+    "seed_s150",
+    "seed_s152"
+  ]
+}

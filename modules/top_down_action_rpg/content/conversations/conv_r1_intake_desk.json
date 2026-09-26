@@ -1,0 +1,144 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r1_intake_desk",
+    "display_name":  "Intake Desk",
+    "region_id":  "region_r1_returning_kiln",
+    "speaker_npc_id":  "npc_02_orrin_kest",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_02_orrin_intake",
+                                                                                   "target_npc_id":  "npc_02_orrin_kest",
+                                                                                   "state_id":  "rs_orrin_quarantined"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_r1_wrong_return_hearing",
+                                                                    "choice_id":  "ch_keep_the_record"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  11,
+    "pages":  [
+                  {
+                      "page_id":  "pg_number_first",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "Give me the number before the name. The number is the part I can defend in a year.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_second_bed",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "The second bed is warm and the sheet has no name written on it.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_signature",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "If you carry the exception out of this room, it stops being mine and starts being yours.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_declare_the_layer",
+                        "text":  "Read the return class aloud and file it exactly as written.",
+                        "semantic_tags":  [
+                                              "bureaucratic",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_wrong_return_witnessed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_release_the_signature",
+                        "text":  "Show that the body and the memory disagree about the same arrival.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "protective"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_wrong_return_witnessed",
+                        "delayed_effect_id":  "eff_r1_return_registry_logs_name",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_refuse_the_own_signature",
+                        "text":  "Leave his own intake number out of the sheet entirely.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_wrong_return_witnessed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_sign_the_wardens_waiver",
+                        "text":  "Sign the warden waiver and close the isolation term today.",
+                        "semantic_tags":  [
+                                              "bureaucratic",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "unavailable",
+                        "availability":  {
+                                             "prop_state_is":  {
+                                                                   "prop_id":  "prop_r1_wrong_return_door",
+                                                                   "state_id":  "ps_intact"
+                                                               }
+                                         },
+                        "unavailable_reason":  "prop_r1_wrong_return_door",
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r1_return_registry_logs_name",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+                                           "eff_r1_wrong_return_witnessed"
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r1_wrong_return_hearing"
+                             ],
+    "seed_ids":  [
+                     "seed_s011",
+                     "seed_s016",
+                     "seed_s107"
+                 ]
+}

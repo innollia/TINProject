@@ -1,0 +1,190 @@
+{
+    "schema_version":  1,
+    "id":  "npc_14_eda_marrow",
+    "display_name":  "Eda Marrow",
+    "roster_kind":  "core",
+    "public_role":  "labor coordinator who calls the shifts that keep care, water and maintenance running",
+    "private_role":  "inherited the earlier collective\u0027s bodies and authority without inheriting its name",
+    "desire":  "wants care labor to stay collective and non-inheritable",
+    "fear":  "that the collective becomes a new institution and compresses each body again",
+    "contradiction":  "opposes every hierarchy and still uses personal loyalty and strategic silence",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_r5_labor",
+                                        "port_r8_course_record"
+                                    ],
+                       "can":  [
+                                   "mobilize_shift",
+                                   "strike_service",
+                                   "redistribute_stock",
+                                   "withhold_labor",
+                                   "protect_worker"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+                                           "equipment_ash_bound_stick"
+                                       ],
+                            "denies":  [
+                                           "gate_g1_ash_debt"
+                                       ],
+                            "denied_by_effect_id":  "eff_r1_ash_debt_opens_chute"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s039",
+                                             "seed_s061"
+                                         ],
+                               "does_not_know":  [
+                                                     "seed_s090"
+                                                 ],
+                               "never_learns":  [
+                                                    "seed_s137"
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_call_the_shift",
+                                             "verb_mobilize_the_floor",
+                                             "verb_withhold_the_labor",
+                                             "verb_protect_the_worker",
+                                             "verb_read_the_course_credit"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "resource_scarcity",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_call_the_shift",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_r8_labor_desk",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_mobilize_the_floor",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_labor_desk",
+                                                                            "choice_id":  "ch_call_the_whole_shift"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_labor_desk",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_withhold_the_labor",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_labor_desk",
+                                                                            "choice_id":  "ch_withhold_one_service"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_labor_desk",
+                                  "presentation_class":  "extreme"
+                              },
+                              {
+                                  "verb_id":  "verb_protect_the_worker",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_labor_desk",
+                                                                            "choice_id":  "ch_shield_one_worker"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_labor_desk",
+                                  "presentation_class":  "neutral"
+                              },
+                              {
+                                  "verb_id":  "verb_read_the_course_credit",
+                                  "availability":  {
+                                                       "prop_state_is":  {
+                                                                             "prop_id":  "prop_r8_medium_store_shelf",
+                                                                             "state_id":  "ps_quarantined"
+                                                                         }
+                                                   },
+                                  "opens":  "conv_r8_labor_desk",
+                                  "presentation_class":  "official"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_14_eda_shift"
+                         ],
+    "clock_ids":  [
+                      "clock_resource_collapse",
+                      "clock_public_record",
+                      "clock_institutional_response"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  "enc_r8_fold_that_refuses_the_hand"
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "conversion_condition":  {
+
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "eff_r8_ash_choir_defeated",
+                                              "encounter_modifier":  1
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_r8_course_index_printed"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_r1_ash_debt_opens_chute"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "permanent",
+                    "condition":  {
+
+                                  },
+                    "moves_to_region_id":  "region_r1_returning_kiln"
+                },
+    "appearance":  {
+                       "body_key":  "body_labor_coordinator",
+                       "portrait_key":  "portrait_eda_marrow",
+                       "voice_key":  "voice_eda_marrow"
+                   },
+    "mana_profile":  "retention_overflow",
+    "oneoff_dialogue_seed_ids":  [
+                                     "seed_s039",
+                                     "seed_s041",
+                                     "seed_s120"
+                                 ],
+    "cross_link_ids":  [
+                           "region_r8_folding_school",
+                           "region_h0_undersign_exchange",
+                           "npc_08_meral_dune",
+                           "npc_10_juno_caster",
+                           "npc_12_ravenna_holt",
+                           "clock_resource_collapse"
+                       ],
+    "removal":  "death",
+    "seed_ids":  [
+                     "seed_s039",
+                     "seed_s040",
+                     "seed_s041",
+                     "seed_s047",
+                     "seed_s049",
+                     "seed_s061",
+                     "seed_s064",
+                     "seed_s068",
+                     "seed_s090",
+                     "seed_s120",
+                     "seed_s134",
+                     "seed_s137",
+                     "seed_s139",
+                     "seed_s140",
+                     "seed_s160"
+                 ]
+}

@@ -1,0 +1,179 @@
+{
+    "schema_version":  1,
+    "id":  "npc_03_veya_morcant",
+    "display_name":  "Veya Morcant",
+    "roster_kind":  "core",
+    "public_role":  "audit officer who reviews the category a recovery is allowed to file",
+    "private_role":  "keeps a living witness under the unrecoverable heading and never files the exception list",
+    "desire":  "wants refusal to count as a lawful answer instead of a delay",
+    "fear":  "that her own compassionate ruling becomes the reason another subject waits",
+    "contradiction":  "doubts every category she writes and still refuses to record the one she acted on",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_hub_appeal"
+                                    ],
+                       "can":  [
+                                   "audit_category",
+                                   "void_a_category",
+                                   "sign_exception",
+                                   "summon_investigation_seal"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+
+                                       ],
+                            "denies":  [
+                                           "gate_g0_arrival_declaration"
+                                       ],
+                            "denied_by_effect_id":  "eff_r1_return_registry_logs_name"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s012",
+                                             "seed_s021"
+                                         ],
+                               "does_not_know":  [
+                                                     "seed_s052"
+                                                 ],
+                               "never_learns":  [
+                                                    "seed_s059"
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_audit_the_category",
+                                             "verb_void_the_category",
+                                             "verb_sign_the_exception",
+                                             "verb_read_the_audit_copy",
+                                             "verb_withhold_the_testimony"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "protocol_legitimacy",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_audit_the_category",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_h0_appeal_chamber",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_void_the_category",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_appeal_chamber",
+                                                                            "choice_id":  "ch_file_the_missing_category"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_h0_appeal_chamber",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_sign_the_exception",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_appeal_chamber",
+                                                                            "choice_id":  "ch_share_the_liability"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_h0_appeal_chamber",
+                                  "presentation_class":  "neutral"
+                              },
+                              {
+                                  "verb_id":  "verb_read_the_audit_copy",
+                                  "availability":  {
+                                                       "clock_at_least":  {
+                                                                              "clock_id":  "clock_public_record",
+                                                                              "stage_index":  2
+                                                                          }
+                                                   },
+                                  "opens":  "doc_r1_wrong_return_log",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_withhold_the_testimony",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_appeal_chamber",
+                                                                            "choice_id":  "ch_withhold_the_result"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_h0_appeal_chamber",
+                                  "presentation_class":  "hostile"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_03_veya_audit"
+                         ],
+    "clock_ids":  [
+                      "clock_public_record",
+                      "clock_institutional_response"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "conversion_condition":  {
+
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "",
+                                              "encounter_modifier":  0
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_r1_return_registry_logs_name"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_h0_arrival_declaration_filed"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "permanent",
+                    "condition":  {
+
+                                  },
+                    "moves_to_region_id":  "region_r1_returning_kiln"
+                },
+    "appearance":  {
+                       "body_key":  "body_audit_officer",
+                       "portrait_key":  "portrait_veya_morcant",
+                       "voice_key":  "voice_veya_morcant"
+                   },
+    "mana_profile":  "retention_high_emission_low",
+    "oneoff_dialogue_seed_ids":  [
+                                     "seed_s074",
+                                     "seed_s101",
+                                     "seed_s119"
+                                 ],
+    "cross_link_ids":  [
+                           "region_h0_undersign_exchange",
+                           "npc_02_orrin_kest",
+                           "npc_01_ilyra_senn",
+                           "npc_12_ravenna_holt",
+                           "clock_public_record"
+                       ],
+    "removal":  "death",
+    "seed_ids":  [
+                     "seed_s012",
+                     "seed_s021",
+                     "seed_s045",
+                     "seed_s052",
+                     "seed_s059",
+                     "seed_s074",
+                     "seed_s101",
+                     "seed_s119"
+                 ]
+}

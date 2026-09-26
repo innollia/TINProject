@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_h0_ration_counter",
+    "display_name":  "Ration Counter",
+    "region_id":  "region_h0_undersign_exchange",
+    "speaker_npc_id":  "npc_08_meral_dune",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_08_meral_ration",
+                                                                                   "target_npc_id":  "npc_08_meral_dune",
+                                                                                   "state_id":  "rs_meral_individual_claim"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_h0_return_desk",
+                                                                    "choice_id":  "ch_file_arrival_category"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  14,
+    "pages":  [
+                  {
+                      "page_id":  "pg_ledger",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "Ask for the number you came for. Then decide whether you can afford what it costs the settlement.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_second_column",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "The ration counter has a second column that the posted price does not have.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_reserve",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "There is a reserve I have never written down. I have run out of ways to say that safely.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_read_the_published_share",
+                        "text":  "Ask for the published share and the settlement it is divided by.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "bureaucratic"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_publish_the_reserve",
+                        "text":  "Make her write the reserve into the public manifest.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "costly"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_hide_the_reserve",
+                        "text":  "Leave the reserve unfiled and take the clean share instead.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_take_a_personal_share",
+                        "text":  "Ask for a share in your own name and sign for it in front of the counter.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r1_return_registry_logs_name",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_h0_return_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s061",
+                     "seed_s065",
+                     "seed_s126"
+                 ]
+}

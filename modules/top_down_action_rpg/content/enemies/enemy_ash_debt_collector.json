@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "id": "enemy_ash_debt_collector",
+  "display_name": "Ash Debt Collector",
+  "role": {
+    "base_region_id": "region_r1_returning_kiln",
+    "region_role": "recovery_reentry",
+    "institution_id": "institution_return_registry",
+    "role_tags": [
+      "creditor",
+      "paperwork"
+    ]
+  },
+  "body": {
+    "body_class": "humanoid",
+    "silhouette_key": "sil_ash_debt_collector",
+    "scale_class": "human",
+    "stateful_body": "open_close",
+    "motion_signature": "debt_call_in"
+  },
+  "stats": {
+    "max_hp": 80,
+    "agility": 10,
+    "action_slots": 1,
+    "resource_pool": {
+      "mp": 8,
+      "equipment_charge": 0
+    }
+  },
+  "condition_bar": {
+    "kind": "condition_progress",
+    "max_value": 100,
+    "start_value": 0,
+    "advance_on": [
+      "window_elapsed"
+    ],
+    "advance_per_source": 20,
+    "decrease_on_phase_enter": 0
+  },
+  "baseline_action_ids": [
+    "act_registry_paper_shove"
+  ],
+  "signature_action_id": "act_debt_collector_call_in",
+  "telegraph": {
+    "signature_tell_key": "tell_debt_collector_call_in",
+    "channels": [
+      "pose",
+      "field_prop"
+    ]
+  },
+  "status_profile": {
+    "innate_status_ids": [],
+    "resistant_status_ids": [
+      "st_recorded"
+    ],
+    "immune_status_ids": []
+  },
+  "break_profile": {
+    "breakable": false,
+    "break_source_action_ids": [],
+    "on_break_status_ids": [],
+    "on_break_effect_ids": []
+  },
+  "reward": {
+    "equipment_ids": [],
+    "item_ids": [
+      "item_blank_return_form"
+    ],
+    "resource_delta": {
+      "mp": 1
+    }
+  },
+  "aftermath": {
+    "effect_ids": [
+      "eff_r1_ash_debt_opens_chute"
+    ],
+    "region_state_tag": "r1_debt_called"
+  },
+  "lore_ref": "seed_s021",
+  "seed_ids": [
+    "seed_s021",
+    "seed_s042",
+    "seed_s092"
+  ]
+}

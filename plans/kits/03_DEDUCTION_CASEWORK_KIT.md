@@ -12,6 +12,8 @@
 
 공통 계약: `docs/KIT_WORKFLOW.md`
 
+현행 이미지 제작 입력: [《빈 공리》 프로젝트 아트 층](../../docs/art/projects/empty_axiom/PROJECT_ART_LAYER.md), [Stage 1 미라 합성용 인물](../../docs/art/projects/empty_axiom/asset_briefs/mira_ben_stage01_cutout.md). 과거 at-icons recipe와 캐릭터 검토판은 현재 최종 이미지 제작 입력이 아니다. 미라 명세의 장면 충돌·배치 규격을 해소하기 전 생성하지 않는다.
+
 ## 0. Kit 목적
 
 - TINProject의 한 게임 안에서 **2D 현장 조사·단어 수집·다중 패널 추론·case review** 장르 구간을 즉시 만들 수 있게 한다.

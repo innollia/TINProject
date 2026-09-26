@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.footstep_wood
+// situation: player footfall on hollow timber
+// render: --seconds 0.38 --rate 48000 --bpm 104 --no-default-bank
+n"c4 g3" as e |> tri(e.freq) * adsr(e.gate, 0.001, 0.12, 0.15, 0.05) * e.vel |> out(%)

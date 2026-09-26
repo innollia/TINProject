@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "id": "act_debt_collector_call_in",
+  "display_name": "ash debt collector call-in",
+  "order": 12,
+  "owner": "enemy",
+  "category": "attack",
+  "defense_mode": "none",
+  "lifecycle": "instant",
+  "intent": {
+    "target_mode": "ONE_ENEMY",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 1,
+    "action_slot_cost": 1,
+    "resource_costs": {
+      "mp": 2
+    },
+    "cooldown_windows": 2
+  },
+  "telegraph": {
+    "channels": [
+      "pose",
+      "field_prop"
+    ],
+    "windows_before_active": 0,
+    "tell_key": "tell_debt_collector_call_in"
+  },
+  "damage_payload": {
+    "delivery": "magical",
+    "shape": "fixed",
+    "base_value": 5,
+    "affinity": "none",
+    "hit_policy": "roll",
+    "hit_modifier": 0,
+    "evasion_policy": "roll",
+    "critical_policy": "never",
+    "dodge_pressure": 3,
+    "guard_ignore": false,
+    "breaks_guard": false,
+    "break_damage": 0,
+    "dodgeable": true,
+    "break_damage_kinds": [],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {
+      "status_id": "st_contract_bound",
+      "chance_permille": 1000,
+      "target": "target"
+    }
+  ],
+  "reactions": {
+    "valid_reaction_ids": [
+      "act_file_return_form"
+    ],
+    "forbidden_response_ids": [
+      "act_break_poise"
+    ]
+  },
+  "recovery": {
+    "windows": 1,
+    "punish_windows": 0,
+    "recovery_locked": false
+  },
+  "counters": {
+    "valid": [
+      "resource_lock",
+      "escape"
+    ],
+    "forbidden": [
+      "break",
+      "guard"
+    ],
+    "breakable": false
+  },
+  "presentation": {
+    "icon_key": "act_debt_collector_call_in"
+  },
+  "seed_ids": [
+    "seed_s021",
+    "seed_s042",
+    "seed_s092"
+  ]
+}

@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: dsc.resource_spend
+// situation: the player uses up a resource
+// render: --seconds 0.40 --rate 48000 --bpm 96 --no-default-bank
+n"e4 c4" as e |> tri(e.freq) * adsr(e.gate, 0.002, 0.09, 0.15, 0.05) * e.vel |> out(%)

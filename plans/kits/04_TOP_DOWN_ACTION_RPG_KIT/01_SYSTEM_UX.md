@@ -180,12 +180,13 @@ actor와 content definition의 연결은 module-local registry의 stable ID로�
 
 ### 4.1 camera와 movement
 
-- field는 고정 top-down orthographic camera를 사용한다. camera rotation은 없고 player를 화면 중심에 둔다.
+- field는 지면 기준 하향각 60°(수직에서 30° 기울어진)의 고정 정사영 탑다운 카메라를 사용한다. 플레이 중 방위 회전은 없고 player anchor는 09와 같은 (50%,58%)다. 13의 구역 bounds에서 camera를 clamp하며, clamp 중에는 anchor가 달라질 수 있다.
 - 이동 입력은 `WASD` 방향을 최대 8 방향 analog vector로 합성한다.
 - 대각선 속도는 `sqrt(2)`로 보정해 직선 이동보다 빠르지 않게 한다.
 - acceleration, deceleration, stop distance, collision slide는 field tuning 값이다.
 - player는 circle collision body와 authored walkable/collision shape를 사용한다.
 - camera, collision, trigger 좌표는 world rule이며 presentation 좌표와 섞지 않는다.
+- 배경은 [13](13_LAYERED_ENVIRONMENT_PRODUCTION.md)의 큰 그림과 분리 레이어로 표시한다. 이동·collision·trigger는 이미지 픽셀, alpha, tile cell에서 추론하지 않는다. 가림물의 접지 깊이와 상호작용 위치를 별도로 명시하고, 그림만 존재하는 가짜 통로를 만들지 않는다.
 - field HUD에는 combat resource band, gauge, 전투 status를 복제하지 않는다.
 - field에는 상시 space name, autosave, 조작법, debug label을 두지 않는다.
 - interaction result와 authored event 표시는 world 안의 대상 변화, NPC dialogue band, world narration band로만 제공한다.

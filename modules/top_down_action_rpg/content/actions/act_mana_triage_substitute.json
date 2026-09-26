@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "id": "act_mana_triage_substitute",
+  "display_name": "mana triage substitute",
+  "order": 20,
+  "owner": "enemy",
+  "category": "magic",
+  "defense_mode": "none",
+  "lifecycle": "instant",
+  "intent": {
+    "target_mode": "ONE_ENEMY",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 1,
+    "action_slot_cost": 1,
+    "resource_costs": {
+      "mp": 5
+    },
+    "cooldown_windows": 2
+  },
+  "telegraph": {
+    "channels": [
+      "pose",
+      "sound",
+      "numeric_bar"
+    ],
+    "windows_before_active": 1,
+    "tell_key": "tell_mana_triage_substitute"
+  },
+  "damage_payload": {
+    "delivery": "magical",
+    "shape": "fixed",
+    "base_value": 4,
+    "affinity": "light",
+    "hit_policy": "roll",
+    "hit_modifier": 0,
+    "evasion_policy": "roll",
+    "critical_policy": "never",
+    "dodge_pressure": 3,
+    "guard_ignore": false,
+    "breaks_guard": false,
+    "break_damage": 0,
+    "dodgeable": true,
+    "break_damage_kinds": [],
+    "self_damage": 0,
+    "lifesteal": 18,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {
+      "status_id": "st_contract_bound",
+      "chance_permille": 1000,
+      "target": "target"
+    }
+  ],
+  "break_spec": {
+    "stacks": 1,
+    "status_ids": [
+      "st_medium_residue"
+    ],
+    "effect_ids": [
+      "eff_r3_mana_profile_filed"
+    ],
+    "requires_target_breakable": true
+  },
+  "hooks": {
+    "on_break": [
+      "eff_r3_mana_profile_filed"
+    ]
+  },
+  "reactions": {
+    "valid_reaction_ids": [
+      "act_break_poise",
+      "act_disperse_reading"
+    ],
+    "forbidden_response_ids": [
+      "act_file_return_form"
+    ]
+  },
+  "counters": {
+    "valid": [
+      "break",
+      "status_counter"
+    ],
+    "forbidden": [
+      "escape",
+      "resource_lock"
+    ],
+    "breakable": true
+  },
+  "presentation": {
+    "icon_key": "act_mana_triage_substitute"
+  },
+  "seed_ids": [
+    "seed_s004",
+    "seed_s028",
+    "seed_s104"
+  ]
+}

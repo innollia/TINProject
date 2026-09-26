@@ -1,5 +1,11 @@
 # Kit 04 — Story and Endings
 
+## 사건 결과의 환경 자산 계약 — 2026-09-26
+
+배경 제작은 [13](13_LAYERED_ENVIRONMENT_PRODUCTION.md)을 따른다. 각 cluster/ending/revisit의 이미 정의된 world mutation을 동일 장소의 prop presence·상태 차분·ground overlay로 나타낸다. 사건마다 무관한 새 배경을 생성하거나 전체 화면 tint만으로 결과를 대신하지 않는다.
+
+인물이 사라진 결과는 배경에 남은 인물 그림을 포함하지 않아야 한다. 제거된 물체 뒤의 바닥과 그림자도 clean base로 복구한다. 여러 기관의 결과가 동시에 남을 때는 domain이 해석한 결과를 레이어 조합으로 보존하며, 미술용 우선순위가 narrative write를 취소하지 않는다. 관계·로맨스·공포·정치적 부조리의 내용과 분량은 기존 계획 그대로다.
+
 상태: **WORLD/STORY EXECUTABLE PLAN**  
 범위: `Top-down Action-RPG Kit`의 world narrative, NPC interaction cluster, layered truths, relationship/body arcs, authored story formats, partial resolution, endings, 10분+ beat map  
 Primary Reference: **BLACK SOULS 2 하나**  

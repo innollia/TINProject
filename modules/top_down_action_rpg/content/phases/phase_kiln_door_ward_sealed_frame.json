@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "phase_kiln_door_ward_sealed_frame",
+  "display_name": "Sealed Frame",
+  "owner_enemy_id": "enemy_kiln_door_ward",
+  "index": 1,
+  "trigger": {
+    "kind": "hp_ratio",
+    "hp_ratio_at": 60
+  },
+  "enter": {
+    "effect_ids": [],
+    "status_ids": [
+      "st_contract_bound"
+    ],
+    "invulnerable_windows": 1
+  },
+  "overrides": {
+    "action_add_ids": [
+      "act_kiln_door_ward_seal"
+    ],
+    "action_remove_ids": [],
+    "stat_overrides": {
+      "agility": 4
+    },
+    "resistance_add_status_ids": [
+      "st_concentration_load"
+    ],
+    "resistance_remove_status_ids": [],
+    "signature_action_id": "act_kiln_door_ward_seal",
+    "telegraph_gain_windows": 1
+  },
+  "roster": {
+    "add_enemy_ids": [
+      "enemy_wrong_return_scribe"
+    ],
+    "remove_enemy_ids": [],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "owner_dead"
+  },
+  "next_phase_id": "phase_kiln_door_ward_open_frame",
+  "seed_ids": [
+    "seed_s017",
+    "seed_s031",
+    "seed_s038"
+  ]
+}

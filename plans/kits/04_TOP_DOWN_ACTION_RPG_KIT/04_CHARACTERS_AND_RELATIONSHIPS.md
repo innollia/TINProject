@@ -1,5 +1,11 @@
 # Kit 04 — Characters and Relationships
 
+## 큰 배경에서의 인물 분리 — 2026-09-26
+
+[13](13_LAYERED_ENVIRONMENT_PRODUCTION.md)에 따라 플레이어, NPC, 동행자, 사건 대상의 변하는 몸은 배경에 굽지 않는다. dossier의 stable identity를 유지한 field sprite/portrait/상태 이미지를 독립 제작한다. 배우가 사라지거나 이동해도 같은 공간이 복원되도록 뒤쪽 환경을 완성한다.
+
+가림은 배경의 명암이 아니라 접지 anchor와 authored depth로 정한다. 인물 손에 들린 물체와 바닥에 놓이는 물체는 소유권을 구분하고 중복 표시하지 않는다. 고정 의자·창구와 인물의 시점·크기를 함께 검수한다. 미정인 얼굴/의상/체형을 배경 샘플 안에서 임의 확정하지 않는다.
+
 상태: executable design specification  
 버전: 1.2 (`PLAN_RESOLUTION.md` 2026-09-25 + `R8 The Folding School` / magic layer 반영)  
 소유 범위: **canonical core NPC roster 14명** + `R8` support resident(`npc_20_*`~`npc_26_*`, §2.4), relationship state의 authored 해석, character-authored action consequences, NPC↔magic craft role 매핑  

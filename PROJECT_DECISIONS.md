@@ -48,7 +48,8 @@ AI에게 독창적인 재해석을 기대하기보다, **먼저 Primary Referenc
 - 고유 자산
 - 고유 문구
 - 고유 캐릭터
-- 고유 레벨 배치
+
+단, **시스템 검증과 수치 측정을 위한 원작 레벨 배치 복사는 허용한다.** 복사한 배치는 authored content가 아니라 검증 입력으로 기록하고 Reference Game 완성 증거로 세지 않는다.
 
 강하게 따라가는 것:
 - 핵심 시스템
@@ -325,3 +326,43 @@ Rule Rewrite의 `IS 3D`는 사용자 제공 이미지 C의 DOOM식 **1인칭 화
 - orthogonal axes 2~4개, 서로 다른 pressure clocks, 분기별 6~12 NPC interaction cluster를 사용한다.
 - romance와 affection은 허용한다. explicit sexual content는 제거한다. body horror는 허용한다.
 - 사용자는 계획서 완성부터 게임 Kit 구현·검증까지 8시간 연속 one-shot 실행을 요청했다. 구현은 계획 게이트와 파일 소유권을 확인한 뒤 시작한다.
+
+## 21. Next Kit — Stone Story RPG (2026-09-26 사용자 지시)
+
+사용자가 새 방향을 확정했다.
+
+- 목표는 **Stone Story RPG와 유사한 게임**이다.
+- **이미지 작업을 전부 코드로 작성한 절차적 애니메이션으로 대체한다.** 이 Kit은 이미지 자산 파일을 쓰지 않는다.
+- 분위기·스토리·내용의 source는 **Ena: Dream BBQ**다.
+- 시스템은 **Stone Story RPG (main) + Dark Souls 3 (sub)** 다.
+- 분량은 **Stone Story RPG 규모**다.
+- **자료조사는 전부 사용자가 수행한다.** 에이전트는 외부 조사를 하지 않고, 추가 자료가 필요하면 사용자에게 요청한다.
+- 사용자는 1만자 이상의 조사 결과를 주기적으로 제공한다. 제공된 원문은 `docs/research/stone_story_rpg/00_user_dumps/`에 수정 없이 보관하고, 해석 문서는 `01`~`04` 폴더로 분리한다.
+
+레퍼런스 지위:
+
+- Primary Reference는 **Stone Story RPG 하나**다.
+- Dark Souls 3는 Sub Reference다. **확장점이 확정되기 전에는 사용하지 않는다.**
+- Ena: Dream BBQ는 시스템 레퍼런스가 아니라 분위기·스토리·내용의 source다. `01`의 시스템 문법과 섞지 않는다.
+
+이미지 자산 파이프라인과의 관계:
+
+- `docs/VISUAL_DIRECTION.md`, `docs/IMAGE_ASSET_WORKFLOW.md`, `docs/art/**`,
+  본 문서 §10의 IMG1–IMG25는 **이 Kit에 적용되지 않는다.**
+- 적용 범위가 이 Kit 한정인지 프로젝트 전체인지는 미확정이다. 전체라면 프로젝트 아트 층과 Gold Standard 구조의 지위가 바뀐다.
+- 이미지 생성/편집 도구는 이 Kit에서 호출하지 않는다.
+
+조사 정본: [Stone Story RPG Kit 조사 인덱스](docs/research/stone_story_rpg/README.md)
+계획서: [plans/kits/05_STONE_STORY_RPG_KIT.md](plans/kits/05_STONE_STORY_RPG_KIT.md)
+
+### 21.1 미확정 결정
+
+- **Kit 슬롯**: 이 방향이 `plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/`(Primary Reference BLACK SOULS 2)의 슬롯을 대체하는지, 별도 슬롯인지 미확정. `modules/top_down_action_rpg/`에 미커밋 구현이 남아 있으므로 삭제·재방향은 사용자 결정 후에만 수행한다.
+- **완료 기준**: `docs/KIT_WORKFLOW.md` §3·§12의 "10분+ Reference Game"과 "Stone Story RPG 규모"의 관계가 미확정.
+- **Dark Souls 3 확장점**: 미확정.
+- **코드 전용 범위**: Kit 한정인지 프로젝트 전체인지 미확정.
+
+### 21.2 계획 게이트
+
+`docs/research/stone_story_rpg/README.md` §2의 S1–S14, E1–E5, P1–P5가 `MISSING`인 동안에는
+**어떤 코드도 작성하지 않는다.** 기억으로 채운 Primary Reference 내용은 구현 근거로 인정하지 않는다.

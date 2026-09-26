@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "act_registry_paper_shove",
+  "display_name": "registry paper shove",
+  "order": 7,
+  "owner": "enemy",
+  "category": "attack",
+  "defense_mode": "none",
+  "lifecycle": "instant",
+  "intent": {
+    "target_mode": "ONE_ENEMY",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 1,
+    "action_slot_cost": 1,
+    "resource_costs": {},
+    "cooldown_windows": 1
+  },
+  "telegraph": {
+    "channels": [
+      "pose"
+    ],
+    "windows_before_active": 0,
+    "tell_key": "tell_registry_paper_shove"
+  },
+  "damage_payload": {
+    "delivery": "physical",
+    "shape": "fixed",
+    "base_value": 7,
+    "affinity": "none",
+    "hit_policy": "roll",
+    "hit_modifier": 0,
+    "evasion_policy": "roll",
+    "critical_policy": "never",
+    "dodge_pressure": 5,
+    "guard_ignore": false,
+    "breaks_guard": false,
+    "break_damage": 0,
+    "dodgeable": true,
+    "break_damage_kinds": [],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "reactions": {
+    "valid_reaction_ids": [
+      "act_ash_sweep",
+      "act_guard_set"
+    ],
+    "forbidden_response_ids": [
+      "act_dodge_shift"
+    ]
+  },
+  "counters": {
+    "valid": [
+      "guard",
+      "break",
+      "resource_lock"
+    ],
+    "forbidden": [
+      "dodge"
+    ],
+    "breakable": true
+  },
+  "presentation": {
+    "icon_key": "act_registry_paper_shove"
+  },
+  "seed_ids": [
+    "seed_s003",
+    "seed_s019",
+    "seed_s048"
+  ]
+}

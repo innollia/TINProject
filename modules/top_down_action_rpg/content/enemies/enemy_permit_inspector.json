@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "id": "enemy_permit_inspector",
+  "display_name": "Permit Inspector",
+  "role": {
+    "base_region_id": "region_r5_glasswing_ordinal",
+    "region_role": "permission_before_transformation",
+    "institution_id": "institution_glasswing_ordinal",
+    "role_tags": [
+      "inspector",
+      "permit"
+    ]
+  },
+  "body": {
+    "body_class": "humanoid",
+    "silhouette_key": "sil_permit_inspector",
+    "scale_class": "human",
+    "stateful_body": "open_close",
+    "motion_signature": "inspection_poke"
+  },
+  "stats": {
+    "max_hp": 78,
+    "agility": 14,
+    "action_slots": 1,
+    "resource_pool": {
+      "mp": 7,
+      "equipment_charge": 0
+    }
+  },
+  "condition_bar": {
+    "kind": "condition_progress",
+    "max_value": 100,
+    "start_value": 0,
+    "advance_on": [
+      "hp_damage_taken",
+      "window_elapsed"
+    ],
+    "advance_per_source": 18,
+    "decrease_on_phase_enter": 0
+  },
+  "baseline_action_ids": [
+    "act_registry_paper_shove",
+    "act_ash_hound_snap"
+  ],
+  "signature_action_id": "act_permit_inspector_inspection",
+  "telegraph": {
+    "signature_tell_key": "tell_permit_inspector_inspection",
+    "channels": [
+      "pose",
+      "field_prop"
+    ]
+  },
+  "status_profile": {
+    "innate_status_ids": [],
+    "resistant_status_ids": [
+      "st_recorded"
+    ],
+    "immune_status_ids": []
+  },
+  "break_profile": {
+    "breakable": false,
+    "break_source_action_ids": [],
+    "on_break_status_ids": [],
+    "on_break_effect_ids": []
+  },
+  "reward": {
+    "equipment_ids": [],
+    "item_ids": [
+      "item_blank_return_form"
+    ],
+    "resource_delta": {
+      "mp": 1
+    }
+  },
+  "aftermath": {
+    "effect_ids": [
+      "eff_r5_supply_permit_split_filed"
+    ],
+    "region_state_tag": "r5_permit_inspected"
+  },
+  "lore_ref": "seed_s021",
+  "seed_ids": [
+    "seed_s021",
+    "seed_s079",
+    "seed_s113"
+  ]
+}

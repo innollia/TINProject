@@ -1,0 +1,166 @@
+{
+    "schema_version":  1,
+    "id":  "npc_25_jano_fesk",
+    "display_name":  "Jano Fesk",
+    "roster_kind":  "support",
+    "public_role":  "circulation liaison who brings the water council\u0027s reading into the school ledger",
+    "private_role":  "files a lower dispersal reading because lowering it is the job and the cost lands elsewhere",
+    "desire":  "wants the school to be able to say where every measured value came from",
+    "fear":  "that a provenance nobody can reconstruct becomes the only number anyone trusts",
+    "contradiction":  "repeats that the decision belongs to the institution while signing the schedule that decides it",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_r8_circulation"
+                                    ],
+                       "can":  [
+                                   "measure_field",
+                                   "assign_dispersal",
+                                   "compare_provenance",
+                                   "refuse_a_reading"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+
+                                       ],
+                            "denies":  [
+                                           "gate_g1_ash_debt"
+                                       ],
+                            "denied_by_effect_id":  "eff_r8_course_index_printed"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s125",
+                                             "seed_s126"
+                                         ],
+                               "does_not_know":  [
+                                                     "seed_s123"
+                                                 ],
+                               "never_learns":  [
+                                                    "seed_s127"
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_trace_the_provenance",
+                                             "verb_publish_both_provenances",
+                                             "verb_file_the_lower_reading",
+                                             "verb_erase_the_old_column"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "contamination",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_trace_the_provenance",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_r8_circulation_board",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_publish_both_provenances",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_circulation_board",
+                                                                            "choice_id":  "ch_publish_both_provenances"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_circulation_board",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_file_the_lower_reading",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_circulation_board",
+                                                                            "choice_id":  "ch_file_the_lower_reading"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_circulation_board",
+                                  "presentation_class":  "neutral"
+                              },
+                              {
+                                  "verb_id":  "verb_erase_the_old_column",
+                                  "availability":  {
+                                                       "clock_at_least":  {
+                                                                              "clock_id":  "clock_resource_collapse",
+                                                                              "stage_index":  3
+                                                                          }
+                                                   },
+                                  "opens":  "conv_r8_circulation_board",
+                                  "presentation_class":  "extreme"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_08_meral_ration"
+                         ],
+    "clock_ids":  [
+                      "clock_contamination",
+                      "clock_resource_collapse"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  "enc_r8_fold_that_refuses_the_hand"
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "conversion_condition":  {
+
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "",
+                                              "encounter_modifier":  0
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_r8_course_index_printed"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_r8_concentration_registered"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "conditional",
+                    "condition":  {
+                                      "clock_irreversible":  {
+                                                                 "clock_id":  "clock_contamination"
+                                                             }
+                                  },
+                    "moves_to_region_id":  "region_h0_undersign_exchange"
+                },
+    "appearance":  {
+                       "body_key":  "body_circulation_liaison",
+                       "portrait_key":  "portrait_jano_fesk",
+                       "voice_key":  "voice_jano_fesk"
+                   },
+    "mana_profile":  "medium_reactive",
+    "oneoff_dialogue_seed_ids":  [
+                                     "seed_s125",
+                                     "seed_s065",
+                                     "seed_s068"
+                                 ],
+    "cross_link_ids":  [
+                           "region_r8_folding_school",
+                           "npc_08_meral_dune",
+                           "npc_20_mira_vask",
+                           "clock_contamination"
+                       ],
+    "removal":  "temporary",
+    "seed_ids":  [
+                     "seed_s065",
+                     "seed_s068",
+                     "seed_s123",
+                     "seed_s125",
+                     "seed_s126",
+                     "seed_s127"
+                 ]
+}

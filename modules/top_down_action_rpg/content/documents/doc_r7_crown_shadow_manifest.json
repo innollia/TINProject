@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "doc_r7_crown_shadow_manifest",
+  "display_name": "Crown Shadow Manifest",
+  "region_id": "region_r7_hollow_orchard",
+  "availability": {
+    "condition": {},
+    "reached_by": "prop"
+  },
+  "reached_by_ref": "prop_r7_crown_position_plinth",
+  "pages": [
+    {
+      "page_id": "pg_five_fragments",
+      "lines": [
+        "five fragments, one position, three records",
+        "object, title and precedence are not the same thing",
+        "a shadow that moved last cycle has no filed owner",
+        "category: crown position"
+      ],
+      "presentation": "plain",
+      "corruption_rules": []
+    },
+    {
+      "page_id": "pg_after_alignment",
+      "lines": [
+        "five fragments, one position, three records",
+        "object, title and precedence are not the same thing",
+        "the moved shadow is filed under the alignment itself",
+        "category: crown position"
+      ],
+      "presentation": "corrupted",
+      "corruption_rules": [
+        {
+          "rule_id": "cr_owner_line",
+          "mode": "replace_token",
+          "trigger": {
+            "clock_irreversible": {
+              "clock_id": "clock_crown_alignment"
+            }
+          },
+          "severity": 3,
+          "line_index": 2,
+          "token_index": 3,
+          "text_note": "the missing owner line is filled with a claim the manifest never asked for"
+        }
+      ]
+    }
+  ],
+  "reading": {
+    "background_mode": "dim_world",
+    "world_visible_ratio": 0.35,
+    "advance": "page",
+    "max_lines_per_page": 9,
+    "min_font_size": 20,
+    "requires_advance_affordance": true
+  },
+  "post_read": {
+    "effect_ids": [
+      "eff_r7_crown_precedence_filed"
+    ],
+    "once": false
+  },
+  "revisit": "allowed",
+  "seed_ids": [
+    "seed_s001",
+    "seed_s055",
+    "seed_s108",
+    "seed_s052"
+  ],
+  "owner_npc_id": "npc_12_ravenna_holt"
+}

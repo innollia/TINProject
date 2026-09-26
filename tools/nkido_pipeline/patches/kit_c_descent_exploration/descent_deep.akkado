@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: dsc.descent_deep
+// situation: the player commits to a long fall or a large vertical drop
+// render: --seconds 1.50 --rate 48000 --bpm 84 --no-default-bank
+n"a2 e2 a2" |> sine(@.freq) * adsr(@.gate, 0.10, 0.25, 0.55, 0.35) |> out(%)

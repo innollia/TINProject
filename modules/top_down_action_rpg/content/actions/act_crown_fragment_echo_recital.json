@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "act_crown_fragment_echo_recital",
+  "display_name": "crown fragment echo recital",
+  "order": 22,
+  "owner": "enemy",
+  "category": "magic",
+  "defense_mode": "none",
+  "lifecycle": "committed",
+  "intent": {
+    "target_mode": "ALL_ENEMIES",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 3,
+    "action_slot_cost": 1,
+    "resource_costs": {
+      "mp": 6
+    },
+    "cooldown_windows": 4
+  },
+  "telegraph": {
+    "channels": [
+      "pose",
+      "vfx",
+      "numeric_bar"
+    ],
+    "windows_before_active": 2,
+    "tell_key": "tell_crown_fragment_echo_recital"
+  },
+  "damage_payload": {
+    "delivery": "true",
+    "shape": "percent_max_hp",
+    "base_value": 8,
+    "affinity": "light",
+    "hit_policy": "guaranteed",
+    "hit_modifier": 0,
+    "evasion_policy": "disabled",
+    "critical_policy": "never",
+    "dodge_pressure": 0,
+    "guard_ignore": true,
+    "breaks_guard": true,
+    "break_damage": 30,
+    "dodgeable": false,
+    "break_damage_kinds": [
+      "hp_damage"
+    ],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {
+      "status_id": "st_concentration_load",
+      "chance_permille": 1000,
+      "target": "target"
+    },
+    {
+      "status_id": "st_overflowed",
+      "chance_permille": 1000,
+      "target": "self"
+    }
+  ],
+  "commitment": {
+    "spans_windows": 3,
+    "interruptible": false,
+    "interrupt_effect_ids": []
+  },
+  "recovery": {
+    "windows": 1,
+    "punish_windows": 2,
+    "recovery_locked": false
+  },
+  "counters": {
+    "valid": [
+      "raw_survive",
+      "break",
+      "escape"
+    ],
+    "forbidden": [
+      "dodge",
+      "guard"
+    ],
+    "breakable": true
+  },
+  "presentation": {
+    "icon_key": "act_crown_fragment_echo_recital"
+  },
+  "seed_ids": [
+    "seed_s051",
+    "seed_s052",
+    "seed_s108"
+  ]
+}

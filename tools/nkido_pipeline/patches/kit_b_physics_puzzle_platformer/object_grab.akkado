@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: phy.object_grab
+// situation: the player takes hold of a movable object
+// render: --seconds 0.30 --rate 48000 --bpm 120 --no-default-bank
+n"c5" |> tri(@.freq) * adsr(@.gate, 0.001, 0.045, 0.0, 0.0) |> out(%)

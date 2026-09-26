@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "id": "enemy_kiln_door_ward",
+  "display_name": "Kiln Door Ward",
+  "role": {
+    "base_region_id": "region_r1_returning_kiln",
+    "region_role": "recovery_reentry",
+    "institution_id": "institution_return_registry",
+    "role_tags": [
+      "threshold",
+      "lock"
+    ]
+  },
+  "body": {
+    "body_class": "architectural",
+    "silhouette_key": "sil_kiln_door_ward",
+    "scale_class": "large",
+    "stateful_body": "none",
+    "motion_signature": "ward_seal_slam"
+  },
+  "stats": {
+    "max_hp": 150,
+    "agility": 5,
+    "action_slots": 1,
+    "resource_pool": {
+      "mp": 8,
+      "equipment_charge": 0
+    }
+  },
+  "condition_bar": {
+    "kind": "condition_progress",
+    "max_value": 100,
+    "start_value": 0,
+    "advance_on": [
+      "hp_damage_taken",
+      "window_elapsed"
+    ],
+    "advance_per_source": 15,
+    "decrease_on_phase_enter": 0
+  },
+  "baseline_action_ids": [
+    "act_registry_paper_shove"
+  ],
+  "signature_action_id": "act_kiln_door_ward_seal",
+  "telegraph": {
+    "signature_tell_key": "tell_kiln_door_ward_seal",
+    "channels": [
+      "pose",
+      "vfx",
+      "numeric_bar"
+    ]
+  },
+  "status_profile": {
+    "innate_status_ids": [
+      "st_contract_bound"
+    ],
+    "resistant_status_ids": [
+      "st_concentration_load"
+    ],
+    "immune_status_ids": []
+  },
+  "break_profile": {
+    "breakable": true,
+    "break_source_action_ids": [
+      "act_break_poise"
+    ],
+    "on_break_status_ids": [
+      "st_misfolded"
+    ],
+    "on_break_effect_ids": [
+      "eff_r1_ash_debt_opens_chute"
+    ]
+  },
+  "phase_ids": [
+    "phase_kiln_door_ward_sealed_frame",
+    "phase_kiln_door_ward_open_frame"
+  ],
+  "linked_actors": [
+    {
+      "enemy_id": "enemy_ash_hound",
+      "role": "guard",
+      "timing": "encounter_start",
+      "on_owner_death": "die_with",
+      "on_actor_death": "none",
+      "is_true_target": false,
+      "max_count": 2
+    }
+  ],
+  "reward": {
+    "equipment_ids": [
+      "equipment_kiln_ledger_seal"
+    ],
+    "item_ids": [],
+    "resource_delta": {
+      "mp": 2
+    }
+  },
+  "aftermath": {
+    "effect_ids": [
+      "eff_r1_ash_debt_opens_chute"
+    ],
+    "region_state_tag": "r1_ward_broken"
+  },
+  "lore_ref": "seed_s017",
+  "seed_ids": [
+    "seed_s017",
+    "seed_s031",
+    "seed_s038"
+  ]
+}

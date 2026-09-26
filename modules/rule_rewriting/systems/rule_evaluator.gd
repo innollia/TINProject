@@ -8,6 +8,18 @@ const ROLE_NOUN: StringName = &"noun"
 const PROPERTY_FLOAT: StringName = &"FLOAT"
 const PROPERTY_SAFE: StringName = &"SAFE"
 const PROPERTY_YOU: StringName = &"YOU"
+const PROPERTY_PUSH: StringName = &"PUSH"
+
+
+# Original behaviour: text tiles carry PUSH without the PUSH word being written, and
+# TEXT IS NOT PUSH is what takes it away. Authored base_tags must not be required
+# for that, so the default lives here instead of in every board file.
+static func _default_has_property(entity: RuleGridEntity, property: StringName) -> bool:
+	if entity == null or property.is_empty():
+		return false
+	if entity.base_tags.has(property) or entity.runtime_tags.has(property):
+		return true
+	return entity.is_word and property == PROPERTY_PUSH
 
 
 static func has_property(
@@ -18,9 +30,7 @@ static func has_property(
 ) -> bool:
 	if entity == null or rules == null or property.is_empty():
 		return false
-	if entity.base_tags.has(property) or entity.runtime_tags.has(property):
-		return true
-	var has_positive := false
+	var has_positive := _default_has_property(entity, property)
 	var has_negative := false
 	for sentence: RuleSentence in rules.sentences:
 		if sentence.operator != OPERATOR_IS or sentence.predicate_role != ROLE_PROPERTY \
@@ -43,7 +53,7 @@ static func property_stack(
 	if entity == null or rules == null or property.is_empty():
 		return 0
 	var active_sentences: Array[RuleSentence] = []
-	var has_positive := false
+	var has_positive := _default_has_property(entity, property)
 	var has_negative := false
 	for sentence: RuleSentence in rules.sentences:
 		if sentence.operator != OPERATOR_IS or sentence.predicate_role != ROLE_PROPERTY \
@@ -56,8 +66,8 @@ static func property_stack(
 			has_positive = true
 			active_sentences.append(sentence)
 	if has_negative:
-		return 0 if not (entity.base_tags.has(property) or entity.runtime_tags.has(property)) else 1
-	var stack := 1 if entity.base_tags.has(property) or entity.runtime_tags.has(property) else 0
+		return 1 if has_positive else 0
+	var stack := 1 if has_positive else 0
 	if not has_positive:
 		return stack
 	var word_ids: Dictionary = {}
@@ -104,6 +114,16 @@ static func resolve_contacts(state: RuleGridState, rules: RuleSet) -> Dictionary
 		by_cell[entity.position] = occupants
 	var removed: Dictionary = {}
 	var defeated: Dictionary = {}
+
+	# Original priority, applied first to last: the mutual destruction pairs, then
+	# WEAK, then DEFEAT, and WIN is judged last on whatever survived. The source is
+	# explicit that DEFEAT sits below WEAK, so a YOU that removes the DEFEAT object
+	# in an earlier stage is never defeated by it. Stages skip already-removed
+	# entities, which is what makes the ordering observable at all.
+
+	# Stage A: SINK, HOT/MELT and OPEN/SHUT destroy the pair they meet. An entity
+	# already removed here still takes part: SINK destroys everything sharing the
+	# cell, so it must not stop working just because a pair removed it first.
 	for occupants_value: Variant in by_cell.values():
 		if not occupants_value is Array:
 			continue
@@ -122,54 +142,43 @@ static func resolve_contacts(state: RuleGridState, rules: RuleSet) -> Dictionary
 					continue
 				var first_safe := has_property(first, PROPERTY_SAFE, rules, state)
 				var second_safe := has_property(second, PROPERTY_SAFE, rules, state)
-				var first_sink := has_property(first, &"SINK", rules, state)
-				var second_sink := has_property(second, &"SINK", rules, state)
-				if first_sink or second_sink:
+				if has_property(first, &"SINK", rules, state) or has_property(second, &"SINK", rules, state) \
+					or _is_open_shut_pair(first, second, rules, state) \
+					or (has_property(first, &"MELT", rules, state) and has_property(second, &"HOT", rules, state)) \
+					or (has_property(second, &"MELT", rules, state) and has_property(first, &"HOT", rules, state)):
 					if not first_safe:
 						removed[first.id] = true
 					if not second_safe:
 						removed[second.id] = true
-				var first_hot_melt := has_property(first, &"MELT", rules, state) \
-					and has_property(second, &"HOT", rules, state)
-				var second_hot_melt := has_property(second, &"MELT", rules, state) \
-					and has_property(first, &"HOT", rules, state)
-				if first_hot_melt and not first_safe:
-					removed[first.id] = true
-				if second_hot_melt and not second_safe:
-					removed[second.id] = true
-				var open_shut := (has_property(first, &"OPEN", rules, state) \
-					and has_property(second, &"SHUT", rules, state)) \
-					or (has_property(first, &"SHUT", rules, state) \
-					and has_property(second, &"OPEN", rules, state))
-				if open_shut:
-					if not first_safe:
-						removed[first.id] = true
-					if not second_safe:
-						removed[second.id] = true
-				if has_property(first, &"WEAK", rules, state) and not first_safe:
-					removed[first.id] = true
-				if has_property(second, &"WEAK", rules, state) and not second_safe:
-					removed[second.id] = true
-				var first_you_defeated := not first.is_word \
-					and has_property(first, PROPERTY_YOU, rules, state) \
-					and has_property(second, &"DEFEAT", rules, state)
-				var second_you_defeated := not second.is_word \
-					and has_property(second, PROPERTY_YOU, rules, state) \
-					and has_property(first, &"DEFEAT", rules, state)
-				if first_you_defeated and not first_safe:
-					removed[first.id] = true
-					defeated[first.id] = true
-				if second_you_defeated and not second_safe:
-					removed[second.id] = true
-					defeated[second.id] = true
+
+	# Stage B: WEAK destroys itself on meeting anything it interacts with.
 	for entity: RuleGridEntity in state.entities:
-		if has_property(entity, &"WEAK", rules, state):
-			for other_value: Variant in by_cell.get(entity.position, []):
-				if other_value is RuleGridEntity and other_value.id != entity.id \
-					and entities_interact(entity, other_value, rules, state) \
-					and not has_property(entity, PROPERTY_SAFE, rules, state):
-					removed[entity.id] = true
-					break
+		if removed.has(entity.id) or not has_property(entity, &"WEAK", rules, state) \
+			or has_property(entity, PROPERTY_SAFE, rules, state):
+			continue
+		for other_value: Variant in by_cell.get(entity.position, []):
+			var other: RuleGridEntity = other_value
+			if other == null or other.id == entity.id or removed.has(other.id):
+				continue
+			if entities_interact(entity, other, rules, state):
+				removed[entity.id] = true
+				break
+
+	# Stage C: DEFEAT destroys the YOU objects sharing its cell.
+	for entity: RuleGridEntity in state.entities:
+		if removed.has(entity.id) or not has_property(entity, &"DEFEAT", rules, state):
+			continue
+		for other_value: Variant in by_cell.get(entity.position, []):
+			var other: RuleGridEntity = other_value
+			if other == null or other.id == entity.id or removed.has(other.id) or other.is_word:
+				continue
+			if not entities_interact(entity, other, rules, state):
+				continue
+			if not has_property(other, PROPERTY_YOU, rules, state) \
+				or has_property(other, PROPERTY_SAFE, rules, state):
+				continue
+			removed[other.id] = true
+			defeated[other.id] = true
 	var removed_ids: Array[String] = []
 	var defeated_ids: Array[String] = []
 	var surviving_you_ids: Array[String] = []
@@ -206,6 +215,16 @@ static func resolve_contacts(state: RuleGridState, rules: RuleSet) -> Dictionary
 		"won": won,
 		"failed": surviving_you_ids.is_empty()
 	}
+
+
+static func _is_open_shut_pair(
+	first: RuleGridEntity,
+	second: RuleGridEntity,
+	rules: RuleSet,
+	state: RuleGridState
+) -> bool:
+	return (has_property(first, &"OPEN", rules, state) and has_property(second, &"SHUT", rules, state)) \
+		or (has_property(first, &"SHUT", rules, state) and has_property(second, &"OPEN", rules, state))
 
 
 static func _has_spawn_descriptors(

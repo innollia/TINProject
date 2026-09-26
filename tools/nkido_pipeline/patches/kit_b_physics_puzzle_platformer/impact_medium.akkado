@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: phy.impact_medium
+// situation: an object collides, middle hardness tier
+// render: --seconds 0.42 --rate 48000 --bpm 96 --no-default-bank
+n"c3 g3" as e |> tri(e.freq) * adsr(e.gate, 0.001, 0.12, 0.0, 0.0) * e.vel |> out(%)

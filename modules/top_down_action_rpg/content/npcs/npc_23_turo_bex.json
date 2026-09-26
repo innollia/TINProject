@@ -1,0 +1,167 @@
+{
+    "schema_version":  1,
+    "id":  "npc_23_turo_bex",
+    "display_name":  "Turo Bex",
+    "roster_kind":  "support",
+    "public_role":  "cut chamber instructor who writes the contract and leaves the failed cut on the wall",
+    "private_role":  "learned the shape before the curriculum and filled the empty shape slot on his own authority",
+    "desire":  "wants the contract to say where it binds before anyone signs the first page",
+    "fear":  "that the school copy and the frontier copy are read as one obligation",
+    "contradiction":  "runs the only honest contract desk in a school that will not say what a contract is for",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_r8_cut_chamber"
+                                    ],
+                       "can":  [
+                                   "write_contract",
+                                   "compare_ledger",
+                                   "file_untallied_tally",
+                                   "refuse_the_cut"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+
+                                       ],
+                            "denies":  [
+
+                                       ],
+                            "denied_by_effect_id":  "eff_r8_concentration_registered"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s125",
+                                             "seed_s154"
+                                         ],
+                               "does_not_know":  [
+                                                     "seed_s155"
+                                                 ],
+                               "never_learns":  [
+                                                    "seed_s158"
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_compare_the_ledgers",
+                                             "verb_file_the_contract",
+                                             "verb_leave_the_tally_open",
+                                             "verb_close_the_tally"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "crown_alignment",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_compare_the_ledgers",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_r8_cut_chamber",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_file_the_contract",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_cut_chamber",
+                                                                            "choice_id":  "ch_file_the_contract"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_cut_chamber",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_leave_the_tally_open",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_cut_chamber",
+                                                                            "choice_id":  "ch_leave_the_tally_open"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_cut_chamber",
+                                  "presentation_class":  "neutral"
+                              },
+                              {
+                                  "verb_id":  "verb_close_the_tally",
+                                  "availability":  {
+                                                       "clock_at_least":  {
+                                                                              "clock_id":  "clock_public_record",
+                                                                              "stage_index":  3
+                                                                          }
+                                                   },
+                                  "opens":  "conv_r8_cut_chamber",
+                                  "presentation_class":  "extreme"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_07_bryn_route"
+                         ],
+    "clock_ids":  [
+                      "clock_crown_alignment",
+                      "clock_public_record"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  "enc_r8_fold_that_refuses_the_hand"
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "conversion_condition":  {
+
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "",
+                                              "encounter_modifier":  0
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_r8_course_index_printed"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_r8_concentration_registered"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "conditional",
+                    "condition":  {
+                                      "clock_irreversible":  {
+                                                                 "clock_id":  "clock_public_record"
+                                                             }
+                                  },
+                    "moves_to_region_id":  "region_h0_undersign_exchange"
+                },
+    "appearance":  {
+                       "body_key":  "body_cut_chamber_instructor",
+                       "portrait_key":  "portrait_turo_bex",
+                       "voice_key":  "voice_turo_bex"
+                   },
+    "mana_profile":  "retention_high_emission_low",
+    "oneoff_dialogue_seed_ids":  [
+                                     "seed_s101",
+                                     "seed_s111",
+                                     "seed_s125"
+                                 ],
+    "cross_link_ids":  [
+                           "region_r8_folding_school",
+                           "npc_07_bryn_oskel",
+                           "npc_01_ilyra_senn",
+                           "npc_26_cael_orin",
+                           "clock_public_record"
+                       ],
+    "removal":  "temporary",
+    "seed_ids":  [
+                     "seed_s101",
+                     "seed_s111",
+                     "seed_s125",
+                     "seed_s154",
+                     "seed_s155",
+                     "seed_s158"
+                 ]
+}

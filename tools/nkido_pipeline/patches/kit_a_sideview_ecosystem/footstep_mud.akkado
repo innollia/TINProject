@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.footstep_mud
+// situation: player footfall on wet soil
+// render: --seconds 0.42 --rate 48000 --bpm 96 --no-default-bank
+n"c3 g2" as e |> saw(e.freq) * adsr(e.gate, 0.004, 0.18, 0.0, 0.0) * e.vel |> out(%)

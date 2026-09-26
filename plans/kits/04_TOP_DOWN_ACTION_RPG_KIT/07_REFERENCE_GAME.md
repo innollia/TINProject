@@ -1,5 +1,11 @@
 # 07 — Reference Game: The Undersign Basin: A Season of Returning
 
+## 환경 제작 및 분량 보존 — 2026-09-26
+
+[13](13_LAYERED_ENVIRONMENT_PRODUCTION.md)의 장면 배경+분리 레이어를 전 지역에 적용한다. H0 샘플 한 장 또는 한 구역의 조립 성공은 기존 Reference Game의 region·NPC·encounter·cluster·revisit·플레이 분량을 충족하지 않는다. 배경 장수나 layer 수를 authored content 수로 세지 않는다.
+
+샘플 검수 뒤 실제 구역을 확장할 때, 각 구역의 출입·가림·상호작용·상태 차분이 기존 authored unit에 대응하는지 기록한다. 기존 core를 수정하지 않고 두 번째 서로 다른 구역과 사건 후 차분을 추가하는 증거도 남긴다. 단순 이동/대사/대기를 늘려 이미지 제작 누락을 가리지 않는다.
+
 상태: 구현 전 Reference Game 실행 계획.  
 범위: `Top-down Action-RPG Kit`의 실제 플레이 흐름, authored content 배치, route/recovery/revisit, 수동 플레이와 완료 증거.  
 Primary Reference: **BLACK SOULS 2 하나**.  

@@ -1,3 +1,4 @@
+class_name RuleRewriteModule
 extends GameModule
 
 const ACTIONS: Array[StringName] = [

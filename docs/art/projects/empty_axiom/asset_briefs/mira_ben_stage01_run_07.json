@@ -1,0 +1,73 @@
+{
+  "asset_id": "mira_ben_stage01_injured_cutout",
+  "status": "diagnostic_not_for_delivery",
+  "approval": "not_approved",
+  "eligible_as_reference": false,
+  "hypothesis": "Repair omitted floor-contact contract and restore project illustration proportions; not a single-factor style experiment",
+  "request": {
+    "workspace_id": "d1d3c25e-e590-46cb-a6db-2a6eb4673a71",
+    "base_model_id": "gemini-3-pro-image",
+    "width": 848,
+    "height": 1264,
+    "batch_size": 1,
+    "seed": 260928,
+    "prompt": "Paint one original Mira character for a hand-drawn investigation game using the supplied references only for rendering. Image 1 supplies the small angular nose-to-cheek plane division, irregular broad light and dark painted masses, visible rough directional brush patches in skin and cloth, and broad hair strokes. Image 2 supplies pressure-varying dark colored structural lines and garment overlaps only. Use expressive illustration proportions with a slightly enlarged head and simplified lower face; retain irregular brush edges inside the masses rather than smooth photographic skin or flat polygon facets. Mira is a slim 26-year-old researcher with narrow shoulders, dark brown ear-length bob, exactly two parallel silver pins behind her left ear. Both eyes are fully covered by plain medical bandages. Leaf-green knit, cream collar, worn off-white lab coat with faint disinfectant smudges, charcoal trousers, low black lace-up shoes. Entire figure sitting DIRECTLY ON THE FLOOR: hips and both shoe soles touch the same ground plane, both knees raised toward her chest, torso leaning slightly back, supporting right palm flat beside her hip at floor level. Left hand holds a small cracked clear lens case on her raised knees. Slightly elevated three-quarter view, looking toward page-right. Show head, hands and both shoes with empty margins. Render only the isolated character, held case and clothing on uniform pure white. Ground plane is implicit; leave white visible underneath and between limbs, without painting a floor or cast shadow. No reference identities, ornaments, costume motifs, text or signature.",
+    "guidance_files": [
+      {
+        "file_id": "b13c3913-552c-43f4-a6d1-adfe0b96cfec",
+        "type": "reference_image"
+      },
+      {
+        "file_id": "efb33a18-433d-4c17-91bc-80923207934f",
+        "type": "reference_image"
+      }
+    ],
+    "session_name": "TIN Mira self-review 07 restored floor pose"
+  },
+  "run": {
+    "inference_id": "eb1eded9-f4e8-496d-86ae-7df8e3ea4c3b",
+    "status": "IN_PROGRESS",
+    "estimated_price_creative_units": 4,
+    "created_at": "2026-09-26T10:35:00.041397+00:00",
+    "session_id": "02fcf772-7c78-4400-8c8b-4727eb755485",
+    "parameters_adjusted": false,
+    "parameters_adjusted_warning": null,
+    "poll_interval_seconds": 10,
+    "base_model_id": "gemini-3-pro-image",
+    "reference_set_contributions": [],
+    "reference_sets_degraded": false,
+    "reference_sets_warning": null
+  },
+  "result": {
+    "inference_id": "eb1eded9-f4e8-496d-86ae-7df8e3ea4c3b",
+    "status": "COMPLETE",
+    "completed_at": "2026-09-26T10:35:23.739981+00:00",
+    "outputs": [
+      {
+        "file_id": "4252bdb3-3f66-4cfd-85ba-b2c3db6c7e63",
+        "url": "https://media.app.layer.ai/workspaces/d1d3c25e-e590-46cb-a6db-2a6eb4673a71/files/4252bdb3-3f66-4cfd-85ba-b2c3db6c7e63/paint_one_original_mira_character_for_a_handdrawn_investigation_game-2026-09-26-103500.png",
+        "content_type": "image/png",
+        "preview_url": "https://media.app.layer.ai/workspaces/d1d3c25e-e590-46cb-a6db-2a6eb4673a71/files/4252bdb3-3f66-4cfd-85ba-b2c3db6c7e63/paint_one_original_mira_character_for_a_handdrawn_investigation_game-2026-09-26-103500_200.png",
+        "width": 848,
+        "height": 1264,
+        "duration_seconds": null,
+        "file_size_bytes": 1115510
+      }
+    ],
+    "actual_price_creative_units": 4,
+    "error": null,
+    "base_model_id": "gemini-3-pro-image",
+    "reference_set_contributions": [],
+    "reference_sets_degraded": false,
+    "reference_sets_warning": null
+  },
+  "local_files": {
+    "source": "assets/art/empty_axiom/candidates/investigation_characters/mira_stage01_run07_source.png"
+  },
+  "observations": [
+    "Floor-seated pose restored, no visible furniture.",
+    "Head/body proportion excessively enlarged; not merely slightly enlarged.",
+    "Bandage rendered as two separate eye pads with straps, not the continuous wrap used by the asset brief.",
+    "Not selected for background removal or further reference use."
+  ]
+}

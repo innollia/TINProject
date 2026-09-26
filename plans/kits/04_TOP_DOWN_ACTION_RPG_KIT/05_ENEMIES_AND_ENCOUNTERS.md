@@ -1,5 +1,11 @@
 # 05 — Enemies and Encounters
 
+## 환경 레이어와 전투 자산 — 2026-09-26
+
+[13](13_LAYERED_ENVIRONMENT_PRODUCTION.md)의 큰 field 배경은 적 스프라이트나 전투 화면 그 자체가 아니다. field encounter trigger는 gameplay data에 남고, 전투 적/telegraph/phase/break 이미지는 별도 카메라 계약을 유지한다. 적을 배경에 구워 defeat 이후에도 남기지 않는다.
+
+field 복귀 시 same-area clean base와 이미 해석된 aftermath layer를 사용한다. 파손·잔류물·사체·장치 개방이 이 문서에 정의된 경우에만 대응 이미지를 제작하며 새 encounter 의미를 미술에서 발명하지 않는다. NPC 전투 전환은 같은 stable identity의 자산 상태로 연결한다.
+
 Status: authored-content plan for the Top-down Action-RPG Kit.  
 Primary Reference: **BLACK SOULS 2 하나**.  
 Scope: original TIN enemy families and encounters for the world described in `WORLD_CONSTITUTION.md`.

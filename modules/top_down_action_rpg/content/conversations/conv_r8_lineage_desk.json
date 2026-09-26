@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r8_lineage_desk",
+    "display_name":  "Lineage Registrar Desk",
+    "region_id":  "region_r8_folding_school",
+    "speaker_npc_id":  "npc_24_perri_lowe",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_09_perrin_ward",
+                                                                                   "target_npc_id":  "npc_09_perrin_lask",
+                                                                                   "state_id":  "rs_perrin_reported"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_r8_course_index_desk",
+                                                                    "choice_id":  "ch_register_measurement"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  17,
+    "pages":  [
+                  {
+                      "page_id":  "pg_sheet",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "A token is access, not a talent. Write it down that way and it stops sounding like a bloodline.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_box",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "The registrar\u0027s box is unlatched and the blank line at the bottom is still blank.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_contested",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "The moment that token leaves this hall it becomes a contested flag, and I still have to hand it over.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_open_the_nameless_box",
+                        "text":  "Have the registrar open the nameless box and read the blank line out.",
+                        "semantic_tags":  [
+                                              "careful",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_issue_the_token",
+                        "text":  "Issue the token in the student\u0027s own name and log the access only.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "protective"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_close_the_placement",
+                        "text":  "Close the placement sheet and let the school classify the craft itself.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_transfer_the_box",
+                        "text":  "Transfer the box to a family house and take the token back.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r8_concentration_registered",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+                                           "eff_r8_course_index_printed"
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r8_course_index_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s119",
+                     "seed_s125",
+                     "seed_s144"
+                 ]
+}

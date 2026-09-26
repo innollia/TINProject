@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "doc_r6_custody_split_deed",
+  "display_name": "Custody Split Deed",
+  "region_id": "region_r6_gristmarket_ward",
+  "availability": {
+    "condition": {},
+    "reached_by": "prop"
+  },
+  "reached_by_ref": "prop_r6_heart_petition_table",
+  "pages": [
+    {
+      "page_id": "pg_signed_first",
+      "lines": [
+        "signed by clinic policy, patient line left blank",
+        "the heart signed the pain line, not the custody line",
+        "custody splits only where two signatures disagree",
+        "category: body authority"
+      ],
+      "presentation": "plain",
+      "corruption_rules": []
+    },
+    {
+      "page_id": "pg_after_quorum",
+      "lines": [
+        "signed by the clinic speaking organ, patient line blank",
+        "the heart signed the pain line, not the custody line",
+        "custody splits only where two signatures disagree",
+        "category: body authority"
+      ],
+      "presentation": "corrupted",
+      "corruption_rules": [
+        {
+          "rule_id": "cr_first_signature",
+          "mode": "replace_token",
+          "trigger": {
+            "route_open": {
+              "gate_id": "gate_g6_organ_quorum"
+            }
+          },
+          "severity": 2,
+          "line_index": 0,
+          "token_index": 2,
+          "text_note": "the first signature is replaced from a policy into an organ"
+        }
+      ]
+    }
+  ],
+  "reading": {
+    "background_mode": "dim_world",
+    "world_visible_ratio": 0.35,
+    "advance": "page",
+    "max_lines_per_page": 9,
+    "min_font_size": 20,
+    "requires_advance_affordance": true
+  },
+  "post_read": {
+    "effect_ids": [
+      "eff_r6_organ_quorum_filed"
+    ],
+    "once": false
+  },
+  "revisit": "allowed",
+  "seed_ids": [
+    "seed_s029",
+    "seed_s084",
+    "seed_s104",
+    "seed_s078"
+  ],
+  "owner_npc_id": "npc_05_nera_voss"
+}

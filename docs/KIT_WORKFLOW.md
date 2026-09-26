@@ -9,7 +9,8 @@
 4. `docs/VISUAL_DIRECTION.md`
 5. `docs/IMAGE_ASSET_WORKFLOW.md`
 6. `docs/UI_WORKFLOW.md`
-7. 해당 `plans/kits/*.md`
+7. `docs/UI_IMPLEMENTATION_RULES.md` — UI 구현·수정·검수 시 필수
+8. 해당 `plans/kits/*.md`
 
 ## 1. 목적
 

@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "id": "act_latency_bell_ringing",
+  "display_name": "latency bell ringing",
+  "order": 16,
+  "owner": "enemy",
+  "category": "unique",
+  "defense_mode": "none",
+  "lifecycle": "charge",
+  "intent": {
+    "target_mode": "ONE_ENEMY",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 1,
+    "action_slot_cost": 1,
+    "resource_costs": {},
+    "cooldown_windows": 3
+  },
+  "telegraph": {
+    "channels": [
+      "sound",
+      "numeric_bar",
+      "pose"
+    ],
+    "windows_before_active": 1,
+    "tell_key": "tell_latency_bell_ringing"
+  },
+  "damage_payload": {
+    "delivery": "true",
+    "shape": "percent_current_hp",
+    "base_value": 12,
+    "affinity": "none",
+    "hit_policy": "guaranteed",
+    "hit_modifier": 0,
+    "evasion_policy": "disabled",
+    "critical_policy": "never",
+    "dodge_pressure": 0,
+    "guard_ignore": true,
+    "breaks_guard": false,
+    "break_damage": 0,
+    "dodgeable": false,
+    "break_damage_kinds": [],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {
+      "status_id": "st_concentration_load",
+      "chance_permille": 1000,
+      "target": "self"
+    }
+  ],
+  "commitment": {
+    "spans_windows": 3,
+    "interruptible": false,
+    "interrupt_effect_ids": []
+  },
+  "recovery": {
+    "windows": 1,
+    "punish_windows": 0,
+    "recovery_locked": false
+  },
+  "stages": [
+    {
+      "stage": "telegraph",
+      "window_cost": 2
+    },
+    {
+      "stage": "strike",
+      "window_cost": 2
+    },
+    {
+      "stage": "recovery",
+      "window_cost": 1
+    }
+  ],
+  "reactions": {
+    "valid_reaction_ids": [
+      "act_guard_set"
+    ],
+    "forbidden_response_ids": [
+      "act_dodge_shift",
+      "act_break_poise"
+    ]
+  },
+  "counters": {
+    "valid": [
+      "raw_survive",
+      "escape",
+      "noncombat"
+    ],
+    "forbidden": [
+      "dodge",
+      "break",
+      "guard"
+    ],
+    "breakable": false
+  },
+  "presentation": {
+    "icon_key": "act_latency_bell_ringing"
+  },
+  "seed_ids": [
+    "seed_s013",
+    "seed_s034",
+    "seed_s103"
+  ]
+}

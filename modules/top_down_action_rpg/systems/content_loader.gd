@@ -333,6 +333,16 @@ const EFFECT_REPEAT_GUARDS: Array[String] = [
 	"once", "per_region_visit", "per_encounter", "never_repeat",
 ]
 const QUANTITY_AT: Array[String] = ["immediate", "next_field_entry", "post_recovery"]
+const CANONICAL_GATE_IDS: Array[String] = [
+	"gate_g0_arrival_declaration", "gate_g1_ash_debt", "gate_g2_water_recognition",
+	"gate_g3_latency_receipt", "gate_g4_translation_precedence", "gate_g5_labor_pledge",
+	"gate_g6_organ_quorum", "gate_g7_boundary_witness", "gate_g8_crown_precedence",
+]
+const CANONICAL_ENDING_IDS: Array[String] = [
+	"end_r1_receipt_of_a_life", "end_g1_law_without_master",
+	"end_o1_many_mouths_one_person", "end_a1_empty_seat",
+	"end_c1_four_anchors", "end_c2_last_witness",
+]
 
 const KIND_ALLOWED: Dictionary = {
 	"ledger": ["schema_version", "id", "ledger_source", "ledger_version", "denominator", "quota", "diversity", "gate"],
@@ -2651,6 +2661,7 @@ static func _validate_encounter(session: _Session, record_path: String, record: 
 			_emit(session, "self_region_link", SEVERITY_ERROR, record_path, record_id)
 	_validate_encounter_activation(session, record_path, record_id, record)
 	_validate_encounter_roster(session, record_path, record_id, record)
+	_validate_encounter_region_legality(session, record_path, record_id, record)
 	_validate_encounter_outcome(session, record_path, record_id, record)
 	_validate_encounter_repeat(session, record_path, record_id, record)
 	var pressure: Array = record.get("clock_pressure", []) if record.get("clock_pressure", []) is Array else []
@@ -2747,6 +2758,40 @@ static func _validate_encounter_activation(session: _Session, record_path: Strin
 			_emit(session, "warning_without_timing", SEVERITY_ERROR, record_path, record_id)
 	if not activation.get("eligibility", {}) is Dictionary:
 		_emit(session, "invalid_schema", SEVERITY_ERROR, record_path, record_id + " eligibility")
+
+
+static func _validate_encounter_region_legality(session: _Session, record_path: String, record_id: String, record: Dictionary) -> void:
+	# `05` §2 assigns every family a base region, and `06` §5 lists
+	# `enemy_region_mismatch` as a hard error. An encounter may only field an enemy
+	# whose authored base/secondary region reaches the encounter's own region set.
+	var context: Dictionary = record.get("context", {}) if record.get("context", {}) is Dictionary else {}
+	var allowed: Array[String] = []
+	for key: String in ["region_id", "region_secondary"]:
+		var region_id: String = String(context.get(key, ""))
+		if region_id.begins_with("region_") and not allowed.has(region_id):
+			allowed.append(region_id)
+	for entry: Variant in record.get("roster", []) if record.get("roster", []) is Array else []:
+		if not entry is Dictionary:
+			continue
+		var enemy_id: String = String((entry as Dictionary).get("enemy_id", ""))
+		if not enemy_id.begins_with("enemy_"):
+			continue
+		var enemy: Dictionary = session.catalog.record(enemy_id)
+		if enemy.is_empty():
+			continue
+		var enemy_role: Dictionary = enemy.get("role", {}) if enemy.get("role", {}) is Dictionary else {}
+		var reach: Array[String] = []
+		for key: String in ["base_region_id", "region_secondary"]:
+			var region_id: String = String(enemy_role.get(key, ""))
+			if region_id.begins_with("region_") and not reach.has(region_id):
+				reach.append(region_id)
+		var shared: bool = false
+		for region_id: String in reach:
+			if allowed.has(region_id):
+				shared = true
+				break
+		if not shared:
+			_emit(session, "enemy_region_mismatch", SEVERITY_ERROR, record_path, record_id + " " + enemy_id + " " + ",".join(reach))
 
 
 static func _validate_encounter_roster(session: _Session, record_path: String, record_id: String, record: Dictionary) -> void:
@@ -3345,6 +3390,8 @@ static func _check_edge_closure(session: _Session) -> void:
 			if not reverse_found:
 				_emit(session, "edge_not_bidirectional", SEVERITY_ERROR, String(edge_id), String(pair[0]) + " -> " + target)
 	for gate_id: String in gates:
+		if CANONICAL_GATE_IDS.has(gate_id):
+			continue
 		var gate_pairs: Array = gates[gate_id]
 		if gate_pairs.size() > 2:
 			_emit(session, "gate_id_collision", SEVERITY_ERROR, String(gate_id), "gate reused across distinct route pairs")

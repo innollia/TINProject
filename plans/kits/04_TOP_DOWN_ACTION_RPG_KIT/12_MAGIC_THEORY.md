@@ -1,5 +1,11 @@
 # Magic Theory 계획 — Top-down Action-RPG
 
+## 환경 그림에 투영하는 마법 — 2026-09-26
+
+[13](13_LAYERED_ENVIRONMENT_PRODUCTION.md)의 base는 고정 공간을 소유한다. 분산/순환 장치, medium/sheet, weave/fold/void-cut의 가시 결과는 기존 prop state와 별도 effect/잔류물 차분으로 표현한다. concentration·clock·resource의 새 의미를 그림에서 계산하지 않는다.
+
+움직이는 매체와 제거 가능한 잔류물을 base에 굽지 않는다. 가림·충돌·효과 층을 구분하고, void-cut가 기존 설계에서 통로를 만들지 않는 경우 그림에 통행 가능한 문을 새로 암시하지 않는다. 같은 상태의 반복 제작에는 고정 anchor/원본과 파생 차분을 사용한다.
+
 ## 1. 범위
 
 magic은 별도 우주가 아니라 Undersign world의 `concentration-mediated craft` protocol이다. 이 파일은 magic theory, magic data, magic region, magic social institution, magic failure/body consequence를 정의한다.

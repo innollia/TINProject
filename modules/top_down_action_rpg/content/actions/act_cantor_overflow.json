@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "id": "act_cantor_overflow",
+  "display_name": "residue cantor basin overflow",
+  "order": 16,
+  "owner": "enemy",
+  "category": "magic",
+  "defense_mode": "none",
+  "lifecycle": "committed",
+  "intent": {
+    "target_mode": "ALL_ENEMIES",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 2,
+    "action_slot_cost": 1,
+    "resource_costs": {
+      "mp": 8
+    },
+    "cooldown_windows": 3
+  },
+  "telegraph": {
+    "channels": [
+      "pose",
+      "vfx",
+      "numeric_bar"
+    ],
+    "windows_before_active": 1,
+    "tell_key": "tell_cantor_overflow"
+  },
+  "damage_payload": {
+    "delivery": "magical",
+    "shape": "fixed",
+    "base_value": 13,
+    "affinity": "none",
+    "hit_policy": "roll",
+    "hit_modifier": 0,
+    "evasion_policy": "roll",
+    "critical_policy": "never",
+    "dodge_pressure": 10,
+    "guard_ignore": false,
+    "breaks_guard": false,
+    "break_damage": 0,
+    "dodgeable": true,
+    "break_damage_kinds": [],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {"status_id": "st_overflowed", "chance_permille": 700, "target": "target"},
+    {"status_id": "st_concentration_load", "chance_permille": 1000, "target": "self"}
+  ],
+  "commitment": {
+    "spans_windows": 2,
+    "interruptible": false,
+    "interrupt_effect_ids": []
+  },
+  "recovery": {
+    "windows": 1,
+    "punish_windows": 2,
+    "recovery_locked": false
+  },
+  "counters": {
+    "valid": [
+      "guard",
+      "dodge",
+      "break",
+      "status_counter"
+    ],
+    "forbidden": [],
+    "breakable": true
+  },
+  "craft": {
+    "craft_family": "rigid_fold",
+    "concentration_source": "body",
+    "concentration_requirement": 560,
+    "body_profile_requirements": [
+      "retention_overflow",
+      "concentration_reactive"
+    ],
+    "medium_options": [
+      "res_fold_sheet"
+    ],
+    "tool_options": [
+      "bone_rule",
+      "curved_awl"
+    ],
+    "shape_or_pattern": "open_basin_fold",
+    "fold_count_budget": 9,
+    "preparation_turns": 1,
+    "waste": {
+      "res_fold_sheet": 1,
+      "st_overflowed": 1
+    },
+    "failure_status_id": "st_overflowed",
+    "environment_effect": {
+      "clock_writes": [
+        {"ticks": 1, "clock_id": "clock_personal_collapse"}
+      ]
+    },
+    "social_recording": "res_craft_credit"
+  },
+  "presentation": {
+    "icon_key": "act_cantor_overflow"
+  },
+  "seed_ids": [
+    "seed_s001"
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "id": "enemy_worksheet_instructor",
+  "display_name": "Worksheet Instructor",
+  "role": {
+    "base_region_id": "region_r8_folding_school",
+    "region_secondary": "region_r5_glasswing_ordinal",
+    "region_role": "magic_training_craft_labor",
+    "institution_id": "institution_mag_academy",
+    "role_tags": [
+      "grader",
+      "labor"
+    ]
+  },
+  "body": {
+    "body_class": "humanoid",
+    "silhouette_key": "sil_worksheet_instructor",
+    "scale_class": "human",
+    "stateful_body": "transform",
+    "motion_signature": "grade_mark"
+  },
+  "stats": {
+    "max_hp": 100,
+    "agility": 12,
+    "action_slots": 1,
+    "resource_pool": {
+      "mp": 12,
+      "equipment_charge": 0
+    }
+  },
+  "condition_bar": {
+    "kind": "condition_progress",
+    "max_value": 100,
+    "start_value": 0,
+    "advance_on": [
+      "status_applied",
+      "window_elapsed"
+    ],
+    "advance_per_source": 20,
+    "decrease_on_phase_enter": 0
+  },
+  "baseline_action_ids": [
+    "act_craft_sheet_snap",
+    "act_fold_wall_measure"
+  ],
+  "signature_action_id": "act_worksheet_instructor_grade_mark",
+  "telegraph": {
+    "signature_tell_key": "tell_worksheet_instructor_grade_mark",
+    "channels": [
+      "field_prop",
+      "numeric_bar",
+      "pose"
+    ]
+  },
+  "status_profile": {
+    "innate_status_ids": [
+      "st_misfolded"
+    ],
+    "resistant_status_ids": [
+      "st_concentration_load"
+    ],
+    "immune_status_ids": []
+  },
+  "break_profile": {
+    "breakable": true,
+    "break_source_action_ids": [
+      "act_break_poise"
+    ],
+    "on_break_status_ids": [
+      "st_overflowed"
+    ],
+    "on_break_effect_ids": [
+      "eff_r8_course_index_printed"
+    ]
+  },
+  "phase_ids": [
+    "phase_worksheet_instructor_second_sheet",
+    "phase_worksheet_instructor_final_mark"
+  ],
+  "reward": {
+    "equipment_ids": [
+      "equipment_r8_fold_brace"
+    ],
+    "item_ids": [
+      "item_ash_thread_spool"
+    ],
+    "resource_delta": {
+      "mp": 2
+    }
+  },
+  "aftermath": {
+    "effect_ids": [
+      "eff_r8_concentration_registered"
+    ],
+    "region_state_tag": "r8_grade_recorded"
+  },
+  "lore_ref": "seed_s091",
+  "seed_ids": [
+    "seed_s091",
+    "seed_s142",
+    "seed_s145"
+  ]
+}

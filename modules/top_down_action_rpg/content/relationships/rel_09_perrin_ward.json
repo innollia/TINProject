@@ -1,0 +1,221 @@
+{
+    "schema_version":  1,
+    "id":  "rel_09_perrin_ward",
+    "target_npc_id":  "npc_09_perrin_lask",
+    "channel":  "kinship",
+    "start_state_id":  "rs_perrin_observed",
+    "states":  [
+                   {
+                       "state_id":  "rs_perrin_observed",
+                       "order":  0,
+                       "label":  "watching what you do with the child",
+                       "entry_effect_ids":  [
+
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "guarded"
+                   },
+                   {
+                       "state_id":  "rs_perrin_proved",
+                       "order":  1,
+                       "label":  "continuity proved in the child\u0027s words",
+                       "entry_effect_ids":  [
+                                                "eff_r8_course_index_printed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r3_naming"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_r8_lineage_hall"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "operational"
+                   },
+                   {
+                       "state_id":  "rs_perrin_chosen_family",
+                       "order":  2,
+                       "label":  "the child stays out of the report",
+                       "entry_effect_ids":  [
+                                                "eff_r8_course_index_printed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r3_naming",
+                                        "port_r8_lineage_hall"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_r8_lineage_hall"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  null
+                                           },
+                       "dialogue_policy":  "candid"
+                   },
+                   {
+                       "state_id":  "rs_perrin_reported",
+                       "order":  3,
+                       "label":  "the report came first",
+                       "entry_effect_ids":  [
+                                                "eff_r8_concentration_registered"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "hostile"
+                   }
+               ],
+    "transitions":  [
+                        {
+                            "transition_id":  "t_01",
+                            "from_state_id":  "rs_perrin_observed",
+                            "to_state_id":  "rs_perrin_proved",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_lineage_hall",
+                                                                            "choice_id":  "ch_prove_the_continuity"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r8_course_index_printed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_02",
+                            "from_state_id":  "rs_perrin_proved",
+                            "to_state_id":  "rs_perrin_chosen_family",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_lineage_hall",
+                                                                            "choice_id":  "ch_open_the_unnamed_box"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r8_course_index_printed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_03",
+                            "from_state_id":  "rs_perrin_proved",
+                            "to_state_id":  "rs_perrin_observed",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_lineage_hall",
+                                                                            "choice_id":  "ch_return_the_child"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  8
+                        },
+                        {
+                            "transition_id":  "t_04",
+                            "from_state_id":  "rs_perrin_chosen_family",
+                            "to_state_id":  "rs_perrin_reported",
+                            "via":  "effect",
+                            "requires_condition":  {
+                                                       "clock_irreversible":  {
+                                                                                  "clock_id":  "clock_institutional_response"
+                                                                              }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r8_concentration_registered"
+                                           ],
+                            "is_irreversible":  true,
+                            "priority":  5
+                        }
+                    ],
+    "axes":  {
+                 "trust":  1,
+                 "fear":  0,
+                 "debt":  0,
+                 "recognition":  0,
+                 "attachment":  1
+             },
+    "axis_rules":  [
+                       {
+                           "key":  "self_authored_name_kept",
+                           "condition":  {
+                                             "choice_taken":  {
+                                                                  "conversation_id":  "conv_r8_lineage_hall",
+                                                                  "choice_id":  "ch_open_the_unnamed_box"
+                                                              }
+                                         },
+                           "sets":  {
+                                        "continuity_pressure":  1
+                                    }
+                       }
+                   ],
+    "exclusions":  {
+                       "max_final_state":  1,
+                       "conflicting_final_state_ids":  [
+                                                           "rs_perrin_reported"
+                                                       ]
+                   },
+    "romance":  {
+                    "allowed":  false,
+                    "explicit_content":  false,
+                    "gate_state_ids":  [
+
+                                       ],
+                    "consent_beat_effect_ids":  [
+
+                                                ]
+                },
+    "seed_ids":  [
+                     "seed_s042",
+                     "seed_s091",
+                     "seed_s102",
+                     "seed_s143",
+                     "seed_s144"
+                 ]
+}

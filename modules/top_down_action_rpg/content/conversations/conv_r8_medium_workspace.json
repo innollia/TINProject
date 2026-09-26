@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r8_medium_workspace",
+    "display_name":  "Execution Space Bench",
+    "region_id":  "region_r8_folding_school",
+    "speaker_npc_id":  "npc_04_sable_halm",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_04_sable_support",
+                                                                                   "target_npc_id":  "npc_04_sable_halm",
+                                                                                   "state_id":  "rs_sable_overridden"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_r8_course_index_desk",
+                                                                    "choice_id":  "ch_register_measurement"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  11,
+    "pages":  [
+                  {
+                      "page_id":  "pg_bench",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "Before anything loads, we agree on how much of you the form is allowed to keep.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_empty_bay",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "One bay of the bench is warm. Its previous occupant is still logged as loaded.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_pending",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "A failed boot is not a lost client. It is a relationship with a pending stage.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_read_the_consent_form",
+                        "text":  "Read the consent form out loud before the bench warms.",
+                        "semantic_tags":  [
+                                              "care",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_allocate_the_space",
+                        "text":  "Give her the whole execution bay and sign the medium against it.",
+                        "semantic_tags":  [
+                                              "care",
+                                              "costly"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_decline_the_form",
+                        "text":  "Refuse the form and let the bench stay cold tonight.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_log_the_stage_pending",
+                        "text":  "Sign the permission for her and record the rest as pending.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r8_concentration_registered",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+                                           "eff_r8_course_index_printed"
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r8_course_index_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s020",
+                     "seed_s024",
+                     "seed_s105"
+                 ]
+}

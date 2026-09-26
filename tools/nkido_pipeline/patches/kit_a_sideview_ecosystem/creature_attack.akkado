@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.creature_attack
+// situation: a creature commits to a strike
+// render: --seconds 0.55 --rate 48000 --bpm 132 --no-default-bank
+n"g4 c3" as e |> saw(e.freq) * adsr(e.gate, 0.001, 0.09, 0.0, 0.0) * e.vel |> out(%)

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "prop_r5_gantry_cradle",
+  "display_name": "Gantry Cradle",
+  "region_id": "region_r5_glasswing_ordinal",
+  "placement": {
+    "anchor_key": "r5_gantry_cradle",
+    "layer": "prop",
+    "visible_from": "adjacent"
+  },
+  "initial_state_id": "ps_empty",
+  "states": [
+    {
+      "state_id": "ps_empty",
+      "label": "the cradle waits for crown gear and two batteries",
+      "visible": true,
+      "art_key": "prop_r5_cradle_empty",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_loaded",
+      "label": "gear and batteries are strapped for the supply leg",
+      "visible": true,
+      "art_key": "prop_r5_cradle_loaded",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r5_gantry_cradle_loaded"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_load_the_gantry_cradle",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r5_gantry_cradle",
+            "state_id": "ps_empty"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r5_gantry_cradle",
+            "state_id": "ps_loaded"
+          }
+        }
+      ]
+    },
+    "opens": "conv_r5_gantry_cradle",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s109",
+    "seed_s160"
+  ]
+}

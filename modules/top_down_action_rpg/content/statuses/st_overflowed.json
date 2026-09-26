@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "id": "st_overflowed",
+  "display_name": "Overflowed",
+  "stack_policy": "refresh",
+  "max_stacks": 1,
+  "duration": {"kind": "region", "turns": 0},
+  "modifiers": {"stat_deltas": {}},
+  "control": {
+    "blocked_action_categories": ["magic"],
+    "blocks_no_turn_actions": false,
+    "prevents_guard": false,
+    "prevents_dodge": false,
+    "prevents_charge_commit": false
+  },
+  "cure": {
+    "categories": ["load", "dispersal"],
+    "removable_by_action_categories": ["item", "skill"],
+    "removable_by_equipment_ids": [],
+    "cures_other_status_ids": []
+  },
+  "resistance": {
+    "incoming_status_ids": [],
+    "immune_status_ids": [],
+    "break_shatter": false
+  },
+  "presentation": {"icon_key": "st_overflowed", "tint_key": "kiln_amber", "band_order": 5},
+  "seed_ids": ["seed_s001"]
+}

@@ -1,5 +1,18 @@
 # 테스트와 완료 판정 — Top-down Action-RPG Kit
 
+## 큰 배경·분리 레이어 추가 검수 — 2026-09-26
+
+제작 정본은 [13](13_LAYERED_ENVIRONMENT_PRODUCTION.md)이다. 아래는 **필요한 검사**이며 이번 문서 갱신만으로 통과한 항목이 아니다.
+
+- 합성본 → clean base + foreground + 대표 prop 재조립. anchor·비례·조명·alpha halo와 비대상 영역 drift 검사.
+- prop/actor 제거 후 뒤쪽 표면과 그림자 잔상, 문/다리/승강기 변화와 실제 통행의 일치 검사.
+- 캐릭터가 가림 요소 앞/뒤를 지날 때 depth와 focus 유지. 겹친 여러 상태 차분의 결정적 조합 검사.
+- 스크롤 네 경계·모서리, 큰 그림 chunk 접합과 잘림, 720p/FHD/QHD 동일 world framing 검사.
+- save/load/death/recovery 후 같은 구역의 올바른 사건 후 레이어 복원 검사.
+- 서로 다른 두 번째 구역과 variant 추가 시 core 무수정 확인.
+
+아트 샘플의 크기·알파·합성 검수와 실제 게임 플레이/해상도 검수는 별도 증거다. 단계 1 기준 합성본만 있는 후보를 레이어 납품 완료 또는 사용자 승인으로 세지 않는다. 사용자 샘플 검토 전 병렬 양산하지 않는다.
+
 Primary Reference: **BLACK SOULS 2 하나**
 
 입력 정본: `docs/research/top_down_action_rpg/PLAN_RESOLUTION.md`, `01_SYSTEM_UX.md`, `02_WORLD_STATE_AND_ROUTES.md`, `03_STORY_AND_ENDINGS.md`, `04_CHARACTERS_AND_RELATIONSHIPS.md`, `05_ENEMIES_AND_ENCOUNTERS.md`, `06_AUTHORED_CONTENT_AND_DATA.md`, `07_REFERENCE_GAME.md`, `08_SAVE_DEATH_AND_RECOVERY.md`, `09_PRESENTATION_ART_AND_AUDIO.md`, `12_MAGIC_THEORY.md`, `docs/KIT_WORKFLOW.md`, `docs/MODULE_CONTRACT.md`.

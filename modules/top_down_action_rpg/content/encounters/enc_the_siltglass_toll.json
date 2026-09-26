@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "id": "enc_the_siltglass_toll",
+  "display_name": "The Siltglass Toll",
+  "context": {
+    "region_id": "region_r2_siltglass_commons",
+    "region_secondary": "region_h0_undersign_exchange",
+    "region_role": "resource_allocation",
+    "depth_band": 0,
+    "story_stage": "mid",
+    "time_of_day": "any"
+  },
+  "activation": {
+    "kind": "quest_add",
+    "prop_id": "prop_r2_circulator_stack",
+    "eligibility": {
+      "clock_at_least": {
+        "clock_id": "clock_contamination",
+        "stage_index": 1
+      }
+    },
+    "warning": {
+      "channel": "npc_warning",
+      "windows_before": 1
+    }
+  },
+  "visibility": {
+    "visible_in_field": false,
+    "shown_on_map": false
+  },
+  "roster": [
+    {
+      "entry_id": "slot_a",
+      "enemy_id": "enemy_circulator_stacker",
+      "count": 1,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 1,
+      "spawn_at": "start"
+    },
+    {
+      "entry_id": "slot_b",
+      "enemy_id": "enemy_disperser_warden",
+      "count": 2,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 2,
+      "spawn_at": "start"
+    }
+  ],
+  "target_priority": [
+    {
+      "enemy_id": "enemy_circulator_stacker",
+      "role": "true_actor",
+      "priority": 1,
+      "only_when": {}
+    },
+    {
+      "enemy_id": "enemy_disperser_warden",
+      "role": "support",
+      "priority": 2,
+      "only_when": {}
+    }
+  ],
+  "target_roles": [
+    {
+      "role": "record",
+      "surface_id": "doc_r2_circulation_ledger",
+      "descendants_only": true
+    },
+    {
+      "role": "resource_node",
+      "surface_id": "res_disperser_charge",
+      "descendants_only": false
+    },
+    {
+      "role": "route",
+      "surface_id": "gate_g0_arrival_declaration",
+      "descendants_only": false
+    }
+  ],
+  "group": null,
+  "allow": {
+    "escape": true,
+    "skip": false
+  },
+  "clock_pressure": [
+    {
+      "clock_id": "clock_contamination",
+      "ticks_on_start": 1,
+      "ticks_per_window": 1,
+      "ticks_on_end": 1
+    },
+    {
+      "clock_id": "clock_resource_collapse",
+      "ticks_on_start": 0,
+      "ticks_per_window": 1,
+      "ticks_on_end": 0
+    }
+  ],
+  "outcome": {
+    "on_victory": {
+      "effect_ids": [
+        "eff_r2_circulation_ledger_filed"
+      ]
+    },
+    "on_escape": {
+      "effect_ids": []
+    },
+    "on_failure": {
+      "effect_ids": [],
+      "death_policy": "respawn_checkpoint"
+    },
+    "on_parley": {
+      "effect_ids": []
+    }
+  },
+  "world_effect": {
+    "region_state_tag": "r2_toll_collected",
+    "prop_state_ids": [
+      "prop_r2_circulator_stack",
+      "prop_r2_disperser_housing"
+    ],
+    "unlock_gate_ids": [
+      "gate_g7_boundary_witness"
+    ]
+  },
+  "repeat": {
+    "policy": "once",
+    "reset_policy": "none",
+    "cooldown_windows": 0,
+    "depth_scaling": {
+      "per_band": {},
+      "max_bands": 0
+    }
+  },
+  "base_encounter_id": null,
+  "variant_overrides": {},
+  "remix_eligibility": {
+    "condition": {
+      "prop_state_is": {
+        "prop_id": "prop_r2_circulator_stack",
+        "state_id": "ps_vented"
+      }
+    },
+    "requires_depth_band_min": 0,
+    "requires_postgame": false
+  },
+  "lore_ref": "seed_s046",
+  "seed_ids": [
+    "seed_s046",
+    "seed_s064",
+    "seed_s093",
+    "seed_s123"
+  ]
+}

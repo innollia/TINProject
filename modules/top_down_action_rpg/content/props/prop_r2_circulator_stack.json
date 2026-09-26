@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "prop_r2_circulator_stack",
+  "display_name": "Circulator Stack",
+  "region_id": "region_r2_siltglass_commons",
+  "placement": {
+    "anchor_key": "r2_circulator_stack",
+    "layer": "wall",
+    "visible_from": "same_room"
+  },
+  "initial_state_id": "ps_idle",
+  "states": [
+    {
+      "state_id": "ps_idle",
+      "label": "the stack is cold and the ledger shows a free slot",
+      "visible": true,
+      "art_key": "prop_r2_circulator_idle",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_vented",
+      "label": "the stack has moved the field into the next settlement",
+      "visible": true,
+      "art_key": "prop_r2_circulator_vented",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r2_circulation_ledger_filed"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_circulator_ledger",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r2_circulator_stack",
+            "state_id": "ps_idle"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r2_circulator_stack",
+            "state_id": "ps_vented"
+          }
+        }
+      ]
+    },
+    "opens": "doc_r2_circulation_ledger",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s127",
+    "seed_s140"
+  ]
+}

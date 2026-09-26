@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r8_weave_yard",
+    "display_name":  "Weave Yard Grading Table",
+    "region_id":  "region_r8_folding_school",
+    "speaker_npc_id":  "npc_22_iven_marrow",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_04_sable_support",
+                                                                                   "target_npc_id":  "npc_04_sable_halm",
+                                                                                   "state_id":  "rs_sable_overridden"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_r8_course_index_desk",
+                                                                    "choice_id":  "ch_register_measurement"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  15,
+    "pages":  [
+                  {
+                      "page_id":  "pg_grade",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "I grade the fold, not the student. The two columns are printed separately and people always read the wrong one.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_wall",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "The yard wall is papered with failed folds. Each one still has a maker\u0027s cut in it.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_residue",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "If the residue goes back to the bench I cannot tell which student it belonged to. If it stays, it stays on the wall.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_grade_both_columns",
+                        "text":  "Have him read the fold column and the student column out loud separately.",
+                        "semantic_tags":  [
+                                              "careful",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_reclaim_the_sheet",
+                        "text":  "Reclaim the residue sheet from the wall and file it to the bench.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "costly"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_leave_the_wall",
+                        "text":  "Leave the failed folds on the wall and take the grade as printed.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_scrape_the_maker_cut",
+                        "text":  "Scrape the maker\u0027s cut off the wall so the class cannot be compared.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r8_concentration_registered",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+                                           "eff_r8_course_index_printed"
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r8_course_index_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s024",
+                     "seed_s065",
+                     "seed_s133"
+                 ]
+}

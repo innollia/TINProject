@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "prop_r3_mana_profile_board",
+  "display_name": "Emission Profile Board",
+  "region_id": "region_r3_bellhouse_hospice",
+  "placement": {
+    "anchor_key": "r3_mana_profile_board",
+    "layer": "wall",
+    "visible_from": "same_room"
+  },
+  "initial_state_id": "ps_unmeasured",
+  "states": [
+    {
+      "state_id": "ps_unmeasured",
+      "label": "four blank columns wait for a body that can be measured",
+      "visible": true,
+      "art_key": "prop_r3_profile_blank",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_filed",
+      "label": "retention, emission, overflow and blocked are four separate columns",
+      "visible": true,
+      "art_key": "prop_r3_profile_filed",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r3_mana_profile_filed"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_profile_board",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r3_mana_profile_board",
+            "state_id": "ps_unmeasured"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r3_mana_profile_board",
+            "state_id": "ps_filed"
+          }
+        }
+      ]
+    },
+    "opens": "doc_r3_mana_profile_triage_board",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s128",
+    "seed_s129",
+    "seed_s131"
+  ]
+}

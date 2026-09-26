@@ -1,0 +1,184 @@
+{
+    "schema_version":  1,
+    "id":  "npc_10_juno_caster",
+    "display_name":  "Juno Caster",
+    "roster_kind":  "core",
+    "public_role":  "crier who decides what the public channel is allowed to call an event",
+    "private_role":  "edited a screenshot to stop a panic and lost the true copy and the false one together",
+    "desire":  "wants one person\u0027s disappearance to still leave a witness that outlives them",
+    "fear":  "that a real anomaly gets filed as a rumor, or that her edit becomes the category error",
+    "contradiction":  "declares the public record neutral while choosing by hand what becomes public",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_h0_crier"
+                                    ],
+                       "can":  [
+                                   "forward_report",
+                                   "verify_report",
+                                   "withhold_channel",
+                                   "pin_evidence",
+                                   "release_archive"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+
+                                       ],
+                            "denies":  [
+
+                                       ],
+                            "denied_by_effect_id":  "eff_h0_arrival_declaration_filed"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s047",
+                                             "seed_s048"
+                                         ],
+                               "does_not_know":  [
+                                                     "seed_s056"
+                                                 ],
+                               "never_learns":  [
+                                                    "seed_s125"
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_post_to_the_channel",
+                                             "verb_verify_with_two_witnesses",
+                                             "verb_pin_the_screenshot",
+                                             "verb_withhold_the_channel",
+                                             "verb_release_the_archive"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "recognition_drift",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_post_to_the_channel",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_h0_crier_thread",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_verify_with_two_witnesses",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_crier_thread",
+                                                                            "choice_id":  "ch_verify_before_forwarding"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_h0_crier_thread",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_pin_the_screenshot",
+                                  "availability":  {
+                                                       "prop_state_is":  {
+                                                                             "prop_id":  "prop_h0_counterweight_map",
+                                                                             "state_id":  "ps_contested"
+                                                                         }
+                                                   },
+                                  "opens":  "doc_r1_wrong_return_log",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_withhold_the_channel",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_crier_thread",
+                                                                            "choice_id":  "ch_withhold_for_one_cycle"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_h0_crier_thread",
+                                  "presentation_class":  "neutral"
+                              },
+                              {
+                                  "verb_id":  "verb_release_the_archive",
+                                  "availability":  {
+                                                       "clock_at_least":  {
+                                                                              "clock_id":  "clock_public_record",
+                                                                              "stage_index":  2
+                                                                          }
+                                                   },
+                                  "opens":  "conv_h0_crier_thread",
+                                  "presentation_class":  "extreme"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_10_juno_channel"
+                         ],
+    "clock_ids":  [
+                      "clock_public_record",
+                      "clock_institutional_response",
+                      "clock_contamination"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  "enc_r1_ash_choir"
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "conversion_condition":  {
+
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "eff_h0_arrival_declaration_filed",
+                                              "encounter_modifier":  1
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_h0_arrival_declaration_filed"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_r1_wrong_return_witnessed"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "permanent",
+                    "condition":  {
+
+                                  },
+                    "moves_to_region_id":  "region_r1_returning_kiln"
+                },
+    "appearance":  {
+                       "body_key":  "body_crier",
+                       "portrait_key":  "portrait_juno_caster",
+                       "voice_key":  "voice_juno_caster"
+                   },
+    "mana_profile":  "sensory_misclassification",
+    "oneoff_dialogue_seed_ids":  [
+                                     "seed_s047",
+                                     "seed_s048",
+                                     "seed_s114",
+                                     "seed_s120"
+                                 ],
+    "cross_link_ids":  [
+                           "region_h0_undersign_exchange",
+                           "npc_01_ilyra_senn",
+                           "npc_06_tamas_quill",
+                           "npc_14_eda_marrow",
+                           "clock_public_record"
+                       ],
+    "removal":  "death",
+    "seed_ids":  [
+                     "seed_s047",
+                     "seed_s048",
+                     "seed_s049",
+                     "seed_s050",
+                     "seed_s056",
+                     "seed_s114",
+                     "seed_s120",
+                     "seed_s125",
+                     "seed_s148",
+                     "seed_s159"
+                 ]
+}

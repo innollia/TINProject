@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "prop_r2_disperser_housing",
+  "display_name": "Disperser Housing",
+  "region_id": "region_r2_siltglass_commons",
+  "placement": {
+    "anchor_key": "r2_disperser_housing",
+    "layer": "wall",
+    "visible_from": "same_room"
+  },
+  "initial_state_id": "ps_charged",
+  "states": [
+    {
+      "state_id": "ps_charged",
+      "label": "the housing is full and the air tastes of metal",
+      "visible": true,
+      "art_key": "prop_r2_disperser_full",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_spent",
+      "label": "the housing is empty and the reading is still on the card",
+      "visible": true,
+      "art_key": "prop_r2_disperser_empty",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r2_disperser_reading_filed"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_disperser",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r2_disperser_housing",
+            "state_id": "ps_charged"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r2_disperser_housing",
+            "state_id": "ps_spent"
+          }
+        }
+      ]
+    },
+    "opens": "conv_r2_disperser_reading",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s123",
+    "seed_s126",
+    "seed_s121"
+  ]
+}

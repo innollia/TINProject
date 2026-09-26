@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "prop_r5_repair_bench_rack",
+  "display_name": "Repair Bench Rack",
+  "region_id": "region_r5_glasswing_ordinal",
+  "placement": {
+    "anchor_key": "r5_repair_bench",
+    "layer": "prop",
+    "visible_from": "same_room"
+  },
+  "initial_state_id": "ps_open",
+  "states": [
+    {
+      "state_id": "ps_open",
+      "label": "fuse, battery, uniform and body part are checked on four shelves",
+      "visible": true,
+      "art_key": "prop_r5_bench_open",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_residue_held",
+      "label": "recovered medium residue from the clinic sits on the fourth shelf",
+      "visible": true,
+      "art_key": "prop_r5_bench_residue",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r5_repair_bench_recovered"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_inspect_the_repair_bench",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r5_repair_bench_rack",
+            "state_id": "ps_open"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r5_repair_bench_rack",
+            "state_id": "ps_residue_held"
+          }
+        }
+      ]
+    },
+    "opens": "conv_r5_repair_bench",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s023",
+    "seed_s156"
+  ]
+}

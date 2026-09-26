@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "id": "enc_r5_the_permit_inspection",
+  "display_name": "The Permit Inspection",
+  "context": {
+    "region_id": "region_r5_glasswing_ordinal",
+    "region_role": "permission_before_transformation",
+    "depth_band": 1,
+    "story_stage": "mid",
+    "time_of_day": "any"
+  },
+  "activation": {
+    "kind": "field_trigger",
+    "prop_id": "prop_r5_supply_rack",
+    "eligibility": {
+      "clock_at_least": {
+        "clock_id": "clock_institutional_response",
+        "stage_index": 1
+      }
+    },
+    "warning": {
+      "channel": "npc_warning",
+      "windows_before": 1
+    }
+  },
+  "visibility": {
+    "visible_in_field": false,
+    "shown_on_map": false
+  },
+  "roster": [
+    {
+      "entry_id": "slot_a",
+      "enemy_id": "enemy_permit_inspector",
+      "count": 2,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 1,
+      "spawn_at": "start"
+    },
+    {
+      "entry_id": "slot_b",
+      "enemy_id": "enemy_boot_contract_holder",
+      "count": 1,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 2,
+      "spawn_at": "start"
+    },
+    {
+      "entry_id": "slot_c",
+      "enemy_id": "enemy_worksheet_instructor",
+      "count": 2,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 3,
+      "spawn_at": "start"
+    }
+  ],
+  "target_priority": [
+    {
+      "enemy_id": "enemy_permit_inspector",
+      "role": "true_actor",
+      "priority": 1,
+      "only_when": {}
+    },
+    {
+      "enemy_id": "enemy_boot_contract_holder",
+      "role": "support",
+      "priority": 2,
+      "only_when": {}
+    },
+    {
+      "enemy_id": "enemy_worksheet_instructor",
+      "role": "support",
+      "priority": 3,
+      "only_when": {}
+    }
+  ],
+  "target_roles": [
+    {
+      "role": "record",
+      "surface_id": "doc_r5_supply_rack_receipt",
+      "descendants_only": true
+    },
+    {
+      "role": "resource_node",
+      "surface_id": "res_transformation_fuse",
+      "descendants_only": false
+    },
+    {
+      "role": "route",
+      "surface_id": "gate_g5_labor_pledge",
+      "descendants_only": false
+    }
+  ],
+  "group": null,
+  "allow": {
+    "escape": true,
+    "skip": false
+  },
+  "clock_pressure": [
+    {
+      "clock_id": "clock_institutional_response",
+      "ticks_on_start": 1,
+      "ticks_per_window": 1,
+      "ticks_on_end": 1
+    },
+    {
+      "clock_id": "clock_personal_collapse",
+      "ticks_on_start": 0,
+      "ticks_per_window": 1,
+      "ticks_on_end": 0
+    }
+  ],
+  "outcome": {
+    "on_victory": {
+      "effect_ids": [
+        "eff_r5_supply_permit_split_filed",
+        "eff_r5_name_hearing_filed"
+      ]
+    },
+    "on_escape": {
+      "effect_ids": []
+    },
+    "on_failure": {
+      "effect_ids": [],
+      "death_policy": "respawn_checkpoint"
+    },
+    "on_parley": {
+      "effect_ids": []
+    }
+  },
+  "world_effect": {
+    "region_state_tag": "r5_permit_split",
+    "prop_state_ids": [
+      "prop_r5_supply_rack",
+      "prop_r5_boot_contract_board"
+    ],
+    "unlock_gate_ids": [
+      "gate_g5_labor_pledge"
+    ]
+  },
+  "repeat": {
+    "policy": "once",
+    "reset_policy": "none",
+    "cooldown_windows": 0,
+    "depth_scaling": {
+      "per_band": {},
+      "max_bands": 0
+    }
+  },
+  "base_encounter_id": null,
+  "variant_overrides": {},
+  "remix_eligibility": {
+    "condition": {
+      "region_visited": {
+        "region_id": "region_r5_glasswing_ordinal"
+      }
+    },
+    "requires_depth_band_min": 0,
+    "requires_postgame": false
+  },
+  "lore_ref": "seed_s021",
+  "seed_ids": [
+    "seed_s021",
+    "seed_s142",
+    "seed_s113"
+  ]
+}

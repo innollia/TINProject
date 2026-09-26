@@ -1,402 +1,1396 @@
 {
-    "schema_version":  1,
-    "module_id":  "top_down_action_rpg",
-    "entry_region_id":  "region_h0_undersign_exchange",
-    "kinds":  [
-                  {
-                      "kind":  "ledger",
-                      "prefix":  "seed_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "seed_ledger",
-                                        "path":  "ledger/seed_ledger.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "seeds",
-                      "prefix":  "seed_s",
-                      "array":  true,
-                      "files":  [
-                                    {
-                                        "id":  "seed_group_core",
-                                        "path":  "seeds/seed_core.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "effects",
-                      "prefix":  "eff_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "eff_h0_arrival_declaration_filed",
-                                        "path":  "effects/eff_h0_arrival_declaration_filed.json"
-                                    },
-                                    {
-                                        "id":  "eff_r1_return_registry_logs_name",
-                                        "path":  "effects/eff_r1_return_registry_logs_name.json"
-                                    },
-                                    {
-                                        "id":  "eff_r1_wrong_return_witnessed",
-                                        "path":  "effects/eff_r1_wrong_return_witnessed.json"
-                                    },
-                                    {
-                                        "id":  "eff_r1_ash_debt_opens_chute",
-                                        "path":  "effects/eff_r1_ash_debt_opens_chute.json"
-                                    },
-                                    {
-                                        "id":  "eff_r8_concentration_registered",
-                                        "path":  "effects/eff_r8_concentration_registered.json"
-                                    },
-                                    {
-                                        "id":  "eff_r8_course_index_printed",
-                                        "path":  "effects/eff_r8_course_index_printed.json"
-                                    },
-                                    {
-                                        "id":  "eff_r8_ash_choir_defeated",
-                                        "path":  "effects/eff_r8_ash_choir_defeated.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "statuses",
-                      "prefix":  "st_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "st_recorded",
-                                        "path":  "statuses/st_recorded.json"
-                                    },
-                                    {
-                                        "id":  "st_concentration_load",
-                                        "path":  "statuses/st_concentration_load.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "actions",
-                      "prefix":  "act_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "act_ash_sweep",
-                                        "path":  "actions/act_ash_sweep.json"
-                                    },
-                                    {
-                                        "id":  "act_file_return_form",
-                                        "path":  "actions/act_file_return_form.json"
-                                    },
-                                    {
-                                        "id":  "act_weave_lash",
-                                        "path":  "actions/act_weave_lash.json"
-                                    },
-                                    {
-                                        "id":  "act_guard_set",
-                                        "path":  "actions/act_guard_set.json"
-                                    },
-                                    {
-                                        "id":  "act_dodge_shift",
-                                        "path":  "actions/act_dodge_shift.json"
-                                    },
-                                    {
-                                        "id":  "act_break_poise",
-                                        "path":  "actions/act_break_poise.json"
-                                    },
-                                    {
-                                        "id":  "act_ash_hound_lunge",
-                                        "path":  "actions/act_ash_hound_lunge.json"
-                                    },
-                                    {
-                                        "id":  "act_ember_clerk_stamp",
-                                        "path":  "actions/act_ember_clerk_stamp.json"
-                                    },
-                                    {
-                                        "id":  "act_fold_wall_verdict",
-                                        "path":  "actions/act_fold_wall_verdict.json"
-                                    },
-                                    {
-                                        "id":  "act_fold_wall_reading",
-                                        "path":  "actions/act_fold_wall_reading.json"
-                                    },
-                                    {
-                                        "id":  "act_ash_hound_snap",
-                                        "path":  "actions/act_ash_hound_snap.json"
-                                    },
-                                    {
-                                        "id":  "act_ember_clerk_refile",
-                                        "path":  "actions/act_ember_clerk_refile.json"
-                                    },
-                                    {
-                                        "id":  "act_fold_wall_measure",
-                                        "path":  "actions/act_fold_wall_measure.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "equipment",
-                      "prefix":  "equipment_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "equipment_ash_bound_stick",
-                                        "path":  "equipment/equipment_ash_bound_stick.json"
-                                    },
-                                    {
-                                        "id":  "equipment_kiln_ledger_seal",
-                                        "path":  "equipment/equipment_kiln_ledger_seal.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "items",
-                      "prefix":  "item_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "item_ash_thread_spool",
-                                        "path":  "items/item_ash_thread_spool.json"
-                                    },
-                                    {
-                                        "id":  "item_blank_return_form",
-                                        "path":  "items/item_blank_return_form.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "clocks",
-                      "prefix":  "clock_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "clock_institutional_response",
-                                        "path":  "clocks/clock_institutional_response.json"
-                                    },
-                                    {
-                                        "id":  "clock_contamination",
-                                        "path":  "clocks/clock_contamination.json"
-                                    },
-                                    {
-                                        "id":  "clock_public_record",
-                                        "path":  "clocks/clock_public_record.json"
-                                    },
-                                    {
-                                        "id":  "clock_resource_collapse",
-                                        "path":  "clocks/clock_resource_collapse.json"
-                                    },
-                                    {
-                                        "id":  "clock_personal_collapse",
-                                        "path":  "clocks/clock_personal_collapse.json"
-                                    },
-                                    {
-                                        "id":  "clock_crown_alignment",
-                                        "path":  "clocks/clock_crown_alignment.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "relationships",
-                      "prefix":  "rel_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "rel_01_ilyra_record",
-                                        "path":  "relationships/rel_01_ilyra_record.json"
-                                    },
-                                    {
-                                        "id":  "rel_05_nera_organ",
-                                        "path":  "relationships/rel_05_nera_organ.json"
-                                    },
-                                    {
-                                        "id":  "rel_11_cael_return",
-                                        "path":  "relationships/rel_11_cael_return.json"
-                                    },
-                                    {
-                                        "id":  "rel_20_mira_curriculum",
-                                        "path":  "relationships/rel_20_mira_curriculum.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "recovery",
-                      "prefix":  "rec_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "rec_r1_kiln_reentry",
-                                        "path":  "recovery/rec_r1_kiln_reentry.json"
-                                    },
-                                    {
-                                        "id":  "rec_r8_course_repeat",
-                                        "path":  "recovery/rec_r8_course_repeat.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "props",
-                      "prefix":  "prop_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "prop_h0_counterweight_map",
-                                        "path":  "props/prop_h0_counterweight_map.json"
-                                    },
-                                    {
-                                        "id":  "prop_h0_ration_counter",
-                                        "path":  "props/prop_h0_ration_counter.json"
-                                    },
-                                    {
-                                        "id":  "prop_r1_wrong_return_door",
-                                        "path":  "props/prop_r1_wrong_return_door.json"
-                                    },
-                                    {
-                                        "id":  "prop_r1_ash_garden_thread",
-                                        "path":  "props/prop_r1_ash_garden_thread.json"
-                                    },
-                                    {
-                                        "id":  "prop_r8_medium_store_shelf",
-                                        "path":  "props/prop_r8_medium_store_shelf.json"
-                                    },
-                                    {
-                                        "id":  "prop_r8_cut_chamber_wall",
-                                        "path":  "props/prop_r8_cut_chamber_wall.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "regions",
-                      "prefix":  "region_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "region_h0_undersign_exchange",
-                                        "path":  "regions/region_h0_undersign_exchange.json"
-                                    },
-                                    {
-                                        "id":  "region_r1_returning_kiln",
-                                        "path":  "regions/region_r1_returning_kiln.json"
-                                    },
-                                    {
-                                        "id":  "region_r8_folding_school",
-                                        "path":  "regions/region_r8_folding_school.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "npcs",
-                      "prefix":  "npc_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "npc_01_ilyra_senn",
-                                        "path":  "npcs/npc_01_ilyra_senn.json"
-                                    },
-                                    {
-                                        "id":  "npc_05_nera_voss",
-                                        "path":  "npcs/npc_05_nera_voss.json"
-                                    },
-                                    {
-                                        "id":  "npc_11_cael_ren",
-                                        "path":  "npcs/npc_11_cael_ren.json"
-                                    },
-                                    {
-                                        "id":  "npc_20_mira_vask",
-                                        "path":  "npcs/npc_20_mira_vask.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "conversations",
-                      "prefix":  "conv_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "conv_h0_return_desk",
-                                        "path":  "conversations/conv_h0_return_desk.json"
-                                    },
-                                    {
-                                        "id":  "conv_r1_wrong_return_hearing",
-                                        "path":  "conversations/conv_r1_wrong_return_hearing.json"
-                                    },
-                                    {
-                                        "id":  "conv_r8_course_index_desk",
-                                        "path":  "conversations/conv_r8_course_index_desk.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "documents",
-                      "prefix":  "doc_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "doc_r1_wrong_return_log",
-                                        "path":  "documents/doc_r1_wrong_return_log.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "phases",
-                      "prefix":  "phase_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "phase_fold_wall_second_hearing",
-                                        "path":  "phases/phase_fold_wall_second_hearing.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "enemies",
-                      "prefix":  "enemy_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "enemy_ash_hound",
-                                        "path":  "enemies/enemy_ash_hound.json"
-                                    },
-                                    {
-                                        "id":  "enemy_ember_clerk",
-                                        "path":  "enemies/enemy_ember_clerk.json"
-                                    },
-                                    {
-                                        "id":  "enemy_fold_wall",
-                                        "path":  "enemies/enemy_fold_wall.json"
-                                    }
-                                ]
-                  },
-                  {
-                      "kind":  "encounters",
-                      "prefix":  "enc_",
-                      "array":  false,
-                      "files":  [
-                                    {
-                                        "id":  "enc_r1_ash_choir",
-                                        "path":  "encounters/enc_r1_ash_choir.json"
-                                    },
-                                    {
-                                        "id":  "enc_r1_door_role_test",
-                                        "path":  "encounters/enc_r1_door_role_test.json"
-                                    },
-                                    {
-                                        "id":  "enc_r8_fold_that_refuses_the_hand",
-                                        "path":  "encounters/enc_r8_fold_that_refuses_the_hand.json"
-                                    }
-                                ]
-                  }
-              ],
-    "registered_slots":  [
-
-                         ],
-    "options":  {
-                    "world_flag_prefix":  "world_",
-                    "max_world_flags":  24,
-                    "closure_record_cap":  4096,
-                    "save_payload_bytes_cap":  262144,
-                    "history_list_cap":  64,
-                    "document_page_line_cap":  9,
-                    "max_equipment_definitions":  64,
-                    "max_item_definitions":  64
+    "schema_version": 1,
+    "module_id": "top_down_action_rpg",
+    "entry_region_id": "region_h0_undersign_exchange",
+    "kinds": [
+        {
+            "kind": "ledger",
+            "prefix": "seed_",
+            "array": false,
+            "files": [
+                {
+                    "id": "seed_ledger",
+                    "path": "ledger/seed_ledger.json"
                 }
+            ]
+        },
+        {
+            "kind": "seeds",
+            "prefix": "seed_s",
+            "array": true,
+            "files": [
+                {
+                    "id": "seed_group_catalog",
+                    "path": "seeds/seed_core.json"
+                }
+            ]
+        },
+        {
+            "kind": "effects",
+            "prefix": "eff_",
+            "array": false,
+            "files": [
+                {
+                    "id": "eff_h0_arrival_declaration_filed",
+                    "path": "effects/eff_h0_arrival_declaration_filed.json"
+                },
+                {
+                    "id": "eff_r1_ash_debt_opens_chute",
+                    "path": "effects/eff_r1_ash_debt_opens_chute.json"
+                },
+                {
+                    "id": "eff_r1_return_registry_logs_name",
+                    "path": "effects/eff_r1_return_registry_logs_name.json"
+                },
+                {
+                    "id": "eff_r1_wrong_return_witnessed",
+                    "path": "effects/eff_r1_wrong_return_witnessed.json"
+                },
+                {
+                    "id": "eff_r2_census_third_count_filed",
+                    "path": "effects/eff_r2_census_third_count_filed.json"
+                },
+                {
+                    "id": "eff_r2_circulation_ledger_filed",
+                    "path": "effects/eff_r2_circulation_ledger_filed.json"
+                },
+                {
+                    "id": "eff_r2_circulation_ledger_read",
+                    "path": "effects/eff_r2_circulation_ledger_read.json"
+                },
+                {
+                    "id": "eff_r2_disperser_reading_filed",
+                    "path": "effects/eff_r2_disperser_reading_filed.json"
+                },
+                {
+                    "id": "eff_r2_emergency_convoy_rostered",
+                    "path": "effects/eff_r2_emergency_convoy_rostered.json"
+                },
+                {
+                    "id": "eff_r2_flood_refuge_opened",
+                    "path": "effects/eff_r2_flood_refuge_opened.json"
+                },
+                {
+                    "id": "eff_r2_seed_vault_ledger_read",
+                    "path": "effects/eff_r2_seed_vault_ledger_read.json"
+                },
+                {
+                    "id": "eff_r2_seed_vault_sample_filed",
+                    "path": "effects/eff_r2_seed_vault_sample_filed.json"
+                },
+                {
+                    "id": "eff_r2_water_ration_read",
+                    "path": "effects/eff_r2_water_ration_read.json"
+                },
+                {
+                    "id": "eff_r2_water_recognition_filed",
+                    "path": "effects/eff_r2_water_recognition_filed.json"
+                },
+                {
+                    "id": "eff_r3_boiler_lift_opened",
+                    "path": "effects/eff_r3_boiler_lift_opened.json"
+                },
+                {
+                    "id": "eff_r3_care_train_rostered",
+                    "path": "effects/eff_r3_care_train_rostered.json"
+                },
+                {
+                    "id": "eff_r3_consent_record_filed",
+                    "path": "effects/eff_r3_consent_record_filed.json"
+                },
+                {
+                    "id": "eff_r3_emergency_care_received",
+                    "path": "effects/eff_r3_emergency_care_received.json"
+                },
+                {
+                    "id": "eff_r3_latency_receipt_filed",
+                    "path": "effects/eff_r3_latency_receipt_filed.json"
+                },
+                {
+                    "id": "eff_r3_mana_profile_filed",
+                    "path": "effects/eff_r3_mana_profile_filed.json"
+                },
+                {
+                    "id": "eff_r3_return_registry_handoff",
+                    "path": "effects/eff_r3_return_registry_handoff.json"
+                },
+                {
+                    "id": "eff_r3_trial_value_read",
+                    "path": "effects/eff_r3_trial_value_read.json"
+                },
+                {
+                    "id": "eff_r3_vow_ledger_filed",
+                    "path": "effects/eff_r3_vow_ledger_filed.json"
+                },
+                {
+                    "id": "eff_r4_care_outcome_filed",
+                    "path": "effects/eff_r4_care_outcome_filed.json"
+                },
+                {
+                    "id": "eff_r4_crown_stair_opened",
+                    "path": "effects/eff_r4_crown_stair_opened.json"
+                },
+                {
+                    "id": "eff_r4_glossary_slot_filled",
+                    "path": "effects/eff_r4_glossary_slot_filled.json"
+                },
+                {
+                    "id": "eff_r4_operator_memory_classified",
+                    "path": "effects/eff_r4_operator_memory_classified.json"
+                },
+                {
+                    "id": "eff_r4_translation_precedence_filed",
+                    "path": "effects/eff_r4_translation_precedence_filed.json"
+                },
+                {
+                    "id": "eff_r5_care_train_consent",
+                    "path": "effects/eff_r5_care_train_consent.json"
+                },
+                {
+                    "id": "eff_r5_courier_shaft_consent",
+                    "path": "effects/eff_r5_courier_shaft_consent.json"
+                },
+                {
+                    "id": "eff_r5_folding_school_approach_opened",
+                    "path": "effects/eff_r5_folding_school_approach_opened.json"
+                },
+                {
+                    "id": "eff_r5_gantry_cradle_loaded",
+                    "path": "effects/eff_r5_gantry_cradle_loaded.json"
+                },
+                {
+                    "id": "eff_r5_name_hearing_filed",
+                    "path": "effects/eff_r5_name_hearing_filed.json"
+                },
+                {
+                    "id": "eff_r5_repair_bench_recovered",
+                    "path": "effects/eff_r5_repair_bench_recovered.json"
+                },
+                {
+                    "id": "eff_r5_supply_gantry_opened",
+                    "path": "effects/eff_r5_supply_gantry_opened.json"
+                },
+                {
+                    "id": "eff_r5_supply_permit_split_filed",
+                    "path": "effects/eff_r5_supply_permit_split_filed.json"
+                },
+                {
+                    "id": "eff_r5_supply_rack_issued",
+                    "path": "effects/eff_r5_supply_rack_issued.json"
+                },
+                {
+                    "id": "eff_r5_under_rail_shunt_opened",
+                    "path": "effects/eff_r5_under_rail_shunt_opened.json"
+                },
+                {
+                    "id": "eff_r6_ash_chute_opened",
+                    "path": "effects/eff_r6_ash_chute_opened.json"
+                },
+                {
+                    "id": "eff_r6_drainage_dark_opened",
+                    "path": "effects/eff_r6_drainage_dark_opened.json"
+                },
+                {
+                    "id": "eff_r6_medicine_ferry_opened",
+                    "path": "effects/eff_r6_medicine_ferry_opened.json"
+                },
+                {
+                    "id": "eff_r6_organ_quorum_filed",
+                    "path": "effects/eff_r6_organ_quorum_filed.json"
+                },
+                {
+                    "id": "eff_r6_pump_primed",
+                    "path": "effects/eff_r6_pump_primed.json"
+                },
+                {
+                    "id": "eff_r6_residue_recovery_filed",
+                    "path": "effects/eff_r6_residue_recovery_filed.json"
+                },
+                {
+                    "id": "eff_r6_under_rail_shunt_opened",
+                    "path": "effects/eff_r6_under_rail_shunt_opened.json"
+                },
+                {
+                    "id": "eff_r7_boundary_shortcut_opened",
+                    "path": "effects/eff_r7_boundary_shortcut_opened.json"
+                },
+                {
+                    "id": "eff_r7_boundary_witness_filed",
+                    "path": "effects/eff_r7_boundary_witness_filed.json"
+                },
+                {
+                    "id": "eff_r7_contract_placed_filed",
+                    "path": "effects/eff_r7_contract_placed_filed.json"
+                },
+                {
+                    "id": "eff_r7_crown_precedence_filed",
+                    "path": "effects/eff_r7_crown_precedence_filed.json"
+                },
+                {
+                    "id": "eff_r7_crown_stair_opened",
+                    "path": "effects/eff_r7_crown_stair_opened.json"
+                },
+                {
+                    "id": "eff_r7_drainage_dark_opened",
+                    "path": "effects/eff_r7_drainage_dark_opened.json"
+                },
+                {
+                    "id": "eff_r7_settlement_vote_filed",
+                    "path": "effects/eff_r7_settlement_vote_filed.json"
+                },
+                {
+                    "id": "eff_r7_supply_gantry_arrived",
+                    "path": "effects/eff_r7_supply_gantry_arrived.json"
+                },
+                {
+                    "id": "eff_r7_wall_mandate_filed",
+                    "path": "effects/eff_r7_wall_mandate_filed.json"
+                },
+                {
+                    "id": "eff_r8_ash_choir_defeated",
+                    "path": "effects/eff_r8_ash_choir_defeated.json"
+                },
+                {
+                    "id": "eff_r8_concentration_registered",
+                    "path": "effects/eff_r8_concentration_registered.json"
+                },
+                {
+                    "id": "eff_r8_course_index_printed",
+                    "path": "effects/eff_r8_course_index_printed.json"
+                }
+            ]
+        },
+        {
+            "kind": "statuses",
+            "prefix": "st_",
+            "array": false,
+            "files": [
+                {
+                    "id": "st_concentration_load",
+                    "path": "statuses/st_concentration_load.json"
+                },
+                {
+                    "id": "st_contract_bound",
+                    "path": "statuses/st_contract_bound.json"
+                },
+                {
+                    "id": "st_medium_residue",
+                    "path": "statuses/st_medium_residue.json"
+                },
+                {
+                    "id": "st_misfolded",
+                    "path": "statuses/st_misfolded.json"
+                },
+                {
+                    "id": "st_overflowed",
+                    "path": "statuses/st_overflowed.json"
+                },
+                {
+                    "id": "st_recorded",
+                    "path": "statuses/st_recorded.json"
+                }
+            ]
+        },
+        {
+            "kind": "actions",
+            "prefix": "act_",
+            "array": false,
+            "files": [
+                {
+                    "id": "act_ash_hound_lunge",
+                    "path": "actions/act_ash_hound_lunge.json"
+                },
+                {
+                    "id": "act_ash_hound_snap",
+                    "path": "actions/act_ash_hound_snap.json"
+                },
+                {
+                    "id": "act_ash_sweep",
+                    "path": "actions/act_ash_sweep.json"
+                },
+                {
+                    "id": "act_boot_contract_holder_binding_clause",
+                    "path": "actions/act_boot_contract_holder_binding_clause.json"
+                },
+                {
+                    "id": "act_break_poise",
+                    "path": "actions/act_break_poise.json"
+                },
+                {
+                    "id": "act_cantor_overflow",
+                    "path": "actions/act_cantor_overflow.json"
+                },
+                {
+                    "id": "act_cantor_sheet_lay",
+                    "path": "actions/act_cantor_sheet_lay.json"
+                },
+                {
+                    "id": "act_cantor_void_gash",
+                    "path": "actions/act_cantor_void_gash.json"
+                },
+                {
+                    "id": "act_circulator_stack_collect",
+                    "path": "actions/act_circulator_stack_collect.json"
+                },
+                {
+                    "id": "act_craft_sheet_snap",
+                    "path": "actions/act_craft_sheet_snap.json"
+                },
+                {
+                    "id": "act_crown_fragment_echo_recital",
+                    "path": "actions/act_crown_fragment_echo_recital.json"
+                },
+                {
+                    "id": "act_cure_queue_clerk_enqueue",
+                    "path": "actions/act_cure_queue_clerk_enqueue.json"
+                },
+                {
+                    "id": "act_debt_collector_call_in",
+                    "path": "actions/act_debt_collector_call_in.json"
+                },
+                {
+                    "id": "act_disperse_reading",
+                    "path": "actions/act_disperse_reading.json"
+                },
+                {
+                    "id": "act_disperser_warden_purge_pass",
+                    "path": "actions/act_disperser_warden_purge_pass.json"
+                },
+                {
+                    "id": "act_dodge_shift",
+                    "path": "actions/act_dodge_shift.json"
+                },
+                {
+                    "id": "act_ember_clerk_refile",
+                    "path": "actions/act_ember_clerk_refile.json"
+                },
+                {
+                    "id": "act_ember_clerk_stamp",
+                    "path": "actions/act_ember_clerk_stamp.json"
+                },
+                {
+                    "id": "act_file_return_form",
+                    "path": "actions/act_file_return_form.json"
+                },
+                {
+                    "id": "act_fold_brace",
+                    "path": "actions/act_fold_brace.json"
+                },
+                {
+                    "id": "act_fold_wall_measure",
+                    "path": "actions/act_fold_wall_measure.json"
+                },
+                {
+                    "id": "act_fold_wall_reading",
+                    "path": "actions/act_fold_wall_reading.json"
+                },
+                {
+                    "id": "act_fold_wall_verdict",
+                    "path": "actions/act_fold_wall_verdict.json"
+                },
+                {
+                    "id": "act_glossary_arbiter_precedence_rule",
+                    "path": "actions/act_glossary_arbiter_precedence_rule.json"
+                },
+                {
+                    "id": "act_guard_set",
+                    "path": "actions/act_guard_set.json"
+                },
+                {
+                    "id": "act_kiln_door_ward_seal",
+                    "path": "actions/act_kiln_door_ward_seal.json"
+                },
+                {
+                    "id": "act_latency_bell_ringing",
+                    "path": "actions/act_latency_bell_ringing.json"
+                },
+                {
+                    "id": "act_mana_triage_substitute",
+                    "path": "actions/act_mana_triage_substitute.json"
+                },
+                {
+                    "id": "act_organ_quorum_witness_count",
+                    "path": "actions/act_organ_quorum_witness_count.json"
+                },
+                {
+                    "id": "act_permit_inspector_inspection",
+                    "path": "actions/act_permit_inspector_inspection.json"
+                },
+                {
+                    "id": "act_registry_paper_shove",
+                    "path": "actions/act_registry_paper_shove.json"
+                },
+                {
+                    "id": "act_scheduled_intervention_step",
+                    "path": "actions/act_scheduled_intervention_step.json"
+                },
+                {
+                    "id": "act_seam_arbiter_boundary_ruling",
+                    "path": "actions/act_seam_arbiter_boundary_ruling.json"
+                },
+                {
+                    "id": "act_void_cut_gash",
+                    "path": "actions/act_void_cut_gash.json"
+                },
+                {
+                    "id": "act_weave_lash",
+                    "path": "actions/act_weave_lash.json"
+                },
+                {
+                    "id": "act_weave_sheet_lay",
+                    "path": "actions/act_weave_sheet_lay.json"
+                },
+                {
+                    "id": "act_worksheet_instructor_grade_mark",
+                    "path": "actions/act_worksheet_instructor_grade_mark.json"
+                },
+                {
+                    "id": "act_wrong_return_scribe_entry_add",
+                    "path": "actions/act_wrong_return_scribe_entry_add.json"
+                }
+            ]
+        },
+        {
+            "kind": "equipment",
+            "prefix": "equipment_",
+            "array": false,
+            "files": [
+                {
+                    "id": "equipment_ash_bound_stick",
+                    "path": "equipment/equipment_ash_bound_stick.json"
+                },
+                {
+                    "id": "equipment_kiln_ledger_seal",
+                    "path": "equipment/equipment_kiln_ledger_seal.json"
+                },
+                {
+                    "id": "equipment_r6_residue_veil",
+                    "path": "equipment/equipment_r6_residue_veil.json"
+                },
+                {
+                    "id": "equipment_r7_wall_charter",
+                    "path": "equipment/equipment_r7_wall_charter.json"
+                },
+                {
+                    "id": "equipment_r8_fold_brace",
+                    "path": "equipment/equipment_r8_fold_brace.json"
+                },
+                {
+                    "id": "equipment_rr_habit_loop",
+                    "path": "equipment/equipment_rr_habit_loop.json"
+                }
+            ]
+        },
+        {
+            "kind": "items",
+            "prefix": "item_",
+            "array": false,
+            "files": [
+                {
+                    "id": "item_ash_thread_spool",
+                    "path": "items/item_ash_thread_spool.json"
+                },
+                {
+                    "id": "item_blank_return_form",
+                    "path": "items/item_blank_return_form.json"
+                }
+            ]
+        },
+        {
+            "kind": "clocks",
+            "prefix": "clock_",
+            "array": false,
+            "files": [
+                {
+                    "id": "clock_contamination",
+                    "path": "clocks/clock_contamination.json"
+                },
+                {
+                    "id": "clock_crown_alignment",
+                    "path": "clocks/clock_crown_alignment.json"
+                },
+                {
+                    "id": "clock_institutional_response",
+                    "path": "clocks/clock_institutional_response.json"
+                },
+                {
+                    "id": "clock_personal_collapse",
+                    "path": "clocks/clock_personal_collapse.json"
+                },
+                {
+                    "id": "clock_public_record",
+                    "path": "clocks/clock_public_record.json"
+                },
+                {
+                    "id": "clock_resource_collapse",
+                    "path": "clocks/clock_resource_collapse.json"
+                }
+            ]
+        },
+        {
+            "kind": "relationships",
+            "prefix": "rel_",
+            "array": false,
+            "files": [
+                {
+                    "id": "rel_01_ilyra_record",
+                    "path": "relationships/rel_01_ilyra_record.json"
+                },
+                {
+                    "id": "rel_02_orrin_intake",
+                    "path": "relationships/rel_02_orrin_intake.json"
+                },
+                {
+                    "id": "rel_03_veya_audit",
+                    "path": "relationships/rel_03_veya_audit.json"
+                },
+                {
+                    "id": "rel_04_sable_support",
+                    "path": "relationships/rel_04_sable_support.json"
+                },
+                {
+                    "id": "rel_05_nera_organ",
+                    "path": "relationships/rel_05_nera_organ.json"
+                },
+                {
+                    "id": "rel_06_tamas_term",
+                    "path": "relationships/rel_06_tamas_term.json"
+                },
+                {
+                    "id": "rel_07_bryn_route",
+                    "path": "relationships/rel_07_bryn_route.json"
+                },
+                {
+                    "id": "rel_08_meral_ration",
+                    "path": "relationships/rel_08_meral_ration.json"
+                },
+                {
+                    "id": "rel_09_perrin_ward",
+                    "path": "relationships/rel_09_perrin_ward.json"
+                },
+                {
+                    "id": "rel_10_juno_channel",
+                    "path": "relationships/rel_10_juno_channel.json"
+                },
+                {
+                    "id": "rel_11_cael_return",
+                    "path": "relationships/rel_11_cael_return.json"
+                },
+                {
+                    "id": "rel_12_ravenna_seat",
+                    "path": "relationships/rel_12_ravenna_seat.json"
+                },
+                {
+                    "id": "rel_13_tovan_triage",
+                    "path": "relationships/rel_13_tovan_triage.json"
+                },
+                {
+                    "id": "rel_14_eda_shift",
+                    "path": "relationships/rel_14_eda_shift.json"
+                },
+                {
+                    "id": "rel_20_mira_curriculum",
+                    "path": "relationships/rel_20_mira_curriculum.json"
+                }
+            ]
+        },
+        {
+            "kind": "recovery",
+            "prefix": "rec_",
+            "array": false,
+            "files": [
+                {
+                    "id": "rec_r1_kiln_reentry",
+                    "path": "recovery/rec_r1_kiln_reentry.json"
+                },
+                {
+                    "id": "rec_r2_census_clone",
+                    "path": "recovery/rec_r2_census_clone.json"
+                },
+                {
+                    "id": "rec_r3_hospice_respawn",
+                    "path": "recovery/rec_r3_hospice_respawn.json"
+                },
+                {
+                    "id": "rec_r4_crown_continuity",
+                    "path": "recovery/rec_r4_crown_continuity.json"
+                },
+                {
+                    "id": "rec_r7_verge_loop",
+                    "path": "recovery/rec_r7_verge_loop.json"
+                },
+                {
+                    "id": "rec_r8_course_repeat",
+                    "path": "recovery/rec_r8_course_repeat.json"
+                },
+                {
+                    "id": "rec_r8_lineage_return",
+                    "path": "recovery/rec_r8_lineage_return.json"
+                }
+            ]
+        },
+        {
+            "kind": "props",
+            "prefix": "prop_",
+            "array": false,
+            "files": [
+                {
+                    "id": "prop_h0_counterweight_map",
+                    "path": "props/prop_h0_counterweight_map.json"
+                },
+                {
+                    "id": "prop_h0_ration_counter",
+                    "path": "props/prop_h0_ration_counter.json"
+                },
+                {
+                    "id": "prop_r1_ash_garden_thread",
+                    "path": "props/prop_r1_ash_garden_thread.json"
+                },
+                {
+                    "id": "prop_r1_wrong_return_door",
+                    "path": "props/prop_r1_wrong_return_door.json"
+                },
+                {
+                    "id": "prop_r2_circulator_stack",
+                    "path": "props/prop_r2_circulator_stack.json"
+                },
+                {
+                    "id": "prop_r2_disperser_housing",
+                    "path": "props/prop_r2_disperser_housing.json"
+                },
+                {
+                    "id": "prop_r2_root_bridge_anchor",
+                    "path": "props/prop_r2_root_bridge_anchor.json"
+                },
+                {
+                    "id": "prop_r2_seed_vault_shelf",
+                    "path": "props/prop_r2_seed_vault_shelf.json"
+                },
+                {
+                    "id": "prop_r2_waterline_mark",
+                    "path": "props/prop_r2_waterline_mark.json"
+                },
+                {
+                    "id": "prop_r3_latency_bell",
+                    "path": "props/prop_r3_latency_bell.json"
+                },
+                {
+                    "id": "prop_r3_mana_profile_board",
+                    "path": "props/prop_r3_mana_profile_board.json"
+                },
+                {
+                    "id": "prop_r3_mercy_engine_valve",
+                    "path": "props/prop_r3_mercy_engine_valve.json"
+                },
+                {
+                    "id": "prop_r3_vow_ledger_desk",
+                    "path": "props/prop_r3_vow_ledger_desk.json"
+                },
+                {
+                    "id": "prop_r4_crown_fragment_plinth",
+                    "path": "props/prop_r4_crown_fragment_plinth.json"
+                },
+                {
+                    "id": "prop_r4_glossary_slot",
+                    "path": "props/prop_r4_glossary_slot.json"
+                },
+                {
+                    "id": "prop_r4_low_level_stacks",
+                    "path": "props/prop_r4_low_level_stacks.json"
+                },
+                {
+                    "id": "prop_r4_weight_lift_counter",
+                    "path": "props/prop_r4_weight_lift_counter.json"
+                },
+                {
+                    "id": "prop_r5_boot_contract_board",
+                    "path": "props/prop_r5_boot_contract_board.json"
+                },
+                {
+                    "id": "prop_r5_gantry_cradle",
+                    "path": "props/prop_r5_gantry_cradle.json"
+                },
+                {
+                    "id": "prop_r5_repair_bench_rack",
+                    "path": "props/prop_r5_repair_bench_rack.json"
+                },
+                {
+                    "id": "prop_r5_supply_rack",
+                    "path": "props/prop_r5_supply_rack.json"
+                },
+                {
+                    "id": "prop_r6_cure_queue_board",
+                    "path": "props/prop_r6_cure_queue_board.json"
+                },
+                {
+                    "id": "prop_r6_drainage_pump",
+                    "path": "props/prop_r6_drainage_pump.json"
+                },
+                {
+                    "id": "prop_r6_heart_petition_table",
+                    "path": "props/prop_r6_heart_petition_table.json"
+                },
+                {
+                    "id": "prop_r6_organ_intake_counter",
+                    "path": "props/prop_r6_organ_intake_counter.json"
+                },
+                {
+                    "id": "prop_r7_crown_position_plinth",
+                    "path": "props/prop_r7_crown_position_plinth.json"
+                },
+                {
+                    "id": "prop_r7_outer_wall_seam",
+                    "path": "props/prop_r7_outer_wall_seam.json"
+                },
+                {
+                    "id": "prop_r7_shelter_ring_ledger",
+                    "path": "props/prop_r7_shelter_ring_ledger.json"
+                },
+                {
+                    "id": "prop_r7_storm_verge_cut",
+                    "path": "props/prop_r7_storm_verge_cut.json"
+                },
+                {
+                    "id": "prop_r8_cut_chamber_wall",
+                    "path": "props/prop_r8_cut_chamber_wall.json"
+                },
+                {
+                    "id": "prop_r8_medium_store_shelf",
+                    "path": "props/prop_r8_medium_store_shelf.json"
+                }
+            ]
+        },
+        {
+            "kind": "regions",
+            "prefix": "region_",
+            "array": false,
+            "files": [
+                {
+                    "id": "region_h0_undersign_exchange",
+                    "path": "regions/region_h0_undersign_exchange.json"
+                },
+                {
+                    "id": "region_r1_returning_kiln",
+                    "path": "regions/region_r1_returning_kiln.json"
+                },
+                {
+                    "id": "region_r2_siltglass_commons",
+                    "path": "regions/region_r2_siltglass_commons.json"
+                },
+                {
+                    "id": "region_r3_bellhouse_hospice",
+                    "path": "regions/region_r3_bellhouse_hospice.json"
+                },
+                {
+                    "id": "region_r4_crownwell_archive",
+                    "path": "regions/region_r4_crownwell_archive.json"
+                },
+                {
+                    "id": "region_r5_glasswing_ordinal",
+                    "path": "regions/region_r5_glasswing_ordinal.json"
+                },
+                {
+                    "id": "region_r6_gristmarket_ward",
+                    "path": "regions/region_r6_gristmarket_ward.json"
+                },
+                {
+                    "id": "region_r7_hollow_orchard",
+                    "path": "regions/region_r7_hollow_orchard.json"
+                },
+                {
+                    "id": "region_r8_folding_school",
+                    "path": "regions/region_r8_folding_school.json"
+                }
+            ]
+        },
+        {
+            "kind": "npcs",
+            "prefix": "npc_",
+            "array": false,
+            "files": [
+                {
+                    "id": "npc_01_ilyra_senn",
+                    "path": "npcs/npc_01_ilyra_senn.json"
+                },
+                {
+                    "id": "npc_02_orrin_kest",
+                    "path": "npcs/npc_02_orrin_kest.json"
+                },
+                {
+                    "id": "npc_03_veya_morcant",
+                    "path": "npcs/npc_03_veya_morcant.json"
+                },
+                {
+                    "id": "npc_04_sable_halm",
+                    "path": "npcs/npc_04_sable_halm.json"
+                },
+                {
+                    "id": "npc_05_nera_voss",
+                    "path": "npcs/npc_05_nera_voss.json"
+                },
+                {
+                    "id": "npc_06_tamas_quill",
+                    "path": "npcs/npc_06_tamas_quill.json"
+                },
+                {
+                    "id": "npc_07_bryn_oskel",
+                    "path": "npcs/npc_07_bryn_oskel.json"
+                },
+                {
+                    "id": "npc_08_meral_dune",
+                    "path": "npcs/npc_08_meral_dune.json"
+                },
+                {
+                    "id": "npc_09_perrin_lask",
+                    "path": "npcs/npc_09_perrin_lask.json"
+                },
+                {
+                    "id": "npc_10_juno_caster",
+                    "path": "npcs/npc_10_juno_caster.json"
+                },
+                {
+                    "id": "npc_11_cael_ren",
+                    "path": "npcs/npc_11_cael_ren.json"
+                },
+                {
+                    "id": "npc_12_ravenna_holt",
+                    "path": "npcs/npc_12_ravenna_holt.json"
+                },
+                {
+                    "id": "npc_13_tovan_reed",
+                    "path": "npcs/npc_13_tovan_reed.json"
+                },
+                {
+                    "id": "npc_14_eda_marrow",
+                    "path": "npcs/npc_14_eda_marrow.json"
+                },
+                {
+                    "id": "npc_20_mira_vask",
+                    "path": "npcs/npc_20_mira_vask.json"
+                },
+                {
+                    "id": "npc_21_halen_osk",
+                    "path": "npcs/npc_21_halen_osk.json"
+                },
+                {
+                    "id": "npc_22_iven_marrow",
+                    "path": "npcs/npc_22_iven_marrow.json"
+                },
+                {
+                    "id": "npc_23_turo_bex",
+                    "path": "npcs/npc_23_turo_bex.json"
+                },
+                {
+                    "id": "npc_24_perri_lowe",
+                    "path": "npcs/npc_24_perri_lowe.json"
+                },
+                {
+                    "id": "npc_25_jano_fesk",
+                    "path": "npcs/npc_25_jano_fesk.json"
+                },
+                {
+                    "id": "npc_26_cael_orin",
+                    "path": "npcs/npc_26_cael_orin.json"
+                }
+            ]
+        },
+        {
+            "kind": "conversations",
+            "prefix": "conv_",
+            "array": false,
+            "files": [
+                {
+                    "id": "conv_h0_appeal_chamber",
+                    "path": "conversations/conv_h0_appeal_chamber.json"
+                },
+                {
+                    "id": "conv_h0_crier_thread",
+                    "path": "conversations/conv_h0_crier_thread.json"
+                },
+                {
+                    "id": "conv_h0_crown_well",
+                    "path": "conversations/conv_h0_crown_well.json"
+                },
+                {
+                    "id": "conv_h0_glossary_counter",
+                    "path": "conversations/conv_h0_glossary_counter.json"
+                },
+                {
+                    "id": "conv_h0_ration_counter",
+                    "path": "conversations/conv_h0_ration_counter.json"
+                },
+                {
+                    "id": "conv_h0_return_desk",
+                    "path": "conversations/conv_h0_return_desk.json"
+                },
+                {
+                    "id": "conv_h0_route_board",
+                    "path": "conversations/conv_h0_route_board.json"
+                },
+                {
+                    "id": "conv_r1_cold_relay",
+                    "path": "conversations/conv_r1_cold_relay.json"
+                },
+                {
+                    "id": "conv_r1_intake_desk",
+                    "path": "conversations/conv_r1_intake_desk.json"
+                },
+                {
+                    "id": "conv_r1_wrong_return_hearing",
+                    "path": "conversations/conv_r1_wrong_return_hearing.json"
+                },
+                {
+                    "id": "conv_r2_water_round",
+                    "path": "conversations/conv_r2_water_round.json"
+                },
+                {
+                    "id": "conv_r3_intake_triage",
+                    "path": "conversations/conv_r3_intake_triage.json"
+                },
+                {
+                    "id": "conv_r4_translation_desk",
+                    "path": "conversations/conv_r4_translation_desk.json"
+                },
+                {
+                    "id": "conv_r5_boot_contract",
+                    "path": "conversations/conv_r5_boot_contract.json"
+                },
+                {
+                    "id": "conv_r6_organ_intake",
+                    "path": "conversations/conv_r6_organ_intake.json"
+                },
+                {
+                    "id": "conv_r7_wall_phase_survey",
+                    "path": "conversations/conv_r7_wall_phase_survey.json"
+                },
+                {
+                    "id": "conv_r8_art_testimony",
+                    "path": "conversations/conv_r8_art_testimony.json"
+                },
+                {
+                    "id": "conv_r8_circulation_board",
+                    "path": "conversations/conv_r8_circulation_board.json"
+                },
+                {
+                    "id": "conv_r8_course_index_desk",
+                    "path": "conversations/conv_r8_course_index_desk.json"
+                },
+                {
+                    "id": "conv_r8_cut_chamber",
+                    "path": "conversations/conv_r8_cut_chamber.json"
+                },
+                {
+                    "id": "conv_r8_labor_desk",
+                    "path": "conversations/conv_r8_labor_desk.json"
+                },
+                {
+                    "id": "conv_r8_lineage_desk",
+                    "path": "conversations/conv_r8_lineage_desk.json"
+                },
+                {
+                    "id": "conv_r8_lineage_hall",
+                    "path": "conversations/conv_r8_lineage_hall.json"
+                },
+                {
+                    "id": "conv_r8_medium_store",
+                    "path": "conversations/conv_r8_medium_store.json"
+                },
+                {
+                    "id": "conv_r8_medium_workspace",
+                    "path": "conversations/conv_r8_medium_workspace.json"
+                },
+                {
+                    "id": "conv_r8_weave_yard",
+                    "path": "conversations/conv_r8_weave_yard.json"
+                }
+            ]
+        },
+        {
+            "kind": "documents",
+            "prefix": "doc_",
+            "array": false,
+            "files": [
+                {
+                    "id": "doc_r1_wrong_return_log",
+                    "path": "documents/doc_r1_wrong_return_log.json"
+                },
+                {
+                    "id": "doc_r2_circulation_ledger",
+                    "path": "documents/doc_r2_circulation_ledger.json"
+                },
+                {
+                    "id": "doc_r2_seed_vault_ledger",
+                    "path": "documents/doc_r2_seed_vault_ledger.json"
+                },
+                {
+                    "id": "doc_r2_water_ration_sheet",
+                    "path": "documents/doc_r2_water_ration_sheet.json"
+                },
+                {
+                    "id": "doc_r3_mana_profile_triage_board",
+                    "path": "documents/doc_r3_mana_profile_triage_board.json"
+                },
+                {
+                    "id": "doc_r3_mercy_engine_trial_value",
+                    "path": "documents/doc_r3_mercy_engine_trial_value.json"
+                },
+                {
+                    "id": "doc_r4_contradictory_translation",
+                    "path": "documents/doc_r4_contradictory_translation.json"
+                },
+                {
+                    "id": "doc_r4_glossary_slot_register",
+                    "path": "documents/doc_r4_glossary_slot_register.json"
+                },
+                {
+                    "id": "doc_r5_boot_name_hearing",
+                    "path": "documents/doc_r5_boot_name_hearing.json"
+                },
+                {
+                    "id": "doc_r5_supply_rack_receipt",
+                    "path": "documents/doc_r5_supply_rack_receipt.json"
+                },
+                {
+                    "id": "doc_r6_cure_debt_ledger",
+                    "path": "documents/doc_r6_cure_debt_ledger.json"
+                },
+                {
+                    "id": "doc_r6_custody_split_deed",
+                    "path": "documents/doc_r6_custody_split_deed.json"
+                },
+                {
+                    "id": "doc_r7_crown_shadow_manifest",
+                    "path": "documents/doc_r7_crown_shadow_manifest.json"
+                },
+                {
+                    "id": "doc_r7_wall_phase_ledger",
+                    "path": "documents/doc_r7_wall_phase_ledger.json"
+                }
+            ]
+        },
+        {
+            "kind": "phases",
+            "prefix": "phase_",
+            "array": false,
+            "files": [
+                {
+                    "id": "phase_boot_contract_holder_clause_struck",
+                    "path": "phases/phase_boot_contract_holder_clause_struck.json"
+                },
+                {
+                    "id": "phase_cantor_contract_press",
+                    "path": "phases/phase_cantor_contract_press.json"
+                },
+                {
+                    "id": "phase_cantor_first_lay",
+                    "path": "phases/phase_cantor_first_lay.json"
+                },
+                {
+                    "id": "phase_circulator_stack_third_count",
+                    "path": "phases/phase_circulator_stack_third_count.json"
+                },
+                {
+                    "id": "phase_crown_fragment_echo_first_recital",
+                    "path": "phases/phase_crown_fragment_echo_first_recital.json"
+                },
+                {
+                    "id": "phase_crown_fragment_echo_second_recital",
+                    "path": "phases/phase_crown_fragment_echo_second_recital.json"
+                },
+                {
+                    "id": "phase_disperser_warden_second_housing",
+                    "path": "phases/phase_disperser_warden_second_housing.json"
+                },
+                {
+                    "id": "phase_fold_wall_second_hearing",
+                    "path": "phases/phase_fold_wall_second_hearing.json"
+                },
+                {
+                    "id": "phase_kiln_door_ward_open_frame",
+                    "path": "phases/phase_kiln_door_ward_open_frame.json"
+                },
+                {
+                    "id": "phase_kiln_door_ward_sealed_frame",
+                    "path": "phases/phase_kiln_door_ward_sealed_frame.json"
+                },
+                {
+                    "id": "phase_mana_triage_surrogate_first_passage",
+                    "path": "phases/phase_mana_triage_surrogate_first_passage.json"
+                },
+                {
+                    "id": "phase_mana_triage_surrogate_replacement_signed",
+                    "path": "phases/phase_mana_triage_surrogate_replacement_signed.json"
+                },
+                {
+                    "id": "phase_organ_quorum_witness_quorum_lapsed",
+                    "path": "phases/phase_organ_quorum_witness_quorum_lapsed.json"
+                },
+                {
+                    "id": "phase_seam_arbiter_final_ruling",
+                    "path": "phases/phase_seam_arbiter_final_ruling.json"
+                },
+                {
+                    "id": "phase_seam_arbiter_first_ruling",
+                    "path": "phases/phase_seam_arbiter_first_ruling.json"
+                },
+                {
+                    "id": "phase_worksheet_instructor_final_mark",
+                    "path": "phases/phase_worksheet_instructor_final_mark.json"
+                },
+                {
+                    "id": "phase_worksheet_instructor_second_sheet",
+                    "path": "phases/phase_worksheet_instructor_second_sheet.json"
+                }
+            ]
+        },
+        {
+            "kind": "enemies",
+            "prefix": "enemy_",
+            "array": false,
+            "files": [
+                {
+                    "id": "enemy_ash_debt_collector",
+                    "path": "enemies/enemy_ash_debt_collector.json"
+                },
+                {
+                    "id": "enemy_ash_hound",
+                    "path": "enemies/enemy_ash_hound.json"
+                },
+                {
+                    "id": "enemy_boot_contract_holder",
+                    "path": "enemies/enemy_boot_contract_holder.json"
+                },
+                {
+                    "id": "enemy_circulator_stacker",
+                    "path": "enemies/enemy_circulator_stacker.json"
+                },
+                {
+                    "id": "enemy_crown_fragment_echo",
+                    "path": "enemies/enemy_crown_fragment_echo.json"
+                },
+                {
+                    "id": "enemy_cure_queue_clerk",
+                    "path": "enemies/enemy_cure_queue_clerk.json"
+                },
+                {
+                    "id": "enemy_disperser_warden",
+                    "path": "enemies/enemy_disperser_warden.json"
+                },
+                {
+                    "id": "enemy_ember_clerk",
+                    "path": "enemies/enemy_ember_clerk.json"
+                },
+                {
+                    "id": "enemy_fold_wall",
+                    "path": "enemies/enemy_fold_wall.json"
+                },
+                {
+                    "id": "enemy_glossary_arbiter",
+                    "path": "enemies/enemy_glossary_arbiter.json"
+                },
+                {
+                    "id": "enemy_kiln_door_ward",
+                    "path": "enemies/enemy_kiln_door_ward.json"
+                },
+                {
+                    "id": "enemy_latency_bell_ringer",
+                    "path": "enemies/enemy_latency_bell_ringer.json"
+                },
+                {
+                    "id": "enemy_mana_triage_surrogate",
+                    "path": "enemies/enemy_mana_triage_surrogate.json"
+                },
+                {
+                    "id": "enemy_organ_quorum_witness",
+                    "path": "enemies/enemy_organ_quorum_witness.json"
+                },
+                {
+                    "id": "enemy_permit_inspector",
+                    "path": "enemies/enemy_permit_inspector.json"
+                },
+                {
+                    "id": "enemy_residue_cantor",
+                    "path": "enemies/enemy_residue_cantor.json"
+                },
+                {
+                    "id": "enemy_seam_arbiter",
+                    "path": "enemies/enemy_seam_arbiter.json"
+                },
+                {
+                    "id": "enemy_worksheet_instructor",
+                    "path": "enemies/enemy_worksheet_instructor.json"
+                },
+                {
+                    "id": "enemy_wrong_return_scribe",
+                    "path": "enemies/enemy_wrong_return_scribe.json"
+                }
+            ]
+        },
+        {
+            "kind": "encounters",
+            "prefix": "enc_",
+            "array": false,
+            "files": [
+                {
+                    "id": "enc_a_name_has_teeth",
+                    "path": "encounters/enc_a_name_has_teeth.json"
+                },
+                {
+                    "id": "enc_archive_return_protocol",
+                    "path": "encounters/enc_archive_return_protocol.json"
+                },
+                {
+                    "id": "enc_audit_above_the_market",
+                    "path": "encounters/enc_audit_above_the_market.json"
+                },
+                {
+                    "id": "enc_bailiff_of_the_outer_seam",
+                    "path": "encounters/enc_bailiff_of_the_outer_seam.json"
+                },
+                {
+                    "id": "enc_consent_of_the_viscera",
+                    "path": "encounters/enc_consent_of_the_viscera.json"
+                },
+                {
+                    "id": "enc_licence_of_the_first_body",
+                    "path": "encounters/enc_licence_of_the_first_body.json"
+                },
+                {
+                    "id": "enc_r1_ash_choir",
+                    "path": "encounters/enc_r1_ash_choir.json"
+                },
+                {
+                    "id": "enc_r1_door_role_test",
+                    "path": "encounters/enc_r1_door_role_test.json"
+                },
+                {
+                    "id": "enc_r1_second_registration",
+                    "path": "encounters/enc_r1_second_registration.json"
+                },
+                {
+                    "id": "enc_r1_the_debt_walk",
+                    "path": "encounters/enc_r1_the_debt_walk.json"
+                },
+                {
+                    "id": "enc_r2_the_stack_dump",
+                    "path": "encounters/enc_r2_the_stack_dump.json"
+                },
+                {
+                    "id": "enc_r3_the_scheduled_bell",
+                    "path": "encounters/enc_r3_the_scheduled_bell.json"
+                },
+                {
+                    "id": "enc_r4_the_precedence_hearing",
+                    "path": "encounters/enc_r4_the_precedence_hearing.json"
+                },
+                {
+                    "id": "enc_r5_the_permit_inspection",
+                    "path": "encounters/enc_r5_the_permit_inspection.json"
+                },
+                {
+                    "id": "enc_r6_the_organ_quorum",
+                    "path": "encounters/enc_r6_the_organ_quorum.json"
+                },
+                {
+                    "id": "enc_r7_the_seam_ruling",
+                    "path": "encounters/enc_r7_the_seam_ruling.json"
+                },
+                {
+                    "id": "enc_r8_fold_that_refuses_the_hand",
+                    "path": "encounters/enc_r8_fold_that_refuses_the_hand.json"
+                },
+                {
+                    "id": "enc_r8_fold_that_refuses_the_hand_withdrawn",
+                    "path": "encounters/enc_r8_fold_that_refuses_the_hand_withdrawn.json"
+                },
+                {
+                    "id": "enc_r8_medium_store_quarantine",
+                    "path": "encounters/enc_r8_medium_store_quarantine.json"
+                },
+                {
+                    "id": "enc_r8_the_graded_sheet",
+                    "path": "encounters/enc_r8_the_graded_sheet.json"
+                },
+                {
+                    "id": "enc_signal_interference",
+                    "path": "encounters/enc_signal_interference.json"
+                },
+                {
+                    "id": "enc_the_above_record",
+                    "path": "encounters/enc_the_above_record.json"
+                },
+                {
+                    "id": "enc_the_above_record_authority",
+                    "path": "encounters/enc_the_above_record_authority.json"
+                },
+                {
+                    "id": "enc_the_audit_crossing",
+                    "path": "encounters/enc_the_audit_crossing.json"
+                },
+                {
+                    "id": "enc_the_bell_that_counts_late",
+                    "path": "encounters/enc_the_bell_that_counts_late.json"
+                },
+                {
+                    "id": "enc_the_bell_that_counts_late_blackout",
+                    "path": "encounters/enc_the_bell_that_counts_late_blackout.json"
+                },
+                {
+                    "id": "enc_the_clone_census",
+                    "path": "encounters/enc_the_clone_census.json"
+                },
+                {
+                    "id": "enc_the_intake_stamp",
+                    "path": "encounters/enc_the_intake_stamp.json"
+                },
+                {
+                    "id": "enc_the_intake_stamp_deep",
+                    "path": "encounters/enc_the_intake_stamp_deep.json"
+                },
+                {
+                    "id": "enc_the_last_safe_water",
+                    "path": "encounters/enc_the_last_safe_water.json"
+                },
+                {
+                    "id": "enc_the_many_become_one",
+                    "path": "encounters/enc_the_many_become_one.json"
+                },
+                {
+                    "id": "enc_the_many_become_one_quorum",
+                    "path": "encounters/enc_the_many_become_one_quorum.json"
+                },
+                {
+                    "id": "enc_the_siltglass_toll",
+                    "path": "encounters/enc_the_siltglass_toll.json"
+                },
+                {
+                    "id": "enc_the_siltglass_toll_civic",
+                    "path": "encounters/enc_the_siltglass_toll_civic.json"
+                },
+                {
+                    "id": "enc_the_unfinished_sentence",
+                    "path": "encounters/enc_the_unfinished_sentence.json"
+                },
+                {
+                    "id": "enc_translation_drift",
+                    "path": "encounters/enc_translation_drift.json"
+                },
+                {
+                    "id": "enc_triage_conflict",
+                    "path": "encounters/enc_triage_conflict.json"
+                }
+            ]
+        }
+    ],
+    "registered_slots": [],
+    "options": {
+        "world_flag_prefix": "world_",
+        "max_world_flags": 24,
+        "closure_record_cap": 4096,
+        "save_payload_bytes_cap": 262144,
+        "history_list_cap": 64,
+        "document_page_line_cap": 9,
+        "max_equipment_definitions": 64,
+        "max_item_definitions": 64
+    }
 }

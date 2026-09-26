@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: phy.goal_satisfied
+// situation: a level condition becomes true
+// render: --seconds 0.85 --rate 48000 --bpm 112 --no-default-bank
+n"c4 e4" as e |> tri(e.freq) * adsr(e.gate, 0.004, 0.08, 0.30, 0.14) * e.vel |> out(%)

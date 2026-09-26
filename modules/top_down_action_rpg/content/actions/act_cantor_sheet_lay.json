@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "id": "act_cantor_sheet_lay",
+  "display_name": "residue cantor sheet lay",
+  "order": 6,
+  "owner": "enemy",
+  "category": "magic",
+  "defense_mode": "none",
+  "lifecycle": "instant",
+  "intent": {
+    "target_mode": "ONE_ENEMY",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 1,
+    "action_slot_cost": 1,
+    "resource_costs": {
+      "mp": 3
+    },
+    "cooldown_windows": 1
+  },
+  "telegraph": {
+    "channels": [
+      "pose",
+      "field_prop"
+    ],
+    "windows_before_active": 0,
+    "tell_key": "tell_cantor_sheet_lay"
+  },
+  "damage_payload": {
+    "delivery": "magical",
+    "shape": "fixed",
+    "base_value": 7,
+    "affinity": "none",
+    "hit_policy": "roll",
+    "hit_modifier": 0,
+    "evasion_policy": "roll",
+    "critical_policy": "never",
+    "dodge_pressure": 5,
+    "guard_ignore": false,
+    "breaks_guard": false,
+    "break_damage": 0,
+    "dodgeable": true,
+    "break_damage_kinds": [],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {"status_id": "st_medium_residue", "chance_permille": 600, "target": "target"},
+    {"status_id": "st_concentration_load", "chance_permille": 1000, "target": "self"}
+  ],
+  "counters": {
+    "valid": [
+      "guard",
+      "dodge",
+      "status_counter"
+    ],
+    "forbidden": [
+      "break"
+    ],
+    "breakable": false
+  },
+  "craft": {
+    "craft_family": "weave_scroll",
+    "concentration_source": "field",
+    "concentration_requirement": 340,
+    "body_profile_requirements": [
+      "retention_balanced",
+      "medium_reactive"
+    ],
+    "medium_options": [
+      "res_medium_blank"
+    ],
+    "tool_options": [
+      "bone_rule"
+    ],
+    "shape_or_pattern": "open_sheet_lay",
+    "preparation_turns": 0,
+    "waste": {
+      "res_medium_blank": 1,
+      "st_medium_residue": 1
+    },
+    "failure_status_id": "st_medium_residue",
+    "environment_effect": {
+      "clock_writes": [
+        {"ticks": 1, "clock_id": "clock_contamination"}
+      ]
+    },
+    "social_recording": "res_craft_credit"
+  },
+  "presentation": {
+    "icon_key": "act_cantor_sheet_lay"
+  },
+  "seed_ids": [
+    "seed_s001"
+  ]
+}

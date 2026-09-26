@@ -1,0 +1,221 @@
+{
+    "schema_version":  1,
+    "id":  "rel_12_ravenna_seat",
+    "target_npc_id":  "npc_12_ravenna_holt",
+    "channel":  "confrontation",
+    "start_state_id":  "rs_ravenna_petitioned",
+    "states":  [
+                   {
+                       "state_id":  "rs_ravenna_petitioned",
+                       "order":  0,
+                       "label":  "logged as a claimant under review",
+                       "entry_effect_ids":  [
+
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "guarded"
+                   },
+                   {
+                       "state_id":  "rs_ravenna_seated_claim",
+                       "order":  1,
+                       "label":  "claim filed through the seal",
+                       "entry_effect_ids":  [
+                                                "eff_h0_arrival_declaration_filed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_crown_seat"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_h0_crown_well"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "operational"
+                   },
+                   {
+                       "state_id":  "rs_ravenna_shared_authority",
+                       "order":  2,
+                       "label":  "the seat held by two hands",
+                       "entry_effect_ids":  [
+                                                "eff_h0_arrival_declaration_filed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_crown_seat",
+                                        "port_r4_operator_trial"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_h0_crown_well"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  null
+                                           },
+                       "dialogue_policy":  "candid"
+                   },
+                   {
+                       "state_id":  "rs_ravenna_claim_betrayed",
+                       "order":  3,
+                       "label":  "the seal used, then the claim abandoned",
+                       "entry_effect_ids":  [
+                                                "eff_r1_return_registry_logs_name"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "hostile"
+                   }
+               ],
+    "transitions":  [
+                        {
+                            "transition_id":  "t_01",
+                            "from_state_id":  "rs_ravenna_petitioned",
+                            "to_state_id":  "rs_ravenna_seated_claim",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_crown_well",
+                                                                            "choice_id":  "ch_file_the_petition"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_h0_arrival_declaration_filed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_02",
+                            "from_state_id":  "rs_ravenna_seated_claim",
+                            "to_state_id":  "rs_ravenna_shared_authority",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_crown_well",
+                                                                            "choice_id":  "ch_defer_the_operator_choice"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_h0_arrival_declaration_filed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_03",
+                            "from_state_id":  "rs_ravenna_seated_claim",
+                            "to_state_id":  "rs_ravenna_petitioned",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_crown_well",
+                                                                            "choice_id":  "ch_hand_the_seat_to_two_hands"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  8
+                        },
+                        {
+                            "transition_id":  "t_04",
+                            "from_state_id":  "rs_ravenna_shared_authority",
+                            "to_state_id":  "rs_ravenna_claim_betrayed",
+                            "via":  "effect",
+                            "requires_condition":  {
+                                                       "clock_irreversible":  {
+                                                                                  "clock_id":  "clock_crown_alignment"
+                                                                              }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_return_registry_logs_name"
+                                           ],
+                            "is_irreversible":  true,
+                            "priority":  5
+                        }
+                    ],
+    "axes":  {
+                 "trust":  0,
+                 "fear":  1,
+                 "debt":  0,
+                 "recognition":  0,
+                 "attachment":  0
+             },
+    "axis_rules":  [
+                       {
+                           "key":  "seat_split_from_the_person",
+                           "condition":  {
+                                             "choice_taken":  {
+                                                                  "conversation_id":  "conv_h0_crown_well",
+                                                                  "choice_id":  "ch_hand_the_seat_to_two_hands"
+                                                              }
+                                         },
+                           "sets":  {
+                                        "protocol_legitimacy":  -1
+                                    }
+                       }
+                   ],
+    "exclusions":  {
+                       "max_final_state":  1,
+                       "conflicting_final_state_ids":  [
+                                                           "rs_ravenna_claim_betrayed"
+                                                       ]
+                   },
+    "romance":  {
+                    "allowed":  false,
+                    "explicit_content":  false,
+                    "gate_state_ids":  [
+
+                                       ],
+                    "consent_beat_effect_ids":  [
+
+                                                ]
+                },
+    "seed_ids":  [
+                     "seed_s051",
+                     "seed_s053",
+                     "seed_s054",
+                     "seed_s057",
+                     "seed_s060"
+                 ]
+}

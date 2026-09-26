@@ -1,0 +1,187 @@
+{
+    "schema_version":  1,
+    "id":  "npc_08_meral_dune",
+    "display_name":  "Meral Dune",
+    "roster_kind":  "core",
+    "public_role":  "water and seed broker who divides a settlement\u0027s survival by the ledger",
+    "private_role":  "holds a clean reserve off the books and knows the published figure is the wrong one",
+    "desire":  "wants the settlement to survive a collapse without a ration deciding who counts as a person",
+    "fear":  "that saving enough makes her the reason the settlement stopped trusting itself",
+    "contradiction":  "argues for collective shares and keeps the arithmetic that would prove her wrong",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_r2_water"
+                                    ],
+                       "can":  [
+                                   "allocate_water",
+                                   "divert_reserve",
+                                   "quarantine_source",
+                                   "share_manifest",
+                                   "refuse_extra"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+
+                                       ],
+                            "denies":  [
+                                           "gate_g1_ash_debt"
+                                       ],
+                            "denied_by_effect_id":  "eff_r1_ash_debt_opens_chute"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s061",
+                                             "seed_s063"
+                                         ],
+                               "does_not_know":  [
+                                                     "seed_s093"
+                                                 ],
+                               "never_learns":  [
+                                                    "seed_s126"
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_ask_for_water_allocation",
+                                             "verb_read_the_ration_counter",
+                                             "verb_share_the_manifest",
+                                             "verb_divert_the_reserve",
+                                             "verb_refuse_the_extra_request"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "resource_scarcity",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_ask_for_water_allocation",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_h0_ration_counter",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_read_the_ration_counter",
+                                  "availability":  {
+                                                       "prop_state_is":  {
+                                                                             "prop_id":  "prop_h0_ration_counter",
+                                                                             "state_id":  "ps_rationing"
+                                                                         }
+                                                   },
+                                  "opens":  "conv_h0_ration_counter",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_share_the_manifest",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_ration_counter",
+                                                                            "choice_id":  "ch_publish_the_reserve"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_h0_ration_counter",
+                                  "presentation_class":  "neutral"
+                              },
+                              {
+                                  "verb_id":  "verb_divert_the_reserve",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_ration_counter",
+                                                                            "choice_id":  "ch_hide_the_reserve"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_h0_ration_counter",
+                                  "presentation_class":  "extreme"
+                              },
+                              {
+                                  "verb_id":  "verb_refuse_the_extra_request",
+                                  "availability":  {
+                                                       "clock_at_least":  {
+                                                                              "clock_id":  "clock_resource_collapse",
+                                                                              "stage_index":  2
+                                                                          }
+                                                   },
+                                  "opens":  "conv_h0_ration_counter",
+                                  "presentation_class":  "hostile"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_08_meral_ration"
+                         ],
+    "clock_ids":  [
+                      "clock_resource_collapse",
+                      "clock_public_record",
+                      "clock_institutional_response"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  "enc_r1_ash_choir"
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "conversion_condition":  {
+
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "eff_r1_wrong_return_witnessed",
+                                              "encounter_modifier":  1
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_r1_ash_debt_opens_chute"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_h0_arrival_declaration_filed"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "permanent",
+                    "condition":  {
+
+                                  },
+                    "moves_to_region_id":  "region_r1_returning_kiln"
+                },
+    "appearance":  {
+                       "body_key":  "body_water_broker",
+                       "portrait_key":  "portrait_meral_dune",
+                       "voice_key":  "voice_meral_dune"
+                   },
+    "mana_profile":  "retention_high_emission_low",
+    "oneoff_dialogue_seed_ids":  [
+                                     "seed_s065",
+                                     "seed_s068",
+                                     "seed_s109"
+                                 ],
+    "cross_link_ids":  [
+                           "region_h0_undersign_exchange",
+                           "region_r1_returning_kiln",
+                           "npc_14_eda_marrow",
+                           "npc_13_tovan_reed",
+                           "clock_resource_collapse"
+                       ],
+    "removal":  "death",
+    "seed_ids":  [
+                     "seed_s061",
+                     "seed_s062",
+                     "seed_s063",
+                     "seed_s064",
+                     "seed_s065",
+                     "seed_s066",
+                     "seed_s067",
+                     "seed_s068",
+                     "seed_s093",
+                     "seed_s096",
+                     "seed_s109",
+                     "seed_s123",
+                     "seed_s126",
+                     "seed_s127"
+                 ]
+}

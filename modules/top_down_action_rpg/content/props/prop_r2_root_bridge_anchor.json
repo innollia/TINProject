@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "prop_r2_root_bridge_anchor",
+  "display_name": "Root Bridge Anchor",
+  "region_id": "region_r2_siltglass_commons",
+  "placement": {
+    "anchor_key": "r2_root_bridge",
+    "layer": "hazard",
+    "visible_from": "adjacent"
+  },
+  "initial_state_id": "ps_locked",
+  "states": [
+    {
+      "state_id": "ps_locked",
+      "label": "the bridge is locked below the flood line",
+      "visible": true,
+      "art_key": "prop_r2_bridge_locked",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_raised",
+      "label": "the bridge is raised and the phase below is walkable",
+      "visible": true,
+      "art_key": "prop_r2_bridge_raised",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r2_flood_refuge_opened"
+      ]
+    },
+    {
+      "state_id": "ps_surveyed",
+      "label": "the phase under the water has been marked on the map",
+      "visible": true,
+      "art_key": "prop_r2_bridge_surveyed",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r2_seed_vault_sample_filed"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_survey_the_bridge_anchor",
+    "availability": {
+      "prop_state_is": {
+        "prop_id": "prop_r2_root_bridge_anchor",
+        "state_id": "ps_raised"
+      }
+    },
+    "opens": "conv_r2_root_bridge_survey",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s062",
+    "seed_s117"
+  ]
+}

@@ -1,0 +1,6 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: dsc.ending_a
+// situation: branch ending A
+// render: --seconds 2.40 --rate 48000 --bpm 72 --no-default-bank
+// c"chord" literal inside a synth chain; least verified construct in this file set.
+c"a2 c3 e3" |> tri(@.freq) * adsr(@.gate, 0.20, 0.25, 0.70, 0.40) |> out(%)

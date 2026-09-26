@@ -1,0 +1,187 @@
+{
+    "schema_version":  1,
+    "id":  "npc_12_ravenna_holt",
+    "display_name":  "Ravenna Holt",
+    "roster_kind":  "core",
+    "public_role":  "crown protocol envoy who holds the seat while the operator is in question",
+    "private_role":  "wants a stable successor and blocks the moment one is chosen, because a successor replaces what she built",
+    "desire":  "wants accountable authority to survive every change of person",
+    "fear":  "that the protocol picks nobody and every local reading wins, or that it picks a tyrant next",
+    "contradiction":  "manipulates succession for legitimacy and destroys legitimacy by manipulating it",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_crown_seat"
+                                    ],
+                       "can":  [
+                                   "petition_seat",
+                                   "levy_resource",
+                                   "withhold_seal",
+                                   "defer_crown",
+                                   "abdicate_protocol"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+
+                                       ],
+                            "denies":  [
+                                           "gate_g0_arrival_declaration"
+                                       ],
+                            "denied_by_effect_id":  "eff_h0_arrival_declaration_filed"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s051",
+                                             "seed_s053"
+                                         ],
+                               "does_not_know":  [
+                                                     "seed_s052"
+                                                 ],
+                               "never_learns":  [
+                                                    "seed_s060"
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_file_a_petition",
+                                             "verb_ask_for_the_deferral",
+                                             "verb_refuse_the_seal",
+                                             "verb_stand_in_the_operator_trial",
+                                             "verb_abdicate_the_protocol"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "protocol_legitimacy",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_file_a_petition",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_h0_crown_well",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_ask_for_the_deferral",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_crown_well",
+                                                                            "choice_id":  "ch_defer_the_operator_choice"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_h0_crown_well",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_refuse_the_seal",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_crown_well",
+                                                                            "choice_id":  "ch_refuse_to_sign_the_seal"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_h0_crown_well",
+                                  "presentation_class":  "extreme"
+                              },
+                              {
+                                  "verb_id":  "verb_stand_in_the_operator_trial",
+                                  "availability":  {
+                                                       "clock_at_least":  {
+                                                                              "clock_id":  "clock_crown_alignment",
+                                                                              "stage_index":  2
+                                                                          }
+                                                   },
+                                  "opens":  "conv_h0_crown_well",
+                                  "presentation_class":  "hostile"
+                              },
+                              {
+                                  "verb_id":  "verb_abdicate_the_protocol",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_crown_well",
+                                                                            "choice_id":  "ch_hand_the_seat_to_two_hands"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_h0_crown_well",
+                                  "presentation_class":  "neutral"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_12_ravenna_seat"
+                         ],
+    "clock_ids":  [
+                      "clock_crown_alignment",
+                      "clock_institutional_response",
+                      "clock_public_record"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "conversion_condition":  {
+
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "",
+                                              "encounter_modifier":  0
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_r1_return_registry_logs_name"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_h0_arrival_declaration_filed"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "permanent",
+                    "condition":  {
+
+                                  },
+                    "moves_to_region_id":  "region_r1_returning_kiln"
+                },
+    "appearance":  {
+                       "body_key":  "body_protocol_envoy",
+                       "portrait_key":  "portrait_ravenna_holt",
+                       "voice_key":  "voice_ravenna_holt"
+                   },
+    "mana_profile":  "blocked_emission",
+    "oneoff_dialogue_seed_ids":  [
+                                     "seed_s055",
+                                     "seed_s057",
+                                     "seed_s060",
+                                     "seed_s108"
+                                 ],
+    "cross_link_ids":  [
+                           "region_h0_undersign_exchange",
+                           "npc_01_ilyra_senn",
+                           "npc_11_cael_ren",
+                           "npc_03_veya_morcant",
+                           "clock_crown_alignment"
+                       ],
+    "removal":  "death",
+    "seed_ids":  [
+                     "seed_s001",
+                     "seed_s002",
+                     "seed_s003",
+                     "seed_s051",
+                     "seed_s052",
+                     "seed_s053",
+                     "seed_s054",
+                     "seed_s055",
+                     "seed_s057",
+                     "seed_s058",
+                     "seed_s059",
+                     "seed_s060",
+                     "seed_s108"
+                 ]
+}

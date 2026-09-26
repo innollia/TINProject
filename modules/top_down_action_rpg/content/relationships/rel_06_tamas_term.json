@@ -1,0 +1,221 @@
+{
+    "schema_version":  1,
+    "id":  "rel_06_tamas_term",
+    "target_npc_id":  "npc_06_tamas_quill",
+    "channel":  "personal",
+    "start_state_id":  "rs_tamas_instrument",
+    "states":  [
+                   {
+                       "state_id":  "rs_tamas_instrument",
+                       "order":  0,
+                       "label":  "your language used as an instrument",
+                       "entry_effect_ids":  [
+
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "guarded"
+                   },
+                   {
+                       "state_id":  "rs_tamas_compared",
+                       "order":  1,
+                       "label":  "two sources compared in full",
+                       "entry_effect_ids":  [
+                                                "eff_h0_arrival_declaration_filed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r4_lexicon"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_h0_glossary_counter"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "operational"
+                   },
+                   {
+                       "state_id":  "rs_tamas_entrusted",
+                       "order":  2,
+                       "label":  "his own wrong gloss left with you",
+                       "entry_effect_ids":  [
+                                                "eff_h0_arrival_declaration_filed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r4_lexicon",
+                                        "port_r4_record_office"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_h0_glossary_counter"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  null
+                                           },
+                       "dialogue_policy":  "candid"
+                   },
+                   {
+                       "state_id":  "rs_tamas_exposed",
+                       "order":  3,
+                       "label":  "the private version is public",
+                       "entry_effect_ids":  [
+                                                "eff_r1_return_registry_logs_name"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "hostile"
+                   }
+               ],
+    "transitions":  [
+                        {
+                            "transition_id":  "t_01",
+                            "from_state_id":  "rs_tamas_instrument",
+                            "to_state_id":  "rs_tamas_compared",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_glossary_counter",
+                                                                            "choice_id":  "ch_compare_the_versions"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_h0_arrival_declaration_filed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_02",
+                            "from_state_id":  "rs_tamas_compared",
+                            "to_state_id":  "rs_tamas_entrusted",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_glossary_counter",
+                                                                            "choice_id":  "ch_keep_the_term_untranslated"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_h0_arrival_declaration_filed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_03",
+                            "from_state_id":  "rs_tamas_compared",
+                            "to_state_id":  "rs_tamas_instrument",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_glossary_counter",
+                                                                            "choice_id":  "ch_seal_one_category"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  8
+                        },
+                        {
+                            "transition_id":  "t_04",
+                            "from_state_id":  "rs_tamas_entrusted",
+                            "to_state_id":  "rs_tamas_exposed",
+                            "via":  "effect",
+                            "requires_condition":  {
+                                                       "clock_irreversible":  {
+                                                                                  "clock_id":  "clock_public_record"
+                                                                              }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_return_registry_logs_name"
+                                           ],
+                            "is_irreversible":  true,
+                            "priority":  5
+                        }
+                    ],
+    "axes":  {
+                 "trust":  1,
+                 "fear":  0,
+                 "debt":  1,
+                 "recognition":  0,
+                 "attachment":  0
+             },
+    "axis_rules":  [
+                       {
+                           "key":  "untranslated_term_held_open",
+                           "condition":  {
+                                             "choice_taken":  {
+                                                                  "conversation_id":  "conv_h0_glossary_counter",
+                                                                  "choice_id":  "ch_keep_the_term_untranslated"
+                                                              }
+                                         },
+                           "sets":  {
+                                        "recognition_drift":  1
+                                    }
+                       }
+                   ],
+    "exclusions":  {
+                       "max_final_state":  1,
+                       "conflicting_final_state_ids":  [
+                                                           "rs_tamas_exposed"
+                                                       ]
+                   },
+    "romance":  {
+                    "allowed":  false,
+                    "explicit_content":  false,
+                    "gate_state_ids":  [
+
+                                       ],
+                    "consent_beat_effect_ids":  [
+
+                                                ]
+                },
+    "seed_ids":  [
+                     "seed_s069",
+                     "seed_s072",
+                     "seed_s073",
+                     "seed_s075",
+                     "seed_s147"
+                 ]
+}

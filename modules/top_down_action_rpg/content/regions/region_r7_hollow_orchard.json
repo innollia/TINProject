@@ -1,0 +1,399 @@
+{
+    "schema_version": 1,
+    "id": "region_r7_hollow_orchard",
+    "display_name": "The Hollow Orchard",
+    "region_role": "boundary_crown_precedence",
+    "conflict_thesis": "The wall does not guard the crown, it reports the crown's category, and the report rewrites the map.",
+    "topology": {
+        "shape": "orchard_ring_and_wall",
+        "size_class": "large",
+        "landmark_count": 5,
+        "traversal_axis": "phase",
+        "backtrack_supported": true
+    },
+    "entry": {
+        "from_region_id": "region_r2_siltglass_commons",
+        "edge_id": "route_e09_orchard_causeway",
+        "gate_id": "gate_g7_boundary_witness",
+        "one_way": false
+    },
+    "exits": [
+        {
+            "to_region_id": "region_r2_siltglass_commons",
+            "edge_id": "route_e09_orchard_causeway",
+            "gate_id": "gate_g7_boundary_witness",
+            "route_state": "conditional",
+            "requires_condition": {
+                "prop_state_is": {
+                    "prop_id": "prop_r2_root_bridge_anchor",
+                    "state_id": "ps_surveyed"
+                }
+            },
+            "unlock_effect_id": "eff_r7_boundary_witness_filed",
+            "field_activation": "STORY_FORCED",
+            "resource_keys": [
+                "res_seed_vault_sample"
+            ]
+        },
+        {
+            "to_region_id": "region_r4_crownwell_archive",
+            "edge_id": "route_e13_crown_stair",
+            "gate_id": "gate_g8_crown_precedence",
+            "route_state": "conditional",
+            "requires_condition": {
+                "route_open": {
+                    "gate_id": "gate_g8_crown_precedence"
+                }
+            },
+            "unlock_effect_id": "eff_r7_crown_stair_opened",
+            "field_activation": "INTERACTION",
+            "resource_keys": [
+                "res_archive_weight"
+            ]
+        },
+        {
+            "to_region_id": "region_r5_glasswing_ordinal",
+            "edge_id": "route_e15_supply_gantry",
+            "gate_id": "gate_g5_labor_pledge",
+            "route_state": "conditional",
+            "requires_condition": {
+                "all_of": [
+                    {
+                        "route_open": {
+                            "gate_id": "gate_g5_labor_pledge"
+                        }
+                    },
+                    {
+                        "resource_held": {
+                            "resource_key": "res_crown_gear",
+                            "min_count": 1
+                        }
+                    }
+                ]
+            },
+            "unlock_effect_id": "eff_r7_supply_gantry_arrived",
+            "field_activation": "INTERACTION",
+            "resource_keys": [
+                "res_crown_gear",
+                "res_battery"
+            ]
+        },
+        {
+            "to_region_id": "region_r6_gristmarket_ward",
+            "edge_id": "route_e16_drainage_dark",
+            "gate_id": "gate_g6_organ_quorum",
+            "route_state": "conditional",
+            "requires_condition": {
+                "route_open": {
+                    "gate_id": "gate_g6_organ_quorum"
+                }
+            },
+            "unlock_effect_id": "eff_r7_drainage_dark_opened",
+            "field_activation": "INTERACTION",
+            "resource_keys": [
+                "res_hand_pump"
+            ]
+        }
+    ],
+    "authority": {
+        "institution_id": "institution_boundary_survey",
+        "protocol_id": "protocol_boundary_crown_precedence",
+        "recognition_default": "unclassified",
+        "legitimacy_baseline": 0
+    },
+    "dominant_protocol": {
+        "protocol_id": "protocol_boundary_crown_precedence",
+        "category_bias": [
+            "unclassified",
+            "artifact"
+        ],
+        "category_error_policy": "record"
+    },
+    "resource_flow": {
+        "scarce_keys": [
+            "res_seed_vault_sample",
+            "res_crown_gear",
+            "res_battery",
+            "res_hand_pump",
+            "res_seam_key",
+            "res_root_record_fragment",
+            "res_blade_credit",
+            "res_contract_tally",
+            "res_party_supply"
+        ],
+        "surplus_keys": [
+            "res_seed_case"
+        ],
+        "access_rule_ids": [
+            "rule_r7_wall_phase",
+            "rule_r7_settlement_quota"
+        ]
+    },
+    "residents": [
+        {
+            "npc_id": "npc_07_bryn_oskel",
+            "initial_presence": "resident",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_12_ravenna_holt",
+            "initial_presence": "resident",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_11_cael_ren",
+            "initial_presence": "resident",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_01_ilyra_senn",
+            "initial_presence": "visiting",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_08_meral_dune",
+            "initial_presence": "visiting",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_04_sable_halm",
+            "initial_presence": "visiting",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_10_juno_caster",
+            "initial_presence": "visiting",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_06_tamas_quill",
+            "initial_presence": "visiting",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        }
+    ],
+    "clocks": [
+        {
+            "clock_id": "clock_institutional_response",
+            "start_state": "active",
+            "reversal": "none",
+            "weight": 2
+        },
+        {
+            "clock_id": "clock_contamination",
+            "start_state": "active",
+            "reversal": "none",
+            "weight": 3
+        },
+        {
+            "clock_id": "clock_public_record",
+            "start_state": "active",
+            "reversal": "none",
+            "weight": 3
+        },
+        {
+            "clock_id": "clock_resource_collapse",
+            "start_state": "active",
+            "reversal": "none",
+            "weight": 3
+        },
+        {
+            "clock_id": "clock_personal_collapse",
+            "start_state": "active",
+            "reversal": "possible",
+            "weight": 3
+        },
+        {
+            "clock_id": "clock_crown_alignment",
+            "start_state": "active",
+            "reversal": "terminal",
+            "weight": 3
+        }
+    ],
+    "hidden_state": {
+        "reveal_condition": {
+            "clock_at_least": {
+                "clock_id": "clock_crown_alignment",
+                "stage_index": 2
+            }
+        },
+        "reveal_kind": "partial",
+        "reveal_prop_ids": [
+            "prop_r7_crown_position_plinth"
+        ],
+        "reveal_document_ids": [
+            "doc_r7_wall_phase_ledger"
+        ]
+    },
+    "initial_state": "as_authored",
+    "combat_content": {
+        "encounter_ids": [
+            "enc_the_audit_crossing",
+            "enc_audit_above_the_market",
+            "enc_bailiff_of_the_outer_seam"
+        ],
+        "field_pressure": "lethal"
+    },
+    "noncombat_content": {
+        "interactable_prop_ids": [
+            "prop_r7_outer_wall_seam",
+            "prop_r7_crown_position_plinth",
+            "prop_r7_storm_verge_cut",
+            "prop_r7_shelter_ring_ledger"
+        ],
+        "service_ids": [
+            "service_r7_wall_survey",
+            "service_r7_settlement_council"
+        ]
+    },
+    "initial_cluster": {
+        "cluster_id": "cluster_rc_07_map_made_by_wall",
+        "npc_ids": [
+            "npc_07_bryn_oskel",
+            "npc_12_ravenna_holt",
+            "npc_01_ilyra_senn",
+            "npc_11_cael_ren",
+            "npc_08_meral_dune",
+            "npc_04_sable_halm",
+            "npc_10_juno_caster",
+            "npc_06_tamas_quill"
+        ],
+        "thread_ids": [
+            "thread_r7_wall_phase",
+            "thread_r7_crown_precedence"
+        ],
+        "starting_conversation_id": "conv_r7_wall_phase_survey"
+    },
+    "revisit_variants": [
+        {
+            "variant_id": "rv_after_void_cut",
+            "condition": {
+                "prop_state_is": {
+                    "prop_id": "prop_r7_storm_verge_cut",
+                    "state_id": "ps_cut_filed"
+                }
+            },
+            "prop_state_ids": [
+                "prop_r7_storm_verge_cut",
+                "prop_r7_outer_wall_seam"
+            ],
+            "conversation_id": "conv_r7_wall_phase_survey"
+        },
+        {
+            "variant_id": "rv_after_settlement_vote",
+            "condition": {
+                "prop_state_is": {
+                    "prop_id": "prop_r7_shelter_ring_ledger",
+                    "state_id": "ps_quota_filed"
+                }
+            },
+            "prop_state_ids": [
+                "prop_r7_shelter_ring_ledger",
+                "prop_r7_crown_position_plinth"
+            ],
+            "conversation_id": "conv_r7_wall_phase_survey"
+        }
+    ],
+    "internal_routes": [
+        {
+            "internal_route_id": "storm_verge_shelter_run",
+            "from_anchor_key": "r7_storm_verge",
+            "to_anchor_key": "r7_shelter_ring",
+            "route_state": "conditional",
+            "requires_condition": {
+                "prop_state_is": {
+                    "prop_id": "prop_r7_storm_verge_cut",
+                    "state_id": "ps_phase_matched"
+                }
+            },
+            "unlock_effect_id": "eff_r7_boundary_shortcut_opened"
+        }
+    ],
+    "unresolved_debt": [
+        {
+            "debt_id": "d_r7_wall_mandate",
+            "description": "nobody has filed whether the wall defends the crown position or pushes it outward",
+            "due_condition": {
+                "clock_at_least": {
+                    "clock_id": "clock_crown_alignment",
+                    "stage_index": 2
+                }
+            },
+            "resolve_effect_ids": [
+                "eff_r7_wall_mandate_filed"
+            ],
+            "resolution_token": "open",
+            "resource_id": "res_seam_key"
+        },
+        {
+            "debt_id": "d_r7_contract_standing",
+            "description": "the void cut contract has not been placed inside or outside the crown protocol",
+            "due_condition": {
+                "clock_irreversible": {
+                    "clock_id": "clock_crown_alignment"
+                }
+            },
+            "resolve_effect_ids": [
+                "eff_r7_contract_placed_filed"
+            ],
+            "resolution_token": "open",
+            "resource_id": "res_contract_tally"
+        }
+    ],
+    "cross_region_links": [
+        {
+            "to_region_id": "region_h0_undersign_exchange",
+            "link_kind": "record",
+            "note": "the alignment rewrites the hub route cards without deleting them"
+        },
+        {
+            "to_region_id": "region_r1_returning_kiln",
+            "link_kind": "record",
+            "note": "a returning body is identified by scar pattern, not by name"
+        },
+        {
+            "to_region_id": "region_r2_siltglass_commons",
+            "link_kind": "resource",
+            "note": "the shelter quota is the seed that the commons cannot keep"
+        },
+        {
+            "to_region_id": "region_r3_bellhouse_hospice",
+            "link_kind": "faith",
+            "note": "a hospice bell tells the shelter when the phase is closing"
+        },
+        {
+            "to_region_id": "region_r4_crownwell_archive",
+            "link_kind": "faith",
+            "note": "the crown stair and the wall answer to the same filed sentence"
+        },
+        {
+            "to_region_id": "region_r5_glasswing_ordinal",
+            "link_kind": "resource",
+            "note": "crown gear arrives by gantry and is counted at the survey desk"
+        },
+        {
+            "to_region_id": "region_r6_gristmarket_ward",
+            "link_kind": "personnel",
+            "note": "the drainage dark is the only return that a quorum can open"
+        },
+        {
+            "to_region_id": "region_r8_folding_school",
+            "link_kind": "trade",
+            "note": "the unfinished cut at the verge is the same evidence the school grades"
+        }
+    ],
+    "axis_weights": {
+        "protocol_legitimacy": 2,
+        "recognition_drift": 3,
+        "continuity_pressure": 3,
+        "resource_scarcity": 2
+    },
+    "seed_ids": [
+        "seed_s001",
+        "seed_s010",
+        "seed_s055",
+        "seed_s076",
+        "seed_s108",
+        "seed_s110",
+        "seed_s154"
+    ]
+}

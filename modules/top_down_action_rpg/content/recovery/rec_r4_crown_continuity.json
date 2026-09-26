@@ -1,0 +1,85 @@
+{
+    "schema_version":  1,
+    "id":  "rec_r4_crown_continuity",
+    "display_name":  "Archive Continuity Head",
+    "kind":  "immortality",
+    "trigger":  {
+                    "kind":  "encounter_failure",
+                    "encounter_id":  "enc_the_above_record",
+                    "condition":  {
+
+                                  }
+                },
+    "preserves":  [
+                      "region_id",
+                      "region_state",
+                      "axis_values",
+                      "clock_stages",
+                      "npc_states",
+                      "relationship_states",
+                      "prop_states",
+                      "conversation_progress",
+                      "document_reads",
+                      "flags",
+                      "effects_fired",
+                      "encounter_clear_flags",
+                      "route_flags",
+                      "inventory",
+                      "equipment_slots",
+                      "recoveries"
+                  ],
+    "discards":  [
+                     "encounter_progress",
+                     "current_phase",
+                     "linked_actor_state",
+                     "combat_transient",
+                     "scheduler_cursor",
+                     "pending_effect_queue",
+                     "presentation_transient"
+                 ],
+    "self_layers_restored":  [
+                                 "body",
+                                 "memory",
+                                 "role",
+                                 "belief",
+                                 "institution",
+                                 "desire"
+                             ],
+    "self_layers_not_restored":  [
+                                     "social_recognition"
+                                 ],
+    "respawn":  {
+                    "region_id":  "region_r4_crownwell_archive",
+                    "prop_id":  "prop_r4_crown_fragment_plinth",
+                    "reset_prop_ids":  [
+                                           "prop_r4_crown_fragment_plinth"
+                                       ]
+                },
+    "cost":  {
+                 "continuity_pressure_delta":  1,
+                 "resource_costs":  {
+                                        "mp":  3
+                                    },
+                 "axis_deltas":  {
+                                     "continuity_pressure":  1,
+                                     "recognition_drift":  1
+                                 },
+                 "world_effect_ids":  [
+                                         "eff_r4_operator_memory_classified"
+                                     ]
+             },
+    "entry_effect_ids":  [
+
+                         ],
+    "cooldown":  {
+                     "kind":  "once",
+                     "count":  1
+                 },
+    "authored_debt":  {
+                         "debt_id":  "d_r4_immortal_branch_unrecognized",
+                         "description":  "the archive keeps the head and keeps writing, and nobody in the basin is required to file the head as a person"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

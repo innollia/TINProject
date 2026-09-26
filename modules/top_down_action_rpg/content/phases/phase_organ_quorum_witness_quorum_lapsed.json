@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "phase_organ_quorum_witness_quorum_lapsed",
+  "display_name": "Quorum Lapsed",
+  "owner_enemy_id": "enemy_organ_quorum_witness",
+  "index": 1,
+  "trigger": {
+    "kind": "window_count",
+    "window_count_at": 3
+  },
+  "enter": {
+    "effect_ids": [
+      "eff_r6_residue_recovery_filed"
+    ],
+    "status_ids": [
+      "st_concentration_load"
+    ],
+    "invulnerable_windows": 0
+  },
+  "overrides": {
+    "action_add_ids": [
+      "act_ember_clerk_stamp"
+    ],
+    "action_remove_ids": [],
+    "stat_overrides": {
+      "agility": 6
+    },
+    "resistance_add_status_ids": [
+      "st_concentration_load"
+    ],
+    "resistance_remove_status_ids": [],
+    "signature_action_id": "act_organ_quorum_witness_count",
+    "telegraph_gain_windows": 1
+  },
+  "roster": {
+    "add_enemy_ids": [
+      "enemy_cure_queue_clerk"
+    ],
+    "remove_enemy_ids": [],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "survive_windows"
+  },
+  "next_phase_id": null,
+  "seed_ids": [
+    "seed_s004",
+    "seed_s005",
+    "seed_s112"
+  ]
+}

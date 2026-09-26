@@ -6,6 +6,8 @@
 
 구체 장르 화면의 최우선 기준은 각 Kit의 **Primary Reference 하나**다. 이 문서는 그 레퍼런스를 제대로 구현하고 검수하기 위한 공통 UI 계약을 제공한다.
 
+UI 구현·수정·검수 전에는 [UI_IMPLEMENTATION_RULES.md](UI_IMPLEMENTATION_RULES.md)도 읽는다. UI Skills에서 선별한 원칙을 TIN의 focus·레이아웃·모션·실패 복구·증거 규칙으로 구체화한 작업용 문서이며, 이 문서의 공통 계약과 Kit별 Primary Reference를 대체하지 않는다.
+
 ## 1. 기본 원칙
 
 UI를 마지막 장식이나 버튼 배치로 취급하지 않는다.

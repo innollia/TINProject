@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "prop_r6_heart_petition_table",
+  "display_name": "Heart Petition Table",
+  "region_id": "region_r6_gristmarket_ward",
+  "placement": {
+    "anchor_key": "r6_heart_petition_table",
+    "layer": "prop",
+    "visible_from": "same_room"
+  },
+  "initial_state_id": "ps_drafted",
+  "states": [
+    {
+      "state_id": "ps_drafted",
+      "label": "clinic policy signed first, the patient line left blank",
+      "visible": true,
+      "art_key": "prop_r6_petition_draft",
+      "collides": false,
+      "interactable": false,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_cosigned",
+      "label": "operation, pain, refusal and witness each carry a line",
+      "visible": true,
+      "art_key": "prop_r6_petition_cosigned",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r6_organ_quorum_filed"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_petition",
+    "availability": {
+      "prop_state_is": {
+        "prop_id": "prop_r6_heart_petition_table",
+        "state_id": "ps_cosigned"
+      }
+    },
+    "opens": "doc_r6_custody_split_deed",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s029",
+    "seed_s036",
+    "seed_s084",
+    "seed_s104"
+  ]
+}

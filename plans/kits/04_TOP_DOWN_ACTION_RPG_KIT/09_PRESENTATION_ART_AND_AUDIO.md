@@ -91,10 +91,11 @@ A~H에서 960×720의 절대 좌표를 그대로 옮기지 않는다. source는 
 
 TIN field presentation은 다음으로 고정한다.
 
-- camera는 rotation이 고정된 orthographic top-down이다. 원작의 특정 pixel camera를 복제하지 않는다.
+- camera는 지면 기준 하향각 60°(수직에서 30° 기울어진)의 orthographic top-down이다. 방위와 기울기는 플레이 중 고정한다. 벽·가구의 옆면과 높이가 보이며, 완전 수직 90° 내려다보기로 만들지 않는다. 원작의 특정 pixel camera를 복제하지 않는다.
 - logical viewport 전체를 world가 사용한다. field의 letterbox, minimap, location title, persistent resource band는 두지 않는다.
 - player anchor는 viewport의 `(50%, 58%)`를 기본으로 한다. 즉 1280×720에서는 `(640, 418)`이다. player가 화면 중앙보다 약간 아래에 있어 위쪽 route와 주변 interactable이 읽히게 한다.
 - camera는 player와 immediate passage를 동시에 보여 준다. field 상태에서 combat stage로 camera를 확대해 HUD를 미리 보여 주지 않는다.
+- camera는 [13](13_LAYERED_ENVIRONMENT_PRODUCTION.md)의 장면 구역 bounds에서 clamp한다. 큰 배경은 스크롤할 수 있으며, 2560×1440 한 장을 region 전체 크기로 강제하지 않는다. actor·collision·가림 레이어는 같은 world 좌표를 사용한다.
 - world prop의 collision, depth ordering, interactable 범위는 gameplay data가 소유한다. 화면상의 glow나 ring은 그 query의 projection이다.
 - 4:3 source의 여백은 world art를 늘려 채우는 것이 아니라 16:9 camera framing과 route composition으로 다시 결정한다.
 
@@ -424,7 +425,7 @@ Shell은 사용자가 Esc 등으로 호출했을 때만 나타난다. Shell을 �
 5. 편집 작업이면 원본과 유지할 영역
 6. 실제 게임 화면 검수와 사용자 승인
 
-현재 저장소의 `docs/art/` 구조나 `assets/art/top_down_action_rpg/` 디렉터리를 이 run에서 만들지 않는다. 실제 Kit 제작 시 해당 자산군을 처음 사용할 때 workflow가 정한 경로에 brief와 manifest를 만든다.
+2026-09-26 사용자 요청으로 이 Kit의 실제 이미지 예시 제작이 허용됐다. 필요한 자산군만 workflow 경로에 brief와 후보를 만든다. 환경은 13의 큰 배경+분리 레이어 방식으로 기획을 먼저 맞추고 샘플 검수 후 양산한다. 기존 계획 작성 run 한정 생성 금지는 이번 요청에 적용하지 않는다.
 
 ### 11.2 Style Reference의 권한
 
@@ -438,7 +439,7 @@ Shell은 사용자가 Esc 등으로 호출했을 때만 나타난다. Shell을 �
 ### 11.3 GPT와 후처리 경계
 
 - GPT Image, `image_gen`, 사용자가 허용한 생성형 도구는 구체적인 이미지 제작·편집을 요구하는 별도 run에서만 호출한다.
-- 이 run에서는 이미지 생성, 편집, 재생성, 후보 보존, approved 복사를 하지 않는다.
+- 현재 요청은 샘플 생성·편집·후보 보존을 포함하지만 공통 Generator Style-Fidelity Gate의 예외를 허용한 것은 아니다. 사용자 승인 없는 approved 복사와 병렬 양산은 하지 않는다. 화풍 실패 생성기로 production 장면을 반복 제작하거나 '샘플'로 우회하지 않는다. 이번 잘못 생성한 후보는 반려 기록으로만 보존한다.
 - GPT output은 최종 그림이다. 사람의 재작화, 수동 선 보정, 자산별 색칠 보정은 제작 공정에 넣지 않는다.
 - 허용된 기계적 후처리는 투명화/배경 분리, crop, canvas/pivot 정렬, layer 분리, resize, atlas packing, color profile 변환, 결정론적 alpha matte와 edge 정리로 한정한다.
 - 정체성과 구도가 맞지만 국소 오류인 후보는 사용자 요청 뒤 GPT 국소 편집으로 처리하고, 전체 시각 문법이 틀린 후보는 사용자 요청 뒤 재생성한다.
@@ -465,9 +466,10 @@ Shell은 사용자가 Esc 등으로 호출했을 때만 나타난다. Shell을 �
 ### 12.1 `environment_background`
 
 - **Use:** field hub, authored region, route, transition background, aftermath의 같은 world.
-- **Production:** 2560×1440 opaque PNG, sRGB, 16:9. parallax가 필요하면 opaque base와 transparent layer를 별도 family file로 만든다.
-- **Camera/composition:** orthographic top-down, fixed rotation, player route가 먼저 읽히고 상단 여백이 다음 destination을 설명한다. horizon/perspective distortion을 넣지 않는다.
+- **Production:** 장면 구역 전체의 master composite와 opaque clean base, 필요한 transparent depth/foreground/prop/variant PNG를 제작한다. sRGB, 기본 2 source px/world unit. 2560×1440은 1280×720 한 viewport 구역의 기준이지 전체 region 크기 제한이 아니다. 큰 구역·crop·청크·피벗·합성 계약은 13을 따른다. 타일 격자 정렬은 필수가 아니다.
+- **Camera/composition:** 지면 기준 하향각 60°의 orthographic top-down, fixed azimuth. 벽·가구의 옆면/높이와 지면의 깊이축 단축을 일관되게 표현한다. player route가 먼저 읽히고 상단 여백이 다음 destination을 설명한다. horizon/perspective distortion을 넣지 않는다.
 - **Information priority:** 모든 주요 object를 위 세 단계 중 하나로 명시한다. evidence/direct interaction object는 실루엣과 경계를 우선하고, atmosphere object는 대비를 낮춘다. 모델이 importance를 추론하지 않는다.
+- **Separation:** 변하지 않는 건축은 base에 남긴다. 이동·제거·가림·상태 변경 대상은 별도 레이어로 분리하고, 뒤쪽 바닥/벽과 그림자 소유권까지 제작한다. 완성 배경에서 잘라낸 투명 구멍을 clean base로 납품하지 않는다.
 - **Keep/transform:** A/B의 brush, value separation, density contrast만 참고한다. TIN의 recovery/recognition/authority protocol 공간을 새로 authored한다. BLACK SOULS 2의 landmark, interior, map, symbol은 사용하지 않는다.
 - **Forbidden:** baked text, HUD, menu frame, readable logo, character portrait, original checker/frame, watermark, unknowable evidence object, excessive line density that hides route.
 - **QA:** field normal/focus, combat transition, aftermath/revisit, long route, three target resolutions. 16:9에서 world focal point와 interactable hierarchy가 유지되어야 한다.
@@ -574,7 +576,8 @@ art_ui_focus_marker
 ```
 
 - 위 key는 asset ID가 아니라 presentation lookup key다.
-- active Gold Standard는 이 run에서 생성하거나 승인하지 않는다.
+- `art_world_*`는 단일 PNG가 아니라 13의 region art bundle을 찾는다. area/layer/variant 경로는 module-local presentation manifest에 두며 기존 content key는 보존한다.
+- active Gold Standard는 사용자 승인 전까지 없다. 샘플 또는 기계적 분리 성공을 승인으로 간주하지 않는다.
 - 실제 asset brief와 candidate가 없으면 presentation 구현은 해당 key를 `missing_art_asset`으로 명시적으로 보고한다. 임의의 placeholder image path를 생성하지 않는다.
 - 유저가 asset 제작을 요청하면 `docs/IMAGE_ASSET_WORKFLOW.md` 순서로 brief → candidate → 실제 화면 검수 → 명시적 승인을 거친다.
 - `art_ui_*`는 UI icon이 아니라 broad information fill/focus rule을 위한 visual language key다.
@@ -699,7 +702,7 @@ audio는 `modules/top_down_action_rpg/`가 소유하는 module-local presentatio
 - 각 asset family의 brief, candidate hard-gate 기록, provenance/license 기록
 - 사용자가 실제 화면에서 최종 승인한 asset manifest
 
-이 문서 작성 run은 위 capture, 구현, asset 생성, visual approval을 수행하지 않았다. 따라서 현재 상태는 **presentation contract written / asset production not started / user play review not started**이다. 자동 테스트나 계획 문서만으로 visual completion을 주장하지 않는다.
+최초 계획 작성 run은 위 capture·구현·asset 생성·visual approval을 수행하지 않았다. 2026-09-26에는 사용자 요청으로 13의 큰 배경+분리 레이어 제작 계획과 샘플 작업을 시작한다. 최신 후보·실제 검수 결과는 해당 asset brief/QA에 기록한다. 현재 런타임 통합·사용자 플레이·최종 시각 승인은 미완료이며, 자동 테스트나 계획 문서만으로 visual completion을 주장하지 않는다.
 
 ## 15. 금지 shortcut
 

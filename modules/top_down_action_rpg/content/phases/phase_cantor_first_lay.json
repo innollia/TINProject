@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "phase_cantor_first_lay",
+  "display_name": "First Lay",
+  "owner_enemy_id": "enemy_residue_cantor",
+  "index": 1,
+  "trigger": {
+    "kind": "hp_ratio",
+    "hp_ratio_at": 55,
+    "condition": {}
+  },
+  "enter": {
+    "effect_ids": [],
+    "status_ids": [
+      "st_medium_residue"
+    ],
+    "invulnerable_windows": 0
+  },
+  "overrides": {
+    "action_add_ids": [
+      "act_cantor_void_gash"
+    ],
+    "action_remove_ids": [],
+    "stat_overrides": {
+      "agility": 2
+    },
+    "resistance_add_status_ids": [
+      "st_medium_residue"
+    ],
+    "resistance_remove_status_ids": [],
+    "signature_action_id": "act_cantor_void_gash",
+    "telegraph_gain_windows": 1
+  },
+  "roster": {
+    "add_enemy_ids": [],
+    "remove_enemy_ids": [],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "reduce_owner_hp_to",
+    "hp_ratio_at": 25
+  },
+  "next_phase_id": "phase_cantor_contract_press",
+  "seed_ids": [
+    "seed_s001"
+  ]
+}

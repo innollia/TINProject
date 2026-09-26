@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "doc_r5_supply_rack_receipt",
+  "display_name": "Supply Rack Receipt",
+  "region_id": "region_r5_glasswing_ordinal",
+  "availability": {
+    "condition": {},
+    "reached_by": "prop"
+  },
+  "reached_by_ref": "prop_r5_supply_rack",
+  "pages": [
+    {
+      "page_id": "pg_rack_ledger",
+      "lines": [
+        "medium blanks, fold sheets, blades, four columns",
+        "the ordinal judges the rack, the school judges the credit",
+        "labour hours converted to craft credit at the counter",
+        "category: supply rack"
+      ],
+      "presentation": "plain",
+      "corruption_rules": []
+    },
+    {
+      "page_id": "pg_split_permit",
+      "lines": [
+        "medium blanks, fold sheets, blades, four columns",
+        "the ordinal judges the rack, the registry judges the credit",
+        "labour hours converted to craft credit at the counter",
+        "category: supply rack"
+      ],
+      "presentation": "corrupted",
+      "corruption_rules": [
+        {
+          "rule_id": "cr_permit_word",
+          "mode": "replace_token",
+          "trigger": {
+            "clock_at_least": {
+              "clock_id": "clock_public_record",
+              "stage_index": 3
+            }
+          },
+          "severity": 3,
+          "line_index": 1,
+          "token_index": 3,
+          "text_note": "the judging authority is replaced so the same rack reads as two acts"
+        }
+      ]
+    }
+  ],
+  "reading": {
+    "background_mode": "dim_world",
+    "world_visible_ratio": 0.35,
+    "advance": "page",
+    "max_lines_per_page": 9,
+    "min_font_size": 20,
+    "requires_advance_affordance": true
+  },
+  "post_read": {
+    "effect_ids": [
+      "eff_r5_supply_rack_issued"
+    ],
+    "once": false
+  },
+  "revisit": "allowed",
+  "seed_ids": [
+    "seed_s140",
+    "seed_s150",
+    "seed_s152"
+  ],
+  "owner_npc_id": "npc_14_eda_marrow"
+}

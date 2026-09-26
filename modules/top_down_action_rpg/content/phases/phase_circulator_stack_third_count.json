@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "phase_circulator_stack_third_count",
+  "display_name": "Third Count",
+  "owner_enemy_id": "enemy_circulator_stacker",
+  "index": 1,
+  "trigger": {
+    "kind": "window_count",
+    "window_count_at": 2
+  },
+  "enter": {
+    "effect_ids": [
+      "eff_r2_census_third_count_filed"
+    ],
+    "status_ids": [
+      "st_medium_residue"
+    ],
+    "invulnerable_windows": 0
+  },
+  "overrides": {
+    "action_add_ids": [
+      "act_cantor_overflow"
+    ],
+    "action_remove_ids": [
+      "act_craft_sheet_snap"
+    ],
+    "stat_overrides": {
+      "agility": 11
+    },
+    "resistance_add_status_ids": [
+      "st_medium_residue"
+    ],
+    "resistance_remove_status_ids": [],
+    "signature_action_id": "act_circulator_stack_collect",
+    "telegraph_gain_windows": 1
+  },
+  "roster": {
+    "add_enemy_ids": [
+      "enemy_disperser_warden"
+    ],
+    "remove_enemy_ids": [],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "survive_windows"
+  },
+  "next_phase_id": null,
+  "seed_ids": [
+    "seed_s022",
+    "seed_s033",
+    "seed_s096"
+  ]
+}

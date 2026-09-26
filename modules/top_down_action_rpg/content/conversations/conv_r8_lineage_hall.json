@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r8_lineage_hall",
+    "display_name":  "Lineage Hall Desk",
+    "region_id":  "region_r8_folding_school",
+    "speaker_npc_id":  "npc_09_perrin_lask",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_09_perrin_ward",
+                                                                                   "target_npc_id":  "npc_09_perrin_lask",
+                                                                                   "state_id":  "rs_perrin_reported"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_r8_course_index_desk",
+                                                                    "choice_id":  "ch_withhold_measurement"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  12,
+    "pages":  [
+                  {
+                      "page_id":  "pg_sound",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "Say the name back, then say which body is standing here while you say it.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_animal_names",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "The guardian column is filled with animal names. None of them are the children\u0027s.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_unnamed_box",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "The registrar\u0027s box has one blank line and nobody has opened it in two terms.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_prove_the_continuity",
+                        "text":  "Have the child state the name and the body together, in their own words.",
+                        "semantic_tags":  [
+                                              "care",
+                                              "protective"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_open_the_unnamed_box",
+                        "text":  "Let the child write their own name into the registrar\u0027s blank line.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_return_the_child",
+                        "text":  "Return the child to the registry with the animal name on file.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_file_the_report_first",
+                        "text":  "File the transfer report before the child leaves the desk.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "bureaucratic"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r8_concentration_registered",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+                                           "eff_r8_course_index_printed"
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r8_course_index_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s042",
+                     "seed_s102",
+                     "seed_s143"
+                 ]
+}

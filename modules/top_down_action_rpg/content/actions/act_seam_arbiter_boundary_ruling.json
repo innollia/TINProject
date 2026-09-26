@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "id": "act_seam_arbiter_boundary_ruling",
+  "display_name": "seam arbiter boundary ruling",
+  "order": 24,
+  "owner": "enemy",
+  "category": "unique",
+  "defense_mode": "none",
+  "lifecycle": "committed",
+  "intent": {
+    "target_mode": "ONE_ENEMY",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 3,
+    "action_slot_cost": 1,
+    "resource_costs": {},
+    "cooldown_windows": 4
+  },
+  "telegraph": {
+    "channels": [
+      "pose",
+      "vfx",
+      "sound"
+    ],
+    "windows_before_active": 2,
+    "tell_key": "tell_seam_arbiter_boundary_ruling"
+  },
+  "damage_payload": {
+    "delivery": "physical",
+    "shape": "percent_max_hp",
+    "base_value": 12,
+    "affinity": "ice",
+    "hit_policy": "guaranteed",
+    "hit_modifier": 0,
+    "evasion_policy": "roll",
+    "critical_policy": "never",
+    "dodge_pressure": 0,
+    "guard_ignore": true,
+    "breaks_guard": true,
+    "break_damage": 36,
+    "dodgeable": true,
+    "break_damage_kinds": [
+      "hp_damage"
+    ],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {
+      "status_id": "st_recorded",
+      "chance_permille": 1000,
+      "target": "target"
+    }
+  ],
+  "commitment": {
+    "spans_windows": 3,
+    "interruptible": false,
+    "interrupt_effect_ids": []
+  },
+  "recovery": {
+    "windows": 2,
+    "punish_windows": 2,
+    "recovery_locked": false
+  },
+  "break_spec": {
+    "stacks": 1,
+    "status_ids": [
+      "st_recorded"
+    ],
+    "effect_ids": [
+      "eff_r7_boundary_witness_filed"
+    ],
+    "requires_target_breakable": true
+  },
+  "hooks": {
+    "on_break": [
+      "eff_r7_boundary_witness_filed"
+    ]
+  },
+  "reactions": {
+    "valid_reaction_ids": [
+      "act_dodge_shift",
+      "act_break_poise"
+    ],
+    "forbidden_response_ids": [
+      "act_guard_set"
+    ]
+  },
+  "counters": {
+    "valid": [
+      "break",
+      "phase_advance",
+      "raw_survive"
+    ],
+    "forbidden": [
+      "guard",
+      "status_counter"
+    ],
+    "breakable": true
+  },
+  "presentation": {
+    "icon_key": "act_seam_arbiter_boundary_ruling"
+  },
+  "seed_ids": [
+    "seed_s051",
+    "seed_s054",
+    "seed_s102"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "doc_r4_contradictory_translation",
+  "display_name": "Low-Level Stacks Translation",
+  "region_id": "region_r4_crownwell_archive",
+  "availability": {
+    "condition": {},
+    "reached_by": "prop"
+  },
+  "reached_by_ref": "prop_r4_low_level_stacks",
+  "pages": [
+    {
+      "page_id": "pg_plain",
+      "lines": [
+        "floor one: untranslated",
+        "floor two: untranslated",
+        "category: not filed"
+      ],
+      "presentation": "plain",
+      "corruption_rules": []
+    },
+    {
+      "page_id": "pg_wrong",
+      "lines": [
+        "floor one: untranslated",
+        "floor two: untranslated",
+        "category: recovered material"
+      ],
+      "presentation": "corrupted",
+      "corruption_rules": [
+        {
+          "rule_id": "cr_class_line",
+          "mode": "recolor",
+          "trigger": {
+            "axis_at_least": {
+              "axis": "recognition_drift",
+              "value": 2
+            }
+          },
+          "severity": 1,
+          "line_index": 2,
+          "token_index": 1,
+          "text_note": "the classification word itself changes, not only the ink"
+        }
+      ]
+    }
+  ],
+  "reading": {
+    "background_mode": "dim_world",
+    "world_visible_ratio": 0.35,
+    "advance": "page",
+    "max_lines_per_page": 9,
+    "min_font_size": 20,
+    "requires_advance_affordance": true
+  },
+  "post_read": {
+    "effect_ids": [
+      "eff_r4_translation_precedence_filed"
+    ],
+    "once": false
+  },
+  "revisit": "allowed",
+  "seed_ids": [
+    "seed_s019",
+    "seed_s107",
+    "seed_s073",
+    "seed_s060"
+  ],
+  "owner_npc_id": "npc_06_tamas_quill"
+}

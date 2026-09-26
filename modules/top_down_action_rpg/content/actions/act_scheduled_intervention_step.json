@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "act_scheduled_intervention_step",
+  "display_name": "scheduled intervention step",
+  "order": 11,
+  "owner": "enemy",
+  "category": "attack",
+  "defense_mode": "none",
+  "lifecycle": "instant",
+  "intent": {
+    "target_mode": "ONE_ENEMY",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 1,
+    "action_slot_cost": 1,
+    "resource_costs": {},
+    "cooldown_windows": 1
+  },
+  "telegraph": {
+    "channels": [
+      "pose",
+      "sound"
+    ],
+    "windows_before_active": 0,
+    "tell_key": "tell_scheduled_intervention_step"
+  },
+  "damage_payload": {
+    "delivery": "physical",
+    "shape": "fixed",
+    "base_value": 9,
+    "affinity": "none",
+    "hit_policy": "roll",
+    "hit_modifier": 0,
+    "evasion_policy": "roll",
+    "critical_policy": "never",
+    "dodge_pressure": 7,
+    "guard_ignore": false,
+    "breaks_guard": false,
+    "break_damage": 0,
+    "dodgeable": true,
+    "break_damage_kinds": [],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "reactions": {
+    "valid_reaction_ids": [
+      "act_dodge_shift",
+      "act_guard_set"
+    ],
+    "forbidden_response_ids": []
+  },
+  "counters": {
+    "valid": [
+      "guard",
+      "dodge",
+      "break"
+    ],
+    "forbidden": [],
+    "breakable": true
+  },
+  "presentation": {
+    "icon_key": "act_scheduled_intervention_step"
+  },
+  "seed_ids": [
+    "seed_s017",
+    "seed_s030",
+    "seed_s093"
+  ]
+}

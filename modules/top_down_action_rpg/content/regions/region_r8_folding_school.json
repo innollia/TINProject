@@ -1,249 +1,262 @@
 {
-    "schema_version":  1,
-    "id":  "region_r8_folding_school",
-    "display_name":  "The Folding School",
-    "region_role":  "magic_training_craft_labor",
-    "conflict_thesis":  "The conflict is not whether craft can be learned but whose labour a learned craft is recorded as.",
-    "topology":  {
-                     "shape":  "terraced_court_and_store",
-                     "size_class":  "large",
-                     "landmark_count":  5,
-                     "traversal_axis":  "elevation",
-                     "backtrack_supported":  true
-                 },
-    "entry":  {
-                  "from_region_id":  "region_r1_returning_kiln",
-                  "edge_id":  "route_e02_folding_school_dispatch",
-                  "gate_id":  "gate_g1_ash_debt",
-                  "one_way":  false
-              },
-    "exits":  [
-                  {
-                      "to_region_id":  "region_r1_returning_kiln",
-                      "edge_id":  "route_e02_folding_school_dispatch",
-                      "gate_id":  "gate_g1_ash_debt",
-                      "route_state":  "conditional",
-                      "requires_condition":  {
-                                                 "clock_at_least":  {
-                                                                        "clock_id":  "clock_institutional_response",
-                                                                        "stage_index":  1
-                                                                    }
-                                             },
-                      "unlock_effect_id":  "eff_r8_concentration_registered",
-                      "field_activation":  "INTERACTION",
-                      "resource_keys":  [
-                                            "res_craft_credit"
-                                        ]
-                  }
-              ],
-    "internal_routes":  [
-                            {
-                                "internal_route_id":  "course_index_return",
-                                "from_anchor_key":  "index_desk",
-                                "to_anchor_key":  "cut_chamber_return",
-                                "route_state":  "conditional",
-                                "requires_condition":  {
-                                                           "region_visited":  {
-                                                                                  "region_id":  "region_r8_folding_school",
-                                                                                  "min_visits":  2
-                                                                              }
-                                                       },
-                                "unlock_effect_id":  "eff_r8_course_index_printed"
-                            }
-                        ],
-    "authority":  {
-                      "institution_id":  "institution_mag_academy",
-                      "protocol_id":  "protocol_curriculum_labor",
-                      "recognition_default":  "person",
-                      "legitimacy_baseline":  0
-                  },
-    "dominant_protocol":  {
-                              "protocol_id":  "protocol_curriculum_labor",
-                              "category_bias":  [
-                                                    "worker",
-                                                    "artifact"
-                                                ],
-                              "category_error_policy":  "record"
-                          },
-    "resource_flow":  {
-                          "scarce_keys":  [
-                                              "res_craft_credit",
-                                              "res_concentration_sample",
-                                              "res_medium_blank",
-                                              "res_contract_tally"
-                                          ],
-                          "surplus_keys":  [
-
-                                           ],
-                          "access_rule_ids":  [
-                                                  "rule_school_course_index"
-                                              ]
-                      },
-    "residents":  [
-                      {
-                          "npc_id":  "npc_20_mira_vask",
-                          "initial_presence":  "resident",
-                          "moves_on_absence_to":  "region_h0_undersign_exchange"
-                      }
-                  ],
-    "clocks":  [
-                   {
-                       "clock_id":  "clock_institutional_response",
-                       "start_state":  "active",
-                       "reversal":  "none",
-                       "weight":  1
-                   },
-                   {
-                       "clock_id":  "clock_contamination",
-                       "start_state":  "active",
-                       "reversal":  "none",
-                       "weight":  2
-                   },
-                   {
-                       "clock_id":  "clock_public_record",
-                       "start_state":  "active",
-                       "reversal":  "none",
-                       "weight":  2
-                   },
-                   {
-                       "clock_id":  "clock_resource_collapse",
-                       "start_state":  "active",
-                       "reversal":  "none",
-                       "weight":  1
-                   },
-                   {
-                       "clock_id":  "clock_personal_collapse",
-                       "start_state":  "active",
-                       "reversal":  "slow",
-                       "weight":  2
-                   },
-                   {
-                       "clock_id":  "clock_crown_alignment",
-                       "start_state":  "dormant",
-                       "reversal":  "terminal",
-                       "weight":  1
-                   }
-               ],
-    "concentration":  {
-                          "field_level_permille":  520,
-                          "safe_band_permille":  640,
-                          "threshold_permille":  900,
-                          "provenance_node_id":  "r8_02_concentration_registration",
-                          "disperser_node_ids":  [
-                                                     "prop_r8_medium_store_shelf"
-                                                 ],
-                          "disperser_charge_key":  "res_disperser_charge",
-                          "circulation_slot_key":  "res_circulation_slot",
-                          "pollution_accumulated":  1
-                      },
-    "hidden_state":  {
-                         "reveal_condition":  {
-                                                  "clock_at_least":  {
-                                                                         "clock_id":  "clock_contamination",
-                                                                         "stage_index":  1
-                                                                     }
-                                              },
-                         "reveal_kind":  "partial",
-                         "reveal_prop_ids":  [
-                                                 "prop_r8_cut_chamber_wall"
-                                             ],
-                         "reveal_document_ids":  [
-
-                                                 ]
-                     },
-    "initial_state":  "as_authored",
-    "combat_content":  {
-                           "encounter_ids":  [
-                                                 "enc_r8_fold_that_refuses_the_hand"
-                                             ],
-                           "field_pressure":  "lethal"
-                       },
-    "noncombat_content":  {
-                              "interactable_prop_ids":  [
-                                                            "prop_r8_medium_store_shelf",
-                                                            "prop_r8_cut_chamber_wall"
-                                                        ],
-                              "service_ids":  [
-                                                  "service_r8_course_index"
-                                              ]
-                          },
-    "initial_cluster":  {
-                            "cluster_id":  "cluster_rc_08_fold_refuses_hand",
-                            "npc_ids":  [
-                                            "npc_01_ilyra_senn",
-                                            "npc_05_nera_voss",
-                                            "npc_11_cael_ren",
-                                            "npc_20_mira_vask"
-                                        ],
-                            "thread_ids":  [
-                                               "thread_r8_concentration_registration",
-                                               "thread_r8_unassigned_stock"
-                                           ],
-                            "starting_conversation_id":  "conv_r8_course_index_desk"
-                        },
-    "revisit_variants":  [
-                             {
-                                 "variant_id":  "rv_after_registration",
-                                 "condition":  {
-                                                   "region_state":  {
-                                                                        "region_id":  "region_r8_folding_school",
-                                                                        "state_tag":  "concentration_filed"
-                                                                    }
-                                               },
-                                 "prop_state_ids":  [
-                                                        "prop_r8_medium_store_shelf"
-                                                    ],
-                                 "conversation_id":  "conv_r8_course_index_desk"
-                             },
-                             {
-                                 "variant_id":  "rv_after_verdict",
-                                 "condition":  {
-                                                   "prop_state_is":  {
-                                                                         "prop_id":  "prop_r8_cut_chamber_wall",
-                                                                         "state_id":  "ps_opened"
-                                                                     }
-                                               },
-                                 "prop_state_ids":  [
-                                                        "prop_r8_cut_chamber_wall"
-                                                    ],
-                                 "conversation_id":  "conv_r8_course_index_desk"
-                             }
-                         ],
-    "unresolved_debt":  [
-                            {
-                                "debt_id":  "d_r8_unassigned_stock",
-                                "description":  "craft that no lineage claims is counted as unassigned stock",
-                                "due_condition":  {
-                                                      "clock_irreversible":  {
-                                                                                 "clock_id":  "clock_institutional_response"
-                                                                             }
-                                                  },
-                                "resolve_effect_ids":  [
-                                                           "eff_r8_concentration_registered"
-                                                       ],
-                                "resolution_token":  "open",
-                                "resource_id":  "res_contract_tally"
-                            }
-                        ],
-    "cross_region_links":  [
-                               {
-                                   "to_region_id":  "region_r1_returning_kiln",
-                                   "link_kind":  "resource",
-                                   "note":  "spent ash thread is traded for course credit"
-                               },
-                               {
-                                   "to_region_id":  "region_h0_undersign_exchange",
-                                   "link_kind":  "record",
-                                   "note":  "the printed course index is filed as a service record"
-                               }
-                           ],
-    "axis_weights":  {
-                         "protocol_legitimacy":  1,
-                         "recognition_drift":  2,
-                         "continuity_pressure":  1,
-                         "resource_scarcity":  2
-                     },
-    "seed_ids":  [
-                     "seed_s001"
-                 ]
+  "schema_version": 1,
+  "id": "region_r8_folding_school",
+  "display_name": "The Folding School",
+  "region_role": "magic_training_craft_labor",
+  "conflict_thesis": "The conflict is not whether craft can be learned but whose labour a learned craft is recorded as.",
+  "topology": {
+    "shape": "terraced_court_and_store",
+    "size_class": "large",
+    "landmark_count": 5,
+    "traversal_axis": "elevation",
+    "backtrack_supported": true
+  },
+  "entry": {
+    "from_region_id": "region_r5_glasswing_ordinal",
+    "edge_id": "route_e18_folding_school_approach",
+    "gate_id": "gate_g5_labor_pledge",
+    "one_way": false
+  },
+  "exits": [
+    {
+      "to_region_id": "region_r5_glasswing_ordinal",
+      "edge_id": "route_e18_folding_school_approach",
+      "gate_id": "gate_g5_labor_pledge",
+      "route_state": "conditional",
+      "requires_condition": {
+        "all_of": [
+          {
+            "route_open": {
+              "gate_id": "gate_g5_labor_pledge"
+            }
+          },
+          {
+            "resource_held": {
+              "resource_key": "res_concentration_sample",
+              "min_count": 1
+            }
+          },
+          {
+            "resource_held": {
+              "resource_key": "res_craft_credit",
+              "min_count": 1
+            }
+          }
+        ]
+      },
+      "unlock_effect_id": "eff_r5_folding_school_approach_opened",
+      "field_activation": "STORY_FORCED",
+      "resource_keys": [
+        "res_concentration_sample",
+        "res_craft_credit"
+      ]
+    }
+  ],
+  "internal_routes": [
+    {
+      "internal_route_id": "course_index_return",
+      "from_anchor_key": "index_desk",
+      "to_anchor_key": "cut_chamber_return",
+      "route_state": "conditional",
+      "requires_condition": {
+        "region_visited": {
+          "region_id": "region_r8_folding_school",
+          "min_visits": 2
+        }
+      },
+      "unlock_effect_id": "eff_r8_course_index_printed"
+    }
+  ],
+  "authority": {
+    "institution_id": "institution_mag_academy",
+    "protocol_id": "protocol_curriculum_labor",
+    "recognition_default": "person",
+    "legitimacy_baseline": 0
+  },
+  "dominant_protocol": {
+    "protocol_id": "protocol_curriculum_labor",
+    "category_bias": [
+      "worker",
+      "artifact"
+    ],
+    "category_error_policy": "record"
+  },
+  "resource_flow": {
+    "scarce_keys": [
+      "res_craft_credit",
+      "res_concentration_sample",
+      "res_medium_blank",
+      "res_contract_tally"
+    ],
+    "surplus_keys": [],
+    "access_rule_ids": [
+      "rule_school_course_index"
+    ]
+  },
+  "residents": [
+    {
+      "npc_id": "npc_20_mira_vask",
+      "initial_presence": "resident",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    }
+  ],
+  "clocks": [
+    {
+      "clock_id": "clock_institutional_response",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 1
+    },
+    {
+      "clock_id": "clock_contamination",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 2
+    },
+    {
+      "clock_id": "clock_public_record",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 2
+    },
+    {
+      "clock_id": "clock_resource_collapse",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 1
+    },
+    {
+      "clock_id": "clock_personal_collapse",
+      "start_state": "active",
+      "reversal": "slow",
+      "weight": 2
+    },
+    {
+      "clock_id": "clock_crown_alignment",
+      "start_state": "dormant",
+      "reversal": "terminal",
+      "weight": 1
+    }
+  ],
+  "concentration": {
+    "field_level_permille": 520,
+    "safe_band_permille": 640,
+    "threshold_permille": 900,
+    "provenance_node_id": "r8_02_concentration_registration",
+    "disperser_node_ids": [
+      "prop_r8_medium_store_shelf"
+    ],
+    "disperser_charge_key": "res_disperser_charge",
+    "circulation_slot_key": "res_circulation_slot",
+    "pollution_accumulated": 1
+  },
+  "hidden_state": {
+    "reveal_condition": {
+      "clock_at_least": {
+        "clock_id": "clock_contamination",
+        "stage_index": 1
+      }
+    },
+    "reveal_kind": "partial",
+    "reveal_prop_ids": [
+      "prop_r8_cut_chamber_wall"
+    ],
+    "reveal_document_ids": []
+  },
+  "initial_state": "as_authored",
+  "combat_content": {
+    "encounter_ids": [
+      "enc_r8_fold_that_refuses_the_hand",
+      "enc_r8_fold_that_refuses_the_hand_withdrawn"
+    ],
+    "field_pressure": "lethal"
+  },
+  "noncombat_content": {
+    "interactable_prop_ids": [
+      "prop_r8_medium_store_shelf",
+      "prop_r8_cut_chamber_wall"
+    ],
+    "service_ids": [
+      "service_r8_course_index"
+    ]
+  },
+  "initial_cluster": {
+    "cluster_id": "cluster_rc_08_fold_refuses_hand",
+    "npc_ids": [
+      "npc_01_ilyra_senn",
+      "npc_05_nera_voss",
+      "npc_11_cael_ren",
+      "npc_20_mira_vask"
+    ],
+    "thread_ids": [
+      "thread_r8_concentration_registration",
+      "thread_r8_unassigned_stock"
+    ],
+    "starting_conversation_id": "conv_r8_course_index_desk"
+  },
+  "revisit_variants": [
+    {
+      "variant_id": "rv_after_registration",
+      "condition": {
+        "region_state": {
+          "region_id": "region_r8_folding_school",
+          "state_tag": "concentration_filed"
+        }
+      },
+      "prop_state_ids": [
+        "prop_r8_medium_store_shelf"
+      ],
+      "conversation_id": "conv_r8_course_index_desk"
+    },
+    {
+      "variant_id": "rv_after_verdict",
+      "condition": {
+        "prop_state_is": {
+          "prop_id": "prop_r8_cut_chamber_wall",
+          "state_id": "ps_opened"
+        }
+      },
+      "prop_state_ids": [
+        "prop_r8_cut_chamber_wall"
+      ],
+      "conversation_id": "conv_r8_course_index_desk"
+    }
+  ],
+  "unresolved_debt": [
+    {
+      "debt_id": "d_r8_unassigned_stock",
+      "description": "craft that no lineage claims is counted as unassigned stock",
+      "due_condition": {
+        "clock_irreversible": {
+          "clock_id": "clock_institutional_response"
+        }
+      },
+      "resolve_effect_ids": [
+        "eff_r8_concentration_registered"
+      ],
+      "resolution_token": "open",
+      "resource_id": "res_contract_tally"
+    }
+  ],
+  "cross_region_links": [
+    {
+      "to_region_id": "region_r1_returning_kiln",
+      "link_kind": "resource",
+      "note": "spent ash thread is traded for course credit"
+    },
+    {
+      "to_region_id": "region_h0_undersign_exchange",
+      "link_kind": "record",
+      "note": "the printed course index is filed as a service record"
+    }
+  ],
+  "axis_weights": {
+    "protocol_legitimacy": 1,
+    "recognition_drift": 2,
+    "continuity_pressure": 1,
+    "resource_scarcity": 2
+  },
+  "seed_ids": [
+    "seed_s001"
+  ]
 }

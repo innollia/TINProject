@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "id": "enc_r3_the_scheduled_bell",
+  "display_name": "The Scheduled Bell",
+  "context": {
+    "region_id": "region_r3_bellhouse_hospice",
+    "region_role": "intervention_scheduling",
+    "depth_band": 1,
+    "story_stage": "mid",
+    "time_of_day": "institutional"
+  },
+  "activation": {
+    "kind": "field_trigger",
+    "prop_id": "prop_r3_latency_bell",
+    "eligibility": {
+      "clock_at_least": {
+        "clock_id": "clock_personal_collapse",
+        "stage_index": 1
+      }
+    },
+    "warning": {
+      "channel": "npc_warning",
+      "windows_before": 1
+    }
+  },
+  "visibility": {
+    "visible_in_field": false,
+    "shown_on_map": false
+  },
+  "roster": [
+    {
+      "entry_id": "slot_a",
+      "enemy_id": "enemy_latency_bell_ringer",
+      "count": 1,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 1,
+      "spawn_at": "start"
+    },
+    {
+      "entry_id": "slot_b",
+      "enemy_id": "enemy_mana_triage_surrogate",
+      "count": 1,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 2,
+      "spawn_at": "start"
+    },
+    {
+      "entry_id": "slot_c",
+      "enemy_id": "enemy_wrong_return_scribe",
+      "count": 2,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 3,
+      "spawn_at": "start"
+    }
+  ],
+  "target_priority": [
+    {
+      "enemy_id": "enemy_latency_bell_ringer",
+      "role": "true_actor",
+      "priority": 1,
+      "only_when": {}
+    },
+    {
+      "enemy_id": "enemy_mana_triage_surrogate",
+      "role": "support",
+      "priority": 2,
+      "only_when": {}
+    },
+    {
+      "enemy_id": "enemy_wrong_return_scribe",
+      "role": "support",
+      "priority": 3,
+      "only_when": {}
+    }
+  ],
+  "target_roles": [
+    {
+      "role": "record",
+      "surface_id": "doc_r3_mana_profile_triage_board",
+      "descendants_only": true
+    },
+    {
+      "role": "resource_node",
+      "surface_id": "res_care_token",
+      "descendants_only": false
+    },
+    {
+      "role": "route",
+      "surface_id": "gate_g3_latency_receipt",
+      "descendants_only": false
+    }
+  ],
+  "group": null,
+  "allow": {
+    "escape": true,
+    "skip": false
+  },
+  "clock_pressure": [
+    {
+      "clock_id": "clock_personal_collapse",
+      "ticks_on_start": 1,
+      "ticks_per_window": 1,
+      "ticks_on_end": 1
+    },
+    {
+      "clock_id": "clock_contamination",
+      "ticks_on_start": 0,
+      "ticks_per_window": 1,
+      "ticks_on_end": 0
+    }
+  ],
+  "outcome": {
+    "on_victory": {
+      "effect_ids": [
+        "eff_r3_latency_receipt_filed",
+        "eff_r3_mana_profile_filed"
+      ]
+    },
+    "on_escape": {
+      "effect_ids": []
+    },
+    "on_failure": {
+      "effect_ids": [],
+      "death_policy": "respawn_checkpoint"
+    },
+    "on_parley": {
+      "effect_ids": []
+    }
+  },
+  "world_effect": {
+    "region_state_tag": "r3_bell_settled",
+    "prop_state_ids": [
+      "prop_r3_latency_bell"
+    ],
+    "unlock_gate_ids": [
+      "gate_g3_latency_receipt"
+    ]
+  },
+  "repeat": {
+    "policy": "once",
+    "reset_policy": "none",
+    "cooldown_windows": 0,
+    "depth_scaling": {
+      "per_band": {},
+      "max_bands": 0
+    }
+  },
+  "base_encounter_id": null,
+  "variant_overrides": {},
+  "remix_eligibility": {
+    "condition": {
+      "region_visited": {
+        "region_id": "region_r3_bellhouse_hospice"
+      }
+    },
+    "requires_depth_band_min": 0,
+    "requires_postgame": false
+  },
+  "lore_ref": "seed_s013",
+  "seed_ids": [
+    "seed_s013",
+    "seed_s004",
+    "seed_s103"
+  ]
+}

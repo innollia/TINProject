@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: phy.tool_use_strike
+// situation: a tool is swung or driven, heavy class
+// render: --seconds 0.55 --rate 48000 --bpm 120 --no-default-bank
+n"c3 c4" as e |> saw(e.freq) * adsr(e.gate, 0.02, 0.10, 0.0, 0.0) * e.vel |> out(%)

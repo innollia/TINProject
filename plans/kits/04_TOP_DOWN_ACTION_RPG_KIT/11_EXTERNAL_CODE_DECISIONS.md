@@ -1,5 +1,11 @@
 # 외부 코드·의존성 결정
 
+## 환경 이미지 제작 결정 — 2026-09-26
+
+[13](13_LAYERED_ENVIRONMENT_PRODUCTION.md)의 큰 배경+분리 레이어 방식은 외부 TileMap/RPG 프레임워크 도입을 요구하지 않는다. 기계적 crop·alpha 분리·canvas 정렬·packing은 제작 처리이며 게임 시스템 의존성으로 승격하지 않는다. 구현할 때 기존 Godot/TIN 자원·노드 기능을 먼저 확인한다.
+
+외부 배경·타일·sprite를 무단 복사하지 않고, 생성 원본/reference/prompt/처리 내역을 후보별 기록한다. BLACK SOULS 2 캡처는 UX 근거로만 남기고 배경 생성의 원작 변형 입력으로 사용하지 않는다. 이번 문서/샘플 작업은 패키지 설치·외부 코드 채택을 포함하지 않는다.
+
 ## godot-jrpg
 
 조사: `https://github.com/kuryart/godot-jrpg`  

@@ -1,0 +1,113 @@
+{
+    "schema_version": 1,
+    "id": "conv_r6_organ_intake",
+    "display_name": "Organ Intake Counter",
+    "region_id": "region_r6_gristmarket_ward",
+    "speaker_npc_id": "npc_05_nera_voss",
+    "entry_condition": {
+        "region_visited": {
+            "region_id": "region_r1_returning_kiln"
+        }
+    },
+    "priority": 28,
+    "pages": [
+        {
+            "page_id": "pg_counter_question",
+            "speaker": "npc",
+            "presentation_class": "official",
+            "text": "The counter asks one question and it is not about the patient. It asks which clinic holds the part. The answer decides the queue.",
+            "advance": "auto"
+        },
+        {
+            "page_id": "pg_numbered_queue",
+            "speaker": "world",
+            "presentation_class": "narration",
+            "text": "The cure queue board is numbered in pencil and the intake counter has two trays with no label between them.",
+            "advance": "wait"
+        },
+        {
+            "page_id": "pg_custody_split",
+            "speaker": "npc",
+            "presentation_class": "confidential",
+            "text": "A cure here is not the previous state handed back. It is a negotiation about where the pain goes and which of us is called the part afterwards.",
+            "advance": "auto"
+        }
+    ],
+    "choices": [
+        {
+            "choice_id": "ch_file_the_custody_split",
+            "text": "File the custody split deed and let the part keep a clinic category instead of a person category.",
+            "semantic_tags": ["bureaucratic", "cooperative"],
+            "presentation_class": "neutral",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r6_residue_recovery_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_reassign_the_queue",
+            "text": "Reassign the queue so the numbers follow who can still work, and say so on the board.",
+            "semantic_tags": ["coercive", "protective"],
+            "presentation_class": "neutral",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r6_pump_primed",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_prime_the_pump_first",
+            "text": "Prime the drainage pump and bring the medicine across before anyone signs the intake tray.",
+            "semantic_tags": ["careful", "protective"],
+            "presentation_class": "unavailable",
+            "availability": {
+                "prop_state_is": {
+                    "prop_id": "prop_r6_drainage_pump",
+                    "state_id": "ps_primed"
+                }
+            },
+            "unavailable_reason": "prop_r6_drainage_pump",
+            "irreversibility": "reversible",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r6_medicine_ferry_opened",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_cosign_with_clinic_policy",
+            "text": "Cosign the petition with clinic policy in the patient line so the quorum has a signature to count.",
+            "semantic_tags": ["destructive", "coercive"],
+            "presentation_class": "extreme",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r6_organ_quorum_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        }
+    ],
+    "on_complete": {
+        "effect_ids": [
+            "eff_r6_residue_recovery_filed"
+        ]
+    },
+    "on_abort": {
+        "effect_ids": []
+    },
+    "revisit": "state_dependent",
+    "alt_conversation_ids": [
+        "conv_r3_intake_triage"
+    ],
+    "seed_ids": [
+        "seed_s025",
+        "seed_s029",
+        "seed_s082",
+        "seed_s104"
+    ]
+}

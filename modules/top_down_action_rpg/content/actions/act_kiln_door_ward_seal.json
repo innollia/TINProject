@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "id": "act_kiln_door_ward_seal",
+  "display_name": "kiln door ward seal",
+  "order": 18,
+  "owner": "enemy",
+  "category": "unique",
+  "defense_mode": "none",
+  "lifecycle": "committed",
+  "intent": {
+    "target_mode": "ALL_ENEMIES",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 2,
+    "action_slot_cost": 1,
+    "resource_costs": {},
+    "cooldown_windows": 3
+  },
+  "telegraph": {
+    "channels": [
+      "pose",
+      "vfx",
+      "numeric_bar"
+    ],
+    "windows_before_active": 1,
+    "tell_key": "tell_kiln_door_ward_seal"
+  },
+  "damage_payload": {
+    "delivery": "physical",
+    "shape": "fixed",
+    "base_value": 9,
+    "affinity": "none",
+    "hit_policy": "guaranteed",
+    "hit_modifier": 0,
+    "evasion_policy": "disabled",
+    "critical_policy": "never",
+    "dodge_pressure": 0,
+    "guard_ignore": true,
+    "breaks_guard": false,
+    "break_damage": 0,
+    "dodgeable": false,
+    "break_damage_kinds": [],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {
+      "status_id": "st_concentration_load",
+      "chance_permille": 700,
+      "target": "target"
+    },
+    {
+      "status_id": "st_contract_bound",
+      "chance_permille": 1000,
+      "target": "self"
+    }
+  ],
+  "commitment": {
+    "spans_windows": 2,
+    "interruptible": true,
+    "interrupt_effect_ids": []
+  },
+  "recovery": {
+    "windows": 1,
+    "punish_windows": 1,
+    "recovery_locked": false
+  },
+  "counters": {
+    "valid": [
+      "break",
+      "guard",
+      "phase_advance"
+    ],
+    "forbidden": [
+      "dodge",
+      "escape"
+    ],
+    "breakable": true
+  },
+  "presentation": {
+    "icon_key": "act_kiln_door_ward_seal"
+  },
+  "seed_ids": [
+    "seed_s017",
+    "seed_s031",
+    "seed_s038"
+  ]
+}

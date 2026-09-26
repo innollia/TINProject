@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "phase_boot_contract_holder_clause_struck",
+  "display_name": "Clause Struck",
+  "owner_enemy_id": "enemy_boot_contract_holder",
+  "index": 1,
+  "trigger": {
+    "kind": "hp_ratio",
+    "hp_ratio_at": 40
+  },
+  "enter": {
+    "effect_ids": [
+      "eff_r5_supply_permit_split_filed"
+    ],
+    "status_ids": [
+      "st_contract_bound"
+    ],
+    "invulnerable_windows": 0
+  },
+  "overrides": {
+    "action_add_ids": [
+      "act_permit_inspector_inspection"
+    ],
+    "action_remove_ids": [],
+    "stat_overrides": {
+      "agility": 7
+    },
+    "resistance_add_status_ids": [
+      "st_contract_bound"
+    ],
+    "resistance_remove_status_ids": [],
+    "signature_action_id": "act_boot_contract_holder_binding_clause",
+    "telegraph_gain_windows": 1
+  },
+  "roster": {
+    "add_enemy_ids": [
+      "enemy_permit_inspector"
+    ],
+    "remove_enemy_ids": [],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "owner_dead"
+  },
+  "next_phase_id": null,
+  "seed_ids": [
+    "seed_s142",
+    "seed_s143",
+    "seed_s158"
+  ]
+}

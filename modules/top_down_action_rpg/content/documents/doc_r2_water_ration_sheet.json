@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "doc_r2_water_ration_sheet",
+  "display_name": "Water Ration Sheet",
+  "region_id": "region_r2_siltglass_commons",
+  "availability": {
+    "condition": {},
+    "reached_by": "prop"
+  },
+  "reached_by_ref": "prop_r2_waterline_mark",
+  "pages": [
+    {
+      "page_id": "pg_first_read",
+      "lines": [
+        "channel depth, marked at the third stilt",
+        "one measuring cup, three claims, one signature",
+        "the cup returns lighter every cycle",
+        "category: ration line"
+      ],
+      "presentation": "plain",
+      "corruption_rules": []
+    },
+    {
+      "page_id": "pg_after_filing",
+      "lines": [
+        "channel depth, marked at the third stilt",
+        "one measuring cup, three claims, one signature",
+        "the council calls the shortfall weather",
+        "category: ration line"
+      ],
+      "presentation": "corrupted",
+      "corruption_rules": [
+        {
+          "rule_id": "cr_category_line",
+          "mode": "recolor",
+          "trigger": {
+            "clock_at_least": {
+              "clock_id": "clock_public_record",
+              "stage_index": 3
+            }
+          },
+          "severity": 2,
+          "line_index": 3,
+          "token_index": 1,
+          "text_note": "the sentence changes from weather to blame, not only the ink"
+        }
+      ]
+    }
+  ],
+  "reading": {
+    "background_mode": "dim_world",
+    "world_visible_ratio": 0.35,
+    "advance": "page",
+    "max_lines_per_page": 9,
+    "min_font_size": 20,
+    "requires_advance_affordance": true
+  },
+  "post_read": {
+    "effect_ids": [
+      "eff_r2_water_ration_read"
+    ],
+    "once": false
+  },
+  "revisit": "blocked_after_corruption",
+  "seed_ids": [
+    "seed_s046",
+    "seed_s064",
+    "seed_s066"
+  ]
+}

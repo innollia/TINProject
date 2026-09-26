@@ -1,0 +1,70 @@
+{
+  "asset_id": "mira_ben_stage01_injured_cutout",
+  "status": "diagnostic_not_for_delivery",
+  "approval": "not_approved",
+  "eligible_as_reference": false,
+  "experiment": "mira_model_experiment_2026-09-26.md",
+  "hypothesis": "Remove B input to test content leakage",
+  "request": {
+    "workspace_id": "d1d3c25e-e590-46cb-a6db-2a6eb4673a71",
+    "base_model_id": "seedream-4.5",
+    "width": 832,
+    "height": 1248,
+    "batch_size": 1,
+    "seed": 260928,
+    "prompt": "Paint a new adult researcher as a rough hand-painted 2D game cutout. Match image 1's rendering process: angular nose-to-cheek division into three broad value planes, opaque directional dry-brush patches inside skin and cloth, broad broken strokes across hair masses. Invent the subject's anatomy and facial proportions independently of the references: an ordinary two-eyed adult face with both eyes fully covered by a horizontal medical bandage. Mira, age 26, slim narrow shoulders, dark-brown ear-length bob with exactly two parallel silver pins behind her left ear; leaf-green knit, cream collar, worn off-white lab coat with disinfectant sleeve marks, charcoal trousers, black lace-up shoes. Entire seated figure, slightly elevated three-quarter view facing page-right, knees bent, torso leaning back. Left hand holds a small cracked transparent lens case over her lap; right hand supports her beside her hip. Neutral mouth, subdued expression. Isolated painted silhouette on perfectly uniform white surrounding every edge and visible through limb gaps, including beneath the shoes. All shading stays inside her silhouette. Leave generous empty margins. One figure only. Transfer paint handling, never the reference characters, motifs, costumes or background; retain rough broken edges rather than a smooth cel-animation finish.",
+    "guidance_files": [
+      {
+        "file_id": "b13c3913-552c-43f4-a6d1-adfe0b96cfec",
+        "type": "reference_image"
+      }
+    ],
+    "session_name": "TIN Mira self-review 05"
+  },
+  "run": {
+    "inference_id": "e8def11e-0e5c-4c1e-8e8c-73d1cfd93207",
+    "status": "IN_PROGRESS",
+    "estimated_price_creative_units": 1.6,
+    "created_at": "2026-09-26T10:30:16.245269+00:00",
+    "session_id": "74622299-fe3e-4810-8f05-eeb3aedae27b",
+    "parameters_adjusted": false,
+    "parameters_adjusted_warning": null,
+    "poll_interval_seconds": 10,
+    "base_model_id": "seedream-4.5",
+    "reference_set_contributions": [],
+    "reference_sets_degraded": false,
+    "reference_sets_warning": null
+  },
+  "result": {
+    "inference_id": "e8def11e-0e5c-4c1e-8e8c-73d1cfd93207",
+    "status": "COMPLETE",
+    "completed_at": "2026-09-26T10:30:59.823770+00:00",
+    "outputs": [
+      {
+        "file_id": "eb0358aa-16a7-4361-8b9d-11fbd88767ed",
+        "url": "https://media.app.layer.ai/workspaces/d1d3c25e-e590-46cb-a6db-2a6eb4673a71/files/eb0358aa-16a7-4361-8b9d-11fbd88767ed/paint_a_new_adult_researcher_as_a_rough_handpainted_2d_game_cutout-2026-09-26-103016.png",
+        "content_type": "image/png",
+        "preview_url": "https://media.app.layer.ai/workspaces/d1d3c25e-e590-46cb-a6db-2a6eb4673a71/files/eb0358aa-16a7-4361-8b9d-11fbd88767ed/paint_a_new_adult_researcher_as_a_rough_handpainted_2d_game_cutout-2026-09-26-103016_200.png",
+        "width": 832,
+        "height": 1248,
+        "duration_seconds": null,
+        "file_size_bytes": 873587
+      }
+    ],
+    "actual_price_creative_units": 1.6,
+    "error": null,
+    "base_model_id": "seedream-4.5",
+    "reference_set_contributions": [],
+    "reference_sets_degraded": false,
+    "reference_sets_warning": null
+  },
+  "local_files": {
+    "source": "assets/art/empty_axiom/candidates/investigation_characters/mira_stage01_run05_source.png"
+  },
+  "observations": [
+    "Broad angular cheek/jaw plane is clearer than run03; not a user style approval.",
+    "No B-like oversized eye mound observed.",
+    "Pose appears perched/suspended instead of floor-seated, and large sleeve patches were invented.",
+    "No background removal spend until a candidate passes content review."
+  ]
+}

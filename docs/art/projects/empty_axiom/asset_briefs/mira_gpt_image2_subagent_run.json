@@ -1,0 +1,71 @@
+{
+  "status": "completed_wrong_execution_path",
+  "asset_id": "mira_ben_stage01_injured_cutout",
+  "requested_by": "user_requested_subagent_gpt_image_2_comparison",
+  "reference_policy": {
+    "A_character_cutout_only": true,
+    "B_excluded": true,
+    "prior_generated_assets_as_reference": false,
+    "cutout_limitations": [
+      "signature on dress remains",
+      "small background fragments remain"
+    ]
+  },
+  "experiment": "Historical run: inherited context and Layer route; not the requested clean-context built-in imagegen experiment",
+  "spending_cap_cu": 6.5,
+  "request": {
+    "workspace_id": "d1d3c25e-e590-46cb-a6db-2a6eb4673a71",
+    "base_model_id": "gpt-image-2",
+    "batch_size": 1,
+    "width": 832,
+    "height": 1248,
+    "quality": "medium",
+    "prompt": "Make a new illustration of Mira in the same drawing and painting language as the CHARACTER in the supplied reference. Treat that image as the visual authority: preserve its visibly irregular, directional painted marks, broken color edges, broad brushed hair locks, and drawn facial structure. The marks follow the turning form and cloth folds. Transfer how it is drawn, not who is depicted. Use the reference character's hair, clothing and exposed skin for rendering guidance; ignore any residual background fragments and signature. Mira is a slim 26-year-old researcher with a short dark-brown bob ending below the ears, two parallel silver pins behind her left ear, a leaf-green knit sweater with a cream collar, a worn off-white lab coat with faint disinfectant sleeve marks, charcoal trousers and low black lace-up shoes. A continuous band of overlapping medical gauze wraps around her head across BOTH eyes, leaving her nose and mouth exposed. She sits directly on the floor with bent knees and her torso leaning back. Her left hand holds a small cracked transparent lens case over her lap; her right hand rests low beside her. Show the entire seated figure, including both shoes, in a slightly elevated three-quarter view facing screen right, with space around the silhouette. Isolate her on a flat light-gray background, without floor shading, furniture or a cast shadow. Do not inherit the reference character's blonde hair, hairstyle, outfit, pose or decorative motifs. No text or signature.",
+    "guidance_files": [
+      {
+        "file_id": "25a361b9-f68a-4caa-b4cd-88c9230ac172",
+        "type": "reference_image"
+      }
+    ],
+    "session_name": "Mira A cutout GPT Image 2 comparison"
+  },
+  "execution": {
+    "inference_id": "541dff8e-7377-4b94-bf1d-806cc1c6d47f",
+    "status": "IN_PROGRESS",
+    "estimated_price_creative_units": 5.9,
+    "created_at": "2026-09-26T19:56:17.111553+09:00",
+    "session_id": "c334bd89-7e9b-48fc-b8e4-64806b8cb49d",
+    "parameters_adjusted": false,
+    "parameters_adjusted_warning": null,
+    "poll_interval_seconds": 10,
+    "base_model_id": "gpt-image-2",
+    "reference_set_contributions": [],
+    "reference_sets_degraded": false,
+    "reference_sets_warning": null
+  },
+  "approval": "user_pending",
+  "eligible_as_reference": false,
+  "result": {
+    "inference_id": "541dff8e-7377-4b94-bf1d-806cc1c6d47f",
+    "status": "COMPLETE",
+    "completed_at": "2026-09-26T19:56:52.308118+09:00",
+    "outputs": [
+      {
+        "file_id": "6959b541-d5fe-48ee-bf73-8e3713a33cd4",
+        "url": "https://media.app.layer.ai/workspaces/d1d3c25e-e590-46cb-a6db-2a6eb4673a71/files/6959b541-d5fe-48ee-bf73-8e3713a33cd4/make_a_new_illustration_of_mira_in_the_same_drawing_and_painting-2026-09-26-105617.png",
+        "content_type": "image/png",
+        "preview_url": "https://media.app.layer.ai/workspaces/d1d3c25e-e590-46cb-a6db-2a6eb4673a71/files/6959b541-d5fe-48ee-bf73-8e3713a33cd4/make_a_new_illustration_of_mira_in_the_same_drawing_and_painting-2026-09-26-105617_200.png",
+        "width": 832,
+        "height": 1248,
+        "duration_seconds": null,
+        "file_size_bytes": 1388714
+      }
+    ],
+    "actual_price_creative_units": 5.9399999999999995,
+    "error": null,
+    "base_model_id": "gpt-image-2",
+    "reference_set_contributions": [],
+    "reference_sets_degraded": false,
+    "reference_sets_warning": null
+  }
+}

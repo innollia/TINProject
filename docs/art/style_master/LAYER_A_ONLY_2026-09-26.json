@@ -1,0 +1,80 @@
+{
+  "status": "complete",
+  "quality_evaluation": "user_rejected_photographic_style",
+  "user_feedback": "현실 사람 사진 그림체로 나옴. Golden Idol 실제 배경 없는 인물 제작을 기준으로 전환.",
+  "eligible_as_reference": false,
+  "request": {
+    "workspace_id": "d1d3c25e-e590-46cb-a6db-2a6eb4673a71",
+    "base_model_id": "flux",
+    "width": 1024,
+    "height": 1024,
+    "quality": "medium",
+    "batch_size": 1,
+    "seed": 260926,
+    "prompt": "A painted waist-up three-quarter portrait of one new adult woman with shoulder-length black hair, a plain muted ochre work jacket over a light neutral shirt, one hand naturally visible, a quiet nearly neutral expression, simple abstract background planes. Strong central facial structure dividing broad light and shadow planes, rough directional brushwork inside skin and cloth, hair built from broad painted light and dark masses. Use the supplied image for painting treatment only. A distinct new identity, outfit and pose; no hearts, stars, flowers, leaves, ornaments, special eyes, text, signature or watermark.",
+    "guidance_files": [
+      {
+        "file_id": "b13c3913-552c-43f4-a6d1-adfe0b96cfec",
+        "type": "ip_adapter",
+        "weight": 0.45
+      }
+    ],
+    "session_name": "TIN A-only style calibration 2026-09-26"
+  },
+  "run": {
+    "inference_id": "750a7cb9-ca05-41c8-8748-07984ac94466",
+    "status": "IN_PROGRESS",
+    "estimated_price_creative_units": 1.4,
+    "created_at": "2026-09-26T16:14:19.209515+09:00",
+    "session_id": "abbc4e93-dcaf-4540-a4cf-a63f0ce436bf",
+    "parameters_adjusted": false,
+    "parameters_adjusted_warning": null,
+    "poll_interval_seconds": 10,
+    "base_model_id": "flux",
+    "reference_set_contributions": [],
+    "reference_sets_degraded": false,
+    "reference_sets_warning": null
+  },
+  "initial_estimate_cu": 0.6,
+  "execution_estimate_cu": 1.4,
+  "cost_discrepancy": "MCP estimate input does not include guidance_files; execution estimate increased.",
+  "references": {
+    "A": "docs/research/visual_reference/user_style_A.png"
+  },
+  "settings_basis": {
+    "model": "Layer capabilities confirm ip_adapter; community firsthand Flux style transfer trials.",
+    "ip_adapter_weight": "0.45 initial trial based on community suggestion below 0.5; not validated optimum; adapter version unknown.",
+    "size": "1024 square comparison baseline",
+    "batch": "User requested one person/one image",
+    "seed": "Arbitrary fixed seed for reproducibility, not a quality recommendation",
+    "quality": "medium supported by Layer at selected comparison size",
+    "steps_cfg_sampler": "Not overridden; backend values not exposed in run response"
+  },
+  "sources": [
+    "https://www.reddit.com/r/StableDiffusion/comments/1f1exbb/flux_ipadapter_img2img_style_transfer_tests_how/",
+    "https://layer.ai/docs/v2/rest-api/operations/executeinferencev2"
+  ],
+  "result": {
+    "inference_id": "750a7cb9-ca05-41c8-8748-07984ac94466",
+    "status": "COMPLETE",
+    "completed_at": "2026-09-26T16:17:46.236139+09:00",
+    "outputs": [
+      {
+        "file_id": "03444441-d544-495c-89aa-b5feab8421f5",
+        "url": "https://media.app.layer.ai/workspaces/d1d3c25e-e590-46cb-a6db-2a6eb4673a71/files/03444441-d544-495c-89aa-b5feab8421f5/a_painted_waistup_threequarter_portrait_of_one_new_adult_woman_with-2026-09-26-071419.png",
+        "content_type": "image/png",
+        "preview_url": "https://media.app.layer.ai/workspaces/d1d3c25e-e590-46cb-a6db-2a6eb4673a71/files/03444441-d544-495c-89aa-b5feab8421f5/a_painted_waistup_threequarter_portrait_of_one_new_adult_woman_with-2026-09-26-071419_200.png",
+        "width": 1024,
+        "height": 1024,
+        "duration_seconds": null,
+        "file_size_bytes": 1586733
+      }
+    ],
+    "actual_price_creative_units": 1.4,
+    "error": null,
+    "base_model_id": "flux",
+    "reference_set_contributions": [],
+    "reference_sets_degraded": false,
+    "reference_sets_warning": null
+  }
+}

@@ -1,0 +1,143 @@
+{
+    "schema_version":  1,
+    "id":  "conv_h0_glossary_counter",
+    "display_name":  "Glossary Counter",
+    "region_id":  "region_h0_undersign_exchange",
+    "speaker_npc_id":  "npc_06_tamas_quill",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_06_tamas_term",
+                                                                                   "target_npc_id":  "npc_06_tamas_quill",
+                                                                                   "state_id":  "rs_tamas_exposed"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_h0_return_desk",
+                                                                    "choice_id":  "ch_index_return"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  12,
+    "pages":  [
+                  {
+                      "page_id":  "pg_word",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "Choose the word first. The community that has to live inside it chooses second, usually without being asked.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_two_lines",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "Two lines of the same term sit in the ledger. One of them arrived from a school.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_blank_slot",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "Until the archive fills the slot, the craft has no correct name. It files as an untranslated term.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_compare_the_versions",
+                        "text":  "Have her read both versions of the term against the same source line.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "careful"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_keep_the_term_untranslated",
+                        "text":  "Leave the school name in the file as an untranslated term.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "careful"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_seal_one_category",
+                        "text":  "Seal one category and force it onto every reading that uses the word.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "bureaucratic"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r1_return_registry_logs_name",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_print_the_school_gloss",
+                        "text":  "Print the school gloss on the public counter before the archive answers.",
+                        "semantic_tags":  [
+                                              "bureaucratic",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "unavailable",
+                        "availability":  {
+                                             "clock_at_least":  {
+                                                                    "clock_id":  "clock_public_record",
+                                                                    "stage_index":  3
+                                                                }
+                                         },
+                        "unavailable_reason":  "conv_h0_crier_thread",
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r1_return_registry_logs_name",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_h0_return_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s069",
+                     "seed_s075",
+                     "seed_s147"
+                 ]
+}

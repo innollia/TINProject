@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_h0_appeal_chamber",
+    "display_name":  "Appeal Chamber",
+    "region_id":  "region_h0_undersign_exchange",
+    "speaker_npc_id":  "npc_03_veya_morcant",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_03_veya_audit",
+                                                                                   "target_npc_id":  "npc_03_veya_morcant",
+                                                                                   "state_id":  "rs_veya_excluded"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_h0_return_desk",
+                                                                    "choice_id":  "ch_file_arrival_category"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  11,
+    "pages":  [
+                  {
+                      "page_id":  "pg_category_first",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "State the category first. Everything I write after that word is a formality you will thank me for.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_empty_box",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "A drawer marked UNRECOVERABLE is full and the drawer beside it is empty.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_witness_line",
+                      "speaker":  "npc",
+                      "presentation_class":  "hostile",
+                      "text":  "There is a living person in that drawer. I am not going to pretend the drawer is the crime.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_file_the_missing_category",
+                        "text":  "Ask her to audit the category that refused to be written.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "bureaucratic"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_share_the_liability",
+                        "text":  "Sign the exception yourself so the ruling has two names on it.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "protective"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_withhold_the_result",
+                        "text":  "Take the audit result and keep it out of the public file.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_seize_the_docket",
+                        "text":  "Seize the docket and close the chamber for the day.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r1_return_registry_logs_name",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_h0_return_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s012",
+                     "seed_s074",
+                     "seed_s101"
+                 ]
+}

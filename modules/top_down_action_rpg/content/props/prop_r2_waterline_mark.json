@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "prop_r2_waterline_mark",
+  "display_name": "Siltglass Waterline Mark",
+  "region_id": "region_r2_siltglass_commons",
+  "placement": {
+    "anchor_key": "r2_waterline_mark",
+    "layer": "water",
+    "visible_from": "any"
+  },
+  "initial_state_id": "ps_low",
+  "states": [
+    {
+      "state_id": "ps_low",
+      "label": "the channel mark sits below the third stilt",
+      "visible": true,
+      "art_key": "prop_r2_waterline_low",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_raised",
+      "label": "the mark has been raised by hand and signed",
+      "visible": true,
+      "art_key": "prop_r2_waterline_raised",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r2_water_recognition_filed"
+      ]
+    },
+    {
+      "state_id": "ps_spent",
+      "label": "the mark has been read so often it no longer holds paint",
+      "visible": false,
+      "art_key": "prop_r2_waterline_spent",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_waterline",
+    "availability": {
+      "prop_state_is": {
+        "prop_id": "prop_r2_waterline_mark",
+        "state_id": "ps_low"
+      }
+    },
+    "opens": "doc_r2_water_ration_sheet",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s064",
+    "seed_s046",
+    "seed_s066"
+  ]
+}

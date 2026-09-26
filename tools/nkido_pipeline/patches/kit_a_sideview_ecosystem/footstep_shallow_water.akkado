@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.footstep_shallow_water
+// situation: player footfall in ankle deep water
+// render: --seconds 0.50 --rate 48000 --bpm 96 --no-default-bank
+n"g4 c5" as e |> tri(e.freq) * adsr(e.gate, 0.002, 0.14, 0.0, 0.0) * e.vel |> out(%)

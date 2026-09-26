@@ -1,0 +1,166 @@
+{
+    "schema_version":  1,
+    "id":  "npc_21_halen_osk",
+    "display_name":  "Halen Osk",
+    "roster_kind":  "support",
+    "public_role":  "medium store keeper who releases blanks and sheets one floor at a time",
+    "private_role":  "keeps two stock ledgers disagreeing because a conflict record is safer than a corrected one",
+    "desire":  "wants the shelf count and the issued count to be the same number",
+    "fear":  "that the school audit reads the store as a supply chain instead of a person",
+    "contradiction":  "issues material on credit while refusing to name who ordered the unassigned box",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_r8_medium_store"
+                                    ],
+                       "can":  [
+                                   "issue_medium",
+                                   "count_shelf",
+                                   "set_exchange_ratio",
+                                   "quarantine_stock"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+
+                                       ],
+                            "denies":  [
+                                           "gate_g1_ash_debt"
+                                       ],
+                            "denied_by_effect_id":  "eff_r8_concentration_registered"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s019",
+                                             "seed_s125"
+                                         ],
+                               "does_not_know":  [
+                                                     "seed_s144"
+                                                 ],
+                               "never_learns":  [
+                                                    "seed_s137"
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_count_the_shelf",
+                                             "verb_set_the_exchange_ratio",
+                                             "verb_leave_the_conflict",
+                                             "verb_reconcile_to_one_number"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "resource_scarcity",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_count_the_shelf",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_r8_medium_store",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_set_the_exchange_ratio",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_medium_store",
+                                                                            "choice_id":  "ch_set_the_exchange_ratio"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_medium_store",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_leave_the_conflict",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_medium_store",
+                                                                            "choice_id":  "ch_leave_the_conflict"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r8_medium_store",
+                                  "presentation_class":  "neutral"
+                              },
+                              {
+                                  "verb_id":  "verb_reconcile_to_one_number",
+                                  "availability":  {
+                                                       "clock_at_least":  {
+                                                                              "clock_id":  "clock_public_record",
+                                                                              "stage_index":  3
+                                                                          }
+                                                   },
+                                  "opens":  "conv_r8_medium_store",
+                                  "presentation_class":  "extreme"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_04_sable_support"
+                         ],
+    "clock_ids":  [
+                      "clock_resource_collapse",
+                      "clock_public_record"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  "enc_r8_fold_that_refuses_the_hand"
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "conversion_condition":  {
+
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "",
+                                              "encounter_modifier":  0
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_r8_concentration_registered"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_r8_course_index_printed"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "conditional",
+                    "condition":  {
+                                      "clock_irreversible":  {
+                                                                 "clock_id":  "clock_institutional_response"
+                                                             }
+                                  },
+                    "moves_to_region_id":  "region_h0_undersign_exchange"
+                },
+    "appearance":  {
+                       "body_key":  "body_store_keeper",
+                       "portrait_key":  "portrait_halen_osk",
+                       "voice_key":  "voice_halen_osk"
+                   },
+    "mana_profile":  "medium_reactive",
+    "oneoff_dialogue_seed_ids":  [
+                                     "seed_s125",
+                                     "seed_s145",
+                                     "seed_s019"
+                                 ],
+    "cross_link_ids":  [
+                           "region_r8_folding_school",
+                           "npc_04_sable_halm",
+                           "npc_14_eda_marrow",
+                           "npc_22_iven_marrow",
+                           "clock_resource_collapse"
+                       ],
+    "removal":  "temporary",
+    "seed_ids":  [
+                     "seed_s019",
+                     "seed_s125",
+                     "seed_s145",
+                     "seed_s146",
+                     "seed_s160"
+                 ]
+}

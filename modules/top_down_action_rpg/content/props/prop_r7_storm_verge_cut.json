@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "prop_r7_storm_verge_cut",
+  "display_name": "Storm Verge Cut",
+  "region_id": "region_r7_hollow_orchard",
+  "placement": {
+    "anchor_key": "r7_storm_verge_cut",
+    "layer": "trace",
+    "visible_from": "adjacent"
+  },
+  "initial_state_id": "ps_open",
+  "states": [
+    {
+      "state_id": "ps_open",
+      "label": "the cut was drawn and never closed",
+      "visible": true,
+      "art_key": "prop_r7_cut_open",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_phase_matched",
+      "label": "the shape answers to the current storm phase",
+      "visible": true,
+      "art_key": "prop_r7_cut_matched",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r7_boundary_shortcut_opened"
+      ]
+    },
+    {
+      "state_id": "ps_cut_filed",
+      "label": "the contract written by the cut is filed and still owed",
+      "visible": true,
+      "art_key": "prop_r7_cut_filed",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r7_contract_placed_filed"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_verge_cut",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r7_storm_verge_cut",
+            "state_id": "ps_open"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r7_storm_verge_cut",
+            "state_id": "ps_phase_matched"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r7_storm_verge_cut",
+            "state_id": "ps_cut_filed"
+          }
+        }
+      ]
+    },
+    "opens": "conv_r7_void_cut_ledger",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s154",
+    "seed_s155",
+    "seed_s158"
+  ]
+}

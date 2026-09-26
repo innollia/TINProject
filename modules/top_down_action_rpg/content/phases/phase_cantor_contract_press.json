@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "phase_cantor_contract_press",
+  "display_name": "Contract Press",
+  "owner_enemy_id": "enemy_residue_cantor",
+  "index": 2,
+  "trigger": {
+    "kind": "hp_ratio",
+    "hp_ratio_at": 25,
+    "condition": {}
+  },
+  "enter": {
+    "effect_ids": [
+      "eff_r8_concentration_registered"
+    ],
+    "status_ids": [
+      "st_overflowed",
+      "st_contract_bound"
+    ],
+    "invulnerable_windows": 0
+  },
+  "overrides": {
+    "action_add_ids": [],
+    "action_remove_ids": [
+      "act_cantor_sheet_lay"
+    ],
+    "stat_overrides": {
+      "agility": 4
+    },
+    "resistance_add_status_ids": [
+      "st_overflowed"
+    ],
+    "resistance_remove_status_ids": [
+      "st_medium_residue"
+    ],
+    "signature_action_id": "act_cantor_void_gash",
+    "telegraph_gain_windows": 1
+  },
+  "roster": {
+    "add_enemy_ids": [],
+    "remove_enemy_ids": [],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "owner_dead"
+  },
+  "next_phase_id": null,
+  "seed_ids": [
+    "seed_s001"
+  ]
+}

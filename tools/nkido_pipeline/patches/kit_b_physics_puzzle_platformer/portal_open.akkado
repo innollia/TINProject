@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: phy.portal_open
+// situation: an exit or shortcut becomes usable
+// render: --seconds 1.40 --rate 48000 --bpm 96 --no-default-bank
+n"a3 c4 e4" |> sine(@.freq) * adsr(@.gate, 0.12, 0.18, 0.60, 0.30) |> out(%)

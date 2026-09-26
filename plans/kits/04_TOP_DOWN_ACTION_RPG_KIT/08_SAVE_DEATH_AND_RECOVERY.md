@@ -1,5 +1,11 @@
 # Kit 04 — SAVE, DEATH, RECOVERY
 
+## 환경 자산 변경과 복귀 — 2026-09-26
+
+[13](13_LAYERED_ENVIRONMENT_PRODUCTION.md)의 image bundle/layer/crop/hash는 저장 대상이 아니다. 기존 region·player 위치·prop/presence·resolved world state에서 올바른 area와 layer variant를 재구성한다. PNG 교체가 JSON save version 변경이나 진행 초기화를 요구해서는 안 된다.
+
+문·다리·승강기·water/phase가 달라진 뒤 load/recovery하면 기존 walkable/return anchor 규칙으로 위치를 복원한다. 그림에 길이 보인다는 이유로 충돌을 무시하거나 이미지 누락을 다른 domain state로 치환하지 않는다. 떠난 인물의 잔상·옛 소품 그림자·사건 전 배경으로 되돌아가는 오류를 재방문 검수에 포함한다.
+
 상태: 실행 설계 문서. 구현·저장 파일 생성·다른 문서 수정은 이 파일의 범위가 아니다.  
 입력 정본: `docs/research/top_down_action_rpg/PLAN_RESOLUTION.md`(Kit 04 문서 간 충돌의 canonical 해석), `docs/research/top_down_action_rpg/WORLD_CONSTITUTION.md`, `docs/research/top_down_action_rpg/IDEA_LEDGER.md`, `docs/MODULE_CONTRACT.md`, `core/services/save_service/save_service.gd`, `docs/ARCHITECTURE.md`, `plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/02_WORLD_STATE_AND_ROUTES.md`  
 Primary Reference: **BLACK SOULS 2 하나**. death/checkpoint의 실제 화면·연출은 현재 A~H evidence에 없으므로 원작 동작을 추정하지 않는다.  

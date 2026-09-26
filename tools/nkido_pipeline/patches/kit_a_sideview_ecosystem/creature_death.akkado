@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.creature_death
+// situation: a creature dies
+// render: --seconds 1.30 --rate 48000 --bpm 72 --no-default-bank
+n"g3 e3 c3 a2" |> saw(@.freq) * adsr(@.gate, 0.02, 0.10, 0.55, 0.35) |> out(%)

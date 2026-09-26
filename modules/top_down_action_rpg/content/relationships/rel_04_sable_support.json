@@ -1,0 +1,223 @@
+{
+    "schema_version":  1,
+    "id":  "rel_04_sable_support",
+    "target_npc_id":  "npc_04_sable_halm",
+    "channel":  "care",
+    "start_state_id":  "rs_sable_contracted",
+    "states":  [
+                   {
+                       "state_id":  "rs_sable_contracted",
+                       "order":  0,
+                       "label":  "logged as an operator, not a client",
+                       "entry_effect_ids":  [
+
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "guarded"
+                   },
+                   {
+                       "state_id":  "rs_sable_consented",
+                       "order":  1,
+                       "label":  "the consent result was kept",
+                       "entry_effect_ids":  [
+                                                "eff_r8_course_index_printed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r3_support"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_r8_medium_workspace"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "operational"
+                   },
+                   {
+                       "state_id":  "rs_sable_independent",
+                       "order":  2,
+                       "label":  "the form stayed the client\u0027s own",
+                       "entry_effect_ids":  [
+                                                "eff_r8_course_index_printed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r3_support",
+                                        "port_r8_medium_workspace"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_r8_medium_workspace"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  true,
+                                               "encounter_modifier":  1,
+                                               "granted_by_effect_ids":  [
+                                                                             "eff_r8_course_index_printed"
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "candid"
+                   },
+                   {
+                       "state_id":  "rs_sable_overridden",
+                       "order":  3,
+                       "label":  "his permission was edited",
+                       "entry_effect_ids":  [
+                                                "eff_r8_concentration_registered"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "hostile"
+                   }
+               ],
+    "transitions":  [
+                        {
+                            "transition_id":  "t_01",
+                            "from_state_id":  "rs_sable_contracted",
+                            "to_state_id":  "rs_sable_consented",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_medium_workspace",
+                                                                            "choice_id":  "ch_read_the_consent_form"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r8_course_index_printed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_02",
+                            "from_state_id":  "rs_sable_consented",
+                            "to_state_id":  "rs_sable_independent",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_medium_workspace",
+                                                                            "choice_id":  "ch_allocate_the_space"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r8_course_index_printed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_03",
+                            "from_state_id":  "rs_sable_consented",
+                            "to_state_id":  "rs_sable_contracted",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r8_medium_workspace",
+                                                                            "choice_id":  "ch_decline_the_form"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  8
+                        },
+                        {
+                            "transition_id":  "t_04",
+                            "from_state_id":  "rs_sable_independent",
+                            "to_state_id":  "rs_sable_overridden",
+                            "via":  "effect",
+                            "requires_condition":  {
+                                                       "clock_irreversible":  {
+                                                                                  "clock_id":  "clock_personal_collapse"
+                                                                              }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r8_concentration_registered"
+                                           ],
+                            "is_irreversible":  true,
+                            "priority":  5
+                        }
+                    ],
+    "axes":  {
+                 "trust":  1,
+                 "fear":  0,
+                 "debt":  0,
+                 "recognition":  0,
+                 "attachment":  1
+             },
+    "axis_rules":  [
+                       {
+                           "key":  "execution_space_kept_for_the_client",
+                           "condition":  {
+                                             "choice_taken":  {
+                                                                  "conversation_id":  "conv_r8_medium_workspace",
+                                                                  "choice_id":  "ch_allocate_the_space"
+                                                              }
+                                         },
+                           "sets":  {
+                                        "continuity_pressure":  1
+                                    }
+                       }
+                   ],
+    "exclusions":  {
+                       "max_final_state":  1,
+                       "conflicting_final_state_ids":  [
+                                                           "rs_sable_overridden"
+                                                       ]
+                   },
+    "romance":  {
+                    "allowed":  false,
+                    "explicit_content":  false,
+                    "gate_state_ids":  [
+
+                                       ],
+                    "consent_beat_effect_ids":  [
+
+                                                ]
+                },
+    "seed_ids":  [
+                     "seed_s020",
+                     "seed_s026",
+                     "seed_s105",
+                     "seed_s113",
+                     "seed_s118"
+                 ]
+}

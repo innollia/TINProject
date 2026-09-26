@@ -1,0 +1,113 @@
+{
+    "schema_version": 1,
+    "id": "conv_r2_water_round",
+    "display_name": "Water Round",
+    "region_id": "region_r2_siltglass_commons",
+    "speaker_npc_id": "npc_08_meral_dune",
+    "entry_condition": {
+        "region_visited": {
+            "region_id": "region_h0_undersign_exchange"
+        }
+    },
+    "priority": 20,
+    "pages": [
+        {
+            "page_id": "pg_same_number",
+            "speaker": "npc",
+            "presentation_class": "official",
+            "text": "The round is one number for the whole channel. Four stilt houses, one count, and the count is not allowed to differ by house.",
+            "advance": "auto"
+        },
+        {
+            "page_id": "pg_waterline",
+            "speaker": "world",
+            "presentation_class": "narration",
+            "text": "The waterline mark on the piling sits a hand above the last painted band. Nobody has repainted the band.",
+            "advance": "wait"
+        },
+        {
+            "page_id": "pg_who_owns_count",
+            "speaker": "npc",
+            "presentation_class": "confidential",
+            "text": "I file the number you hand me. If the number is wrong, the wrongness is filed under my name and the thirst is still yours.",
+            "advance": "auto"
+        }
+    ],
+    "choices": [
+        {
+            "choice_id": "ch_file_the_count_as_written",
+            "text": "Read the round count off the board and file it exactly as the board states it.",
+            "semantic_tags": ["bureaucratic", "cooperative"],
+            "presentation_class": "neutral",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r2_water_ration_read",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_carry_the_measuring_pole",
+            "text": "Take the measuring pole out to the channel and count what the water actually leaves.",
+            "semantic_tags": ["careful", "protective"],
+            "presentation_class": "neutral",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r2_circulation_ledger_read",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_refuse_the_round",
+            "text": "Refuse to enter a single number for four houses and hand the round back unsigned.",
+            "semantic_tags": ["protective", "evasive"],
+            "presentation_class": "unavailable",
+            "availability": {
+                "prop_state_is": {
+                    "prop_id": "prop_r2_circulator_stack",
+                    "state_id": "ps_vented"
+                }
+            },
+            "unavailable_reason": "prop_r2_circulator_stack",
+            "irreversibility": "reversible",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r2_water_ration_read",
+            "one_shot": true,
+            "hint_surface": "none"
+        },
+        {
+            "choice_id": "ch_count_one_name_three_times",
+            "text": "Enter the same settler on three separate lines so the round balances against the ration it cannot meet.",
+            "semantic_tags": ["destructive", "coercive"],
+            "presentation_class": "extreme",
+            "availability": {},
+            "unavailable_reason": "",
+            "irreversibility": "delayed_only",
+            "return_focus": "field",
+            "immediate_effect_id": "eff_r2_census_third_count_filed",
+            "one_shot": true,
+            "hint_surface": "none"
+        }
+    ],
+    "on_complete": {
+        "effect_ids": [
+            "eff_r2_water_ration_read"
+        ]
+    },
+    "on_abort": {
+        "effect_ids": []
+    },
+    "revisit": "state_dependent",
+    "alt_conversation_ids": [
+        "conv_h0_ration_counter"
+    ],
+    "seed_ids": [
+        "seed_s005",
+        "seed_s046",
+        "seed_s064",
+        "seed_s093"
+    ]
+}

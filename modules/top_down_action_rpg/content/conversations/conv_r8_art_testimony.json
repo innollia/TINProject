@@ -1,0 +1,139 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r8_art_testimony",
+    "display_name":  "Art Column Testimony",
+    "region_id":  "region_r8_folding_school",
+    "speaker_npc_id":  "npc_26_cael_orin",
+    "entry_condition":  {
+                            "all_of":  [
+                                           {
+                                               "not":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_06_tamas_term",
+                                                                                   "target_npc_id":  "npc_06_tamas_quill",
+                                                                                   "state_id":  "rs_tamas_exposed"
+                                                                               }
+                                                       }
+                                           },
+                                           {
+                                               "choice_taken":  {
+                                                                    "conversation_id":  "conv_r8_course_index_desk",
+                                                                    "choice_id":  "ch_withhold_measurement"
+                                                                }
+                                           }
+                                       ]
+                        },
+    "priority":  19,
+    "pages":  [
+                  {
+                      "page_id":  "pg_column",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "The register says art. It does not say who wrote art into that column, and I am the only one left who was there.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_margin",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "An old design margin lies folded inside a course index. The measurements are in an unfamiliar tool scale.",
+                      "advance":  "wait"
+                  },
+                  {
+                      "page_id":  "pg_not_a_student",
+                      "speaker":  "npc",
+                      "presentation_class":  "confidential",
+                      "text":  "I am not on the course list. Nobody has corrected that, because correcting it would require naming the order.",
+                      "advance":  "auto"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_take_the_testimony",
+                        "text":  "Take his testimony about the old shape and file it under his own name.",
+                        "semantic_tags":  [
+                                              "careful",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_name_the_order",
+                        "text":  "Make him name who ordered the unassigned stock column.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "costly"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_keep_him_in_the_art_column",
+                        "text":  "Keep him in the art column where nothing he says is actionable.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "reversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_enrol_him_as_a_student",
+                        "text":  "Enrol him as a student so his testimony becomes curriculum.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "coercive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "delayed_effect_id":  "eff_r1_return_registry_logs_name",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r8_course_index_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s036",
+                     "seed_s110",
+                     "seed_s137"
+                 ]
+}

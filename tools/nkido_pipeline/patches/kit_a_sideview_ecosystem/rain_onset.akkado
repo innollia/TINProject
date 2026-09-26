@@ -1,0 +1,6 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.rain_onset
+// situation: rain starts or gets heavy
+// render: --seconds 2.40 --rate 48000 --bpm 72 --no-default-bank
+// bracket subdivision inside one cycle; the least verified construct in this file set.
+n"[a3 a3 c4 a3]" as e |> sine(e.freq) * adsr(e.gate, 0.20, 0.15, 0.60, 0.25) * e.vel |> out(%)

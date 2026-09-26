@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.water_exit
+// situation: the player surfaces or leaves deep water
+// render: --seconds 0.70 --rate 48000 --bpm 104 --no-default-bank
+n"c4 g4" as e |> tri(e.freq) * adsr(e.gate, 0.01, 0.10, 0.30, 0.14) * e.vel |> out(%)

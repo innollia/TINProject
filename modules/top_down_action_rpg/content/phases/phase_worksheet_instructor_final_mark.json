@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "phase_worksheet_instructor_final_mark",
+  "display_name": "Final Mark",
+  "owner_enemy_id": "enemy_worksheet_instructor",
+  "index": 2,
+  "trigger": {
+    "kind": "previous_phase_complete"
+  },
+  "enter": {
+    "effect_ids": [
+      "eff_r8_concentration_registered"
+    ],
+    "status_ids": [
+      "st_overflowed"
+    ],
+    "invulnerable_windows": 0
+  },
+  "overrides": {
+    "action_add_ids": [
+      "act_cantor_overflow"
+    ],
+    "action_remove_ids": [
+      "act_craft_sheet_snap"
+    ],
+    "stat_overrides": {
+      "agility": 14
+    },
+    "resistance_add_status_ids": [
+      "st_overflowed"
+    ],
+    "resistance_remove_status_ids": [
+      "st_misfolded"
+    ],
+    "signature_action_id": "act_worksheet_instructor_grade_mark",
+    "telegraph_gain_windows": 0
+  },
+  "roster": {
+    "add_enemy_ids": [],
+    "remove_enemy_ids": [
+      "enemy_residue_cantor"
+    ],
+    "count_overrides": []
+  },
+  "completion": {
+    "kind": "reduce_owner_hp_to",
+    "hp_ratio_at": 10
+  },
+  "next_phase_id": null,
+  "seed_ids": [
+    "seed_s091",
+    "seed_s142",
+    "seed_s145"
+  ]
+}

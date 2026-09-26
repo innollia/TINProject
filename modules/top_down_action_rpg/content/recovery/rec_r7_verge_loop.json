@@ -1,0 +1,84 @@
+{
+    "schema_version":  1,
+    "id":  "rec_r7_verge_loop",
+    "display_name":  "Storm Verge Cut Loop",
+    "kind":  "loop",
+    "trigger":  {
+                    "kind":  "encounter_failure",
+                    "encounter_id":  "enc_the_audit_crossing",
+                    "condition":  {
+
+                                  }
+                },
+    "preserves":  [
+                      "region_id",
+                      "region_state",
+                      "axis_values",
+                      "clock_stages",
+                      "npc_states",
+                      "relationship_states",
+                      "prop_states",
+                      "conversation_progress",
+                      "document_reads",
+                      "flags",
+                      "effects_fired",
+                      "encounter_clear_flags",
+                      "route_flags",
+                      "equipment_slots",
+                      "recoveries"
+                  ],
+    "discards":  [
+                     "encounter_progress",
+                     "current_phase",
+                     "linked_actor_state",
+                     "combat_transient",
+                     "scheduler_cursor",
+                     "pending_effect_queue",
+                     "presentation_transient"
+                 ],
+    "self_layers_restored":  [
+                                 "body",
+                                 "memory",
+                                 "role",
+                                 "belief"
+                             ],
+    "self_layers_not_restored":  [
+                                     "institution",
+                                     "desire",
+                                     "social_recognition"
+                                 ],
+    "respawn":  {
+                    "region_id":  "region_r7_hollow_orchard",
+                    "prop_id":  "prop_r7_storm_verge_cut",
+                    "reset_prop_ids":  [
+                                           "prop_r7_storm_verge_cut",
+                                           "prop_r7_outer_wall_seam"
+                                       ]
+                },
+    "cost":  {
+                 "continuity_pressure_delta":  1,
+                 "resource_costs":  {
+
+                                    },
+                 "axis_deltas":  {
+                                     "continuity_pressure":  1
+                                 },
+                 "world_effect_ids":  [
+
+                                      ]
+             },
+    "entry_effect_ids":  [
+
+                         ],
+    "cooldown":  {
+                     "kind":  "per_encounter",
+                     "count":  1
+                 },
+    "authored_debt":  {
+                         "debt_id":  "d_r7_loop_count_unrecorded",
+                         "description":  "the loop keeps the observation and the filed debt, so the wall learns the player and the settlement does not"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

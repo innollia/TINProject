@@ -1,11 +1,11 @@
-# 분할 계획 중앙 해석 — 2026-09-25
+# 분할 계획 중앙 해석 — 2026-09-26 갱신
 
 이 파일은 `plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/` 문서 간 충돌을 해결하는 canonical resolution이다. 각 문서와 구현은 이 해석을 따른다.
 
 ## 1. World
 
 - canonical world: `02_WORLD_STATE_AND_ROUTES.md`의 **The Undersign Basin**
-- canonical nodes: `H0` hub + `R1`~`R7`
+- canonical nodes: `H0` hub + `R1`~`R8` (9개). R8 The Folding School과 E18은 현재 정본의 필수 범위이며 미래 선택 후보가 아니다.
 - canonical Crown: `Crownwell Archive`의 `Crown of Continuance` object와 `Crown Protocol`
 - `Marrowglass`, `Terminal Ledger Hall`, `Lower Switchyard`, `Crown Alignment Office`는 구버전/독립 초안으로 사용하지 않는다. 다른 문서의 예시 ID는 canonical world로 재키한다.
 - `PLAYER_BRIDGE_0`는 canonical NPC/role ID로 재키한다.
@@ -85,9 +85,9 @@ institutional_reentry
 - magic has three authored forms: weave/scroll craft, rigid-fold craft, void-cut portal craft. The name for the broad theory remains a candidate label until story content uses it.
 - mana is not a magic-only stat: it has concentration, body accumulation, emission, circulation, injury, and environmental failure.
 - magic failure can create environmental/pressure consequences; a spell is not an instant effect.
-- new magic-era region/era is an authored module inside the Undersign world and must have a canonical `H0`/`R1`~`R7` or later `R8` entry path.
+- new magic-era region/era is authored inside the same Undersign world. Current R8 enters through E18 from R5 after the G5/labor pledge resolution specified in 02; preserve the existing return affordances.
 - magic theory terms are authored in `06` data and must not be hardcoded in module scripts.
-- combat textile, portal, and ritual actions are candidate authored action families; they are not guaranteed Reference Game floors.
+- current weave/scroll, rigid-fold and void-cut/portal content follows the concrete floors in 07 and the definitions in 12. Do not downgrade the current R5/R8 authored acts to optional concept candidates. Unspecified ritual families are not added automatically.
 - body-horror and political absurdism rules apply to magic exactly as they apply to other protocols.
 
 ## 8. Relationship, focus, content
@@ -112,3 +112,11 @@ institutional_reentry
 ## 10. Implementation gate
 
 위 resolution이 문서 간에 반영되기 전에는 구현 파일을 만들지 않는다. 파일별 수정이 끝난 뒤 재검토를 통과해야 한다.
+
+## 11. 환경 제작과 준비 상태 — 2026-09-26
+
+- field 카메라: 지면 기준 하향각 60°의 정사영. 수직에서 30° 기울어지고 방위 고정.
+- 환경 제작: plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/13_LAYERED_ENVIRONMENT_PRODUCTION.md의 큰 장면 배경과 분리 레이어.
+- 독립 입력·이미지 결과 격리: 같은 계획 폴더의 14_ISOLATED_ART_JOBS.md.
+- 이미지 입력 완결성과 생성기 화풍 검증은 별도다. 기존 system planning 상태가 이미지 생산 준비를 증명하지 않는다.
+- 기존 H0 master는 반려됐다. 새 샘플 전에 빠진 명세를 구체화하고 공통 생성기 게이트를 지킨다.

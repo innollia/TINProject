@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "id": "region_r4_crownwell_archive",
+  "display_name": "Crownwell Archive",
+  "region_role": "translation_precedence",
+  "conflict_thesis": "A filed translation is not a report of the meaning, it is the machine that makes the meaning binding.",
+  "topology": {
+    "shape": "vertical_stack_and_hall",
+    "size_class": "large",
+    "landmark_count": 5,
+    "traversal_axis": "elevation",
+    "backtrack_supported": true
+  },
+  "entry": {
+    "from_region_id": "region_h0_undersign_exchange",
+    "edge_id": "route_e04_crownwell_ascent",
+    "gate_id": "gate_g0_arrival_declaration",
+    "one_way": false
+  },
+  "exits": [
+    {
+      "to_region_id": "region_h0_undersign_exchange",
+      "edge_id": "route_e04_crownwell_ascent",
+      "gate_id": "gate_g0_arrival_declaration",
+      "route_state": "conditional",
+      "requires_condition": {
+        "all_of": [
+          {
+            "route_open": {
+              "gate_id": "gate_g0_arrival_declaration"
+            }
+          },
+          {
+            "resource_held": {
+              "resource_key": "res_blank_form",
+              "min_count": 1
+            }
+          }
+        ]
+      },
+      "field_activation": "INTERACTION",
+      "resource_keys": [
+        "res_blank_form"
+      ]
+    },
+    {
+      "to_region_id": "region_r3_bellhouse_hospice",
+      "edge_id": "route_e10_bell_cable_lift",
+      "gate_id": "gate_g3_latency_receipt",
+      "route_state": "conditional",
+      "requires_condition": {
+        "route_open": {
+          "gate_id": "gate_g3_latency_receipt"
+        }
+      },
+      "unlock_effect_id": "eff_r4_care_outcome_filed",
+      "field_activation": "INTERACTION",
+      "resource_keys": [
+        "res_latency_token"
+      ]
+    },
+    {
+      "to_region_id": "region_r5_glasswing_ordinal",
+      "edge_id": "route_e12_courier_shaft",
+      "gate_id": "gate_g4_translation_precedence",
+      "route_state": "conditional",
+      "requires_condition": {
+        "route_open": {
+          "gate_id": "gate_g4_translation_precedence"
+        }
+      },
+      "unlock_effect_id": "eff_r4_translation_precedence_filed",
+      "field_activation": "INTERACTION",
+      "resource_keys": [
+        "res_sealed_plate"
+      ]
+    },
+    {
+      "to_region_id": "region_r7_hollow_orchard",
+      "edge_id": "route_e13_crown_stair",
+      "gate_id": "gate_g4_translation_precedence",
+      "route_state": "conditional",
+      "requires_condition": {
+        "route_open": {
+          "gate_id": "gate_g4_translation_precedence"
+        }
+      },
+      "unlock_effect_id": "eff_r4_crown_stair_opened",
+      "field_activation": "INTERACTION",
+      "resource_keys": [
+        "res_archive_weight"
+      ]
+    }
+  ],
+  "authority": {
+    "institution_id": "institution_r4_record_office",
+    "protocol_id": "protocol_translation_precedence",
+    "recognition_default": "artifact",
+    "legitimacy_baseline": 0
+  },
+  "dominant_protocol": {
+    "protocol_id": "protocol_translation_precedence",
+    "category_bias": [
+      "artifact",
+      "record"
+    ],
+    "category_error_policy": "record"
+  },
+  "resource_flow": {
+    "scarce_keys": [
+      "res_blank_form",
+      "res_archive_weight",
+      "res_sealed_plate",
+      "res_ink_credit",
+      "res_definition_token",
+      "res_untranslated_glyph"
+    ],
+    "surplus_keys": [
+      "res_lamp_oil"
+    ],
+    "access_rule_ids": [
+      "rule_r4_form_quota",
+      "rule_r4_glossary_slot"
+    ]
+  },
+  "residents": [
+    {
+      "npc_id": "npc_01_ilyra_senn",
+      "initial_presence": "resident",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_06_tamas_quill",
+      "initial_presence": "resident",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_10_juno_caster",
+      "initial_presence": "visiting",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_03_veya_morcant",
+      "initial_presence": "visiting",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_04_sable_halm",
+      "initial_presence": "visiting",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_11_cael_ren",
+      "initial_presence": "visiting",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_12_ravenna_holt",
+      "initial_presence": "visiting",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    }
+  ],
+  "clocks": [
+    {
+      "clock_id": "clock_institutional_response",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 2
+    },
+    {
+      "clock_id": "clock_contamination",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 1
+    },
+    {
+      "clock_id": "clock_public_record",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 3
+    },
+    {
+      "clock_id": "clock_resource_collapse",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 2
+    },
+    {
+      "clock_id": "clock_personal_collapse",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 1
+    },
+    {
+      "clock_id": "clock_crown_alignment",
+      "start_state": "active",
+      "reversal": "terminal",
+      "weight": 2
+    }
+  ],
+  "hidden_state": {
+    "reveal_condition": {
+      "clock_at_least": {
+        "clock_id": "clock_public_record",
+        "stage_index": 3
+      }
+    },
+    "reveal_kind": "partial",
+    "reveal_prop_ids": [
+      "prop_r4_low_level_stacks"
+    ],
+    "reveal_document_ids": [
+      "doc_r4_contradictory_translation"
+    ]
+  },
+  "initial_state": "as_authored",
+  "combat_content": {
+    "encounter_ids": [
+      "enc_translation_drift",
+      "enc_archive_return_protocol",
+      "enc_the_unfinished_sentence",
+      "enc_a_name_has_teeth",
+      "enc_the_above_record",
+      "enc_the_above_record_authority"
+    ],
+    "field_pressure": "high"
+  },
+  "noncombat_content": {
+    "interactable_prop_ids": [
+      "prop_r4_low_level_stacks",
+      "prop_r4_weight_lift_counter",
+      "prop_r4_glossary_slot",
+      "prop_r4_crown_fragment_plinth"
+    ],
+    "service_ids": [
+      "service_r4_access_request",
+      "service_r4_glossary_counter"
+    ]
+  },
+  "initial_cluster": {
+    "cluster_id": "cluster_rc_04_sentence_above_stair",
+    "npc_ids": [
+      "npc_06_tamas_quill",
+      "npc_01_ilyra_senn",
+      "npc_10_juno_caster",
+      "npc_03_veya_morcant",
+      "npc_04_sable_halm",
+      "npc_11_cael_ren",
+      "npc_12_ravenna_holt"
+    ],
+    "thread_ids": [
+      "thread_r4_translation_precedence",
+      "thread_r4_glossary_slot"
+    ],
+    "starting_conversation_id": "conv_r4_translation_desk"
+  },
+  "revisit_variants": [
+    {
+      "variant_id": "rv_after_canonical",
+      "condition": {
+        "prop_state_is": {
+          "prop_id": "prop_r4_low_level_stacks",
+          "state_id": "ps_filed"
+        }
+      },
+      "prop_state_ids": [
+        "prop_r4_low_level_stacks",
+        "prop_r4_weight_lift_counter"
+      ],
+      "conversation_id": "conv_r4_translation_desk"
+    },
+    {
+      "variant_id": "rv_after_glossary_slot",
+      "condition": {
+        "prop_state_is": {
+          "prop_id": "prop_r4_glossary_slot",
+          "state_id": "ps_filled"
+        }
+      },
+      "prop_state_ids": [
+        "prop_r4_glossary_slot"
+      ],
+      "conversation_id": "conv_r4_translation_desk"
+    }
+  ],
+  "internal_routes": [],
+  "unresolved_debt": [
+    {
+      "debt_id": "d_r4_previous_operator_memory",
+      "description": "the archive holds the previous operator memory and denies holding the operator",
+      "due_condition": {
+        "clock_irreversible": {
+          "clock_id": "clock_public_record"
+        }
+      },
+      "resolve_effect_ids": [
+        "eff_r4_operator_memory_classified"
+      ],
+      "resolution_token": "open",
+      "resource_id": "res_recovered_note"
+    },
+    {
+      "debt_id": "d_r4_glossary_double_line",
+      "description": "the school name and the archive translation are both filed in the same slot",
+      "due_condition": {
+        "clock_at_least": {
+          "clock_id": "clock_crown_alignment",
+          "stage_index": 2
+        }
+      },
+      "resolve_effect_ids": [
+        "eff_r4_glossary_slot_filled"
+      ],
+      "resolution_token": "open",
+      "resource_id": "res_untranslated_glyph"
+    }
+  ],
+  "cross_region_links": [
+    {
+      "to_region_id": "region_h0_undersign_exchange",
+      "link_kind": "record",
+      "note": "every filed sentence returns to the hub as a public category"
+    },
+    {
+      "to_region_id": "region_r3_bellhouse_hospice",
+      "link_kind": "record",
+      "note": "a care outcome arrives as a translation problem, not a clinical one"
+    },
+    {
+      "to_region_id": "region_r5_glasswing_ordinal",
+      "link_kind": "record",
+      "note": "the labour role is whatever sentence the archive last filed"
+    },
+    {
+      "to_region_id": "region_r7_hollow_orchard",
+      "link_kind": "faith",
+      "note": "the crown stair decides which sentence the wall answers to"
+    },
+    {
+      "to_region_id": "region_r8_folding_school",
+      "link_kind": "record",
+      "note": "the empty glossary slot is the only place a craft name may be written"
+    }
+  ],
+  "axis_weights": {
+    "protocol_legitimacy": 1,
+    "recognition_drift": 3,
+    "continuity_pressure": 1,
+    "resource_scarcity": 2
+  },
+  "seed_ids": [
+    "seed_s018",
+    "seed_s050",
+    "seed_s059",
+    "seed_s073",
+    "seed_s147"
+  ]
+}

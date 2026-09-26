@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "prop_r7_shelter_ring_ledger",
+  "display_name": "Shelter Ring Ledger",
+  "region_id": "region_r7_hollow_orchard",
+  "placement": {
+    "anchor_key": "r7_shelter_ring_ledger",
+    "layer": "prop",
+    "visible_from": "same_room"
+  },
+  "initial_state_id": "ps_open",
+  "states": [
+    {
+      "state_id": "ps_open",
+      "label": "seed, water and memory slots are divided by hand",
+      "visible": true,
+      "art_key": "prop_r7_ledger_open",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_quota_filed",
+      "label": "the settlement vote is written as a quota, not as a favour",
+      "visible": true,
+      "art_key": "prop_r7_ledger_quota",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r7_settlement_vote_filed"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_shelter_ledger",
+    "availability": {
+      "any_of": [
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r7_shelter_ring_ledger",
+            "state_id": "ps_open"
+          }
+        },
+        {
+          "prop_state_is": {
+            "prop_id": "prop_r7_shelter_ring_ledger",
+            "state_id": "ps_quota_filed"
+          }
+        }
+      ]
+    },
+    "opens": "conv_r7_settlement_vote",
+    "return_focus": "prop"
+  },
+  "seed_ids": [
+    "seed_s065",
+    "seed_s068",
+    "seed_s117"
+  ]
+}

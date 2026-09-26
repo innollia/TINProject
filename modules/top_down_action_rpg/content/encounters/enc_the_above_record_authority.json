@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "id": "enc_the_above_record_authority",
+  "display_name": "The Above-Record, Authority",
+  "context": {
+    "region_id": "region_r4_crownwell_archive",
+    "region_secondary": "region_r7_hollow_orchard",
+    "region_role": "translation_precedence",
+    "depth_band": 0,
+    "story_stage": "late",
+    "time_of_day": "institutional"
+  },
+  "activation": {
+    "kind": "remix",
+    "base_encounter_id": "enc_the_above_record",
+    "eligibility": {
+      "clock_at_least": {
+        "clock_id": "clock_crown_alignment",
+        "stage_index": 3
+      }
+    },
+    "warning": {
+      "channel": "npc_warning",
+      "windows_before": 1
+    }
+  },
+  "visibility": {
+    "visible_in_field": false,
+    "shown_on_map": false
+  },
+  "roster": [
+    {
+      "entry_id": "slot_a",
+      "enemy_id": "enemy_crown_fragment_echo",
+      "count": 1,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 1,
+      "spawn_at": "start"
+    },
+    {
+      "entry_id": "slot_b",
+      "enemy_id": "enemy_glossary_arbiter",
+      "count": 2,
+      "count_variant": 0,
+      "loadout_ids": [],
+      "target_priority": 2,
+      "spawn_at": "start"
+    }
+  ],
+  "target_priority": [
+    {
+      "enemy_id": "enemy_crown_fragment_echo",
+      "role": "true_actor",
+      "priority": 1,
+      "only_when": {}
+    },
+    {
+      "enemy_id": "enemy_glossary_arbiter",
+      "role": "support",
+      "priority": 2,
+      "only_when": {}
+    }
+  ],
+  "target_roles": [
+    {
+      "role": "record",
+      "surface_id": "prop_r4_crown_fragment_plinth",
+      "descendants_only": true
+    },
+    {
+      "role": "resource_node",
+      "surface_id": "prop_r4_glossary_slot",
+      "descendants_only": false
+    },
+    {
+      "role": "route",
+      "surface_id": "gate_g4_translation_precedence",
+      "descendants_only": false
+    }
+  ],
+  "group": null,
+  "allow": {
+    "escape": false,
+    "skip": false
+  },
+  "clock_pressure": [
+    {
+      "clock_id": "clock_crown_alignment",
+      "ticks_on_start": 1,
+      "ticks_per_window": 1,
+      "ticks_on_end": 1
+    },
+    {
+      "clock_id": "clock_public_record",
+      "ticks_on_start": 0,
+      "ticks_per_window": 1,
+      "ticks_on_end": 0
+    }
+  ],
+  "outcome": {
+    "on_victory": {
+      "effect_ids": [
+        "eff_r4_crown_stair_opened"
+      ]
+    },
+    "on_escape": {
+      "effect_ids": []
+    },
+    "on_failure": {
+      "effect_ids": [
+        "eff_r4_glossary_slot_filled"
+      ],
+      "death_policy": "respawn_checkpoint"
+    },
+    "on_parley": {
+      "effect_ids": []
+    }
+  },
+  "world_effect": {
+    "region_state_tag": "r4_above_record",
+    "prop_state_ids": [
+      "prop_r4_crown_fragment_plinth"
+    ],
+    "unlock_gate_ids": [
+      "gate_g4_translation_precedence"
+    ]
+  },
+  "repeat": {
+    "policy": "once",
+    "reset_policy": "none",
+    "cooldown_windows": 0,
+    "depth_scaling": {
+      "per_band": {},
+      "max_bands": 0
+    }
+  },
+  "base_encounter_id": "enc_the_above_record",
+  "variant_overrides": {
+    "source_record_category": "political_institution",
+    "usher_becomes": "claimant",
+    "final_proof": "authority_plus_truth"
+  },
+  "remix_eligibility": {
+    "condition": {
+      "clock_at_least": {
+        "clock_id": "clock_crown_alignment",
+        "stage_index": 3
+      }
+    },
+    "requires_depth_band_min": 0,
+    "requires_postgame": false
+  },
+  "lore_ref": "seed_s002",
+  "seed_ids": [
+    "seed_s002",
+    "seed_s053",
+    "seed_s059",
+    "seed_s108"
+  ]
+}

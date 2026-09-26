@@ -1,0 +1,183 @@
+{
+    "schema_version":  1,
+    "id":  "npc_13_tovan_reed",
+    "display_name":  "Tovan Reed",
+    "roster_kind":  "core",
+    "public_role":  "field medic who sorts a survivor by what the body can still do",
+    "private_role":  "operates past the forbidden line and does not say what the next self will be",
+    "desire":  "wants to leave a living self a capability it can still choose, not the original one restored",
+    "fear":  "that the body survives and the memory, role and want queue up behind it unnoticed",
+    "contradiction":  "puts consent first and reaches for the nonstandard option when supplies are short",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_r6_triage"
+                                    ],
+                       "can":  [
+                                   "triage_subject",
+                                   "operate_bypass",
+                                   "cure_status",
+                                   "carry_survivor",
+                                   "refuse_the_order"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+
+                                       ],
+                            "denies":  [
+
+                                       ],
+                            "denied_by_effect_id":  "eff_r1_wrong_return_witnessed"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s014",
+                                             "seed_s083"
+                                         ],
+                               "does_not_know":  [
+                                                     "seed_s079"
+                                                 ],
+                               "never_learns":  [
+                                                    "seed_s128"
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_ask_for_triage",
+                                             "verb_ask_for_consent",
+                                             "verb_carry_the_survivor",
+                                             "verb_refuse_the_order",
+                                             "verb_stabilize_the_door_test"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "resource_scarcity",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_ask_for_triage",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_r1_cold_relay",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_ask_for_consent",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r1_cold_relay",
+                                                                            "choice_id":  "ch_ask_before_the_bypass"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r1_cold_relay",
+                                  "presentation_class":  "confidential"
+                              },
+                              {
+                                  "verb_id":  "verb_carry_the_survivor",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r1_cold_relay",
+                                                                            "choice_id":  "ch_carry_them_out"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r1_cold_relay",
+                                  "presentation_class":  "neutral"
+                              },
+                              {
+                                  "verb_id":  "verb_refuse_the_order",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r1_cold_relay",
+                                                                            "choice_id":  "ch_refuse_the_quota"
+                                                                        }
+                                                   },
+                                  "opens":  "conv_r1_cold_relay",
+                                  "presentation_class":  "extreme"
+                              },
+                              {
+                                  "verb_id":  "verb_stabilize_the_door_test",
+                                  "availability":  {
+                                                       "prop_state_is":  {
+                                                                             "prop_id":  "prop_r1_wrong_return_door",
+                                                                             "state_id":  "ps_opened"
+                                                                         }
+                                                   },
+                                  "opens":  "enc_r1_door_role_test",
+                                  "presentation_class":  "hostile"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_13_tovan_triage"
+                         ],
+    "clock_ids":  [
+                      "clock_resource_collapse",
+                      "clock_personal_collapse",
+                      "clock_contamination"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  "enc_r1_ash_choir"
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "conversion_condition":  {
+
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "eff_r1_wrong_return_witnessed",
+                                              "encounter_modifier":  1
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_r1_ash_debt_opens_chute"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_r1_wrong_return_witnessed"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "permanent",
+                    "condition":  {
+
+                                  },
+                    "moves_to_region_id":  "region_h0_undersign_exchange"
+                },
+    "appearance":  {
+                       "body_key":  "body_field_medic",
+                       "portrait_key":  "portrait_tovan_reed",
+                       "voice_key":  "voice_tovan_reed"
+                   },
+    "mana_profile":  "medium_reactive",
+    "oneoff_dialogue_seed_ids":  [
+                                     "seed_s085",
+                                     "seed_s109"
+                                 ],
+    "cross_link_ids":  [
+                           "region_r1_returning_kiln",
+                           "npc_02_orrin_kest",
+                           "npc_04_sable_halm",
+                           "npc_08_meral_dune",
+                           "enc_r1_ash_choir",
+                           "clock_resource_collapse"
+                       ],
+    "removal":  "death",
+    "seed_ids":  [
+                     "seed_s014",
+                     "seed_s017",
+                     "seed_s064",
+                     "seed_s068",
+                     "seed_s079",
+                     "seed_s083",
+                     "seed_s085",
+                     "seed_s109",
+                     "seed_s128",
+                     "seed_s132"
+                 ]
+}

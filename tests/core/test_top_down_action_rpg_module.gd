@@ -17,6 +17,7 @@ const CHOIR_ENCOUNTER: String = "enc_r1_ash_choir"
 const DOOR_ENCOUNTER: String = "enc_r1_door_role_test"
 const RETURN_DESK: String = "conv_h0_return_desk"
 const RETURN_DESK_CHOICE: String = "ch_file_arrival_category"
+const INDEX_RETURN_CHOICE: String = "ch_index_return"
 const DESK_NPC: String = "npc_01_ilyra_senn"
 const KILN_DOCUMENT: String = "doc_r1_wrong_return_log"
 const KILN_DOOR_PROP: String = "prop_r1_wrong_return_door"
@@ -25,6 +26,10 @@ const REGISTRY_EFFECT: String = "eff_r1_return_registry_logs_name"
 const PLAYER_ACTION: String = "act_ash_sweep"
 const GUARD_ACTION: String = "act_guard_set"
 const REACTION_ACTION: String = "act_dodge_shift"
+const CHARGE_ACTION: String = "act_ash_hound_lunge"
+const CHARGE_ENEMY: String = "enemy_ash_hound"
+const ENEMY_ACTION_OWNER: String = "enemy"
+const ENEMY_ACTION_HOLD: int = 4096
 const ACTIONS_PREFIX: String = "행동 "
 
 const EXPECTED_ACTIONS: Array[String] = [
@@ -240,17 +245,39 @@ func _interactable_of(game: GameModule, target_id: String) -> TopDownActionRpgFi
 	return null
 
 
-func _approach_and_interact(game: GameModule, target_id: String) -> bool:
-	var previous_mode: String = _mode_of(game)
+func _focused_interactable_id(game: GameModule) -> String:
+	var focused: TopDownActionRpgFieldController.Interactable = _field_of(game).focused_interactable() if _field_of(game) != null else null
+	return String(focused.interactable_id) if focused != null else ""
+
+
+func _walk_to_interactable(game: GameModule, target_id: String) -> Vector2:
 	var target := _interactable_of(game, target_id)
 	assert_not_null(target, target_id)
 	if target == null:
-		return false
+		return _position_of(game)
 	for _step: int in range(WALK_STEPS):
 		var delta: Vector2 = target.position - _position_of(game)
 		if delta.length() <= 0.4:
 			break
 		game.execute_command(&"move", {"direction": delta})
+	return _position_of(game)
+
+
+func _focus_interactable(game: GameModule, target_id: String) -> bool:
+	var field := _field_of(game)
+	if field == null:
+		return false
+	for _step: int in range(field.focus_candidates().size() + 1):
+		if _focused_interactable_id(game) == target_id:
+			return true
+		if not game.execute_command(&"focus", {"step": 1}):
+			break
+	return _focused_interactable_id(game) == target_id
+
+
+func _approach_and_interact(game: GameModule, target_id: String) -> bool:
+	var previous_mode: String = _mode_of(game)
+	_walk_to_interactable(game, target_id)
 	game.execute_command(&"interact", {"interactable_id": target_id})
 	return _mode_of(game) != previous_mode
 
@@ -571,18 +598,31 @@ func test_all_six_allowed_actions_are_edge_dispatched_and_bound_keys_do_not_repe
 	assert_eq(_position_of(game), held_once)
 	game.call("_process", 0.0)
 	assert_eq(_position_of(game), held_once)
+	var desk_stand: Vector2 = _walk_to_interactable(game, DESK_NPC)
+	assert_true(_focus_interactable(game, DESK_NPC), DESK_NPC)
+	assert_eq(_focused_interactable_id(game), DESK_NPC)
 	_press(game, &"top_down_action_rpg_confirm")
 	assert_eq(_mode_of(game), "dialogue")
+	assert_eq(String(_conversation_of(game).conversation_id), RETURN_DESK)
 	_press(game, &"top_down_action_rpg_cancel")
 	assert_eq(_mode_of(game), "field")
+	assert_eq(String(_conversation_of(game).conversation_id), "")
 	_press(game, &"top_down_action_rpg_confirm")
 	assert_eq(_mode_of(game), "dialogue")
+	assert_eq(String(_conversation_of(game).conversation_id), RETURN_DESK)
 	assert_eq(int(_conversation_of(game).page_index), 0)
 	assert_true(game.execute_command(&"dialogue_focus", {"step": 1}))
-	assert_eq(String(_conversation_of(game).active_choice_id), "ch_index_return")
-	assert_true(game.execute_command(&"dialogue_cancel"))
+	assert_eq(String(_conversation_of(game).active_choice_id), INDEX_RETURN_CHOICE)
+	assert_true(game.execute_command(&"choice_confirm", {"choice_id": INDEX_RETURN_CHOICE}))
+	assert_true(_conversation_of(game).committed)
+	assert_true(_state_of(game).choice_taken(RETURN_DESK, INDEX_RETURN_CHOICE))
+	assert_eq(String(_conversation_of(game).active_choice_id), "ch_withhold_category")
+	assert_true(game.execute_command(&"choice_confirm", {}))
+	assert_false(_conversation_of(game).committed)
+	assert_eq(String(_conversation_of(game).conversation_id), "")
 	assert_eq(_mode_of(game), "field")
-	assert_eq(_position_of(game), held_once)
+	assert_eq(_screen_of(game).current_state(), TopDownActionRpgScreen.STATE_FIELD)
+	assert_eq(_position_of(game), desk_stand)
 
 
 func test_module_source_has_no_direct_input_polling_root_lookup_or_other_module_reference() -> void:
@@ -607,7 +647,7 @@ func test_field_dialogue_choice_and_document_close_all_return_to_field() -> void
 	var state := _state_of(game)
 	assert_eq(String(state.field.get("active_interaction_id", "")), DESK_NPC)
 	assert_true(game.execute_command(&"dialogue_focus", {"step": 1}))
-	assert_eq(String(_conversation_of(game).active_choice_id), "ch_index_return")
+	assert_eq(String(_conversation_of(game).active_choice_id), INDEX_RETURN_CHOICE)
 	assert_true(game.execute_command(&"choice_confirm", {"choice_id": RETURN_DESK_CHOICE}))
 	assert_true(state.choice_taken(RETURN_DESK, RETURN_DESK_CHOICE))
 	assert_true(state.flag_is("world_h0_arrival_filed"))
@@ -648,7 +688,10 @@ func test_field_dialogue_choice_and_document_close_all_return_to_field() -> void
 
 func test_combat_build_opens_player_window_and_deterministic_enemy_windows() -> void:
 	var first := _spawn(_fresh_snapshot(CHOIR_ENCOUNTER, 220))
+	var catalog := _catalog_of(first)
+	var record: Dictionary = catalog.record(CHOIR_ENCOUNTER)
 	var combat := _combat_of(first)
+	assert_false(record.is_empty(), CHOIR_ENCOUNTER)
 	assert_eq(String(combat.encounter_id), CHOIR_ENCOUNTER)
 	assert_eq(int(combat.encounter_attempt_serial), 1)
 	assert_eq(combat.rng_state, TopDownActionRpgGameState.stable_seed(CHOIR_ENCOUNTER, 1))
@@ -661,29 +704,88 @@ func test_combat_build_opens_player_window_and_deterministic_enemy_windows() -> 
 		if actor.side == "enemy_side":
 			enemy_ids.append(String(actor.actor_id))
 	assert_eq(enemy_ids, ["enemy_ash_hound", "enemy_ash_hound_2", "enemy_ember_clerk"])
+	assert_eq(enemy_ids, _roster_actor_ids(catalog, record))
+	assert_eq(String((record.get("context", {}) as Dictionary).get("region_id", "")), KILN_REGION)
+	assert_eq(String(_state_of(first).region_id()), KILN_REGION)
 	var player := _player_of(first)
 	assert_eq(String(player.side), "player_side")
 	assert_eq(int(player.max_hp), 220)
 	assert_eq(int(player.hp), 220)
 	assert_eq(int(player.action_slot_snapshot), 1)
+	_lock_actor_onto_action(first, CHARGE_ENEMY, CHARGE_ACTION)
 	var ledger: Array = _combat_ledger(first)
 	var second := _spawn(_fresh_snapshot(CHOIR_ENCOUNTER, 220))
+	_lock_actor_onto_action(second, CHARGE_ENEMY, CHARGE_ACTION)
 	assert_eq(_combat_ledger(second), ledger)
 	assert_gt(ledger.size(), 3)
 	var tick_seen: bool = false
 	var reaction_seen: bool = false
+	var authored_charge_seen: bool = false
 	for entry: Dictionary in ledger:
 		if int(entry["tick"]) > 0:
 			tick_seen = true
 		if bool(entry["awaiting"]):
 			reaction_seen = true
+		if String(entry["label"]) == "reaction" and String(entry["charge_action"]) == CHARGE_ACTION:
+			authored_charge_seen = true
 	assert_true(tick_seen)
 	assert_true(reaction_seen)
+	assert_true(authored_charge_seen, str(ledger))
 	var windowed: Array[String] = []
 	for key: Variant in (_controller_of(first).consumed_slots as Dictionary):
 		windowed.append(String(key))
-	assert_true(windowed.has("enemy_ash_hound") or windowed.has("enemy_ember_clerk"), str(windowed))
+	assert_true(windowed.has(CHARGE_ENEMY) or windowed.has("enemy_ember_clerk"), str(windowed))
 	assert_eq(String(_player_of(first).side), "player_side")
+
+
+func _roster_actor_ids(catalog: TopDownActionRpgContentLoader.Catalog, record: Dictionary) -> Array[String]:
+	var result: Array[String] = []
+	for entry: Variant in record.get("roster", []):
+		if not entry is Dictionary:
+			continue
+		var enemy_id: String = String((entry as Dictionary).get("enemy_id", ""))
+		for index: int in range(maxi(1, int((entry as Dictionary).get("count", 1)))):
+			result.append(enemy_id if index == 0 else "%s_%d" % [enemy_id, index + 1])
+	return result
+
+
+func _catalog_of(game: GameModule) -> TopDownActionRpgContentLoader.Catalog:
+	return game.get("_catalog") as TopDownActionRpgContentLoader.Catalog
+
+
+func _enemy_action_ids(game: GameModule) -> Array[String]:
+	var catalog := _catalog_of(game)
+	var result: Array[String] = []
+	for record_id: String in catalog.ids_of_kind("actions"):
+		if String(catalog.record(record_id).get("owner", "")) == ENEMY_ACTION_OWNER:
+			result.append(record_id)
+	return result
+
+
+func _actor_of(game: GameModule, actor_id: String) -> TopDownActionRpgCombatState.ActorState:
+	var combat := _combat_of(game)
+	return combat.find_actor(StringName(actor_id)) if combat != null else null
+
+
+func _hold_actor_from_actions(game: GameModule, actor_id: String, except_action_id: String = "") -> void:
+	var actor := _actor_of(game, actor_id)
+	assert_not_null(actor, actor_id)
+	if actor == null:
+		return
+	var cooldowns: Dictionary = actor.action_cooldowns.duplicate()
+	for candidate: String in _enemy_action_ids(game):
+		if candidate != except_action_id:
+			cooldowns[candidate] = ENEMY_ACTION_HOLD
+	actor.action_cooldowns = cooldowns
+
+
+func _lock_actor_onto_action(game: GameModule, actor_id: String, action_id: String) -> void:
+	var record: Dictionary = _catalog_of(game).record(action_id)
+	assert_false(record.is_empty(), action_id)
+	assert_eq(String(record.get("lifecycle", "")), "charge", action_id)
+	assert_eq(String(record.get("owner", "")), ENEMY_ACTION_OWNER, action_id)
+	assert_true(_enemy_action_ids(game).has(action_id), action_id)
+	_hold_actor_from_actions(game, actor_id, action_id)
 
 
 func _combat_ledger(game: GameModule) -> Array:
@@ -695,8 +797,9 @@ func _combat_ledger(game: GameModule) -> Array:
 			break
 		var controller := _controller_of(game)
 		if controller != null and controller.awaiting_reaction:
+			var charge_action: String = String(controller.pending_charge.charge_action_id) if controller.pending_charge != null else ""
 			game.execute_command(&"combat_reaction")
-			ledger.append(_ledger_row(game, "reaction"))
+			ledger.append(_ledger_row(game, "reaction", charge_action))
 			continue
 		if _player_window_open(game):
 			game.execute_command(&"combat_end_turn")
@@ -705,7 +808,7 @@ func _combat_ledger(game: GameModule) -> Array:
 	return ledger
 
 
-func _ledger_row(game: GameModule, label: String) -> Dictionary:
+func _ledger_row(game: GameModule, label: String, charge_action: String = "") -> Dictionary:
 	var combat := _combat_of(game)
 	var controller := _controller_of(game)
 	var player := _player_of(game)
@@ -720,6 +823,7 @@ func _ledger_row(game: GameModule, label: String) -> Dictionary:
 		"tick": int(combat.scheduler_tick) if combat != null else -1,
 		"result": String(combat.result) if combat != null else "",
 		"awaiting": bool(controller.awaiting_reaction) if controller != null else false,
+		"charge_action": charge_action,
 		"hp": vitals,
 		"player_hp": int(player.hp) if player != null else -1,
 	}
@@ -775,8 +879,15 @@ func test_combat_command_target_and_charge_reaction_and_receive_path() -> void:
 	assert_eq(combat.queue.size(), 0)
 	assert_gt(int(combat.scheduler_tick), tick_after_commit)
 	assert_true(_player_window_open(game))
+	_lock_actor_onto_action(game, CHARGE_ENEMY, CHARGE_ACTION)
+	for enemy_id: String in _roster_actor_ids(_catalog_of(game), _catalog_of(game).record(CHOIR_ENCOUNTER)):
+		if enemy_id != CHARGE_ENEMY:
+			_hold_actor_from_actions(game, enemy_id)
 	var charging := _await_charge(game)
 	assert_not_null(charging)
+	assert_eq(String(charging.actor_id), CHARGE_ENEMY)
+	assert_eq(String(charging.charge_state.charge_action_id), CHARGE_ACTION)
+	assert_eq(String(charging.charge_state.target_actor_id), String(player.actor_id))
 	assert_eq(screen.current_state(), TopDownActionRpgScreen.STATE_CHARGE_COUNTER)
 	assert_eq(String(charging.charge_state.stage), "reaction")
 	assert_true(charging.charge_state.valid_reaction_ids.has(REACTION_ACTION))
@@ -796,12 +907,15 @@ func test_combat_command_target_and_charge_reaction_and_receive_path() -> void:
 	assert_ne(screen.current_state(), TopDownActionRpgScreen.STATE_CHARGE_COUNTER)
 	var second_charge := _await_charge(game)
 	assert_not_null(second_charge)
+	assert_eq(String(second_charge.actor_id), CHARGE_ENEMY)
+	assert_eq(String(second_charge.charge_state.charge_action_id), CHARGE_ACTION)
 	combat.submode = "reaction_select"
 	assert_true(game.execute_command(&"combat_receive"))
 	assert_false(_controller_of(game).awaiting_reaction)
 	assert_not_null(_controller_of(game).pending_charge)
 	assert_eq(String(_controller_of(game).pending_charge.stage), "telegraph")
 	assert_eq(String(_controller_of(game).pending_charge.owner_actor_id), String(second_charge.actor_id))
+	assert_eq(String(_controller_of(game).pending_charge.charge_action_id), CHARGE_ACTION)
 
 
 func _await_charge(game: GameModule) -> TopDownActionRpgCombatState.ActorState:

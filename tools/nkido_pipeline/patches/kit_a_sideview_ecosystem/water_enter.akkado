@@ -1,0 +1,5 @@
+// W3 draft. UNVERIFIED against a real nkido build.
+// id: eco.water_enter
+// situation: the player submerges or enters deep water
+// render: --seconds 0.80 --rate 48000 --bpm 96 --no-default-bank
+n"g2 c3" as e |> saw(e.freq) * adsr(e.gate, 0.02, 0.22, 0.25, 0.20) * e.vel |> out(%)

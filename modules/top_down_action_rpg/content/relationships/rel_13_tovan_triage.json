@@ -1,0 +1,223 @@
+{
+    "schema_version":  1,
+    "id":  "rel_13_tovan_triage",
+    "target_npc_id":  "npc_13_tovan_reed",
+    "channel":  "care",
+    "start_state_id":  "rs_tovan_triaged",
+    "states":  [
+                   {
+                       "state_id":  "rs_tovan_triaged",
+                       "order":  0,
+                       "label":  "sorted by what the body can do",
+                       "entry_effect_ids":  [
+
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "guarded"
+                   },
+                   {
+                       "state_id":  "rs_tovan_consented",
+                       "order":  1,
+                       "label":  "the bypass was explained first",
+                       "entry_effect_ids":  [
+                                                "eff_r1_ash_debt_opens_chute"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r6_triage"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_r1_cold_relay"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "operational"
+                   },
+                   {
+                       "state_id":  "rs_tovan_partnered",
+                       "order":  2,
+                       "label":  "both capacities on the table",
+                       "entry_effect_ids":  [
+                                                "eff_r1_ash_debt_opens_chute"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_r6_triage",
+                                        "port_r1_cold_relay"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_r1_cold_relay"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  true,
+                                               "encounter_modifier":  1,
+                                               "granted_by_effect_ids":  [
+                                                                             "eff_r1_ash_debt_opens_chute"
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "candid"
+                   },
+                   {
+                       "state_id":  "rs_tovan_used",
+                       "order":  3,
+                       "label":  "used as a rescue pretext",
+                       "entry_effect_ids":  [
+                                                "eff_r1_return_registry_logs_name"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "hostile"
+                   }
+               ],
+    "transitions":  [
+                        {
+                            "transition_id":  "t_01",
+                            "from_state_id":  "rs_tovan_triaged",
+                            "to_state_id":  "rs_tovan_consented",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r1_cold_relay",
+                                                                            "choice_id":  "ch_ask_before_the_bypass"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_ash_debt_opens_chute"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_02",
+                            "from_state_id":  "rs_tovan_consented",
+                            "to_state_id":  "rs_tovan_partnered",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r1_cold_relay",
+                                                                            "choice_id":  "ch_carry_them_out"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_ash_debt_opens_chute"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_03",
+                            "from_state_id":  "rs_tovan_consented",
+                            "to_state_id":  "rs_tovan_triaged",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r1_cold_relay",
+                                                                            "choice_id":  "ch_refuse_the_quota"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  8
+                        },
+                        {
+                            "transition_id":  "t_04",
+                            "from_state_id":  "rs_tovan_partnered",
+                            "to_state_id":  "rs_tovan_used",
+                            "via":  "effect",
+                            "requires_condition":  {
+                                                       "clock_irreversible":  {
+                                                                                  "clock_id":  "clock_personal_collapse"
+                                                                              }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_return_registry_logs_name"
+                                           ],
+                            "is_irreversible":  true,
+                            "priority":  5
+                        }
+                    ],
+    "axes":  {
+                 "trust":  1,
+                 "fear":  0,
+                 "debt":  0,
+                 "recognition":  0,
+                 "attachment":  1
+             },
+    "axis_rules":  [
+                       {
+                           "key":  "bypass_cost_named_out_loud",
+                           "condition":  {
+                                             "choice_taken":  {
+                                                                  "conversation_id":  "conv_r1_cold_relay",
+                                                                  "choice_id":  "ch_ask_before_the_bypass"
+                                                              }
+                                         },
+                           "sets":  {
+                                        "continuity_pressure":  1
+                                    }
+                       }
+                   ],
+    "exclusions":  {
+                       "max_final_state":  1,
+                       "conflicting_final_state_ids":  [
+                                                           "rs_tovan_used"
+                                                       ]
+                   },
+    "romance":  {
+                    "allowed":  false,
+                    "explicit_content":  false,
+                    "gate_state_ids":  [
+
+                                       ],
+                    "consent_beat_effect_ids":  [
+
+                                                ]
+                },
+    "seed_ids":  [
+                     "seed_s014",
+                     "seed_s083",
+                     "seed_s085",
+                     "seed_s109",
+                     "seed_s128"
+                 ]
+}

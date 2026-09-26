@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "id": "region_r3_bellhouse_hospice",
+  "display_name": "Bellhouse Hospice",
+  "region_role": "intervention_scheduling",
+  "conflict_thesis": "Faith shortens the interval to help without ever promising that consent or recognition arrives with it.",
+  "topology": {
+    "shape": "gallery_tower_and_undercroft",
+    "size_class": "large",
+    "landmark_count": 5,
+    "traversal_axis": "elevation",
+    "backtrack_supported": true
+  },
+  "entry": {
+    "from_region_id": "region_h0_undersign_exchange",
+    "edge_id": "route_e03_mercy_causeway",
+    "gate_id": "gate_g0_arrival_declaration",
+    "one_way": false
+  },
+  "exits": [
+    {
+      "to_region_id": "region_h0_undersign_exchange",
+      "edge_id": "route_e03_mercy_causeway",
+      "gate_id": "gate_g0_arrival_declaration",
+      "route_state": "conditional",
+      "requires_condition": {
+        "all_of": [
+          {
+            "route_open": {
+              "gate_id": "gate_g0_arrival_declaration"
+            }
+          },
+          {
+            "resource_held": {
+              "resource_key": "res_care_token",
+              "min_count": 1
+            }
+          }
+        ]
+      },
+      "field_activation": "INTERACTION",
+      "resource_keys": [
+        "res_care_token"
+      ]
+    },
+    {
+      "to_region_id": "region_r1_returning_kiln",
+      "edge_id": "route_e06_quiet_ward_passage",
+      "gate_id": "gate_g1_ash_debt",
+      "route_state": "conditional",
+      "requires_condition": {
+        "route_open": {
+          "gate_id": "gate_g1_ash_debt"
+        }
+      },
+      "unlock_effect_id": "eff_r3_return_registry_handoff",
+      "field_activation": "STORY_FORCED",
+      "resource_keys": [
+        "res_ash_thread"
+      ]
+    },
+    {
+      "to_region_id": "region_r4_crownwell_archive",
+      "edge_id": "route_e10_bell_cable_lift",
+      "gate_id": "gate_g3_latency_receipt",
+      "route_state": "conditional",
+      "requires_condition": {
+        "route_open": {
+          "gate_id": "gate_g3_latency_receipt"
+        }
+      },
+      "unlock_effect_id": "eff_r3_latency_receipt_filed",
+      "field_activation": "INTERACTION",
+      "resource_keys": [
+        "res_latency_token"
+      ]
+    },
+    {
+      "to_region_id": "region_r5_glasswing_ordinal",
+      "edge_id": "route_e11_care_train",
+      "gate_id": "gate_g3_latency_receipt",
+      "route_state": "conditional",
+      "requires_condition": {
+        "route_open": {
+          "gate_id": "gate_g3_latency_receipt"
+        }
+      },
+      "unlock_effect_id": "eff_r3_care_train_rostered",
+      "field_activation": "INTERACTION",
+      "resource_keys": [
+        "res_care_ration"
+      ]
+    },
+    {
+      "to_region_id": "region_r2_siltglass_commons",
+      "edge_id": "route_e17_water_ambulance_bridge",
+      "gate_id": "gate_g2_water_recognition",
+      "route_state": "conditional",
+      "requires_condition": {
+        "all_of": [
+          {
+            "route_open": {
+              "gate_id": "gate_g2_water_recognition"
+            }
+          },
+          {
+            "prop_state_is": {
+              "prop_id": "prop_r2_root_bridge_anchor",
+              "state_id": "ps_raised"
+            }
+          }
+        ]
+      },
+      "unlock_effect_id": "eff_r3_emergency_care_received",
+      "field_activation": "INTERACTION",
+      "resource_keys": [
+        "res_stretcher"
+      ]
+    }
+  ],
+  "authority": {
+    "institution_id": "institution_hospice_covenant",
+    "protocol_id": "protocol_intervention_latency",
+    "recognition_default": "patient",
+    "legitimacy_baseline": 0
+  },
+  "dominant_protocol": {
+    "protocol_id": "protocol_intervention_latency",
+    "category_bias": [
+      "patient",
+      "artifact"
+    ],
+    "category_error_policy": "record"
+  },
+  "resource_flow": {
+    "scarce_keys": [
+      "res_care_token",
+      "res_latency_token",
+      "res_care_ration",
+      "res_medicine_reserve",
+      "res_consent_charter",
+      "res_surgical_license"
+    ],
+    "surplus_keys": [
+      "res_heat_token"
+    ],
+    "access_rule_ids": [
+      "rule_r3_care_window",
+      "rule_r3_emission_capacity"
+    ]
+  },
+  "residents": [
+    {
+      "npc_id": "npc_04_sable_halm",
+      "initial_presence": "resident",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_09_perrin_lask",
+      "initial_presence": "resident",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_03_veya_morcant",
+      "initial_presence": "visiting",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_05_nera_voss",
+      "initial_presence": "visiting",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_13_tovan_reed",
+      "initial_presence": "visiting",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_08_meral_dune",
+      "initial_presence": "visiting",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_01_ilyra_senn",
+      "initial_presence": "visiting",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    },
+    {
+      "npc_id": "npc_10_juno_caster",
+      "initial_presence": "visiting",
+      "moves_on_absence_to": "region_h0_undersign_exchange"
+    }
+  ],
+  "clocks": [
+    {
+      "clock_id": "clock_institutional_response",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 1
+    },
+    {
+      "clock_id": "clock_contamination",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 2
+    },
+    {
+      "clock_id": "clock_public_record",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 2
+    },
+    {
+      "clock_id": "clock_resource_collapse",
+      "start_state": "active",
+      "reversal": "none",
+      "weight": 2
+    },
+    {
+      "clock_id": "clock_personal_collapse",
+      "start_state": "active",
+      "reversal": "slow",
+      "weight": 2
+    },
+    {
+      "clock_id": "clock_crown_alignment",
+      "start_state": "dormant",
+      "reversal": "terminal",
+      "weight": 1
+    }
+  ],
+  "hidden_state": {
+    "reveal_condition": {
+      "clock_at_least": {
+        "clock_id": "clock_contamination",
+        "stage_index": 2
+      }
+    },
+    "reveal_kind": "partial",
+    "reveal_prop_ids": [
+      "prop_r3_mercy_engine_valve"
+    ],
+    "reveal_document_ids": [
+      "doc_r3_mercy_engine_trial_value"
+    ]
+  },
+  "initial_state": "as_authored",
+  "combat_content": {
+    "encounter_ids": [
+      "enc_signal_interference",
+      "enc_the_bell_that_counts_late",
+      "enc_the_bell_that_counts_late_blackout"
+    ],
+    "field_pressure": "medium"
+  },
+  "noncombat_content": {
+    "interactable_prop_ids": [
+      "prop_r3_latency_bell",
+      "prop_r3_vow_ledger_desk",
+      "prop_r3_mercy_engine_valve",
+      "prop_r3_mana_profile_board"
+    ],
+    "service_ids": [
+      "service_r3_care_window",
+      "service_r3_intake_seal"
+    ]
+  },
+  "initial_cluster": {
+    "cluster_id": "cluster_rc_03_mercy_delay",
+    "npc_ids": [
+      "npc_04_sable_halm",
+      "npc_09_perrin_lask",
+      "npc_03_veya_morcant",
+      "npc_05_nera_voss",
+      "npc_13_tovan_reed",
+      "npc_08_meral_dune",
+      "npc_01_ilyra_senn",
+      "npc_10_juno_caster"
+    ],
+    "thread_ids": [
+      "thread_r3_care_window",
+      "thread_r3_mana_profile"
+    ],
+    "starting_conversation_id": "conv_r3_intake_triage"
+  },
+  "revisit_variants": [
+    {
+      "variant_id": "rv_after_latency_receipt",
+      "condition": {
+        "prop_state_is": {
+          "prop_id": "prop_r3_latency_bell",
+          "state_id": "ps_retimed"
+        }
+      },
+      "prop_state_ids": [
+        "prop_r3_latency_bell"
+      ],
+      "conversation_id": "conv_r3_intake_triage"
+    },
+    {
+      "variant_id": "rv_after_profile_filed",
+      "condition": {
+        "prop_state_is": {
+          "prop_id": "prop_r3_mana_profile_board",
+          "state_id": "ps_filed"
+        }
+      },
+      "prop_state_ids": [
+        "prop_r3_mana_profile_board",
+        "prop_r3_mercy_engine_valve"
+      ],
+      "conversation_id": "conv_r3_intake_triage"
+    }
+  ],
+  "internal_routes": [
+    {
+      "internal_route_id": "boiler_undercroft_lift",
+      "from_anchor_key": "r3_boiler_undercroft",
+      "to_anchor_key": "r3_mercy_engine",
+      "route_state": "conditional",
+      "requires_condition": {
+        "prop_state_is": {
+          "prop_id": "prop_r3_mercy_engine_valve",
+          "state_id": "ps_throttled"
+        }
+      },
+      "unlock_effect_id": "eff_r3_boiler_lift_opened"
+    }
+  ],
+  "unresolved_debt": [
+    {
+      "debt_id": "d_r3_fast_stage_latency",
+      "description": "the deleted fast stage value has no category, so the seven minutes belong to nobody",
+      "due_condition": {
+        "clock_irreversible": {
+          "clock_id": "clock_institutional_response"
+        }
+      },
+      "resolve_effect_ids": [
+        "eff_r3_latency_receipt_filed"
+      ],
+      "resolution_token": "open",
+      "resource_id": "res_latency_token"
+    },
+    {
+      "debt_id": "d_r3_consent_signature",
+      "description": "the consent record was filed with a care role in place of a patient signature",
+      "due_condition": {
+        "clock_at_least": {
+          "clock_id": "clock_personal_collapse",
+          "stage_index": 3
+        }
+      },
+      "resolve_effect_ids": [
+        "eff_r3_consent_record_filed"
+      ],
+      "resolution_token": "open",
+      "resource_id": "res_consent_charter"
+    }
+  ],
+  "cross_region_links": [
+    {
+      "to_region_id": "region_h0_undersign_exchange",
+      "link_kind": "faith",
+      "note": "the intake seal is still a hub permit read from the other end"
+    },
+    {
+      "to_region_id": "region_r1_returning_kiln",
+      "link_kind": "record",
+      "note": "the mismatch case is handed over instead of being resolved here"
+    },
+    {
+      "to_region_id": "region_r4_crownwell_archive",
+      "link_kind": "record",
+      "note": "the care outcome is filed as an archive category, not as a recovery"
+    },
+    {
+      "to_region_id": "region_r5_glasswing_ordinal",
+      "link_kind": "personnel",
+      "note": "the care roster and the labour roster are the same list read twice"
+    },
+    {
+      "to_region_id": "region_r6_gristmarket_ward",
+      "link_kind": "personnel",
+      "note": "an organ complaint arrives here before it reaches a court"
+    },
+    {
+      "to_region_id": "region_r2_siltglass_commons",
+      "link_kind": "resource",
+      "note": "the ambulance bridge decides whether water or attention is the shortage"
+    }
+  ],
+  "axis_weights": {
+    "protocol_legitimacy": 2,
+    "recognition_drift": 2,
+    "continuity_pressure": 1,
+    "resource_scarcity": 1
+  },
+  "seed_ids": [
+    "seed_s013",
+    "seed_s027",
+    "seed_s045",
+    "seed_s088",
+    "seed_s128",
+    "seed_s131"
+  ]
+}

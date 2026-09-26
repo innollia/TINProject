@@ -1,0 +1,221 @@
+{
+    "schema_version":  1,
+    "id":  "rel_03_veya_audit",
+    "target_npc_id":  "npc_03_veya_morcant",
+    "channel":  "confrontation",
+    "start_state_id":  "rs_veya_audited",
+    "states":  [
+                   {
+                       "state_id":  "rs_veya_audited",
+                       "order":  0,
+                       "label":  "audited as a possible tool",
+                       "entry_effect_ids":  [
+
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "hostile"
+                   },
+                   {
+                       "state_id":  "rs_veya_answered",
+                       "order":  1,
+                       "label":  "named in her own filing",
+                       "entry_effect_ids":  [
+                                                "eff_h0_arrival_declaration_filed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_hub_appeal"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_h0_appeal_chamber"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "operational"
+                   },
+                   {
+                       "state_id":  "rs_veya_accountable",
+                       "order":  2,
+                       "label":  "co-signed exception",
+                       "entry_effect_ids":  [
+                                                "eff_h0_arrival_declaration_filed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_hub_appeal",
+                                        "port_r4_censor"
+                                    ],
+                       "unlocks_conversation_ids":  [
+                                                        "conv_h0_appeal_chamber"
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  null
+                                           },
+                       "dialogue_policy":  "candid"
+                   },
+                   {
+                       "state_id":  "rs_veya_excluded",
+                       "order":  3,
+                       "label":  "kept out of her own ruling",
+                       "entry_effect_ids":  [
+                                                "eff_r1_return_registry_logs_name"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "hostile"
+                   }
+               ],
+    "transitions":  [
+                        {
+                            "transition_id":  "t_01",
+                            "from_state_id":  "rs_veya_audited",
+                            "to_state_id":  "rs_veya_answered",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_appeal_chamber",
+                                                                            "choice_id":  "ch_file_the_missing_category"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_h0_arrival_declaration_filed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_02",
+                            "from_state_id":  "rs_veya_answered",
+                            "to_state_id":  "rs_veya_accountable",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_appeal_chamber",
+                                                                            "choice_id":  "ch_share_the_liability"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_h0_arrival_declaration_filed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_03",
+                            "from_state_id":  "rs_veya_answered",
+                            "to_state_id":  "rs_veya_audited",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_appeal_chamber",
+                                                                            "choice_id":  "ch_withhold_the_result"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  8
+                        },
+                        {
+                            "transition_id":  "t_04",
+                            "from_state_id":  "rs_veya_accountable",
+                            "to_state_id":  "rs_veya_excluded",
+                            "via":  "effect",
+                            "requires_condition":  {
+                                                       "clock_irreversible":  {
+                                                                                  "clock_id":  "clock_public_record"
+                                                                              }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_return_registry_logs_name"
+                                           ],
+                            "is_irreversible":  true,
+                            "priority":  5
+                        }
+                    ],
+    "axes":  {
+                 "trust":  0,
+                 "fear":  1,
+                 "debt":  0,
+                 "recognition":  0,
+                 "attachment":  0
+             },
+    "axis_rules":  [
+                       {
+                           "key":  "voided_category_opens_route",
+                           "condition":  {
+                                             "choice_taken":  {
+                                                                  "conversation_id":  "conv_h0_appeal_chamber",
+                                                                  "choice_id":  "ch_file_the_missing_category"
+                                                              }
+                                         },
+                           "sets":  {
+                                        "protocol_legitimacy":  -1
+                                    }
+                       }
+                   ],
+    "exclusions":  {
+                       "max_final_state":  1,
+                       "conflicting_final_state_ids":  [
+                                                           "rs_veya_excluded"
+                                                       ]
+                   },
+    "romance":  {
+                    "allowed":  false,
+                    "explicit_content":  false,
+                    "gate_state_ids":  [
+
+                                       ],
+                    "consent_beat_effect_ids":  [
+
+                                                ]
+                },
+    "seed_ids":  [
+                     "seed_s012",
+                     "seed_s021",
+                     "seed_s045",
+                     "seed_s101",
+                     "seed_s119"
+                 ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "prop_r4_glossary_slot",
+  "display_name": "Glossary Slot",
+  "region_id": "region_r4_crownwell_archive",
+  "placement": {
+    "anchor_key": "r4_glossary_slot",
+    "layer": "wall",
+    "visible_from": "same_room"
+  },
+  "initial_state_id": "ps_empty",
+  "states": [
+    {
+      "state_id": "ps_empty",
+      "label": "the slot for a craft term is empty and stays empty",
+      "visible": true,
+      "art_key": "prop_r4_slot_empty",
+      "collides": false,
+      "interactable": false,
+      "entry_effect_ids": []
+    },
+    {
+      "state_id": "ps_filled",
+      "label": "two names for one craft now sit in the same slot",
+      "visible": true,
+      "art_key": "prop_r4_slot_filled",
+      "collides": false,
+      "interactable": true,
+      "entry_effect_ids": [
+        "eff_r4_glossary_slot_filled"
+      ]
+    }
+  ],
+  "revisit_visible": true,
+  "interaction": {
+    "verb_id": "verb_read_the_glossary_slot",
+    "availability": {
+      "prop_state_is": {
+        "prop_id": "prop_r4_glossary_slot",
+        "state_id": "ps_filled"
+      }
+    },
+    "opens": "doc_r4_glossary_slot_register",
+    "return_focus": "prop"
+  },
+  "hidden_until_condition": {
+    "not": {
+      "prop_state_is": {
+        "prop_id": "prop_r4_glossary_slot",
+        "state_id": "ps_empty"
+      }
+    }
+  },
+  "seed_ids": [
+    "seed_s147",
+    "seed_s144"
+  ]
+}

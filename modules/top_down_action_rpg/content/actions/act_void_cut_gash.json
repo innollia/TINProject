@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "id": "act_void_cut_gash",
+  "display_name": "cut chamber gash",
+  "order": 22,
+  "owner": "player",
+  "category": "magic",
+  "defense_mode": "none",
+  "lifecycle": "committed",
+  "intent": {
+    "target_mode": "ONE_ENEMY",
+    "requires_target_cursor": true,
+    "target_eligibility": "living"
+  },
+  "cost": {
+    "turn_cost": 2,
+    "action_slot_cost": 1,
+    "resource_costs": {
+      "mp": 6
+    },
+    "cooldown_windows": 4
+  },
+  "telegraph": {
+    "channels": [
+      "pose",
+      "vfx",
+      "sound"
+    ],
+    "windows_before_active": 1,
+    "tell_key": "tell_void_cut_gash"
+  },
+  "damage_payload": {
+    "delivery": "magical",
+    "shape": "fixed",
+    "base_value": 16,
+    "affinity": "darkness",
+    "hit_policy": "roll",
+    "hit_modifier": 0,
+    "evasion_policy": "roll",
+    "critical_policy": "never",
+    "dodge_pressure": 12,
+    "guard_ignore": true,
+    "breaks_guard": true,
+    "break_damage": 18,
+    "dodgeable": true,
+    "break_damage_kinds": [
+      "hp_damage"
+    ],
+    "self_damage": 0,
+    "lifesteal": 0,
+    "reflect": 0,
+    "on_hit_payload_ids": [],
+    "on_evade_payload_ids": []
+  },
+  "status_payloads": [
+    {"status_id": "st_concentration_load", "chance_permille": 500, "target": "self"}
+  ],
+  "commitment": {
+    "spans_windows": 2,
+    "interruptible": false,
+    "interrupt_effect_ids": []
+  },
+  "recovery": {
+    "windows": 1,
+    "punish_windows": 1,
+    "recovery_locked": false
+  },
+  "counters": {
+    "valid": [
+      "guard",
+      "dodge",
+      "break",
+      "resource_lock"
+    ],
+    "forbidden": [],
+    "breakable": true
+  },
+  "craft": {
+    "craft_family": "void_cut",
+    "concentration_source": "social_permission",
+    "concentration_requirement": 620,
+    "body_profile_requirements": [
+      "retention_low_emission_high",
+      "blocked_emission"
+    ],
+    "medium_options": [],
+    "tool_options": [
+      "course_scissors",
+      "ash_blade"
+    ],
+    "shape_or_pattern": "open_chamber_gash",
+    "preparation_turns": 3,
+    "waste": {
+      "st_concentration_load": 1
+    },
+    "failure_status_id": "st_concentration_load",
+    "environment_effect": {
+      "clock_writes": [
+        {"ticks": 1, "clock_id": "clock_crown_alignment"}
+      ]
+    },
+    "social_recording": "res_contract_tally",
+    "contract_ref": "contract_r8_unresolved_gash"
+  },
+  "presentation": {
+    "icon_key": "act_void_cut_gash"
+  },
+  "seed_ids": [
+    "seed_s001"
+  ]
+}

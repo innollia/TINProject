@@ -1,0 +1,370 @@
+{
+    "schema_version": 1,
+    "id": "region_r6_gristmarket_ward",
+    "display_name": "Gristmarket Ward",
+    "region_role": "organ_authority_negotiation",
+    "conflict_thesis": "A cure here is a negotiation about where the pain and the social role go, not a return to the previous state.",
+    "topology": {
+        "shape": "ring_market_and_drainage",
+        "size_class": "large",
+        "landmark_count": 5,
+        "traversal_axis": "depth",
+        "backtrack_supported": true
+    },
+    "entry": {
+        "from_region_id": "region_r1_returning_kiln",
+        "edge_id": "route_e07_ash_chute",
+        "gate_id": "gate_g1_ash_debt",
+        "one_way": false
+    },
+    "exits": [
+        {
+            "to_region_id": "region_r1_returning_kiln",
+            "edge_id": "route_e07_ash_chute",
+            "gate_id": "gate_g1_ash_debt",
+            "route_state": "conditional",
+            "requires_condition": {
+                "route_open": {
+                    "gate_id": "gate_g1_ash_debt"
+                }
+            },
+            "unlock_effect_id": "eff_r6_ash_chute_opened",
+            "field_activation": "STORY_FORCED",
+            "resource_keys": [
+                "res_preservative"
+            ]
+        },
+        {
+            "to_region_id": "region_r2_siltglass_commons",
+            "edge_id": "route_e08_medicine_ferry",
+            "gate_id": "gate_g2_water_recognition",
+            "route_state": "conditional",
+            "requires_condition": {
+                "route_open": {
+                    "gate_id": "gate_g2_water_recognition"
+                }
+            },
+            "unlock_effect_id": "eff_r6_medicine_ferry_opened",
+            "field_activation": "INTERACTION",
+            "resource_keys": [
+                "res_safe_water",
+                "res_medicine"
+            ]
+        },
+        {
+            "to_region_id": "region_r5_glasswing_ordinal",
+            "edge_id": "route_e14_under_rail_shunt",
+            "gate_id": "gate_g5_labor_pledge",
+            "route_state": "conditional",
+            "requires_condition": {
+                "route_open": {
+                    "gate_id": "gate_g5_labor_pledge"
+                }
+            },
+            "unlock_effect_id": "eff_r6_under_rail_shunt_opened",
+            "field_activation": "INTERACTION",
+            "resource_keys": [
+                "res_transformation_fuse"
+            ]
+        },
+        {
+            "to_region_id": "region_r7_hollow_orchard",
+            "edge_id": "route_e16_drainage_dark",
+            "gate_id": "gate_g6_organ_quorum",
+            "route_state": "conditional",
+            "requires_condition": {
+                "route_open": {
+                    "gate_id": "gate_g6_organ_quorum"
+                }
+            },
+            "unlock_effect_id": "eff_r6_drainage_dark_opened",
+            "field_activation": "INTERACTION",
+            "resource_keys": [
+                "res_hand_pump"
+            ]
+        }
+    ],
+    "authority": {
+        "institution_id": "institution_gristmarket_clinic",
+        "protocol_id": "protocol_organ_authority_negotiation",
+        "recognition_default": "organ-authority",
+        "legitimacy_baseline": 0
+    },
+    "dominant_protocol": {
+        "protocol_id": "protocol_organ_authority_negotiation",
+        "category_bias": [
+            "organ-authority",
+            "person"
+        ],
+        "category_error_policy": "escalate"
+    },
+    "resource_flow": {
+        "scarce_keys": [
+            "res_medicine",
+            "res_preservative",
+            "res_hand_pump",
+            "res_audit_credit",
+            "res_consent_charter",
+            "res_surgical_license",
+            "res_medicine_reserve",
+            "res_petition_seal"
+        ],
+        "surplus_keys": [
+            "res_heat_token",
+            "res_recovered_note"
+        ],
+        "access_rule_ids": [
+            "rule_r6_cure_queue",
+            "rule_r6_component_custody"
+        ]
+    },
+    "residents": [
+        {
+            "npc_id": "npc_05_nera_voss",
+            "initial_presence": "resident",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_13_tovan_reed",
+            "initial_presence": "resident",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_14_eda_marrow",
+            "initial_presence": "resident",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_04_sable_halm",
+            "initial_presence": "visiting",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_03_veya_morcant",
+            "initial_presence": "visiting",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_11_cael_ren",
+            "initial_presence": "visiting",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        },
+        {
+            "npc_id": "npc_01_ilyra_senn",
+            "initial_presence": "visiting",
+            "moves_on_absence_to": "region_h0_undersign_exchange"
+        }
+    ],
+    "clocks": [
+        {
+            "clock_id": "clock_institutional_response",
+            "start_state": "active",
+            "reversal": "none",
+            "weight": 1
+        },
+        {
+            "clock_id": "clock_contamination",
+            "start_state": "active",
+            "reversal": "none",
+            "weight": 3
+        },
+        {
+            "clock_id": "clock_public_record",
+            "start_state": "active",
+            "reversal": "none",
+            "weight": 2
+        },
+        {
+            "clock_id": "clock_resource_collapse",
+            "start_state": "active",
+            "reversal": "none",
+            "weight": 3
+        },
+        {
+            "clock_id": "clock_personal_collapse",
+            "start_state": "active",
+            "reversal": "slow",
+            "weight": 2
+        },
+        {
+            "clock_id": "clock_crown_alignment",
+            "start_state": "dormant",
+            "reversal": "terminal",
+            "weight": 1
+        }
+    ],
+    "hidden_state": {
+        "reveal_condition": {
+            "clock_at_least": {
+                "clock_id": "clock_personal_collapse",
+                "stage_index": 3
+            }
+        },
+        "reveal_kind": "partial",
+        "reveal_prop_ids": [
+            "prop_r6_heart_petition_table"
+        ],
+        "reveal_document_ids": [
+            "doc_r6_custody_split_deed"
+        ]
+    },
+    "initial_state": "as_authored",
+    "combat_content": {
+    "encounter_ids":  [
+                          "enc_triage_conflict",
+                          "enc_consent_of_the_viscera",
+                          "enc_r6_the_organ_quorum"
+                      ],
+        "field_pressure": "high"
+    },
+    "noncombat_content": {
+        "interactable_prop_ids": [
+            "prop_r6_organ_intake_counter",
+            "prop_r6_cure_queue_board",
+            "prop_r6_heart_petition_table",
+            "prop_r6_drainage_pump"
+        ],
+        "service_ids": [
+            "service_r6_cure_queue",
+            "service_r6_discharge_route"
+        ]
+    },
+    "initial_cluster": {
+        "cluster_id": "cluster_rc_06_hearts_petition",
+        "npc_ids": [
+            "npc_05_nera_voss",
+            "npc_13_tovan_reed",
+            "npc_04_sable_halm",
+            "npc_03_veya_morcant",
+            "npc_11_cael_ren",
+            "npc_01_ilyra_senn",
+            "npc_14_eda_marrow"
+        ],
+        "thread_ids": [
+            "thread_r6_custody_split",
+            "thread_r6_cure_debt"
+        ],
+        "starting_conversation_id": "conv_r6_organ_intake"
+    },
+    "revisit_variants": [
+        {
+            "variant_id": "rv_after_quorum",
+            "condition": {
+                "route_open": {
+                    "gate_id": "gate_g6_organ_quorum"
+                }
+            },
+            "prop_state_ids": [
+                "prop_r6_cure_queue_board",
+                "prop_r6_heart_petition_table"
+            ],
+            "conversation_id": "conv_r6_organ_intake"
+        },
+        {
+            "variant_id": "rv_after_debt_surgery",
+            "condition": {
+                "prop_state_is": {
+                    "prop_id": "prop_r6_organ_intake_counter",
+                    "state_id": "ps_split"
+                }
+            },
+            "prop_state_ids": [
+                "prop_r6_organ_intake_counter",
+                "prop_r6_drainage_pump"
+            ],
+            "conversation_id": "conv_r6_organ_intake"
+        }
+    ],
+    "internal_routes": [
+        {
+            "internal_route_id": "drainage_pump_run",
+            "from_anchor_key": "r6_replacement_stalls",
+            "to_anchor_key": "r6_drainage_dark",
+            "route_state": "conditional",
+            "requires_condition": {
+                "prop_state_is": {
+                    "prop_id": "prop_r6_drainage_pump",
+                    "state_id": "ps_primed"
+                }
+            },
+            "unlock_effect_id": "eff_r6_pump_primed"
+        }
+    ],
+    "unresolved_debt": [
+        {
+            "debt_id": "d_r6_petition_category",
+            "description": "the petition was signed by clinic policy first, so no organ or patient category holds it",
+            "due_condition": {
+                "clock_irreversible": {
+                    "clock_id": "clock_personal_collapse"
+                }
+            },
+            "resolve_effect_ids": [
+                "eff_r6_organ_quorum_filed"
+            ],
+            "resolution_token": "open",
+            "resource_id": "res_petition_seal"
+        },
+        {
+            "debt_id": "d_r6_medium_residue_owed",
+            "description": "the medium residue in the tissue is owed back to the repair bench and has not been carried",
+            "due_condition": {
+                "clock_at_least": {
+                    "clock_id": "clock_contamination",
+                    "stage_index": 3
+                }
+            },
+            "resolve_effect_ids": [
+                "eff_r6_residue_recovery_filed"
+            ],
+            "resolution_token": "open",
+            "resource_id": "res_medicine_reserve"
+        }
+    ],
+    "cross_region_links": [
+        {
+            "to_region_id": "region_r1_returning_kiln",
+            "link_kind": "resource",
+            "note": "the ash chute is the only arrival that does not pass the exchange"
+        },
+        {
+            "to_region_id": "region_r2_siltglass_commons",
+            "link_kind": "trade",
+            "note": "medicine is priced against the settlement water line"
+        },
+        {
+            "to_region_id": "region_r5_glasswing_ordinal",
+            "link_kind": "personnel",
+            "note": "the repair bench is the only place residue can be recovered"
+        },
+        {
+            "to_region_id": "region_r7_hollow_orchard",
+            "link_kind": "personnel",
+            "note": "the drainage dark is opened by an organ quorum, not by a permit"
+        },
+        {
+            "to_region_id": "region_r4_crownwell_archive",
+            "link_kind": "record",
+            "note": "the archive decides whether an organ is filed as a person or as a part"
+        },
+        {
+            "to_region_id": "region_r3_bellhouse_hospice",
+            "link_kind": "faith",
+            "note": "an organ complaint is heard here before it reaches a hospice bell"
+        }
+    ],
+    "axis_weights": {
+        "protocol_legitimacy": 1,
+        "recognition_drift": 3,
+        "continuity_pressure": 1,
+        "resource_scarcity": 3
+    },
+    "seed_ids": [
+        "seed_s025",
+        "seed_s029",
+        "seed_s082",
+        "seed_s104",
+        "seed_s132",
+        "seed_s156"
+    ]
+}

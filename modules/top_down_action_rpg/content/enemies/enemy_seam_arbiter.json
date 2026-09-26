@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "id": "enemy_seam_arbiter",
+  "display_name": "Seam Arbiter",
+  "role": {
+    "base_region_id": "region_r7_hollow_orchard",
+    "region_role": "boundary_crown_precedence",
+    "institution_id": "institution_hollow_orchard",
+    "role_tags": [
+      "arbiter",
+      "boundary"
+    ]
+  },
+  "body": {
+    "body_class": "architectural",
+    "silhouette_key": "sil_seam_arbiter",
+    "scale_class": "large",
+    "stateful_body": "none",
+    "motion_signature": "seam_ruling"
+  },
+  "stats": {
+    "max_hp": 175,
+    "agility": 4,
+    "action_slots": 1,
+    "resource_pool": {
+      "mp": 10,
+      "equipment_charge": 0
+    }
+  },
+  "condition_bar": {
+    "kind": "condition_progress",
+    "max_value": 100,
+    "start_value": 0,
+    "advance_on": [
+      "hp_damage_taken",
+      "window_elapsed"
+    ],
+    "advance_per_source": 10,
+    "decrease_on_phase_enter": 0
+  },
+  "baseline_action_ids": [
+    "act_fold_wall_reading"
+  ],
+  "signature_action_id": "act_seam_arbiter_boundary_ruling",
+  "telegraph": {
+    "signature_tell_key": "tell_seam_arbiter_boundary_ruling",
+    "channels": [
+      "pose",
+      "vfx",
+      "sound"
+    ]
+  },
+  "status_profile": {
+    "innate_status_ids": [
+      "st_recorded"
+    ],
+    "resistant_status_ids": [
+      "st_concentration_load"
+    ],
+    "immune_status_ids": []
+  },
+  "break_profile": {
+    "breakable": true,
+    "break_source_action_ids": [
+      "act_break_poise"
+    ],
+    "on_break_status_ids": [
+      "st_recorded"
+    ],
+    "on_break_effect_ids": [
+      "eff_r7_boundary_witness_filed"
+    ]
+  },
+  "phase_ids": [
+    "phase_seam_arbiter_first_ruling",
+    "phase_seam_arbiter_final_ruling"
+  ],
+  "reward": {
+    "equipment_ids": [
+      "equipment_r7_wall_charter"
+    ],
+    "item_ids": [],
+    "resource_delta": {
+      "mp": 3
+    }
+  },
+  "aftermath": {
+    "effect_ids": [
+      "eff_r7_boundary_witness_filed"
+    ],
+    "region_state_tag": "r7_seam_ruled"
+  },
+  "lore_ref": "seed_s051",
+  "seed_ids": [
+    "seed_s051",
+    "seed_s054",
+    "seed_s102"
+  ]
+}
