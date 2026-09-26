@@ -1,0 +1,596 @@
+- generic [active] [ref=f18e1]:
+  - banner [ref=f18e2]:
+    - generic [ref=f18e4]:
+      - link [ref=f18e5] [cursor=pointer]:
+        - /url: /
+        - img "Godot Engine" [ref=f18e6]
+      - generic [ref=f18e7]:
+        - link "Donate" [ref=f18e9] [cursor=pointer]:
+          - /url: https://fund.godotengine.org
+        - img "Main menu" [ref=f18e13] [cursor=pointer]
+  - main [ref=f18e14]:
+    - generic [ref=f18e16]:
+      - article [ref=f18e17]:
+        - generic [ref=f18e18]:
+          - figure [ref=f18e19]:
+            - img "The Rise of the Golden Idol A game by Color Gray Games" [ref=f18e20]
+            - generic [ref=f18e21]:
+              - strong [ref=f18e22]: The Rise of the Golden Idol
+              - text: A game by Color Gray Games
+          - generic [ref=f18e23]:
+            - 'heading "Dev snapshot: Godot 4.4 dev 5" [level=1] [ref=f18e24]'
+            - generic [ref=f18e25]:
+              - generic [ref=f18e26]:
+                - generic [ref=f18e27]: "By:"
+                - img "Thaddeus Crews" [ref=f18e28]
+                - generic [ref=f18e29]: Thaddeus Crews
+              - generic [ref=f18e30]: 21 November 2024
+            - link "Pre-release" [ref=f18e32] [cursor=pointer]:
+              - /url: /blog/pre-release
+          - generic [ref=f18e34]:
+            - paragraph [ref=f18e35]:
+              - text: With
+              - link "GodotCon" [ref=f18e36] [cursor=pointer]:
+                - /url: https://godotengine.org/article/review-godotcon24/
+              - text: behind us and our developers recuperated, we’re thrilled to return to a more frequent release-cycle. It’s only been two weeks since we last checked in, yet there’s still so much to talk about! So buckle on in for a breakdown of what you can expect to see in 4.4 dev 5.
+            - paragraph [ref=f18e37]: Many of the changes in this release are bug fixes that will be backported to Godot 4.3 and released in 4.3.1! So please test this release well so we can be confident with the changes and release 4.3.1 with them as soon as possible.
+            - paragraph [ref=f18e38]: Keep in mind that while we try to make sure each dev snapshot is stable enough for general testing, this is by definition a pre-release piece of software. Be sure to make frequent backups, or use a version control system such as Git, to preserve your projects in case of corruption or data loss.
+            - paragraph [ref=f18e39]:
+              - link [ref=f18e40] [cursor=pointer]:
+                - /url: "#downloads"
+                - text: Jump to the
+                - strong [ref=f18e41]: Downloads
+                - text: section
+              - text: ", and give it a spin right now, or continue reading to learn more about improvements in this release. You can also try the"
+              - link [ref=f18e42] [cursor=pointer]:
+                - /url: https://editor.godotengine.org/releases/4.4.dev5/
+                - strong [ref=f18e43]: Web editor
+              - text: ","
+              - link [ref=f18e44] [cursor=pointer]:
+                - /url: https://www.meta.com/experiences/godot-game-engine/7713660705416473/
+                - strong [ref=f18e45]: XR editor
+              - text: ", or the"
+              - strong [ref=f18e46]: Android editor
+              - text: for this release (join the
+              - link "Android editor testing group" [ref=f18e47] [cursor=pointer]:
+                - /url: https://groups.google.com/g/godot-testers
+              - text: to get access to pre-release builds).
+            - separator [ref=f18e48]
+            - paragraph [ref=f18e49]:
+              - emphasis [ref=f18e50]: The cover illustration is from
+              - link [ref=f18e51] [cursor=pointer]:
+                - /url: https://store.steampowered.com/app/2716400/The_Rise_of_the_Golden_Idol/?curator_clanid=41324400
+                - strong [ref=f18e52]: The Rise of the Golden Idol
+              - text: ","
+              - emphasis [ref=f18e53]:
+                - text: a mystery game where you unravel the truth behind 20 cases of crime in the 1970s! It is developed by
+                - link "Color Gray Games" [ref=f18e54] [cursor=pointer]:
+                  - /url: https://www.thegoldenidol.com/
+                - text: . You can purchase the game
+                - link "on Steam" [ref=f18e55] [cursor=pointer]:
+                  - /url: https://store.steampowered.com/app/2716400/The_Rise_of_the_Golden_Idol/?curator_clanid=41324400
+                - text: and follow the developer on
+                - link "Twitter" [ref=f18e56] [cursor=pointer]:
+                  - /url: https://twitter.com/colorgray7/
+                - text: .
+            - heading "Highlights" [level=2] [ref=f18e57]
+            - paragraph [ref=f18e58]:
+              - text: In case you missed them, see the
+              - link "4.4 dev 1" [ref=f18e59] [cursor=pointer]:
+                - /url: /article/dev-snapshot-godot-4-4-dev-1/
+              - text: ","
+              - link "4.4 dev 2" [ref=f18e60] [cursor=pointer]:
+                - /url: /article/dev-snapshot-godot-4-4-dev-2/
+              - text: ","
+              - link "4.4 dev 3" [ref=f18e61] [cursor=pointer]:
+                - /url: /article/dev-snapshot-godot-4-4-dev-3/
+              - text: ", and"
+              - link "4.4 dev 4" [ref=f18e62] [cursor=pointer]:
+                - /url: /article/dev-snapshot-godot-4-4-dev-4/
+              - text: release notes for an overview of some key features which were already in that snapshot, and are therefore still available for testing in dev 5.
+            - paragraph [ref=f18e63]: Here are highlights of a few new features in dev 5 that you might find particularly exciting!
+            - heading "Universalize UID support" [level=3] [ref=f18e64]
+            - paragraph [ref=f18e65]: Previously, the UID format was not supported by all Resource types. This proved to be a pain point for users wishing to reference their scripts and other resources in a manner that’s path-agnostic. This, along with a need to refactor their scripts anytime these kinds of files were moved, put a significant duty of care on the end-user that shouldn’t have been necessary.
+            - paragraph [ref=f18e66]:
+              - text: Starting with dev 5, this will no longer be your burden to bear! Thanks to a long-term effort from
+              - link "reduz" [ref=f18e67] [cursor=pointer]:
+                - /url: https://github.com/reduz
+              - text: ", UIDs will now be applied universally in a way the engine can automatically track and account for. This is achieved via"
+              - code [ref=f18e68]: .uid
+              - text: files for the resource types that previously didn’t support them, functioning similarly to other metadata files that “track” a main file.
+            - paragraph [ref=f18e69]:
+              - text: Note that, unlike metadata files,
+              - code [ref=f18e70]: .uid
+              - text: files are strictly for the editor; the information is migrated to the uid database on export. Despite this, users using version control software
+              - strong [ref=f18e71]: should add these files
+              - text: ", as they’re required to properly sync data (similar to"
+              - code [ref=f18e72]: .import
+              - text: files). For more information, see (
+              - link "GH-97352" [ref=f18e73] [cursor=pointer]:
+                - /url: https://github.com/godotengine/godot/pull/97352
+              - text: ).
+            - heading "Favorite editor items" [level=3] [ref=f18e74]
+            - paragraph [ref=f18e75]:
+              - text: A common complaint we hear regarding the inspector is the potential for it to get cluttered. Namely, while there’s generally a wide selection of options available for a given class/script, users will usually only care about a particular subsection that suits them. To account for this,
+              - link "YeldhamDev" [ref=f18e76] [cursor=pointer]:
+                - /url: https://github.com/YeldhamDev
+              - text: brings us the long-awaited ability to pin one’s favorite properties in the inspector! Check out the implementation from PR (
+              - link "GH-97352" [ref=f18e77] [cursor=pointer]:
+                - /url: https://github.com/godotengine/godot/pull/97415
+              - text: ") below:"
+            - heading "And more!" [level=3] [ref=f18e79]
+            - paragraph [ref=f18e80]: "There are too many exciting changes to list them all here, but here’s a curated selection:"
+            - list [ref=f18e81]:
+              - listitem [ref=f18e82]:
+                - text: "2D: Add a way to know when a TileMapLayer’s cell is modified ("
+                - link "GH-96188" [ref=f18e83] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/96188
+                - text: ).
+              - listitem [ref=f18e84]:
+                - text: "2D: Make possible to scale multiple nodes at once in the canvas editor ("
+                - link "GH-98534" [ref=f18e85] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98534
+                - text: ).
+              - listitem [ref=f18e86]:
+                - text: "3D: Fix Gridmap shortcut conflicts with 3D editor ("
+                - link "GH-99170" [ref=f18e87] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/99170
+                - text: ).
+              - listitem [ref=f18e88]:
+                - text: "3D: Move GridMapEditor to bottom panel ("
+                - link "GH-96922" [ref=f18e89] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/96922
+                - text: ).
+              - listitem [ref=f18e90]:
+                - text: "Animation: Add"
+                - code [ref=f18e91]: advance_on_start
+                - text: option to
+                - code [ref=f18e92]: NodeAnimation
+                - text: to handle
+                - code [ref=f18e93]: advance(0)
+                - text: for each
+                - code [ref=f18e94]: NodeAnimation
+                - text: (
+                - link "GH-94372" [ref=f18e95] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/94372
+                - text: ).
+              - listitem [ref=f18e96]:
+                - text: "Animation: Fix key is deselected by changing key time in KeyEdit in FPS mode ("
+                - link "GH-99319" [ref=f18e97] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/99319
+                - text: ).
+              - listitem [ref=f18e98]:
+                - text: "Animation: Implement LookAtModifier3D ("
+                - link "GH-98446" [ref=f18e99] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98446
+                - text: ).
+              - listitem [ref=f18e100]:
+                - text: "Animation: Sort blend shapes in the inspector by ID instead of alphabetically ("
+                - link "GH-99231" [ref=f18e101] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/99231
+                - text: ).
+              - listitem [ref=f18e102]:
+                - text: "Audio: Allow waveform resize ("
+                - link "GH-97551" [ref=f18e103] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/97551
+                - text: ).
+              - listitem [ref=f18e104]:
+                - text: "Audio: Fix"
+                - code [ref=f18e105]: AudioStreamWAV::save_to_wav
+                - text: adding extra ‘.wav’ to file if existing ext is not lower case (
+                - link "GH-98717" [ref=f18e106] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98717
+                - text: ).
+              - listitem [ref=f18e107]:
+                - text: "Buildsystem: Bump minimum version of SCons to 4.0 & Python to 3.8 ("
+                - link "GH-99134" [ref=f18e108] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/99134
+                - text: ).
+              - listitem [ref=f18e109]:
+                - text: "Core: Add typed dictionary support for binary serialization ("
+                - link "GH-98120" [ref=f18e110] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98120
+                - text: ).
+              - listitem [ref=f18e111]:
+                - text: "Core: Fix"
+                - code [ref=f18e112]: Freed Object
+                - text: booleanization (
+                - link "GH-93885" [ref=f18e113] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/93885
+                - text: ).
+              - listitem [ref=f18e114]:
+                - text: "Core: Fix"
+                - code [ref=f18e115]: MissingResource
+                - text: properties being stripped on save (
+                - link "GH-86600" [ref=f18e116] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/86600
+                - text: ).
+              - listitem [ref=f18e117]:
+                - text: "Core: Fix comparison of callables ("
+                - link "GH-99078" [ref=f18e118] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/99078
+                - text: ).
+              - listitem [ref=f18e119]:
+                - text: "Core: Provide a reliable way to see original resources in a directory ("
+                - link "GH-96590" [ref=f18e120] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/96590
+                - text: ).
+              - listitem [ref=f18e121]:
+                - text: "Dotnet: Add Codium support to C# external editors ("
+                - link "GH-89051" [ref=f18e122] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/89051
+                - text: ).
+              - listitem [ref=f18e123]:
+                - text: "Dotnet: Implement"
+                - code [ref=f18e124]: "[ExportToolButton]"
+                - text: (
+                - link "GH-97894" [ref=f18e125] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/97894
+                - text: ).
+              - listitem [ref=f18e126]:
+                - text: "Editor: Add a pin toggle to prevent involuntary bottom editor switching ("
+                - link "GH-98074" [ref=f18e127] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98074
+                - text: ).
+              - listitem [ref=f18e128]:
+                - text: "Editor: Add fuzzy string matching to quick open search ("
+                - link "GH-98278" [ref=f18e129] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98278
+                - text: ).
+              - listitem [ref=f18e130]:
+                - text: "Editor: Highlight scripts used by current scene ("
+                - link "GH-97041" [ref=f18e131] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/97041
+                - text: ).
+              - listitem [ref=f18e132]:
+                - text: "Editor: Optimize FileSystem Dock filtering ("
+                - link "GH-95107" [ref=f18e133] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/95107
+                - text: ).
+              - listitem [ref=f18e134]:
+                - text: "Export: Add ability for PCK patches to remove files ("
+                - link "GH-97356" [ref=f18e135] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/97356
+                - text: ).
+              - listitem [ref=f18e136]:
+                - text: "Export: Display project settings splash color on web export ("
+                - link "GH-96625" [ref=f18e137] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/96625
+                - text: )
+              - listitem [ref=f18e138]:
+                - text: "GDExtension: Fix method binds not saying if they are varargs ("
+                - link "GH-99403" [ref=f18e139] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/99403
+                - text: ).
+              - listitem [ref=f18e140]:
+                - text: "GDExtension: Improve macOS library loading/export ("
+                - link "GH-98809" [ref=f18e141] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98809
+                - text: ).
+              - listitem [ref=f18e142]:
+                - text: "GDScript: Add support for"
+                - code [ref=f18e143]: print
+                - text: command in local (command line
+                - code [ref=f18e144]: "-d"
+                - text: ) debugger (
+                - link "GH-97218" [ref=f18e145] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/97218
+                - text: ).
+              - listitem [ref=f18e146]:
+                - text: "GUI: Fix tooltip appearing in old place, on movement ("
+                - link "GH-96721" [ref=f18e147] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/96721
+                - text: ).
+              - listitem [ref=f18e148]:
+                - text: "Import: Allow passing UID to importer ("
+                - link "GH-97363" [ref=f18e149] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/97363
+                - text: ).
+              - listitem [ref=f18e150]:
+                - text: "Import: Reload cached resources in runtime on file reimport ("
+                - link "GH-98710" [ref=f18e151] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98710
+                - text: ).
+              - listitem [ref=f18e152]:
+                - text: "Input: Revert “Fix"
+                - code [ref=f18e153]: InputEvent
+                - text: device id clash” and add a compatibility function (
+                - link "GH-99449" [ref=f18e154] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/99449
+                - text: ).
+              - listitem [ref=f18e155]:
+                - text: "Multiplayer: Handle scene UIDs in MultiplayerSpawner ("
+                - link "GH-99137" [ref=f18e156] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/99137
+                - text: ).
+              - listitem [ref=f18e157]:
+                - text: "Navigation: Improve"
+                - code [ref=f18e158]: NavMeshGenerator2D::generator_bake_from_source_geometry_data
+                - text: performance (
+                - link "GH-98957" [ref=f18e159] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98957
+                - text: ).
+              - listitem [ref=f18e160]:
+                - text: "Navigation: Reduce allocations for NavMap synchronisation ("
+                - link "GH-98866" [ref=f18e161] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98866
+                - text: ).
+              - listitem [ref=f18e162]:
+                - text: "Network: Split Unix/Windows IP implementation ("
+                - link "GH-99026" [ref=f18e163] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/99026
+                - text: ).
+              - listitem [ref=f18e164]:
+                - text: "Network: Split Unix/Windows NetSocket implementation ("
+                - link "GH-98969" [ref=f18e165] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98969
+                - text: ).
+              - listitem [ref=f18e166]:
+                - text: "Plugin: Make the method selector dialog available via"
+                - code [ref=f18e167]: EditorInterface
+                - text: (
+                - link "GH-98859" [ref=f18e168] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98859
+                - text: ).
+              - listitem [ref=f18e169]:
+                - text: "Rendering: Add"
+                - code [ref=f18e170]: multimesh_get_buffer_rd_rid
+                - text: method to
+                - code [ref=f18e171]: RenderingServer
+                - text: (
+                - link "GH-98788" [ref=f18e172] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98788
+                - text: ).
+              - listitem [ref=f18e173]:
+                - text: "Rendering: Ensure shadow material and mesh are not used with wireframe mode ("
+                - link "GH-98683" [ref=f18e174] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98683
+                - text: ).
+              - listitem [ref=f18e175]:
+                - text: "Rendering: Normalize normal, tangent, and binormal before interpolating in the mobile renderer to avoid precision errors on heavily scaled meshes ("
+                - link "GH-99163" [ref=f18e176] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/99163
+                - text: ).
+              - listitem [ref=f18e177]:
+                - text: "Rendering: Reduce shader permutations in the compatibility backend ("
+                - link "GH-87558" [ref=f18e178] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/87558
+                - text: ).
+              - listitem [ref=f18e179]:
+                - text: "Shaders: Add renderer state defines to shader preprocessor ("
+                - link "GH-98549" [ref=f18e180] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/98549
+                - text: ).
+              - listitem [ref=f18e181]:
+                - text: "Shaders: Add swap connection option to visual shader graph ("
+                - link "GH-99177" [ref=f18e182] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/99177
+                - text: ).
+              - listitem [ref=f18e183]:
+                - text: "XR: Fix pose recenter signal to be omitted properly ("
+                - link "GH-99159" [ref=f18e184] [cursor=pointer]:
+                  - /url: https://github.com/godotengine/godot/pull/99159
+                - text: ).
+            - heading "Changelog" [level=2] [ref=f18e185]
+            - paragraph [ref=f18e186]:
+              - strong [ref=f18e187]: 116 contributors
+              - text: submitted
+              - strong [ref=f18e188]: 265 improvements
+              - text: for this new snapshot. See our
+              - link [ref=f18e189] [cursor=pointer]:
+                - /url: https://godotengine.github.io/godot-interactive-changelog/#4.4-dev5
+                - strong [ref=f18e190]: interactive changelog
+              - text: for the complete list of changes since the previous 4.4-dev4 snapshot.
+            - paragraph [ref=f18e191]:
+              - text: This release is built from commit
+              - link [ref=f18e192] [cursor=pointer]:
+                - /url: https://github.com/godotengine/godot/commit/9e6098432aac35bae42c9089a29ba2a80320d823
+                - code [ref=f18e193]: "9e6098432"
+              - text: .
+            - heading "Downloads" [level=2] [ref=f18e194]
+            - generic [ref=f18e195]:
+              - link "Download Godot 4.4 dev5" [ref=f18e196] [cursor=pointer]:
+                - /url: /download/archive/4.4-dev5
+              - generic [ref=f18e199]:
+                - generic [ref=f18e200]:
+                  - img "Linux" [ref=f18e201]
+                  - text: Linux
+                - link "Standard" [ref=f18e202] [cursor=pointer]:
+                  - /url: https://downloads.godotengine.org/?version=4.4&flavor=dev5&slug=linux.x86_64.zip&platform=linux.64
+                - link ".NET" [ref=f18e204] [cursor=pointer]:
+                  - /url: https://downloads.godotengine.org/?version=4.4&flavor=dev5&slug=mono_linux_x86_64.zip&platform=linux.64
+                - generic [ref=f18e206]:
+                  - img "macOS" [ref=f18e207]
+                  - text: macOS
+                - link "Standard" [ref=f18e208] [cursor=pointer]:
+                  - /url: https://downloads.godotengine.org/?version=4.4&flavor=dev5&slug=macos.universal.zip&platform=macos.universal
+                - link ".NET" [ref=f18e210] [cursor=pointer]:
+                  - /url: https://downloads.godotengine.org/?version=4.4&flavor=dev5&slug=mono_macos.universal.zip&platform=macos.universal
+                - generic [ref=f18e212]:
+                  - img "Windows" [ref=f18e213]
+                  - text: Windows
+                - link "Standard" [ref=f18e214] [cursor=pointer]:
+                  - /url: https://downloads.godotengine.org/?version=4.4&flavor=dev5&slug=win64.exe.zip&platform=windows.64
+                - link ".NET" [ref=f18e216] [cursor=pointer]:
+                  - /url: https://downloads.godotengine.org/?version=4.4&flavor=dev5&slug=mono_win64.zip&platform=windows.64
+              - generic [ref=f18e218]:
+                - link "Export templates and other downloads" [ref=f18e219] [cursor=pointer]:
+                  - /url: /download/archive/4.4-dev5
+                - link "Make a Donation" [ref=f18e220] [cursor=pointer]:
+                  - /url: https://fund.godotengine.org/
+            - paragraph [ref=f18e221]:
+              - strong [ref=f18e222]: Standard build
+              - text: includes support for GDScript and GDExtension.
+            - paragraph [ref=f18e223]:
+              - strong [ref=f18e224]: .NET build
+              - text: (marked as
+              - code [ref=f18e225]: mono
+              - text: ) includes support for C#, as well as GDScript and GDExtension.
+            - list [ref=f18e226]:
+              - listitem [ref=f18e227]:
+                - text: See also
+                - link "C# platform support" [ref=f18e228] [cursor=pointer]:
+                  - /url: https://docs.godotengine.org/en/latest/tutorials/scripting/c_sharp/index.html#c-platform-support
+                - text: .
+            - paragraph [ref=f18e230]:
+              - text: While engine maintainers try their best to ensure that each preview snapshot and release candidate is stable, this is by definition
+              - strong [ref=f18e231]: a pre-release piece of software
+              - text: . Be sure to make frequent backups, or use a version control system such as Git, to preserve your projects in case of corruption or data loss.
+            - heading "Known issues" [level=2] [ref=f18e232]
+            - paragraph [ref=f18e233]:
+              - text: With every release we accept that there are going to be various issues, which have already been reported but haven’t been fixed yet. See the GitHub issue tracker for a complete list of
+              - link "known bugs" [ref=f18e234] [cursor=pointer]:
+                - /url: https://github.com/godotengine/godot/issues?q=is%3Aissue+is%3Aopen+label%3Abug+
+              - text: .
+            - heading "Bug reports" [level=2] [ref=f18e235]
+            - paragraph [ref=f18e236]:
+              - text: As a tester, we encourage you to
+              - link "open bug reports" [ref=f18e237] [cursor=pointer]:
+                - /url: https://github.com/godotengine/godot/issues
+              - text: if you experience issues with this release. Please check the
+              - link "existing issues on GitHub" [ref=f18e238] [cursor=pointer]:
+                - /url: https://github.com/godotengine/godot/issues
+              - text: first, using the search function with relevant keywords, to ensure that the bug you experience is not already known.
+            - paragraph [ref=f18e239]: In particular, any change that would cause a regression in your projects is very important to report (e.g. if something that worked fine in previous 4.x releases, but no longer works in this snapshot).
+            - heading "Support" [level=2] [ref=f18e240]
+            - paragraph [ref=f18e241]:
+              - text: Godot is a non-profit, open source game engine developed by hundreds of contributors on their free time, as well as a handful of part or full-time developers hired thanks to
+              - link "generous donations from the Godot community" [ref=f18e242] [cursor=pointer]:
+                - /url: https://fund.godotengine.org/
+              - text: . A big thank you to everyone who has contributed
+              - link "their time" [ref=f18e243] [cursor=pointer]:
+                - /url: https://github.com/godotengine/godot/blob/master/AUTHORS.md
+              - text: or
+              - link "their financial support" [ref=f18e244] [cursor=pointer]:
+                - /url: https://github.com/godotengine/godot/blob/master/DONORS.md
+              - text: to the project!
+            - paragraph [ref=f18e245]:
+              - text: If you’d like to support the project financially and help us secure our future hires, you can do so using the
+              - link "Godot Development Fund" [ref=f18e246] [cursor=pointer]:
+                - /url: https://fund.godotengine.org/
+              - text: platform managed by
+              - link "Godot Foundation" [ref=f18e247] [cursor=pointer]:
+                - /url: https://godot.foundation/
+              - text: . There are also several
+              - link "alternative ways to donate" [ref=f18e248] [cursor=pointer]:
+                - /url: /donate
+              - text: which you may find more suitable.
+      - generic [ref=f18e249]:
+        - generic [ref=f18e250]:
+          - generic [ref=f18e251]: Previous
+          - 'link "GodotCon 24: Berlin Edition" [ref=f18e252] [cursor=pointer]':
+            - /url: /article/review-godotcon24/
+        - generic [ref=f18e253]:
+          - generic [ref=f18e254]: Next
+          - link "Statement on GodLoader malware loader" [ref=f18e255] [cursor=pointer]:
+            - /url: /article/statement-on-godloader-malware-loader/
+  - contentinfo [ref=f18e256]:
+    - generic [ref=f18e257]:
+      - generic [ref=f18e258]:
+        - generic [ref=f18e259]:
+          - heading "Godot Engine" [level=2] [ref=f18e260]
+          - list [ref=f18e261]:
+            - listitem [ref=f18e262]:
+              - link "Download" [ref=f18e263] [cursor=pointer]:
+                - /url: /download/windows/
+            - listitem [ref=f18e264]:
+              - link "Documentation" [ref=f18e265] [cursor=pointer]:
+                - /url: https://docs.godotengine.org
+            - listitem [ref=f18e266]:
+              - link "Features" [ref=f18e267] [cursor=pointer]:
+                - /url: /features/
+            - listitem [ref=f18e268]:
+              - link "Web editor" [ref=f18e269] [cursor=pointer]:
+                - /url: https://editor.godotengine.org/releases/latest/
+            - listitem [ref=f18e270]:
+              - link "Release archive" [ref=f18e271] [cursor=pointer]:
+                - /url: /download/archive/
+            - listitem [ref=f18e272]:
+              - link "Source code" [ref=f18e273] [cursor=pointer]:
+                - /url: https://github.com/godotengine
+        - generic [ref=f18e274]:
+          - heading "Project" [level=2] [ref=f18e275]
+          - list [ref=f18e276]:
+            - listitem [ref=f18e277]:
+              - link "Blog" [ref=f18e278] [cursor=pointer]:
+                - /url: /blog/
+            - listitem [ref=f18e279]:
+              - link "Code of conduct" [ref=f18e280] [cursor=pointer]:
+                - /url: /code-of-conduct/
+            - listitem [ref=f18e281]:
+              - link "Governance" [ref=f18e282] [cursor=pointer]:
+                - /url: /governance/
+            - listitem [ref=f18e283]:
+              - link "Teams" [ref=f18e284] [cursor=pointer]:
+                - /url: https://contributing.godotengine.org/en/latest/development/workflows/areas.html
+            - listitem [ref=f18e285]:
+              - link "Priorities" [ref=f18e286] [cursor=pointer]:
+                - /url: /priorities/
+            - listitem [ref=f18e287]:
+              - link "Communities" [ref=f18e288] [cursor=pointer]:
+                - /url: /community/
+        - generic [ref=f18e289]:
+          - heading "Resources" [level=2] [ref=f18e290]
+          - list [ref=f18e291]:
+            - listitem [ref=f18e292]:
+              - link "Asset Store" [ref=f18e293] [cursor=pointer]:
+                - /url: https://store.godotengine.org/
+            - listitem [ref=f18e294]:
+              - link "Asset library" [ref=f18e295] [cursor=pointer]:
+                - /url: https://godotengine.org/asset-library/asset
+            - listitem [ref=f18e296]:
+              - link "Press kit" [ref=f18e297] [cursor=pointer]:
+                - /url: /press/
+            - listitem [ref=f18e298]:
+              - link "Showcase" [ref=f18e299] [cursor=pointer]:
+                - /url: /showcase/
+            - listitem [ref=f18e300]:
+              - link "Education" [ref=f18e301] [cursor=pointer]:
+                - /url: /education/
+            - listitem [ref=f18e302]:
+              - link "Console support" [ref=f18e303] [cursor=pointer]:
+                - /url: /consoles/
+        - generic [ref=f18e304]:
+          - heading "Foundation" [level=2] [ref=f18e305]
+          - list [ref=f18e306]:
+            - listitem [ref=f18e307]:
+              - link "About" [ref=f18e308] [cursor=pointer]:
+                - /url: https://godot.foundation/
+            - listitem [ref=f18e309]:
+              - link "Donate" [ref=f18e310] [cursor=pointer]:
+                - /url: https://fund.godotengine.org
+            - listitem [ref=f18e311]:
+              - link "License" [ref=f18e312] [cursor=pointer]:
+                - /url: /license/
+            - listitem [ref=f18e313]:
+              - link "Privacy policy" [ref=f18e314] [cursor=pointer]:
+                - /url: /privacy-policy/
+            - listitem [ref=f18e315]:
+              - link "Contact us" [ref=f18e316] [cursor=pointer]:
+                - /url: /contact/
+      - separator [ref=f18e317]
+      - generic [ref=f18e318]:
+        - paragraph [ref=f18e319]:
+          - text: © 2007-2026 Juan Linietsky, Ariel Manzur and
+          - link "contributors" [ref=f18e320] [cursor=pointer]:
+            - /url: https://github.com/godotengine/godot/blob/master/AUTHORS.md
+          - text: . Hosted by the
+          - link "Godot Foundation" [ref=f18e321] [cursor=pointer]:
+            - /url: https://godot.foundation/
+          - text: . Website
+          - link "source code on GitHub" [ref=f18e322] [cursor=pointer]:
+            - /url: https://github.com/godotengine/godot-website
+          - text: .
+        - generic [ref=f18e323]:
+          - link "GitHub" [ref=f18e324] [cursor=pointer]:
+            - /url: https://github.com/godotengine
+          - link "Bluesky" [ref=f18e327] [cursor=pointer]:
+            - /url: https://bsky.app/profile/godotengine.org
+          - link "Mastodon" [ref=f18e330] [cursor=pointer]:
+            - /url: https://mastodon.gamedev.place/@godotengine
+          - link "Discord" [ref=f18e333] [cursor=pointer]:
+            - /url: https://discord.gg/godotengine
+          - link "Reddit" [ref=f18e336] [cursor=pointer]:
+            - /url: https://www.reddit.com/r/godot
+          - link "RSS" [ref=f18e339] [cursor=pointer]:
+            - /url: /rss.xml

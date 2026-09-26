@@ -1,0 +1,85 @@
+{
+    "schema_version":  1,
+    "id":  "enemy_ember_clerk",
+    "display_name":  "Ember Clerk",
+    "role":  {
+                 "base_region_id":  "region_r1_returning_kiln",
+                 "region_role":  "recovery_reentry",
+                 "institution_id":  "institution_return_registry",
+                 "role_tags":  [
+                                   "paperwork",
+                                   "custodian"
+                               ]
+             },
+    "body":  {
+                 "body_class":  "humanoid",
+                 "silhouette_key":  "sil_ember_clerk",
+                 "scale_class":  "human",
+                 "stateful_body":  "open_close",
+                 "motion_signature":  "ledger_sweep"
+             },
+    "stats":  {
+                  "max_hp":  90,
+                  "agility":  9,
+                  "action_slots":  1,
+                  "resource_pool":  {
+                                        "mp":  10,
+                                        "equipment_charge":  0
+                                    }
+              },
+    "baseline_action_ids":  [
+                                "act_ember_clerk_refile"
+                            ],
+    "signature_action_id":  "act_ember_clerk_stamp",
+    "telegraph":  {
+                      "signature_tell_key":  "tell_ember_clerk_stamp",
+                      "channels":  [
+                                       "pose",
+                                       "numeric_bar"
+                                   ]
+                  },
+    "status_profile":  {
+                           "innate_status_ids":  [
+                                                     "st_recorded"
+                                                 ],
+                           "resistant_status_ids":  [
+
+                                                    ],
+                           "immune_status_ids":  [
+
+                                                 ]
+                       },
+    "break_profile":  {
+                          "breakable":  true,
+                          "break_source_action_ids":  [
+                                                          "act_break_poise"
+                                                      ],
+                          "on_break_status_ids":  [
+                                                      "st_recorded"
+                                                  ],
+                          "on_break_effect_ids":  [
+                                                      "eff_r1_return_registry_logs_name"
+                                                  ]
+                      },
+    "reward":  {
+                   "equipment_ids":  [
+                                         "equipment_kiln_ledger_seal"
+                                     ],
+                   "item_ids":  [
+
+                                ],
+                   "resource_delta":  {
+                                          "mp":  1
+                                      }
+               },
+    "aftermath":  {
+                      "effect_ids":  [
+                                         "eff_r1_return_registry_logs_name"
+                                     ],
+                      "region_state_tag":  "r1_cleared"
+                  },
+    "lore_ref":  "seed_s001",
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

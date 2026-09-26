@@ -8,11 +8,13 @@ static func resolve(state: RuleGridState, active: bool) -> Array[Dictionary]:
 		return result
 
 	var cells := _entities_by_cell(state)
+	var wall_index := _wall_index_by_cell(cells)
+	var starts_by_top := _box_starts_by_top(wall_index, state)
 	for top: int in range(state.height - 2):
 		for bottom: int in range(top + 2, state.height):
-			for left: int in range(state.width - 2):
+			for left: int in starts_by_top[top]:
 				for right: int in range(left + 2, state.width):
-					var boundary := _read_boundary(cells, left, top, right, bottom)
+					var boundary := _read_boundary(wall_index, left, top, right, bottom)
 					if boundary.is_empty():
 						continue
 					result.append(_build_shape(state, cells, left, top, right, bottom, boundary))
@@ -47,15 +49,47 @@ static func _entities_by_cell(state: RuleGridState) -> Dictionary:
 	return cells
 
 
-static func _read_boundary(cells: Dictionary, left: int, top: int, right: int, bottom: int) -> Dictionary:
+static func _wall_index_by_cell(cells: Dictionary) -> Dictionary:
+	var wall_index: Dictionary = {}
+	for cell: Vector2i in cells.keys():
+		var boxes: Array[String] = []
+		var doors: Array[String] = []
+		for entity: RuleGridEntity in cells[cell]:
+			if entity.is_word:
+				continue
+			if entity.kind == &"BOX":
+				boxes.append(entity.id)
+			elif entity.kind == &"DOOR":
+				doors.append(entity.id)
+		if not boxes.is_empty() or not doors.is_empty():
+			boxes.sort()
+			doors.sort()
+			wall_index[cell] = {"boxes": boxes, "doors": doors}
+	return wall_index
+
+
+static func _box_starts_by_top(wall_index: Dictionary, state: RuleGridState) -> Array:
+	var starts_by_top: Array = []
+	for top: int in range(state.height - 2):
+		var starts: Array[int] = []
+		for left: int in range(state.width - 2):
+			var entry: Dictionary = wall_index.get(Vector2i(left, top), {})
+			if not entry.get("boxes", []).is_empty():
+				starts.append(left)
+		starts_by_top.append(starts)
+	return starts_by_top
+
+
+static func _read_boundary(wall_index: Dictionary, left: int, top: int, right: int, bottom: int) -> Dictionary:
 	var selected_ids: Dictionary = {}
 	for y: int in range(top, bottom + 1):
 		for x: int in range(left, right + 1):
 			if x != left and x != right and y != top and y != bottom:
 				continue
 			var is_corner: bool = (x == left or x == right) and (y == top or y == bottom)
-			var boxes := _ids_at(cells, Vector2i(x, y), &"BOX")
-			var doors := _ids_at(cells, Vector2i(x, y), &"DOOR")
+			var entry: Dictionary = wall_index.get(Vector2i(x, y), {})
+			var boxes: Array = entry.get("boxes", [])
+			var doors: Array = entry.get("doors", [])
 			if is_corner:
 				if boxes.is_empty():
 					return {}
@@ -63,7 +97,7 @@ static func _read_boundary(cells: Dictionary, left: int, top: int, right: int, b
 			elif not boxes.is_empty():
 				_add_ids(selected_ids, boxes)
 			elif not doors.is_empty():
-				if not _door_has_box_neighbors(cells, x, y, left, top, right, bottom):
+				if not _door_has_box_neighbors(wall_index, x, y, left, top, right, bottom):
 					return {}
 				_add_ids(selected_ids, doors)
 			else:
@@ -77,7 +111,7 @@ static func _read_boundary(cells: Dictionary, left: int, top: int, right: int, b
 
 
 static func _door_has_box_neighbors(
-	cells: Dictionary,
+	wall_index: Dictionary,
 	x: int,
 	y: int,
 	left: int,
@@ -86,21 +120,17 @@ static func _door_has_box_neighbors(
 	bottom: int
 ) -> bool:
 	if y == top or y == bottom:
-		return not _ids_at(cells, Vector2i(x - 1, y), &"BOX").is_empty() \
-			and not _ids_at(cells, Vector2i(x + 1, y), &"BOX").is_empty()
+		return not _boxes_at(wall_index, Vector2i(x - 1, y)).is_empty() \
+			and not _boxes_at(wall_index, Vector2i(x + 1, y)).is_empty()
 	if x == left or x == right:
-		return not _ids_at(cells, Vector2i(x, y - 1), &"BOX").is_empty() \
-			and not _ids_at(cells, Vector2i(x, y + 1), &"BOX").is_empty()
+		return not _boxes_at(wall_index, Vector2i(x, y - 1)).is_empty() \
+			and not _boxes_at(wall_index, Vector2i(x, y + 1)).is_empty()
 	return false
 
 
-static func _ids_at(cells: Dictionary, cell: Vector2i, kind: StringName) -> Array[String]:
-	var result: Array[String] = []
-	for entity: RuleGridEntity in cells.get(cell, []):
-		if not entity.is_word and entity.kind == kind:
-			result.append(entity.id)
-	result.sort()
-	return result
+static func _boxes_at(wall_index: Dictionary, cell: Vector2i) -> Array:
+	var entry: Dictionary = wall_index.get(cell, {})
+	return entry.get("boxes", [])
 
 
 static func _add_ids(target: Dictionary, ids: Array[String]) -> void:

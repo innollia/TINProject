@@ -71,6 +71,7 @@
 | S24 | [Baba Is You 위키: 3D](https://babaiswiki.fandom.com/wiki/3D) | 3D 대상의 시점·조작, 복수 3D 대상 선택, YOU/SELECT와의 동시 조작, EMPTY/LEVEL 예외 | CC-BY-SA 커뮤니티 규칙 페이지. 직접 플레이와 화면 검증은 하지 않았으며 시점을 설명하는 명칭이 페이지·분류 사이에서 일관되지 않음 |
 | S25 | [Baba Is You 위키: WORD](https://babaiswiki.fandom.com/wiki/WORD), [Rule](https://babaiswiki.fandom.com/wiki/Rule) | 물리 오브젝트를 자신의 명사 TEXT처럼 문장에 참여시키는 WORD, 단순 자기유지 금지, 무한 루프/복잡도 실패 가능성 | CC-BY-SA 커뮤니티 규칙 페이지. 이미지로만 제시된 구체 예시는 이번 조사에서 복원하지 않음 |
 | S26 | [PlasmaFlare Baba Modding Guide](https://github.com/PlasmaFlare/baba-modding-guide), [Parsing overview](https://github.com/PlasmaFlare/baba-modding-guide/blob/master/references/parsing.md) | `updatecode` 기반 재파싱, firstword 수집, 겹친 텍스트의 모든 조합 생성, syntax 검사와 부분 문장 재삽입, rule table 등록의 상위 구조 | 비공식·실험적 모딩 자료이며 저자도 완전한 문서가 아니라고 밝힘. 원작 Lua 소스를 대신하는 최종 명세로 사용하지 않음 |
+| S27 | [Baba is Hint: Temple Ruins](https://www.keyofw.com/baba-is-blog/temple-ruins) | 2026-09-25 브라우저 확인. Baba Is You Temple Ruins의 Weak·HAS·MOVE 학습 순서, 속성 조합 질문, HAS 생성물 활용, 문장을 한 줄로 고정하는 설계 힌트와 1280×720 맵 캡처 | 스포일러 없는 팬/community 가이드와 힌트 질문이지 실제 플레이 영상·정답 경로·현재 원작 동작의 직접 증거가 아님. 화면 캡처는 참고 비교 자료로만 사용하고 TIN 구현 계약으로 사용하지 않음 |
 
 ### 카탈로그 증거의 판독 기준
 
@@ -348,7 +349,7 @@ E02는 undo 입력 힌트를 보여 주지만 undo가 무엇을 한 단계로 �
 10. **진행/해금과 플레이어 지식:** 저장할 플래그와 저장하지 않을 플레이어 지식, 순서 고정/레벨 선택/건너뛰기, 이미 해법을 아는 플레이어의 재진입. 프로젝트의 “지식 그 자체를 게임 상태로 간주하지 않음” 결정을 지킬 것.
 11. **화면·입력:** 보드와 화면의 비율·셀/단어 최소 가독성, 겹친 오브젝트, 조작 대상 식별, 메시지/상태 변화, press/hold 반복, menu focus와 close 복귀, 오디오/모션 검증. 근거 화면을 해상도별 캡처와 연결.
 12. **입력 버블·저장 경계:** 장르 구간의 물리 키 변화는 KIT_WORKFLOW의 Input Bubble 계약에 따르고, 실제 바인딩 표시/복구를 기술. ModuleContext, JSON-safe versioned state, AppRoot 유지/ModuleHost 교체 경계와 맞춰야 함.
-13. **완료 증거:** 1280×720, 1920×1080, 2560×1440 화면, 첫 플레이부터 끝까지 및 실측 플레이시간, 실패·성공·undo/reset·save/load·재진입, 새 authored content 추가 시 core 무수정, placeholder/상시 HUD/금지 UI/at-icons 오용 검사를 구체 과제로 포함.
+13. **완료 증거:** 1280×720, 1920×1080, 2560×1440 화면, 첫 플레이부터 끝까지 및 실측 플레이시간, 실패·성공·undo/reset·save/load·재진입, 새 authored content 추가 시 core 무수정, placeholder/상시 HUD/금지 UI/확정된 이미지 자산 출처·라이선스 검사를 구체 과제로 포함. 이전 at-icons 오용 검사는 2026-09-25 이미지 기반 전환 지시에 따라 대체한다.
 
 현 Kit 초안은 가설이다. 이 보고서만으로 위 각 항목의 구현 깊이, 레벨 수, 포함 속성이나 UI를 확정하지 않는다.
 

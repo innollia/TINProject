@@ -1,0 +1,167 @@
+{
+    "schema_version":  1,
+    "id":  "enc_r8_fold_that_refuses_the_hand",
+    "display_name":  "The Fold That Refuses The Hand",
+    "context":  {
+                    "region_id":  "region_r8_folding_school",
+                    "region_role":  "magic_training_craft_labor",
+                    "depth_band":  0,
+                    "story_stage":  "late",
+                    "time_of_day":  "institutional"
+                },
+    "activation":  {
+                       "kind":  "field_trigger",
+                       "prop_id":  "prop_r8_cut_chamber_wall",
+                       "eligibility":  {
+                                           "clock_at_least":  {
+                                                                  "clock_id":  "clock_institutional_response",
+                                                                  "stage_index":  1
+                                                              }
+                                       },
+                       "warning":  {
+                                       "channel":  "sound",
+                                       "windows_before":  1
+                                   }
+                   },
+    "visibility":  {
+                       "visible_in_field":  false,
+                       "shown_on_map":  false
+                   },
+    "roster":  [
+                   {
+                       "entry_id":  "slot_a",
+                       "enemy_id":  "enemy_fold_wall",
+                       "count":  1,
+                       "count_variant":  0,
+                       "loadout_ids":  [
+
+                                       ],
+                       "target_priority":  1,
+                       "spawn_at":  "start"
+                   },
+                   {
+                       "entry_id":  "slot_b",
+                       "enemy_id":  "enemy_ember_clerk",
+                       "count":  1,
+                       "count_variant":  0,
+                       "loadout_ids":  [
+
+                                       ],
+                       "target_priority":  2,
+                       "spawn_at":  "phase_enter"
+                   }
+               ],
+    "target_priority":  [
+                            {
+                                "enemy_id":  "enemy_fold_wall",
+                                "role":  "true_actor",
+                                "priority":  1,
+                                "only_when":  {
+
+                                              }
+                            },
+                            {
+                                "enemy_id":  "enemy_ember_clerk",
+                                "role":  "linked_actor",
+                                "priority":  2,
+                                "only_when":  {
+
+                                              }
+                            }
+                        ],
+    "target_roles":  [
+                         {
+                             "role":  "record",
+                             "surface_id":  "prop_r8_cut_chamber_wall",
+                             "descendants_only":  true
+                         },
+                         {
+                             "role":  "resource_node",
+                             "surface_id":  "res_craft_credit",
+                             "descendants_only":  false
+                         },
+                         {
+                             "role":  "route",
+                             "surface_id":  "gate_g1_ash_debt",
+                             "descendants_only":  false
+                         }
+                     ],
+    "group":  null,
+    "allow":  {
+                  "escape":  true,
+                  "skip":  false
+              },
+    "clock_pressure":  [
+                           {
+                               "clock_id":  "clock_institutional_response",
+                               "ticks_on_start":  1,
+                               "ticks_per_window":  1,
+                               "ticks_on_end":  1
+                           },
+                           {
+                               "clock_id":  "clock_contamination",
+                               "ticks_on_start":  0,
+                               "ticks_per_window":  1,
+                               "ticks_on_end":  0
+                           }
+                       ],
+    "outcome":  {
+                    "on_victory":  {
+                                       "effect_ids":  [
+                                                          "eff_r8_ash_choir_defeated"
+                                                      ]
+                                   },
+                    "on_escape":  {
+                                      "effect_ids":  [
+
+                                                     ]
+                                  },
+                    "on_failure":  {
+                                       "effect_ids":  [
+
+                                                      ],
+                                       "death_policy":  "recover_event",
+                                       "recovery_event_id":  "rec_r8_course_repeat"
+                                   },
+                    "on_parley":  {
+                                      "effect_ids":  [
+
+                                                     ]
+                                  }
+                },
+    "world_effect":  {
+                         "region_state_tag":  "r8_verdict_read",
+                         "prop_state_ids":  [
+                                                "prop_r8_cut_chamber_wall"
+                                            ],
+                         "unlock_gate_ids":  [
+                                                 "gate_g1_ash_debt"
+                                             ]
+                     },
+    "repeat":  {
+                   "policy":  "once",
+                   "reset_policy":  "none",
+                   "cooldown_windows":  0,
+                   "depth_scaling":  {
+                                         "per_band":  {
+
+                                                      },
+                                         "max_bands":  0
+                                     }
+               },
+    "base_encounter_id":  null,
+    "variant_overrides":  {
+
+                          },
+    "remix_eligibility":  {
+                              "condition":  {
+
+                                            },
+                              "requires_depth_band_min":  0,
+                              "requires_postgame":  false
+                          },
+    "lore_ref":  "seed_s001",
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

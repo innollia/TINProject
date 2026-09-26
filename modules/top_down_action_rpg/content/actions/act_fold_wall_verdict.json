@@ -1,0 +1,89 @@
+{
+    "schema_version":  1,
+    "id":  "act_fold_wall_verdict",
+    "display_name":  "fold wall verdict",
+    "order":  10,
+    "owner":  "enemy",
+    "category":  "attack",
+    "defense_mode":  "none",
+    "lifecycle":  "committed",
+    "intent":  {
+                   "target_mode":  "ONE_ENEMY",
+                   "requires_target_cursor":  true,
+                   "target_eligibility":  "living"
+               },
+    "cost":  {
+                 "turn_cost":  3,
+                 "action_slot_cost":  1,
+                 "resource_costs":  {
+
+                                    },
+                 "cooldown_windows":  3
+             },
+    "telegraph":  {
+                      "channels":  [
+                                       "pose",
+                                       "vfx",
+                                       "numeric_bar"
+                                   ],
+                      "windows_before_active":  2,
+                      "tell_key":  "tell_fold_wall_verdict"
+                  },
+    "damage_payload":  {
+                           "delivery":  "physical",
+                           "shape":  "percent_max_hp",
+                           "base_value":  22,
+                           "affinity":  "none",
+                           "hit_policy":  "guaranteed",
+                           "hit_modifier":  0,
+                           "evasion_policy":  "roll",
+                           "critical_policy":  "never",
+                           "dodge_pressure":  0,
+                           "guard_ignore":  true,
+                           "breaks_guard":  true,
+                           "break_damage":  40,
+                           "dodgeable":  false,
+                           "break_damage_kinds":  [
+                                                      "hp_damage"
+                                                  ],
+                           "self_damage":  0,
+                           "lifesteal":  0,
+                           "reflect":  0,
+                           "on_hit_payload_ids":  [
+
+                                                  ],
+                           "on_evade_payload_ids":  [
+
+                                                    ]
+                       },
+    "commitment":  {
+                       "spans_windows":  3,
+                       "interruptible":  false,
+                       "interrupt_effect_ids":  [
+
+                                                ]
+                   },
+    "recovery":  {
+                     "windows":  1,
+                     "punish_windows":  2,
+                     "recovery_locked":  false
+                 },
+    "counters":  {
+                     "valid":  [
+                                   "break",
+                                   "raw_survive",
+                                   "escape"
+                               ],
+                     "forbidden":  [
+                                       "guard",
+                                       "dodge"
+                                   ],
+                     "breakable":  true
+                 },
+    "presentation":  {
+                         "icon_key":  "act_fold_wall_verdict"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

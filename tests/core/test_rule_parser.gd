@@ -199,6 +199,116 @@ func test_parses_conditions_and_tin_specific_sentences() -> void:
 	assert_eq(facing_rules.sentences[0].conditions, [{"kind": &"FACING", "target": &"WALL", "negated": true, "position": &"prefix"}])
 
 
+func test_incomplete_suffix_condition_does_not_create_base_rule() -> void:
+	var words: Array[RuleGridEntity] = [
+		_word("metrix", "METRIX", "noun", Vector2i(0, 0)),
+		_word("is", "IS", "operator", Vector2i(1, 0)),
+		_word("active", "ACTIVE", "property", Vector2i(2, 0)),
+		_word("on", "ON", "operator", Vector2i(3, 0))
+	]
+	var rules := RuleParser.parse(4, 1, words)
+	assert_eq(rules.sentences.size(), 0)
+	assert_false(rules.has_property(&"METRIX", &"ACTIVE"))
+
+	var complete_words: Array[RuleGridEntity] = [
+		_word("complete_metrix", "METRIX", "noun", Vector2i(0, 1)),
+		_word("complete_is", "IS", "operator", Vector2i(1, 1)),
+		_word("complete_active", "ACTIVE", "property", Vector2i(2, 1)),
+		_word("complete_on", "ON", "operator", Vector2i(3, 1)),
+		_word("complete_ember", "EMBER", "noun", Vector2i(4, 1))
+	]
+	var complete_rules := RuleParser.parse(5, 2, complete_words)
+	assert_eq(complete_rules.sentences.size(), 1)
+	assert_eq(complete_rules.sentences[0].conditions, [{"kind": &"ON", "target": &"EMBER", "negated": false, "position": &"suffix"}])
+
+
+func test_suffix_guard_keeps_has_and_inside_is_base_rules() -> void:
+	var has_words: Array[RuleGridEntity] = [
+		_word("has_moth", "MOTH", "noun", Vector2i(0, 0)),
+		_word("has_has", "HAS", "operator", Vector2i(1, 0)),
+		_word("has_key", "KEY", "noun", Vector2i(2, 0)),
+		_word("has_on", "ON", "operator", Vector2i(3, 0))
+	]
+	var has_rules := RuleParser.parse(4, 1, has_words)
+
+	assert_eq(has_rules.sentences.size(), 1)
+	assert_eq(has_rules.sentences[0].operator, &"HAS")
+	assert_eq(has_rules.sentences[0].predicate, &"KEY")
+	assert_true(has_rules.sentences[0].conditions.is_empty())
+
+	var inside_words: Array[RuleGridEntity] = [
+		_word("inside_box", "BOX", "noun", Vector2i(0, 0)),
+		_word("inside_inside", "INSIDE", "operator", Vector2i(1, 0)),
+		_word("inside_is", "IS", "operator", Vector2i(2, 0)),
+		_word("inside_metrix", "METRIX", "noun", Vector2i(3, 0)),
+		_word("inside_on", "ON", "operator", Vector2i(4, 0))
+	]
+	var inside_rules := RuleParser.parse(5, 1, inside_words)
+
+	assert_eq(inside_rules.sentences.size(), 1)
+	assert_eq(inside_rules.sentences[0].operator, &"INSIDE_IS")
+	assert_eq(inside_rules.sentences[0].predicate, &"METRIX")
+	assert_true(inside_rules.sentences[0].conditions.is_empty())
+
+
+func test_truncated_suffix_does_not_leave_prefix_or_infix_base_rules() -> void:
+	var prefix_words: Array[RuleGridEntity] = [
+		_word("prefix_on", "ON", "operator", Vector2i(0, 0)),
+		_word("prefix_not", "NOT", "operator", Vector2i(1, 0)),
+		_word("prefix_ember", "EMBER", "noun", Vector2i(2, 0)),
+		_word("prefix_metrix", "METRIX", "noun", Vector2i(3, 0)),
+		_word("prefix_is", "IS", "operator", Vector2i(4, 0)),
+		_word("prefix_active", "ACTIVE", "property", Vector2i(5, 0)),
+		_word("prefix_truncated", "ON", "operator", Vector2i(6, 0))
+	]
+	var prefix_rules := RuleParser.parse(7, 1, prefix_words)
+
+	assert_eq(prefix_rules.sentences.size(), 0)
+	assert_false(prefix_rules.has_property(&"METRIX", &"ACTIVE"))
+
+	var infix_words: Array[RuleGridEntity] = [
+		_word("infix_metrix", "METRIX", "noun", Vector2i(0, 0)),
+		_word("infix_near", "NEAR", "operator", Vector2i(1, 0)),
+		_word("infix_ember", "EMBER", "noun", Vector2i(2, 0)),
+		_word("infix_is", "IS", "operator", Vector2i(3, 0)),
+		_word("infix_active", "ACTIVE", "property", Vector2i(4, 0)),
+		_word("infix_truncated", "ON", "operator", Vector2i(5, 0))
+	]
+	var infix_rules := RuleParser.parse(6, 1, infix_words)
+
+	assert_eq(infix_rules.sentences.size(), 0)
+	assert_false(infix_rules.has_property(&"METRIX", &"ACTIVE"))
+
+
+func test_complete_suffix_keeps_negation_and_stacked_word_combinations() -> void:
+	var negated_words: Array[RuleGridEntity] = [
+		_word("negated_metrix", "METRIX", "noun", Vector2i(0, 0)),
+		_word("negated_is", "IS", "operator", Vector2i(1, 0)),
+		_word("negated_active", "ACTIVE", "property", Vector2i(2, 0)),
+		_word("negated_on", "ON", "operator", Vector2i(3, 0)),
+		_word("negated_not", "NOT", "operator", Vector2i(4, 0)),
+		_word("negated_ember", "EMBER", "noun", Vector2i(5, 0))
+	]
+	var negated_rules := RuleParser.parse(6, 1, negated_words)
+
+	assert_eq(negated_rules.sentences.size(), 1)
+	assert_eq(negated_rules.sentences[0].conditions, [{"kind": &"ON", "target": &"EMBER", "negated": true, "position": &"suffix"}])
+
+	var stacked_words: Array[RuleGridEntity] = [
+		_word("stacked_lantern", "LANTERN", "noun", Vector2i(0, 0)),
+		_word("stacked_rock", "ROCK", "noun", Vector2i(0, 0)),
+		_word("stacked_is", "IS", "operator", Vector2i(1, 0)),
+		_word("stacked_glow", "GLOW", "property", Vector2i(2, 0)),
+		_word("stacked_on", "ON", "operator", Vector2i(3, 0)),
+		_word("stacked_ember", "EMBER", "noun", Vector2i(4, 0))
+	]
+	var stacked_rules := RuleParser.parse(5, 1, stacked_words)
+
+	assert_eq(stacked_rules.sentences.size(), 2)
+	assert_eq(stacked_rules.sentences[0].conditions, [{"kind": &"ON", "target": &"EMBER", "negated": false, "position": &"suffix"}])
+	assert_eq(stacked_rules.sentences[1].conditions, [{"kind": &"ON", "target": &"EMBER", "negated": false, "position": &"suffix"}])
+
+
 func test_every_stacked_word_combination_is_parsed_and_duplicate_sources_merge() -> void:
 	var words: Array[RuleGridEntity] = [
 		_word("lantern", "LANTERN", "noun", Vector2i(0, 0)),

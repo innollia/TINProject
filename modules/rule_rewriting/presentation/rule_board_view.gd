@@ -78,6 +78,7 @@ const PALETTE: Array[Color] = [
 	Color("b381cc"), Color("d89255"), Color("72a9c6")
 ]
 const RULE_FEEDBACK_DURATION: float = 0.58
+const FIRST_PERSON_EYE_BACK_DISTANCE: float = 0.65
 var _state: RuleGridState
 var _rules: RuleSet
 var _metrix: Array[Dictionary] = []
@@ -86,9 +87,12 @@ var _mode_3d: bool = false
 var _inventory_open: bool = false
 var _failed: bool = false
 var _solved: bool = false
+var _solved_cue: float = 0.0
+var _solved_cue_cells: Array[Vector2i] = []
 var _interactive: bool = true
 var _hotbar_slot: int = 0
 var _camera_quadrant: int = 0
+var _first_person_3d: bool = true
 var _selected_you_id: String = ""
 var _focused_slot: int = 0
 var _held_id: String = ""
@@ -100,8 +104,11 @@ var _world_root: Node3D
 var _world_grid_root: Node3D
 var _world_metrix_root: Node3D
 var _world_entities_root: Node3D
+var _world_cue_root: Node3D
 var _world_grid_signature: String = ""
 var _world_metrix_signature: String = ""
+var _world_cue_signature: String = ""
+var _world_cue_materials: Array[StandardMaterial3D] = []
 var _world_entity_nodes: Dictionary = {}
 var _world_entity_signatures: Dictionary = {}
 var _last_camera_signature: String = ""
@@ -144,8 +151,11 @@ func show_state(
 	held_id: String,
 	hotbar_slot: int,
 	camera_quadrant: int,
+	first_person_3d: bool,
 	failed: bool,
 	solved: bool,
+	solved_cue: float,
+	solved_cue_cells: Array[Vector2i],
 	message: String,
 	interactive: bool
 ) -> void:
@@ -158,9 +168,12 @@ func show_state(
 	_held_id = held_id
 	_hotbar_slot = hotbar_slot
 	_camera_quadrant = posmod(camera_quadrant, 4)
+	_first_person_3d = first_person_3d
 	_selected_you_id = selected_you_id
 	_failed = failed
 	_solved = solved
+	_solved_cue = maxf(0.0, solved_cue)
+	_solved_cue_cells.assign(solved_cue_cells)
 	_message = message
 	_interactive = interactive
 	_selected_metrix = {}
@@ -186,6 +199,7 @@ func show_state(
 	if _mode_3d:
 		_resize_inventory_panel()
 	_resize_message_panel()
+	_sync_world_solved_cue()
 	if _mode_3d:
 		_sync_world()
 	_last_mode_3d = _mode_3d
@@ -246,7 +260,31 @@ func _draw() -> void:
 		for index: int in range(entities.size()):
 			_draw_entity(entities[index], origin + (Vector2(cell.x, cell.y) + Vector2(0.5, 0.5)) * cell_size + positions[index], cell_size)
 	if _solved:
+		_draw_solved_cue(origin, cell_size)
+
+
+func _draw_solved_cue(origin: Vector2, cell_size: float) -> void:
+	if _solved_cue <= 0.0:
 		draw_rect(Rect2(0.0, 0.0, size.x, 4.0), Color("efd477"), true)
+		return
+	var strength := clampf(_solved_cue, 0.0, 1.0)
+	var pulse := 0.5 + 0.5 * sin((1.0 - strength) * PI)
+	draw_rect(Rect2(0.0, 0.0, size.x, 4.0 + 10.0 * pulse * strength), Color(0.94, 0.83, 0.47, strength), true)
+	if _solved_cue_cells.is_empty():
+		draw_rect(Rect2(0.0, size.y * 0.4, size.x, size.y * 0.18), Color(0.98, 0.86, 0.5, 0.18 * strength), true)
+		return
+	for cell: Vector2i in _solved_cue_cells:
+		var rect := Rect2(origin + Vector2(cell) * cell_size, Vector2.ONE * cell_size)
+		draw_rect(rect, Color(0.98, 0.86, 0.5, 0.34 * strength), true)
+		draw_arc(
+			rect.get_center(),
+			cell_size * (0.30 + 0.52 * (1.0 - strength)),
+			0.0,
+			TAU,
+			32,
+			Color(1.0, 0.93, 0.64, strength),
+			maxf(2.0, cell_size * 0.05)
+		)
 
 
 func _draw_metrix_boundaries(origin: Vector2, cell_size: float) -> void:
@@ -331,6 +369,8 @@ func _create_3d_world() -> void:
 	_camera = Camera3D.new()
 	_camera.current = true
 	_camera.fov = 46.0
+	_camera.near = 0.05
+	_camera.far = 128.0
 	_world_root.add_child(_camera)
 	_world_grid_root = Node3D.new()
 	_world_grid_root.name = "BoardGrid"
@@ -341,6 +381,9 @@ func _create_3d_world() -> void:
 	_world_entities_root = Node3D.new()
 	_world_entities_root.name = "Entities"
 	_world_root.add_child(_world_entities_root)
+	_world_cue_root = Node3D.new()
+	_world_cue_root.name = "SolvedCue"
+	_world_root.add_child(_world_cue_root)
 	_world_view.visible = false
 
 
@@ -350,7 +393,11 @@ func _sync_world() -> void:
 	var changed := _sync_world_grid()
 	changed = _sync_world_metrix() or changed
 	changed = _sync_world_entities() or changed
-	var camera_signature := "%d:%d:%d" % [_state.width, _state.height, _camera_quadrant]
+	var subject: RuleGridEntity = _find_entity(_selected_you_id)
+	var subject_signature := "none"
+	if subject != null:
+		subject_signature = "%s:%d:%d" % [subject.id, subject.position.x, subject.position.y]
+	var camera_signature := "%d:%d:%d:%s:%s" % [_state.width, _state.height, _camera_quadrant, _first_person_3d, subject_signature]
 	if camera_signature != _last_camera_signature:
 		_sync_world_camera()
 		_last_camera_signature = camera_signature
@@ -439,11 +486,33 @@ func _sync_world_camera() -> void:
 	var width := float(_state.width)
 	var height := float(_state.height)
 	var center := Vector3((width - 1.0) * 0.5, 0.0, (height - 1.0) * 0.5)
+	if _first_person_3d:
+		var subject: RuleGridEntity = _find_entity(_selected_you_id)
+		if subject != null:
+			var forward := _camera_forward()
+			var max_x := maxf(0.0, width - 1.0)
+			var max_z := maxf(0.0, height - 1.0)
+			var eye := Vector3(
+				clampf(float(subject.position.x) - forward.x * FIRST_PERSON_EYE_BACK_DISTANCE, 0.0, max_x),
+				0.72,
+				clampf(float(subject.position.y) - forward.z * FIRST_PERSON_EYE_BACK_DISTANCE, 0.0, max_z)
+			)
+			_camera.fov = 74.0
+			_camera.position = eye
+			_camera.look_at(eye + forward * 4.0 + Vector3(0.0, -0.12, 0.0), Vector3.UP)
+			return
 	var camera_target := center + Vector3(0.0, 0.15, 0.0)
 	var distance := maxf(width, height) * 1.1
 	var offset := Vector2(distance * 0.68, distance * 0.86).rotated(float(_camera_quadrant) * PI * 0.5)
+	_camera.fov = 46.0
 	_camera.position = camera_target + Vector3(offset.x, distance * 0.9, offset.y)
 	_camera.look_at(camera_target, Vector3.UP)
+
+
+func _camera_forward() -> Vector3:
+	var directions: Array[Vector2i] = [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]
+	var direction := directions[_camera_quadrant]
+	return Vector3(float(direction.x), 0.0, float(direction.y))
 
 
 func _sync_world_entities() -> bool:
@@ -486,13 +555,76 @@ func _sync_world_entities() -> bool:
 func _world_entity_signature(entity: RuleGridEntity) -> String:
 	return JSON.stringify([
 		String(entity.kind), entity.is_word, String(entity.word_role), String(entity.word_value),
-		_has_property(entity, &"YOU"), entity.id == _selected_you_id
+		_has_property(entity, &"YOU"), entity.id == _selected_you_id,
+		_mode_3d and _first_person_3d and entity.id == _selected_you_id
 	])
 
 
 func _request_world_redraw() -> void:
 	if _world_viewport != null:
 		_world_viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+
+
+func _sync_world_solved_cue() -> void:
+	if _world_cue_root == null:
+		return
+	var cells: Array[Vector2i] = []
+	if _mode_3d and _solved and _solved_cue > 0.0:
+		cells = _solved_cue_cells
+	var signature := JSON.stringify(cells)
+	if signature != _world_cue_signature:
+		for child: Node in _world_cue_root.get_children():
+			_world_cue_root.remove_child(child)
+			child.queue_free()
+		_world_cue_materials.clear()
+		for cell: Vector2i in cells:
+			_world_cue_materials.append(_add_world_solved_cue(cell))
+		_world_cue_signature = signature
+	if _world_cue_materials.is_empty():
+		return
+	var strength := clampf(_solved_cue, 0.0, 1.0)
+	var pulse := 0.5 + 0.5 * sin((1.0 - strength) * PI)
+	for index: int in range(_world_cue_materials.size()):
+		var material: StandardMaterial3D = _world_cue_materials[index]
+		material.albedo_color = Color(1.0, 0.93, 0.6, strength)
+		var cue_node := _world_cue_root.get_child(index) as Node3D
+		if cue_node != null:
+			cue_node.scale = Vector3.ONE * (0.6 + 0.55 * pulse)
+	if _mode_3d:
+		_request_world_redraw()
+
+
+func _add_world_solved_cue(cell: Vector2i) -> StandardMaterial3D:
+	var material := StandardMaterial3D.new()
+	material.albedo_color = Color(1.0, 0.93, 0.6, 1.0)
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	var cue := Node3D.new()
+	cue.name = "SolvedCueCell"
+	cue.position = Vector3(float(cell.x), 0.0, float(cell.y))
+	_world_cue_root.add_child(cue)
+	var beam_mesh := CylinderMesh.new()
+	beam_mesh.top_radius = 0.4
+	beam_mesh.bottom_radius = 0.4
+	beam_mesh.height = 1.5
+	beam_mesh.radial_segments = 12
+	var beam := MeshInstance3D.new()
+	beam.mesh = beam_mesh
+	beam.material_override = material
+	beam.position = Vector3(0.0, 0.75, 0.0)
+	cue.add_child(beam)
+	var ring_mesh := TorusMesh.new()
+	ring_mesh.inner_radius = 0.4
+	ring_mesh.outer_radius = 0.54
+	ring_mesh.ring_segments = 20
+	ring_mesh.rings = 8
+	var ring := MeshInstance3D.new()
+	ring.mesh = ring_mesh
+	ring.material_override = material
+	ring.rotation_degrees.x = 90.0
+	ring.position = Vector3(0.0, 0.05, 0.0)
+	cue.add_child(ring)
+	return material
 
 
 func _sync_active_feedback_rings() -> void:
@@ -562,6 +694,8 @@ func _add_world_entity(entity: RuleGridEntity) -> Node3D:
 	entity_root.name = "Entity"
 	entity_root.position = Vector3(float(entity.position.x), 0.0, float(entity.position.y))
 	_world_entities_root.add_child(entity_root)
+	if _mode_3d and _first_person_3d and entity.id == _selected_you_id:
+		return entity_root
 	var color := _word_color(entity) if entity.is_word else _entity_color(entity.kind)
 	var is_you := _has_property(entity, &"YOU")
 	var marker_height := 0.0
@@ -732,11 +866,6 @@ func _create_inventory() -> void:
 	_inventory_grid.add_theme_constant_override("h_separation", 4)
 	_inventory_grid.add_theme_constant_override("v_separation", 4)
 	body.add_child(_inventory_grid)
-	var hint := Label.new()
-	hint.text = "Enter: take / place    Backspace: close"
-	hint.add_theme_color_override("font_color", Color("454d52"))
-	hint.add_theme_font_size_override("font_size", 15)
-	body.add_child(hint)
 	add_child(_inventory_panel)
 
 
@@ -782,7 +911,7 @@ func _resize_inventory_panel() -> void:
 		inner_width = maxi(1, bounds.size.x - 2)
 		inner_height = maxi(1, bounds.size.y - 2)
 	var panel_width := minf(size.x * 0.9, maxf(310.0, float(inner_width) * 78.0 + 52.0))
-	var panel_height := minf(size.y * 0.86, maxf(220.0, float(inner_height) * 56.0 + 128.0))
+	var panel_height := minf(size.y * 0.86, maxf(220.0, float(inner_height) * 56.0 + 64.0))
 	_inventory_panel.offset_left = -panel_width * 0.5
 	_inventory_panel.offset_right = panel_width * 0.5
 	_inventory_panel.offset_top = -panel_height * 0.5

@@ -1,0 +1,34 @@
+{
+    "schema_version":  1,
+    "id":  "eff_h0_arrival_declaration_filed",
+    "timing":  "delayed",
+    "delay_ref":  {
+                      "stage_id":  "filing",
+                      "id":  "clock_public_record",
+                      "kind":  "clock_stage"
+                  },
+    "operations":  [
+                       {
+                           "op":  "set_axis",
+                           "value":  0,
+                           "axis":  "protocol_legitimacy"
+                       },
+                       {
+                           "key":  "world_h0_arrival_filed",
+                           "op":  "flag",
+                           "value":  true
+                       },
+                       {
+                           "relationship_id":  "rel_01_ilyra_record",
+                           "op":  "relationship",
+                           "target_npc_id":  "npc_01_ilyra_senn",
+                           "reason":  "the declaration is now the only accepted category",
+                           "to_state_id":  "rs_candid"
+                       }
+                   ],
+    "one_shot":  true,
+    "repeat_guard":  "once",
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

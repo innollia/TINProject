@@ -1,0 +1,27 @@
+{
+    "schema_version":  1,
+    "id":  "eff_r8_concentration_registered",
+    "timing":  "on_clock_stage",
+    "delay_ref":  {
+                      "stage_id":  "active",
+                      "id":  "clock_contamination",
+                      "kind":  "clock_stage"
+                  },
+    "operations":  [
+                       {
+                           "op":  "region_state",
+                           "region_id":  "region_r8_folding_school",
+                           "state_tag":  "concentration_filed"
+                       },
+                       {
+                           "key":  "world_r8_concentration_filed",
+                           "op":  "flag",
+                           "value":  true
+                       }
+                   ],
+    "one_shot":  true,
+    "repeat_guard":  "once",
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

@@ -1,0 +1,742 @@
+{
+  "schema_version": 1,
+  "id": "case_02_morren_empty_chair",
+  "title": "02 모렌가의 빈 의자 — 모렌 저택",
+  "start_scene_id": "scene_dining",
+  "scenes": [
+    {
+      "schema_version": 1,
+      "id": "scene_dining",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_dining_guest_seat",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_dining_guest_seat", "focus_id": "msg_dining_guest_seat" },
+        { "schema_version": 1, "id": "hotspot_dining_visual_seats", "focus_id": "msg_dining_visual_seats" },
+        { "schema_version": 1, "id": "hotspot_dining_seat_plan", "focus_id": "msg_dining_seat_plan" },
+        { "schema_version": 1, "id": "hotspot_dining_silla_cup", "focus_id": "msg_dining_silla_cup" },
+        { "schema_version": 1, "id": "hotspot_dining_ruca_pocket", "focus_id": "msg_dining_ruca_pocket" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_dining_to_foyer",
+          "destination_scene_id": "scene_foyer",
+          "focus_id": "hotspot_foyer_attendance"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_dining_to_study",
+          "destination_scene_id": "scene_study",
+          "focus_id": "hotspot_study_record_gap"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_dining_to_service",
+          "destination_scene_id": "scene_service",
+          "focus_id": "hotspot_service_peter"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_foyer",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_foyer_attendance",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_foyer_attendance", "focus_id": "msg_foyer_attendance" },
+        { "schema_version": 1, "id": "hotspot_foyer_photos", "focus_id": "msg_foyer_photos" },
+        { "schema_version": 1, "id": "hotspot_foyer_yona_bag", "focus_id": "msg_foyer_yona_bag" },
+        { "schema_version": 1, "id": "hotspot_foyer_shoes", "focus_id": "msg_foyer_shoes" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_foyer_to_dining",
+          "destination_scene_id": "scene_dining",
+          "focus_id": "hotspot_dining_guest_seat"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_study",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_study_record_gap",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_study_record_gap", "focus_id": "msg_study_record_gap" },
+        { "schema_version": 1, "id": "hotspot_study_will", "focus_id": "msg_study_will" },
+        { "schema_version": 1, "id": "hotspot_study_silla", "focus_id": "msg_study_silla" },
+        { "schema_version": 1, "id": "hotspot_study_window_sill", "focus_id": "msg_study_window_sill" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_study_to_dining",
+          "destination_scene_id": "scene_dining",
+          "focus_id": "hotspot_dining_guest_seat"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_study_to_service",
+          "destination_scene_id": "scene_service",
+          "focus_id": "hotspot_service_key_list"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_study_to_grave",
+          "destination_scene_id": "scene_grave",
+          "focus_id": "hotspot_grave_footprints"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_service",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_service_peter",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_service_peter", "focus_id": "msg_service_peter" },
+        { "schema_version": 1, "id": "hotspot_service_key_list", "focus_id": "msg_service_key_list" },
+        { "schema_version": 1, "id": "hotspot_service_payroll", "focus_id": "msg_service_payroll" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_service_to_dining",
+          "destination_scene_id": "scene_dining",
+          "focus_id": "hotspot_dining_guest_seat"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_service_to_study",
+          "destination_scene_id": "scene_study",
+          "focus_id": "hotspot_study_silla"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_grave",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_grave_footprints",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_grave_footprints", "focus_id": "msg_grave_footprints" },
+        { "schema_version": 1, "id": "hotspot_grave_case44", "focus_id": "msg_grave_case44" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_grave_to_study",
+          "destination_scene_id": "scene_study",
+          "focus_id": "hotspot_study_window_sill"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_grave_to_dining",
+          "destination_scene_id": "scene_dining",
+          "focus_id": "hotspot_dining_guest_seat"
+        }
+      ]
+    }
+  ],
+  "closeups": [],
+  "entities": [
+    { "schema_version": 1, "id": "ent_person_oswald", "kind": "person", "display_text": "오스왈드 모렌", "source_text_id": "msg_foyer_photos", "tags": ["deceased"] },
+    { "schema_version": 1, "id": "ent_person_helen", "kind": "person", "display_text": "헬렌 모렌", "source_text_id": "msg_foyer_photos", "tags": ["family"] },
+    { "schema_version": 1, "id": "ent_person_ruca", "kind": "person", "display_text": "루카 모렌", "source_text_id": "msg_dining_ruca_pocket", "tags": ["family"] },
+    { "schema_version": 1, "id": "ent_person_eba", "kind": "person", "display_text": "에바 모렌", "source_text_id": "msg_foyer_photos", "tags": ["family"] },
+    { "schema_version": 1, "id": "ent_person_silla", "kind": "person", "display_text": "실라 베크", "source_text_id": "msg_study_silla", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_person_yona", "kind": "person", "display_text": "요나 페일", "source_text_id": "msg_foyer_yona_bag", "tags": ["outsider"] },
+    { "schema_version": 1, "id": "ent_person_peter", "kind": "person", "display_text": "피터 론", "source_text_id": "msg_service_peter", "tags": ["witness"] },
+
+    { "schema_version": 1, "id": "ent_role_elder_daughter", "kind": "role", "display_text": "장녀·의사", "source_text_id": "msg_foyer_photos", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_elder_son", "kind": "role", "display_text": "장남", "source_text_id": "msg_foyer_photos", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_lawyer", "kind": "role", "display_text": "법률대리인", "source_text_id": "msg_study_will", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_ex_nurse", "kind": "role", "display_text": "전직 간호사", "source_text_id": "msg_service_payroll", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_butler", "kind": "role", "display_text": "집사", "source_text_id": "msg_service_key_list", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_guest", "kind": "role", "display_text": "외부 손님", "source_text_id": "msg_foyer_attendance", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_item_tea", "kind": "item", "display_text": "차", "source_text_id": "msg_dining_silla_cup", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_sleeping_drug", "kind": "item", "display_text": "수면제 성분", "source_text_id": "msg_dining_ruca_pocket", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_pill_bottle", "kind": "item", "display_text": "빈 처방약병", "source_text_id": "msg_dining_ruca_pocket", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_will", "kind": "item", "display_text": "새 유언장", "source_text_id": "msg_study_will", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_safe", "kind": "item", "display_text": "서재 벽금고", "source_text_id": "msg_study_record_gap", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_case44_file", "kind": "item", "display_text": "Case 44 기록철", "source_text_id": "msg_study_record_gap", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_empty_cover", "kind": "item", "display_text": "빈 보존커버", "source_text_id": "msg_foyer_yona_bag", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_old_key", "kind": "item", "display_text": "구형 직원키", "source_text_id": "msg_service_payroll", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_funeral_card", "kind": "item", "display_text": "장례카드", "source_text_id": "msg_foyer_yona_bag", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_seat_guest", "kind": "place", "display_text": "비어 있던 Guest 자리", "source_text_id": "msg_dining_visual_seats", "tags": ["visual"] },
+    { "schema_version": 1, "id": "ent_seat_family", "kind": "decoy", "display_text": "가족 좌석", "source_text_id": "msg_dining_visual_seats", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_place_study_window", "kind": "place", "display_text": "서재 바깥창", "source_text_id": "msg_study_window_sill", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_path_grave_window", "kind": "path", "display_text": "묘지에서 서재창으로 이어진 바깥동선", "source_text_id": "msg_grave_footprints", "tags": [] },
+    { "schema_version": 1, "id": "ent_path_front_door", "kind": "path", "display_text": "정문 동선", "source_text_id": "msg_grave_footprints", "tags": ["decoy"] },
+
+    { "schema_version": 1, "id": "ent_state_missing_record", "kind": "state", "display_text": "비어 있는 병원기록 자리", "source_text_id": "msg_study_record_gap", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_will_untouched", "kind": "state", "display_text": "유언장이 그대로 남았다", "source_text_id": "msg_study_will", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_two_goals", "kind": "state", "display_text": "서로 다른 두 사람의 서로 다른 목표", "source_text_id": "msg_study_silla", "tags": ["late_observation"] },
+    { "schema_version": 1, "id": "ent_state_outsider", "kind": "state", "display_text": "가족이 아닌 저녁 초대 손님", "source_text_id": "msg_foyer_attendance", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_appointment", "kind": "state", "display_text": "21:30 서류 약속", "source_text_id": "msg_dining_ruca_pocket", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_action_drugged_tea", "kind": "action", "display_text": "차에 수면제를 넣어 마시게 했다", "source_text_id": "msg_dining_silla_cup", "tags": ["cause"] },
+    { "schema_version": 1, "id": "ent_action_left_table", "kind": "action", "display_text": "식사 도중 자리를 떠났다", "source_text_id": "msg_dining_guest_seat", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_used_key", "kind": "action", "display_text": "구형키로 서재 보조문을 열었다", "source_text_id": "msg_service_key_list", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_took_file", "kind": "action", "display_text": "기록철을 통째로 가져갔다", "source_text_id": "msg_study_record_gap", "tags": ["cause"] },
+    { "schema_version": 1, "id": "ent_action_woke_then_slept", "kind": "action", "display_text": "소리에 잠깐 깬 뒤 다시 잠들었다", "source_text_id": "msg_study_silla", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_trace_cold_soup", "kind": "trace", "display_text": "손대지 않은 수프막", "source_text_id": "msg_dining_guest_seat", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_chair_back", "kind": "trace", "display_text": "통로 쪽으로 밀린 의자", "source_text_id": "msg_dining_guest_seat", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_wet_coat", "kind": "trace", "display_text": "젖은 외투", "source_text_id": "msg_dining_guest_seat", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_shoe_v_sole", "kind": "trace", "display_text": "좁은 V자 홈이 찍힌 구두 밑창", "source_text_id": "msg_foyer_shoes", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_grave_soil", "kind": "trace", "display_text": "창문턱의 회색 점토", "source_text_id": "msg_study_window_sill", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_press_mark", "kind": "trace", "display_text": "금고 안 눌린 끈자국", "source_text_id": "msg_study_record_gap", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_cup_fingerprint", "kind": "trace", "display_text": "차잔 손잡이의 지문", "source_text_id": "msg_dining_silla_cup", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_cup_powder", "kind": "trace", "display_text": "잔받침 바깥의 가루", "source_text_id": "msg_dining_ruca_pocket", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_decoy_will_target", "kind": "decoy", "display_text": "유언장이 목표였다", "source_text_id": "msg_study_will", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_single_thief", "kind": "decoy", "display_text": "한 사람의 연속절도", "source_text_id": "msg_grave_footprints", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_peter_theft", "kind": "decoy", "display_text": "집사가 가져갔다", "source_text_id": "msg_service_peter", "tags": ["decoy"] }
+  ],
+  "messages": [
+    {
+      "schema_version": 1,
+      "id": "msg_dining_guest_seat",
+      "title": "오브젝트 B2 — 사용되지 않은 한 자리",
+      "body": "관찰: 여섯 자리 중 다섯 자리에는 이름표와 사용흔적이 서로 다르게 남아 있다.\n관찰: 남는 한 자리만 수프 표면에 막이 있고 접힌 냅킨이 한 번도 펴지지 않았다.\n관찰: 그 의자만 통로 쪽으로 비스듬히 밀려 있고 등받이에 젖은 외투가 걸려 있다.",
+      "source_refs": ["ent_trace_cold_soup", "ent_trace_chair_back", "ent_trace_wet_coat", "ent_action_left_table"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_cold_soup", "ent_trace_chair_back", "ent_trace_wet_coat", "ent_action_left_table"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_ids": ["panel_main_statement", "panel_inter_empty_seat_route"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dining_visual_seats",
+      "title": "비수집형 시각단서 — 여섯 자리의 사용상태",
+      "body": "관찰: 이름표를 모두 걷어 내면 세 가족 좌석 등받이에는 같은 문장 자수, 한 자리에는 서류가방 자국, 한 자리에는 앞치마 고리 자국이 남는다.\n관찰: 남는 평의자 하나만 사용흔적이 전혀 없다. 이 자리가 가족 좌석이 아니라는 사실은 문서가 아니라 자리 자체가 말해 준다.",
+      "source_refs": ["ent_seat_guest", "ent_seat_family"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_seat_guest", "ent_seat_family"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dining_seat_plan",
+      "title": "오브젝트 B1 — 식탁 자리표",
+      "body": "관찰: 여섯 자리만 표시된 표. 가족 셋 / 법률대리인 / 집사 / 그리고 이름 대신 '외부 손님' 한 칸.",
+      "source_refs": ["ent_role_guest"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_id": "ent_role_guest" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dining_silla_cup",
+      "title": "오브젝트 B3 — 남겨진 차잔",
+      "body": "관찰: 잔 바닥에 침전물이 남아 있다. 잔 손잡이에는 한 사람의 지문만 있다.\n관찰: 잔받침 바깥에 흰 가루가 붙어 있다.",
+      "source_refs": ["ent_item_tea", "ent_action_drugged_tea", "ent_trace_cup_fingerprint"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_tea", "ent_trace_cup_fingerprint", "ent_action_drugged_tea"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dining_ruca_pocket",
+      "title": "오브젝트 B4 — 오른쪽 소매 주머니",
+      "body": "관찰: 가족 자리 중 한 사람이 회수한 오른쪽 소매 주머니에 자기 명의 처방약병 한 개. 라벨은 지워졌고 병만 비어 있다.\n관찰: 같은 날 저녁에 받은 약국영수증 한 장.\n하위 개인 수첩 기재: 법률대리인 / 21:30 / 아버지 서류.\n관찰: 병 속 남은 가루가 잔받침 바깥의 흰 가루와 겉모습이 같다.",
+      "source_refs": ["ent_person_ruca", "ent_item_pill_bottle", "ent_item_sleeping_drug", "ent_state_appointment", "ent_trace_cup_powder"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_trace_cup_fingerprint", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_ruca", "ent_item_pill_bottle", "ent_item_sleeping_drug", "ent_state_appointment", "ent_trace_cup_powder"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_two_goals" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_foyer_attendance",
+      "title": "오브젝트 A1 — 저녁식사 참석부",
+      "body": "관찰 인쇄: 가족 / 법률대리인 / 집사 / 저녁식사 초대 외부조문객 1인.\n관찰: 가족 명단은 이름까지 적혀 있고, 외부조문객 칸은 이름대신 '외부 손님'이라고만 적혀 있다.",
+      "source_refs": ["ent_role_guest", "ent_state_outsider"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_role_guest", "ent_state_outsider"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_foyer_photos",
+      "title": "오브젝트 A2 — 가족사진 세 장",
+      "body": "관찰: 첫 장에 젊은 오스왈드와 어린 딸·아들. 둘째 장에 장남의 결혼식과 신부. 셋째 장은 가족 단체.\n관찰: 어느 장에도 장례 당일 신원은 없다.\n관찰: 식탁에 앉아 있는 사람들과 얼굴·소지품을 대조하면 장녀는 펜라이트, 장남의 아내는 은색 장부클립으로 맞는다.",
+      "source_refs": ["ent_person_oswald", "ent_person_helen", "ent_person_ruca", "ent_person_eba", "ent_role_elder_daughter", "ent_role_elder_son"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_oswald", "ent_person_helen", "ent_person_ruca", "ent_person_eba", "ent_role_elder_daughter", "ent_role_elder_son"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_study_record_gap",
+      "title": "오브젝트 C3 — 비어 있는 서류 자리",
+      "body": "관찰: 벽금고 문이 열려 있다. 안쪽 서류철 한 칸만 먼지선이 끊겨 있고, 눌린 끈자국이 남아 있다.\n관찰: 유언장은 책상 위에 펼쳐진 채로 남아 있다. 사라진 것은 유언장이 아니다.",
+      "source_refs": ["ent_item_safe", "ent_item_case44_file", "ent_state_missing_record", "ent_trace_press_mark", "ent_action_took_file"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_safe", "ent_state_missing_record", "ent_trace_press_mark", "ent_action_took_file"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_study_will",
+      "title": "오브젝트 C2 — 새 유언장",
+      "body": "관찰 인쇄: 장녀에게 북쪽 별장과 의료서적. 아들에게는 별도 현금유산 없음. 법률대리인이 장례 다음 날까지 원본을 보관한다.\n관찰: 서명란은 비어 있고 도장도 없다. 이 장면에서 유언장은 미개정 문서로 읽힌다.",
+      "source_refs": ["ent_item_will", "ent_role_lawyer", "ent_state_will_untouched", "ent_decoy_will_target"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_will", "ent_role_lawyer", "ent_state_will_untouched", "ent_decoy_will_target"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_study_window_sill",
+      "title": "오브젝트 C4 — 창문턱의 흙",
+      "body": "관찰: 창문은 반쯤 열린 채다. 턱에 회색 젖은 흙이 얇게 남아 있다.\n관찰: 흙 위에 좁은 V자 홈이 한 번 찍혀 있다. 흙의 색을 다른 어떤 기록과 대조해도 같은 종류라는 문장은 어디에도 없다.",
+      "source_refs": ["ent_place_study_window", "ent_trace_grave_soil"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_place_study_window", "ent_trace_grave_soil"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_foyer_yona_bag",
+      "title": "오브젝트 A3 — 조문객의 가방",
+      "body": "관찰: 낡은 검은 가방. 장례카드와 보존커버가 따로 들어 있다.\n하위 장례카드 필기: 고인의 이름 대신 '44번'을 쓰고, 마지막 기록을 데려가겠다고 적혀 있다. 서명 칸에는 요나 페일.\n하위 보존커버: 표지에는 사나토리움 이름과 Case 44. 안쪽은 두 칸 분량의 눌린 자국만 남고 비어 있다.",
+      "source_refs": ["ent_person_yona", "ent_item_funeral_card", "ent_item_empty_cover", "ent_item_case44_file"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_state_missing_record", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_yona", "ent_item_funeral_card", "ent_item_empty_cover", "ent_item_case44_file"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_foyer_shoes",
+      "title": "비수집형 시각단서 — 여섯 신발과 창문턱 흙",
+      "body": "관찰: 현관 신발 여섯 켤레를 나란히 놓았다. 한 켤레의 밑창에만 회색 점토와 좁은 V자 홈이 찍혀 있다.\n관찰: 그 무늬는 서재 창문턱의 회색 흙과 묘지길 발자국에서도 같은 모양으로 보인다.\n관찰: 신발의 흙이 신발장 바깥으로 이어지는 동선은 정문 쪽이 아니라 저택 반대편으로 길어진다.",
+      "source_refs": ["ent_trace_shoe_v_sole", "ent_trace_grave_soil"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_trace_wet_coat", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_study_window_sill", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_shoe_v_sole", "ent_trace_grave_soil"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_study_silla",
+      "title": "오브젝트 C1 — 소파 위의 법률대리인",
+      "body": "관찰: 소파에 쓰러져 있다. 깨어난 뒤 진술: 「차를 따라준 사람이 있었고, 금고가 열리는 소리에 잠깐 깼다가 다시 정신을 잃었다.」\n관찰: 진술은 소리와 의식 상태까지만이고, 누가 그 소리를 냈는지는 말하지 않는다.\n관찰: 차를 따라준 사람과 금고 쪽으로 간 사람이 시각상 분리되어 있다.",
+      "source_refs": ["ent_person_silla", "ent_action_woke_then_slept", "ent_state_two_goals"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_item_sleeping_drug", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_study_record_gap", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_silla", "ent_action_woke_then_slept", "ent_state_two_goals"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_service_peter",
+      "title": "오브젝트 D1 — 집사",
+      "body": "인용: 「금고열쇠는 고인, 법률대리인, 그리고 저에게만 있었습니다. 서재 문은 오래된 규격이라 예전 직원키도 맞을 수는 있습니다.」",
+      "source_refs": ["ent_person_peter", "ent_role_butler", "ent_decoy_peter_theft"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_peter", "ent_role_butler", "ent_decoy_peter_theft"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_service_key_list",
+      "title": "오브젝트 D2 — 열쇠목록",
+      "body": "관찰 인쇄: 금고 열쇠 보유자는 고인 / 법률대리인 / 집사 세 명.\n관찰: 보조문 옆 규격표. 오래된 구형 직원키 규격과 호환한다는 문장만 있다.\n관찰: 문 규격표에 그려진 열쇠날 모양을 따로 대조해야 누가 그 키를 가지고 있었는지 정해진다.",
+      "source_refs": ["ent_item_old_key", "ent_action_used_key"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_service_peter", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_old_key", "ent_action_used_key"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_service_payroll",
+      "title": "오브젝트 D3 — 옛 급여장부",
+      "body": "관찰: 옛 정원 근무 명단에 Yona Pale 한 줄. 직책은 간호사, 배정 지점은 모렌가 운영 사나토리움.\n관찰: 같은 줄의 비고 칸에 구형 직원키 수령 표기가 남아 있다. 키가 실제로 어디로 갔는지는 기록에 없다.",
+      "source_refs": ["ent_person_yona", "ent_role_ex_nurse", "ent_item_old_key"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_item_old_key", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_role_ex_nurse"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_grave_footprints",
+      "title": "오브젝트 E1 — 묘지길과 서재창 아래",
+      "body": "관찰: 비에 젖은 묘지길. 서재창 아래 진흙발자국이 저택 반대편에서 시작해 서재창까지 한 방향으로 이어진다.\n관찰: 그 자국 옆의 담 너머 자국은 정문 쪽이 아니라 하인복로 쪽으로 꺾인다.\n관찰: 발자국의 V자 홈은 현관 신발 밑창의 흠과 같다.",
+      "source_refs": ["ent_path_grave_window", "ent_path_front_door", "ent_decoy_single_thief"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_trace_shoe_v_sole", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_path_grave_window", "ent_path_front_door", "ent_decoy_single_thief"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_grave_case44",
+      "title": "오브젝트 E2 — 떨어진 기록철 한 장",
+      "body": "관찰 인쇄: 사나토리움 / 1958 / 환자 44.\n인용: 환자는 말로는 자기 것과 남의 것을 정확히 구분한다. 그러나 병실에서 옷을 고르게 하면 가장 가까운 것을 입고, 두 번 반복된 뒤에도 훔쳤다는 인식이나 숨기려는 행동이 관찰되지 않았다.\n관찰: 이 장은 이번 범행의 답을 주지 않는다. 어떤 기록이 사라졌는지만 정해 준다.",
+      "source_refs": ["ent_item_case44_file", "ent_item_empty_cover"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_item_case44_file", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_id": "ent_item_empty_cover" } }
+      ],
+      "detail_scene_id": ""
+    }
+  ],
+  "panels": [
+    {
+      "schema_version": 1,
+      "id": "panel_inter_empty_seat_route",
+      "kind": "state_board",
+      "title": "중간문제 — 빈자리에서 서재까지",
+      "accepted_entity_kinds": ["person", "place", "path", "action", "item", "state", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_route_seat", "segment_id": "segment_route_seat", "accepted_kinds": ["place", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_route_absent", "segment_id": "segment_route_absent", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_route_path", "segment_id": "segment_route_path", "accepted_kinds": ["path", "action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_route_missing", "segment_id": "segment_route_missing", "accepted_kinds": ["item", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_route_untouched", "segment_id": "segment_route_untouched", "accepted_kinds": ["item", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_route_seat", "display_text": "식사 중 비어 있던 자리" },
+        { "schema_version": 1, "id": "segment_route_absent", "display_text": "그 시간에 저택 밖에 있던 사람" },
+        { "schema_version": 1, "id": "segment_route_path", "display_text": "서재로 들어온 동선" },
+        { "schema_version": 1, "id": "segment_route_missing", "display_text": "금고에서 실제로 빠진 것" },
+        { "schema_version": 1, "id": "segment_route_untouched", "display_text": "그대로 남은 것" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_two_goals",
+      "kind": "procedure_board",
+      "title": "중간문제 — 두 행동줄기의 분리",
+      "accepted_entity_kinds": ["person", "item", "state", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_goal_drug_actor", "segment_id": "segment_goal_drug_actor", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_goal_drug_target", "segment_id": "segment_goal_drug_target", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_goal_take_actor", "segment_id": "segment_goal_take_actor", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_goal_take_item", "segment_id": "segment_goal_take_item", "accepted_kinds": ["item", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_goal_shape", "segment_id": "segment_goal_shape", "accepted_kinds": ["state", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_goal_drug_actor", "display_text": "차를 만든 행위자" },
+        { "schema_version": 1, "id": "segment_goal_drug_target", "display_text": "약이 들어간 대상" },
+        { "schema_version": 1, "id": "segment_goal_take_actor", "display_text": "기록철을 가져간 행위자" },
+        { "schema_version": 1, "id": "segment_goal_take_item", "display_text": "가져간 기록" },
+        { "schema_version": 1, "id": "segment_goal_shape", "display_text": "사건의 형태" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_main_statement",
+      "kind": "statement",
+      "title": "메인문제 — [루카 모렌]은 [실라 베크]의 [차]에 [수면제 성분]을 넣어 [새 유언장]을 확인하려 했다. [요나 페일]은 바깥동선으로 서재에 침입해 [Case 44 기록철]을 가져갔다. 식사 중 비어 있던 [비어 있던 Guest 자리]는 [요나 페일]의 자리였다.",
+      "accepted_entity_kinds": ["person", "item", "path", "place", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_main_drug_actor", "segment_id": "segment_main_drug_actor", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_drug_target", "segment_id": "segment_main_drug_target", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_drug_item", "segment_id": "segment_main_drug_item", "accepted_kinds": ["item"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_drug_goal", "segment_id": "segment_main_drug_goal", "accepted_kinds": ["item"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_take_actor", "segment_id": "segment_main_take_actor", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_take_path", "segment_id": "segment_main_take_path", "accepted_kinds": ["path"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_take_item", "segment_id": "segment_main_take_item", "accepted_kinds": ["item"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_seat", "segment_id": "segment_main_seat", "accepted_kinds": ["place", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_main_drug_actor", "display_text": "메인문 — 차를 만든 행위자" },
+        { "schema_version": 1, "id": "segment_main_drug_target", "display_text": "메인문 — 약이 들어간 대상" },
+        { "schema_version": 1, "id": "segment_main_drug_item", "display_text": "메인문 — 차에 든 약" },
+        { "schema_version": 1, "id": "segment_main_drug_goal", "display_text": "메인문 — 약물행동의 목적" },
+        { "schema_version": 1, "id": "segment_main_take_actor", "display_text": "메인문 — 기록철을 가져간 행위자" },
+        { "schema_version": 1, "id": "segment_main_take_path", "display_text": "메인문 — 들어온 동선" },
+        { "schema_version": 1, "id": "segment_main_take_item", "display_text": "메인문 — 실제로 사라진 기록" },
+        { "schema_version": 1, "id": "segment_main_seat", "display_text": "메인문 — 비어 있던 식탁 자리" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": true,
+      "unlock_condition": null
+    }
+  ],
+  "solutions": [
+    {
+      "schema_version": 1,
+      "id": "solution_inter_empty_seat_route",
+      "panel_id": "panel_inter_empty_seat_route",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_route_seat", "entity_id": "ent_seat_guest" },
+        { "schema_version": 1, "slot_id": "slot_route_absent", "entity_id": "ent_person_yona" },
+        { "schema_version": 1, "slot_id": "slot_route_path", "entity_id": "ent_path_grave_window" },
+        { "schema_version": 1, "slot_id": "slot_route_missing", "entity_id": "ent_item_case44_file" },
+        { "schema_version": 1, "slot_id": "slot_route_untouched", "entity_id": "ent_item_will" }
+      ],
+      "forbidden_assignments": [],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dining_guest_seat", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_study_record_gap", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_grave_footprints", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dining_visual_seats", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_two_goals",
+      "panel_id": "panel_inter_two_goals",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_goal_drug_actor", "entity_id": "ent_person_ruca" },
+        { "schema_version": 1, "slot_id": "slot_goal_drug_target", "entity_id": "ent_person_silla" },
+        { "schema_version": 1, "slot_id": "slot_goal_take_actor", "entity_id": "ent_person_yona" },
+        { "schema_version": 1, "slot_id": "slot_goal_take_item", "entity_id": "ent_item_case44_file" },
+        { "schema_version": 1, "slot_id": "slot_goal_shape", "entity_id": "ent_state_two_goals" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_goal_drug_actor", "entity_id": "ent_person_yona" },
+        { "schema_version": 1, "slot_id": "slot_goal_take_actor", "entity_id": "ent_person_ruca" },
+        { "schema_version": 1, "slot_id": "slot_goal_shape", "entity_id": "ent_decoy_single_thief" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dining_ruca_pocket", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_study_silla", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_main_statement",
+      "panel_id": "panel_main_statement",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_drug_actor", "entity_id": "ent_person_ruca" },
+        { "schema_version": 1, "slot_id": "slot_main_drug_target", "entity_id": "ent_person_silla" },
+        { "schema_version": 1, "slot_id": "slot_main_drug_item", "entity_id": "ent_item_sleeping_drug" },
+        { "schema_version": 1, "slot_id": "slot_main_drug_goal", "entity_id": "ent_item_will" },
+        { "schema_version": 1, "slot_id": "slot_main_take_actor", "entity_id": "ent_person_yona" },
+        { "schema_version": 1, "slot_id": "slot_main_take_path", "entity_id": "ent_path_grave_window" },
+        { "schema_version": 1, "slot_id": "slot_main_take_item", "entity_id": "ent_item_case44_file" },
+        { "schema_version": 1, "slot_id": "slot_main_seat", "entity_id": "ent_seat_guest" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_drug_actor", "entity_id": "ent_person_yona" },
+        { "schema_version": 1, "slot_id": "slot_main_drug_actor", "entity_id": "ent_person_peter" },
+        { "schema_version": 1, "slot_id": "slot_main_drug_target", "entity_id": "ent_person_helen" },
+        { "schema_version": 1, "slot_id": "slot_main_drug_target", "entity_id": "ent_person_eba" },
+        { "schema_version": 1, "slot_id": "slot_main_drug_item", "entity_id": "ent_item_tea" },
+        { "schema_version": 1, "slot_id": "slot_main_drug_goal", "entity_id": "ent_item_case44_file" },
+        { "schema_version": 1, "slot_id": "slot_main_take_actor", "entity_id": "ent_person_ruca" },
+        { "schema_version": 1, "slot_id": "slot_main_take_actor", "entity_id": "ent_person_peter" },
+        { "schema_version": 1, "slot_id": "slot_main_take_path", "entity_id": "ent_path_front_door" },
+        { "schema_version": 1, "slot_id": "slot_main_take_item", "entity_id": "ent_item_will" },
+        { "schema_version": 1, "slot_id": "slot_main_seat", "entity_id": "ent_seat_family" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dining_ruca_pocket", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_foyer_shoes", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_service_payroll", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dining_visual_seats", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": "review_main"
+    }
+  ],
+  "hints": [
+    {
+      "schema_version": 1,
+      "id": "hint_empty_seat_bundle",
+      "title": "힌트 — 한 자리에 몰린 네 가지",
+      "body": "수프 위에 굳은 막, 밀린 의자, 젖은 외투, 그리고 신발 밑창의 흠을 한 장면에 놓고라. 비를 맞고 나왔다는 사실과 가족 좌석이 아닌 자리라는 사실이 함께 움직이면 후보가 한 명으로 좁혀진다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_cold_soup",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_safe_gap_and_cover",
+      "title": "힌트 — 금고의 빈 폭과 빈 커버",
+      "body": "금고 안에서 먼지선이 끊긴 폭을 재어라. 조문객 가방의 빈 보존커버 두께와 눌린 자국이 그 폭에 맞아떨어지는지가 '유언장이 목표였다'는 문장을 뒤집는다. 서류가 아니라 기록철째로 사라졌다는 사실이 먼저 확정된다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_press_mark",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_tea_and_pocket",
+      "title": "힌트 — 차잔과 오른쪽 소매",
+      "body": "차잔의 침전물, 잔 손잡이의 지문, 잔받침 가루, 그리고 회수된 빈 약병을 나란히 놓아라. 성분 하나만으로는 행위자가 나오지 않는다. 약병을 가진 사람의 21:30 메모까지 합쳐야 접촉·시간·동기가 한 번에 움직인다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_item_sleeping_drug",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    }
+  ],
+  "review": {
+    "schema_version": 1,
+    "id": "review_main",
+    "conclusion": "식탁에서 비어 있던 자리는 가족 좌석이 아니었고, 그 자리는 수프가 굳고 의자가 밀린 채 비어 있었다. 같은 사람의 신발 밑창 흠이 묘지길에서 서재창까지 이어지고, 금고에서 사라진 폭은 유언장이 아니라 기록철 한 칸이었다. 한 사람이 두 목표를 동시에 좇았다는 가설은 소지품 대응과 시간 순서로 떨어진다. 사라진 기록의 내용은 후속 사건을 위한 것이며 이 장의 답이 아니다.",
+    "referenced_case_ids": [],
+    "scene_path": ""
+  },
+  "next_case_ids": ["case_03_n153_last_tour"]
+}

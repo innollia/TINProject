@@ -16,6 +16,20 @@
 
 `game_library`는 개발/탐색용 목록 UI다. Kit나 게임 콘텐츠 수에 포함하지 않는다.
 
+## 구현 대기 계획
+
+| 계획 | Primary Reference | 상태 | 비고 |
+|---|---|---|---|
+| [04_TOP_DOWN_ACTION_RPG_KIT/README.md](04_TOP_DOWN_ACTION_RPG_KIT/README.md) | BLACK SOULS 2 | **PLAN COMPLETE / IMPLEMENTATION READY** | 01~12 split plan, world constitution, magic supplement, seed ledger 160/96/120 reviewed |
+
+## 차단/대기 계획
+
+| 계획 | Primary Reference | 상태 | 현재 whitelist에 올리지 않은 이유 |
+|---|---|---|---|
+| [03_DEDUCTION_CASEWORK_KIT.md](03_DEDUCTION_CASEWORK_KIT.md) | The Case of the Golden Idol | **12-STAGE AUTHORED PLAYABLE / FINAL ART QA PENDING** | 01~12 placeholder campaign과 자동 route/solve 검증 완료; 최종 art·수동 플레이 검증 대기 |
+
+`03_DEDUCTION_CASEWORK_KIT.md`는 차단 상태의 실행 명세다. 차단 조건이 해소되고 계획 게이트를 통과한 뒤에만 `현재 whitelist`로 이동한다.
+
 ## 삭제한 옛 계획 체계
 
 2026-09-23 방향 재설정에서 아래 계획 파일들은 저장소에서 삭제했다.
@@ -36,6 +50,6 @@ Git 이력에만 남는다. 새 작업자는 이 과거 계획을 구현 입력�
 2. 실제 화면/플레이 자료를 조사한다.
 3. [TEMPLATE.md](TEMPLATE.md)를 복사해 빈칸을 모두 채운다.
 4. `docs/KIT_WORKFLOW.md`의 금지 shortcut/완료 증거와 충돌하지 않는지 확인한다.
-5. Reference Game이 10분 이상이며 여러 authored content가 같은 core를 재사용하는지 계획 단계에서 증명한다.
+5. 계획 단계에서는 verified Primary Reference runtime evidence를 기록하고, 구현 후 TIN Reference Game이 10분 이상이며 여러 authored content가 같은 core를 재사용하는지 검증한다.
 
 Kit 수량 목표는 없다.

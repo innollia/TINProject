@@ -1,0 +1,96 @@
+{
+    "schema_version":  1,
+    "id":  "enemy_ash_hound",
+    "display_name":  "Ash Hound",
+    "role":  {
+                 "base_region_id":  "region_r1_returning_kiln",
+                 "region_role":  "recovery_reentry",
+                 "institution_id":  "institution_return_registry",
+                 "role_tags":  [
+                                   "custodian",
+                                   "pursuit"
+                               ]
+             },
+    "body":  {
+                 "body_class":  "composite",
+                 "silhouette_key":  "sil_ash_hound",
+                 "scale_class":  "human",
+                 "stateful_body":  "none",
+                 "motion_signature":  "ash_lunge"
+             },
+    "stats":  {
+                  "max_hp":  60,
+                  "agility":  14,
+                  "action_slots":  1,
+                  "resource_pool":  {
+                                        "mp":  10,
+                                        "equipment_charge":  0
+                                    }
+              },
+    "condition_bar":  {
+                          "kind":  "condition_progress",
+                          "max_value":  100,
+                          "start_value":  0,
+                          "advance_on":  [
+                                             "hp_damage_taken",
+                                             "window_elapsed"
+                                         ],
+                          "advance_per_source":  15,
+                          "decrease_on_phase_enter":  0
+                      },
+    "baseline_action_ids":  [
+                                "act_ash_hound_snap"
+                            ],
+    "signature_action_id":  "act_ash_hound_lunge",
+    "telegraph":  {
+                      "signature_tell_key":  "tell_ash_hound_lunge",
+                      "channels":  [
+                                       "pose",
+                                       "numeric_bar"
+                                   ]
+                  },
+    "status_profile":  {
+                           "innate_status_ids":  [
+
+                                                 ],
+                           "resistant_status_ids":  [
+                                                        "st_recorded"
+                                                    ],
+                           "immune_status_ids":  [
+
+                                                 ]
+                       },
+    "break_profile":  {
+                          "breakable":  true,
+                          "break_source_action_ids":  [
+                                                          "act_break_poise"
+                                                      ],
+                          "on_break_status_ids":  [
+                                                      "st_recorded"
+                                                  ],
+                          "on_break_effect_ids":  [
+                                                      "eff_r1_wrong_return_witnessed"
+                                                  ]
+                      },
+    "reward":  {
+                   "equipment_ids":  [
+
+                                     ],
+                   "item_ids":  [
+                                    "item_ash_thread_spool"
+                                ],
+                   "resource_delta":  {
+                                          "mp":  1
+                                      }
+               },
+    "aftermath":  {
+                      "effect_ids":  [
+                                         "eff_r1_wrong_return_witnessed"
+                                     ],
+                      "region_state_tag":  "r1_cleared"
+                  },
+    "lore_ref":  "seed_s001",
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

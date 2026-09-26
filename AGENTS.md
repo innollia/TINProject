@@ -17,9 +17,10 @@
 4. `docs/DESIGN_PHILOSOPHY.md`
 5. `docs/KIT_WORKFLOW.md`
 6. `docs/VISUAL_DIRECTION.md`
-7. `docs/UI_WORKFLOW.md`
-8. `docs/UI_REFERENCE_SOURCES.md`와 `docs/UI_REFERENCE_ADAPTATIONS.md`
-9. 해당 `plans/kits/*.md`
+7. `docs/IMAGE_ASSET_WORKFLOW.md`
+8. `docs/UI_WORKFLOW.md`
+9. `docs/UI_REFERENCE_SOURCES.md`와 `docs/UI_REFERENCE_ADAPTATIONS.md`
+10. 해당 `plans/kits/*.md`
 
 ### Grilling bootstrap
 
@@ -70,6 +71,8 @@ Git 이력이 보존 역할을 한다. 박물관 폴더를 새로 만들지 않�
 **계획서가 완성되기 전에는 Kit 구현을 시작하지 않는다.**
 
 계획서는 `docs/KIT_WORKFLOW.md`의 필수 항목을 모두 가져야 한다.
+
+각 Kit 계획에는 톤앤매너와 실제 제작할 이미지 자산의 생성·편집 명세를 포함한다. 길면 `plans/kits/`의 별도 시각 명세로 분리해 계획서에서 링크한다. 필수 입력 문서나 레퍼런스를 읽을 수 없어 내용이 불분명하면 이미지를 추측해 생성하지 않는다.
 
 특히:
 - Primary Reference 하나
@@ -164,17 +167,24 @@ Shell은 호출 전까지 시각적 존재감 0. Esc 메뉴는 Esc를 누를 때
 
 `first_entry`를 보존한다는 뜻은 현재 설명문/presentation을 그대로 보존한다는 뜻이 아니다. 시작 로직만 whitelist다.
 
-## at-icons
+## 이미지 자산 방향 전환
 
-`res://addons/at-icons/`는 모든 Kit Reference Game의 월드 아트 기본 재료다.
+아이콘 기반 이미지 제작 문서와 실험 자료는 `archive/icon_based_image_assets/`에 보관한다. 이미 만들어진 SVG/PNG 및 기타 이미지 파일은 기존 위치와 내용 그대로 둔다. 아카이브 자료는 과거 기록이며 현재 제작 기준이 아니다.
 
-- UI 아이콘 사용 금지.
-- 원래 pictogram 의미 그대로 사용 금지.
-- 주요 오브젝트는 여러 조각을 조합.
-- crop/rotation/mirror/non-uniform scale/overlap/color 변형 적극 사용.
-- 3D Kit에서도 Sprite3D/plane/cutout 등 장르에 맞게 사용 가능.
+## GPT 이미지 제작 권한과 경계
 
-원본 asset은 덮어쓰지 않는다.
+2026-09-25 사용자 결정으로 기존 생성 이미지 절대 금지를 해제했다. `image_gen`, GPT Image 및 사용자가 허용한 생성형 이미지 도구로 TIN 이미지 자산을 제작·편집할 수 있다.
+
+- 문서 정리, 계획, 검토만 요청받은 상태에서 이미지를 임의로 생성하지 않는다. 현재 요청이 구체적인 이미지 자산의 제작·편집을 포함할 때 실행한다.
+- 권한 충돌은 `최신 사용자 결정 → 프로젝트 아트 층 → 개인 화풍 코어 → 역할이 제한된 A/B Style Reference → 해당 자산군 Gold Standard` 순서로 해소한다.
+- A/B는 영구 Style Reference다. A는 얼굴 구조·명암 면·내부 붓결, B는 선 강약·의상 구조·실루엣·밀도 대비·배경 콜라주성에만 사용하며 인물, 의상, 모티프, 정확한 색 조합을 복제하지 않는다.
+- Gold Standard는 환경/배경, 게임플레이 스프라이트, UI, 리깅용 전신 파츠, 비주얼노벨 전신·초상, 조사 화면의 자산군별 묶음으로 관리한다. 프로젝트에 필요한 묶음만 활성화한다.
+- 이미지 제작 파일 구조, 독립 작업 입력, Gold Standard 승인 절차, 제작 단위와 검수 게이트는 `docs/IMAGE_ASSET_WORKFLOW.md`를 따른다.
+- 배경 제작 brief는 오브젝트를 `증거·직접 상호작용`, `길찾기·상황 이해`, `분위기`의 3단계로 명시한다. 모델이나 작업자가 중요도를 임의 추론하거나 승격하지 않는다.
+- GPT 출력은 최종 그림이다. 사람의 재작화, 수동 선 보정, 자산별 색칠 보정은 제작 공정에 넣지 않는다.
+- 허용하는 기계적 후처리는 투명화/배경 분리, 크롭, 캔버스·피벗 정렬, 레이어 분리, 리사이즈, 아틀라스 패킹, 색 프로파일 변환, 결정론적 알파 매트·가장자리 정리다.
+- 기계적 후처리로 고칠 수 없는 오류는 GPT 국소 편집 또는 재생성으로 되돌린다. 에이전트가 오류를 발견해도 현재 사용자 요청에 이미지 편집·재생성이 포함되지 않았다면 실행하지 않는다.
+- 최종 판정은 고립된 이미지가 아니라 실제 게임 화면의 정보 계층, 일관성, 입력 상태, 지원 해상도에서 한다.
 
 ## UI 보고서 적용
 
@@ -257,7 +267,7 @@ $p.ExitCode
 5. 720p/FHD/QHD 실행 캡처
 6. 입력 전/후, 실패/성공, save/load/reset 확인
 7. placeholder/상시 HUD/설명문 검색
-8. at-icons가 원래 pictogram으로 읽히는 사용 검색
+8. 새 이미지 자산 기반과 출처/라이선스 준수 확인
 
 사용자 직접 플레이 검토 전에는 **검토 준비 완료**까지만 선언한다.
 

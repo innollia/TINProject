@@ -1,0 +1,48 @@
+{
+    "schema_version":  1,
+    "id":  "prop_r8_cut_chamber_wall",
+    "display_name":  "Cut Chamber Wall",
+    "region_id":  "region_r8_folding_school",
+    "placement":  {
+                      "anchor_key":  "r8_cut_chamber_wall",
+                      "layer":  "wall",
+                      "visible_from":  "same_room"
+                  },
+    "initial_state_id":  "ps_marked",
+    "states":  [
+                   {
+                       "state_id":  "ps_marked",
+                       "label":  "a failed fold is still pressed into the wall",
+                       "visible":  true,
+                       "art_key":  "prop_r8_wall_marked",
+                       "collides":  false,
+                       "interactable":  true,
+                       "entry_effect_ids":  [
+
+                                            ]
+                   },
+                   {
+                       "state_id":  "ps_opened",
+                       "label":  "the mark has been read as a verdict",
+                       "visible":  true,
+                       "art_key":  "prop_r8_wall_opened",
+                       "collides":  false,
+                       "interactable":  true,
+                       "entry_effect_ids":  [
+                                                "eff_r8_ash_choir_defeated"
+                                            ]
+                   }
+               ],
+    "interaction":  {
+                        "verb_id":  "verb_read_the_fold_mark",
+                        "availability":  {
+
+                                         },
+                        "opens":  "conv_r8_course_index_desk",
+                        "return_focus":  "prop"
+                    },
+    "revisit_visible":  true,
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

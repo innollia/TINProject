@@ -1,0 +1,240 @@
+{
+    "schema_version":  1,
+    "id":  "region_r1_returning_kiln",
+    "display_name":  "The Returning Kiln",
+    "region_role":  "recovery_reentry",
+    "conflict_thesis":  "Recovery is a bypass that keeps working after the original failure is gone.",
+    "topology":  {
+                     "shape":  "stacked_furnace_loops",
+                     "size_class":  "large",
+                     "landmark_count":  5,
+                     "traversal_axis":  "elevation",
+                     "backtrack_supported":  true
+                 },
+    "entry":  {
+                  "from_region_id":  "region_h0_undersign_exchange",
+                  "edge_id":  "route_e01_ash_stair",
+                  "gate_id":  "gate_g0_arrival_declaration",
+                  "one_way":  false
+              },
+    "exits":  [
+                  {
+                      "to_region_id":  "region_h0_undersign_exchange",
+                      "edge_id":  "route_e01_ash_stair",
+                      "gate_id":  "gate_g0_arrival_declaration",
+                      "route_state":  "open",
+                      "requires_condition":  {
+
+                                             },
+                      "field_activation":  "INTERACTION",
+                      "resource_keys":  [
+
+                                        ]
+                  },
+                  {
+                      "to_region_id":  "region_r8_folding_school",
+                      "edge_id":  "route_e02_folding_school_dispatch",
+                      "gate_id":  "gate_g1_ash_debt",
+                      "route_state":  "conditional",
+                      "requires_condition":  {
+                                                 "prop_state_is":  {
+                                                                       "prop_id":  "prop_r1_ash_garden_thread",
+                                                                       "state_id":  "ps_spent"
+                                                                   }
+                                             },
+                      "unlock_effect_id":  "eff_r1_ash_debt_opens_chute",
+                      "field_activation":  "STORY_FORCED"
+                  }
+              ],
+    "authority":  {
+                      "institution_id":  "institution_return_registry",
+                      "protocol_id":  "protocol_role_continuity",
+                      "recognition_default":  "patient",
+                      "legitimacy_baseline":  0
+                  },
+    "dominant_protocol":  {
+                              "protocol_id":  "protocol_role_continuity",
+                              "category_bias":  [
+                                                    "patient",
+                                                    "worker"
+                                                ],
+                              "category_error_policy":  "escalate"
+                          },
+    "resource_flow":  {
+                          "scarce_keys":  [
+                                              "res_ash_thread",
+                                              "res_medicine_reserve"
+                                          ],
+                          "surplus_keys":  [
+
+                                           ],
+                          "access_rule_ids":  [
+                                                  "rule_kiln_heat"
+                                              ]
+                      },
+    "residents":  [
+                      {
+                          "npc_id":  "npc_05_nera_voss",
+                          "initial_presence":  "resident",
+                          "moves_on_absence_to":  "region_h0_undersign_exchange"
+                      },
+                      {
+                          "npc_id":  "npc_11_cael_ren",
+                          "initial_presence":  "resident",
+                          "moves_on_absence_to":  "region_h0_undersign_exchange"
+                      }
+                  ],
+    "clocks":  [
+                   {
+                       "clock_id":  "clock_institutional_response",
+                       "start_state":  "active",
+                       "reversal":  "none",
+                       "weight":  1
+                   },
+                   {
+                       "clock_id":  "clock_contamination",
+                       "start_state":  "active",
+                       "reversal":  "none",
+                       "weight":  2
+                   },
+                   {
+                       "clock_id":  "clock_public_record",
+                       "start_state":  "active",
+                       "reversal":  "none",
+                       "weight":  2
+                   },
+                   {
+                       "clock_id":  "clock_resource_collapse",
+                       "start_state":  "active",
+                       "reversal":  "none",
+                       "weight":  1
+                   },
+                   {
+                       "clock_id":  "clock_personal_collapse",
+                       "start_state":  "active",
+                       "reversal":  "slow",
+                       "weight":  2
+                   },
+                   {
+                       "clock_id":  "clock_crown_alignment",
+                       "start_state":  "dormant",
+                       "reversal":  "terminal",
+                       "weight":  1
+                   }
+               ],
+    "hidden_state":  {
+                         "reveal_condition":  {
+                                                  "choice_taken":  {
+                                                                       "conversation_id":  "conv_r1_wrong_return_hearing",
+                                                                       "choice_id":  "ch_carry_the_claimant"
+                                                                   }
+                                              },
+                         "reveal_kind":  "partial",
+                         "reveal_prop_ids":  [
+                                                 "prop_r1_wrong_return_door"
+                                             ],
+                         "reveal_document_ids":  [
+                                                     "doc_r1_wrong_return_log"
+                                                 ]
+                     },
+    "initial_state":  "as_authored",
+    "combat_content":  {
+                           "encounter_ids":  [
+                                                 "enc_r1_ash_choir",
+                                                 "enc_r1_door_role_test"
+                                             ],
+                           "field_pressure":  "high"
+                       },
+    "noncombat_content":  {
+                              "interactable_prop_ids":  [
+                                                            "prop_r1_wrong_return_door",
+                                                            "prop_r1_ash_garden_thread"
+                                                        ],
+                              "service_ids":  [
+                                                  "service_r1_warm_door"
+                                              ]
+                          },
+    "initial_cluster":  {
+                            "cluster_id":  "cluster_rc_01_wrong_return",
+                            "npc_ids":  [
+                                            "npc_01_ilyra_senn",
+                                            "npc_05_nera_voss",
+                                            "npc_11_cael_ren",
+                                            "npc_20_mira_vask"
+                                        ],
+                            "thread_ids":  [
+                                               "thread_r1_wrong_return",
+                                               "thread_r1_role_restoration"
+                                           ],
+                            "starting_conversation_id":  "conv_r1_wrong_return_hearing"
+                        },
+    "revisit_variants":  [
+                             {
+                                 "variant_id":  "rv_after_witness",
+                                 "condition":  {
+                                                   "choice_taken":  {
+                                                                        "conversation_id":  "conv_r1_wrong_return_hearing",
+                                                                        "choice_id":  "ch_carry_the_claimant"
+                                                                    }
+                                               },
+                                 "prop_state_ids":  [
+                                                        "prop_r1_wrong_return_door"
+                                                    ],
+                                 "conversation_id":  "conv_r1_wrong_return_hearing"
+                             },
+                             {
+                                 "variant_id":  "rv_after_chute",
+                                 "condition":  {
+                                                   "prop_state_is":  {
+                                                                         "prop_id":  "prop_r1_ash_garden_thread",
+                                                                         "state_id":  "ps_spent"
+                                                                     }
+                                               },
+                                 "prop_state_ids":  [
+                                                        "prop_r1_ash_garden_thread"
+                                                    ],
+                                 "conversation_id":  "conv_r1_wrong_return_hearing"
+                             }
+                         ],
+    "internal_routes":  [
+
+                        ],
+    "unresolved_debt":  [
+                            {
+                                "debt_id":  "d_r1_ash_thread_spent",
+                                "description":  "the spent thread is never returned to the garden",
+                                "due_condition":  {
+                                                      "prop_state_is":  {
+                                                                            "prop_id":  "prop_r1_ash_garden_thread",
+                                                                            "state_id":  "ps_spent"
+                                                                        }
+                                                  },
+                                "resolve_effect_ids":  [
+                                                           "eff_r1_ash_debt_opens_chute"
+                                                       ],
+                                "resolution_token":  "full",
+                                "resource_id":  "res_ash_thread"
+                            }
+                        ],
+    "cross_region_links":  [
+                               {
+                                   "to_region_id":  "region_h0_undersign_exchange",
+                                   "link_kind":  "record",
+                                   "note":  "the return hearing writes back to the hub docket"
+                               },
+                               {
+                                   "to_region_id":  "region_r8_folding_school",
+                                   "link_kind":  "resource",
+                                   "note":  "craft credit is traded for the spent ash thread"
+                               }
+                           ],
+    "axis_weights":  {
+                         "protocol_legitimacy":  1,
+                         "recognition_drift":  2,
+                         "continuity_pressure":  3,
+                         "resource_scarcity":  2
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

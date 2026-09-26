@@ -160,12 +160,7 @@ validator:
 
 ## 6. Presentation
 
-at-icons를 월드 아트의 필수 원재료로 사용한다.
-
-- 캐릭터: 여러 unrelated icon 조각을 조합
-- 건물/가구/기계/식물: crop/rotation/mirror/overlap/color 변형
-- 작은 소품도 원래 pictogram 의미 그대로 두지 않음
-- UI icon 사용 금지
+과거 at-icons 월드 아트 recipe는 `archive/icon_based_image_assets/`에 보존한다. 대체 이미지 자산 기반이 확정되기 전에는 새 월드 이미지를 제작하지 않고, 확정 뒤 본 계획의 출처·라이선스·recipe 항목을 갱신한다.
 
 화면:
 - 탐험 중 대부분은 월드

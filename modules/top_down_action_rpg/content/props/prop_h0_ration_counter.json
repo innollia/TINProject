@@ -1,0 +1,48 @@
+{
+    "schema_version":  1,
+    "id":  "prop_h0_ration_counter",
+    "display_name":  "Ration Counter",
+    "region_id":  "region_h0_undersign_exchange",
+    "placement":  {
+                      "anchor_key":  "h0_ration_counter",
+                      "layer":  "prop",
+                      "visible_from":  "same_room"
+                  },
+    "initial_state_id":  "ps_open",
+    "states":  [
+                   {
+                       "state_id":  "ps_open",
+                       "label":  "counter is open",
+                       "visible":  true,
+                       "art_key":  "prop_h0_counter_open",
+                       "collides":  false,
+                       "interactable":  true,
+                       "entry_effect_ids":  [
+
+                                            ]
+                   },
+                   {
+                       "state_id":  "ps_rationing",
+                       "label":  "counter hands out ration",
+                       "visible":  true,
+                       "art_key":  "prop_h0_counter_rationing",
+                       "collides":  false,
+                       "interactable":  true,
+                       "entry_effect_ids":  [
+                                                "eff_r1_ash_debt_opens_chute"
+                                            ]
+                   }
+               ],
+    "interaction":  {
+                        "verb_id":  "verb_ask_for_a_share",
+                        "availability":  {
+
+                                         },
+                        "opens":  "conv_h0_return_desk",
+                        "return_focus":  "prop"
+                    },
+    "revisit_visible":  true,
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

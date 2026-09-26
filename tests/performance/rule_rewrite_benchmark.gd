@@ -160,7 +160,10 @@ func _measure_board(board_id: StringName, initial_state: Dictionary) -> void:
 			_module.load_state(initial_state)
 			_set_camera_for_direction(direction)
 			await process_frame
-			await RenderingServer.frame_post_draw
+			if DisplayServer.get_name() != "headless":
+				await RenderingServer.frame_post_draw
+			else:
+				await process_frame
 			_module.call("_apply_player_intent", ids, direction)
 			start_usec = Time.get_ticks_usec()
 			_module.call("_refresh")

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "seed_ledger",
+  "ledger_source": "docs/research/top_down_action_rpg/IDEA_LEDGER.md",
+  "ledger_version": 1,
+  "denominator": {
+    "extracted_units": 160,
+    "unit_rule": "independent_idea_unit",
+    "excluded_from_denominator": ["dialogue_metadata", "author_attribution", "date_line", "duplicate_wording", "no_new_causal_relation"],
+    "line_count_is_not_denominator": true
+  },
+  "quota": {
+    "ratio_permille": 600,
+    "gate_status_token": "planned_retained",
+    "minimum_retained": 96,
+    "preferred_planned": 120,
+    "post_review_status_token": "used",
+    "post_review_counts_toward_gate": false
+  },
+  "diversity": {
+    "minimum_distinct_clock_kinds_in_catalog": 3,
+    "max_single_ledger_section_share_permille": 250
+  },
+  "gate": {
+    "blocks_review_ready": true,
+    "blocks_runtime_start": false
+  }
+}

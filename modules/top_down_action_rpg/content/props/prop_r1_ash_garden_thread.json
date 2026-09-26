@@ -1,0 +1,48 @@
+{
+    "schema_version":  1,
+    "id":  "prop_r1_ash_garden_thread",
+    "display_name":  "Ash Garden Thread",
+    "region_id":  "region_r1_returning_kiln",
+    "placement":  {
+                      "anchor_key":  "r1_ash_garden_thread",
+                      "layer":  "trace",
+                      "visible_from":  "same_room"
+                  },
+    "initial_state_id":  "ps_available",
+    "states":  [
+                   {
+                       "state_id":  "ps_available",
+                       "label":  "thread still holds heat",
+                       "visible":  true,
+                       "art_key":  "prop_r1_thread_available",
+                       "collides":  false,
+                       "interactable":  true,
+                       "entry_effect_ids":  [
+
+                                            ]
+                   },
+                   {
+                       "state_id":  "ps_spent",
+                       "label":  "thread spent on door stability",
+                       "visible":  true,
+                       "art_key":  "prop_r1_thread_spent",
+                       "collides":  false,
+                       "interactable":  false,
+                       "entry_effect_ids":  [
+                                                "eff_r1_ash_debt_opens_chute"
+                                            ]
+                   }
+               ],
+    "interaction":  {
+                        "verb_id":  "verb_take_the_thread",
+                        "availability":  {
+
+                                         },
+                        "opens":  "conv_r1_wrong_return_hearing",
+                        "return_focus":  "prop"
+                    },
+    "revisit_visible":  true,
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

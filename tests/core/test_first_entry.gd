@@ -6,15 +6,19 @@ const ACTIONS: Array[StringName] = [
 	&"first_entry_right", &"first_entry_confirm", &"first_entry_cancel",
 ]
 const KEY_CODES: Array[int] = [KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_Z, KEY_X]
+const DYNAMIC_ACTION: StringName = &"first_entry_extra"
+const DYNAMIC_KEY: int = KEY_E
 
 var _bindings: Dictionary = {}
 var _module: GameModule
 var _context: ModuleContext
 var _requests: Array[Dictionary] = []
 var _layout_viewport: SubViewport
+var _dynamic_action_created: bool = false
 
 
 func before_each() -> void:
+	_dynamic_action_created = false
 	_requests.clear()
 	_bindings.clear()
 	for index: int in range(ACTIONS.size()):
@@ -50,6 +54,10 @@ func after_each() -> void:
 				InputMap.action_add_event(action, event)
 		elif InputMap.has_action(action):
 			InputMap.erase_action(action)
+	if _dynamic_action_created and InputMap.has_action(DYNAMIC_ACTION):
+		Input.action_release(DYNAMIC_ACTION)
+		InputMap.erase_action(DYNAMIC_ACTION)
+	_dynamic_action_created = false
 	_bindings.clear()
 	_requests.clear()
 
@@ -63,6 +71,16 @@ func _dispose_module() -> void:
 	if is_instance_valid(_layout_viewport):
 		_layout_viewport.free()
 	_layout_viewport = null
+
+
+func _install_dynamic_action() -> void:
+	assert_false(InputMap.has_action(DYNAMIC_ACTION))
+	InputMap.add_action(DYNAMIC_ACTION)
+	InputMap.action_set_deadzone(DYNAMIC_ACTION, 0.2)
+	var event := InputEventKey.new()
+	event.physical_keycode = DYNAMIC_KEY
+	InputMap.action_add_event(DYNAMIC_ACTION, event)
+	_dynamic_action_created = true
 
 
 func _spawn(state: Dictionary = {}, arrival: Dictionary = {}, identity: Dictionary = {}, viewport_size: Vector2i = Vector2i.ZERO) -> bool:
@@ -418,6 +436,19 @@ func test_presentation_draws_intro_editor_and_collision() -> void:
 	await get_tree().process_frame
 	var presentation: Control = _module.get_node("Presentation") as Control
 	assert_eq(presentation.size, presentation.get_viewport_rect().size)
+	assert_null(presentation.get_node_or_null("MenuButton"))
+	assert_null(presentation.get_node_or_null("LanguageButton"))
+	assert_eq(presentation.find_children("*", "Label", true, false).size(), 0)
+	var rebind_event := InputEventKey.new()
+	rebind_event.physical_keycode = KEY_CTRL
+	InputMap.action_erase_events(&"first_entry_confirm")
+	InputMap.action_add_event(&"first_entry_confirm", rebind_event)
+	_module.load_state({})
+	var expected_rebind := InputEventKey.new()
+	expected_rebind.keycode = KEY_CTRL
+	var binding_labels: Dictionary = presentation.get("_binding_labels")
+	assert_eq(String(binding_labels["first_entry_confirm"]), expected_rebind.as_text())
+	assert_eq(String(binding_labels["first_entry_confirm"]).length(), expected_rebind.as_text().length())
 	_module.load_state(_editor_state())
 	for index: int in range(3):
 		assert_true(bool(_module.call(&"select_shape", index)))
@@ -460,3 +491,192 @@ func test_menu_language_and_command_contracts() -> void:
 	assert_eq(_phase(), "keys")
 	assert_eq(_keys().size(), 0)
 	assert_true(_action(&"first_entry_up"), "Reset re-arms collected keys")
+
+
+func test_input_bubble_keeps_fixed_cells_and_initial_rising_state() -> void:
+	if not _spawn():
+		return
+	var snapshot: Dictionary = _module.call(&"get_input_bubble_state")
+	assert_eq(snapshot["key_profile"].size(), ACTIONS.size())
+	var expected_profile: Array[String] = []
+	for action: StringName in ACTIONS:
+		expected_profile.append(String(action))
+	assert_eq(snapshot["key_profile"], expected_profile)
+	var seen_cells: Dictionary = {}
+	for action: StringName in ACTIONS:
+		var key: String = String(action)
+		var state: String = String(_module.call(&"get_bubble_state", key))
+		var cell: Variant = snapshot["cells"][key]
+		assert_eq(state, "rising")
+		assert_true(cell is Array)
+		var cell_key: String = JSON.stringify(cell)
+		assert_false(seen_cells.has(cell_key))
+		seen_cells[cell_key] = true
+	_tick()
+	assert_eq(String(_module.call(&"get_bubble_state", ACTIONS[0])), "rising")
+	_tick()
+	for action: StringName in ACTIONS:
+		assert_eq(String(_module.call(&"get_bubble_state", action)), "intact")
+
+
+func test_input_bubble_transition_restores_reused_rises_new_and_keeps_removed_popped() -> void:
+	if not _spawn():
+		return
+	assert_false(_module.call(&"set_key_profile", ["first_entry_missing"]))
+	var extra_action: StringName = DYNAMIC_ACTION
+	_install_dynamic_action()
+	_context.allowed_actions.append(extra_action)
+	assert_true(_action(&"first_entry_up"))
+	_action(&"first_entry_up", false)
+	var first_profile: Array[String] = ["first_entry_up", String(extra_action)]
+	assert_true(_module.call(&"set_key_profile", first_profile))
+	var transition: Dictionary = _module.call(&"get_input_bubble_state")
+	assert_eq(String(transition["bubble_states"]["first_entry_up"]), "restoring")
+	assert_eq(String(transition["bubble_states"][String(extra_action)]), "rising")
+	assert_eq(String(transition["bubble_states"]["first_entry_down"]), "popped")
+	assert_eq(_module.call(&"get_bubble_cell", &"first_entry_up"), Vector2i(0, 0))
+	assert_eq(_module.call(&"get_bubble_cell", extra_action), Vector2i(0, 2))
+	Input.action_press(extra_action)
+	_tick()
+	assert_eq(String(_module.call(&"get_bubble_state", extra_action)), "popped")
+	Input.action_release(extra_action)
+	Input.action_press(&"first_entry_up")
+	_tick()
+	assert_eq(String(_module.call(&"get_bubble_state", &"first_entry_up")), "popped")
+	Input.action_release(&"first_entry_up")
+	_tick(8)
+	assert_eq(_phase(), "editor")
+	var cells_before: Dictionary = _module.call(&"get_input_bubble_state")
+	var second_profile: Array[String] = ["first_entry_up", String(extra_action), "first_entry_confirm"]
+	assert_true(_module.call(&"set_key_profile", second_profile))
+	var second_transition: Dictionary = _module.call(&"get_input_bubble_state")
+	assert_eq(String(second_transition["bubble_states"]["first_entry_up"]), "restoring")
+	assert_eq(String(second_transition["bubble_states"][String(extra_action)]), "restoring")
+	assert_eq(String(second_transition["bubble_states"]["first_entry_confirm"]), "restoring")
+	assert_eq(String(second_transition["bubble_states"]["first_entry_down"]), "popped")
+	assert_eq(second_transition["bubble_cells"]["first_entry_up"], cells_before["bubble_cells"]["first_entry_up"])
+	assert_eq(second_transition["bubble_cells"][String(extra_action)], cells_before["bubble_cells"][String(extra_action)])
+	_tick(2)
+	assert_eq(String(_module.call(&"get_bubble_state", &"first_entry_up")), "intact")
+	assert_eq(String(_module.call(&"get_bubble_state", extra_action)), "intact")
+	assert_true(_action(&"first_entry_up"))
+	assert_eq(String(_module.call(&"get_bubble_state", &"first_entry_up")), "popped")
+
+
+func test_input_bubble_save_reentry_and_disabled_input_contract() -> void:
+	if not _spawn(_editor_state()):
+		return
+	var saved: Dictionary = _module.save_state()
+	assert_true(SaveService.is_json_safe(saved))
+	var decoded: Variant = JSON.parse_string(JSON.stringify(saved))
+	assert_true(decoded is Dictionary)
+	if not decoded is Dictionary:
+		return
+	if not _spawn(decoded):
+		return
+	var restored: Dictionary = _module.call(&"get_input_bubble_state")
+	assert_eq(restored["bubble_cells"], saved["bubble_cells"])
+	assert_eq(restored["bubble_states"], saved["bubble_states"])
+	assert_eq(restored["key_profile"], saved["key_profile"])
+	_context.input_enabled = false
+	var before: Dictionary = _module.save_state()
+	assert_false(_action(&"first_entry_up"))
+	_tick(8)
+	assert_eq(_module.save_state(), before)
+	_context.input_enabled = true
+	assert_true(_action(&"first_entry_up"))
+	assert_eq(String(_module.call(&"get_bubble_state", &"first_entry_up")), "popped")
+
+
+func test_editor_actions_are_independent_from_required_profile() -> void:
+	if not _spawn(_editor_state()):
+		return
+	assert_true(_module.call(&"set_key_profile", ["first_entry_up"]))
+	assert_true(_action(&"first_entry_up"))
+	_action(&"first_entry_up", false)
+	_tick(8)
+	assert_eq(_phase(), "editor")
+	_context.allowed_actions.erase(&"first_entry_confirm")
+	assert_false(_action(&"first_entry_confirm"))
+	_context.allowed_actions.append(&"first_entry_confirm")
+	assert_true(_action(&"first_entry_confirm"))
+	assert_eq(_phase(), "collision")
+
+
+func test_same_profile_reentry_preserves_transient_state_and_checkpoint() -> void:
+	if not _spawn():
+		return
+	for action: StringName in ACTIONS:
+		assert_true(_action(action))
+		_action(action, false)
+	_tick(2)
+	assert_eq(_phase(), "zoom")
+	var before_reentry: Dictionary = _module.save_state()
+	_module.enter(_context)
+	assert_eq(_module.save_state(), before_reentry)
+	assert_eq(_requests_of(&"checkpoint").size(), 0)
+	_tick(4)
+	assert_eq(_phase(), "editor")
+	assert_eq(_requests_of(&"checkpoint").size(), 1)
+	var after_checkpoint: Dictionary = _module.save_state()
+	_module.enter(_context)
+	assert_eq(_module.save_state(), after_checkpoint)
+	assert_eq(_requests_of(&"checkpoint").size(), 1)
+
+
+func test_profile_order_and_saved_cell_validation_are_stable() -> void:
+	if not _spawn(_editor_state()):
+		return
+	var profile: Array[String] = ["first_entry_up", "first_entry_down"]
+	assert_true(_module.call(&"set_key_profile", profile))
+	var before_order: Dictionary = _module.save_state()
+	var reversed_profile: Array[String] = ["first_entry_down", "first_entry_up"]
+	assert_true(_module.call(&"set_key_profile", reversed_profile))
+	assert_eq(_module.save_state(), before_order)
+	var invalid: Dictionary = _editor_state()
+	invalid["bubble_slots"] = [
+		"first_entry_up", "first_entry_down", "first_entry_left",
+		"first_entry_right", "first_entry_confirm", "first_entry_cancel",
+	]
+	invalid["bubble_cells"] = {
+		"first_entry_up": [0, 0],
+		"first_entry_down": [0, 0],
+		"first_entry_left": [3, 0],
+		"first_entry_right": [0, 9],
+		"first_entry_confirm": [-1, 0],
+		"first_entry_cancel": [0, 1],
+	}
+	if not _spawn(invalid):
+		return
+	var used: Dictionary = {}
+	for action: StringName in ACTIONS:
+		var cell: Vector2i = _module.call(&"get_bubble_cell", action)
+		assert_true(cell.x >= 0 and cell.x < 3)
+		assert_true(cell.y >= 0 and cell.y < 2)
+		assert_false(used.has(cell))
+		used[cell] = action
+
+
+func test_transient_zoom_save_roundtrip_is_reentry_safe() -> void:
+	if not _spawn():
+		return
+	for action: StringName in ACTIONS:
+		assert_true(_action(action))
+		_action(action, false)
+	_tick(2)
+	assert_eq(_phase(), "zoom")
+	var saved: Dictionary = _module.save_state()
+	var decoded: Variant = JSON.parse_string(JSON.stringify(saved))
+	assert_true(decoded is Dictionary)
+	if not decoded is Dictionary:
+		return
+	if not _spawn(decoded):
+		return
+	assert_eq(_phase(), "zoom")
+	assert_eq(_module.save_state()["bubble_states"], saved["bubble_states"])
+	assert_eq(_module.save_state()["keys"], saved["keys"])
+	var before_reentry: Dictionary = _module.save_state()
+	_module.enter(_context)
+	assert_eq(_module.save_state(), before_reentry)
+	_tick(4)
+	assert_eq(_requests_of(&"checkpoint").size(), 1)

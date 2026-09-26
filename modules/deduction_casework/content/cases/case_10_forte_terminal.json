@@ -1,0 +1,675 @@
+{
+  "schema_version": 1,
+  "id": "case_10_forte_terminal",
+  "title": "10 편도표를 산 사람 — 포르테 국제여객선 터미널",
+  "start_scene_id": "scene_hall",
+  "scenes": [
+    {
+      "schema_version": 1,
+      "id": "scene_hall",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_hall_board",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_hall_board", "focus_id": "msg_hall_board" },
+        { "schema_version": 1, "id": "hotspot_hall_ticket", "focus_id": "msg_hall_ticket" },
+        { "schema_version": 1, "id": "hotspot_hall_ledger", "focus_id": "msg_hall_ledger" },
+        { "schema_version": 1, "id": "hotspot_hall_route_board", "focus_id": "panel_inter_departure" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_hall_to_locker",
+          "destination_scene_id": "scene_locker",
+          "focus_id": "hotspot_locker_bag"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_hall_to_services",
+          "destination_scene_id": "scene_services",
+          "focus_id": "hotspot_services_receipt"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_hall_to_pier",
+          "destination_scene_id": "scene_pier",
+          "focus_id": "hotspot_pier_photo"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_locker",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_locker_bag",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_locker_bag", "focus_id": "msg_locker_bag" },
+        { "schema_version": 1, "id": "hotspot_locker_coat", "focus_id": "msg_locker_coat" },
+        { "schema_version": 1, "id": "hotspot_locker_currency", "focus_id": "msg_locker_currency" },
+        { "schema_version": 1, "id": "hotspot_locker_notes", "focus_id": "msg_locker_notes" },
+        { "schema_version": 1, "id": "hotspot_locker_one_slot", "focus_id": "panel_main_statement" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_locker_to_hall",
+          "destination_scene_id": "scene_hall",
+          "focus_id": "hotspot_hall_board"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_locker_to_services",
+          "destination_scene_id": "scene_services",
+          "focus_id": "hotspot_services_receipt"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_services",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_services_receipt",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_services_receipt", "focus_id": "msg_services_receipt" },
+        { "schema_version": 1, "id": "hotspot_services_phone", "focus_id": "msg_services_phone" },
+        { "schema_version": 1, "id": "hotspot_services_phone_map", "focus_id": "msg_services_phone_map" },
+        { "schema_version": 1, "id": "hotspot_services_letter", "focus_id": "msg_services_letter" },
+        { "schema_version": 1, "id": "hotspot_services_varen", "focus_id": "msg_services_varen" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_services_to_hall",
+          "destination_scene_id": "scene_hall",
+          "focus_id": "hotspot_hall_board"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_services_to_locker",
+          "destination_scene_id": "scene_locker",
+          "focus_id": "hotspot_locker_bag"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_pier",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_pier_photo",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_pier_photo", "focus_id": "msg_pier_photo" },
+        { "schema_version": 1, "id": "hotspot_pier_customs", "focus_id": "msg_pier_customs" },
+        { "schema_version": 1, "id": "hotspot_pier_envelope", "focus_id": "msg_pier_envelope" },
+        { "schema_version": 1, "id": "hotspot_pier_program", "focus_id": "msg_pier_program" },
+        { "schema_version": 1, "id": "hotspot_pier_assessment", "focus_id": "msg_pier_assessment" },
+        { "schema_version": 1, "id": "hotspot_pier_postcard", "focus_id": "msg_pier_postcard" },
+        { "schema_version": 1, "id": "hotspot_pier_agnes_board", "focus_id": "panel_inter_agnes" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_pier_to_hall",
+          "destination_scene_id": "scene_hall",
+          "focus_id": "hotspot_hall_board"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_pier_to_services",
+          "destination_scene_id": "scene_services",
+          "focus_id": "hotspot_services_receipt"
+        }
+      ]
+    }
+  ],
+  "closeups": [],
+  "entities": [
+    { "schema_version": 1, "id": "ent_person_julian", "kind": "person", "display_text": "줄리언 룩", "source_text_id": "msg_hall_ledger", "tags": ["subject"] },
+    { "schema_version": 1, "id": "ent_person_mara", "kind": "person", "display_text": "마라 데인", "source_text_id": "msg_services_letter", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_dest_north", "kind": "state", "display_text": "북항 / Pier 4", "source_text_id": "msg_hall_board", "tags": [] },
+    { "schema_version": 1, "id": "ent_dest_santel", "kind": "state", "display_text": "산텔 / Pier 2", "source_text_id": "msg_hall_board", "tags": [] },
+    { "schema_version": 1, "id": "ent_dest_varen", "kind": "state", "display_text": "바렌 / Pier 1", "source_text_id": "msg_hall_board", "tags": [] },
+    { "schema_version": 1, "id": "ent_dest_heska", "kind": "state", "display_text": "헤스카 / Pier 3", "source_text_id": "msg_hall_board", "tags": [] },
+    { "schema_version": 1, "id": "ent_doc_ledger", "kind": "document", "display_text": "결제대장 한 줄", "source_text_id": "msg_hall_ledger", "tags": [] },
+    { "schema_version": 1, "id": "ent_doc_repeat_cards", "kind": "document", "display_text": "반복 질문카드·호흡순서·시각카드", "source_text_id": "msg_locker_bag", "tags": [] },
+    { "schema_version": 1, "id": "ent_doc_preserved_notes", "kind": "document", "display_text": "치료 전 기록 — 보존용", "source_text_id": "msg_locker_notes", "tags": [] },
+    { "schema_version": 1, "id": "ent_doc_varen_leaflet", "kind": "document", "display_text": "바렌 정신병원 안내서", "source_text_id": "msg_services_varen", "tags": [] },
+    { "schema_version": 1, "id": "ent_doc_intake_envelope", "kind": "document", "display_text": "성 아그네스 접수봉투", "source_text_id": "msg_pier_envelope", "tags": [] },
+    { "schema_version": 1, "id": "ent_doc_assessment", "kind": "document", "display_text": "사전평가서", "source_text_id": "msg_pier_assessment", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_st_agnes", "kind": "place", "display_text": "성 아그네스", "source_text_id": "msg_pier_envelope", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_ship_livery", "kind": "state", "display_text": "네 배의 선사문장·표색·게이트 도안", "source_text_id": "msg_hall_board", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_dep_0605", "kind": "state", "display_text": "승선권에 남은 06:05", "source_text_id": "msg_hall_ticket", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_ticket_marks", "kind": "state", "display_text": "남색-금색 사선 · 갈매기 세 마리 · 세모 절취홈", "source_text_id": "msg_hall_ticket", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_bag_contents_low", "kind": "state", "display_text": "셔츠 세 장, 속옷 세 벌, 책 0권", "source_text_id": "msg_locker_bag", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_currency_fresh", "kind": "state", "display_text": "환율판과 도안이 같은 새 지폐", "source_text_id": "msg_locker_currency", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_currency_old", "kind": "state", "display_text": "모서리가 접힌 구형 잔돈", "source_text_id": "msg_locker_currency", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_exchange_slip", "kind": "state", "display_text": "국가명 없는 환전영수증", "source_text_id": "msg_services_receipt", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_phone_memo", "kind": "state", "display_text": "St. Agnes — intake 09:30 메모", "source_text_id": "msg_services_phone", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_phone_map", "kind": "state", "display_text": "공중전화 안내지도의 도시별 색영역", "source_text_id": "msg_services_phone_map", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_letter_return", "kind": "state", "display_text": "편지의 마지막 문장", "source_text_id": "msg_services_letter", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_photo_strip", "kind": "state", "display_text": "사진부스 연속 3컷", "source_text_id": "msg_pier_photo", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_solo_boarding", "kind": "state", "display_text": "동행자 없음", "source_text_id": "msg_pier_photo", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_left_hand_signature", "kind": "state", "display_text": "왼손 필체 서명", "source_text_id": "msg_pier_envelope", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_treatment_diagram", "kind": "state", "display_text": "치료도식의 얇아지는 화살표", "source_text_id": "msg_pier_envelope", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_submitted_items", "kind": "state", "display_text": "체크된 제출물 세 칸", "source_text_id": "msg_pier_envelope", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_target_routine", "kind": "state", "display_text": "반복 진입경로", "source_text_id": "msg_pier_program", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_competitor_task", "kind": "state", "display_text": "단서 직후 붙는 경쟁과제", "source_text_id": "msg_pier_program", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_records_kept", "kind": "state", "display_text": "치료 전 판단과 기록의 보존", "source_text_id": "msg_pier_program", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_postcard", "kind": "state", "display_text": "세 달 뒤 산텔 소인 엽서", "source_text_id": "msg_pier_postcard", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_winter_coat", "kind": "trace", "display_text": "보관함에 남은 겨울코트", "source_text_id": "msg_locker_coat", "tags": [] },
+    { "schema_version": 1, "id": "ent_hypothesis_flight", "kind": "state", "display_text": "망명", "source_text_id": "msg_locker_coat", "tags": ["hypothesis"] },
+    { "schema_version": 1, "id": "ent_hypothesis_rest", "kind": "state", "display_text": "휴식", "source_text_id": "msg_services_letter", "tags": ["hypothesis"] },
+    { "schema_version": 1, "id": "ent_hypothesis_forced", "kind": "state", "display_text": "강제입원", "source_text_id": "msg_services_varen", "tags": ["hypothesis"] },
+    { "schema_version": 1, "id": "ent_hypothesis_memory_erasure", "kind": "state", "display_text": "기억 내용 삭제", "source_text_id": "msg_locker_notes", "tags": ["hypothesis"] }
+  ],
+  "messages": [
+    {
+      "schema_version": 1,
+      "id": "msg_hall_board",
+      "title": "오브젝트 A1 — 출항 전광판",
+      "body": "관찰: 05:40 북항 — Pier 4\n관찰: 06:05 산텔 — Pier 2\n관찰: 06:20 바렌 — Pier 1\n관찰: 06:05 헤스카 — Pier 3\n관찰: 06:05로 같은 두 편이 있다.\n관찰: 전광판 옆 벽에 네 배의 선사문장, 표색, 부두 게이트 절취형 그림이 붙어 있다.\n관찰: 그림에는 Pier 번호가 적혀 있지 않다.",
+      "source_refs": ["ent_dest_north", "ent_dest_santel", "ent_dest_varen", "ent_dest_heska", "ent_state_ship_livery"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_dest_north", "ent_dest_santel", "ent_dest_varen", "ent_dest_heska", "ent_state_ship_livery"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_hall_ticket",
+      "title": "오브젝트 A2 — 찢긴 승선권",
+      "body": "관찰: 목적지 부분이 찢겼다. 남은 표에는 06:05, 회사 문장, 가장자리 홈, 편도 표시가 있다.\n관찰: 남은 표지의 세 표식. 남색-금색 사선 테두리. 갈매기 세 마리 문장. 오른쪽 모서리의 세모형 절취홈.\n관찰: 찢긴 면은 섬유가 벌어진 단절이다.\n관찰: 목적지 글자 자리는 비어 있고 지워진 흔적도 없다.",
+      "source_refs": ["ent_state_dep_0605", "ent_state_ticket_marks"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_dep_0605", "ent_state_ticket_marks"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_departure" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_hall_ledger",
+      "title": "오브젝트 A3 — 매표창구 결제대장",
+      "body": "관찰: 창구 하나의 거래기록 한 줄. J. Rook / 현금결제.\n관찰: 같은 날 같은 이름의 다른 거래는 없다.\n관찰: 대장에는 탑승자가 아니라 결제자만 적는다.\n관찰: J로 시작하는 다른 서명은 이 대장에 없다.",
+      "source_refs": ["ent_doc_ledger", "ent_person_julian"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_doc_ledger", "ent_person_julian"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_bag",
+      "title": "오브젝트 B1 — 작은 여행가방",
+      "body": "관찰: 속옷, 셔츠, 양말이 각각 세 벌씩 접혀 있다.\n관찰: 세면도구 소형 한 세트.\n관찰: 책 0권. 직업서류 원본 없음.\n관찰: 안쪽에 카드 세 묶음이 들어 있다. 반복 질문카드, 호흡순서 카드, 시각카드.\n관찰: 세 묶음의 모서리에 J.R. 표시가 있고 세 묶음의 그림은 서로 다른 장을 묻는다.\n관찰: 가방 손잡이 감김에 왼손 자국이 남아 있다.",
+      "source_refs": ["ent_state_bag_contents_low", "ent_doc_repeat_cards", "ent_person_julian"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_bag_contents_low", "ent_doc_repeat_cards", "ent_person_julian"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_main_statement" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_coat",
+      "title": "오브젝트 B2 — 겨울코트",
+      "body": "관찰: 두꺼운 코트가 보관함 뒤 걸이에 그대로 걸려 있다.\n관찰: 소매에 접힌 자국이 없고 바닥에 떨어진 흔적도 없다.\n관찰: 보관함 명찰의 칸 번호는 05:40 출항 편 승객 칸이다.\n관찰: 명찰에 적힌 이름은 지워져 있다.",
+      "source_refs": ["ent_trace_winter_coat", "ent_hypothesis_flight"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_winter_coat", "ent_hypothesis_flight"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_currency",
+      "title": "오브젝트 B3 — 화폐 봉투 세 개",
+      "body": "관찰: 한 봉투는 새 지폐 다발이다.\n관찰: 두 봉투는 모서리가 접힌 구형 지폐 소액이다.\n관찰: 벽의 환율판 도안샘플 세 개와 봉투의 지폐를 나란히 놓으면 새 지폐 도안은 샘플 하나와만 같다.\n관찰: 어느 봉투도 새 지폐를 두 종류 이상 담고 있지 않다.\n관찰: 새 지폐 다발의 밴드에 환전 날짜가 찍혀 있다.",
+      "source_refs": ["ent_state_currency_fresh", "ent_state_currency_old"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_currency_fresh", "ent_state_currency_old"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_notes",
+      "title": "오브젝트 B4 — 옛 노트 복사본",
+      "body": "관찰: 표지: 「치료 전 기록 — 보존용」\n관찰: 안에 앞선 두 건의 메모가 복사되어 있다. 한 건은 빈 원을 겹쳐 그린 도식, 한 건은 설명이 닿지 않는다고 적힌 쪽.\n관찰: 복사본에 새 해설은 없고 옮겨 적힌 날짜 두 개뿐이다.\n관찰: 표지 안쪽에 새 잉크로 한 줄: 「기억을 지우는 게 아니다.」\n관찰: 그 잉크 필체는 복사된 두 건의 필체와 같다.",
+      "source_refs": ["ent_doc_preserved_notes", "ent_hypothesis_memory_erasure"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_doc_preserved_notes", "ent_hypothesis_memory_erasure"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_services_receipt",
+      "title": "오브젝트 C1 — 환전영수증",
+      "body": "관찰: 국가명이 없고 통화기호만 적혀 있다.\n관찰: 기호 옆에 환율 도안 샘플이 하나 찍혀 있다.\n관찰: 금액은 환율잔고 한도를 거의 채운 크기다. 서명 J. Rook.\n관찰: 날짜는 전날 오후이다.\n관찰: 영수증 밑부분이 잘려나갔다.",
+      "source_refs": ["ent_state_exchange_slip"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_exchange_slip"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_services_phone",
+      "title": "오브젝트 C2 — 전화부스 메모",
+      "body": "관찰: 「St. Agnes — intake 09:30.」\n관찰: 뒤에 숫자가 적혀 있고 앞 세 자리에 밑줄이 있다.\n관찰: 국가명도 지역명도 적혀 있지 않다.\n관찰: 밑줄 아래에 같은 숫자가 한 번 더 눌려 있다.",
+      "source_refs": ["ent_state_phone_memo"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_phone_memo"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_services_phone_map",
+      "title": "오브젝트 C3 — 공중전화 안내지도",
+      "body": "관찰: 도시별 색영역으로 나뉘어 있고 각 색 옆에 세 자리 번호가 있다.\n관찰: 네 색의 번호는 서로 다르다.\n관찰: 메모의 밑줄 세 자리와 같은 번호가 붙은 색영역은 하나뿐이다.\n관찰: 그 색은 환전영수증의 도안 샘플과 같은 색이다.",
+      "source_refs": ["ent_state_phone_map"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_phone_map"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_services_letter",
+      "title": "오브젝트 C4 — 마라에게 쓰다 만 편지",
+      "body": "인용: 「네가 이해하지 못한 게 문제였던 건 아니야.\n문제는 내가 설명할 때마다 네가 다른 뜻으로 듣는 걸 확인하고도 다음 날이면 또 설명하려 든다는 거야.\n며칠 쉬면 괜찮아질 줄 알았는데 다시 같은 데로 돌아간다.\n이번에는 내가 멈추는 게 아니라 돌아가는 길을 덜 쉽게 만들 생각이야.」\n관찰: 수신자 이름만 적혀 있다. 마라.\n관찰: 서명란은 비어 있다.\n관찰: 중간 한 장이 빠져 있고 앞뒤 문장이 바로 이어지지 않는다.",
+      "source_refs": ["ent_state_letter_return", "ent_person_mara", "ent_hypothesis_rest"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_letter_return", "ent_person_mara", "ent_hypothesis_rest"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_services_varen",
+      "title": "오브젝트 C5 — 바렌 정신병원 안내서",
+      "body": "관찰: 마라가 건넨 팸플릿이다.\n관찰: 안쪽에 다른 손의 필기: 「여긴 목적이 다름.」\n관찰: 접수 기한은 이번 주까지라고 적혀 있다.\n관찰: 팸플릿 어디에도 보호자 서명 칸이 없다.",
+      "source_refs": ["ent_doc_varen_leaflet", "ent_hypothesis_forced"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_doc_varen_leaflet", "ent_hypothesis_forced"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_pier_photo",
+      "title": "오브젝트 D1 — 사진부스 필름",
+      "body": "관찰: 연속 3컷. 첫 컷은 남색 타일 바닥. 둘째 컷은 갈매기 문장 아치. 셋째 컷은 세모 절취 게이트 안쪽.\n관찰: 세 컷에 같은 인영 하나와 작은 가방 하나만 있다.\n관찰: 어느 컷에도 다른 사람이 없다.\n관찰: 사진에 Pier 번호 캡션은 없다.\n관찰: 인영은 두 컷에서 코트를 입고 있지 않다.",
+      "source_refs": ["ent_state_photo_strip", "ent_state_solo_boarding", "ent_person_julian"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_photo_strip", "ent_state_solo_boarding", "ent_person_julian"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_pier_customs",
+      "title": "오브젝트 D2 — 세관 통과장부",
+      "body": "관찰: J. Rook / 05:58 통과.\n관찰: 같은 줄에 다른 이름이 없다.\n관찰: 부두번호 칸과 동행자 칸이 비어 있다.\n관찰: 05:58은 06:05 출항 시각보다 앞선다.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_pier_envelope",
+      "title": "오브젝트 D3 — 접수봉투",
+      "body": "관찰: 봉투 겉면 수신처. St. Agnes. 접수번호와 날짜가 찍혀 있다.\n관찰: 봉인 인장이 눌려 있다.\n관찰: 안에는 그림카드 세 장이 들어 있고, 같은 가방 속 카드 세 묶음의 그림과 세 장이 일치한다.\n관찰: 안에는 본인 서명 선납영수증 한 장이 있다. 서명은 왼손 필체로 쓰였다.\n관찰: 안에는 치료도식 한 장이 있다. 같은 카드, 옆 화살표, 경쟁과제 상자, 다시 같은 카드로 돌아오는데 마지막 화살표만 점점 얇아진다.\n관찰: 함께 낀 예약팩스. 환자 J. Rook / 치료비 선납.\n관찰: 도식 옆 체크 세 칸이 모두 체크되어 있다. 진입단서 목록 / 반복 질문카드 / 시각카드.",
+      "source_refs": ["ent_doc_intake_envelope", "ent_place_st_agnes", "ent_state_left_hand_signature", "ent_state_treatment_diagram", "ent_state_submitted_items", "ent_doc_repeat_cards"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_doc_intake_envelope", "ent_place_st_agnes", "ent_state_left_hand_signature", "ent_state_treatment_diagram", "ent_state_submitted_items", "ent_doc_repeat_cards"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_agnes" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_pier_program",
+      "title": "오브젝트 D4 — 프로그램 안내",
+      "body": "인쇄 항목: 본 프로그램은 기억내용을 삭제하지 않습니다.\n인쇄 항목: 반복 사고루틴의 진입단서를 확인한 뒤 단서 직후 경쟁과제를 수행합니다.\n인쇄 항목: 치료 전 판단과 기록은 별도 보존합니다.\n관찰: 세 문장 옆에 도식이 붙어 있다. 첫 칸은 진입단서 목록. 그 옆 카드 한 장. 그 옆 경쟁과제 상자. 그 뒤 화살표가 얇아진다.\n관찰: 첫 칸 아래에 그 사람이 스스로 목록을 올렸다는 서명이 있다.",
+      "source_refs": ["ent_state_target_routine", "ent_state_competitor_task", "ent_state_records_kept"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_target_routine", "ent_state_competitor_task", "ent_state_records_kept"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_pier_assessment",
+      "title": "오브젝트 D5 — 사전평가서",
+      "body": "인용: 환자 J. Rook\n「나는 반복적으로 같은 사고상태로 되돌아간다.」 5\n「그 상태는 내 연구에 중요하다.」 5\n「그 상태 때문에 일상생활이 어렵다.」 4\n「그 상태를 유지하고 싶다.」 빈칸\n관찰: 빈칸에 잉크가 번져 있다. 번짐이 오른쪽에서 왼쪽으로 흐른다.\n관찰: 평가란 서명도 왼손 필체다.",
+      "source_refs": ["ent_doc_assessment", "ent_state_left_hand_signature"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_doc_assessment", "ent_state_left_hand_signature"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_pier_postcard",
+      "title": "완료 후 후일담 — 세 달 뒤 엽서",
+      "body": "인용: 「마라에게 미안하다고 전해 줘. 예전 노트를 읽어 봤는데 왜 그 문제에 그렇게 매달렸는지 잘 모르겠어. 요즘은 사진을 다시 배우고 있어.」\n관찰: 소인은 산텔.\n관찰: 날짜는 세 달 뒤다.\n관찰: 뒷면에는 주소가 없고 문장만 있다.",
+      "source_refs": ["ent_state_postcard", "ent_person_julian"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_postcard", "ent_person_julian"] } }
+      ],
+      "detail_scene_id": ""
+    }
+  ],
+  "panels": [
+    {
+      "schema_version": 1,
+      "id": "panel_inter_departure",
+      "kind": "state_board",
+      "title": "중간문제 — 한 사람의 출항준비",
+      "accepted_entity_kinds": ["person", "state", "trace"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_p1_payer", "segment_id": "segment_p1_payer", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_time", "segment_id": "segment_p1_time", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_marks", "segment_id": "segment_p1_marks", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_route", "segment_id": "segment_p1_route", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_currency", "segment_id": "segment_p1_currency", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_bag", "segment_id": "segment_p1_bag", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_coat", "segment_id": "segment_p1_coat", "accepted_kinds": ["trace", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_p1_payer", "display_text": "표를 결제한 사람" },
+        { "schema_version": 1, "id": "segment_p1_time", "display_text": "승선권에 남은 시각" },
+        { "schema_version": 1, "id": "segment_p1_marks", "display_text": "승선권에 남은 세 표식" },
+        { "schema_version": 1, "id": "segment_p1_route", "display_text": "같은 시각 두 편 중 표식이 모두 맞는 항로" },
+        { "schema_version": 1, "id": "segment_p1_currency", "display_text": "방금 환전한 쪽 지폐" },
+        { "schema_version": 1, "id": "segment_p1_bag", "display_text": "가방 안의 옷과 비품" },
+        { "schema_version": 1, "id": "segment_p1_coat", "display_text": "보관함에 남겨 둔 옷" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "msg_hall_ticket",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_agnes",
+      "kind": "state_board",
+      "title": "중간문제 — 접수봉투 한 통",
+      "accepted_entity_kinds": ["place", "state", "document"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_p2_facility", "segment_id": "segment_p2_facility", "accepted_kinds": ["place", "state", "document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_signature", "segment_id": "segment_p2_signature", "accepted_kinds": ["state", "document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_cards", "segment_id": "segment_p2_cards", "accepted_kinds": ["document", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_diagram", "segment_id": "segment_p2_diagram", "accepted_kinds": ["state", "document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_items", "segment_id": "segment_p2_items", "accepted_kinds": ["state", "document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_task", "segment_id": "segment_p2_task", "accepted_kinds": ["state", "document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_letter", "segment_id": "segment_p2_letter", "accepted_kinds": ["state", "document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_p2_facility", "display_text": "봉투가 가리키는 기관" },
+        { "schema_version": 1, "id": "segment_p2_signature", "display_text": "봉투 안 영수증의 서명" },
+        { "schema_version": 1, "id": "segment_p2_cards", "display_text": "봉투 안 그림카드" },
+        { "schema_version": 1, "id": "segment_p2_diagram", "display_text": "봉투 안 도식" },
+        { "schema_version": 1, "id": "segment_p2_items", "display_text": "체크된 제출물 세 칸" },
+        { "schema_version": 1, "id": "segment_p2_task", "display_text": "카드 뒤에 붙은 과제" },
+        { "schema_version": 1, "id": "segment_p2_letter", "display_text": "편지의 마지막 문장" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "msg_pier_envelope",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_main_statement",
+      "kind": "statement",
+      "title": "메인문제 — [한 사람]은 혼자 [항로] 행 배를 타고 [기관]으로 갔다. 그는 본인이 쓰던 질문카드와 호흡순서, 시각카드를 본인의 이름으로 내고, 그 카드 뒤에 붙은 경쟁과제로 같은 사고상태로 되돌아가는 경로를 약하게 만드는 프로그램을 신청했다. [ ? ]",
+      "accepted_entity_kinds": ["person", "place", "state", "document"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_main_traveler", "segment_id": "segment_main_traveler", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_route", "segment_id": "segment_main_route", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_facility", "segment_id": "segment_main_facility", "accepted_kinds": ["place", "state", "document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_alone", "segment_id": "segment_main_alone", "accepted_kinds": ["state", "document", "trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_applicant", "segment_id": "segment_main_applicant", "accepted_kinds": ["state", "document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_target", "segment_id": "segment_main_target", "accepted_kinds": ["state", "document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_preserved", "segment_id": "segment_main_preserved", "accepted_kinds": ["state", "document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_main_traveler", "display_text": "혼자 출발한 사람" },
+        { "schema_version": 1, "id": "segment_main_route", "display_text": "탑승한 항로" },
+        { "schema_version": 1, "id": "segment_main_facility", "display_text": "도착한 기관" },
+        { "schema_version": 1, "id": "segment_main_alone", "display_text": "동행과 강제 이동의 흔적" },
+        { "schema_version": 1, "id": "segment_main_applicant", "display_text": "신청과 납부의 주체" },
+        { "schema_version": 1, "id": "segment_main_target", "display_text": "치료대상으로 제출된 것" },
+        { "schema_version": 1, "id": "segment_main_preserved", "display_text": "지우지 않고 남긴 것" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": true,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "msg_locker_bag",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "schema_version": 1,
+      "id": "solution_inter_departure",
+      "panel_id": "panel_inter_departure",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_p1_payer", "entity_id": "ent_person_julian" },
+        { "schema_version": 1, "slot_id": "slot_p1_time", "entity_id": "ent_state_dep_0605" },
+        { "schema_version": 1, "slot_id": "slot_p1_marks", "entity_id": "ent_state_ticket_marks" },
+        { "schema_version": 1, "slot_id": "slot_p1_route", "entity_id": "ent_dest_santel" },
+        { "schema_version": 1, "slot_id": "slot_p1_currency", "entity_id": "ent_state_currency_fresh" },
+        { "schema_version": 1, "slot_id": "slot_p1_bag", "entity_id": "ent_state_bag_contents_low" },
+        { "schema_version": 1, "slot_id": "slot_p1_coat", "entity_id": "ent_trace_winter_coat" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_p1_route", "entity_id": "ent_dest_north" },
+        { "schema_version": 1, "slot_id": "slot_p1_route", "entity_id": "ent_dest_varen" },
+        { "schema_version": 1, "slot_id": "slot_p1_route", "entity_id": "ent_dest_heska" },
+        { "schema_version": 1, "slot_id": "slot_p1_route", "entity_id": "ent_hypothesis_flight" },
+        { "schema_version": 1, "slot_id": "slot_p1_route", "entity_id": "ent_hypothesis_rest" },
+        { "schema_version": 1, "slot_id": "slot_p1_currency", "entity_id": "ent_state_currency_old" },
+        { "schema_version": 1, "slot_id": "slot_p1_payer", "entity_id": "ent_person_mara" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_hall_ticket", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_hall_board", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_hall_ledger", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_locker_bag", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_locker_currency", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_locker_coat", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_agnes",
+      "panel_id": "panel_inter_agnes",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_p2_facility", "entity_id": "ent_place_st_agnes" },
+        { "schema_version": 1, "slot_id": "slot_p2_signature", "entity_id": "ent_state_left_hand_signature" },
+        { "schema_version": 1, "slot_id": "slot_p2_cards", "entity_id": "ent_doc_repeat_cards" },
+        { "schema_version": 1, "slot_id": "slot_p2_diagram", "entity_id": "ent_state_treatment_diagram" },
+        { "schema_version": 1, "slot_id": "slot_p2_items", "entity_id": "ent_state_submitted_items" },
+        { "schema_version": 1, "slot_id": "slot_p2_task", "entity_id": "ent_state_competitor_task" },
+        { "schema_version": 1, "slot_id": "slot_p2_letter", "entity_id": "ent_state_letter_return" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_p2_facility", "entity_id": "ent_doc_varen_leaflet" },
+        { "schema_version": 1, "slot_id": "slot_p2_facility", "entity_id": "ent_hypothesis_forced" },
+        { "schema_version": 1, "slot_id": "slot_p2_facility", "entity_id": "ent_hypothesis_rest" },
+        { "schema_version": 1, "slot_id": "slot_p2_cards", "entity_id": "ent_doc_preserved_notes" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_pier_envelope", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_pier_program", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_locker_bag", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_services_letter", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_main_statement",
+      "panel_id": "panel_main_statement",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_traveler", "entity_id": "ent_person_julian" },
+        { "schema_version": 1, "slot_id": "slot_main_route", "entity_id": "ent_dest_santel" },
+        { "schema_version": 1, "slot_id": "slot_main_facility", "entity_id": "ent_place_st_agnes" },
+        { "schema_version": 1, "slot_id": "slot_main_alone", "entity_id": "ent_state_solo_boarding" },
+        { "schema_version": 1, "slot_id": "slot_main_applicant", "entity_id": "ent_state_left_hand_signature" },
+        { "schema_version": 1, "slot_id": "slot_main_target", "entity_id": "ent_state_target_routine" },
+        { "schema_version": 1, "slot_id": "slot_main_preserved", "entity_id": "ent_state_records_kept" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_traveler", "entity_id": "ent_person_mara" },
+        { "schema_version": 1, "slot_id": "slot_main_route", "entity_id": "ent_dest_north" },
+        { "schema_version": 1, "slot_id": "slot_main_route", "entity_id": "ent_dest_varen" },
+        { "schema_version": 1, "slot_id": "slot_main_route", "entity_id": "ent_dest_heska" },
+        { "schema_version": 1, "slot_id": "slot_main_route", "entity_id": "ent_hypothesis_flight" },
+        { "schema_version": 1, "slot_id": "slot_main_route", "entity_id": "ent_hypothesis_rest" },
+        { "schema_version": 1, "slot_id": "slot_main_route", "entity_id": "ent_hypothesis_forced" },
+        { "schema_version": 1, "slot_id": "slot_main_facility", "entity_id": "ent_doc_varen_leaflet" },
+        { "schema_version": 1, "slot_id": "slot_main_target", "entity_id": "ent_hypothesis_memory_erasure" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_hall_ticket", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_locker_bag", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_locker_notes", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_pier_photo", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_pier_envelope", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_pier_program", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": "review_main"
+    }
+  ],
+  "hints": [
+    {
+      "schema_version": 1,
+      "id": "hint_two_0605",
+      "title": "힌트 — 06:05는 두 편이다",
+      "body": "숫자만으로는 갈 곳이 정해지지 않는다. 남은 표지의 세 표식을 전광판 옆 네 그림과 하나씩 대입해라. 같은 시각 두 편 중 하나만 세 표식이 모두 맞는다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_dep_0605",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_currency_design",
+      "title": "힌트 — 지폐는 그림으로만 안다",
+      "body": "봉투 셋 중 새로 펼친 지폐는 한 종류뿐이다. 국가명이 아니라 도안으로 구분된다. 환율판 샘플 세 개와 나란히 놓고 지폐 세 묶음이 각각 어느 샘플과 같은지 표시해 보라.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_currency_fresh",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_locker_one_slot",
+      "title": "힌트 — 한 칸을 통째로 본다",
+      "body": "보관함 한 칸에 찢긴 승선권, 새 지폐, 작은 짐, 두고 간 코드가 함께 있다. 이 물건들을 따로따로 설명한 문서는 없다. 계절복장과 짐의 양만으로 걸리는 후보를 두 개만 남기고 나머지를 빼라.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_winter_coat",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_return_clue",
+      "title": "힌트 — 편지 마지막 문장",
+      "body": "편지의 마지막 문장과 접수봉투 안 도식을 나란히 놓아라. 같은 말인지 다른 말인지 보라. 도식 옆에 체크된 세 칸이 무엇을 가리키는지도 함께 확인해라. 자발성은 서명 필체와 게이트 기록에서 나온다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_letter_return",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    }
+  ],
+  "review": {
+    "schema_version": 1,
+    "id": "review_main",
+    "conclusion": "06:05 편은 둘이었고, 남은 승선권의 세 표식 — 남색-금색 사선, 갈매기 세 마리 문장, 세모형 절취홈 — 이 전광판 옆 네 그림과 모두 일치하는 편은 산텔행 Pier 2뿐이었다. 연속 3컷은 남색 타일, 갈매기 문장 아치, 세모 절취 게이트를 지나가는 한 사람과 작은 가방만 담고 있으며 다른 사람은 어느 컷에도 없다. 환율판 도안과 같은 새 지폐는 한 종류뿐이고 그 돈은 전날 오후 본인 서명으로 환전되었다. 가방에는 셔츠 세 장, 속옷 세 벌, 양말 세 벌과 소형 세면도구만 있고 책도 직업서류 원본도 없으며 겨울코트는 보관함에 그대로 남아 있다. 목적지가 적힌 봉투 안에는 같은 그림카드 세 장, 본인 서명 선납영수증, 카드 뒤에 경쟁과제를 붙여 같은 진입경로로 되돌아가는 빈도를 낮추는 도식이 들어 있다. 치료 대상은 기억내용이 아니라 스스로 반복해 온 진입경로이며 치료 전 판단과 기록은 별도로 보존된다. 세 달 뒤 엽서에서 그는 예전 노트를 읽어도 그때 왜 그 문제에 매달렸는지 모르겠다고 쓴다. 두 사람이 달라진 것에 대한 감정은 이 장의 답이 아니다.",
+    "referenced_case_ids": [],
+    "scene_path": ""
+  },
+  "next_case_ids": ["case_11_tarr_shore_cave"]
+}

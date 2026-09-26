@@ -1,0 +1,26 @@
+{
+    "schema_version":  1,
+    "id":  "eff_r1_ash_debt_opens_chute",
+    "timing":  "immediate",
+    "operations":  [
+                       {
+                           "gate_id":  "gate_g1_ash_debt",
+                           "op":  "unlock_route"
+                       },
+                       {
+                           "state_id":  "ps_spent",
+                           "op":  "prop_state",
+                           "prop_id":  "prop_r1_ash_garden_thread"
+                       },
+                       {
+                           "op":  "grant_item",
+                           "item_id":  "item_ash_thread_spool",
+                           "count":  1
+                       }
+                   ],
+    "one_shot":  true,
+    "repeat_guard":  "once",
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

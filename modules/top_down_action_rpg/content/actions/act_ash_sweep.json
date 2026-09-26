@@ -1,0 +1,74 @@
+{
+    "schema_version":  1,
+    "id":  "act_ash_sweep",
+    "display_name":  "ash sweep",
+    "order":  10,
+    "owner":  "player",
+    "category":  "attack",
+    "defense_mode":  "none",
+    "lifecycle":  "instant",
+    "intent":  {
+                   "target_mode":  "ONE_ENEMY",
+                   "requires_target_cursor":  true,
+                   "target_eligibility":  "living"
+               },
+    "cost":  {
+                 "turn_cost":  1,
+                 "action_slot_cost":  1,
+                 "resource_costs":  {
+
+                                    },
+                 "cooldown_windows":  0
+             },
+    "telegraph":  {
+                      "channels":  [
+                                       "pose"
+                                   ],
+                      "windows_before_active":  0,
+                      "tell_key":  "tell_ash_sweep"
+                  },
+    "damage_payload":  {
+                           "delivery":  "physical",
+                           "shape":  "fixed",
+                           "base_value":  12,
+                           "affinity":  "none",
+                           "hit_policy":  "roll",
+                           "hit_modifier":  0,
+                           "evasion_policy":  "roll",
+                           "critical_policy":  "never",
+                           "dodge_pressure":  5,
+                           "guard_ignore":  false,
+                           "breaks_guard":  false,
+                           "break_damage":  0,
+                           "dodgeable":  true,
+                           "break_damage_kinds":  [
+
+                                                  ],
+                           "self_damage":  0,
+                           "lifesteal":  0,
+                           "reflect":  0,
+                           "on_hit_payload_ids":  [
+
+                                                  ],
+                           "on_evade_payload_ids":  [
+
+                                                    ]
+                       },
+    "counters":  {
+                     "valid":  [
+                                   "guard",
+                                   "dodge",
+                                   "break"
+                               ],
+                     "forbidden":  [
+
+                                   ],
+                     "breakable":  true
+                 },
+    "presentation":  {
+                         "icon_key":  "act_ash_sweep"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

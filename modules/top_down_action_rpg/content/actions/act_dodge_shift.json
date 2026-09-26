@@ -1,0 +1,73 @@
+{
+    "schema_version":  1,
+    "id":  "act_dodge_shift",
+    "display_name":  "dodge shift",
+    "order":  20,
+    "owner":  "player",
+    "category":  "defend",
+    "defense_mode":  "dodge",
+    "lifecycle":  "instant",
+    "intent":  {
+                   "target_mode":  "SELF",
+                   "requires_target_cursor":  false,
+                   "target_eligibility":  "living"
+               },
+    "cost":  {
+                 "turn_cost":  1,
+                 "action_slot_cost":  1,
+                 "resource_costs":  {
+
+                                    },
+                 "cooldown_windows":  1
+             },
+    "telegraph":  {
+                      "channels":  [
+                                       "pose"
+                                   ],
+                      "windows_before_active":  0,
+                      "tell_key":  "tell_dodge_shift"
+                  },
+    "counters":  {
+                     "valid":  [
+                                   "dodge",
+                                   "break"
+                               ],
+                     "forbidden":  [
+                                       "guard"
+                                   ],
+                     "breakable":  true
+                 },
+    "presentation":  {
+                         "icon_key":  "act_dodge_shift"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ],
+    "damage_payload":  {
+                           "delivery":  "physical",
+                           "shape":  "guaranteed",
+                           "base_value":  0,
+                           "affinity":  "none",
+                           "hit_policy":  "guaranteed",
+                           "hit_modifier":  0,
+                           "evasion_policy":  "roll",
+                           "critical_policy":  "never",
+                           "dodge_pressure":  0,
+                           "guard_ignore":  true,
+                           "breaks_guard":  false,
+                           "break_damage":  0,
+                           "dodgeable":  false,
+                           "break_damage_kinds":  [
+
+                                                  ],
+                           "self_damage":  0,
+                           "lifesteal":  0,
+                           "reflect":  0,
+                           "on_hit_payload_ids":  [
+
+                                                  ],
+                           "on_evade_payload_ids":  [
+
+                                                    ]
+                       }
+}

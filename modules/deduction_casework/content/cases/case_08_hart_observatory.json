@@ -1,0 +1,688 @@
+{
+  "schema_version": 1,
+  "id": "case_08_hart_observatory",
+  "title": "08 별이 사라진 열두 분 — 하르트 산 천문대",
+  "start_scene_id": "scene_dome",
+  "scenes": [
+    {
+      "schema_version": 1,
+      "id": "scene_dome",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_dome_scope",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_dome_scope", "focus_id": "msg_dome_scope" },
+        { "schema_version": 1, "id": "hotspot_dome_julian", "focus_id": "msg_dome_julian" },
+        { "schema_version": 1, "id": "hotspot_dome_contract", "focus_id": "msg_dome_contract" },
+        { "schema_version": 1, "id": "hotspot_dome_star_chart", "focus_id": "msg_dome_star_chart" },
+        { "schema_version": 1, "id": "hotspot_dome_worktable", "focus_id": "panel_main_statement" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_dome_to_control",
+          "destination_scene_id": "scene_control",
+          "focus_id": "hotspot_control_powercheck"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_dome_to_generator",
+          "destination_scene_id": "scene_generator",
+          "focus_id": "hotspot_generator_cable"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_dome_to_terrace",
+          "destination_scene_id": "scene_terrace",
+          "focus_id": "hotspot_terrace_film"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_control",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_control_powercheck",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_control_powercheck", "focus_id": "msg_control_powercheck" },
+        { "schema_version": 1, "id": "hotspot_control_panel", "focus_id": "msg_control_panel" },
+        { "schema_version": 1, "id": "hotspot_control_autotrack", "focus_id": "msg_control_autotrack" },
+        { "schema_version": 1, "id": "hotspot_control_power_board", "focus_id": "panel_inter_power_path" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_control_to_dome",
+          "destination_scene_id": "scene_dome",
+          "focus_id": "hotspot_dome_scope"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_generator",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_generator_cable",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_generator_cable", "focus_id": "msg_generator_cable" },
+        { "schema_version": 1, "id": "hotspot_generator_socket", "focus_id": "msg_generator_socket" },
+        { "schema_version": 1, "id": "hotspot_generator_fuel", "focus_id": "msg_generator_fuel" },
+        { "schema_version": 1, "id": "hotspot_generator_ladder", "focus_id": "msg_generator_ladder" },
+        { "schema_version": 1, "id": "hotspot_roof_transmitter", "focus_id": "msg_roof_transmitter" },
+        { "schema_version": 1, "id": "hotspot_roof_radio_log", "focus_id": "msg_roof_radio_log" },
+        { "schema_version": 1, "id": "hotspot_roof_photo", "focus_id": "msg_roof_photo" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_generator_to_dome",
+          "destination_scene_id": "scene_dome",
+          "focus_id": "hotspot_dome_scope"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_terrace",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_terrace_film",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_terrace_film", "focus_id": "msg_terrace_film" },
+        { "schema_version": 1, "id": "hotspot_terrace_case44", "focus_id": "msg_terrace_case44" },
+        { "schema_version": 1, "id": "hotspot_terrace_sara", "focus_id": "msg_terrace_sara" },
+        { "schema_version": 1, "id": "hotspot_terrace_jean", "focus_id": "msg_terrace_jean" },
+        { "schema_version": 1, "id": "hotspot_terrace_traces", "focus_id": "msg_terrace_traces" },
+        { "schema_version": 1, "id": "hotspot_terrace_notes", "focus_id": "msg_terrace_notes" },
+        { "schema_version": 1, "id": "hotspot_terrace_archive", "focus_id": "msg_terrace_archive" },
+        { "schema_version": 1, "id": "hotspot_terrace_marks_board", "focus_id": "panel_inter_four_marks" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_terrace_to_dome",
+          "destination_scene_id": "scene_dome",
+          "focus_id": "hotspot_dome_scope"
+        }
+      ]
+    }
+  ],
+  "closeups": [],
+  "entities": [
+    { "schema_version": 1, "id": "ent_person_julian", "kind": "person", "display_text": "줄리언 룩", "source_text_id": "msg_dome_julian", "tags": ["subject"] },
+    { "schema_version": 1, "id": "ent_person_mara", "kind": "person", "display_text": "마라 데인", "source_text_id": "msg_terrace_film", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_person_evan", "kind": "person", "display_text": "에반 트로", "source_text_id": "msg_roof_photo", "tags": ["subject"] },
+    { "schema_version": 1, "id": "ent_person_dario", "kind": "person", "display_text": "다리오 벡", "source_text_id": "msg_dome_contract", "tags": ["alternative_actor"] },
+    { "schema_version": 1, "id": "ent_person_bess", "kind": "person", "display_text": "베스 칼", "source_text_id": "msg_control_powercheck", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_person_olma", "kind": "person", "display_text": "올마 렌", "source_text_id": "msg_control_autotrack", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_role_director", "kind": "role", "display_text": "천문대장", "source_text_id": "msg_control_autotrack", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_electrician", "kind": "role", "display_text": "전기담당", "source_text_id": "msg_control_powercheck", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_assistant", "kind": "role", "display_text": "보조기사", "source_text_id": "msg_generator_fuel", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_sponsor", "kind": "role", "display_text": "기업 후원자", "source_text_id": "msg_dome_contract", "tags": [] },
+    { "schema_version": 1, "id": "ent_doc_star_chart", "kind": "document", "display_text": "수동 별지도", "source_text_id": "msg_dome_star_chart", "tags": [] },
+    { "schema_version": 1, "id": "ent_doc_panel_map", "kind": "document", "display_text": "배전도 두 장", "source_text_id": "msg_control_panel", "tags": [] },
+    { "schema_version": 1, "id": "ent_doc_case44_copy", "kind": "document", "display_text": "사건 2 낙장 증거 사본", "source_text_id": "msg_terrace_case44", "tags": [] },
+    { "schema_version": 1, "id": "ent_doc_sara_flyer", "kind": "document", "display_text": "공개세미나 유인물 한 장", "source_text_id": "msg_terrace_sara", "tags": [] },
+    { "schema_version": 1, "id": "ent_doc_jean_draft", "kind": "image", "display_text": "기억으로 다시 그린 초안", "source_text_id": "msg_terrace_jean", "tags": [] },
+    { "schema_version": 1, "id": "ent_doc_slate_card", "kind": "document", "display_text": "이전 사건 기록 석판 카드", "source_text_id": "msg_terrace_archive", "tags": [] },
+    { "schema_version": 1, "id": "ent_device_backup_generator", "kind": "device", "display_text": "보조발전기", "source_text_id": "msg_control_powercheck", "tags": [] },
+    { "schema_version": 1, "id": "ent_device_transmitter", "kind": "device", "display_text": "장거리 라디오 송신기", "source_text_id": "msg_roof_transmitter", "tags": ["subject"] },
+    { "schema_version": 1, "id": "ent_trace_tape_generator", "kind": "trace", "display_text": "발전기실 분기함의 황색테이프 두 바퀴", "source_text_id": "msg_generator_cable", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_tape_ladder", "kind": "trace", "display_text": "서비스사다리의 황색테이프 두 바퀴", "source_text_id": "msg_generator_ladder", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_tape_roof", "kind": "trace", "display_text": "옥상 기둥의 황색테이프 두 바퀴", "source_text_id": "msg_roof_transmitter", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_blackout_window", "kind": "state", "display_text": "21:44–21:56 추적중단 구간", "source_text_id": "msg_control_autotrack", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_socket_scuff", "kind": "state", "display_text": "비상출력 소켓의 3핀 금속활 자국", "source_text_id": "msg_generator_socket", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_call_window", "kind": "state", "display_text": "21:43–21:56 송신 기록", "source_text_id": "msg_roof_transmitter", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_dome_light_gap", "kind": "state", "display_text": "필름의 돔 조명 공백 구간", "source_text_id": "msg_terrace_film", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_empty_triplet", "kind": "state", "display_text": "테라스에 남은 빈 삼각대", "source_text_id": "msg_terrace_film", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_tracing_overlay", "kind": "state", "display_text": "각 자료 위의 반투명 트레이싱지", "source_text_id": "msg_terrace_traces", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_red_circle", "kind": "state", "display_text": "네 장에 겹쳐지는 붉은 원 표식", "source_text_id": "msg_terrace_traces", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_gathered_early", "kind": "state", "display_text": "21:42 메모에 함께 적힌 네 항목", "source_text_id": "msg_terrace_notes", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_marked_blanks", "kind": "action", "display_text": "빈 자리에 덧붙인 자리를 표시했다", "source_text_id": "msg_terrace_traces", "tags": ["answer"] },
+    { "schema_version": 1, "id": "ent_action_kept_comparing", "kind": "action", "display_text": "자료를 계속 비교했다", "source_text_id": "msg_terrace_notes", "tags": [] },
+    { "schema_version": 1, "id": "ent_decoy_julian_blackout", "kind": "decoy", "display_text": "줄리언이 정전시켰다", "source_text_id": "msg_dome_julian", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_sponsor_sabotage", "kind": "decoy", "display_text": "후원자에 의한 조작", "source_text_id": "msg_dome_contract", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_generator_fault", "kind": "decoy", "display_text": "발전기 자체 고장", "source_text_id": "msg_control_powercheck", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_storm", "kind": "decoy", "display_text": "폭풍이 원인", "source_text_id": "msg_control_autotrack", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_outage_cause", "kind": "decoy", "display_text": "정전 뒤에 시작한 비교", "source_text_id": "msg_terrace_notes", "tags": ["decoy"] }
+  ],
+  "messages": [
+    {
+      "schema_version": 1,
+      "id": "msg_dome_scope",
+      "title": "비수집형 시각단서 — 정전 뒤 돔 바닥",
+      "body": "관찰: 주망원경 요크가 돔 지붕 쪽으로 틀어져 있고 회전 자국은 바닥에만 남아 있다.\n관찰: 돔 벽을 타고 올라가는 굵은 케이블 하나가 배전배관과 다른 색으로 옥상 쪽으로 사라진다.\n관찰: 그 케이블 가까이에 기름 묻은 장갑 한 짝이 놓여 있다.\n관찰: 돔 중앙 바닥에 책, 가방, 메모 몇 장이 서로 떨어져 놓여 있고 그 위에 반투명 종이가 얹혀 있다.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_main_statement" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dome_julian",
+      "title": "오브젝트 A1 — 줄리언 룩",
+      "body": "관찰: 검은 곱슬머리 인물. 왼손으로 메모를 쥐고 있고 손가락에 붉은 표시 자국이 남아 있다.\n인용: 「정전은 내가 한 게 아니야. 근데 잠깐 조용해지니까 이어지긴 했어.」",
+      "source_refs": ["ent_person_julian", "ent_decoy_julian_blackout"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_julian", "ent_decoy_julian_blackout"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dome_contract",
+      "title": "오브젝트 A2 — 관측시간 구매계약서",
+      "body": "관찰: 검은 턱시도 인물 소지품. 서명란 D. Vek.\n인쇄 항목: 정전으로 구매 관측시간이 취소되면 일부 보상금 지급.\n인쇄 각인: 전력계통 열람 권한 없음.",
+      "source_refs": ["ent_person_dario", "ent_role_sponsor", "ent_decoy_sponsor_sabotage"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_dario", "ent_role_sponsor", "ent_decoy_sponsor_sabotage"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dome_star_chart",
+      "title": "오브젝트 A3 — 수동 별지도와 접안부 사진",
+      "body": "관찰: 정전 직전 수동 별지도. 목표별 한 개와 기준별 한 개의 상대위치가 남아 있고 두 점 사이에 각도 눈금이 있다.\n관찰: 복구 뒤 접안부에 남은 사진. 같은 기준별만 찍혀 있고 목표별 자리에는 고정구가 눌린 자국만 있다.\n관찰: 두 기록에 찍힌 폭풍번개 프레임 수는 같다.\n관찰: 사진에는 시각 표기가 없다.",
+      "source_refs": ["ent_doc_star_chart"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_doc_star_chart"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_control_powercheck",
+      "title": "오브젝트 B1 — 야간전력 점검표",
+      "body": "관찰: 21:00 점검 기재. 서명 B. Kal.\n인쇄 항목: 주전원 정상 / 보조발전기 정상 / 연료 71% / 비상전환시험 통과.\n인용: 「비상전력이면 열두 시간은 버텨요.」",
+      "source_refs": ["ent_person_bess", "ent_role_electrician", "ent_decoy_generator_fault", "ent_device_backup_generator"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_bess", "ent_role_electrician", "ent_device_backup_generator", "ent_decoy_generator_fault"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_control_panel",
+      "title": "오브젝트 B2 — 배전도 두 장",
+      "body": "관찰: 첫 장. 주전원 → 천문대.\n관찰: 둘째 장. 주전원 실패 시 보조발전기 → 천문대.\n관찰: 두 장 모두 세 번째 선로를 그리지 않는다.\n관찰: 뒷면 여백에 수기로 '옥상' 이라는 단어만 적혀 있고 선로는 그어지지 않았다.",
+      "source_refs": ["ent_doc_panel_map"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_doc_panel_map"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_control_autotrack",
+      "title": "오브젝트 B3 — 자동추적 기록지",
+      "body": "관찰: 21:43까지 추적중. 21:44 추적중단. 21:56 추적복귀. 21:57 정상.\n관찰: 중단 구간에서 돔 조명 회로 표시가 꺼져 있다.\n관찰: 같은 구간에 창밖 번개 기록은 남아 있다.\n인용: 「기록지는 안 건드렸습니다.」 서명 O. Ren.",
+      "source_refs": ["ent_state_blackout_window", "ent_person_olma", "ent_role_director", "ent_decoy_storm"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_blackout_window", "ent_person_olma", "ent_role_director", "ent_decoy_storm"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_generator_cable",
+      "title": "오브젝트 C1 — 분기함 벽 안쪽",
+      "body": "관찰: 배관 바깥으로 빠지는 굵은 검정 고무케이블 하나가 황색테이프로 두 바퀴 감겨 있다.\n관찰: 케이블 표면에 길게 긁힌 자국이 있고 당긴 방향이 바깥쪽이다.\n관찰: 케이블 지름은 도면 배관 규격보다 두껍다.",
+      "source_refs": ["ent_trace_tape_generator"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_tape_generator"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_power_path" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_generator_socket",
+      "title": "오브젝트 C2 — 발전기 비상출력 소켓",
+      "body": "관찰: 콘센트 3핀 하나. 가장자리 육각부에 새 금속활 자국이 있다.\n관찰: 기계식 차단기 레버가 부하 쪽이 아니라 정상 계통 쪽에 내려가 있다.\n관찰: 복구 뒤에도 계기판은 같은 지점에 있다.",
+      "source_refs": ["ent_state_socket_scuff", "ent_device_backup_generator"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_socket_scuff", "ent_device_backup_generator"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_generator_fuel",
+      "title": "오브젝트 C3 — 연료계와 점검표 여백",
+      "body": "관찰: 계기판 71%. 21:57 이후에도 같은 지점이다.\n관찰: 점검표에 '과부하 시 차단기 작동' 이라는 문장이 있고 그 옆에 붉은 연필 선이 한 번 그어져 있다.\n인용: 「안 건드렸어요.」 기름 묻은 작업복 인물의 문장.",
+      "source_refs": ["ent_role_assistant"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_role_assistant"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_generator_ladder",
+      "title": "오브젝트 C4 — 외부 서비스사다리",
+      "body": "관찰: 중간참 난간. 황색테이프 두 바퀴가 여기서도 같은 폭으로 감겨 있다.\n관찰: 표면의 검정 고무가루가 손잡이 쪽에 손바닥만큼 몰려 있다.\n관찰: 난간 아래로 케이블이 옥상 방향으로 이어진다.",
+      "source_refs": ["ent_trace_tape_ladder"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_tape_ladder"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_roof_transmitter",
+      "title": "오브젝트 C5 — 옥상 장거리 라디오 송신기",
+      "body": "관찰: 기기 전원플러그가 3핀으로 물려 있고 날개에 소켓과 같은 폭의 긁힘이 겹쳐 있다.\n관찰: 기기 옆 기둥에 황색테이프 두 바퀴.\n인쇄 항목: 송신기는 큰 전력을 쓴다.\n인쇄 항목: 21:43 CALL START / 21:56 CALL END.\n관찰: 기기 케이스에 동호회 배지 번호와 개인 호출기 번호가 같은 기종 라벨로 붙어 있다.",
+      "source_refs": ["ent_device_transmitter", "ent_state_call_window", "ent_trace_tape_roof"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_device_transmitter", "ent_state_call_window", "ent_trace_tape_roof"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_roof_radio_log",
+      "title": "오브젝트 C6 — 무선일지",
+      "body": "관찰: 20:55 북부 주파수 수신 양호.\n관찰: 21:31 해외국 호출 확인.\n관찰: 21:43 송신 시작.\n관찰: 여백 필기: 「이번 달 마지막 기회.」\n관찰: 서명란은 비어 있다.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_roof_photo",
+      "title": "오브젝트 C7 — 동호회 단체사진",
+      "body": "관찰: 단체사진. 인물들은 모두 비슷한 기름 묻은 작업복이다.\n관찰: 한 인물의 왼쪽 장갑 손목에 삼각 패치가 있고 무전기 안테나를 테이프로 감은 방식이 옥상 현재 장비와 같다.\n관찰: 사진 뒷면에는 서명란 없이 번호만 적혀 있다.\n관찰: 무선일지 서명란은 비어 있다.",
+      "source_refs": ["ent_person_evan"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_evan"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_terrace_film",
+      "title": "오브젝트 D1 — 장노출 필름 한 롤",
+      "body": "관찰: 별궤적은 이어지지만 돔 조명만 한 구간 비어 있다.\n관찰: 같은 구간에 번개가 계속 찍혀 있다.\n관찰: 테라스 쪽 삼각대는 비어 있고 렌즈 덮개가 씌워져 있다.\n관찰: 필름에는 눈금이 없다.",
+      "source_refs": ["ent_state_dome_light_gap", "ent_state_empty_triplet", "ent_person_mara"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_dome_light_gap", "ent_state_empty_triplet", "ent_person_mara"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_terrace_case44",
+      "title": "오브젝트 D2 — 철학서 속 증거 사본",
+      "body": "관찰: 사건 2 낙장의 증거복사본. 여백에 붉은 X표와 밑줄.\n관찰: 옷표 그림 위에 붉은 원이 겹쳐 찍혀 있다.\n관찰: 원본 보관 위치는 기록되어 있지 않다.\n관찰: 이 자료 위에 반투명 종이 한 장이 얹혀 있다.",
+      "source_refs": ["ent_doc_case44_copy"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_doc_case44_copy"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_terrace_sara",
+      "title": "오브젝트 D3 — 세라 유인물",
+      "body": "관찰: 북서언어학회 공개세미나 유인물 한 문단.\n관찰: 여백에 같은 붉은 X표와 밑줄. 번역문 위에 붉은 원.\n인용 필기: 「주어를 지우면 문장이 성립하지 않는다.」\n관찰: 이 자료 위에 반투명 종이 한 장이 얹혀 있다.",
+      "source_refs": ["ent_doc_sara_flyer"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_doc_sara_flyer"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_terrace_jean",
+      "title": "오브젝트 D4 — 기억으로 다시 그린 도식",
+      "body": "관찰: 앞서 읽은 초안의 명사 빈칸을 줄리언이 기억으로 다시 그린 한 장.\n관찰: 빈칸 위치에 붉은 원.\n관찰: 이 자료 위에 반투명 종이 한 장이 얹혀 있다.\n관찰: 원문은 현장에 없다.",
+      "source_refs": ["ent_doc_jean_draft"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_doc_jean_draft"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_terrace_archive",
+      "title": "오브젝트 D5 — 이전 사건 기록함",
+      "body": "관찰: 기록함 안 석판 카드. 중앙이 비어 있고 복원된 칠 위에 덧그린 스케치가 있다.\n관찰: 카드 모서리에 붉은 원.\n관찰: 현장에 새 문서는 없다. 이 기록함을 다시 열어야만 중앙 공백과 붉은 원이 나란히 놓인다.",
+      "source_refs": ["ent_doc_slate_card"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_terrace_case44", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_terrace_sara", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_doc_slate_card"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_terrace_traces",
+      "title": "오브젝트 D6 — 겹쳐 놓은 트레이싱지",
+      "body": "관찰: 네 장의 반투명 트레이싱지를 한 장씩 겹쳐 놓은 화면.\n관찰: 붉은 원 네 개가 거의 같은 위치에 포개진다.\n관찰: 원 안쪽에는 후대 손으로 덧붙은 자리만 남아 있고 원 안 자리의 종류는 자료마다 다르다.\n관찰: 색인카드에는 질문어가 적혀 있지 않다.",
+      "source_refs": ["ent_state_tracing_overlay", "ent_state_red_circle", "ent_action_marked_blanks"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_tracing_overlay", "ent_state_red_circle", "ent_action_marked_blanks"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_four_marks" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_terrace_notes",
+      "title": "오브젝트 D7 — 시간별 메모와 녹음",
+      "body": "21:42 메모: 무아 = 너무 큼 / 해리 = 결과만 비슷함 / 주어생략 = 언어표면뿐 / 소유감 상실 = 한 건만 설명\n21:50 메모: 네 개의 작은 그림과 같은 붉은 원만 남고 글은 없다.\n21:55 메모: 빈 원 하나와 화살표 세 개. 아래 「아.」\n21:58 녹음: 「이걸 찾았다고 말하면 벌써 틀리네. 미쳤다. 이걸 아무도 모른다고?」\n관찰: 21:42 메모에 적힌 네 항목은 21:44보다 앞선 시각에 적혀 있다.\n관찰: 네 자료는 그 시각 이미 한 곳에 함께 있었다.",
+      "source_refs": ["ent_state_gathered_early", "ent_action_kept_comparing", "ent_decoy_outage_cause", "ent_person_julian"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_gathered_early", "ent_action_kept_comparing", "ent_decoy_outage_cause", "ent_person_julian"] } }
+      ],
+      "detail_scene_id": ""
+    }
+  ],
+  "panels": [
+    {
+      "schema_version": 1,
+      "id": "panel_inter_power_path",
+      "kind": "state_board",
+      "title": "중간문제 — 정전의 실제 전력경로",
+      "accepted_entity_kinds": ["trace", "device", "state"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_p1_tap_gen", "segment_id": "segment_p1_tap_gen", "accepted_kinds": ["trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_tap_ladder", "segment_id": "segment_p1_tap_ladder", "accepted_kinds": ["trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_tap_roof", "segment_id": "segment_p1_tap_roof", "accepted_kinds": ["trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_device", "segment_id": "segment_p1_device", "accepted_kinds": ["device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_socket", "segment_id": "segment_p1_socket", "accepted_kinds": ["state", "device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_p1_tap_gen", "display_text": "배관 밖으로 빠진 지점" },
+        { "schema_version": 1, "id": "segment_p1_tap_ladder", "display_text": "벽을 타고 올라간 구간" },
+        { "schema_version": 1, "id": "segment_p1_tap_roof", "display_text": "옥상에 도착한 지점" },
+        { "schema_version": 1, "id": "segment_p1_device", "display_text": "같은 흔적의 끝에 물린 기기" },
+        { "schema_version": 1, "id": "segment_p1_socket", "display_text": "발전기실에서 맞물린 흔적" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "msg_control_powercheck",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_four_marks",
+      "kind": "state_board",
+      "title": "중간문제 — 줄리언의 네 번의 같은 표시",
+      "accepted_entity_kinds": ["document", "image", "state"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_p2_case44", "segment_id": "segment_p2_case44", "accepted_kinds": ["document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_sara", "segment_id": "segment_p2_sara", "accepted_kinds": ["document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_jean", "segment_id": "segment_p2_jean", "accepted_kinds": ["document", "image"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_archive", "segment_id": "segment_p2_archive", "accepted_kinds": ["document", "image"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_mark", "segment_id": "segment_p2_mark", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_p2_case44", "display_text": "현장에 놓인 자료 첫째" },
+        { "schema_version": 1, "id": "segment_p2_sara", "display_text": "현장에 놓인 자료 둘째" },
+        { "schema_version": 1, "id": "segment_p2_jean", "display_text": "기억으로 다시 그린 도식" },
+        { "schema_version": 1, "id": "segment_p2_archive", "display_text": "이전 사건 기록에서 다시 본 것" },
+        { "schema_version": 1, "id": "segment_p2_mark", "display_text": "네 장에 겹쳐지는 표시" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "msg_terrace_traces",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_main_statement",
+      "kind": "statement",
+      "title": "메인문제 — [행위자]는 개인 [기기]를 보조전원에 물려 사용했고, [정전 구간] 동안 그 사용이 겹쳐 천문대가 어두워졌다. 같은 구간에 [다른 행위자]도 있었고, 그는 서로 다른 네 자료의 빈 자리에 덧붙인 자리를 같은 표시로 묶었다. 정전과 그 일의 관계는 [ ? ]",
+      "accepted_entity_kinds": ["person", "device", "state", "action", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_main_actor", "segment_id": "segment_main_actor", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_device", "segment_id": "segment_main_device", "accepted_kinds": ["device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_socket", "segment_id": "segment_main_socket", "accepted_kinds": ["state", "device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_window", "segment_id": "segment_main_window", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_load", "segment_id": "segment_main_load", "accepted_kinds": ["state", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_second_actor", "segment_id": "segment_main_second_actor", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_marking", "segment_id": "segment_main_marking", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_relation", "segment_id": "segment_main_relation", "accepted_kinds": ["state", "action", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_main_actor", "display_text": "정전 구간의 행위자" },
+        { "schema_version": 1, "id": "segment_main_device", "display_text": "개인으로 쓰던 기기" },
+        { "schema_version": 1, "id": "segment_main_socket", "display_text": "발전기 쪽 물린 자리" },
+        { "schema_version": 1, "id": "segment_main_window", "display_text": "추적이 끊긴 구간" },
+        { "schema_version": 1, "id": "segment_main_load", "display_text": "그 구간 안에서 겹친 사용" },
+        { "schema_version": 1, "id": "segment_main_second_actor", "display_text": "같은 구간의 다른 행위자" },
+        { "schema_version": 1, "id": "segment_main_marking", "display_text": "그 사람이 자료에 한 일" },
+        { "schema_version": 1, "id": "segment_main_relation", "display_text": "정전과 그 일의 관계" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": true,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "msg_dome_star_chart",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "schema_version": 1,
+      "id": "solution_inter_power_path",
+      "panel_id": "panel_inter_power_path",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_p1_tap_gen", "entity_id": "ent_trace_tape_generator" },
+        { "schema_version": 1, "slot_id": "slot_p1_tap_ladder", "entity_id": "ent_trace_tape_ladder" },
+        { "schema_version": 1, "slot_id": "slot_p1_tap_roof", "entity_id": "ent_trace_tape_roof" },
+        { "schema_version": 1, "slot_id": "slot_p1_device", "entity_id": "ent_device_transmitter" },
+        { "schema_version": 1, "slot_id": "slot_p1_socket", "entity_id": "ent_state_socket_scuff" }
+      ],
+      "forbidden_assignments": [],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_generator_cable", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_generator_ladder", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_roof_transmitter", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_generator_socket", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_control_powercheck", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_four_marks",
+      "panel_id": "panel_inter_four_marks",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_p2_case44", "entity_id": "ent_doc_case44_copy" },
+        { "schema_version": 1, "slot_id": "slot_p2_sara", "entity_id": "ent_doc_sara_flyer" },
+        { "schema_version": 1, "slot_id": "slot_p2_jean", "entity_id": "ent_doc_jean_draft" },
+        { "schema_version": 1, "slot_id": "slot_p2_archive", "entity_id": "ent_doc_slate_card" },
+        { "schema_version": 1, "slot_id": "slot_p2_mark", "entity_id": "ent_state_red_circle" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_p2_mark", "entity_id": "ent_state_tracing_overlay" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_terrace_traces", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_terrace_case44", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_terrace_sara", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_terrace_jean", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_terrace_archive", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_main_statement",
+      "panel_id": "panel_main_statement",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_actor", "entity_id": "ent_person_evan" },
+        { "schema_version": 1, "slot_id": "slot_main_device", "entity_id": "ent_device_transmitter" },
+        { "schema_version": 1, "slot_id": "slot_main_socket", "entity_id": "ent_state_socket_scuff" },
+        { "schema_version": 1, "slot_id": "slot_main_window", "entity_id": "ent_state_blackout_window" },
+        { "schema_version": 1, "slot_id": "slot_main_load", "entity_id": "ent_state_call_window" },
+        { "schema_version": 1, "slot_id": "slot_main_second_actor", "entity_id": "ent_person_julian" },
+        { "schema_version": 1, "slot_id": "slot_main_marking", "entity_id": "ent_action_marked_blanks" },
+        { "schema_version": 1, "slot_id": "slot_main_relation", "entity_id": "ent_state_gathered_early" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_actor", "entity_id": "ent_person_julian" },
+        { "schema_version": 1, "slot_id": "slot_main_actor", "entity_id": "ent_person_dario" },
+        { "schema_version": 1, "slot_id": "slot_main_device", "entity_id": "ent_device_backup_generator" },
+        { "schema_version": 1, "slot_id": "slot_main_load", "entity_id": "ent_decoy_storm" },
+        { "schema_version": 1, "slot_id": "slot_main_load", "entity_id": "ent_decoy_generator_fault" },
+        { "schema_version": 1, "slot_id": "slot_main_second_actor", "entity_id": "ent_person_mara" },
+        { "schema_version": 1, "slot_id": "slot_main_marking", "entity_id": "ent_action_kept_comparing" },
+        { "schema_version": 1, "slot_id": "slot_main_relation", "entity_id": "ent_decoy_outage_cause" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dome_scope", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dome_star_chart", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_control_autotrack", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_generator_socket", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_roof_photo", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_terrace_film", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_terrace_traces", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_terrace_notes", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": "review_main"
+    }
+  ],
+  "hints": [
+    {
+      "schema_version": 1,
+      "id": "hint_cable_run",
+      "title": "힌트 — 같은 테이프 두 바퀴",
+      "body": "배전도를 펴서 답을 찾지 마라. 굵은 케이블 하나가 지나간 자리를 하나씩 찾아 같은 흔적을 맞춰 보라. 같은 폭의 황색테이프 두 바퀴가 나온 자리는 세 곳이고, 그 사이가 두 곳이다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_tape_generator",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_two_clocks",
+      "title": "힌트 — 시간이 두 번 나온다",
+      "body": "한쪽은 기기 기록이고 다른 한쪽은 손으로 남긴 필기다. 기록지에도 필기에도 같은 구간이 적혀 있다. 그 구간에 겹쳐 있는 다른 기록이 무엇인지 찾아라.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_blackout_window",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_four_overlays",
+      "title": "힌트 — 네 장의 반투명 종이",
+      "body": "네 자료 중 두 장은 현장에 놓여 있고 한 장은 기억으로 다시 그려졌고 한 장은 기록함 카드다. 색인카드에 적힌 말은 단서가 아니다. 얇은 종이 네 장을 한 장씩 겹쳐 같은 표식이 어디에 포개지는지 보라.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_tracing_overlay",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_two_events",
+      "title": "힌트 — 같은 시간에 있었다는 것",
+      "body": "정전 구간의 행위자를 찾아도 줄리언의 자리는 그대로 남는다. 두 사람이 같은 시각에 있었다는 기록은 두 사건을 합치는 근거가 아니다. 한쪽은 배전과 기기, 다른 쪽은 종이에서 나온 것이라 근거가 다르다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_person_julian",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    }
+  ],
+  "review": {
+    "schema_version": 1,
+    "id": "review_main",
+    "conclusion": "연료는 71%에서 움직이지 않았고 기계식 차단기는 정상 계통 쪽에 내려가 있었다. 배전도 두 장은 세 번째 선로를 그리지 않는다. 굵은 케이블 하나가 발전기실 분기함에서 서비스사다리를 거쳐 옥상으로 이어졌고, 3핀 플러그 날개의 긁힘과 비상출력 소켓의 금속활 자국이 같은 폭으로 맞물린다. 21:43–21:56의 송신 기록은 추적이 끊긴 21:44–21:56와 겹친다. 같은 구간에 줄리언은 돔 안에 있었고, 그의 네 자료는 그 구간보다 앞선 시각에 이미 한 곳에 함께 있었다. 네 자료에 겹쳐지는 붉은 원은 후대 손이 빈 자리에 덧붙인 자리를 가리킨다. 정전과 그의 행위 사이에는 원인 관계가 없으며, 그가 무엇을 경험했는지의 이름은 이 장의 답이 아니다.",
+    "referenced_case_ids": [],
+    "scene_path": ""
+  },
+  "next_case_ids": ["case_09_mara_darkroom"]
+}

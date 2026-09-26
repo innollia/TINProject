@@ -139,7 +139,7 @@ Primitive → Component → Pattern → Screen은 **책임을 나누는 사고 �
 
 ## 9. UI 아이콘
 
-UI에는 at-icons를 포함한 아이콘을 기본적으로 사용하지 않는다.
+UI 아이콘을 기본적으로 사용하지 않는다.
 
 선택/상태/경고는:
 - 텍스트
@@ -151,7 +151,7 @@ UI에는 at-icons를 포함한 아이콘을 기본적으로 사용하지 않는�
 - 짧은 모션
 으로 해결한다.
 
-at-icons는 월드 아트 재료다.
+월드 이미지 자산의 기준은 `docs/VISUAL_DIRECTION.md`에 둔다.
 
 ## 10. 모션
 

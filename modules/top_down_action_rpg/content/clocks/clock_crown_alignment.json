@@ -1,0 +1,193 @@
+{
+    "schema_version":  1,
+    "id":  "clock_crown_alignment",
+    "kind":  "crown_alignment",
+    "scope":  "global",
+    "start_state":  "dormant",
+    "period":  {
+                   "unit":  "region_enter",
+                   "per":  1
+               },
+    "stages":  [
+                   {
+                       "stage_id":  "vacant",
+                       "index":  0,
+                       "label":  "the operator seat is empty",
+                       "advance":  {
+                                       "ticks":  2
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "world_event",
+                                              "text":  "the operator position is empty and the route map still has a chair for it"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "contested",
+                       "index":  1,
+                       "label":  "two institutions claim it",
+                       "advance":  {
+                                       "ticks":  3
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "prop_change",
+                                              "prop_id":  "prop_h0_counterweight_map",
+                                              "text":  "the counterweight shadow and the seat disagree"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "aligned",
+                       "index":  2,
+                       "label":  "one claim is accepted",
+                       "advance":  {
+                                       "ticks":  4
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "npc_warning",
+                                              "npc_id":  "npc_01_ilyra_senn",
+                                              "text":  "an institution presents its protocol as the precedence"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "intervened",
+                       "index":  3,
+                       "label":  "an operator is swapped",
+                       "advance":  {
+                                       "ticks":  5
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "world_event",
+                                              "text":  "the operator is swapped in public"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "fixed",
+                       "index":  4,
+                       "label":  "precedence and operator are fixed",
+                       "advance":  {
+                                       "ticks":  6
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "document",
+                                              "document_id":  "doc_r1_wrong_return_log",
+                                              "text":  "precedence and operator are written once"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  true,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "locked",
+                       "index":  5,
+                       "label":  "the choice can no longer move",
+                       "advance":  {
+                                       "ticks":  7
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "world_event",
+                                              "text":  "the choice can no longer be moved"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  false,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   }
+               ],
+    "pressure_policy":  {
+                            "advance_on_player_action":  true,
+                            "advance_on_region_enter":  true,
+                            "advance_on_encounter_window":  false,
+                            "decay_when_untouched":  0
+                        },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

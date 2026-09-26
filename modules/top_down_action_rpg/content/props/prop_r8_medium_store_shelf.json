@@ -1,0 +1,48 @@
+{
+    "schema_version":  1,
+    "id":  "prop_r8_medium_store_shelf",
+    "display_name":  "Medium Store Shelf",
+    "region_id":  "region_r8_folding_school",
+    "placement":  {
+                      "anchor_key":  "r8_medium_store_shelf",
+                      "layer":  "prop",
+                      "visible_from":  "same_room"
+                  },
+    "initial_state_id":  "ps_stocked",
+    "states":  [
+                   {
+                       "state_id":  "ps_stocked",
+                       "label":  "shelves hold blanks and fold sheets",
+                       "visible":  true,
+                       "art_key":  "prop_r8_shelf_stocked",
+                       "collides":  false,
+                       "interactable":  true,
+                       "entry_effect_ids":  [
+
+                                            ]
+                   },
+                   {
+                       "state_id":  "ps_quarantined",
+                       "label":  "shelves are counted as unassigned stock",
+                       "visible":  true,
+                       "art_key":  "prop_r8_shelf_quarantined",
+                       "collides":  false,
+                       "interactable":  true,
+                       "entry_effect_ids":  [
+                                                "eff_r8_concentration_registered"
+                                            ]
+                   }
+               ],
+    "interaction":  {
+                        "verb_id":  "verb_count_the_shelves",
+                        "availability":  {
+
+                                         },
+                        "opens":  "conv_r8_course_index_desk",
+                        "return_focus":  "prop"
+                    },
+    "revisit_visible":  true,
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

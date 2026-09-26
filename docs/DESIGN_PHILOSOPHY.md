@@ -125,15 +125,9 @@ Shell은 기술적 기반이지 화면 장식이 아니다. Esc 등으로 호출
 - 되돌리기
 - 콘텐츠 밀도
 
-## 9. at-icons는 월드의 공통 재료다
+## 9. 이미지 자산 기반 전환
 
-모든 Kit Reference Game에서 `res://addons/at-icons/`를 월드 아트 재료로 사용한다.
-
-아이콘 하나를 그대로 “집/사람/돋보기”로 쓰지 않는다. 여러 조각을 재조립해 원래 pictogram 의미를 지운다.
-
-UI 아이콘으로는 사용하지 않는다.
-
-이 공통 재료를 쓰더라도 장르마다 Primary Reference의 실루엣, 밀도, 카메라, 정보 구조는 달라야 한다.
+기존 at-icons 조립 기반의 문서와 실험 자료는 `archive/icon_based_image_assets/`에 보관한다. 기존에 만들어 둔 이미지 파일은 그대로 유지한다. 현행 기반은 GPT 이미지 제작을 전제로 한 개인 화풍 코어 + 프로젝트 아트 층이며, `docs/VISUAL_DIRECTION.md`의 자산군 Gold Standard와 제작 경계를 따른다. 각 Kit는 이 기준과 함께 Primary Reference의 실루엣, 밀도, 카메라, 정보 구조를 반영한다.
 
 ## 10. 공통화는 장르 자유를 해치지 않게 한다
 

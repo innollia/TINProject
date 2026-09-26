@@ -1,0 +1,694 @@
+{
+  "schema_version": 1,
+  "id": "case_07_karmin_dock",
+  "title": "07 불탄 창고의 일곱 상자 — 카르민 항",
+  "start_scene_id": "scene_bonded_store",
+  "scenes": [
+    {
+      "schema_version": 1,
+      "id": "scene_bonded_store",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_store_overview",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_store_overview", "focus_id": "msg_store_overview" },
+        { "schema_version": 1, "id": "hotspot_store_chalk", "focus_id": "msg_store_chalk" },
+        { "schema_version": 1, "id": "hotspot_store_e09_seal", "focus_id": "msg_store_e09_seal" },
+        { "schema_version": 1, "id": "hotspot_store_g02_tray", "focus_id": "msg_store_g02_tray" },
+        { "schema_version": 1, "id": "hotspot_store_ignition", "focus_id": "msg_store_ignition" },
+        { "schema_version": 1, "id": "hotspot_store_pocket", "focus_id": "msg_store_pocket" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_store_to_yard",
+          "destination_scene_id": "scene_yard",
+          "focus_id": "hotspot_yard_nyle"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_store_to_customs",
+          "destination_scene_id": "scene_customs",
+          "focus_id": "hotspot_customs_scale"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_store_to_office",
+          "destination_scene_id": "scene_office",
+          "focus_id": "hotspot_office_permit"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_yard",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_yard_nyle",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_yard_nyle", "focus_id": "msg_yard_nyle" },
+        { "schema_version": 1, "id": "hotspot_yard_order", "focus_id": "msg_yard_order" },
+        { "schema_version": 1, "id": "hotspot_yard_supervisor", "focus_id": "msg_yard_supervisor" },
+        { "schema_version": 1, "id": "hotspot_yard_fork", "focus_id": "msg_yard_fork" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_yard_to_store",
+          "destination_scene_id": "scene_bonded_store",
+          "focus_id": "hotspot_store_overview"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_customs",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_customs_scale",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_customs_scale", "focus_id": "msg_customs_scale" },
+        { "schema_version": 1, "id": "hotspot_customs_manifest", "focus_id": "msg_customs_manifest" },
+        { "schema_version": 1, "id": "hotspot_customs_decl", "focus_id": "msg_customs_decl" },
+        { "schema_version": 1, "id": "hotspot_customs_seal_drawing", "focus_id": "msg_customs_seal_drawing" },
+        { "schema_version": 1, "id": "hotspot_customs_g02_seal", "focus_id": "msg_customs_g02_seal" },
+        { "schema_version": 1, "id": "hotspot_customs_empty_bag", "focus_id": "msg_customs_empty_bag" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_customs_to_store",
+          "destination_scene_id": "scene_bonded_store",
+          "focus_id": "hotspot_store_overview"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_office",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_office_permit",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_office_permit", "focus_id": "msg_office_permit" },
+        { "schema_version": 1, "id": "hotspot_office_telegram", "focus_id": "msg_office_telegram" },
+        { "schema_version": 1, "id": "hotspot_office_bench", "focus_id": "msg_office_bench" },
+        { "schema_version": 1, "id": "hotspot_office_insurance", "focus_id": "msg_office_insurance" },
+        { "schema_version": 1, "id": "hotspot_office_trunk", "focus_id": "msg_office_trunk" },
+        { "schema_version": 1, "id": "hotspot_office_stove", "focus_id": "msg_office_stove" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_office_to_store",
+          "destination_scene_id": "scene_bonded_store",
+          "focus_id": "hotspot_store_overview"
+        }
+      ]
+    }
+  ],
+  "closeups": [],
+  "entities": [
+    { "schema_version": 1, "id": "ent_person_olren", "kind": "person", "display_text": "올렌 피스크", "source_text_id": "msg_store_chalk", "tags": ["victim"] },
+    { "schema_version": 1, "id": "ent_person_vera", "kind": "person", "display_text": "베라 콜", "source_text_id": "msg_yard_supervisor", "tags": ["alternative_actor"] },
+    { "schema_version": 1, "id": "ent_person_nyle", "kind": "person", "display_text": "나일 로우", "source_text_id": "msg_yard_nyle", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_person_kass", "kind": "person", "display_text": "카스 민", "source_text_id": "msg_yard_order", "tags": [] },
+    { "schema_version": 1, "id": "ent_person_paul", "kind": "person", "display_text": "폴 에른", "source_text_id": "msg_office_stove", "tags": ["alternative_actor"] },
+    { "schema_version": 1, "id": "ent_role_customs_officer", "kind": "role", "display_text": "세관검사관", "source_text_id": "msg_store_chalk", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_store_supervisor", "kind": "role", "display_text": "창고감독", "source_text_id": "msg_yard_supervisor", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_loading_lead", "kind": "role", "display_text": "하역반장", "source_text_id": "msg_yard_nyle", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_antiquities_importer", "kind": "role", "display_text": "골동품수입업자", "source_text_id": "msg_office_permit", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_night_guard", "kind": "role", "display_text": "야간경비", "source_text_id": "msg_office_stove", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_crate_e09", "kind": "place", "display_text": "E09", "source_text_id": "msg_customs_manifest", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_crate_g02", "kind": "place", "display_text": "G02", "source_text_id": "msg_customs_manifest", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_crate_d11", "kind": "place", "display_text": "D11", "source_text_id": "msg_customs_scale", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_store", "kind": "place", "display_text": "12번 보세창고", "source_text_id": "msg_store_ignition", "tags": [] },
+    { "schema_version": 1, "id": "ent_stone_panel", "kind": "object", "display_text": "흑색석판", "source_text_id": "msg_customs_decl", "tags": [] },
+    { "schema_version": 1, "id": "ent_stone_shard", "kind": "object", "display_text": "깨진 흑색석판 조각", "source_text_id": "msg_store_pocket", "tags": [] },
+    { "schema_version": 1, "id": "ent_empty_sack", "kind": "object", "display_text": "무표기 공업포대", "source_text_id": "msg_customs_empty_bag", "tags": [] },
+    { "schema_version": 1, "id": "ent_weight_22kg", "kind": "device", "display_text": "22kg 각인의 금속물", "source_text_id": "msg_store_e09_seal", "tags": [] },
+    { "schema_version": 1, "id": "ent_accelerant", "kind": "device", "display_text": "가속제 성분 액체", "source_text_id": "msg_office_trunk", "tags": [] },
+    { "schema_version": 1, "id": "ent_customs_seal", "kind": "device", "display_text": "세관봉인", "source_text_id": "msg_store_e09_seal", "tags": [] },
+    { "schema_version": 1, "id": "ent_device_scale", "kind": "device", "display_text": "자동저울", "source_text_id": "msg_customs_scale", "tags": [] },
+    { "schema_version": 1, "id": "ent_stove", "kind": "device", "display_text": "등유난로", "source_text_id": "msg_office_stove", "tags": [] },
+    { "schema_version": 1, "id": "ent_work_order", "kind": "document", "display_text": "작업지시서", "source_text_id": "msg_yard_order", "tags": [] },
+    { "schema_version": 1, "id": "ent_cargo_manifest", "kind": "document", "display_text": "화물 인수목록", "source_text_id": "msg_customs_manifest", "tags": [] },
+    { "schema_version": 1, "id": "ent_import_declaration", "kind": "document", "display_text": "수입품 신고철", "source_text_id": "msg_customs_decl", "tags": [] },
+    { "schema_version": 1, "id": "ent_seal_rule", "kind": "document", "display_text": "봉인 번호별 인장그림", "source_text_id": "msg_customs_seal_drawing", "tags": [] },
+    { "schema_version": 1, "id": "ent_weigh_tape", "kind": "document", "display_text": "자동저울 종이테이프", "source_text_id": "msg_customs_scale", "tags": [] },
+    { "schema_version": 1, "id": "ent_import_permit", "kind": "document", "display_text": "수입허가서", "source_text_id": "msg_office_permit", "tags": [] },
+    { "schema_version": 1, "id": "ent_overseas_telegram", "kind": "document", "display_text": "해외전보", "source_text_id": "msg_office_telegram", "tags": [] },
+    { "schema_version": 1, "id": "ent_insurance", "kind": "document", "display_text": "보험서류", "source_text_id": "msg_office_insurance", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_dust_outline", "kind": "trace", "display_text": "포장틀의 넓고 얇은 먼지선", "source_text_id": "msg_store_overview", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_trace_black_rubble", "kind": "trace", "display_text": "검은 돌가루", "source_text_id": "msg_yard_fork", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_ree_soot", "kind": "trace", "display_text": "바닥에서 위로 V자 그을음", "source_text_id": "msg_store_ignition", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_trace_cut_thread", "kind": "trace", "display_text": "잘린 실꾸러미", "source_text_id": "msg_office_bench", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_residue", "kind": "trace", "display_text": "트렁크 용제통 잔류액", "source_text_id": "msg_office_trunk", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_kerosene", "kind": "trace", "display_text": "난로의 등유 남음", "source_text_id": "msg_office_stove", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_two_crates", "kind": "state", "display_text": "두 상자 사이에 무언가 옮겨갔다", "source_text_id": "msg_store_overview", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_state_22kg_shift", "kind": "state", "display_text": "E09 +22 / G02 −22", "source_text_id": "msg_customs_scale", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_trapezoid_gap", "kind": "state", "display_text": "사다리꼴로 눌린 빈 자리", "source_text_id": "msg_store_g02_tray", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_state_repressed_seal", "kind": "state", "display_text": "네 갈래로 어긋난 재압착 흔적", "source_text_id": "msg_customs_seal_drawing", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_state_recheck_seal", "kind": "state", "display_text": "마지막 재계량 옆 붉은 분필", "source_text_id": "msg_customs_scale", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_normal_loading", "kind": "state", "display_text": "서명지시로 옮긴 정상 작업", "source_text_id": "msg_yard_order", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_wired_intact", "kind": "state", "display_text": "전기배선에 그을음이 없다", "source_text_id": "msg_store_ignition", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_stove_old_soot", "kind": "state", "display_text": "오래된 원형 그을음", "source_text_id": "msg_office_stove", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_no_insurance_gain", "kind": "state", "display_text": "손해가 등재 금액보다 크다", "source_text_id": "msg_office_insurance", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_panel_void", "kind": "state", "display_text": "제작 당시부터 비어 있던 중앙부", "source_text_id": "msg_office_telegram", "tags": [] },
+    { "schema_version": 1, "id": "ent_decoy_normal_error", "kind": "decoy", "display_text": "정상 적재오류", "source_text_id": "msg_yard_fork", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_electrical", "kind": "decoy", "display_text": "전기합선", "source_text_id": "msg_store_ignition", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_kerosene_stove", "kind": "decoy", "display_text": "등유난로가 불을 냈다", "source_text_id": "msg_office_stove", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_insurance", "kind": "decoy", "display_text": "보험금 목적", "source_text_id": "msg_office_insurance", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_seven_crates", "kind": "decoy", "display_text": "일곱 상자를 모두 맞춰야 한다", "source_text_id": "msg_store_overview", "tags": ["decoy"] }
+  ],
+  "messages": [
+    {
+      "schema_version": 1,
+      "id": "msg_store_overview",
+      "title": "비수집형 시각단서 — 창고 본실 / E09 포장틀",
+      "body": "관찰: 일곱 상자가 흩어져 있다. A17·B04·C22·D11은 닫혀 있고 E09만 검사대 앞에서 열려 있다.\n관찰: E09 포장틀에 넓고 얇은 직사각형 먼지선이 남아 있다. 테두리에 검은 돌가루가 고여 있다.\n관찰: 같은 포장틀에 사다리꼴 손잡이와 둥근 돌기 두 개 모양의 새 압흔이 하나 더 있다.\n관찰: 바닥에는 서로 다른 방향의 지게차 자국과 소화수 흐름이 겹쳐 있다.",
+      "source_refs": ["ent_trace_dust_outline", "ent_state_two_crates", "ent_place_crate_e09", "ent_place_store", "ent_decoy_seven_crates"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_dust_outline", "ent_state_two_crates", "ent_place_crate_e09", "ent_place_store", "ent_decoy_seven_crates"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_main_statement" } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_two_crates_one_object" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_store_chalk",
+      "title": "오브젝트 B1 — 붉은 검사분필선",
+      "body": "관찰: A17·B04·C22·D11 상자 옆에 검사완료 사선이 그어져 있다. E09 옆 사선은 없다.\n관찰: 사선이 끝난 네 상자 모서리에는 같은 붉은 분필이 조금씩 묻어 있다.\n관찰: 사선을 긋는 방향이 세 구간에서 같다.",
+      "source_refs": ["ent_person_olren", "ent_role_customs_officer", "ent_place_crate_e09", "ent_place_crate_d11"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_olren", "ent_role_customs_officer", "ent_place_crate_e09", "ent_place_crate_d11"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_store_e09_seal",
+      "title": "오브젝트 B2 — E09 봉인과 내부",
+      "body": "관찰: E09 뚜껑에 세관봉인. 겉보기엔 온전하다. 실은 새것이다.\n관찰: 새 실 사이에 검은 밀랍 미세조각이 박혀 있다.\n관찰: 내부 포장틀 한 칸에 금속물이 들어 있다. 윗면에 22kg 각인. 사다리꼴 손잡이와 둥근 돌기 두 개가 있다.",
+      "source_refs": ["ent_customs_seal", "ent_weight_22kg", "ent_place_crate_e09"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_customs_seal", "ent_weight_22kg", "ent_place_crate_e09"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_store_g02_tray",
+      "title": "비수집형 시각단서 — G02 내부 트레이",
+      "body": "관찰: G02 내부 포대 하나가 비어 있다.\n관찰: 빈 포대에 남은 눌림은 사다리꼴 손잡이와 둥근 돌기 두 개 모양이다.\n비교: E09 내부 금속물의 손잡이와 돌기 간격. 두 압흔의 폭이 같다.\n관찰: G02 뚜껑 안쪽 먼지는 고르게 쌓여 있다.",
+      "source_refs": ["ent_state_trapezoid_gap", "ent_place_crate_g02", "ent_weight_22kg"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_trapezoid_gap", "ent_place_crate_g02", "ent_weight_22kg"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_two_crates_one_object" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_store_ignition",
+      "title": "오브젝트 B3 — 화점의 포장면천",
+      "body": "관찰: 화점 표시 아래 포장면천에 그을음이 바닥에서 위로 V자로 퍼져 있다.\n관찰: V자 바깥을 지나는 천장 전기배선에는 그을음이 없다.\n관찰: 검사표 기재: 가속제 성분 검출.",
+      "source_refs": ["ent_trace_ree_soot", "ent_state_wired_intact", "ent_place_store", "ent_decoy_electrical"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_ree_soot", "ent_state_wired_intact", "ent_place_store", "ent_decoy_electrical"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_olren_discovery" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_store_pocket",
+      "title": "오브젝트 B4 — 올렌 주머니",
+      "body": "관찰: 회색 제복 주머니에서 깨진 흑색석판 조각이 나왔다.\n비교: E09 포장틀 먼지선 테두리 가루와 창고바닥의 검은 돌가루. 세 재질의 색과 입자가 같다.\n관찰: 조각 한 면은 매끈하다. 두께 면은 거칠다.",
+      "source_refs": ["ent_stone_shard", "ent_stone_panel", "ent_person_olren", "ent_state_panel_void"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_stone_shard", "ent_stone_panel", "ent_person_olren", "ent_state_panel_void"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_yard_nyle",
+      "title": "오브젝트 A1 — 나일 로우",
+      "body": "인용: 「E09를 검사대로 옮기라는 서명지시가 있었습니다. 다른 건 손대지 않았습니다. 지게차는 그 한 대만 씁니다.」",
+      "source_refs": ["ent_person_nyle", "ent_role_loading_lead", "ent_state_normal_loading", "ent_decoy_normal_error"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_nyle", "ent_role_loading_lead", "ent_state_normal_loading", "ent_decoy_normal_error"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_yard_order",
+      "title": "오브젝트 A2 — 작업지시서",
+      "body": "인쇄: 「E09 → 검사대 앞으로 이동.」\n서명: K. Min.",
+      "source_refs": ["ent_work_order", "ent_person_kass", "ent_place_crate_e09", "ent_state_normal_loading"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_work_order", "ent_person_kass", "ent_place_crate_e09", "ent_state_normal_loading"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_yard_supervisor",
+      "title": "오브젝트 A4 — 베라 콜",
+      "body": "인용: 「E09는 제가 열지 않았습니다. 창고 열쇠는 저한테 있지만 세관봉인은 창고 열쇠로 뜯을 수 없습니다. 개봉권한이 없습니다.」",
+      "source_refs": ["ent_person_vera", "ent_role_store_supervisor"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_vera", "ent_role_store_supervisor"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_yard_fork",
+      "title": "오브젝트 A3 — 지게차 포크",
+      "body": "관찰: 포크 홈에 검은 돌가루가 끼어 있다.\n비교: E09 포장틀 먼지선 테두리 가루. 굵기와 색이 같다.\n관찰: 포크 홈의 가루는 바닥이 아니라 들어 올린 높이에서 묻어 있다.",
+      "source_refs": ["ent_trace_black_rubble", "ent_state_normal_loading"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_black_rubble", "ent_state_normal_loading"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_customs_scale",
+      "title": "오브젝트 C1 — 자동저울 종이테이프",
+      "body": "기록:\n03:04 D11 — 28.2\n03:08 E09 — 118.1\n03:16 G02 — 96.8\n03:27 E09 — 95.4\n마지막 줄 옆 붉은 분필: RECHECK SEAL.",
+      "source_refs": ["ent_state_22kg_shift", "ent_state_recheck_seal", "ent_device_scale", "ent_weigh_tape", "ent_place_crate_e09", "ent_place_crate_g02", "ent_place_crate_d11"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_22kg_shift", "ent_state_recheck_seal", "ent_device_scale", "ent_weigh_tape", "ent_place_crate_e09", "ent_place_crate_g02", "ent_place_crate_d11"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_two_crates_one_object" } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_olren_discovery" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_customs_manifest",
+      "title": "오브젝트 C2 — 화물 인수목록",
+      "body": "기입: E09 — 96kg / G02 — 119kg\n나머지 다섯 상자도 번호와 신고 중량만 있다.",
+      "source_refs": ["ent_cargo_manifest", "ent_place_crate_e09", "ent_place_crate_g02", "ent_state_22kg_shift"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_cargo_manifest", "ent_place_crate_e09", "ent_place_crate_g02", "ent_state_22kg_shift"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_customs_decl",
+      "title": "오브젝트 C3 — 수입품 신고철",
+      "body": "기재: 내용물은 상자번호가 아니라 봉인번호로 관리한다.\n검은 밀랍 K-71 / carved stone panel / 신고 96kg\n붉은 공업봉인 M-22 / machine counterweights / 신고 119kg",
+      "source_refs": ["ent_import_declaration", "ent_stone_panel", "ent_customs_seal", "ent_place_crate_e09", "ent_place_crate_g02"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_import_declaration", "ent_stone_panel", "ent_customs_seal", "ent_place_crate_e09", "ent_place_crate_g02"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_customs_seal_drawing",
+      "title": "비수집형 시각단서 — 봉인 번호별 인장그림",
+      "body": "관찰: 신고철에 붙은 봉인 번호별 인장그림. 균열이 몇 갈래로 뻗는지가 그려져 있다.\n관찰: K-71 검은 밀랍의 균열은 세 갈래로 뻗어 있다.\n비교: E09 현재 봉인. 균열이 네 갈래로 어긋나 있고 한 면이 눌려 있다.\n비교: 창고사무실 포장대의 검은 밀랍 금형. 균열이 네 갈래로 뻗어 있다.",
+      "source_refs": ["ent_state_repressed_seal", "ent_seal_rule", "ent_customs_seal"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_repressed_seal", "ent_seal_rule", "ent_customs_seal"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_customs_g02_seal",
+      "title": "오브젝트 C4 — G02 봉인표",
+      "body": "관찰: G02 봉인표는 붉은 공업봉인 M-22. 개봉 흔적과 재압착 흔적 없다.",
+      "source_refs": ["ent_place_crate_g02", "ent_customs_seal"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_place_crate_g02", "ent_customs_seal"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_customs_empty_bag",
+      "title": "오브젝트 C5 — 공업포대",
+      "body": "관찰: 무표기 공업포대 하나가 바닥에 떨어져 있다.\n관찰: 안쪽에 사다리꼴 손잡이와 둥른 돌기 두 개의 눌림이 남아 있다.\n비교: E09 내부 금속물 각인 옆 손잡이와 돌기. 폭이 같다.",
+      "source_refs": ["ent_empty_sack", "ent_weight_22kg"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_empty_sack", "ent_weight_22kg"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_office_permit",
+      "title": "하위 D1-1 — 수입허가서",
+      "body": "인쇄: Importer: Kass Min\n서명: Kass Min\n상호: 민 골동품수입",
+      "source_refs": ["ent_person_kass", "ent_import_permit", "ent_role_antiquities_importer"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_kass", "ent_import_permit", "ent_role_antiquities_importer"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_office_telegram",
+      "title": "하위 D1-2 — 해외전보",
+      "body": "인쇄: 「네 인물판 확보 중. 중앙부가 파손이 아니라 원래 비어 있는 형식이라면 제시가의 세 배. — K. Min」",
+      "source_refs": ["ent_overseas_telegram", "ent_state_panel_void", "ent_person_kass"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_overseas_telegram", "ent_state_panel_void", "ent_person_kass"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_office_bench",
+      "title": "오브젝트 D2 — 카스 포장대",
+      "body": "관찰: 검은 밀랍 덩어리와 잘린 실꾸러미 한 묶음이 있다.\n관찰: 밀랍 금형의 가장자리는 네 갈래 균열로 갈라져 있다.\n비교: 신고철의 K-71 인장그림. 균열 방향이 다르다.",
+      "source_refs": ["ent_trace_cut_thread", "ent_state_repressed_seal", "ent_person_kass"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_cut_thread", "ent_state_repressed_seal", "ent_person_kass"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_office_insurance",
+      "title": "오브젝트 D3 — 보험서류",
+      "body": "기재: 석판 신고가는 96kg 기준 신고가로 산정되어 있다. 등재 금액이 신고가보다 높다.\n인재: 제라 베일 / 보험조사원",
+      "source_refs": ["ent_insurance", "ent_state_no_insurance_gain", "ent_decoy_insurance"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_insurance", "ent_state_no_insurance_gain", "ent_decoy_insurance"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_office_trunk",
+      "title": "오브젝트 D4 — 차량 트렁크 용제통",
+      "body": "관찰: 트렁크 바닥 용제통에 소량의 액체가 남아 있다.\n관찰: 화점 검사표에 성분 대조표가 붙어 있다. 색과 점도 반응으로 읽는다.\n비교: 화점 검사표의 가속제 성분표와 트렁크 잔류액. 색과 점도가 같고 등유 잔류액과는 반응이 다르다.",
+      "source_refs": ["ent_accelerant", "ent_trace_residue", "ent_trace_kerosene", "ent_person_kass"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_accelerant", "ent_trace_residue", "ent_trace_kerosene", "ent_person_kass"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_office_stove",
+      "title": "오브젝트 D5 — 폴의 등유난로",
+      "body": "관찰: 등유 남음이 있다. 창고 화점까지 20m.\n비교: 난로 주변 그을음은 오래된 원형이다. 화점의 그을음과 형태가 다르다.\n관찰: 폴 에른이 야간 순찰 때 쓰던 기기다.",
+      "source_refs": ["ent_stove", "ent_state_stove_old_soot", "ent_person_paul", "ent_role_night_guard", "ent_decoy_kerosene_stove"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_stove", "ent_state_stove_old_soot", "ent_person_paul", "ent_role_night_guard", "ent_decoy_kerosene_stove"] } }
+      ],
+      "detail_scene_id": ""
+    }
+  ],
+  "panels": [
+    {
+      "schema_version": 1,
+      "id": "panel_inter_two_crates_one_object",
+      "kind": "procedure_board",
+      "title": "중간문제 — 두 상자, 한 물체",
+      "accepted_entity_kinds": ["place", "state", "device", "trace", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_swap_from", "segment_id": "segment_swap_from", "accepted_kinds": ["place"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_swap_to", "segment_id": "segment_swap_to", "accepted_kinds": ["place"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_swap_mass", "segment_id": "segment_swap_mass", "accepted_kinds": ["state", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_swap_form", "segment_id": "segment_swap_form", "accepted_kinds": ["device", "trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_swap_absence", "segment_id": "segment_swap_absence", "accepted_kinds": ["trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_swap_from", "display_text": "석판이 있던 상자" },
+        { "schema_version": 1, "id": "segment_swap_to", "display_text": "무거운 물체가 옮겨간 상자" },
+        { "schema_version": 1, "id": "segment_swap_mass", "display_text": "두 상자 사이의 질량차" },
+        { "schema_version": 1, "id": "segment_swap_form", "display_text": "빈 자리의 형태와 맞는 물체" },
+        { "schema_version": 1, "id": "segment_swap_absence", "display_text": "E09 포장틀에 남은 것" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_olren_discovery",
+      "kind": "procedure_board",
+      "title": "중간문제 — 올렌이 무엇을 남겼나",
+      "accepted_entity_kinds": ["place", "state", "object", "device", "trace", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_olren_crate", "segment_id": "segment_olren_crate", "accepted_kinds": ["place"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_olren_recheck", "segment_id": "segment_olren_recheck", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_olren_pocket", "segment_id": "segment_olren_pocket", "accepted_kinds": ["object"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_olren_seal", "segment_id": "segment_olren_seal", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_olren_fire", "segment_id": "segment_olren_fire", "accepted_kinds": ["state", "trace", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_olren_crate", "display_text": "검사가 멈춘 상자" },
+        { "schema_version": 1, "id": "segment_olren_recheck", "display_text": "마지막 재계량 표시" },
+        { "schema_version": 1, "id": "segment_olren_pocket", "display_text": "주머니에서 나온 물건" },
+        { "schema_version": 1, "id": "segment_olren_seal", "display_text": "E09 봉인의 상태" },
+        { "schema_version": 1, "id": "segment_olren_fire", "display_text": "화점의 시작 형태" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_main_statement",
+      "kind": "statement",
+      "title": "메인문제 — [석판을 빼돌린 사람]은 [석판이 있던 상자]에서 [흑색석판]을 빼돌리고 [무거운 물체를 넣은 상자]에 [22kg 각인의 금속물]를 넣어 신고 중량을 맞추려 했다. [마지막 재계량을 쓴 검사관]이 이상을 발견하자 카스는 흔적을 없애기 위해 [가속제 성분 액체]로 불을 냈다. [지시대로 상자를 옮긴 사람]의 이동은 서명된 정상 작업이었다.",
+      "accepted_entity_kinds": ["person", "place", "object", "device", "state", "trace", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_main_actor", "segment_id": "segment_main_actor", "accepted_kinds": ["person", "decoy"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_from", "segment_id": "segment_main_from", "accepted_kinds": ["place", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_item", "segment_id": "segment_main_item", "accepted_kinds": ["object", "trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_to", "segment_id": "segment_main_to", "accepted_kinds": ["place", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_weight", "segment_id": "segment_main_weight", "accepted_kinds": ["device", "object"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_fire", "segment_id": "segment_main_fire", "accepted_kinds": ["device", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_worker", "segment_id": "segment_main_worker", "accepted_kinds": ["person", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_main_actor", "display_text": "석판을 빼돌린 사람" },
+        { "schema_version": 1, "id": "segment_main_from", "display_text": "석판이 있던 상자" },
+        { "schema_version": 1, "id": "segment_main_item", "display_text": "빼돌린 물건" },
+        { "schema_version": 1, "id": "segment_main_to", "display_text": "무거운 물체를 넣은 상자" },
+        { "schema_version": 1, "id": "segment_main_weight", "display_text": "중량을 맞추기 위해 넣은 물체" },
+        { "schema_version": 1, "id": "segment_main_fire", "display_text": "불을 낸 물질" },
+        { "schema_version": 1, "id": "segment_main_worker", "display_text": "지시대로 상자를 옮긴 사람" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": true,
+      "unlock_condition": null
+    }
+  ],
+  "solutions": [
+    {
+      "schema_version": 1,
+      "id": "solution_inter_two_crates_one_object",
+      "panel_id": "panel_inter_two_crates_one_object",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_swap_from", "entity_id": "ent_place_crate_e09" },
+        { "schema_version": 1, "slot_id": "slot_swap_to", "entity_id": "ent_place_crate_g02" },
+        { "schema_version": 1, "slot_id": "slot_swap_mass", "entity_id": "ent_state_22kg_shift" },
+        { "schema_version": 1, "slot_id": "slot_swap_form", "entity_id": "ent_weight_22kg" },
+        { "schema_version": 1, "slot_id": "slot_swap_absence", "entity_id": "ent_trace_dust_outline" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_swap_from", "entity_id": "ent_place_crate_g02" },
+        { "schema_version": 1, "slot_id": "slot_swap_from", "entity_id": "ent_place_crate_d11" },
+        { "schema_version": 1, "slot_id": "slot_swap_to", "entity_id": "ent_place_crate_e09" },
+        { "schema_version": 1, "slot_id": "slot_swap_to", "entity_id": "ent_place_crate_d11" },
+        { "schema_version": 1, "slot_id": "slot_swap_mass", "entity_id": "ent_decoy_normal_error" },
+        { "schema_version": 1, "slot_id": "slot_swap_mass", "entity_id": "ent_state_no_insurance_gain" },
+        { "schema_version": 1, "slot_id": "slot_swap_mass", "entity_id": "ent_state_recheck_seal" },
+        { "schema_version": 1, "slot_id": "slot_swap_form", "entity_id": "ent_stone_panel" },
+        { "schema_version": 1, "slot_id": "slot_swap_form", "entity_id": "ent_trace_dust_outline" },
+        { "schema_version": 1, "slot_id": "slot_swap_form", "entity_id": "ent_device_scale" },
+        { "schema_version": 1, "slot_id": "slot_swap_form", "entity_id": "ent_empty_sack" },
+        { "schema_version": 1, "slot_id": "slot_swap_absence", "entity_id": "ent_weight_22kg" },
+        { "schema_version": 1, "slot_id": "slot_swap_absence", "entity_id": "ent_trace_black_rubble" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_store_overview", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_store_g02_tray", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_customs_scale", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_customs_manifest", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_olren_discovery",
+      "panel_id": "panel_inter_olren_discovery",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_olren_crate", "entity_id": "ent_place_crate_e09" },
+        { "schema_version": 1, "slot_id": "slot_olren_recheck", "entity_id": "ent_state_recheck_seal" },
+        { "schema_version": 1, "slot_id": "slot_olren_pocket", "entity_id": "ent_stone_shard" },
+        { "schema_version": 1, "slot_id": "slot_olren_seal", "entity_id": "ent_state_repressed_seal" },
+        { "schema_version": 1, "slot_id": "slot_olren_fire", "entity_id": "ent_trace_ree_soot" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_olren_crate", "entity_id": "ent_place_crate_g02" },
+        { "schema_version": 1, "slot_id": "slot_olren_crate", "entity_id": "ent_place_crate_d11" },
+        { "schema_version": 1, "slot_id": "slot_olren_recheck", "entity_id": "ent_state_22kg_shift" },
+        { "schema_version": 1, "slot_id": "slot_olren_recheck", "entity_id": "ent_state_wired_intact" },
+        { "schema_version": 1, "slot_id": "slot_olren_pocket", "entity_id": "ent_weight_22kg" },
+        { "schema_version": 1, "slot_id": "slot_olren_pocket", "entity_id": "ent_stone_panel" },
+        { "schema_version": 1, "slot_id": "slot_olren_pocket", "entity_id": "ent_empty_sack" },
+        { "schema_version": 1, "slot_id": "slot_olren_seal", "entity_id": "ent_state_normal_loading" },
+        { "schema_version": 1, "slot_id": "slot_olren_seal", "entity_id": "ent_state_recheck_seal" },
+        { "schema_version": 1, "slot_id": "slot_olren_fire", "entity_id": "ent_state_wired_intact" },
+        { "schema_version": 1, "slot_id": "slot_olren_fire", "entity_id": "ent_state_stove_old_soot" },
+        { "schema_version": 1, "slot_id": "slot_olren_fire", "entity_id": "ent_decoy_electrical" },
+        { "schema_version": 1, "slot_id": "slot_olren_fire", "entity_id": "ent_decoy_kerosene_stove" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_store_chalk", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_store_pocket", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_store_e09_seal", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_store_ignition", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_main_statement",
+      "panel_id": "panel_main_statement",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_actor", "entity_id": "ent_person_kass" },
+        { "schema_version": 1, "slot_id": "slot_main_from", "entity_id": "ent_place_crate_e09" },
+        { "schema_version": 1, "slot_id": "slot_main_item", "entity_id": "ent_stone_panel" },
+        { "schema_version": 1, "slot_id": "slot_main_to", "entity_id": "ent_place_crate_g02" },
+        { "schema_version": 1, "slot_id": "slot_main_weight", "entity_id": "ent_weight_22kg" },
+        { "schema_version": 1, "slot_id": "slot_main_fire", "entity_id": "ent_accelerant" },
+        { "schema_version": 1, "slot_id": "slot_main_worker", "entity_id": "ent_person_nyle" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_actor", "entity_id": "ent_person_nyle" },
+        { "schema_version": 1, "slot_id": "slot_main_actor", "entity_id": "ent_person_vera" },
+        { "schema_version": 1, "slot_id": "slot_main_actor", "entity_id": "ent_person_olren" },
+        { "schema_version": 1, "slot_id": "slot_main_actor", "entity_id": "ent_person_paul" },
+        { "schema_version": 1, "slot_id": "slot_main_from", "entity_id": "ent_place_crate_g02" },
+        { "schema_version": 1, "slot_id": "slot_main_from", "entity_id": "ent_place_crate_d11" },
+        { "schema_version": 1, "slot_id": "slot_main_from", "entity_id": "ent_place_store" },
+        { "schema_version": 1, "slot_id": "slot_main_item", "entity_id": "ent_stone_shard" },
+        { "schema_version": 1, "slot_id": "slot_main_item", "entity_id": "ent_empty_sack" },
+        { "schema_version": 1, "slot_id": "slot_main_item", "entity_id": "ent_weight_22kg" },
+        { "schema_version": 1, "slot_id": "slot_main_item", "entity_id": "ent_trace_dust_outline" },
+        { "schema_version": 1, "slot_id": "slot_main_to", "entity_id": "ent_place_crate_e09" },
+        { "schema_version": 1, "slot_id": "slot_main_to", "entity_id": "ent_place_crate_d11" },
+        { "schema_version": 1, "slot_id": "slot_main_to", "entity_id": "ent_place_store" },
+        { "schema_version": 1, "slot_id": "slot_main_weight", "entity_id": "ent_stone_panel" },
+        { "schema_version": 1, "slot_id": "slot_main_weight", "entity_id": "ent_device_scale" },
+        { "schema_version": 1, "slot_id": "slot_main_weight", "entity_id": "ent_customs_seal" },
+        { "schema_version": 1, "slot_id": "slot_main_fire", "entity_id": "ent_stove" },
+        { "schema_version": 1, "slot_id": "slot_main_fire", "entity_id": "ent_decoy_electrical" },
+        { "schema_version": 1, "slot_id": "slot_main_fire", "entity_id": "ent_decoy_kerosene_stove" },
+        { "schema_version": 1, "slot_id": "slot_main_worker", "entity_id": "ent_person_kass" },
+        { "schema_version": 1, "slot_id": "slot_main_worker", "entity_id": "ent_person_vera" },
+        { "schema_version": 1, "slot_id": "slot_main_worker", "entity_id": "ent_person_paul" },
+        { "schema_version": 1, "slot_id": "slot_main_actor", "entity_id": "ent_decoy_normal_error" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_store_overview", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_store_g02_tray", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_store_pocket", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_store_ignition", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_customs_scale", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_office_trunk", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_yard_order", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": "review_main"
+    }
+  ],
+  "hints": [
+    {
+      "schema_version": 1,
+      "id": "hint_crate_interior",
+      "title": "힌트 — E09 포장틀 안",
+      "body": "E09 포장틀 하나 안에 두 종류의 자국이 겹쳐 있다. 하나는 넓고 얇은 직사각형이고 테두리에 검은 돌가루가 고여 있다. 다른 하나는 사다리꼴 손잡이와 둥른 돌기 두 개 모양으로, 가장자리가 아직 뜨겁지 않게 눌린 새 압흔이다. 포장틀에서 나온 것과 저절로 들어온 것은 같은 흔적이 아니다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_dust_outline",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_scale_tape",
+      "title": "힌트 — 종이테이프 네 줄",
+      "body": "자동저울 종이테이프는 시간순이다. E09 118.1, G02 96.8, E09 95.4. 인수목록의 신고 중량은 E09 96kg, G02 119kg. 수치만 놓고 시간순·상자별로 두 줄을 세워 변화량을 구한 뒤, 그 수치를 종이테이프가 아니라 포장틀과 빈 트레이의 모양과 대조해라. 숫자만 맞히면 무엇이 옮겨갔는지는 남는다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_22kg_shift",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_seal_cracks",
+      "title": "힌트 — 세 개의 균열문양",
+      "body": "신고철의 봉인 번호별 인장그림, E09 현재 봉인, 창고사무실 포장대의 밀랍 금형. 세 장면에서 균열이 몇 갈래로 뻗는지 따로 세라. 신고철의 K-71 인장과 다르면 현재 봉인은 원래 봉인이 아니다. 같은 밀랍이라는 문장은 이 장의 증거가 되지 않는다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_repressed_seal",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    }
+  ],
+  "review": {
+    "schema_version": 1,
+    "id": "review_main",
+    "conclusion": "자동저울은 E09를 03:08에 118.1, 03:27에 95.4로, G02를 03:16에 96.8로 쟀다. 신고 중량은 E09 96kg, G02 119kg이므로 약 22kg가 G02에서 E09로 옮겨갔다. E09 포장틀의 넓고 얇은 먼지선은 무거운 판형물이 빠진 자리이고, 같은 포장틀의 사다리꼴 새 압흔과 G02 빈 트레이 압흔, 무표기 공업포대의 눌림은 같은 형태다. K-71 신고는 carved stone panel 96kg, M-22 신고는 machine counterweights 119kg이므로 빠진 것은 흑색석판이고 들어간 것은 22kg 각인의 금속물이다. K-71 인장은 세 갈래 균열인데 E09 현재 봉인은 네 갈래로 어긋난 재압착 흔적이고, 카스 포장대의 밀랍 금형은 같은 네 갈래다. 올렌은 붉은 분필선이 E09에서 끊긴 자리에서 마지막 재계량을 적고 석판 조각을 주머니에 넣었다. 화점은 바닥에서 위로 V자로 퍼졌고 전기배선은 그 바깥을 지나며, 트렁크 용제통 잔류액은 화점의 가속제 성분과 색·점도 반응이 같다. 나일 로우의 E09 이동은 K. Min 서명지시에 따른 정상 작업이었다. 창고감독 개봉은 개봉권한 부재로, 전기합선과 등유난로는 그을음 형태와 용액 대조로, 보험금 목적은 손해가 등재 금액보다 크다는 자료로, 일곱 상자 전부 맞히기는 D11·A17·B04·C22에 걸린 흔적으로 각각 떨어진다. 석판 조각의 매끈한 면은 파손면이 아니라 제작 당시부터 비어 있던 중앙부이며 그 의미는 이 장에서 정하지 않는다.",
+    "referenced_case_ids": [],
+    "scene_path": ""
+  },
+  "next_case_ids": ["case_08_hart_observatory"]
+}

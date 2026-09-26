@@ -4,7 +4,7 @@ const ACTIONS: Array[StringName] = [
 	&"rule_rewriting_left", &"rule_rewriting_right", &"rule_rewriting_up", &"rule_rewriting_down",
 	&"rule_rewriting_confirm", &"rule_rewriting_cancel", &"rule_rewriting_undo", &"rule_rewriting_reset",
 	&"rule_rewriting_forward", &"rule_rewriting_turn_left", &"rule_rewriting_turn_right",
-	&"rule_rewriting_cycle_3d_subject", &"rule_rewriting_open_inventory", &"rule_rewriting_cycle_metrix",
+	&"rule_rewriting_toggle_view", &"rule_rewriting_cycle_3d_subject", &"rule_rewriting_open_inventory", &"rule_rewriting_cycle_metrix",
 	&"rule_rewriting_place", &"rule_rewriting_hotbar_1", &"rule_rewriting_hotbar_2",
 	&"rule_rewriting_hotbar_3", &"rule_rewriting_hotbar_4", &"rule_rewriting_hotbar_5",
 	&"rule_rewriting_hotbar_6", &"rule_rewriting_hotbar_7", &"rule_rewriting_hotbar_8",
@@ -14,6 +14,9 @@ const MAX_HISTORY: int = 64
 const MAX_COUNTER: int = 999999
 const SAVE_VERSION: int = 5
 const MAX_WORD_FIXED_POINT_STEPS: int = 128
+const SOLVED_CUE_DURATION: float = 0.9
+const MAX_CONTACT_PASSES: int = 4
+const MAX_QUEUED_ACTIONS: int = 32
 
 var board_id: StringName = &""
 var grid_state: RuleGridState
@@ -33,6 +36,8 @@ var _held_origin: Vector2i = Vector2i(-1, -1)
 var _focused_slot: int = 0
 var _stack_focus: int = 0
 var _camera_quadrant: int = 0
+var _first_person_3d: bool = true
+var _last_3d_mode: bool = false
 var _inventory_open: bool = false
 var _message: String = ""
 var _held_actions: Dictionary = {}
@@ -41,9 +46,13 @@ var _view: RuleBoardView
 var _pending_rule_feedback_ids: Array[String] = []
 var _metrix_geometry_cache_key: String = ""
 var _cached_metrix_shapes: Array[Dictionary] = []
+var _solved_cue_remaining: float = 0.0
+var _solved_cue_cells: Array[Vector2i] = []
+var _queued_actions: Array[StringName] = []
 
 
 func _ready() -> void:
+	set_process_input(true)
 	_view = RuleBoardView.new()
 	_view.name = "RuleRewritePresentation"
 	_view.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -55,27 +64,74 @@ func _ready() -> void:
 func enter(value: ModuleContext) -> void:
 	super.enter(value)
 	_request_sent = false
-	_held_actions.clear()
+	_clear_input_state()
 	_refresh()
 
 
 func exit() -> void:
-	_held_actions.clear()
+	_clear_input_state()
 	_held_entity_id = ""
 	_inventory_open = false
 	super.exit()
 
 
-func _process(_delta: float) -> void:
+func _input(event: InputEvent) -> void:
+	if not event.is_pressed() or not _can_input():
+		return
+	var injected := event as InputEventAction
+	for action: StringName in ACTIONS:
+		if not context.allows_action(action):
+			continue
+		var pressed := false
+		if injected != null:
+			pressed = injected.action == action and injected.pressed
+		else:
+			pressed = event.is_action_pressed(action)
+		if not pressed or _queued_actions.has(action) or _queued_actions.size() >= MAX_QUEUED_ACTIONS:
+			continue
+		_queued_actions.append(action)
+
+
+func _process(delta: float) -> void:
 	if not _can_input():
-		_held_actions.clear()
+		_clear_input_state()
 		return
 	for action: StringName in ACTIONS:
+		var queued := 0
+		while _queued_actions.has(action):
+			_queued_actions.erase(action)
+			queued += 1
 		var pressed := context.is_action_pressed(action)
 		var previous: bool = bool(_held_actions.get(action, false))
 		_held_actions[action] = pressed
-		if pressed and not previous:
+		var repeats := queued
+		if repeats == 0 and pressed and not previous:
+			repeats = 1
+		for _repeat: int in range(repeats):
 			_execute_action(action)
+	_advance_solved_cue(delta)
+
+
+func _clear_input_state() -> void:
+	_held_actions.clear()
+	_queued_actions.clear()
+
+
+func _advance_solved_cue(delta: float) -> void:
+	if _solved_cue_remaining <= 0.0:
+		return
+	_solved_cue_remaining = maxf(0.0, _solved_cue_remaining - maxf(0.0, delta))
+	_refresh()
+	if _solved_cue_remaining > 0.0:
+		return
+	_advance_board()
+	_refresh()
+
+
+func _solved_cue_ratio() -> float:
+	if _solved_cue_remaining <= 0.0:
+		return 0.0
+	return clampf(_solved_cue_remaining / SOLVED_CUE_DURATION, 0.0, 1.0)
 
 
 func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
@@ -92,17 +148,41 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 				_move_inventory_focus(direction)
 			else:
 				_move_you(direction)
-		&"forward":
+		&"move_2d":
 			if solved:
+				return false
+			var direction_2d := _read_direction(payload)
+			if direction_2d == Vector2i.ZERO:
+				return false
+			if _is_3d_mode():
+				if not _inventory_open:
+					return false
+				_move_inventory_focus(direction_2d)
+			else:
+				_move_you(direction_2d)
+		&"forward":
+			if solved or not _is_3d_mode():
 				return false
 			_move_3d_forward()
 		&"turn_left":
+			if not _is_3d_mode():
+				return false
 			_turn_camera(-1)
 		&"turn_right":
+			if not _is_3d_mode():
+				return false
 			_turn_camera(1)
+		&"toggle_view":
+			if not _is_3d_mode():
+				return false
+			_first_person_3d = not _first_person_3d
 		&"cycle_3d_subject":
+			if not _is_3d_mode():
+				return false
 			_cycle_3d_subject()
 		&"open_inventory":
+			if not _is_3d_mode():
+				return false
 			_toggle_inventory()
 		&"cycle_metrix":
 			_cycle_metrix()
@@ -115,11 +195,13 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 				return false
 			_place_hotbar_entity(payload)
 		&"undo":
-			_undo()
+			if not _undo():
+				return false
 		&"reset":
 			_reset_board()
 		&"confirm":
 			if solved:
+				_solved_cue_remaining = 0.0
 				_advance_board()
 			elif _inventory_open:
 				_inventory_slot_action(_focused_slot)
@@ -176,9 +258,13 @@ func load_state(state: Dictionary) -> void:
 	_focused_slot = 0
 	_stack_focus = 0
 	_camera_quadrant = 0
+	_first_person_3d = true
+	_last_3d_mode = false
 	_inventory_open = false
 	_message = ""
 	_request_sent = false
+	_solved_cue_remaining = 0.0
+	_solved_cue_cells = []
 	_rebuild_derived()
 	_refresh()
 
@@ -191,10 +277,10 @@ func migrate_save(old_version: int, data: Dictionary) -> Dictionary:
 
 func _execute_action(action: StringName) -> void:
 	match action:
-		&"rule_rewriting_left": execute_command(&"move", {"direction": Vector2i.LEFT})
-		&"rule_rewriting_right": execute_command(&"move", {"direction": Vector2i.RIGHT})
-		&"rule_rewriting_up": execute_command(&"move", {"direction": Vector2i.UP})
-		&"rule_rewriting_down": execute_command(&"move", {"direction": Vector2i.DOWN})
+		&"rule_rewriting_left": execute_command(&"move_2d", {"direction": Vector2i.LEFT})
+		&"rule_rewriting_right": execute_command(&"move_2d", {"direction": Vector2i.RIGHT})
+		&"rule_rewriting_up": execute_command(&"move_2d", {"direction": Vector2i.UP})
+		&"rule_rewriting_down": execute_command(&"move_2d", {"direction": Vector2i.DOWN})
 		&"rule_rewriting_confirm": execute_command(&"confirm")
 		&"rule_rewriting_cancel": execute_command(&"cancel")
 		&"rule_rewriting_undo": execute_command(&"undo")
@@ -202,6 +288,7 @@ func _execute_action(action: StringName) -> void:
 		&"rule_rewriting_forward": execute_command(&"forward")
 		&"rule_rewriting_turn_left": execute_command(&"turn_left")
 		&"rule_rewriting_turn_right": execute_command(&"turn_right")
+		&"rule_rewriting_toggle_view": execute_command(&"toggle_view")
 		&"rule_rewriting_cycle_3d_subject": execute_command(&"cycle_3d_subject")
 		&"rule_rewriting_open_inventory": execute_command(&"open_inventory")
 		&"rule_rewriting_cycle_metrix": execute_command(&"cycle_metrix")
@@ -220,6 +307,13 @@ func _on_view_command(command: StringName, payload: Dictionary) -> void:
 
 
 func _move_you(direction: Vector2i) -> void:
+	if _is_3d_mode():
+		var subject := _selected_3d_subject()
+		if subject == null:
+			_message = ""
+			return
+		_apply_player_intent([subject.id], direction)
+		return
 	var controlled_ids := _you_ids()
 	if controlled_ids.is_empty():
 		_message = ""
@@ -242,24 +336,17 @@ func _apply_player_intent(controlled_ids: Array[String], direction: Vector2i) ->
 	var before_rule_set := rule_set
 	var before_rules := _rule_signature()
 	var plan := RuleMovementSolver.plan_move_many(grid_state, rule_set, controlled_ids, direction)
-	if not bool(plan.get("can_move", false)):
-		_message = ""
-		return
-	_apply_moves(plan.get("moves", []))
-	for entity_id: String in controlled_ids:
-		var actor := _find_entity(entity_id)
-		if actor != null:
-			actor.facing = direction
 	var processed_transform_ids: Dictionary = {}
-	_rebuild_derived()
-	var transform_result := RuleEvaluator.apply_transformations(grid_state, rule_set, processed_transform_ids)
-	if not bool(transform_result.get("valid", false)):
-		_restore_snapshot(before)
-		return
-	var transformed_ids: Array = transform_result.get("changed_ids", [])
-	var created_ids: Array = transform_result.get("created_ids", [])
-	if not transformed_ids.is_empty() or not created_ids.is_empty():
+	if bool(plan.get("can_move", false)):
+		_apply_moves(plan.get("moves", []))
+		for entity_id: String in controlled_ids:
+			var actor := _find_entity(entity_id)
+			if actor != null:
+				actor.facing = direction
 		_rebuild_derived()
+		if not _apply_transform_stage(processed_transform_ids):
+			_restore_snapshot(before)
+			return
 	var auto_plan := RuleMovementSolver.plan_move_auto(grid_state, rule_set)
 	if not bool(auto_plan.get("valid", false)):
 		_restore_snapshot(before)
@@ -267,14 +354,9 @@ func _apply_player_intent(controlled_ids: Array[String], direction: Vector2i) ->
 	_apply_moves(auto_plan.get("moves", []))
 	if bool(auto_plan.get("word_moved", false)):
 		_rebuild_derived()
-		transform_result = RuleEvaluator.apply_transformations(grid_state, rule_set, processed_transform_ids)
-		if not bool(transform_result.get("valid", false)):
+		if not _apply_transform_stage(processed_transform_ids):
 			_restore_snapshot(before)
 			return
-		transformed_ids = transform_result.get("changed_ids", [])
-		created_ids = transform_result.get("created_ids", [])
-		if not transformed_ids.is_empty() or not created_ids.is_empty():
-			_rebuild_derived()
 	_resolve_interactions()
 	_commit_intent(before)
 	if _rule_signature() != before_rules:
@@ -285,6 +367,17 @@ func _apply_player_intent(controlled_ids: Array[String], direction: Vector2i) ->
 	else:
 		_pending_rule_feedback_ids.clear()
 		_message = ""
+
+
+func _apply_transform_stage(processed_transform_ids: Dictionary) -> bool:
+	var transform_result := RuleEvaluator.apply_transformations(grid_state, rule_set, processed_transform_ids)
+	if not bool(transform_result.get("valid", false)):
+		return false
+	var transformed_ids: Array = transform_result.get("changed_ids", [])
+	var created_ids: Array = transform_result.get("created_ids", [])
+	if not transformed_ids.is_empty() or not created_ids.is_empty():
+		_rebuild_derived()
+	return true
 
 
 func _apply_moves(moves: Variant) -> void:
@@ -307,29 +400,69 @@ func _apply_moves(moves: Variant) -> void:
 
 
 func _resolve_interactions() -> void:
-	var result: Dictionary = RuleEvaluator.resolve_contacts(grid_state, rule_set)
-	if not bool(result.get("valid", false)):
+	var was_solved := solved
+	for _pass: int in range(MAX_CONTACT_PASSES):
+		var result: Dictionary = RuleEvaluator.resolve_contacts(grid_state, rule_set)
+		if not bool(result.get("valid", false)):
+			return
+		var removed_ids: Dictionary = {}
+		for entity_id: String in result.get("removed_ids", []):
+			removed_ids[entity_id] = true
+		var spawn_result := _append_has_spawns(result.get("has_spawns", []))
+		if not removed_ids.is_empty():
+			var survivors: Array[RuleGridEntity] = []
+			for entity: RuleGridEntity in grid_state.entities:
+				if not removed_ids.has(entity.id):
+					survivors.append(entity)
+			grid_state.entities = survivors
+		var changed := not removed_ids.is_empty() or bool(spawn_result.get("changed", false))
+		if changed:
+			_rebuild_derived()
+		failed = bool(result.get("failed", false)) and _you_ids().is_empty()
+		solved = bool(result.get("won", false)) and not failed
+		if failed:
+			_inventory_open = false
+			_held_entity_id = ""
+			_held_origin = Vector2i(-1, -1)
+		if solved:
+			_mark_completed()
+		if not changed:
+			break
+	if not solved:
+		_solved_cue_remaining = 0.0
+		_solved_cue_cells = []
+	elif not was_solved:
+		_begin_solved_cue()
+
+
+func _begin_solved_cue() -> void:
+	if _solved_cue_remaining > 0.0:
 		return
-	var removed_ids: Dictionary = {}
-	for entity_id: String in result.get("removed_ids", []):
-		removed_ids[entity_id] = true
-	var spawn_result := _append_has_spawns(result.get("has_spawns", []))
-	if not removed_ids.is_empty():
-		var survivors: Array[RuleGridEntity] = []
-		for entity: RuleGridEntity in grid_state.entities:
-			if not removed_ids.has(entity.id):
-				survivors.append(entity)
-		grid_state.entities = survivors
-	if not removed_ids.is_empty() or bool(spawn_result.get("changed", false)):
-		_rebuild_derived()
-	failed = bool(result.get("failed", false)) and _you_ids().is_empty()
-	solved = bool(result.get("won", false)) and not failed
-	if failed:
-		_inventory_open = false
-		_held_entity_id = ""
-		_held_origin = Vector2i(-1, -1)
-	if solved:
-		_mark_completed()
+	_solved_cue_remaining = SOLVED_CUE_DURATION
+	_solved_cue_cells = _success_cue_cells()
+
+
+func _success_cue_cells() -> Array[Vector2i]:
+	var found: Array[Vector2i] = []
+	if grid_state == null:
+		return found
+	for entity: RuleGridEntity in grid_state.entities:
+		if entity == null or entity.is_word or not _has_property(entity, &"WIN"):
+			continue
+		var cell := entity.position
+		if _has_property(entity, &"YOU"):
+			found.append(cell)
+			continue
+		for actor: RuleGridEntity in _you_entities():
+			if actor.position == cell \
+				and RuleEvaluator.entities_interact(actor, entity, rule_set, grid_state):
+				found.append(cell)
+				break
+	var result: Array[Vector2i] = []
+	for cell: Vector2i in found:
+		if not result.has(cell):
+			result.append(cell)
+	return result
 
 
 func _append_has_spawns(value: Variant) -> Dictionary:
@@ -380,7 +513,6 @@ func _turn_camera(turns: int) -> void:
 		return
 	_camera_quadrant = posmod(_camera_quadrant + turns, 4)
 	_message = ""
-	_refresh()
 
 
 func _cycle_3d_subject() -> void:
@@ -393,8 +525,8 @@ func _cycle_3d_subject() -> void:
 			current_index = index
 			break
 	selected_3d_subject_id = subjects[posmod(current_index + 1, subjects.size())].id
+	_sync_selected_metrix()
 	_message = ""
-	_refresh()
 
 
 func _toggle_inventory() -> void:
@@ -428,7 +560,6 @@ func _cycle_metrix() -> void:
 	_focused_slot = 0
 	_held_entity_id = ""
 	_message = ""
-	_refresh()
 
 
 func _set_hotbar_slot(slot: int) -> void:
@@ -436,7 +567,6 @@ func _set_hotbar_slot(slot: int) -> void:
 		return
 	hotbar_slot = slot
 	_message = ""
-	_refresh()
 
 
 func _move_inventory_focus(direction: Vector2i) -> void:
@@ -451,7 +581,6 @@ func _move_inventory_focus(direction: Vector2i) -> void:
 	cell.x = posmod(cell.x, width)
 	cell.y = posmod(cell.y, height)
 	_focused_slot = mini(cell.y * width + cell.x, slots.size() - 1)
-	_refresh()
 
 
 func _inventory_slot_action(slot_index: int) -> void:
@@ -468,7 +597,6 @@ func _inventory_slot_action(slot_index: int) -> void:
 		if contents.is_empty():
 			_stack_focus = 0
 			_message = ""
-			_refresh()
 			return
 		var entity_index := posmod(_stack_focus, contents.size())
 		_held_entity_id = contents[entity_index]
@@ -477,13 +605,11 @@ func _inventory_slot_action(slot_index: int) -> void:
 		if selected != null:
 			_held_origin = selected.position
 		_message = ""
-		_refresh()
 		return
 	var held := _find_entity(_held_entity_id)
 	if held == null:
 		_held_entity_id = ""
 		_held_origin = Vector2i(-1, -1)
-		_refresh()
 		return
 	if held.position == cell_value:
 		_stack_focus += 1
@@ -491,14 +617,12 @@ func _inventory_slot_action(slot_index: int) -> void:
 		if not same_cell.is_empty():
 			_stack_focus = posmod(_stack_focus, same_cell.size())
 			_held_entity_id = same_cell[_stack_focus].id
-		_refresh()
 		return
 	var before := _board_snapshot()
 	var target_ids := _slot_entity_ids(slot)
 	if target_ids.has(_held_entity_id):
 		_held_entity_id = ""
 		_held_origin = Vector2i(-1, -1)
-		_refresh()
 		return
 	var occupant_id: String = String(target_ids.front()) if not target_ids.is_empty() else ""
 	if not occupant_id.is_empty():
@@ -512,7 +636,6 @@ func _inventory_slot_action(slot_index: int) -> void:
 	_resolve_interactions()
 	_commit_intent(before)
 	_message = ""
-	_refresh()
 
 
 func _place_hotbar_entity(payload: Dictionary) -> void:
@@ -545,18 +668,21 @@ func _place_hotbar_entity(payload: Dictionary) -> void:
 	_resolve_interactions()
 	_commit_intent(before)
 	_message = ""
-	_refresh()
 
 
-func _undo() -> void:
+func _undo() -> bool:
 	if _undo_stack.is_empty():
-		return
+		return false
 	var snapshot: Dictionary = _undo_stack.pop_back()
 	if not _restore_snapshot(snapshot):
 		_undo_stack.clear()
-		return
+		_solved_cue_remaining = 0.0
+		_solved_cue_cells = []
+		return false
+	_solved_cue_remaining = 0.0
+	_solved_cue_cells = []
 	_message = ""
-	_refresh()
+	return true
 
 
 func _reset_board() -> void:
@@ -572,16 +698,26 @@ func _reset_board() -> void:
 	selected_3d_subject_id = ""
 	selected_metrix_id = ""
 	hotbar_slot = 0
+	_camera_quadrant = 0
+	_first_person_3d = true
+	_last_3d_mode = false
 	completed_board_ids.assign(preserved_completed)
 	_undo_stack.clear()
 	_inventory_open = false
 	_held_entity_id = ""
+	_held_origin = Vector2i(-1, -1)
+	_focused_slot = 0
+	_stack_focus = 0
+	_solved_cue_remaining = 0.0
+	_solved_cue_cells = []
 	_rebuild_derived()
 	_message = ""
-	_refresh()
 
 
 func _advance_board() -> void:
+	_solved_cue_remaining = 0.0
+	_solved_cue_cells = []
+	_clear_input_state()
 	var ids := _progression_board_ids()
 	var index := ids.find(board_id)
 	if index >= 0 and index + 1 < ids.size():
@@ -598,11 +734,18 @@ func _advance_board() -> void:
 		selected_3d_subject_id = ""
 		selected_metrix_id = ""
 		hotbar_slot = 0
+		_camera_quadrant = 0
+		_first_person_3d = true
+		_last_3d_mode = false
 		completed_board_ids.assign(completed)
 		_undo_stack.clear()
+		_inventory_open = false
+		_held_entity_id = ""
+		_held_origin = Vector2i(-1, -1)
+		_focused_slot = 0
+		_stack_focus = 0
 		_rebuild_derived()
 		_message = ""
-		_refresh()
 		return
 	_request_exit("forward")
 
@@ -839,9 +982,15 @@ func _rebuild_derived() -> void:
 	if grid_state == null:
 		rule_set = RuleSet.new()
 		metrix_shapes.clear()
+		_last_3d_mode = false
 		return
 	rule_set = _resolve_word_rules()
 	var subjects := _three_d_you_entities()
+	var mode_3d := not subjects.is_empty()
+	if mode_3d and not _last_3d_mode:
+		_camera_quadrant = 0
+		_first_person_3d = true
+	_last_3d_mode = mode_3d
 	if not subjects.is_empty():
 		var selected_exists := false
 		for subject: RuleGridEntity in subjects:
@@ -870,19 +1019,7 @@ func _rebuild_derived() -> void:
 		shape["inventory"] = inv_enabled and not owner_ids.is_empty() and active
 		shape["owner_ids"] = owner_ids
 		metrix_shapes.append(shape)
-	var available := _available_inventories()
-	if available.is_empty():
-		_inventory_open = false
-		_held_entity_id = ""
-		if _selected_3d_subject() != null:
-			selected_metrix_id = ""
-	else:
-		var still_valid := false
-		for shape: Dictionary in available:
-			if String(shape["id"]) == selected_metrix_id:
-				still_valid = true
-		if not still_valid:
-			selected_metrix_id = String(available[0]["id"])
+	_sync_selected_metrix()
 
 
 func _metrix_geometry_signature() -> String:
@@ -1130,6 +1267,25 @@ func _shape_conditions_match(shape: Dictionary, probe: RuleGridEntity, condition
 		if not matched:
 			return false
 	return true
+
+
+func _sync_selected_metrix() -> void:
+	var available := _available_inventories()
+	if available.is_empty():
+		_inventory_open = false
+		_held_entity_id = ""
+		_held_origin = Vector2i(-1, -1)
+		if _selected_3d_subject() != null:
+			selected_metrix_id = ""
+		return
+	var still_valid := false
+	for shape: Dictionary in available:
+		if String(shape.get("id", "")) == selected_metrix_id:
+			still_valid = true
+			break
+	if not still_valid:
+		selected_metrix_id = String(available[0]["id"])
+	_focused_slot = clampi(_focused_slot, 0, maxi(0, _slot_count(_selected_metrix()) - 1))
 
 
 func _available_inventories() -> Array[Dictionary]:
@@ -1424,8 +1580,11 @@ func _refresh() -> void:
 		_held_entity_id,
 		hotbar_slot,
 		_camera_quadrant,
+		_first_person_3d,
 		failed,
 		solved,
+		_solved_cue_ratio(),
+		_solved_cue_cells,
 		_message,
 		context == null or context.input_enabled
 	)

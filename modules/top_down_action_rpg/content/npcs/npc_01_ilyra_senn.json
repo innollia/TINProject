@@ -1,0 +1,131 @@
+{
+    "schema_version":  1,
+    "id":  "npc_01_ilyra_senn",
+    "display_name":  "Ilyra Senn",
+    "roster_kind":  "core",
+    "public_role":  "archive inquiry and record correction",
+    "private_role":  "does not proofread her own filing",
+    "desire":  "stops a record from finishing before the person in it does",
+    "fear":  "that her category outlives her name",
+    "contradiction":  "trusts procedure most and knows procedure erases people",
+    "capability":  {
+                       "port_ids":  [
+                                        "port_hub_filing"
+                                    ],
+                       "can":  [
+                                   "withhold_record",
+                                   "reclassify_subject",
+                                   "open_gate"
+                               ]
+                   },
+    "resource_access":  {
+                            "grants":  [
+                                           "equipment_kiln_ledger_seal"
+                                       ],
+                            "denies":  [
+                                           "gate_g1_ash_debt"
+                                       ],
+                            "denied_by_effect_id":  "eff_r1_return_registry_logs_name"
+                        },
+    "knowledge_boundary":  {
+                               "knows":  [
+                                             "seed_s001"
+                                         ],
+                               "does_not_know":  [
+
+                                                 ],
+                               "never_learns":  [
+
+                                                ]
+                           },
+    "speech_pressure":  {
+                            "verb_ids":  [
+                                             "verb_file_arrival_category"
+                                         ],
+                            "silence_condition":  {
+                                                      "axis_at_least":  {
+                                                                            "axis":  "recognition_drift",
+                                                                            "value":  2
+                                                                        }
+                                                  }
+                        },
+    "interaction_verbs":  [
+                              {
+                                  "verb_id":  "verb_file_arrival_category",
+                                  "availability":  {
+
+                                                   },
+                                  "opens":  "conv_h0_return_desk",
+                                  "presentation_class":  "official"
+                              },
+                              {
+                                  "verb_id":  "verb_ask_for_the_docket_copy",
+                                  "availability":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_h0_return_desk",
+                                                                            "choice_id":  "ch_file_arrival_category"
+                                                                        }
+                                                   },
+                                  "opens":  "doc_r1_wrong_return_log",
+                                  "presentation_class":  "confidential"
+                              }
+                          ],
+    "relationship_ids":  [
+                             "rel_01_ilyra_record"
+                         ],
+    "clock_ids":  [
+                      "clock_public_record",
+                      "clock_institutional_response"
+                  ],
+    "encounter_profile":  {
+                              "as_neutral":  {
+                                                 "encounter_id":  ""
+                                             },
+                              "as_hostile":  {
+                                                 "encounter_id":  "enc_r1_door_role_test"
+                                             },
+                              "conversion_condition":  {
+                                                           "relationship_is":  {
+                                                                                   "relationship_id":  "rel_01_ilyra_record",
+                                                                                   "target_npc_id":  "npc_01_ilyra_senn",
+                                                                                   "state_id":  "rs_archived"
+                                                                               }
+                                                       },
+                              "as_ally":  {
+                                              "effect_id":  "eff_h0_arrival_declaration_filed",
+                                              "encounter_modifier":  1
+                                          }
+                          },
+    "survival":  {
+                     "death_allowed":  true,
+                     "on_death_effect_ids":  [
+                                                 "eff_r1_return_registry_logs_name"
+                                             ],
+                     "on_absence_effect_ids":  [
+                                                   "eff_r1_return_registry_logs_name"
+                                               ]
+                 },
+    "absence":  {
+                    "kind":  "permanent",
+                    "condition":  {
+
+                                  },
+                    "moves_to_region_id":  "region_r1_returning_kiln"
+                },
+    "appearance":  {
+                       "body_key":  "body_archivist",
+                       "portrait_key":  "portrait_ilyra_senn",
+                       "voice_key":  "voice_ilyra_senn"
+                   },
+    "mana_profile":  "retention_balanced",
+    "cross_link_ids":  [
+                           "region_h0_undersign_exchange",
+                           "npc_05_nera_voss",
+                           "clock_public_record",
+                           "doc_r1_wrong_return_log"
+                       ],
+    "removal":  "death",
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

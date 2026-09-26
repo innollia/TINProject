@@ -55,7 +55,7 @@
 - grid/board처럼 게임 규칙상 좌표가 중요한 월드는 별도 layout 계산을 사용한다.
 - focus는 명시적 상태로 다룬다.
 - placeholder ColorRect/Label을 월드 오브젝트의 최종 표현으로 남기지 않는다.
-- at-icons는 월드 아트 조립 재료이며 UI 아이콘으로 사용하지 않는다.
+- 새 이미지 자산의 출처와 라이선스 기준은 `docs/VISUAL_DIRECTION.md`에 기록한다.
 
 ## 의존성
 

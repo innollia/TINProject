@@ -1,0 +1,82 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r8_course_index_desk",
+    "display_name":  "Course Index Desk",
+    "region_id":  "region_r8_folding_school",
+    "speaker_npc_id":  "npc_20_mira_vask",
+    "entry_condition":  {
+
+                        },
+    "priority":  10,
+    "pages":  [
+                  {
+                      "page_id":  "pg_index",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "Registration chooses the source of a measurement, not the capability of a person.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_box",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "The unassigned box has no name plate and one line already filled.",
+                      "advance":  "wait"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_register_measurement",
+                        "text":  "Register the measurement with its source and keep the credit.",
+                        "semantic_tags":  [
+                                              "bureaucratic",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "unavailable_reason":  "",
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_withhold_measurement",
+                        "text":  "Leave the value unregistered and keep the sheet.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "unavailable_reason":  "",
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r8_course_index_printed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_h0_return_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

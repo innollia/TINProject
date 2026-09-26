@@ -1,0 +1,702 @@
+{
+  "schema_version": 1,
+  "id": "case_06_haywolsa",
+  "title": "06 달을 가리킨 사람 — 해월사",
+  "start_scene_id": "scene_under_arcade",
+  "scenes": [
+    {
+      "schema_version": 1,
+      "id": "scene_under_arcade",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_arcade_knocker",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_arcade_knocker", "focus_id": "msg_arcade_knocker" },
+        { "schema_version": 1, "id": "hotspot_arcade_footprints", "focus_id": "msg_arcade_footprints" },
+        { "schema_version": 1, "id": "hotspot_arcade_hem", "focus_id": "msg_arcade_hem" },
+        { "schema_version": 1, "id": "hotspot_arcade_rail", "focus_id": "msg_arcade_rail" },
+        { "schema_version": 1, "id": "hotspot_arcade_confession", "focus_id": "msg_arcade_confession" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_arcade_to_loft",
+          "destination_scene_id": "scene_archive_loft",
+          "focus_id": "hotspot_loft_books"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_arcade_to_hall",
+          "destination_scene_id": "scene_gate_hall",
+          "focus_id": "hotspot_hall_roster"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_arcade_to_translation",
+          "destination_scene_id": "scene_translation_hall",
+          "focus_id": "hotspot_tr_worklist"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_arcade_to_kitchen",
+          "destination_scene_id": "scene_kitchen",
+          "focus_id": "hotspot_kitchen_mei"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_archive_loft",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_loft_books",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_loft_books", "focus_id": "msg_loft_books" },
+        { "schema_version": 1, "id": "hotspot_loft_b112_114", "focus_id": "msg_loft_b112_114" },
+        { "schema_version": 1, "id": "hotspot_loft_c41_43", "focus_id": "msg_loft_c41_43" },
+        { "schema_version": 1, "id": "hotspot_loft_checklist", "focus_id": "msg_loft_checklist" },
+        { "schema_version": 1, "id": "hotspot_loft_fiber", "focus_id": "msg_loft_fiber" },
+        { "schema_version": 1, "id": "hotspot_loft_card", "focus_id": "msg_loft_card" },
+        { "schema_version": 1, "id": "hotspot_loft_letter", "focus_id": "msg_loft_letter" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_loft_to_arcade",
+          "destination_scene_id": "scene_under_arcade",
+          "focus_id": "hotspot_arcade_knocker"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_gate_hall",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_hall_roster",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_hall_roster", "focus_id": "msg_hall_roster" },
+        { "schema_version": 1, "id": "hotspot_hall_bellrope", "focus_id": "msg_hall_bellrope" },
+        { "schema_version": 1, "id": "hotspot_hall_invitation", "focus_id": "msg_hall_invitation" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_hall_to_arcade",
+          "destination_scene_id": "scene_under_arcade",
+          "focus_id": "hotspot_arcade_knocker"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_translation_hall",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_tr_worklist",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_tr_worklist", "focus_id": "msg_tr_worklist" },
+        { "schema_version": 1, "id": "hotspot_tr_draft", "focus_id": "msg_tr_draft" },
+        { "schema_version": 1, "id": "hotspot_tr_alex_note", "focus_id": "msg_tr_alex_note" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_translation_to_arcade",
+          "destination_scene_id": "scene_under_arcade",
+          "focus_id": "hotspot_arcade_knocker"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_kitchen",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_kitchen_mei",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_kitchen_mei", "focus_id": "msg_kitchen_mei" },
+        { "schema_version": 1, "id": "hotspot_kitchen_raincheck", "focus_id": "msg_kitchen_raincheck" },
+        { "schema_version": 1, "id": "hotspot_kitchen_mats", "focus_id": "msg_kitchen_mats" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_kitchen_to_arcade",
+          "destination_scene_id": "scene_under_arcade",
+          "focus_id": "hotspot_arcade_knocker"
+        }
+      ]
+    }
+  ],
+  "closeups": [],
+  "entities": [
+    { "schema_version": 1, "id": "ent_person_taren", "kind": "person", "display_text": "타렌", "source_text_id": "msg_arcade_confession", "tags": [] },
+    { "schema_version": 1, "id": "ent_person_jian", "kind": "person", "display_text": "지안", "source_text_id": "msg_arcade_confession", "tags": ["victim"] },
+    { "schema_version": 1, "id": "ent_person_lengpo", "kind": "person", "display_text": "렌포", "source_text_id": "msg_hall_bellrope", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_person_soma", "kind": "person", "display_text": "소마", "source_text_id": "msg_loft_checklist", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_person_alex", "kind": "person", "display_text": "알렉 룩", "source_text_id": "msg_hall_invitation", "tags": ["alternative_actor"] },
+    { "schema_version": 1, "id": "ent_person_mei", "kind": "person", "display_text": "메이 아르", "source_text_id": "msg_kitchen_mei", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_role_translator", "kind": "role", "display_text": "번역승", "source_text_id": "msg_hall_roster", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_abbott", "kind": "role", "display_text": "주지", "source_text_id": "msg_hall_roster", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_archivist", "kind": "role", "display_text": "기록담당", "source_text_id": "msg_hall_roster", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_pilgrim", "kind": "role", "display_text": "행자", "source_text_id": "msg_hall_roster", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_professor", "kind": "role", "display_text": "외부 철학교수", "source_text_id": "msg_hall_invitation", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_kitchen", "kind": "role", "display_text": "공양담당", "source_text_id": "msg_hall_roster", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_archive_loft", "kind": "place", "display_text": "고문헌 보관각 2층", "source_text_id": "msg_loft_books", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_arcade", "kind": "place", "display_text": "보관각 아래 회랑", "source_text_id": "msg_arcade_footprints", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_rail", "kind": "place", "display_text": "회랑 난간", "source_text_id": "msg_arcade_rail", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_stair", "kind": "place", "display_text": "보관각 계단", "source_text_id": "msg_kitchen_mats", "tags": [] },
+    { "schema_version": 1, "id": "ent_book_a", "kind": "document", "display_text": "경전 A권", "source_text_id": "msg_loft_books", "tags": [] },
+    { "schema_version": 1, "id": "ent_book_b", "kind": "document", "display_text": "경전 B권", "source_text_id": "msg_loft_books", "tags": [] },
+    { "schema_version": 1, "id": "ent_book_c", "kind": "document", "display_text": "경전 C권", "source_text_id": "msg_loft_books", "tags": [] },
+    { "schema_version": 1, "id": "ent_page_b113", "kind": "document", "display_text": "B권 113면 자리", "source_text_id": "msg_loft_b112_114", "tags": [] },
+    { "schema_version": 1, "id": "ent_page_c42", "kind": "document", "display_text": "C권 42면 자리", "source_text_id": "msg_loft_c41_43", "tags": [] },
+    { "schema_version": 1, "id": "ent_checklist", "kind": "document", "display_text": "소마의 페이지 점검표", "source_text_id": "msg_loft_checklist", "tags": [] },
+    { "schema_version": 1, "id": "ent_rain_check", "kind": "document", "display_text": "우천 체크표", "source_text_id": "msg_kitchen_raincheck", "tags": [] },
+    { "schema_version": 1, "id": "ent_buy_card", "kind": "document", "display_text": "익명 골동품 매입카드", "source_text_id": "msg_loft_card", "tags": [] },
+    { "schema_version": 1, "id": "ent_family_letter", "kind": "document", "display_text": "가족편지", "source_text_id": "msg_loft_letter", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_gray_thread", "kind": "trace", "display_text": "문고리의 회색 실 한 올", "source_text_id": "msg_arcade_knocker", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_red_thread", "kind": "trace", "display_text": "찢긴 면에 섞인 붉은 실 한 올", "source_text_id": "msg_loft_c41_43", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_robe_sole", "kind": "trace", "display_text": "장삼 끝단 위의 신발바닥 무늬", "source_text_id": "msg_arcade_hem", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_paper_fiber", "kind": "trace", "display_text": "소매 안쪽의 황갈색 종이섬유", "source_text_id": "msg_loft_fiber", "tags": [] },
+    { "schema_version": 1, "id": "ent_device_rope", "kind": "device", "display_text": "황마 종 밧줄", "source_text_id": "msg_hall_bellrope", "tags": [] },
+    { "schema_version": 1, "id": "ent_device_umbrella", "kind": "device", "display_text": "검은 우산", "source_text_id": "msg_hall_invitation", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_never_printed", "kind": "state", "display_text": "처음부터 인쇄되지 않은 자리", "source_text_id": "msg_loft_b112_114", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_state_torn_out", "kind": "state", "display_text": "실제로 뜯긴 자리", "source_text_id": "msg_loft_c41_43", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_state_door_contact", "kind": "state", "display_text": "문고리에서 접촉이 있었다", "source_text_id": "msg_arcade_knocker", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_three_steps", "kind": "state", "display_text": "문고리에서 난간까지 젖은 발자국 세 개", "source_text_id": "msg_arcade_footprints", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_state_no_contact", "kind": "state", "display_text": "추락 순간 두 사람은 떨어져 있었다", "source_text_id": "msg_arcade_rail", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_state_mats_missing", "kind": "state", "display_text": "보관각 계단 칸만 비어 있다", "source_text_id": "msg_kitchen_mats", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_state_mats_placed", "kind": "state", "display_text": "미끄럼천이 설치되어 있었다", "source_text_id": "msg_kitchen_mats", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_state_pushed_confession", "kind": "state", "display_text": "타렌이 밀었다고 믿는다", "source_text_id": "msg_arcade_confession", "tags": ["self_report", "decoy"] },
+    { "schema_version": 1, "id": "ent_state_debt_medicine", "kind": "state", "display_text": "약값", "source_text_id": "msg_loft_letter", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_q42", "kind": "state", "display_text": "뒷면 필기의 42", "source_text_id": "msg_loft_card", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_manuscript_subject", "kind": "state", "display_text": "주어를 보충하려던 초안", "source_text_id": "msg_tr_draft", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_tore_out", "kind": "action", "display_text": "뜯었다", "source_text_id": "msg_loft_c41_43", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_grabbed", "kind": "action", "display_text": "붙잡았다", "source_text_id": "msg_arcade_knocker", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_broke_free", "kind": "action", "display_text": "뿌리치고 달아났다", "source_text_id": "msg_arcade_confession", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_ran_ahead", "kind": "action", "display_text": "뒤쫓았다", "source_text_id": "msg_arcade_footprints", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_stepped_hem", "kind": "action", "display_text": "젖은 장삼 끝을 밟았다", "source_text_id": "msg_arcade_hem", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_decoy_mei_fault", "kind": "decoy", "display_text": "미끄럼천 부재가 직접원인", "source_text_id": "msg_kitchen_mei", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_alex_theft", "kind": "decoy", "display_text": "알렉 룩이 훔쳤다", "source_text_id": "msg_hall_invitation", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_om", "kind": "decoy", "display_text": "종교용어를 결손의 이름으로", "source_text_id": "msg_tr_alex_note", "tags": ["decoy"] }
+  ],
+  "messages": [
+    {
+      "schema_version": 1,
+      "id": "msg_arcade_knocker",
+      "title": "오브젝트 E1 — 보관각 문고리",
+      "body": "관찰: 문고리에 회색 장삼의 실 한 올이 감겨 있다.\n관찰: 고리 표면에는 한 방향으로 길게 미끄러진 당김자국과, 정반대 방향으로 깊게 파인 손자국이 함께 남아 있다.\n관찰: 고리를 잡은 손자국은 문이 닫히던 쪽이 아니라 문이 열린 쪽에 몰려 있다.",
+      "source_refs": ["ent_trace_gray_thread", "ent_state_door_contact", "ent_action_grabbed", "ent_place_arcade"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_gray_thread", "ent_state_door_contact", "ent_action_grabbed", "ent_place_arcade"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_main_statement" } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_four_seconds" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_arcade_footprints",
+      "title": "오브젝트 E2 — 젖은 발자국",
+      "body": "관찰: 문고리에서 난간까지 젖은 장삼 자국이 밴 발자국이 세 개 이어져 있다. 간격이 거의 같다.\n관찰: 첫 발자국은 문고리 바로 앞에서 시작한다. 젖은 자국이 중간에서 끊기거나 겹치지 않는다.\n관찰: 되돌아오는 방향의 젖은 자국은 없다.",
+      "source_refs": ["ent_state_three_steps", "ent_action_ran_ahead"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_three_steps", "ent_action_ran_ahead"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_arcade_hem",
+      "title": "비수집형 시각단서 — 장삼 끝단 / 자를 문",
+      "body": "관찰: 난간 직전 돌바닥에 지안 본인의 신발바닥 무늬가 찍힌 자국 하나.\n관찰: 그 자국 위쪽에 젖은 장삼 끝단이 눌린 자국이 겹쳐 있다. 장삼 자국이 신발 자국보다 아래에 있다.\n관찰: 눌린 장삼 자국에서 돌바닥이 한 덩이 깨져 있다. 깨진 방향은 난간 쪽이다.",
+      "source_refs": ["ent_trace_robe_sole", "ent_action_stepped_hem", "ent_person_jian"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_robe_sole", "ent_action_stepped_hem", "ent_person_jian"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_arcade_rail",
+      "title": "비수집형 시각단서 — 부서진 난간",
+      "body": "관찰: 회랑 난간 한 칸이 바깥으로 부서져 있다. 부서진 면과 남아 있는 면 어디에도 손바닥 자국이 없다.\n관찰: 젖은 흔적은 난간 앞 돌바닥에서 끊긴다. 마지막 젖은 자국은 젖은 장삼 끝단이 눌린 자국과 겹친다.\n비교: 회랑 입구 난간. 그쪽 기둥에는 손바닥 자국이 남아 있다.\n관찰: 젖은 자국을 거슬러 올라오면 문 쪽에서 끊긴다. 다른 사람의 젖은 흔적은 없다.",
+      "source_refs": ["ent_state_no_contact", "ent_place_rail"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_no_contact", "ent_place_rail"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_arcade_confession",
+      "title": "오브젝트 E4 — 자백초안",
+      "body": "필기: 「문에서 스승님 손을 뿌리쳤습니다. 뒤에서 난간 부러지는 소리가 났습니다. 제가 넘어뜨린 겁니다.」\n필기 밑: 「시간대를 물으니 저녁종 뒤였습니다. 제가 저녁종 전에 보관각에 없었습니다.」",
+      "source_refs": ["ent_person_taren", "ent_person_jian", "ent_state_pushed_confession", "ent_action_broke_free"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_taren", "ent_person_jian", "ent_state_pushed_confession", "ent_action_broke_free"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_loft_books",
+      "title": "오브젝트 C1 — 경전 A·B·C",
+      "body": "표지:\nA = 장례의례서\nB = 수행문답집\nC = 여행자용 사후세계 도상집\n관찰: C권은 제본 실밥 한 가닥이 풀려 있다. B권과 A권의 제본은 이어져 있다.",
+      "source_refs": ["ent_book_a", "ent_book_b", "ent_book_c", "ent_place_archive_loft"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_book_a", "ent_book_b", "ent_book_c", "ent_place_archive_loft"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_loft_b112_114",
+      "title": "비수집형 시각단서 — B권 112와 114 사이",
+      "body": "관찰: B권을 펴면 112 다음 면의 지수가 바로 114로 뛴다.\n관찰: 112와 114 사이 제본 실밥은 끊긴 곳 없이 이어진다. 그 자리에 끼어 있는 종이는 한 장도 없다.\n비교: C권 41과 43 사이. 그 자리는 제본이 없고 종이섬유가 불규칙하게 남아 있다.",
+      "source_refs": ["ent_page_b113", "ent_state_never_printed", "ent_book_b"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_page_b113", "ent_state_never_printed", "ent_book_b"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_which_page" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_loft_c41_43",
+      "title": "비수집형 시각단서 — C권 41과 43 사이",
+      "body": "관찰: C권 41과 43 사이에 면이 없다. 제본 실이 끊겨 바깥으로 말려 있다.\n관찰: 찢긴 면의 황갈색 종이섬유가 불규칙하게 남아 있다. 섬유 사이에 붉은 실 한 올이 섞여 있다.\n비교: B권 112와 114 사이. 그 자리의 제본은 매끄럽게 이어져 있다.",
+      "source_refs": ["ent_page_c42", "ent_state_torn_out", "ent_trace_red_thread", "ent_action_tore_out", "ent_book_c"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_page_c42", "ent_state_torn_out", "ent_trace_red_thread", "ent_action_tore_out", "ent_book_c"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_which_page" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_loft_checklist",
+      "title": "오브젝트 C2 — 페이지 점검표",
+      "body": "기입: 오전 점검. B권 총 214면. C권 총 118면.\n관찰: 확인표시 옆에 권 이름과 작은 제본도식만 적혀 있다. 개별 면 번호는 없다.",
+      "source_refs": ["ent_person_soma", "ent_checklist", "ent_role_archivist"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_soma", "ent_checklist", "ent_role_archivist"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_loft_fiber",
+      "title": "오브젝트 C3 — 소매 안쪽의 종이섬유",
+      "body": "관찰: 행자 소매 안쪽에 황갈색 종이섬유가 붙어 있다.\n관찰: 오른 소매의 붉은 실밥 하나가 비어 있다.\n비교: C권 찢김면 섬유 사이에 섞인 붉은 실 한 올. 굵기와 비듬 방향이 같다.",
+      "source_refs": ["ent_trace_paper_fiber", "ent_trace_red_thread", "ent_person_taren", "ent_role_pilgrim"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_paper_fiber", "ent_trace_red_thread", "ent_person_taren", "ent_role_pilgrim"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_loft_card",
+      "title": "하위 C4-1 — 익명 골동품 매입카드",
+      "body": "인쇄: 카르민 항 사서함 18 / 현금거래 / 삽화가 있는 낱장 고문서 고가매입.\n뒷면 필기: 「42 / 저녁종 뒤.」",
+      "source_refs": ["ent_buy_card", "ent_state_q42", "ent_page_c42"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_buy_card", "ent_state_q42", "ent_page_c42"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_loft_letter",
+      "title": "하위 C4-2 — 가족편지",
+      "body": "필기: 「형, 약값을 이번 주 안에는 내야 한대… 보낼 수 있는 만큼만 보내줘.」",
+      "source_refs": ["ent_family_letter", "ent_state_debt_medicine", "ent_person_taren"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_family_letter", "ent_state_debt_medicine", "ent_person_taren"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_hall_roster",
+      "title": "오브젝트 A1 — 사원 일과표",
+      "body": "인쇄:\n주지 = 정오 종 3회\n기록담당 = 종 후 경전수량 확인\n번역승 = 외부손님과 보관각 열람\n행자 = 차·방석 운반\n공양담당 = 비 오는 날 회랑 미끄럼천 설치",
+      "source_refs": ["ent_role_abbott", "ent_role_archivist", "ent_role_translator", "ent_role_pilgrim", "ent_role_kitchen", "ent_person_lengpo", "ent_person_soma", "ent_person_jian", "ent_person_taren", "ent_person_mei"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_role_abbott", "ent_role_archivist", "ent_role_translator", "ent_role_pilgrim", "ent_role_kitchen", "ent_person_lengpo", "ent_person_soma", "ent_person_jian", "ent_person_taren", "ent_person_mei"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_hall_bellrope",
+      "title": "오브젝트 A2 — 종 밧줄",
+      "body": "관찰: 붉은 황마가루가 밧줄에 묻어 있다.\n관찰: 밧줄을 잡은 손자국은 한 사람 폭이며 주지의 손 크기와 맞는다.",
+      "source_refs": ["ent_device_rope", "ent_person_lengpo", "ent_role_abbott"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_device_rope", "ent_person_lengpo", "ent_role_abbott"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_hall_invitation",
+      "title": "오브젝트 A3 — 방문자 우산·초청장",
+      "body": "인쇄: Alex Rook / philosophy. 번역회 초청.\n관찰: 검은 우산이 산문에 세워져 있다. 우산 자루에 흙이 없다. 우산을 들고 걷지 않았다는 뜻이다.",
+      "source_refs": ["ent_person_alex", "ent_role_professor", "ent_device_umbrella", "ent_decoy_alex_theft"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_alex", "ent_role_professor", "ent_device_umbrella", "ent_decoy_alex_theft"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_tr_worklist",
+      "title": "오브젝트 B1 — 번역회 작업지",
+      "body": "기입:\n지안 — C권 원문\n소마 — 기존번역 대조\n알렉 룩 — 철학용어 주석\n타렌 — 문헌 운반·차 준비\n메이 아르 — 저녁 공양\n하단: 「원문 페이지를 보관각 밖으로 반출하지 말 것.」",
+      "source_refs": ["ent_person_jian", "ent_person_soma", "ent_person_alex", "ent_person_taren", "ent_person_mei", "ent_role_pilgrim", "ent_place_archive_loft"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_jian", "ent_person_soma", "ent_person_alex", "ent_person_taren", "ent_person_mei", "ent_role_pilgrim", "ent_place_archive_loft"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_tr_draft",
+      "title": "오브젝트 B2 — 번역초안 A안 / B안",
+      "body": "A안: 「수행자가 봄을 보되 보는 이를 앞세우지 말라.」\nB안: 「봄이 있으되 보는 이를 앞세우지 말라.」\n여백 필기: 「주어를 보충하면 자연스럽다. 그러나 무엇을 보충했는가?」",
+      "source_refs": ["ent_person_jian", "ent_state_manuscript_subject", "ent_role_translator"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_jian", "ent_state_manuscript_subject", "ent_role_translator"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_tr_alex_note",
+      "title": "오브젝트 B3 — 알렉의 주석",
+      "body": "필기: 「무아와 관련 있어 보이나 동일하다고 단정할 근거 없음. 주어 누락은 번역자의 선택 문제이며 원문의 상태가 아니다.」",
+      "source_refs": ["ent_person_alex", "ent_decoy_om", "ent_state_manuscript_subject"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_alex", "ent_decoy_om", "ent_state_manuscript_subject"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_kitchen_mei",
+      "title": "오브젝트 D1 — 메이 아르",
+      "body": "인용: 「보관각 계단 한 칸만 깔지 못했습니다. 번역회 차를 다시 데우느라 시간이 없었습니다.」",
+      "source_refs": ["ent_person_mei", "ent_role_kitchen", "ent_decoy_mei_fault"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_mei", "ent_role_kitchen", "ent_decoy_mei_fault"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_kitchen_raincheck",
+      "title": "오브젝트 D2 — 우천 체크표",
+      "body": "인쇄 표: 다섯 개의 회랑을 작은 평면 아이콘으로 나열. 비 오는 날 미끄럼천 설치 여부를 각 칸에 체크.\n관찰: 다섯 칸 중 네 칸에 체크가 있고 한 칸만 비어 있다. 빈 칸의 아이콘 이름은 지워져 있다.",
+      "source_refs": ["ent_person_soma", "ent_rain_check", "ent_role_kitchen"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_soma", "ent_rain_check", "ent_role_kitchen"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_kitchen_mats",
+      "title": "비수집형 시각단서 — 보관각 계단 미끄럼천",
+      "body": "관찰: 다섯 회랑 중 네 곳에 회랑 아이콘과 같은 모양의 미끄럼천이 깔려 있다.\n관찰: 보관각 계단만 천이 없다.\n관찰: 젖은 발자국 세 개가 천이 없는 돌바닥 구간을 지나도 미끄러진 흔적 없이 이어진다. 젖은 자국은 천이 깔린 구간에서 시작한다.\n비교: 우천 체크표의 빈 칸 아이콘. 보관각 계단 아이콘과 모양이 같다.",
+      "source_refs": ["ent_state_mats_missing", "ent_state_mats_placed", "ent_place_stair"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_mats_missing", "ent_state_mats_placed", "ent_place_stair"] } }
+      ],
+      "detail_scene_id": ""
+    }
+  ],
+  "panels": [
+    {
+      "schema_version": 1,
+      "id": "panel_inter_which_page",
+      "kind": "state_board",
+      "title": "중간문제 — 어떤 면이 실제로 빠졌나",
+      "accepted_entity_kinds": ["document", "state", "person", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_page_b", "segment_id": "segment_page_b", "accepted_kinds": ["document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_page_c", "segment_id": "segment_page_c", "accepted_kinds": ["document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_page_b_state", "segment_id": "segment_page_b_state", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_page_c_state", "segment_id": "segment_page_c_state", "accepted_kinds": ["state", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_page_touch", "segment_id": "segment_page_touch", "accepted_kinds": ["person", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_page_b", "display_text": "B권 112 다음 자리" },
+        { "schema_version": 1, "id": "segment_page_c", "display_text": "C권 41 다음 자리" },
+        { "schema_version": 1, "id": "segment_page_b_state", "display_text": "B권 그 자리의 제본" },
+        { "schema_version": 1, "id": "segment_page_c_state", "display_text": "C권 그 자리의 성격" },
+        { "schema_version": 1, "id": "segment_page_touch", "display_text": "C권을 최근 만진 사람" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_four_seconds",
+      "kind": "procedure_board",
+      "title": "중간문제 — 문에서 난간까지",
+      "accepted_entity_kinds": ["state", "trace", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_four_contact", "segment_id": "segment_four_contact", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_four_gap", "segment_id": "segment_four_gap", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_four_rail", "segment_id": "segment_four_rail", "accepted_kinds": ["trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_four_mats", "segment_id": "segment_four_mats", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_four_cause", "segment_id": "segment_four_cause", "accepted_kinds": ["state", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_four_contact", "display_text": "문고리 앞 접촉" },
+        { "schema_version": 1, "id": "segment_four_gap", "display_text": "접촉과 추락 사이" },
+        { "schema_version": 1, "id": "segment_four_rail", "display_text": "난간 직전에 밟힌 것" },
+        { "schema_version": 1, "id": "segment_four_mats", "display_text": "보관각 계단 미끄럼천" },
+        { "schema_version": 1, "id": "segment_four_cause", "display_text": "낙하의 직접 원인" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_main_statement",
+      "kind": "statement",
+      "title": "메인문제 — [페이지를 뜯은 사람]은 [그 행동을 объяс하는 뿌리] 때문에 [실제로 뜯긴 자리]를 가져갔다. 문고리에서 [지안]에게 붙잡히자 손을 뿌리치고 달아났고, 지안은 뒤쫓다가 자기 [젖은 장삼 끝]을 밟아 회랑 난간 아래로 떨어졌다. 타렌은 자신이 [밀었다]고 믿지만, 추락 순간 두 사람은 접촉하지 않았다.",
+      "accepted_entity_kinds": ["person", "document", "state", "trace", "action", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_main_thief", "segment_id": "segment_main_thief", "accepted_kinds": ["person", "decoy"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_motive", "segment_id": "segment_main_motive", "accepted_kinds": ["state", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_page", "segment_id": "segment_main_page", "accepted_kinds": ["document"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_separate", "segment_id": "segment_main_separate", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_hem", "segment_id": "segment_main_hem", "accepted_kinds": ["trace", "action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_contact", "segment_id": "segment_main_contact", "accepted_kinds": ["state", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_confess", "segment_id": "segment_main_confess", "accepted_kinds": ["state", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_main_thief", "display_text": "페이지를 뜯은 사람" },
+        { "schema_version": 1, "id": "segment_main_motive", "display_text": "그 행동을 설명하는 뿌리" },
+        { "schema_version": 1, "id": "segment_main_page", "display_text": "실제로 뜯긴 자리" },
+        { "schema_version": 1, "id": "segment_main_separate", "display_text": "문 앞에서 떨어진 뒤의 행동" },
+        { "schema_version": 1, "id": "segment_main_hem", "display_text": "추락 직전 밟힌 것" },
+        { "schema_version": 1, "id": "segment_main_contact", "display_text": "추락 순간의 접촉 여부" },
+        { "schema_version": 1, "id": "segment_main_confess", "display_text": "타렌이 스스로 믿는 해석" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": true,
+      "unlock_condition": null
+    }
+  ],
+  "solutions": [
+    {
+      "schema_version": 1,
+      "id": "solution_inter_which_page",
+      "panel_id": "panel_inter_which_page",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_page_b", "entity_id": "ent_page_b113" },
+        { "schema_version": 1, "slot_id": "slot_page_c", "entity_id": "ent_page_c42" },
+        { "schema_version": 1, "slot_id": "slot_page_b_state", "entity_id": "ent_state_never_printed" },
+        { "schema_version": 1, "slot_id": "slot_page_c_state", "entity_id": "ent_state_torn_out" },
+        { "schema_version": 1, "slot_id": "slot_page_touch", "entity_id": "ent_person_taren" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_page_b", "entity_id": "ent_page_c42" },
+        { "schema_version": 1, "slot_id": "slot_page_b", "entity_id": "ent_book_a" },
+        { "schema_version": 1, "slot_id": "slot_page_b", "entity_id": "ent_book_c" },
+        { "schema_version": 1, "slot_id": "slot_page_c", "entity_id": "ent_page_b113" },
+        { "schema_version": 1, "slot_id": "slot_page_c", "entity_id": "ent_book_a" },
+        { "schema_version": 1, "slot_id": "slot_page_c", "entity_id": "ent_book_b" },
+        { "schema_version": 1, "slot_id": "slot_page_b_state", "entity_id": "ent_state_torn_out" },
+        { "schema_version": 1, "slot_id": "slot_page_c_state", "entity_id": "ent_state_never_printed" },
+        { "schema_version": 1, "slot_id": "slot_page_c_state", "entity_id": "ent_decoy_om" },
+        { "schema_version": 1, "slot_id": "slot_page_touch", "entity_id": "ent_person_soma" },
+        { "schema_version": 1, "slot_id": "slot_page_touch", "entity_id": "ent_person_jian" },
+        { "schema_version": 1, "slot_id": "slot_page_touch", "entity_id": "ent_person_lengpo" },
+        { "schema_version": 1, "slot_id": "slot_page_touch", "entity_id": "ent_person_mei" },
+        { "schema_version": 1, "slot_id": "slot_page_touch", "entity_id": "ent_decoy_alex_theft" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_loft_b112_114", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_loft_c41_43", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_loft_fiber", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_four_seconds",
+      "panel_id": "panel_inter_four_seconds",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_four_contact", "entity_id": "ent_state_door_contact" },
+        { "schema_version": 1, "slot_id": "slot_four_gap", "entity_id": "ent_state_three_steps" },
+        { "schema_version": 1, "slot_id": "slot_four_rail", "entity_id": "ent_trace_robe_sole" },
+        { "schema_version": 1, "slot_id": "slot_four_mats", "entity_id": "ent_state_mats_missing" },
+        { "schema_version": 1, "slot_id": "slot_four_cause", "entity_id": "ent_state_no_contact" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_four_contact", "entity_id": "ent_state_no_contact" },
+        { "schema_version": 1, "slot_id": "slot_four_gap", "entity_id": "ent_state_mats_missing" },
+        { "schema_version": 1, "slot_id": "slot_four_gap", "entity_id": "ent_state_pushed_confession" },
+        { "schema_version": 1, "slot_id": "slot_four_rail", "entity_id": "ent_trace_red_thread" },
+        { "schema_version": 1, "slot_id": "slot_four_rail", "entity_id": "ent_trace_gray_thread" },
+        { "schema_version": 1, "slot_id": "slot_four_mats", "entity_id": "ent_state_mats_placed" },
+        { "schema_version": 1, "slot_id": "slot_four_mats", "entity_id": "ent_state_no_contact" },
+        { "schema_version": 1, "slot_id": "slot_four_cause", "entity_id": "ent_state_pushed_confession" },
+        { "schema_version": 1, "slot_id": "slot_four_cause", "entity_id": "ent_state_mats_missing" },
+        { "schema_version": 1, "slot_id": "slot_four_cause", "entity_id": "ent_decoy_mei_fault" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_arcade_knocker", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_arcade_footprints", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_arcade_hem", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_arcade_rail", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_kitchen_mats", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_main_statement",
+      "panel_id": "panel_main_statement",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_thief", "entity_id": "ent_person_taren" },
+        { "schema_version": 1, "slot_id": "slot_main_motive", "entity_id": "ent_state_debt_medicine" },
+        { "schema_version": 1, "slot_id": "slot_main_page", "entity_id": "ent_page_c42" },
+        { "schema_version": 1, "slot_id": "slot_main_separate", "entity_id": "ent_action_broke_free" },
+        { "schema_version": 1, "slot_id": "slot_main_hem", "entity_id": "ent_trace_robe_sole" },
+        { "schema_version": 1, "slot_id": "slot_main_contact", "entity_id": "ent_state_no_contact" },
+        { "schema_version": 1, "slot_id": "slot_main_confess", "entity_id": "ent_state_pushed_confession" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_thief", "entity_id": "ent_person_alex" },
+        { "schema_version": 1, "slot_id": "slot_main_thief", "entity_id": "ent_person_soma" },
+        { "schema_version": 1, "slot_id": "slot_main_thief", "entity_id": "ent_person_jian" },
+        { "schema_version": 1, "slot_id": "slot_main_thief", "entity_id": "ent_person_mei" },
+        { "schema_version": 1, "slot_id": "slot_main_thief", "entity_id": "ent_person_lengpo" },
+        { "schema_version": 1, "slot_id": "slot_main_thief", "entity_id": "ent_decoy_alex_theft" },
+        { "schema_version": 1, "slot_id": "slot_main_motive", "entity_id": "ent_state_manuscript_subject" },
+        { "schema_version": 1, "slot_id": "slot_main_motive", "entity_id": "ent_state_q42" },
+        { "schema_version": 1, "slot_id": "slot_main_motive", "entity_id": "ent_decoy_om" },
+        { "schema_version": 1, "slot_id": "slot_main_page", "entity_id": "ent_page_b113" },
+        { "schema_version": 1, "slot_id": "slot_main_page", "entity_id": "ent_book_a" },
+        { "schema_version": 1, "slot_id": "slot_main_page", "entity_id": "ent_book_b" },
+        { "schema_version": 1, "slot_id": "slot_main_page", "entity_id": "ent_book_c" },
+        { "schema_version": 1, "slot_id": "slot_main_separate", "entity_id": "ent_action_grabbed" },
+        { "schema_version": 1, "slot_id": "slot_main_separate", "entity_id": "ent_action_ran_ahead" },
+        { "schema_version": 1, "slot_id": "slot_main_separate", "entity_id": "ent_action_tore_out" },
+        { "schema_version": 1, "slot_id": "slot_main_separate", "entity_id": "ent_action_stepped_hem" },
+        { "schema_version": 1, "slot_id": "slot_main_hem", "entity_id": "ent_trace_red_thread" },
+        { "schema_version": 1, "slot_id": "slot_main_hem", "entity_id": "ent_trace_gray_thread" },
+        { "schema_version": 1, "slot_id": "slot_main_hem", "entity_id": "ent_trace_paper_fiber" },
+        { "schema_version": 1, "slot_id": "slot_main_hem", "entity_id": "ent_action_ran_ahead" },
+        { "schema_version": 1, "slot_id": "slot_main_contact", "entity_id": "ent_state_pushed_confession" },
+        { "schema_version": 1, "slot_id": "slot_main_contact", "entity_id": "ent_state_mats_missing" },
+        { "schema_version": 1, "slot_id": "slot_main_contact", "entity_id": "ent_state_mats_placed" },
+        { "schema_version": 1, "slot_id": "slot_main_contact", "entity_id": "ent_decoy_mei_fault" },
+        { "schema_version": 1, "slot_id": "slot_main_confess", "entity_id": "ent_state_no_contact" },
+        { "schema_version": 1, "slot_id": "slot_main_confess", "entity_id": "ent_state_never_printed" },
+        { "schema_version": 1, "slot_id": "slot_main_confess", "entity_id": "ent_state_torn_out" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_loft_b112_114", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_loft_c41_43", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_arcade_footprints", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_arcade_hem", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_arcade_rail", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_arcade_confession", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_loft_card", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": "review_main"
+    }
+  ],
+  "hints": [
+    {
+      "schema_version": 1,
+      "id": "hint_binding_sections",
+      "title": "힌트 — 두 책의 제본단면",
+      "body": "B권과 C권을 나란히 펴라. 두 곳 모두 지수에서 면 하나가 뛴다. 112 다음 지수가 114로 뛴 자리와 41 다음 지수가 43으로 뛴 자리의 제본 실밥을 손끝으로 각각 훑어 보라. 두 자리는 같은 표면사실을 공유하지 않는다. 소마의 점검표는 총 면수와 제본도식만 있다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_book_b",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_red_thread",
+      "title": "힌트 — 찢긴 면의 붉은 한 올",
+      "body": "C권 찢긴 면의 종이섬유 사이에 붉은 실 한 올이 섞여 있다. 행자의 오른 소매에는 붉은 실밥 하나가 비어 있고 안쪽에 황갈색 섬유가 붙어 있다. 두 조각의 굵기와 비듬 방향을 눈으로 맞춰 보라. 대조 없이 '같은 섬유'라고 적은 문장은 이 장의 증거가 아니다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_red_thread",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_four_seconds",
+      "title": "힌트 — 문고리에서 난간까지 한 줄",
+      "body": "문고리 자국, 젖은 발자국 세 개, 장삼 끝이 눌린 자국, 부서진 난간을 실제 거리 순서로 한 줄에 놓아 보라. 발자국은 어디서 시작하고 어디서 끊기는가. 부서진 난간 면에 손바닥 자국이 있는가. 타렌의 자백은 이 줄의 어느 한 구간과만 맞는다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_door_contact",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    }
+  ],
+  "review": {
+    "schema_version": 1,
+    "id": "review_main",
+    "conclusion": "B권 113은 처음부터 인쇄되지 않은 결번이고, 실제로 뜯긴 면은 C권 42다. C권 찢김면의 황갈색 종이섬유에 섞인 붉은 실 한 올과 소매 안쪽의 같은 섬유, 비어 있는 오른 소매 붉은 실밥이 그 접촉을 가리킨다. 문고리 앞 접촉은 실제로 있었다. 그러나 젖은 발자국 세 개가 문고리에서 난간까지 이어지고, 난간 직전의 자국은 지안이 자기 젖은 장삼 끝을 밟은 모양이며, 부서진 난간 면에는 손자국이 없다. 메이의 미끄럼천 누락은 사실이지만 젖은 흔적이 그 구간을 미끄러짐 없이 통과하므로 직접원인이 아니다. 타렌의 자백은 접촉 부분을 옳게 기억하고 자신이 추락시켰다는 해석만 틀렸다. 결손의 이름에 종교용어를 쓰는 답은 채점하지 않는다.",
+    "referenced_case_ids": [],
+    "scene_path": ""
+  },
+  "next_case_ids": ["case_07_karmin_dock"]
+}

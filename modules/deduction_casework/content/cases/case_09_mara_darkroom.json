@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "id": "case_09_mara_darkroom",
+  "title": "09 암실에서 끝난 대화 — 마라의 사진관",
+  "start_scene_id": "scene_studio",
+  "scenes": [
+    {
+      "schema_version": 1,
+      "id": "scene_studio",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_studio_tram",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_studio_tram", "focus_id": "msg_studio_tram" },
+        { "schema_version": 1, "id": "hotspot_studio_album", "focus_id": "msg_studio_album" },
+        { "schema_version": 1, "id": "hotspot_studio_booking_clock", "focus_id": "msg_studio_booking_clock" },
+        { "schema_version": 1, "id": "hotspot_studio_table", "focus_id": "panel_main_statement" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_studio_to_darkroom",
+          "destination_scene_id": "scene_darkroom",
+          "focus_id": "hotspot_dark_timer"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_darkroom",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_dark_timer",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_dark_timer", "focus_id": "msg_dark_timer" },
+        { "schema_version": 1, "id": "hotspot_dark_photo_a", "focus_id": "msg_dark_photo_a" },
+        { "schema_version": 1, "id": "hotspot_dark_photo_b", "focus_id": "msg_dark_photo_b" },
+        { "schema_version": 1, "id": "hotspot_dark_photo_c", "focus_id": "msg_dark_photo_c" },
+        { "schema_version": 1, "id": "hotspot_dark_photo_d", "focus_id": "msg_dark_photo_d" },
+        { "schema_version": 1, "id": "hotspot_dark_tapes", "focus_id": "msg_dark_tapes" },
+        { "schema_version": 1, "id": "hotspot_dark_floor_tracks", "focus_id": "msg_dark_floor_tracks" },
+        { "schema_version": 1, "id": "hotspot_dark_mara_memo", "focus_id": "msg_dark_mara_memo" },
+        { "schema_version": 1, "id": "hotspot_dark_julian_memo", "focus_id": "msg_dark_julian_memo" },
+        { "schema_version": 1, "id": "hotspot_dark_order_board", "focus_id": "panel_inter_photo_tape" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_dark_to_studio",
+          "destination_scene_id": "scene_studio",
+          "focus_id": "hotspot_studio_tram"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_dark_to_wash",
+          "destination_scene_id": "scene_washroom",
+          "focus_id": "hotspot_wash_pressure"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_washroom",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_wash_pressure",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_wash_pressure", "focus_id": "msg_wash_pressure" },
+        { "schema_version": 1, "id": "hotspot_wash_shutter", "focus_id": "msg_wash_shutter" },
+        { "schema_version": 1, "id": "hotspot_wash_hand", "focus_id": "msg_wash_hand" },
+        { "schema_version": 1, "id": "hotspot_wash_nextday", "focus_id": "msg_wash_nextday" },
+        { "schema_version": 1, "id": "hotspot_wash_last_board", "focus_id": "panel_inter_last_thirty" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_wash_to_dark",
+          "destination_scene_id": "scene_darkroom",
+          "focus_id": "hotspot_dark_timer"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_wash_to_studio",
+          "destination_scene_id": "scene_studio",
+          "focus_id": "hotspot_studio_tram"
+        }
+      ]
+    }
+  ],
+  "closeups": [],
+  "entities": [
+    { "schema_version": 1, "id": "ent_person_julian", "kind": "person", "display_text": "줄리언 룩", "source_text_id": "msg_studio_album", "tags": ["subject"] },
+    { "schema_version": 1, "id": "ent_person_mara", "kind": "person", "display_text": "마라 데인", "source_text_id": "msg_studio_album", "tags": ["subject"] },
+    { "schema_version": 1, "id": "ent_photo_a", "kind": "image", "display_text": "사진 A — 빈 의자", "source_text_id": "msg_dark_photo_a", "tags": [] },
+    { "schema_version": 1, "id": "ent_photo_b", "kind": "image", "display_text": "사진 B — 창에 비친 인영", "source_text_id": "msg_dark_photo_b", "tags": [] },
+    { "schema_version": 1, "id": "ent_photo_c", "kind": "image", "display_text": "사진 C — 컵을 든 인물", "source_text_id": "msg_dark_photo_c", "tags": [] },
+    { "schema_version": 1, "id": "ent_photo_d", "kind": "image", "display_text": "사진 D — 불이 꺼진 방", "source_text_id": "msg_dark_photo_d", "tags": [] },
+    { "schema_version": 1, "id": "ent_tape_piece_a", "kind": "audio", "display_text": "카세트 조각 첫째", "source_text_id": "msg_dark_tapes", "tags": [] },
+    { "schema_version": 1, "id": "ent_tape_piece_b", "kind": "audio", "display_text": "카세트 조각 둘째", "source_text_id": "msg_dark_tapes", "tags": [] },
+    { "schema_version": 1, "id": "ent_tape_piece_c", "kind": "audio", "display_text": "카세트 조각 셋째", "source_text_id": "msg_dark_tapes", "tags": [] },
+    { "schema_version": 1, "id": "ent_tape_piece_d", "kind": "audio", "display_text": "카세트 조각 넷째", "source_text_id": "msg_dark_tapes", "tags": [] },
+    { "schema_version": 1, "id": "ent_record_timer_strip", "kind": "document", "display_text": "현상타이머 절취지", "source_text_id": "msg_dark_timer", "tags": [] },
+    { "schema_version": 1, "id": "ent_record_tram_table", "kind": "document", "display_text": "거리전차 시간표", "source_text_id": "msg_studio_tram", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_tram_streak", "kind": "image", "display_text": "창밖을 가로지른 수평광선", "source_text_id": "msg_dark_photo_d", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_lamp_reflection", "kind": "image", "display_text": "구석에 남은 붉은 반사", "source_text_id": "msg_dark_photo_d", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_glass_sound", "kind": "audio", "display_text": "테이프 끝의 유리가 깨지는 소리", "source_text_id": "msg_dark_tapes", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_no_blood", "kind": "state", "display_text": "줄리언 자리에서 없던 것", "source_text_id": "msg_wash_hand", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_two_only", "kind": "state", "display_text": "19:05 이후 지하에 둘뿐", "source_text_id": "msg_studio_booking_clock", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_shared_paper", "kind": "state", "display_text": "두 사람이 번갈아 쓴 한 장의 종이", "source_text_id": "msg_dark_mara_memo", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_rejected_four", "kind": "state", "display_text": "네 번, 서로 다른 이유로", "source_text_id": "msg_dark_julian_memo", "tags": [] },
+    { "schema_version": 1, "id": "ent_concept_camera", "kind": "state", "display_text": "시점 없는 카메라", "source_text_id": "msg_dark_tapes", "tags": [] },
+    { "schema_version": 1, "id": "ent_concept_depersonalization", "kind": "state", "display_text": "해리", "source_text_id": "msg_dark_tapes", "tags": [] },
+    { "schema_version": 1, "id": "ent_concept_nihilism", "kind": "state", "display_text": "무아", "source_text_id": "msg_dark_tapes", "tags": [] },
+    { "schema_version": 1, "id": "ent_concept_private_language", "kind": "state", "display_text": "정의 불가능한 사적 언어", "source_text_id": "msg_dark_tapes", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_floor_turn", "kind": "trace", "display_text": "안전등 앞에서 꺾인 현상액 자국", "source_text_id": "msg_dark_floor_tracks", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_debris_side", "kind": "trace", "display_text": "마라 쪽으로 퍼진 유리조각", "source_text_id": "msg_wash_hand", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_hand_cut", "kind": "trace", "display_text": "손바닥 바깥쪽으로 긁힌 절상", "source_text_id": "msg_wash_hand", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_hit_lamp", "kind": "action", "display_text": "안전등에 부딪혀 손을 베었다", "source_text_id": "msg_wash_hand", "tags": ["answer"] },
+    { "schema_version": 1, "id": "ent_decoy_assault", "kind": "decoy", "display_text": "줄리언이 마라를 때렸다", "source_text_id": "msg_wash_hand", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_third_party", "kind": "decoy", "display_text": "제3자가 있었다", "source_text_id": "msg_dark_floor_tracks", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_lying", "kind": "decoy", "display_text": "둘 중 한 사람이 거짓말했다", "source_text_id": "msg_wash_nextday", "tags": ["decoy"] }
+  ],
+  "messages": [
+    {
+      "schema_version": 1,
+      "id": "msg_studio_tram",
+      "title": "오브젝트 A1 — 거리전차 시간표",
+      "body": "관찰: 이 거리 전차의 통과 시각 18:50 / 19:10 / 19:30 / 19:50.\n관찰: 19:30 행의 칸만 잉크가 두껍고 지워지지 않은 자국이 있다.\n관찰: 시간표에 요일 표시가 없다.",
+      "source_refs": ["ent_record_tram_table"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_record_tram_table"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_studio_album",
+      "title": "오브젝트 A2 — 오래된 사진첩",
+      "body": "관찰: 14년 전부터 두 사람이 함께 찍은 사진이 한 권에 묶여 있다. 어느 장에도 제3자는 없다.\n관찰: 뒷면 서명이 두 종류다. J. Rook. M. Dain.\n관찰: 한 장 뒷면 필기: 「말 안 통해도 14년째 친구.」",
+      "source_refs": ["ent_person_julian", "ent_person_mara"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_julian", "ent_person_mara"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_main_statement" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_studio_booking_clock",
+      "title": "오브젝트 A3 — 예약시계",
+      "body": "관찰: 마지막 손님 퇴실 19:05.\n관찰: 19:05 이후 기록된 예약이 없다.\n관찰: 계기판 아래 여백 필기: 「촬영 종료 후 지하 사용 없음」",
+      "source_refs": ["ent_state_two_only"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_two_only"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dark_timer",
+      "title": "오브젝트 B1 — 현상타이머 절취지",
+      "body": "관찰: 절취된 네 줄. 19:12 / 19:18 / 19:24 / 19:31.\n관찰: 종이에 사진 번호가 적혀 있지 않다.\n관찰: 각 줄 끝에 서로 다른 색 얼룩이 남아 있다.",
+      "source_refs": ["ent_record_timer_strip"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_record_timer_strip"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dark_photo_a",
+      "title": "하위 B2-1 — 사진 A",
+      "body": "관찰: 빈 의자. 현상액 얼룩이 없고 농도가 첫 탱크와 같다.\n관찰: 가장자리 두 곳이 다른 사진과 같은 손톱 자국을 공유한다.\n관찰: 사진에 시간 표기가 없다.",
+      "source_refs": ["ent_photo_a"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_photo_a"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dark_photo_b",
+      "title": "하위 B2-2 — 사진 B",
+      "body": "관찰: 창문에 비친 인영. 윤곽이 어긋나 두 겹으로 찍혀 있다.\n관찰: 두 겹의 어긋난 폭이 가장자리 세로 스크래치 폭과 같다.\n관찰: 사진에 시간 표기가 없다.",
+      "source_refs": ["ent_photo_b"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_photo_b"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dark_photo_c",
+      "title": "하위 B2-3 — 사진 C",
+      "body": "관찰: 컵을 든 인물. 하단에만 창백한 얼룩이 있고 위쪽은 맑다.\n관찰: 얼룩 경계가 한 줄로 꺾여 있고 경계선이 세척대 쪽 벽에서 이어진다.\n관찰: 사진에 시간 표기가 없다.",
+      "source_refs": ["ent_photo_c"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_photo_c"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dark_photo_d",
+      "title": "하위 B2-4 — 사진 D",
+      "body": "관찰: 불이 꺼진 방. 창밖으로 긴 수평광선이 벽을 가로질러 찍혀 있다.\n관찰: 방 구석에 붉은 반사 조각이 남았다.\n관찰: 유리에는 균열이 없다. 반사는 물결치지 않는다.\n관찰: 사진에 시간 표기가 없다.",
+      "source_refs": ["ent_photo_d", "ent_state_tram_streak", "ent_state_lamp_reflection"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_photo_d", "ent_state_tram_streak", "ent_state_lamp_reflection"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dark_tapes",
+      "title": "오브젝트 B3 — 끊어진 카세트 네 조각",
+      "body": "관찰: 조각에 번호가 없고 자른 면 모양이 서로 다르다.\n관찰: 물방울이 반쪽씩 이어지는 조각은 첫째와 둘째다. 모서리가 접히고 잉크가 없는 조각은 셋째와 넷째다.\n관찰: 어느 쌍이 먼저인지 정해 주는 것은 절단면이 아니다.\n관찰: 조각 첫째. 테이프에 방아쇠 클릭이 두 번 남아 있다. 뒷면 필기 없음.\n줄리언: 「아까 카메라 얘기처럼, 통증도 '누구의 것'이라고 쓰면 내가 말하려던 데서 벗어나.」\n마라: 「몸이 내 몸 같지 않은 해리?」\n줄리언: 「그건 소유감이 달라졌다는 설명이잖아.」\n관찰: 조각 둘째. 테이프에 짧은 종 한 번이 남아 있다.\n줄리언: 「컵을 보고 있던 걸 설명하려니까 '내가 보고 있었다'고 쓰게 되는데, 그건 내가 기억하는 것과 달라.」\n마라: 「시점 없는 카메라 같은 거?」\n줄리언: 「카메라를 넣는 순간 벌써 다른 얘기야.」\n관찰: 조각 셋째. 테이프에 물소리가 길게 남아 있고 마른 바닥을 스치는 소리가 섞여 있다.\n마라: 「카메라도 아니고 해리도 아니면 결국 무아야?」\n줄리언: 「그것도 앞의 두 개랑 같은 식으로 다른 문제로 바꿔.」\n관찰: 조각 넷째. 테이프에 낮은 종소리 다음에 유리가 깨지는 소리가 남아 있다.\n줄리언: 「세 번째도 아니야. 문장으로 고정할 때마다 내가 아는 다른 설명으로 바뀌어.」\n마라: 「내가 못 알아듣는다는 거야?」\n줄리언: 「아니. 네가 아니라—」",
+      "source_refs": [
+        "ent_tape_piece_a", "ent_tape_piece_b", "ent_tape_piece_c", "ent_tape_piece_d",
+        "ent_concept_camera", "ent_concept_depersonalization", "ent_concept_nihilism",
+        "ent_concept_private_language", "ent_state_glass_sound"
+      ],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_tape_piece_a", "ent_tape_piece_b", "ent_tape_piece_c", "ent_tape_piece_d", "ent_concept_camera", "ent_concept_depersonalization", "ent_concept_nihilism", "ent_concept_private_language", "ent_state_glass_sound"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_photo_tape" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dark_floor_tracks",
+      "title": "오브젝트 B4 — 바닥의 흔적",
+      "body": "관찰: 현상액 자국이 현상탱크에서 시작해 확대기 앞을 지나 세척대 쪽으로 이어진다.\n관찰: 세척대 앞까지 이어진 자국이 안전등 앞에서 갑자기 꺾이고 두 갈래로 갈라진다.\n관찰: 한 갈래는 마라의 신발 밑창과 폭이 같고 다른 갈래는 벽 앞에서 끊긴다.\n관찰: 벽 아래에 유리조각이 흩어져 있다.",
+      "source_refs": ["ent_trace_floor_turn", "ent_decoy_third_party"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_floor_turn", "ent_decoy_third_party"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dark_mara_memo",
+      "title": "오브젝트 B5 — 네 장의 메모",
+      "body": "관찰: 네 장이 책상 여러 위치에 흩어져 있고 번호가 없다.\n관찰 첫 장: 「시점 제거?」\n관찰 둘째: 「해리?」\n관찰 셋째: 「무아?」\n관찰 넷째: 「정의 불가능한 사적 언어?」\n관찰: 네 장의 필체가 같고 날짜가 없다.\n관찰: 각 장 옆에 서로 다른 모양의 X가 그어져 있고 그 X는 다른 필체다.\n관찰: 마라가 쓴 네 장과 줄리언이 쓴 줄이 한 장의 종이에서 번갈아 이어진다.",
+      "source_refs": ["ent_state_shared_paper"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_shared_paper"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dark_julian_memo",
+      "title": "오브젝트 B6 — 네 줄의 메모",
+      "body": "관찰: 번호가 없고 각 장의 여백에 현상액 얼룩 색이 서로 다르다.\n관찰 첫째: 「카메라를 새 주체로 만들었음.」\n관찰 둘째: 「소유감을 먼저 생성했음.」\n관찰 셋째: 「자아를 먼저 생성했음.」\n관찰 넷째: 「사적 언어 문제가 아님.」\n관찰: 네 줄 옆의 X 모양이 서로 다르다.\n관찰: 여백 얼룩이 마라가 쓴 네 장의 순서와 같은 색으로 이어진다.",
+      "source_refs": ["ent_state_rejected_four"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_rejected_four"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_wash_pressure",
+      "title": "오브젝트 C1 — 수도압 수리표",
+      "body": "관찰: 19:20~19:25 저수압 작업 기재. 작업자 서명.\n관찰: 같은 시간대에 세척대 물줄기 기록이 남아 있고 그 전후에는 기록이 없다.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_wash_shutter",
+      "title": "오브젝트 C2 — 확대기 셔터 기록",
+      "body": "관찰: 19:17:52 한 차례 이중작동. 같은 필름 구획이 두 번 통과한 기록.\n관찰: 그 앞뒤 기록은 모두 정상이다.\n관찰: 기록지 끝에 다음 작업 시작 시각이 비어 있다.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_wash_hand",
+      "title": "오브젝트 C3 — 마라의 손과 유리조각",
+      "body": "관찰: 손바닥 바깥쪽으로 긁힌 절상. 긁힘 방향이 손바닥에서 손가락 바깥쪽으로 이어진다.\n관찰: 유리조각 대부분은 벽에서 마라 쪽 바닥으로 퍼져 있다.\n관찰: 피가 묻은 조각은 손바닥 높이 아래에만 있다.\n관찰: 줄리언이 서 있던 자리에는 조각도 혈흔도 없다.\n관찰: 깨진 안전등의 테두리 높이가 그 자리의 긁힘 시작점과 같다.\n인용: 「넘어졌어요.」",
+      "source_refs": ["ent_trace_debris_side", "ent_trace_hand_cut", "ent_state_no_blood", "ent_action_hit_lamp", "ent_decoy_assault"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_debris_side", "ent_trace_hand_cut", "ent_state_no_blood", "ent_action_hit_lamp", "ent_decoy_assault"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_last_thirty" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_wash_nextday",
+      "title": "오브젝트 C4 — 다음날 메모",
+      "body": "인용: 「줄리언이 뭔가 겪었다는 건 믿는다. 내가 알아듣는 말을 찾을 때마다 그는 고개를 저었다.」\n관찰: 날짜는 다음 날. 여백에 질문 세 개가 적혀 있고 답은 없다.\n관찰: 같은 손이 쓴 앞날 메모와 필체가 같다.",
+      "source_refs": ["ent_decoy_lying"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_decoy_lying"] } }
+      ],
+      "detail_scene_id": ""
+    }
+  ],
+  "panels": [
+    {
+      "schema_version": 1,
+      "id": "panel_inter_photo_tape",
+      "kind": "state_board",
+      "title": "중간문제 — 사진과 녹음 한 줄로 복원",
+      "accepted_entity_kinds": ["image", "audio"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_p1_first", "segment_id": "segment_p1_first", "accepted_kinds": [], "accepted_entity_ids": ["ent_photo_a", "ent_tape_piece_b"], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_second", "segment_id": "segment_p1_second", "accepted_kinds": [], "accepted_entity_ids": ["ent_photo_b", "ent_tape_piece_a"], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_third", "segment_id": "segment_p1_third", "accepted_kinds": [], "accepted_entity_ids": ["ent_photo_c", "ent_tape_piece_d"], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p1_fourth", "segment_id": "segment_p1_fourth", "accepted_kinds": [], "accepted_entity_ids": ["ent_photo_d", "ent_tape_piece_c"], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_p1_first", "display_text": "가장 먼저 진행된 작업" },
+        { "schema_version": 1, "id": "segment_p1_second", "display_text": "그다음 진행된 작업" },
+        { "schema_version": 1, "id": "segment_p1_third", "display_text": "다섯 시를 넘긴 뒤의 작업" },
+        { "schema_version": 1, "id": "segment_p1_fourth", "display_text": "가장 마지막에 진행된 작업" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "msg_dark_tapes",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_last_thirty",
+      "kind": "state_board",
+      "title": "중간문제 — 마지막 30초",
+      "accepted_entity_kinds": ["state", "trace", "image", "audio"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_p2_streak", "segment_id": "segment_p2_streak", "accepted_kinds": ["image", "state", "trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_reflection", "segment_id": "segment_p2_reflection", "accepted_kinds": ["image", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_debris", "segment_id": "segment_p2_debris", "accepted_kinds": ["trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_hand", "segment_id": "segment_p2_hand", "accepted_kinds": ["trace", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_sound", "segment_id": "segment_p2_sound", "accepted_kinds": ["audio", "state", "trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_p2_absence", "segment_id": "segment_p2_absence", "accepted_kinds": ["state", "trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_p2_streak", "display_text": "유리가 깨지기 전에 찍힌 빛" },
+        { "schema_version": 1, "id": "segment_p2_reflection", "display_text": "깨지기 전 안전등의 흔적" },
+        { "schema_version": 1, "id": "segment_p2_debris", "display_text": "유리가 어느 쪽으로 퍼졌나" },
+        { "schema_version": 1, "id": "segment_p2_hand", "display_text": "상처의 방향" },
+        { "schema_version": 1, "id": "segment_p2_sound", "display_text": "마지막 발화 뒤의 소리" },
+        { "schema_version": 1, "id": "segment_p2_absence", "display_text": "상대 자리에서 발견되지 않은 것" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "msg_wash_hand",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_main_statement",
+      "kind": "statement",
+      "title": "메인문제 — [첫 번째로 부른 사람]은 [다른 사람]의 설명을 차례로 「[첫 번째 부름]」, 「[두 번째 부름]」, 「[세 번째 부름]」, 「[네 번째 부름]」이라고 불렀고, 그 사람은 네 번 모두 다른 이유로 부정했다. 마지막 말다툼 직후 실제로 일어난 것은 [ ? ]이었다.",
+      "accepted_entity_kinds": ["person", "state", "action", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_main_namer", "segment_id": "segment_main_namer", "accepted_kinds": ["person", "decoy"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_named", "segment_id": "segment_main_named", "accepted_kinds": ["person", "decoy"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_first", "segment_id": "segment_main_first", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_second", "segment_id": "segment_main_second", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_third", "segment_id": "segment_main_third", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_fourth", "segment_id": "segment_main_fourth", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_after", "segment_id": "segment_main_after", "accepted_kinds": ["action", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_main_namer", "display_text": "네 설명을 부르며 답한 사람" },
+        { "schema_version": 1, "id": "segment_main_named", "display_text": "거부한 사람" },
+        { "schema_version": 1, "id": "segment_main_first", "display_text": "가장 먼저 제시된 부름" },
+        { "schema_version": 1, "id": "segment_main_second", "display_text": "두 번째로 제시된 부름" },
+        { "schema_version": 1, "id": "segment_main_third", "display_text": "세 번째로 제시된 부름" },
+        { "schema_version": 1, "id": "segment_main_fourth", "display_text": "마지막에 제시된 부름" },
+        { "schema_version": 1, "id": "segment_main_after", "display_text": "마지막 발화 뒤 일어난 일" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": true,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "msg_studio_booking_clock",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "schema_version": 1,
+      "id": "solution_inter_photo_tape",
+      "panel_id": "panel_inter_photo_tape",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_p1_first", "entity_id": "ent_tape_piece_b" },
+        { "schema_version": 1, "slot_id": "slot_p1_second", "entity_id": "ent_tape_piece_a" },
+        { "schema_version": 1, "slot_id": "slot_p1_third", "entity_id": "ent_tape_piece_d" },
+        { "schema_version": 1, "slot_id": "slot_p1_fourth", "entity_id": "ent_tape_piece_c" }
+      ],
+      "forbidden_assignments": [],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dark_tapes", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dark_timer", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dark_photo_c", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_wash_shutter", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_wash_pressure", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_studio_tram", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_last_thirty",
+      "panel_id": "panel_inter_last_thirty",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_p2_streak", "entity_id": "ent_state_tram_streak" },
+        { "schema_version": 1, "slot_id": "slot_p2_reflection", "entity_id": "ent_state_lamp_reflection" },
+        { "schema_version": 1, "slot_id": "slot_p2_debris", "entity_id": "ent_trace_debris_side" },
+        { "schema_version": 1, "slot_id": "slot_p2_hand", "entity_id": "ent_trace_hand_cut" },
+        { "schema_version": 1, "slot_id": "slot_p2_sound", "entity_id": "ent_state_glass_sound" },
+        { "schema_version": 1, "slot_id": "slot_p2_absence", "entity_id": "ent_state_no_blood" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_p2_debris", "entity_id": "ent_trace_floor_turn" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dark_photo_d", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dark_tapes", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_wash_hand", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dark_floor_tracks", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_main_statement",
+      "panel_id": "panel_main_statement",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_namer", "entity_id": "ent_person_mara" },
+        { "schema_version": 1, "slot_id": "slot_main_named", "entity_id": "ent_person_julian" },
+        { "schema_version": 1, "slot_id": "slot_main_first", "entity_id": "ent_concept_camera" },
+        { "schema_version": 1, "slot_id": "slot_main_second", "entity_id": "ent_concept_depersonalization" },
+        { "schema_version": 1, "slot_id": "slot_main_third", "entity_id": "ent_concept_nihilism" },
+        { "schema_version": 1, "slot_id": "slot_main_fourth", "entity_id": "ent_concept_private_language" },
+        { "schema_version": 1, "slot_id": "slot_main_after", "entity_id": "ent_action_hit_lamp" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_namer", "entity_id": "ent_decoy_third_party" },
+        { "schema_version": 1, "slot_id": "slot_main_named", "entity_id": "ent_decoy_third_party" },
+        { "schema_version": 1, "slot_id": "slot_main_named", "entity_id": "ent_decoy_lying" },
+        { "schema_version": 1, "slot_id": "slot_main_after", "entity_id": "ent_decoy_assault" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dark_tapes", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dark_mara_memo", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dark_julian_memo", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_wash_hand", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_studio_album", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": "review_main"
+    }
+  ],
+  "hints": [
+    {
+      "schema_version": 1,
+      "id": "hint_photo_defect_time",
+      "title": "힌트 — 사진에 시각이 없다",
+      "body": "네 장에 적힌 시각은 없다. 대신 남은 것은 물이 닿은 자국, 방아쇠가 두 번 눌린 자국, 창밖을 스친 빛이다. 이 세 가지 흔적을 수리표, 셔터 기록, 전차 시간표, 절취지와 한 줄로 놓고 네 장을 시간 순서대로 세워라.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_photo_b",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_tape_pairs",
+      "title": "힌트 — 조각 두 쌍",
+      "body": "네 조각은 두 쌍으로 이어진다. 절단면은 쌍만 정해 주고 앞뒤는 정해 주지 않는다. 각 조각에 남아 있는 소리를 수리표, 셔터 기록, 시간표와 대입해 어떤 쌍이 앞인지 정해라. 지시어가 근거를 준다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_tape_piece_a",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_last_thirty",
+      "title": "힌트 — 마지막 30초 한 화면",
+      "body": "깨지기 전의 붉은 반사가 찍힌 사진, 유리가 퍼진 쪽, 손 상처의 방향, 테이프 끝의 파손음을 한 쪽에 놓아라. 유리가 깨진 것은 마지막 발화 뒤다. 파편이 벽의 어느 쪽으로 나갔는지가 폭행과 부딪힘을 가른다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_hand_cut",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_no_assault",
+      "title": "힌트 — 존재하지 않는 흔적",
+      "body": "피가 묻은 조각이 벽에서 손바닥 높이 아래에만 있다는 기록을 다시 읽어라. 폭행이라면 반대편 자리에 조각과 혈흔이 남아야 한다. 거짓말 가설을 세우기 전에 이 자리부터 확인해 보라.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_no_blood",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    }
+  ],
+  "review": {
+    "schema_version": 1,
+    "id": "review_main",
+    "conclusion": "네 장의 사진에는 시각이 없고 물리적 결함만 남아 있다. A는 첫 탱크 농도, B는 19:17:52의 셔터 이중작동으로 어긋난 2mm 중첩, C는 19:20~19:25 저수압 때 생긴 하단 유백 얼룩, D는 창밖 전차의 긴 수평광선과 깨지기 전 안전등의 붉은 반사다. 이 결함을 절취지·셔터 기록·수리표·전차 시간표에 대입하면 네 작업이 한 줄로 정렬되고, 테이프 네 조각의 절단면과 각 조각에 남은 소리도 그 순서를 따라간다. 마라가 차례로 부른 네 가지는 시점 없는 카메라, 해리, 무아, 정의 불가능한 사적 언어였고, 줄리언은 네 번 모두 다른 이유로 부정했다. 두 사람이 한 장의 종이를 번갈아 쓴 사실은 그 교정이 대화 중에 일어났음을 보여 준다. 유리조각과 피는 마라 쪽 바닥에만 퍼져 있고 줄리언이 서 있던 자리에는 혈흔이 없다. 마지막 발화 뒤의 파손은 마라가 장치에 부딪힌 경위와 맞는다. 두 사람이 무엇을 다르게 알았는지의 이름은 이 장의 답이 아니다.",
+    "referenced_case_ids": [],
+    "scene_path": ""
+  },
+  "next_case_ids": ["case_10_forte_terminal"]
+}

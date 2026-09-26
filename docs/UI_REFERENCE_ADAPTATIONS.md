@@ -61,7 +61,7 @@ Kit의 실제 두 사용처가 확인되지 않은 shared 추상화는 만들지
 키바인드 안내는 상시 InputGlyph가 아니라 장르 전환의 Input Bubble이 기본이다.
 
 ### Art
-UI 아이콘은 사용하지 않는다. at-icons는 월드 아트 조립 재료다.
+UI 아이콘은 사용하지 않는다. 월드 이미지 자산은 `docs/VISUAL_DIRECTION.md`의 현행 이미지 기반 상태에 따른다.
 
 ### Resolution
 1280×720 / 1920×1080 / 2560×1440을 실제 검수한다.

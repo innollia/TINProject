@@ -1,0 +1,90 @@
+{
+    "schema_version":  1,
+    "id":  "act_break_poise",
+    "display_name":  "break poise",
+    "order":  30,
+    "owner":  "player",
+    "category":  "defend",
+    "defense_mode":  "break_attempt",
+    "lifecycle":  "instant",
+    "intent":  {
+                   "target_mode":  "ONE_ENEMY",
+                   "requires_target_cursor":  true,
+                   "target_eligibility":  "living"
+               },
+    "cost":  {
+                 "turn_cost":  1,
+                 "action_slot_cost":  1,
+                 "resource_costs":  {
+
+                                    },
+                 "cooldown_windows":  1
+             },
+    "telegraph":  {
+                      "channels":  [
+                                       "pose",
+                                       "numeric_bar"
+                                   ],
+                      "windows_before_active":  0,
+                      "tell_key":  "tell_break_poise"
+                  },
+    "damage_payload":  {
+                           "delivery":  "physical",
+                           "shape":  "guaranteed",
+                           "base_value":  0,
+                           "affinity":  "none",
+                           "hit_policy":  "guaranteed",
+                           "hit_modifier":  0,
+                           "evasion_policy":  "roll",
+                           "critical_policy":  "never",
+                           "dodge_pressure":  0,
+                           "guard_ignore":  true,
+                           "breaks_guard":  true,
+                           "break_damage":  30,
+                           "dodgeable":  false,
+                           "break_damage_kinds":  [
+                                                      "hp_damage"
+                                                  ],
+                           "self_damage":  0,
+                           "lifesteal":  0,
+                           "reflect":  0,
+                           "on_hit_payload_ids":  [
+
+                                                  ],
+                           "on_evade_payload_ids":  [
+
+                                                    ]
+                       },
+    "break_spec":  {
+                       "stacks":  1,
+                       "status_ids":  [
+
+                                      ],
+                       "effect_ids":  [
+                                          "eff_r8_ash_choir_defeated"
+                                      ],
+                       "requires_target_breakable":  true,
+                       "cancels_charge":  false
+                   },
+    "counters":  {
+                     "valid":  [
+                                   "break",
+                                   "guard"
+                               ],
+                     "forbidden":  [
+
+                                   ],
+                     "breakable":  true
+                 },
+    "hooks":  {
+                  "on_break":  [
+                                   "eff_r8_ash_choir_defeated"
+                               ]
+              },
+    "presentation":  {
+                         "icon_key":  "act_break_poise"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

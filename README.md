@@ -63,15 +63,16 @@ Kit마다:
 - Esc 메뉴는 호출 시에만 표시
 - 장문 키설명 없음
 - 장르 입력 프로필 전환은 Input Bubble로 학습
-- `addons/at-icons`는 월드 아트 조립 재료, UI 아이콘이 아님
+- 과거 at-icons 기반 이미지 제작 문서·규칙·실험은 `archive/icon_based_image_assets/`에 보존하며, 기존 이미지 파일은 원래 위치에 둠
+- 대체 이미지 자산 기반은 아직 정해지지 않음
 
 ## 실행
 
-Godot 4.7.2로 `project.godot`을 연다. 현재 프로젝트 설정은 과거 1152×720 기준이 남아 있으며, 새 문서 기준의 720p/FHD/QHD 지원은 후속 구현 작업이다.
+프로젝트는 1280×720 기준 viewport를 사용하며, 실제 지원 검증은 1280×720 / 1920×1080 / 2560×1440 세 해상도로 수행한다.
 
 ## 라이선스 및 서드파티
 
 - 게임 코드: 프로젝트 자체 코드(라이선스 미정)
 - `addons/gut`: GUT 9.7.1 (MIT)
-- `addons/at-icons`: 월드 아트 조립 재료
+- `addons/at-icons`: 보존된 기존 의존성. 새 월드 이미지 자산 기반으로 사용하지 않음
 - `.opencode/skills/ponytail`: MIT

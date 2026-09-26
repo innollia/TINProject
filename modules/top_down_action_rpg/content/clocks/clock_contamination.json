@@ -1,0 +1,193 @@
+{
+    "schema_version":  1,
+    "id":  "clock_contamination",
+    "kind":  "contamination",
+    "scope":  "global",
+    "start_state":  "dormant",
+    "period":  {
+                   "unit":  "clock_tick",
+                   "per":  1
+               },
+    "stages":  [
+                   {
+                       "stage_id":  "clean",
+                       "index":  0,
+                       "label":  "no residue yet",
+                       "advance":  {
+                                       "ticks":  2
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "world_event",
+                                              "text":  "nothing has been carried out yet"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "exposed",
+                       "index":  1,
+                       "label":  "contact leaves a trace",
+                       "advance":  {
+                                       "ticks":  3
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "prop_change",
+                                              "prop_id":  "prop_r1_ash_garden_thread",
+                                              "text":  "the ash garden keeps a thread of who passed"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "active",
+                       "index":  2,
+                       "label":  "failures accumulate",
+                       "advance":  {
+                                       "ticks":  4
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "resource_shortage",
+                                              "text":  "clean water is only counted, never tasted"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "systemic",
+                       "index":  3,
+                       "label":  "every route is checked",
+                       "advance":  {
+                                       "ticks":  5
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "prop_change",
+                                              "prop_id":  "prop_r1_wrong_return_door",
+                                              "text":  "the wrong return door opens from the wrong side"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "irreversible",
+                       "index":  4,
+                       "label":  "the recovery path itself is contaminated",
+                       "advance":  {
+                                       "ticks":  6
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "document",
+                                              "document_id":  "doc_r1_wrong_return_log",
+                                              "text":  "the recovery path itself is now suspect"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  true,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "collapsed",
+                       "index":  5,
+                       "label":  "nothing local works anymore",
+                       "advance":  {
+                                       "ticks":  7
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "world_event",
+                                              "text":  "no local recovery is trusted in this region"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  false,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   }
+               ],
+    "pressure_policy":  {
+                            "advance_on_player_action":  true,
+                            "advance_on_region_enter":  true,
+                            "advance_on_encounter_window":  false,
+                            "decay_when_untouched":  0
+                        },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

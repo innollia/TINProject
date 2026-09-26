@@ -1,0 +1,50 @@
+{
+    "schema_version":  1,
+    "id":  "equipment_kiln_ledger_seal",
+    "display_name":  "Kiln Ledger Seal",
+    "slot":  "accessory",
+    "allow_empty":  true,
+    "floor_role":  "resistance_behavior",
+    "stat_modifiers":  {
+                           "guard_efficiency":  100,
+                           "evasion":  1
+                       },
+    "status_grants":  {
+                          "resistant_status_ids":  [
+                                                       "st_recorded"
+                                                   ],
+                          "immune_status_ids":  [
+
+                                                ]
+                      },
+    "defense":  {
+                    "guard_power":  0,
+                    "guard_efficiency_bp":  200,
+                    "dodge_pressure":  0,
+                    "evasion":  2,
+                    "break_resistance":  4,
+                    "break_policy":  "resistant"
+                },
+    "action_grants":  {
+                          "granted_action_ids":  [
+                                                     "act_weave_lash"
+                                                 ],
+                          "no_turn_action_ids":  [
+
+                                                 ],
+                          "action_slot_delta":  0
+                      },
+    "acquisition":  {
+                        "source_kind":  "npc_gift",
+                        "source_id":  "npc_05_nera_voss",
+                        "count":  1
+                    },
+    "presentation":  {
+                         "icon_key":  "equipment_kiln_ledger_seal",
+                         "tint_key":  "record_grey",
+                         "silhouette_key":  "sil_ledger_seal"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

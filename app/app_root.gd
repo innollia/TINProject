@@ -3,8 +3,8 @@ extends Node
 signal readiness_changed(is_ready: bool)
 
 const MetaLayerScript = preload("res://meta/meta_layer.gd")
-const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic", &"afterimage_aquarium", &"paper_lighthouse", &"lost_signal_vn", &"violet_case", &"after_signal", &"return_address", &"rule_rewriting", &"dedution_casework", &"physics_toolbox", &"time_loop", &"odd_road_adventure"]
-const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic", &"afterimage_aquarium", &"paper_lighthouse", &"lost_signal_vn", &"violet_case", &"after_signal", &"return_address", &"rule_rewriting", &"dedution_casework", &"physics_toolbox", &"time_loop", &"odd_road_adventure", &"click_counter", &"box_mover", &"room_3d", &"game_library"]
+const SET_IDS: Array[StringName] = [&"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic", &"afterimage_aquarium", &"paper_lighthouse", &"lost_signal_vn", &"violet_case", &"after_signal", &"return_address", &"rule_rewriting", &"dedution_casework", &"deduction_casework", &"physics_toolbox", &"time_loop", &"odd_road_adventure"]
+const NORMAL_IDS: Array[StringName] = [&"first_entry", &"signal_desk", &"relay_quay", &"last_echo", &"return_cradle", &"maintenance_cut", &"glyph_gallery", &"switchboard_choir", &"rain_lift", &"borrowed_title", &"glasshouse_return", &"teacup_orbit", &"numberless_clock", &"shadow_ferry", &"receipt_orchard", &"wrong_weather", &"quiet_locker", &"memory_customs", &"paper_moon_clinic", &"afterimage_aquarium", &"paper_lighthouse", &"lost_signal_vn", &"violet_case", &"after_signal", &"return_address", &"rule_rewriting", &"dedution_casework", &"deduction_casework", &"physics_toolbox", &"time_loop", &"odd_road_adventure", &"click_counter", &"box_mover", &"top_down_action_rpg", &"room_3d", &"game_library"]
 const ROUTES: Dictionary = {
 	"signal_desk": {"forward": "relay_quay", "hidden": "maintenance_cut", "side": "glyph_gallery"},
 	"relay_quay": {"forward": "last_echo", "back": "signal_desk"},
@@ -30,7 +30,8 @@ const ROUTES: Dictionary = {
 	"violet_case": {"forward": "after_signal", "back": "lost_signal_vn"},
 	"after_signal": {"forward": "return_address", "back": "violet_case"},
 	"return_address": {"forward": "rule_rewriting", "back": "after_signal"},
-	"rule_rewriting": {"forward": "dedution_casework", "back": "return_address"},
+	"rule_rewriting": {"forward": "deduction_casework", "back": "return_address"},
+	"deduction_casework": {"forward": "physics_toolbox", "back": "rule_rewriting"},
 	"dedution_casework": {"forward": "physics_toolbox", "back": "rule_rewriting"},
 	"physics_toolbox": {"forward": "time_loop", "back": "dedution_casework"},
 	"time_loop": {"forward": "odd_road_adventure", "back": "physics_toolbox"},
@@ -58,7 +59,6 @@ const ROUTES: Dictionary = {
 @onready var volume_button: Button = $UIHost/UI/Shell/Rows/Settings/SaveSettings
 @onready var narrator: Label = $UIHost/UI/Shell/Rows/Narrator
 @onready var status: Label = $UIHost/UI/Shell/Rows/Status
-@onready var debug_label: Label = $DebugRoot/Label
 
 var is_ready: bool = false
 var paused: bool = false
@@ -80,16 +80,10 @@ var _records_save_queued: bool = false
 var _last_process_mode: Node.ProcessMode = Node.PROCESS_MODE_INHERIT
 var _load_started_usec: int = 0
 var _last_load_ms: float = 0.0
-var _shared_bar: HBoxContainer
-var _context_hud: PanelContainer
-var _context_title: Label
-var _context_meta: Label
-var _context_status: Label
-var _context_hint: Label
 var _menu: PanelContainer
 var _journal: PanelContainer
-var _menu_button: Button
-var _journal_button: Button
+var _focus_before_overlay: Control
+var _focus_before_overlay_module: StringName = &""
 var _resume_button: Button
 var _language_button: Button
 var _clicker_button: Button
@@ -135,10 +129,9 @@ func _ready() -> void:
 	reset_button.pressed.connect(_on_reset_pressed)
 	volume_slider.value_changed.connect(_on_volume_changed)
 	volume_button.pressed.connect(_on_save_settings_pressed)
-	$UIHost/UI/Shell.visible = dev_shell
-	$DebugRoot.visible = dev_shell
 	_setup_records()
-	_build_shared_ui()
+	_build_overlays()
+	_sync_dev_shell_visibility()
 	selector.clear()
 	for manifest: ModuleManifest in catalog:
 		if manifest == null:
@@ -171,7 +164,7 @@ func _ready() -> void:
 
 func _configure_launch() -> void:
 	var args: PackedStringArray = OS.get_cmdline_user_args()
-	dev_shell = test_mode or args.has("--dev-shell")
+	dev_shell = _dev_shell_allowed(args, OS.is_debug_build())
 	if test_mode:
 		save_path = ""
 		_settings_path = ""
@@ -192,6 +185,10 @@ func _configure_launch() -> void:
 			return
 		save_path = candidate
 		_settings_path = candidate + ".settings.cfg"
+
+
+func _dev_shell_allowed(args: PackedStringArray, debug_build: bool) -> bool:
+	return test_mode or (debug_build and args.has("--dev-shell"))
 
 
 func _is_test_path(path: String) -> bool:
@@ -227,13 +224,7 @@ func _process(_delta: float) -> void:
 	pause_button.disabled = blocked or director.current_module == null
 	reset_button.disabled = blocked or paused or director.current_module == null
 	volume_button.disabled = blocked
-	pause_button.text = "Resume (P)" if paused else "Pause (P)"
-	debug_label.text = "Loaded: %d | Last load: %.1f ms" % [module_host.get_child_count(), _last_load_ms]
-	if _menu_button != null:
-		_menu_button.disabled = blocked
-		_journal_button.disabled = blocked
-		_library_button.disabled = blocked or (not dev_shell and not bool(profile.get("started", false)))
-	_sync_shared_ui_visibility()
+	_library_button.disabled = blocked or (not dev_shell and not bool(profile.get("started", false)))
 	if paused and not router.locked:
 		router.set_locked(true)
 
@@ -286,6 +277,7 @@ func _configure_module_actions() -> void:
 	bindings[&"rule_rewriting_forward"] = [KEY_W]
 	bindings[&"rule_rewriting_turn_left"] = [KEY_A]
 	bindings[&"rule_rewriting_turn_right"] = [KEY_D]
+	bindings[&"rule_rewriting_toggle_view"] = [KEY_V]
 	bindings[&"rule_rewriting_cycle_3d_subject"] = [KEY_S]
 	bindings[&"rule_rewriting_open_inventory"] = [KEY_E]
 	bindings[&"rule_rewriting_cycle_metrix"] = [KEY_TAB]
@@ -586,6 +578,7 @@ func _set_paused(value: bool) -> void:
 	if paused == value or director.current_module == null:
 		return
 	paused = value
+	pause_button.text = "Resume" if paused else "Pause"
 	if paused:
 		_last_process_mode = director.current_module.process_mode
 		router.set_locked(true)
@@ -603,12 +596,37 @@ func _toggle_pause() -> void:
 		_journal.hide()
 		_quit_dialog.hide()
 		_set_paused(false)
-		if _shared_bar != null and _shared_bar.visible:
-			_menu_button.grab_focus()
+		_restore_overlay_focus()
 	else:
+		_capture_overlay_focus()
 		_set_paused(true)
 		_menu.show()
 		_resume_button.grab_focus()
+
+
+func _capture_overlay_focus() -> void:
+	var owner: Control = get_viewport().gui_get_focus_owner()
+	if owner == null or not is_instance_valid(owner) or not owner.is_inside_tree():
+		_clear_overlay_focus()
+		return
+	_focus_before_overlay = owner
+	_focus_before_overlay_module = director.current_id
+
+
+func _restore_overlay_focus() -> void:
+	var owner: Control = _focus_before_overlay
+	var module_id: StringName = _focus_before_overlay_module
+	_clear_overlay_focus()
+	if director.current_module == null or module_id != director.current_id:
+		return
+	if owner == null or not is_instance_valid(owner) or not owner.is_inside_tree() or not owner.is_visible_in_tree() or owner.focus_mode == Control.FOCUS_NONE:
+		return
+	owner.grab_focus()
+
+
+func _clear_overlay_focus() -> void:
+	_focus_before_overlay = null
+	_focus_before_overlay_module = &""
 
 
 func _open_library() -> void:
@@ -652,9 +670,10 @@ func toggle_journal() -> void:
 	if _journal.visible:
 		_journal.hide()
 		_set_paused(false)
-		if _shared_bar != null and _shared_bar.visible:
-			_journal_button.grab_focus()
+		_restore_overlay_focus()
 	else:
+		if not _menu.visible:
+			_capture_overlay_focus()
 		_menu.hide()
 		_quit_dialog.hide()
 		_set_paused(true)
@@ -718,8 +737,8 @@ func _on_module_changed(id: StringName) -> void:
 		meta_layer.describe_module(id, catalog[index].display_name)
 	else:
 		meta_layer.describe_module(id, String(id))
-	_update_context_hud(id)
-	_sync_shared_ui_visibility()
+	_clear_overlay_focus()
+	_sync_dev_shell_visibility()
 	if not _restoring and records_store != null and SET_IDS.has(id):
 		_suppress_records_save = true
 		records_store.call("visit", id)
@@ -740,8 +759,6 @@ func _on_narration_changed(text: String) -> void:
 
 func _set_status(text: String) -> void:
 	status.text = text
-	if _context_status != null:
-		_context_status.text = text
 
 
 func _catalog_index(id: StringName) -> int:
@@ -795,24 +812,12 @@ func select_theme(id: String) -> bool:
 	return bool(records_store.call("select_theme", id))
 
 
-func _build_shared_ui() -> void:
+func _build_overlays() -> void:
 	var ui: Control = $UIHost/UI
 	var font := SystemFont.new()
 	font.font_names = PackedStringArray(["Malgun Gothic", "Noto Sans CJK KR", "Noto Sans KR"])
 	font.allow_system_fallback = true
 	ui.add_theme_font_override("font", font)
-	_shared_bar = HBoxContainer.new()
-	_shared_bar.name = "SharedBar"
-	_shared_bar.add_theme_constant_override("separation", 8)
-	ui.add_child(_shared_bar)
-	_shared_bar.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
-	_shared_bar.offset_left = -280.0
-	_shared_bar.offset_right = -12.0
-	_shared_bar.offset_top = 12.0
-	_shared_bar.offset_bottom = 52.0
-	_menu_button = _button(_shared_bar, "Menu", _toggle_pause)
-	_journal_button = _button(_shared_bar, "Journal (J)", toggle_journal)
-	_build_context_hud(ui, font)
 	_menu = PanelContainer.new()
 	_menu.name = "SharedMenu"
 	ui.add_child(_menu)
@@ -900,13 +905,9 @@ func _button(parent: Node, text: String, callback: Callable) -> Button:
 
 
 func _update_shared_text() -> void:
-	if _menu_button == null:
-		return
 	var korean: bool = language == "ko"
 	_menu_title.text = "메뉴" if korean else "Menu"
 	_menu_hint.text = "Esc · 계속하기   J · 기록 열기" if korean else "Esc · resume   J · open journal"
-	_menu_button.text = "메뉴 (Esc)" if korean else "Menu (Esc)"
-	_journal_button.text = "기록 (J)" if korean else "Journal (J)"
 	_resume_button.text = "계속" if korean else "Resume"
 	_library_button.text = "게임 목록" if korean else "Game library"
 	_settings_label.text = "설정 · 전체 음량" if korean else "Settings · Master volume"
@@ -919,9 +920,6 @@ func _update_shared_text() -> void:
 	_quit_dialog.ok_button_text = "종료" if korean else "Quit"
 	_quit_dialog.cancel_button_text = "취소" if korean else "Cancel"
 	_notice.text = "클릭에는 보상이 없습니다. 기록과 외형은 그대로 남습니다." if korean else "Clicks have no rewards. Records and identity remain unchanged."
-	_menu_button.accessibility_name = _menu_button.text
-	_journal_button.accessibility_name = _journal_button.text
-	_update_context_hud(director.current_id)
 
 
 func _on_menu_volume_changed(value: float) -> void:
@@ -967,66 +965,8 @@ func _fail(message: String, error: Error) -> void:
 		_notice.text = status.text
 
 
-func _build_context_hud(ui: Control, font: SystemFont) -> void:
-	_context_hud = PanelContainer.new()
-	_context_hud.name = "ContextHud"
-	_context_hud.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_context_hud.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
-	_context_hud.offset_left = 16.0
-	_context_hud.offset_top = 12.0
-	_context_hud.offset_right = 370.0
-	_context_hud.offset_bottom = 116.0
-	_context_hud.add_theme_stylebox_override("panel", _ui_box(Color("12212e"), Color("6e9bb8"), 1))
-	ui.add_child(_context_hud)
-	var margin := MarginContainer.new()
-	for side: String in ["left", "top", "right", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, 12)
-	_context_hud.add_child(margin)
-	var rows := VBoxContainer.new()
-	rows.add_theme_constant_override("separation", 2)
-	margin.add_child(rows)
-	_context_title = Label.new()
-	_context_title.add_theme_font_override("font", font)
-	_context_title.add_theme_font_size_override("font_size", 20)
-	_context_title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	rows.add_child(_context_title)
-	_context_meta = Label.new()
-	_context_meta.add_theme_font_override("font", font)
-	_context_meta.add_theme_font_size_override("font_size", 13)
-	rows.add_child(_context_meta)
-	_context_status = Label.new()
-	_context_status.add_theme_font_override("font", font)
-	_context_status.add_theme_font_size_override("font_size", 13)
-	_context_status.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	rows.add_child(_context_status)
-	_context_hint = Label.new()
-	_context_hint.add_theme_font_override("font", font)
-	_context_hint.add_theme_font_size_override("font_size", 12)
-	_context_hint.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	rows.add_child(_context_hint)
-	_sync_shared_ui_visibility()
-
-
-func _sync_shared_ui_visibility() -> void:
-	if _shared_bar == null:
-		return
+func _sync_dev_shell_visibility() -> void:
 	$UIHost/UI/Shell.visible = dev_shell and director.current_id != &"game_library"
-	_shared_bar.visible = false
-	_context_hud.visible = false
-
-
-func _update_context_hud(id: StringName) -> void:
-	if _context_title == null:
-		return
-	var index: int = _catalog_index(id)
-	var display_name: String = String(id)
-	if index >= 0:
-		display_name = catalog[index].display_name
-	_context_title.text = display_name
-	var korean: bool = language == "ko"
-	var position_text: String = "%02d / %02d" % [index + 1, maxi(catalog.size(), 1)] if index >= 0 else "-- / --"
-	_context_meta.text = ("공간 %s · 자동 저장" if korean else "Space %s · autosave") % position_text
-	_context_hint.text = "Esc/P 메뉴 · J 기록 · 방향키 이동 · Z 확인 · X 뒤로" if korean else "Esc/P menu · J journal · arrows move · Z confirm · X back"
 
 
 func _ui_box(background: Color, border: Color, width: int) -> StyleBoxFlat:

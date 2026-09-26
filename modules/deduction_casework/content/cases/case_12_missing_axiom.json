@@ -1,0 +1,720 @@
+{
+  "schema_version": 1,
+  "id": "case_12_missing_axiom",
+  "title": "12 최종 프레이밍 — 인류가 잊은 것",
+  "start_scene_id": "scene_board_personal",
+  "scenes": [
+    {
+      "schema_version": 1,
+      "id": "scene_board_personal",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_board_card_mira",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_board_card_mira", "focus_id": "msg_board_card_mira" },
+        { "schema_version": 1, "id": "hotspot_board_card_case44", "focus_id": "msg_board_card_case44" },
+        { "schema_version": 1, "id": "hotspot_board_card_n153", "focus_id": "msg_board_card_n153" },
+        { "schema_version": 1, "id": "hotspot_board_common_slots", "focus_id": "msg_board_common_slots" }
+      ],
+      "transitions": [
+        { "schema_version": 1, "id": "trans_board_personal_to_sources", "destination_scene_id": "scene_board_sources", "focus_id": "hotspot_board_card_sera" }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_board_sources",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_board_card_sera",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_board_card_sera", "focus_id": "msg_board_card_sera" },
+        { "schema_version": 1, "id": "hotspot_board_card_jian", "focus_id": "msg_board_card_jian" },
+        { "schema_version": 1, "id": "hotspot_board_card_tablet", "focus_id": "msg_board_card_tablet" },
+        { "schema_version": 1, "id": "hotspot_board_three_branches", "focus_id": "msg_board_three_branches" }
+      ],
+      "transitions": [
+        { "schema_version": 1, "id": "trans_board_sources_to_personal", "destination_scene_id": "scene_board_personal", "focus_id": "hotspot_board_card_mira" },
+        { "schema_version": 1, "id": "trans_board_sources_to_julian", "destination_scene_id": "scene_board_julian", "focus_id": "hotspot_board_card_definitions" }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_board_julian",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_board_card_definitions",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_board_card_definitions", "focus_id": "msg_board_card_definitions" },
+        { "schema_version": 1, "id": "hotspot_board_card_dialogue", "focus_id": "msg_board_card_dialogue" },
+        { "schema_version": 1, "id": "hotspot_board_card_treatment", "focus_id": "msg_board_card_treatment" },
+        { "schema_version": 1, "id": "hotspot_board_candidate_list", "focus_id": "msg_board_candidate_list" }
+      ],
+      "transitions": [
+        { "schema_version": 1, "id": "trans_board_julian_to_sources", "destination_scene_id": "scene_board_sources", "focus_id": "hotspot_board_card_sera" },
+        { "schema_version": 1, "id": "trans_board_julian_to_history", "destination_scene_id": "scene_board_history", "focus_id": "hotspot_board_strata_card" }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_board_history",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_board_strata_card",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_board_strata_card", "focus_id": "msg_board_strata_card" },
+        { "schema_version": 1, "id": "hotspot_board_ax7_card", "focus_id": "msg_board_ax7_card" },
+        { "schema_version": 1, "id": "hotspot_board_figure_card", "focus_id": "msg_board_figure_card" },
+        { "schema_version": 1, "id": "hotspot_board_claim_board", "focus_id": "msg_board_claim_board" }
+      ],
+      "transitions": [
+        { "schema_version": 1, "id": "trans_board_history_to_julian", "destination_scene_id": "scene_board_julian", "focus_id": "hotspot_board_card_definitions" },
+        { "schema_version": 1, "id": "trans_board_history_to_final", "destination_scene_id": "scene_board_final", "focus_id": "hotspot_board_final_statement" }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_board_final",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_board_final_statement",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_board_final_statement", "focus_id": "msg_board_final_statement" },
+        { "schema_version": 1, "id": "hotspot_board_recap_lines", "focus_id": "msg_board_recap_lines" },
+        { "schema_version": 1, "id": "hotspot_board_reopened_cards", "focus_id": "msg_board_reopened_cards" }
+      ],
+      "transitions": [
+        { "schema_version": 1, "id": "trans_board_final_to_history", "destination_scene_id": "scene_board_history", "focus_id": "hotspot_board_strata_card" }
+      ]
+    }
+  ],
+  "closeups": [],
+  "entities": [
+    { "schema_version": 1, "id": "ent_person_julian_rook", "kind": "person", "display_text": "줄리언 룩", "source_text_id": "msg_board_card_definitions", "tags": ["observer"] },
+    { "schema_version": 1, "id": "ent_person_mara_dane", "kind": "person", "display_text": "마라 데인", "source_text_id": "msg_board_card_dialogue", "tags": ["listener"] },
+    { "schema_version": 1, "id": "ent_case_mira", "kind": "case", "display_text": "사건 01 — 미라 벤", "source_text_id": "msg_board_card_mira", "tags": ["card"] },
+    { "schema_version": 1, "id": "ent_case_44", "kind": "case", "display_text": "사건 02 — Case 44", "source_text_id": "msg_board_card_case44", "tags": ["card"] },
+    { "schema_version": 1, "id": "ent_case_n153", "kind": "case", "display_text": "사건 03 — N153", "source_text_id": "msg_board_card_n153", "tags": ["card"] },
+    { "schema_version": 1, "id": "ent_case_sera", "kind": "case", "display_text": "사건 04 — 세라 퀼", "source_text_id": "msg_board_card_sera", "tags": ["card"] },
+    { "schema_version": 1, "id": "ent_case_jian", "kind": "case", "display_text": "사건 06 — 지안", "source_text_id": "msg_board_card_jian", "tags": ["card"] },
+    { "schema_version": 1, "id": "ent_case_tablet", "kind": "case", "display_text": "사건 07 — 흑색석판", "source_text_id": "msg_board_card_tablet", "tags": ["card"] },
+    { "schema_version": 1, "id": "ent_case_julian_defs", "kind": "case", "display_text": "사건 08 — 실패정의", "source_text_id": "msg_board_card_definitions", "tags": ["card"] },
+    { "schema_version": 1, "id": "ent_case_dialogue", "kind": "case", "display_text": "사건 09 — 대화", "source_text_id": "msg_board_card_dialogue", "tags": ["card"] },
+    { "schema_version": 1, "id": "ent_case_treatment", "kind": "case", "display_text": "사건 10 — 치료 전후", "source_text_id": "msg_board_card_treatment", "tags": ["card"] },
+    { "schema_version": 1, "id": "ent_case_strata", "kind": "case", "display_text": "사건 11 — 층 순서 카드", "source_text_id": "msg_board_strata_card", "tags": ["card"] },
+    { "schema_version": 1, "id": "ent_case_ax7", "kind": "case", "display_text": "사건 11 — 비율과 경계 카드", "source_text_id": "msg_board_ax7_card", "tags": ["card"] },
+    { "schema_version": 1, "id": "ent_case_figure", "kind": "case", "display_text": "사건 11 — 도상 분포 카드", "source_text_id": "msg_board_figure_card", "tags": ["card"] },
+    { "schema_version": 1, "id": "ent_state_words_remain", "kind": "state", "display_text": "단어·사실지식은 남아 있다", "source_text_id": "msg_board_card_mira", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_use_gap", "kind": "state", "display_text": "특정 판단·경험의 사용능력만 빠졌다", "source_text_id": "msg_board_card_mira", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_nearest_fill", "kind": "state", "display_text": "남아 있는 가까운 설명으로 채워졌다", "source_text_id": "msg_board_card_case44", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_unaware", "kind": "state", "display_text": "당사자는 치환을 자각하지 않았다", "source_text_id": "msg_board_card_n153", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_shared_blank", "kind": "state", "display_text": "해석하고 싶어지는 빈자리", "source_text_id": "msg_board_card_sera", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_unnamed_omission", "kind": "state", "display_text": "무엇이 생략됐는지는 확정할 수 없다", "source_text_id": "msg_board_card_tablet", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_no_shared_rule", "kind": "state", "display_text": "하나의 교리·문법·상징을 공유한다는 증거는 없다", "source_text_id": "msg_board_three_branches", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_shared_mistake", "kind": "state", "display_text": "공통된 대상이 아니라 공통된 실수 방식", "source_text_id": "msg_board_card_definitions", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_blank_filling", "kind": "state", "display_text": "서로 다른 자료의 빈자리를 익숙한 개념으로 메운 흔적", "source_text_id": "msg_board_final_statement", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_meaning_shifted", "kind": "state", "display_text": "설명할수록 뜻이 바뀌어 전달되었다", "source_text_id": "msg_board_final_statement", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_no_word_slot", "kind": "state", "display_text": "이름이나 체험을 요구하는 칸이 없다", "source_text_id": "msg_board_final_statement", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_self_treatment", "kind": "action", "display_text": "다시 들어가는 접근성을 낮추는 치료를 스스로 신청했다", "source_text_id": "msg_board_card_treatment", "tags": [] },
+    { "schema_version": 1, "id": "ent_cand_ownership", "kind": "candidate", "display_text": "소유감 상실", "source_text_id": "msg_board_candidate_list", "tags": ["candidate"] },
+    { "schema_version": 1, "id": "ent_cand_subject_omission", "kind": "candidate", "display_text": "주어 생략", "source_text_id": "msg_board_candidate_list", "tags": ["candidate"] },
+    { "schema_version": 1, "id": "ent_cand_no_self", "kind": "candidate", "display_text": "무아", "source_text_id": "msg_board_candidate_list", "tags": ["candidate"] },
+    { "schema_version": 1, "id": "ent_cand_dissociation", "kind": "candidate", "display_text": "해리", "source_text_id": "msg_board_candidate_list", "tags": ["candidate"] },
+    { "schema_version": 1, "id": "ent_cand_viewless_camera", "kind": "candidate", "display_text": "시점 없는 카메라", "source_text_id": "msg_board_candidate_list", "tags": ["candidate"] },
+    { "schema_version": 1, "id": "ent_cand_private_language", "kind": "candidate", "display_text": "사적 언어", "source_text_id": "msg_board_candidate_list", "tags": ["candidate"] },
+    { "schema_version": 1, "id": "ent_fail_ownership", "kind": "reason", "display_text": "소유감 상실은 언어자료와 석판을 설명하지 못한다", "source_text_id": "msg_board_candidate_list", "tags": [] },
+    { "schema_version": 1, "id": "ent_fail_subject_omission", "kind": "reason", "display_text": "단순 주어생략은 다른 결손을 설명하지 못한다", "source_text_id": "msg_board_candidate_list", "tags": [] },
+    { "schema_version": 1, "id": "ent_fail_no_self", "kind": "reason", "display_text": "실재 종교개념 하나로 언어·행동·도상을 동일시할 근거가 없다", "source_text_id": "msg_board_candidate_list", "tags": [] },
+    { "schema_version": 1, "id": "ent_fail_dissociation", "kind": "reason", "display_text": "이미 기각됐고 다른 자료를 설명하지 못한다", "source_text_id": "msg_board_candidate_list", "tags": [] },
+    { "schema_version": 1, "id": "ent_fail_viewless_camera", "kind": "reason", "display_text": "관찰주체를 새로 상정해 버린다", "source_text_id": "msg_board_candidate_list", "tags": [] },
+    { "schema_version": 1, "id": "ent_fail_private_language", "kind": "reason", "display_text": "전달 문제의 결과만 말하고 개인 결손과 역사자료를 설명하지 못한다", "source_text_id": "msg_board_candidate_list", "tags": [] },
+    { "schema_version": 1, "id": "ent_claim_coincidence", "kind": "claim", "display_text": "세 변화가 비슷한 연대구간에 놓인다", "source_text_id": "msg_board_claim_board", "tags": ["supported"] },
+    { "schema_version": 1, "id": "ent_claim_cause_hypothesis", "kind": "claim", "display_text": "고에너지 사건이 비율 감소를 일으켰다", "source_text_id": "msg_board_claim_board", "tags": ["hypothesis"] },
+    { "schema_version": 1, "id": "ent_claim_total_erasure", "kind": "claim", "display_text": "한 사건이 인류 전체를 지웠다", "source_text_id": "msg_board_claim_board", "tags": ["out_of_range"] },
+    { "schema_version": 1, "id": "ent_decoy_word_loss", "kind": "decoy", "display_text": "언어를 잊은 것", "source_text_id": "msg_board_card_mira", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_shared_lesion", "kind": "decoy", "display_text": "모든 사례가 같은 부위의 뇌손상", "source_text_id": "msg_board_card_n153", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_all_n153", "kind": "decoy", "display_text": "모든 사례가 N153 때문에 발생", "source_text_id": "msg_board_card_n153", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_lying", "kind": "decoy", "display_text": "거짓말이나 정신착란", "source_text_id": "msg_board_card_dialogue", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_named_answer", "kind": "decoy", "display_text": "정답 이름을 고르는 선택", "source_text_id": "msg_board_final_statement", "tags": ["decoy"] }
+  ],
+  "messages": [
+    {
+      "schema_version": 1,
+      "id": "msg_board_card_mira",
+      "title": "카드 A1 — 사건 01 미라 벤",
+      "body": "관찰: 이미 해결한 사건카드. 새 조사자료는 없다. 카드의 확정 항목만 다시 적혀 있다.\n기재: 기관 손상 전부터 시각행동과 시각심상이 무너져 있었다. '눈', '색', '사진' 같은 단어지식은 남아 있었다. 미라는 자기 상태를 눈이라는 부품고장으로 해석했다.\n기재: 이 사건의 답에 '언어를 잊은 것'은 없다.",
+      "source_refs": ["ent_case_mira", "ent_state_words_remain", "ent_state_use_gap", "ent_decoy_word_loss"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_case_mira", "ent_state_words_remain", "ent_state_use_gap", "ent_decoy_word_loss"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_card_case44",
+      "title": "카드 A2 — 사건 02 Case 44",
+      "body": "관찰: 이미 해결한 사건카드. 새 조사자료는 없다.\n기재: '내 것/남의 것'이라는 말을 정확히 사용했다. 그러나 행동에서 그 구분을 사용하지 못했다. 절도 의도나 숨기려는 행동은 없었다.\n기재: 카드에 거짓말·정신착란에 대한 항목은 없다.",
+      "source_refs": ["ent_case_44", "ent_state_nearest_fill", "ent_decoy_lying"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_case_44", "ent_state_nearest_fill", "ent_decoy_lying"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_card_n153",
+      "title": "카드 A3 — 사건 03 N153",
+      "body": "관찰: 이미 해결한 사건카드. 새 조사자료는 없다.\n기재: 현상을 측정하고 교란할 수 있는 인공자극 연구가 존재했다. 데럴은 기록상 1명이라는 전제 때문에 현장물증을 괴물변이로 해석했다.\n기재: 같은 부위 뇌손상이라는 공통점은 카드 어디에도 적혀 있지 않다.",
+      "source_refs": ["ent_case_n153", "ent_state_unaware", "ent_decoy_shared_lesion", "ent_decoy_all_n153"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_case_n153", "ent_state_unaware", "ent_decoy_shared_lesion", "ent_decoy_all_n153"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_common_slots",
+      "title": "비수집형 시각단서 — 공통 슬롯 세 칸",
+      "body": "비수집형 시각단서 — 보드 영역 A\n관찰: 세 완료카드가 삼각형으로 놓여 있고 가운데에는 빈 칸이 아니라 슬롯 세 개만 놓여 있다.\n기재: 슬롯에는 이름이 적혀 있지 않다. 채울 대상은 카드 문장이 아니라 세 카드에 공통된 구조다.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_common_structure" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_card_sera",
+      "title": "카드 B1 — 사건 04 세라 퀼",
+      "body": "관찰: 이미 해결한 사건카드. 새 조사자료는 없다.\n기재: 번역자가 명시되지 않은 사람이나 주어를 보충하면 현지 화자는 질문 자체를 이상하게 여겼다.\n기재: 이 사건은 보충된 자리를 둘러싼 사건이다.",
+      "source_refs": ["ent_case_sera", "ent_state_shared_blank"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_case_sera", "ent_state_shared_blank"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_card_jian",
+      "title": "카드 B2 — 사건 06 지안",
+      "body": "관찰: 이미 해결한 사건카드. 새 조사자료는 없다.\n기재: 명사를 보충한 현대어는 자연스럽지만 지안은 무엇을 보충했는지 의심했다. 알렉은 무아와 비슷해 보인다고 적었지만 동일성은 보류로 남았다.\n기재: 카드에 보편기호에 대한 확정 항목은 없다.",
+      "source_refs": ["ent_case_jian"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_case_jian"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_card_tablet",
+      "title": "카드 B3 — 사건 07 흑색석판",
+      "body": "관찰: 이미 해결한 사건카드. 새 조사자료는 없다.\n기재: 중앙의 비어 있는 부분은 파손이 아니라 제작 당시부터 의도된 것으로 확인됐다. 무엇이 생략됐는지는 알 수 없다.",
+      "source_refs": ["ent_case_tablet", "ent_state_unnamed_omission"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_case_tablet", "ent_state_unnamed_omission"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_three_branches",
+      "title": "비수집형 시각단서 — 서로 연결되지 않은 세 갈래",
+      "body": "비수집형 시각단서 — 보드 영역 B\n관찰: 세 완료카드가 서로 직접 연결되지 않고 세 갈래로 놓여 있다. 카드 사이를 잇는 선이 없다.\n기재: 세 카드의 비어 있는 자리는 형태가 다르다. 하나는 화자, 하나는 주어, 하나는 조각된 면이다.",
+      "source_refs": ["ent_state_no_shared_rule"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_no_shared_rule"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_no_overreach" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_card_definitions",
+      "title": "카드 C1 — 사건 08 실패정의",
+      "body": "관찰: 이미 해결한 사건카드. 새 조사자료는 없다.\n기재: 줄리언 룩은 소유감·문법·무아·주의·시점 같은 가설을 각각 일부 사례만 설명한다는 이유로 지웠다. 21:50에 남긴 문장은 다음과 같다.\n인용: 「공통된 대상이 아니라 공통된 실수 방식이다.」",
+      "source_refs": ["ent_person_julian_rook", "ent_case_julian_defs", "ent_state_shared_mistake"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_julian_rook", "ent_case_julian_defs", "ent_state_shared_mistake"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_card_dialogue",
+      "title": "카드 C2 — 사건 09 대화",
+      "body": "관찰: 이미 해결한 사건카드. 새 조사자료는 없다.\n기재: 마라 데인은 카메라, 해리, 무아, 사적언어 순으로 이해했다. 줄리언 룩은 네 번 모두 다른 문제로 치환됐다고 교정했다.\n기재: 둘 중 누구도 거짓말하지 않았다.",
+      "source_refs": ["ent_person_mara_dane", "ent_case_dialogue", "ent_decoy_lying"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_mara_dane", "ent_case_dialogue"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_card_treatment",
+      "title": "카드 C3 — 사건 10 치료 전후",
+      "body": "관찰: 이미 해결한 사건카드. 새 조사자료는 없다.\n기재: 치료 전 줄리언 룩은 그 사고루틴을 매우 중요하게 평가했다. 치료 뒤에는 옛 문장을 읽어도 왜 중요했는지 재구성하지 못했다. 기억내용 자체는 남아 있었다.\n기재: 치료 신청은 스스로 한 선택으로 적혀 있다.",
+      "source_refs": ["ent_case_treatment", "ent_action_self_treatment"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_case_treatment", "ent_action_self_treatment"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_candidate_list",
+      "title": "비수집형 시각단서 — 후보 여섯 개",
+      "body": "비수집형 시각단서 — 보드 영역 C\n관찰: 사건 08·09·10 카드 옆에 후보 여섯 개가 놓여 있다. 소유감 상실, 주어 생략, 무아, 해리, 시점 없는 카메라, 사적 언어.\n기재: 각 후보 옆에는 붙일 수 있는 사건카드 자리가 비어 있다. 칸에 이름이 적힌 자리는 없다.",
+      "source_refs": ["ent_cand_ownership", "ent_cand_subject_omission", "ent_cand_no_self", "ent_cand_dissociation", "ent_cand_viewless_camera", "ent_cand_private_language", "ent_fail_ownership", "ent_fail_subject_omission", "ent_fail_no_self", "ent_fail_dissociation", "ent_fail_viewless_camera", "ent_fail_private_language"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_cand_ownership", "ent_cand_subject_omission", "ent_cand_no_self", "ent_cand_dissociation", "ent_cand_viewless_camera", "ent_cand_private_language", "ent_fail_ownership", "ent_fail_subject_omission", "ent_fail_no_self", "ent_fail_dissociation", "ent_fail_viewless_camera", "ent_fail_private_language"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_candidate_removal" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_strata_card",
+      "title": "카드 D1 — 사건 11 층 순서",
+      "body": "관찰: 이미 해결한 사건카드. 새 조사자료는 없다.\n기재: 적갈층 아래 검은층, 그 위 회백층. 채취 위치가 카드에 함께 적혀 있다.\n기재: 이 카드는 연대와 채집범위만 말한다.",
+      "source_refs": ["ent_case_strata"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_case_strata"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_ax7_card",
+      "title": "카드 D2 — 사건 11 비율과 경계",
+      "body": "관찰: 이미 해결한 사건카드. 새 조사자료는 없다.\n기재: 세 유적의 비슷한 연대구간에 고에너지 경계 표식과 A형→B형 비율 변화가 나란히 표시돼 있다. 각 표식 옆의 연대오차 막대 폭은 서로 다르다.\n기재: 카드에 원인 연결 문장은 없다.",
+      "source_refs": ["ent_case_ax7"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_case_ax7"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_figure_card",
+      "title": "카드 D3 — 사건 11 도상 분포",
+      "body": "관찰: 이미 해결한 사건카드. 새 조사자료는 없다.\n기재: 층별로 분류된 중앙이 빈 도상 조각의 분류 결과만 적혀 있다. 상부 서랍의 칸은 현재 발굴분이 없다.\n기재: 카드에 관념 감소에 대한 문장은 없다.",
+      "source_refs": ["ent_case_figure"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_case_figure"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_claim_board",
+      "title": "비수집형 시각단서 — 세 문장과 연대오차 막대",
+      "body": "비수집형 시각단서 — 보드 영역 D\n관찰: 세 완료카드 위에 연대오차 막대와 채집 위치만 겹쳐 놓았다. 세 문장이 그 옆에 나란히 적혀 있다.\n기재 1: 세 변화가 비슷한 연대구간에 놓인다.\n기재 2: 고에너지 사건이 A형 감소를 일으켰다.\n기재 3: 한 사건이 인류 전체의 □□를 지웠다.\n기재: 세 번째 문장에는 □□ 자리가 비어 있다. 이 판은 선택형이며 어떤 결과도 다음 단계의 입구가 되지 않는다.",
+      "source_refs": ["ent_claim_coincidence", "ent_claim_cause_hypothesis", "ent_claim_total_erasure"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_claim_coincidence", "ent_claim_cause_hypothesis", "ent_claim_total_erasure"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_claim_scope" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_final_statement",
+      "title": "카드 E1 — 최종 사건문 자리",
+      "body": "관찰: 앞선 사건카드만 놓인 자리. 새 이름도 새 철학용어도 없다.\n기재: 줄리언 룩은 서로 다른 네 자료의 빈자리를 사람들이 익숙한 개념으로 메운 흔적을 같은 표시로 묶었다. 마라 데인에게 설명할수록 뜻이 바뀌어 전달되자, 그는 그 상태에 다시 들어가는 사고루틴의 접근성을 낮추는 치료를 스스로 신청했다.\n기재: 이 자리에 이름 칸은 없고 체험 칸도 없다.\n기재: 정답 이름을 고르는 자리는 이 보드에 없다.",
+      "source_refs": ["ent_state_blank_filling", "ent_state_meaning_shifted", "ent_state_no_word_slot", "ent_decoy_named_answer"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_blank_filling", "ent_state_meaning_shifted", "ent_state_no_word_slot", "ent_decoy_named_answer"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_main_statement" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_recap_lines",
+      "title": "비수집형 시각단서 — 선택형 회고 세 줄",
+      "body": "비수집형 시각단서 — 보드 영역 E\n관찰: 이미 완료한 사건카드의 관계만 확인하는 세 줄이 회고판에 적혀 있다. 새 낱말은 없다.\n기재 1: 사건 01·02 — 단어를 기억해도 해당 경험을 쓰지 못할 수 있다.\n기재 2: 사건 04·06·07·09 — 서로 다른 빈자리를 익숙한 뜻으로 채운 행동이 반복된다.\n기재 3: 사건 11 — 오래된 자료의 변화는 시간상 겹친다. 하나의 원인이 인류 전체를 바꾸었다고 확정할 수 없다.\n기재: 이 세 줄은 필수 사건문의 입력조건이 아니다.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_board_reopened_cards",
+      "title": "비수집형 시각단서 — 다시 여는 자리",
+      "body": "비수집형 시각단서 — 보드 영역 E\n관찰: 지난 장면과 사건문을 여는 자리. 같은 공간을 새 장소로 쓰는 것이 아니라 이미 해결한 카드를 다시 호출하는 자리다.\n기재: 이 보드 어디에도 새로 조사한 물증이 놓여 있지 않다.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    }
+  ],
+  "panels": [
+    {
+      "schema_version": 1,
+      "id": "panel_inter_common_structure",
+      "kind": "state_board",
+      "title": "중간문제 — 세 카드에 공통된 구조",
+      "accepted_entity_kinds": ["state", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_common_remain", "segment_id": "segment_common_remain", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_common_gap", "segment_id": "segment_common_gap", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_common_fill", "segment_id": "segment_common_fill", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_common_awareness", "segment_id": "segment_common_awareness", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_common_remain", "display_text": "남아 있던 것" },
+        { "schema_version": 1, "id": "segment_common_gap", "display_text": "빠진 것" },
+        { "schema_version": 1, "id": "segment_common_fill", "display_text": "그 자리를 메운 것" },
+        { "schema_version": 1, "id": "segment_common_awareness", "display_text": "자각 여부" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "case_11_tarr_shore_cave",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_no_overreach",
+      "kind": "state_board",
+      "title": "중간문제 — 과잉연결 금지",
+      "accepted_entity_kinds": ["state"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_overreach_blank", "segment_id": "segment_overreach_blank", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_overreach_shared", "segment_id": "segment_overreach_shared", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_overreach_omission", "segment_id": "segment_overreach_omission", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_overreach_blank", "display_text": "세 자료에 공통된 것" },
+        { "schema_version": 1, "id": "segment_overreach_shared", "display_text": "공통으로 증명된 것" },
+        { "schema_version": 1, "id": "segment_overreach_omission", "display_text": "정확히 알 수 없는 것" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "case_11_tarr_shore_cave",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_candidate_removal",
+      "kind": "state_board",
+      "title": "중간문제 — 후보 옆에 붙는 카드",
+      "accepted_entity_kinds": ["reason", "candidate"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_remove_ownership", "segment_id": "segment_remove_ownership", "accepted_kinds": ["reason", "candidate"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_remove_subject_omission", "segment_id": "segment_remove_subject_omission", "accepted_kinds": ["reason", "candidate"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_remove_no_self", "segment_id": "segment_remove_no_self", "accepted_kinds": ["reason", "candidate"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_remove_dissociation", "segment_id": "segment_remove_dissociation", "accepted_kinds": ["reason", "candidate"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_remove_viewless_camera", "segment_id": "segment_remove_viewless_camera", "accepted_kinds": ["reason", "candidate"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_remove_private_language", "segment_id": "segment_remove_private_language", "accepted_kinds": ["reason", "candidate"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_remove_ownership", "display_text": "소유감 상실 옆" },
+        { "schema_version": 1, "id": "segment_remove_subject_omission", "display_text": "주어 생략 옆" },
+        { "schema_version": 1, "id": "segment_remove_no_self", "display_text": "무아 옆" },
+        { "schema_version": 1, "id": "segment_remove_dissociation", "display_text": "해리 옆" },
+        { "schema_version": 1, "id": "segment_remove_viewless_camera", "display_text": "시점 없는 카메라 옆" },
+        { "schema_version": 1, "id": "segment_remove_private_language", "display_text": "사적 언어 옆" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "case_11_tarr_shore_cave",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_claim_scope",
+      "kind": "state_board",
+      "title": "중간문제 — 세 문장 각각의 범위",
+      "accepted_entity_kinds": ["claim"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_claim_supported", "segment_id": "segment_claim_supported", "accepted_kinds": ["claim"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_claim_hypothesis", "segment_id": "segment_claim_hypothesis", "accepted_kinds": ["claim"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_claim_out_of_range", "segment_id": "segment_claim_out_of_range", "accepted_kinds": ["claim"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_claim_supported", "display_text": "자료가 직접 지지하는 문장" },
+        { "schema_version": 1, "id": "segment_claim_hypothesis", "display_text": "가설로만 남는 문장" },
+        { "schema_version": 1, "id": "segment_claim_out_of_range", "display_text": "자료 범위 밖의 문장" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "case_11_tarr_shore_cave",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_main_statement",
+      "kind": "statement",
+      "title": "메인문제 — [줄리언 룩]은 서로 다른 네 자료의 빈자리를 사람들이 익숙한 개념으로 메운 흔적을 같은 표시로 묶었다. 그 사실을 [공통된 대상이 아니라 공통된 실수 방식]이라 적었다. [마라 데인]에게 설명할수록 뜻이 바뀌어 전달되자, 그는 그 상태에 다시 들어가는 [사고루틴의 접근성을 낮추는 치료를 스스로 신청했다]. 이 사건문의 답은 사건 연결이며, [이름이나 체험을 요구하는 칸이 없다]는 범위를 넘지 않는다.",
+      "accepted_entity_kinds": ["person", "state", "action"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_final_who", "segment_id": "segment_final_who", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_final_object", "segment_id": "segment_final_object", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_final_way", "segment_id": "segment_final_way", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_final_partner", "segment_id": "segment_final_partner", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_final_result", "segment_id": "segment_final_result", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_final_choice", "segment_id": "segment_final_choice", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_final_limit", "segment_id": "segment_final_limit", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_final_who", "display_text": "흔적을 묶은 사람" },
+        { "schema_version": 1, "id": "segment_final_object", "display_text": "묶은 것" },
+        { "schema_version": 1, "id": "segment_final_way", "display_text": "그 사실을 적은 방식" },
+        { "schema_version": 1, "id": "segment_final_partner", "display_text": "전달이 되지 않은 상대" },
+        { "schema_version": 1, "id": "segment_final_result", "display_text": "전달에서 생긴 결과" },
+        { "schema_version": 1, "id": "segment_final_choice", "display_text": "끝에 내린 선택" },
+        { "schema_version": 1, "id": "segment_final_limit", "display_text": "이 사건문이 요구하지 않는 것" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": true,
+      "unlock_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "case_11_tarr_shore_cave",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      }
+    }
+  ],
+  "solutions": [
+    {
+      "schema_version": 1,
+      "id": "solution_inter_common_structure",
+      "panel_id": "panel_inter_common_structure",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_common_remain", "entity_id": "ent_state_words_remain" },
+        { "schema_version": 1, "slot_id": "slot_common_gap", "entity_id": "ent_state_use_gap" },
+        { "schema_version": 1, "slot_id": "slot_common_fill", "entity_id": "ent_state_nearest_fill" },
+        { "schema_version": 1, "slot_id": "slot_common_awareness", "entity_id": "ent_state_unaware" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_common_gap", "entity_id": "ent_decoy_word_loss" },
+        { "schema_version": 1, "slot_id": "slot_common_fill", "entity_id": "ent_decoy_all_n153" },
+        { "schema_version": 1, "slot_id": "slot_common_awareness", "entity_id": "ent_decoy_lying" },
+        { "schema_version": 1, "slot_id": "slot_common_remain", "entity_id": "ent_decoy_shared_lesion" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_card_mira", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_card_case44", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_card_n153", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_no_overreach",
+      "panel_id": "panel_inter_no_overreach",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_overreach_blank", "entity_id": "ent_state_shared_blank" },
+        { "schema_version": 1, "slot_id": "slot_overreach_shared", "entity_id": "ent_state_no_shared_rule" },
+        { "schema_version": 1, "slot_id": "slot_overreach_omission", "entity_id": "ent_state_unnamed_omission" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_overreach_blank", "entity_id": "ent_cand_no_self" },
+        { "schema_version": 1, "slot_id": "slot_overreach_shared", "entity_id": "ent_state_words_remain" },
+        { "schema_version": 1, "slot_id": "slot_overreach_omission", "entity_id": "ent_cand_ownership" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_card_sera", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_card_jian", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_card_tablet", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_candidate_removal",
+      "panel_id": "panel_inter_candidate_removal",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_remove_ownership", "entity_id": "ent_fail_ownership" },
+        { "schema_version": 1, "slot_id": "slot_remove_subject_omission", "entity_id": "ent_fail_subject_omission" },
+        { "schema_version": 1, "slot_id": "slot_remove_no_self", "entity_id": "ent_fail_no_self" },
+        { "schema_version": 1, "slot_id": "slot_remove_dissociation", "entity_id": "ent_fail_dissociation" },
+        { "schema_version": 1, "slot_id": "slot_remove_viewless_camera", "entity_id": "ent_fail_viewless_camera" },
+        { "schema_version": 1, "slot_id": "slot_remove_private_language", "entity_id": "ent_fail_private_language" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_remove_ownership", "entity_id": "ent_cand_ownership" },
+        { "schema_version": 1, "slot_id": "slot_remove_subject_omission", "entity_id": "ent_cand_subject_omission" },
+        { "schema_version": 1, "slot_id": "slot_remove_no_self", "entity_id": "ent_cand_no_self" },
+        { "schema_version": 1, "slot_id": "slot_remove_dissociation", "entity_id": "ent_cand_dissociation" },
+        { "schema_version": 1, "slot_id": "slot_remove_viewless_camera", "entity_id": "ent_cand_viewless_camera" },
+        { "schema_version": 1, "slot_id": "slot_remove_private_language", "entity_id": "ent_cand_private_language" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_card_definitions", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_card_dialogue", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_card_treatment", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_claim_scope",
+      "panel_id": "panel_inter_claim_scope",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_claim_supported", "entity_id": "ent_claim_coincidence" },
+        { "schema_version": 1, "slot_id": "slot_claim_hypothesis", "entity_id": "ent_claim_cause_hypothesis" },
+        { "schema_version": 1, "slot_id": "slot_claim_out_of_range", "entity_id": "ent_claim_total_erasure" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_claim_supported", "entity_id": "ent_claim_cause_hypothesis" },
+        { "schema_version": 1, "slot_id": "slot_claim_hypothesis", "entity_id": "ent_claim_total_erasure" },
+        { "schema_version": 1, "slot_id": "slot_claim_out_of_range", "entity_id": "ent_claim_coincidence" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_strata_card", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_ax7_card", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_figure_card", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_main_statement",
+      "panel_id": "panel_main_statement",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_final_who", "entity_id": "ent_person_julian_rook" },
+        { "schema_version": 1, "slot_id": "slot_final_object", "entity_id": "ent_state_blank_filling" },
+        { "schema_version": 1, "slot_id": "slot_final_way", "entity_id": "ent_state_shared_mistake" },
+        { "schema_version": 1, "slot_id": "slot_final_partner", "entity_id": "ent_person_mara_dane" },
+        { "schema_version": 1, "slot_id": "slot_final_result", "entity_id": "ent_state_meaning_shifted" },
+        { "schema_version": 1, "slot_id": "slot_final_choice", "entity_id": "ent_action_self_treatment" },
+        { "schema_version": 1, "slot_id": "slot_final_limit", "entity_id": "ent_state_no_word_slot" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_final_who", "entity_id": "ent_person_mara_dane" },
+        { "schema_version": 1, "slot_id": "slot_final_partner", "entity_id": "ent_person_julian_rook" },
+        { "schema_version": 1, "slot_id": "slot_final_object", "entity_id": "ent_decoy_word_loss" },
+        { "schema_version": 1, "slot_id": "slot_final_choice", "entity_id": "ent_decoy_lying" },
+        { "schema_version": 1, "slot_id": "slot_final_limit", "entity_id": "ent_decoy_named_answer" },
+        { "schema_version": 1, "slot_id": "slot_final_way", "entity_id": "ent_cand_ownership" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_common_slots", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_three_branches", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_candidate_list", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_claim_board", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_board_reopened_cards", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": "review_main"
+    }
+  ],
+  "hints": [
+    {
+      "schema_version": 1,
+      "id": "hint_no_new_material",
+      "title": "힌트 — 새 물증이 없는 보드",
+      "body": "이 보드에는 새로 조사한 물증이 없다. 확인할 대상은 카드의 문장이 아니라 카드 사이의 빈자리다. 무엇이 빠져 있고 무엇을 사람이 보충하려 했는지만 적어 보라.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_shared_blank",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_removal_row",
+      "title": "힌트 — 후보 옆에 붙는 카드",
+      "body": "후보 여섯 개 옆의 빈 자리에는 그 후보가 설명하지 못하는 자료가 붙는다. 후보를 지우는 일과 남은 하나의 이름을 찾는 일은 다르다. 이 보드에는 이름 칸이 없다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_cand_ownership",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_claim_range",
+      "title": "힌트 — 세 문장의 범위",
+      "body": "세 문장 옆에 겹쳐 놓인 것은 연대오차 막대와 채집 위치뿐이다. 막대가 붙어 있는 문장, 막대와 채집 위치만으로 성립하는 문장, 둘 다 닿지 않는 문장을 나눠 보라.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_claim_coincidence",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    }
+  ],
+  "review": {
+    "schema_version": 1,
+    "id": "review_main",
+    "conclusion": "이 보드는 새 조사자료를 추가하지 않았다. 이미 해결한 사건카드만 다시 열었다. 미라 벤과 Case 44는 언어망각이 아니었고, 단어와 사실지식이 남아도 특정 경험의 사용능력은 빠질 수 있으며 그 자리는 남아 있는 가까운 설명으로 채워진다. 데럴의 N153 해석은 기록상 1명이라는 전제에서 나왔다. 세라 퀼의 언어자료, 지안의 번역, 흑색석판은 서로 다른 문화권의 기록이고, 셋 다 현대인이 보충하고 싶은 빈자리를 만들지만 하나의 교리·문법·상징을 공유한다는 증거는 없다. 무엇이 생략됐는지는 확정할 수 없다. 줄리언 룩은 후보 가설을 각각 일부 사례만 설명한다는 이유로 지우고 공통된 실수 방식이라 적었으며, 그 사실을 마라 데인에게 설명할수록 뜻이 바뀌어 전달되었다. 두 사람 중 누구도 거짓말하지 않았다. 치료 뒤 줄리언 룩은 옛 문장을 읽어도 왜 중요했는지 재구성하지 못했다. 사건 11의 자료가 직접 지지하는 것은 세 변화가 비슷한 연대구간에 놓인다는 사실까지이며, 원인 연결은 가설로만 남고 한 사건이 인류 전체를 지웠다는 문장은 자료 범위 밖이다. 정답은 줄리언 룩의 행동, 전달 실패, 치료 이후 결과라는 사건 연결이며 이름과 체험은 요구하지 않는다.",
+    "referenced_case_ids": [],
+    "scene_path": ""
+  },
+  "next_case_ids": []
+}

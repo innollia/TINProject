@@ -1,7 +1,5 @@
 extends Control
 
-signal menu_pressed()
-signal language_pressed()
 signal shape_selected(index: int)
 signal color_selected(index: int)
 signal start_pressed()
@@ -13,30 +11,27 @@ const MUTED: Color = Color("9299a6")
 const ORANGE: Color = Color("ed9463")
 const EDGE: Color = Color("303744")
 const HAIR_COLORS: Array[Color] = [Color("de8657"), Color("ddd4bf"), Color("839baf")]
-const ACTIONS: Array[String] = [
-	"first_entry_up", "first_entry_down", "first_entry_left",
-	"first_entry_right", "first_entry_confirm", "first_entry_cancel",
-]
-const KEY_NAMES: Array[String] = ["↑", "↓", "←", "→", "Z", "X"]
 
 var _data: Dictionary = {}
 var _phase: String = "keys"
 var _elapsed: float = 0.0
 var _phase_time: float = 0.0
+var _bubble_states: Dictionary = {}
+var _bubble_progress: Dictionary = {}
+var _bubble_cells: Dictionary = {}
+var _bubble_slots: Array[String] = []
+var _binding_labels: Dictionary = {}
 var _shape: int = 0
 var _color: int = 0
 var _english: bool = false
 var _font: SystemFont
 var _title_font: SystemFont
-var _menu: Button
-var _language: Button
 var _start: Button
 var _shapes: Array[Button] = []
 var _colors: Array[Button] = []
 var _normal_style: StyleBoxFlat
 var _selected_style: StyleBoxFlat
 var _panel_style: StyleBoxFlat
-var _key_style: StyleBoxFlat
 var _margin: float = 40.0
 var _narrow: bool = false
 var _panel: Rect2
@@ -57,12 +52,6 @@ func _ready() -> void:
 	_normal_style = _style(Color("1a202c"), EDGE, 12)
 	_selected_style = _style(Color("352c29"), ORANGE, 12)
 	_panel_style = _style(Color("141a25"), EDGE, 20)
-	_key_style = _style(Color("1d2430"), Color("626776"), 12)
-	_menu = _button("MenuButton", "≡")
-	_menu.add_theme_font_size_override("font_size", 28)
-	_menu.pressed.connect(func() -> void: menu_pressed.emit())
-	_language = _button("LanguageButton", "KO / EN")
-	_language.pressed.connect(func() -> void: language_pressed.emit())
 	_start = _button("StartButton", "부딪히기")
 	_start.add_theme_stylebox_override("normal", _style(ORANGE, ORANGE, 14))
 	_start.add_theme_stylebox_override("hover", _style(Color("ffad7d"), CREAM, 14))
@@ -94,16 +83,25 @@ func update_view(data: Dictionary) -> void:
 	_shape = clampi(int(data.get("shape", 0)), 0, 2)
 	_color = clampi(int(data.get("color", 0)), 0, 2)
 	_english = String(data.get("language", "ko")) == "en"
-	if _menu == null:
+	var states: Variant = data.get("bubble_states", {})
+	_bubble_states = states.duplicate(true) if states is Dictionary else {}
+	var progress: Variant = data.get("bubble_progress", {})
+	_bubble_progress = progress.duplicate(true) if progress is Dictionary else {}
+	var cells: Variant = data.get("bubble_cells", {})
+	_bubble_cells = cells.duplicate(true) if cells is Dictionary else {}
+	_bubble_slots.clear()
+	var slots: Variant = data.get("bubble_slots", [])
+	if slots is Array:
+		for slot: Variant in slots:
+			if slot is String or slot is StringName:
+				_bubble_slots.append(String(slot))
+	var labels: Variant = data.get("binding_labels", {})
+	_binding_labels = labels.duplicate(true) if labels is Dictionary else {}
+	if _start == null:
 		return
 	var enabled: bool = bool(data.get("enabled", false))
 	var editing: bool = _phase == "editor"
 	var show_editor: bool = _phase in ["editor", "entry", "collision"]
-	_menu.disabled = not enabled
-	_language.disabled = not enabled
-	_menu.tooltip_text = _tr("메뉴", "Menu")
-	_language.text = "EN / KO" if _english else "KO / EN"
-	_language.tooltip_text = _tr("언어 바꾸기", "Change language")
 	_start.text = _tr("부딪히기", "COLLIDE")
 	_start.visible = show_editor
 	_start.disabled = not enabled or not editing
@@ -169,10 +167,6 @@ func _resize_view() -> void:
 	position = Vector2.ZERO
 	_narrow = size.x < 760.0
 	_margin = clampf(size.x * 0.045, 20.0, 64.0)
-	_menu.position = Vector2(_margin, 24.0)
-	_menu.size = Vector2(48.0, 44.0)
-	_language.position = Vector2(size.x - _margin - 100.0, 24.0)
-	_language.size = Vector2(100.0, 44.0)
 	_start.size = Vector2(164.0, 52.0)
 	_start.position = Vector2(size.x - _margin - _start.size.x, size.y - 76.0)
 	if _narrow:
@@ -232,51 +226,73 @@ func _draw_intro() -> void:
 	var fade: float = 1.0 - smoothstep(0.0, 0.50, zoom)
 	var title_size: int = 34 if _narrow else 52
 	_text(_tr("모든 시작은, 낯선 곳에서.", "Every beginning is a leap."), Vector2(size.x * 0.5, 148.0), title_size, Color(CREAM, fade), true, true)
-	_text(_tr("여섯 개의 키를 눌러, 문을 열어 주세요.", "Press each of the six keys. Open the way."), Vector2(size.x * 0.5, 184.0), 14, Color(MUTED, fade), true)
 	var center: Vector2 = Vector2(size.x * 0.5, size.y * 0.5 + 40.0)
-	var orbit: float = minf(size.x * 0.34, maxf(62.0, (size.y - 351.0) * 0.5 - 25.0))
-	var radius: float = orbit * 0.50
-	var expansion: float = 1.0 + pow(zoom, 3.0) * 28.0
-	var hole_radius: float = radius * expansion
-	for ring: int in range(9, 0, -1):
-		draw_circle(center, hole_radius + float(ring) * 5.0 * expansion, Color(ORANGE, 0.007 * float(10 - ring)))
-	draw_arc(center, hole_radius * 1.29, -0.5 + _elapsed * 0.06, 4.6 + _elapsed * 0.06, 100, Color(ORANGE, 0.35), 1.0, true)
-	draw_arc(center, hole_radius * 1.18, 1.0, 5.8, 100, Color(CREAM, 0.25), 1.0, true)
-	draw_circle(center, hole_radius, INK)
-	draw_arc(center, hole_radius, 0.0, TAU, 100, Color(ORANGE, 0.8), 2.0, true)
-	if zoom <= 0.0:
-		_draw_keys(center, orbit)
-		for index: int in range(6):
-			var absorbed: Array = _data.get("keys", [])
-			var active: bool = absorbed.has(ACTIONS[index])
-			draw_circle(Vector2(size.x * 0.5 - 35.0 + index * 14.0, size.y - 94.0), 3.0, ORANGE if active else EDGE)
-		_text(_tr("서두르지 않아도 괜찮아요.", "There is no hurry."), Vector2(size.x * 0.5, size.y - 53.0), 12, MUTED, true)
+	_draw_bubble_grid(_bubble_grid_rect(), fade)
+	if zoom > 0.0:
+		var expansion: float = 1.0 + pow(zoom, 3.0) * 28.0
+		var hole_radius: float = 31.0 * expansion
+		draw_circle(center, hole_radius, Color(INK, 1.0 - zoom))
+		draw_arc(center, hole_radius, 0.0, TAU, 100, Color(ORANGE, (1.0 - zoom) * 0.8), 2.0, true)
 
 
-func _draw_keys(center: Vector2, orbit: float) -> void:
-	var absorption: Dictionary = _data.get("absorption", {})
-	var absorbed: Array = _data.get("keys", [])
-	var angles: Array[float] = [-PI * 0.5, PI * 0.5, PI, 0.0, PI * 0.75, PI * 0.25]
-	for index: int in range(6):
-		var progress: float = clampf(float(absorption.get(ACTIONS[index], 1.0 if absorbed.has(ACTIONS[index]) else 0.0)), 0.0, 1.0)
-		if progress >= 1.0:
+func _bubble_grid_rect() -> Rect2:
+	var count: int = maxi(1, _bubble_slots.size())
+	var rows: int = maxi(1, ceili(float(count) / 3.0))
+	var gap: float = 12.0
+	var available_width: float = maxf(size.x - _margin * 2.0, 180.0)
+	var available_height: float = maxf(size.y - 250.0, 180.0)
+	var cell_size: float = minf(104.0, minf((available_width - gap * 2.0) / 3.0, (available_height - gap * float(rows - 1)) / float(rows)))
+	cell_size = maxf(44.0, cell_size)
+	var grid_size: Vector2 = Vector2(cell_size * 3.0 + gap * 2.0, cell_size * float(rows) + gap * float(rows - 1))
+	var origin: Vector2 = Vector2((size.x - grid_size.x) * 0.5, maxf(168.0, (size.y - grid_size.y) * 0.5 + 18.0))
+	return Rect2(origin, grid_size)
+
+
+func _draw_bubble_grid(grid: Rect2, opacity: float) -> void:
+	if _bubble_slots.is_empty() or opacity <= 0.0:
+		return
+	var gap: float = 12.0
+	var cell_size: float = (grid.size.x - gap * 2.0) / 3.0
+	for index: int in range(_bubble_slots.size()):
+		var key: String = _bubble_slots[index]
+		var cell: Vector2i = _cell_position(_bubble_cells.get(key, [index % 3, index / 3]))
+		cell.x = maxi(0, cell.x)
+		cell.y = maxi(0, cell.y)
+		var center: Vector2 = grid.position + Vector2(float(cell.x) * (cell_size + gap) + cell_size * 0.5, float(cell.y) * (cell_size + gap) + cell_size * 0.5)
+		var cell_rect: Rect2 = Rect2(center - Vector2.ONE * cell_size * 0.5, Vector2.ONE * cell_size)
+		draw_rect(cell_rect, Color(INK, 0.32 * opacity), true)
+		draw_rect(cell_rect, Color(EDGE, 0.75 * opacity), false, 1.0)
+		var state: String = String(_bubble_states.get(key, "popped"))
+		if state == "popped":
+			draw_arc(center, cell_size * 0.20, 0.0, TAU, 32, Color(ORANGE, 0.30 * opacity), 2.0, true)
+			draw_line(center - Vector2(cell_size * 0.20, 0.0), center + Vector2(cell_size * 0.20, 0.0), Color(ORANGE, 0.20 * opacity), 1.0, true)
+			draw_line(center - Vector2(0.0, cell_size * 0.20), center + Vector2(0.0, cell_size * 0.20), Color(ORANGE, 0.20 * opacity), 1.0, true)
 			continue
-		var angle: float = angles[index] + sin(_elapsed * 0.45 + index) * 0.04 + progress * 5.0
-		var point: Vector2 = center + Vector2(cos(angle), sin(angle)) * orbit * (1.0 - progress)
-		var scale_value: float = (1.0 - progress) * clampf(size.x / 620.0, 0.70, 1.0)
-		if progress > 0.0:
-			draw_line(point, center, Color(ORANGE, 0.13 * (1.0 - progress)), 1.0, true)
-		draw_set_transform(point, progress * 2.5, Vector2.ONE * scale_value)
-		draw_style_box(_key_style, Rect2(-25.0, -25.0, 50.0, 50.0))
-		draw_line(Vector2(-14.0, 21.0), Vector2(14.0, 21.0), Color(INK, 0.6), 2.0, true)
-		if index < 4:
-			var direction: Vector2 = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT][index]
-			var perpendicular: Vector2 = direction.orthogonal()
-			draw_line(-direction * 9.0, direction * 9.0, CREAM, 2.0, true)
-			draw_polyline(PackedVector2Array([direction * 2.0 + perpendicular * 7.0, direction * 9.0, direction * 2.0 - perpendicular * 7.0]), CREAM, 2.0, true)
-		else:
-			_text(KEY_NAMES[index], Vector2(0.0, 8.0), 23, CREAM, true)
-		draw_set_transform(Vector2.ZERO)
+		var progress: float = clampf(float(_bubble_progress.get(key, 0.0)), 0.0, 1.0)
+		var point: Vector2 = center
+		var scale_value: float = 1.0
+		var alpha: float = opacity
+		if state == "rising":
+			point.y += (1.0 - progress) * cell_size * 0.85
+			scale_value = 0.55 + progress * 0.45
+			alpha *= 0.30 + progress * 0.70
+		elif state == "restoring":
+			scale_value = 0.45 + progress * 0.55
+			alpha *= 0.20 + progress * 0.80
+		draw_circle(point, cell_size * 0.37 * scale_value, Color(ORANGE, 0.12 * alpha))
+		draw_circle(point, cell_size * 0.29 * scale_value, Color(CREAM, 0.08 * alpha))
+		draw_arc(point, cell_size * 0.29 * scale_value, 0.0, TAU, 48, Color(ORANGE, 0.78 * alpha), 2.0, true)
+		draw_circle(point - Vector2(cell_size * 0.10, cell_size * 0.11), cell_size * 0.045 * scale_value, Color(CREAM, 0.78 * alpha))
+		var label: String = String(_binding_labels.get(key, key))
+		_text(label, point + Vector2(0.0, 7.0), int(maxf(14.0, cell_size * 0.18)), Color(CREAM, alpha), true)
+
+
+func _cell_position(value: Variant) -> Vector2i:
+	if value is Vector2i:
+		return value
+	if value is Array and value.size() >= 2:
+		return Vector2i(int(value[0]), int(value[1]))
+	return Vector2i.ZERO
 
 
 func _draw_editor() -> void:
@@ -287,22 +303,9 @@ func _draw_editor() -> void:
 	center.y -= (1.0 - entry) * size.y * 0.65
 	var figure_scale: float = _figure_scale * (1.0 + collision * collision * 3.0)
 	_draw_person(center, figure_scale, -0.19 + sin(_elapsed * 0.60) * 0.045)
-	if _narrow:
-		_text(_tr("떨어지는 동안, 나를 고르다.", "Become, as you fall."), Vector2(_margin, 125.0), 25, CREAM, false, true)
-		_text(_tr("어떤 모습으로 시작할까요?", "How will your story begin?"), Vector2(_margin, 152.0), 13, MUTED)
-	elif size.y < 600.0:
-		_text(_tr("가능성의 모양.", "Become, as you fall."), Vector2(_margin, 127.0), 30, CREAM, false, true)
-		_text(_tr("어떤 모습으로 시작할까요?", "How will your story begin?"), Vector2(_margin, 153.0), 13, MUTED)
-	else:
-		_text(_tr("아직은,", "Not quite"), Vector2(_margin, 165.0), 48, CREAM, false, true)
-		_text(_tr("가능성의 모양.", "gravity. Yet."), Vector2(_margin, 222.0), 48, CREAM, false, true)
-		_text(_tr("떨어지는 동안, 나를 골라 보세요.", "A little time to decide who you will be."), Vector2(_margin, 260.0), 14, MUTED)
 	draw_style_box(_panel_style, _panel)
 	_text(_tr("머리 모양", "HAIR SHAPE"), Vector2(_panel.position.x + 16.0, _shape_y - 12.0), 11, MUTED)
 	_text(_tr("머리 색", "HAIR COLOR"), Vector2(_panel.position.x + 16.0, _color_y - 12.0), 11, MUTED)
-	if not _narrow:
-		_text(_tr("↑ ↓  모양     ← →  색", "↑ ↓  SHAPE     ← →  COLOR"), Vector2(_margin, size.y - 47.0), 12, MUTED)
-		_text(_tr("준비가 되면, 세상과 부딪혀 보세요.", "When you are ready, meet the world."), Vector2(size.x - _margin - 190.0, size.y - 102.0), 12, MUTED, true)
 
 
 func _draw_streaks() -> void:

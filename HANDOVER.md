@@ -1,6 +1,6 @@
 # TINProject — 현재 핸드오버
 
-갱신: 2026-09-23
+갱신: 2026-09-25
 
 ## 1. 방향 재설정
 
@@ -18,7 +18,7 @@ TINProject는 여러 미니게임/모듈을 많이 만드는 프로젝트가 아
 7. `plans/kits/INDEX.md`
 8. 작업 대상 `plans/kits/*.md`
 
-현재 `docs/GRILLING_STATE.md`는 ACTIVE다. 새 채팅에서 project-wide grilling을 이어갈 때 이미 Settled된 루트 질문을 반복하지 말고 Current Frontier에서 시작한다. 기존 `plans/kits/` 파일은 이번 grilling 동안 그대로 둔다.
+현재 `docs/GRILLING_STATE.md`는 project-wide 및 Rule Rewrite grilling을 **COMPLETE**로 기록한다. 새 채팅은 settled root 질문을 반복하지 말고, 구현 현황과 남은 검증의 `docs/research/rule_rewrite/IMPLEMENTATION_STATUS_2026-09-24.md`에서 시작한다.
 
 ## 2. 현재 코드 whitelist
 
@@ -104,9 +104,7 @@ Esc 메뉴는 Esc를 눌렀을 때만 보인다.
 
 ## 7. 시각
 
-`res://addons/at-icons/`를 모든 Kit Reference Game의 월드 아트 재료로 사용한다.
-
-UI icon은 금지. 원래 pictogram 의미 그대로 쓰는 것도 금지.
+2026-09-25 사용자 지시에 따라 at-icons 기반 제작 문서·규칙·실험은 `archive/icon_based_image_assets/`로 보존한다. 기존 이미지 파일은 그대로 둔다. 대체 이미지 자산 기반은 아직 정해지지 않았다.
 
 Primary Reference의:
 - camera
@@ -124,24 +122,26 @@ Primary Reference의:
 - 1920×1080
 - 2560×1440
 
-현재 project.godot의 1152×720 설정은 과거 구현 사실일 뿐 새 지원 기준이 아니다.
+현재 `project.godot`의 1280×720 설정과 세 해상도 외부 캡처 harness를 사용한다.
 
 ## 9. 현재 테스트 수치
 
-기존 전체 테스트 통과 기록은 **과거 코드 기준선**으로만 본다.
+2026-09-25 기준선:
+- editor import: exit 0
+- `tests/run_tests.gd`: 644/644
+- 기존 프로젝트 범위 GUT `tests/core`: 241/241, 7771 assertions
+- 180-frame headless smoke: exit 0
+- 외부 temp visual harness: 1280×720 / 1920×1080 / 2560×1440, 18개 상태 캡처 생성
+- 현재 전체 GUT의 추가 3 실패는 사용자 신규 `deduction_casework` 스켈레톤과 game_library catalog 변경에서 발생했으며 이 작업 범위 밖이다.
 
-이번 작업은 문서 방향 재설정이므로 엔진 테스트/시각 검수를 새로 실행했다고 기록하지 않는다.
-
-Retired Prototype 삭제와 Shell/Input Bubble/Kit 코드 구현을 시작하면 새 기준선을 다시 측정한다.
+이 수치는 자동 검증과 외부 캡처 생성까지의 기록이며, Kit 최종 완료 선언이나 사용자 직접 플레이 검토를 의미하지 않는다. 현재 남은 검증은 `docs/research/rule_rewrite/IMPLEMENTATION_STATUS_2026-09-24.md`를 따른다.
 
 ## 10. 다음 구현 작업 후보
 
-순서는 별도 사용자 지시로 확정한다.
+- Rule Rewrite 01→15 실제 연속 플레이와 10분 실측
+- Rule Rewrite 15번째 authored board는 데이터 확장만으로 추가했고, core 무수정 추가 증거를 남긴다.
+- 실제 창 성능과 W/A/D/V 입력 체감 재측정
+- 새 이미지 자산 기반이 정해진 뒤 해당 기준에 따른 자산 출처·화면 검수
+- Input Bubble의 App 전환 hook은 별도 계획/소유권 계약이 필요
 
-- Retired Prototype 코드/catalog/route/test 제거
-- 상시 Shell HUD 제거
-- Input Bubble 구현 교정
-- Rule Rewrite Kit 계획대로 presentation/reference game 재구축
-- Odd Road Kit data/registry 분리 + Reference Game 재구축
-
-문서가 먼저다. 구현은 `docs/KIT_WORKFLOW.md`와 각 Kit 계획의 빈칸이 없는 상태에서 시작한다.
+Odd Road는 reference evidence gate가 닫히지 않아 구현하지 않는다.

@@ -1,0 +1,48 @@
+{
+    "schema_version":  1,
+    "id":  "prop_h0_counterweight_map",
+    "display_name":  "Counterweight Map",
+    "region_id":  "region_h0_undersign_exchange",
+    "placement":  {
+                      "anchor_key":  "h0_counterweight_map",
+                      "layer":  "floor",
+                      "visible_from":  "same_room"
+                  },
+    "initial_state_id":  "ps_matched",
+    "states":  [
+                   {
+                       "state_id":  "ps_matched",
+                       "label":  "map and lift counter agree",
+                       "visible":  true,
+                       "art_key":  "prop_h0_map_matched",
+                       "collides":  false,
+                       "interactable":  true,
+                       "entry_effect_ids":  [
+
+                                            ]
+                   },
+                   {
+                       "state_id":  "ps_contested",
+                       "label":  "one card reprinted with a precedence line",
+                       "visible":  true,
+                       "art_key":  "prop_h0_map_contested",
+                       "collides":  false,
+                       "interactable":  true,
+                       "entry_effect_ids":  [
+                                                "eff_h0_arrival_declaration_filed"
+                                            ]
+                   }
+               ],
+    "interaction":  {
+                        "verb_id":  "verb_read_the_map",
+                        "availability":  {
+
+                                         },
+                        "opens":  "conv_h0_return_desk",
+                        "return_focus":  "prop"
+                    },
+    "revisit_visible":  true,
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

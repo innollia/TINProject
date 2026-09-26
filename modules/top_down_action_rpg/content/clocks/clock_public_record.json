@@ -1,0 +1,193 @@
+{
+    "schema_version":  1,
+    "id":  "clock_public_record",
+    "kind":  "public_record",
+    "scope":  "global",
+    "start_state":  "dormant",
+    "period":  {
+                   "unit":  "player_action",
+                   "per":  1
+               },
+    "stages":  [
+                   {
+                       "stage_id":  "private",
+                       "index":  0,
+                       "label":  "one private note",
+                       "advance":  {
+                                       "ticks":  2
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "world_event",
+                                              "text":  "one note exists and nobody else has read it"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "circulating",
+                       "index":  1,
+                       "label":  "the note is copied around",
+                       "advance":  {
+                                       "ticks":  3
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "npc_warning",
+                                              "npc_id":  "npc_05_nera_voss",
+                                              "text":  "the same event comes back with a different category"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "contested",
+                       "index":  2,
+                       "label":  "two versions disagree",
+                       "advance":  {
+                                       "ticks":  4
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "enemy_tell",
+                                              "text":  "a form is filled before the event is understood"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "filing",
+                       "index":  3,
+                       "label":  "a form is filled",
+                       "advance":  {
+                                       "ticks":  5
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "document",
+                                              "document_id":  "doc_r1_wrong_return_log",
+                                              "text":  "the filing window opens"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "canonical",
+                       "index":  4,
+                       "label":  "one version becomes the record",
+                       "advance":  {
+                                       "ticks":  6
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "document",
+                                              "document_id":  "doc_r1_wrong_return_log",
+                                              "text":  "one version is now the official sentence"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  true,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "retired",
+                       "index":  5,
+                       "label":  "the record is retired",
+                       "advance":  {
+                                       "ticks":  7
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "world_event",
+                                              "text":  "the record is closed and cannot be reopened"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  false,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   }
+               ],
+    "pressure_policy":  {
+                            "advance_on_player_action":  true,
+                            "advance_on_region_enter":  true,
+                            "advance_on_encounter_window":  false,
+                            "decay_when_untouched":  0
+                        },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

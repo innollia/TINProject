@@ -1,0 +1,27 @@
+{
+    "schema_version":  1,
+    "id":  "eff_r8_course_index_printed",
+    "timing":  "immediate",
+    "operations":  [
+                       {
+                           "op":  "region_state",
+                           "region_id":  "region_r8_folding_school",
+                           "state_tag":  "course_index_printed"
+                       },
+                       {
+                           "equipment_id":  "equipment_kiln_ledger_seal",
+                           "op":  "grant_equipment",
+                           "count":  1
+                       },
+                       {
+                           "key":  "world_r8_course_index_printed",
+                           "op":  "flag",
+                           "value":  true
+                       }
+                   ],
+    "one_shot":  true,
+    "repeat_guard":  "once",
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

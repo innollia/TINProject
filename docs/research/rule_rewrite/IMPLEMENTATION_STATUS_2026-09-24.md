@@ -1,24 +1,25 @@
-# Rule Rewrite 작업 현황 — 2026-09-24
+# Rule Rewrite 작업 현황 — 2026-09-25
 
 이 문서는 현재 커밋에 포함한 작업과 남은 검증을 구분한다. Kit 완료 선언이 아니다. 실행 계약의 정본은 [계획서](../../../plans/kits/01_RULE_REWRITE_KIT.md), 전역 결정은 [PROJECT_DECISIONS.md](../../../PROJECT_DECISIONS.md)다.
 
 ## 반영한 작업
 
 - 프로젝트 전체의 `뭉탱이`, 상태 인계, 지식 관문, Reference Game과 UI 조사 방식을 공통 문서에 정리했다. Rule Rewrite의 Primary Reference 조사, 모드 생태계 조사, 사용자 UI 캡처 및 Minecraft 인벤토리 캡처를 `docs/research/`에 보존했다.
-- Rule Rewrite 계획에 단어/규칙, 이동·충돌, METRIX·INV·OWNS·ACTIVE, 저장·Undo, 14개 authored 퍼즐, 화면·입력·검증 기준을 기록했다. `modules/rule_rewriting/`에 도메인 로직, JSON 보드, 보드 화면, 2D/3D 인벤토리·핫바와 같은 물리 ID를 쓰는 실행 기반을 추가했다.
+- Rule Rewrite 계획에 단어/규칙, 이동·충돌, METRIX·INV·OWNS·ACTIVE, 저장·Undo, 15개 authored 퍼즐, 화면·입력·검증 기준을 기록했다. `modules/rule_rewriting/`에 도메인 로직, JSON 보드, 보드 화면, 2D/3D 인벤토리·핫바와 같은 물리 ID를 쓰는 실행 기반을 추가했다.
 - `at-icons` 조각을 조합한 Rule Rewrite용 월드 아트와 크기별 미리보기를 `modules/rule_rewriting/art/`에 두었다. 화면 캡처와 성능 계측 하네스는 `tests/performance/`에 있다. 이 자료는 최종 스타일 합격 판정이 아니다.
-- 사용자가 제공한 A·B는 게임 전체의 아트 기준, C는 Rule Rewrite의 DOOM식 1인칭 카메라 기준으로 기록했다. `IS 3D` 진입은 1인칭, 1인칭 이동은 격자 턴, W 전방 한 칸·A/D 90도 회전·V 1인칭/3인칭 전환으로 확정했다. **현재 실행 화면의 3D는 기존 3인칭이며, 1인칭 기본 시점과 전환 구현·검증은 아직 남았다.**
+- 사용자가 제공한 A·B는 게임 전체의 아트 기준, C는 Rule Rewrite의 DOOM식 1인칭 카메라 기준으로 기록했다. `IS 3D` 진입은 1인칭, 1인칭 이동은 격자 턴, W 전방 한 칸·A/D 90도 회전·V 1인칭/3인칭 전환으로 확정했고, 선택 주체 이동과 view-only intent를 같은 물리 상태에 연결했다. **1인칭/3인칭 전환과 격자 턴 자동 검증은 완료됐지만 실제 창 입력 체감은 별도 확인한다.**
 - 반복적인 규칙 변경 상단 문구를 제거하고 변화가 일어난 단어·물체를 현장에서 강조하는 구현과 집중 테스트를 추가했다. 실패 복구 안내는 별도 상태로 유지한다.
+- 01→15 authored route를 한 GameModule instance에서 연속 실행해 15개 보드 모두 `solved=true`, `failed=false`를 확인했다. 총 285 command, 259 physical turn이며, 사람의 실측 10분 플레이는 별도 과제로 남긴다.
+- 플레이 중 보고된 WIN cue/자동 진행, 짧은 Z 입력 유실과 반복 Undo, blocked direct move에서 auto SHIFT/WIN 접촉이 누락되던 문제를 수정했다. 성공 cue는 2D/3D에서 표시되고 0.9초 후 자동 진행하며, cue 중 Undo가 이전 상태를 복원한다.
 
 ## 확인한 성능과 테스트
 
-- 수정 전 실제 창 12회 표본의 명령→draw 중앙값: 2D 보드 01은 555.4 ms, 3D 보드 14는 2655.8 ms였다. 3D 노드 재생성과 불필요한 파생 상태 재계산을 줄인 뒤 headless 화면 재구성 표본은 각각 0.661 ms, 4.94 ms로 내려갔다. 서로 다른 실행 환경의 수치를 직접 속도 개선율로 환산하지 않는다. 수정 후 실제 창의 동일 조건 재측정과 입력 체감 검수가 남았다. 측정 근거와 원인은 [방향 점검](DIRECTION_REVIEW_2026-09-24.md)에 있다.
-- 2026-09-24 자동 게이트: Godot editor import 종료 0, `tests/run_tests.gd` 644/644 통과. GUT 전체는 19 scripts, 224 tests 중 218 통과·6 실패, 7572/7591 assertions, 종료 1이었다. 실패는 09의 옛 좌표 fixture, 10·12·14 authored 경로 기대값, METRIX 문 검사 typed array, 공유 벽 fixture에 집중됐다. 이 파일들은 콘텐츠와 테스트를 함께 재검토한다.
+- 2026-09-25 실제 OpenGL 창 benchmark 12회: 2D 명령→draw 중앙값 15.439 ms(p95 20.881), 3D 명령→draw 중앙값 6.003 ms(p95 12.785), 3D dirty movement view 4.314 ms, 3D forward→draw 중앙값 52.180 ms(p95 70.980). 수정 전 기록보다 크게 개선됐으며, headless 수치와 별도로 보존한다.
+- 2026-09-25 자동 게이트: Godot editor import 종료 0, `tests/run_tests.gd` 644/644 통과, Rule/first_entry/기존 core 범위 GUT 19 scripts·241 tests·7771 assertions 전부 통과, 180-frame headless 종료 0. 전체 GUT의 deduction_casework/game_library 사용자 범위 실패는 이 작업에서 수정하지 않았다.
 
 ## 완료 전 남은 일
 
-1. 09–14 보드 경로·우회 테스트의 실패 원인을 수정하고, 각 퍼즐에서 목표 조작이 실제로 필요한지 검증한다.
-2. 1인칭 이동 입력을 확정한 뒤 DOOM식 전방 시점과 3인칭 전환을 같은 물리 상태에 붙인다. 계획·Input Bubble·저장/Undo 계약과 충돌하지 않는지 확인한다.
-3. 수정 후 실제 창 12회 성능 재측정, 01→14 수동 연속 플레이와 10분 실측, 15번째 보드의 core 무수정 추가를 마친다.
-4. 자동 검증 네 단계 전부 통과 후 720p/FHD/QHD, 2D·1인칭·3인칭·인벤토리·실패·성공 화면을 캡처하고 Primary Reference와 비교한다. 사용자 직접 플레이 전에는 검토 준비 완료까지만 말한다.
-5. 게임 전체용 큰 나무·인물 파츠·폭탄·토끼의 `at-icons` 재조합과 크기별 비교는 아직 결과물이 없다.
+1. 01→15 자동 route는 통과했으므로, 실제 플레이어로 대안 route를 포함해 10분 이상을 실측한다.
+2. 720p/FHD/QHD 캡처를 현재 외부 temp harness로 생성했으므로, Primary Reference 비교와 at-icons silhouette audit를 남긴다.
+3. 2026-09-25 사용자 지시가 기존 at-icons 제작 기준을 대체했다. 새 이미지 자산 기반이 확정되면 해당 기준으로 자산 출처와 실제 화면을 검수한다.
+4. parser/METRIX 최적화와 3D/Input Bubble 회귀를 포함한 전체 자동 게이트를 최종 변경 후 다시 실행한다.

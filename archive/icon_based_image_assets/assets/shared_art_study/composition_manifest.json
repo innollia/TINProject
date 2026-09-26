@@ -1,0 +1,525 @@
+{
+  "source": "res://addons/at-icons/node2d/",
+  "catalog_source_svg_count": 618,
+  "raw_viewbox_px": 16,
+  "uniform_display_icon_size_px": 48,
+  "uniform_source_scale": 3.0,
+  "crop_or_mask": false,
+  "no_overlap": true,
+  "forbidden_transforms": [
+    "rotation",
+    "mirror",
+    "per-instance scaling",
+    "overlap",
+    "crop",
+    "mask"
+  ],
+  "composition_transforms": [
+    "translation",
+    "palette recolor"
+  ],
+  "note": "Each glyph is exported at the same 48x48 size in every variant and occupies a separate 56x56 cell. Density changes come from count and object-scale footprint, not output-resolution changes.",
+  "samples": {
+    "large_tree": {
+      "low": {
+        "label": "큰 나무",
+        "instances": 8,
+        "unique_icon_kinds": 5,
+        "icons": [
+          "cloud",
+          "cylinder",
+          "leaf",
+          "sponge",
+          "sprout"
+        ],
+        "composition_rule": "잎 glyph 6개 + 원통 2개를 수직 적층",
+        "readable_at_object_scale": "작은 배경 수목",
+        "risk": "기둥이 가늘고 수관이 약함",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      },
+      "medium": {
+        "label": "큰 나무",
+        "instances": 14,
+        "unique_icon_kinds": 5,
+        "icons": [
+          "cloud",
+          "cylinder",
+          "leaf",
+          "sponge",
+          "sprout"
+        ],
+        "composition_rule": "수관 glyph 8개 + 원통 6개를 2열로 적층",
+        "readable_at_object_scale": "중간 거리 월드 오브젝트",
+        "risk": "원통 반복이 목재 기둥처럼 튐",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      },
+      "high": {
+        "label": "큰 나무",
+        "instances": 100,
+        "unique_icon_kinds": 5,
+        "icons": [
+          "cloud",
+          "cylinder",
+          "leaf",
+          "sponge",
+          "sprout"
+        ],
+        "composition_rule": "수관 90개 + 원통 10개로 큰 덩어리 실험",
+        "readable_at_object_scale": "큰 장면 랜드마크",
+        "risk": "수관이 무늬 벽처럼 되고 기둥이 막대 더미로 읽힘",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      }
+    },
+    "neutral_human": {
+      "low": {
+        "label": "인체 기본형",
+        "instances": 9,
+        "unique_icon_kinds": 7,
+        "icons": [
+          "box",
+          "circle",
+          "eye",
+          "pencil",
+          "shield",
+          "triangle",
+          "wing"
+        ],
+        "composition_rule": "머리·얼굴·몸통·상의/하의·좌우 팔/다리",
+        "readable_at_object_scale": "멀리 있는 인물 실루엣",
+        "risk": "얼굴과 팔다리 형태가 약함",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      },
+      "medium": {
+        "label": "인체 기본형",
+        "instances": 14,
+        "unique_icon_kinds": 11,
+        "icons": [
+          "box",
+          "circle",
+          "cube",
+          "eye",
+          "feather",
+          "gem",
+          "hand",
+          "pencil",
+          "shield",
+          "triangle",
+          "wing"
+        ],
+        "composition_rule": "머리·손·의상 슬롯에 다섯 조각 추가",
+        "readable_at_object_scale": "중거리 NPC 기본형",
+        "risk": "손/안경 glyph의 의미가 튐",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      },
+      "high": {
+        "label": "인체 기본형",
+        "instances": 100,
+        "unique_icon_kinds": 16,
+        "icons": [
+          "arrow_up",
+          "box",
+          "circle",
+          "cloud",
+          "cube",
+          "cylinder",
+          "diamond",
+          "eye",
+          "feather",
+          "glasses",
+          "hand",
+          "pencil",
+          "road",
+          "shield",
+          "triangle",
+          "wing"
+        ],
+        "composition_rule": "12열 타일 실루엣을 머리·몸통·팔·다리 슬롯으로 분배",
+        "readable_at_object_scale": "화면 전경 크기의 인물 덩어리",
+        "risk": "인체 형태보다 격자 모자이크가 먼저 읽힘",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      }
+    },
+    "modular_parts": {
+      "low": {
+        "label": "교체식 인체 파츠",
+        "instances": 9,
+        "unique_icon_kinds": 7,
+        "icons": [
+          "box",
+          "circle",
+          "eye",
+          "pencil",
+          "shield",
+          "triangle",
+          "wing"
+        ],
+        "composition_rule": "머리·얼굴·몸통·좌우 팔/다리·상의·하의 분리",
+        "readable_at_object_scale": "파츠 교체 슬롯 구조 확인",
+        "risk": "관절과 표정 세부가 부족함",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      },
+      "medium": {
+        "label": "교체식 인체 파츠",
+        "instances": 14,
+        "unique_icon_kinds": 11,
+        "icons": [
+          "box",
+          "circle",
+          "cube",
+          "eye",
+          "feather",
+          "gem",
+          "hand",
+          "pencil",
+          "shield",
+          "triangle",
+          "wing"
+        ],
+        "composition_rule": "같은 슬롯에 다섯 보조 조각을 배치",
+        "readable_at_object_scale": "교체식 캐릭터 제작 후보",
+        "risk": "상의와 몸통이 가까워 경계가 약함",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      },
+      "high": {
+        "label": "교체식 인체 파츠",
+        "instances": 100,
+        "unique_icon_kinds": 17,
+        "icons": [
+          "arrow_up",
+          "box",
+          "circle",
+          "cloud",
+          "cube",
+          "cylinder",
+          "diamond",
+          "eye",
+          "feather",
+          "gem",
+          "glasses",
+          "hand",
+          "pencil",
+          "road",
+          "shield",
+          "triangle",
+          "wing"
+        ],
+        "composition_rule": "100개를 슬롯별 타일로 나누어 대량 파츠 경계 확인",
+        "readable_at_object_scale": "대형 조립체의 슬롯 경계 스트레스 테스트",
+        "risk": "고밀도에서 교체 경계가 사라짐",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      }
+    },
+    "bomb": {
+      "low": {
+        "label": "폭탄",
+        "instances": 3,
+        "unique_icon_kinds": 3,
+        "icons": [
+          "hook",
+          "ring",
+          "sphere"
+        ],
+        "composition_rule": "구형 껍질 2개 + 퓨즈 1개",
+        "readable_at_object_scale": "작은 소품",
+        "risk": "구형/퓨즈 단서가 부족함",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      },
+      "medium": {
+        "label": "폭탄",
+        "instances": 5,
+        "unique_icon_kinds": 3,
+        "icons": [
+          "hook",
+          "ring",
+          "sphere"
+        ],
+        "composition_rule": "껍질 4개 + 퓨즈 1개를 인접 배치",
+        "readable_at_object_scale": "손에 드는 초점 소품",
+        "risk": "고리 glyph가 따로 읽힘",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      },
+      "high": {
+        "label": "폭탄",
+        "instances": 100,
+        "unique_icon_kinds": 9,
+        "icons": [
+          "arrow_up",
+          "circle",
+          "cube",
+          "cylinder",
+          "diamond",
+          "feather",
+          "hook",
+          "shield",
+          "sphere"
+        ],
+        "composition_rule": "껍질 90개 + 2열 퓨즈 10개로 거대 소품 구성",
+        "readable_at_object_scale": "큰 화면 오브젝트 스트레스 테스트",
+        "risk": "폭탄보다 둥근 모자이크 덩어리로 읽힘",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      }
+    },
+    "rabbit": {
+      "low": {
+        "label": "토끼",
+        "instances": 4,
+        "unique_icon_kinds": 3,
+        "icons": [
+          "circle",
+          "cloud",
+          "feather"
+        ],
+        "composition_rule": "긴 귀 2개 + 머리 + 몸통",
+        "readable_at_object_scale": "작은 동물 실루엣",
+        "risk": "얼굴 특징과 발이 없음",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      },
+      "medium": {
+        "label": "토끼",
+        "instances": 7,
+        "unique_icon_kinds": 5,
+        "icons": [
+          "circle",
+          "cloud",
+          "egg",
+          "feather",
+          "paw_print"
+        ],
+        "composition_rule": "발 2개와 꼬리를 붙여 앉은 자세 구성",
+        "readable_at_object_scale": "월드 생물 크기",
+        "risk": "발바닥/달걀 glyph가 튐",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      },
+      "high": {
+        "label": "토끼",
+        "instances": 100,
+        "unique_icon_kinds": 11,
+        "icons": [
+          "circle",
+          "cloud",
+          "egg",
+          "eye",
+          "feather",
+          "gem",
+          "glasses",
+          "leaf",
+          "paw_print",
+          "sphere",
+          "triangle"
+        ],
+        "composition_rule": "귀 10·머리 20·몸통 50·발 12·꼬리 8개로 대형 생물 타일화",
+        "readable_at_object_scale": "큰 캐릭터형 생물 스트레스 테스트",
+        "risk": "토끼보다 군집이나 패턴으로 읽힘",
+        "display_icon_size_px": 48,
+        "crop_or_mask": false,
+        "no_overlap": true,
+        "rotation_or_mirror": false
+      }
+    }
+  },
+  "parts_layer_manifest": {
+    "canvas_px": {
+      "width": 672,
+      "height": 728
+    },
+    "display_icon_size_px": 48,
+    "parts": [
+      {
+        "slot": "head",
+        "file": "head.svg",
+        "pivot_px": [
+          332,
+          52
+        ],
+        "icon_instances": 2,
+        "unique_icon_kinds": 2,
+        "icons": [
+          "circle",
+          "feather"
+        ]
+      },
+      {
+        "slot": "face",
+        "file": "face.svg",
+        "pivot_px": [
+          360,
+          24
+        ],
+        "icon_instances": 1,
+        "unique_icon_kinds": 1,
+        "icons": [
+          "eye"
+        ]
+      },
+      {
+        "slot": "torso",
+        "file": "torso.svg",
+        "pivot_px": [
+          304,
+          80
+        ],
+        "icon_instances": 1,
+        "unique_icon_kinds": 1,
+        "icons": [
+          "shield"
+        ]
+      },
+      {
+        "slot": "arm_left",
+        "file": "arm_left.svg",
+        "pivot_px": [
+          248,
+          80
+        ],
+        "icon_instances": 2,
+        "unique_icon_kinds": 2,
+        "icons": [
+          "hand",
+          "wing"
+        ]
+      },
+      {
+        "slot": "arm_right",
+        "file": "arm_right.svg",
+        "pivot_px": [
+          360,
+          80
+        ],
+        "icon_instances": 2,
+        "unique_icon_kinds": 2,
+        "icons": [
+          "hand",
+          "wing"
+        ]
+      },
+      {
+        "slot": "leg_left",
+        "file": "leg_left.svg",
+        "pivot_px": [
+          248,
+          192
+        ],
+        "icon_instances": 1,
+        "unique_icon_kinds": 1,
+        "icons": [
+          "pencil"
+        ]
+      },
+      {
+        "slot": "leg_right",
+        "file": "leg_right.svg",
+        "pivot_px": [
+          360,
+          192
+        ],
+        "icon_instances": 1,
+        "unique_icon_kinds": 1,
+        "icons": [
+          "pencil"
+        ]
+      },
+      {
+        "slot": "top",
+        "file": "top.svg",
+        "pivot_px": [
+          304,
+          136
+        ],
+        "icon_instances": 3,
+        "unique_icon_kinds": 3,
+        "icons": [
+          "cube",
+          "gem",
+          "triangle"
+        ]
+      },
+      {
+        "slot": "bottom",
+        "file": "bottom.svg",
+        "pivot_px": [
+          304,
+          192
+        ],
+        "icon_instances": 1,
+        "unique_icon_kinds": 1,
+        "icons": [
+          "box"
+        ]
+      }
+    ],
+    "note": "Every layer has the same viewBox and placement coordinates, so it can be swapped in place. Pivots are visual estimates for testing, not a validated Spine skeleton."
+  },
+  "source_icons_used": [
+    "arrow_up",
+    "badge",
+    "book_open",
+    "box",
+    "circle",
+    "cloud",
+    "cube",
+    "cylinder",
+    "diamond",
+    "door",
+    "egg",
+    "eye",
+    "feather",
+    "gem",
+    "glasses",
+    "hand",
+    "hook",
+    "leaf",
+    "paw_print",
+    "pencil",
+    "ring",
+    "road",
+    "shield",
+    "sphere",
+    "sponge",
+    "sprout",
+    "triangle",
+    "wing"
+  ],
+  "source_icon_kind_count": 28
+}

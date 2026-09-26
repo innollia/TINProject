@@ -1,15 +1,15 @@
 extends GutTest
 
-const REFERENCE_IDS: Array[StringName] = [&"rule_01_open_gate", &"rule_02_shift_win", &"rule_03_pit_and_chain", &"rule_04_second_runner", &"rule_05_word_seed", &"rule_06_key_from_risk", &"rule_07_moving_gate", &"rule_08_safe_crossing", &"rule_09_first_metrix", &"rule_10_shared_frames", &"rule_11_metrix_storage", &"rule_12_wall_alignment", &"rule_13_hotbar_phrase", &"rule_14_owner_focus"]
+const REFERENCE_IDS: Array[StringName] = [&"rule_01_open_gate", &"rule_02_shift_win", &"rule_03_pit_and_chain", &"rule_04_second_runner", &"rule_05_word_seed", &"rule_06_key_from_risk", &"rule_07_moving_gate", &"rule_08_safe_crossing", &"rule_09_first_metrix", &"rule_10_shared_frames", &"rule_11_metrix_storage", &"rule_12_wall_alignment", &"rule_13_hotbar_phrase", &"rule_14_owner_focus", &"rule_15_relay"]
 
 
 func test_reference_sequence_loads_in_authored_order_with_legacy_entries_preserved() -> void:
 	var ids := RuleLevelLoader.list_level_ids()
-	assert_eq(ids.size(), 16)
+	assert_eq(ids.size(), 17)
 	for index: int in range(REFERENCE_IDS.size()):
 		assert_eq(ids[index], REFERENCE_IDS[index])
-	assert_eq(ids[14], &"signal_room_01")
-	assert_eq(ids[15], &"crossing_02")
+	assert_eq(ids[15], &"signal_room_01")
+	assert_eq(ids[16], &"crossing_02")
 	for level_id: StringName in REFERENCE_IDS:
 		var loaded := RuleLevelLoader.load_level(level_id)
 		assert_true(loaded["ok"], "failed to load %s" % level_id)

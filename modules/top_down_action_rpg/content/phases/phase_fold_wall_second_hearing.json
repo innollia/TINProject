@@ -1,0 +1,61 @@
+{
+    "schema_version":  1,
+    "id":  "phase_fold_wall_second_hearing",
+    "display_name":  "Second Hearing",
+    "owner_enemy_id":  "enemy_fold_wall",
+    "index":  1,
+    "trigger":  {
+                    "kind":  "hp_ratio",
+                    "hp_ratio_at":  40,
+                    "condition":  {
+
+                                  }
+                },
+    "enter":  {
+                  "effect_ids":  [
+
+                                 ],
+                  "status_ids":  [
+                                     "st_concentration_load"
+                                 ],
+                  "invulnerable_windows":  0
+              },
+    "overrides":  {
+                      "action_add_ids":  [
+                                             "act_fold_wall_measure"
+                                         ],
+                      "action_remove_ids":  [
+
+                                            ],
+                      "stat_overrides":  {
+                                             "agility":  2
+                                         },
+                      "resistance_add_status_ids":  [
+                                                        "st_concentration_load"
+                                                    ],
+                      "resistance_remove_status_ids":  [
+
+                                                       ],
+                      "signature_action_id":  "act_fold_wall_verdict",
+                      "telegraph_gain_windows":  1
+                  },
+    "roster":  {
+                   "add_enemy_ids":  [
+
+                                     ],
+                   "remove_enemy_ids":  [
+
+                                        ],
+                   "count_overrides":  [
+
+                                       ]
+               },
+    "completion":  {
+                       "kind":  "reduce_owner_hp_to",
+                       "hp_ratio_at":  15
+                   },
+    "next_phase_id":  null,
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

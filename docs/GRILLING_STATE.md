@@ -1,13 +1,100 @@
 # TINProject — Grilling State
 
-현재 상태: **COMPLETE — Rule Rewrite Kit별 grilling 및 계획서 작성 완료. 구현 중 방향 점검 뒤 재개**
+현재 상태: **COMPLETE — 프로젝트 공통 GPT 이미지 자산 기반 Q1–Q32 반영 및 사용자 shared understanding 확인 완료**
+Top-down Action-RPG 상태: **PLAN COMPLETE — 분할 계획·중앙 해석·magic supplement 검토 통과. 구현·검증 실행 단계**
+Rule Rewrite 구현 상태: **COMPLETE — Kit별 grilling 및 계획서 작성 완료. 구현·자동 회귀·외부 해상도 캡처 진행 중**
 구현 중 발견한 불일치와 재개 조건: [Rule Rewrite 방향 점검](research/rule_rewrite/DIRECTION_REVIEW_2026-09-24.md).
 project-wide 상태: **COMPLETE — 사용자 shared understanding 확인 완료**
-갱신: 2026-09-24
+갱신: 2026-09-25
+
+## GPT 이미지 자산 기반 grilling
+
+Shared understanding: **CONFIRMED — 2026-09-25**
+
+입력: 사용자가 제공한 공유 대화 `https://chatgpt.com/share/6ab6725f-5848-83e9-a304-1d1fd78a6510`의 첫 조사 보고서와 이후 Q1–Q32 결정. 조사 요약과 출처는 `docs/research/visual_reference/GPT_IMAGE_GAME_ART_PIPELINE_REPORT.md`에 보존한다. 사용자는 2026-09-25 첨부한 두 이미지를 실제 시각 레퍼런스로 재확인했고, 저장소의 `docs/research/visual_reference/user_style_A.png`, `user_style_B.png`와 SHA-256 기준으로 각각 동일함을 확인했다.
+
+### Settled
+
+- IMG1: 여러 게임에 재사용하는 `개인 화풍 코어`를 만들고 게임마다 `프로젝트 아트 층`을 얹는다.
+- IMG2: A/B를 평균내지 않는다. A는 얼굴 중앙 구조·명암 면·내부 붓결·머리카락 밝기 변화, B는 선 강약·의상 구조·실루엣 정리·밀도 대비·배경 콜라주성을 맡는다.
+- IMG3: A/B의 얼굴형, 헤어스타일, 구체 모티프, 의상 디자인, 정확한 색 조합은 상속하지 않는다.
+- IMG4: A/B를 영구 Style Reference로 유지한다. 새 Gold Standard만으로 대체하지 않는다.
+- IMG5: 얼굴의 `안면 능선`, 주변색보다 매우 어두운 유색 구조선, 3단 얼굴 명암과 면 내부 붓질을 공통 문법으로 둔다.
+- IMG6: 색은 고정 RGB 팔레트보다 관계를 고정한다. 넓은 면은 낮은 채도, 정체성색 1–2개는 중채도, 초점은 작은 고채도 면적을 사용한다.
+- IMG7: 질감의 불균질함은 공통이지만 붓질 형태는 재질별로 다르며, 자산군마다 같은 효과를 다른 방식으로 번역한다.
+- IMG8: UI는 테두리 마모 대신 넓은 정보면과 선택 상태의 `내부 브러시 채움`을 사용한다. 작은 아이콘과 글자는 깨끗하게 유지한다.
+- IMG9: 기괴한 비정상성은 필수도 자동 적용 대상도 아니다. 프로젝트가 명시적으로 선택한다.
+- IMG10: GPT 출력이 최종 그림이다. 사람의 재작화는 하지 않으며 A-2 범위의 기계적 후처리를 허용한다.
+- IMG11: Spine은 사용하지 않는다. 2D 리깅은 컷아웃 관절과 메시 변형을 합친 혼합형이며 overdraw margin을 요구한다.
+- IMG12: 스프라이트는 일러스트의 번역판이다. 구조선 수 감소, 2단 명암, 극소량의 내부 붓질로 단순화한다.
+- IMG13: 배경 오브젝트가 조사 정보처럼 중요할 수 있으므로 배경 전체에 낮은 선 밀도를 강제하지 않는다.
+- IMG14: 실패한 생성물은 정체성/구도가 맞으면 GPT 국소 편집, 전체 문법이 틀리면 재생성한다. 사용자의 요청 전에는 편집·재생성을 실행하지 않는다.
+- IMG15: 코어는 UI의 렌더 문법만 소유하고 실제 메뉴 형태·세계관 소품·레이아웃은 프로젝트가 정한다.
+- IMG16: 기존 생성 이미지 절대 금지를 2026-09-25 즉시 해제한다. 구체적인 이미지 제작·편집 요청이 있을 때 생성 도구를 사용할 수 있다.
+- IMG17: 규칙 충돌은 최신 사용자 결정, 프로젝트 아트 층, 개인 화풍 코어, 역할이 제한된 A/B Style Reference, 해당 자산군 Gold Standard 순으로 해소한다.
+- IMG18: 기계적 후처리는 투명화/배경 분리, 크롭, 캔버스·피벗 정렬, 레이어 분리, 리사이즈, 아틀라스 패킹, 색 프로파일 변환, 결정론적 알파 매트·가장자리 정리까지 허용한다. 수동 재작화와 자산별 색칠 보정은 제외한다.
+- IMG19: 배경 정보 중요도는 `증거·직접 상호작용`, `길찾기·상황 이해`, `분위기`의 3단계다. 프로젝트 또는 장면 brief가 명시하고 모델이 임의 승격하지 않는다.
+- IMG20: Gold Standard는 환경/배경, 게임플레이 스프라이트, UI, 리깅용 전신 파츠, 비주얼노벨 전신·초상, 조사 화면의 자산군별 묶음으로 둔다. 프로젝트에 필요한 묶음만 활성화한다.
+- IMG21: 개인 화풍 코어, 프로젝트 아트 층, 자산군 brief는 별도 파일로 관리하며 `docs/IMAGE_ASSET_WORKFLOW.md`의 필수 필드를 사용한다.
+- IMG22: 에이전트는 부적합 후보를 탈락시킬 수 있지만 Gold Standard 승격·교체·폐기는 사용자의 명시적 승인만으로 확정한다. 교체 승인 전에는 기존 기준이 유효하다.
+- IMG23: 모든 생성 요청은 독립 작업이다. 코어, 프로젝트 층, 자산군 brief, 활성 Gold Standard와 필요한 원본을 매번 입력하고 채팅 누적 기억을 정본으로 사용하지 않는다.
+- IMG24: Character Bible은 한 장, 리깅 파츠는 한 세트 후 기계적 분리, 애니메이션은 승인 기준 프레임과 포즈 자료를 사용한 프레임별 생성이 기본 단위다.
+- IMG25: 파일 규격·알파·피벗·레이어·명명·출처는 하드 게이트다. 통과 후보를 실제 게임 화면에서 검수하고 정보 계층과 시각 일관성은 사용자가 최종 승인한다.
+
+### Current Frontier
+
+**비어 있음.** 공통 이미지 기반을 시작하는 데 필요한 설계 선택은 IMG1–IMG25로 닫혔다.
+
+다음 항목은 현재 설계 frontier가 아니다. 실제 조건이 생겼을 때 해당 작업의 로컬 결정으로 다룬다.
+
+- 후보 생성 수: 자산 난이도, 비용, 첫 결과의 실패 유형이 확인될 때 결정한다.
+- 탈락 후보 보존: 사용자가 검토하거나 보존을 요청한 결과가 생겼을 때 결정한다.
+- provenance 세부 스키마: 첫 생성 도구와 실제 응답 메타데이터를 확인한 뒤 정한다. 출처 기록 자체는 IMG25의 하드 게이트로 이미 확정됐다.
+- 첫 검증 자산군: 사용자가 실제 제작할 프로젝트와 자산을 요청할 때 선택한다.
+- 코어 버전 마이그레이션: 두 번째 코어 버전이 생길 때 결정한다. 현재 프로젝트 층은 사용할 코어 버전을 명시한다.
+
+사용자가 실제 A/B 레퍼런스를 재확인하고 종료를 지시했으므로 프로젝트 공통 GPT 이미지 자산 기반 grilling을 종료했다. 이후 구체적인 자산 제작 요청에는 현행 Settled 규칙을 적용한다.
+
+## Top-down Action-RPG Kit별 진행
+
+Kit-specific shared understanding: **CONFIRMED — 2026-09-25**
+
+### Settled
+
+- K-ARPG1: 다음 Kit은 쯔꾸르 계열의 Top-down Action-RPG Kit이다.
+- K-ARPG2: 유일한 Primary Reference는 BLACK SOULS 2이며, 계획에서 최대 가중치를 준다.
+- K-ARPG3: 시스템·UX·콘텐츠 밀도·분량을 강하게 따른다. 작은 전투 데모나 한 보스·한 맵으로 닫는 범위는 분량으로 인정하지 않는다.
+- K-ARPG4: 스토리·character·enemy design의 범용 규칙을 추출해 우리 콘텐츠 제작의 기반으로 삼는다.
+- K-ARPG5: 앨리스는 새 세계관에서 완전히 버린다. 원작 앨리스 요소를 다른 이름으로 변형해 재사용하지 않는다.
+- K-ARPG6: 사용자가 제공한 실제 플레이 캡처 A~H를 통합했다.
+- K-ARPG7: 계획서는 여러 파일로 나누고 content와 story/world/character 문서에 가장 큰 분량을 준다.
+- K-ARPG8: 사용자 메모는 canon이 아니라 문장 단위 idea source로 취급한다. 원문 대화, metadata, 중복, filler는 자동 canon이 아니다.
+- K-ARPG9: 한 문장 또는 특정 NPC 대사 한 번의提及도 authored content로 사용할 수 있다. 사용된 seed는 TIN rule로 구조화하고 최소 두 개의 cross-link와 immediate/delayed consequence를 가져야 한다.
+- K-ARPG10: memo에서 추출한 usable idea unit의 최소 60%를 구조적으로 변환해 사용한다. utilization은 원문 줄 수가 아니라 독립 idea unit 기준으로 측정한다.
+- K-ARPG11: 세상은 하나의 deep system 안에 여러 module/era를 가지며, 왕관은 literal object·political institution·metaphysical invariant의 세 층위를 가진다.
+- K-ARPG12: root law는 단순 simulation이 아니라, 여러 protocol이 recovery·recognition·authority를 서로 다르게 구현하는 meta-system이다.
+- K-ARPG13: player는 investigator이면서 world protocol의 experiment/subject다.
+- K-ARPG14: institutions는 local competence를 가지며 category error와 interface failure에서 political absurdity를 만든다.
+- K-ARPG15: orthogonal world axes 2~4개, 서로 다른 pressure clocks, 분기별 6~12 NPC interaction cluster를 사용한다.
+- K-ARPG16: romance와 affection은 허용한다. explicit sexual content는 제거한다. body horror는 허용한다.
+- K-ARPG17: 사용자는 계획서 완성부터 게임 Kit 구현·검증까지 8시간 연속 one-shot 실행을 요청했다. 구현은 계획 게이트와 파일 소유권을 확인한 뒤 시작한다.
+
+### Current Frontier
+
+**비어 있음.** 이제 기존 `plans/kits/`에 분할 계획을 작성하고 구현으로 진행한다.
+
+### 조사·기술 결론
+
+- [BLACK SOULS 2 통합 조사](research/top_down_action_rpg/BLACK_SOULS_2_RESEARCH.md): story/character/enemy/combat/content의 범용 규칙, 원작 복제 금지 범위, 실제 플레이 미확인 항목을 통합했다.
+- [사용자 실제 플레이 A~H](research/top_down_action_rpg/USER_PLAY_REFERENCE_2026-09-25.md): NPC dialogue/choice, combat command/action gauge, document/corruption/aftermath의 실제 화면 문법을 보존했다.
+- [godot-jrpg 외부 코드 감사](research/top_down_action_rpg/GODOT_JRPG_AUDIT.md): MIT이나 action RPG/complex battle 비목표, Godot 4.6, autoload/scene-swap/Resource-save 충돌, 0.1 WIP 상태를 확인했다.
+- 외부 코드 기본 결론: 전체 addon/dependency로 채택하지 않는다. 개념을 참고해 `modules/top_down_action_rpg/`를 module-local 직접 구현한다. 향후 exact file-level code reuse가 필요할 때만 별도 감사를 한다.
+- 이미지 자산은 현행 GPT 이미지 기반을 따른다. 이 작업에서 이미지 생성/editing을 임의로 수행하지 않고, 실제 필요한 자산 brief와 승인 절차만 계획한다.
+
 
 ## Rule Rewrite Kit별 합의와 계획 입력
 
-2026-09-24 사용자가 추가 질문보다 구체 계획서 작성을 선택하고 작업을 지시했다. 현재 설계 질문 frontier는 비어 있다. 아래 확정값을 계획 입력으로 사용한다. 계획 작성 중 확인이 필요한 원작 동작·UI 증거는 조사 항목으로 다루고, 플레이 경험을 실제로 바꾸는 새 갈림길이 발견될 때만 사용자에게 묻는다.
+2026-09-24 사용자가 추가 질문보다 구체 계획서 작성을 선택하고 작업을 지시했다. 해당 Kit의 설계 질문 frontier는 비어 있다. 아래 확정값을 과거 계획 입력으로 보존한다.
 
 조사 입력: `docs/research/RULE_REWRITE_REFERENCE_REPORT.md`, `docs/research/RULE_REWRITE_MOD_ECOSYSTEM_REPORT.md` 및 `docs/research/rule_rewrite/user_capture_01.jpg`~`user_capture_10.jpg`. 후속 에이전트가 레퍼런스 보고서의 어휘 카탈로그와 사용자 캡처 10장을 읽고 직접 확인했다. 모드 생태계 보고서는 공개 자료의 기능·기술·권리 범위를 정리한 입력이다. 정지 화면으로 모션·음향·입력 반복을 확인했다고 간주하지 않는다.
 
@@ -29,6 +116,7 @@ project-wide 상태: **COMPLETE — 사용자 shared understanding 확인 완료
 - METRIX 이동 시 내부 물건은 함께 운반되어 4096처럼 이동 방향의 안쪽 벽에 붙는다. 외부 충돌은 경계만 검사한다.
 - 여러 METRIX 인벤토리는 별도로 유지한다. 현재 활성 인벤토리와 소유 관계는 규칙으로 변경 가능해야 한다.
 - 사용자 지적: 단순 확장 아이디어를 맨바닥 질문만으로 구체화하는 데 시간이 과도하게 들었다. Baba Is You 모드 생태계의 유사 기능·새 문법 구현 사례를 조사해 보고서에 정리했으며, 추가 추천안 승인 질문 없이 Kit 계획 작성으로 넘어갔다.
+- authored 퍼즐은 대안 route와 우회를 허용한다. trivial한 rule cluster나 핵심 시스템과 무관한 우회만 남는 콘텐츠는 거부한다.
 
 원작의 사실은 에이전트가 조사한다. 기존 확정된 UI 충실도·복구 문법을 임의의 재해석 선택지로 다시 묻지 않는다. 아래 1~22절은 완료된 project-wide grilling 기록이다. Kit별 합의 전에는 기존 Kit 계획을 새 실행 명세로 수정하지 않는다.
 
@@ -133,7 +221,7 @@ project-wide와 Kit-specific 결정을 한 트리에 섞지 않는다.
 - save/load/reset/undo
 - failure/recovery
 - visual composition
-- at-icons recipe
+- image asset source, production method, and license plan
 - file ownership
 - automated tests
 - manual play tasks
@@ -514,29 +602,11 @@ B → C 중간창
 
 ---
 
-# 15. 시각 자산 — at-icons
+# 15. 시각 자산 — 이미지 기반 전환
 
-## Settled
+## Superseded decision
 
-선택지 A 확정: **at-icons를 모든 Kit Reference Game의 기본 월드 아트 재료로 강제한다.**
-
-경로:
-`res://addons/at-icons/`
-
-규칙:
-- UI icon으로 쓰지 않음
-- 원래 pictogram 의미 그대로 쓰지 않음
-- 여러 unrelated 조각을 조합
-- crop/rotate/mirror/non-uniform scale/overlap/color transform
-- 2D/3D 모두 장르에 맞게 사용
-
-Primary Reference의:
-- silhouette
-- density
-- camera
-- composition
-- readability
-는 유지하되 원작 asset은 복제하지 않는다.
+2026-09-25 사용자 지시에 따라 기존의 “at-icons를 모든 Kit Reference Game의 기본 월드 아트 재료로 강제” 결정을 종료했다. 아이콘 기반 이미지 제작 문서와 실험 도구는 `archive/icon_based_image_assets/`에 보관한다. 이미 만들어진 이미지 파일은 기존 위치와 내용 그대로 유지한다. 이 문단의 “기반 미정” 상태는 같은 날 IMG1–IMG25로 대체되었으며, 아카이브를 현행 제작 기준으로 사용하지 않는다.
 
 ---
 
@@ -622,7 +692,6 @@ Kit 개수 자체는 목표가 아니다.
 - Menu/Journal 상시 버튼
 - 키바인드 설명문
 - old prototype 아이디어/대사/UI salvage
-- at-icons를 선택사항으로 낮추기
 - Kit 전체를 외부 공개 API/framework로 만들기
 - implementation-affecting decision을 계획에 선택지로 남기기
 - 자동 테스트 통과를 game completion으로 취급
@@ -634,7 +703,7 @@ Kit 개수 자체는 목표가 아니다.
 
 현재 project-wide 질문 frontier는 비어 있다. 아래 F1~F5는 확정한 방향과 Kit별 설계로 넘긴 범위를 보존한다. 2026-09-24 사용자가 전체 방향 합의 요약에 “다 맞아”라고 답하여 shared understanding을 명시적으로 확인했다.
 
-이 라운드 종료 당시 다음 단계는 Rule Rewrite의 Primary Reference 조사와 Kit별 grilling이었다. 이후 해당 조사·Kit 계획을 거쳐 구현에 착수했고 현재는 위 방향 점검으로 일시정지했다. 위 Settled 항목을 다시 질문하거나 Kit별 상세 문법을 project-wide 미결정으로 되돌리지 않는다.
+이 라운드 종료 당시 다음 단계는 Rule Rewrite의 Primary Reference 조사와 Kit별 grilling이었다. 이후 해당 조사·Kit 계획을 거쳐 구현과 자동 회귀·외부 해상도 캡처를 진행했다. 위 Settled 항목을 다시 질문하거나 Kit별 상세 문법을 project-wide 미결정으로 되돌리지 않는다.
 
 질문은 추천안 승인 요청으로 만들지 않는다. 서로 다른 답이 실제 플레이를 어떻게 바꾸는지 구체 사례와 손실을 제시해 사용자가 자기 기준을 말할 수 있게 한다. 특히 장르 사이의 이질적 물건·신체 상태와 플레이어 머릿속 지식을 일반적인 상태 정리 대상으로 가정하지 않는다.
 

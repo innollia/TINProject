@@ -1,0 +1,31 @@
+{
+    "schema_version":  1,
+    "id":  "eff_r8_ash_choir_defeated",
+    "timing":  "on_encounter_end",
+    "delay_ref":  {
+                      "kind":  "encounter"
+                  },
+    "operations":  [
+                       {
+                           "op":  "advance_clock",
+                           "clock_id":  "clock_institutional_response",
+                           "ticks":  1
+                       },
+                       {
+                           "state_id":  "ps_opened",
+                           "op":  "prop_state",
+                           "prop_id":  "prop_r8_cut_chamber_wall"
+                       },
+                       {
+                           "op":  "apply_status",
+                           "stacks":  1,
+                           "target":  "selected_actor",
+                           "status_id":  "st_recorded"
+                       }
+                   ],
+    "one_shot":  true,
+    "repeat_guard":  "once",
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

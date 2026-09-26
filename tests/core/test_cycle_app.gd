@@ -329,11 +329,14 @@ func test_checkpoint_language_and_overlays() -> void:
 
 func test_shell_navigation_and_context_hud_stay_hidden_in_play() -> void:
 	app.dev_shell = false
+	app._sync_dev_shell_visibility()
 	app.profile = {"intro_seen": false, "shape": 0, "color": 0, "started": false}
 	assert_eq(await app._change_module(&"first_entry"), OK)
 	await _settle()
-	assert_false(app._shared_bar.visible, "First entry keeps its own navigation controls")
-	assert_false(app._context_hud.visible, "First entry keeps the shared HUD out of the way")
+	assert_null(app.get_node_or_null("UIHost/UI/SharedBar"), "SharedBar is not created in normal play")
+	assert_null(app.get_node_or_null("UIHost/UI/ContextHud"), "ContextHud is not created in normal play")
+	assert_null(app.get_node_or_null("DebugRoot"), "Debug status is not created")
+	assert_false(app.get_node("UIHost/UI/Shell").visible)
 	var pause_event := InputEventKey.new()
 	pause_event.keycode = KEY_P
 	pause_event.physical_keycode = KEY_P
@@ -344,10 +347,12 @@ func test_shell_navigation_and_context_hud_stay_hidden_in_play() -> void:
 	assert_eq(await app._change_module(&"signal_desk"), OK)
 	await _settle()
 	assert_false(app.get_node("UIHost/UI/Shell").visible)
-	assert_false(app._shared_bar.visible)
-	assert_false(app._context_hud.visible)
+	assert_false(app._menu.visible)
+	assert_false(app._journal.visible)
 	app._input(pause_event)
 	assert_false(app.paused, "P leaves the game running")
+	assert_false(app.pause_button.text.contains("(P)"), "The shell does not advertise an unbound P action")
+	assert_false(app._menu_hint.text.contains("(P)"), "The overlay hint does not advertise an unbound P action")
 	var escape_event := InputEventKey.new()
 	escape_event.keycode = KEY_ESCAPE
 	escape_event.physical_keycode = KEY_ESCAPE
@@ -356,8 +361,68 @@ func test_shell_navigation_and_context_hud_stay_hidden_in_play() -> void:
 	assert_true(app.paused, "Escape opens the shared menu")
 	assert_true(app._menu.visible, "The menu appears only after Escape")
 	app._input(escape_event)
+	await _settle()
 	assert_false(app.paused, "Escape closes the shared menu")
 	assert_false(app._menu.visible)
+
+
+func test_dev_shell_argument_requires_debug_build() -> void:
+	var original_test_mode: bool = app.test_mode
+	assert_true(app.dev_shell, "Test mode keeps the development shell available")
+	assert_true(app.get_node("UIHost/UI/Shell").visible)
+	app.test_mode = false
+	assert_true(app._dev_shell_allowed(PackedStringArray(["--dev-shell"]), true))
+	assert_false(app._dev_shell_allowed(PackedStringArray(["--dev-shell"]), false), "A release build ignores --dev-shell")
+	assert_false(app._dev_shell_allowed(PackedStringArray(), true))
+	app.test_mode = true
+	assert_true(app._dev_shell_allowed(PackedStringArray(), false), "Test mode remains an explicit override")
+	app.test_mode = original_test_mode
+
+
+func test_escape_menu_restores_module_focus_and_locks_input() -> void:
+	app.profile["started"] = true
+	assert_eq(await app._change_module(&"click_counter"), OK)
+	await _settle()
+	var module: GameModule = app.director.current_module
+	var button := Button.new()
+	button.name = "FocusProbe"
+	button.focus_mode = Control.FOCUS_ALL
+	module.add_child(button)
+	var prior_mode: Node.ProcessMode = module.process_mode
+	button.grab_focus()
+	await _settle()
+	assert_true(button.has_focus(), "The module starts with a real focus owner")
+	var escape_event := InputEventKey.new()
+	escape_event.keycode = KEY_ESCAPE
+	escape_event.physical_keycode = KEY_ESCAPE
+	escape_event.pressed = true
+	app._input(escape_event)
+	await _settle()
+	assert_true(app.paused)
+	assert_true(app.router.locked)
+	assert_true(app.director.current_module.context.input_enabled == false)
+	assert_eq(module.process_mode, Node.PROCESS_MODE_DISABLED)
+	assert_same(app.get_viewport().gui_get_focus_owner(), app._resume_button)
+	app._input(escape_event)
+	await _settle()
+	assert_false(app.paused)
+	assert_false(app.router.locked)
+	assert_true(module.context.input_enabled)
+	assert_eq(module.process_mode, prior_mode)
+	assert_same(app.get_viewport().gui_get_focus_owner(), button, "Closing Esc returns focus to the module")
+	app.toggle_journal()
+	await _settle()
+	assert_true(app.paused)
+	assert_true(app.router.locked)
+	assert_true(app._journal.visible)
+	assert_false(app._menu.visible)
+	assert_same(app.get_viewport().gui_get_focus_owner(), app._journal_close)
+	app.toggle_journal()
+	await _settle()
+	assert_false(app.paused)
+	assert_false(app.router.locked)
+	assert_false(app._journal.visible)
+	assert_same(app.get_viewport().gui_get_focus_owner(), button, "Closing Journal keeps the overlay boundary")
 
 
 func test_settings_library_browses_all_games_and_returns_or_switches() -> void:
@@ -366,6 +431,7 @@ func test_settings_library_browses_all_games_and_returns_or_switches() -> void:
 	assert_true(app.paused)
 	await app._open_library()
 	assert_eq(app.director.current_id, &"game_library")
+
 	assert_false(app.paused)
 	assert_false(app._menu.visible)
 	assert_eq(app.director.current_module._buttons.size(), app.catalog.size() - 2)

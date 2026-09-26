@@ -1,0 +1,33 @@
+{
+    "schema_version":  1,
+    "id":  "eff_r1_return_registry_logs_name",
+    "timing":  "on_clock_stage",
+    "delay_ref":  {
+                      "stage_id":  "canonical",
+                      "id":  "clock_public_record",
+                      "kind":  "clock_stage"
+                  },
+    "operations":  [
+                       {
+                           "key":  "state_key",
+                           "op":  "npc_state",
+                           "npc_id":  "npc_05_nera_voss",
+                           "value":  "logged_as_returning"
+                       },
+                       {
+                           "op":  "set_axis",
+                           "value":  2,
+                           "axis":  "recognition_drift"
+                       },
+                       {
+                           "key":  "world_r1_name_logged",
+                           "op":  "flag",
+                           "value":  true
+                       }
+                   ],
+    "one_shot":  true,
+    "repeat_guard":  "once",
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

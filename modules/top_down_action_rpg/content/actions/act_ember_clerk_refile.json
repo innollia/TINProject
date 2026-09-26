@@ -1,0 +1,81 @@
+{
+    "schema_version":  1,
+    "id":  "act_ember_clerk_refile",
+    "display_name":  "ember clerk refile",
+    "order":  15,
+    "owner":  "enemy",
+    "category":  "attack",
+    "defense_mode":  "none",
+    "lifecycle":  "instant",
+    "intent":  {
+                   "target_mode":  "ONE_ENEMY",
+                   "requires_target_cursor":  true,
+                   "target_eligibility":  "living"
+               },
+    "cost":  {
+                 "turn_cost":  1,
+                 "resource_costs":  {
+                                        "mp":  2
+                                    },
+                 "cooldown_windows":  1,
+                 "action_slot_cost":  1
+             },
+    "telegraph":  {
+                      "channels":  [
+                                       "pose",
+                                       "field_prop"
+                                   ],
+                      "windows_before_active":  0,
+                      "tell_key":  "tell_ember_clerk_refile"
+                  },
+    "damage_payload":  {
+                           "delivery":  "magical",
+                           "shape":  "fixed",
+                           "base_value":  6,
+                           "affinity":  "none",
+                           "hit_policy":  "roll",
+                           "hit_modifier":  0,
+                           "evasion_policy":  "roll",
+                           "critical_policy":  "never",
+                           "dodge_pressure":  4,
+                           "guard_ignore":  false,
+                           "breaks_guard":  false,
+                           "break_damage":  0,
+                           "dodgeable":  true,
+                           "break_damage_kinds":  [
+
+                                                  ],
+                           "self_damage":  0,
+                           "lifesteal":  0,
+                           "reflect":  0,
+                           "on_hit_payload_ids":  [
+
+                                                  ],
+                           "on_evade_payload_ids":  [
+
+                                                    ]
+                       },
+    "status_payloads":  [
+                            {
+                                "status_id":  "st_recorded",
+                                "chance_permille":  250,
+                                "target":  "target"
+                            }
+                        ],
+    "counters":  {
+                     "valid":  [
+                                   "guard",
+                                   "break"
+                               ],
+                     "forbidden":  [
+                                       "dodge"
+                                   ],
+                     "breakable":  true
+                 },
+    "presentation":  {
+                         "icon_key":  "act_ember_clerk_refile"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

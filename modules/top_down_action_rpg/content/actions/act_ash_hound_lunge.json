@@ -1,0 +1,109 @@
+{
+    "schema_version":  1,
+    "id":  "act_ash_hound_lunge",
+    "display_name":  "ash hound lunge",
+    "order":  10,
+    "owner":  "enemy",
+    "category":  "attack",
+    "defense_mode":  "none",
+    "lifecycle":  "charge",
+    "intent":  {
+                   "target_mode":  "ONE_ENEMY",
+                   "requires_target_cursor":  true,
+                   "target_eligibility":  "living"
+               },
+    "cost":  {
+                 "turn_cost":  1,
+                 "action_slot_cost":  1,
+                 "resource_costs":  {
+
+                                    },
+                 "cooldown_windows":  2
+             },
+    "telegraph":  {
+                      "channels":  [
+                                       "pose",
+                                       "vfx"
+                                   ],
+                      "windows_before_active":  1,
+                      "tell_key":  "tell_ash_hound_lunge"
+                  },
+    "damage_payload":  {
+                           "delivery":  "physical",
+                           "shape":  "fixed",
+                           "base_value":  17,
+                           "affinity":  "none",
+                           "hit_policy":  "roll",
+                           "hit_modifier":  0,
+                           "evasion_policy":  "roll",
+                           "critical_policy":  "never",
+                           "dodge_pressure":  12,
+                           "guard_ignore":  false,
+                           "breaks_guard":  true,
+                           "break_damage":  25,
+                           "dodgeable":  true,
+                           "break_damage_kinds":  [
+                                                      "hp_damage"
+                                                  ],
+                           "self_damage":  0,
+                           "lifesteal":  0,
+                           "reflect":  0,
+                           "on_hit_payload_ids":  [
+
+                                                  ],
+                           "on_evade_payload_ids":  [
+
+                                                    ]
+                       },
+    "commitment":  {
+                       "spans_windows":  2,
+                       "interruptible":  true,
+                       "interrupt_effect_ids":  [
+
+                                                ]
+                   },
+    "reactions":  {
+                      "valid_reaction_ids":  [
+                                                 "act_dodge_shift"
+                                             ],
+                      "forbidden_response_ids":  [
+                                                     "act_guard_set"
+                                                 ]
+                  },
+    "recovery":  {
+                     "windows":  1,
+                     "punish_windows":  1,
+                     "recovery_locked":  false
+                 },
+    "stages":  [
+                   {
+                       "stage":  "telegraph",
+                       "window_cost":  2
+                   },
+                   {
+                       "stage":  "strike",
+                       "window_cost":  2
+                   },
+                   {
+                       "stage":  "recovery",
+                       "window_cost":  1
+                   }
+               ],
+    "counters":  {
+                     "valid":  [
+                                   "dodge",
+                                   "break",
+                                   "raw_survive"
+                               ],
+                     "forbidden":  [
+                                       "guard"
+                                   ],
+                     "breakable":  true
+                 },
+    "presentation":  {
+                         "icon_key":  "act_ash_hound_lunge"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

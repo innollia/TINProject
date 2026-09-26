@@ -84,6 +84,9 @@ static func _expand_line(
 			if sentence.operator == OPERATOR_OWNS \
 				and _has_owns_condition_suffix_extension(choices, index):
 				continue
+			if (sentence.operator == OPERATOR_IS or sentence.operator == OPERATOR_OWNS) \
+				and _has_condition_suffix_extension(choices, index):
+				continue
 			result.add(sentence)
 		_expand_line(result, choices, index + 1, words)
 		words.pop_back()
@@ -161,7 +164,7 @@ static func _parse_tokens(words: Array[RuleGridEntity]) -> Array[RuleSentence]:
 	if operator_value == OPERATOR_IS and predicate_role != WORD_NOUN and predicate_role != WORD_PROPERTY:
 		return result
 
-	if operator_value == OPERATOR_OWNS:
+	if operator_value == OPERATOR_OWNS or operator_value == OPERATOR_IS:
 		position = _parse_condition_chain(words, position, &"suffix", conditions)
 	if position != words.size():
 		return result
@@ -239,6 +242,19 @@ static func _has_prefix_condition_before(
 					if negated_condition.word_role == WORD_OPERATOR \
 						and CONDITIONS.has(negated_condition.word_value):
 						return true
+	return false
+
+
+static func _has_condition_suffix_extension(choices: Array, index: int) -> bool:
+	if index + 1 >= choices.size():
+		return false
+	var condition_choices: Variant = choices[index + 1]
+	if not condition_choices is Array:
+		return false
+	for value: Variant in condition_choices:
+		if value is RuleGridEntity and value.word_role == WORD_OPERATOR \
+			and CONDITIONS.has(value.word_value):
+			return true
 	return false
 
 

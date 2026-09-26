@@ -1,0 +1,29 @@
+{
+    "schema_version":  1,
+    "id":  "eff_r1_wrong_return_witnessed",
+    "timing":  "immediate",
+    "operations":  [
+                       {
+                           "relationship_id":  "rel_11_cael_return",
+                           "op":  "relationship",
+                           "target_npc_id":  "npc_11_cael_ren",
+                           "reason":  "someone carried the claimant out",
+                           "to_state_id":  "rs_witnessed"
+                       },
+                       {
+                           "op":  "set_axis",
+                           "value":  1,
+                           "axis":  "continuity_pressure"
+                       },
+                       {
+                           "key":  "world_r1_witness_filed",
+                           "op":  "flag",
+                           "value":  true
+                       }
+                   ],
+    "one_shot":  true,
+    "repeat_guard":  "once",
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

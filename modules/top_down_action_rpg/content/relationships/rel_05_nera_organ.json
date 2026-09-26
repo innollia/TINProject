@@ -1,0 +1,162 @@
+{
+    "schema_version":  1,
+    "id":  "rel_05_nera_organ",
+    "target_npc_id":  "npc_05_nera_voss",
+    "channel":  "care",
+    "start_state_id":  "rs_unmet",
+    "states":  [
+                   {
+                       "state_id":  "rs_unmet",
+                       "order":  0,
+                       "label":  "no custody agreed",
+                       "entry_effect_ids":  [
+
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "guarded"
+                   },
+                   {
+                       "state_id":  "rs_ledgered",
+                       "order":  1,
+                       "label":  "ledger custody",
+                       "entry_effect_ids":  [
+                                                "eff_r1_wrong_return_witnessed"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+                                        "port_kiln_relay"
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "operational"
+                   },
+                   {
+                       "state_id":  "rs_sealed",
+                       "order":  2,
+                       "label":  "sealed as an object",
+                       "entry_effect_ids":  [
+                                                "eff_r1_return_registry_logs_name"
+                                            ],
+                       "exit_effect_ids":  [
+
+                                           ],
+                       "port_ids":  [
+
+                                    ],
+                       "unlocks_conversation_ids":  [
+
+                                                    ],
+                       "companion_power":  {
+                                               "enabled":  false,
+                                               "encounter_modifier":  0,
+                                               "granted_by_effect_ids":  [
+
+                                                                         ]
+                                           },
+                       "dialogue_policy":  "hostile"
+                   }
+               ],
+    "transitions":  [
+                        {
+                            "transition_id":  "t_01",
+                            "from_state_id":  "rs_unmet",
+                            "to_state_id":  "rs_ledgered",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r1_wrong_return_hearing",
+                                                                            "choice_id":  "ch_keep_the_record"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_wrong_return_witnessed"
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_02",
+                            "from_state_id":  "rs_ledgered",
+                            "to_state_id":  "rs_unmet",
+                            "via":  "choice",
+                            "requires_condition":  {
+                                                       "choice_taken":  {
+                                                                            "conversation_id":  "conv_r1_wrong_return_hearing",
+                                                                            "choice_id":  "ch_erase_the_record"
+                                                                        }
+                                                   },
+                            "effect_ids":  [
+
+                                           ],
+                            "is_irreversible":  false,
+                            "priority":  10
+                        },
+                        {
+                            "transition_id":  "t_03",
+                            "from_state_id":  "rs_ledgered",
+                            "to_state_id":  "rs_sealed",
+                            "via":  "effect",
+                            "requires_condition":  {
+                                                       "clock_irreversible":  {
+                                                                                  "clock_id":  "clock_public_record"
+                                                                              }
+                                                   },
+                            "effect_ids":  [
+                                               "eff_r1_return_registry_logs_name"
+                                           ],
+                            "is_irreversible":  true,
+                            "priority":  5
+                        }
+                    ],
+    "axes":  {
+                 "trust":  0,
+                 "fear":  0,
+                 "debt":  0,
+                 "recognition":  0,
+                 "attachment":  0
+             },
+    "exclusions":  {
+                       "max_final_state":  1,
+                       "conflicting_final_state_ids":  [
+                                                           "rs_sealed"
+                                                       ]
+                   },
+    "romance":  {
+                    "allowed":  false,
+                    "explicit_content":  false,
+                    "gate_state_ids":  [
+
+                                       ],
+                    "consent_beat_effect_ids":  [
+
+                                                ]
+                },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

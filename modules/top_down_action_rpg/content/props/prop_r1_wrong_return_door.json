@@ -1,0 +1,48 @@
+{
+    "schema_version":  1,
+    "id":  "prop_r1_wrong_return_door",
+    "display_name":  "Wrong Return Door",
+    "region_id":  "region_r1_returning_kiln",
+    "placement":  {
+                      "anchor_key":  "r1_wrong_return_door",
+                      "layer":  "door",
+                      "visible_from":  "same_room"
+                  },
+    "initial_state_id":  "ps_intact",
+    "states":  [
+                   {
+                       "state_id":  "ps_intact",
+                       "label":  "door is closed on a return that already happened",
+                       "visible":  true,
+                       "art_key":  "prop_r1_door_intact",
+                       "collides":  false,
+                       "interactable":  true,
+                       "entry_effect_ids":  [
+
+                                            ]
+                   },
+                   {
+                       "state_id":  "ps_opened",
+                       "label":  "door opened from the wrong side",
+                       "visible":  true,
+                       "art_key":  "prop_r1_door_opened",
+                       "collides":  false,
+                       "interactable":  true,
+                       "entry_effect_ids":  [
+                                                "eff_r1_return_registry_logs_name"
+                                            ]
+                   }
+               ],
+    "interaction":  {
+                        "verb_id":  "verb_read_the_door_log",
+                        "availability":  {
+
+                                         },
+                        "opens":  "doc_r1_wrong_return_log",
+                        "return_focus":  "prop"
+                    },
+    "revisit_visible":  true,
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

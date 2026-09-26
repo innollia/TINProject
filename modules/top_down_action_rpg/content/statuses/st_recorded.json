@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "id": "st_recorded",
+  "display_name": "Recorded",
+  "stack_policy": "stack",
+  "max_stacks": 3,
+  "duration": {"kind": "region", "turns": 0},
+  "modifiers": {"stat_deltas": {"agility": -1}},
+  "control": {
+    "blocked_action_categories": [],
+    "blocks_no_turn_actions": false,
+    "prevents_guard": false,
+    "prevents_dodge": false,
+    "prevents_charge_commit": false
+  },
+  "cure": {
+    "categories": ["record", "dispel"],
+    "removable_by_action_categories": ["item", "skill"],
+    "removable_by_equipment_ids": [],
+    "cures_other_status_ids": []
+  },
+  "resistance": {
+    "incoming_status_ids": [],
+    "immune_status_ids": [],
+    "break_shatter": false
+  },
+  "presentation": {"icon_key": "st_recorded", "tint_key": "record_grey", "band_order": 2},
+  "seed_ids": ["seed_s001"]
+}

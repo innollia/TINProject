@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "records": [
+    {
+      "schema_version": 1,
+      "id": "seed_s001",
+      "ledger_section": "B",
+      "ledger_usage_class": "SYSTEM",
+      "status": "planned_retained",
+      "source_intent": "A record category outlives the body it was written for.",
+      "tin_structural_change": "The record becomes an executable gate instead of a description: a filed category decides which route, door and combat roster are legal.",
+      "local_rule": "A body may only be discussed after an arrival category has been filed for it, and the filed category becomes the only category the return registry accepts.",
+      "bindings": [
+        {"kind": "npc", "id": "npc_01_ilyra_senn"},
+        {"kind": "region", "id": "region_h0_undersign_exchange"},
+        {"kind": "document", "id": "doc_r1_wrong_return_log"}
+      ],
+      "cross_link_a": {"kind": "npc", "id": "npc_01_ilyra_senn", "how": "The index NPC can only advance her own state after the filing window opens."},
+      "cross_link_b": {"kind": "clock", "id": "clock_public_record", "how": "Filing pushes the public record clock from circulating into filing."},
+      "immediate_consequence": "Filing the arrival category opens the first route permission in the hub and consumes the declaration once.",
+      "delayed_consequence": {"timing": "on_clock_stage", "effect_id": "eff_r1_return_registry_logs_name", "what": "When the public record clock reaches its filing stage the same category reclassifies the returning body in the kiln."},
+      "anti_generic_gates": {
+        "g1_local_rule": true,
+        "g2_surface_removed_variant": true,
+        "g3_two_cross_links": true,
+        "g4_immediate_consequence": true,
+        "g5_delayed_consequence": true,
+        "g6_needed_by_npc_region_or_system": true,
+        "g7_name_swap_still_specific": true,
+        "g8_not_weirdness_only": true
+      },
+      "generic_risk_test": {
+        "name_only_reskin": false,
+        "justified_by_weirdness_only": false,
+        "notes": "The source surface is a bureaucratic sentence. Here the filing order is a gameplay gate, so renaming the record changes nothing about how the door behaves."
+      },
+      "provenance": {"source_kind": "user_memo", "no_original_wording_copied": true}
+    }
+  ]
+}

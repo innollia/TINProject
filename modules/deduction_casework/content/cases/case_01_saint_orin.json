@@ -1,0 +1,617 @@
+{
+  "schema_version": 1,
+  "id": "case_01_saint_orin",
+  "title": "01 눈을 고친 사람 — 세인트 오린 대학",
+  "start_scene_id": "scene_lab",
+  "scenes": [
+    {
+      "schema_version": 1,
+      "id": "scene_lab",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_lab_bench",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_lab_bench", "focus_id": "msg_lab_bench" },
+        { "schema_version": 1, "id": "hotspot_lab_lens_case", "focus_id": "msg_lab_lens_case" },
+        { "schema_version": 1, "id": "hotspot_lab_stim_calibration", "focus_id": "msg_lab_stim_calibration" },
+        { "schema_version": 1, "id": "hotspot_lab_stim_behavior", "focus_id": "msg_lab_stim_behavior" },
+        { "schema_version": 1, "id": "hotspot_lab_task_board", "focus_id": "msg_lab_task_board" },
+        { "schema_version": 1, "id": "hotspot_lab_grell_gauze", "focus_id": "msg_lab_grell_gauze" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_lab_to_booth",
+          "destination_scene_id": "scene_booth",
+          "focus_id": "hotspot_booth_eye_card"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_lab_to_locker",
+          "destination_scene_id": "scene_locker",
+          "focus_id": "hotspot_locker_cabinet"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_lab_to_corridor",
+          "destination_scene_id": "scene_corridor",
+          "focus_id": "hotspot_corridor_instruments"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_booth",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_booth_eye_card",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_booth_eye_card", "focus_id": "msg_booth_eye_card" },
+        { "schema_version": 1, "id": "hotspot_booth_recorder", "focus_id": "msg_booth_recorder" },
+        { "schema_version": 1, "id": "hotspot_booth_log_sheet", "focus_id": "msg_booth_log_sheet" },
+        { "schema_version": 1, "id": "hotspot_booth_grell_pager", "focus_id": "msg_booth_grell_pager" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_booth_to_lab",
+          "destination_scene_id": "scene_lab",
+          "focus_id": "hotspot_lab_bench"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_locker",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_locker_cabinet",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_locker_cabinet", "focus_id": "msg_locker_cabinet" },
+        { "schema_version": 1, "id": "hotspot_locker_coat", "focus_id": "msg_locker_coat" },
+        { "schema_version": 1, "id": "hotspot_locker_notebook", "focus_id": "msg_locker_notebook" },
+        { "schema_version": 1, "id": "hotspot_locker_sketchbook", "focus_id": "msg_locker_sketchbook" },
+        { "schema_version": 1, "id": "hotspot_locker_repair_card", "focus_id": "msg_locker_repair_card" },
+        { "schema_version": 1, "id": "hotspot_locker_name_cards", "focus_id": "msg_locker_name_cards" },
+        { "schema_version": 1, "id": "hotspot_locker_roster", "focus_id": "msg_locker_roster" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_locker_to_lab",
+          "destination_scene_id": "scene_lab",
+          "focus_id": "hotspot_lab_bench"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_corridor",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_corridor_instruments",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_corridor_instruments", "focus_id": "msg_corridor_instruments" },
+        { "schema_version": 1, "id": "hotspot_corridor_copier", "focus_id": "msg_corridor_copier" },
+        { "schema_version": 1, "id": "hotspot_corridor_guard_log", "focus_id": "msg_corridor_guard_log" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_corridor_to_lab",
+          "destination_scene_id": "scene_lab",
+          "focus_id": "hotspot_lab_bench"
+        }
+      ]
+    }
+  ],
+  "closeups": [],
+  "entities": [
+    { "schema_version": 1, "id": "ent_person_mira", "kind": "person", "display_text": "미라 벤", "source_text_id": "msg_lab_bench", "tags": ["subject"] },
+    { "schema_version": 1, "id": "ent_person_grell", "kind": "person", "display_text": "토마스 그렐", "source_text_id": "msg_lab_grell_gauze", "tags": ["alternative_actor"] },
+    { "schema_version": 1, "id": "ent_person_orr", "kind": "person", "display_text": "리나 오르", "source_text_id": "msg_booth_grell_pager", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_person_paro", "kind": "person", "display_text": "에드 파로", "source_text_id": "msg_corridor_guard_log", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_role_researcher", "kind": "role", "display_text": "연구원", "source_text_id": "msg_locker_roster", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_principal_investigator", "kind": "role", "display_text": "연구책임자", "source_text_id": "msg_locker_roster", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_night_guard", "kind": "role", "display_text": "경비원", "source_text_id": "msg_corridor_guard_log", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_undergraduate_assistant", "kind": "role", "display_text": "조교", "source_text_id": "msg_locker_roster", "tags": [] },
+    { "schema_version": 1, "id": "ent_body_eyes", "kind": "body", "display_text": "눈", "source_text_id": "msg_lab_bench", "tags": [] },
+    { "schema_version": 1, "id": "ent_body_pupil", "kind": "body", "display_text": "동공", "source_text_id": "msg_booth_eye_card", "tags": [] },
+    { "schema_version": 1, "id": "ent_body_retina", "kind": "body", "display_text": "망막", "source_text_id": "msg_booth_eye_card", "tags": [] },
+    { "schema_version": 1, "id": "ent_body_touch", "kind": "body", "display_text": "촉각", "source_text_id": "msg_booth_recorder", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_visual_experience", "kind": "body", "display_text": "시각경험", "source_text_id": "msg_locker_notebook", "tags": ["late_observation"] },
+    { "schema_version": 1, "id": "ent_device_lens", "kind": "device", "display_text": "렌즈", "source_text_id": "msg_lab_lens_case", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_screen", "kind": "device", "display_text": "화면", "source_text_id": "msg_lab_stim_behavior", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_input", "kind": "device", "display_text": "입력", "source_text_id": "msg_lab_stim_calibration", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_normal", "kind": "state", "display_text": "정상이다", "source_text_id": "msg_lab_stim_calibration", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_fault", "kind": "state", "display_text": "고장", "source_text_id": "msg_locker_notebook", "tags": ["late_observation"] },
+    { "schema_version": 1, "id": "ent_hypothesis_part_fault", "kind": "state", "display_text": "부품고장", "source_text_id": "msg_locker_repair_card", "tags": ["hypothesis"] },
+    { "schema_version": 1, "id": "ent_action_no_read", "kind": "action", "display_text": "읽지 못했다", "source_text_id": "msg_lab_stim_behavior", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_touch_correct", "kind": "action", "display_text": "만져 맞혔다", "source_text_id": "msg_lab_task_board", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_first_aid", "kind": "action", "display_text": "응급처치했다", "source_text_id": "msg_lab_grell_gauze", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_left_alone", "kind": "action", "display_text": "혼자 남았다", "source_text_id": "msg_booth_grell_pager", "tags": [] },
+    { "schema_version": 1, "id": "ent_method_input_first_check", "kind": "action", "display_text": "입력부를 먼저 분리해 확인했다", "source_text_id": "msg_locker_repair_card", "tags": ["method"] },
+    { "schema_version": 1, "id": "ent_action_self_damage", "kind": "action", "display_text": "손상시켰다", "source_text_id": "msg_corridor_instruments", "tags": ["cause"] },
+    { "schema_version": 1, "id": "ent_trace_blood", "kind": "trace", "display_text": "혈흔", "source_text_id": "msg_corridor_instruments", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_gauze", "kind": "trace", "display_text": "그렐의 거즈", "source_text_id": "msg_lab_grell_gauze", "tags": [] },
+    { "schema_version": 1, "id": "ent_decoy_lens_accident", "kind": "decoy", "display_text": "렌즈사고", "source_text_id": "msg_lab_lens_case", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_assault", "kind": "decoy", "display_text": "폭행", "source_text_id": "msg_lab_grell_gauze", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_drug", "kind": "decoy", "display_text": "약물", "source_text_id": "msg_lab_bench", "tags": ["decoy"] }
+  ],
+  "messages": [
+    {
+      "schema_version": 1,
+      "id": "msg_lab_bench",
+      "title": "오브젝트 A1 — 미라 벤",
+      "body": "관찰: 실험대 아래에 반쯤 기대어 앉은 인물. 양 눈은 붕대. 녹색 스웨터 소매에 소독약 자국.\n인용: 「눈이 잘못된 것 같아서 확인하려고 했어요. 그렐이 자꾸 손대지 말라고 해서.」",
+      "source_refs": ["ent_person_mira", "ent_body_eyes"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_mira", "ent_body_eyes", "ent_decoy_drug"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_main_statement" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_lab_lens_case",
+      "title": "오브젝트 A2 — 깨진 렌즈집",
+      "body": "관찰: 투명 원형 렌즈 두 장 중 한 장이 깨져 있다. 케이스 측면 각인 EYE TRACK MARKER / 0.00.\n관찰값: 도수 0.00. 시력교정렌즈가 아니라 안구추적용 표식 렌즈.",
+      "source_refs": ["ent_device_lens", "ent_decoy_lens_accident"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_device_lens", "ent_decoy_lens_accident"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_lab_stim_calibration",
+      "title": "하위 A3-1 — 장비 교정 출력지",
+      "body": "관찰: 12칸 변화탐지 과제가 정지된 CRT 옆 프린터 출력. 섬광자극 입력 파형이 기준범위 안에 있다.\n인쇄 항목: 입력 파형 정상.",
+      "source_refs": ["ent_state_input", "ent_state_normal"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_input", "ent_state_normal"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_lab_stim_behavior",
+      "title": "하위 A3-2 — 행동응답 출력지",
+      "body": "관찰: 같은 시간대 행동응답 출력지. 화면 변화 탐지 0 / 12.\n인쇄 항목: 화면 12칸 중 반응 0.",
+      "source_refs": ["ent_state_screen", "ent_action_no_read"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_screen", "ent_action_no_read"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_lab_task_board",
+      "title": "비수집형 시각단서 — 시각과제 보드",
+      "body": "관찰: 4x4 색·도형 배열의 정답키와 미라가 꽂은 자석 배열이 한 화면에 있다. 문자는 없다.\n관찰: 자석 배열은 색·위치 기준으로는 거의 전부 어긋나 있다.\n관찰: 돌출된 모양의 촉각 윤곽은 같은 칸끼리 일치한다.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_id": "ent_action_touch_correct" } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_frame_0134" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_lab_grell_gauze",
+      "title": "오브젝트 A4 — 그렐의 피 묻은 손",
+      "body": "관찰: 응급도구를 정리하는 인물. 손에 감긴 거즈에 피가 배어 있다. 거즈 아래 손목 위치는 붕대 있는 인물보다 낮다.\n인용: 「내가 발견했을 땐 이미 그랬어. 눌러서 지혈했을 뿐이야.」",
+      "source_refs": ["ent_person_grell", "ent_trace_gauze", "ent_action_first_aid", "ent_decoy_assault"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_grell", "ent_trace_gauze", "ent_action_first_aid", "ent_decoy_assault"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_booth_eye_card",
+      "title": "오브젝트 B1 — 눈검사 카드",
+      "body": "관찰: 사건 50분 전 검사 기록. 동공반사 정상. 망막반응 정상.\n기재 항목: 검사시각, 동공 측정값, 망막 측정값. 행동과제 결과는 이 카드에 없다.",
+      "source_refs": ["ent_body_pupil", "ent_body_retina"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_body_pupil", "ent_body_retina"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_booth_recorder",
+      "title": "오브젝트 B2 — 실험 녹음기",
+      "body": "관찰: 녹취 4개 응답.\n리나: 「코끼리를 생각하지 마세요.」\n미라: 「냄새가 세고, 피부가 거칠고, 무겁고.」\n리나: 「색은요?」\n미라: 「색이라는 건 알고 있어요.」",
+      "source_refs": ["ent_body_touch"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_id": "ent_body_touch" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_booth_log_sheet",
+      "title": "오브젝트 B3 — 미라의 실험기록지",
+      "body": "관찰: 기재 피험자 M. Venn.\n01:12 문자과제 중단.\n01:19 촉각과제 종료.\n01:27 입력선 재점검, 이상 없음.\n하단 필기: 「그럼 눈에서 들어온 뒤 어디로 가는 거지?」",
+      "source_refs": ["ent_person_mira", "ent_state_input", "ent_state_normal"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_input", "ent_state_normal"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_booth_grell_pager",
+      "title": "오브젝트 B4 — 그렐 호출기",
+      "body": "관찰: 수신 기록 2건.\n01:50 리나에게 「미라를 혼자 두지 마라.」\n02:08 경비 호출.",
+      "source_refs": ["ent_person_orr", "ent_action_left_alone"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_orr", "ent_action_left_alone"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_cabinet",
+      "title": "오브젝트 C1 — 미라 사물함",
+      "body": "관찰: 문 이름표 M. VENN. 안쪽에 흰 실험복과 개인 노트가 놓여 있다.",
+      "source_refs": ["ent_person_mira"],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_coat",
+      "title": "하위 C1-1 — 실험복",
+      "body": "관찰: 안쪽 자수 MIRA.",
+      "source_refs": ["ent_person_mira"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_id": "ent_person_mira" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_notebook",
+      "title": "하위 C1-2 — 개인 연구노트",
+      "body": "인용 원문:\n「그렐은 계속 '안 보인다'고 부른다.\n색이라는 말은 안다. 어제 산 녹색 스웨터도 안다.\n그런데 지금 녹색을 떠올리라고 하면 뭘 해야 하는지 모르겠다.\n눈을 감아도 전과 다르지 않다.\n입력부가 정상인데 출력이 없으면…」",
+      "source_refs": ["ent_person_mira"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_body_touch", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_state_screen", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_visual_experience", "ent_state_fault"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_sketchbook",
+      "title": "비수집형 시각단서 — 스케치북 두 장",
+      "body": "관찰 이전 달 장: 연구실을 원근법으로 정확히 그린 연필 스케치. 색면과 배치가 살아 있다.\n관찰 사건 당일 장: 같은 방을 그리라는 과제. 물건 이름을 적은 작은 표식과 손으로 더듬은 윤곽만 남아 있다. 원근과 색면이 없다.",
+      "source_refs": [],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_visual_experience",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_repair_card",
+      "title": "오브젝트 C2 — 장비정비 카드",
+      "body": "관찰: 미라 필체 기입. 「출력이 없으면 입력부부터 분리해 결함 부품을 확인.」\n기입 옆 3칸 도식: INPUT → PART → OUTPUT.",
+      "source_refs": ["ent_state_input", "ent_hypothesis_part_fault", "ent_method_input_first_check"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_input",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_hypothesis_part_fault", "ent_method_input_first_check"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_repair_response" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_name_cards",
+      "title": "오브젝트 C3 — 사물 명명 카드",
+      "body": "관찰: 그림카드 묶음 4장. 눈, 사진, 빨강 카드는 이름표 칸이 채워져 있다.\n관찰: '보다'가 들어간 행동그림 4장은 이름표 칸이 비어 있다.",
+      "source_refs": ["ent_body_eyes"],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_roster",
+      "title": "오브젝트 C4 — 학과 명단",
+      "body": "관찰 인쇄:\nVenn, Mira — Graduate Researcher\nOrr, Lina — Undergraduate Assistant\nGrell, Thomas — Principal Investigator",
+      "source_refs": ["ent_person_mira", "ent_person_orr", "ent_person_grell", "ent_role_researcher", "ent_role_principal_investigator", "ent_role_undergraduate_assistant"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_role_researcher", "ent_role_principal_investigator", "ent_role_undergraduate_assistant", "ent_person_orr", "ent_person_grell"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_corridor_instruments",
+      "title": "오브젝트 D1 — 소독도구",
+      "body": "관찰: 손잡이에 피묻은 엄지 소용돌이 자국 1개. 오른손 엄지 방향.\n관찰: 미라의 연구동 출입지문카드가 같은 서랍의 별도 대조 자료로 보관되어 있다.",
+      "source_refs": ["ent_trace_blood", "ent_action_self_damage"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_device_lens", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_locker_repair_card", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_blood", "ent_action_self_damage"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_corridor_copier",
+      "title": "오브젝트 D2 — 복사기 사용기록",
+      "body": "관찰: 01:52 L. Orr / 14 sheets → 02:06 L. Orr / 6 sheets.",
+      "source_refs": ["ent_person_orr"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_id": "ent_person_orr" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_corridor_guard_log",
+      "title": "오브젝트 D3 — 경비 호출·도착기록",
+      "body": "관찰: 02:08 호출. 02:11 에드 파로 4층 도착.",
+      "source_refs": ["ent_person_paro", "ent_role_night_guard"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_paro", "ent_role_night_guard"] } }
+      ],
+      "detail_scene_id": ""
+    }
+  ],
+  "panels": [
+    {
+      "schema_version": 1,
+      "id": "panel_inter_frame_0134",
+      "kind": "state_board",
+      "title": "중간문제 — 01:34 상태복원",
+      "accepted_entity_kinds": ["body", "state", "device", "action"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_inter_eyes", "segment_id": "segment_inter_time", "accepted_kinds": ["body", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_inter_visual", "segment_id": "segment_inter_visual", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_inter_touch", "segment_id": "segment_inter_touch", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_inter_input", "segment_id": "segment_inter_input", "accepted_kinds": ["state", "device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_inter_time", "display_text": "그 시각의 눈 상태" },
+        { "schema_version": 1, "id": "segment_inter_visual", "display_text": "시각과제 결과" },
+        { "schema_version": 1, "id": "segment_inter_touch", "display_text": "대신 사용한 처리" },
+        { "schema_version": 1, "id": "segment_inter_input", "display_text": "같은 시각 장비 입력" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_repair_response",
+      "kind": "procedure_board",
+      "title": "중간문제 — 정비식 사고 대응도",
+      "accepted_entity_kinds": ["state", "device", "trace", "action"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_repair_input", "segment_id": "segment_repair_input", "accepted_kinds": ["state", "device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_repair_part", "segment_id": "segment_repair_part", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_repair_output", "segment_id": "segment_repair_output", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_repair_trace", "segment_id": "segment_repair_trace", "accepted_kinds": ["trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_repair_input", "display_text": "INPUT — 먼저 분리한 쪽" },
+        { "schema_version": 1, "id": "segment_repair_part", "display_text": "PART — 확인한 후보" },
+        { "schema_version": 1, "id": "segment_repair_output", "display_text": "OUTPUT — 없는 쪽" },
+        { "schema_version": 1, "id": "segment_repair_trace", "display_text": "점검 흔적" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_main_statement",
+      "kind": "statement",
+      "title": "메인문제 — [미라 벤]은 눈이 멀쩡한 01:34에도 화면 과제를 거의 수행하지 못했지만 손으로 만진 도형은 구별했다. 그는 장비의 입력부를 분리해 고장을 찾던 자신의 정비방식대로 몸의 문제를 확인하려 했고, 이후 [ ? ]",
+      "accepted_entity_kinds": ["person", "action", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_main_actor", "segment_id": "segment_main_actor", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_visual", "segment_id": "segment_main_visual", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_touch", "segment_id": "segment_main_touch", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_method", "segment_id": "segment_main_method", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_cause", "segment_id": "segment_main_cause", "accepted_kinds": ["action", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_main_actor", "display_text": "행위자" },
+        { "schema_version": 1, "id": "segment_main_visual", "display_text": "01:34의 시각과제" },
+        { "schema_version": 1, "id": "segment_main_touch", "display_text": "그 시각 대신 한 처리" },
+        { "schema_version": 1, "id": "segment_main_method", "display_text": "본인의 상태를 확인한 방식" },
+        { "schema_version": 1, "id": "segment_main_cause", "display_text": "이후의 행위" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": true,
+      "unlock_condition": null
+    }
+  ],
+  "solutions": [
+    {
+      "schema_version": 1,
+      "id": "solution_inter_frame_0134",
+      "panel_id": "panel_inter_frame_0134",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_inter_eyes", "entity_id": "ent_body_eyes" },
+        { "schema_version": 1, "slot_id": "slot_inter_visual", "entity_id": "ent_action_no_read" },
+        { "schema_version": 1, "slot_id": "slot_inter_touch", "entity_id": "ent_action_touch_correct" },
+        { "schema_version": 1, "slot_id": "slot_inter_input", "entity_id": "ent_state_input" }
+      ],
+      "forbidden_assignments": [],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_lab_task_board", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_lab_stim_behavior", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_lab_stim_calibration", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_repair_response",
+      "panel_id": "panel_inter_repair_response",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_repair_input", "entity_id": "ent_state_input" },
+        { "schema_version": 1, "slot_id": "slot_repair_part", "entity_id": "ent_hypothesis_part_fault" },
+        { "schema_version": 1, "slot_id": "slot_repair_output", "entity_id": "ent_state_fault" },
+        { "schema_version": 1, "slot_id": "slot_repair_trace", "entity_id": "ent_trace_blood" }
+      ],
+      "forbidden_assignments": [],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_locker_repair_card", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_corridor_instruments", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_main_statement",
+      "panel_id": "panel_main_statement",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_actor", "entity_id": "ent_person_mira" },
+        { "schema_version": 1, "slot_id": "slot_main_visual", "entity_id": "ent_action_no_read" },
+        { "schema_version": 1, "slot_id": "slot_main_touch", "entity_id": "ent_action_touch_correct" },
+        { "schema_version": 1, "slot_id": "slot_main_method", "entity_id": "ent_method_input_first_check" },
+        { "schema_version": 1, "slot_id": "slot_main_cause", "entity_id": "ent_action_self_damage" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_actor", "entity_id": "ent_person_grell" },
+        { "schema_version": 1, "slot_id": "slot_main_cause", "entity_id": "ent_decoy_assault" },
+        { "schema_version": 1, "slot_id": "slot_main_cause", "entity_id": "ent_decoy_lens_accident" },
+        { "schema_version": 1, "slot_id": "slot_main_cause", "entity_id": "ent_decoy_drug" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_lab_task_board", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_locker_repair_card", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_corridor_instruments", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": "review_main"
+    }
+  ],
+  "hints": [
+    {
+      "schema_version": 1,
+      "id": "hint_frame_0134",
+      "title": "힌트 — 01:34 한 프레임",
+      "body": "관찰부스 정지화면과 주실험실 벽의 과제보드를 같은 시각으로 맞춰 보라. 두 눈의 상태, 보드 상태, 미라의 손 위치가 한 프레임 안에 동시에 들어 있는 시각이 있다. 그 시각과 그 뒤의 시각을 구분해 보라.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_screen",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_sketch_pair",
+      "title": "힌트 — 같은 방을 그린 두 장",
+      "body": "준비실 개인 노트 바깥에 스케치북이 있다. 이전 달 장과 사건 당일 장을 나란히 놓고 같은 물건을 찾아 보라. 사라진 것과 남아 있는 것을 각각 세라.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_body_touch",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_fingerprint_card",
+      "title": "힌트 — 손잡이와 정비카드",
+      "body": "계단 아래 세면대 손잡이의 소용돌이 자국을 연구동 출입지문카드와 비교하라. 같은 손의 기름때가 영역 C 정비카드 문장 옆에도 남아 있다. 손잡이 하나만으로는 결론이 나오지 않는다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_input",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    }
+  ],
+  "review": {
+    "schema_version": 1,
+    "id": "review_main",
+    "conclusion": "01:34에 두 눈은 외견상 멀쩡했고 시각과제만 실패했으며, 같은 시각의 장비 입력은 기준 범위였다. 도구 손잡이의 오른손 엄지 지문과 정비카드의 기름때는 도구를 잡은 사람이 미라임을 가리킨다. 그렐의 폭행설은 떨어진다. 후천적 변화의 원인명은 이 장의 답이 아니다.",
+    "referenced_case_ids": [],
+    "scene_path": ""
+  },
+  "next_case_ids": ["case_02_morren_empty_chair"]
+}

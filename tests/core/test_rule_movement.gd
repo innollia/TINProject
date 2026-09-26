@@ -466,5 +466,34 @@ func test_metrix_inside_on_condition_filters_shapes_per_boundary_box() -> void:
 	assert_true(metrix_plan["moves"].any(func(move: Dictionary) -> bool: return move["entity_id"] == "box_1_2" and move["to"] == Vector2i(2, 2)))
 
 
+func test_shift_runs_for_the_auto_stage_when_the_direct_move_is_blocked() -> void:
+	var actor := _entity("actor", "BABA", Vector2i(2, 2))
+	actor.base_tags.append(&"YOU")
+	var wall := _entity("wall", "WALL", Vector2i(2, 1))
+	wall.base_tags.append(&"STOP")
+	var platform := _entity("platform", "PAD", Vector2i(2, 2))
+	platform.base_tags.append(&"SHIFT")
+	var flag := _entity("flag", "FLAG", Vector2i(3, 2))
+	flag.base_tags.append(&"WIN")
+	var state := RuleGridState.new()
+	state.width = 5
+	state.height = 3
+	state.entities = [wall, actor, platform, flag]
+
+	var direct := RuleMovementSolver.plan_move(state, RuleSet.new(), "actor", Vector2i.UP)
+	var auto := RuleMovementSolver.plan_move_auto(state, RuleSet.new())
+
+	assert_false(direct["can_move"], "the direct YOU step is blocked by the STOP wall")
+	assert_true(auto["valid"])
+	assert_eq(auto["moves"], [
+		{"entity_id": "actor", "from": Vector2i(2, 2), "to": Vector2i(3, 2),
+			"facing_from": Vector2i.RIGHT, "facing_to": Vector2i.RIGHT}
+	])
+	assert_eq(actor.position, Vector2i(2, 2))
+	var contacts := RuleEvaluator.resolve_contacts(state, RuleSet.new())
+	assert_true(contacts["valid"])
+	assert_false(contacts["won"], "the shifted contact only resolves after the auto moves are applied")
+
+
 func _inside_metrix_rule() -> RuleSentence:
 	return RuleSentence.new("BOX", &"INSIDE_IS", "METRIX", &"noun")

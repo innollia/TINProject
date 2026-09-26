@@ -1,0 +1,24 @@
+{
+    "schema_version":  1,
+    "id":  "item_ash_thread_spool",
+    "display_name":  "Ash Thread Spool",
+    "item_class":  "material",
+    "floor_role":  "no_turn_item_source",
+    "use":  {
+                "action_id":  "act_weave_lash",
+                "consumed_on_use":  true,
+                "max_stack":  4
+            },
+    "acquisition":  {
+                        "source_kind":  "scripted",
+                        "effect_id":  "eff_r1_ash_debt_opens_chute",
+                        "count":  1
+                    },
+    "presentation":  {
+                         "icon_key":  "item_ash_thread_spool",
+                         "tint_key":  "kiln_amber"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

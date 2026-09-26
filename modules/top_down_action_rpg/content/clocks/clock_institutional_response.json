@@ -1,0 +1,193 @@
+{
+    "schema_version":  1,
+    "id":  "clock_institutional_response",
+    "kind":  "institutional_response",
+    "scope":  "global",
+    "start_state":  "dormant",
+    "period":  {
+                   "unit":  "clock_tick",
+                   "per":  1
+               },
+    "stages":  [
+                   {
+                       "stage_id":  "noticed",
+                       "index":  0,
+                       "label":  "office notices the anomaly",
+                       "advance":  {
+                                       "ticks":  2
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "world_event",
+                                              "text":  "a second office stamp lands on the same event"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "assigned",
+                       "index":  1,
+                       "label":  "a handler is assigned",
+                       "advance":  {
+                                       "ticks":  3
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "npc_warning",
+                                              "npc_id":  "npc_01_ilyra_senn",
+                                              "text":  "a handler name is written where no name was"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "contested",
+                       "index":  2,
+                       "label":  "the category narrows",
+                       "advance":  {
+                                       "ticks":  4
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "document",
+                                              "document_id":  "doc_r1_wrong_return_log",
+                                              "text":  "the narrowing is copied into a form"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "intervened",
+                       "index":  3,
+                       "label":  "local protocol runs",
+                       "advance":  {
+                                       "ticks":  5
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "enemy_tell",
+                                              "text":  "the handler arrives before the paperwork does"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "filed",
+                       "index":  4,
+                       "label":  "dispatch is filed",
+                       "advance":  {
+                                       "ticks":  6
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "document",
+                                              "document_id":  "doc_r1_wrong_return_log",
+                                              "text":  "the dispatch is filed under a body that never arrived"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  true,
+                       "reversal":  {
+                                        "allowed":  true,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   },
+                   {
+                       "stage_id":  "superseded",
+                       "index":  5,
+                       "label":  "the handler is replaced",
+                       "advance":  {
+                                       "ticks":  7
+                                   },
+                       "visible_signal":  {
+                                              "channel":  "world_event",
+                                              "text":  "the handler is replaced and the route card is reprinted"
+                                          },
+                       "intervention":  {
+                                            "encounter_id":  null,
+                                            "effect_ids":  [
+
+                                                           ]
+                                        },
+                       "irreversible":  false,
+                       "reversal":  {
+                                        "allowed":  false,
+                                        "requires_condition":  {
+
+                                                               },
+                                        "effect_ids":  [
+
+                                                       ]
+                                    }
+                   }
+               ],
+    "pressure_policy":  {
+                            "advance_on_player_action":  true,
+                            "advance_on_region_enter":  true,
+                            "advance_on_encounter_window":  false,
+                            "decay_when_untouched":  0
+                        },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

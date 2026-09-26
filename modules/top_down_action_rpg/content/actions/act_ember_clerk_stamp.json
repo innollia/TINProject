@@ -1,0 +1,82 @@
+{
+    "schema_version":  1,
+    "id":  "act_ember_clerk_stamp",
+    "display_name":  "ember clerk stamp",
+    "order":  20,
+    "owner":  "enemy",
+    "category":  "attack",
+    "defense_mode":  "none",
+    "lifecycle":  "instant",
+    "intent":  {
+                   "target_mode":  "ONE_ENEMY",
+                   "requires_target_cursor":  true,
+                   "target_eligibility":  "living"
+               },
+    "cost":  {
+                 "turn_cost":  1,
+                 "action_slot_cost":  1,
+                 "resource_costs":  {
+                                        "mp":  3
+                                    },
+                 "cooldown_windows":  1
+             },
+    "telegraph":  {
+                      "channels":  [
+                                       "pose",
+                                       "field_prop"
+                                   ],
+                      "windows_before_active":  0,
+                      "tell_key":  "tell_ember_clerk_stamp"
+                  },
+    "damage_payload":  {
+                           "delivery":  "magical",
+                           "shape":  "fixed",
+                           "base_value":  8,
+                           "affinity":  "none",
+                           "hit_policy":  "guaranteed",
+                           "hit_modifier":  0,
+                           "evasion_policy":  "roll",
+                           "critical_policy":  "never",
+                           "dodge_pressure":  0,
+                           "guard_ignore":  false,
+                           "breaks_guard":  false,
+                           "break_damage":  0,
+                           "dodgeable":  true,
+                           "break_damage_kinds":  [
+
+                                                  ],
+                           "self_damage":  0,
+                           "lifesteal":  0,
+                           "reflect":  0,
+                           "on_hit_payload_ids":  [
+
+                                                  ],
+                           "on_evade_payload_ids":  [
+
+                                                    ]
+                       },
+    "status_payloads":  [
+                            {
+                                "target":  "target",
+                                "chance_permille":  400,
+                                "status_id":  "st_recorded"
+                            }
+                        ],
+    "counters":  {
+                     "valid":  [
+                                   "break",
+                                   "resource_lock",
+                                   "status_counter"
+                               ],
+                     "forbidden":  [
+                                       "dodge"
+                                   ],
+                     "breakable":  true
+                 },
+    "presentation":  {
+                         "icon_key":  "act_ember_clerk_stamp"
+                     },
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

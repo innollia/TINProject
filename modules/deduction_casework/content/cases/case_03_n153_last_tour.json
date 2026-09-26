@@ -1,0 +1,785 @@
+{
+  "schema_version": 1,
+  "id": "case_03_n153_last_tour",
+  "title": "03 루돌프의 마지막 견학 — N153 제2계측동",
+  "start_scene_id": "scene_chamber",
+  "scenes": [
+    {
+      "schema_version": 1,
+      "id": "scene_chamber",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_chamber_debris",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_chamber_debris", "focus_id": "msg_chamber_debris" },
+        { "schema_version": 1, "id": "hotspot_chamber_shoes", "focus_id": "msg_chamber_shoes" },
+        { "schema_version": 1, "id": "hotspot_chamber_n_lux", "focus_id": "msg_chamber_n_lux" },
+        { "schema_version": 1, "id": "hotspot_chamber_derral", "focus_id": "msg_chamber_derral" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_chamber_to_control",
+          "destination_scene_id": "scene_control",
+          "focus_id": "hotspot_control_entry_log"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_chamber_to_locker",
+          "destination_scene_id": "scene_locker",
+          "focus_id": "hotspot_locker_overcoat"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_chamber_to_service",
+          "destination_scene_id": "scene_service",
+          "focus_id": "hotspot_service_key_board"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_chamber_to_seal",
+          "destination_scene_id": "scene_seal",
+          "focus_id": "hotspot_seal_receipt"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_control",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_control_entry_log",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_control_entry_log", "focus_id": "msg_control_entry_log" },
+        { "schema_version": 1, "id": "hotspot_control_skeleton_scan", "focus_id": "msg_control_skeleton_scan" },
+        { "schema_version": 1, "id": "hotspot_control_dorn_draft", "focus_id": "msg_control_dorn_draft" },
+        { "schema_version": 1, "id": "hotspot_control_dorn_call", "focus_id": "msg_control_dorn_call" },
+        { "schema_version": 1, "id": "hotspot_control_conflict_envelope", "focus_id": "msg_control_conflict_envelope" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_control_to_chamber",
+          "destination_scene_id": "scene_chamber",
+          "focus_id": "hotspot_chamber_debris"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_locker",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_locker_overcoat",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_locker_overcoat", "focus_id": "msg_locker_overcoat" },
+        { "schema_version": 1, "id": "hotspot_locker_ri_an_locker", "focus_id": "msg_locker_ri_an_locker" },
+        { "schema_version": 1, "id": "hotspot_locker_door_film", "focus_id": "msg_locker_door_film" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_locker_to_chamber",
+          "destination_scene_id": "scene_chamber",
+          "focus_id": "hotspot_chamber_shoes"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_service",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_service_key_board",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_service_key_board", "focus_id": "msg_service_key_board" },
+        { "schema_version": 1, "id": "hotspot_service_interlock", "focus_id": "msg_service_interlock" },
+        { "schema_version": 1, "id": "hotspot_service_demo_tape", "focus_id": "msg_service_demo_tape" },
+        { "schema_version": 1, "id": "hotspot_service_residual_checklist", "focus_id": "msg_service_residual_checklist" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_service_to_chamber",
+          "destination_scene_id": "scene_chamber",
+          "focus_id": "hotspot_chamber_n_lux"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_seal",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_seal_receipt",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_seal_receipt", "focus_id": "msg_seal_receipt" },
+        { "schema_version": 1, "id": "hotspot_seal_notebook", "focus_id": "msg_seal_notebook" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_seal_to_chamber",
+          "destination_scene_id": "scene_chamber",
+          "focus_id": "hotspot_chamber_derral"
+        }
+      ]
+    }
+  ],
+  "closeups": [],
+  "entities": [
+    { "schema_version": 1, "id": "ent_person_ri_an", "kind": "person", "display_text": "리안 소른", "source_text_id": "msg_chamber_debris", "tags": ["subject"] },
+    { "schema_version": 1, "id": "ent_person_li_sa", "kind": "person", "display_text": "리사 마렌", "source_text_id": "msg_locker_ri_an_locker", "tags": ["second_person"] },
+    { "schema_version": 1, "id": "ent_person_derral", "kind": "person", "display_text": "데럴 보스", "source_text_id": "msg_chamber_derral", "tags": ["misjudge"] },
+    { "schema_version": 1, "id": "ent_person_irena", "kind": "person", "display_text": "이레나 베일", "source_text_id": "msg_control_conflict_envelope", "tags": ["preserver"] },
+    { "schema_version": 1, "id": "ent_person_dorn", "kind": "person", "display_text": "하벨 도른", "source_text_id": "msg_control_dorn_draft", "tags": ["coverup"] },
+    { "schema_version": 1, "id": "ent_person_odo", "kind": "person", "display_text": "오도 케스트", "source_text_id": "msg_seal_notebook", "tags": ["witness"] },
+
+    { "schema_version": 1, "id": "ent_role_metrologist", "kind": "role", "display_text": "계측기사", "source_text_id": "msg_service_key_board", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_civilian", "kind": "role", "display_text": "민간인", "source_text_id": "msg_locker_overcoat", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_assistant_researcher", "kind": "role", "display_text": "보조연구원", "source_text_id": "msg_chamber_derral", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_safety_officer", "kind": "role", "display_text": "안전책임자", "source_text_id": "msg_control_conflict_envelope", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_facility_chief", "kind": "role", "display_text": "시설책임자", "source_text_id": "msg_control_dorn_draft", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_engineer", "kind": "role", "display_text": "설비기술자", "source_text_id": "msg_service_key_board", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_device_service_key_k1", "kind": "device", "display_text": "K-1 개인키", "source_text_id": "msg_service_key_board", "tags": [] },
+    { "schema_version": 1, "id": "ent_device_service_key_k2", "kind": "device", "display_text": "K-2 대여키", "source_text_id": "msg_service_key_board", "tags": [] },
+    { "schema_version": 1, "id": "ent_device_interlock_bypass", "kind": "device", "display_text": "방문자 인터록 우회스위치", "source_text_id": "msg_service_interlock", "tags": [] },
+    { "schema_version": 1, "id": "ent_device_n_lux", "kind": "device", "display_text": "N-LUX 추적제", "source_text_id": "msg_chamber_n_lux", "tags": [] },
+    { "schema_version": 1, "id": "ent_device_person_sensor", "kind": "device", "display_text": "인원센서", "source_text_id": "msg_control_entry_log", "tags": [] },
+    { "schema_version": 1, "id": "ent_device_residual_gauge", "kind": "device", "display_text": "축전기 잔류전력 계기", "source_text_id": "msg_service_residual_checklist", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_item_pager", "kind": "item", "display_text": "호출기", "source_text_id": "msg_locker_ri_an_locker", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_visitor_pass", "kind": "item", "display_text": "임시 방문패스", "source_text_id": "msg_locker_ri_an_locker", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_demo_tape", "kind": "item", "display_text": "시연명령 종이테이프", "source_text_id": "msg_service_demo_tape", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_skeleton_scan", "kind": "item", "display_text": "응급 골격스캔", "source_text_id": "msg_control_skeleton_scan", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_conflict_envelope", "kind": "item", "display_text": "인원 충돌 봉투", "source_text_id": "msg_control_conflict_envelope", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_external_draft", "kind": "item", "display_text": "외부보고 초안", "source_text_id": "msg_control_dorn_draft", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_receipt_signature", "kind": "item", "display_text": "인수서명", "source_text_id": "msg_seal_receipt", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_residual_checklist", "kind": "item", "display_text": "축전기 점검표", "source_text_id": "msg_service_residual_checklist", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_safety_notebook", "kind": "item", "display_text": "설비 상식노트", "source_text_id": "msg_seal_notebook", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_entry_log", "kind": "item", "display_text": "공식 출입기록", "source_text_id": "msg_control_entry_log", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_state_registered_one", "kind": "state", "display_text": "기록상 한 명", "source_text_id": "msg_control_entry_log", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_two_on_site", "kind": "state", "display_text": "현장에 두 사람", "source_text_id": "msg_control_skeleton_scan", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_reported_one", "kind": "state", "display_text": "보고서상 한 명", "source_text_id": "msg_control_dorn_draft", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_skeleton_overlap", "kind": "state", "display_text": "중첩된 골격", "source_text_id": "msg_control_skeleton_scan", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_demo_low", "kind": "state", "display_text": "낮은 단계 시연", "source_text_id": "msg_service_demo_tape", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_residual_power", "kind": "state", "display_text": "규정치 위의 잔류전력", "source_text_id": "msg_service_residual_checklist", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_demo_during_residual", "kind": "state", "display_text": "잔류전력이 남은 시점에 열린 시험실", "source_text_id": "msg_service_residual_checklist", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_private_visit", "kind": "state", "display_text": "업무가 아닌 개인 방문", "source_text_id": "msg_locker_ri_an_locker", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_action_brought_secretly", "kind": "action", "display_text": "몰래 데려왔다", "source_text_id": "msg_locker_ri_an_locker", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_bypass", "kind": "action", "display_text": "인터록을 우회했다", "source_text_id": "msg_service_interlock", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_demo_low", "kind": "action", "display_text": "낮은 단계 시연을 했다", "source_text_id": "msg_service_demo_tape", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_misjudge", "kind": "action", "display_text": "공식기록을 믿고 오판했다", "source_text_id": "msg_chamber_derral", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_underreport", "kind": "action", "display_text": "인원을 축소해 보고했다", "source_text_id": "msg_control_dorn_draft", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_preserve", "kind": "action", "display_text": "충돌물증만 보존했다", "source_text_id": "msg_control_conflict_envelope", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_trace_safety_boot", "kind": "trace", "display_text": "검은 안전화 한 쌍", "source_text_id": "msg_chamber_shoes", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_shoe_star_tread", "kind": "trace", "display_text": "별 모양 마모 밑창", "source_text_id": "msg_chamber_shoes", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_silver_ring", "kind": "trace", "display_text": "얇은 은반지", "source_text_id": "msg_control_conflict_envelope", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_photo_ring", "kind": "trace", "display_text": "즉석사진 속 같은 반지", "source_text_id": "msg_locker_ri_an_locker", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_necklace_ring", "kind": "trace", "display_text": "목걸이에 걸린 짝반지", "source_text_id": "msg_locker_ri_an_locker", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_red_ink", "kind": "trace", "display_text": "붉은 수정 잉크 연속 자국", "source_text_id": "msg_seal_receipt", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_color_cards", "kind": "trace", "display_text": "라벨 없는 두 색반응 카드", "source_text_id": "msg_control_conflict_envelope", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_path_material_door", "kind": "path", "display_text": "자재문으로 들어온 동선", "source_text_id": "msg_locker_door_film", "tags": [] },
+    { "schema_version": 1, "id": "ent_path_staff_gate", "kind": "path", "display_text": "직원 정문 동선", "source_text_id": "msg_control_entry_log", "tags": ["decoy"] },
+
+    { "schema_version": 1, "id": "ent_decoy_mutant", "kind": "decoy", "display_text": "새로 변한 개체", "source_text_id": "msg_chamber_debris", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_one_body", "kind": "decoy", "display_text": "다리 넷은 한 사람의 변형", "source_text_id": "msg_chamber_debris", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_equipment_blast", "kind": "decoy", "display_text": "우발 장비 폭주", "source_text_id": "msg_chamber_n_lux", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_official_visit", "kind": "decoy", "display_text": "정상 견학", "source_text_id": "msg_control_dorn_call", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_odo_did_it", "kind": "decoy", "display_text": "설비기술자가 범인", "source_text_id": "msg_service_key_board", "tags": ["decoy"] }
+  ],
+  "messages": [
+    {
+      "schema_version": 1,
+      "id": "msg_chamber_debris",
+      "title": "오브젝트 A1 — 뒤엉킨 탄 잔해",
+      "body": "관찰: 회색 작업복 한 벌처럼 보이는 큰 덩어리 위에 베이지 천 조각과 장비 프레임이 붙어 있다.\n관찰: 다리처럼 보이는 실루엣은 네 개다. 식별 가능한 두개골은 하나뿐이다.\n관찰: 실루엣과 두개골 개수를 세는 것만으로는 사람이 몇 명인지 정해지지 않는다.",
+      "source_refs": ["ent_decoy_mutant", "ent_decoy_one_body", "ent_person_ri_an"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_decoy_mutant", "ent_decoy_one_body"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_ids": ["panel_main_statement", "panel_inter_second_person"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_chamber_shoes",
+      "title": "오브젝트 A2 — 신발 흔적",
+      "body": "관찰: 검은 안전화 한 쌍이 완전히 붙어 있다. 그 아래에서 별 모양 마모가 남은 흰 운동화 한 짝이 나온다.\n관찰: 직원 안전화는 바닥이 깊게 V자로 파였고, 별 모양 마모는 다른 어떤 직원화에도 없다.\n관찰: 이 짝의 위치는 잔해의 바깥이 아니라 안쪽에 있다.",
+      "source_refs": ["ent_trace_safety_boot", "ent_trace_shoe_star_tread", "ent_state_two_on_site"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_safety_boot", "ent_trace_shoe_star_tread", "ent_state_two_on_site"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_chamber_n_lux",
+      "title": "오브젝트 A3 — 발광 흔적",
+      "body": "관찰: 잔해에서 검은 청색으로 변한 주입점 흔적. 설명서 요약에는 추적제가 위에서 아래 순서로 발광한다고만 적혀 있고, 사람 수에 대한 문장은 없다.\n관찰: 작업복 재킷 주입점도 같은 위치에 있다.",
+      "source_refs": ["ent_device_n_lux", "ent_decoy_equipment_blast"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_device_n_lux", "ent_decoy_equipment_blast"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_control_entry_log",
+      "title": "오브젝트 B1 — 공식 출입기록",
+      "body": "관찰 인쇄: 17:06 계측기사 카드 1회 / 방문자 0.\n관찰: 카드 사용 횟수와 인원수는 같은 항목이 아니다. 이 기록은 카드에 찍힌 사람 수만 고정한다.\n관찰: 인원센서는 같은 시간대에 다른 수치를 보관하고 있다.",
+      "source_refs": ["ent_item_entry_log", "ent_state_registered_one", "ent_device_person_sensor", "ent_path_staff_gate"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_entry_log", "ent_state_registered_one", "ent_device_person_sensor", "ent_path_staff_gate"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_chamber_derral",
+      "title": "오브젝트 A4 — 문밖의 보조연구원",
+      "body": "인용: 「출입기록에는 한 명이잖아요! 다리는 넷인데 작업복이 붙어 있어요! 문을 열지 마. 밖으로 나오면 어떡해!」\n관찰: 이 사람은 사고 당시 출입기록에 없는 입장자였다. 진술의 전제가 무엇인지와 실제로 본 것이 무엇인지는 같은 문장 안에 함께 있다.",
+      "source_refs": ["ent_person_derral", "ent_role_assistant_researcher", "ent_action_misjudge"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_state_registered_one", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_derral", "ent_role_assistant_researcher", "ent_action_misjudge"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_knowledge" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_control_skeleton_scan",
+      "title": "비수집형 시각단서 — 응급 골격 영상",
+      "body": "관찰: 자동판정 실패. 반투명 영상만 남아 있다.\n관찰: 같은 방향의 왼쪽 대퇴골 머리 구조가 두 곳이고, 크기가 다른 골반 호가 서로 겹쳐 있다.\n관찰: 정상 참고 골격 그림을 옆에 놓고 비교해야 중첩이 보인다. 화면에는 '미확정' 한 줄만 문자로 남아 있다.",
+      "source_refs": ["ent_item_skeleton_scan", "ent_state_skeleton_overlap"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_skeleton_scan", "ent_state_skeleton_overlap"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_control_dorn_draft",
+      "title": "오브젝트 B3 — 외부보고 초안",
+      "body": "관찰 타자 원문: 등록 인원 1 / 현장 수량 미확정.\n관찰: 미확정 부분이 붉은 펜으로 지워지고 1로 고쳐졌다. 붉은 선이 두 글자 위를 한 번에 가로지른다.\n관찰 하단 서명: 시설책임자.",
+      "source_refs": ["ent_person_dorn", "ent_role_facility_chief", "ent_item_external_draft", "ent_state_reported_one", "ent_action_underreport"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_state_skeleton_overlap", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_dorn", "ent_role_facility_chief", "ent_item_external_draft", "ent_state_reported_one", "ent_action_underreport"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_control_dorn_call",
+      "title": "오브젝트 B4 — 첫 외부 통화",
+      "body": "인용: 「등록카드는 한 장입니다. 공식 인원은 그 기준으로 올리세요.」\n인용: 「현장 수량은 아직 확정하지 마십시오.」\n관찰: 같은 사람이 같은 통화에서 두 문장을 연속해 말한다. 이 통화에는 현장 자료가 아직 없다.",
+      "source_refs": ["ent_decoy_official_visit"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_control_entry_log", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_id": "ent_decoy_official_visit" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_control_conflict_envelope",
+      "title": "오브젝트 B5 — 인원 충돌 봉투",
+      "body": "관찰: 봉투 겉면에 '인원 충돌 / 폐기 금지'라고 적혀 있고 안전책임자 관리가 남아 있다.\n하위: 라벨 없는 두 색반응 카드 두 장. 옆지에는 오염 가능성에 대한 메모만 있다.\n하위: 현장과 사물함 선반 밑에서 나온 흰 섬유 한 올. 두 장소의 마모 모양이 같다.\n하위: 잔해 손가락에 붙은 아주 얇은 은반지 한 장치.\n관찰: 이 봉투에는 결론이 아니라 서로 어긋난 물건만 들어 있다.",
+      "source_refs": ["ent_person_irena", "ent_role_safety_officer", "ent_item_conflict_envelope", "ent_action_preserve", "ent_trace_silver_ring", "ent_trace_color_cards"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_irena", "ent_role_safety_officer", "ent_item_conflict_envelope", "ent_action_preserve", "ent_trace_silver_ring", "ent_trace_color_cards"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_knowledge" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_overcoat",
+      "title": "오브젝트 C2 — 흰 덧신과 신발",
+      "body": "관찰: 방문자용 덧신 한 벌이 사이즈가 맞지 않게 늘어나 있다. 바닥은 매끈한 얇은 밑창이다.\n관찰: 선반 밑 흰 운동화 한 짝. 밑창의 별 모양 마모가 A지역 잔해에서 나온 그 짝과 같은 위치에 같다.\n관찰: 덧신 안쪽에 남은 흙 자국은 저택 밖이 아니라 계측동 뒤편 방향이다.",
+      "source_refs": ["ent_role_civilian", "ent_trace_shoe_star_tread"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_role_civilian"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_ri_an_locker",
+      "title": "오브젝트 C1 — 계측기사의 사물함",
+      "body": "하위 즉석사진: 두 사람이 팔짱을 끼고 있다. 한 사람의 손목에는 아주 얇은 은반지가 있다. 사진 캡션에는 이름이 없다.\n관찰: 같은 사물함 안 목걸이에 짝이 되는 반지가 하나 걸려 있다.\n하위 호출기 수신 기록 4건: 17:02 자재문 앞인데 아무도 없다는 말. 17:03 거긴 카메라가 있다는 답. 17:04 십 분만 보고 간다는 말. 17:05 약속한 대상만 보여준다는 답.\n하위 임시 방문패스: 정식번호 없음. 뒷면에는 L.M. / 17:20 전 퇴실 / 계측기사 필체.\n관찰: 사진 속 얼굴과 호출기 이름, 방문패스 이니셜을 겹쳐야 두 번째 사람이 특정된다.",
+      "source_refs": ["ent_person_ri_an", "ent_person_li_sa", "ent_item_pager", "ent_item_visitor_pass", "ent_trace_photo_ring", "ent_trace_necklace_ring", "ent_action_brought_secretly", "ent_state_private_visit"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_trace_shoe_star_tread", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_ri_an", "ent_person_li_sa", "ent_item_pager", "ent_item_visitor_pass", "ent_trace_photo_ring", "ent_trace_necklace_ring", "ent_action_brought_secretly", "ent_state_private_visit"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_locker_door_film",
+      "title": "비수집형 시각단서 — 자재문 필름 한 컷",
+      "body": "관찰: 한 장의 필름에 계측기사의 뒤쪽 프레임과 베이지 천, 흰 고무 밑창 일부가 함께 찍혀 있다. 얼굴 영역은 프레임 밖이다.\n관찰: 두 번째 인물의 신발만 찍혔다는 문장은 어디에도 없지만, 밑창 무늬는 다른 장면의 그 짝과 겉모습이 같다.",
+      "source_refs": ["ent_path_material_door"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_trace_shoe_star_tread", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_id": "ent_path_material_door" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_service_key_board",
+      "title": "오브젝트 D1 — 서비스키 대여판",
+      "body": "관찰: 17:04에 K-2 한 개가 대여판에서 빠져 있다.\n관찰 인쇄: 대여 가능한 직책은 계측기사 / 설비기술자 두 부류뿐이다.\n관찰: 판에는 이름표가 없고 열쇠날 모양만 걸려 있다. 설비기술자의 개인키는 이 판이 아니라 공구벨트에 그대로 있다.\n관찰: 따라서 이 시점에 비어 있던 키를 단 사람은 설비기술자가 아니다.",
+      "source_refs": ["ent_device_service_key_k1", "ent_device_service_key_k2", "ent_role_metrologist", "ent_role_engineer", "ent_decoy_odo_did_it"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_device_service_key_k1", "ent_device_service_key_k2", "ent_role_metrologist", "ent_role_engineer", "ent_decoy_odo_did_it"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_service_interlock",
+      "title": "비수집형 시각단서 — 인터록 패널 안쪽",
+      "body": "관찰: 덮개 안쪽 소켓 옆에 K-2 열쇠날만 맞는 우회스위치가 있다. 스위치는 우회 위치에서 열손상으로 굳어 있다.\n관찰: 소켓 모양과 대여판에 걸린 열쇠날 실루엣을 나란히 놓아야 이 스위치가 어느 키용인지 읽힌다. 문서에는 대여 가능한 직책만 적혀 있고 우회 주체는 적혀 있지 않다.",
+      "source_refs": ["ent_device_interlock_bypass", "ent_action_bypass"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_device_service_key_k2", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_device_interlock_bypass", "ent_action_bypass"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_service_demo_tape",
+      "title": "오브젝트 D3 — 시연명령 종이테이프",
+      "body": "관찰 인쇄: 17:10 / 시연 / 낮은 단계.\n관찰: 행위자 이름 칸은 비어 있다. 누가 붙였는지는 이 테이프에 없다.",
+      "source_refs": ["ent_item_demo_tape", "ent_state_demo_low", "ent_action_demo_low"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_action_bypass", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_demo_tape", "ent_state_demo_low", "ent_action_demo_low"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_service_residual_checklist",
+      "title": "오브젝트 D4 — 축전기 점검표",
+      "body": "관찰: 직전 실험 뒤 잔류전력이 규정치 아래로 내려갈 예정시각이 17:25로 적혀 있다.\n관찰: 사고 발생 시각은 17:11이다.\n관찰: 두 시각을 한 축에 놓으면 시험이 열린 시간 구간이 규정치를 넘긴 채였다는 사실이 시각 정보만으로 읽힌다.",
+      "source_refs": ["ent_item_residual_checklist", "ent_device_residual_gauge", "ent_state_residual_power", "ent_state_demo_during_residual"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_residual_checklist", "ent_device_residual_gauge", "ent_state_residual_power", "ent_state_demo_during_residual"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_demo_route" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_seal_receipt",
+      "title": "오브젝트 E1 — 인수서명과 잉크",
+      "body": "관찰: 안전책임자가 봉인한 방에 인수서명 한 부가 있다.\n관찰: 서명과 보고서 수정에 쓰인 붉은 잉크가 같은 색이며, 한 자루에서 나온 연속 번짐이 두 장을 잇는다.\n관찰: 봉투 인수시각 도장과 보고서 타자지의 겹침을 비교하면 어느 쪽이 먼저인지 판정된다.",
+      "source_refs": ["ent_item_receipt_signature", "ent_trace_red_ink"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_state_reported_one", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_control_conflict_envelope", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_receipt_signature", "ent_trace_red_ink"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_seal_notebook",
+      "title": "오브젝트 E2 — 설비기술자의 개인 노트",
+      "body": "인용: 「기록의 사람 수와 현장의 사람 수가 다르면 둘 다 틀릴 가능성을 둔다.」\n인용: 「새 생물이라고 이름 붙이기 전에 신발, 골반, 옷, 개인물품 수를 센다.」\n인용: 「혼란한 사람의 확신은 계측치가 아니다.」\n관찰: 이 글은 사건의 답을 말하지 않고 확인 순서만 말한다.",
+      "source_refs": ["ent_person_odo", "ent_item_safety_notebook"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_odo", "ent_item_safety_notebook"] } }
+      ],
+      "detail_scene_id": ""
+    }
+  ],
+  "panels": [
+    {
+      "schema_version": 1,
+      "id": "panel_inter_second_person",
+      "kind": "state_board",
+      "title": "중간문제 — 두 번째 사람 복원",
+      "accepted_entity_kinds": ["person", "state", "trace", "path"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_second_count", "segment_id": "segment_second_count", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_second_visitor", "segment_id": "segment_second_visitor", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_second_shoe", "segment_id": "segment_second_shoe", "accepted_kinds": ["trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_second_skeleton", "segment_id": "segment_second_skeleton", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_second_entry", "segment_id": "segment_second_entry", "accepted_kinds": ["path"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_second_relation", "segment_id": "segment_second_relation", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_second_count", "display_text": "사고 당시 현장 인원" },
+        { "schema_version": 1, "id": "segment_second_visitor", "display_text": "두 번째 사람" },
+        { "schema_version": 1, "id": "segment_second_shoe", "display_text": "두 번째 사람의 신발 단서" },
+        { "schema_version": 1, "id": "segment_second_skeleton", "display_text": "골격 영상이 말하는 것" },
+        { "schema_version": 1, "id": "segment_second_entry", "display_text": "들어온 동선" },
+        { "schema_version": 1, "id": "segment_second_relation", "display_text": "방문의 성격" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_demo_route",
+      "kind": "procedure_board",
+      "title": "중간문제 — 정상 기록 없는 시연 경로",
+      "accepted_entity_kinds": ["device", "action", "state", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_demo_key", "segment_id": "segment_demo_key", "accepted_kinds": ["device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_demo_lock", "segment_id": "segment_demo_lock", "accepted_kinds": ["device", "action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_demo_command", "segment_id": "segment_demo_command", "accepted_kinds": ["state", "action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_demo_power", "segment_id": "segment_demo_power", "accepted_kinds": ["state", "device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_demo_cause", "segment_id": "segment_demo_cause", "accepted_kinds": ["state", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_demo_key", "display_text": "그 시점에 비어 있던 키" },
+        { "schema_version": 1, "id": "segment_demo_lock", "display_text": "조작한 잠금장치" },
+        { "schema_version": 1, "id": "segment_demo_command", "display_text": "17:10에 실행된 명령" },
+        { "schema_version": 1, "id": "segment_demo_power", "display_text": "규정치에 도달하지 못한 값" },
+        { "schema_version": 1, "id": "segment_demo_cause", "display_text": "사고의 성격" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_knowledge",
+      "kind": "identity_board",
+      "title": "중간문제 — 누가 무엇에 접했나",
+      "accepted_entity_kinds": ["person", "state", "item"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_know_registered", "segment_id": "segment_know_registered", "accepted_kinds": ["state", "item"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_know_scene", "segment_id": "segment_know_scene", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_know_report", "segment_id": "segment_know_report", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_know_misjudge", "segment_id": "segment_know_misjudge", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_know_preserver", "segment_id": "segment_know_preserver", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_know_altered", "segment_id": "segment_know_altered", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_know_registered", "display_text": "REGISTERED — 기록 열" },
+        { "schema_version": 1, "id": "segment_know_scene", "display_text": "SCENE — 현장 열" },
+        { "schema_version": 1, "id": "segment_know_report", "display_text": "REPORT — 보고서 열" },
+        { "schema_version": 1, "id": "segment_know_misjudge", "display_text": "등록기록을 근거로 삼은 사람" },
+        { "schema_version": 1, "id": "segment_know_preserver", "display_text": "충돌물증을 보존한 사람" },
+        { "schema_version": 1, "id": "segment_know_altered", "display_text": "보고서를 고친 사람" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_main_statement",
+      "kind": "statement",
+      "title": "메인문제 — [리안 소른]은 연인 [리사 마렌]을 몰래 데려와 [K-2 대여키]로 방문자 [방문자 인터록 우회스위치]를 조작하고 [낮은 단계 시연]을 했다. [규정치 위의 잔류전력] 때문에 두 사람이 사망했다. [데럴 보스]는 공식기록 때문에 한 사람이 변형됐다고 오판했고, [하벨 도른]은 두 번째 사람의 증거를 알고도 [인원을 축소해 보고했다].",
+      "accepted_entity_kinds": ["person", "device", "action", "state"],      "slots": [
+        { "schema_version": 1, "id": "slot_main_bringer", "segment_id": "segment_main_bringer", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_visitor", "segment_id": "segment_main_visitor", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_key", "segment_id": "segment_main_key", "accepted_kinds": ["device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_lock", "segment_id": "segment_main_lock", "accepted_kinds": ["device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_demo", "segment_id": "segment_main_demo", "accepted_kinds": ["action", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_power", "segment_id": "segment_main_power", "accepted_kinds": ["state", "device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_misjudge", "segment_id": "segment_main_misjudge", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_coverup", "segment_id": "segment_main_coverup", "accepted_kinds": ["person", "action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_main_bringer", "display_text": "메인문 — 사람을 데려온 행위자" },
+        { "schema_version": 1, "id": "segment_main_visitor", "display_text": "메인문 — 함께 들어온 두 번째 사람" },
+        { "schema_version": 1, "id": "segment_main_key", "display_text": "메인문 — 사용한 키" },
+        { "schema_version": 1, "id": "segment_main_lock", "display_text": "메인문 — 조작한 잠금장치" },
+        { "schema_version": 1, "id": "segment_main_demo", "display_text": "메인문 — 시행한 시험" },
+        { "schema_version": 1, "id": "segment_main_power", "display_text": "메인문 — 사고를 낸 상태" },
+        { "schema_version": 1, "id": "segment_main_misjudge", "display_text": "메인문 — 현장에서 틀린 판단을 한 사람" },
+        { "schema_version": 1, "id": "segment_main_coverup", "display_text": "메인문 — 기록을 축소한 사람" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": true,
+      "unlock_condition": null
+    }
+  ],
+  "solutions": [
+    {
+      "schema_version": 1,
+      "id": "solution_inter_second_person",
+      "panel_id": "panel_inter_second_person",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_second_count", "entity_id": "ent_state_two_on_site" },
+        { "schema_version": 1, "slot_id": "slot_second_visitor", "entity_id": "ent_person_li_sa" },
+        { "schema_version": 1, "slot_id": "slot_second_shoe", "entity_id": "ent_trace_shoe_star_tread" },
+        { "schema_version": 1, "slot_id": "slot_second_skeleton", "entity_id": "ent_state_skeleton_overlap" },
+        { "schema_version": 1, "slot_id": "slot_second_entry", "entity_id": "ent_path_material_door" },
+        { "schema_version": 1, "slot_id": "slot_second_relation", "entity_id": "ent_state_private_visit" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_second_count", "entity_id": "ent_state_registered_one" },
+        { "schema_version": 1, "slot_id": "slot_second_count", "entity_id": "ent_state_reported_one" },
+        { "schema_version": 1, "slot_id": "slot_second_entry", "entity_id": "ent_path_staff_gate" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_chamber_shoes", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_control_skeleton_scan", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_locker_ri_an_locker", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_locker_door_film", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_demo_route",
+      "panel_id": "panel_inter_demo_route",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_demo_key", "entity_id": "ent_device_service_key_k2" },
+        { "schema_version": 1, "slot_id": "slot_demo_lock", "entity_id": "ent_device_interlock_bypass" },
+        { "schema_version": 1, "slot_id": "slot_demo_command", "entity_id": "ent_action_demo_low" },
+        { "schema_version": 1, "slot_id": "slot_demo_power", "entity_id": "ent_state_residual_power" },
+        { "schema_version": 1, "slot_id": "slot_demo_cause", "entity_id": "ent_state_demo_during_residual" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_demo_key", "entity_id": "ent_device_service_key_k1" },
+        { "schema_version": 1, "slot_id": "slot_demo_cause", "entity_id": "ent_decoy_equipment_blast" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_service_key_board", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_service_interlock", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_service_demo_tape", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_knowledge",
+      "panel_id": "panel_inter_knowledge",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_know_registered", "entity_id": "ent_state_registered_one" },
+        { "schema_version": 1, "slot_id": "slot_know_scene", "entity_id": "ent_state_two_on_site" },
+        { "schema_version": 1, "slot_id": "slot_know_report", "entity_id": "ent_state_reported_one" },
+        { "schema_version": 1, "slot_id": "slot_know_misjudge", "entity_id": "ent_person_derral" },
+        { "schema_version": 1, "slot_id": "slot_know_preserver", "entity_id": "ent_person_irena" },
+        { "schema_version": 1, "slot_id": "slot_know_altered", "entity_id": "ent_person_dorn" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_know_altered", "entity_id": "ent_person_derral" },
+        { "schema_version": 1, "slot_id": "slot_know_altered", "entity_id": "ent_person_irena" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_control_entry_log", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_control_dorn_draft", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_seal_receipt", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_main_statement",
+      "panel_id": "panel_main_statement",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_bringer", "entity_id": "ent_person_ri_an" },
+        { "schema_version": 1, "slot_id": "slot_main_visitor", "entity_id": "ent_person_li_sa" },
+        { "schema_version": 1, "slot_id": "slot_main_key", "entity_id": "ent_device_service_key_k2" },
+        { "schema_version": 1, "slot_id": "slot_main_lock", "entity_id": "ent_device_interlock_bypass" },
+        { "schema_version": 1, "slot_id": "slot_main_demo", "entity_id": "ent_action_demo_low" },
+        { "schema_version": 1, "slot_id": "slot_main_power", "entity_id": "ent_state_residual_power" },
+        { "schema_version": 1, "slot_id": "slot_main_misjudge", "entity_id": "ent_person_derral" },
+        { "schema_version": 1, "slot_id": "slot_main_coverup", "entity_id": "ent_person_dorn" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_bringer", "entity_id": "ent_person_odo" },
+        { "schema_version": 1, "slot_id": "slot_main_bringer", "entity_id": "ent_person_derral" },
+        { "schema_version": 1, "slot_id": "slot_main_visitor", "entity_id": "ent_person_ri_an" },
+        { "schema_version": 1, "slot_id": "slot_main_key", "entity_id": "ent_device_service_key_k1" },
+        { "schema_version": 1, "slot_id": "slot_main_key", "entity_id": "ent_device_n_lux" },
+        { "schema_version": 1, "slot_id": "slot_main_power", "entity_id": "ent_state_demo_low" },
+        { "schema_version": 1, "slot_id": "slot_main_coverup", "entity_id": "ent_person_irena" },
+        { "schema_version": 1, "slot_id": "slot_main_misjudge", "entity_id": "ent_person_dorn" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_locker_ri_an_locker", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_service_key_board", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_service_demo_tape", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_seal_receipt", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": "review_main"
+    }
+  ],
+  "hints": [
+    {
+      "schema_version": 1,
+      "id": "hint_star_tread_shoe",
+      "title": "힌트 — 같은 마모 두 짝",
+      "body": "잔해 속 한 짝, 사물함 선반 아래 한 짝, 자재문 필름의 밑창을 나란히 놓아라. 이 한 무늬만 보면 두 번째 사람이 있었는지, 직원을 신었는지, 어느 경로로 들어왔는지, 현장과 사물함이 같은 사람인지가 동시에 움직인다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_shoe_star_tread",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_key_socket_board",
+      "title": "힌트 — 열쇠날과 소켓과 빈자리",
+      "body": "어느 키가 우회소켓에 맞는지, 그 시점에 어느 키가 비어 있었는지, 그 키를 쓸 수 있는 직책이 무엇인지를 세 장면에서 한 흐름으로 놓아라. 설비기술자의 개인키가 몸에 있었다는 사실이 마지막 한 걸음을 가른다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_device_service_key_k2",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_red_ink_order",
+      "title": "힌트 — 붉은 잉크의 순서",
+      "body": "같은 붉은 잉크가 봉투 인수와 보고서 수정에 연속 번짐으로 남아 있다. 도장 시각과 타자지 겹침을 비교하면 사람이 충돌증거를 본 뒤 기록을 고쳤다는 순서가 정해진다. 현장에서 진심으로 잘못 본 사람과 나중에 축소한 사람은 같은 의도가 아니다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_red_ink",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    }
+  ],
+  "review": {
+    "schema_version": 1,
+    "id": "review_main",
+    "conclusion": "출입기록의 카드 한 장은 사람 한 명이 아니다. 잔해 안쪽의 별 모양 마모 신발, 중첩된 골격 호, 사물함 즉석사진의 같은 반지, 자재문 필름의 밑창이 하나의 두 번째 인물을 만든다. 계측기사는 비어 있던 대여키를 챙겼고, 대여 가능한 두 직책 중 개인키를 몸에 지닌 쪽이 아니었다. 시험이 열린 시각은 잔류전력이 규정치 아래로 내려갈 예정시각보다 빨랐고, 그래서 시험실이 열린 상태였다. 현장의 오판과 보고서의 축소는 같은 의도가 아니라 정보접근 차이다.",
+    "referenced_case_ids": [],
+    "scene_path": ""
+  },
+  "next_case_ids": ["case_04_bellma_exchange_247"]
+}

@@ -1,0 +1,100 @@
+{
+    "schema_version":  1,
+    "id":  "conv_h0_return_desk",
+    "display_name":  "Return Desk",
+    "region_id":  "region_h0_undersign_exchange",
+    "speaker_npc_id":  "npc_01_ilyra_senn",
+    "entry_condition":  {
+
+                        },
+    "priority":  10,
+    "pages":  [
+                  {
+                      "page_id":  "pg_receipt",
+                      "speaker":  "npc",
+                      "presentation_class":  "official",
+                      "text":  "The receipt number comes before the name on this desk.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_well",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "Above the arrival well there is a shadow with no owner filed to it.",
+                      "advance":  "wait"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_file_arrival_category",
+                        "text":  "File one arrival category and take the receipt.",
+                        "semantic_tags":  [
+                                              "bureaucratic",
+                                              "cooperative"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "unavailable_reason":  "",
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_index_return",
+                        "text":  "Ask for the returning body to be indexed instead of filed.",
+                        "semantic_tags":  [
+                                              "cooperative",
+                                              "protective"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "unavailable_reason":  "",
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_withhold_category",
+                        "text":  "Leave the category blank and keep the receipt unread.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "unavailable_reason":  "",
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_h0_arrival_declaration_filed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r1_wrong_return_hearing"
+                             ],
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

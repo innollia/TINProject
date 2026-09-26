@@ -2,7 +2,7 @@ extends GutTest
 
 const ACTION_SUFFIXES: Array[String] = [
 	"left", "right", "up", "down", "confirm", "cancel", "undo", "reset", "forward",
-	"turn_left", "turn_right", "cycle_3d_subject", "open_inventory", "cycle_metrix", "place",
+	"turn_left", "turn_right", "toggle_view", "cycle_3d_subject", "open_inventory", "cycle_metrix", "place",
 	"hotbar_1", "hotbar_2", "hotbar_3", "hotbar_4", "hotbar_5", "hotbar_6", "hotbar_7", "hotbar_8", "hotbar_9"
 ]
 
@@ -243,6 +243,30 @@ func test_board_14_lark_must_activate_glass_inventory_to_place_key_win() -> void
 	assert_eq(_entity_position(game, "key_second"), Vector2i(5, 6))
 	assert_true(_rules(game).has_property(&"KEY", &"WIN"))
 	assert_true(game.solved)
+
+
+func test_board_10_route_cue_holds_then_advances_to_the_next_board() -> void:
+	var game := _spawn_board(&"rule_10_shared_frames")
+	for step: int in range(4):
+		_move(game, Vector2i.RIGHT)
+		assert_false(game.solved, "the connected frame has to move before the contact wins")
+	_move(game, Vector2i.RIGHT)
+	assert_true(game.solved, "the real route reaches the shared-wall WIN contact")
+	var cue_cells: Array = game.get("_solved_cue_cells")
+	assert_eq(cue_cells.size(), 1)
+	assert_eq(cue_cells[0], Vector2i(7, 8))
+	assert_gt(float(game.get("_solved_cue_remaining")), 0.0)
+	var solved_turn := int(game.save_state()["turn_index"])
+	assert_eq(solved_turn, 5)
+	game.call("_process", 0.05)
+	assert_true(game.solved, "the cue keeps the solved board on screen")
+	assert_eq(String(game.save_state()["board_id"]), "rule_10_shared_frames")
+	game.call("_process", 5.0)
+	assert_false(game.solved, "the cue expires and advances by itself")
+	assert_eq(String(game.save_state()["board_id"]), "rule_11_metrix_storage")
+	assert_eq(int(game.save_state()["turn_index"]), 0)
+	assert_eq((game.get("_undo_stack") as Array).size(), 0)
+	assert_eq(float(game.get("_solved_cue_remaining")), 0.0)
 
 
 func _spawn_board(board_id: StringName) -> GameModule:

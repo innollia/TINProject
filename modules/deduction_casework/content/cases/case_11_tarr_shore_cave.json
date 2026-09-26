@@ -1,0 +1,906 @@
+{
+  "schema_version": 1,
+  "id": "case_11_tarr_shore_cave",
+  "title": "11 검은 층 아래의 사람들 — 타르 해안동굴",
+  "start_scene_id": "scene_camp",
+  "scenes": [
+    {
+      "schema_version": 1,
+      "id": "scene_camp",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_camp_meeting_minutes",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_camp_meeting_minutes", "focus_id": "msg_camp_meeting_minutes" },
+        { "schema_version": 1, "id": "hotspot_camp_contract_terms", "focus_id": "msg_camp_contract_terms" },
+        { "schema_version": 1, "id": "hotspot_camp_vein_map", "focus_id": "msg_camp_vein_map" },
+        { "schema_version": 1, "id": "hotspot_camp_company_papers", "focus_id": "msg_camp_company_papers" },
+        { "schema_version": 1, "id": "hotspot_camp_pay_ledger", "focus_id": "msg_camp_pay_ledger" },
+        { "schema_version": 1, "id": "hotspot_camp_role_table", "focus_id": "msg_camp_role_table" }
+      ],
+      "transitions": [
+        { "schema_version": 1, "id": "trans_camp_to_cave", "destination_scene_id": "scene_cave_mouth", "focus_id": "hotspot_cave_drill_grid" },
+        { "schema_version": 1, "id": "trans_camp_to_van", "destination_scene_id": "scene_geochem_van", "focus_id": "hotspot_van_ax7_summary" }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_cave_mouth",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_cave_drill_grid",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_cave_drill_grid", "focus_id": "msg_cave_drill_grid" },
+        { "schema_version": 1, "id": "hotspot_cave_vein_band", "focus_id": "msg_cave_vein_band" },
+        { "schema_version": 1, "id": "hotspot_cave_det_fragment", "focus_id": "msg_cave_det_fragment" },
+        { "schema_version": 1, "id": "hotspot_cave_tool_case", "focus_id": "msg_cave_tool_case" },
+        { "schema_version": 1, "id": "hotspot_cave_blast_log", "focus_id": "msg_cave_blast_log" },
+        { "schema_version": 1, "id": "hotspot_cave_ben_note", "focus_id": "msg_cave_ben_note" },
+        { "schema_version": 1, "id": "hotspot_cave_storm_chart", "focus_id": "msg_cave_storm_chart" },
+        { "schema_version": 1, "id": "hotspot_cave_broken_clock", "focus_id": "msg_cave_broken_clock" },
+        { "schema_version": 1, "id": "hotspot_cave_generator_log", "focus_id": "msg_cave_generator_log" },
+        { "schema_version": 1, "id": "hotspot_cave_camera_time", "focus_id": "msg_cave_camera_time" },
+        { "schema_version": 1, "id": "hotspot_cave_time_alignment", "focus_id": "msg_cave_time_alignment" },
+        { "schema_version": 1, "id": "hotspot_cave_rockfall_line", "focus_id": "msg_cave_rockfall_line" },
+        { "schema_version": 1, "id": "hotspot_cave_body_position", "focus_id": "msg_cave_body_position" },
+        { "schema_version": 1, "id": "hotspot_cave_ella_memo", "focus_id": "msg_cave_ella_memo" }
+      ],
+      "transitions": [
+        { "schema_version": 1, "id": "trans_cave_to_camp", "destination_scene_id": "scene_camp", "focus_id": "hotspot_camp_meeting_minutes" },
+        { "schema_version": 1, "id": "trans_cave_to_trench", "destination_scene_id": "scene_trench", "focus_id": "hotspot_trench_upper_white" }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_trench",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_trench_upper_white",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_trench_upper_white", "focus_id": "msg_trench_upper_white" },
+        { "schema_version": 1, "id": "hotspot_trench_middle_black", "focus_id": "msg_trench_middle_black" },
+        { "schema_version": 1, "id": "hotspot_trench_lower_ochre", "focus_id": "msg_trench_lower_ochre" },
+        { "schema_version": 1, "id": "hotspot_trench_section_diagram", "focus_id": "msg_trench_section_diagram" }
+      ],
+      "transitions": [
+        { "schema_version": 1, "id": "trans_trench_to_cave", "destination_scene_id": "scene_cave_mouth", "focus_id": "hotspot_cave_drill_grid" },
+        { "schema_version": 1, "id": "trans_trench_to_tent", "destination_scene_id": "scene_specimen_tent", "focus_id": "hotspot_specimen_boxes_mixed" }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_specimen_tent",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_specimen_boxes_mixed",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_specimen_boxes_mixed", "focus_id": "msg_specimen_boxes_mixed" },
+        { "schema_version": 1, "id": "hotspot_specimen_box_alpha", "focus_id": "msg_specimen_box_alpha" },
+        { "schema_version": 1, "id": "hotspot_specimen_box_beta", "focus_id": "msg_specimen_box_beta" },
+        { "schema_version": 1, "id": "hotspot_specimen_box_gamma", "focus_id": "msg_specimen_box_gamma" },
+        { "schema_version": 1, "id": "hotspot_specimen_field_guide", "focus_id": "msg_specimen_field_guide" },
+        { "schema_version": 1, "id": "hotspot_specimen_ria_sketch", "focus_id": "msg_specimen_ria_sketch" }
+      ],
+      "transitions": [
+        { "schema_version": 1, "id": "trans_tent_to_trench", "destination_scene_id": "scene_trench", "focus_id": "hotspot_trench_upper_white" }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_geochem_van",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_van_ax7_summary",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_van_ax7_summary", "focus_id": "msg_van_ax7_summary" },
+        { "schema_version": 1, "id": "hotspot_van_coastal_series", "focus_id": "msg_van_coastal_series" },
+        { "schema_version": 1, "id": "hotspot_van_figure_trays", "focus_id": "msg_van_figure_trays" },
+        { "schema_version": 1, "id": "hotspot_van_ivo_ypothesis", "focus_id": "msg_van_ivo_ypothesis" }
+      ],
+      "transitions": [
+        { "schema_version": 1, "id": "trans_van_to_camp", "destination_scene_id": "scene_camp", "focus_id": "hotspot_camp_meeting_minutes" }
+      ]
+    }
+  ],
+  "closeups": [],
+  "entities": [
+    { "schema_version": 1, "id": "ent_person_eira", "kind": "person", "display_text": "에이라 펜", "source_text_id": "msg_camp_meeting_minutes", "tags": ["victim", "lead"] },
+    { "schema_version": 1, "id": "ent_person_noel", "kind": "person", "display_text": "노엘 사르", "source_text_id": "msg_specimen_ria_sketch", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_person_ivo", "kind": "person", "display_text": "이보 렌", "source_text_id": "msg_van_ivo_ypothesis", "tags": ["hypothesis_maker"] },
+    { "schema_version": 1, "id": "ent_person_karel", "kind": "person", "display_text": "카렐 모크", "source_text_id": "msg_camp_meeting_minutes", "tags": ["instigator"] },
+    { "schema_version": 1, "id": "ent_person_ben", "kind": "person", "display_text": "벤 아로", "source_text_id": "msg_cave_blast_log", "tags": ["operator"] },
+    { "schema_version": 1, "id": "ent_person_ria", "kind": "person", "display_text": "리아 노스", "source_text_id": "msg_cave_camera_time", "tags": ["recorder"] },
+    { "schema_version": 1, "id": "ent_role_lead_archeologist", "kind": "role", "display_text": "수석고고학자", "source_text_id": "msg_camp_role_table", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_blaster", "kind": "role", "display_text": "발파기술자", "source_text_id": "msg_camp_role_table", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_sponsor", "kind": "role", "display_text": "스폰서", "source_text_id": "msg_camp_role_table", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_guide", "kind": "role", "display_text": "현지안내인", "source_text_id": "msg_camp_role_table", "tags": [] },
+    { "schema_version": 1, "id": "ent_site_east_wall", "kind": "place", "display_text": "동쪽 벽", "source_text_id": "msg_camp_meeting_minutes", "tags": ["forbidden_site"] },
+    { "schema_version": 1, "id": "ent_time_0330", "kind": "time", "display_text": "03:30", "source_text_id": "msg_cave_ben_note", "tags": ["blast"] },
+    { "schema_version": 1, "id": "ent_time_0337", "kind": "time", "display_text": "03:37", "source_text_id": "msg_cave_time_alignment", "tags": ["collapse"] },
+    { "schema_version": 1, "id": "ent_time_0642", "kind": "time", "display_text": "06:42", "source_text_id": "msg_cave_storm_chart", "tags": ["storm"] },
+    { "schema_version": 1, "id": "ent_state_refusal", "kind": "state", "display_text": "동쪽벽 작업 보류 결정", "source_text_id": "msg_camp_meeting_minutes", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_unapproved", "kind": "state", "display_text": "승인 없는 발파", "source_text_id": "msg_cave_blast_log", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_hidden_ledger", "kind": "state", "display_text": "통상 일당 ×3의 추가 안전점검", "source_text_id": "msg_camp_pay_ledger", "tags": ["hidden_cost"] },
+    { "schema_version": 1, "id": "ent_state_strata_texture_match", "kind": "state", "display_text": "현장 단면과 표본의 질감 대응", "source_text_id": "msg_specimen_ria_sketch", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_strata_order", "kind": "state", "display_text": "적갈층 아래 검은층, 그 위 회백층", "source_text_id": "msg_van_ax7_summary", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_time_correlation", "kind": "state", "display_text": "시간상 상관", "source_text_id": "msg_van_coastal_series", "tags": ["evidence_strength"] },
+    { "schema_version": 1, "id": "ent_state_cause_open", "kind": "state", "display_text": "역사적 원인은 확정하지 않는다", "source_text_id": "msg_van_ivo_ypothesis", "tags": ["evidence_strength"] },
+    { "schema_version": 1, "id": "ent_device_det", "kind": "device", "display_text": "전기뇌관", "source_text_id": "msg_cave_det_fragment", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_drill_grid", "kind": "trace", "display_text": "같은 간격의 천공 네 개", "source_text_id": "msg_cave_drill_grid", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_det_cap", "kind": "trace", "display_text": "3핀 배열과 주황 절연띠", "source_text_id": "msg_cave_det_fragment", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_company_triangle", "kind": "trace", "display_text": "안에 점 두 개가 찍힌 삼각표식", "source_text_id": "msg_camp_vein_map", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_vein_band", "kind": "trace", "display_text": "벽 안쪽으로 이어지는 자연색 띠", "source_text_id": "msg_cave_vein_band", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_rockfall_line", "kind": "trace", "display_text": "젖은 천장층을 따라 옆으로 번진 균열", "source_text_id": "msg_cave_rockfall_line", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_broken_clock", "kind": "trace", "display_text": "깨진 현장시계", "source_text_id": "msg_cave_broken_clock", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_generator_log", "kind": "trace", "display_text": "캠프 발전기 로그", "source_text_id": "msg_cave_generator_log", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_camera_time", "kind": "trace", "display_text": "리아의 카메라 시각", "source_text_id": "msg_cave_camera_time", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_figure_blank", "kind": "trace", "display_text": "중앙이 비어 있는 도상 조각", "source_text_id": "msg_van_figure_trays", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_vein_targeting", "kind": "action", "display_text": "벽 안쪽을 수평으로 향한 천공", "source_text_id": "msg_cave_drill_grid", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_small_charge", "kind": "action", "display_text": "작은 것 하나를 놓는 작업", "source_text_id": "msg_cave_ben_note", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_ceiling_collapse", "kind": "action", "display_text": "예상 밖의 천장붕괴", "source_text_id": "msg_cave_rockfall_line", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_not_targeted", "kind": "action", "display_text": "폭파직선 밖의 위치", "source_text_id": "msg_cave_body_position", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_hidden_inspection", "kind": "action", "display_text": "공식 일정에 없던 안전점검 수행", "source_text_id": "msg_camp_pay_ledger", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_contract_cancel", "kind": "action", "display_text": "후원계약 중지 통보", "source_text_id": "msg_cave_ella_memo", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_strata_restore", "kind": "action", "display_text": "세 상자의 상대 층위 복원", "source_text_id": "msg_specimen_ria_sketch", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_layer_code_reuse", "kind": "action", "display_text": "같은 층코드를 다른 자료에 재적용", "source_text_id": "msg_van_ax7_summary", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_collect_figure", "kind": "action", "display_text": "중앙이 빈 도상 조각을 층별 트레이로 옮김", "source_text_id": "msg_van_figure_trays", "tags": [] },
+    { "schema_version": 1, "id": "ent_sample_box_alpha", "kind": "specimen", "display_text": "라벨 없는 상자 α", "source_text_id": "msg_specimen_box_alpha", "tags": [] },
+    { "schema_version": 1, "id": "ent_sample_box_beta", "kind": "specimen", "display_text": "라벨 없는 상자 β", "source_text_id": "msg_specimen_box_beta", "tags": [] },
+    { "schema_version": 1, "id": "ent_sample_box_gamma", "kind": "specimen", "display_text": "라벨 없는 상자 γ", "source_text_id": "msg_specimen_box_gamma", "tags": [] },
+    { "schema_version": 1, "id": "ent_decoy_natural_collapse", "kind": "decoy", "display_text": "폭풍만으로 무너진 자연붕괴", "source_text_id": "msg_cave_storm_chart", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_targeted_murder", "kind": "decoy", "display_text": "에이라를 직접 겨냥한 계획", "source_text_id": "msg_cave_body_position", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_ben_personal_mark", "kind": "decoy", "display_text": "벤 개인의 사내 표식", "source_text_id": "msg_cave_ben_note", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_equation", "kind": "decoy", "display_text": "A형과 공백을 같은 것으로 놓는 등식", "source_text_id": "msg_van_ax7_summary", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_single_cause", "kind": "decoy", "display_text": "고에너지 경계 하나로 설명되는 변화", "source_text_id": "msg_van_coastal_series", "tags": ["decoy"] }
+  ],
+  "messages": [
+    {
+      "schema_version": 1,
+      "id": "msg_camp_meeting_minutes",
+      "title": "오브젝트 A1 — 9월 14일 현장회의 기록",
+      "body": "관찰: 찢긴 천막 아래 회의탁자. 회의기록 세 쪽이 펼쳐져 있고 서명란은 두 칸만 채워져 있다.\n기재 1 카렐: 동쪽 벽 뒤 광물층 확인을 위해 시험천공을 요청한다.\n기재 2 에이라: 발굴층을 가로지르므로 거부한다. 표본채취가 끝날 때까지 어떤 천공도 하지 않는다.\n기재 3 벤: 폭파장비는 창고 봉인을 유지한다고 적는다.\n결정란: 동쪽 벽 작업 보류.",
+      "source_refs": ["ent_person_karel", "ent_person_eira", "ent_person_ben", "ent_site_east_wall", "ent_state_refusal"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_karel", "ent_person_eira", "ent_person_ben", "ent_site_east_wall", "ent_state_refusal"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_main_statement" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_camp_contract_terms",
+      "title": "하위 A2-1 — 후원계약 별첨",
+      "body": "관찰: 후원계약서 별첨 한 장. 학술발굴 지원 조항과 별개 조항으로 동굴 외곽 광물조사 우선협상권이 스폰서 회사에 있다.\n기재: 우선협상권 조항의 서명일은 발굴 종료 예정일보다 앞선다.",
+      "source_refs": ["ent_person_karel", "ent_site_east_wall"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_karel"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_camp_vein_map",
+      "title": "하위 A2-2 — 광맥지도",
+      "body": "비수집형 시각단서 — 광맥지도\n관찰: 지도 한 장. 동쪽 벽 위치에 삼각표식이 찍혀 있고 삼각형 안쪽에 작은 점 두 개가 있다. 표식에서 벽 안쪽으로 색이 다른 띠가 이어진다.\n관찰: 지도에는 천공이나 폭약에 대한 기재가 없다.",
+      "source_refs": ["ent_trace_company_triangle"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_company_triangle"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_camp_company_papers",
+      "title": "비수집형 시각단서 — 회사 상자 서류",
+      "body": "관찰: 회사 상자에서 꺼낸 서류 여섯 장. 탐색 보고서, 선代金 명세, 안전표지판 주문서.\n관찰: 세 장의 하단에는 지도와 같은 삼각표식이 찍혀 있고 안쪽 점 두 개의 위치도 같다. 서류 세 장은 서로 다른 시기의 문서다.",
+      "source_refs": ["ent_trace_company_triangle", "ent_decoy_ben_personal_mark"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_trace_company_triangle", "requires_resolved_message_id": "msg_cave_ben_note", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_company_triangle"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_camp_pay_ledger",
+      "title": "오브젝트 A3 — 지급대장",
+      "body": "관찰: 지급대장 한 줄. B. Aro — 추가 안전점검 — 통상 일당 ×3.\n관찰: 같은 날짜의 공식 안전점검 일정은 이름란이 비어 있다. 회계란에는 적지 않고 \"현장\"이라는 글자만 있다.",
+      "source_refs": ["ent_person_ben", "ent_state_hidden_ledger", "ent_action_hidden_inspection"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_ben", "ent_state_hidden_ledger", "ent_action_hidden_inspection"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_camp_role_table",
+      "title": "오브젝트 A4 — 직책·권한표",
+      "body": "관찰: 권한표 네 줄.\n수석고고학자 — 발굴층 작업 승인.\n발파기술자 — 폭약 취급 가능, 승인번호 필요.\n스폰서 — 작업 승인권 없음.\n현지안내인 — 지형·안전동선 기록.\n관찰: 승인번호를 발급할 수 있는 칸은 두 줄뿐이다.",
+      "source_refs": ["ent_role_lead_archeologist", "ent_role_blaster", "ent_role_sponsor", "ent_role_guide"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_role_lead_archeologist", "ent_role_blaster", "ent_role_sponsor", "ent_role_guide"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_drill_grid",
+      "title": "오브젝트 B1 — 동쪽 벽의 구멍 네 개",
+      "body": "관찰: 동쪽 벽 상부에 구멍 네 개. 지름이 같고 간격도 같다. 벽 전체에 방향 없이 퍼진 자연균열과 대조하면, 이 네 개의 축은 수평으로 한 줄을 이룬다.\n관찰: 구멍 주변 파편은 벽면보다 안쪽으로 들이 눌려 있다.",
+      "source_refs": ["ent_trace_drill_grid", "ent_action_vein_targeting"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_drill_grid", "ent_action_vein_targeting"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_vein_band",
+      "title": "하위 B1-1 — 벽 안쪽의 색 띠",
+      "body": "비수집형 시각단서 — 벽 표면의 띠\n관찰: 동쪽 벽 표면에서 안쪽으로 이어지는 색 띠. 자갈 크기가 띠 구간에서만 일정하게 달라진다.\n관찰: 띠의 시작 위치는 지도에 찍힌 삼각표식의 위치와 같은 방향을 향한다.",
+      "source_refs": ["ent_trace_vein_band"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_vein_band"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_det_fragment",
+      "title": "오브젝트 B2 — 절연포 조각",
+      "body": "관찰: 낙석 사이에 반쯤 묻힌 절연포. 안쪽에서 끝에 가느다란 금속 세 갈래가 나온다. 세 갈래 끝에 접점이 있고 접점 옆 절연부가 주황색이다.\n관찰: 금속 갈래는 벽 안쪽으로 눕혀져 있다.",
+      "source_refs": ["ent_device_det", "ent_trace_det_cap"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_device_det", "ent_trace_det_cap"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_tool_case",
+      "title": "하위 B2-1 — 주황 작업복의 공구상자",
+      "body": "비수집형 시각단서 — 공구상자 안쪽\n관찰: 공구상자 한 칸에 정식 뇌관이 들어 있다. 끝의 접점은 셋이 나란히 있고 절연부 색은 주황색이다.\n관찰: 다른 칸에는 두 갈래 접점 부품이 두 개 들어 있다. 두 부품도 절연부가 주황색이다.\n관찰: 세 갈래와 두 갈래의 크기와 절연 두께는 서로 다르다.",
+      "source_refs": ["ent_device_det"],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_blast_log",
+      "title": "오브젝트 B3 — 발파작업일지",
+      "body": "관찰: 당일 면. 승인란에 서명이 없다. 작업자 서명란에 벤의 정식 서명이 없다.\n관찰: 같은 면 하단에 '보류'라고 적힌 줄이 있고 그 바로 위 한 줄이 지워져 있다. 지워진 줄의 압흔은 남아 있다.",
+      "source_refs": ["ent_person_ben", "ent_state_unapproved"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_ben", "ent_state_unapproved"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_ben_note",
+      "title": "오브젝트 B4 — 접힌 쪽지",
+      "body": "관찰: 공구상자 옆에 떨어진 접힌 쪽지. 필체가 공구상자 안쪽 메모와 같다.\n기재: 03:30 — 동쪽 벽 △ / 작은 것 하나 / 흔적 치울 것.\n인용: 「일정은 이대로 두자.」\n인용: 「옆 구역은 안 건드린다.」",
+      "source_refs": ["ent_person_ben", "ent_time_0330", "ent_action_small_charge", "ent_trace_company_triangle", "ent_decoy_ben_personal_mark"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_ben", "ent_time_0330", "ent_action_small_charge", "ent_trace_company_triangle", "ent_decoy_ben_personal_mark"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_blast_reconstruction" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_storm_chart",
+      "title": "오브젝트 B5 — 폭풍·붕괴 시각표",
+      "body": "관찰: 시각표 한 장. 강풍 최고시각 06:42가 굵게 표시돼 있다. 붕괴시각 칸은 비어 있다.\n기재: 「붕괴 시각은 현장 시각자료 세 곳을 맞춰 적는다.」\n기재: 「강풍 최고시각만으로는 붕괴를 설명할 수 없다.」",
+      "source_refs": ["ent_time_0642", "ent_decoy_natural_collapse"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_time_0642", "ent_decoy_natural_collapse"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_broken_clock",
+      "title": "하위 B5-1 — 깨진 현장시계",
+      "body": "관찰: 천막 기둥에 걸린 현장시계. 유리판이 깨졌고 hour 바늘은 3시 방향, 분침은 끊겨 있다. 끊긴 위치는 3과 4 사이.\n관찰: 뒷면 배터리를 교체한 흔적이 있다.",
+      "source_refs": ["ent_trace_broken_clock"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_broken_clock"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_generator_log",
+      "title": "하위 B5-2 — 캠프 발전기 로그",
+      "body": "관찰: 발전기 롤로그. 02:58 부하 급상승 1회, 그 뒤 40분간 평준. 그다음 행에서 부하가 0으로 떨어지고 이후 기록이 다시 시작된다.\n관찰: 0이 된 행 옆에 사람이 적은 분 단위 숫자가 있다. 앞자리가 3이다.",
+      "source_refs": ["ent_trace_generator_log"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_generator_log"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_camera_time",
+      "title": "하위 B5-3 — 카메라 필름",
+      "body": "관찰: 현지안내인이 들고 있던 필름 한 롤. 노출 순서대로 03:29, 03:31, 03:37 세 컷이 남아 있다.\n관찰: 03:29 컷은 동쪽 벽만 잡혀 있다. 03:37 컷은 흔들린 프레임이고 아래쪽 절반이 잘려 있다. 필름 가장자리에 디상에 적힌 숫자가 있다.",
+      "source_refs": ["ent_person_ria", "ent_trace_camera_time"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_ria", "ent_trace_camera_time"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_time_alignment",
+      "title": "오브젝트 B6 — 세 시각자료를 맞춘 판",
+      "body": "관찰: 천막 벽의 판에 세 시각자료가 한 줄로 세워져 있다. 깨진 시계의 끊긴 분침 자리, 발전기 로그의 0이 된 행, 필름의 마지막 컷이 같은 칸에 겹쳐 있다.\n기재: 붕괴 03:37.\n기재: 강풍 최고시각 06:42는 이 붕괴보다 뒤다.",
+      "source_refs": ["ent_time_0337", "ent_time_0642", "ent_decoy_natural_collapse"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cave_broken_clock", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cave_generator_log", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cave_camera_time", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_time_0337"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_rockfall_line",
+      "title": "하위 B6-1 — 천장 균열",
+      "body": "비수집형 시각단서 — 천장 균열\n관찰: 오래된 빗물층을 따라 옆으로 뻗은 균열. 한쪽 끝이 낙석선 아래에서 멈춘다.\n관찰: 균열은 벽 상단의 구멍 네 개가 모인 자리를 지나지 않는다.",
+      "source_refs": ["ent_trace_rockfall_line", "ent_action_ceiling_collapse"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_rockfall_line", "ent_action_ceiling_collapse"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_body_position",
+      "title": "오브젝트 B7 — 시신의 위치",
+      "body": "관찰: 동쪽 벽 앞이 아니라 옆쪽 상부 낙석 아래에 붙어 있는 인물. 벽면에서 떨어진 위치가 구멍 네 개가 모인 지점보다 낮고 옆에 있다. 몸이 벽을 향한 자세다.\n관찰: 인물의 작업복 자수와 캠프 회의기록의 수석고고학자 서명이 같다.",
+      "source_refs": ["ent_person_eira", "ent_action_not_targeted", "ent_decoy_targeted_murder"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_eira", "ent_action_not_targeted", "ent_decoy_targeted_murder"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cave_ella_memo",
+      "title": "오브젝트 B8 — 마지막 메모",
+      "body": "관찰: 날짜가 없는 필기 한 장. 필체가 회의기록의 두 번째 칸과 같다.\n인용: 「폭파 흔적 발견. 오늘 후원사 계약 중지 통보.」\n관찰: 끝줄은 찢어져 있고 반쪽 글자가 남아 있다.",
+      "source_refs": ["ent_person_eira", "ent_person_karel", "ent_action_contract_cancel"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_eira", "ent_person_karel", "ent_action_contract_cancel"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_trench_upper_white",
+      "title": "오브젝트 C1 — 트렌치 상부 단면",
+      "body": "비수집형 시각단서 — 상부 단면\n관찰: 층을 따라 흰 조개 단면이 끊어져 이어진다. 조개 사이결에 가는 회색 점토 줄기가 세로로 내려간다.\n관찰: 이 단면에 글자나 도상은 없다.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_trench_middle_black",
+      "title": "오브젝트 C2 — 트렌치 가운데 단면",
+      "body": "비수집형 시각단서 — 가운데 단면\n관찰: 유리질 검은 알갱이가 층 전체에 박혀 있다. 알갱이 사이로 길고 뾰족한 뼈가 층 방향과 다르게 눕혀져 박혀 있다.\n관찰: 이 단면에 글자나 도상은 없다.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_trench_lower_ochre",
+      "title": "오브젝트 C3 — 트렌치 아래쪽 단면",
+      "body": "비수집형 시각단서 — 아래쪽 단면\n관찰: 주황 철분띠가 끊기지 않고 이어진다. 띠 위에 넓고 깎인 패각이 눕혀져 있고 패각 가장자리가 얕게 부서져 있다.\n관찰: 이 단면에 글자나 도상은 없다.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_trench_section_diagram",
+      "title": "비수집형 시각단서 — 단면도",
+      "body": "관찰: 단면도 한 장에 세 선이 같은 도면에 얹혀 있다. 가는 선 하나는 동쪽 벽 상부 구멍 네 개에서 시작해 벽 안쪽의 색 띠를 지나고 끝난다. 굵은 선 하나는 천장층을 따라 옆으로 꺾여 아래로 내려온다. 점선 하나는 그 굵은 선의 끝과 벽면 사이를 잇는다.\n기재: 두 선의 끝점은 서로 다른 자리에 있다. 굵은 선은 가는 선을 지나지 않는다.",
+      "source_refs": ["ent_trace_drill_grid", "ent_trace_rockfall_line", "ent_action_not_targeted", "ent_action_vein_targeting", "ent_action_ceiling_collapse"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_trace_drill_grid", "requires_resolved_message_id": "msg_cave_rockfall_line", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_action_not_targeted", "requires_resolved_message_id": "msg_cave_body_position", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_trench_upper_white", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_specimen_boxes_mixed",
+      "title": "오브젝트 D1 — 라벨이 떨어진 상자 세 개",
+      "body": "비수집형 시각단서 — 상자 세 개\n관찰: 상자 세 개 모두 라벨이 떨어져 있다. 어느 상자에도 층 이름이 남지 않았다.\n관찰: 한 상자는 주황 철분토가 가장 많고, 한 상자는 검은 알갱이가 바닥을 덮고, 한 상자는 회색 점토 덩어리가 절반을 차지한다. 세 상자 모두 다른 상자의 조각이 섞여 있다.",
+      "source_refs": ["ent_action_strata_restore"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_action_strata_restore"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_specimen_box_alpha",
+      "title": "오브젝트 D2 — 상자 α",
+      "body": "비수집형 시각단서 — 상자 α\n관찰: 주황 철분토 덩어리가 대부분을 차지한다. 발굽이 갈라진 굵은 뼈 두 조각, 넓고 깎인 패각 두 장이 섞여 있다.\n관찰: 흰 조개 조각은 몇 개뿐이고 바닥에 깔려 있다.",
+      "source_refs": ["ent_sample_box_alpha"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_sample_box_alpha"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_specimen_box_beta",
+      "title": "오브젝트 D3 — 상자 β",
+      "body": "비수집형 시각단서 — 상자 β\n관찰: 검은 유리질 알갱이가 바닥을 덮는다. 그 위에는 길고 뾰족한 뼈 여러 개가 한 방향으로 나란히 놓여 있다. 뼈 사이로 탄화목 조각이 끼어 있다.\n관찰: 넓게 깎인 패각은 없다.",
+      "source_refs": ["ent_sample_box_beta"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_sample_box_beta"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_specimen_box_gamma",
+      "title": "오브젝트 D4 — 상자 γ",
+      "body": "비수집형 시각단서 — 상자 γ\n관찰: 가는 회색 점토 덩어리가 절반을 차지한다. 흰 조개 단면 조각이 층 방향으로 이어져 있다.\n관찰: 가운데에 작은 뼈 여러 개가 섞여 있고 뼈 표면에 가는 균열이 두드러진다.",
+      "source_refs": ["ent_sample_box_gamma"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_sample_box_gamma"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_specimen_field_guide",
+      "title": "하위 D4-1 — 현장 생물도감",
+      "body": "비수집형 시각단서 — 생물도감\n관찰: 실루엣 그림 세 장과 뼈 모양 그림 세 장. 이름 칸은 모두 비어 있다.\n관찰: 윤곽이 셋으로 갈린다. 하나는 가늘고 다리가 긴 형태, 하나는 뼈가 길고 곧은 형태, 하나는 굵고 발굽이 갈라진 형태.",
+      "source_refs": [],
+      "prerequisite_condition": null,
+      "effects": [],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_specimen_ria_sketch",
+      "title": "오브젝트 D5 — 붕괴 전 단면 스케치",
+      "body": "관찰: 리아 노스가 그린 스케치. 붕괴 전 세 층 경계가 각각 다른 무늬로 그려져 있고 채취 위치가 점으로 표시돼 있다. 색 이름은 없고 무늬만 있다.\n기재: 경계가 두 번 꺾이는 층이 가운데다.\n관찰: 뼈 표본튜브를 든 인물이 카드 두 장을 놓고 기다리고 있다.",
+      "source_refs": ["ent_state_strata_texture_match", "ent_action_strata_restore", "ent_person_ria", "ent_person_noel"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_sample_box_alpha", "requires_resolved_message_id": "msg_specimen_boxes_mixed", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_strata_texture_match", "ent_person_ria", "ent_person_noel"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_strata_restore" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_van_ax7_summary",
+      "title": "오브젝트 E1 — 층별 요약표",
+      "body": "관찰: 층별 요약표 세 줄. 각 줄은 상·중·하로만 구분돼 있고 뒤에 A형과 B형의 비율이 적혀 있다. 하부 A형 우세, 중부 혼재, 상부 B형 우세.\n기재: A형은 변화폭이 크고 강한 자극 뒤 오류가 더 자주 남는다. B형은 변화폭이 작고 오류도 적다.\n기재: 표에는 '같다'는 문장이나 등식이 없다. 비율과 오류 사이에 성질 문장은 없다.\n기재: 세 줄의 층 구분은 상자에 붙였던 코드와 같은 순서로 정렬되어 있다.",
+      "source_refs": ["ent_state_strata_order", "ent_action_layer_code_reuse", "ent_decoy_equation"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_sample_box_alpha", "requires_resolved_message_id": "msg_specimen_box_alpha", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_strata_order", "ent_action_layer_code_reuse", "ent_decoy_equation"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_van_coastal_series",
+      "title": "오브젝트 E2 — 연안 경계 연대표",
+      "body": "관찰: 세 유적의 연대 구간을 한 축에 겹친 그림. 비슷한 구간에 고에너지 경계 표식과 A형→B형 비율 변화가 나란히 표시돼 있다. 각 표식 옆에 연대오차 막대가 붙어 있고 막대 폭이 서로 다르다.\n인용: 「한 동굴의 우연이라고 부르기는 어렵다. 전 지구 일반화 금지.」",
+      "source_refs": ["ent_state_time_correlation", "ent_decoy_single_cause"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_time_correlation", "ent_decoy_single_cause"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_van_figure_trays",
+      "title": "오브젝트 E3 — 층별 도상 서랍",
+      "body": "관찰: 층별로 펼친 서랍 세 칸. 중앙이 매끈하게 비어 있는 도상 조각들이 층별 트레이로 옮겨져 있다. 조각에 문자는 없고 중앙만 가렸다. 마지막 카드에는 분류 결과만 적혀 있고 개수는 적혀 있지 않다.\n기재: 상부 서랍의 칸에는 현재 발굴분이 없다.\n기재: 사건 7 석판과 재질과 기법 일부만 같다. 의미가 같은지는 확인된 항목이 아니다.",
+      "source_refs": ["ent_trace_figure_blank", "ent_action_collect_figure"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_figure_blank", "ent_action_collect_figure"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_van_ivo_ypothesis",
+      "title": "오브젝트 E4 — 가설노트와 반론",
+      "body": "관찰: 이보 렌의 가설노트 세 줄과 그 아래 에이라 펜의 필기 두 줄.\n이보: 「고에너지 경계 → A형에서 연쇄오류 증가 → A형 비율 감소? B형의 안정성이 생존차이를 만들었나?」\n에이라: 「도상 감소가 곧 관념 감소라는 증거는 아니다. 다만 세 변화가 같은 경계에 몰린 이유는 설명이 필요하다.」",
+      "source_refs": ["ent_person_ivo", "ent_person_eira", "ent_state_cause_open"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_ivo", "ent_person_eira", "ent_state_cause_open"] } }
+      ],
+      "detail_scene_id": ""
+    }
+  ],
+  "panels": [
+    {
+      "schema_version": 1,
+      "id": "panel_inter_blast_reconstruction",
+      "kind": "procedure_board",
+      "title": "중간문제 — 동쪽 벽 한 장면",
+      "accepted_entity_kinds": ["state", "device", "trace", "action", "time", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_blast_axis", "segment_id": "segment_blast_axis", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_blast_marker", "segment_id": "segment_blast_marker", "accepted_kinds": ["trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_blast_charge", "segment_id": "segment_blast_charge", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_blast_tool", "segment_id": "segment_blast_tool", "accepted_kinds": ["trace", "device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_blast_time", "segment_id": "segment_blast_time", "accepted_kinds": ["time"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_blast_collapse", "segment_id": "segment_blast_collapse", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_blast_position", "segment_id": "segment_blast_position", "accepted_kinds": ["action", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_blast_record", "segment_id": "segment_blast_record", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_blast_axis", "display_text": "구멍 네 개가 향한 쪽" },
+        { "schema_version": 1, "id": "segment_blast_marker", "display_text": "같은 표식이 함께 찍힌 자료" },
+        { "schema_version": 1, "id": "segment_blast_charge", "display_text": "실제로 놓은 것" },
+        { "schema_version": 1, "id": "segment_blast_tool", "display_text": "실행에 쓰인 장비 자국" },
+        { "schema_version": 1, "id": "segment_blast_time", "display_text": "실행 시각" },
+        { "schema_version": 1, "id": "segment_blast_collapse", "display_text": "가장 커진 결과" },
+        { "schema_version": 1, "id": "segment_blast_position", "display_text": "피해자 위치가 말하는 것" },
+        { "schema_version": 1, "id": "segment_blast_record", "display_text": "당일 발파기록에 남은 것" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_strata_restore",
+      "kind": "state_board",
+      "title": "중간문제 — 한 번의 층위 복원",
+      "accepted_entity_kinds": ["specimen", "state", "action"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_strata_top", "segment_id": "segment_strata_top", "accepted_kinds": ["specimen"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_strata_middle", "segment_id": "segment_strata_middle", "accepted_kinds": ["specimen"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_strata_bottom", "segment_id": "segment_strata_bottom", "accepted_kinds": ["specimen"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_strata_work", "segment_id": "segment_strata_work", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_strata_texture", "segment_id": "segment_strata_texture", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_strata_order", "segment_id": "segment_strata_order", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_strata_reuse", "segment_id": "segment_strata_reuse", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_strata_top", "display_text": "가장 위쪽" },
+        { "schema_version": 1, "id": "segment_strata_middle", "display_text": "가운데" },
+        { "schema_version": 1, "id": "segment_strata_bottom", "display_text": "가장 아래쪽" },
+        { "schema_version": 1, "id": "segment_strata_work", "display_text": "한 번에 정렬한 것" },
+        { "schema_version": 1, "id": "segment_strata_texture", "display_text": "맞춤 근거" },
+        { "schema_version": 1, "id": "segment_strata_order", "display_text": "상대 층위" },
+        { "schema_version": 1, "id": "segment_strata_reuse", "display_text": "복원 뒤 다시 읽은 자료" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_main_statement",
+      "kind": "statement",
+      "title": "메인문제 — [카렐 모크]는 금지된 [동쪽 벽]을 확인하려 [벤 아로]에게 비공식 작업을 맡겼고, 벤은 [03:30]에 작은 것 하나를 놓아 실행했다. 구멍 네 개는 사람이 아니라 벽 뒤를 향했고, 결과는 [예상 밖의 천장붕괴]였다. [폭파직선 밖의 위치]이므로 피해자를 겨냥한 계획은 아니다. 뒤섞인 상자를 맞추면 [적갈층 아래 검은층, 그 위 회백층] 순서가 확정되며, [역사적 원인은 확정하지 않는다]는 범위를 넘지 않는다.",
+      "accepted_entity_kinds": ["person", "place", "time", "action", "state"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_main_instigator", "segment_id": "segment_main_instigator", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_forbidden", "segment_id": "segment_main_forbidden", "accepted_kinds": ["place"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_operator", "segment_id": "segment_main_operator", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_blast_time", "segment_id": "segment_main_blast_time", "accepted_kinds": ["time"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_blast", "segment_id": "segment_main_blast", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_collapse", "segment_id": "segment_main_collapse", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_position", "segment_id": "segment_main_position", "accepted_kinds": ["action", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_strata", "segment_id": "segment_main_strata", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_limit", "segment_id": "segment_main_limit", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_main_instigator", "display_text": "비공식 작업을 지시한 사람" },
+        { "schema_version": 1, "id": "segment_main_forbidden", "display_text": "지시에 따라 확인하려던 대상" },
+        { "schema_version": 1, "id": "segment_main_operator", "display_text": "그 작업을 실행한 사람" },
+        { "schema_version": 1, "id": "segment_main_blast_time", "display_text": "실행 시각" },
+        { "schema_version": 1, "id": "segment_main_blast", "display_text": "실행한 것" },
+        { "schema_version": 1, "id": "segment_main_collapse", "display_text": "예상보다 커진 결과" },
+        { "schema_version": 1, "id": "segment_main_position", "display_text": "피해자 위치가 남기는 결론" },
+        { "schema_version": 1, "id": "segment_main_strata", "display_text": "복원 뒤 확정된 상대 층위" },
+        { "schema_version": 1, "id": "segment_main_limit", "display_text": "이 사건이 넘어가지 않는 범위" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": true,
+      "unlock_condition": null
+    }
+  ],
+  "solutions": [
+    {
+      "schema_version": 1,
+      "id": "solution_inter_blast_reconstruction",
+      "panel_id": "panel_inter_blast_reconstruction",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_blast_axis", "entity_id": "ent_action_vein_targeting" },
+        { "schema_version": 1, "slot_id": "slot_blast_marker", "entity_id": "ent_trace_company_triangle" },
+        { "schema_version": 1, "slot_id": "slot_blast_charge", "entity_id": "ent_action_small_charge" },
+        { "schema_version": 1, "slot_id": "slot_blast_tool", "entity_id": "ent_trace_det_cap" },
+        { "schema_version": 1, "slot_id": "slot_blast_time", "entity_id": "ent_time_0330" },
+        { "schema_version": 1, "slot_id": "slot_blast_collapse", "entity_id": "ent_action_ceiling_collapse" },
+        { "schema_version": 1, "slot_id": "slot_blast_position", "entity_id": "ent_action_not_targeted" },
+        { "schema_version": 1, "slot_id": "slot_blast_record", "entity_id": "ent_state_unapproved" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_blast_axis", "entity_id": "ent_decoy_natural_collapse" },
+        { "schema_version": 1, "slot_id": "slot_blast_marker", "entity_id": "ent_decoy_ben_personal_mark" },
+        { "schema_version": 1, "slot_id": "slot_blast_position", "entity_id": "ent_decoy_targeted_murder" },
+        { "schema_version": 1, "slot_id": "slot_blast_time", "entity_id": "ent_time_0642" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cave_ben_note", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cave_drill_grid", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cave_tool_case", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cave_rockfall_line", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cave_body_position", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cave_time_alignment", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cave_blast_log", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_strata_restore",
+      "panel_id": "panel_inter_strata_restore",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_strata_top", "entity_id": "ent_sample_box_gamma" },
+        { "schema_version": 1, "slot_id": "slot_strata_middle", "entity_id": "ent_sample_box_beta" },
+        { "schema_version": 1, "slot_id": "slot_strata_bottom", "entity_id": "ent_sample_box_alpha" },
+        { "schema_version": 1, "slot_id": "slot_strata_work", "entity_id": "ent_action_strata_restore" },
+        { "schema_version": 1, "slot_id": "slot_strata_texture", "entity_id": "ent_state_strata_texture_match" },
+        { "schema_version": 1, "slot_id": "slot_strata_order", "entity_id": "ent_state_strata_order" },
+        { "schema_version": 1, "slot_id": "slot_strata_reuse", "entity_id": "ent_action_layer_code_reuse" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_strata_top", "entity_id": "ent_sample_box_alpha" },
+        { "schema_version": 1, "slot_id": "slot_strata_middle", "entity_id": "ent_sample_box_gamma" },
+        { "schema_version": 1, "slot_id": "slot_strata_bottom", "entity_id": "ent_sample_box_beta" },
+        { "schema_version": 1, "slot_id": "slot_strata_reuse", "entity_id": "ent_decoy_equation" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_trench_upper_white", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_trench_middle_black", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_trench_lower_ochre", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_specimen_box_alpha", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_specimen_box_beta", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_specimen_box_gamma", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_specimen_field_guide", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_specimen_ria_sketch", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_van_ax7_summary", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_main_statement",
+      "panel_id": "panel_main_statement",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_instigator", "entity_id": "ent_person_karel" },
+        { "schema_version": 1, "slot_id": "slot_main_forbidden", "entity_id": "ent_site_east_wall" },
+        { "schema_version": 1, "slot_id": "slot_main_operator", "entity_id": "ent_person_ben" },
+        { "schema_version": 1, "slot_id": "slot_main_blast_time", "entity_id": "ent_time_0330" },
+        { "schema_version": 1, "slot_id": "slot_main_blast", "entity_id": "ent_action_small_charge" },
+        { "schema_version": 1, "slot_id": "slot_main_collapse", "entity_id": "ent_action_ceiling_collapse" },
+        { "schema_version": 1, "slot_id": "slot_main_position", "entity_id": "ent_action_not_targeted" },
+        { "schema_version": 1, "slot_id": "slot_main_strata", "entity_id": "ent_state_strata_order" },
+        { "schema_version": 1, "slot_id": "slot_main_limit", "entity_id": "ent_state_cause_open" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_instigator", "entity_id": "ent_person_ben" },
+        { "schema_version": 1, "slot_id": "slot_main_instigator", "entity_id": "ent_role_sponsor" },
+        { "schema_version": 1, "slot_id": "slot_main_operator", "entity_id": "ent_person_karel" },
+        { "schema_version": 1, "slot_id": "slot_main_collapse", "entity_id": "ent_decoy_natural_collapse" },
+        { "schema_version": 1, "slot_id": "slot_main_position", "entity_id": "ent_decoy_targeted_murder" },
+        { "schema_version": 1, "slot_id": "slot_main_blast_time", "entity_id": "ent_time_0642" },
+        { "schema_version": 1, "slot_id": "slot_main_limit", "entity_id": "ent_decoy_single_cause" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_camp_company_papers", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cave_time_alignment", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_trench_section_diagram", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_specimen_ria_sketch", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_van_ivo_ypothesis", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": "review_main"
+    }
+  ],
+  "hints": [
+    {
+      "schema_version": 1,
+      "id": "hint_east_wall_frame",
+      "title": "힌트 — 동쪽 벽 한 장면",
+      "body": "동굴 입구 화면에 네 가지를 한 번에 올려 보라. 같은 간격의 구멍 네 개, 점 두 개가 들어간 삼각표식이 찍힌 자료, 세 갈래 접점의 절연 조각, 그리고 그 방향 뒤로 이어지는 자연색 띠. 이 네 가지는 자연붕괴만으로 설명되지 않는 같은 장면을 만든다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_drill_grid",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_company_mark_pair",
+      "title": "힌트 — 같은 표식이 찍힌 세 곳",
+      "body": "카렐의 지도, 벤의 쪽지, 그리고 회사에 이미 쓰이고 있던 서류 여섯 장. 안쪽 점 두 개의 위치와 크기를 세 장에 걸쳐 비교해 보라. 한 사람의 사내 기호라면 세 문서에 함께 남을 수 없다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_company_triangle",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_axis_and_rockfall",
+      "title": "힌트 — 축과 균열을 같은 도면에",
+      "body": "트렌치 안쪽 단면도에 두 선을 겹쳐 보라. 구멍 네 개에서 시작한 선은 사람이 아니라 벽 안쪽의 띠를 지나고, 다른 선은 젖은 천장층을 타고 옆으로 꺾여 내려온다. 두 선이 만나지 않는다면 폭파목표와 피해자 위치는 같은 자리가 아니다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_rockfall_line",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_three_clocks",
+      "title": "힌트 — 붕괴 시각은 세 곳에서",
+      "body": "시각표의 붕괴 칸은 비어 있다. 깨진 시계의 끊긴 분침, 발전기 로그에서 부하가 0이 된 행, 필름의 마지막 컷을 한 줄로 맞춰 보라. 강풍 최고시각은 붕괴보다 뒤인지 앞에 있는지도 같이 보라.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_generator_log",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_box_texture",
+      "title": "힌트 — 상자 세 개의 무게중심",
+      "body": "이름표를 붙이지 말고 질감으로만 맞춰 보라. 주황 철분띠가 이어지는 곳, 검은 알갱이가 바닥을 덮고 뼈가 길게 눕혀진 곳, 흰 조개 사이에 가는 회색 줄기가 내려가는 곳. 세 곳 중 어디가 가장 위인지도 같은 기준으로 정한다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_sample_box_alpha",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    }
+  ],
+  "review": {
+    "schema_version": 1,
+    "id": "review_main",
+    "conclusion": "동쪽 벽의 구멍 네 개는 같은 간격으로 수평으로 들어가 벽 안쪽을 향했고, 같은 방향 뒤에 광맥으로 이어지는 띠가 있다. 03:30에 벤 아로가 작은 것 하나를 놓았고, 천공축과 낙석선이 같은 자리를 지나지 않으므로 결과는 예상보다 큰 천장붕괴였다. 붕괴 03:37은 강풍 최고시각 06:42보다 먼저이므로 폭풍 단독원인과는 어긋난다. 지시 근거는 회사에 이미 쓰이던 점 두 개의 삼각표식과 통상 일당 ×3의 추가 안전점검 대금에 있고, 실행자는 벤이다. 공식 발파기록에는 승인과 정식 서명이 없다. 에이라 펜은 폭파직선 밖의 낙석 아래에 있었으므로 직접 겨냥한 계획의 근거는 없다. 뒤섞인 상자를 맞추면 적갈층 아래 검은층, 그 위 회백층 순서가 확정되고 같은 층코드가 다른 자료에 재적용된다. 그러나 고에너지 경계와 비율 변화, 도상 분포 사이의 인과는 이 사건의 답이 아니며 확정하지 않는다.",
+    "referenced_case_ids": [],
+    "scene_path": ""
+  },
+  "next_case_ids": ["case_12_missing_axiom"]
+}

@@ -1,0 +1,298 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://modules/deduction_casework/presentation/case_screen.gd" id="1"]
+[ext_resource type="Script" path="res://modules/deduction_casework/presentation/contextual_drawer.gd" id="2"]
+[ext_resource type="Script" path="res://modules/deduction_casework/presentation/focusable_case_control.gd" id="3"]
+
+[node name="CaseScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="AuthoredWorld" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+clip_contents = true
+
+[node name="FoundationLayer" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FoundationPanel" type="PanelContainer" parent="FoundationLayer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 112)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="FoundationLayer/FoundationPanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="Rows" type="VBoxContainer" parent="FoundationLayer/FoundationPanel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="FoundationTitle" type="Label" parent="FoundationLayer/FoundationPanel/Margin/Rows"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+text = "FOUNDATION"
+
+[node name="FoundationBody" type="Label" parent="FoundationLayer/FoundationPanel/Margin/Rows"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+text = "AUTHORED CASE CONTENT IS NOT AVAILABLE."
+autowrap_mode = 3
+
+[node name="ContextualDrawer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_left = 0.04
+anchor_top = 0.64
+anchor_right = 0.96
+anchor_bottom = 0.98
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("2")
+
+[node name="Margin" type="MarginContainer" parent="ContextualDrawer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="Rows" type="VBoxContainer" parent="ContextualDrawer/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="ContextualDrawer/Margin/Rows"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="DrawerTitle" type="Label" parent="ContextualDrawer/Margin/Rows/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+text = "SOLVER"
+
+[node name="DrawerStatus" type="Label" parent="ContextualDrawer/Margin/Rows/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+text = "UNSOLVED"
+
+[node name="HeaderRule" type="HSeparator" parent="ContextualDrawer/Margin/Rows"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Columns" type="HBoxContainer" parent="ContextualDrawer/Margin/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="PhraseColumn" type="VBoxContainer" parent="ContextualDrawer/Margin/Rows/Columns"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="PhraseHeading" type="Label" parent="ContextualDrawer/Margin/Rows/Columns/PhraseColumn"]
+layout_mode = 2
+mouse_filter = 2
+text = "PHRASES"
+
+[node name="PhraseScroll" type="ScrollContainer" parent="ContextualDrawer/Margin/Rows/Columns/PhraseColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="PhraseList" type="VBoxContainer" parent="ContextualDrawer/Margin/Rows/Columns/PhraseColumn/PhraseScroll"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="ColumnRule" type="VSeparator" parent="ContextualDrawer/Margin/Rows/Columns"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SolverColumn" type="VBoxContainer" parent="ContextualDrawer/Margin/Rows/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="SolverHeading" type="Label" parent="ContextualDrawer/Margin/Rows/Columns/SolverColumn"]
+layout_mode = 2
+mouse_filter = 2
+text = "SOLVER SLOTS"
+
+[node name="SlotScroll" type="ScrollContainer" parent="ContextualDrawer/Margin/Rows/Columns/SolverColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SlotGrid" type="GridContainer" parent="ContextualDrawer/Margin/Rows/Columns/SolverColumn/SlotScroll"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="FooterRule" type="HSeparator" parent="ContextualDrawer/Margin/Rows"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Footer" type="HBoxContainer" parent="ContextualDrawer/Margin/Rows"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="SubmitButton" type="PanelContainer" parent="ContextualDrawer/Margin/Rows/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 44)
+layout_mode = 2
+script = ExtResource("3")
+intent = &"submit_panel"
+base_text = "SUBMIT"
+
+[node name="CloseButton" type="PanelContainer" parent="ContextualDrawer/Margin/Rows/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 44)
+layout_mode = 2
+script = ExtResource("3")
+intent = &"cancel"
+base_text = "CLOSE"
+
+[node name="DetailSurface" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.12
+anchor_top = 0.1
+anchor_right = 0.88
+anchor_bottom = 0.88
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="DetailSurface"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Rows" type="VBoxContainer" parent="DetailSurface/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="DetailKind" type="Label" parent="DetailSurface/Margin/Rows"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+text = "DETAIL"
+
+[node name="DetailTitle" type="Label" parent="DetailSurface/Margin/Rows"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+text = ""
+autowrap_mode = 3
+
+[node name="DetailRule" type="HSeparator" parent="DetailSurface/Margin/Rows"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="DetailBody" type="RichTextLabel" parent="DetailSurface/Margin/Rows"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+bbcode_enabled = false
+fit_content = false
+scroll_active = true
+selection_enabled = true
+
+[node name="DetailActions" type="VBoxContainer" parent="DetailSurface/Margin/Rows"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="DetailClose" type="PanelContainer" parent="DetailSurface/Margin/Rows"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 44)
+layout_mode = 2
+size_flags_horizontal = 8
+script = ExtResource("3")
+intent = &"cancel"
+base_text = "CLOSE"
+
+[node name="FeedbackSurface" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.0
+offset_top = 16.0
+offset_right = 260.0
+offset_bottom = 58.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="FeedbackSurface"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 6
+
+[node name="FeedbackLabel" type="Label" parent="FeedbackSurface/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+text = ""
+horizontal_alignment = 1

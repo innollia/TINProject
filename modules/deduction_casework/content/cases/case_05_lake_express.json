@@ -1,0 +1,682 @@
+{
+  "schema_version": 1,
+  "id": "case_05_lake_express",
+  "title": "05 6호 침대차의 잘못 든 가방 — 라크 익스프레스",
+  "start_scene_id": "scene_cabin_four",
+  "scenes": [
+    {
+      "schema_version": 1,
+      "id": "scene_cabin_four",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_cabin4_body",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_cabin4_body", "focus_id": "msg_cabin4_body" },
+        { "schema_version": 1, "id": "hotspot_cabin4_bedding", "focus_id": "msg_cabin4_bedding" },
+        { "schema_version": 1, "id": "hotspot_cabin4_bag_dented", "focus_id": "msg_cabin4_bag_dented" },
+        { "schema_version": 1, "id": "hotspot_cabin4_bag_blue", "focus_id": "msg_cabin4_bag_blue" },
+        { "schema_version": 1, "id": "hotspot_cabin4_bag_blue_notes", "focus_id": "msg_cabin4_bag_blue_notes" },
+        { "schema_version": 1, "id": "hotspot_cabin4_bag_blue_gap", "focus_id": "msg_cabin4_bag_blue_gap" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_cabin4_to_platform",
+          "destination_scene_id": "scene_platform",
+          "focus_id": "hotspot_platform_manifest"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_cabin4_to_five",
+          "destination_scene_id": "scene_cabin_five",
+          "focus_id": "hotspot_cabin5_bags"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_cabin4_to_dining",
+          "destination_scene_id": "scene_dining",
+          "focus_id": "hotspot_dining_dor_note"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_cabin4_to_washroom",
+          "destination_scene_id": "scene_washroom",
+          "focus_id": "hotspot_wash_ampoule"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_platform",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_platform_manifest",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_platform_manifest", "focus_id": "msg_platform_manifest" },
+        { "schema_version": 1, "id": "hotspot_platform_tickets", "focus_id": "msg_platform_tickets" },
+        { "schema_version": 1, "id": "hotspot_platform_attendant", "focus_id": "msg_platform_attendant" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_platform_to_cabin4",
+          "destination_scene_id": "scene_cabin_four",
+          "focus_id": "hotspot_cabin4_body"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_cabin_five",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_cabin5_bags",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_cabin5_bags", "focus_id": "msg_cabin5_bags" },
+        { "schema_version": 1, "id": "hotspot_cabin5_regulation", "focus_id": "msg_cabin5_regulation" },
+        { "schema_version": 1, "id": "hotspot_cabin5_toxin_note", "focus_id": "msg_cabin5_toxin_note" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_five_to_cabin4",
+          "destination_scene_id": "scene_cabin_four",
+          "focus_id": "hotspot_cabin4_body"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_dining",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_dining_dor_note",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_dining_dor_note", "focus_id": "msg_dining_dor_note" },
+        { "schema_version": 1, "id": "hotspot_dining_napkin", "focus_id": "msg_dining_napkin" },
+        { "schema_version": 1, "id": "hotspot_dining_ledger", "focus_id": "msg_dining_ledger" },
+        { "schema_version": 1, "id": "hotspot_dining_receipts", "focus_id": "msg_dining_receipts" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_dining_to_cabin4",
+          "destination_scene_id": "scene_cabin_four",
+          "focus_id": "hotspot_cabin4_body"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_washroom",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_wash_ampoule",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_wash_ampoule", "focus_id": "msg_wash_ampoule" },
+        { "schema_version": 1, "id": "hotspot_wash_dor_kit", "focus_id": "msg_wash_dor_kit" },
+        { "schema_version": 1, "id": "hotspot_wash_tape", "focus_id": "msg_wash_tape" },
+        { "schema_version": 1, "id": "hotspot_wash_tag", "focus_id": "msg_wash_tag" },
+        { "schema_version": 1, "id": "hotspot_wash_pillbox", "focus_id": "msg_wash_pillbox" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_washroom_to_cabin4",
+          "destination_scene_id": "scene_cabin_four",
+          "focus_id": "hotspot_cabin4_body"
+        }
+      ]
+    }
+  ],
+  "closeups": [],
+  "entities": [
+    { "schema_version": 1, "id": "ent_person_merec", "kind": "person", "display_text": "메렉 솔", "source_text_id": "msg_cabin4_body", "tags": ["victim"] },
+    { "schema_version": 1, "id": "ent_person_sara", "kind": "person", "display_text": "세라 퀼", "source_text_id": "msg_platform_tickets", "tags": ["absent_party"] },
+    { "schema_version": 1, "id": "ent_person_fel", "kind": "person", "display_text": "펠 도르", "source_text_id": "msg_dining_ledger", "tags": [] },
+    { "schema_version": 1, "id": "ent_person_bern", "kind": "person", "display_text": "베른 카스", "source_text_id": "msg_platform_tickets", "tags": ["alternative_actor"] },
+    { "schema_version": 1, "id": "ent_person_yuri", "kind": "person", "display_text": "유리 벤트", "source_text_id": "msg_cabin5_toxin_note", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_person_niko", "kind": "person", "display_text": "니코 렌", "source_text_id": "msg_platform_attendant", "tags": ["witness"] },
+    { "schema_version": 1, "id": "ent_role_rare_documents", "kind": "role", "display_text": "희귀문헌상", "source_text_id": "msg_platform_manifest", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_field_linguist", "kind": "role", "display_text": "현지언어학자", "source_text_id": "msg_platform_manifest", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_express_courier", "kind": "role", "display_text": "특송원", "source_text_id": "msg_cabin5_regulation", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_travel_doctor", "kind": "role", "display_text": "여행의사", "source_text_id": "msg_cabin5_toxin_note", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_cabin_attendant", "kind": "role", "display_text": "차내승무원", "source_text_id": "msg_platform_attendant", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_antiquities_dealer", "kind": "role", "display_text": "골동품중개인", "source_text_id": "msg_dining_ledger", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_berth_4b", "kind": "place", "display_text": "위침대 4B", "source_text_id": "msg_platform_manifest", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_berth_4a", "kind": "place", "display_text": "아래침대 4A", "source_text_id": "msg_platform_manifest", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_cabin_5", "kind": "place", "display_text": "5번 침실", "source_text_id": "msg_platform_manifest", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_cabin_4", "kind": "place", "display_text": "4번 침실", "source_text_id": "msg_cabin4_body", "tags": [] },
+    { "schema_version": 1, "id": "ent_bag_rough", "kind": "device", "display_text": "모서리가 찌그러진 갈색 가방", "source_text_id": "msg_cabin4_bag_dented", "tags": [] },
+    { "schema_version": 1, "id": "ent_bag_blue", "kind": "device", "display_text": "손잡이에 파란 실이 묶인 갈색 가방", "source_text_id": "msg_cabin4_bag_blue", "tags": [] },
+    { "schema_version": 1, "id": "ent_bag_sealed", "kind": "device", "display_text": "바닥에 붉은 밀랍이 붙은 갈색 가방", "source_text_id": "msg_cabin5_bags", "tags": [] },
+    { "schema_version": 1, "id": "ent_drug_sedative", "kind": "device", "display_text": "수면성 진정제", "source_text_id": "msg_cabin5_toxin_note", "tags": [] },
+    { "schema_version": 1, "id": "ent_drug_heart", "kind": "device", "display_text": "심장약", "source_text_id": "msg_wash_pillbox", "tags": [] },
+    { "schema_version": 1, "id": "ent_book_volume_1", "kind": "document", "display_text": "노트 I권", "source_text_id": "msg_cabin4_bag_blue_notes", "tags": [] },
+    { "schema_version": 1, "id": "ent_book_volume_2", "kind": "document", "display_text": "노트 II권", "source_text_id": "msg_cabin4_bag_blue_notes", "tags": [] },
+    { "schema_version": 1, "id": "ent_book_volume_3", "kind": "document", "display_text": "노트 III권", "source_text_id": "msg_cabin4_bag_blue_notes", "tags": [] },
+    { "schema_version": 1, "id": "ent_ledger", "kind": "document", "display_text": "메렉의 거래장부", "source_text_id": "msg_dining_ledger", "tags": [] },
+    { "schema_version": 1, "id": "ent_dor_note", "kind": "document", "display_text": "펠의 접힌 쪽지", "source_text_id": "msg_dining_dor_note", "tags": [] },
+    { "schema_version": 1, "id": "ent_tag_torn", "kind": "document", "display_text": "찢긴 수하물표", "source_text_id": "msg_wash_tag", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_injection", "kind": "trace", "display_text": "목 뒤 주사자국", "source_text_id": "msg_cabin4_body", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_no_goods", "kind": "trace", "display_text": "빈 서류봉투", "source_text_id": "msg_cabin4_bag_dented", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_broken_tie", "kind": "trace", "display_text": "끊어진 청색 고정끈", "source_text_id": "msg_cabin4_bag_blue_gap", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_blue_tape", "kind": "trace", "display_text": "청색 식물압착테이프 조각", "source_text_id": "msg_wash_tape", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_glove", "kind": "trace", "display_text": "회색 장갑 섬유", "source_text_id": "msg_wash_dor_kit", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_coat_thread", "kind": "trace", "display_text": "코트 깃의 갈색 실밥", "source_text_id": "msg_dining_receipts", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_bunk_marks", "kind": "state", "display_text": "사다리 아래 사용자 흔적 묶음", "source_text_id": "msg_cabin4_bedding", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_state_berth_mismatch", "kind": "state", "display_text": "원래 배정과 실제 취침배치가 다르다", "source_text_id": "msg_platform_attendant", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_missing_volume", "kind": "state", "display_text": "세 번째 권이 있던 자리가 비어 있다", "source_text_id": "msg_cabin4_bag_blue_gap", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_state_dose_normal", "kind": "state", "display_text": "앰플 눈금 그대로의 용량", "source_text_id": "msg_wash_ampoule", "tags": ["visual_only"] },
+    { "schema_version": 1, "id": "ent_state_berth_bag_marks", "kind": "state", "display_text": "자리와 가방표식만으로 지시되었다", "source_text_id": "msg_dining_dor_note", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_q3", "kind": "state", "display_text": "Q-3", "source_text_id": "msg_dining_ledger", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_cardiac_arrest", "kind": "state", "display_text": "심장마비 소견", "source_text_id": "msg_cabin5_toxin_note", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_rule_interaction", "kind": "state", "display_text": "두 약물 병용 시 호흡억제 위험", "source_text_id": "msg_cabin5_toxin_note", "tags": [] },
+    { "schema_version": 1, "id": "ent_rule_no_combo", "kind": "state", "display_text": "수면성 진정제와 병용 금지", "source_text_id": "msg_wash_pillbox", "tags": [] },
+    { "schema_version": 1, "id": "ent_decoy_overdose", "kind": "decoy", "display_text": "의도적 과량 주사", "source_text_id": "msg_wash_ampoule", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_robbery", "kind": "decoy", "display_text": "강도", "source_text_id": "msg_cabin4_bag_blue_gap", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_mail_theft", "kind": "decoy", "display_text": "우편물 탈취", "source_text_id": "msg_cabin5_bags", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_sara_died", "kind": "decoy", "display_text": "세라가 사망했다", "source_text_id": "msg_cabin4_bedding", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_merec_carried", "kind": "decoy", "display_text": "메렉이 이미 훔쳐 들고 있었다", "source_text_id": "msg_cabin4_bag_dented", "tags": ["decoy"] }
+  ],
+  "messages": [
+    {
+      "schema_version": 1,
+      "id": "msg_cabin4_body",
+      "title": "오브젝트 B1 — 위침대 4B의 시신",
+      "body": "관찰: 위침대 4B에 한 사람의 시신. 비싼 갈색 코트. 왼손 새끼손가락 금반지.\n관찰: 목 뒤에 작은 자국 1개. 주변 바닥에 물자국은 없다.\n관찰: 창문 밖 6호차 승강장에 증원이 와 있다. 격리 요청에 답은 없다.",
+      "source_refs": ["ent_person_merec", "ent_place_berth_4b", "ent_place_cabin_4", "ent_trace_injection", "ent_decoy_sara_died"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_merec", "ent_place_berth_4b", "ent_place_cabin_4", "ent_trace_injection", "ent_decoy_sara_died"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_main_statement" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cabin4_bedding",
+      "title": "비수집형 시각단서 — 4B 사다리 아래 / 4A 침대 밑",
+      "body": "관찰: 4B 사다리 아래에 큰 남성구두 한 켤레. 옆에 금색 새끼발가락 반지 보관함, 복용 직후라 병이 아직 닫힌 개인 약품 용기.\n관찰: 4A 아래침대 이불에 몸집이 작은 사람의 눌림. 침대 밑에 낮은 여성구두와 청색잉크 얼룩이 배인 양말.\n관찰: 두 묶음이 놓인 자리가 원래 배정표의 상·하단과 서로 반대다.",
+      "source_refs": ["ent_state_bunk_marks", "ent_state_berth_mismatch"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_bunk_marks", "ent_state_berth_mismatch"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_target_4b" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cabin4_bag_dented",
+      "title": "오브젝트 B3 — 가방 ①",
+      "body": "관찰: 갈색 가죽 가방. 한쪽 금속 모서리가 찌그러져 있다.\n관찰: 내부에 옷 몇 벌과 빈 서류봉투 하나. 금속 모서리 조각은 없다.\n비교: 메렉의 갈색 코트 주머니에서 나온 호텔 로비 사진. 같은 모서리 파손 그림이 보인다.",
+      "source_refs": ["ent_bag_rough", "ent_trace_no_goods", "ent_decoy_merec_carried"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_bag_rough", "ent_trace_no_goods", "ent_decoy_merec_carried"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cabin4_bag_blue",
+      "title": "오브젝트 B4 — 가방 ② 손잡이 파란 실",
+      "body": "관찰: 갈색 가방. 손잡이에 파란 실이 묶여 있다. 안쪽에 청색잉크 얼룩.\n비교: 세라의 산악마을 사진. 사진 속 손잡이에도 같은 파란 실과 같은 얼룩이 있다.",
+      "source_refs": ["ent_bag_blue", "ent_person_sara"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_bag_blue", "ent_person_sara"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cabin4_bag_blue_notes",
+      "title": "하위 B4-1 — 노트 차례",
+      "body": "관찰: 가방 안 노트 두 권. 표지 「I. 음운」, 「II. 식물명」.\n관찰: 두 권 사이에 「III. 현지 예문과 교정표」가 적힌 차례가 남아 있다. III권 자체는 없다.",
+      "source_refs": ["ent_person_sara", "ent_book_volume_1", "ent_book_volume_2", "ent_book_volume_3"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_sara", "ent_book_volume_1", "ent_book_volume_2", "ent_book_volume_3"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cabin4_bag_blue_gap",
+      "title": "비수집형 시각단서 — 가방 ② 안의 세 번째 자리",
+      "body": "관찰: 남은 두 권과 같은 폭의 눌린 자국 하나. 묶이던 청색 고정끈 한 가닥이 끊겨 있다.\n관찰: 고정끈 홈에서 청색 식물압착테이프를 뽑은 자국이 남아 있다.\n비교: 세라의 산악마을 사진. 사진 속 가방에는 세 권이 같은 고정끈에 세 겹으로 묶여 있다.",
+      "source_refs": ["ent_state_missing_volume", "ent_trace_broken_tie", "ent_trace_blue_tape", "ent_decoy_robbery"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_missing_volume", "ent_trace_broken_tie", "ent_trace_blue_tape", "ent_decoy_robbery"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_platform_manifest",
+      "title": "오브젝트 A3 — 취침배정표",
+      "body": "인쇄:\n4A 메렉 솔\n4B 세라 퀼\n5A 베른 카스\n5B 유리 벤트\n하단 필기: 「퀼 씨, 위칸 멀미. 솔 씨와 상의.」",
+      "source_refs": ["ent_person_merec", "ent_person_sara", "ent_person_bern", "ent_person_yuri", "ent_place_berth_4a", "ent_place_berth_4b", "ent_place_cabin_5", "ent_role_rare_documents", "ent_role_field_linguist", "ent_role_express_courier", "ent_role_travel_doctor"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_merec", "ent_person_sara", "ent_person_bern", "ent_person_yuri", "ent_place_berth_4a", "ent_place_berth_4b", "ent_place_cabin_5", "ent_role_rare_documents", "ent_role_field_linguist", "ent_role_express_courier", "ent_role_travel_doctor"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_platform_tickets",
+      "title": "오브젝트 A1 — 회수함의 승차권 묶음",
+      "body": "인쇄:\nM. SOL — CABIN 4\nS. QUILL — CABIN 4\nB. KASS — CABIN 5\nY. VENT — CABIN 5\n관찰: 승차권에는 객실 번호만 있다. 상·하침대 표시는 없다.",
+      "source_refs": ["ent_person_merec", "ent_person_sara", "ent_person_bern", "ent_person_yuri"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_merec", "ent_person_sara", "ent_person_bern", "ent_person_yuri"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_platform_attendant",
+      "title": "오브젝트 A2 — 니코 렌",
+      "body": "인용: 「배정은 했습니다. 저녁 뒤에 퀼 씨가 위칸이 힘들다고 해서 자리를 바꾸자고 했죠. 그 뒤 상태는 직접 못 봤습니다.」",
+      "source_refs": ["ent_person_niko", "ent_role_cabin_attendant", "ent_state_berth_mismatch"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_niko", "ent_role_cabin_attendant", "ent_state_berth_mismatch"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cabin5_bags",
+      "title": "오브젝트 C1 — 침대 아래 세 번째 가방",
+      "body": "관찰: 갈색 가방. 바닥에 붉은 밀랍 봉인.\n비교: 객차 벽에 붙은 특송원 제복 안내 그림. 제복주머니 밀랍의 문양과 같다.",
+      "source_refs": ["ent_bag_sealed", "ent_person_bern", "ent_decoy_mail_theft"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_bag_sealed", "ent_person_bern", "ent_decoy_mail_theft"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cabin5_regulation",
+      "title": "오브젝트 C2 — 철도우편 규정",
+      "body": "인쇄 조항: 「특송원 개인 운송가방 바닥에는 붉은 밀랍봉인을 부착한다. 개봉 시 재봉인하지 못한다.」",
+      "source_refs": ["ent_role_express_courier"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_role_express_courier"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_cabin5_toxin_note",
+      "title": "오브젝트 C3 — 유리 벤트의 검안 메모",
+      "body": "인용 메모:\n「목 뒤 주사자국 1개.\n수면성 진정제 성분 검출. 심장약 성분 동시 검출.\n두 약물 병용 시 호흡억제 위험.\n투여량은 앰플 잔량과 대조해 확인할 것.\n사망 시각 소견: 심장마비.」",
+      "source_refs": ["ent_person_yuri", "ent_role_travel_doctor", "ent_drug_sedative", "ent_drug_heart", "ent_rule_interaction", "ent_state_cardiac_arrest"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_yuri", "ent_role_travel_doctor", "ent_drug_sedative", "ent_drug_heart", "ent_rule_interaction", "ent_state_cardiac_arrest"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_death_mechanism" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dining_dor_note",
+      "title": "오브젝트 D3 — 펠의 접힌 쪽지",
+      "body": "필기: 「회색 객차 6호 / 4B / 파란 실 가방」\n하단 필기: 「Q-3. 상품상태 확인 후.」\n관찰: 세 표기 가운데 사람의 이름은 없다.",
+      "source_refs": ["ent_person_fel", "ent_dor_note", "ent_state_berth_bag_marks"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_fel", "ent_dor_note", "ent_state_berth_bag_marks"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dining_napkin",
+      "title": "오브젝트 D1 — 세라의 냅킨 메모",
+      "body": "필기: 「위에서는 멀미가 심합니다. 솔 씨가 괜찮다면 바꾸고 싶어요.」",
+      "source_refs": ["ent_person_sara", "ent_person_merec"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_sara", "ent_person_merec"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dining_ledger",
+      "title": "오브젝트 D2 — 메렉의 거래장부",
+      "body": "기입:\n4/27 — F. Dor\nQ-3 회수 시 2배\n상품상태 확인 후 현금",
+      "source_refs": ["ent_person_merec", "ent_person_fel", "ent_role_antiquities_dealer", "ent_ledger", "ent_state_q3"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_merec", "ent_person_fel", "ent_role_antiquities_dealer", "ent_ledger", "ent_state_q3"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_dining_receipts",
+      "title": "비수집형 시각단서 — 떨어진 두 좌석의 영수증",
+      "body": "관찰: 식당칸에서 서로 멀리 떨어진 두 자리에 같은 시각대 영수증 2장이 놓여 있다.\n관찰: 한 장 모서리에 갈색 코트 깃의 실밥이 붙어 있다.\n비교: 펠의 회색 장갑을 접어 둔 자리에 남은 갈색 실밥과 굵기가 같다.",
+      "source_refs": ["ent_person_merec", "ent_person_fel", "ent_trace_coat_thread"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_merec", "ent_person_fel", "ent_trace_coat_thread"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_wash_ampoule",
+      "title": "비수집형 시각단서 — 빈 진정제 앰플",
+      "body": "관찰: 성인 1회 1앰플 표기 진정제 앰플 하나가 비어 있다. 마개에 회색 장갑 섬유 한 올.\n관찰: 앰플에 남은 액체가 처음 용량 표시선까지 차 있다.\n비교: 유리 벤트 검안 메모의 혈중검사 그래프. 투여량 표시와 앰플 잔량이 어긋나지 않는다.",
+      "source_refs": ["ent_state_dose_normal", "ent_drug_sedative", "ent_decoy_overdose"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_state_dose_normal", "ent_drug_sedative", "ent_decoy_overdose"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_death_mechanism" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_wash_dor_kit",
+      "title": "오브젝트 E1 — 펠의 세면가방",
+      "body": "관찰: 회색 장갑을 안쪽에 넣은 작은 세면가방. 뚜껑 안쪽에 잘린 실꾸러미 한 묶음.\n관찰: 가방 옆에 6호차 객차도 한 장.",
+      "source_refs": ["ent_person_fel", "ent_trace_glove"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_fel", "ent_trace_glove"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_wash_tape",
+      "title": "하위 E1-2 — 청색 식물압착테이프",
+      "body": "관찰: 세면대 위 청색 식물압착테이프 조각. 한 면에 좁은 책등 자국과 접착제가 아직 붙어 있다.\n비교: 세라 노트 I권 표본을 떼어 낸 자국과 폭이 같다.",
+      "source_refs": ["ent_trace_blue_tape", "ent_state_missing_volume"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_trace_blue_tape", "ent_state_missing_volume"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_wash_tag",
+      "title": "오브젝트 E2 — 찢긴 수하물표",
+      "body": "관찰: 연결통로 쓰레기통에 버려진 수하물표. 「QUI—」 글자만 남는다.\n관찰: 찢긴 면 한쪽에 가죽 섬유가 붙어 있다.",
+      "source_refs": ["ent_person_sara", "ent_tag_torn"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_sara", "ent_tag_torn"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_wash_pillbox",
+      "title": "오브젝트 E3 — 개인 약통",
+      "body": "관찰: 갈색 코트 주머니의 금속 약통. 심장약 알약판이 들어 있다.\n관찰: 통 안쪽 겉면에 경고문: 「수면성 진정제와 병용 금지.」\n관찰: 최근 사용한 칸 두 개가 비어 있다.",
+      "source_refs": ["ent_person_merec", "ent_drug_heart", "ent_rule_no_combo"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_merec", "ent_drug_heart", "ent_rule_no_combo"] } }
+      ],
+      "detail_scene_id": ""
+    }
+  ],
+  "panels": [
+    {
+      "schema_version": 1,
+      "id": "panel_inter_target_4b",
+      "kind": "state_board",
+      "title": "중간문제 — 4B 표적복원",
+      "accepted_entity_kinds": ["person", "place", "device", "state", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_tgt_assigned", "segment_id": "segment_tgt_assigned", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_tgt_occupant", "segment_id": "segment_tgt_occupant", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_tgt_berth", "segment_id": "segment_tgt_berth", "accepted_kinds": ["place"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_tgt_bag", "segment_id": "segment_tgt_bag", "accepted_kinds": ["device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_tgt_basis", "segment_id": "segment_tgt_basis", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_tgt_assigned", "display_text": "원래 배정표가 4B에 둔 이름" },
+        { "schema_version": 1, "id": "segment_tgt_occupant", "display_text": "4B에 실제로 누가 있었나" },
+        { "schema_version": 1, "id": "segment_tgt_berth", "display_text": "지시가 가리킨 자리표식" },
+        { "schema_version": 1, "id": "segment_tgt_bag", "display_text": "지시가 가리킨 가방표식" },
+        { "schema_version": 1, "id": "segment_tgt_basis", "display_text": "지시가 무엇을 근거로 있었나" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_death_mechanism",
+      "kind": "state_board",
+      "title": "중간문제 — 사망기전",
+      "accepted_entity_kinds": ["device", "state", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_cause_injected", "segment_id": "segment_cause_injected", "accepted_kinds": ["device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_cause_carrying", "segment_id": "segment_cause_carrying", "accepted_kinds": ["device"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_cause_rule", "segment_id": "segment_cause_rule", "accepted_kinds": ["state", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_cause_volume", "segment_id": "segment_cause_volume", "accepted_kinds": ["state", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_cause_injected", "display_text": "주입된 물질" },
+        { "schema_version": 1, "id": "segment_cause_carrying", "display_text": "같은 시각 몸에 있던 약물" },
+        { "schema_version": 1, "id": "segment_cause_rule", "display_text": "의사가 적은 위험 규칙" },
+        { "schema_version": 1, "id": "segment_cause_volume", "display_text": "앰플에 남은 용량" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_main_statement",
+      "kind": "statement",
+      "title": "메인문제 — [의뢰한 사람]은 [지시를 받고 움직인 사람]에게 [지시받은 대상]을 [사용한 약물]로 재우고 노트 III권을 가져오라고 했다. [지시를 받고 움직인 사람]은 원래 배정표가 가리키던 [오판의 근거가 된 자리표식]만 보고 그 위의 사람이 [지시받은 대상]이라고 오인해 앰플 눈금 그대로의 용량을 주사했다. 그 사람은 [같은 시각 몸에 있던 약물]을 복용한 상태였고, 두 약물 병용 금지 규칙으로 죽었다. [지시를 받고 움직인 사람]은 혼란 속에서 노트 III권을 실제로 가져갔다.",
+      "accepted_entity_kinds": ["person", "place", "device", "document", "trace", "state", "decoy"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_main_client", "segment_id": "segment_main_client", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_executor", "segment_id": "segment_main_executor", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_marked", "segment_id": "segment_main_marked", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_drug", "segment_id": "segment_main_drug", "accepted_kinds": ["device", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_berth", "segment_id": "segment_main_berth", "accepted_kinds": ["place", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_heart", "segment_id": "segment_main_heart", "accepted_kinds": ["device", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_taken", "segment_id": "segment_main_taken", "accepted_kinds": ["document", "trace", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_main_client", "display_text": "의뢰한 사람" },
+        { "schema_version": 1, "id": "segment_main_executor", "display_text": "지시를 받고 움직인 사람" },
+        { "schema_version": 1, "id": "segment_main_marked", "display_text": "지시받은 대상" },
+        { "schema_version": 1, "id": "segment_main_drug", "display_text": "사용한 약물" },
+        { "schema_version": 1, "id": "segment_main_berth", "display_text": "오판의 근거가 된 자리표식" },
+        { "schema_version": 1, "id": "segment_main_heart", "display_text": "같은 시각 몸에 있던 약물" },
+        { "schema_version": 1, "id": "segment_main_taken", "display_text": "반출된 물건" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": true,
+      "unlock_condition": null
+    }
+  ],
+  "solutions": [
+    {
+      "schema_version": 1,
+      "id": "solution_inter_target_4b",
+      "panel_id": "panel_inter_target_4b",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_tgt_assigned", "entity_id": "ent_person_sara" },
+        { "schema_version": 1, "slot_id": "slot_tgt_occupant", "entity_id": "ent_person_merec" },
+        { "schema_version": 1, "slot_id": "slot_tgt_berth", "entity_id": "ent_place_berth_4b" },
+        { "schema_version": 1, "slot_id": "slot_tgt_bag", "entity_id": "ent_bag_blue" },
+        { "schema_version": 1, "slot_id": "slot_tgt_basis", "entity_id": "ent_state_berth_bag_marks" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_tgt_assigned", "entity_id": "ent_person_merec" },
+        { "schema_version": 1, "slot_id": "slot_tgt_assigned", "entity_id": "ent_person_bern" },
+        { "schema_version": 1, "slot_id": "slot_tgt_assigned", "entity_id": "ent_person_yuri" },
+        { "schema_version": 1, "slot_id": "slot_tgt_occupant", "entity_id": "ent_person_sara" },
+        { "schema_version": 1, "slot_id": "slot_tgt_occupant", "entity_id": "ent_person_niko" },
+        { "schema_version": 1, "slot_id": "slot_tgt_occupant", "entity_id": "ent_person_fel" },
+        { "schema_version": 1, "slot_id": "slot_tgt_berth", "entity_id": "ent_place_berth_4a" },
+        { "schema_version": 1, "slot_id": "slot_tgt_berth", "entity_id": "ent_place_cabin_5" },
+        { "schema_version": 1, "slot_id": "slot_tgt_bag", "entity_id": "ent_bag_rough" },
+        { "schema_version": 1, "slot_id": "slot_tgt_bag", "entity_id": "ent_bag_sealed" },
+        { "schema_version": 1, "slot_id": "slot_tgt_basis", "entity_id": "ent_state_berth_mismatch" },
+        { "schema_version": 1, "slot_id": "slot_tgt_basis", "entity_id": "ent_state_q3" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cabin4_bedding", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dining_dor_note", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cabin4_bag_blue", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_death_mechanism",
+      "panel_id": "panel_inter_death_mechanism",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_cause_injected", "entity_id": "ent_drug_sedative" },
+        { "schema_version": 1, "slot_id": "slot_cause_carrying", "entity_id": "ent_drug_heart" },
+        { "schema_version": 1, "slot_id": "slot_cause_rule", "entity_id": "ent_rule_interaction" },
+        { "schema_version": 1, "slot_id": "slot_cause_volume", "entity_id": "ent_state_dose_normal" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_cause_injected", "entity_id": "ent_drug_heart" },
+        { "schema_version": 1, "slot_id": "slot_cause_injected", "entity_id": "ent_bag_sealed" },
+        { "schema_version": 1, "slot_id": "slot_cause_carrying", "entity_id": "ent_drug_sedative" },
+        { "schema_version": 1, "slot_id": "slot_cause_rule", "entity_id": "ent_state_cardiac_arrest" },
+        { "schema_version": 1, "slot_id": "slot_cause_rule", "entity_id": "ent_decoy_overdose" },
+        { "schema_version": 1, "slot_id": "slot_cause_volume", "entity_id": "ent_decoy_overdose" },
+        { "schema_version": 1, "slot_id": "slot_cause_volume", "entity_id": "ent_state_cardiac_arrest" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_wash_ampoule", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cabin5_toxin_note", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_wash_pillbox", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_main_statement",
+      "panel_id": "panel_main_statement",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_client", "entity_id": "ent_person_merec" },
+        { "schema_version": 1, "slot_id": "slot_main_executor", "entity_id": "ent_person_fel" },
+        { "schema_version": 1, "slot_id": "slot_main_marked", "entity_id": "ent_person_sara" },
+        { "schema_version": 1, "slot_id": "slot_main_drug", "entity_id": "ent_drug_sedative" },
+        { "schema_version": 1, "slot_id": "slot_main_berth", "entity_id": "ent_place_berth_4b" },
+        { "schema_version": 1, "slot_id": "slot_main_heart", "entity_id": "ent_drug_heart" },
+        { "schema_version": 1, "slot_id": "slot_main_taken", "entity_id": "ent_book_volume_3" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_client", "entity_id": "ent_person_fel" },
+        { "schema_version": 1, "slot_id": "slot_main_client", "entity_id": "ent_person_sara" },
+        { "schema_version": 1, "slot_id": "slot_main_client", "entity_id": "ent_person_bern" },
+        { "schema_version": 1, "slot_id": "slot_main_executor", "entity_id": "ent_person_niko" },
+        { "schema_version": 1, "slot_id": "slot_main_executor", "entity_id": "ent_person_yuri" },
+        { "schema_version": 1, "slot_id": "slot_main_executor", "entity_id": "ent_person_bern" },
+        { "schema_version": 1, "slot_id": "slot_main_marked", "entity_id": "ent_person_merec" },
+        { "schema_version": 1, "slot_id": "slot_main_marked", "entity_id": "ent_person_yuri" },
+        { "schema_version": 1, "slot_id": "slot_main_marked", "entity_id": "ent_person_bern" },
+        { "schema_version": 1, "slot_id": "slot_main_drug", "entity_id": "ent_drug_heart" },
+        { "schema_version": 1, "slot_id": "slot_main_drug", "entity_id": "ent_decoy_overdose" },
+        { "schema_version": 1, "slot_id": "slot_main_berth", "entity_id": "ent_state_berth_mismatch" },
+        { "schema_version": 1, "slot_id": "slot_main_berth", "entity_id": "ent_place_berth_4a" },
+        { "schema_version": 1, "slot_id": "slot_main_berth", "entity_id": "ent_place_cabin_5" },
+        { "schema_version": 1, "slot_id": "slot_main_heart", "entity_id": "ent_drug_sedative" },
+        { "schema_version": 1, "slot_id": "slot_main_heart", "entity_id": "ent_rule_no_combo" },
+        { "schema_version": 1, "slot_id": "slot_main_taken", "entity_id": "ent_book_volume_1" },
+        { "schema_version": 1, "slot_id": "slot_main_taken", "entity_id": "ent_book_volume_2" },
+        { "schema_version": 1, "slot_id": "slot_main_taken", "entity_id": "ent_ledger" },
+        { "schema_version": 1, "slot_id": "slot_main_taken", "entity_id": "ent_tag_torn" },
+        { "schema_version": 1, "slot_id": "slot_main_taken", "entity_id": "ent_decoy_robbery" },
+        { "schema_version": 1, "slot_id": "slot_main_taken", "entity_id": "ent_decoy_mail_theft" },
+        { "schema_version": 1, "slot_id": "slot_main_marked", "entity_id": "ent_decoy_sara_died" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cabin4_bedding", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_cabin4_bag_blue_gap", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_wash_ampoule", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dining_dor_note", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_dining_ledger", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": "review_main"
+    }
+  ],
+  "hints": [
+    {
+      "schema_version": 1,
+      "id": "hint_bunk_under_ladder",
+      "title": "힌트 — 4B 사다리 아래 물건 묶음",
+      "body": "4B 사다리 아래의 구두·금반지 보관함·병이 닫힌 약품 용기는 한 사람의 것들이 한 자리에 모여 있다. 그 반대편 4A 침대 밑 묶음과 원래 배정표를 나란히 놓고 위·아래가 어디에 대응하는지 세어 보라. 신발 하나만으론 결론이 나오지 않는다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_berth_mismatch",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_third_slot",
+      "title": "힌트 — 파란 실 가방의 세 번째 자리",
+      "body": "파란 실 가방을 열면 노트가 두 권뿐이지만 같은 폭의 눌린 자국, 끊어진 청색 고정끈, 테이프 찌꺼기가 함께 있다. 세라의 산악마을 사진 속 가방과 나란히 놓고, 사진에서는 몇 권이 같은 끈에 묶여 있었는지 세라. III권이라고 적힌 쪽과 실제로 자리가 비어 있는 쪽은 같은 말이 아니다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_bag_blue",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_ampoule_mark",
+      "title": "힌트 — 앰플 눈금과 병용 경고 두 개",
+      "body": "연결통로에서 발견된 앰플은 처음 용량 표시선까지 액체가 남아 있다. 유리 벤트의 검안 메모는 투여량 대신 앰플 잔량과 대조하라고만 적었다. 메렉의 약통 겉면에는 병용 금지 문구가 있다. 규칙, 몸에 있던 약물, 앰플 눈금을 따로 세지 말고 한 사건으로 놓아 보라.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_drug_sedative",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    }
+  ],
+  "review": {
+    "schema_version": 1,
+    "id": "review_main",
+    "conclusion": "원래 배정표상 4B는 세라 퀼의 자리였고, 실제로 4B를 쓰던 사람은 메렉 솔이었다. 펠 도르가 받은 지시는 4B·파란 실 가방·Q-3 세 표기였고 셋 다 사람의 이름이 아니었다. 메렉은 자기 거래장부에 4/27 펠 도르를 적어 세라를 진정제로 재우고 노트 III권을 가져오라고 의뢰했다. 펠은 앰플 눈금 그대로의 용량을 썼고, 메렉은 자기 약통에 적힌 대로 심장약을 복용한 상태였고 그 결과 두 약물 병용 금지 규칙으로 죽었다. 반출된 것은 노트 III권이다. 강도와 우편물 탈취는 Q-3 반출 경로가 없다는 것으로, 세라의 사망은 시신의 금반지와 4B 사다리 아래 사용자 흔적으로, 의도적 과량 주사는 앰플 잔량과 혈중검사 수치로, 승무원 개입은 펠의 쪽지 표식과 거래장부 서명으로 떨어진다.",
+    "referenced_case_ids": [],
+    "scene_path": ""
+  },
+  "next_case_ids": ["case_06_haywolsa"]
+}

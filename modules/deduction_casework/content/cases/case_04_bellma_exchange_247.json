@@ -1,0 +1,826 @@
+{
+  "schema_version": 1,
+  "id": "case_04_bellma_exchange_247",
+  "title": "04 247번은 누구에게 연결되었나 — 벨마 중앙교환국",
+  "start_scene_id": "scene_exchange_hall",
+  "scenes": [
+    {
+      "schema_version": 1,
+      "id": "scene_exchange_hall",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_hall_call_sheet",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_hall_call_sheet", "focus_id": "msg_hall_call_sheet" },
+        { "schema_version": 1, "id": "hotspot_hall_black_cord", "focus_id": "msg_hall_black_cord" },
+        { "schema_version": 1, "id": "hotspot_hall_assignment", "focus_id": "msg_hall_assignment" },
+        { "schema_version": 1, "id": "hotspot_hall_name_clues", "focus_id": "msg_hall_name_clues" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_hall_to_office",
+          "destination_scene_id": "scene_supervisor_office",
+          "focus_id": "hotspot_office_directory"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_hall_to_lounge",
+          "destination_scene_id": "scene_staff_lounge",
+          "focus_id": "hotspot_lounge_leda_letter"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_hall_to_test_room",
+          "destination_scene_id": "scene_line_test_room",
+          "focus_id": "hotspot_test_counter"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_supervisor_office",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_office_directory",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_office_directory", "focus_id": "msg_office_directory" },
+        { "schema_version": 1, "id": "hotspot_office_refusal_rule", "focus_id": "msg_office_refusal_rule" },
+        { "schema_version": 1, "id": "hotspot_office_acceptance_fax", "focus_id": "msg_office_acceptance_fax" },
+        { "schema_version": 1, "id": "hotspot_office_confirmation_form", "focus_id": "msg_office_confirmation_form" },
+        { "schema_version": 1, "id": "hotspot_office_audit_memo", "focus_id": "msg_office_audit_memo" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_office_to_hall",
+          "destination_scene_id": "scene_exchange_hall",
+          "focus_id": "hotspot_hall_call_sheet"
+        },
+        {
+          "schema_version": 1,
+          "id": "trans_office_to_gallery",
+          "destination_scene_id": "scene_cable_gallery",
+          "focus_id": "hotspot_gallery_rail_blue_paint"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_staff_lounge",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_lounge_leda_letter",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_lounge_leda_letter", "focus_id": "msg_lounge_leda_letter" },
+        { "schema_version": 1, "id": "hotspot_lounge_lease_end", "focus_id": "msg_lounge_lease_end" },
+        { "schema_version": 1, "id": "hotspot_lounge_tomas_slip", "focus_id": "msg_lounge_tomas_slip" },
+        { "schema_version": 1, "id": "hotspot_lounge_juna_break", "focus_id": "msg_lounge_juna_break" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_lounge_to_hall",
+          "destination_scene_id": "scene_exchange_hall",
+          "focus_id": "hotspot_hall_assignment"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_line_test_room",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_test_counter",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_test_counter", "focus_id": "msg_test_counter" },
+        { "schema_version": 1, "id": "hotspot_test_line_sheet", "focus_id": "msg_test_line_sheet" },
+        { "schema_version": 1, "id": "hotspot_test_yoren_note", "focus_id": "msg_test_yoren_note" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_test_to_hall",
+          "destination_scene_id": "scene_exchange_hall",
+          "focus_id": "hotspot_hall_black_cord"
+        }
+      ]
+    },
+    {
+      "schema_version": 1,
+      "id": "scene_cable_gallery",
+      "scene_path": "res://modules/deduction_casework/presentation/authored_case_scene.tscn",
+      "start_focus_id": "hotspot_gallery_hv_checklist",
+      "hotspots": [
+        { "schema_version": 1, "id": "hotspot_gallery_hv_checklist", "focus_id": "msg_gallery_hv_checklist" },
+        { "schema_version": 1, "id": "hotspot_gallery_fuse_box", "focus_id": "msg_gallery_fuse_box" },
+        { "schema_version": 1, "id": "hotspot_gallery_gloves_shoes", "focus_id": "msg_gallery_gloves_shoes" },
+        { "schema_version": 1, "id": "hotspot_gallery_rail_blue_paint", "focus_id": "msg_gallery_rail_blue_paint" }
+      ],
+      "transitions": [
+        {
+          "schema_version": 1,
+          "id": "trans_gallery_to_office",
+          "destination_scene_id": "scene_supervisor_office",
+          "focus_id": "hotspot_office_audit_memo"
+        }
+      ]
+    }
+  ],
+  "closeups": [],
+  "entities": [
+    { "schema_version": 1, "id": "ent_person_orin", "kind": "person", "display_text": "오린 벨", "source_text_id": "msg_office_audit_memo", "tags": ["victim"] },
+    { "schema_version": 1, "id": "ent_person_nella", "kind": "person", "display_text": "네라 홀트", "source_text_id": "msg_hall_assignment", "tags": ["operator_candidate"] },
+    { "schema_version": 1, "id": "ent_person_juna", "kind": "person", "display_text": "주나 렐", "source_text_id": "msg_hall_assignment", "tags": ["alibi"] },
+    { "schema_version": 1, "id": "ent_person_bram", "kind": "person", "display_text": "브람 케스", "source_text_id": "msg_gallery_hv_checklist", "tags": ["decoy_axis"] },
+    { "schema_version": 1, "id": "ent_person_tomas", "kind": "person", "display_text": "토마 렌", "source_text_id": "msg_lounge_tomas_slip", "tags": ["alibi"] },
+    { "schema_version": 1, "id": "ent_person_leda", "kind": "person", "display_text": "레다 홀트", "source_text_id": "msg_lounge_leda_letter", "tags": ["impersonator_candidate"] },
+    { "schema_version": 1, "id": "ent_person_yoren", "kind": "person", "display_text": "요렌 마크", "source_text_id": "msg_office_acceptance_fax", "tags": ["target"] },
+
+    { "schema_version": 1, "id": "ent_role_night_supervisor", "kind": "role", "display_text": "야간감독", "source_text_id": "msg_office_audit_memo", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_operator", "kind": "role", "display_text": "교환원", "source_text_id": "msg_hall_assignment", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_line_tech", "kind": "role", "display_text": "선로정비기사", "source_text_id": "msg_gallery_fuse_box", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_telegraph_clerk", "kind": "role", "display_text": "야간전보원", "source_text_id": "msg_lounge_tomas_slip", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_applicant", "kind": "role", "display_text": "최종합격자", "source_text_id": "msg_office_refusal_rule", "tags": [] },
+    { "schema_version": 1, "id": "ent_role_first_reserve", "kind": "role", "display_text": "예비 1순위", "source_text_id": "msg_office_acceptance_fax", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_number_247", "kind": "number", "display_text": "247", "source_text_id": "msg_hall_call_sheet", "tags": ["request"] },
+    { "schema_version": 1, "id": "ent_number_362", "kind": "number", "display_text": "362", "source_text_id": "msg_hall_black_cord", "tags": ["actual"] },
+    { "schema_version": 1, "id": "ent_number_104", "kind": "number", "display_text": "104", "source_text_id": "msg_hall_call_sheet", "tags": ["origin"] },
+    { "schema_version": 1, "id": "ent_number_118", "kind": "number", "display_text": "118", "source_text_id": "msg_hall_call_sheet", "tags": [] },
+    { "schema_version": 1, "id": "ent_number_171", "kind": "number", "display_text": "171", "source_text_id": "msg_hall_call_sheet", "tags": [] },
+    { "schema_version": 1, "id": "ent_number_17", "kind": "number", "display_text": "17", "source_text_id": "msg_office_acceptance_fax", "tags": ["confirmation_value"] },
+
+    { "schema_version": 1, "id": "ent_item_call_sheet", "kind": "item", "display_text": "23시 통화표", "source_text_id": "msg_hall_call_sheet", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_black_patch_cord", "kind": "item", "display_text": "정리되지 않은 검은 패치선", "source_text_id": "msg_hall_black_cord", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_assignment", "kind": "item", "display_text": "업무배정표", "source_text_id": "msg_hall_assignment", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_directory", "kind": "item", "display_text": "전화번호부", "source_text_id": "msg_office_directory", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_refusal_rule", "kind": "item", "display_text": "최종 연락지침", "source_text_id": "msg_office_refusal_rule", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_acceptance_fax", "kind": "item", "display_text": "공개 합격공고 팩스", "source_text_id": "msg_office_acceptance_fax", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_confirmation_form", "kind": "item", "display_text": "학술원 확인표", "source_text_id": "msg_office_confirmation_form", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_audit_memo", "kind": "item", "display_text": "붉은 감사메모", "source_text_id": "msg_office_audit_memo", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_leda_letter", "kind": "item", "display_text": "사물함 편지", "source_text_id": "msg_lounge_leda_letter", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_lease_end", "kind": "item", "display_text": "임대종료서·열쇠인수표", "source_text_id": "msg_lounge_lease_end", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_delivery_slip", "kind": "item", "display_text": "전보 배달서명", "source_text_id": "msg_lounge_tomas_slip", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_break_roster", "kind": "item", "display_text": "휴식표", "source_text_id": "msg_lounge_juna_break", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_jack_counter", "kind": "item", "display_text": "잭 사용카운터", "source_text_id": "msg_test_counter", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_line_test_sheet", "kind": "item", "display_text": "회선시험표", "source_text_id": "msg_test_line_sheet", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_yoren_note", "kind": "item", "display_text": "하숙집 메모", "source_text_id": "msg_test_yoren_note", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_hv_checklist", "kind": "item", "display_text": "고전압 점검표", "source_text_id": "msg_gallery_hv_checklist", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_fuse_box", "kind": "item", "display_text": "분전반", "source_text_id": "msg_gallery_fuse_box", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_safety_rule_card", "kind": "item", "display_text": "안전규정 카드", "source_text_id": "msg_gallery_fuse_box", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_gloves_shoes", "kind": "item", "display_text": "오린의 장갑·신발", "source_text_id": "msg_gallery_gloves_shoes", "tags": [] },
+    { "schema_version": 1, "id": "ent_item_railing", "kind": "item", "display_text": "케이블 갤러리 난간", "source_text_id": "msg_gallery_rail_blue_paint", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_place_exchange_hall", "kind": "place", "display_text": "교환홀", "source_text_id": "msg_hall_call_sheet", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_supervisor_office", "kind": "place", "display_text": "감독실", "source_text_id": "msg_office_directory", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_cable_gallery", "kind": "place", "display_text": "케이블 갤러리", "source_text_id": "msg_gallery_hv_checklist", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_line_test_room", "kind": "place", "display_text": "회선시험실", "source_text_id": "msg_test_counter", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_yoren_room", "kind": "place", "display_text": "요렌 마크 하숙집", "source_text_id": "msg_test_yoren_note", "tags": [] },
+    { "schema_version": 1, "id": "ent_place_old_reading_room", "kind": "place", "display_text": "구 라크 독서실", "source_text_id": "msg_lounge_lease_end", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_path_black_cord_route", "kind": "path", "display_text": "검은 패치선이 실제로 꽂힌 물리 경로", "source_text_id": "msg_hall_black_cord", "tags": [] },
+    { "schema_version": 1, "id": "ent_path_office_to_gallery", "kind": "path", "display_text": "감독실에서 케이블 갤러리로 이어지는 동선", "source_text_id": "msg_gallery_rail_blue_paint", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_state_request_differs", "kind": "state", "display_text": "요청번호와 실제 연결번호가 다름", "source_text_id": "msg_hall_black_cord", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_second_board_handled", "kind": "state", "display_text": "제2교환석에서 처리된 요청", "source_text_id": "msg_hall_assignment", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_pretest_2253", "kind": "state", "display_text": "사건 전 시험흔적", "source_text_id": "msg_test_line_sheet", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_pager_never_rang", "kind": "state", "display_text": "수신처 집에서 벨이 울리지 않음", "source_text_id": "msg_test_yoren_note", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_mismatch_noticed", "kind": "state", "display_text": "표는 맞는데 선이 다르다는 불일치", "source_text_id": "msg_office_audit_memo", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_fuses_intact", "kind": "state", "display_text": "모든 퓨즈가 정상 위치", "source_text_id": "msg_gallery_fuse_box", "tags": [] },
+    { "schema_version": 1, "id": "ent_state_no_arc_burn", "kind": "state", "display_text": "접촉면에 아크흔 없음", "source_text_id": "msg_gallery_gloves_shoes", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_action_request", "kind": "action", "display_text": "전화를 요청했다", "source_text_id": "msg_hall_call_sheet", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_connect", "kind": "action", "display_text": "다른 번호로 연결했다", "source_text_id": "msg_hall_black_cord", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_impersonate", "kind": "action", "display_text": "다른 사람인 척했다", "source_text_id": "msg_lounge_leda_letter", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_refuse", "kind": "action", "display_text": "참가 거절을 알렸다", "source_text_id": "msg_office_confirmation_form", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_retest", "kind": "action", "display_text": "재시험하려 했다", "source_text_id": "msg_office_audit_memo", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_struggle", "kind": "action", "display_text": "난간에서 몸싸움이 벌어졌다", "source_text_id": "msg_gallery_rail_blue_paint", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_fall", "kind": "action", "display_text": "난간을 넘어 떨어졌다", "source_text_id": "msg_gallery_rail_blue_paint", "tags": [] },
+    { "schema_version": 1, "id": "ent_action_disguise_electrocution", "kind": "action", "display_text": "감전사고로 위장했다", "source_text_id": "msg_gallery_hv_checklist", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_trace_rail_blue_paint", "kind": "trace", "display_text": "난간에 긁힌 파란 도료", "source_text_id": "msg_gallery_rail_blue_paint", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_shoe_heel_paint", "kind": "trace", "display_text": "신발 뒤꿈치의 사선 도료", "source_text_id": "msg_gallery_gloves_shoes", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_sleeve_fiber", "kind": "trace", "display_text": "난간에 남은 검은 섬유 한 올", "source_text_id": "msg_gallery_rail_blue_paint", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_counter_wear", "kind": "trace", "display_text": "사용카운터의 미세마모", "source_text_id": "msg_test_counter", "tags": [] },
+    { "schema_version": 1, "id": "ent_trace_cord_tag", "kind": "trace", "display_text": "패치선 금속태그", "source_text_id": "msg_hall_black_cord", "tags": [] },
+
+    { "schema_version": 1, "id": "ent_decoy_wiring_mistake", "kind": "decoy", "display_text": "배선 실수", "source_text_id": "msg_hall_black_cord", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_electrocution_real", "kind": "decoy", "display_text": "실제 감전사고", "source_text_id": "msg_gallery_fuse_box", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_yoren_received", "kind": "decoy", "display_text": "요렌이 실제로 받았다", "source_text_id": "msg_test_yoren_note", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_juna_operated", "kind": "decoy", "display_text": "다른 교환원이 조작했다", "source_text_id": "msg_hall_assignment", "tags": ["decoy"] },
+    { "schema_version": 1, "id": "ent_decoy_bram_operated", "kind": "decoy", "display_text": "정비기사가 목적지를 바꿨다", "source_text_id": "msg_gallery_hv_checklist", "tags": ["decoy"] }
+  ],
+  "messages": [
+    {
+      "schema_version": 1,
+      "id": "msg_hall_call_sheet",
+      "title": "오브젝트 A1 — 23시 통화표",
+      "body": "관찰 인쇄 네 줄: 23:07 118 → 104 / 23:14 외부중계 9 → 171 / 23:21 104 → 요청 247 / 23:35 경찰초소 → 118.\n관찰: 이 표에는 요청번호만 남는다. 실제로 어떤 잭에 꽂혔는지는 이 종이에 없다.",
+      "source_refs": ["ent_item_call_sheet", "ent_number_247", "ent_number_104", "ent_number_118", "ent_number_171", "ent_action_request", "ent_place_exchange_hall"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_call_sheet", "ent_number_247", "ent_number_104", "ent_number_118", "ent_number_171", "ent_action_request", "ent_place_exchange_hall"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_main_statement" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_hall_black_cord",
+      "title": "비수집형 시각단서 — 정리되지 않은 검은 선",
+      "body": "관찰: 23:21에 쓴 검은 선 하나가 정리걸이로 돌아가지 않은 채 아래쪽 잭으로 늘어져 있다. 다른 선 두 개 뒤로 지나간다.\n관찰: 선의 금속태그에 362가 적혀 있다. 태그의 362가 요청번호인지 실제 연결번호인지는 이 장면만으로 정해지지 않는다.\n관찰: 통화표의 104 출발선 위치에서 이 선을 눈으로 따라가 실제로 꽂힌 잭을 찾아야 한다.",
+      "source_refs": ["ent_item_black_patch_cord", "ent_number_362", "ent_trace_cord_tag", "ent_state_request_differs", "ent_action_connect", "ent_path_black_cord_route", "ent_decoy_wiring_mistake"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_number_104", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_black_patch_cord", "ent_number_362", "ent_trace_cord_tag", "ent_state_request_differs", "ent_action_connect", "ent_path_black_cord_route", "ent_decoy_wiring_mistake"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_line_247_path" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_hall_assignment",
+      "title": "오브젝트 A3 — 업무배정표",
+      "body": "관찰 인쇄: 200번대 지역회선과 외부중계 보조는 제2교환석 교환원 한 명. 긴급회선은 제1교환석 교환원 한 명.\n관찰: 23:21의 요청은 제2교환석에서 처리하도록 배정되어 있다.\n관찰: 두 교환석의 이름은 급료봉투와 사물함 표기에서 따로 확인한다.",
+      "source_refs": ["ent_item_assignment", "ent_person_nella", "ent_person_juna", "ent_role_operator", "ent_state_second_board_handled", "ent_decoy_juna_operated"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_assignment", "ent_person_nella", "ent_person_juna", "ent_role_operator", "ent_state_second_board_handled", "ent_decoy_juna_operated"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_hall_name_clues",
+      "title": "오브젝트 A4 — 두 교환석의 이름 근거",
+      "body": "관찰: 급료봉투 표기 N. HOLT 한 부. 같은 사물함 편지에는 '언니'라는 호칭이 있다.\n관찰: 사물함 표기 JUNA 한 부와 근무표의 다른 이니셜 J. RELL 한 줄.",
+      "source_refs": ["ent_person_nella", "ent_person_leda", "ent_person_juna"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_role_operator", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_leda"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_office_directory",
+      "title": "오브젝트 B1 — 전화번호부",
+      "body": "관찰 인쇄 다섯 줄: 104 북부학술원 / 118 벨마 병원 / 171 북서언어학회 편집실 / 247 지원자 하숙집 / 362 구 라크 독서실(폐업).\n관찰: 362 항목 옆에 '폐업'과 '회선 철거 예정'이 함께 적혀 있다.",
+      "source_refs": ["ent_item_directory", "ent_number_247", "ent_number_362", "ent_number_104", "ent_number_118", "ent_number_171", "ent_place_supervisor_office", "ent_place_old_reading_room"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_directory", "ent_place_supervisor_office", "ent_place_old_reading_room"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_office_refusal_rule",
+      "title": "오브젝트 B2 — 최종 연락지침",
+      "body": "관찰 인쇄: 최종합격자가 전화로 거절할 경우 성명 확인 / 공개 합격공고의 지원번호 끝 두 자리 확인 / 거절시각 기록 / 다음날 예비 1순위 연락.\n관찰: 지침 어디에도 음성 대조가 없다. 이 약한 확인 절차가 그대로 사칭의 틈이 된다.",
+      "source_refs": ["ent_item_refusal_rule", "ent_role_applicant", "ent_action_refuse"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_refusal_rule", "ent_role_applicant", "ent_action_refuse"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_office_acceptance_fax",
+      "title": "오브젝트 B3 — 공개 합격공고 팩스",
+      "body": "관찰 인쇄 1번: 최종합격자 한 명.\n관찰 인쇄 2번: 예비 1순위 한 명.\n관찰: 예비 쪽 지원번호의 끝 두 자리는 첫 번째 행의 끝 두 자리와 같다. 이 숫자는 공개 문서이므로 두 번째 행의 당사자에게도 합법적으로 알려져 있다.",
+      "source_refs": ["ent_item_acceptance_fax", "ent_person_yoren", "ent_person_leda", "ent_role_first_reserve", "ent_number_17"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_acceptance_fax", "ent_person_yoren", "ent_person_leda", "ent_role_first_reserve", "ent_number_17"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_office_confirmation_form",
+      "title": "오브젝트 B4 — 학술원 확인표",
+      "body": "관찰 기재: 23:21 / 247 요청 / 성명 일치 / 지원번호 끝 두 자리 일치 / 참가 거절.\n관찰: 담당자 비고 한 줄 — 수신자의 목소리는 알지 못한다.\n관찰: 이 표는 요청번호와 거절 사실만 고정한다. 누가 그 요청을 받았는지는 고정하지 않는다.",
+      "source_refs": ["ent_item_confirmation_form", "ent_number_247", "ent_number_17", "ent_state_request_differs"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_number_17", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_hall_black_cord", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_confirmation_form"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_office_audit_memo",
+      "title": "오브젝트 B5 — 감독의 붉은 메모",
+      "body": "관찰: 붉은 삼각형 표시가 남은 메모 한 장.\n기재: 104 → 247 ? / 표는 맞는데 선이 다름 / 재시험.\n관찰: 이 메모 한 장에 요청번호와 실제 연결번호와 조작자가 모두 적혀 있지는 않다.",
+      "source_refs": ["ent_person_orin", "ent_role_night_supervisor", "ent_item_audit_memo", "ent_state_mismatch_noticed", "ent_action_retest"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_state_request_differs", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_person_orin", "ent_role_night_supervisor", "ent_item_audit_memo", "ent_state_mismatch_noticed", "ent_action_retest"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_last_five_minutes" } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_lounge_leda_letter",
+      "title": "오브젝트 C1 — 사물함 편지",
+      "body": "인용: 「언니, 열쇠는 월요일에 반납하래. 오늘은 집에 있기 싫어서 밤늦게 옛 독서실에 있을 거야. 전화도 아직 끊기지 않았더라.」\n서명: 레다.\n관찰: 이 편지가 주는 것은 362에서 레다가 받을 수 있다는 조건뿐이다. 왜 그 번호로 전화했는지는 이 종이에 없다.",
+      "source_refs": ["ent_item_leda_letter", "ent_person_leda", "ent_action_impersonate", "ent_place_old_reading_room"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_leda_letter", "ent_action_impersonate"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_lounge_lease_end",
+      "title": "오브젝트 C2 — 임대종료서와 열쇠인수표",
+      "body": "관찰 인쇄: 구 라크 독서실 / 회선 철거 다음 주 / 마지막 관리보조 한 명 / 사건 당일 외부문 열쇠 미반납.\n관찰: 열쇠 인수표의 서명 칸이 비어 있다. 마지막 관리보조의 이름은 362 항목 옆 기록과 같은 사람으로 이어진다.",
+      "source_refs": ["ent_item_lease_end", "ent_person_leda", "ent_number_362", "ent_place_old_reading_room"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_item_leda_letter", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_lease_end"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_lounge_tomas_slip",
+      "title": "오브젝트 C3 — 전보 배달서명",
+      "body": "관찰: 23:20부터 23:40까지 교환국 밖 두 곳에서 전보 전달. 서명 하나씩.\n관찰: 이 시간대 전보원은 교환패치 권한이 없는 직책이다. 배달서명은 그 시간과 그 동선만 고정한다.",
+      "source_refs": ["ent_item_delivery_slip", "ent_person_tomas", "ent_role_telegraph_clerk"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_delivery_slip", "ent_person_tomas", "ent_role_telegraph_clerk"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_lounge_juna_break",
+      "title": "오브젝트 C4 — 휴게실 휴식표",
+      "body": "관찰: 23:19부터 23:27까지 한 명의 휴게실 사용 기록이 있다. 서명은 그 직책의 근무표와 같다.\n관찰: 이 표는 247 요청을 어느 좌석에서 처리했는지에 대한 확인을 보강할 뿐, 그 자체로 결론이 되지 않는다.",
+      "source_refs": ["ent_item_break_roster", "ent_person_juna"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_person_juna", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_break_roster"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_test_counter",
+      "title": "비수집형 시각단서 — 잭 사용카운터 배열",
+      "body": "관찰: 번호가 적힌 기계식 카운터들이 교환대의 잭과 같은 배열로 놓여 있다.\n관찰: 배열을 겹쳐 보면 요청번호 쪽 계기눈금은 그대로이고 다른 번호 쪽만 한 칸 올라 있다. 어느 번호가 늘었는지는 이 화면이 말하지 않는다.\n관찰: 늘어난 계기 주변에는 손으로 눌러 온 자국의 미세마모가 남아 있다.",
+      "source_refs": ["ent_item_jack_counter", "ent_trace_counter_wear", "ent_place_line_test_room"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_number_362", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_jack_counter", "ent_trace_counter_wear", "ent_place_line_test_room"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_test_line_sheet",
+      "title": "오브젝트 D2 — 회선시험표",
+      "body": "관찰 인쇄: 22:53, 제2교환석에서 한 번, 길이 4초. 정상 정비시험 목록에 없는 회선이다.\n관찰: 이 표만으로는 어느 좌석에서 누가 올렸는지 정해지지 않는다. 시험기 케이블이 어느 좌석으로 이어지는지를 함께 봐야 한다.\n관찰: '누군가 그 번호를 미리 울렸다'는 사실만 남는다.",
+      "source_refs": ["ent_item_line_test_sheet", "ent_state_pretest_2253"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_trace_counter_wear", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_line_test_sheet", "ent_state_pretest_2253"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_test_yoren_note",
+      "title": "오브젝트 D3 — 하숙집 쪽 메모",
+      "body": "관찰 기재: 오늘 23시까지 학술원 전화 기다림.\n관찰 집주인 진술: 그 시간에 전화벨은 한 번도 울리지 않았다.\n관찰: 두 문장을 붙이면 '요렌의 집에는 벨이 울리지 않았다'가 된다. 벨의 기록은 지금도 다른 곳에 남아 있을 수 있다는 뜻이지, 요렌이 받았다는 뜻이 아니다.",
+      "source_refs": ["ent_item_yoren_note", "ent_place_yoren_room", "ent_state_pager_never_rang", "ent_decoy_yoren_received"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_person_yoren", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_yoren_note", "ent_place_yoren_room", "ent_state_pager_never_rang", "ent_decoy_yoren_received"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_gallery_hv_checklist",
+      "title": "오브젝트 E1 — 고전압 점검표",
+      "body": "관찰: 시신 옆에 한 부가 놓여 있다. 점검 예정 시각은 00:30.\n관찰: 점검 예정 시각은 사망으로 기록된 시각보다 뒤다. 현장 작업의 근거가 될 수 없는 시각이다.\n관찰: 이 종이는 사건의 시각을 말해주지 않고, 한 사람의 마지막 행동으로 배치된 물건이라는 사실만 고정한다.",
+      "source_refs": ["ent_item_hv_checklist", "ent_person_bram", "ent_place_cable_gallery", "ent_action_disguise_electrocution", "ent_decoy_bram_operated"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_hv_checklist", "ent_person_bram", "ent_place_cable_gallery", "ent_action_disguise_electrocution", "ent_decoy_bram_operated"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_gallery_fuse_box",
+      "title": "오브젝트 E2 — 분전반",
+      "body": "관찰: 감시 퓨즈의 상태 표시가 모두 정상 위치에 있다. 어느 하나도 내려가 있지 않다.\n관찰: 옆의 안전규정 카드에는 고압 접촉이 일어나면 어떤 퓨즈가 반드시 떨어진다는 규칙만 적혀 있다. 규칙은 문서로, 상태는 이미지로만 본다.",
+      "source_refs": ["ent_item_fuse_box", "ent_item_safety_rule_card", "ent_role_line_tech", "ent_state_fuses_intact", "ent_decoy_electrocution_real"],
+      "prerequisite_condition": null,
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_fuse_box", "ent_item_safety_rule_card", "ent_role_line_tech", "ent_state_fuses_intact", "ent_decoy_electrocution_real"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_gallery_gloves_shoes",
+      "title": "오브젝트 E3 — 장갑과 신발",
+      "body": "관찰: 장갑과 신발 표면에 그을음이 없다. 장갑 손바닥에 아크흔도 없다.\n관찰: 신발 바깥쪽 뒤꿈치에 파란 도료가 사선으로 묻어 있다. 바닥이 아니라 바깥쪽 면에 묻었다.",
+      "source_refs": ["ent_item_gloves_shoes", "ent_state_no_arc_burn", "ent_trace_shoe_heel_paint"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_state_fuses_intact", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_gloves_shoes", "ent_state_no_arc_burn", "ent_trace_shoe_heel_paint"] } }
+      ],
+      "detail_scene_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "msg_gallery_rail_blue_paint",
+      "title": "비수집형 시각단서 — 난간과 섬유",
+      "body": "관찰: 난간에 파란 도료가 긁힌 높이와 방향이 남아 있다. 같은 파란색이 감독실 신발 뒤꿈치의 사선 흔적과 겉모습이 같다.\n관찰: 난간 반대편 면에 검은 섬유 한 올이 걸려 있다. 이 섬유가 누구의 옷인지는 이 화면에서 말하지 않는다.\n관찰: 교환홀에 서 있는 사람들의 소매단을 확대해 같은 사선직조와 뜯긴 한 올을 찾아야 한다.",
+      "source_refs": ["ent_item_railing", "ent_trace_rail_blue_paint", "ent_trace_sleeve_fiber", "ent_action_struggle", "ent_action_fall", "ent_path_office_to_gallery"],
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [
+          { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "ent_trace_shoe_heel_paint", "requires_resolved_message_id": "", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+        ],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "effects": [
+        { "schema_version": 1, "type": "discover_entity", "params": { "entity_ids": ["ent_item_railing", "ent_trace_rail_blue_paint", "ent_trace_sleeve_fiber", "ent_action_struggle", "ent_action_fall", "ent_path_office_to_gallery"] } },
+        { "schema_version": 1, "type": "reveal_panel", "params": { "panel_id": "panel_inter_last_five_minutes" } }
+      ],
+      "detail_scene_id": ""
+    }
+  ],
+  "panels": [
+    {
+      "schema_version": 1,
+      "id": "panel_inter_line_247_path",
+      "kind": "state_board",
+      "title": "중간문제 — 247 요청의 실제 경로",
+      "accepted_entity_kinds": ["number", "state", "person"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_line_request", "segment_id": "segment_line_request", "accepted_kinds": ["number"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_line_actual", "segment_id": "segment_line_actual", "accepted_kinds": ["number"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_line_seat", "segment_id": "segment_line_seat", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_line_tested", "segment_id": "segment_line_tested", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_line_caller", "segment_id": "segment_line_caller", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_line_voice", "segment_id": "segment_line_voice", "accepted_kinds": ["number"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_line_request", "display_text": "통화표에 남은 요청번호" },
+        { "schema_version": 1, "id": "segment_line_actual", "display_text": "실제로 꽂힌 연결번호" },
+        { "schema_version": 1, "id": "segment_line_seat", "display_text": "요청을 처리한 좌석" },
+        { "schema_version": 1, "id": "segment_line_tested", "display_text": "사건 전에 남은 시험흔적" },
+        { "schema_version": 1, "id": "segment_line_caller", "display_text": "요청을 넣은 쪽" },
+        { "schema_version": 1, "id": "segment_line_voice", "display_text": "본인확인에서 쓰인 확인값" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_inter_last_five_minutes",
+      "kind": "procedure_board",
+      "title": "중간문제 — 감독의 마지막 5분",
+      "accepted_entity_kinds": ["state", "place", "path", "trace", "action", "decoy", "item"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_last_motive", "segment_id": "segment_last_motive", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_last_path", "segment_id": "segment_last_path", "accepted_kinds": ["place", "path"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_last_contact", "segment_id": "segment_last_contact", "accepted_kinds": ["trace"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_last_cause", "segment_id": "segment_last_cause", "accepted_kinds": ["action", "decoy", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_last_disguise", "segment_id": "segment_last_disguise", "accepted_kinds": ["item", "action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_last_fuse", "segment_id": "segment_last_fuse", "accepted_kinds": ["state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_last_motive", "display_text": "재시험하려던 이유" },
+        { "schema_version": 1, "id": "segment_last_path", "display_text": "감독실 이후 도착한 곳" },
+        { "schema_version": 1, "id": "segment_last_contact", "display_text": "근접접촉을 남긴 흔적" },
+        { "schema_version": 1, "id": "segment_last_cause", "display_text": "사망의 형태" },
+        { "schema_version": 1, "id": "segment_last_disguise", "display_text": "위장에 쓰인 물건" },
+        { "schema_version": 1, "id": "segment_last_fuse", "display_text": "감전 여부를 가른 장치 상태" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": false,
+      "unlock_condition": null
+    },
+    {
+      "schema_version": 1,
+      "id": "panel_main_statement",
+      "kind": "statement",
+      "title": "메인문제 — 북부학술원의 [247] 요청은 [네라 홀트]에 의해 [362]로 연결되었다. [레다 홀트]는 [요렌 마크]인 척 참가를 거절했다. 이를 발견한 [오린 벨]이 재시험하려 하자 [난간에서 몸싸움]이 벌어져 오린이 [난간을 넘어 떨어졌고], 네라는 [고전압 점검표]로 감전사고처럼 위장했다.",
+      "accepted_entity_kinds": ["number", "person", "action", "state", "decoy", "item"],
+      "slots": [
+        { "schema_version": 1, "id": "slot_main_request_number", "segment_id": "segment_main_request_number", "accepted_kinds": ["number"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_operator", "segment_id": "segment_main_operator", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": true, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_connected_number", "segment_id": "segment_main_connected_number", "accepted_kinds": ["number"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_impersonator", "segment_id": "segment_main_impersonator", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_impersonated", "segment_id": "segment_main_impersonated", "accepted_kinds": ["person"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_refusal", "segment_id": "segment_main_refusal", "accepted_kinds": ["action", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_retest", "segment_id": "segment_main_retest", "accepted_kinds": ["action", "state"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_struggle", "segment_id": "segment_main_struggle", "accepted_kinds": ["action"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_death", "segment_id": "segment_main_death", "accepted_kinds": ["action", "decoy"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" },
+        { "schema_version": 1, "id": "slot_main_disguise", "segment_id": "segment_main_disguise", "accepted_kinds": ["action", "item"], "accepted_entity_ids": [], "persistent": false, "move_policy": "move" }
+      ],
+      "segments": [
+        { "schema_version": 1, "id": "segment_main_request_number", "display_text": "메인문 — 학술원이 건 요청번호" },
+        { "schema_version": 1, "id": "segment_main_operator", "display_text": "메인문 — 연결을 바꾼 교환원" },
+        { "schema_version": 1, "id": "segment_main_connected_number", "display_text": "메인문 — 실제로 꽂힌 연결번호" },
+        { "schema_version": 1, "id": "segment_main_impersonator", "display_text": "메인문 — 사칭한 사람" },
+        { "schema_version": 1, "id": "segment_main_impersonated", "display_text": "메인문 — 사칭된 대상" },
+        { "schema_version": 1, "id": "segment_main_refusal", "display_text": "메인문 — 전화로 한 행위" },
+        { "schema_version": 1, "id": "segment_main_retest", "display_text": "메인문 — 감사가 택한 행위" },
+        { "schema_version": 1, "id": "segment_main_struggle", "display_text": "메인문 — 감독실에서 벌어진 일" },
+        { "schema_version": 1, "id": "segment_main_death", "display_text": "메인문 — 사망의 형태" },
+        { "schema_version": 1, "id": "segment_main_disguise", "display_text": "메인문 — 위장에 쓰인 것" }
+      ],
+      "almost_threshold": 1,
+      "required_for_completion": true,
+      "unlock_condition": null
+    }
+  ],
+  "solutions": [
+    {
+      "schema_version": 1,
+      "id": "solution_inter_line_247_path",
+      "panel_id": "panel_inter_line_247_path",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_line_request", "entity_id": "ent_number_247" },
+        { "schema_version": 1, "slot_id": "slot_line_actual", "entity_id": "ent_number_362" },
+        { "schema_version": 1, "slot_id": "slot_line_seat", "entity_id": "ent_state_second_board_handled" },
+        { "schema_version": 1, "slot_id": "slot_line_tested", "entity_id": "ent_state_pretest_2253" },
+        { "schema_version": 1, "slot_id": "slot_line_caller", "entity_id": "ent_person_yoren" },
+        { "schema_version": 1, "slot_id": "slot_line_voice", "entity_id": "ent_number_17" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_line_actual", "entity_id": "ent_number_247" },
+        { "schema_version": 1, "slot_id": "slot_line_request", "entity_id": "ent_number_362" },
+        { "schema_version": 1, "slot_id": "slot_line_caller", "entity_id": "ent_person_leda" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_hall_call_sheet", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_hall_black_cord", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_test_counter", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_office_refusal_rule", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_inter_last_five_minutes",
+      "panel_id": "panel_inter_last_five_minutes",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_last_motive", "entity_id": "ent_state_mismatch_noticed" },
+        { "schema_version": 1, "slot_id": "slot_last_path", "entity_id": "ent_place_cable_gallery" },
+        { "schema_version": 1, "slot_id": "slot_last_contact", "entity_id": "ent_trace_sleeve_fiber" },
+        { "schema_version": 1, "slot_id": "slot_last_cause", "entity_id": "ent_action_fall" },
+        { "schema_version": 1, "slot_id": "slot_last_disguise", "entity_id": "ent_item_hv_checklist" },
+        { "schema_version": 1, "slot_id": "slot_last_fuse", "entity_id": "ent_state_fuses_intact" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_last_cause", "entity_id": "ent_decoy_electrocution_real" },
+        { "schema_version": 1, "slot_id": "slot_last_disguise", "entity_id": "ent_item_fuse_box" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_office_audit_memo", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_gallery_fuse_box", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_gallery_gloves_shoes", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": ""
+    },
+    {
+      "schema_version": 1,
+      "id": "solution_main_statement",
+      "panel_id": "panel_main_statement",
+      "required_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_request_number", "entity_id": "ent_number_247" },
+        { "schema_version": 1, "slot_id": "slot_main_operator", "entity_id": "ent_person_nella" },
+        { "schema_version": 1, "slot_id": "slot_main_connected_number", "entity_id": "ent_number_362" },
+        { "schema_version": 1, "slot_id": "slot_main_impersonator", "entity_id": "ent_person_leda" },
+        { "schema_version": 1, "slot_id": "slot_main_impersonated", "entity_id": "ent_person_yoren" },
+        { "schema_version": 1, "slot_id": "slot_main_refusal", "entity_id": "ent_action_refuse" },
+        { "schema_version": 1, "slot_id": "slot_main_retest", "entity_id": "ent_action_retest" },
+        { "schema_version": 1, "slot_id": "slot_main_struggle", "entity_id": "ent_action_struggle" },
+        { "schema_version": 1, "slot_id": "slot_main_death", "entity_id": "ent_action_fall" },
+        { "schema_version": 1, "slot_id": "slot_main_disguise", "entity_id": "ent_action_disguise_electrocution" }
+      ],
+      "forbidden_assignments": [
+        { "schema_version": 1, "slot_id": "slot_main_operator", "entity_id": "ent_person_juna" },
+        { "schema_version": 1, "slot_id": "slot_main_operator", "entity_id": "ent_person_bram" },
+        { "schema_version": 1, "slot_id": "slot_main_operator", "entity_id": "ent_person_orin" },
+        { "schema_version": 1, "slot_id": "slot_main_connected_number", "entity_id": "ent_number_247" },
+        { "schema_version": 1, "slot_id": "slot_main_connected_number", "entity_id": "ent_number_171" },
+        { "schema_version": 1, "slot_id": "slot_main_impersonator", "entity_id": "ent_person_yoren" },
+        { "schema_version": 1, "slot_id": "slot_main_impersonated", "entity_id": "ent_person_leda" },
+        { "schema_version": 1, "slot_id": "slot_main_death", "entity_id": "ent_decoy_electrocution_real" },
+        { "schema_version": 1, "slot_id": "slot_main_disguise", "entity_id": "ent_item_hv_checklist" }
+      ],
+      "all_of_conditions": [
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_hall_assignment", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_lounge_lease_end", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_test_yoren_note", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" },
+        { "schema_version": 1, "all_of": [], "any_of": [], "not": null, "requires_discovered_entity_id": "", "requires_resolved_message_id": "msg_gallery_rail_blue_paint", "requires_solved_case_id": "", "requires_assignment_id": "", "requires_assignment_entity_id": "" }
+      ],
+      "completion_review_id": "review_main"
+    }
+  ],
+  "hints": [
+    {
+      "schema_version": 1,
+      "id": "hint_uncorded_black_line",
+      "title": "힌트 — 정리되지 않은 검은 선",
+      "body": "통화표의 104 출발선에서 362 잭까지 이 선을 눈으로 따라가라. 이 한 화면이 실제 연결번호, 어느 좌석에서 처리됐는지, 감독 메모의 '표는 맞는데 선이 다름'이라는 말의 정체, 그리고 247 집에서 벨이 울리지 않은 이유를 한 번에 설명한다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_request_differs",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_2253_test_trace",
+      "title": "힌트 — 사건 전 4초의 시험흔적",
+      "body": "늘어난 계기눈금의 미세마모, 시험기 케이블이 이어지는 좌석, 그 좌석의 교대시간을 한 장면에 놓아라. 이 조합은 그 번호가 사건 전에 의도적으로 울렸음을 만든다. '누가 시험했다'는 문장을 읽지 않아도 조작자가 좁혀진다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_state_pretest_2253",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    },
+    {
+      "schema_version": 1,
+      "id": "hint_rail_blue_paint",
+      "title": "힌트 — 난간의 파란 도료",
+      "body": "신발 뒤꿈치의 사선 도료, 난간 긁힘의 높이와 방향, 그리고 소매에서 뜯긴 한 올이 같은 접촉 지점에 모인다. 감전이 아니라 물리적으로 난간을 넘은 사고이며, 감독과 다른 사람이 근접접촉했다는 것도 함께 움직인다. 고전압 점검표의 의미가 뒤집힌다.",
+      "prerequisite_condition": {
+        "schema_version": 1,
+        "all_of": [],
+        "any_of": [],
+        "not": null,
+        "requires_discovered_entity_id": "ent_trace_rail_blue_paint",
+        "requires_resolved_message_id": "",
+        "requires_solved_case_id": "",
+        "requires_assignment_id": "",
+        "requires_assignment_entity_id": ""
+      },
+      "one_shot": true
+    }
+  ],
+  "review": {
+    "schema_version": 1,
+    "id": "review_main",
+    "conclusion": "통화표는 요청번호만 남긴다. 23:21의 104 출발선은 실제로는 362 잭에 꽂혔고, 그 선은 제2교환석에서 처리된 것으로 남았다. 22:53의 4초 시험은 그 번호가 사건 전에 의도적으로 울렸음을 보여 준다. 본인은 전화가 오지 않았다고 했고, 제2교환석 교환원 자매의 편지와 열쇠 인수표는 362에서 받을 수 있는 조건을 만든다. 감독은 불일치를 알아챈 뒤 재시험을 택했고, 그 직후 난간 도료와 신발 흔적, 소매 섬유가 같은 접촉 지점에 모였다. 퓨즈가 모두 정상이고 접촉면에 아크흔이 없다는 것은 감전이 아니었음을 가리킨다. 위장에 쓰인 것은 예정 시각이 사망 시각보다 뒤인 고전압 점검표였다.",
+    "referenced_case_ids": [],
+    "scene_path": ""
+  },
+  "next_case_ids": ["case_05_lake_express"]
+}

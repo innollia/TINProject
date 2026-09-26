@@ -1,0 +1,118 @@
+{
+    "schema_version":  1,
+    "id":  "conv_r1_wrong_return_hearing",
+    "display_name":  "Wrong Return Hearing",
+    "region_id":  "region_r1_returning_kiln",
+    "speaker_npc_id":  "npc_05_nera_voss",
+    "entry_condition":  {
+
+                        },
+    "priority":  10,
+    "pages":  [
+                  {
+                      "page_id":  "pg_door",
+                      "speaker":  "npc",
+                      "presentation_class":  "neutral",
+                      "text":  "The door returned the body. It never returned the role.",
+                      "advance":  "auto"
+                  },
+                  {
+                      "page_id":  "pg_log",
+                      "speaker":  "world",
+                      "presentation_class":  "narration",
+                      "text":  "Three furnace logs hold three different names for one arrival.",
+                      "advance":  "wait"
+                  }
+              ],
+    "choices":  [
+                    {
+                        "choice_id":  "ch_keep_the_record",
+                        "text":  "Keep the contradictory line in the ledger.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "bureaucratic"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "unavailable_reason":  "",
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_wrong_return_witnessed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_erase_the_record",
+                        "text":  "Have the line removed before the hearing ends.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "evasive"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "unavailable_reason":  "",
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_wrong_return_witnessed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_carry_the_claimant",
+                        "text":  "Carry the claimant out through the warm door.",
+                        "semantic_tags":  [
+                                              "protective",
+                                              "costly"
+                                          ],
+                        "presentation_class":  "neutral",
+                        "availability":  {
+
+                                         },
+                        "unavailable_reason":  "",
+                        "irreversibility":  "delayed_only",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_wrong_return_witnessed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    },
+                    {
+                        "choice_id":  "ch_keep_the_door",
+                        "text":  "Leave the door closed and the claimant inside it.",
+                        "semantic_tags":  [
+                                              "destructive",
+                                              "bureaucratic"
+                                          ],
+                        "presentation_class":  "extreme",
+                        "availability":  {
+
+                                         },
+                        "unavailable_reason":  "",
+                        "irreversibility":  "irreversible",
+                        "return_focus":  "field",
+                        "immediate_effect_id":  "eff_r1_wrong_return_witnessed",
+                        "one_shot":  true,
+                        "hint_surface":  "none"
+                    }
+                ],
+    "on_complete":  {
+                        "effect_ids":  [
+                                           "eff_r1_wrong_return_witnessed"
+                                       ]
+                    },
+    "on_abort":  {
+                     "effect_ids":  [
+
+                                    ]
+                 },
+    "revisit":  "state_dependent",
+    "alt_conversation_ids":  [
+                                 "conv_r8_course_index_desk"
+                             ],
+    "seed_ids":  [
+                     "seed_s001"
+                 ]
+}

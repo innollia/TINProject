@@ -1,0 +1,99 @@
+{
+    "schema_version":  1,
+    "id":  "enemy_fold_wall",
+    "display_name":  "Fold That Refuses The Hand",
+    "role":  {
+                 "base_region_id":  "region_r8_folding_school",
+                 "region_role":  "magic_training_craft_labor",
+                 "institution_id":  "institution_mag_academy",
+                 "role_tags":  [
+                                   "instrument",
+                                   "grader"
+                               ]
+             },
+    "body":  {
+                 "body_class":  "architectural",
+                 "silhouette_key":  "sil_fold_wall",
+                 "scale_class":  "large",
+                 "stateful_body":  "none",
+                 "motion_signature":  "fold_verdict"
+             },
+    "stats":  {
+                  "max_hp":  140,
+                  "agility":  7,
+                  "action_slots":  1,
+                  "resource_pool":  {
+                                        "mp":  10,
+                                        "equipment_charge":  0
+                                    }
+              },
+    "condition_bar":  {
+                          "kind":  "condition_progress",
+                          "max_value":  100,
+                          "start_value":  0,
+                          "advance_on":  [
+                                             "hp_damage_taken",
+                                             "window_elapsed"
+                                         ],
+                          "advance_per_source":  15,
+                          "decrease_on_phase_enter":  0
+                      },
+    "baseline_action_ids":  [
+                                "act_fold_wall_measure"
+                            ],
+    "signature_action_id":  "act_fold_wall_verdict",
+    "telegraph":  {
+                      "signature_tell_key":  "tell_fold_wall_verdict",
+                      "channels":  [
+                                       "pose",
+                                       "numeric_bar"
+                                   ]
+                  },
+    "status_profile":  {
+                           "innate_status_ids":  [
+
+                                                 ],
+                           "resistant_status_ids":  [
+                                                        "st_concentration_load"
+                                                    ],
+                           "immune_status_ids":  [
+
+                                                 ]
+                       },
+    "break_profile":  {
+                          "breakable":  true,
+                          "break_source_action_ids":  [
+                                                          "act_break_poise"
+                                                      ],
+                          "on_break_status_ids":  [
+                                                      "st_concentration_load"
+                                                  ],
+                          "on_break_effect_ids":  [
+                                                      "eff_r8_ash_choir_defeated"
+                                                  ]
+                      },
+    "reward":  {
+                   "equipment_ids":  [
+                                         "equipment_kiln_ledger_seal"
+                                     ],
+                   "item_ids":  [
+                                    "item_blank_return_form"
+                                ],
+                   "resource_delta":  {
+                                          "mp":  1
+                                      }
+               },
+    "aftermath":  {
+                      "effect_ids":  [
+                                         "eff_r8_ash_choir_defeated"
+                                     ],
+                      "region_state_tag":  "r1_cleared"
+                  },
+    "lore_ref":  "seed_s001",
+    "seed_ids":  [
+                     "seed_s001"
+                 ],
+    "phase_ids":  [
+                      "phase_fold_wall_second_hearing"
+                  ]
+}

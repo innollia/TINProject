@@ -3,7 +3,7 @@ extends GutTest
 const SUFFIXES: Array[String] = ["left", "right", "up", "down", "confirm", "cancel"]
 const RULE_SUFFIXES: Array[String] = [
 	"left", "right", "up", "down", "confirm", "cancel", "undo", "reset", "forward",
-	"turn_left", "turn_right", "cycle_3d_subject", "open_inventory", "cycle_metrix", "place",
+	"turn_left", "turn_right", "toggle_view", "cycle_3d_subject", "open_inventory", "cycle_metrix", "place",
 	"hotbar_1", "hotbar_2", "hotbar_3", "hotbar_4", "hotbar_5", "hotbar_6", "hotbar_7", "hotbar_8", "hotbar_9"
 ]
 
