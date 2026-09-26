@@ -1,0 +1,404 @@
+{
+ "asset": "icon_skill_ice",
+ "status": "candidate",
+ "note": "Skill tile: an ice spear flying up to the right, frost shards and sparkles.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 85497,
+ "meta": {
+  "kind": "icon",
+  "stage": "B",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      100.0,
+      100.0
+     ]
+    }
+   ],
+   "color": "tint_ice",
+   "clip_to": "plate",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 18,
+    "y1": 114
+   }
+  },
+  {
+   "name": "plate_rim",
+   "z": 5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      115.0,
+      115.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      102.0,
+      102.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "plate_studs",
+   "z": 5.2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      80.0,
+      80.0
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       10.3667,
+       7.9667
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       8.0333,
+       5.6333
+      ]
+     ]
+    }
+   ],
+   "blur": 5,
+   "opacity": 0.5,
+   "color": "glow_ice",
+   "clip_to": "plate"
+  },
+  {
+   "name": "spear",
+   "z": 2,
+   "material": "ice",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      80.0,
+      80.0
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       10.3667,
+       7.9667
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       8.0333,
+       5.6333
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shards",
+   "z": 2,
+   "material": "ice",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      40.0,
+      46.0
+     ],
+     "size": [
+      10.0,
+      20.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       6.8
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       2.0,
+       6.8
+      ]
+     ],
+     "rot": -30
+    },
+    {
+     "icon": "square",
+     "at": [
+      92.0,
+      88.0
+     ],
+     "size": [
+      9.0,
+      18.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       6.8
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       2.0,
+       6.8
+      ]
+     ],
+     "rot": 40
+    },
+    {
+     "icon": "square",
+     "at": [
+      32.0,
+      76.0
+     ],
+     "size": [
+      7.0,
+      14.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       6.8
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       2.0,
+       6.8
+      ]
+     ],
+     "rot": 10
+    }
+   ]
+  },
+  {
+   "name": "core",
+   "z": 2.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      65.0,
+      63.0
+     ],
+     "size": [
+      62.0,
+      62.0
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       9.6106,
+       7.2106
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       8.7894,
+       6.3894
+      ]
+     ]
+    }
+   ],
+   "color": "#ffffff",
+   "clip_to": "spear",
+   "opacity": 0.55
+  },
+  {
+   "name": "sparks",
+   "z": 3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      98.0,
+      30.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      30.0,
+      100.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    }
+   ],
+   "color": "#ffffff",
+   "clip_to": "plate"
+  }
+ ]
+}

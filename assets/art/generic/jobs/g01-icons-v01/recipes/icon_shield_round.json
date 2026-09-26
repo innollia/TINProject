@@ -1,0 +1,329 @@
+{
+ "asset": "icon_shield_round",
+ "status": "candidate",
+ "note": "Round wooden shield: plank seams, faded wine bend, iron rim with bronze rivets, steel boss.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 54200,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "board",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      104.0,
+      104.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bend",
+   "z": 0.5,
+   "kind": "flat",
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      28.0,
+      130.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -38
+    }
+   ],
+   "clip_to": "board",
+   "opacity": 0.55
+  },
+  {
+   "name": "planks",
+   "z": 1,
+   "kind": "flat",
+   "material": "wood_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      44.0,
+      64.0
+     ],
+     "size": [
+      2.0,
+      110.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      2.0,
+      110.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      84.0,
+      64.0
+     ],
+     "size": [
+      2.0,
+      110.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "clip_to": "board",
+   "opacity": 0.75
+  },
+  {
+   "name": "rim",
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      110.0,
+      110.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      94.0,
+      94.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "rivets",
+   "z": 3,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      115.0,
+      64.0
+     ],
+     "size": [
+      5.5,
+      5.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      105.26,
+      93.98
+     ],
+     "size": [
+      5.5,
+      5.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      79.76,
+      112.5
+     ],
+     "size": [
+      5.5,
+      5.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      48.24,
+      112.5
+     ],
+     "size": [
+      5.5,
+      5.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      22.74,
+      93.98
+     ],
+     "size": [
+      5.5,
+      5.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      13.0,
+      64.0
+     ],
+     "size": [
+      5.5,
+      5.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      22.74,
+      34.02
+     ],
+     "size": [
+      5.5,
+      5.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      48.24,
+      15.5
+     ],
+     "size": [
+      5.5,
+      5.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      79.76,
+      15.5
+     ],
+     "size": [
+      5.5,
+      5.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      105.26,
+      34.02
+     ],
+     "size": [
+      5.5,
+      5.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "boss_ring",
+   "z": 3,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "boss",
+   "z": 4,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.8
+   }
+  }
+ ]
+}

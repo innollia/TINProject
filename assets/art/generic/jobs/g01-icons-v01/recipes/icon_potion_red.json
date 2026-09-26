@@ -1,0 +1,262 @@
+{
+ "asset": "icon_potion_red",
+ "status": "candidate",
+ "note": "Round red healing potion: dark glass flask, cork, bronze neck band, liquid level and glint.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 30805,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "glass",
+   "z": 0,
+   "material": "glass_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      82.0
+     ],
+     "size": [
+      74.0,
+      70.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      42.0
+     ],
+     "size": [
+      24.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      28.0
+     ],
+     "size": [
+      32.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "liquid",
+   "z": 1,
+   "material": "liquid_red",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      84.0
+     ],
+     "size": [
+      68.0,
+      64.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      44.0
+     ],
+     "size": [
+      90.0,
+      40.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    }
+   ],
+   "clip_to": "glass"
+  },
+  {
+   "name": "surface",
+   "z": 2,
+   "kind": "flat",
+   "material": "liquid_red_light",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      58.0,
+      8.0
+     ]
+    }
+   ],
+   "clip_to": "liquid",
+   "opacity": 0.8
+  },
+  {
+   "name": "bubbles",
+   "z": 2.2,
+   "kind": "flat",
+   "material": "liquid_red_light",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      76.0,
+      92.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      82.0,
+      80.0
+     ],
+     "size": [
+      4.5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      68.0,
+      102.0
+     ],
+     "size": [
+      3.5,
+      3.5
+     ]
+    }
+   ],
+   "clip_to": "liquid",
+   "opacity": 0.7
+  },
+  {
+   "name": "band",
+   "z": 3,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      50.0
+     ],
+     "size": [
+      28.0,
+      6.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cork",
+   "z": 3,
+   "material": "cork",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      20.0
+     ],
+     "size": [
+      20.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      13.0
+     ],
+     "size": [
+      22.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glint",
+   "z": 4,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      44.0,
+      84.0
+     ],
+     "size": [
+      12.0,
+      42.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      48.0,
+      82.0
+     ],
+     "size": [
+      12.0,
+      42.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      50.0,
+      60.0
+     ],
+     "size": [
+      6.0,
+      7.0
+     ]
+    }
+   ],
+   "color": "glint",
+   "clip_to": "glass",
+   "opacity": 0.55
+  }
+ ]
+}

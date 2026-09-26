@@ -1,0 +1,362 @@
+{
+ "asset": "icon_elixir",
+ "status": "candidate",
+ "note": "Golden elixir: round flask in a thin gold cage, glowing gold liquid with sparkles, crowned gold stopper with a garnet.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 88987,
+ "meta": {
+  "kind": "icon",
+  "stage": "B",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "aura",
+   "z": 0,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      80.0
+     ],
+     "size": [
+      74.0,
+      72.0
+     ]
+    }
+   ],
+   "blur": 6,
+   "opacity": 0.35,
+   "color": "glow_gold"
+  },
+  {
+   "name": "glass",
+   "z": 0.5,
+   "material": "glass_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      82.0
+     ],
+     "size": [
+      66.0,
+      64.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      44.0
+     ],
+     "size": [
+      20.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      31.0
+     ],
+     "size": [
+      28.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "liquid",
+   "z": 1,
+   "material": "liquid_gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      84.0
+     ],
+     "size": [
+      60.0,
+      58.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      46.0
+     ],
+     "size": [
+      90.0,
+      40.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    }
+   ],
+   "clip_to": "glass"
+  },
+  {
+   "name": "surface",
+   "z": 2,
+   "kind": "flat",
+   "material": "liquid_gold_light",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      66.0
+     ],
+     "size": [
+      50.0,
+      7.0
+     ]
+    }
+   ],
+   "clip_to": "liquid",
+   "opacity": 0.8
+  },
+  {
+   "name": "spark",
+   "z": 2.2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      76.0,
+      92.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      54.0,
+      98.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      66.0,
+      78.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    }
+   ],
+   "color": "#fff4c8",
+   "clip_to": "liquid",
+   "opacity": 0.9
+  },
+  {
+   "name": "cage",
+   "z": 3,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      82.0
+     ],
+     "size": [
+      34.0,
+      64.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      82.0
+     ],
+     "size": [
+      29.2,
+      59.2
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      82.0
+     ],
+     "size": [
+      66.0,
+      3.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "clip_to": "glass"
+  },
+  {
+   "name": "stopper",
+   "z": 3,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      22.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      12.0
+     ],
+     "size": [
+      24.0,
+      13.0
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       2.0,
+       5.6
+      ],
+      [
+       5.0,
+       9.44
+      ],
+      [
+       8.0,
+       2.0
+      ],
+      [
+       11.0,
+       9.44
+      ],
+      [
+       14.0,
+       5.6
+      ],
+      [
+       14.0,
+       14.0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stopper_gem",
+   "z": 3.5,
+   "material": "gem_red",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      22.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glint",
+   "z": 4,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      44.0,
+      84.0
+     ],
+     "size": [
+      12.0,
+      40.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      48.2,
+      82.0
+     ],
+     "size": [
+      12.0,
+      40.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glint",
+   "clip_to": "glass",
+   "opacity": 0.5
+  }
+ ]
+}

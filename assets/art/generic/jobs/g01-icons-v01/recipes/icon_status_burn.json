@@ -1,0 +1,274 @@
+{
+ "asset": "icon_status_burn",
+ "status": "candidate",
+ "note": "Status badge: three flame tongues with a hot core and embers.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 99870,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "badge",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      106.0,
+      106.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "badge_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      96.0,
+      96.0
+     ]
+    }
+   ],
+   "color": "tint_fire",
+   "clip_to": "badge",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 16,
+    "y1": 112
+   }
+  },
+  {
+   "name": "badge_rim",
+   "z": 5,
+   "material": "silver",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      98.0,
+      98.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      64.0,
+      60.0
+     ],
+     "size": [
+      42.0,
+      66.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      45.0,
+      74.0
+     ],
+     "size": [
+      24.0,
+      40.0
+     ],
+     "rot": -18
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      83.0,
+      74.0
+     ],
+     "size": [
+      24.0,
+      40.0
+     ],
+     "rot": 18
+    }
+   ],
+   "blur": 5,
+   "opacity": 0.5,
+   "color": "glow_fire",
+   "clip_to": "badge"
+  },
+  {
+   "name": "flame",
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_fire",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      64.0,
+      60.0
+     ],
+     "size": [
+      42.0,
+      66.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      45.0,
+      74.0
+     ],
+     "size": [
+      24.0,
+      40.0
+     ],
+     "rot": -18
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      83.0,
+      74.0
+     ],
+     "size": [
+      24.0,
+      40.0
+     ],
+     "rot": 18
+    }
+   ],
+   "clip_to": "badge"
+  },
+  {
+   "name": "flame_core",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "fx_fire_core",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      64.0,
+      72.0
+     ],
+     "size": [
+      22.0,
+      38.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      50.0,
+      82.0
+     ],
+     "size": [
+      12.0,
+      20.0
+     ],
+     "rot": -15
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      78.0,
+      82.0
+     ],
+     "size": [
+      12.0,
+      20.0
+     ],
+     "rot": 15
+    }
+   ],
+   "clip_to": "badge"
+  },
+  {
+   "name": "embers",
+   "z": 2.6,
+   "kind": "flat",
+   "material": "fx_fire_core",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      40.0,
+      40.0
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      90.0,
+      36.0
+     ],
+     "size": [
+      3.5,
+      3.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      80.0,
+      26.0
+     ],
+     "size": [
+      2.5,
+      2.5
+     ]
+    }
+   ],
+   "clip_to": "badge"
+  }
+ ]
+}

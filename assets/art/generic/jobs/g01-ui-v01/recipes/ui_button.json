@@ -1,0 +1,1568 @@
+{
+ "asset": "ui_button",
+ "status": "candidate",
+ "note": "Button base in four states (normal, hover, pressed, disabled): bevelled plate, bronze or gold rim, no label.",
+ "palette": "palette_g01.json",
+ "style": "ui",
+ "canvas": [
+  192,
+  96
+ ],
+ "pivot": [
+  96.0,
+  48.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 215,
+ "meta": {
+  "kind": "ui_9slice",
+  "nine_slice": [
+   32,
+   32,
+   32,
+   32
+  ],
+  "states": [
+   "ui_button_normal",
+   "ui_button_hover",
+   "ui_button_pressed",
+   "ui_button_disabled"
+  ],
+  "preview_size": [
+   360,
+   96
+  ],
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "f1_body",
+   "z": 0,
+   "material": "button",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      154.0,
+      86.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      186.0,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      21.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      75.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      21.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      75.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    }
+   ],
+   "shade": {
+    "ragged": 0.04,
+    "threshold": 0.3,
+    "soft": 0.1,
+    "bump": 0.55,
+    "highlight_amount": 0.25
+   },
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_sheen",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      26.0
+     ],
+     "size": [
+      150.0,
+      18.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      21.0,
+      26.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      21.0,
+      26.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171.0,
+      26.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171.0,
+      26.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    }
+   ],
+   "color": "glint",
+   "clip_to": "f1_body",
+   "opacity": 0.08,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_rim",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      154.0,
+      86.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      186.0,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      21.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      75.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      21.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      75.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      154.0,
+      79.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      179.0,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      21.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      75.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      21.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      75.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_body",
+   "z": 0,
+   "material": "button_hot",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      154.0,
+      86.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      186.0,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      21.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      75.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      21.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      75.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    }
+   ],
+   "shade": {
+    "ragged": 0.04,
+    "threshold": 0.3,
+    "soft": 0.1,
+    "bump": 0.55,
+    "highlight_amount": 0.25
+   },
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_sheen",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      26.0
+     ],
+     "size": [
+      150.0,
+      18.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      21.0,
+      26.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      21.0,
+      26.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171.0,
+      26.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171.0,
+      26.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    }
+   ],
+   "color": "glint",
+   "clip_to": "f2_body",
+   "opacity": 0.12,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_glow_in",
+   "z": 1.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      152.0,
+      72.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      172.0,
+      52.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      20.0,
+      22.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      20.0,
+      74.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      22.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      74.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      152.0,
+      62.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      162.0,
+      52.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      20.0,
+      22.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      20.0,
+      74.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      22.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      74.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_gold",
+   "blur": 3,
+   "clip_to": "f2_body",
+   "opacity": 0.4,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_rim",
+   "z": 2,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      154.0,
+      86.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      186.0,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      21.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      75.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      21.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      75.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      154.0,
+      79.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      179.0,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      21.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      75.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      21.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      75.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_body",
+   "z": 0,
+   "material": "button_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      50.0
+     ],
+     "size": [
+      154.0,
+      86.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      50.0
+     ],
+     "size": [
+      186.0,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      23.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      77.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      23.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      77.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    }
+   ],
+   "shade": {
+    "ragged": 0.04,
+    "threshold": 0.3,
+    "soft": 0.1,
+    "bump": 0.55,
+    "highlight_amount": 0.25
+   },
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_inset",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      14.0
+     ],
+     "size": [
+      162.0,
+      26.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      14.0
+     ],
+     "size": [
+      186.0,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      13.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      15.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      177.0,
+      13.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      177.0,
+      15.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ]
+    }
+   ],
+   "color": "void_violet",
+   "blur": 4,
+   "clip_to": "f3_body",
+   "opacity": 0.55,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_rim",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      50.0
+     ],
+     "size": [
+      154.0,
+      86.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      50.0
+     ],
+     "size": [
+      186.0,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      23.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      77.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      23.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      77.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      50.0
+     ],
+     "size": [
+      154.0,
+      79.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      50.0
+     ],
+     "size": [
+      179.0,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      23.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      77.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      23.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      77.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.2
+   },
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_body",
+   "z": 0,
+   "material": "button_off",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      154.0,
+      86.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      186.0,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      21.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      75.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      21.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      75.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    }
+   ],
+   "shade": {
+    "ragged": 0.04,
+    "threshold": 0.3,
+    "soft": 0.1,
+    "bump": 0.55,
+    "highlight_amount": 0.25
+   },
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_rim",
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      154.0,
+      86.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      186.0,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      21.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      75.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      21.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      75.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      154.0,
+      79.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      48.0
+     ],
+     "size": [
+      179.0,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      21.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      19.0,
+      75.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      21.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      75.0
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.2
+   },
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  }
+ ],
+ "frames": [
+  {
+   "name": "ui_button_normal",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "ui_button_hover",
+   "show": [
+    "f2"
+   ]
+  },
+  {
+   "name": "ui_button_pressed",
+   "show": [
+    "f3"
+   ]
+  },
+  {
+   "name": "ui_button_disabled",
+   "show": [
+    "f4"
+   ]
+  }
+ ]
+}

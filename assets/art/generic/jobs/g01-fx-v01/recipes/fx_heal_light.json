@@ -1,0 +1,1693 @@
+{
+ "asset": "fx_heal_light",
+ "status": "candidate",
+ "note": "Healing light: green-gold glow gathers on the ground, a soft column rises with floating crosses and sparkles, then drifts away.",
+ "palette": "palette_g01.json",
+ "style": "fx",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 54002,
+ "meta": {
+  "kind": "fx",
+  "stage": "A",
+  "frames": 5,
+  "cell": [
+   192,
+   192
+  ],
+  "sheet": "fx_heal_light_sheet.png (one row)",
+  "blend": "normal (alpha); additive also works",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "f1_ground",
+   "z": 0.3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      158.0
+     ],
+     "size": [
+      90.0,
+      27.0
+     ]
+    }
+   ],
+   "blur": 8,
+   "opacity": 0.7,
+   "color": "glow_heal",
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_sparks",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      112.35,
+      148.35
+     ],
+     "size": [
+      6.65,
+      6.65
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      96.89,
+      152.31
+     ],
+     "size": [
+      6.62,
+      6.62
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      82.58,
+      147.47
+     ],
+     "size": [
+      9.9,
+      9.9
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    }
+   ],
+   "color": "#effff0",
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_ground",
+   "z": 0.3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      158.0
+     ],
+     "size": [
+      130.0,
+      39.0
+     ]
+    }
+   ],
+   "blur": 8,
+   "opacity": 0.8,
+   "color": "glow_heal",
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_column",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      113.0
+     ],
+     "size": [
+      60.0,
+      30.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      98.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      128.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      98.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      128.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    }
+   ],
+   "blur": 10,
+   "opacity": 0.4,
+   "color": "glow_heal",
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_column_core",
+   "z": 0.6,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      113.0
+     ],
+     "size": [
+      22.0,
+      68.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      79.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      147.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      79.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      147.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ],
+   "color": "#e8ffe8",
+   "blur": 6,
+   "opacity": 0.36000000000000004,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_cross_halo",
+   "z": 1.45,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      95.11,
+      105.45
+     ],
+     "size": [
+      4.92,
+      14.46
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      95.11,
+      105.45
+     ],
+     "size": [
+      14.46,
+      4.92
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.81,
+      108.39
+     ],
+     "size": [
+      5.75,
+      16.91
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.81,
+      108.39
+     ],
+     "size": [
+      16.91,
+      5.75
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      84.21,
+      102.99
+     ],
+     "size": [
+      5.92,
+      17.42
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      84.21,
+      102.99
+     ],
+     "size": [
+      17.42,
+      5.92
+     ]
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.5,
+   "color": "glow_heal",
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_cross",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "fx_heal",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      95.11,
+      105.45
+     ],
+     "size": [
+      4.92,
+      14.46
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      95.11,
+      105.45
+     ],
+     "size": [
+      14.46,
+      4.92
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.81,
+      108.39
+     ],
+     "size": [
+      5.75,
+      16.91
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.81,
+      108.39
+     ],
+     "size": [
+      16.91,
+      5.75
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      84.21,
+      102.99
+     ],
+     "size": [
+      5.92,
+      17.42
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      84.21,
+      102.99
+     ],
+     "size": [
+      17.42,
+      5.92
+     ]
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_ground",
+   "z": 0.3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      158.0
+     ],
+     "size": [
+      150.0,
+      45.0
+     ]
+    }
+   ],
+   "blur": 8,
+   "opacity": 0.8,
+   "color": "glow_heal",
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_column",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      78.0
+     ],
+     "size": [
+      60.0,
+      100.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      28.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      128.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      28.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      128.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    }
+   ],
+   "blur": 10,
+   "opacity": 0.5,
+   "color": "glow_heal",
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_column_core",
+   "z": 0.6,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      78.0
+     ],
+     "size": [
+      22.0,
+      138.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      9.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      147.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      9.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      147.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ],
+   "color": "#e8ffe8",
+   "blur": 6,
+   "opacity": 0.45,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_cross_halo",
+   "z": 1.45,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      50.1,
+      121.23
+     ],
+     "size": [
+      5.21,
+      15.32
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      50.1,
+      121.23
+     ],
+     "size": [
+      15.32,
+      5.21
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      120.0,
+      75.56
+     ],
+     "size": [
+      4.35,
+      12.79
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      120.0,
+      75.56
+     ],
+     "size": [
+      12.79,
+      4.35
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      52.12,
+      39.76
+     ],
+     "size": [
+      4.47,
+      13.14
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      52.12,
+      39.76
+     ],
+     "size": [
+      13.14,
+      4.47
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.56,
+      57.12
+     ],
+     "size": [
+      4.82,
+      14.19
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.56,
+      57.12
+     ],
+     "size": [
+      14.19,
+      4.82
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      115.86,
+      76.64
+     ],
+     "size": [
+      4.68,
+      13.76
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      115.86,
+      76.64
+     ],
+     "size": [
+      13.76,
+      4.68
+     ]
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.5,
+   "color": "glow_heal",
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_cross",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "fx_heal",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      50.1,
+      121.23
+     ],
+     "size": [
+      5.21,
+      15.32
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      50.1,
+      121.23
+     ],
+     "size": [
+      15.32,
+      5.21
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      120.0,
+      75.56
+     ],
+     "size": [
+      4.35,
+      12.79
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      120.0,
+      75.56
+     ],
+     "size": [
+      12.79,
+      4.35
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      52.12,
+      39.76
+     ],
+     "size": [
+      4.47,
+      13.14
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      52.12,
+      39.76
+     ],
+     "size": [
+      13.14,
+      4.47
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.56,
+      57.12
+     ],
+     "size": [
+      4.82,
+      14.19
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.56,
+      57.12
+     ],
+     "size": [
+      14.19,
+      4.82
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      115.86,
+      76.64
+     ],
+     "size": [
+      4.68,
+      13.76
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      115.86,
+      76.64
+     ],
+     "size": [
+      13.76,
+      4.68
+     ]
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_sparks",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      145.54,
+      80.41
+     ],
+     "size": [
+      9.31,
+      9.31
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      124.15,
+      55.9
+     ],
+     "size": [
+      7.25,
+      7.25
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      130.13,
+      55.53
+     ],
+     "size": [
+      11.56,
+      11.56
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      142.51,
+      69.55
+     ],
+     "size": [
+      10.32,
+      10.32
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      126.47,
+      116.62
+     ],
+     "size": [
+      9.71,
+      9.71
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      71.53,
+      67.27
+     ],
+     "size": [
+      10.12,
+      10.12
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    }
+   ],
+   "color": "#effff0",
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_ground",
+   "z": 0.3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      158.0
+     ],
+     "size": [
+      130.0,
+      39.0
+     ]
+    }
+   ],
+   "blur": 8,
+   "opacity": 0.4,
+   "color": "glow_heal",
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_column",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      73.0
+     ],
+     "size": [
+      60.0,
+      110.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      18.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      128.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      18.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      128.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    }
+   ],
+   "blur": 10,
+   "opacity": 0.25,
+   "color": "glow_heal",
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_column_core",
+   "z": 0.6,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      73.0
+     ],
+     "size": [
+      22.0,
+      148.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      -1.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      147.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      -1.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      147.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ],
+   "color": "#e8ffe8",
+   "blur": 6,
+   "opacity": 0.225,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_cross_halo",
+   "z": 1.45,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      100.78,
+      39.0
+     ],
+     "size": [
+      5.9,
+      17.35
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      100.78,
+      39.0
+     ],
+     "size": [
+      17.35,
+      5.9
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      143.24,
+      70.19
+     ],
+     "size": [
+      3.73,
+      10.98
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      143.24,
+      70.19
+     ],
+     "size": [
+      10.98,
+      3.73
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      144.16,
+      10.94
+     ],
+     "size": [
+      5.35,
+      15.73
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      144.16,
+      10.94
+     ],
+     "size": [
+      15.73,
+      5.35
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      117.8,
+      42.18
+     ],
+     "size": [
+      4.59,
+      13.51
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      117.8,
+      42.18
+     ],
+     "size": [
+      13.51,
+      4.59
+     ]
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.375,
+   "color": "glow_heal",
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_cross",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "fx_heal",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      100.78,
+      39.0
+     ],
+     "size": [
+      5.9,
+      17.35
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      100.78,
+      39.0
+     ],
+     "size": [
+      17.35,
+      5.9
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      143.24,
+      70.19
+     ],
+     "size": [
+      3.73,
+      10.98
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      143.24,
+      70.19
+     ],
+     "size": [
+      10.98,
+      3.73
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      144.16,
+      10.94
+     ],
+     "size": [
+      5.35,
+      15.73
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      144.16,
+      10.94
+     ],
+     "size": [
+      15.73,
+      5.35
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      117.8,
+      42.18
+     ],
+     "size": [
+      4.59,
+      13.51
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      117.8,
+      42.18
+     ],
+     "size": [
+      13.51,
+      4.59
+     ]
+    }
+   ],
+   "opacity": 0.75,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_sparks",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      101.04,
+      83.74
+     ],
+     "size": [
+      6.24,
+      6.24
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      92.94,
+      10.48
+     ],
+     "size": [
+      8.74,
+      8.74
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      88.74,
+      13.34
+     ],
+     "size": [
+      7.69,
+      7.69
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      134.43,
+      60.77
+     ],
+     "size": [
+      7.75,
+      7.75
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      36.4,
+      53.17
+     ],
+     "size": [
+      5.87,
+      5.87
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    }
+   ],
+   "color": "#effff0",
+   "opacity": 0.8,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_cross_halo",
+   "z": 1.45,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      102.31,
+      23.49
+     ],
+     "size": [
+      2.99,
+      8.79
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      102.31,
+      23.49
+     ],
+     "size": [
+      8.79,
+      2.99
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.41,
+      14.16
+     ],
+     "size": [
+      3.08,
+      9.05
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.41,
+      14.16
+     ],
+     "size": [
+      9.05,
+      3.08
+     ]
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.2,
+   "color": "glow_heal",
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_cross",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "fx_heal",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      102.31,
+      23.49
+     ],
+     "size": [
+      2.99,
+      8.79
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      102.31,
+      23.49
+     ],
+     "size": [
+      8.79,
+      2.99
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.41,
+      14.16
+     ],
+     "size": [
+      3.08,
+      9.05
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.41,
+      14.16
+     ],
+     "size": [
+      9.05,
+      3.08
+     ]
+    }
+   ],
+   "opacity": 0.4,
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_sparks",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      93.58,
+      12.17
+     ],
+     "size": [
+      7.69,
+      7.69
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      95.06,
+      47.76
+     ],
+     "size": [
+      4.43,
+      4.43
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      57.66,
+      17.86
+     ],
+     "size": [
+      7.12,
+      7.12
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      119.55,
+      29.47
+     ],
+     "size": [
+      5.56,
+      5.56
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    }
+   ],
+   "color": "#effff0",
+   "opacity": 0.5,
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  }
+ ],
+ "frames": [
+  {
+   "name": "fx_heal_light_1",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "fx_heal_light_2",
+   "show": [
+    "f2"
+   ]
+  },
+  {
+   "name": "fx_heal_light_3",
+   "show": [
+    "f3"
+   ]
+  },
+  {
+   "name": "fx_heal_light_4",
+   "show": [
+    "f4"
+   ]
+  },
+  {
+   "name": "fx_heal_light_5",
+   "show": [
+    "f5"
+   ]
+  }
+ ]
+}

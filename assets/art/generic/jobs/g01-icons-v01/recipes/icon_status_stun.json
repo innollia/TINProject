@@ -1,0 +1,291 @@
+{
+ "asset": "icon_status_stun",
+ "status": "candidate",
+ "note": "Status badge: three gold stars circling on a faint orbit, a small swirl below.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 50331,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "badge",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      106.0,
+      106.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "badge_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      96.0,
+      96.0
+     ]
+    }
+   ],
+   "color": "tint_stun",
+   "clip_to": "badge",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 16,
+    "y1": 112
+   }
+  },
+  {
+   "name": "badge_rim",
+   "z": 5,
+   "material": "silver",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      98.0,
+      98.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "orbit",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      60.0
+     ],
+     "size": [
+      80.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      60.0
+     ],
+     "size": [
+      74.8,
+      24.8
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_gold",
+   "clip_to": "badge",
+   "opacity": 0.5
+  },
+  {
+   "name": "glow",
+   "z": 1.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "star",
+     "at": [
+      33.0,
+      58.0
+     ],
+     "size": [
+      27.0,
+      27.0
+     ],
+     "rot": -12
+    },
+    {
+     "icon": "star",
+     "at": [
+      80.0,
+      45.0
+     ],
+     "size": [
+      21.0,
+      21.0
+     ],
+     "rot": 10
+    },
+    {
+     "icon": "star",
+     "at": [
+      98.0,
+      66.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "rot": 20
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.6,
+   "color": "glow_gold",
+   "clip_to": "badge"
+  },
+  {
+   "name": "stars",
+   "z": 2,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "star",
+     "at": [
+      33.0,
+      58.0
+     ],
+     "size": [
+      27.0,
+      27.0
+     ],
+     "rot": -12
+    },
+    {
+     "icon": "star",
+     "at": [
+      80.0,
+      45.0
+     ],
+     "size": [
+      21.0,
+      21.0
+     ],
+     "rot": 10
+    },
+    {
+     "icon": "star",
+     "at": [
+      98.0,
+      66.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "rot": 20
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.9
+   }
+  },
+  {
+   "name": "star_cores",
+   "z": 2.2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "star",
+     "at": [
+      33.0,
+      58.0
+     ],
+     "size": [
+      13.0,
+      13.0
+     ],
+     "rot": -12
+    },
+    {
+     "icon": "star",
+     "at": [
+      80.0,
+      45.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "rot": 10
+    },
+    {
+     "icon": "star",
+     "at": [
+      98.0,
+      66.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ],
+     "rot": 20
+    }
+   ],
+   "color": "#ffe8a0",
+   "clip_to": "stars",
+   "opacity": 0.55
+  },
+  {
+   "name": "swirl",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "spiral",
+     "at": [
+      64.0,
+      92.0
+     ],
+     "size": [
+      30.0,
+      18.0
+     ]
+    }
+   ],
+   "color": "glow_gold",
+   "clip_to": "badge",
+   "opacity": 0.55
+  }
+ ]
+}

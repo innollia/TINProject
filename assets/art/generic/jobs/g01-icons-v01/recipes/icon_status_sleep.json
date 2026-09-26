@@ -1,0 +1,216 @@
+{
+ "asset": "icon_status_sleep",
+ "status": "candidate",
+ "note": "Status badge: pale crescent moon with sparkles (no letters).",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 75932,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "badge",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      106.0,
+      106.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "badge_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      96.0,
+      96.0
+     ]
+    }
+   ],
+   "color": "tint_sleep",
+   "clip_to": "badge",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 16,
+    "y1": 112
+   }
+  },
+  {
+   "name": "badge_rim",
+   "z": 5,
+   "material": "silver",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      98.0,
+      98.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      58.0,
+      66.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      73.0,
+      55.0
+     ],
+     "size": [
+      54.0,
+      54.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "blur": 5,
+   "opacity": 0.4,
+   "color": "glow_holy",
+   "clip_to": "badge"
+  },
+  {
+   "name": "moon",
+   "z": 2,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      58.0,
+      66.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      73.0,
+      55.0
+     ],
+     "size": [
+      54.0,
+      54.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "stars",
+   "z": 2.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      88.0,
+      36.0
+     ],
+     "size": [
+      17.0,
+      17.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      99.0,
+      62.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      82.0,
+      84.0
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    }
+   ],
+   "color": "glow_holy",
+   "clip_to": "badge"
+  }
+ ]
+}

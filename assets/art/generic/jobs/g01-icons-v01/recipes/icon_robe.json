@@ -1,0 +1,296 @@
+{
+ "asset": "icon_robe",
+ "status": "candidate",
+ "note": "Mage robe: violet body flaring to the hem, wide sleeves, gold trim, wine sash with a gem clasp.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 75536,
+ "meta": {
+  "kind": "icon",
+  "stage": "B",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "sleeves",
+   "z": 0,
+   "material": "cloth_violet",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      30.0,
+      58.0
+     ],
+     "size": [
+      34.0,
+      52.0
+     ],
+     "poly": [
+      [
+       10.4,
+       2.0
+      ],
+      [
+       14.0,
+       3.2
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       2.0,
+       12.2
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      98.0,
+      58.0
+     ],
+     "size": [
+      34.0,
+      52.0
+     ],
+     "poly": [
+      [
+       5.6,
+       2.0
+      ],
+      [
+       2.0,
+       3.2
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       14.0,
+       12.2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 1,
+   "material": "cloth_violet",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      72.0
+     ],
+     "size": [
+      72.0,
+      96.0
+     ],
+     "poly": [
+      [
+       5.84,
+       2.0
+      ],
+      [
+       10.16,
+       2.0
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ]
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      26.0
+     ],
+     "size": [
+      34.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "collar",
+   "z": 1.5,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      26.0
+     ],
+     "size": [
+      36.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      26.0
+     ],
+     "size": [
+      26.0,
+      8.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "clip_to": "body"
+  },
+  {
+   "name": "trim",
+   "z": 2,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      76.0
+     ],
+     "size": [
+      5.0,
+      94.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      118.0
+     ],
+     "size": [
+      70.0,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "clip_to": "body"
+  },
+  {
+   "name": "cuffs",
+   "z": 2,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      21.0,
+      80.0
+     ],
+     "size": [
+      16.0,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -28
+    },
+    {
+     "icon": "square",
+     "at": [
+      107.0,
+      80.0
+     ],
+     "size": [
+      16.0,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 28
+    }
+   ],
+   "clip_to": "sleeves"
+  },
+  {
+   "name": "sash",
+   "z": 2.5,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      60.0
+     ],
+     "size": [
+      50.0,
+      8.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "clip_to": "body"
+  },
+  {
+   "name": "clasp",
+   "z": 3,
+   "material": "gem_blue",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      60.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    }
+   ]
+  }
+ ]
+}

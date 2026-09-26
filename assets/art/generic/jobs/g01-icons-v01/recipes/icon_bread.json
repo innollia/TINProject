@@ -1,0 +1,161 @@
+{
+ "asset": "icon_bread",
+ "status": "candidate",
+ "note": "Crusty bread loaf with three light score marks and a small roll in front.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 56570,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "loaf",
+   "z": 1,
+   "material": "bread",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      60.0,
+      76.0
+     ],
+     "size": [
+      100.0,
+      58.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      60.0,
+      66.0
+     ],
+     "size": [
+      84.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "scores",
+   "z": 2,
+   "kind": "flat",
+   "material": "bread_crumb",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      38.0,
+      66.0
+     ],
+     "size": [
+      9.0,
+      30.0
+     ],
+     "rot": 38
+    },
+    {
+     "icon": "square",
+     "at": [
+      58.0,
+      60.0
+     ],
+     "size": [
+      9.0,
+      34.0
+     ],
+     "rot": 38
+    },
+    {
+     "icon": "square",
+     "at": [
+      78.0,
+      60.0
+     ],
+     "size": [
+      9.0,
+      32.0
+     ],
+     "rot": 38
+    }
+   ],
+   "clip_to": "loaf",
+   "opacity": 0.85
+  },
+  {
+   "name": "crust_hl",
+   "z": 2.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      52.0,
+      50.0
+     ],
+     "size": [
+      44.0,
+      10.0
+     ],
+     "rot": -12
+    }
+   ],
+   "color": "glint",
+   "clip_to": "loaf",
+   "opacity": 0.14
+  },
+  {
+   "name": "roll",
+   "z": 3,
+   "material": "bread",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      98.0,
+      100.0
+     ],
+     "size": [
+      40.0,
+      28.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "roll_score",
+   "z": 3.5,
+   "kind": "flat",
+   "material": "bread_crumb",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      98.0,
+      96.0
+     ],
+     "size": [
+      22.0,
+      5.0
+     ],
+     "rot": -15
+    }
+   ],
+   "clip_to": "roll",
+   "opacity": 0.8
+  }
+ ]
+}

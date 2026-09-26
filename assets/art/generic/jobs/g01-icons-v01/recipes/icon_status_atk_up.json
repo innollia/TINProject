@@ -1,0 +1,339 @@
+{
+ "asset": "icon_status_atk_up",
+ "status": "candidate",
+ "note": "Status badge: small sword with a glowing red-orange up arrow.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 23265,
+ "meta": {
+  "kind": "icon",
+  "stage": "B",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "badge",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      106.0,
+      106.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "badge_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      96.0,
+      96.0
+     ]
+    }
+   ],
+   "color": "tint_buff",
+   "clip_to": "badge",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 16,
+    "y1": 112
+   }
+  },
+  {
+   "name": "badge_rim",
+   "z": 5,
+   "material": "silver",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      98.0,
+      98.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "sword",
+   "z": 1,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      45.21,
+      50.84
+     ],
+     "size": [
+      10.0,
+      50.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       3.44
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       2.0,
+       3.44
+      ]
+     ],
+     "rot": -20.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      54.79,
+      77.16
+     ],
+     "size": [
+      26.0,
+      5.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -20.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      58.21,
+      86.55
+     ],
+     "size": [
+      6.0,
+      14.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -20.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      61.29,
+      95.01
+     ],
+     "size": [
+      8.0,
+      8.0
+     ],
+     "rot": -20.0
+    }
+   ]
+  },
+  {
+   "name": "arrow_glow",
+   "z": 1.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      86.0,
+      64.0
+     ],
+     "size": [
+      30.0,
+      46.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.6
+      ],
+      [
+       10.16,
+       8.6
+      ],
+      [
+       10.16,
+       14.0
+      ],
+      [
+       5.84,
+       14.0
+      ],
+      [
+       5.84,
+       8.6
+      ],
+      [
+       2.0,
+       8.6
+      ]
+     ]
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.6,
+   "color": "glow_fire",
+   "clip_to": "badge"
+  },
+  {
+   "name": "arrow",
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_fire",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      86.0,
+      64.0
+     ],
+     "size": [
+      30.0,
+      46.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.6
+      ],
+      [
+       10.16,
+       8.6
+      ],
+      [
+       10.16,
+       14.0
+      ],
+      [
+       5.84,
+       14.0
+      ],
+      [
+       5.84,
+       8.6
+      ],
+      [
+       2.0,
+       8.6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arrow_core",
+   "z": 2.2,
+   "kind": "flat",
+   "material": "fx_fire_core",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      86.0,
+      66.0
+     ],
+     "size": [
+      14.0,
+      30.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.6
+      ],
+      [
+       10.16,
+       8.6
+      ],
+      [
+       10.16,
+       14.0
+      ],
+      [
+       5.84,
+       14.0
+      ],
+      [
+       5.84,
+       8.6
+      ],
+      [
+       2.0,
+       8.6
+      ]
+     ]
+    }
+   ],
+   "clip_to": "arrow",
+   "opacity": 0.7
+  }
+ ]
+}

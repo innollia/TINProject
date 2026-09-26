@@ -1,0 +1,513 @@
+{
+ "asset": "icon_status_freeze",
+ "status": "candidate",
+ "note": "Status badge: ice crystal snowflake built from six ticked arms and a hexagon core.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 99508,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "badge",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      106.0,
+      106.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "badge_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      96.0,
+      96.0
+     ]
+    }
+   ],
+   "color": "tint_ice",
+   "clip_to": "badge",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 16,
+    "y1": 112
+   }
+  },
+  {
+   "name": "badge_rim",
+   "z": 5,
+   "material": "silver",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      98.0,
+      98.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      8.0,
+      80.0
+     ],
+     "rot": 0.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      59.32,
+      36.12
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      68.68,
+      36.12
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      59.32,
+      91.88
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      68.68,
+      91.88
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      8.0,
+      80.0
+     ],
+     "rot": 60.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      85.8,
+      46.01
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 15.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      90.48,
+      54.11
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 105.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      37.52,
+      73.89
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 105.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      42.2,
+      81.99
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 15.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      8.0,
+      80.0
+     ],
+     "rot": 120.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      90.48,
+      73.89
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 75.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      85.8,
+      81.99
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 165.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      42.2,
+      46.01
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 165.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      37.52,
+      54.11
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 75.0
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.45,
+   "color": "glow_ice",
+   "clip_to": "badge"
+  },
+  {
+   "name": "flake",
+   "z": 2,
+   "material": "ice",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      8.0,
+      80.0
+     ],
+     "rot": 0.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      59.32,
+      36.12
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      68.68,
+      36.12
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      59.32,
+      91.88
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      68.68,
+      91.88
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      8.0,
+      80.0
+     ],
+     "rot": 60.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      85.8,
+      46.01
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 15.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      90.48,
+      54.11
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 105.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      37.52,
+      73.89
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 105.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      42.2,
+      81.99
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 15.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      8.0,
+      80.0
+     ],
+     "rot": 120.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      90.48,
+      73.89
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 75.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      85.8,
+      81.99
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 165.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      42.2,
+      46.01
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 165.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      37.52,
+      54.11
+     ],
+     "size": [
+      5.6,
+      18.0
+     ],
+     "rot": 75.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       5.0
+      ],
+      [
+       14.0,
+       11.0
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       2.0,
+       11.0
+      ],
+      [
+       2.0,
+       5.0
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

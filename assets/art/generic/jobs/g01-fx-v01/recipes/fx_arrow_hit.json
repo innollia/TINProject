@@ -1,0 +1,1457 @@
+{
+ "asset": "fx_arrow_hit",
+ "status": "candidate",
+ "note": "Arrow hit: an arrow streaks in from the left, strikes with a flash and ring, sticks and quivers as the flash fades.",
+ "palette": "palette_g01.json",
+ "style": "fx",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 31348,
+ "meta": {
+  "kind": "fx",
+  "stage": "B",
+  "frames": 5,
+  "cell": [
+   192,
+   192
+  ],
+  "sheet": "fx_arrow_hit_sheet.png (one row)",
+  "blend": "normal (alpha); additive also works",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "f1_arrow_glow",
+   "z": 0.8,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      34.27,
+      90.77
+     ],
+     "size": [
+      76.0,
+      5.5
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 6.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      75.05,
+      95.06
+     ],
+     "size": [
+      20.0,
+      16.0
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       5.0,
+       8.0
+      ]
+     ],
+     "rot": 6.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      7.16,
+      80.89
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -94.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      5.7,
+      94.81
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -74.0
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.35,
+   "color": "glow_steel",
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_shaft",
+   "z": 1,
+   "material": "cork",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      34.27,
+      90.77
+     ],
+     "size": [
+      76.0,
+      5.5
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 6.0
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_fletch",
+   "z": 1.1,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      7.16,
+      80.89
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -94.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      5.7,
+      94.81
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -74.0
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_head",
+   "z": 1.2,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      75.05,
+      95.06
+     ],
+     "size": [
+      20.0,
+      16.0
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       5.0,
+       8.0
+      ]
+     ],
+     "rot": 6.0
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_streaks",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      37.0,
+      90.4
+     ],
+     "size": [
+      66.0,
+      4.8
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       9.1802,
+       12.9401
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       9.2198,
+       5.4599
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      37.0,
+      100.0
+     ],
+     "size": [
+      66.0,
+      3.0
+     ],
+     "poly": [
+      [
+       2.0,
+       8.0
+      ],
+      [
+       9.2,
+       14.0
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       9.2,
+       2.0
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      37.0,
+      109.6
+     ],
+     "size": [
+      66.0,
+      4.8
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       9.2198,
+       10.5401
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       9.1802,
+       3.0599
+      ]
+     ]
+    }
+   ],
+   "color": "glow_steel",
+   "opacity": 0.5,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_arrow_glow",
+   "z": 0.8,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      82.3,
+      94.36
+     ],
+     "size": [
+      84.0,
+      5.5
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 6.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      127.05,
+      99.06
+     ],
+     "size": [
+      20.0,
+      16.0
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       5.0,
+       8.0
+      ]
+     ],
+     "rot": 6.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      51.2,
+      84.05
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -94.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      49.74,
+      97.97
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -74.0
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.35,
+   "color": "glow_steel",
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_shaft",
+   "z": 1,
+   "material": "cork",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      82.3,
+      94.36
+     ],
+     "size": [
+      84.0,
+      5.5
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 6.0
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_fletch",
+   "z": 1.1,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      51.2,
+      84.05
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -94.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      49.74,
+      97.97
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -74.0
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_head",
+   "z": 1.2,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      127.05,
+      99.06
+     ],
+     "size": [
+      20.0,
+      16.0
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       5.0,
+       8.0
+      ]
+     ],
+     "rot": 6.0
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_streaks",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      65.0,
+      90.4
+     ],
+     "size": [
+      90.0,
+      4.8
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       9.1893,
+       12.9447
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       9.2107,
+       5.4553
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      65.0,
+      100.0
+     ],
+     "size": [
+      90.0,
+      3.0
+     ],
+     "poly": [
+      [
+       2.0,
+       8.0
+      ],
+      [
+       9.2,
+       14.0
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       9.2,
+       2.0
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      65.0,
+      109.6
+     ],
+     "size": [
+      90.0,
+      4.8
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       9.2107,
+       10.5447
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       9.1893,
+       3.0553
+      ]
+     ]
+    }
+   ],
+   "color": "glow_steel",
+   "opacity": 0.45,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_spark",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      136.0,
+      100.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    }
+   ],
+   "color": "#ffffff",
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_arrow_glow",
+   "z": 0.8,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      79.28,
+      94.67
+     ],
+     "size": [
+      78.0,
+      5.5
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 6.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      51.17,
+      84.68
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -94.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      49.71,
+      98.6
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -74.0
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.35,
+   "color": "glow_steel",
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_shaft",
+   "z": 1,
+   "material": "cork",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      79.28,
+      94.67
+     ],
+     "size": [
+      78.0,
+      5.5
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 6.0
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_fletch",
+   "z": 1.1,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      51.17,
+      84.68
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -94.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      49.71,
+      98.6
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -74.0
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_flash_halo",
+   "z": 1.95,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      136.0,
+      100.0
+     ],
+     "size": [
+      66.0,
+      66.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       8.9184,
+       5.7827
+      ],
+      [
+       12.2426,
+       3.7574
+      ],
+      [
+       10.2173,
+       7.0816
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       10.2173,
+       8.9184
+      ],
+      [
+       12.2426,
+       12.2426
+      ],
+      [
+       8.9184,
+       10.2173
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       7.0816,
+       10.2173
+      ],
+      [
+       3.7574,
+       12.2426
+      ],
+      [
+       5.7827,
+       8.9184
+      ],
+      [
+       2.0,
+       8.0
+      ],
+      [
+       5.7827,
+       7.0816
+      ],
+      [
+       3.7574,
+       3.7574
+      ],
+      [
+       7.0816,
+       5.7827
+      ]
+     ],
+     "rot": 8
+    }
+   ],
+   "blur": 8,
+   "opacity": 0.55,
+   "color": "glow_steel",
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_flash",
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_white",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      136.0,
+      100.0
+     ],
+     "size": [
+      66.0,
+      66.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       8.9184,
+       5.7827
+      ],
+      [
+       12.2426,
+       3.7574
+      ],
+      [
+       10.2173,
+       7.0816
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       10.2173,
+       8.9184
+      ],
+      [
+       12.2426,
+       12.2426
+      ],
+      [
+       8.9184,
+       10.2173
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       7.0816,
+       10.2173
+      ],
+      [
+       3.7574,
+       12.2426
+      ],
+      [
+       5.7827,
+       8.9184
+      ],
+      [
+       2.0,
+       8.0
+      ],
+      [
+       5.7827,
+       7.0816
+      ],
+      [
+       3.7574,
+       3.7574
+      ],
+      [
+       7.0816,
+       5.7827
+      ]
+     ],
+     "rot": 8
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_ring",
+   "z": 1.8,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      100.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      100.0
+     ],
+     "size": [
+      54.0,
+      54.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "fx_white",
+   "opacity": 0.8,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_arrow_glow",
+   "z": 0.8,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      79.77,
+      91.14
+     ],
+     "size": [
+      78.0,
+      5.5
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 10.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      52.43,
+      79.21
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -90.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      50.0,
+      93.0
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -70.0
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.35,
+   "color": "glow_steel",
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_shaft",
+   "z": 1,
+   "material": "cork",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      79.77,
+      91.14
+     ],
+     "size": [
+      78.0,
+      5.5
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 10.0
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_fletch",
+   "z": 1.1,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      52.43,
+      79.21
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -90.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      50.0,
+      93.0
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -70.0
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_ring",
+   "z": 1.8,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      100.0
+     ],
+     "size": [
+      88.0,
+      88.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      100.0
+     ],
+     "size": [
+      84.0,
+      84.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_steel",
+   "opacity": 0.5,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_chips",
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_dust",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      129.24,
+      106.41
+     ],
+     "size": [
+      6.0,
+      5.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 89.79550654658512
+    },
+    {
+     "icon": "square",
+     "at": [
+      131.62,
+      121.14
+     ],
+     "size": [
+      6.0,
+      5.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 13.46154694434462
+    },
+    {
+     "icon": "square",
+     "at": [
+      142.64,
+      123.75
+     ],
+     "size": [
+      6.0,
+      5.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 26.97261752510706
+    },
+    {
+     "icon": "square",
+     "at": [
+      153.25,
+      74.59
+     ],
+     "size": [
+      6.0,
+      5.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 77.43945937864359
+    },
+    {
+     "icon": "square",
+     "at": [
+      144.71,
+      70.22
+     ],
+     "size": [
+      6.0,
+      5.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 13.07463811763658
+    },
+    {
+     "icon": "square",
+     "at": [
+      144.46,
+      117.14
+     ],
+     "size": [
+      6.0,
+      5.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 50.26022448518432
+    }
+   ],
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_arrow_glow",
+   "z": 0.8,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      79.07,
+      97.33
+     ],
+     "size": [
+      78.0,
+      5.5
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 3.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      50.48,
+      88.82
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -97.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      49.74,
+      102.8
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -77.0
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.35,
+   "color": "glow_steel",
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_shaft",
+   "z": 1,
+   "material": "cork",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      79.07,
+      97.33
+     ],
+     "size": [
+      78.0,
+      5.5
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 3.0
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_fletch",
+   "z": 1.1,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      50.48,
+      88.82
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -97.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      49.74,
+      102.8
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -77.0
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_ring",
+   "z": 1.8,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      100.0
+     ],
+     "size": [
+      100.0,
+      100.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      100.0
+     ],
+     "size": [
+      96.8,
+      96.8
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_steel",
+   "opacity": 0.25,
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  }
+ ],
+ "frames": [
+  {
+   "name": "fx_arrow_hit_1",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "fx_arrow_hit_2",
+   "show": [
+    "f2"
+   ]
+  },
+  {
+   "name": "fx_arrow_hit_3",
+   "show": [
+    "f3"
+   ]
+  },
+  {
+   "name": "fx_arrow_hit_4",
+   "show": [
+    "f4"
+   ]
+  },
+  {
+   "name": "fx_arrow_hit_5",
+   "show": [
+    "f5"
+   ]
+  }
+ ]
+}

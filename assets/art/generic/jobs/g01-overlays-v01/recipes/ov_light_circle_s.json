@@ -1,0 +1,195 @@
+{
+ "asset": "ov_light_circle_s",
+ "status": "candidate",
+ "note": "Light circle, small (192): white and yellow soft radial light, three stacked falloffs.",
+ "palette": "palette_g01.json",
+ "style": "overlay",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "centre of the image",
+ "seed": 82929,
+ "meta": {
+  "kind": "overlay_light",
+  "tileable": false,
+  "sizes_px": 192,
+  "blend": "additive (or screen) over the scene",
+  "colors": [
+   "white",
+   "yellow"
+  ],
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "f1_outer",
+   "z": 0,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      107.52,
+      107.52
+     ]
+    }
+   ],
+   "color": "#fff6ec",
+   "blur": 23.04,
+   "opacity": 0.34,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_mid",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      69.12,
+      69.12
+     ]
+    }
+   ],
+   "color": "#fff6ec",
+   "blur": 15.36,
+   "opacity": 0.5,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_core",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      30.72,
+      30.72
+     ]
+    }
+   ],
+   "color": "#fff6ec",
+   "blur": 9.600000000000001,
+   "opacity": 0.8,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_outer",
+   "z": 0,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      107.52,
+      107.52
+     ]
+    }
+   ],
+   "color": "#ffd27a",
+   "blur": 23.04,
+   "opacity": 0.34,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_mid",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      69.12,
+      69.12
+     ]
+    }
+   ],
+   "color": "#ffd27a",
+   "blur": 15.36,
+   "opacity": 0.5,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_core",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      30.72,
+      30.72
+     ]
+    }
+   ],
+   "color": "#ffd27a",
+   "blur": 9.600000000000001,
+   "opacity": 0.8,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  }
+ ],
+ "frames": [
+  {
+   "name": "ov_light_circle_s_white",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "ov_light_circle_s_yellow",
+   "show": [
+    "f2"
+   ]
+  }
+ ]
+}

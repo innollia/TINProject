@@ -1,0 +1,332 @@
+{
+ "asset": "icon_status_def_up",
+ "status": "candidate",
+ "note": "Status badge: small heater shield with a glowing blue up arrow.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 88642,
+ "meta": {
+  "kind": "icon",
+  "stage": "B",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "badge",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      106.0,
+      106.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "badge_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      96.0,
+      96.0
+     ]
+    }
+   ],
+   "color": "tint_water",
+   "clip_to": "badge",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 16,
+    "y1": 112
+   }
+  },
+  {
+   "name": "badge_rim",
+   "z": 5,
+   "material": "silver",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      98.0,
+      98.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "shield",
+   "z": 1,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      48.0,
+      66.0
+     ],
+     "size": [
+      40.0,
+      50.0
+     ],
+     "poly": [
+      [
+       2.72,
+       2.0
+      ],
+      [
+       13.28,
+       2.0
+      ],
+      [
+       14.0,
+       5.6
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       2.0,
+       5.6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shield_mark",
+   "z": 1.2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      48.0,
+      60.0
+     ],
+     "size": [
+      4.0,
+      30.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      48.0,
+      52.0
+     ],
+     "size": [
+      22.0,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "clip_to": "shield"
+  },
+  {
+   "name": "arrow_glow",
+   "z": 1.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      88.0,
+      62.0
+     ],
+     "size": [
+      30.0,
+      46.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.6
+      ],
+      [
+       10.16,
+       8.6
+      ],
+      [
+       10.16,
+       14.0
+      ],
+      [
+       5.84,
+       14.0
+      ],
+      [
+       5.84,
+       8.6
+      ],
+      [
+       2.0,
+       8.6
+      ]
+     ]
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.6,
+   "color": "glow_blue",
+   "clip_to": "badge"
+  },
+  {
+   "name": "arrow",
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_blue",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      88.0,
+      62.0
+     ],
+     "size": [
+      30.0,
+      46.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.6
+      ],
+      [
+       10.16,
+       8.6
+      ],
+      [
+       10.16,
+       14.0
+      ],
+      [
+       5.84,
+       14.0
+      ],
+      [
+       5.84,
+       8.6
+      ],
+      [
+       2.0,
+       8.6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arrow_core",
+   "z": 2.2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      88.0,
+      64.0
+     ],
+     "size": [
+      14.0,
+      30.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.6
+      ],
+      [
+       10.16,
+       8.6
+      ],
+      [
+       10.16,
+       14.0
+      ],
+      [
+       5.84,
+       14.0
+      ],
+      [
+       5.84,
+       8.6
+      ],
+      [
+       2.0,
+       8.6
+      ]
+     ]
+    }
+   ],
+   "color": "#b8ccff",
+   "clip_to": "arrow",
+   "opacity": 0.7
+  }
+ ]
+}
