@@ -154,11 +154,23 @@ func test_a3_attributes_reshape_the_silhouette() -> void:
 
 
 func test_a3_silhouettes_stay_distinct() -> void:
+	# 정규 좌표(폭·높이 배율 전) 기준. 실제 키는 content 의 shape 가 정한다.
 	var a: Dictionary = {"limbs": 4, "surprise": 0.0, "wrongness": 0.0, "roundness": 0.0}
 	var crab: Rect2 = StoneStoryInk.bounds(_critter(a, "sil_crab").body)
 	var ang: Rect2 = StoneStoryInk.bounds(_critter(a, "sil_angular").body)
-	assert_gt(crab.size.x / crab.size.y, ang.size.x / ang.size.y * 1.8, "A3 the crab is wide, the angular one is tall")
+	var lump: Rect2 = StoneStoryInk.bounds(_critter(a, "sil_lump").body)
+	assert_lt(crab.size.y / crab.size.x, 0.5, "A3 the crab body is flat")
+	assert_gt(ang.size.y / ang.size.x, 0.65, "A3 the angular body is not flat")
+	assert_gt(lump.size.y / lump.size.x, 0.65, "A3 the lump body is not flat")
+	assert_gt(crab.size.x / crab.size.y, ang.size.x / ang.size.y * 1.5, "A3 the crab is much wider than the angular one")
+	# 몸이 땅에서 뜬 높이: 덩어리(바닥에 붙음) < 각형(짧은 다리) < 게(다리 위에 걸림)
+	assert_lt(-lump.end.y, 0.05, "A3 the lump sits on the ground")
+	assert_gt(-ang.end.y, -lump.end.y + 0.1, "A3 the angular body stands higher than the lump")
+	assert_gt(-crab.end.y, -ang.end.y + 0.1, "A3 the crab body hangs highest on its legs")
+	assert_false(_content.get_def("silhouette", "sil_angular").get("horns", []).is_empty(), "A3 only the angular one has horns")
+	assert_true(_content.get_def("silhouette", "sil_lump").get("horns", []).is_empty())
 	assert_eq(_critter(a, "sil_crab").leg_style, "splay")
+	assert_eq(_critter(a, "sil_angular").leg_style, "stilt")
 	assert_eq(_critter(a, "sil_lump").leg_style, "stub")
 
 

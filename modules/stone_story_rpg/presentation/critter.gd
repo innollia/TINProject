@@ -399,9 +399,8 @@ static func draw_gear(ci: CanvasItem, c: StoneStoryCritter, origin: Vector2, loo
 	var hand: Vector2 = c.hand_point(origin)
 	var h: float = c.size_px.y
 	var f: float = c.facing
-	var swing: float = 0.0
-	if stance == "attack" or stance == "neutral":
-		swing = sin(c.t * 5.2) * 0.55
+	# 무기는 몸의 기울기를 따른다. 선딜에 뒤로, 판정 틱에 앞으로 (view.swing_lean).
+	var swing: float = clampf(c.lean, -0.6, 1.0) * 0.9
 	var blade: Color = StoneStoryPalette.sclera(pal)
 	var edge: Color = StoneStoryPalette.ink(pal)
 	var wood: Color = StoneStoryPalette.role(pal, "wood")

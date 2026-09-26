@@ -186,7 +186,10 @@ func _sync_anim(delta: float) -> void:
 	var pl: Dictionary = _last.get("player", {})
 	if not pl.is_empty() and int(state["player"]["hp"]) < int(pl.get("hp", 0)):
 		_player.hit = 1.0
-	_last["player"] = {"hp": int(state["player"]["hp"])}
+	var pmoved: bool = not pl.is_empty() and (pl.get("pos", ppos) as Vector2).distance_to(ppos) > 0.01
+	_player.walk = move_toward(_player.walk, 1.0 if pmoved else 0.0, delta * (6.0 if pmoved else 2.5))
+	_last["player"] = {"hp": int(state["player"]["hp"]), "pos": ppos}
+	var sw: Dictionary = encounter.get("swing", {})
 	match stance:
 		"guard":
 			_player.lean = -0.25
@@ -195,9 +198,23 @@ func _sync_anim(delta: float) -> void:
 		"superarmor":
 			_player.lean = 0.35
 		_:
-			_player.lean = (0.45 + 0.35 * sin(clock * 5.2)) if nearest != Vector2.INF else 0.0
+			_player.lean = 0.0
+	if not sw.is_empty():
+		_player.lean = swing_lean(int(sw.get("t", 0)), int(sw.get("cast", 0)), int(sw.get("frames", 1)))
 	if working:
 		_player.lean = 0.2 + 0.5 * maxf(0.0, sin(clock * 6.0))
+
+
+## 선딜 동안 뒤로 젖혔다가(-), 판정 틱에 앞으로 크게(+), 남은 틱 동안 제자리로.
+static func swing_lean(t: int, cast: int, frames: int) -> float:
+	var total: float = float(maxi(1, frames))
+	var c: float = float(clampi(cast, 0, frames - 1))
+	var tf: float = float(t)
+	if tf <= c and c > 0.0:
+		return -0.35 * (tf / c)
+	var rest: float = maxf(1.0, total - c)
+	var k: float = clampf((tf - c) / rest, 0.0, 1.0)
+	return 0.95 * (1.0 - k) * (1.0 - k) - 0.05
 
 
 func _alive_count() -> int:

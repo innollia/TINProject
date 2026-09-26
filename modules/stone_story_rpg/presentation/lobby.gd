@@ -264,7 +264,7 @@ func _draw_room(ox: float) -> void:
 	var w: float = maxf(float(StoneStoryFrame.VIEW_W), size.x)
 	var hz: float = float(StoneStoryContent.SCENE_HORIZON_Y)
 	var seed_v: int = REGION_HUB.hash()
-	StoneStorySky.draw(self, pal, _hub, w, hz, clock, null, ox, seed_v)
+	StoneStorySky.draw(self, pal, _hub, w, hz, clock, null, ox + SCENE_SHIFT, seed_v)
 	StoneStoryGround.draw(self, pal, _hub, w, hz, float(StoneStoryFrame.VIEW_H), null, ox + SCENE_SHIFT, seed_v)
 	if content != null:
 		StoneStoryStructure.draw(self, content.get_def("structure", str(_hub.get("structure", ""))), pal, ox + SCENE_SHIFT, null)

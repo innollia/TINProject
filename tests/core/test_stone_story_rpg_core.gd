@@ -588,3 +588,99 @@ func test_p6_no_image_assets() -> void:
 				if lower.ends_with("." + String(ext)):
 					offenders.append(sub + f)
 	assert_eq(offenders, [], "P no image assets anywhere in the module")
+
+
+
+# --- D-8 / D-9 전투 루프 --------------------------------------------
+
+## 탐험을 시작하고 틱은 테스트가 직접 돈다. 플레이어는 죽지 않고 녹슨 검만 든다.
+func _duel(inst: Node, region: String, star: int) -> Dictionary:
+	inst.set("_pending_region", region)
+	inst.set("_pending_star", star)
+	inst.call("_on_go")
+	inst.set("_started", false)
+	var st: Dictionary = inst.get("state")
+	var p: Dictionary = st["player"]
+	p["hp_max"] = 999999
+	p["hp"] = 999999
+	p["gear"] = [StoneStoryContent.make_item_state("item_rusted_sword")]
+	return st
+
+
+func test_d8_player_swings_on_the_weapon_cadence() -> void:
+	var inst: Node = await _enter_module()
+	var st: Dictionary = _duel(inst, "region_hollow_cistern", 1)
+	var enc: Dictionary = st["encounter"]
+	assert_false(enc["foes"].is_empty(), "D-8 the cistern spawns foes")
+	var foe: Dictionary = enc["foes"][0]
+	enc["foes"] = [foe]
+	enc["boss"] = {}
+	foe["pos"] = {"x": int(st["player"]["pos"]["x"]) + 2, "y": int(st["player"]["pos"]["y"])}
+	foe["hp"] = 999999
+	foe["hp_max"] = 999999
+	var sword: Dictionary = _content.item("item_rusted_sword")
+	var frames: int = int(sword["attack"]["frames"])
+	var cast: int = int(sword["attack"]["cast"])
+	var hits: Array[int] = []
+	var last: int = int(foe["hp"])
+	var p_hp: int = int(st["player"]["hp"])
+	for i in frames * 3:
+		inst.call("_tick")
+		if int(foe["hp"]) < last:
+			hits.append(i + 1)
+		last = int(foe["hp"])
+	assert_eq(hits.size(), 3, "D-8 one landing per attack.frames, not one per tick (%s)" % str(hits))
+	if hits.size() == 3:
+		assert_eq(hits[0], cast + 1, "D-8 the first hit lands after the cast windup")
+		assert_eq(hits[1] - hits[0], frames, "D-8 swings repeat every attack.frames")
+	assert_lt(int(st["player"]["hp"]), p_hp, "D-8 a foe in reach leaves approach and attacks")
+	assert_eq(int(foe["behavior"]), 1, "D-8 in reach the foe runs its attack cycle (behavior 1)")
+	inst.call("exit")
+
+
+func test_d9_the_boss_takes_part_and_the_region_clears() -> void:
+	var inst: Node = await _enter_module()
+	var st: Dictionary = _duel(inst, "region_hollow_cistern", 5)
+	var enc: Dictionary = st["encounter"]
+	var boss: Dictionary = enc["boss"]
+	assert_false(boss.is_empty(), "D-9 star 5 brings the boss")
+	enc["foes"] = []
+	enc["chain"] = [enc["chain"][0]]
+	boss["hp"] = 3
+	var start: Dictionary = (boss["pos"] as Dictionary).duplicate()
+	var cleared: bool = false
+	for i in 900:
+		inst.call("_tick")
+		if str(inst.get("mode")) == "lobby":
+			cleared = true
+			break
+	assert_true(cleared, "D-9 the player reaches and beats the boss, so the expedition ends")
+	assert_ne(JSON.stringify(boss["pos"]), JSON.stringify(start), "D-9 the boss runs its state machine and moves")
+	assert_ne(JSON.stringify(st["player"]["pos"]), JSON.stringify({"x": 0, "y": 0}), "D-9 the player walks toward an out-of-reach target")
+	var report: Array = (inst.get("_lobby") as Object).get("report")
+	assert_true(not report.is_empty() and str(report[0]).begins_with("비웠다"), "D-9 the result line says cleared")
+	inst.call("exit")
+
+
+
+func test_d8_foes_queue_instead_of_stacking() -> void:
+	var inst: Node = await _enter_module()
+	var st: Dictionary = _duel(inst, "region_hollow_cistern", 1)
+	var enc: Dictionary = st["encounter"]
+	var a: Dictionary = enc["foes"][0]
+	var b: Dictionary = a.duplicate(true)
+	b["spawn_index"] = 1
+	a["pos"] = {"x": 14, "y": 0}
+	b["pos"] = {"x": 17, "y": 0}
+	for f in [a, b]:
+		f["hp"] = 999999
+		f["hp_max"] = 999999
+	enc["foes"] = [a, b]
+	enc["boss"] = {}
+	for i in 240:
+		inst.call("_tick")
+	var dx: int = int(a["pos"]["x"]) - int(b["pos"]["x"])
+	var dy: int = int(a["pos"]["y"]) - int(b["pos"]["y"])
+	assert_gte(dx * dx + dy * dy, StoneStoryFoeMachine.PERSONAL_SPACE_SQ, "D-8 two foes keep their spacing instead of sharing a spot")
+	assert_lt(int(a["pos"]["x"]), 14, "D-8 the front foe still closes in")
+	inst.call("exit")

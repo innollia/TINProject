@@ -92,7 +92,7 @@ static func _transition(foe: Dictionary, state: Dictionary) -> void:
 	foe["staggered"] = false
 
 
-static func move_step(foe: Dictionary, target_pos: Dictionary) -> void:
+static func move_step(foe: Dictionary, target_pos: Dictionary, others: Array = []) -> void:
 	if not bool(foe["alive"]):
 		return
 	if bool(foe["staggered"]) or str(foe["state_id"]) == "stagger":
@@ -106,6 +106,10 @@ static func move_step(foe: Dictionary, target_pos: Dictionary) -> void:
 		return
 	if foe["tags"].has("static") or foe["tags"].has("fixed_direction"):
 		return
+	# behaviors[현재].moves 가 false 면 제자리에서 주기 행동만 한다. (03 §3.3)
+	var beh_now: Dictionary = (foe.get("def", {}) as Dictionary).get("behaviors", {}).get(str(int(foe["behavior"])), {})
+	if not bool(beh_now.get("moves", true)):
+		return
 	var per_unit: int = maxi(1, int(foe["walk_frames_per_unit"]))
 	if foe["tags"].has("slow"):
 		per_unit *= 2
@@ -113,18 +117,74 @@ static func move_step(foe: Dictionary, target_pos: Dictionary) -> void:
 	if int(foe["move_accum"]) < per_unit:
 		return
 	foe["move_accum"] = 0
-	var dx: int = int(target_pos["x"]) - int(foe["pos"]["x"])
-	var dy: int = int(target_pos["y"]) - int(foe["pos"]["y"])
-	if absi(dx) > absi(dy):
-		foe["pos"]["x"] = int(foe["pos"]["x"]) + (1 if dx > 0 else -1)
-	elif dy != 0:
-		foe["pos"]["y"] = int(foe["pos"]["y"]) + (1 if dy > 0 else -1)
+	var fx: int = int(foe["pos"]["x"])
+	var fy: int = int(foe["pos"]["y"])
+	var dx: int = int(target_pos["x"]) - fx
+	var dy: int = int(target_pos["y"]) - fy
+	if dx == 0 and dy == 0:
+		return
+	var sx: int = signi(dx)
+	var sy: int = signi(dy)
+	# 주 축 먼저, 막히면 다른 축. 둘 다 막히면 그 자리에 선다. (다른 개체에 겹쳐 서지 않는다)
+	var tries: Array = [Vector2i(sx, 0), Vector2i(0, sy)] if absi(dx) > absi(dy) else [Vector2i(0, sy), Vector2i(sx, 0)]
+	for s: Vector2i in tries:
+		if s == Vector2i.ZERO:
+			continue
+		if crowded(foe, fx + s.x, fy + s.y, others):
+			continue
+		foe["pos"]["x"] = fx + s.x
+		foe["pos"]["y"] = fy + s.y
+		return
+
+
+## 4칸 = 가로 28px. 보통 크기 개체(폭 25px 안팎)가 서로 덮지 않는 간격.
+const PERSONAL_SPACE_SQ: int = 16
+
+
+## 다른 개체와 4칸보다 가까워지는 걸음이면 true. 이미 가까우면 멀어지는 걸음은 허용한다.
+static func crowded(foe: Dictionary, nx: int, ny: int, others: Array) -> bool:
+	var fx: int = int(foe["pos"]["x"])
+	var fy: int = int(foe["pos"]["y"])
+	for o in others:
+		var od: Dictionary = o
+		if is_same(od, foe) or not bool(od.get("alive", true)):
+			continue
+		var ox: int = int(od["pos"]["x"])
+		var oy: int = int(od["pos"]["y"])
+		var after: int = (ox - nx) * (ox - nx) + (oy - ny) * (oy - ny)
+		var before: int = (ox - fx) * (ox - fx) + (oy - fy) * (oy - fy)
+		if after < PERSONAL_SPACE_SQ and after < before:
+			return true
+	return false
 
 
 static func refresh_distance(foe: Dictionary, target_pos: Dictionary) -> void:
 	var dx: int = int(target_pos["x"]) - int(foe["pos"]["x"])
 	var dy: int = int(target_pos["y"]) - int(foe["pos"]["y"])
 	foe["dist"] = int(round(sqrt(float(dx * dx + dy * dy))))
+
+
+## behaviors "2"(이동)로 다가오다 공격 사거리에 들면 "1"(주기 행동: cooldown -> 공격 -> recover)로 바꾼다.
+## 사거리에서 2 넘게 벗어나면 다시 "2". awaken / stagger 중에는 바꾸지 않는다.
+static func update_behavior(foe: Dictionary, def: Dictionary, reach: int) -> void:
+	if not bool(foe["alive"]):
+		return
+	var sid: String = str(foe["state_id"])
+	if sid == "awaken" or sid == "stagger":
+		return
+	var behs: Dictionary = def.get("behaviors", {})
+	if not behs.has("1") or not behs.has("2"):
+		return
+	var d: int = int(foe["dist"])
+	if int(foe["behavior"]) == 2 and d <= reach:
+		foe["behavior"] = 1
+		foe["state_id"] = str(behs["1"].get("default_state", "cooldown"))
+		foe["state_time"] = 0
+		foe["move_accum"] = 0
+	elif int(foe["behavior"]) == 1 and d > reach + 2:
+		foe["behavior"] = 2
+		foe["state_id"] = str(behs["2"].get("default_state", "approach"))
+		foe["state_time"] = 0
 
 
 ## chill 은 이산 확률 스킵. 결정론 유지.

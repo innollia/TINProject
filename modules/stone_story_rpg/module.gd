@@ -24,6 +24,7 @@ var _started: bool = false
 var _stream: StoneStoryRng = StoneStoryRng.new(0, "empty")
 var _serial: int = 0
 var _verb_cache: Dictionary = {}
+var _reach_cache: Dictionary = {}
 
 
 func _ready() -> void:
@@ -212,17 +213,21 @@ func _tick() -> void:
 	enc["player_stance"] = str(intent["stance"])
 	_player_attack(p, enc, intent, tick)
 
-	# 6. 적 행동
+	# 6. 적 행동. 보스도 같은 상태 기계로 움직인다. 정렬: spawn_index, 보스는 마지막.
 	var order: Array = enc.get("foes", []).duplicate()
 	order.sort_custom(func(a, b): return int(a["spawn_index"]) < int(b["spawn_index"]))
+	var boss_now: Dictionary = enc.get("boss", {})
+	if not boss_now.is_empty():
+		order.append(boss_now)
 	for f in order:
 		if not bool(f["alive"]):
 			continue
 		var def: Dictionary = content.get_def(_kind_of(f), str(f["foe_id"]))
 		StoneStoryFoeMachine.refresh_distance(f, p["pos"])
+		StoneStoryFoeMachine.update_behavior(f, def, _foe_reach(f))
 		if not StoneStoryFoeMachine.chill_skips(f, _stream, tick):
 			StoneStoryFoeMachine.step(f, def, _stream, tick)
-		StoneStoryFoeMachine.move_step(f, p["pos"])
+		StoneStoryFoeMachine.move_step(f, p["pos"], order)
 		_foe_attack(f, def, enc, p, tick)
 
 	# 7. 투사체
@@ -272,6 +277,8 @@ func _tick_stamina(p: Dictionary, tick: int) -> void:
 				int(p["stamina"]) + int(ceil(tuning.cf("stamina_regen_per_tick"))))
 
 
+## 무기 attack.frames 가 한 번 휘두르는 전체 틱, attack.cast 가 선딜. (07 §2)
+## 선딜이 끝나는 틱에 행동 수만큼 맞힌다. 목표가 사거리 밖이면 휘두르지 않고 걸어간다.
 func _player_attack(p: Dictionary, enc: Dictionary, intent: Dictionary, tick: int) -> void:
 	var wid: String = str(intent["weapon"])
 	if wid.is_empty():
@@ -279,35 +286,87 @@ func _player_attack(p: Dictionary, enc: Dictionary, intent: Dictionary, tick: in
 	var weapon: Dictionary = content.item(wid)
 	if weapon.is_empty():
 		return
-	var item: Dictionary = _item_of(p, wid)
-	var target_id: String = str(intent["target_id"])
+	var atk: Dictionary = weapon.get("attack", {})
+	var reach: int = int(atk.get("reach", 4))
+	var swing: Dictionary = enc.get("swing", {})
+	if swing.is_empty():
+		var target: Dictionary = StoneStoryPlayerAI.find_target(enc, str(intent.get("target_key", "")))
+		if target.is_empty():
+			return
+		StoneStoryFoeMachine.refresh_distance(target, p["pos"])
+		if int(target["dist"]) > reach:
+			_walk_toward(p, enc, target["pos"])
+			return
+		var frames: int = maxi(1, int(atk.get("frames", 30)))
+		swing = {"t": 0, "frames": frames, "cast": clampi(int(atk.get("cast", 0)), 0, frames - 1),
+				"weapon": wid, "key": StoneStoryPlayerAI.target_key(target)}
+		enc["swing"] = swing
+		enc["walk_accum"] = 0
+	swing["t"] = int(swing["t"]) + 1
+	if int(swing["t"]) == int(swing["cast"]) + 1:
+		_land_swing(p, enc, intent, weapon, str(swing["key"]), reach, tick)
+	if int(swing["t"]) >= int(swing["frames"]):
+		enc["swing"] = {}
+
+
+func _land_swing(p: Dictionary, enc: Dictionary, intent: Dictionary, weapon: Dictionary,
+		key: String, reach: int, tick: int) -> void:
+	var item: Dictionary = _item_of(p, str(weapon.get("id", "")))
 	var acts: int = maxi(1, int(intent["actions_per_turn"]))
 	for a in acts:
-		for f in enc.get("foes", []):
-			if not bool(f["alive"]):
-				continue
-			if not target_id.is_empty() and str(f["foe_id"]) != target_id:
-				continue
-			StoneStoryFoeMachine.refresh_distance(f, p["pos"])
-			if int(f["dist"]) > int(weapon.get("attack", {}).get("reach", 4)):
-				continue
-			var me: Dictionary = {
-				"attributes": intent["attributes"],
-				"affinity_attr": str(p["affinity_attr"]),
-				"seed": int(state["run_seed"]),
-			}
-			var res: Dictionary = StoneStoryCombat.resolve_attack(
-					weapon, item, content.db["affix"], p["stats"], tuning, me, f, _serial + a)
-			var dmg: float = StoneStoryCombat.apply_stance(float(res["damage"]),
-					str(enc.get("player_stance", "neutral")), tuning)
-			dmg *= (1.0 - clampf(float(f.get("defense", 0.0)), 0.0, tuning.cf("defense_max")))
-			_hit_foe(f, dmg)
-			var burst: Array[String] = StoneStoryCombat.accumulate(
-					f, weapon.get("status_build", {}), p["stats"], tuning)
-			for b in burst:
-				_hit_foe(f, StoneStoryCombat.burst_damage(b, float(res["damage"]), p["stats"], tuning))
-			StoneStoryCombat.resolve_poise(
-					float(weapon.get("attack", {}).get("poise_damage", 10)), f, tick, tuning)
+		var f: Dictionary = StoneStoryPlayerAI.find_target(enc, key)
+		if f.is_empty():
+			f = StoneStoryPlayerAI.find_target(enc, str(intent.get("target_key", "")))
+		if f.is_empty():
+			return
+		StoneStoryFoeMachine.refresh_distance(f, p["pos"])
+		if int(f["dist"]) > reach + 1:
+			return
+		var me: Dictionary = {
+			"attributes": intent["attributes"],
+			"affinity_attr": str(p["affinity_attr"]),
+			"seed": int(state["run_seed"]),
+		}
+		var res: Dictionary = StoneStoryCombat.resolve_attack(
+				weapon, item, content.db["affix"], p["stats"], tuning, me, f, _serial + a)
+		var dmg: float = StoneStoryCombat.apply_stance(float(res["damage"]),
+				str(enc.get("player_stance", "neutral")), tuning)
+		dmg *= (1.0 - clampf(float(f.get("defense", 0.0)), 0.0, tuning.cf("defense_max")))
+		_hit_foe(f, dmg)
+		var burst: Array[String] = StoneStoryCombat.accumulate(
+				f, weapon.get("status_build", {}), p["stats"], tuning)
+		for b in burst:
+			_hit_foe(f, StoneStoryCombat.burst_damage(b, float(res["damage"]), p["stats"], tuning))
+		StoneStoryCombat.resolve_poise(
+				float(weapon.get("attack", {}).get("poise_damage", 10)), f, tick, tuning)
+		if int(f["hp"]) <= 0:
+			key = ""
+
+
+## 적과 같은 격자 이동. player_walk_frames_per_unit 틱마다 1칸.
+func _walk_toward(p: Dictionary, enc: Dictionary, target_pos: Dictionary) -> void:
+	var per_unit: int = maxi(1, tuning.ci("player_walk_frames_per_unit"))
+	enc["walk_accum"] = int(enc.get("walk_accum", 0)) + 1
+	if int(enc["walk_accum"]) < per_unit:
+		return
+	enc["walk_accum"] = 0
+	var dx: int = int(target_pos["x"]) - int(p["pos"]["x"])
+	var dy: int = int(target_pos["y"]) - int(p["pos"]["y"])
+	if absi(dx) > absi(dy):
+		p["pos"]["x"] = int(p["pos"]["x"]) + (1 if dx > 0 else -1)
+	elif dy != 0:
+		p["pos"]["y"] = int(p["pos"]["y"]) + (1 if dy > 0 else -1)
+
+
+func _foe_reach(f: Dictionary) -> int:
+	var fid: String = str(f.get("foe_id", ""))
+	if _reach_cache.has(fid):
+		return int(_reach_cache[fid])
+	var r: int = 1
+	for atk_id in f.get("attacks", []):
+		r = maxi(r, int(content.get_def("attack", str(atk_id)).get("reach", 1)))
+	_reach_cache[fid] = r
+	return r
 
 
 func _hit_foe(f: Dictionary, dmg: float) -> void:
@@ -497,6 +556,8 @@ func _item_of(p: Dictionary, item_id: String) -> Dictionary:
 func _on_go() -> void:
 	if String(state["region_id"]) != String(_pending_region):
 		_start_region(String(_pending_region), int(_pending_star))
+	# 탐험은 무대 중앙에서 시작한다. 지난 싸움에서 걸어간 자리는 남기지 않는다.
+	state["player"]["pos"] = {"x": 0, "y": 0}
 	state["encounter"] = StoneStoryEncounter.build(content, tuning, String(state["region_id"]),
 			int(state["star_level"]), int(state["run_seed"]), state["player"])
 	_stream = StoneStoryCore.stream(int(state["run_seed"]), StoneStoryCore.TAG_SIM)

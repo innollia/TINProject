@@ -97,7 +97,8 @@ func _setup(scene: String) -> void:
 			_module.set("_pending_region", "region_hollow_cistern")
 			_module.set("_pending_star", 12)
 			_module.call("_on_go")
-			await _wait(80)
+			# 적이 다가와 맞붙은 뒤에 멈춘다. (공격 주기 = 무기 attack.frames)
+			await _wait(100)
 			_module.set("_started", false)
 			await _wait(4)
 		"canyon":
@@ -113,7 +114,13 @@ func _setup(scene: String) -> void:
 			var st2: Dictionary = _module.get("state")
 			view.call("bind", st2, st2.get("encounter", {}), base, content, _module.get("tuning"))
 			await _wait(10)
-	print("SCENE %s mode=%s" % [scene, str(_module.get("mode"))])
+	var alive: int = 0
+	var enc: Dictionary = (_module.get("state") as Dictionary).get("encounter", {})
+	for f in enc.get("foes", []):
+		if bool(f.get("alive", true)):
+			alive += 1
+	print("SCENE %s mode=%s foes_alive=%d/%d boss=%s" % [scene, str(_module.get("mode")), alive,
+			enc.get("foes", []).size(), str(not (enc.get("boss", {}) as Dictionary).is_empty())])
 
 
 func _resize(res: Vector2i) -> void:
@@ -135,10 +142,11 @@ func _capture(scene: String) -> void:
 		_fail += 1
 		return
 	var win: Vector2i = DisplayServer.window_get_size()
-	var path: String = _out + "%s_%dx%d.png" % [scene, img.get_width(), img.get_height()]
+	# 이름은 창 크기로 짓는다. 3:2 창은 프로젝트 비율 유지(keep) 때문에 그림이 16:9 로 나온다.
+	var path: String = _out + "%s_%dx%d.png" % [scene, win.x, win.y]
 	img.save_png(path)
 	_saved += 1
-	print("CAPTURE %s window=%dx%d" % [path, win.x, win.y])
+	print("CAPTURE %s window=%dx%d image=%dx%d" % [path, win.x, win.y, img.get_width(), img.get_height()])
 	_audit(scene, win)
 
 

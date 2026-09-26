@@ -36,7 +36,31 @@ static func alive_foes(enc: Dictionary) -> int:
 	for f in enc.get("foes", []):
 		if bool(f["alive"]):
 			n += 1
+	var b: Dictionary = enc.get("boss", {})
+	if not b.is_empty() and bool(b.get("alive", true)):
+		n += 1
 	return n
+
+
+## 한 개체를 가리키는 키. foe_id 는 같은 종류가 여럿일 수 있어 쓰지 않는다.
+static func target_key(f: Dictionary) -> String:
+	if f.is_empty():
+		return ""
+	if bool(f.get("is_boss", false)):
+		return "boss"
+	return "foe:" + str(int(f.get("spawn_index", 0)))
+
+
+static func find_target(enc: Dictionary, key: String) -> Dictionary:
+	if key.is_empty():
+		return {}
+	if key == "boss":
+		var b: Dictionary = enc.get("boss", {})
+		return b if not b.is_empty() and bool(b.get("alive", true)) and int(b.get("hp", 1)) > 0 else {}
+	for f in enc.get("foes", []):
+		if bool(f["alive"]) and int(f.get("hp", 1)) > 0 and target_key(f) == key:
+			return f
+	return {}
 
 
 ## 정책만 읽는다. 장비가 정한 것을 그대로 실행한다.
@@ -78,6 +102,7 @@ static func decide(state: Dictionary, enc: Dictionary, content: StoneStoryConten
 		"weapon": str(loadout["main"]),
 		"actions_per_turn": StoneStoryAttributes.actions_per_turn(attrs, policy, tuning),
 		"target_id": str(target.get("foe_id", "")),
+		"target_key": target_key(target),
 		"want_potion": hp_ratio(p) <= float(policy[&"potion_at_hp"]) and float(policy[&"potion_at_hp"]) > 0.0,
 		"want_ability": hp_ratio(p) <= float(policy[&"use_ability_below_hp"]) and float(policy[&"use_ability_below_hp"]) > 0.0,
 		"retreat": goal == Goal.SURVIVE and float(p["hp"]) / maxf(1.0, float(p["hp_max"])) < float(policy[&"retreat_hp_below"]),
@@ -113,6 +138,9 @@ static func _pick_target(enc: Dictionary, priority: String, counter_attr: String
 	for f in enc.get("foes", []):
 		if bool(f["alive"]):
 			pool.append(f)
+	var boss: Dictionary = enc.get("boss", {})
+	if not boss.is_empty() and bool(boss.get("alive", true)):
+		pool.append(boss)
 	if pool.is_empty():
 		return {}
 	# 다리 12 보스가 세 개에 몰려도 한 번에 하나만 상대한다.
