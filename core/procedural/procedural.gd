@@ -79,6 +79,10 @@ static func build_sprite(_spec: Dictionary) -> ImageTexture:
 ## turned with it) → texture. The rig is two joints: the base (bottom centre of the
 ## sprite, planted) and the crown (top centre, soft). Pushing the crown down
 ## squashes the sprite, pushing it sideways or wind leans it. No tween.
+## The squash stays inside the crown joint's default limit (ProceduralSquishRig
+## `squash`, 0.35): at most 1 / 0.65 ≈ 1.54 times wider. The frame keeps the sprite's
+## canvas size and cuts what falls outside, so give "size" room around the sprite.
+## A frame whose pose did not change returns the previous call's texture.
 static func render_frame(_spec: Dictionary) -> ImageTexture:
 	var state: Dictionary = _spec.get("_frame", {})
 	if state.is_empty():
@@ -110,18 +114,23 @@ static func render_frame(_spec: Dictionary) -> ImageTexture:
 	var points: PackedVector2Array = shape.get_points()
 	var rest_bone: Vector2 = rest[1] - rest[0]
 	var live_bone: Vector2 = points[1] - points[0]
+	var limit: float = float(state["limit"])
 	var along: float = clampf(
-		live_bone.length() / maxf(rest_bone.length(), 0.0001),
-		1.0 - ProceduralSquishRig.MAX_SQUASH, 1.0 + ProceduralSquishRig.MAX_SQUASH
+		live_bone.length() / maxf(rest_bone.length(), 0.0001), 1.0 - limit, 1.0 + limit
 	)
 	var shift: Vector2 = backdrop.get_offset(0) if backdrop != null else Vector2.ZERO
 	var forward: Transform2D = Transform2D(0.0, points[0] + shift) \
 		* Transform2D(rest_bone.angle_to(live_bone), Vector2.ZERO) \
 		* ProceduralBodyPart._squash_basis(rest_bone.angle(), along, 1.0 / along) \
 		* Transform2D(0.0, -base)
+	if state.has("texture") and forward == state["forward"]:
+		return state["texture"]
 	var frame: ProceduralCanvas = state["frame"]
-	_resample(state["canvas"], frame, forward.affine_inverse())
-	return frame.to_texture()
+	_resample(state["canvas"], frame, forward, state["used"])
+	var texture: ImageTexture = frame.to_texture()
+	state["forward"] = forward
+	state["texture"] = texture
+	return texture
 
 
 ## make_rig(spec): build a ProceduralSquishRig graph from a spec and return its root.
@@ -296,7 +305,6 @@ static func _start_frame(spec: Dictionary) -> Dictionary:
 	rig.rest_position = base
 	var top: ProceduralSquishRig = ProceduralSquishRig.new(&"crown")
 	top.rest_position = crown - base
-	top.squash = ProceduralSquishRig.MAX_SQUASH
 	rig.attach(top)
 	if rig.to_shape() == null:
 		return {}
@@ -314,6 +322,8 @@ static func _start_frame(spec: Dictionary) -> Dictionary:
 	return {
 		"canvas": canvas,
 		"frame": ProceduralCanvas.new(canvas.width, canvas.height),
+		"used": used,
+		"limit": clampf(top.squash, 0.0, ProceduralSquishRig.MAX_SQUASH),
 		"rig": rig,
 		"backdrop": backdrop,
 		"base": base,
@@ -321,33 +331,68 @@ static func _start_frame(spec: Dictionary) -> Dictionary:
 	}
 
 
-## target 의 픽셀 중심마다 inverse 로 source 를 쌍선형 샘플한다. 알파 가중 평균이라
-## 가장자리가 검게 번지지 않는다. 색은 source 에서만 온다.
-static func _resample(source: ProceduralCanvas, target: ProceduralCanvas, inverse: Transform2D) -> void:
+## source 를 forward(원본 픽셀 → 대상 픽셀)로 옮겨 target 에 다시 칠한다. 대상 픽셀 중심마다
+## 원본을 쌍선형으로 샘플하며 알파 가중 평균이라 가장자리가 검게 번지지 않는다. 색은 source
+## 에서만 온다. 원본의 칠해진 영역(used)이 닿을 수 있는 대상 사각형만 돈다.
+static func _resample(source: ProceduralCanvas, target: ProceduralCanvas, forward: Transform2D, used: Rect2i) -> void:
 	target.clear()
-	for y: int in target.height:
-		for x: int in target.width:
+	var reach: Rect2 = ProceduralBodyPart._transformed_rect(forward, Rect2(used).grow(1.0)).grow(1.0)
+	var area: Rect2i = Rect2i(
+		floori(reach.position.x), floori(reach.position.y),
+		ceili(reach.end.x) - floori(reach.position.x), ceili(reach.end.y) - floori(reach.position.y)
+	).intersection(Rect2i(0, 0, target.width, target.height))
+	if area.size.x <= 0 or area.size.y <= 0:
+		return
+	var inverse: Transform2D = forward.affine_inverse()
+	var src: PackedByteArray = source.pixels
+	var out: PackedByteArray = target.pixels
+	var source_width: int = source.width
+	var source_height: int = source.height
+	var stride: int = source_width * 4
+	for y: int in range(area.position.y, area.end.y):
+		for x: int in range(area.position.x, area.end.x):
 			var at: Vector2 = inverse * Vector2(float(x) + 0.5, float(y) + 0.5) - Vector2(0.5, 0.5)
 			var x0: int = floori(at.x)
 			var y0: int = floori(at.y)
-			if x0 < -1 or y0 < -1 or x0 >= source.width or y0 >= source.height:
+			if x0 < -1 or y0 < -1 or x0 >= source_width or y0 >= source_height:
+				continue
+			var has_left: bool = x0 >= 0
+			var has_right: bool = x0 + 1 < source_width
+			var has_top: bool = y0 >= 0
+			var has_bottom: bool = y0 + 1 < source_height
+			var i00: int = y0 * stride + x0 * 4
+			var i10: int = i00 + 4
+			var i01: int = i00 + stride
+			var i11: int = i01 + 4
+			var a00: float = float(src[i00 + 3]) if has_left and has_top else 0.0
+			var a10: float = float(src[i10 + 3]) if has_right and has_top else 0.0
+			var a01: float = float(src[i01 + 3]) if has_left and has_bottom else 0.0
+			var a11: float = float(src[i11 + 3]) if has_right and has_bottom else 0.0
+			if a00 + a10 + a01 + a11 <= 0.0:
 				continue
 			var tx: float = at.x - float(x0)
 			var ty: float = at.y - float(y0)
-			var c00: Color = source.get_pixel(x0, y0)
-			var c10: Color = source.get_pixel(x0 + 1, y0)
-			var c01: Color = source.get_pixel(x0, y0 + 1)
-			var c11: Color = source.get_pixel(x0 + 1, y0 + 1)
-			var w00: float = (1.0 - tx) * (1.0 - ty) * c00.a
-			var w10: float = tx * (1.0 - ty) * c10.a
-			var w01: float = (1.0 - tx) * ty * c01.a
-			var w11: float = tx * ty * c11.a
+			var w00: float = (1.0 - tx) * (1.0 - ty) * a00
+			var w10: float = tx * (1.0 - ty) * a10
+			var w01: float = (1.0 - tx) * ty * a01
+			var w11: float = tx * ty * a11
 			var alpha: float = w00 + w10 + w01 + w11
-			if alpha < 0.5 / 255.0:
+			if alpha < 0.5:
 				continue
-			var mixed: Color = (c00 * w00 + c10 * w10 + c01 * w01 + c11 * w11) / alpha
-			mixed.a = alpha
-			target.set_pixel(x, y, mixed)
+			var index: int = (y * target.width + x) * 4
+			for channel: int in 3:
+				var mixed: float = 0.0
+				if w00 > 0.0:
+					mixed += float(src[i00 + channel]) * w00
+				if w10 > 0.0:
+					mixed += float(src[i10 + channel]) * w10
+				if w01 > 0.0:
+					mixed += float(src[i01 + channel]) * w01
+				if w11 > 0.0:
+					mixed += float(src[i11 + channel]) * w11
+				out[index + channel] = clampi(roundi(mixed / alpha), 0, 255)
+			out[index + 3] = clampi(roundi(alpha), 0, 255)
+	target.pixels = out
 
 
 static func _joint_kind_of(raw: Variant) -> int:

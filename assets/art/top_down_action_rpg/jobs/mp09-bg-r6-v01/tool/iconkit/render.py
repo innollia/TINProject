@@ -19,7 +19,14 @@ Form:
     pivot, hidden, clip_to, cut_by[], rough{amp, soft, cell}, extrude, ao{...},
     line{width, heavy, breaks, color} | false, shade{...}, texture{...} | false,
     cast{dist, blur, opacity} | false, glow{radius, opacity, color}, opacity,
-    grad{to, y0, y1}, blend normal | multiply
+    grad{to, y0, y1}, blend normal | multiply,
+    grime{stamps[], size, density, strength, color, soft, foot, foot_curve} | false   (v02)
+    emit: 0..1 | true   (v02: the form also goes to the separate emission layer)
+
+v02 (h0-icon-mood-v02) additions: material/form ``grime`` (icon-stamp stains that
+multiply toward a grime colour, plus dirt collecting at the foot of front faces)
+and ``emit`` (flames, embers: written to ``<frame>_emit.png`` so a lit preview can
+add them back after the scene is darkened).  Everything else is unchanged from v01.
 """
 
 from __future__ import annotations
@@ -37,7 +44,7 @@ from . import paint as P
 from .icons import IconLibrary, find_project_root
 from .raster import Affine, ShapeFactory, canvas_bounds, placement_size, rasterize, shape_to_canvas
 
-TOOL_VERSION = "0.2"
+TOOL_VERSION = "0.3-mood"
 GROUND_SQUASH = math.sin(math.radians(60.0))   # 0.866: ground depth on a 60 deg camera
 HEIGHT_SQUASH = math.cos(math.radians(60.0))   # 0.5: vertical height on a 60 deg camera
 
@@ -58,8 +65,12 @@ def deep_merge(base: dict, over: dict) -> dict:
 
 
 def tool_source_hash() -> str:
+    """Hash of the code that paints assets.  ``lighting.py`` is compose-time only
+    (scene light for previews), so editing it does not force asset rebuilds."""
     h = hashlib.sha256()
     for p in sorted(Path(__file__).resolve().parent.glob("*.py")):
+        if p.name == "lighting.py":
+            continue
         h.update(p.name.encode())
         h.update(p.read_bytes())
     return h.hexdigest()
@@ -75,6 +86,19 @@ def load_recipe(path) -> dict:
     data["forms"] = forms + data.get("forms", [])
     data["_path"] = str(path)
     data["_dir"] = str(path.parent)
+    return data
+
+
+def load_palette(path, _depth: int = 0) -> dict:
+    """Load a palette; mp09 addition: ``"extends": "<file>"`` deep-merges a base palette
+    from the same folder first, so a region palette only lists what it adds or changes
+    and the shared ink / shadow / style values stay identical to the base."""
+    path = Path(path)
+    data = load_json(path)
+    base_name = data.get("extends")
+    if base_name and _depth < 4:
+        base = load_palette(path.parent / base_name, _depth + 1)
+        data = deep_merge(base, {k: v for k, v in data.items() if k != "extends"})
     return data
 
 
@@ -474,6 +498,74 @@ class Renderer:
         color = self._color(line["color"]) if line.get("color") else mat["_line"]
         return P.lerp(rgb, color, band * line.get("opacity", 1.0))
 
+    # -- v02: grime and emission ------------------------------------------------------
+    def _stain_stamps(self, spec: dict, ss: int) -> list:
+        key = "stain|" + json.dumps(spec, sort_keys=True) + f"|{ss}"
+        if key in self._stamps:
+            return self._stamps[key]
+        size = float(spec.get("size", 40)) * ss
+        soft = float(spec.get("soft", 0.0)) * ss
+        aspect = float(spec.get("aspect", 1.0))
+        out = []
+        for i, name in enumerate(spec.get("stamps", ["metaballs", "sponge", "cloud"])):
+            img = self.lib.image(name)
+            box = img.getbbox()
+            if box:
+                img = img.crop(box)
+            for k, rot in enumerate((0, 90, 180, 270)):
+                f = (0.65, 1.0, 1.35)[(i + k) % 3]
+                sw = max(3, int(round(size * f)))
+                sh = max(3, int(round(size * f * aspect)))
+                im = img.resize((sw, sh), Image.Resampling.LANCZOS).rotate(rot, resample=Image.Resampling.BICUBIC,
+                                                                          expand=True)
+                arr = np.asarray(im, dtype=np.float32) / 255.0
+                if soft > 0:
+                    pad = int(soft * 2) + 1
+                    arr = P.blur(np.pad(arr, pad), soft)
+                out.append(arr)
+        self._stamps[key] = out
+        return out
+
+    def _grime_spec(self, form: dict, mat: dict, style: dict, key: str = "grime"):
+        spec = form.get(key, None)
+        if spec is False:
+            return None
+        base = mat.get(key)
+        if base is None and key == "grime":
+            base = style.get("grime")
+        if isinstance(spec, dict):
+            return deep_merge(base or {}, spec)
+        return base
+
+    def _grime(self, rgb, M, spec, ss, rng, tt=None):
+        """Multiply toward a grime colour where icon-stamp stains (and foot dirt) land."""
+        if not spec or spec.get("strength", 0) <= 0:
+            return rgb
+        field = np.zeros(M.shape, dtype=np.float32)
+        if spec.get("density", 0) > 0:
+            stamps = self._stain_stamps({k: spec[k] for k in ("stamps", "size", "soft", "aspect") if k in spec}, ss)
+            field = P.stain_field(M.shape[0], M.shape[1], stamps, rng, density=spec["density"], mask=M,
+                                  lo=spec.get("lo", 0.35), hi=spec.get("hi", 1.0))
+        if tt is not None and spec.get("foot", 0) > 0:
+            field = np.maximum(field, (tt ** spec.get("foot_curve", 2.0)) * spec["foot"])
+        amt = np.clip(field, 0.0, 1.0) * float(spec["strength"]) * np.clip(M, 0.0, 1.0)
+        color = self._color(spec.get("color", "grime"))
+        return rgb * (1.0 - amt[..., None] * (1.0 - color))
+
+    @staticmethod
+    def _emit_strength(form: dict) -> float:
+        value = form.get("emit", 0.0)
+        if value is True:
+            return 1.0
+        return float(value or 0.0)
+
+    @staticmethod
+    def _emit_layer(emit: P.Buffer, rgb, alpha, x0: int, y0: int, strength: float) -> None:
+        if strength > 0:
+            emit.composite(rgb, alpha * min(1.0, strength), x0, y0)
+        else:
+            emit.occlude(alpha, x0, y0)
+
     def _cast(self, M, x0, y0, cast, ss, target: P.Buffer):
         if not cast or cast.get("opacity", 0) <= 0:
             return
@@ -486,7 +578,7 @@ class Renderer:
     def render(self, recipe: dict, frame: dict | None = None) -> dict:
         frame = frame or {"name": recipe.get("asset", "asset")}
         rdir = Path(recipe["_dir"])
-        self.palette = load_json(rdir / recipe["palette"])
+        self.palette = load_palette(rdir / recipe["palette"])
         style = deep_merge(self.palette["styles"][recipe.get("style", "sprite")], recipe.get("style_override", {}))
         ss = int(recipe.get("supersample", style.get("supersample", 2)))
         W, H = recipe["canvas"]
@@ -502,6 +594,7 @@ class Renderer:
         separate_shadows = style.get("shadow_output", "separate") == "separate"
         canvas = P.Buffer(Ws, Hs, fill=style.get("background"))
         shadows = P.Buffer(Ws, Hs)
+        emit = P.Buffer(Ws, Hs)  # v02: flames / embers, kept separate for lit previews
         stored: dict = {}
         pad = int(style.get("edge_pad", 64) * ss)
         limit = (-pad, -pad, Ws + pad, Hs + pad)
@@ -546,6 +639,7 @@ class Renderer:
             if name in refs:
                 stored[name] = (M.copy(), x0, y0)
             opacity = float(form.get("opacity", 1.0))
+            glow_strength = self._emit_strength(form)
 
             if kind == "shadow":
                 color = self._color(form.get("color", "shadow_contact"))
@@ -563,6 +657,7 @@ class Renderer:
                     canvas.darken(M * opacity, color, x0, y0)
                 else:
                     canvas.composite(rgb, M * opacity, x0, y0)
+                    self._emit_layer(emit, rgb, M * opacity, x0, y0, glow_strength)
                 continue
 
             if kind == "flat":
@@ -576,20 +671,28 @@ class Renderer:
                     t = t ** grad.get("curve", 1.0)
                     rgb = P.lerp(rgb, self._color(grad["to"]), np.repeat(t[:, None], M.shape[1], 1))
                 rgb = self._texture(rgb, M, mat, form.get("texture", mat.get("texture") if form.get("textured") else None), ss, rng)
+                if isinstance(form.get("grime"), dict):
+                    rgb = self._grime(rgb, M, self._grime_spec(form, mat, style), ss, rng)
                 rgb = self._lines(rgb, M, mat, line, ss, noise)
                 self._cast(M, x0, y0, form.get("cast"), ss, canvas)
                 canvas.composite(rgb, M * opacity, x0, y0)
+                self._emit_layer(emit, rgb, M * opacity, x0, y0, glow_strength)
                 if glow:
                     G = P.blur(M, glow.get("radius", 3) * ss) * glow.get("opacity", 0.5)
                     if form.get("clip_to") in stored:
                         G *= self._crop_to(stored[form["clip_to"]], x0, y0, M.shape)
-                    canvas.lighten(G, self._color(glow.get("color", mat.get("light", "#ffffff"))), x0, y0)
+                    gcol = self._color(glow.get("color", mat.get("light", "#ffffff")))
+                    canvas.lighten(G, gcol, x0, y0)
+                    if glow_strength > 0:
+                        emit.add(G * glow_strength, gcol, x0, y0)
                 continue
 
             shade = deep_merge(style.get("shade", {}), deep_merge(mat.get("shade", {}), form.get("shade", {})))
             tex = form.get("texture", deep_merge(style.get("texture", {}), mat.get("texture", {})) if mat.get("texture") else None)
             if form.get("texture") is not None and form.get("texture") is not False and mat.get("texture"):
                 tex = deep_merge(deep_merge(style.get("texture", {}), mat.get("texture", {})), form["texture"])
+
+            grime = self._grime_spec(form, mat, style)
 
             if kind == "block":
                 T = M
@@ -609,10 +712,13 @@ class Renderer:
                                                                      "highlight_amount": 0.2}))
                 top = self._shade(T, mat, top_shade, ss, rng, noise)
                 top = self._texture(top, T, mat, tex, ss, rng)
+                top = self._grime(top, T, grime, ss, rng)
                 side = P.lerp(mat["_side"], mat["_side_shadow"], tt * form.get("side_grad", 0.55))
                 side_tex = mat.get("side_texture") or (dict(tex, angle=90.0) if tex else None)
                 smat = dict(mat, _light=P.lerp(mat["_side"], mat["_base"], 0.35), _shadow=mat["_side_shadow"])
                 side = self._texture(side, S, smat, side_tex, ss, rng)
+                side_grime = self._grime_spec(form, mat, style, "side_grime") or grime
+                side = self._grime(side, S, side_grime, ss, rng, tt=tt)
                 rgb = P.lerp(side, top, np.clip(T, 0.0, 1.0))
                 if line:
                     jw = max(1.0, line.get("junction", 0.8) * ss)
@@ -622,6 +728,7 @@ class Renderer:
                 rgb = self._lines(rgb, A, mat, line, ss, noise)
                 self._cast(A, x0, y0, form.get("cast", None), ss, canvas)
                 canvas.composite(rgb, A * opacity, x0, y0)
+                self._emit_layer(emit, rgb, A * opacity, x0, y0, glow_strength)
                 if name in refs:
                     stored[name] = (A.copy(), x0, y0)
                 continue
@@ -636,9 +743,17 @@ class Renderer:
                 t = np.clip((yy - grad["y0"]) / span, 0.0, 1.0) ** grad.get("curve", 1.0)
                 rgb = P.lerp(rgb, self._color(grad["to"]), np.repeat(t[:, None], M.shape[1], 1) * grad.get("amount", 1.0))
             rgb = self._texture(rgb, M, mat, tex, ss, rng)
+            rgb = self._grime(rgb, M, grime, ss, rng)
             rgb = self._lines(rgb, M, mat, line, ss, noise)
             self._cast(M, x0, y0, form.get("cast", style.get("cast")), ss, canvas)
             canvas.composite(rgb, M * opacity, x0, y0)
+            self._emit_layer(emit, rgb, M * opacity, x0, y0, glow_strength)
+            if glow:
+                G = P.blur(M, glow.get("radius", 3) * ss) * glow.get("opacity", 0.5)
+                gcol = self._color(glow.get("color", mat.get("light", "#ffffff")))
+                canvas.lighten(G, gcol, x0, y0)
+                if glow_strength > 0:
+                    emit.add(G * glow_strength, gcol, x0, y0)
 
         sil = style.get("silhouette")
         if sil:
@@ -649,12 +764,14 @@ class Renderer:
 
         image = P.downsample(canvas.to_image(), ss)
         shadow_img = P.downsample(shadows.to_image(), ss) if shadows.a.max() > 0.003 else None
+        emit_img = P.downsample(emit.to_image(), ss) if emit.a.max() > 0.003 else None
         pivot = recipe.get("pivot")
         if pivot and frame.get("mirror"):
             pivot = [W - pivot[0], pivot[1]]
         return {
             "image": image,
             "shadow": shadow_img,
+            "emit": emit_img,
             "pivot": pivot,
             "icons": dict(sorted(self.lib.used.items())),
             "instances": self.instances,

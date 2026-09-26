@@ -1,0 +1,40 @@
+{
+  "asset": "obj_h0_crate",
+  "status": "candidate",
+  "note": "mp06 H0 object: wooden crates taken out of the V1 background (crates / crate_faces / crate_top). Three frames share one recipe: crate_large, crate_small, crate_stack (a small crate on a large one). Drawn in V1 coordinates, scaled x1.24; block heights x1.24 by hand (scale_all does not scale extrude).",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [248, 347],
+  "pivot": [124, 304],
+  "pivot_meaning": "front-bottom centre of the (lower) crate on the floor",
+  "scale_all": {"factor": 1.24, "origin": [0, 0]},
+  "seed": 304,
+  "frames": [
+    {"name": "crate_large", "hide": ["small", "top"]},
+    {"name": "crate_small", "hide": ["large", "top"]},
+    {"name": "crate_stack", "hide": ["small"]}
+  ],
+  "forms": [
+    {"name": "shadow_large", "tags": ["large"], "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 8,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [108, 240], "size": [134, 30]}]},
+    {"name": "large", "z": 1, "kind": "block", "material": "wood", "extrude": 87,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [100, 140], "size": [116, 70]}]},
+    {"name": "large_face", "tags": ["large"], "z": 1.5, "kind": "flat", "material": "wood", "opacity": 0.85,
+     "line": {"width": 0.9, "heavy": 0.8},
+     "pieces": [{"icon": "crate", "crop": [0.8, 0.8, 15.2, 15.2], "at": [100, 210], "size": [110, 66]}]},
+
+    {"name": "shadow_small", "tags": ["small"], "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 8,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [106, 240], "size": [112, 28]}]},
+    {"name": "small", "z": 1, "kind": "block", "material": "wood", "extrude": 87,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [100, 145], "size": [96, 60]}]},
+    {"name": "small_face", "tags": ["small"], "z": 1.5, "kind": "flat", "material": "wood", "opacity": 0.85,
+     "line": {"width": 0.9, "heavy": 0.8},
+     "pieces": [{"icon": "crate", "crop": [0.8, 0.8, 15.2, 15.2], "at": [100, 206], "size": [90, 58], "flip": "x"}]},
+
+    {"name": "top", "z": 2, "kind": "block", "material": "wood", "extrude": 72,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [110, 75], "size": [92, 58]}]},
+    {"name": "top_face", "tags": ["top"], "z": 2.5, "kind": "flat", "material": "wood", "opacity": 0.85,
+     "line": {"width": 0.9, "heavy": 0.8},
+     "pieces": [{"icon": "crate", "crop": [0.8, 0.8, 15.2, 15.2], "at": [110, 136], "size": [88, 56]}]}
+  ]
+}

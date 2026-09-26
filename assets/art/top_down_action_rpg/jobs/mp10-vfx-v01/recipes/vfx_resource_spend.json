@@ -1,0 +1,569 @@
+{
+ "asset": "vfx_resource_spend",
+ "status": "candidate",
+ "note": "Resource spend (09 12.4 resource change, decrease). Muted drops fall and stretch, then splash in a small ring. Falling direction and drop shape tell it apart from vfx_resource_gain.",
+ "palette": "palette_mp10.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "resource point (HP/MP spent or lost)",
+ "seed": 1011,
+ "vfx": {
+  "blend": "normal",
+  "cell": [
+   192,
+   192
+  ],
+  "frames": 4,
+  "loop": false,
+  "static_frame": "spend_2"
+ },
+ "forms": [
+  {
+   "name": "spend_1__drops_1",
+   "tags": [
+    "spend_1"
+   ],
+   "hidden": true,
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_mute_light",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      72.0,
+      52.0
+     ],
+     "size": [
+      14.0,
+      19.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      90.0,
+      68.0
+     ],
+     "size": [
+      14.0,
+      19.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      104.0,
+      48.0
+     ],
+     "size": [
+      14.0,
+      19.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      120.0,
+      64.0
+     ],
+     "size": [
+      14.0,
+      19.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      84.0,
+      40.0
+     ],
+     "size": [
+      14.0,
+      19.0
+     ]
+    }
+   ],
+   "opacity": 0.8,
+   "line": {
+    "width": 1.0,
+    "heavy": 0.8,
+    "color": "#4d4856"
+   }
+  },
+  {
+   "name": "spend_2__drops_2",
+   "tags": [
+    "spend_2"
+   ],
+   "hidden": true,
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_mute_light",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      72.0,
+      78.0
+     ],
+     "size": [
+      13.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      90.0,
+      94.0
+     ],
+     "size": [
+      13.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      104.0,
+      74.0
+     ],
+     "size": [
+      13.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      120.0,
+      90.0
+     ],
+     "size": [
+      13.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      84.0,
+      66.0
+     ],
+     "size": [
+      13.0,
+      22.0
+     ]
+    }
+   ],
+   "opacity": 1.0,
+   "line": {
+    "width": 1.0,
+    "heavy": 0.8,
+    "color": "#4d4856"
+   }
+  },
+  {
+   "name": "spend_3__drops_3",
+   "tags": [
+    "spend_3"
+   ],
+   "hidden": true,
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_mute_light",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      72.0,
+      104.0
+     ],
+     "size": [
+      12.0,
+      25.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      90.0,
+      120.0
+     ],
+     "size": [
+      12.0,
+      25.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      104.0,
+      100.0
+     ],
+     "size": [
+      12.0,
+      25.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      120.0,
+      116.0
+     ],
+     "size": [
+      12.0,
+      25.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      84.0,
+      92.0
+     ],
+     "size": [
+      12.0,
+      25.0
+     ]
+    }
+   ],
+   "opacity": 0.85,
+   "line": {
+    "width": 1.0,
+    "heavy": 0.8,
+    "color": "#4d4856"
+   }
+  },
+  {
+   "name": "spend_3__splash_4",
+   "tags": [
+    "spend_3"
+   ],
+   "hidden": true,
+   "z": 1,
+   "kind": "flat",
+   "material": "fx_mute_light",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      150.0
+     ],
+     "size": [
+      54.74,
+      24.63
+     ],
+     "fit": "box",
+     "poly": [
+      [
+       8.0,
+       8.0
+      ],
+      [
+       -4.0,
+       8.0
+      ],
+      [
+       -3.77,
+       5.66
+      ],
+      [
+       -3.09,
+       3.41
+      ],
+      [
+       -1.98,
+       1.33
+      ],
+      [
+       -0.49,
+       -0.49
+      ],
+      [
+       1.33,
+       -1.98
+      ],
+      [
+       3.41,
+       -3.09
+      ],
+      [
+       5.66,
+       -3.77
+      ],
+      [
+       8.0,
+       -4.0
+      ],
+      [
+       10.34,
+       -3.77
+      ],
+      [
+       12.59,
+       -3.09
+      ],
+      [
+       14.67,
+       -1.98
+      ],
+      [
+       16.49,
+       -0.49
+      ],
+      [
+       17.98,
+       1.33
+      ],
+      [
+       19.09,
+       3.41
+      ],
+      [
+       19.77,
+       5.66
+      ],
+      [
+       20.0,
+       8.0
+      ]
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      150.0
+     ],
+     "size": [
+      44.0,
+      19.8
+     ],
+     "op": "sub"
+    }
+   ],
+   "opacity": 0.8
+  },
+  {
+   "name": "spend_4__drops_5",
+   "tags": [
+    "spend_4"
+   ],
+   "hidden": true,
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_mute_light",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      72.0,
+      130.0
+     ],
+     "size": [
+      11.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      90.0,
+      146.0
+     ],
+     "size": [
+      11.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      104.0,
+      126.0
+     ],
+     "size": [
+      11.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      120.0,
+      142.0
+     ],
+     "size": [
+      11.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      84.0,
+      118.0
+     ],
+     "size": [
+      11.0,
+      28.0
+     ]
+    }
+   ],
+   "opacity": 0.5,
+   "line": {
+    "width": 1.0,
+    "heavy": 0.8,
+    "color": "#4d4856"
+   }
+  },
+  {
+   "name": "spend_4__splash_6",
+   "tags": [
+    "spend_4"
+   ],
+   "hidden": true,
+   "z": 1,
+   "kind": "flat",
+   "material": "fx_mute_light",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      150.0
+     ],
+     "size": [
+      71.58,
+      32.21
+     ],
+     "fit": "box",
+     "poly": [
+      [
+       8.0,
+       8.0
+      ],
+      [
+       -4.0,
+       8.0
+      ],
+      [
+       -3.77,
+       5.66
+      ],
+      [
+       -3.09,
+       3.41
+      ],
+      [
+       -1.98,
+       1.33
+      ],
+      [
+       -0.49,
+       -0.49
+      ],
+      [
+       1.33,
+       -1.98
+      ],
+      [
+       3.41,
+       -3.09
+      ],
+      [
+       5.66,
+       -3.77
+      ],
+      [
+       8.0,
+       -4.0
+      ],
+      [
+       10.34,
+       -3.77
+      ],
+      [
+       12.59,
+       -3.09
+      ],
+      [
+       14.67,
+       -1.98
+      ],
+      [
+       16.49,
+       -0.49
+      ],
+      [
+       17.98,
+       1.33
+      ],
+      [
+       19.09,
+       3.41
+      ],
+      [
+       19.77,
+       5.66
+      ],
+      [
+       20.0,
+       8.0
+      ]
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      150.0
+     ],
+     "size": [
+      60.0,
+      27.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "opacity": 0.5
+  }
+ ],
+ "frames": [
+  {
+   "name": "spend_1",
+   "show": [
+    "spend_1"
+   ]
+  },
+  {
+   "name": "spend_2",
+   "show": [
+    "spend_2"
+   ]
+  },
+  {
+   "name": "spend_3",
+   "show": [
+    "spend_3"
+   ]
+  },
+  {
+   "name": "spend_4",
+   "show": [
+    "spend_4"
+   ]
+  }
+ ]
+}

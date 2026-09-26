@@ -1,0 +1,98 @@
+{
+  "asset": "player",
+  "view": "down",
+  "status": "candidate",
+  "note": "Player facing down (front). From v01 player_front.json: same parts, moved 4 px up (pivot 96,182), scale 1.0, limb tags renamed to the character's own left/right (the character's left is screen right here). Bag and strap sit on the character's left hip; scarf end hangs on the chest, character's left.",
+  "palette": "palette_h0.json",
+  "style": "sprite",
+  "canvas": [192, 192],
+  "pivot": [96, 182],
+  "pivot_meaning": "ground contact point between the feet (place this pixel on the floor position)",
+  "seed": 41,
+  "rig": {
+    "stride": 14, "lift": 3, "bob": 2, "swing": 8,
+    "limbs": [
+      {"kind": "leg", "phase": 1, "pivot": [106, 146], "len": 30, "thigh": "thigh_left", "foot": "foot_left"},
+      {"kind": "leg", "phase": -1, "pivot": [86, 146], "len": 30, "thigh": "thigh_right", "foot": "foot_right"},
+      {"kind": "arm", "phase": -1, "pivot": [124, 92], "len": 45, "tag": "arm_left"},
+      {"kind": "arm", "phase": 1, "pivot": [68, 92], "len": 45, "tag": "arm_right"}
+    ],
+    "sway": [{"tag": "scarf_tail", "pivot": [109, 80], "rot": 5}]
+  },
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 3,
+     "pieces": [{"icon": "circle", "at": [96, 180], "size": [60, 16]}]},
+    {"name": "hair_back", "tags": ["upper", "head"], "z": 0, "material": "hair",
+     "pieces": [
+       {"icon": "circle", "at": [96, 38], "size": [66, 60]},
+       {"icon": "droplet", "flip": "y", "at": [69, 60], "size": [16, 26], "rot": 8},
+       {"icon": "droplet", "flip": "y", "at": [123, 60], "size": [16, 26], "rot": -8}
+     ]},
+
+    {"name": "leg_right", "tags": ["legs", "leg_right", "thigh_right"], "z": 1, "material": "trouser",
+     "pieces": [{"icon": "circle", "at": [86, 161], "size": [17, 30]}]},
+    {"name": "leg_left", "tags": ["legs", "leg_left", "thigh_left"], "z": 1, "material": "trouser",
+     "pieces": [{"icon": "circle", "at": [106, 161], "size": [17, 30]}]},
+    {"name": "boot_right", "tags": ["legs", "leg_right", "foot_right"], "z": 2, "material": "leather",
+     "pieces": [{"icon": "footsteps", "crop": [2, 2, 7.6, 9.8], "flip": "y", "at": [85, 175], "size": [20, 17]}]},
+    {"name": "boot_left", "tags": ["legs", "leg_left", "foot_left"], "z": 2, "material": "leather",
+     "pieces": [{"icon": "footsteps", "crop": [2, 2, 7.6, 9.8], "flip": "xy", "at": [107, 175], "size": [20, 17]}]},
+
+    {"name": "coat", "tags": ["upper", "body"], "z": 3, "material": "coat",
+     "pieces": [
+       {"icon": "bell", "crop": [1.6, 3.4, 14.4, 10.6], "at": [96, 120], "size": [66, 64]},
+       {"icon": "cloud", "flip": "y", "at": [96, 153], "size": [62, 20]}
+     ]},
+    {"name": "coat_seam", "tags": ["upper", "body"], "z": 3.5, "kind": "flat", "color": "coat_seam",
+     "pieces": [{"icon": "circle", "at": [97, 136], "size": [3, 40]}]},
+
+    {"name": "strap", "tags": ["upper", "strap"], "z": 4, "material": "leather", "cast": false,
+     "pieces": [{"icon": "circle", "at": [103, 114], "size": [5, 76], "rot": -44}]},
+    {"name": "satchel", "tags": ["upper", "satchel"], "z": 4.2, "material": "leather",
+     "pieces": [{"icon": "briefcase", "crop": [1.5, 4.2, 14.5, 15], "at": [129, 150], "size": [24, 18]}]},
+    {"name": "satchel_buckle", "tags": ["upper", "satchel"], "z": 4.5, "kind": "flat", "material": "bronze",
+     "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "square", "at": [129, 147], "size": [6, 5]}]},
+
+    {"name": "arm_right", "tags": ["upper", "arm_right"], "z": 5.5, "material": "coat", "pivot": [68, 92],
+     "pieces": [{"icon": "shield", "half": "left", "at": [65, 113], "size": [18, 44], "rot": 4}]},
+    {"name": "arm_left", "tags": ["upper", "arm_left"], "z": 5.5, "material": "coat", "pivot": [124, 92],
+     "pieces": [{"icon": "shield", "half": "right", "at": [127, 113], "size": [18, 44], "rot": -4}]},
+    {"name": "glove_right", "tags": ["upper", "arm_right"], "z": 6, "material": "leather",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [63, 137], "size": [12, 15], "rot": 6}]},
+    {"name": "glove_left", "tags": ["upper", "arm_left"], "z": 6, "material": "leather",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [129, 137], "size": [12, 15], "rot": -6}]},
+
+    {"name": "capelet", "tags": ["upper", "body"], "z": 7, "material": "coat_top",
+     "pieces": [{"icon": "umbrella", "crop": [0.6, 2.3, 15.4, 8.7], "at": [96, 90], "size": [90, 38]}]},
+    {"name": "clasp", "tags": ["upper", "body"], "z": 7.5, "kind": "flat", "material": "bronze",
+     "line": {"width": 0.6, "heavy": 0.5},
+     "pieces": [{"icon": "coin", "at": [96, 103], "size": [11, 11]}]},
+
+    {"name": "scarf", "tags": ["upper", "neck"], "z": 8, "material": "scarf",
+     "pieces": [{"icon": "circle", "at": [96, 75], "size": [50, 18]}]},
+    {"name": "scarf_tail", "tags": ["upper", "scarf_tail"], "z": 8.2, "material": "scarf", "pivot": [109, 80],
+     "pieces": [{"icon": "bookmark", "at": [110, 94], "size": [14, 30], "rot": -6}]},
+
+    {"name": "face", "tags": ["upper", "head"], "z": 9, "material": "skin",
+     "pieces": [{"icon": "circle", "at": [96, 52], "size": [46, 40]}]},
+
+    {"name": "hair_front", "tags": ["upper", "head"], "z": 10, "material": "hair",
+     "shade": {"highlight_amount": 0.75, "highlight": 0.9},
+     "pieces": [
+       {"icon": "cloud", "at": [95, 25], "size": [74, 38]},
+       {"icon": "droplet", "flip": "y", "at": [80, 43], "size": [14, 17], "rot": 12},
+       {"icon": "droplet", "flip": "y", "at": [96, 45], "size": [13, 17]},
+       {"icon": "droplet", "flip": "y", "at": [111, 43], "size": [14, 17], "rot": -12},
+       {"icon": "droplet", "flip": "y", "at": [70, 54], "size": [12, 24], "rot": 5},
+       {"icon": "droplet", "flip": "y", "at": [122, 54], "size": [12, 24], "rot": -5}
+     ]},
+
+    {"name": "eye_right", "tags": ["upper", "head", "face_marks"], "z": 11, "kind": "flat", "material": "eye",
+     "pieces": [{"icon": "circle", "at": [85, 57], "size": [5, 7]}]},
+    {"name": "eye_left", "tags": ["upper", "head", "face_marks"], "z": 11, "kind": "flat", "material": "eye",
+     "pieces": [{"icon": "circle", "at": [107, 57], "size": [5, 7]}]},
+    {"name": "nose", "tags": ["upper", "head", "face_marks"], "z": 11, "kind": "flat", "color": "skin_shadow",
+     "pieces": [{"icon": "moon", "at": [97, 63], "size": [6, 4], "rot": 200}]}
+  ]
+}

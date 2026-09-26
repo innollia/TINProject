@@ -1,0 +1,82 @@
+{
+  "asset": "enemy_ash_hound",
+  "view": "up",
+  "status": "candidate",
+  "note": "Ash Hound facing up (back), new. Rump nearest and lowest, tail rising in front of it (tilted), back and a low neck crest rising toward the head. Seen from behind and above, the head shows the skull top, ears spread to the sides and the blunt top of the muzzle pointing away (up on screen), so it does not read as a cat face. Hind legs are the near legs, front legs peek out behind. The dog's left is screen left.",
+  "palette": "palette_h0.json",
+  "style": "sprite",
+  "canvas": [384, 384],
+  "pivot": [192, 320],
+  "pivot_meaning": "ground point under the body centre (place this pixel on the floor position)",
+  "seed": 73,
+  "rig": {
+    "stride": 22, "lift": 4, "bob": 2,
+    "limbs": [
+      {"kind": "leg", "phase": 1, "pivot": [174, 242], "len": 53, "tag": "leg_front_left"},
+      {"kind": "leg", "phase": -1, "pivot": [210, 242], "len": 53, "tag": "leg_front_right"},
+      {"kind": "leg", "phase": -1, "pivot": [164, 285], "len": 65, "tag": "leg_hind_left"},
+      {"kind": "leg", "phase": 1, "pivot": [220, 285], "len": 65, "tag": "leg_hind_right"}
+    ],
+    "sway": [{"tag": "tail", "pivot": [196, 266], "rot": 8}]
+  },
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.42, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [192, 322], "size": [84, 84]}]},
+
+    {"name": "leg_front_left", "tags": ["legs", "leg_front_left"], "z": 0.5, "material": "ash_far",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [174, 258], "size": [20, 32]},
+       {"icon": "circle", "at": [174, 278], "size": [12, 24]},
+       {"icon": "circle", "at": [174, 295], "size": [19, 10]}
+     ]},
+    {"name": "leg_front_right", "tags": ["legs", "leg_front_right"], "z": 0.5, "material": "ash_far",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [210, 258], "size": [20, 32]},
+       {"icon": "circle", "at": [210, 278], "size": [12, 24]},
+       {"icon": "circle", "at": [210, 295], "size": [19, 10]}
+     ]},
+
+    {"name": "ear_left", "tags": ["upper", "head"], "z": 1.4, "material": "ash_far",
+     "pieces": [{"icon": "droplet", "at": [172, 184], "size": [12, 22], "rot": -25}]},
+    {"name": "ear_right", "tags": ["upper", "head"], "z": 1.4, "material": "ash_far",
+     "pieces": [{"icon": "droplet", "at": [212, 184], "size": [12, 22], "rot": 25}]},
+    {"name": "snout", "tags": ["upper", "head"], "z": 1.45, "material": "ash_far",
+     "pieces": [{"icon": "circle", "at": [192, 179], "size": [18, 24]}]},
+    {"name": "head", "tags": ["upper", "head"], "z": 1.5, "material": "ash",
+     "pieces": [{"icon": "circle", "at": [192, 197], "size": [48, 32]}]},
+
+    {"name": "leg_hind_left", "tags": ["legs", "leg_hind_left"], "z": 1.8, "material": "ash",
+     "pieces": [
+       {"icon": "circle", "at": [164, 306], "size": [23, 42]},
+       {"icon": "circle", "at": [164, 332], "size": [15, 26]},
+       {"icon": "circle", "at": [164, 350], "size": [24, 12]}
+     ]},
+    {"name": "leg_hind_right", "tags": ["legs", "leg_hind_right"], "z": 1.8, "material": "ash",
+     "pieces": [
+       {"icon": "circle", "at": [220, 306], "size": [23, 42]},
+       {"icon": "circle", "at": [220, 332], "size": [15, 26]},
+       {"icon": "circle", "at": [220, 350], "size": [24, 12]}
+     ]},
+
+    {"name": "body", "tags": ["upper", "body"], "z": 2, "material": "ash",
+     "pieces": [
+       {"icon": "circle", "at": [192, 276], "size": [80, 62]},
+       {"icon": "circle", "at": [192, 248], "size": [74, 54]},
+       {"icon": "mountains", "at": [192, 221], "size": [66, 26]},
+       {"icon": "mountains", "at": [192, 204], "size": [44, 16]}
+     ]},
+
+    {"name": "tail", "tags": ["upper", "tail"], "z": 4, "material": "ash",
+     "pieces": [{"icon": "comet", "at": [200, 254], "size": [38, 38], "rot": -25}]},
+    {"name": "tail_embers", "tags": ["upper", "tail"], "z": 4.5, "kind": "flat", "material": "ember", "clip_to": "tail",
+     "glow": {"radius": 2.5, "opacity": 0.45, "color": "ember_glow"},
+     "pieces": [{"icon": "comet", "keep": [[9.5, 1, 15.5, 7]], "at": [200, 254], "size": [38, 38], "rot": -25}]},
+
+    {"name": "cracks", "tags": ["upper", "cracks"], "z": 6, "kind": "flat", "material": "ember", "clip_to": "body",
+     "glow": {"radius": 2.5, "opacity": 0.5, "color": "ember_glow"},
+     "pieces": [
+       {"icon": "lightning_bolt", "at": [162, 272], "size": [6, 18], "rot": 24},
+       {"icon": "lightning_bolt", "at": [224, 266], "size": [6, 16], "rot": -24}
+     ]}
+  ]
+}

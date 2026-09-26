@@ -1,0 +1,155 @@
+{
+  "asset": "enemy_permit_inspector",
+  "status": "candidate",
+  "note": "enemy_permit_inspector (R5 Glasswing Ordinal; inspector/permit; humanoid, human scale, stateful open_close, motion inspection_poke; unbreakable). Author design: a stiff, narrow inspector in a slate-blue uniform coat, peaked cap with a glass wing badge, a monocle, a clamp-tipped inspection rod in the right hand, a permit clipboard in the left, and a hinged bronze checklist plate on the chest that opens on a stamp compartment (support reference: FAM-ARPG-06 Seal Lancer, same region: narrow upright body, long rod, checklist plate). Telegraph (pose + field prop): rod levelled, clipboard held out. Signature (inspection, contract bound): rod poked low and forward, chest plate open on the stamp. Exposure (never breaks; resource lock / guard / status counter): plate stuck open, rod lowered tip-down, clipboard dropped, head bowed. Front battler, 60 deg view.",
+  "palette": "palette_mp05_enemies.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre (game draws the enemy centred on its stage position); ground contact line y=320",
+  "seed": 505,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [160, 321], "size": [124, 22]}]},
+
+    {"name": "clipboard_dropped", "tags": ["dropped"], "hidden": true, "z": 0.8, "material": "wood",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [100, 312], "size": [36, 30], "rot": -10, "squash": 0.55}]},
+    {"name": "clipboard_dropped_paper", "tags": ["dropped"], "hidden": true, "z": 0.9, "material": "paper",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [100, 311], "size": [28, 24], "rot": -10, "squash": 0.55}]},
+
+    {"name": "legs", "tags": ["legs"], "z": 1, "material": "trouser",
+     "pieces": [
+       {"icon": "circle", "at": [150, 284], "size": [18, 66]},
+       {"icon": "circle", "at": [170, 284], "size": [18, 66]}
+     ]},
+    {"name": "boots", "tags": ["legs"], "z": 1.2, "material": "leather",
+     "pieces": [
+       {"icon": "circle", "at": [149, 316], "size": [22, 12]},
+       {"icon": "circle", "at": [171, 316], "size": [22, 12]}
+     ]},
+
+    {"name": "coat", "tags": ["body"], "z": 2, "material": "uniform",
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [160, 204], "size": [76, 150]},
+       {"icon": "triangle", "op": "sub", "at": [160, 272], "size": [12, 30]}
+     ]},
+    {"name": "coat_seam", "tags": ["body"], "z": 2.2, "kind": "flat", "color": "coat_seam", "clip_to": "coat",
+     "pieces": [{"icon": "square", "at": [160, 214], "size": [2, 126]}]},
+    {"name": "buttons", "tags": ["body"], "z": 2.3, "material": "bronze", "line": {"width": 0.4, "heavy": 0.3},
+     "pieces": [{"icon": "circle", "at": [172, 150], "size": [5, 5], "repeat": {"grid": [1, 5], "step": [0, 15]}}]},
+    {"name": "belt", "tags": ["body"], "z": 2.4, "material": "leather", "clip_to": "coat",
+     "pieces": [{"icon": "square", "at": [160, 228], "size": [80, 7]}]},
+    {"name": "buckle", "tags": ["body"], "z": 2.45, "material": "bronze", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [160, 228], "size": [11, 9]}]},
+
+    {"name": "compartment", "tags": ["open"], "hidden": true, "z": 2.5, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [146, 170], "size": [28, 34]}]},
+    {"name": "stamp", "tags": ["open"], "hidden": true, "z": 2.6, "material": "bronze",
+     "pieces": [{"icon": "stamp", "at": [147, 170], "size": [18, 18]}]},
+    {"name": "stamp_ink", "tags": ["open"], "hidden": true, "z": 2.65, "material": "seal_wax",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [147, 181], "size": [16, 4]}]},
+
+    {"name": "plate", "tags": ["plate"], "z": 2.7, "material": "bronze", "cast": {"dist": 2.2, "blur": 1.4, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [146, 170], "size": [30, 36]}]},
+    {"name": "plate_paper", "tags": ["plate"], "z": 2.8, "material": "paper", "shade": {"bump": 0.3},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [146, 171], "size": [22, 28]}]},
+    {"name": "plate_marks", "tags": ["plate"], "z": 2.9, "kind": "flat", "material": "paper_mark",
+     "pieces": [
+       {"icon": "square", "at": [149, 162], "size": [12, 1.8]},
+       {"icon": "square", "at": [149, 169], "size": [12, 1.8]},
+       {"icon": "square", "at": [149, 176], "size": [12, 1.8]},
+       {"icon": "square", "at": [148, 183], "size": [9, 1.8]},
+       {"icon": "square", "at": [140, 162], "size": [3, 3]},
+       {"icon": "square", "at": [140, 169], "size": [3, 3]},
+       {"icon": "square", "at": [140, 176], "size": [3, 3]},
+       {"icon": "square", "at": [140, 183], "size": [3, 3]}
+     ]},
+
+    {"name": "neck", "tags": ["head"], "z": 2.95, "material": "skin", "shade": {"threshold": 0.6},
+     "pieces": [{"icon": "square", "at": [160, 120], "size": [14, 12]}]},
+    {"name": "epaulettes", "tags": ["body"], "z": 3, "material": "uniform_top",
+     "pieces": [
+       {"icon": "circle", "at": [126, 136], "size": [30, 16], "rot": -8},
+       {"icon": "circle", "at": [194, 136], "size": [30, 16], "rot": 8}
+     ]},
+    {"name": "epaulette_fringe", "tags": ["body"], "z": 3.05, "kind": "flat", "material": "bronze",
+     "pieces": [
+       {"icon": "square", "at": [120, 144], "size": [1.6, 6], "repeat": {"grid": [4, 1], "step": [4, 0]}},
+       {"icon": "square", "at": [188, 144], "size": [1.6, 6], "repeat": {"grid": [4, 1], "step": [4, 0]}}
+     ]},
+    {"name": "collar", "tags": ["body"], "z": 3.1, "material": "uniform_top",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [160, 127], "size": [36, 14]}]},
+
+    {"name": "arm_l", "tags": ["arm_l"], "z": 3.2, "material": "uniform",
+     "pieces": [{"icon": "circle", "at": [118, 172], "size": [19, 62], "rot": 5}]},
+    {"name": "clipboard", "tags": ["arm_l", "clipboard"], "z": 3.3, "material": "wood",
+     "cast": {"dist": 2.2, "blur": 1.4, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [106, 226], "size": [30, 38], "rot": 6}]},
+    {"name": "clipboard_paper", "tags": ["arm_l", "clipboard"], "z": 3.32, "material": "paper", "shade": {"bump": 0.3},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [106, 228], "size": [23, 29], "rot": 6}]},
+    {"name": "clipboard_clip", "tags": ["arm_l", "clipboard"], "z": 3.34, "material": "bronze", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [108, 209], "size": [12, 5], "rot": 6}]},
+    {"name": "hand_l", "tags": ["arm_l"], "z": 3.4, "material": "skin", "shade": {"threshold": 0.58, "highlight_amount": 0.3},
+     "pieces": [{"icon": "circle", "at": [114, 206], "size": [13, 14]}]},
+
+    {"name": "arm_r", "tags": ["arm_r"], "z": 3.2, "material": "uniform",
+     "pieces": [{"icon": "circle", "at": [202, 172], "size": [19, 62], "rot": -5}]},
+
+    {"name": "face", "tags": ["head"], "z": 3.4, "material": "skin", "shade": {"threshold": 0.58, "highlight_amount": 0.3},
+     "pieces": [{"icon": "circle", "at": [160, 103], "size": [34, 36]}]},
+    {"name": "brows", "tags": ["head"], "z": 3.45, "kind": "flat", "material": "hair",
+     "pieces": [
+       {"icon": "square", "at": [152, 97], "size": [8, 2.2], "rot": 10},
+       {"icon": "square", "at": [168, 97], "size": [8, 2.2], "rot": -10}
+     ]},
+    {"name": "eye", "tags": ["head"], "z": 3.46, "kind": "flat", "material": "eye",
+     "pieces": [{"icon": "circle", "at": [152, 103], "size": [4, 4]}]},
+    {"name": "mouth", "tags": ["head"], "z": 3.46, "kind": "flat", "color": "skin_shadow",
+     "pieces": [{"icon": "square", "at": [160, 114], "size": [9, 1.6]}]},
+    {"name": "monocle", "tags": ["head"], "z": 3.5, "material": "glass", "line": {"width": 0.7, "heavy": 0.6, "color": "bronze"},
+     "pieces": [{"icon": "circle", "at": [168, 103], "size": [11, 11]}]},
+    {"name": "monocle_chain", "tags": ["head"], "z": 3.52, "kind": "flat", "material": "bronze",
+     "pieces": [{"icon": "square", "at": [173, 113], "size": [1.2, 14], "rot": -10}]},
+    {"name": "cap_crown", "tags": ["head"], "z": 3.6, "material": "uniform_top",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [160, 82], "size": [44, 22]}]},
+    {"name": "cap_top", "tags": ["head"], "z": 3.65, "material": "uniform_top", "shade": {"bump": 0.4, "highlight_amount": 0.6},
+     "pieces": [{"icon": "circle", "at": [160, 72], "size": [48, 15]}]},
+    {"name": "cap_brim", "tags": ["head"], "z": 3.7, "material": "leather",
+     "pieces": [{"icon": "circle", "at": [160, 94], "size": [48, 9]}]},
+    {"name": "badge", "tags": ["head"], "z": 3.8, "material": "glass", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "wing", "at": [160, 82], "size": [16, 10]}]},
+
+    {"name": "rod", "tags": ["rod"], "z": 3.5, "material": "iron",
+     "pieces": [
+       {"icon": "square", "at": [205, 166], "size": [5, 150]},
+       {"icon": "circle", "at": [205, 222], "size": [9, 7]},
+       {"icon": "moon", "at": [201, 86], "size": [7, 14], "rot": 20},
+       {"icon": "moon", "flip": "x", "at": [209, 86], "size": [7, 14], "rot": -20}
+     ]},
+    {"name": "rod_lens", "tags": ["rod"], "z": 3.55, "material": "glass",
+     "pieces": [{"icon": "circle", "at": [205, 98], "size": [8, 8]}]},
+    {"name": "hand_r", "tags": ["arm_r"], "z": 3.6, "material": "skin", "shade": {"threshold": 0.58, "highlight_amount": 0.3},
+     "pieces": [{"icon": "circle", "at": [205, 206], "size": [13, 14]}]}
+  ],
+  "frames": [
+    {"name": "baseline"},
+    {"name": "telegraph",
+     "move": {"arm_l": {"rot": -38, "dy": -14, "pivot": [126, 146]},
+              "rod": {"rot": 30, "pivot": [205, 206]},
+              "arm_r": {"rot": -6, "pivot": [196, 144]},
+              "head": {"rot": -4, "pivot": [160, 120]}}},
+    {"name": "signature",
+     "show": ["open"],
+     "move": {"rod": {"rot": -120, "pivot": [205, 206]},
+              "plate": {"sx": 0.22, "pivot": [131, 170]},
+              "head": {"rot": 6, "dy": 2, "pivot": [160, 120]},
+              "arm_l": {"rot": -18, "dy": -6, "pivot": [126, 146]}}},
+    {"name": "exposure",
+     "hide": ["clipboard"],
+     "show": ["open", "dropped"],
+     "move": {"rod": {"rot": 180, "dy": -8, "pivot": [205, 206]},
+              "plate": {"sx": 0.22, "pivot": [131, 170]},
+              "head": {"rot": 12, "dy": 4, "pivot": [160, 120]},
+              "arm_l": {"rot": 6, "pivot": [126, 146]}}}
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "asset": "obj_h0_rubble",
+  "status": "candidate",
+  "note": "mp06 H0 object: broken stone rubble at wall feet, taken out of the V1 background (rubble). Two frames: rubble_large (three stones), rubble_small (two stones). Scaled x1.24 to the player scale; floor shadow in _shadow.png.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [310, 174],
+  "pivot": [155, 126],
+  "pivot_meaning": "floor contact point under the front of the pile",
+  "scale_all": {"factor": 1.24, "origin": [0, 0]},
+  "seed": 305,
+  "frames": [
+    {"name": "rubble_large", "hide": ["small"]},
+    {"name": "rubble_small", "hide": ["large"]}
+  ],
+  "forms": [
+    {"name": "shadow_large", "tags": ["large"], "kind": "shadow", "color": "shadow_contact", "opacity": 0.45, "blur": 6,
+     "pieces": [{"icon": "circle", "at": [130, 98], "size": [170, 34]}]},
+    {"name": "stones_large", "tags": ["large"], "z": 1, "material": "rubble",
+     "shade": {"max_radius": 8, "bump": 1.1},
+     "line": {"width": 1.4, "heavy": 1.8, "breaks": 0.3},
+     "pieces": [
+       {"icon": "rocks", "crop": [2, 2, 12, 12.5], "at": [70, 74], "size": [70, 52], "rot": 10},
+       {"icon": "rocks", "crop": [8.5, 8.5, 14.5, 14.8], "at": [126, 92], "size": [34, 28], "rot": -20},
+       {"icon": "rocks", "crop": [2, 2, 12, 12.5], "at": [180, 76], "size": [44, 32], "rot": 70}
+     ]},
+    {"name": "shadow_small", "tags": ["small"], "kind": "shadow", "color": "shadow_contact", "opacity": 0.45, "blur": 6,
+     "pieces": [{"icon": "circle", "at": [128, 98], "size": [130, 28]}]},
+    {"name": "stones_small", "tags": ["small"], "z": 1, "material": "rubble",
+     "shade": {"max_radius": 8, "bump": 1.1},
+     "line": {"width": 1.4, "heavy": 1.8, "breaks": 0.3},
+     "pieces": [
+       {"icon": "rocks", "crop": [2, 2, 12, 12.5], "at": [100, 72], "size": [74, 54], "rot": -12},
+       {"icon": "rocks", "crop": [8.5, 8.5, 14.5, 14.8], "at": [160, 90], "size": [36, 28], "rot": 25}
+     ]}
+  ]
+}

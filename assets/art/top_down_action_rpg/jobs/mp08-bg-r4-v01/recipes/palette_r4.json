@@ -1,0 +1,47 @@
+{
+  "id": "palette_r4",
+  "extends": "palette_h0_mood.json",
+  "status": "candidate",
+  "source": "mp08-bg-r4-v01. R4 Crownwell Archive on top of the V1 mood palette (palette_h0_mood.json, copied unchanged). Kept from V1: ink, shade_tint, shadow_contact, floor_joint, grime, damp, rust, soot, paper, bronze, iron, glass, flame and every style setting (line widths, brush stamps, light direction). Changed: floor/wall materials to a cold blue-grey slate and soot-inked stone so the region reads apart from H0's grey-violet; new dark lacquered wood, ink-blue cloth ties, chalk and ink-stain/dust colours. Overall value kept at V1 level (hall floor luma ~83 like V1 floor).",
+  "colors": {
+    "ink_stain": "#171a26",
+    "dust": "#6a675f",
+    "chalk": "#a8a396",
+    "slate_joint": "#14161d"
+  },
+  "materials": {
+    "floor": {"base": "#50545e", "shadow": "#40444e", "light": "#62666f",
+              "texture": {"stamp": "leaf", "pre_rot": 45, "length": 34, "width": 7, "angle": 2, "jitter": 9, "density": 1.3, "strength": 0.14},
+              "grime": {"stamps": ["metaballs", "sponge", "cloud"], "size": 70, "soft": 6, "density": 0.07, "strength": 0.22, "color": "damp", "lo": 0.3}},
+    "floor_low": {"base": "#45484f", "shadow": "#373a42", "light": "#555861",
+                  "texture": {"stamp": "leaf", "pre_rot": 45, "length": 34, "width": 7, "angle": 2, "jitter": 9, "density": 1.3, "strength": 0.14},
+                  "grime": {"stamps": ["metaballs", "sponge", "cloud"], "size": 70, "soft": 6, "density": 0.09, "strength": 0.26, "color": "grime", "lo": 0.3}},
+    "floor_high": {"base": "#555a64", "shadow": "#454a54", "light": "#686d77",
+                   "texture": {"stamp": "leaf", "pre_rot": 45, "length": 34, "width": 7, "angle": 2, "jitter": 9, "density": 1.3, "strength": 0.13},
+                   "grime": {"stamps": ["metaballs", "sponge", "cloud"], "size": 70, "soft": 6, "density": 0.06, "strength": 0.2, "color": "damp", "lo": 0.3}},
+    "stone": {"base": "#4e505b", "shadow": "#3b3d48", "light": "#61636e", "side": "#3d3f4a", "side_shadow": "#2a2b35", "line": "#0f0a12",
+              "texture": {"stamp": "leaf", "pre_rot": 45, "length": 14, "width": 3.5, "angle": 0, "jitter": 14, "density": 0.9, "strength": 0.09},
+              "grime": {"stamps": ["metaballs", "cloud", "droplet"], "size": 34, "soft": 3, "density": 0.22, "strength": 0.3, "color": "soot"},
+              "side_grime": {"stamps": ["droplet", "metaballs"], "size": 30, "aspect": 1.7, "soft": 3, "density": 0.45, "strength": 0.45, "color": "soot", "foot": 0.75, "foot_curve": 1.6}},
+    "stone_dark": {"base": "#42444f", "shadow": "#31333d", "light": "#52545f", "side": "#30313b", "side_shadow": "#1f2027", "line": "#0c080e",
+                   "texture": {"stamp": "leaf", "pre_rot": 45, "length": 14, "width": 3.5, "angle": 0, "jitter": 14, "density": 0.9, "strength": 0.09},
+                   "grime": {"stamps": ["metaballs", "cloud"], "size": 30, "soft": 3, "density": 0.3, "strength": 0.32, "color": "soot"},
+                   "side_grime": {"stamps": ["droplet", "metaballs"], "size": 26, "aspect": 1.7, "soft": 3, "density": 0.45, "strength": 0.45, "color": "soot", "foot": 0.75, "foot_curve": 1.6}},
+    "slate_rim": {"base": "#4f5563", "shadow": "#3c4150", "light": "#646a79", "side": "#3a3f4c", "side_shadow": "#252933", "line": "#0f0a12",
+                  "texture": {"stamp": "leaf", "pre_rot": 45, "length": 18, "width": 4, "angle": 0, "jitter": 20, "density": 0.9, "strength": 0.1},
+                  "grime": {"stamps": ["metaballs", "cloud"], "size": 30, "soft": 3, "density": 0.35, "strength": 0.35, "color": "damp"},
+                  "side_grime": {"stamps": ["droplet", "metaballs"], "size": 22, "aspect": 1.6, "soft": 2, "density": 0.5, "strength": 0.45, "color": "damp", "foot": 0.6, "foot_curve": 1.5}},
+    "lacquer": {"base": "#4a3129", "shadow": "#2e1e18", "light": "#65463a", "side": "#38251e", "side_shadow": "#231610", "line": "#120806",
+                "texture": {"stamp": "pill", "pre_rot": -45, "length": 22, "width": 2.2, "angle": 0, "jitter": 4, "density": 0.9, "strength": 0.12},
+                "grime": {"stamps": ["metaballs", "cloud"], "size": 16, "soft": 2, "density": 0.3, "strength": 0.3, "color": "grime"}},
+    "cloth_ink": {"base": "#2f3346", "shadow": "#1f2231", "light": "#41465d", "line": "#0b0c14",
+                  "texture": {"stamp": "leaf", "pre_rot": 45, "length": 10, "width": 2.5, "angle": 90, "jitter": 10, "density": 0.8, "strength": 0.08}},
+    "chalk": {"base": "#a8a396"},
+    "ink_stain": {"base": "#171a26"},
+    "dust": {"base": "#6a675f"},
+    "slate_joint": {"base": "#14161d"}
+  },
+  "styles": {
+    "environment": {"background": "#50545e"}
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "asset": "obj_r4_copy_shelf",
+  "status": "candidate",
+  "note": "R4 public copy shelf, stands against a wall. Dark lacquered cabinet 1.6 m wide, 0.45 m deep, 2.4 m tall with four open shelves: record spines, rolled copies, bound ledgers and tied bundles. No readable text. 226 px/m. Contact shadow separate.",
+  "palette": "palette_r4.json",
+  "style": "prop",
+  "canvas": [500, 500],
+  "pivot": [250, 436],
+  "pivot_meaning": "front-bottom centre of the cabinet on the floor (back side against the wall)",
+  "seed": 431,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.45, "blur": 8,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 16}, "at": [252, 432], "size": [392, 34]}]},
+    {"name": "cabinet", "z": 0, "kind": "block", "material": "lacquer", "extrude": 271,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [250, 121], "size": [362, 88]}]},
+    {"name": "recesses", "z": 1, "kind": "flat", "color": "#1a1215",
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [250, 206], "size": [322, 48]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [250, 266], "size": [322, 48]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [250, 326], "size": [322, 48]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [250, 386], "size": [322, 48]}
+     ]},
+    {"name": "spines_ink", "z": 2, "kind": "mass", "material": "cloth_ink", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "at": [0, 0], "size": [13, 40], "repeat": {"line": [[108, 210], [238, 210]], "count": 8, "jitter": {"size": 0.12, "at": 1}}},
+       {"icon": "square", "at": [0, 0], "size": [14, 38], "repeat": {"line": [[268, 330], [392, 330]], "count": 7, "jitter": {"size": 0.12, "at": 1}}}
+     ]},
+    {"name": "spines_paper", "z": 2.1, "kind": "mass", "material": "paper", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "at": [0, 0], "size": [12, 36], "repeat": {"line": [[254, 212], [300, 212]], "count": 3, "jitter": {"size": 0.1, "at": 1}}},
+       {"icon": "square", "at": [0, 0], "size": [13, 38], "repeat": {"line": [[110, 330], [180, 330]], "count": 4, "jitter": {"size": 0.1, "at": 1}}}
+     ]},
+    {"name": "spines_leather", "z": 2.2, "kind": "mass", "material": "leather", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "at": [0, 0], "size": [16, 40], "repeat": {"line": [[320, 211], [394, 211]], "count": 4, "jitter": {"size": 0.1, "at": 1}}},
+       {"icon": "square", "at": [0, 0], "size": [18, 36], "repeat": {"line": [[200, 332], [248, 332]], "count": 3, "jitter": {"size": 0.1, "at": 1}}}
+     ]},
+    {"name": "leaning_spine", "z": 2.3, "kind": "mass", "material": "cloth_ink", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [{"icon": "square", "at": [304, 214], "size": [12, 38], "rot": 18}]},
+    {"name": "roll_ends", "z": 2, "kind": "mass", "material": "paper", "line": {"width": 0.7, "heavy": 0.8},
+     "shade": {"bump": 0.6},
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [22, 22], "repeat": {"line": [[112, 278], [388, 278]], "count": 12, "jitter": {"size": 0.12, "at": 1.5}}},
+       {"icon": "circle", "at": [0, 0], "size": [20, 20], "repeat": {"line": [[124, 256], [376, 256]], "count": 11, "jitter": {"size": 0.12, "at": 1.5}}}
+     ]},
+    {"name": "roll_cores", "z": 2.1, "kind": "flat", "color": "#4a3f33", "opacity": 0.8,
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [6, 6], "repeat": {"line": [[112, 278], [388, 278]], "count": 12}},
+       {"icon": "circle", "at": [0, 0], "size": [5, 5], "repeat": {"line": [[124, 256], [376, 256]], "count": 11}}
+     ]},
+    {"name": "bundles", "z": 2, "kind": "mass", "material": "paper", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [140, 394], "size": [62, 30]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [214, 392], "size": [70, 34]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [290, 396], "size": [58, 26]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [360, 393], "size": [66, 32]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [212, 370], "size": [60, 16]}
+     ]},
+    {"name": "bundle_ties", "z": 2.3, "kind": "flat", "material": "cloth_ink",
+     "pieces": [
+       {"icon": "square", "at": [140, 394], "size": [5, 30]},
+       {"icon": "square", "at": [214, 392], "size": [5, 34]},
+       {"icon": "square", "at": [290, 396], "size": [5, 26]},
+       {"icon": "square", "at": [360, 393], "size": [5, 32]}
+     ]},
+    {"name": "top_stack", "z": 3, "material": "paper", "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "ground": true, "at": [300, 112], "size": [84, 34]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "ground": true, "at": [302, 104], "size": [78, 30]}
+     ]},
+    {"name": "top_ledger", "z": 3.2, "material": "leather",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "ground": true, "at": [182, 118], "size": [64, 40], "rot": -8}]},
+    {"name": "dust", "z": 4, "kind": "wash", "material": "dust", "opacity": 0.12, "clip_to": "cabinet", "blur": 6,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [250, 121], "size": [362, 88]}]}
+  ]
+}

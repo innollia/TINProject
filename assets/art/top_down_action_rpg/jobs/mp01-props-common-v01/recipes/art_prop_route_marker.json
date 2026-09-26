@@ -1,0 +1,93 @@
+{
+  "asset": "art_prop_route_marker",
+  "status": "candidate",
+  "note": "art_prop_route_marker: the frontier guide's route marker (npc_07_bryn_oskel mark_route, conv_h0_route_board ch_mark_the_safe_segment 'pay for it in chalk'). A knee-low wooden stake with a chalked head board, twine and a wine cloth strip; on the floor a chalk band (two strokes, a start bar, three dots) points along the walkable segment. States: normal (fresh chalk), recognized (bronze registry tag), trace (chalk faded and broken: the guide is gone, the marker only partly works), damaged (contaminated segment: chalk smeared, damp stain spreading). No text, no arrow glyph. Author's design.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 112],
+  "pivot_meaning": "centre of the stake foot on the floor",
+  "seed": 151,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.42, "blur": 2.5,
+     "pieces": [{"icon": "circle", "at": [97, 113], "size": [28, 9]}]},
+
+    {"name": "stain_floor", "tags": ["stain"], "hidden": true, "decal": true, "z": 0, "kind": "wash", "color": "#1f2824",
+     "opacity": 0.42, "blur": 3,
+     "pieces": [
+       {"icon": "metaballs", "ground": true, "rot": -20, "at": [74, 128], "size": [84, 50]},
+       {"icon": "cloud", "ground": true, "at": [104, 113], "size": [44, 26]}
+     ]},
+
+    {"name": "chalk_floor", "tags": ["chalk_fresh"], "decal": true, "z": 0.5, "kind": "flat", "color": "#9d97a2", "opacity": 0.8,
+     "rough": {"amp": 0.25, "soft": 0.4, "cell": 4},
+     "pieces": [
+       {"icon": "circle", "rot": -28, "at": [64, 131], "size": [56, 2.6]},
+       {"icon": "circle", "rot": -28, "at": [70.6, 143.3], "size": [50, 2.6]},
+       {"icon": "circle", "rot": -28, "at": [91, 125], "size": [2.6, 22]},
+       {"icon": "circle", "at": [79, 131], "size": [3.4, 3]},
+       {"icon": "circle", "at": [67.5, 137.5], "size": [3.4, 3]},
+       {"icon": "circle", "at": [56, 144], "size": [3.4, 3]}
+     ]},
+    {"name": "chalk_floor_faded", "tags": ["chalk_faded"], "hidden": true, "decal": true, "z": 0.5, "kind": "flat", "color": "#9d97a2", "opacity": 0.32,
+     "rough": {"amp": 0.9, "soft": 0.5, "cell": 5},
+     "pieces": [
+       {"icon": "circle", "rot": -28, "at": [70, 128], "size": [40, 2.4]},
+       {"icon": "circle", "rot": -28, "at": [62, 148], "size": [26, 2.4]},
+       {"icon": "circle", "rot": -28, "at": [91, 125], "size": [2.4, 12]},
+       {"icon": "circle", "at": [67.5, 137.5], "size": [3, 2.6]}
+     ]},
+    {"name": "chalk_floor_smear", "tags": ["chalk_smear"], "hidden": true, "decal": true, "z": 0.5, "kind": "flat", "color": "#8d8792", "opacity": 0.45,
+     "blur": 1.5, "rough": {"amp": 0.6, "soft": 1.0, "cell": 6},
+     "pieces": [
+       {"icon": "circle", "rot": -28, "at": [64, 131], "size": [58, 6]},
+       {"icon": "circle", "rot": -28, "at": [70.6, 143.3], "size": [52, 6]},
+       {"icon": "circle", "rot": -28, "at": [91, 125], "size": [6, 22]}
+     ]},
+
+    {"name": "stake", "z": 1, "kind": "block", "material": "wood", "extrude": 48,
+     "pieces": [{"icon": "circle", "ground": true, "at": [96, 62], "size": [14, 14]}]},
+    {"name": "stake_stain", "tags": ["stain"], "hidden": true, "z": 1.2, "kind": "wash", "color": "#3e4a44",
+     "blend": "multiply", "opacity": 0.6, "clip_to": "stake",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [96, 102], "size": [18, 30]}]},
+
+    {"name": "board", "z": 2, "material": "wood", "shade": {"bump": 0.3},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "rot": -5, "at": [96, 74], "size": [30, 13]}]},
+    {"name": "board_nails", "z": 2.2, "kind": "flat", "material": "iron",
+     "pieces": [
+       {"icon": "circle", "at": [85, 75], "size": [2.6, 2.6]},
+       {"icon": "circle", "at": [107, 73], "size": [2.6, 2.6]}
+     ]},
+    {"name": "board_chalk", "tags": ["chalk_fresh"], "z": 2.4, "kind": "flat", "color": "#9d97a2", "opacity": 0.85, "clip_to": "board",
+     "pieces": [
+       {"icon": "circle", "rot": -9, "at": [94, 72], "size": [15, 2.2]},
+       {"icon": "circle", "rot": 35, "at": [103, 76], "size": [9, 2.2]},
+       {"icon": "circle", "at": [88, 77], "size": [3, 3]}
+     ]},
+    {"name": "board_chalk_faded", "tags": ["chalk_faded"], "hidden": true, "z": 2.4, "kind": "flat", "color": "#9d97a2", "opacity": 0.3,
+     "clip_to": "board", "rough": {"amp": 0.8, "soft": 0.4, "cell": 4},
+     "pieces": [{"icon": "circle", "rot": -9, "at": [96, 72], "size": [10, 2.2]}]},
+    {"name": "board_chalk_smear", "tags": ["chalk_smear"], "hidden": true, "z": 2.4, "kind": "flat", "color": "#8d8792", "opacity": 0.45,
+     "clip_to": "board", "blur": 1.2,
+     "pieces": [{"icon": "circle", "rot": -9, "at": [95, 74], "size": [20, 6]}]},
+
+    {"name": "twine", "z": 3, "kind": "flat", "color": "#8e7b64", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 1.5}, "at": [96, 87], "size": [16, 3.2]},
+       {"icon": "circle", "rot": 20, "at": [104, 91], "size": [2, 7]}
+     ]},
+    {"name": "cloth", "z": 3.2, "material": "cloth_wine", "shade": {"bump": 0.3},
+     "pieces": [{"icon": "bookmark", "rot": 14, "at": [107, 97], "size": [8, 21]}]},
+
+    {"name": "tag_string", "tags": ["tag"], "hidden": true, "z": 3.4, "kind": "flat", "color": "#8e7b64",
+     "pieces": [{"icon": "circle", "rot": 20, "at": [87, 90], "size": [1.2, 8]}]},
+    {"name": "tag", "tags": ["tag"], "hidden": true, "z": 3.5, "material": "bronze",
+     "pieces": [{"icon": "tag", "rot": -30, "at": [84, 98], "size": [11, 15]}]}
+  ],
+  "frames": [
+    {"name": "art_prop_route_marker_normal"},
+    {"name": "art_prop_route_marker_recognized", "show": ["tag"]},
+    {"name": "art_prop_route_marker_trace", "hide": ["chalk_fresh"], "show": ["chalk_faded"]},
+    {"name": "art_prop_route_marker_damaged", "hide": ["chalk_fresh"], "show": ["chalk_smear", "stain"]}
+  ]
+}

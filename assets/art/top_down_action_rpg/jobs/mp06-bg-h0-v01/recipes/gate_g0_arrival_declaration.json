@@ -1,13 +1,18 @@
 {
   "asset": "gate_g0_arrival_declaration",
   "status": "candidate",
-  "note": "gate_g0_arrival_declaration (H0 Arrival Declaration gate, open). Stone portal 2.5 m wide, 1.9 m posts, bronze-banded, pediment crest, a blank bronze docket plate hanging from the lintel and a declaration stamp on a side pedestal. No text.",
-  "palette": "palette_h0.json",
+  "note": "mp06 gate_g0_arrival_declaration (H0 area A, north passage). From h0-icon-mood-v02 (V1): stone portal, bronze-banded posts, pediment crest, a blank bronze docket plate on chains, two hanging lamps, a declaration stamp on a side pedestal. Scaled x1.24 (posts 1.9 m -> taller than the player); block heights x1.24 by hand. States (author design): closed = before declaration, lamps unlit, stamp under a bronze cover; open = lamps lit (emissive), stamp uncovered. The portal never blocks the passage in either state (G0 only gates E02-E05). No text.",
+  "palette": "palette_h0_mood.json",
   "style": "prop",
-  "canvas": [480, 380],
-  "pivot": [240, 360],
-  "pivot_meaning": "centre of the opening on the floor line (front face base)",
+  "canvas": [595, 485],
+  "pivot": [298, 449],
+  "pivot_meaning": "centre of the opening on the floor line (front face base of the posts)",
+  "scale_all": {"factor": 1.24, "origin": [0, 0]},
   "seed": 107,
+  "frames": [
+    {"name": "closed", "show": ["closed_only"], "hide": ["open_only"]},
+    {"name": "open"}
+  ],
   "forms": [
     {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 7,
      "pieces": [
@@ -16,7 +21,7 @@
        {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [444, 354], "size": [50, 20]}
      ]},
 
-    {"name": "posts", "z": 0, "kind": "block", "material": "stone", "extrude": 171,
+    {"name": "posts", "z": 0, "kind": "block", "material": "stone", "extrude": 212,
      "pieces": [
        {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [84, 169], "size": [50, 44]},
        {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [396, 169], "size": [50, 44]}
@@ -29,7 +34,7 @@
        {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [396, 336], "size": [50, 9]}
      ]},
 
-    {"name": "lintel", "z": 2, "kind": "block", "material": "stone", "extrude": 28,
+    {"name": "lintel", "z": 2, "kind": "block", "material": "stone", "extrude": 35,
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [240, 142], "size": [404, 44]}]},
     {"name": "lintel_studs", "z": 3, "kind": "flat", "material": "bronze", "line": {"width": 0.7, "heavy": 0.6},
      "pieces": [{"icon": "circle", "at": [70, 178], "size": [8, 8], "repeat": {"line": [[70, 178], [410, 178]], "count": 9}}]},
@@ -48,14 +53,62 @@
     {"name": "docket_inlay", "z": 6.5, "kind": "flat", "material": "paper", "opacity": 0.9,
      "pieces": [{"icon": "banner", "crop": [2.6, 3.3, 13.4, 12.4], "at": [240, 232], "size": [38, 42]}]},
 
-    {"name": "pedestal", "z": 7, "kind": "block", "material": "stone_dark", "extrude": 70,
+    {"name": "lamp_chains", "z": 5, "kind": "flat", "material": "iron", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [
+       {"icon": "circle", "at": [132, 201], "size": [3, 18]},
+       {"icon": "circle", "at": [348, 201], "size": [3, 18]}
+     ]},
+    {"name": "lamp_caps", "z": 5.6, "material": "iron", "line": {"width": 0.7, "heavy": 0.6},
+     "pieces": [
+       {"icon": "triangle", "at": [132, 210], "size": [18, 8]},
+       {"icon": "triangle", "at": [348, 210], "size": [18, 8]}
+     ]},
+    {"name": "lamp_glass", "tags": ["open_only"], "z": 5.7, "material": "glass", "emit": 0.85,
+     "glow": {"radius": 7, "opacity": 0.55, "color": "lamp_glow"},
+     "pieces": [
+       {"icon": "tungsten_light", "crop": [4.3, 0.2, 11.7, 10.6], "at": [132, 226], "size": [18, 24]},
+       {"icon": "tungsten_light", "crop": [4.3, 0.2, 11.7, 10.6], "at": [348, 226], "size": [18, 24]}
+     ]},
+    {"name": "lamp_flame", "tags": ["open_only"], "z": 5.8, "kind": "flat", "material": "flame", "emit": 1.0, "clip_to": "lamp_glass",
+     "glow": {"radius": 3, "opacity": 0.7, "color": "flame_glow"},
+     "pieces": [
+       {"icon": "fire", "at": [132, 228], "size": [8, 11]},
+       {"icon": "fire", "at": [348, 228], "size": [8, 11]}
+     ]},
+    {"name": "lamp_glass_dark", "tags": ["closed_only"], "hidden": true, "z": 5.7, "material": "iron", "color": "#3b342d",
+     "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [
+       {"icon": "tungsten_light", "crop": [4.3, 0.2, 11.7, 10.6], "at": [132, 226], "size": [18, 24]},
+       {"icon": "tungsten_light", "crop": [4.3, 0.2, 11.7, 10.6], "at": [348, 226], "size": [18, 24]}
+     ]},
+    {"name": "lamp_bars", "z": 5.85, "kind": "flat", "material": "iron", "line": false,
+     "pieces": [
+       {"icon": "square", "at": [128, 226], "size": [1.6, 22]},
+       {"icon": "square", "at": [136, 226], "size": [1.6, 22]},
+       {"icon": "square", "at": [344, 226], "size": [1.6, 22]},
+       {"icon": "square", "at": [352, 226], "size": [1.6, 22]}
+     ]},
+    {"name": "lamp_base", "z": 5.9, "material": "iron", "line": {"width": 0.7, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [132, 239], "size": [16, 5]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [348, 239], "size": [16, 5]}
+     ]},
+
+    {"name": "pedestal", "z": 7, "kind": "block", "material": "stone_dark", "extrude": 87,
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [444, 272], "size": [40, 34]}]},
-    {"name": "stamp", "z": 8, "material": "bronze",
+    {"name": "stamp", "tags": ["open_only"], "z": 8, "material": "bronze",
      "pieces": [
        {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [444, 256], "size": [38, 10]},
        {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [444, 244], "size": [28, 15]},
        {"icon": "circle", "at": [444, 230], "size": [7, 16]},
        {"icon": "circle", "at": [444, 219], "size": [15, 14]}
+     ]},
+    {"name": "stamp_cover", "tags": ["closed_only"], "hidden": true, "z": 8, "material": "bronze",
+     "shade": {"highlight_amount": 0.6},
+     "pieces": [
+       {"icon": "circle", "crop": [0, 0, 16, 9], "at": [444, 249], "size": [42, 28]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [444, 261], "size": [46, 6]},
+       {"icon": "circle", "at": [444, 233], "size": [9, 8]}
      ]}
   ]
 }

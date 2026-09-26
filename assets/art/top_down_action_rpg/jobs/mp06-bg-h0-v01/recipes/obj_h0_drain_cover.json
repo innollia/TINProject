@@ -1,0 +1,19 @@
+{
+  "asset": "obj_h0_drain_cover",
+  "status": "candidate",
+  "note": "mp06 H0 object: iron drain grate over a dark drain hole, taken out of the V1 background (grate_void + grates). Floor object: scene layer 'floor', pivot at the centre of the grate. Scaled x1.24.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [198, 174],
+  "pivot": [99, 87],
+  "pivot_meaning": "centre of the grate on the floor (floor-layer object)",
+  "scale_all": {"factor": 1.24, "origin": [0, 0]},
+  "seed": 306,
+  "forms": [
+    {"name": "hole", "z": 0, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 8}, "ground": true, "at": [80, 70], "size": [96, 96]}]},
+    {"name": "grate", "z": 1, "kind": "flat", "material": "iron", "line": {"width": 1.4, "heavy": 1.6},
+     "grime": {"stamps": ["metaballs", "sponge"], "size": 16, "soft": 1.5, "density": 0.5, "strength": 0.4, "color": "rust"},
+     "pieces": [{"icon": "grid_fine", "ground": true, "at": [80, 70], "size": [110, 110]}]}
+  ]
+}

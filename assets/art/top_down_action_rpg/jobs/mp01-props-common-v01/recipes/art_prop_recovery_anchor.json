@@ -1,0 +1,64 @@
+{
+  "asset": "art_prop_recovery_anchor",
+  "status": "candidate",
+  "note": "art_prop_recovery_anchor: the spot a body is restored to after an encounter failure (content/recovery rec_* respawn.prop_id; recovery_controller.gd sets field.anchor_id to it; 08 recovery kinds). A round bronze plate about 1 m across set into the floor: notched registry rim, dark stone inlay, a bronze boss worn bright by standing feet, and a knee-high iron post with a bronze cap and hanging ring at the back-left. States: normal, used (this death's restart has been spent, cooldown per_death: soot and ash on the plate, a fresh scrape). No text. Author's design.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [320, 320],
+  "pivot": [160, 180],
+  "pivot_meaning": "centre of the plate on the floor (the spot the body is restored to)",
+  "seed": 171,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.28, "blur": 6,
+     "pieces": [{"icon": "circle", "ground": true, "at": [162, 184], "size": [222, 222]}]},
+    {"name": "shadow_post", "kind": "shadow", "color": "shadow_contact", "opacity": 0.45, "blur": 2.5,
+     "pieces": [{"icon": "circle", "at": [99, 127], "size": [30, 10]}]},
+
+    {"name": "plate", "z": 0, "kind": "block", "material": "bronze_block", "extrude": 5,
+     "pieces": [{"icon": "circle", "ground": true, "at": [160, 180], "size": [210, 210]}]},
+    {"name": "inlay", "z": 1, "kind": "flat", "material": "stone_dark", "textured": true, "grime": {},
+     "line": {"width": 1.0, "heavy": 0.3, "breaks": 0.2},
+     "pieces": [{"icon": "circle", "ground": true, "at": [160, 180], "size": [168, 168]}]},
+    {"name": "rim_notches", "z": 1.5, "kind": "flat", "color": "ink", "opacity": 0.55,
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2.6, 9],
+                 "repeat": {"ellipse": [160, 180, 94.5, 81.8], "count": 24, "orient": true}}]},
+    {"name": "boss", "z": 2, "kind": "flat", "material": "bronze", "textured": true, "grime": {},
+     "line": {"width": 0.9, "heavy": 0.5},
+     "pieces": [{"icon": "circle", "ground": true, "at": [160, 182], "size": [92, 92]}]},
+    {"name": "footprints", "z": 2.5, "kind": "flat", "color": "#9a8457", "opacity": 0.55, "clip_to": "boss",
+     "blur": 0.8, "rough": {"amp": 0.5, "soft": 0.8, "cell": 5},
+     "pieces": [{"icon": "footsteps", "ground": true, "rot": -8, "at": [160, 183], "size": [50, 62]}]},
+
+    {"name": "ash_soot", "tags": ["ash"], "hidden": true, "z": 2.8, "kind": "wash", "material": "soot",
+     "blend": "multiply", "opacity": 0.55, "clip_to": "plate", "blur": 2,
+     "pieces": [
+       {"icon": "metaballs", "ground": true, "rot": 15, "at": [156, 186], "size": [118, 80]},
+       {"icon": "cloud", "ground": true, "at": [206, 212], "size": [58, 34]},
+       {"icon": "cloud", "ground": true, "rot": -10, "at": [118, 156], "size": [40, 26]}
+     ]},
+    {"name": "ash_dust", "tags": ["ash"], "hidden": true, "z": 2.9, "kind": "wash", "color": "#5d565c",
+     "opacity": 0.35, "clip_to": "plate",
+     "pieces": [{"icon": "sponge", "ground": true, "at": [172, 176], "size": [70, 44]}]},
+    {"name": "scrape", "tags": ["ash"], "hidden": true, "z": 2.95, "kind": "flat", "color": "#a08a5c", "opacity": 0.6,
+     "clip_to": "plate",
+     "pieces": [
+       {"icon": "circle", "rot": 12, "at": [184, 222], "size": [56, 1.8]},
+       {"icon": "circle", "rot": 16, "at": [190, 228], "size": [34, 1.4]}
+     ]},
+
+    {"name": "post", "z": 3, "kind": "block", "material": "iron", "extrude": 56,
+     "pieces": [{"icon": "circle", "ground": true, "at": [97, 68], "size": [20, 20]}]},
+    {"name": "post_band", "z": 3.2, "kind": "flat", "material": "bronze", "line": {"width": 0.6, "heavy": 0.5},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [97, 110], "size": [21, 4]}]},
+    {"name": "post_cap", "z": 3.4, "kind": "block", "material": "bronze_block", "extrude": 6,
+     "pieces": [{"icon": "circle", "ground": true, "at": [97, 62], "size": [27, 27]}]},
+    {"name": "link", "z": 3.6, "material": "iron", "line": {"width": 0.6, "heavy": 0.5},
+     "pieces": [{"icon": "link", "rot": 90, "at": [106, 84], "size": [6, 10]}]},
+    {"name": "ring", "z": 3.8, "material": "bronze",
+     "pieces": [{"icon": "torus", "at": [108, 96], "size": [14, 16]}]}
+  ],
+  "frames": [
+    {"name": "art_prop_recovery_anchor_normal"},
+    {"name": "art_prop_recovery_anchor_used", "show": ["ash"]}
+  ]
+}

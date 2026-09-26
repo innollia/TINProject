@@ -1,0 +1,46 @@
+{
+  "asset": "item_ash_thread_spool",
+  "status": "candidate",
+  "note": "item_ash_thread_spool (Ash Thread Spool, material item, tint kiln_amber, weave-craft material for act_weave_lash, received in R1 Returning Kiln) lying on its side on the floor: bone-coloured spool with two flanges, thick ash-grey thread wound on it, a loose end trailing on the floor, a few kiln-amber glints in the fibres (also written to the emissive layer). No text. Author's design.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "style_override": {"silhouette": {"width": 1.2, "heavy": 1.0}, "line": {"width": 0.9, "heavy": 1.0}},
+  "canvas": [128, 128],
+  "pivot": [64, 90],
+  "pivot_meaning": "floor contact point under the middle of the spool",
+  "seed": 131,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 3,
+     "pieces": [{"icon": "circle", "at": [66, 90], "size": [86, 16]}]},
+
+    {"name": "loose_end", "z": 0, "material": "ash", "line": {"width": 0.6, "heavy": 0.5},
+     "shade": {"bump": 0.2},
+     "pieces": [
+       {"icon": "circle", "rot": -45, "at": [84, 88], "size": [2.4, 13]},
+       {"icon": "circle", "rot": -68, "at": [93, 94], "size": [2.4, 12.5]},
+       {"icon": "circle", "rot": -101, "at": [103, 95], "size": [2.4, 12]},
+       {"icon": "circle", "rot": -63, "at": [111, 95.5], "size": [2.4, 8]}
+     ]},
+
+    {"name": "thread", "z": 1, "material": "ash", "shade": {"bump": 0.5, "highlight_amount": 0.35},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 9}, "at": [64, 66], "size": [54, 40]}]},
+    {"name": "thread_wraps", "z": 1.5, "kind": "flat", "color": "#6b6269", "opacity": 0.45, "clip_to": "thread",
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [1.6, 44], "rot": 9,
+                 "repeat": {"line": [[40, 66], [88, 66]], "count": 12, "jitter": {"at": 1.2, "rot": 4}}}]},
+    {"name": "embers", "z": 1.8, "kind": "flat", "material": "ember", "emit": 0.8, "clip_to": "thread",
+     "glow": {"radius": 1.5, "opacity": 0.4, "color": "ember_glow"},
+     "pieces": [
+       {"icon": "circle", "rot": 9, "at": [48, 59], "size": [1.4, 6]},
+       {"icon": "circle", "rot": 9, "at": [61, 74], "size": [1.4, 5]},
+       {"icon": "circle", "rot": 9, "at": [73, 61], "size": [1.4, 7]},
+       {"icon": "circle", "rot": 9, "at": [83, 72], "size": [1.4, 5]}
+     ]},
+
+    {"name": "flange_far", "z": 2, "material": "paper", "shade": {"bump": 0.35},
+     "pieces": [{"icon": "circle", "at": [93, 65], "size": [12, 50]}]},
+    {"name": "flange_near", "z": 2.2, "material": "paper", "shade": {"bump": 0.35},
+     "pieces": [{"icon": "circle", "at": [35, 65], "size": [15, 50]}]},
+    {"name": "axle_hole", "z": 2.5, "kind": "flat", "material": "void", "opacity": 0.9,
+     "pieces": [{"icon": "circle", "at": [33, 65], "size": [5, 11]}]}
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "asset": "enemy_ash_hound",
+  "view": "down_left",
+  "mirror_view": "down_right",
+  "status": "candidate",
+  "note": "Ash Hound facing down-left (3/4 front), new. Body axis runs from the rump (upper right) to the head (lower left): screen offset of a point = ahead * (-0.707, +0.354) + dog's left * (+0.707, +0.354) - height, i.e. the left-view layout turned 45 deg with north-south depth x0.5. The dog's left side faces the camera: left legs near (full colour, in front), right legs far (ash_far, behind). Down-right = mirror.",
+  "palette": "palette_h0.json",
+  "style": "sprite",
+  "canvas": [384, 384],
+  "pivot": [192, 320],
+  "pivot_meaning": "ground point under the body centre (place this pixel on the floor position)",
+  "seed": 75,
+  "rig": {
+    "stride": 22, "lift": 4, "bob": 2,
+    "limbs": [
+      {"kind": "leg", "phase": 1, "pivot": [175, 280], "len": 58, "tag": "leg_front_left"},
+      {"kind": "leg", "phase": -1, "pivot": [154, 270], "len": 57, "tag": "leg_front_right"},
+      {"kind": "leg", "phase": -1, "pivot": [244, 249], "len": 53, "tag": "leg_hind_left"},
+      {"kind": "leg", "phase": 1, "pivot": [217, 236], "len": 52, "tag": "leg_hind_right"}
+    ],
+    "sway": [{"tag": "tail", "pivot": [241, 212], "rot": 6}]
+  },
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.42, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [198, 314], "size": [130, 34], "rot": -26.6}]},
+
+    {"name": "tail", "tags": ["upper", "tail"], "z": 0, "material": "ash",
+     "pieces": [{"icon": "comet", "at": [252, 198], "size": [42, 42], "rot": -10}]},
+    {"name": "tail_embers", "tags": ["upper", "tail"], "z": 0.5, "kind": "flat", "material": "ember", "clip_to": "tail",
+     "glow": {"radius": 2.5, "opacity": 0.45, "color": "ember_glow"},
+     "pieces": [{"icon": "comet", "keep": [[9.5, 1, 15.5, 7]], "at": [252, 198], "size": [42, 42], "rot": -10}]},
+
+    {"name": "leg_hind_right", "tags": ["legs", "leg_hind_right"], "z": 0.5, "material": "ash_far",
+     "pieces": [
+       {"icon": "circle", "at": [223, 252], "size": [15, 33], "rot": -20},
+       {"icon": "circle", "at": [226, 272], "size": [11, 24], "rot": 12},
+       {"icon": "circle", "at": [222, 288], "size": [22, 10], "rot": -10}
+     ]},
+    {"name": "leg_front_right", "tags": ["legs", "leg_front_right"], "z": 1, "material": "ash_far",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [154, 289], "size": [21, 40]},
+       {"icon": "circle", "at": [153, 311], "size": [12, 30]},
+       {"icon": "circle", "at": [150, 327], "size": [22, 11], "rot": -10}
+     ]},
+
+    {"name": "body", "tags": ["upper", "body"], "z": 2, "material": "ash",
+     "pieces": [
+       {"icon": "circle", "at": [163, 258], "size": [60, 64]},
+       {"icon": "circle", "at": [200, 241], "size": [90, 52], "rot": -22},
+       {"icon": "circle", "at": [229, 236], "size": [54, 58]},
+       {"icon": "circle", "at": [150, 248], "size": [38, 48], "rot": -20},
+       {"icon": "mountains", "at": [198, 214], "size": [96, 24], "rot": -20},
+       {"icon": "mountains", "flip": "x", "at": [156, 228], "size": [44, 22], "rot": -40},
+       {"icon": "circle", "op": "sub", "at": [202, 272], "size": [48, 18], "rot": -22}
+     ]},
+
+    {"name": "leg_hind_left", "tags": ["legs", "leg_hind_left"], "z": 3, "material": "ash",
+     "pieces": [
+       {"icon": "circle", "at": [250, 266], "size": [18, 36], "rot": -20},
+       {"icon": "circle", "at": [254, 287], "size": [13, 27], "rot": 12},
+       {"icon": "circle", "at": [250, 302], "size": [26, 12], "rot": -10}
+     ]},
+    {"name": "leg_front_left", "tags": ["legs", "leg_front_left"], "z": 3, "material": "ash",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [175, 300], "size": [25, 42]},
+       {"icon": "circle", "at": [174, 322], "size": [14, 32]},
+       {"icon": "circle", "at": [171, 338], "size": [26, 12], "rot": -10}
+     ]},
+
+    {"name": "ear_right", "tags": ["upper", "head"], "z": 3.9, "material": "ash_far",
+     "pieces": [{"icon": "droplet", "at": [138, 237], "size": [12, 24], "rot": -15}]},
+    {"name": "head", "tags": ["upper", "head"], "z": 4, "material": "ash",
+     "shade": {"highlight_amount": 0.6},
+     "pieces": [
+       {"icon": "droplet", "rot": -117, "at": [136, 268], "size": [44, 40]},
+       {"icon": "droplet", "rot": -117, "at": [117, 285], "size": [22, 34]}
+     ]},
+    {"name": "ear_left", "tags": ["upper", "head"], "z": 4.5, "material": "ash",
+     "pieces": [{"icon": "droplet", "at": [151, 243], "size": [14, 27], "rot": 10}]},
+
+    {"name": "collar", "tags": ["upper", "neck"], "z": 5, "material": "bronze",
+     "pieces": [{"icon": "circle", "at": [148, 268], "size": [10, 36], "rot": 35}]},
+    {"name": "collar_tag", "tags": ["upper", "neck"], "z": 5.2, "material": "bronze",
+     "pieces": [{"icon": "tag", "at": [150, 290], "size": [11, 12], "rot": 30}]},
+
+    {"name": "cracks", "tags": ["upper", "cracks"], "z": 6, "kind": "flat", "material": "ember", "clip_to": "body",
+     "glow": {"radius": 2.5, "opacity": 0.5, "color": "ember_glow"},
+     "pieces": [
+       {"icon": "lightning_bolt", "at": [198, 236], "size": [7, 20], "rot": 25},
+       {"icon": "lightning_bolt", "at": [228, 244], "size": [6, 17], "rot": -20}
+     ]},
+
+    {"name": "eye_right", "tags": ["upper", "head"], "z": 7, "kind": "flat", "material": "ember",
+     "glow": {"radius": 2.5, "opacity": 0.65, "color": "ember_glow"},
+     "pieces": [{"icon": "circle", "at": [123, 264], "size": [5, 4], "rot": -20}]},
+    {"name": "eye_left", "tags": ["upper", "head"], "z": 7, "kind": "flat", "material": "ember",
+     "glow": {"radius": 2.5, "opacity": 0.65, "color": "ember_glow"},
+     "pieces": [{"icon": "circle", "at": [135, 270], "size": [7, 5], "rot": -20}]},
+    {"name": "nose", "tags": ["upper", "head"], "z": 7, "kind": "flat", "material": "eye",
+     "pieces": [{"icon": "circle", "at": [106, 291], "size": [8, 7]}]},
+    {"name": "mouth", "tags": ["upper", "head"], "z": 7, "kind": "flat", "material": "eye",
+     "pieces": [{"icon": "circle", "at": [119, 295], "size": [22, 2.4], "rot": -26}]}
+  ]
+}

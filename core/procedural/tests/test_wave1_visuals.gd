@@ -422,18 +422,39 @@ func test_rig_landing_squashes_then_recovers() -> void:
 	assert_almost_eq(chest.get_scale(), 1.0, 0.001, "the squash never recovered")
 
 
-func test_rig_rotation_reads_the_bone() -> void:
+func test_rig_rotation_reads_the_bone_its_part_spans() -> void:
 	var rig: ProceduralSquishRig = Procedural.make_rig(rig_spec())
-	var head: ProceduralSquishRig = rig.get_joint(&"chest").get_joint(&"head")
-	assert_almost_eq(head.get_rotation(), 0.0, 0.0001)
+	var chest: ProceduralSquishRig = rig.get_joint(&"chest")
+	var head: ProceduralSquishRig = chest.get_joint(&"head")
+	assert_almost_eq(chest.get_rotation(), 0.0, 0.0001)
+	# 가슴 파트는 가슴 → 머리 뼈에 걸쳐 있다. 머리를 오른쪽으로 밀면 그 뼈가 시계 방향으로 돈다.
 	head.disturb(Vector2(420.0, 0.0))
 	var peak: float = 0.0
+	var head_turn: float = 0.0
 	for _i: int in 12:
 		rig.step(STEP)
-		peak = maxf(peak, head.get_rotation())
-	assert_gt(peak, 0.05, "pushing the head right did not turn its bone clockwise")
+		peak = maxf(peak, chest.get_rotation())
+		head_turn = maxf(head_turn, absf(head.get_rotation()))
+	assert_gt(peak, 0.05, "pushing the head right did not turn the chest -> head bone clockwise")
+	assert_almost_eq(head_turn, 0.0, 0.0001, "a leaf joint turned away from the bone its parent's part spans")
 	settle_rig(rig, 900)
-	assert_almost_eq(head.get_rotation(), 0.0, 0.001)
+	assert_almost_eq(chest.get_rotation(), 0.0, 0.001)
+
+
+func test_rig_joint_squashes_along_the_bone_its_part_spans() -> void:
+	var rig: ProceduralSquishRig = Procedural.make_rig(rig_spec())
+	var chest: ProceduralSquishRig = rig.get_joint(&"chest")
+	var head: ProceduralSquishRig = chest.get_joint(&"head")
+	# 머리를 가슴 쪽으로 누른다. 가슴 파트(가슴 → 머리)가 찌그러지고, 엉덩이 뼈는 그대로다.
+	# 예전 읽기(부모 → 관절)는 가슴 파트를 늘 길이 그대로 그려 찌그러진 머리를 뚫고 나왔다.
+	head.disturb(Vector2(0.0, 150.0))
+	var chest_lowest: float = 1.0
+	for _i: int in 20:
+		rig.step(STEP)
+		chest_lowest = minf(chest_lowest, chest.get_scale())
+		assert_almost_eq(rig.get_scale(), 1.0, 0.0001, "the hips bone changed though only the head was hit")
+	assert_lt(chest_lowest, 0.95, "the chest part did not squash when the head was pushed into it")
+	assert_true(chest_lowest >= 1.0 - chest.squash - 0.0001, "the squash went past the joint's limit")
 
 
 func test_rig_draw_is_deterministic_and_moves() -> void:
@@ -606,6 +627,16 @@ func test_render_frame_is_deterministic_and_squashes_on_impact() -> void:
 	for height: int in heights:
 		lowest = mini(lowest, height)
 	assert_lt(lowest, rest_height - 1, "pushing the crown down did not squash the sprite")
+	assert_gt(lowest, int(float(rest_height) * 0.65) - 3, "the squash went past the crown joint's limit")
+
+
+func test_render_frame_reuses_the_texture_while_the_pose_holds() -> void:
+	var frame: Dictionary = {"sprite": load_spec("sprite_critter.json"), "pose": {}, "delta": STEP}
+	var first: ImageTexture = Procedural.render_frame(frame)
+	assert_eq(Procedural.render_frame(frame), first, "a frame at rest resampled the sprite again")
+	frame["pose"] = {"impulse": [0.0, 120.0]}
+	var moved: ImageTexture = Procedural.render_frame(frame)
+	assert_ne(moved, first, "a pushed sprite returned the resting texture")
 
 
 func test_render_frame_wind_leans_and_recovers() -> void:

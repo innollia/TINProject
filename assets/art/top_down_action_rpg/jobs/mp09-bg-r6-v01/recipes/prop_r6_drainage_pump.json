@@ -1,0 +1,86 @@
+{
+  "asset": "prop_r6_drainage_pump",
+  "status": "candidate",
+  "note": "prop_r6_drainage_pump (Drainage Hand Pump). Footprint 1.2 x 1.0 m, lever tip 1.5 m (110 px/m). Wet slate plinth, verdigris pump column with a spout over an iron basin. ps_dry: lever up, basin dry and cracked, rust on the spout. ps_primed: lever down, water in the basin, a thin stream from the spout, wet sheen on the plinth.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [360, 440],
+  "pivot": [180, 384],
+  "pivot_meaning": "front-bottom centre of the plinth on the floor",
+  "seed": 624,
+  "frames": [
+    {"name": "prop_r6_pump_dry"},
+    {"name": "prop_r6_pump_primed", "hide": ["dry"], "show": ["primed"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 9,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 20}, "at": [188, 374], "size": [240, 50]}]},
+    {"name": "plinth", "z": 0, "kind": "block", "material": "wet_slate", "extrude": 22,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [180, 302], "size": [216, 120]}]},
+    {"name": "plinth_wet", "tags": ["primed"], "hidden": true, "z": 0.5, "kind": "wash", "color": "water_sheen", "opacity": 0.35, "clip_to": "plinth",
+     "rough": {"amp": 0.6, "soft": 4, "cell": 18},
+     "pieces": [{"icon": "cloud", "at": [224, 320], "size": [170, 90]}]},
+
+    {"name": "basin", "z": 1, "kind": "block", "material": "iron", "extrude": 26,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [230, 296], "size": [104, 64]}]},
+    {"name": "basin_inner", "z": 1.2, "kind": "flat", "color": "#1c201e",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [230, 296], "size": [84, 46]}]},
+    {"name": "basin_cracks", "tags": ["dry"], "z": 1.3, "kind": "flat", "color": "#0c0e0d", "clip_to": "basin_inner",
+     "pieces": [
+       {"icon": "lightning_bolt", "at": [218, 292], "size": [8, 34], "rot": 70},
+       {"icon": "lightning_bolt", "at": [246, 300], "size": [7, 26], "rot": -50}
+     ]},
+    {"name": "basin_dust", "tags": ["dry"], "z": 1.35, "kind": "wash", "color": "ash_dust", "opacity": 0.35, "clip_to": "basin_inner",
+     "pieces": [{"icon": "cloud", "at": [234, 304], "size": [70, 30]}]},
+    {"name": "basin_water", "tags": ["primed"], "hidden": true, "z": 1.3, "kind": "flat", "material": "water_dark",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [230, 297], "size": [82, 43]}]},
+    {"name": "basin_sheen", "tags": ["primed"], "hidden": true, "z": 1.4, "kind": "wash", "color": "water_sheen", "opacity": 0.7, "clip_to": "basin_water",
+     "pieces": [
+       {"icon": "square", "at": [216, 288], "size": [34, 3]},
+       {"icon": "square", "at": [246, 302], "size": [26, 3]},
+       {"icon": "ring", "ground": true, "at": [228, 298], "size": [30, 30]}
+     ]},
+
+    {"name": "column", "z": 2, "material": "verdigris",
+     "shade": {"max_radius": 10, "bump": 1.2, "highlight_amount": 0.55},
+     "line": {"width": 1.2, "heavy": 1.5},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [142, 214], "size": [54, 150]}]},
+    {"name": "column_bands", "z": 2.2, "kind": "flat", "material": "bronze_block", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [142, 276], "size": [60, 9]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [142, 180], "size": [58, 7]}
+     ]},
+    {"name": "cap", "z": 2.4, "kind": "block", "material": "bronze_block", "extrude": 8,
+     "pieces": [{"icon": "circle", "at": [142, 138], "size": [62, 20]}]},
+    {"name": "spout", "z": 2.6, "material": "verdigris",
+     "shade": {"max_radius": 5, "bump": 1.0},
+     "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [192, 226], "size": [78, 15], "rot": 16}]},
+    {"name": "spout_rust", "tags": ["dry"], "z": 2.7, "kind": "wash", "material": "rust", "blend": "multiply", "opacity": 0.7, "clip_to": "spout",
+     "pieces": [{"icon": "cloud", "at": [214, 234], "size": [40, 20]}]},
+    {"name": "stream", "tags": ["primed"], "hidden": true, "z": 2.8, "kind": "flat", "color": "water_sheen", "opacity": 0.85,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [229, 262], "size": [5, 50]},
+       {"icon": "circle", "at": [226, 290], "size": [7, 5]},
+       {"icon": "circle", "at": [236, 292], "size": [5, 4]}
+     ]},
+
+    {"name": "lever_up", "tags": ["dry"], "z": 3, "material": "iron",
+     "shade": {"max_radius": 4, "bump": 0.9},
+     "line": {"width": 0.9, "heavy": 1.1},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [106, 108], "size": [96, 10], "rot": -38},
+       {"icon": "circle", "at": [70, 80], "size": [15, 15]}
+     ]},
+    {"name": "lever_down", "tags": ["primed"], "hidden": true, "z": 3, "material": "iron",
+     "shade": {"max_radius": 4, "bump": 0.9},
+     "line": {"width": 0.9, "heavy": 1.1},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [186, 150], "size": [96, 10], "rot": 14},
+       {"icon": "circle", "at": [230, 160], "size": [15, 15]}
+     ]},
+    {"name": "lever_pin", "z": 3.2, "kind": "flat", "material": "bronze", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [{"icon": "circle", "at": [142, 136], "size": [10, 9]}]}
+  ]
+}

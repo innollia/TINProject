@@ -1,0 +1,25 @@
+{
+  "job_id": "mp01-props-common-v01",
+  "status": "candidate",
+  "hashes_taken": "2026-09-27, at the end of the top-down pass",
+  "read_only_inputs": [
+    {"path": "docs/IMAGE_ASSET_WORKFLOW.md", "sha256": "6d2c161c92ac404a8e56bc4e6c98b620c40007d6e5f05481e7c33c4f532b809c", "role": "rule doc, read only"},
+    {"path": "docs/art/projects/top_down_action_rpg/PROJECT_ART_LAYER.md", "sha256": "6346e65417891ca5cc227581108075abb46fc85c59b3598862aa2b182597fe52", "role": "project art layer, read only"},
+    {"path": "plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/09_PRESENTATION_ART_AND_AUDIO.md", "sha256": "87ce02abe618004f4ea56d489f1b824269611fc140bc8238480398463a9dd485", "role": "12.2 / 12.8 asset rules, 12.10 art key registry (the three art_prop_* keys)"},
+    {"path": "plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/12_MAGIC_THEORY.md", "sha256": "a7a198ebdec932a3d406a350ead9c6e6a8982dab0a4b5dbf81d103bc6a3010f1", "role": "2.3 environmental concentration (disperser / circulator), no vapour or flow in the image"},
+    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/recipes/palette_h0_mood.json", "sha256": "ccfa41612677c98e366dc9bb77b90e62bd11d9406d1d7d66c783455ebfff9ebc", "role": "V1 palette, copied unchanged into recipes/"},
+    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/recipes/item_blank_return_form.json", "sha256": "8330ff10701fc300d990c6f38942f041bdc3509b34c7d9f32cc102dd9f22397c", "role": "V1 recipe, copied and moved onto the 128x128 item canvas"},
+    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/preview/asset_sheet_v1_props_0.5x.png", "sha256": "cd28b60435056955e525a1256bac67c5c49d6525634a01bfca5ad90806032bdf", "role": "V1 style reference for objects, viewed only"},
+    {"path": "modules/top_down_action_rpg/content/items/item_blank_return_form.json", "sha256": "91c953661b02715fcd26424b6d3eab70f562005ae1b52ba8129dd9a2aadd9501", "role": "item content"},
+    {"path": "modules/top_down_action_rpg/content/items/item_ash_thread_spool.json", "sha256": "64da33562274972c74ce9e2e84253f11ef4d533a5ab8619bcbf42ae6b81a374f", "role": "item content"},
+    {"path": "modules/top_down_action_rpg/content/npcs/npc_07_bryn_oskel.json", "sha256": "166d045114016099e94cc4279d7327d2e16781476105ad9790b2521abf2fa1ca", "role": "route marker source (mark_route)"},
+    {"path": "modules/top_down_action_rpg/content/conversations/conv_h0_route_board.json", "sha256": "cddd571cb264e94b42d6310f5109c89d92d4d9706e28cde1c039b0502a3ae6ef", "role": "route marker source (ch_mark_the_safe_segment, chalk)"},
+    {"path": "modules/top_down_action_rpg/content/recovery/rec_r1_kiln_reentry.json", "sha256": "bdef37f640d4e452613ad8d45845908b0117d4a56355fef1cc51471841803e84", "role": "recovery anchor source (respawn.prop_id, cooldown per_death)"},
+    {"path": "modules/top_down_action_rpg/content/recovery/rec_r3_hospice_respawn.json", "sha256": "68b50d1b9cb9ec8325d61bfe1fef42fbc4e9702f61e89e29f9077ac7f1e6f2be", "role": "recovery anchor source"},
+    {"path": "modules/top_down_action_rpg/systems/recovery_controller.gd", "sha256": "c1a50328641aab543f4fd358e579ceb6949a183dba9df3d8d52d288759a0572b", "role": "recovery anchor source (field.anchor_id = respawn prop)"},
+    {"path": "modules/top_down_action_rpg/content/props/prop_r2_disperser_housing.json", "sha256": "2ce82e1fcf11034b56e6c8e2e1334c5d517d4ce73c55b73a2e3c0282a8a2e568", "role": "concentration device source (charged / spent state wording)"},
+    {"path": "modules/top_down_action_rpg/content/regions/region_r2_siltglass_commons.json", "sha256": "fa8a88080256ecf7341ad8dbdb834dfc30756a9eab0ff132c6fc1faa21057761", "role": "concentration device source (concentration block)"}
+  ],
+  "tool": "assets/art/top_down_action_rpg/jobs/mp01-props-common-v01/tool (copy of h0-icon-mood-v02/tool; changes listed in JOB.md). Each output .json records its recipe hash, tool version, icons used with SHA-256 and build key",
+  "shape_source": "addons/at-icons/node2d SVG icons (MIT, Valentin Fossati & contributors)"
+}

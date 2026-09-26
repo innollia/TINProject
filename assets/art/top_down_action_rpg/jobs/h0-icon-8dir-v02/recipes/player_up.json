@@ -1,0 +1,77 @@
+{
+  "asset": "player",
+  "view": "up",
+  "status": "candidate",
+  "note": "Player facing up (back). From v01 player_back.json, moved 4 px up. The character's left is screen left here: bag on the left hip (screen left), strap across the back from the right shoulder (screen right) down to it. Ponytail sways with the step.",
+  "palette": "palette_h0.json",
+  "style": "sprite",
+  "canvas": [192, 192],
+  "pivot": [96, 182],
+  "pivot_meaning": "ground contact point between the feet (place this pixel on the floor position)",
+  "seed": 43,
+  "rig": {
+    "stride": 14, "lift": 3, "bob": 2, "swing": 8,
+    "limbs": [
+      {"kind": "leg", "phase": 1, "pivot": [86, 146], "len": 30, "thigh": "thigh_left", "foot": "foot_left"},
+      {"kind": "leg", "phase": -1, "pivot": [106, 146], "len": 30, "thigh": "thigh_right", "foot": "foot_right"},
+      {"kind": "arm", "phase": -1, "pivot": [68, 92], "len": 45, "tag": "arm_left"},
+      {"kind": "arm", "phase": 1, "pivot": [124, 92], "len": 45, "tag": "arm_right"}
+    ],
+    "sway": [{"tag": "hair_tail", "pivot": [96, 66], "rot": 5}]
+  },
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 3,
+     "pieces": [{"icon": "circle", "at": [96, 180], "size": [60, 16]}]},
+    {"name": "leg_left", "tags": ["legs", "leg_left", "thigh_left"], "z": 1, "material": "trouser",
+     "pieces": [{"icon": "circle", "at": [86, 161], "size": [17, 30]}]},
+    {"name": "leg_right", "tags": ["legs", "leg_right", "thigh_right"], "z": 1, "material": "trouser",
+     "pieces": [{"icon": "circle", "at": [106, 161], "size": [17, 30]}]},
+    {"name": "boot_left", "tags": ["legs", "leg_left", "foot_left"], "z": 2, "material": "leather",
+     "pieces": [{"icon": "footsteps", "crop": [2, 10.6, 7.6, 14.6], "at": [86, 176], "size": [18, 13]}]},
+    {"name": "boot_right", "tags": ["legs", "leg_right", "foot_right"], "z": 2, "material": "leather",
+     "pieces": [{"icon": "footsteps", "crop": [2, 10.6, 7.6, 14.6], "flip": "x", "at": [106, 176], "size": [18, 13]}]},
+
+    {"name": "coat", "tags": ["upper", "body"], "z": 3, "material": "coat",
+     "pieces": [
+       {"icon": "bell", "crop": [1.6, 3.4, 14.4, 10.6], "at": [96, 120], "size": [66, 64]},
+       {"icon": "cloud", "flip": "xy", "at": [96, 153], "size": [62, 20]}
+     ]},
+    {"name": "coat_seam", "tags": ["upper", "body"], "z": 3.5, "kind": "flat", "color": "coat_seam",
+     "pieces": [{"icon": "circle", "at": [96, 142], "size": [2.5, 30]}]},
+
+    {"name": "strap", "tags": ["upper", "strap"], "z": 4, "material": "leather", "cast": false,
+     "pieces": [{"icon": "circle", "at": [89, 114], "size": [5, 76], "rot": 44}]},
+    {"name": "satchel", "tags": ["upper", "satchel"], "z": 4.2, "material": "leather",
+     "pieces": [{"icon": "briefcase", "crop": [1.5, 4.2, 14.5, 15], "at": [63, 150], "size": [24, 18]}]},
+
+    {"name": "arm_left", "tags": ["upper", "arm_left"], "z": 5.5, "material": "coat", "pivot": [68, 92],
+     "pieces": [{"icon": "shield", "half": "left", "at": [65, 113], "size": [18, 44], "rot": 4}]},
+    {"name": "arm_right", "tags": ["upper", "arm_right"], "z": 5.5, "material": "coat", "pivot": [124, 92],
+     "pieces": [{"icon": "shield", "half": "right", "at": [127, 113], "size": [18, 44], "rot": -4}]},
+    {"name": "glove_left", "tags": ["upper", "arm_left"], "z": 6, "material": "leather",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [63, 137], "size": [12, 15], "rot": 6}]},
+    {"name": "glove_right", "tags": ["upper", "arm_right"], "z": 6, "material": "leather",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [129, 137], "size": [12, 15], "rot": -6}]},
+
+    {"name": "capelet", "tags": ["upper", "body"], "z": 7, "material": "coat_top",
+     "pieces": [{"icon": "umbrella", "crop": [0.6, 2.3, 15.4, 8.7], "at": [96, 90], "size": [90, 38]}]},
+
+    {"name": "scarf", "tags": ["upper", "neck"], "z": 8, "material": "scarf",
+     "pieces": [{"icon": "circle", "at": [96, 76], "size": [50, 18]}]},
+
+    {"name": "hair", "tags": ["upper", "head"], "z": 10, "material": "hair",
+     "shade": {"highlight_amount": 0.75, "highlight": 0.9},
+     "pieces": [
+       {"icon": "circle", "at": [96, 39], "size": [66, 60]},
+       {"icon": "cloud", "flip": "x", "at": [97, 25], "size": [74, 38]},
+       {"icon": "circle", "at": [96, 60], "size": [54, 26]},
+       {"icon": "droplet", "flip": "y", "at": [70, 58], "size": [14, 24], "rot": 8},
+       {"icon": "droplet", "flip": "y", "at": [122, 58], "size": [14, 24], "rot": -8}
+     ]},
+    {"name": "hair_tail", "tags": ["upper", "hair_tail"], "z": 10.5, "material": "hair",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [96, 76], "size": [13, 21]}]},
+    {"name": "hair_tie", "tags": ["upper", "hair_tail"], "z": 11, "kind": "flat", "material": "bronze",
+     "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "circle", "at": [96, 68], "size": [8, 5]}]}
+  ]
+}

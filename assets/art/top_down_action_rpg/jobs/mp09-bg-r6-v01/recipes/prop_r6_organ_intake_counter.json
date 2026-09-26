@@ -1,0 +1,83 @@
+{
+  "asset": "prop_r6_organ_intake_counter",
+  "status": "candidate",
+  "note": "prop_r6_organ_intake_counter (Organ Intake Counter). 3.2 m wide, 0.9 m deep, 1.05 m high (110 px/m). Glazed-tile body with three front panels; on top three in-trays. ps_open: two wooden dividers split the top into three sections and each tray holds a differently shaped blank form with its own colour band (organ / patient / replacement part). ps_split: dividers removed, one long blank form lies across all three trays with three empty seal rings. No text.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [704, 448],
+  "pivot": [352, 384],
+  "pivot_meaning": "front-bottom centre of the counter on the floor",
+  "seed": 621,
+  "frames": [
+    {"name": "prop_r6_counter_open"},
+    {"name": "prop_r6_counter_split", "hide": ["dividers", "forms_open"], "show": ["forms_split"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 10,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 24}, "at": [362, 374], "size": [604, 50]}]},
+    {"name": "body", "z": 0, "kind": "block", "material": "tile_wall", "extrude": 116,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [352, 198], "size": [576, 140]}]},
+    {"name": "face_tints", "z": 0.5, "kind": "wash", "opacity": 0.2, "color": "glaze", "clip_to": "body",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [160, 330], "size": [186, 104]}]},
+    {"name": "face_tint_b", "z": 0.55, "kind": "wash", "opacity": 0.26, "color": "verdigris_dust", "clip_to": "body",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [352, 330], "size": [186, 104]}]},
+    {"name": "face_tint_c", "z": 0.6, "kind": "wash", "opacity": 0.2, "color": "ash_dust", "clip_to": "body",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [544, 330], "size": [186, 104]}]},
+    {"name": "face_joints", "z": 0.8, "kind": "flat", "material": "tile_joint", "opacity": 0.7, "clip_to": "body",
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [256, 328], "size": [3, 112]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [448, 328], "size": [3, 112]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [352, 300], "size": [576, 2]}
+     ]},
+    {"name": "kick", "z": 0.9, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.45, "clip_to": "body",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [352, 372], "size": [580, 26]}]},
+    {"name": "lip", "z": 1, "kind": "flat", "material": "verdigris", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [352, 271], "size": [578, 8]}]},
+
+    {"name": "trays", "z": 2, "kind": "block", "material": "iron", "extrude": 10,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [160, 190], "size": [124, 72]},
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [352, 190], "size": [124, 72]},
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [544, 190], "size": [124, 72]}
+     ]},
+    {"name": "tray_wells", "z": 2.2, "kind": "flat", "color": "#1e1f1c",
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [160, 190], "size": [106, 56]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [352, 190], "size": [106, 56]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [544, 190], "size": [106, 56]}
+     ]},
+
+    {"name": "dividers", "tags": ["dividers"], "z": 3, "kind": "block", "material": "court_wood", "extrude": 42,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [256, 156], "size": [9, 118]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [448, 156], "size": [9, 118]}
+     ]},
+
+    {"name": "form_a", "tags": ["forms_open"], "z": 4, "material": "paper", "shade": {"bump": 0.3},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "ground": true, "rot": -4, "at": [160, 186], "size": [84, 54]}]},
+    {"name": "form_a_band", "tags": ["forms_open"], "z": 4.2, "kind": "flat", "color": "rust", "opacity": 0.9,
+     "pieces": [{"icon": "square", "ground": true, "rot": -4, "at": [160, 170], "size": [84, 7]}]},
+    {"name": "form_b", "tags": ["forms_open"], "z": 4, "material": "paper", "shade": {"bump": 0.3},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "file", "ground": true, "rot": 90, "at": [352, 188], "size": [56, 74]}]},
+    {"name": "form_b_band", "tags": ["forms_open"], "z": 4.2, "kind": "flat", "material": "verdigris", "opacity": 0.95,
+     "pieces": [{"icon": "square", "ground": true, "at": [340, 190], "size": [8, 50]}]},
+    {"name": "form_c", "tags": ["forms_open"], "z": 4, "material": "paper", "shade": {"bump": 0.3},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "tag", "ground": true, "rot": 8, "at": [544, 188], "size": [76, 60]}]},
+    {"name": "form_c_band", "tags": ["forms_open"], "z": 4.2, "kind": "flat", "color": "ash_dust", "opacity": 0.95,
+     "pieces": [{"icon": "square", "ground": true, "rot": 8, "at": [552, 196], "size": [40, 6]}]},
+
+    {"name": "form_long", "tags": ["forms_split"], "hidden": true, "z": 4, "material": "paper", "shade": {"bump": 0.3},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "ground": true, "rot": -1.5, "at": [352, 188], "size": [480, 58]}]},
+    {"name": "form_long_lines", "tags": ["forms_split"], "hidden": true, "z": 4.2, "kind": "flat", "material": "paper_mark", "opacity": 0.8, "clip_to": "form_long",
+     "pieces": [{"icon": "square", "ground": true, "at": [0, 0], "size": [110, 2], "rot": -1.5, "repeat": {"points": [[200, 182], [352, 180], [504, 178]]}}]},
+    {"name": "seal_rings", "tags": ["forms_split"], "hidden": true, "z": 4.4, "kind": "flat", "material": "bronze", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [{"icon": "ring", "ground": true, "at": [0, 0], "size": [22, 22], "repeat": {"points": [[252, 196], [404, 194], [556, 192]]}}]},
+
+    {"name": "bell", "z": 5, "material": "bronze", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "bell", "at": [620, 170], "size": [26, 26]}]}
+  ]
+}

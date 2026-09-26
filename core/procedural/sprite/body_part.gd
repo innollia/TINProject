@@ -88,6 +88,11 @@ const _FAR: float = 1.0e6
 const _LAYER_FILL: int = 0
 const _LAYER_CRESCENT: int = 1
 const _LAYER_STROKE: int = 2
+## _distance() 의 조각 계산 방식. _geometry_tables() 가 정한다.
+const _PIECE_TAPER: int = 0
+const _PIECE_POINT: int = 1
+const _PIECE_SWALLOW: int = 2
+const _PIECE_OTHER: int = 3
 
 var id: StringName = &"part"
 var kind: Kind = Kind.LIMB
@@ -533,31 +538,144 @@ func _geometry() -> Array:
 			from_radii.append(maxf(radius_at(a_t), 0.0))
 			to_radii.append(maxf(radius_at(b_t), 0.0))
 	_geo = [kinds, groups, from_points, to_points, from_radii, to_radii]
+	_geo.append_array(_geometry_tables(kinds, groups, from_points, to_points, from_radii, to_radii))
 	_geo_key = key
 	return _geo
 
 
+## _geometry() 의 [6] 이후. 픽셀마다 다시 풀지 않도록 조각별 상수를 한 번 계산한다.
+##   [6] 방향  [7] 길이  [8] 기울기  [9] rise  [10] 계산 방식(_PIECE_*)
+##   [11] 조각 경계 원 중심  [12] 반지름  [13] 세그먼트 시작 인덱스(+끝)  [14] 세그먼트 원 중심
+##   [15] 반지름  [16] 파트 전체 원 중심  [17] 반지름(smooth_min 이 파는 폭 포함)
+## 경계 원은 조각을 전부 품는다. 정확한 거리장은 |p - c| - r 보다 작을 수 없으므로
+## 그 값이 이미 구한 최솟값보다 크면 그 조각을 계산하지 않아도 결과가 같다.
+func _geometry_tables(
+	kinds: PackedInt32Array, groups: PackedInt32Array, from_points: PackedVector2Array,
+	to_points: PackedVector2Array, from_radii: PackedFloat32Array, to_radii: PackedFloat32Array
+) -> Array:
+	var count: int = kinds.size()
+	var directions: PackedVector2Array = PackedVector2Array()
+	var spans: PackedFloat64Array = PackedFloat64Array()
+	var slopes: PackedFloat64Array = PackedFloat64Array()
+	var rises: PackedFloat64Array = PackedFloat64Array()
+	var modes: PackedInt32Array = PackedInt32Array()
+	var centers: PackedVector2Array = PackedVector2Array()
+	var reach: PackedFloat64Array = PackedFloat64Array()
+	directions.resize(count)
+	spans.resize(count)
+	slopes.resize(count)
+	rises.resize(count)
+	modes.resize(count)
+	centers.resize(count)
+	reach.resize(count)
+	for index: int in count:
+		var a: Vector2 = from_points[index]
+		var b: Vector2 = to_points[index]
+		var start_radius: float = from_radii[index]
+		var end_radius: float = to_radii[index]
+		var span: float = (b - a).length()
+		spans[index] = span
+		centers[index] = (a + b) * 0.5
+		reach[index] = span * 0.5 + maxf(maxf(start_radius, end_radius), 0.5)
+		if kinds[index] != SegmentKind.CAPSULE:
+			modes[index] = _PIECE_OTHER
+		elif span < 0.000001:
+			modes[index] = _PIECE_POINT
+		elif absf(start_radius - end_radius) >= span:
+			modes[index] = _PIECE_SWALLOW
+		else:
+			modes[index] = _PIECE_TAPER
+			directions[index] = (b - a) / span
+			var slope: float = (start_radius - end_radius) / span
+			slopes[index] = slope
+			rises[index] = sqrt(1.0 - slope * slope)
+	var starts: PackedInt32Array = PackedInt32Array()
+	var group_centers: PackedVector2Array = PackedVector2Array()
+	var group_reach: PackedFloat64Array = PackedFloat64Array()
+	var begin: int = 0
+	while begin < count:
+		var end: int = begin
+		while end < count and groups[end] == groups[begin]:
+			end += 1
+		var ball: Array = _enclosing_ball(centers, reach, begin, end)
+		starts.append(begin)
+		group_centers.append(ball[0])
+		group_reach.append(ball[1])
+		begin = end
+	starts.append(count)
+	var whole: Array = _enclosing_ball(group_centers, group_reach, 0, group_centers.size())
+	# 세그먼트가 n 개면 smooth_min 이 최소값보다 (n - 1) * fusion / 4 까지 더 파고든다.
+	var dip: float = float(maxi(group_centers.size() - 1, 0)) * fusion * 0.25
+	return [directions, spans, slopes, rises, modes, centers, reach, starts, group_centers, group_reach, whole[0], float(whole[1]) + dip]
+
+
+## centers[begin..end) 의 원들을 모두 품는 원 [중심, 반지름]. 중심은 경계 사각형의 가운데다.
+static func _enclosing_ball(centers: PackedVector2Array, reach: PackedFloat64Array, begin: int, end: int) -> Array:
+	if end <= begin:
+		return [Vector2.ZERO, 0.0]
+	var box: Rect2 = Rect2(centers[begin] - Vector2.ONE * reach[begin], Vector2.ONE * reach[begin] * 2.0)
+	for index: int in range(begin + 1, end):
+		box = box.merge(Rect2(centers[index] - Vector2.ONE * reach[index], Vector2.ONE * reach[index] * 2.0))
+	var center: Vector2 = box.get_center()
+	var radius: float = 0.0
+	for index: int in range(begin, end):
+		radius = maxf(radius, center.distance_to(centers[index]) + reach[index])
+	return [center, radius]
+
+
 ## _geometry() 의 거리장. 로컬 좌표, 로컬 단위.
+## 한 세그먼트 안은 min, 세그먼트끼리는 fusion 폭의 smooth_min 이다. 경계 원이 이미 구한
+## 값보다 먼 조각·세그먼트는 결과를 바꾸지 않으므로 건너뛴다(smooth_min 은 blend 폭 밖에서
+## min 과 같다). 곧은 캡슐은 함수 호출 없이 여기서 푼다. 픽셀마다 불리는 경로다.
 func _distance(geometry: Array, point: Vector2) -> float:
 	var kinds: PackedInt32Array = geometry[0]
-	var groups: PackedInt32Array = geometry[1]
 	var from_points: PackedVector2Array = geometry[2]
 	var to_points: PackedVector2Array = geometry[3]
 	var from_radii: PackedFloat32Array = geometry[4]
 	var to_radii: PackedFloat32Array = geometry[5]
+	var directions: PackedVector2Array = geometry[6]
+	var spans: PackedFloat64Array = geometry[7]
+	var slopes: PackedFloat64Array = geometry[8]
+	var rises: PackedFloat64Array = geometry[9]
+	var modes: PackedInt32Array = geometry[10]
+	var centers: PackedVector2Array = geometry[11]
+	var reach: PackedFloat64Array = geometry[12]
+	var starts: PackedInt32Array = geometry[13]
+	var group_centers: PackedVector2Array = geometry[14]
+	var group_reach: PackedFloat64Array = geometry[15]
+	var blend: float = maxf(fusion, 0.0)
 	var best: float = _FAR
-	var group: int = -1
-	var group_best: float = _FAR
-	for index: int in kinds.size():
-		if groups[index] != group:
-			if group >= 0:
-				best = _fuse(best, group_best, fusion)
-			group = groups[index]
-			group_best = _FAR
-		group_best = minf(group_best, _primitive_distance(
-			kinds[index], point, from_points[index], to_points[index], from_radii[index], to_radii[index]
-		))
-	if group >= 0:
+	for group: int in starts.size() - 1:
+		if best < _FAR and point.distance_to(group_centers[group]) - group_reach[group] >= best + blend:
+			continue
+		var group_best: float = _FAR
+		for index: int in range(starts[group], starts[group + 1]):
+			if point.distance_to(centers[index]) - reach[index] >= group_best:
+				continue
+			var value: float = 0.0
+			var mode: int = modes[index]
+			if mode == _PIECE_TAPER:
+				var relative: Vector2 = point - from_points[index]
+				var direction: Vector2 = directions[index]
+				var across: float = absf(direction.x * relative.y - direction.y * relative.x)
+				var along: float = relative.x * direction.x + relative.y * direction.y
+				var slope: float = slopes[index]
+				var rise: float = rises[index]
+				var side: float = along * rise - across * slope
+				if side < 0.0:
+					value = sqrt(across * across + along * along) - from_radii[index]
+				elif side > rise * spans[index]:
+					var beyond: float = along - spans[index]
+					value = sqrt(across * across + beyond * beyond) - to_radii[index]
+				else:
+					value = across * rise + along * slope - from_radii[index]
+			elif mode == _PIECE_POINT:
+				value = point.distance_to(from_points[index]) - maxf(from_radii[index], to_radii[index])
+			elif mode == _PIECE_SWALLOW:
+				value = minf(point.distance_to(from_points[index]) - from_radii[index], point.distance_to(to_points[index]) - to_radii[index])
+			else:
+				value = _primitive_distance(kinds[index], point, from_points[index], to_points[index], from_radii[index], to_radii[index])
+			group_best = minf(group_best, value)
 		best = _fuse(best, group_best, fusion)
 	return best
 

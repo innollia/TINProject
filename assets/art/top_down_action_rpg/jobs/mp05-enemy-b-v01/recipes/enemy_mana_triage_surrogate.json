@@ -1,0 +1,200 @@
+{
+  "asset": "enemy_mana_triage_surrogate",
+  "status": "candidate",
+  "note": "enemy_mana_triage_surrogate (R3 Bellhouse Hospice; surrogate/consent; composite body, human scale, stateful transform, motion substitute_step). Author design: a stand-in body assembled from mismatched parts - mannequin head with a seam and one button eye, mannequin torso with an empty rectangular slot in the chest, jointed mannequin legs mid-step, a short open hospice gown, one mannequin arm and one borrowed bandaged real arm, a triage tag on a string. Telegraph: gown parts, the chest slot fills with cold mana light. Signature (mana triage substitute): the borrowed arm brings a glowing piece of itself forward. Break (misfolded): parts knocked out of line with gaps at the joints. Phase 1 First Passage: residue stains, the left arm replaced by a flesh arm. Phase 2 Replacement Signed: head, legs and gown replaced (reads as another person), a signed strap and a stitched patch over the slot. Front battler, 60 deg view.",
+  "palette": "palette_mp05_enemies.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre (game draws the enemy centred on its stage position); ground contact line y=320",
+  "seed": 503,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [160, 321], "size": [150, 24]}]},
+
+    {"name": "leg_r", "tags": ["legs", "leg_r", "legs_limb"], "z": 1, "material": "surrogate",
+     "pieces": [
+       {"icon": "circle", "at": [175, 256], "size": [20, 44]},
+       {"icon": "circle", "at": [176, 290], "size": [16, 40]},
+       {"icon": "circle", "at": [179, 311], "size": [22, 10]}
+     ]},
+    {"name": "knee_r", "tags": ["legs", "leg_r", "joint"], "z": 1.2, "material": "bronze", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "circle", "at": [175, 274], "size": [9, 9]}]},
+    {"name": "leg_l", "tags": ["legs", "leg_l", "legs_limb"], "z": 1.4, "material": "surrogate",
+     "pieces": [
+       {"icon": "circle", "at": [145, 262], "size": [21, 46]},
+       {"icon": "circle", "at": [143, 298], "size": [17, 42]},
+       {"icon": "circle", "at": [140, 320], "size": [25, 11]}
+     ]},
+    {"name": "knee_l", "tags": ["legs", "leg_l", "joint"], "z": 1.6, "material": "bronze", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "circle", "at": [144, 281], "size": [10, 10]}]},
+
+    {"name": "hips", "tags": ["body", "torso_skin"], "z": 2, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [160, 206], "size": [58, 38]}]},
+    {"name": "torso", "tags": ["body", "torso_skin"], "z": 2.2, "material": "surrogate",
+     "pieces": [{"icon": "shield", "crop": [2, 1, 15, 12], "at": [160, 158], "size": [74, 78]}]},
+    {"name": "cavity", "tags": ["body", "slot"], "z": 2.4, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [160, 158], "size": [30, 38]}]},
+    {"name": "stitches", "tags": ["body", "slot"], "z": 2.5, "kind": "flat", "material": "seal_wax",
+     "pieces": [
+       {"icon": "square", "at": [143, 146], "size": [7, 1.8], "rot": 10},
+       {"icon": "square", "at": [143, 158], "size": [7, 1.8], "rot": -8},
+       {"icon": "square", "at": [143, 170], "size": [7, 1.8], "rot": 12},
+       {"icon": "square", "at": [177, 146], "size": [7, 1.8], "rot": -10},
+       {"icon": "square", "at": [177, 158], "size": [7, 1.8], "rot": 8},
+       {"icon": "square", "at": [177, 170], "size": [7, 1.8], "rot": -12},
+       {"icon": "square", "at": [160, 136], "size": [1.8, 6]},
+       {"icon": "square", "at": [160, 180], "size": [1.8, 6]}
+     ]},
+    {"name": "mana_glow", "tags": ["body", "mana"], "hidden": true, "z": 2.6, "kind": "flat", "material": "mana", "emit": 0.9,
+     "clip_to": "cavity", "glow": {"radius": 6, "opacity": 0.6, "color": "mana_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [160, 160], "size": [26, 32]},
+       {"icon": "star", "at": [160, 158], "size": [12, 12], "rot": 12}
+     ]},
+    {"name": "cavity_patch", "tags": ["body", "patch"], "hidden": true, "z": 2.7, "material": "skin", "shade": {"bump": 0.5},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [160, 158], "size": [34, 42]}]},
+    {"name": "patch_stitches", "tags": ["body", "patch"], "hidden": true, "z": 2.8, "kind": "flat", "material": "seal_wax",
+     "pieces": [{"icon": "square", "at": [150, 142], "size": [1.6, 7], "repeat": {"grid": [3, 4], "step": [10, 11]}}]},
+
+    {"name": "gown_l", "tags": ["body", "gown", "gown_l"], "z": 3, "material": "linen",
+     "pieces": [{"icon": "shield", "half": "left", "flip": "y", "at": [125, 204], "size": [40, 128]}]},
+    {"name": "gown_r", "tags": ["body", "gown", "gown_r"], "z": 3, "material": "linen",
+     "pieces": [{"icon": "shield", "half": "right", "flip": "y", "at": [195, 204], "size": [40, 128]}]},
+    {"name": "sleeves", "tags": ["body", "gown"], "z": 3.2, "material": "linen_top",
+     "pieces": [
+       {"icon": "circle", "at": [121, 144], "size": [30, 22], "rot": -14},
+       {"icon": "circle", "at": [199, 144], "size": [30, 22], "rot": 14}
+     ]},
+    {"name": "tag_string", "tags": ["body", "triage_tag"], "z": 3.4, "kind": "flat", "material": "soot",
+     "pieces": [{"icon": "square", "at": [172, 134], "size": [1.4, 24], "rot": -24}]},
+    {"name": "triage_tag", "tags": ["body", "triage_tag"], "z": 3.5, "material": "paper", "shade": {"bump": 0.4},
+     "cast": {"dist": 2, "blur": 1.2, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [{"icon": "tag", "at": [181, 150], "size": [18, 22], "rot": 100}]},
+    {"name": "tag_mark", "tags": ["body", "triage_tag"], "z": 3.6, "material": "seal_wax",
+     "pieces": [{"icon": "circle", "at": [182, 153], "size": [7, 7]}]},
+
+    {"name": "neck", "tags": ["head"], "z": 3.8, "material": "surrogate",
+     "pieces": [{"icon": "square", "at": [160, 114], "size": [14, 16]}]},
+    {"name": "neck_ring", "tags": ["body", "joint"], "z": 3.9, "material": "bronze", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "circle", "at": [160, 122], "size": [26, 7]}]},
+    {"name": "head_oval", "tags": ["head", "head_skin"], "z": 4, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [160, 84], "size": [42, 50]}]},
+    {"name": "cap", "tags": ["head", "cap"], "z": 4.2, "material": "paper", "shade": {"bump": 0.7},
+     "pieces": [
+       {"icon": "cloud", "at": [160, 66], "size": [46, 22]},
+       {"icon": "square", "op": "sub", "at": [160, 84], "size": [60, 14]}
+     ]},
+    {"name": "hair", "tags": ["head", "new_head"], "hidden": true, "z": 4.2, "material": "hair",
+     "pieces": [
+       {"icon": "cloud", "at": [160, 66], "size": [52, 30]},
+       {"icon": "droplet", "flip": "y", "at": [140, 84], "size": [10, 22], "rot": 6},
+       {"icon": "droplet", "flip": "y", "at": [180, 84], "size": [10, 22], "rot": -6}
+     ]},
+    {"name": "face_seam", "tags": ["head", "seam"], "z": 4.4, "kind": "flat", "material": "soot",
+     "pieces": [
+       {"icon": "square", "at": [160, 92], "size": [1.6, 30]},
+       {"icon": "square", "at": [160, 101], "size": [10, 1.6]}
+     ]},
+    {"name": "eye_socket", "tags": ["head"], "z": 4.5, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "at": [151, 87], "size": [6, 5]}]},
+    {"name": "button_eye", "tags": ["head"], "z": 4.6, "material": "bronze", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "circle", "at": [169, 87], "size": [7, 7]}]},
+
+    {"name": "arm_l", "tags": ["arm_l", "arm_l_limb"], "z": 5, "material": "surrogate",
+     "pieces": [
+       {"icon": "circle", "at": [116, 170], "size": [17, 46], "rot": 5},
+       {"icon": "circle", "at": [111, 212], "size": [15, 40], "rot": 3},
+       {"icon": "droplet", "flip": "y", "at": [109, 238], "size": [14, 18], "rot": 4}
+     ]},
+    {"name": "joints_l", "tags": ["arm_l", "joint"], "z": 5.2, "material": "bronze", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [
+       {"icon": "circle", "at": [120, 144], "size": [12, 12]},
+       {"icon": "circle", "at": [113, 192], "size": [9, 9]}
+     ]},
+    {"name": "arm_r", "tags": ["arm_r"], "z": 5, "material": "linen_top",
+     "pieces": [
+       {"icon": "circle", "at": [205, 170], "size": [21, 48], "rot": -6},
+       {"icon": "circle", "at": [210, 212], "size": [19, 42], "rot": -4}
+     ]},
+    {"name": "arm_r_wraps", "tags": ["arm_r"], "z": 5.1, "kind": "flat", "material": "soot", "opacity": 0.55, "clip_to": "arm_r",
+     "pieces": [
+       {"icon": "square", "at": [205, 158], "size": [24, 1.6], "rot": -20},
+       {"icon": "square", "at": [206, 172], "size": [24, 1.6], "rot": -20},
+       {"icon": "square", "at": [207, 186], "size": [24, 1.6], "rot": -20},
+       {"icon": "square", "at": [209, 202], "size": [22, 1.6], "rot": -20},
+       {"icon": "square", "at": [210, 216], "size": [22, 1.6], "rot": -20},
+       {"icon": "square", "at": [211, 229], "size": [20, 1.6], "rot": -20}
+     ]},
+    {"name": "hand_r", "tags": ["arm_r"], "z": 5.2, "material": "skin", "shade": {"threshold": 0.56, "highlight_amount": 0.3},
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [212, 241], "size": [16, 19], "rot": -4}]},
+    {"name": "offered_part", "tags": ["arm_r", "offered"], "hidden": true, "z": 5.4, "material": "surrogate",
+     "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [214, 254], "size": [22, 26], "rot": 8}]},
+    {"name": "offered_glow", "tags": ["arm_r", "offered"], "hidden": true, "z": 5.5, "kind": "flat", "material": "mana", "emit": 0.9,
+     "glow": {"radius": 5, "opacity": 0.6, "color": "mana_glow"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [214, 254], "size": [14, 17], "rot": 8}
+     ]},
+
+    {"name": "seam_gaps", "tags": ["gaps"], "hidden": true, "z": 5.6, "kind": "flat", "material": "void",
+     "pieces": [
+       {"icon": "circle", "at": [162, 118], "size": [24, 4], "rot": 14},
+       {"icon": "circle", "at": [118, 150], "size": [5, 16], "rot": 20},
+       {"icon": "circle", "at": [150, 236], "size": [16, 4], "rot": -10}
+     ]},
+
+    {"name": "sign_band", "tags": ["sign_band"], "hidden": true, "z": 5.8, "material": "paper", "shade": {"bump": 0.45},
+     "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [160, 178], "size": [104, 12], "rot": -28}]},
+    {"name": "sign_line", "tags": ["sign_band"], "hidden": true, "z": 5.9, "kind": "flat", "material": "soot",
+     "pieces": [
+       {"icon": "square", "at": [140, 191], "size": [14, 1.6], "rot": -40},
+       {"icon": "square", "at": [150, 186], "size": [10, 1.6], "rot": -10},
+       {"icon": "square", "at": [184, 166], "size": [12, 1.6], "rot": -45}
+     ]},
+    {"name": "sign_wax", "tags": ["sign_band"], "hidden": true, "z": 6, "material": "seal_wax",
+     "pieces": [{"icon": "circle", "at": [166, 175], "size": [17, 16]}]},
+
+    {"name": "residue", "tags": ["residue"], "hidden": true, "z": 7, "kind": "wash", "blend": "multiply", "material": "residue", "opacity": 0.6,
+     "rough": {"amp": 0.5, "cell": 7, "soft": 1.5},
+     "pieces": [
+       {"icon": "metaballs", "at": [148, 186], "size": [48, 36], "rot": 20},
+       {"icon": "cloud", "at": [180, 240], "size": [40, 28], "rot": -12},
+       {"icon": "metaballs", "at": [141, 294], "size": [26, 36], "rot": 90},
+       {"icon": "cloud", "at": [205, 196], "size": [22, 30], "rot": 70},
+       {"icon": "droplet", "at": [152, 96], "size": [12, 20], "rot": 180}
+     ]}
+  ],
+  "frames": [
+    {"name": "baseline"},
+    {"name": "telegraph",
+     "show": ["mana"],
+     "move": {"gown_l": {"dx": -6, "rot": 5, "pivot": [140, 140]},
+              "gown_r": {"dx": 6, "rot": -5, "pivot": [180, 140]},
+              "arm_r": {"rot": -22, "pivot": [205, 146]},
+              "head": {"rot": -9, "pivot": [160, 114]}}},
+    {"name": "signature",
+     "show": ["mana", "offered"],
+     "move": {"gown_l": {"dx": -8, "rot": 7, "pivot": [140, 140]},
+              "gown_r": {"dx": 8, "rot": -7, "pivot": [180, 140]},
+              "arm_r": {"rot": 40, "dy": -18, "pivot": [205, 146]},
+              "head": {"rot": 7, "dy": 3, "pivot": [160, 114]},
+              "leg_l": {"dy": 3, "dx": -3}}},
+    {"name": "break",
+     "show": ["gaps"],
+     "move": {"body": {"rot": -6, "pivot": [160, 206]},
+              "head": {"dx": 12, "dy": 6, "rot": 24, "pivot": [160, 114]},
+              "arm_l": {"dx": -8, "dy": 16, "rot": 14, "pivot": [120, 144]},
+              "arm_r": {"rot": 22, "dy": 4, "pivot": [205, 146]},
+              "leg_l": {"rot": 10, "pivot": [145, 242]},
+              "leg_r": {"rot": -12, "pivot": [175, 236]}}},
+    {"name": "phase1_first_passage",
+     "show": ["residue"],
+     "materials": {"arm_l_limb": "flesh"}},
+    {"name": "phase2_replacement_signed",
+     "hide": ["cap", "slot", "seam", "triage_tag"],
+     "show": ["new_head", "patch", "sign_band"],
+     "materials": {"arm_l_limb": "flesh", "head_skin": "skin", "legs_limb": "trouser", "gown": "clinic_cloth", "torso_skin": "skin"}}
+  ]
+}

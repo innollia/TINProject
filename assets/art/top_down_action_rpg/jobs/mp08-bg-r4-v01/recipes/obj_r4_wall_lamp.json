@@ -1,0 +1,41 @@
+{
+  "asset": "obj_r4_wall_lamp",
+  "status": "candidate",
+  "note": "R4 wall lamp. Iron bracket on the wall face with a glass oil lamp; mounted 1.9 m above the floor (scene y = wall base line - 215 src px). Flame and glass go to _emit.png. No floor shadow (wall-mounted).",
+  "palette": "palette_r4.json",
+  "style": "prop",
+  "canvas": [200, 180],
+  "pivot": [100, 116],
+  "pivot_meaning": "back centre of the bracket plate where it touches the wall face",
+  "seed": 422,
+  "forms": [
+    {"name": "plate", "z": 0, "material": "iron", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [100, 116], "size": [18, 30]}]},
+    {"name": "plate_bolts", "z": 0.5, "kind": "flat", "material": "bronze",
+     "pieces": [
+       {"icon": "circle", "at": [100, 106], "size": [5, 5]},
+       {"icon": "circle", "at": [100, 126], "size": [5, 5]}
+     ]},
+    {"name": "arm", "z": 1, "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [100, 111], "size": [8, 16]}]},
+    {"name": "lamp_base", "z": 1.5, "material": "iron", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [100, 101], "size": [26, 7]}]},
+    {"name": "lamp_glass", "z": 2, "material": "glass", "emit": 0.85,
+     "glow": {"radius": 9, "opacity": 0.5, "color": "lamp_glow"},
+     "line": {"width": 0.9, "heavy": 0.9},
+     "pieces": [{"icon": "tungsten_light", "crop": [4.3, 0.2, 11.7, 10.6], "flip": "y", "at": [100, 80], "size": [28, 38]}]},
+    {"name": "lamp_flame", "z": 2.2, "kind": "flat", "material": "flame", "emit": 1.0, "clip_to": "lamp_glass",
+     "glow": {"radius": 4, "opacity": 0.7, "color": "flame_glow"},
+     "pieces": [{"icon": "fire", "at": [100, 85], "size": [11, 16]}]},
+    {"name": "lamp_bars", "z": 2.4, "kind": "flat", "material": "iron", "line": false,
+     "pieces": [
+       {"icon": "square", "at": [93, 80], "size": [2, 32]},
+       {"icon": "square", "at": [107, 80], "size": [2, 32]}
+     ]},
+    {"name": "lamp_cap", "z": 2.6, "material": "iron", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [100, 60], "size": [34, 7]},
+       {"icon": "triangle", "at": [100, 52], "size": [26, 12]}
+     ]}
+  ]
+}

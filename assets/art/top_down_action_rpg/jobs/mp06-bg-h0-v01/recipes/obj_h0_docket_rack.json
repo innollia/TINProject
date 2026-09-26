@@ -1,0 +1,24 @@
+{
+  "asset": "obj_h0_docket_rack",
+  "status": "candidate",
+  "note": "mp06 H0 object: empty wooden docket rack with a few blank slips, taken out of the V1 background (rack_void / rack_slips / rack_frames on the north wall face). Wall-mounted: the pivot is the bottom centre of the rack on the wall face; sort it with the wall's floor line (scene item 'sort_y'). No text on the slips. Scaled x1.24.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [273, 198],
+  "pivot": [136, 153],
+  "pivot_meaning": "wall attachment point: bottom centre of the rack on the wall face",
+  "scale_all": {"factor": 1.24, "origin": [0, 0]},
+  "seed": 307,
+  "forms": [
+    {"name": "back", "z": 0, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 4}, "at": [110, 80], "size": [148, 76]}]},
+    {"name": "slips", "z": 1, "kind": "flat", "material": "paper", "opacity": 0.8,
+     "pieces": [
+       {"icon": "square", "at": [65, 64], "size": [22, 10]},
+       {"icon": "square", "at": [157, 90], "size": [22, 12]},
+       {"icon": "square", "at": [111, 98], "size": [20, 10]}
+     ]},
+    {"name": "frame", "z": 2, "kind": "flat", "material": "wood", "line": {"width": 1.2, "heavy": 1.6},
+     "pieces": [{"icon": "grid_fine", "crop": [1, 1, 15, 15], "at": [110, 80], "size": [160, 86]}]}
+  ]
+}

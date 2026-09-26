@@ -25,9 +25,13 @@ extends RefCounted
 #   §4.8 — soft 자식은 부모의 이동을 상속하고 회전은 상속하지 않는다. RIGID 도 같다.
 #
 # 읽기
-#   관절의 뼈 = 부모 → 관절. 루트는 자식들로 가는 뼈들의 평균이다.
+#   관절의 뼈 = 그 관절의 파트가 걸쳐 있는 뼈다. 파트는 관절에서 자식 쪽으로 자라므로
+#   관절 → soft 자식 중 파트 축(누적 rest_rotation + part.angle)과 가장 나란한 자식을 고른다
+#   (같으면 먼저 붙은 자식). soft 자식이 없는 끝 관절은 부모 → 관절 뼈를 쓴다. rigid 자식
+#   (장식)과 pinned 자식(고정점)은 뼈가 아니다. 이 선택은 정지 자세에서 한 번 정해진다.
 #   get_rotation()  rest_rotation + (내 뼈가 돈 각도 − 부모 뼈가 돈 각도)
 #   get_scale()     뼈 길이 / 정지 길이. 1 = 정지. squash 한도(squash, MAX_SQUASH) 안으로 자른다.
+#   끝 관절은 부모 파트와 같은 뼈를 읽으므로 부모 대비 회전이 0 이고 부모와 함께 찌그러진다.
 #   움직임의 원천은 disturb() 의 임펄스와 정규 형상의 force(바람) 뿐이다. 트윈이 없다.
 #
 # 한 프레임: disturb(...) → step(delta) → draw(canvas, palette). step() 은 그래프 전체를
@@ -57,6 +61,8 @@ var _joint_index: Dictionary = {}
 var _shape: ProceduralShape = null
 ## 루트만 채운다. RIGID 관절의 노드 번호. 부모가 먼저 온다.
 var _rigid_nodes: PackedInt32Array = PackedInt32Array()
+## 루트만 채운다. 노드마다 읽는 뼈 [from, to] 두 칸씩. 뼈가 없으면 -1.
+var _drawn_bones: PackedInt32Array = PackedInt32Array()
 
 
 func _init(p_part_id: StringName = &"rig") -> void:
@@ -168,7 +174,44 @@ func to_shape() -> ProceduralShape:
 		built.set_node_stiffness(index, joint.stiffness, joint.damping_ratio)
 	_shape = built
 	_rigid_nodes = rigid
+	_drawn_bones = _choose_bones(ordered, placed, built.get_rest())
 	return _shape
+
+
+## 노드마다 읽을 뼈를 정지 자세에서 한 번 고른다. 머리말 "읽기" 의 규칙이다.
+func _choose_bones(ordered: Array, placed: Dictionary, rest: PackedVector2Array) -> PackedInt32Array:
+	var bones: PackedInt32Array = PackedInt32Array()
+	bones.resize(ordered.size() * 2)
+	for index: int in ordered.size():
+		var joint: ProceduralSquishRig = ordered[index]
+		var heading: float = _accumulated_rotation(joint)
+		if joint.body_part != null:
+			heading += deg_to_rad(joint.body_part.angle)
+		var axis_direction: Vector2 = Vector2.RIGHT.rotated(heading)
+		var chosen: int = -1
+		var closest: float = -INF
+		for entry: Variant in joint._joints:
+			var child: ProceduralSquishRig = entry
+			if child.joint_kind != JointKind.SOFT:
+				continue
+			var child_index: int = int(placed[child])
+			var bone: Vector2 = rest[child_index] - rest[index]
+			if bone.length() < 0.0001:
+				continue
+			var alignment: float = bone.normalized().dot(axis_direction)
+			if alignment > closest:
+				closest = alignment
+				chosen = child_index
+		if chosen >= 0:
+			bones[index * 2] = index
+			bones[index * 2 + 1] = chosen
+		elif joint.parent != null:
+			bones[index * 2] = int(placed[joint.parent])
+			bones[index * 2 + 1] = index
+		else:
+			bones[index * 2] = -1
+			bones[index * 2 + 1] = -1
+	return bones
 
 
 ## 부모 체인을 따라 누적 회전(라디안)을 합친다. 관절의 정지 월드 방향이다.
@@ -208,6 +251,7 @@ func _root_damping() -> float:
 func _invalidate() -> void:
 	_shape = null
 	_rigid_nodes = PackedInt32Array()
+	_drawn_bones = PackedInt32Array()
 	if parent != null:
 		parent._invalidate()
 
@@ -376,43 +420,24 @@ func _follow_rigid(shape: ProceduralShape) -> void:
 
 
 ## 관절 뼈의 읽기. x = 월드 회전 변화(라디안), y = 찌그러짐(1 − 현재 길이 / 정지 길이),
-## z = 찌그러짐 축(현재 뼈 방향, 라디안). 루트는 자식 뼈들의 평균이며, 축은 방향이
-## 반대인 뼈끼리 상쇄되지 않도록 두 배 각도로 평균낸다.
+## z = 찌그러짐 축(현재 뼈 방향, 라디안). 뼈는 _choose_bones() 가 고른 것이다.
 func _bone_reading(shape: ProceduralShape, node: int) -> Vector3:
+	var bones: PackedInt32Array = find_root()._drawn_bones
+	if node < 0 or node * 2 + 1 >= bones.size() or bones[node * 2] < 0:
+		return Vector3(0.0, 0.0, shape.get_rest_dir(maxi(node, 0)).angle())
+	var from_node: int = bones[node * 2]
+	var to_node: int = bones[node * 2 + 1]
 	var rest: PackedVector2Array = shape.get_rest()
 	var points: PackedVector2Array = shape.get_points()
-	var bones: Array[Vector2i] = []
-	var parent_node: int = shape.anchor_parent[node]
-	if parent_node >= 0:
-		bones.append(Vector2i(parent_node, node))
-	else:
-		for index: int in shape.node_count():
-			if shape.anchor_parent[index] == node:
-				bones.append(Vector2i(node, index))
-	var turned: float = 0.0
-	var squeezed: float = 0.0
-	var axis_x: float = 0.0
-	var axis_y: float = 0.0
-	var counted: int = 0
-	for bone: Vector2i in bones:
-		var rest_bone: Vector2 = rest[bone.y] - rest[bone.x]
-		var live_bone: Vector2 = points[bone.y] - points[bone.x]
-		var rest_length: float = rest_bone.length()
-		if rest_length < 0.0001:
-			continue
-		var live_length: float = live_bone.length()
-		var amount: float = 1.0 - live_length / rest_length
-		var heading: float = live_bone.angle() if live_length > 0.000001 else rest_bone.angle()
-		if live_length > 0.000001:
-			turned += rest_bone.angle_to(live_bone)
-		var weight: float = absf(amount) + 0.000001
-		axis_x += cos(heading * 2.0) * weight
-		axis_y += sin(heading * 2.0) * weight
-		squeezed += amount
-		counted += 1
-	if counted == 0:
-		return Vector3(0.0, 0.0, shape.get_rest_dir(node).angle())
-	return Vector3(turned / float(counted), squeezed / float(counted), atan2(axis_y, axis_x) * 0.5)
+	var rest_bone: Vector2 = rest[to_node] - rest[from_node]
+	var live_bone: Vector2 = points[to_node] - points[from_node]
+	var rest_length: float = rest_bone.length()
+	if rest_length < 0.0001:
+		return Vector3(0.0, 0.0, rest_bone.angle())
+	var live_length: float = live_bone.length()
+	if live_length <= 0.000001:
+		return Vector3(0.0, 1.0, rest_bone.angle())
+	return Vector3(rest_bone.angle_to(live_bone), 1.0 - live_length / rest_length, live_bone.angle())
 
 
 ## 관절의 squash 한도 안으로 자른 찌그러짐.

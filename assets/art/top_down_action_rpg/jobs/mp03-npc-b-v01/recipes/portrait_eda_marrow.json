@@ -1,0 +1,755 @@
+{
+ "asset": "npc_14_eda_marrow",
+ "status": "candidate",
+ "note": "Eda Marrow dialogue portrait: 3/4 bust turned to the viewer's right, labour coordinator. Red-brown kerchief tied at the nape over black hair, strong jaw, straight thick brows, ochre work jacket with a V opening, several nameless pins on the collar, a hooked maintenance pole leaning behind the near shoulder. Author design from npc_14 JSON and 04 NPC-14 (female: author design).",
+ "identity": {
+  "npc_id": "npc_14_eda_marrow",
+  "display_name": "Eda Marrow",
+  "roster_kind": "core",
+  "portrait_key": "portrait_eda_marrow",
+  "art_key": "art_npc_core_portrait",
+  "body_key": "body_labor_coordinator"
+ },
+ "anchors": {
+  "face": [
+   168,
+   124
+  ],
+  "head_center": [
+   160,
+   122
+  ]
+ },
+ "palette": "palette_npc_b.json",
+ "style": "portrait",
+ "canvas": [
+  320,
+  320
+ ],
+ "pivot": [
+  168,
+  124
+ ],
+ "pivot_meaning": "face anchor: midpoint between the eyes (the same pixel in every mp03 portrait)",
+ "seed": 1401,
+ "forms": [
+  {
+   "name": "pole",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      58,
+      192
+     ],
+     "size": [
+      13,
+      300
+     ],
+     "rot": 10.6
+    }
+   ]
+  },
+  {
+   "name": "hook",
+   "z": 0.1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "hook",
+     "crop": [
+      3,
+      2,
+      13,
+      15
+     ],
+     "at": [
+      90,
+      30
+     ],
+     "size": [
+      26,
+      34
+     ],
+     "rot": 10
+    }
+   ]
+  },
+  {
+   "name": "neck",
+   "z": 0.5,
+   "material": "skin_deep",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      196
+     ],
+     "size": [
+      58,
+      60
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160,
+      234
+     ],
+     "size": [
+      56,
+      52
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck_shade",
+   "z": 0.6,
+   "kind": "flat",
+   "color": "#5a3e30",
+   "clip_to": "neck",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      168,
+      180
+     ],
+     "size": [
+      92,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "undershirt",
+   "z": 0.7,
+   "material": "trouser",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      164,
+      250
+     ],
+     "size": [
+      52,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jacket",
+   "z": 1,
+   "material": "em_jacket",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      158,
+      280
+     ],
+     "size": [
+      284,
+      118
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      158,
+      328
+     ],
+     "size": [
+      284,
+      100
+     ]
+    },
+    {
+     "icon": "triangle",
+     "op": "sub",
+     "at": [
+      164,
+      238
+     ],
+     "size": [
+      40,
+      44
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "jacket_seams",
+   "z": 1.2,
+   "kind": "flat",
+   "color": "#1c1308",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      92,
+      292
+     ],
+     "size": [
+      3,
+      60
+     ],
+     "rot": 8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      232,
+      294
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": -8
+    }
+   ]
+  },
+  {
+   "name": "collar_l",
+   "z": 2,
+   "material": "em_jacket",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      140,
+      232
+     ],
+     "size": [
+      40,
+      24
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "collar_r",
+   "z": 2,
+   "material": "em_jacket",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      188,
+      234
+     ],
+     "size": [
+      36,
+      22
+     ],
+     "rot": -30
+    }
+   ]
+  },
+  {
+   "name": "pins_bronze",
+   "z": 2.2,
+   "kind": "flat",
+   "material": "bronze",
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      124,
+      250
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      138,
+      246
+     ],
+     "size": [
+      5,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pins_iron",
+   "z": 2.2,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      131,
+      256
+     ],
+     "size": [
+      5,
+      5
+     ],
+     "rot": 20
+    },
+    {
+     "icon": "circle",
+     "at": [
+      116,
+      258
+     ],
+     "size": [
+      5,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "z": 5,
+   "material": "hair_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      110
+     ],
+     "size": [
+      116,
+      112
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ear",
+   "z": 5.5,
+   "material": "skin_deep",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110,
+      141
+     ],
+     "size": [
+      17,
+      29
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ear_inner",
+   "z": 5.6,
+   "kind": "flat",
+   "color": "#5a3e30",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      109,
+      142
+     ],
+     "size": [
+      7,
+      15
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "z": 6,
+   "material": "skin_deep",
+   "shade": {
+    "threshold": 0.44,
+    "ragged": 0.06,
+    "soft": 0.34,
+    "highlight_amount": 0.35
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      129
+     ],
+     "size": [
+      98,
+      102
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      171,
+      172
+     ],
+     "size": [
+      60,
+      42
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      204,
+      146
+     ],
+     "size": [
+      12,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hairline",
+   "z": 6.4,
+   "material": "hair_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      162,
+      99
+     ],
+     "size": [
+      94,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nose_shade",
+   "z": 7,
+   "kind": "flat",
+   "color": "#5a3e30",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      199,
+      142
+     ],
+     "size": [
+      10,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nostril",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "#2a1812",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198,
+      153
+     ],
+     "size": [
+      5.5,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "#2a1812",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      184,
+      168
+     ],
+     "size": [
+      21,
+      3.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lip_shade",
+   "z": 7.05,
+   "kind": "flat",
+   "color": "#5a3e30",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      185,
+      173
+     ],
+     "size": [
+      14,
+      3.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "iris",
+   "z": 7.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      125
+     ],
+     "size": [
+      11,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      123
+     ],
+     "size": [
+      8,
+      9.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glint",
+   "z": 7.3,
+   "kind": "flat",
+   "color": "eye_glint",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140,
+      122
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192,
+      121
+     ],
+     "size": [
+      2.5,
+      2.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lids",
+   "z": 7.4,
+   "kind": "flat",
+   "color": "ink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      126
+     ],
+     "size": [
+      23,
+      14
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      142,
+      129.2
+     ],
+     "size": [
+      23,
+      14
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      124
+     ],
+     "size": [
+      16,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      194,
+      126.8
+     ],
+     "size": [
+      16,
+      11
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "z": 7.5,
+   "kind": "flat",
+   "material": "hair_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141,
+      112
+     ],
+     "size": [
+      28,
+      6.5
+     ],
+     "rot": 2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      195,
+      111
+     ],
+     "size": [
+      18,
+      5.5
+     ],
+     "rot": -2
+    }
+   ]
+  },
+  {
+   "name": "kerchief",
+   "z": 8,
+   "material": "em_kerchief",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      104
+     ],
+     "size": [
+      126,
+      112
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      166,
+      158
+     ],
+     "size": [
+      130,
+      120
+     ]
+    }
+   ]
+  },
+  {
+   "name": "kerchief_knot",
+   "z": 8.2,
+   "material": "em_kerchief",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      102,
+      120
+     ],
+     "size": [
+      22,
+      18
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      94,
+      142
+     ],
+     "size": [
+      12,
+      30
+     ],
+     "rot": 15
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      107,
+      144
+     ],
+     "size": [
+      11,
+      26
+     ],
+     "rot": -10
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "portrait_eda_marrow"
+  }
+ ]
+}

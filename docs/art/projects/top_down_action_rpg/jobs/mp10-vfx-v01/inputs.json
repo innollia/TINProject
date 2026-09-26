@@ -1,0 +1,55 @@
+{
+  "job_id": "mp10-vfx-v01",
+  "status": "prepared (spec only, no recipes or output yet)",
+  "hashes_taken": "2026-09-27 preparation. Re-check when work starts: the tone-and-manner and sprite standards are being redefined and COMMON.md may change.",
+  "session_rules": {
+    "path": "C:/Users/Sherum/.kiro/crew/workspace/tin_mass_production/COMMON.md",
+    "sha256": "4071814e009fdbc3fadb89cc07f465f3a2a6490bd1b47549bdea228828eca3c8",
+    "role": "mass-production rules for sessions 01-10 (user decisions override docs). Contains the 'prepare only' gate."
+  },
+  "read_only_inputs": [
+    {"path": "docs/IMAGE_ASSET_WORKFLOW.md", "sha256": "6d2c161c92ac404a8e56bc4e6c98b620c40007d6e5f05481e7c33c4f532b809c", "role": "brief required fields, hard gates, candidate/approval"},
+    {"path": "docs/VISUAL_DIRECTION.md", "sha256": "a0aa78880d0768c178b0ba8565c571daf0ab9f99b8b1a3b9562cac37a775b7ff", "role": "UI minimalism, resolutions"},
+    {"path": "docs/art/PERSONAL_STYLE_CORE.md", "sha256": "9efe76916f980ee4a25cd13839e52f754897c8890c569e9bc146bae6b93cbc5e", "role": "style core (not re-read in full during preparation; brush settings stay as the trial)"},
+    {"path": "docs/art/projects/top_down_action_rpg/PROJECT_ART_LAYER.md", "sha256": "6346e65417891ca5cc227581108075abb46fc85c59b3598862aa2b182597fe52", "role": "project art layer: camera, light, forbidden content"},
+    {"path": "plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/09_PRESENTATION_ART_AND_AUDIO.md", "sha256": "87ce02abe618004f4ea56d489f1b824269611fc140bc8238480398463a9dd485", "role": "4.1 combat composition, 4.4 target, 4.5 feedback channels, 7.3 corruption, 9 focus, 12 common brief fields, 12.3 enemy states, 12.4 combat_vfx, 12.8 aftermath, 12.10 art keys"},
+    {"path": "plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/12_MAGIC_THEORY.md", "sha256": "a7a198ebdec932a3d406a350ead9c6e6a8982dab0a4b5dbf81d103bc6a3010f1", "role": "meaning of weave/fold/void-cut, concentration overflow, medium residue, contract, recording (status and effect imagery)"},
+    {"path": "plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/13_LAYERED_ENVIRONMENT_PRODUCTION.md", "sha256": "e13c5c2fc33aa44faba3a861a6b97d275136b09a9040d9f458ba255e6a4d9af5", "role": "effects and residue stay out of the base layer"},
+    {"path": "plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/14_ISOLATED_ART_JOBS.md", "sha256": "350f7c25c6245a40678467c66f845c61342a3c9d275e77fa3280a9c4e21985f7", "role": "job folder format, JOB.md fields, author-design labelling"},
+    {"path": "modules/top_down_action_rpg/presentation/top_down_vector_layer.gd", "sha256": "8f36e3740c71316d19c53c38fcd0c854a2b9f02bc19ecfd83952faf996995753", "role": "current feedback marks (hit/miss/critical/guard/dodge/break/status/queued), charge tell stages, target bracket, actor size, game colours"},
+    {"path": "modules/top_down_action_rpg/presentation/top_down_screen.gd", "sha256": "003889892524a939783d6bce864ec8af47b60dc0d0db82e6442702899b9b3c65", "role": "push_feedback(kind, position, strength), status rows in the player band"},
+    {"path": "modules/top_down_action_rpg/presentation/top_down_row.gd", "sha256": "4afced410fca6c18fff6e90eaf19613b9b6043f4442a66b31d73d99f5fee6043", "role": "CORRUPTION_MODES recolor/replace_token/shatter_line/drop_glyph, EXTREME red #b34c3c"},
+    {"path": "modules/top_down_action_rpg/domain/combat_state.gd", "sha256": "ea2b6c3b55a86a013902750608a5e9d1e1caa512baaa260b4ed364e87919fc6c", "role": "charge stages telegraph/reaction/strike/recovery/cancelled/completed, stances normal/guard/dodge/broken/guard_broken"},
+    {"path": "modules/top_down_action_rpg/systems/combat_controller.gd", "sha256": "e3bcdc7a2d76fc4e2776312c72ff0a17f826c469573e55d80d998346118a4e78", "role": "presentation events charge_stage_*, stance_guard, stance_dodge, break_applied, guard_broken, actor_down, status_applied, charge_cancelled, charge_strike"},
+    {"path": "modules/top_down_action_rpg/content/statuses/st_concentration_load.json", "sha256": "1116316cac1083b03338c7e16b5370c026154c905c1cd6845585998cc92b85c3", "role": "status: stack 3, blocks magic, prevents charge commit, tint kiln_amber"},
+    {"path": "modules/top_down_action_rpg/content/statuses/st_contract_bound.json", "sha256": "ffe7b5b084bf8ae2ab5dcd678414bdc2bdea604387813517f87b7906b6822b8c", "role": "status: refresh, agility -1, prevents charge commit, tint record_grey"},
+    {"path": "modules/top_down_action_rpg/content/statuses/st_medium_residue.json", "sha256": "b531b4c42fda5376f4c203ee21255f2344ffe289d8188088691b5cfb7b20c95b", "role": "status: stack 3, agility -1, cures st_misfolded, tint kiln_amber"},
+    {"path": "modules/top_down_action_rpg/content/statuses/st_misfolded.json", "sha256": "e5bf6af0aa71691b4eb2def2f42bd15849870b1a3326c5e3af69d548b7ac70de", "role": "status: refresh, tint record_grey"},
+    {"path": "modules/top_down_action_rpg/content/statuses/st_overflowed.json", "sha256": "d1a510e344e847e7caec9b5ea531efe3f0a3c3574a67588f3ad8b0c630e11a55", "role": "status: refresh, blocks magic, tint kiln_amber"},
+    {"path": "modules/top_down_action_rpg/content/statuses/st_recorded.json", "sha256": "2f89e574cb62a0606863038419fb020db261cbc5a42210ac813270f48b381a6a", "role": "status: stack 3, agility -1, tint record_grey"},
+    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-collage-v01/recipes/palette_h0.json", "sha256": "6ba743f32be716cfaa130fe80383ca710c007ef743e6830edd26baa25d506fb5", "role": "trial palette: outline, shadow and shared colours kept as-is (copied when work starts)"},
+    {"path": "docs/art/projects/top_down_action_rpg/jobs/h0-icon-collage-v01/JOB.md", "sha256": "a0bbbf9a123289531f524e9dcae08c43765b3db93581878e02bcfb9d7cc1dc53", "role": "trial job record: tool usage, output format"},
+    {"path": "docs/art/projects/top_down_action_rpg/jobs/h0-icon-collage-v01/QA.md", "sha256": "65c61dfeac9fa9eb1c146f371bb36ad094c3091441e0d5c229062e0d7818e83d", "role": "trial known problems"}
+  ],
+  "input_images": [
+    {
+      "path": "assets/art/top_down_action_rpg/jobs/mp10-vfx-v01/input/preview_h0_1280x720.png",
+      "source": "assets/art/top_down_action_rpg/jobs/h0-icon-collage-v01/preview/preview_h0_1280x720.png",
+      "sha256": "e032ccb6edf1438e5595188b92ca0bdc71c3bf5c88d80b6494e1f1f245d1d6b3",
+      "role": "background for the overlay preview only (candidate trial image, not a style authority, not a runtime asset)"
+    }
+  ],
+  "planned_inputs": [
+    {
+      "source": "assets/art/top_down_action_rpg/jobs/h0-icon-collage-v01/output/enemy_ash_hound/idle_left.png",
+      "sha256": "21c7fd108795c7b27eab48dd194857330316f9407240fc4e123707eac54e2d36",
+      "role": "stand-in enemy for the combat mock preview only; copy into input/ when work starts"
+    }
+  ],
+  "icon_source": {
+    "path": "addons/at-icons/node2d",
+    "license": "MIT (addons/at-icons/LICENSE.txt)",
+    "note": "Icons actually used and their SHA-256 are written per output PNG manifest at build time."
+  },
+  "gold_standard": "none"
+}

@@ -1,0 +1,32 @@
+{
+  "note": "Shared R6 tiled floor (included by bg_r6_debt_hall and bg_r6_stalls_drainage; same forms as bg_r6_intake_ring). Stains in three sizes with falling strength (COMMON.md weakness note).",
+  "forms": [
+    {"name": "joint_base", "z": 0, "kind": "wash", "material": "tile_joint",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "tiles", "z": 1, "material": "tile",
+     "shade": {"max_radius": 6, "soft": 0.1, "bump": 0.9, "threshold": 0.42, "highlight": 0.86, "highlight_amount": 0.3, "ragged": 0.12},
+     "line": {"width": 1.1, "heavy": 0.9, "breaks": 0.2, "color": "#1f1e19", "opacity": 0.8},
+     "rough": {"amp": 0.45, "soft": 2.0, "cell": 14},
+     "cast": {"dist": 2, "blur": 2, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [67, 58], "size": [130, 112],
+                 "repeat": {"grid": [20, 13], "step": [135, 117], "jitter": {"at": 2, "size": 0.012}}}]},
+    {"name": "tile_tint", "z": 1.4, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.26,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [67, 58], "size": [130, 112],
+                 "repeat": {"grid": [20, 13], "step": [135, 117], "jitter": {"at": 2, "alpha": 1.0}}}]},
+    {"name": "tile_damp", "z": 1.5, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.2,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [67, 58], "size": [130, 112],
+                 "repeat": {"grid": [20, 13], "step": [135, 117], "jitter": {"at": 2, "alpha": 1.0}}}]},
+    {"name": "stain_large", "z": 2, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.24,
+     "mottle": {"cell": 480, "lo": 0.5, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "stain_mid", "z": 2.1, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.16,
+     "mottle": {"cell": 180, "lo": 0.58, "hi": 0.86},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "stain_small", "z": 2.2, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.12,
+     "mottle": {"cell": 60, "lo": 0.62, "hi": 0.9},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "mottle_light", "z": 2.3, "kind": "wash", "material": "worn", "opacity": 0.08,
+     "mottle": {"cell": 240, "lo": 0.55, "hi": 0.9},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]}
+  ]
+}

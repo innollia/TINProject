@@ -1,0 +1,219 @@
+{
+  "asset": "enemy_kiln_door_ward",
+  "status": "candidate",
+  "note": "enemy_kiln_door_ward (R1 Returning Kiln, Return Registry; threshold/lock; architectural, scale large). Author design: a free-standing kiln mouth of sooty brick with an arched iron door, a bronze seal plate with a wax seal, registry slips pasted on the door, an ash tray at the foot. Signature ward_seal_slam: the seal plate rises (telegraph), then slams down on the tray (signature). Break (misfolded): door wrenched off its hinge line, plate folded on the tray, kiln mouth exposed. Phase 1 Sealed Frame: contract straps and wax seals across the frame. Phase 2 Open Frame: door swung open, mouth and embers visible. Front battler, fixed combat camera, 60 deg view.",
+  "palette": "palette_mp05_enemies.json",
+  "style": "sprite",
+  "canvas": [400, 480],
+  "pivot": [200, 240],
+  "pivot_meaning": "body centre (game draws the enemy centred on its stage position); ground contact line y=384 after offset_all",
+  "offset_all": [0, -40],
+  "seed": 501,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.42, "blur": 5,
+     "pieces": [{"icon": "circle", "at": [200, 424], "size": [332, 40]}]},
+
+    {"name": "mouth", "z": 0, "kind": "flat", "material": "void",
+     "grad": {"to": "rust", "y0": 300, "y1": 420, "curve": 1.6},
+     "pieces": [
+       {"icon": "square", "at": [200, 341], "size": [172, 150]},
+       {"icon": "circle", "half": "top", "at": [200, 226], "size": [172, 80]}
+     ]},
+    {"name": "mouth_embers", "tags": ["mouth_embers"], "hidden": true, "z": 0.5, "kind": "flat", "material": "ember", "emit": 1.0,
+     "clip_to": "mouth", "glow": {"radius": 6, "opacity": 0.6, "color": "ember_glow"},
+     "pieces": [
+       {"icon": "cloud", "at": [200, 404], "size": [168, 30]},
+       {"icon": "fire", "at": [168, 384], "size": [22, 26]},
+       {"icon": "fire", "at": [232, 388], "size": [18, 20], "rot": 8},
+       {"icon": "fire", "at": [204, 380], "size": [14, 16], "rot": -6}
+     ]},
+
+    {"name": "gap_glow", "tags": ["gap_glow"], "hidden": true, "z": 1, "kind": "flat", "material": "ember", "emit": 0.9,
+     "glow": {"radius": 5, "opacity": 0.6, "color": "ember_glow"},
+     "pieces": [
+       {"icon": "square", "at": [200, 341], "size": [172, 150]},
+       {"icon": "circle", "half": "top", "at": [200, 226], "size": [172, 80]},
+       {"icon": "square", "op": "sub", "at": [200, 350], "size": [142, 150]},
+       {"icon": "circle", "half": "top", "op": "sub", "at": [200, 242], "size": [142, 66]}
+     ]},
+
+    {"name": "door", "tags": ["door"], "z": 2, "material": "kiln_iron", "shade": {"bump": 0.55, "soft": 0.2},
+     "pieces": [
+       {"icon": "square", "at": [200, 339], "size": [160, 150]},
+       {"icon": "circle", "half": "top", "at": [200, 232], "size": [160, 72]}
+     ]},
+    {"name": "door_bands", "tags": ["door"], "z": 2.2, "material": "iron", "clip_to": "door", "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [200, 252], "size": [168, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [200, 318], "size": [168, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [200, 384], "size": [168, 12]}
+     ]},
+    {"name": "door_rivets", "tags": ["door"], "z": 2.3, "material": "bronze", "line": {"width": 0.5, "heavy": 0.4}, "clip_to": "door",
+     "pieces": [
+       {"icon": "circle", "at": [128, 252], "size": [6, 6], "repeat": {"grid": [8, 1], "step": [20.5, 0]}},
+       {"icon": "circle", "at": [128, 318], "size": [6, 6], "repeat": {"grid": [8, 1], "step": [20.5, 0]}},
+       {"icon": "circle", "at": [128, 384], "size": [6, 6], "repeat": {"grid": [8, 1], "step": [20.5, 0]}}
+     ]},
+    {"name": "hinges", "tags": ["door"], "z": 2.4, "material": "iron", "line": {"width": 0.7, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [140, 284], "size": [42, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [140, 356], "size": [42, 12]},
+       {"icon": "circle", "at": [122, 284], "size": [10, 18]},
+       {"icon": "circle", "at": [122, 356], "size": [10, 18]}
+     ]},
+    {"name": "slips", "tags": ["door", "papers"], "z": 2.5, "material": "paper", "cast": {"dist": 2, "blur": 1.2, "opacity": 0.4, "color": "shade_tint"},
+     "shade": {"bump": 0.4},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [156, 336], "size": [30, 42], "rot": -4},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [250, 350], "size": [26, 36], "rot": 6},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [238, 226], "size": [22, 28], "rot": -9}
+     ]},
+    {"name": "slip_marks", "tags": ["door", "papers"], "z": 2.6, "kind": "flat", "material": "paper_mark",
+     "pieces": [
+       {"icon": "square", "at": [156, 326], "size": [18, 2.2], "rot": -4},
+       {"icon": "square", "at": [157, 333], "size": [20, 2.2], "rot": -4},
+       {"icon": "square", "at": [157, 340], "size": [14, 2.2], "rot": -4},
+       {"icon": "square", "at": [251, 343], "size": [15, 2.2], "rot": 6},
+       {"icon": "square", "at": [250, 350], "size": [16, 2.2], "rot": 6},
+       {"icon": "square", "at": [238, 222], "size": [12, 2], "rot": -9},
+       {"icon": "square", "at": [239, 229], "size": [10, 2], "rot": -9}
+     ]},
+
+    {"name": "frame", "z": 3, "material": "kiln_brick", "shade": {"bump": 0.75, "soft": 0.22},
+     "pieces": [
+       {"icon": "square", "at": [200, 328], "size": [262, 164]},
+       {"icon": "circle", "half": "top", "at": [200, 190], "size": [262, 112]},
+       {"icon": "square", "op": "sub", "at": [200, 341], "size": [172, 150]},
+       {"icon": "circle", "half": "top", "op": "sub", "at": [200, 226], "size": [172, 80]}
+     ]},
+    {"name": "frame_courses", "z": 3.2, "kind": "flat", "material": "soot", "opacity": 0.55, "clip_to": "frame",
+     "pieces": [
+       {"icon": "square", "at": [200, 262], "size": [270, 2.4], "repeat": {"grid": [1, 7], "step": [0, 24]}},
+       {"icon": "square", "at": [82, 250], "size": [2.4, 22], "repeat": {"grid": [2, 7], "step": [22, 24], "stagger": 11}},
+       {"icon": "square", "at": [296, 250], "size": [2.4, 22], "repeat": {"grid": [2, 7], "step": [22, 24], "stagger": 11}},
+       {"icon": "square", "at": [200, 190], "size": [2.4, 30], "repeat": {"ellipse": [200, 212, 110, 62], "count": 11, "arc": [185, 355], "orient": true}}
+     ]},
+    {"name": "keystone", "z": 3.4, "material": "kiln_iron", "shade": {"bump": 0.6},
+     "pieces": [{"icon": "triangle", "flip": "y", "at": [200, 158], "size": [34, 30]}]},
+    {"name": "ward_cords", "z": 3.5, "kind": "flat", "material": "soot",
+     "pieces": [
+       {"icon": "square", "at": [92, 266], "size": [2, 26], "rot": 4},
+       {"icon": "square", "at": [308, 266], "size": [2, 26], "rot": -4}
+     ]},
+    {"name": "ward_tags", "z": 3.6, "material": "bronze", "cast": {"dist": 2, "blur": 1, "opacity": 0.4, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "tag", "at": [91, 288], "size": [16, 20], "rot": 96},
+       {"icon": "tag", "at": [309, 288], "size": [16, 20], "rot": 84}
+     ]},
+    {"name": "frame_crack", "tags": ["frame_crack"], "hidden": true, "z": 3.7, "kind": "flat", "material": "void", "opacity": 0.85, "clip_to": "frame",
+     "pieces": [
+       {"icon": "square", "at": [270, 160], "size": [2.4, 17], "rot": 28},
+       {"icon": "square", "at": [275, 175], "size": [2.2, 16], "rot": -18},
+       {"icon": "square", "at": [271, 190], "size": [2, 15], "rot": 32},
+       {"icon": "square", "at": [280, 168], "size": [1.6, 9], "rot": 70},
+       {"icon": "square", "at": [98, 316], "size": [2.4, 15], "rot": -16},
+       {"icon": "square", "at": [94, 330], "size": [2.2, 15], "rot": 22},
+       {"icon": "square", "at": [97, 344], "size": [2, 14], "rot": -10}
+     ]},
+
+    {"name": "tray", "z": 4, "kind": "block", "material": "kiln_iron", "extrude": 14,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [200, 396], "size": [286, 30]}]},
+    {"name": "ash_heap", "z": 4.2, "material": "ash", "shade": {"bump": 0.8},
+     "pieces": [
+       {"icon": "cloud", "at": [200, 388], "size": [232, 22]},
+       {"icon": "cloud", "at": [122, 392], "size": [60, 12]},
+       {"icon": "cloud", "at": [276, 391], "size": [64, 13]}
+     ]},
+    {"name": "rubble", "tags": ["rubble"], "hidden": true, "z": 4.5, "material": "kiln_brick",
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [74, 420], "size": [20, 13], "rot": 18},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [96, 428], "size": [14, 10], "rot": -8},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [326, 424], "size": [18, 12], "rot": -16},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [308, 432], "size": [11, 8], "rot": 30}
+     ]},
+
+    {"name": "phase_straps", "tags": ["phase_straps"], "hidden": true, "z": 4.8, "material": "paper", "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "shade": {"bump": 0.5},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [200, 292], "size": [300, 15], "rot": 36},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [200, 292], "size": [300, 15], "rot": -36},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [92, 346], "size": [24, 34], "rot": 7},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [310, 330], "size": [22, 30], "rot": -6},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [172, 170], "size": [20, 26], "rot": -12}
+     ]},
+    {"name": "phase_wax", "tags": ["phase_straps"], "hidden": true, "z": 4.9, "material": "seal_wax",
+     "pieces": [
+       {"icon": "circle", "at": [89, 211], "size": [20, 19]},
+       {"icon": "circle", "at": [311, 211], "size": [20, 19]},
+       {"icon": "circle", "at": [89, 373], "size": [20, 19]},
+       {"icon": "circle", "at": [311, 373], "size": [20, 19]}
+     ]},
+
+    {"name": "seal_heat", "tags": ["seal", "seal_heat"], "hidden": true, "z": 4.95, "kind": "flat", "material": "ember", "emit": 0.85,
+     "glow": {"radius": 5, "opacity": 0.55, "color": "ember_glow"},
+     "pieces": [
+       {"icon": "octagon", "at": [200, 290], "size": [74, 74]},
+       {"icon": "octagon", "op": "sub", "at": [200, 290], "size": [62, 62]}
+     ]},
+    {"name": "seal_plate", "tags": ["seal"], "z": 5, "material": "bronze", "pivot": [200, 290],
+     "cast": {"dist": 3.5, "blur": 2.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "octagon", "at": [200, 290], "size": [64, 64]}]},
+    {"name": "seal_wax", "tags": ["seal"], "z": 5.2, "material": "seal_wax", "pivot": [200, 290],
+     "pieces": [{"icon": "circle", "at": [200, 290], "size": [34, 32]}]},
+    {"name": "seal_imprint", "tags": ["seal"], "z": 5.4, "kind": "flat", "color": "#461a1e", "pivot": [200, 290],
+     "pieces": [
+       {"icon": "circle", "at": [200, 290], "size": [21, 20]},
+       {"icon": "circle", "op": "sub", "at": [200, 290], "size": [15, 14]},
+       {"icon": "circle", "at": [200, 290], "size": [6, 6]}
+     ]},
+
+    {"name": "seal_bent", "tags": ["seal_bent"], "hidden": true, "z": 4.6, "material": "bronze",
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "octagon", "half": "left", "at": [196, 386], "size": [30, 56], "rot": -62, "squash": 0.7},
+       {"icon": "octagon", "half": "right", "at": [228, 380], "size": [30, 56], "rot": -24}
+     ]},
+    {"name": "seal_bent_wax", "tags": ["seal_bent"], "hidden": true, "z": 4.7, "material": "seal_wax",
+     "pieces": [{"icon": "circle", "half": "right", "at": [224, 381], "size": [14, 28], "rot": -24}]},
+
+    {"name": "ash_burst", "tags": ["ash_burst"], "hidden": true, "z": 6, "material": "ash", "opacity": 0.92, "shade": {"bump": 0.9},
+     "pieces": [
+       {"icon": "cloud", "at": [96, 404], "size": [84, 40], "rot": -8},
+       {"icon": "cloud", "at": [62, 386], "size": [46, 28], "rot": -20},
+       {"icon": "cloud", "at": [304, 404], "size": [84, 40], "rot": 8},
+       {"icon": "cloud", "at": [340, 386], "size": [46, 28], "rot": 20},
+       {"icon": "cloud", "at": [200, 412], "size": [120, 26]}
+     ]},
+    {"name": "sparks", "tags": ["ash_burst"], "hidden": true, "z": 6.5, "kind": "flat", "material": "ember", "emit": 1.0,
+     "glow": {"radius": 3, "opacity": 0.6, "color": "ember_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [76, 362], "size": [5, 5]},
+       {"icon": "circle", "at": [112, 348], "size": [4, 4]},
+       {"icon": "circle", "at": [58, 404], "size": [4, 4]},
+       {"icon": "circle", "at": [324, 360], "size": [5, 5]},
+       {"icon": "circle", "at": [290, 346], "size": [4, 4]},
+       {"icon": "circle", "at": [346, 402], "size": [4, 4]}
+     ]}
+  ],
+  "frames": [
+    {"name": "baseline"},
+    {"name": "telegraph",
+     "show": ["gap_glow", "seal_heat"],
+     "move": {"door": {"sx": 0.94, "sy": 0.95, "pivot": [200, 414]},
+              "seal": {"dy": -74, "rot": -7, "pivot": [200, 290]}}},
+    {"name": "signature",
+     "show": ["gap_glow", "ash_burst"],
+     "move": {"door": {"sx": 1.02, "sy": 0.99, "pivot": [200, 414]},
+              "seal": {"dy": 88, "sy": 0.9, "rot": 3, "pivot": [200, 290]}}},
+    {"name": "break",
+     "hide": ["seal"],
+     "show": ["seal_bent", "mouth_embers", "frame_crack", "rubble"],
+     "move": {"door": {"rot": -8, "dx": 14, "dy": 8, "pivot": [124, 412]}}},
+    {"name": "phase1_sealed_frame",
+     "show": ["phase_straps"]},
+    {"name": "phase2_open_frame",
+     "hide": ["seal"],
+     "show": ["seal_bent", "mouth_embers"],
+     "move": {"door": {"sx": 0.22, "pivot": [118, 330]}}}
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "asset": "foreground_r6_lintel",
+  "status": "candidate",
+  "note": "R6 zone 1 (bg_r6_intake_ring) foreground occluder: arcade lintel beam across the bottom-left corner (logical x0..400, y664..720) on a post, with two pulley blocks. Full-canvas transparent layer with the same origin as the background; drawn over characters. Keeps the south stair and the counter spot clear.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = background origin (logical 0,0)",
+  "seed": 611,
+  "forms": [
+    {"name": "post", "z": 0, "kind": "block", "material": "tile_wall_dark", "extrude": 120,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [792, 1382], "size": [46, 36]}]},
+    {"name": "post_band", "z": 0.5, "kind": "flat", "material": "verdigris", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [792, 1420], "size": [46, 8]}]},
+    {"name": "beam", "z": 1, "kind": "block", "material": "court_wood", "extrude": 42,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [390, 1336], "size": [840, 30]}]},
+    {"name": "beam_straps", "z": 1.5, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [0, 1356], "size": [10, 50],
+                 "repeat": {"points": [[120, 1356], [420, 1356], [700, 1356]]}}]},
+    {"name": "pulley_ropes", "z": 2, "kind": "flat", "material": "leather", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [
+       {"icon": "square", "at": [270, 1392], "size": [3, 30]},
+       {"icon": "square", "at": [560, 1392], "size": [3, 44]}
+     ]},
+    {"name": "pulleys", "z": 2.5, "material": "iron", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [
+       {"icon": "wheel", "at": [270, 1416], "size": [26, 26]},
+       {"icon": "wheel", "at": [560, 1428], "size": [24, 24]}
+     ]}
+  ]
+}

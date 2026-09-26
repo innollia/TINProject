@@ -1,0 +1,890 @@
+{
+ "asset": "npc_12_ravenna_holt",
+ "status": "candidate",
+ "note": "Ravenna Holt dialogue portrait: 3/4 bust turned to the viewer's right, crown protocol envoy. Black hair pulled back into a bun with one grey streak, stiff angular oxblood mantle, high standing collar, round bronze seal on a chain, pressed lips, lowered brows. No crown (she is the envoy, not the operator). Author design from npc_12 JSON and 04 NPC-12.",
+ "identity": {
+  "npc_id": "npc_12_ravenna_holt",
+  "display_name": "Ravenna Holt",
+  "roster_kind": "core",
+  "portrait_key": "portrait_ravenna_holt",
+  "art_key": "art_npc_core_portrait",
+  "body_key": "body_protocol_envoy"
+ },
+ "anchors": {
+  "face": [
+   168,
+   124
+  ],
+  "head_center": [
+   160,
+   122
+  ]
+ },
+ "palette": "palette_npc_b.json",
+ "style": "portrait",
+ "canvas": [
+  320,
+  320
+ ],
+ "pivot": [
+  168,
+  124
+ ],
+ "pivot_meaning": "face anchor: midpoint between the eyes (the same pixel in every mp03 portrait)",
+ "seed": 1201,
+ "forms": [
+  {
+   "name": "coat",
+   "z": 1,
+   "material": "rh_coat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      158,
+      330
+     ],
+     "size": [
+      240,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mantle",
+   "z": 1.5,
+   "material": "rh_coat",
+   "shade": {
+    "threshold": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3,
+       0
+      ],
+      [
+       13,
+       0
+      ],
+      [
+       16,
+       5
+      ],
+      [
+       16,
+       16
+      ],
+      [
+       0,
+       16
+      ],
+      [
+       0,
+       5
+      ]
+     ],
+     "at": [
+      158,
+      303
+     ],
+     "size": [
+      276,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mantle_folds",
+   "z": 1.55,
+   "kind": "flat",
+   "color": "coat_seam",
+   "opacity": 0.55,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      98,
+      300
+     ],
+     "size": [
+      4,
+      46
+     ],
+     "rot": 6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      226,
+      302
+     ],
+     "size": [
+      4,
+      42
+     ],
+     "rot": -6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      62,
+      306
+     ],
+     "size": [
+      3,
+      30
+     ],
+     "rot": 4
+    }
+   ]
+  },
+  {
+   "name": "mantle_trim",
+   "z": 1.6,
+   "kind": "flat",
+   "material": "bronze",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3,
+       0
+      ],
+      [
+       13,
+       0
+      ],
+      [
+       16,
+       5
+      ],
+      [
+       16,
+       16
+      ],
+      [
+       0,
+       16
+      ],
+      [
+       0,
+       5
+      ]
+     ],
+     "at": [
+      158,
+      303
+     ],
+     "size": [
+      276,
+      150
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3,
+       0
+      ],
+      [
+       13,
+       0
+      ],
+      [
+       16,
+       5
+      ],
+      [
+       16,
+       16
+      ],
+      [
+       0,
+       16
+      ],
+      [
+       0,
+       5
+      ]
+     ],
+     "op": "sub",
+     "at": [
+      158,
+      310
+     ],
+     "size": [
+      266,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck",
+   "z": 3,
+   "material": "skin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      208
+     ],
+     "size": [
+      50,
+      76
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck_shade",
+   "z": 3.1,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "clip_to": "neck",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      168,
+      178
+     ],
+     "size": [
+      86,
+      48
+     ]
+    }
+   ]
+  },
+  {
+   "name": "collar_l",
+   "z": 3.5,
+   "material": "rh_coat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      132,
+      218
+     ],
+     "size": [
+      30,
+      62
+     ],
+     "rot": -10
+    }
+   ]
+  },
+  {
+   "name": "collar_r",
+   "z": 3.5,
+   "material": "rh_coat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      189,
+      220
+     ],
+     "size": [
+      28,
+      58
+     ],
+     "rot": 10
+    }
+   ]
+  },
+  {
+   "name": "chain",
+   "z": 4,
+   "kind": "flat",
+   "material": "bronze",
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      138,
+      244
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      253
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      147,
+      262
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      153,
+      270
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      187,
+      246
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      183,
+      255
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178,
+      263
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172,
+      271
+     ],
+     "size": [
+      5,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "seal",
+   "z": 4.2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "coin",
+     "at": [
+      163,
+      292
+     ],
+     "size": [
+      38,
+      38
+     ]
+    }
+   ]
+  },
+  {
+   "name": "seal_ring",
+   "z": 4.3,
+   "kind": "flat",
+   "color": "#4a3c27",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      163,
+      292
+     ],
+     "size": [
+      24,
+      24
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      163,
+      292
+     ],
+     "size": [
+      18,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bun",
+   "z": 4.8,
+   "material": "hair_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110,
+      80
+     ],
+     "size": [
+      46,
+      42
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "z": 5,
+   "material": "hair_black",
+   "shade": {
+    "highlight_amount": 0.6,
+    "highlight": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      110
+     ],
+     "size": [
+      116,
+      112
+     ]
+    }
+   ]
+  },
+  {
+   "name": "streak",
+   "z": 5.2,
+   "kind": "flat",
+   "color": "#6a645e",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      150,
+      84
+     ],
+     "size": [
+      84,
+      40
+     ],
+     "rot": -12
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      152,
+      88
+     ],
+     "size": [
+      84,
+      40
+     ],
+     "rot": -12
+    }
+   ]
+  },
+  {
+   "name": "ear",
+   "z": 5.5,
+   "material": "skin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110,
+      140
+     ],
+     "size": [
+      17,
+      28
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ear_inner",
+   "z": 5.6,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      109,
+      141
+     ],
+     "size": [
+      7,
+      15
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "z": 6,
+   "material": "skin",
+   "shade": {
+    "threshold": 0.44,
+    "ragged": 0.06,
+    "soft": 0.34,
+    "highlight_amount": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      128
+     ],
+     "size": [
+      94,
+      104
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      173,
+      173
+     ],
+     "size": [
+      50,
+      40
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      204,
+      146
+     ],
+     "size": [
+      12,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cheek_shade",
+   "z": 6.9,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "opacity": 0.45,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      197,
+      150
+     ],
+     "size": [
+      14,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nose_shade",
+   "z": 7,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      199,
+      142
+     ],
+     "size": [
+      9,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nostril",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198,
+      153
+     ],
+     "size": [
+      5,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      184,
+      168
+     ],
+     "size": [
+      22,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lip_shade",
+   "z": 7.05,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      185,
+      172.5
+     ],
+     "size": [
+      13,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "iris",
+   "z": 7.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      125
+     ],
+     "size": [
+      11,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      123
+     ],
+     "size": [
+      8,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glint",
+   "z": 7.3,
+   "kind": "flat",
+   "color": "eye_glint",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140,
+      122
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192,
+      121
+     ],
+     "size": [
+      2.5,
+      2.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lids",
+   "z": 7.4,
+   "kind": "flat",
+   "color": "ink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      126
+     ],
+     "size": [
+      24,
+      15
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      142,
+      129
+     ],
+     "size": [
+      24,
+      15
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      130,
+      124
+     ],
+     "size": [
+      5,
+      8
+     ],
+     "rot": -60
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      124
+     ],
+     "size": [
+      17,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      194,
+      126.6
+     ],
+     "size": [
+      17,
+      12
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      203,
+      122
+     ],
+     "size": [
+      4,
+      7
+     ],
+     "rot": 60
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "z": 7.5,
+   "kind": "flat",
+   "material": "hair_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141,
+      110
+     ],
+     "size": [
+      26,
+      4.5
+     ],
+     "rot": 8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      195,
+      109
+     ],
+     "size": [
+      17,
+      4
+     ],
+     "rot": -8
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "portrait_ravenna_holt"
+  }
+ ]
+}

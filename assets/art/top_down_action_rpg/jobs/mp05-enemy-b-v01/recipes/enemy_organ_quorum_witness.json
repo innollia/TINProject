@@ -1,0 +1,187 @@
+{
+  "asset": "enemy_organ_quorum_witness",
+  "status": "candidate",
+  "note": "enemy_organ_quorum_witness (R6 Gristmarket Ward; quorum/witness; cluster body, human scale, stateful split_merge, motion quorum_count). Author design: four hooded clinic witnesses of unequal size fused into one robed mass, joined by flesh tubes to a central pulsing organ lump on the front (support reference: FAM-ARPG-10 Organ Chorus, same region). Telegraph (data: sound + bar only, no pose): heads turn inward, mouths open. Signature (quorum count): the witnesses split into a row with hands raised, tubes stretched to the organ. Break (recorded): scattered and slumped, organ dropped to the floor, record slips on them. Phase 1 Quorum Lapsed: one witness gone, an empty cowl and a cut tube, the rest leaning into the gap. Front battler, 60 deg view.",
+  "palette": "palette_mp05_enemies.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre (game draws the enemy centred on its stage position); ground contact line y=318",
+  "seed": 504,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [160, 320], "size": [200, 28]}]},
+
+    {"name": "w1_body", "tags": ["w", "w1"], "z": 1, "material": "clinic_cloth",
+     "pieces": [{"icon": "bell", "crop": [2, 3.4, 14, 11.8], "fit": [2, 3.4, 14, 11.8], "at": [118, 236], "size": [58, 166]}]},
+    {"name": "w2_body", "tags": ["w", "w2"], "z": 1, "material": "coat_dark",
+     "pieces": [{"icon": "bell", "crop": [2, 3.4, 14, 11.8], "fit": [2, 3.4, 14, 11.8], "at": [201, 233], "size": [64, 172]}]},
+    {"name": "w3_body", "tags": ["w", "w3"], "z": 1.2, "material": "clinic_cloth",
+     "pieces": [{"icon": "bell", "crop": [2, 3.4, 14, 11.8], "fit": [2, 3.4, 14, 11.8], "at": [133, 258], "size": [58, 122]}]},
+    {"name": "w4_body", "tags": ["w", "w4"], "z": 1.2, "material": "coat_dark",
+     "pieces": [{"icon": "bell", "crop": [2, 3.4, 14, 11.8], "fit": [2, 3.4, 14, 11.8], "at": [188, 262], "size": [52, 114]}]},
+
+    {"name": "robe", "tags": ["merged"], "z": 2, "material": "clinic_cloth",
+     "pieces": [{"icon": "bell", "crop": [2, 3.4, 14, 11.8], "fit": [2, 3.4, 14, 11.8], "at": [160, 250], "size": [166, 138]}]},
+    {"name": "robe_folds", "tags": ["merged"], "z": 2.1, "kind": "flat", "material": "coat_seam", "opacity": 0.6, "clip_to": "robe",
+     "pieces": [
+       {"icon": "square", "at": [128, 272], "size": [1.8, 70], "rot": 8},
+       {"icon": "square", "at": [194, 276], "size": [1.8, 64], "rot": -8}
+     ]},
+
+    {"name": "tubes", "tags": ["tubes"], "z": 2.4, "material": "flesh",
+     "pieces": [
+       {"icon": "circle", "at": [137, 206], "size": [7, 40], "rot": 52},
+       {"icon": "circle", "at": [183, 204], "size": [7, 42], "rot": -54},
+       {"icon": "circle", "at": [146, 236], "size": [7, 22], "rot": 70},
+       {"icon": "circle", "at": [175, 238], "size": [7, 22], "rot": -70}
+     ]},
+    {"name": "tubes_split", "tags": ["tubes_split"], "hidden": true, "z": 2.4, "material": "flesh",
+     "pieces": [
+       {"icon": "circle", "at": [110, 214], "size": [6, 92], "rot": 70},
+       {"icon": "circle", "at": [208, 210], "size": [6, 96], "rot": -72},
+       {"icon": "circle", "at": [140, 238], "size": [6, 40], "rot": 64},
+       {"icon": "circle", "at": [181, 240], "size": [6, 40], "rot": -64}
+     ]},
+    {"name": "tube_cut", "tags": ["lapsed"], "hidden": true, "z": 2.45, "material": "flesh",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [180, 246], "size": [8, 24], "rot": -20}]},
+
+    {"name": "organ", "tags": ["organ"], "z": 2.5, "material": "flesh", "shade": {"bump": 1.2},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "metaballs", "at": [160, 228], "size": [58, 50]},
+       {"icon": "circle", "at": [158, 222], "size": [38, 36]},
+       {"icon": "circle", "at": [172, 236], "size": [22, 20]}
+     ]},
+    {"name": "organ_veins", "tags": ["organ"], "z": 2.6, "kind": "flat", "material": "coat_seam", "opacity": 0.55, "clip_to": "organ",
+     "pieces": [
+       {"icon": "square", "at": [150, 222], "size": [1.6, 20], "rot": 30},
+       {"icon": "square", "at": [166, 232], "size": [1.6, 18], "rot": -40},
+       {"icon": "square", "at": [160, 214], "size": [14, 1.6], "rot": 8}
+     ]},
+    {"name": "pulse", "tags": ["organ", "pulse"], "hidden": true, "z": 2.7, "kind": "flat", "material": "pulse", "emit": 0.9, "clip_to": "organ",
+     "glow": {"radius": 6, "opacity": 0.6, "color": "pulse_glow"},
+     "pieces": [{"icon": "circle", "at": [160, 226], "size": [20, 18]}]},
+
+    {"name": "w1_hood", "tags": ["w", "w1", "w1_head"], "z": 3, "material": "clinic_cloth",
+     "pieces": [{"icon": "circle", "at": [118, 132], "size": [46, 46]}]},
+    {"name": "w1_hole", "tags": ["w", "w1", "w1_head"], "z": 3.05, "kind": "flat", "color": "#15111a",
+     "pieces": [{"icon": "circle", "at": [118, 138], "size": [30, 28]}]},
+    {"name": "w1_face", "tags": ["w", "w1", "w1_head"], "z": 3.1, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [118, 142], "size": [21, 19]}]},
+    {"name": "w1_eyes", "tags": ["w", "w1", "w1_head"], "z": 3.15, "kind": "flat", "material": "eye",
+     "pieces": [
+       {"icon": "circle", "at": [113, 140], "size": [3.5, 4]},
+       {"icon": "circle", "at": [123, 140], "size": [3.5, 4]}
+     ]},
+    {"name": "w1_mouth", "tags": ["w", "w1", "w1_head", "mouths"], "hidden": true, "z": 3.16, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "at": [118, 148], "size": [5, 5]}]},
+
+    {"name": "w2_hood", "tags": ["w", "w2", "w2_head"], "z": 3, "material": "coat_dark",
+     "pieces": [{"icon": "circle", "at": [201, 124], "size": [54, 54]}]},
+    {"name": "w2_hole", "tags": ["w", "w2", "w2_head"], "z": 3.05, "kind": "flat", "color": "#15111a",
+     "pieces": [{"icon": "circle", "at": [201, 131], "size": [34, 32]}]},
+    {"name": "w2_face", "tags": ["w", "w2", "w2_head"], "z": 3.1, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [201, 135], "size": [24, 22]}]},
+    {"name": "w2_eyes", "tags": ["w", "w2", "w2_head"], "z": 3.15, "kind": "flat", "material": "eye",
+     "pieces": [
+       {"icon": "moon", "at": [195, 133], "size": [6, 3], "rot": 180},
+       {"icon": "moon", "at": [207, 133], "size": [6, 3], "rot": 180}
+     ]},
+    {"name": "w2_mouth", "tags": ["w", "w2", "w2_head", "mouths"], "hidden": true, "z": 3.16, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "at": [201, 142], "size": [6, 6]}]},
+
+    {"name": "w3_hood", "tags": ["w", "w3", "w3_head"], "z": 3.5, "material": "clinic_cloth",
+     "pieces": [{"icon": "circle", "at": [133, 174], "size": [42, 42]}]},
+    {"name": "w3_hole", "tags": ["w", "w3", "w3_head"], "z": 3.55, "kind": "flat", "color": "#15111a",
+     "pieces": [{"icon": "circle", "at": [133, 180], "size": [27, 25]}]},
+    {"name": "w3_face", "tags": ["w", "w3", "w3_head"], "z": 3.6, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [133, 183], "size": [19, 17]}]},
+    {"name": "w3_eyes", "tags": ["w", "w3", "w3_head"], "z": 3.65, "kind": "flat", "material": "eye",
+     "pieces": [
+       {"icon": "circle", "at": [129, 181], "size": [3.2, 3.6]},
+       {"icon": "circle", "at": [137, 181], "size": [3.2, 3.6]}
+     ]},
+    {"name": "w3_mouth", "tags": ["w", "w3", "w3_head", "mouths"], "hidden": true, "z": 3.66, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "at": [133, 188], "size": [4.5, 4.5]}]},
+
+    {"name": "w4_hood", "tags": ["w", "w4", "w4_head"], "z": 3.5, "material": "coat_dark",
+     "pieces": [{"icon": "circle", "at": [188, 182], "size": [38, 38]}]},
+    {"name": "w4_hole", "tags": ["w", "w4", "w4_head"], "z": 3.55, "kind": "flat", "color": "#15111a",
+     "pieces": [{"icon": "circle", "at": [188, 188], "size": [24, 22]}]},
+    {"name": "w4_face", "tags": ["w", "w4", "w4_head"], "z": 3.6, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [188, 190], "size": [17, 15]}]},
+    {"name": "w4_eyes", "tags": ["w", "w4", "w4_head"], "z": 3.65, "kind": "flat", "material": "eye",
+     "pieces": [{"icon": "circle", "at": [185, 189], "size": [3, 3.4]}, {"icon": "square", "at": [192, 189], "size": [4, 1.4]}]},
+    {"name": "w4_mouth", "tags": ["w", "w4", "w4_head", "mouths"], "hidden": true, "z": 3.66, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "at": [188, 195], "size": [4, 4]}]},
+
+    {"name": "hands_front", "tags": ["hands_front"], "z": 3.8, "material": "surrogate",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [150, 206], "size": [11, 13], "rot": -20},
+       {"icon": "droplet", "flip": "y", "at": [171, 208], "size": [10, 12], "rot": 20}
+     ]},
+
+    {"name": "w1_arm_up", "tags": ["w", "w1", "hands_up"], "hidden": true, "z": 4, "material": "clinic_cloth",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [96, 150], "size": [16, 40], "rot": -14}]},
+    {"name": "w2_arm_up", "tags": ["w", "w2", "hands_up"], "hidden": true, "z": 4, "material": "coat_dark",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [222, 142], "size": [17, 44], "rot": 14}]},
+    {"name": "w3_arm_up", "tags": ["w", "w3", "hands_up"], "hidden": true, "z": 4, "material": "clinic_cloth",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [112, 196], "size": [14, 36], "rot": -12}]},
+    {"name": "w4_arm_up", "tags": ["w", "w4", "hands_up"], "hidden": true, "z": 4, "material": "coat_dark",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [210, 204], "size": [13, 34], "rot": 12}]},
+    {"name": "w1_hand_up", "tags": ["w", "w1", "hands_up"], "hidden": true, "z": 4.1, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [91, 127], "size": [11, 12]}]},
+    {"name": "w2_hand_up", "tags": ["w", "w2", "hands_up"], "hidden": true, "z": 4.1, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [227, 117], "size": [11, 12]}]},
+    {"name": "w3_hand_up", "tags": ["w", "w3", "hands_up"], "hidden": true, "z": 4.1, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [108, 175], "size": [10, 11]}]},
+    {"name": "w4_hand_up", "tags": ["w", "w4", "hands_up"], "hidden": true, "z": 4.1, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [213, 184], "size": [10, 11]}]},
+
+    {"name": "empty_cowl", "tags": ["lapsed"], "hidden": true, "z": 1.3, "material": "coat_dark",
+     "pieces": [
+       {"icon": "cloud", "at": [192, 306], "size": [52, 22]},
+       {"icon": "circle", "at": [204, 296], "size": [26, 16], "rot": -12}
+     ]},
+
+    {"name": "slips", "tags": ["recorded"], "hidden": true, "z": 4.5, "material": "paper", "shade": {"bump": 0.4},
+     "cast": {"dist": 2, "blur": 1.2, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [96, 236], "size": [16, 21], "rot": -14},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [232, 244], "size": [15, 20], "rot": 12},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [122, 280], "size": [14, 18], "rot": 6},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [206, 286], "size": [14, 18], "rot": -8}
+     ]}
+  ],
+  "frames": [
+    {"name": "baseline"},
+    {"name": "telegraph",
+     "show": ["mouths", "pulse"],
+     "move": {"w1_head": {"rot": 12, "dx": 4, "pivot": [118, 154]},
+              "w2_head": {"rot": -12, "dx": -4, "pivot": [201, 150]},
+              "w3_head": {"rot": 10, "dx": 3, "pivot": [133, 194]},
+              "w4_head": {"rot": -10, "dx": -3, "pivot": [188, 200]}}},
+    {"name": "signature",
+     "hide": ["merged", "tubes", "hands_front"],
+     "show": ["tubes_split", "hands_up", "mouths", "pulse"],
+     "move": {"w1": {"dx": -48, "dy": 2},
+              "w2": {"dx": 50},
+              "w3": {"dx": -12, "dy": 4},
+              "w4": {"dx": 10, "dy": 4}}},
+    {"name": "break",
+     "hide": ["merged", "tubes", "hands_front"],
+     "show": ["recorded"],
+     "move": {"w1": {"dx": -26, "rot": -16, "dy": 16, "pivot": [118, 318]},
+              "w2": {"dx": 30, "rot": 18, "dy": 20, "pivot": [201, 318]},
+              "w3": {"dx": -30, "rot": -8, "dy": 8, "pivot": [133, 318]},
+              "w4": {"dx": 30, "rot": 26, "dy": 10, "pivot": [188, 318]},
+              "organ": {"dy": 62, "sy": 0.82, "pivot": [160, 250]}}},
+    {"name": "phase1_quorum_lapsed",
+     "hide": ["w4"],
+     "show": ["lapsed"],
+     "move": {"w3": {"rot": 7, "pivot": [133, 318]},
+              "w2": {"rot": -5, "pivot": [201, 318]},
+              "w1": {"rot": 4, "pivot": [118, 318]}}}
+  ]
+}

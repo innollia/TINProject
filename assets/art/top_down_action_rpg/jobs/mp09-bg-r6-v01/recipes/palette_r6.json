@@ -1,0 +1,49 @@
+{
+  "id": "palette_r6",
+  "extends": "palette_h0_mood.json",
+  "status": "candidate",
+  "source": "mp09-bg-r6-v01. Inherits palette_h0_mood (V1): ink, shadow, contact shadow, common colours, grime colours and every style unchanged. Adds the Gristmarket Ward materials (dim bone glazed tile, verdigris copper, wet blue-grey slate, dark ochre canvas, court wood, dark water) at the V1 value level (floor luma ~85).",
+  "colors": {
+    "tile_joint": "#1a1916",
+    "water_dark": "#101615",
+    "water_sheen": "#2e3a37",
+    "verdigris_dust": "#4d6356",
+    "ash_dust": "#6a6663",
+    "glaze": "#7c7866"
+  },
+  "materials": {
+    "tile": {"base": "#58564a", "shadow": "#474539", "light": "#6b6858",
+             "texture": {"stamp": "leaf", "pre_rot": 45, "length": 22, "width": 5, "angle": 2, "jitter": 10, "density": 1.2, "strength": 0.12},
+             "grime": {"stamps": ["metaballs", "sponge", "cloud"], "size": 44, "soft": 4, "density": 0.3, "strength": 0.32, "color": "grime", "lo": 0.3}},
+    "tile_joint": {"base": "#1a1916"},
+    "tile_wall": {"base": "#4f5249", "shadow": "#3c3f37", "light": "#60645a", "side": "#383b34", "side_shadow": "#22241f", "line": "#0d0e0b",
+                  "texture": {"stamp": "leaf", "pre_rot": 45, "length": 14, "width": 3.5, "angle": 0, "jitter": 14, "density": 0.9, "strength": 0.09},
+                  "grime": {"stamps": ["metaballs", "cloud", "droplet"], "size": 30, "soft": 3, "density": 0.35, "strength": 0.35, "color": "damp"},
+                  "side_grime": {"stamps": ["droplet", "metaballs"], "size": 26, "aspect": 1.7, "soft": 3, "density": 0.45, "strength": 0.5, "color": "grime", "foot": 0.75, "foot_curve": 1.6}},
+    "tile_wall_dark": {"base": "#43463f", "shadow": "#33362f", "light": "#53574e", "side": "#2f322c", "side_shadow": "#1c1e1a", "line": "#0b0c0a",
+                       "texture": {"stamp": "leaf", "pre_rot": 45, "length": 14, "width": 3.5, "angle": 0, "jitter": 14, "density": 0.9, "strength": 0.09},
+                       "grime": {"stamps": ["metaballs", "cloud"], "size": 28, "soft": 3, "density": 0.35, "strength": 0.35, "color": "damp"},
+                       "side_grime": {"stamps": ["droplet", "metaballs"], "size": 24, "aspect": 1.7, "soft": 3, "density": 0.45, "strength": 0.5, "color": "grime", "foot": 0.75, "foot_curve": 1.6}},
+    "wall_cap": {"base": "#1d1f1b", "shadow": "#151714", "light": "#262923", "side": "#383b34", "side_shadow": "#22241f", "line": "#090a08"},
+    "wet_slate": {"base": "#3f4744", "shadow": "#2e3533", "light": "#505955", "side": "#2c3230", "side_shadow": "#1a1e1d", "line": "#0a0c0c",
+                  "texture": {"stamp": "leaf", "pre_rot": 45, "length": 18, "width": 4, "angle": 0, "jitter": 20, "density": 0.9, "strength": 0.1},
+                  "grime": {"stamps": ["metaballs", "cloud", "droplet"], "size": 34, "soft": 3, "density": 0.4, "strength": 0.4, "color": "damp"},
+                  "side_grime": {"stamps": ["droplet", "metaballs"], "size": 22, "aspect": 1.8, "soft": 2, "density": 0.55, "strength": 0.55, "color": "damp", "foot": 0.7, "foot_curve": 1.5}},
+    "verdigris": {"base": "#4a5e52", "shadow": "#34443b", "light": "#6a8273", "side": "#34443b", "side_shadow": "#222d27", "line": "#0d120f",
+                  "shade": {"highlight": 0.88, "highlight_amount": 0.55},
+                  "grime": {"stamps": ["metaballs", "sponge"], "size": 14, "soft": 1.2, "density": 0.35, "strength": 0.3, "color": "rust"}},
+    "canvas_ochre": {"base": "#5e5031", "shadow": "#3f3520", "light": "#776741", "line": "#16110a",
+                     "texture": {"stamp": "leaf", "pre_rot": 45, "length": 12, "width": 3, "angle": 90, "jitter": 10, "density": 0.8, "strength": 0.08},
+                     "grime": {"stamps": ["cloud", "metaballs"], "size": 24, "soft": 3, "density": 0.3, "strength": 0.3, "color": "grime"}},
+    "court_wood": {"base": "#43362c", "shadow": "#2d241d", "light": "#574639", "side": "#342920", "side_shadow": "#201912", "line": "#110b07",
+                   "texture": {"stamp": "pill", "pre_rot": -45, "length": 22, "width": 2.2, "angle": 0, "jitter": 4, "density": 0.9, "strength": 0.12},
+                   "grime": {"stamps": ["metaballs", "cloud"], "size": 18, "soft": 2, "density": 0.3, "strength": 0.3, "color": "grime"}},
+    "water_dark": {"base": "#101615", "shadow": "#0a0e0d", "light": "#2e3a37", "line": "#050707"},
+    "glaze": {"base": "#7c7866", "shadow": "#5e5b4c", "light": "#948f7a", "line": "#1c1b15",
+              "grime": {"stamps": ["sponge", "metaballs"], "size": 10, "soft": 1.0, "density": 0.3, "strength": 0.3, "color": "grime"}},
+    "ash_dust": {"base": "#6a6663"}
+  },
+  "styles": {
+    "environment": {"background": "#58564a"}
+  }
+}

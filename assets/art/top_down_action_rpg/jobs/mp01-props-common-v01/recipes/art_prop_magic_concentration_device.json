@@ -1,0 +1,80 @@
+{
+  "asset": "art_prop_magic_concentration_device",
+  "status": "candidate",
+  "note": "art_prop_magic_concentration_device: a free-standing civic concentration unit (12 section 2.3 humidifier/disperser/circulator; region JSON concentration block; prop_r2_disperser_housing states 'full, the air tastes of metal' / 'empty, the reading is still on the card'). About 1.4 m to the hood: bronze cylinder on a short iron pedestal with a foot ring, iron cap with radial vent slots, a small vent stack and hood, a glass sight tube with graduation ticks on the front, a reading card clipped to the side. States: charged (medium fills the tube and glows faintly, emissive layer), spent (medium dried to a residue, the card carries line-and-dot marks). No vapour or flow drawn (effects belong to session 10). No text. Author's design.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [192, 320],
+  "pivot": [96, 244],
+  "pivot_meaning": "floor point under the centre of the device (centre of the foot ring)",
+  "seed": 191,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [96, 250], "size": [112, 34]}]},
+
+    {"name": "foot_ring", "z": 0, "kind": "block", "material": "iron", "extrude": 5,
+     "pieces": [{"icon": "circle", "ground": true, "at": [96, 239], "size": [98, 98]}]},
+    {"name": "pedestal", "z": 0.5, "kind": "block", "material": "iron", "extrude": 18, "ao": false,
+     "pieces": [{"icon": "circle", "ground": true, "at": [96, 221], "size": [78, 78]}]},
+
+    {"name": "body", "z": 1, "kind": "block", "material": "bronze_block", "extrude": 90, "ao": false,
+     "pieces": [{"icon": "circle", "ground": true, "at": [96, 131], "size": [92, 92]}]},
+    {"name": "rivets", "z": 1.5, "kind": "flat", "material": "bronze", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [3.6, 3.6], "repeat": {"ellipse": [96, 145, 42, 36], "count": 9, "arc": [18, 162]}},
+       {"icon": "circle", "at": [0, 0], "size": [3.6, 3.6], "repeat": {"ellipse": [96, 213, 42, 36], "count": 9, "arc": [18, 162]}}
+     ]},
+
+    {"name": "cap", "z": 2, "kind": "block", "material": "iron", "extrude": 12,
+     "pieces": [{"icon": "circle", "ground": true, "at": [96, 119], "size": [66, 66]}]},
+    {"name": "vents", "z": 2.2, "kind": "flat", "material": "void", "opacity": 0.9,
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 1.5}, "at": [0, 0], "size": [3, 9],
+                 "repeat": {"ellipse": [96, 119, 22, 19], "count": 8, "orient": true}}]},
+    {"name": "stack", "z": 2.4, "kind": "block", "material": "iron", "extrude": 12,
+     "pieces": [{"icon": "circle", "ground": true, "at": [96, 107], "size": [20, 20]}]},
+    {"name": "hood", "z": 2.6, "material": "iron",
+     "pieces": [{"icon": "umbrella", "crop": [0.6, 2.3, 15.4, 8.7], "at": [96, 105], "size": [40, 17]}]},
+
+    {"name": "bezel", "z": 3, "kind": "flat", "material": "bronze", "textured": true,
+     "line": {"width": 1.0, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 7}, "at": [96, 216], "size": [24, 76]}]},
+    {"name": "tube_glass", "z": 3.2, "kind": "flat", "color": "#15191d",
+     "line": {"width": 0.8, "heavy": 0.6},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [96, 216], "size": [14, 66]}]},
+    {"name": "medium", "tags": ["medium"], "z": 3.4, "kind": "flat", "color": "#5f8f8a", "emit": 0.45,
+     "clip_to": "tube_glass", "grad": {"to": "#3f6964", "y0": 199, "y1": 249},
+     "glow": {"radius": 4, "opacity": 0.35, "color": "#7fb3ad"},
+     "pieces": [{"icon": "square", "at": [96, 224], "size": [14, 52]}]},
+    {"name": "meniscus", "tags": ["medium"], "z": 3.5, "kind": "flat", "color": "#9fc4bd", "emit": 0.5, "opacity": 0.8,
+     "clip_to": "tube_glass",
+     "pieces": [{"icon": "circle", "at": [96, 198.5], "size": [12, 2.4]}]},
+    {"name": "residue", "tags": ["residue"], "hidden": true, "z": 3.4, "kind": "flat", "color": "#34494a",
+     "clip_to": "tube_glass",
+     "pieces": [
+       {"icon": "square", "at": [96, 247], "size": [14, 6]},
+       {"icon": "circle", "at": [93, 235], "size": [1.6, 20]},
+       {"icon": "circle", "at": [99, 239], "size": [1.4, 12]}
+     ]},
+    {"name": "glass_glint", "z": 3.6, "kind": "flat", "color": "#8c8a96", "opacity": 0.35, "clip_to": "tube_glass",
+     "pieces": [{"icon": "circle", "at": [91.5, 214], "size": [2, 52]}]},
+    {"name": "ticks", "z": 3.7, "kind": "flat", "color": "ink", "opacity": 0.8,
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [5, 1.4], "repeat": {"line": [[111, 189], [111, 243]], "count": 7}}]},
+
+    {"name": "card", "z": 4, "material": "paper", "shade": {"bump": 0.2, "highlight_amount": 0.2},
+     "pieces": [{"icon": "file", "rot": 6, "at": [130, 198], "size": [18, 24]}]},
+    {"name": "card_marks", "tags": ["card_marks"], "hidden": true, "z": 4.2, "kind": "flat", "material": "paper_mark",
+     "opacity": 0.95, "clip_to": "card",
+     "pieces": [
+       {"icon": "square", "rot": 6, "at": [130, 195], "size": [10, 1.6]},
+       {"icon": "square", "rot": 6, "at": [130.5, 200], "size": [8, 1.6]},
+       {"icon": "square", "rot": 6, "at": [130, 205], "size": [10, 1.6]},
+       {"icon": "circle", "at": [124, 209], "size": [2.6, 2.6]}
+     ]},
+    {"name": "card_clip", "z": 4.4, "material": "bronze",
+     "pieces": [{"icon": "paperclip", "rot": 10, "at": [128, 186], "size": [6, 13]}]}
+  ],
+  "frames": [
+    {"name": "art_prop_magic_concentration_device_charged"},
+    {"name": "art_prop_magic_concentration_device_spent", "hide": ["medium"], "show": ["residue", "card_marks"]}
+  ]
+}

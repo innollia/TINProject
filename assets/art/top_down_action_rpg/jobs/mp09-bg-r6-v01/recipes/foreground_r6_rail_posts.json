@@ -1,0 +1,22 @@
+{
+  "asset": "foreground_r6_rail_posts",
+  "status": "candidate",
+  "note": "R6 zone 2 (bg_r6_debt_hall) foreground occluder: three railing posts and a top rail along the bottom-left edge (logical x40..360, y650..720). Full-canvas transparent layer, same origin as the background.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = background origin (logical 0,0)",
+  "seed": 612,
+  "forms": [
+    {"name": "posts", "z": 0, "kind": "block", "material": "verdigris", "extrude": 104,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [0, 1336], "size": [22, 18],
+                 "repeat": {"points": [[110, 1336], [400, 1336], [690, 1336]]}}]},
+    {"name": "post_caps", "z": 0.5, "kind": "flat", "material": "bronze", "line": {"width": 0.7, "heavy": 0.7},
+     "pieces": [{"icon": "circle", "at": [0, 1330], "size": [26, 16], "repeat": {"points": [[110, 1330], [400, 1330], [690, 1330]]}}]},
+    {"name": "top_rail", "z": 1, "kind": "block", "material": "court_wood", "extrude": 14,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [400, 1352], "size": [620, 14]}]},
+    {"name": "mid_rail", "z": 1.2, "kind": "block", "material": "iron", "extrude": 6,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [400, 1402], "size": [600, 6]}]}
+  ]
+}

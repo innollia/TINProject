@@ -1,0 +1,60 @@
+{
+  "asset": "prop_r2_waterline_mark",
+  "status": "candidate",
+  "note": "prop_r2_waterline_mark (Siltglass Waterline Mark), placement layer water, visible_from any. A narrow gauge board nailed to the south face of the third marker stilt (the stilt itself is in the area A base). Carved ticks only, no numbers. States: ps_low -> painted band low (0.5 m above water); ps_raised -> band moved up by hand and freshly painted, knotted cord tag instead of a signature, ghost of the old band; ps_spent (content visible:false, optional trace art) -> paint worn off. Board 0.25 m wide, 2.5 m above water.",
+  "palette": "palette_r2.json",
+  "style": "prop",
+  "canvas": [200, 440],
+  "pivot": [100, 376],
+  "pivot_meaning": "where the board meets the water surface, on the south face of the third marker stilt (area A source px 1640,660)",
+  "seed": 311,
+  "frames": [
+    {"name": "prop_r2_waterline_low", "show": ["low"]},
+    {"name": "prop_r2_waterline_raised", "show": ["raised"]},
+    {"name": "prop_r2_waterline_spent", "show": ["spent"], "materials": {"board": "plank_dark"}}
+  ],
+  "forms": [
+    {"name": "board", "z": 1, "material": "plank",
+     "shade": {"bump": 0.5, "max_radius": 6},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [100, 236], "size": [44, 280]}]},
+    {"name": "water_stain", "z": 1.5, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.6, "clip_to": "board",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [100, 360], "size": [50, 40]}]},
+    {"name": "silt_line", "z": 1.6, "kind": "flat", "material": "silt_mark", "opacity": 0.45, "clip_to": "board",
+     "pieces": [{"icon": "square", "at": [100, 346], "size": [50, 5]}]},
+    {"name": "ticks_long", "z": 2, "kind": "flat", "material": "deck_joint", "opacity": 0.85,
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [22, 3], "repeat": {"line": [[100, 356], [100, 116]], "count": 7}}]},
+    {"name": "ticks_short", "z": 2, "kind": "flat", "material": "deck_joint", "opacity": 0.75,
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [12, 3], "repeat": {"line": [[94, 336], [94, 136]], "count": 6}}]},
+    {"name": "nails", "z": 2.1, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.5},
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [7, 6], "repeat": {"points": [[100, 106], [100, 366]]}}]},
+
+    {"name": "band_low", "tags": ["low"], "hidden": true, "z": 3, "material": "paint", "shade": {"bump": 0.4},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [100, 318], "size": [48, 20]}]},
+
+    {"name": "band_ghost", "tags": ["raised"], "hidden": true, "z": 2.5, "kind": "wash", "material": "paint", "opacity": 0.3,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [100, 318], "size": [48, 20]}]},
+    {"name": "band_raised", "tags": ["raised"], "hidden": true, "z": 3, "material": "paint_fresh", "shade": {"bump": 0.4},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [100, 206], "size": [48, 22]}]},
+    {"name": "tag_nail", "tags": ["raised"], "hidden": true, "z": 3.4, "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "circle", "at": [124, 204], "size": [7, 6]}]},
+    {"name": "tag_cord", "tags": ["raised"], "hidden": true, "z": 3.5, "kind": "flat", "material": "cord", "line": {"width": 0.6, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "at": [129, 214], "size": [3, 16], "rot": -28},
+       {"icon": "square", "at": [136, 232], "size": [3, 20], "rot": -12},
+       {"icon": "circle", "at": [125, 206], "size": [9, 8]}
+     ]},
+    {"name": "tag", "tags": ["raised"], "hidden": true, "z": 3.6, "material": "paper", "shade": {"bump": 0.3},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [{"icon": "tag", "at": [142, 254], "size": [22, 26], "rot": 100}]},
+
+    {"name": "worn_paint", "tags": ["spent"], "hidden": true, "z": 2.5, "kind": "wash", "material": "paint", "opacity": 0.2,
+     "rough": {"amp": 0.8, "soft": 1.0, "cell": 5},
+     "pieces": [
+       {"icon": "square", "at": [100, 318], "size": [40, 16]},
+       {"icon": "square", "at": [100, 206], "size": [40, 16]}
+     ]},
+    {"name": "worn_grime", "tags": ["spent"], "hidden": true, "z": 2.6, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.45, "clip_to": "board",
+     "mottle": {"cell": 18, "lo": 0.5, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [100, 236], "size": [50, 290]}]}
+  ]
+}

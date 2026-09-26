@@ -1,0 +1,76 @@
+{
+  "asset": "obj_r4_weight_lift_car",
+  "status": "candidate",
+  "note": "R4 Weight Lift car, used on all three floors at the lift opening (zone centre 1060,330 logical). Iron cage 1.9 m wide, 1.5 m deep, 2.6 m tall on a checker-plate floor, open lattice roof with a pulley wheel, a bronze counterweight hanging at its east side. 226 px/m. Contact shadow separate.",
+  "palette": "palette_r4.json",
+  "style": "prop",
+  "canvas": [680, 760],
+  "pivot": [320, 696],
+  "pivot_meaning": "front-bottom centre of the car floor on the ground",
+  "seed": 411,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.45, "blur": 10,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 30}, "at": [322, 690], "size": [470, 52]}]},
+
+    {"name": "floor_platform", "z": 0, "kind": "block", "material": "iron", "extrude": 11,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [320, 538], "size": [430, 294]}]},
+    {"name": "floor_pattern", "z": 0.5, "kind": "flat", "color": "#26272d", "opacity": 0.4, "clip_to": "floor_platform",
+     "pieces": [{"icon": "grid_fine", "ground": true, "at": [320, 538], "size": [420, 330]}]},
+
+    {"name": "back_posts", "z": 1, "kind": "block", "material": "iron", "extrude": 294,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [16, 12],
+                 "repeat": {"points": [[113, 97], [527, 97]]}}]},
+    {"name": "back_bars", "z": 1.2, "kind": "flat", "material": "iron", "opacity": 0.9,
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [5, 294],
+                 "repeat": {"line": [[147, 250], [493, 250]], "count": 9}}]},
+    {"name": "back_rails", "z": 1.3, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 160], "size": [414, 7]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 310], "size": [414, 7]}
+     ]},
+
+    {"name": "roof_frame", "z": 3, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [320, 244], "size": [440, 300]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "op": "sub", "at": [320, 244], "size": [412, 276]}
+     ]},
+    {"name": "roof_cross", "z": 3.2, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 244], "size": [414, 9]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 244], "size": [9, 280]}
+     ]},
+    {"name": "pulley_bracket", "z": 3.4, "material": "iron", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [{"icon": "triangle", "at": [320, 226], "size": [66, 40]}]},
+    {"name": "pulley_wheel", "z": 3.6, "material": "bronze", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [{"icon": "wheel", "at": [320, 196], "size": [74, 74]}]},
+    {"name": "cable", "z": 3.5, "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "square", "at": [320, 118], "size": [4, 120]}]},
+
+    {"name": "counterweight_cable", "z": 1.4, "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "square", "at": [592, 150], "size": [3, 190]}]},
+    {"name": "counterweight", "z": 1.5, "kind": "block", "material": "bronze_block", "extrude": 62,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [592, 250], "size": [36, 24]}]},
+    {"name": "counterweight_bands", "z": 1.6, "kind": "flat", "material": "iron",
+     "pieces": [
+       {"icon": "square", "at": [592, 280], "size": [36, 4]},
+       {"icon": "square", "at": [592, 300], "size": [36, 4]}
+     ]},
+
+    {"name": "front_posts", "z": 5, "kind": "block", "material": "iron", "extrude": 294,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [18, 14],
+                 "repeat": {"points": [[113, 391], [527, 391]]}}]},
+    {"name": "front_bars", "z": 5.2, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [6, 294],
+                 "repeat": {"line": [[150, 544], [490, 544]], "count": 9}}]},
+    {"name": "front_rails", "z": 5.4, "kind": "flat", "material": "iron", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 400], "size": [432, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 470], "size": [432, 9]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 640], "size": [432, 10]}
+     ]},
+    {"name": "front_band", "z": 5.5, "kind": "flat", "material": "bronze", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 470], "size": [432, 5]}]},
+    {"name": "gate_latch", "z": 5.6, "material": "bronze", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 560], "size": [18, 26]}]}
+  ]
+}

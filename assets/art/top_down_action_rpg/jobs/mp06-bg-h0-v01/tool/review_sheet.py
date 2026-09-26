@@ -37,7 +37,7 @@ def main() -> int:
     paths = []
     for pattern in args.files:
         paths.extend(sorted(glob.glob(pattern)) or [pattern])
-    paths = [Path(p) for p in paths if not p.endswith("_shadow.png")]
+    paths = [Path(p) for p in paths if not p.endswith(("_shadow.png", "_emit.png"))]  # mp06: skip emit layers too
     scales = [float(s) for s in args.scales.split(",")]
     images = [Image.open(p).convert("RGBA") for p in paths]
     shadows = []

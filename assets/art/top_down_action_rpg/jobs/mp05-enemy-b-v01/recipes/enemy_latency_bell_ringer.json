@@ -1,0 +1,136 @@
+{
+  "asset": "enemy_latency_bell_ringer",
+  "status": "candidate",
+  "note": "enemy_latency_bell_ringer (R3 Bellhouse Hospice; scheduler/debt; humanoid, human scale, stateful open_close, motion bell_ringing). Author design: a hunched hospice ringer in a damp linen gown and pointed hood, a tall staff with a bronze bell hanging from its crossbar (T silhouette), an hourglass on the belt (latency). The gown front opens (open_close) to show small bells hung inside. Telegraph: staff lifted, gown opening. Signature: staff swung, bell tilted mid-ring, gown wide open. Break (recorded): kneeling, staff dropped, bell fallen upside down, record slips stuck to the gown. Front battler, 60 deg view.",
+  "palette": "palette_mp05_enemies.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre (game draws the enemy centred on its stage position); ground contact line y=318",
+  "seed": 502,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [166, 320], "size": [168, 26]}]},
+
+    {"name": "staff_fallen", "tags": ["fallen"], "hidden": true, "z": 0.5, "material": "wood", "shade": {"bump": 0.6},
+     "pieces": [
+       {"icon": "square", "at": [153, 205], "size": [7, 262], "rot": -28}
+     ]},
+
+    {"name": "interior", "tags": ["gown"], "z": 1, "kind": "flat", "color": "#16121b",
+     "pieces": [{"icon": "bell", "crop": [2, 3.4, 14, 11.8], "fit": [2, 3.4, 14, 11.8], "at": [160, 224], "size": [104, 182]}]},
+    {"name": "inner_strings", "tags": ["gown", "inner_bells"], "hidden": true, "z": 1.4, "kind": "flat", "material": "soot",
+     "pieces": [
+       {"icon": "square", "at": [150, 170], "size": [1.6, 20]},
+       {"icon": "square", "at": [171, 186], "size": [1.6, 28]},
+       {"icon": "square", "at": [148, 212], "size": [1.6, 22]},
+       {"icon": "square", "at": [173, 236], "size": [1.6, 22]}
+     ]},
+    {"name": "inner_bells", "tags": ["gown", "inner_bells"], "hidden": true, "z": 1.5, "material": "bronze",
+     "pieces": [
+       {"icon": "bell", "crop": [2, 3, 14, 13], "at": [150, 188], "size": [20, 20]},
+       {"icon": "bell", "crop": [2, 3, 14, 13], "at": [171, 208], "size": [17, 17]},
+       {"icon": "bell", "crop": [2, 3, 14, 13], "at": [148, 232], "size": [22, 22]},
+       {"icon": "bell", "crop": [2, 3, 14, 13], "at": [173, 255], "size": [16, 16]}
+     ]},
+
+    {"name": "feet", "tags": ["feet"], "z": 1.8, "material": "leather",
+     "pieces": [
+       {"icon": "circle", "at": [146, 316], "size": [22, 12]},
+       {"icon": "circle", "at": [177, 317], "size": [22, 12]}
+     ]},
+
+    {"name": "gown_l", "tags": ["gown", "gown_l"], "z": 2, "material": "linen",
+     "pieces": [{"icon": "bell", "crop": [2, 3.4, 14, 11.8], "half": "left", "fit": [2, 3.4, 14, 11.8], "at": [160, 222], "size": [120, 192]}]},
+    {"name": "gown_r", "tags": ["gown", "gown_r"], "z": 2, "material": "linen",
+     "pieces": [{"icon": "bell", "crop": [2, 3.4, 14, 11.8], "half": "right", "fit": [2, 3.4, 14, 11.8], "at": [160, 222], "size": [120, 192]}]},
+    {"name": "belt_l", "tags": ["gown", "gown_l"], "z": 2.2, "material": "leather", "clip_to": "gown_l",
+     "pieces": [{"icon": "square", "at": [130, 196], "size": [70, 5], "rot": -3}]},
+    {"name": "belt_r", "tags": ["gown", "gown_r"], "z": 2.2, "material": "leather", "clip_to": "gown_r",
+     "pieces": [{"icon": "square", "at": [190, 196], "size": [70, 5], "rot": 3}]},
+    {"name": "slips_l", "tags": ["gown", "gown_l", "recorded"], "hidden": true, "z": 2.4, "material": "paper", "shade": {"bump": 0.4},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [138, 254], "size": [18, 24], "rot": -10}]},
+    {"name": "slips_r", "tags": ["gown", "gown_r", "recorded"], "hidden": true, "z": 2.4, "material": "paper", "shade": {"bump": 0.4},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [182, 232], "size": [16, 22], "rot": 9},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [188, 282], "size": [14, 18], "rot": -6}
+     ]},
+    {"name": "hourglass", "tags": ["gown", "gown_l"], "z": 2.5, "material": "bronze",
+     "cast": {"dist": 2, "blur": 1.2, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [{"icon": "hourglass", "at": [128, 214], "size": [14, 20], "rot": 6}]},
+
+    {"name": "arm_l", "tags": ["upper", "arm_l"], "z": 2.6, "material": "linen",
+     "pieces": [{"icon": "droplet", "at": [113, 186], "size": [24, 58], "rot": 8}]},
+    {"name": "hand_l", "tags": ["upper", "arm_l"], "z": 2.7, "material": "surrogate",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [110, 220], "size": [13, 16], "rot": 6}]},
+
+    {"name": "cape", "tags": ["upper"], "z": 3, "material": "linen_top",
+     "pieces": [{"icon": "umbrella", "crop": [0.6, 2.3, 15.4, 8.7], "at": [160, 146], "size": [112, 40]}]},
+    {"name": "hood", "tags": ["upper", "head"], "z": 3.2, "material": "linen_top", "shade": {"highlight_amount": 0.55},
+     "pieces": [{"icon": "droplet", "at": [156, 100], "size": [64, 78], "rot": -6}]},
+    {"name": "face_hole", "tags": ["upper", "head"], "z": 3.3, "kind": "flat", "color": "#15111a",
+     "pieces": [{"icon": "circle", "at": [155, 116], "size": [36, 32]}]},
+    {"name": "face", "tags": ["upper", "head"], "z": 3.4, "material": "surrogate", "shade": {"threshold": 0.6, "highlight_amount": 0.2},
+     "pieces": [{"icon": "circle", "at": [155, 121], "size": [25, 23]}]},
+    {"name": "face_marks", "tags": ["upper", "head"], "z": 3.5, "kind": "flat", "material": "eye",
+     "pieces": [
+       {"icon": "moon", "at": [149, 118], "size": [7, 3], "rot": 180},
+       {"icon": "moon", "at": [161, 118], "size": [7, 3], "rot": 180},
+       {"icon": "square", "at": [155, 128], "size": [6, 1.6]}
+     ]},
+
+    {"name": "staff_pole", "tags": ["staff"], "z": 4, "material": "wood", "shade": {"bump": 0.6},
+     "pieces": [{"icon": "square", "at": [206, 190], "size": [7, 262]}]},
+    {"name": "crossbar", "tags": ["staff"], "z": 4.1, "material": "iron", "line": {"width": 0.7, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [222, 62], "size": [36, 6]},
+       {"icon": "circle", "at": [206, 58], "size": [11, 11]}
+     ]},
+    {"name": "clapper", "tags": ["staff", "bell"], "z": 4.15, "material": "iron",
+     "pieces": [
+       {"icon": "square", "at": [234, 110], "size": [2.4, 16]},
+       {"icon": "circle", "at": [234, 120], "size": [9, 9]}
+     ]},
+    {"name": "bell", "tags": ["staff", "bell"], "z": 4.2, "material": "bronze", "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "circle", "at": [234, 68], "size": [9, 8]},
+       {"icon": "bell", "crop": [2, 3, 14, 12.4], "fit": [2, 3, 14, 12.4], "at": [234, 92], "size": [46, 46]}
+     ]},
+
+    {"name": "bell_fallen", "tags": ["fallen"], "hidden": true, "z": 5, "material": "bronze", "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "bell", "crop": [2, 3, 14, 12.4], "fit": [2, 3, 14, 12.4], "at": [90, 300], "size": [44, 44], "rot": 152},
+       {"icon": "circle", "at": [112, 318], "size": [9, 8]}
+     ]},
+
+    {"name": "arm_r", "tags": ["upper", "arm_r"], "z": 4.5, "material": "linen",
+     "pieces": [{"icon": "droplet", "at": [197, 158], "size": [22, 44], "rot": -38}]},
+    {"name": "hand_r", "tags": ["upper", "arm_r"], "z": 4.6, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [206, 174], "size": [14, 15]}]}
+  ],
+  "frames": [
+    {"name": "baseline"},
+    {"name": "telegraph",
+     "show": ["inner_bells"],
+     "move": {"staff": {"dx": 18, "dy": -20},
+              "arm_r": {"rot": -42, "pivot": [188, 140]},
+              "gown_l": {"rot": 8, "pivot": [146, 134]},
+              "gown_r": {"rot": -8, "pivot": [174, 134]},
+              "head": {"dy": -4, "rot": -6, "pivot": [156, 138]}}},
+    {"name": "signature",
+     "show": ["inner_bells"],
+     "move": {"staff": {"rot": 14, "pivot": [206, 174]},
+              "bell": {"rot": 32, "pivot": [259, 76]},
+              "upper": {"rot": -4, "pivot": [160, 300]},
+              "gown_l": {"rot": 16, "pivot": [146, 134]},
+              "gown_r": {"rot": -16, "pivot": [174, 134]}}},
+    {"name": "break",
+     "hide": ["staff", "feet"],
+     "show": ["fallen", "recorded", "inner_bells"],
+     "move": {"gown": {"sy": 0.8, "pivot": [160, 317]},
+              "upper": {"dy": 38},
+              "gown_r": {"rot": -9, "pivot": [174, 171]},
+              "head": {"dy": 8, "rot": 12, "pivot": [156, 176]},
+              "arm_r": {"rot": 48, "pivot": [188, 178]}}}
+  ]
+}

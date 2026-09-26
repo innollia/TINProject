@@ -5,7 +5,8 @@
     py -3 -B build.py ../recipes/player_front.json --frames idle_down --force
 
 Output per frame: output/<asset>/<frame>.png (+ <frame>_shadow.png when the
-recipe has contact-shadow forms) and <frame>.json (manifest: status, size,
+recipe has contact-shadow forms, + <frame>_emit.png when it has emissive forms)
+and <frame>.json (manifest: status, size,
 pivot, icons used with SHA-256, recipe hash, build key).  A frame whose
 manifest build key matches the current recipe + palette + tool code is skipped,
 so an interrupted run can simply be started again.  Progress is appended to
@@ -23,7 +24,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from iconkit.render import TOOL_VERSION, Renderer, load_json, load_recipe, tool_source_hash  # noqa: E402
+from iconkit.render import TOOL_VERSION, Renderer, load_json, load_palette, load_recipe, tool_source_hash  # noqa: E402
 
 JOB = Path(__file__).resolve().parents[1]
 SKIP_PREFIXES = ("_", "palette_", "scene_")
@@ -35,7 +36,8 @@ def resolved_blob(recipe: dict) -> bytes:
 
 
 def build_key(recipe: dict, frame: dict, tool_hash: str) -> str:
-    palette = (Path(recipe["_dir"]) / recipe["palette"]).read_bytes()
+    # mp09: hash the resolved palette (base + "extends" chain), not only the file bytes
+    palette = json.dumps(load_palette(Path(recipe["_dir"]) / recipe["palette"]), sort_keys=True).encode("utf-8")
     blob = resolved_blob(recipe) + palette + json.dumps(frame, sort_keys=True).encode() + tool_hash.encode()
     return hashlib.sha256(blob).hexdigest()
 
@@ -95,6 +97,13 @@ def main() -> int:
                 shadow_name = shadow_png.name
             elif shadow_png.exists():
                 shadow_png.unlink()
+            emit_name = None
+            emit_png = out_dir / f"{name}_emit.png"
+            if result.get("emit") is not None:
+                result["emit"].save(emit_png)
+                emit_name = emit_png.name
+            elif emit_png.exists():
+                emit_png.unlink()
             seconds = round(time.time() - t0, 2)
             manifest = {
                 "asset": asset,
@@ -107,6 +116,7 @@ def main() -> int:
                 "pivot": result["pivot"],
                 "pivot_meaning": recipe.get("pivot_meaning", "ground contact point"),
                 "shadow_file": shadow_name,
+                "emit_file": emit_name,
                 "mirror": bool(frame.get("mirror", False)),
                 "recipe": rel(path),
                 "recipe_sha256": hashlib.sha256(resolved_blob(recipe)).hexdigest(),

@@ -190,7 +190,10 @@ func _place_in_canvas() -> void:
 	for index: int in parts.size():
 		var part: ProceduralBodyPart = parts[index]
 		var forward: Transform2D = Transform2D(0.0, canvas_origin) * _part_transform(built, index)
-		_frames.append([forward.affine_inverse(), maxf(part.scale, 0.0001), part._geometry(), forward])
+		var size: float = maxf(part.scale, 0.0001)
+		var geometry: Array = part._geometry()
+		# [4] [5] 파트 전체를 품는 원(squash·facing 전 캔버스). _fused_distance 가 먼 파트를 건너뛴다.
+		_frames.append([forward.affine_inverse(), size, geometry, forward, forward * (geometry[16] as Vector2), float(geometry[17]) * size])
 
 
 ## 파트 실루엣 전체의 정규 형상 좌표 경계. squash / facing 전. bake 전용.
@@ -418,12 +421,17 @@ func _part_transform(built: ProceduralShape, index: int) -> Transform2D:
 
 
 ## _place_in_canvas() 뒤의 캔버스 거리. facing·squash 를 되돌리고 파트들을 녹인다.
+## 파트를 품는 원까지의 거리가 지금까지의 값 + fusion 보다 멀면 그 파트는 smooth_min 의
+## 결과를 바꾸지 않으므로 계산하지 않는다. 픽셀마다 불리는 경로다.
 func _fused_distance(canvas_point: Vector2) -> float:
 	var local_point: Vector2 = _unwarp(canvas_point)
 	var best: float = ProceduralBodyPart._FAR
 	for index: int in _frames.size():
 		var frame: Array = _frames[index]
 		var part: ProceduralBodyPart = parts[index]
+		if best < ProceduralBodyPart._FAR \
+				and local_point.distance_to(frame[4]) - float(frame[5]) >= best + maxf(part.fusion, 0.0):
+			continue
 		var inverse: Transform2D = frame[0]
 		var distance: float = part._distance(frame[2], inverse * local_point) * float(frame[1])
 		best = ProceduralSdf.smooth_min(best, distance, part.fusion)

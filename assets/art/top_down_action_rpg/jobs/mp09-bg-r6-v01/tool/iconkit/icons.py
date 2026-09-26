@@ -124,10 +124,11 @@ class IconLibrary:
     def prefetch(self, names: list[str], workers: int = 2) -> None:
         """Render missing cache files in parallel (renderer calls are subprocesses).
 
-        mp09: default lowered 8 -> 2 because ten production sessions share the host.
+        mp09: default lowered from 8 to 2 because ten sessions share the host (COMMON.md).
         """
         from concurrent.futures import ThreadPoolExecutor
 
+        workers = min(int(workers), 2)
         missing = [n for n in names if not self._cache_png(n).exists()]
 
         def job(name: str) -> None:

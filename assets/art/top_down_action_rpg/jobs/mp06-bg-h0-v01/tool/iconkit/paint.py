@@ -97,6 +97,31 @@ class Buffer:
         # screen blend in premultiplied form: out = rgb + s * (a - rgb)
         self.rgb[by0:by1, bx0:bx1] = cur + s * (a - cur)
 
+    def occlude(self, alpha: np.ndarray, x0: int, y0: int) -> None:
+        """Something non-emissive was drawn in front: hide this layer under it (v02)."""
+        h, w = alpha.shape
+        r = self.region(x0, y0, x0 + w, y0 + h)
+        if r is None:
+            return
+        bx0, by0, bx1, by1 = r
+        sx0, sy0 = bx0 - x0, by0 - y0
+        a = alpha[sy0:sy0 + by1 - by0, sx0:sx0 + bx1 - bx0]
+        self.rgb[by0:by1, bx0:bx1] *= (1.0 - a)[..., None]
+        self.a[by0:by1, bx0:bx1] *= 1.0 - a
+
+    def add(self, amount: np.ndarray, color, x0: int, y0: int) -> None:
+        """Additive light into a (possibly transparent) emission layer (v02)."""
+        h, w = amount.shape
+        r = self.region(x0, y0, x0 + w, y0 + h)
+        if r is None:
+            return
+        bx0, by0, bx1, by1 = r
+        sx0, sy0 = bx0 - x0, by0 - y0
+        m = amount[sy0:sy0 + by1 - by0, sx0:sx0 + bx1 - bx0]
+        self.rgb[by0:by1, bx0:bx1] += hex_rgb(color) * m[..., None]
+        dst_a = self.a[by0:by1, bx0:bx1]
+        dst_a += m * (1.0 - dst_a)
+
     def to_image(self) -> Image.Image:
         a = np.clip(self.a, 0.0, 1.0)
         safe = np.where(a > 1e-5, a, 1.0)[..., None]
@@ -249,6 +274,40 @@ def stroke_field(h: int, w: int, stamp: Image.Image, rng: np.random.Generator, a
             continue
         field[ay0:ay1, ax0:ax1] += v * s[ay0 - y0:ay1 - y0, ax0 - x0:ax1 - x0]
     return np.tanh(field * 0.9)
+
+
+def stain_field(h: int, w: int, stamps: list, rng: np.random.Generator, density: float = 0.5,
+                mask: np.ndarray | None = None, lo: float = 0.35, hi: float = 1.0) -> np.ndarray:
+    """Coverage 0..1 of scattered icon-stamp blotches (grime, damp, foxing) - v02.
+
+    Unlike :func:`stroke_field` the stamps do not add up: overlapping blotches keep
+    the stronger one, so old stains read as separate marks instead of a flat filter.
+    """
+    field = np.zeros((h, w), dtype=np.float32)
+    if not stamps:
+        return field
+    area = float(np.mean([s.sum() for s in stamps])) or 1.0
+    count = int(density * h * w / area)
+    if count <= 0:
+        return field
+    xs = rng.integers(0, w, count)
+    ys = rng.integers(0, h, count)
+    if mask is not None:
+        keep = mask[ys, xs] > 0.3
+        xs, ys = xs[keep], ys[keep]
+    vals = rng.uniform(lo, hi, len(xs)).astype(np.float32)
+    picks = rng.integers(0, len(stamps), len(xs))
+    for x, y, v, p in zip(xs, ys, vals, picks):
+        s = stamps[p]
+        sh, sw = s.shape
+        x0, y0 = int(x) - sw // 2, int(y) - sh // 2
+        ax0, ay0 = max(0, x0), max(0, y0)
+        ax1, ay1 = min(w, x0 + sw), min(h, y0 + sh)
+        if ax1 <= ax0 or ay1 <= ay0:
+            continue
+        dst = field[ay0:ay1, ax0:ax1]
+        np.maximum(dst, v * s[ay0 - y0:ay1 - y0, ax0 - x0:ax1 - x0], out=dst)
+    return field
 
 
 # --------------------------------------------------------------------------- shading

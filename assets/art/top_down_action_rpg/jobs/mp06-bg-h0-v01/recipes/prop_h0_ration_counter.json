@@ -1,15 +1,20 @@
 {
   "asset": "prop_h0_ration_counter",
   "status": "candidate",
-  "note": "prop_h0_ration_counter (H0 Ration Counter, state ps_open). 60 deg camera, 180 px per metre: counter 2.8 m wide, 0.7 m deep, 1.05 m high; back partition with two arched hatches; ration tokens, scale, stamp and blank slips on top. Contact shadow is a separate layer.",
-  "palette": "palette_h0.json",
+  "note": "mp06 prop_h0_ration_counter (content prop, H0 area A). From h0-icon-mood-v02 (V1). Counter 2.8 m wide, 0.7 m deep, 1.05 m high in the V1 layout, scaled x1.24 so it is waist high to the player; block heights x1.24 by hand. States: ps_open (open counter, blank slips, token stack) and ps_rationing (a ration tray with wrapped parcels and a water flask comes up, one token ring is gone). The arched hatch frames are built from a cropped ring and bars instead of the doorway icon. Lamp glass and flame are emissive. Contact shadow is a separate layer. No text or stamp marks.",
+  "palette": "palette_h0_mood.json",
   "style": "prop",
-  "canvas": [560, 400],
-  "pivot": [280, 382],
+  "canvas": [694, 520],
+  "pivot": [347, 486],
   "pivot_meaning": "front-bottom centre of the counter base on the floor",
+  "scale_all": {"factor": 1.24, "origin": [0, 0]},
   "seed": 101,
+  "frames": [
+    {"name": "ps_open"},
+    {"name": "ps_rationing", "show": ["rationing"], "hide": ["open_only"]}
+  ],
   "forms": [
-    {"name": "partition", "z": 0, "kind": "block", "material": "stone", "extrude": 99,
+    {"name": "partition", "z": 0, "kind": "block", "material": "stone", "extrude": 123,
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [280, 87], "size": [480, 22]}]},
     {"name": "hatch_void", "z": 1, "kind": "flat", "material": "void",
      "grad": {"to": "well_inner", "y0": 130, "y1": 196, "curve": 1.6},
@@ -19,18 +24,52 @@
      ]},
     {"name": "hatch_frame", "z": 2, "material": "bronze",
      "pieces": [
-       {"icon": "doorway", "at": [178, 157], "size": [72, 78]},
-       {"icon": "doorway", "at": [382, 157], "size": [72, 78]}
+       {"icon": "ring", "crop": [0, 0, 16, 8], "at": [178, 137], "size": [68, 34]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [147, 175], "size": [6, 42]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [209, 175], "size": [6, 42]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [178, 196], "size": [72, 6]},
+       {"icon": "ring", "crop": [0, 0, 16, 8], "at": [382, 137], "size": [68, 34]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [351, 175], "size": [6, 42]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [413, 175], "size": [6, 42]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [382, 196], "size": [72, 6]}
      ]},
-    {"name": "awning", "z": 3, "material": "paper", "cast": {"dist": 6, "blur": 4, "opacity": 0.45, "color": "shade_tint"},
+    {"name": "awning", "z": 3, "material": "cloth_wine", "cast": {"dist": 6, "blur": 4, "opacity": 0.5, "color": "shade_tint"},
      "pieces": [{"icon": "shop", "crop": [0.4, 1.1, 15.6, 7.7], "at": [280, 82], "size": [500, 62]}]},
-    {"name": "awning_stripes", "z": 3.2, "kind": "flat", "color": "#9c8a97", "opacity": 0.55, "clip_to": "awning",
+    {"name": "awning_stripes", "z": 3.2, "kind": "flat", "color": "cloth_stripe", "opacity": 0.3, "clip_to": "awning",
      "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [0, 0], "size": [20, 80],
                  "repeat": {"line": [[54, 84], [506, 84]], "count": 12}}]},
+    {"name": "awning_stains", "z": 3.3, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.45, "clip_to": "awning",
+     "pieces": [
+       {"icon": "droplet", "at": [150, 104], "size": [26, 40]},
+       {"icon": "droplet", "at": [352, 106], "size": [20, 34]},
+       {"icon": "droplet", "at": [452, 102], "size": [18, 30]}
+     ]},
     {"name": "awning_trim", "z": 3.5, "kind": "flat", "material": "bronze", "opacity": 0.9,
      "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [280, 60], "size": [430, 7]}]},
 
-    {"name": "counter", "z": 4, "kind": "block", "material": "stone_dark", "extrude": 95,
+    {"name": "lamp_chain", "z": 3.6, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.4},
+     "pieces": [{"icon": "link", "rot": 45, "at": [280, 0], "size": [7, 7],
+                 "repeat": {"line": [[280, 112], [280, 127]], "count": 3}}]},
+    {"name": "lamp_cap", "z": 3.7, "material": "iron", "line": {"width": 0.7, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [280, 132], "size": [22, 6]},
+       {"icon": "triangle", "at": [280, 128], "size": [14, 6]}
+     ]},
+    {"name": "lamp_glass", "z": 3.8, "material": "glass", "emit": 0.85,
+     "glow": {"radius": 7, "opacity": 0.55, "color": "lamp_glow"},
+     "pieces": [{"icon": "tungsten_light", "crop": [4.3, 0.2, 11.7, 10.6], "at": [280, 146], "size": [18, 24]}]},
+    {"name": "lamp_flame", "z": 3.9, "kind": "flat", "material": "flame", "emit": 1.0, "clip_to": "lamp_glass",
+     "glow": {"radius": 3, "opacity": 0.7, "color": "flame_glow"},
+     "pieces": [{"icon": "fire", "at": [280, 148], "size": [8, 11]}]},
+    {"name": "lamp_bars", "z": 3.95, "kind": "flat", "material": "iron", "line": false,
+     "pieces": [
+       {"icon": "square", "at": [275, 147], "size": [1.6, 22]},
+       {"icon": "square", "at": [285, 147], "size": [1.6, 22]}
+     ]},
+    {"name": "lamp_base", "z": 3.97, "material": "iron", "line": {"width": 0.7, "heavy": 0.6},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [280, 159], "size": [18, 5]}]},
+
+    {"name": "counter", "z": 4, "kind": "block", "material": "stone_dark", "extrude": 118,
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 18}, "at": [280, 236], "size": [520, 122]}]},
     {"name": "drawers", "z": 5, "kind": "flat", "material": "stone", "line": {"width": 1.0, "heavy": 1.2},
      "pieces": [
@@ -50,9 +89,10 @@
     {"name": "tokens", "z": 6, "material": "bronze",
      "pieces": [
        {"icon": "ring", "at": [118, 238], "size": [42, 30]},
-       {"icon": "ring", "at": [116, 229], "size": [42, 30]},
-       {"icon": "ring", "at": [119, 220], "size": [42, 30]}
+       {"icon": "ring", "at": [116, 229], "size": [42, 30]}
      ]},
+    {"name": "token_top", "tags": ["open_only"], "z": 6.1, "material": "bronze",
+     "pieces": [{"icon": "ring", "at": [119, 220], "size": [42, 30]}]},
     {"name": "stamp_block", "z": 6, "material": "bronze",
      "pieces": [
        {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [352, 238], "size": [34, 9]},
@@ -73,6 +113,21 @@
      "pieces": [
        {"icon": "ring", "crop": [1, 2.4, 15, 10.2], "at": [402, 226], "size": [36, 15]},
        {"icon": "ring", "crop": [1, 2.4, 15, 10.2], "at": [486, 226], "size": [36, 15]}
+     ]},
+
+    {"name": "ration_tray", "tags": ["rationing"], "hidden": true, "z": 6.2, "kind": "flat", "material": "bronze",
+     "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "ground": true, "at": [198, 240], "size": [92, 44]}]},
+    {"name": "ration_parcels", "tags": ["rationing"], "hidden": true, "z": 6.3, "material": "paper",
+     "shade": {"bump": 0.4}, "cast": {"dist": 2, "blur": 1.5, "opacity": 0.4, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "delivery_box", "crop": [1, 2, 15, 15], "at": [184, 228], "size": [34, 28]},
+       {"icon": "delivery_box", "crop": [1, 2, 15, 15], "at": [213, 233], "size": [30, 24], "flip": "x"}
+     ]},
+    {"name": "ration_flask", "tags": ["rationing"], "hidden": true, "z": 6.4, "material": "iron",
+     "pieces": [
+       {"icon": "cylinder", "at": [236, 224], "size": [14, 24]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [236, 210], "size": [7, 5]}
      ]},
 
     {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 10,

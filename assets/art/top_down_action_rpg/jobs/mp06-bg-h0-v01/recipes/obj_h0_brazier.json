@@ -1,0 +1,30 @@
+{
+  "asset": "obj_h0_brazier",
+  "status": "candidate",
+  "note": "mp06 H0 object: iron brazier with coals and flames, taken out of the V1 background (bg_h0_arrival_approach braziers) so it is a reusable object. Drawn in the V1 coordinates and scaled x1.24 to the player scale. Flames and coals are emissive (_emit.png); the floor shadow is _shadow.png. No light pool is painted: the game adds the light (scene JSON 'light').",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [211, 236],
+  "pivot": [105, 186],
+  "pivot_meaning": "floor contact point under the bowl foot",
+  "scale_all": {"factor": 1.24, "origin": [0, 0]},
+  "seed": 301,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.6, "blur": 8,
+     "pieces": [{"icon": "circle", "at": [91, 155], "size": [120, 34]}]},
+    {"name": "bowl", "z": 1, "material": "iron",
+     "shade": {"max_radius": 10, "bump": 1.0, "highlight_amount": 0.45},
+     "line": {"width": 1.6, "heavy": 2.2, "breaks": 0.25},
+     "pieces": [{"icon": "cauldron", "crop": [0.8, 5.6, 15.2, 16], "at": [85, 119], "size": [96, 62]}]},
+    {"name": "coals", "z": 2, "kind": "flat", "material": "ember", "emit": 0.7,
+     "glow": {"radius": 6, "opacity": 0.6, "color": "ember_glow"},
+     "pieces": [{"icon": "circle", "at": [85, 97], "size": [72, 12]}]},
+    {"name": "flames", "z": 3, "kind": "flat", "material": "flame", "emit": 1.0,
+     "glow": {"radius": 12, "opacity": 0.55, "color": "flame_glow"},
+     "pieces": [
+       {"icon": "fire", "at": [69, 73], "size": [22, 32], "rot": -8},
+       {"icon": "fire", "at": [89, 63], "size": [28, 42]},
+       {"icon": "fire", "at": [107, 77], "size": [18, 26], "rot": 10}
+     ]}
+  ]
+}

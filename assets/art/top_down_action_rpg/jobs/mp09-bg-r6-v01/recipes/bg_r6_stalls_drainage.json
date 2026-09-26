@@ -1,0 +1,203 @@
+{
+  "asset": "bg_r6_stalls_drainage",
+  "status": "candidate",
+  "note": "R6 Gristmarket Ward, zone 3 (lowest level, Replacement Stalls and Drainage Dark): base_clean only. Layout from BRIEF.md 6.3 (logical px x2): north wall face y0..220 split by the stair up to zone 2 (x1760..2080); stall row spots along the north-west (objects); drainage trench from the pump spot (1320,840) east to a spout at x1860; sunken basin x1640..2520 y940..1440 with its north retaining wall face (y940..1160) holding the E16 tunnel arch x1920..2320 and wet service steps down its west side. Basin is drawn dry; water level and chain are the route object. 60 deg camera, ground 180 px/m, heights 110 px/m.",
+  "palette": "palette_r6.json",
+  "style": "environment",
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = logical (0,0); 2 source px per logical px",
+  "seed": 603,
+  "include": ["_r6_floor.json"],
+  "forms": [
+    {"name": "worn_paths", "z": 6, "kind": "wash", "material": "worn", "opacity": 0.12, "blur": 40,
+     "rough": {"amp": 0.6, "soft": 24, "cell": 70},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1900, 520], "size": [300, 520]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [900, 700], "size": [1500, 150]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1600, 780], "size": [300, 170], "rot": 20}
+     ]},
+    {"name": "wall_foot_dirt", "z": 6.5, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.6, "blur": 22,
+     "rough": {"amp": 0.75, "soft": 12, "cell": 46},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 242], "size": [2600, 52]},
+       {"icon": "cloud", "at": [240, 270], "size": [260, 110]},
+       {"icon": "cloud", "at": [1560, 268], "size": [240, 100], "flip": "x"},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [70, 820], "size": [60, 1300]}
+     ]},
+    {"name": "floor_damp", "z": 6.6, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.5, "blur": 30,
+     "rough": {"amp": 0.7, "soft": 20, "cell": 60},
+     "pieces": [
+       {"icon": "cloud", "at": [1500, 1040], "size": [520, 220]},
+       {"icon": "cloud", "at": [1280, 800], "size": [320, 160], "flip": "x"},
+       {"icon": "cloud", "at": [700, 1200], "size": [420, 180]}
+     ]},
+    {"name": "cracks", "z": 7, "kind": "flat", "material": "tile_joint", "opacity": 0.65,
+     "pieces": [
+       {"icon": "lightning_bolt", "at": [420, 980], "size": [18, 84], "rot": 58},
+       {"icon": "lightning_bolt", "at": [1120, 1210], "size": [14, 64], "rot": -26},
+       {"icon": "lightning_bolt", "at": [860, 480], "size": [12, 54], "rot": 100},
+       {"icon": "lightning_bolt", "at": [1480, 1320], "size": [15, 70], "rot": 20}
+     ]},
+    {"name": "chips", "z": 7.2, "kind": "flat", "color": "#171613", "opacity": 0.9,
+     "rough": {"amp": 0.5, "soft": 2, "cell": 10},
+     "pieces": [
+       {"icon": "explosion", "crop": [0.5, 1, 15.5, 12.5], "ground": true, "at": [560, 1330], "size": [90, 60], "rot": 6},
+       {"icon": "explosion", "crop": [0.5, 1, 15.5, 12.5], "ground": true, "at": [1260, 1100], "size": [70, 48], "rot": -18, "flip": "x"},
+       {"icon": "explosion", "crop": [0.5, 1, 15.5, 12.5], "ground": true, "at": [240, 820], "size": [64, 44], "rot": 170}
+     ]},
+
+    {"name": "channel_face", "z": 9, "kind": "flat", "color": "#2c3230",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1620, 888], "size": [480, 36]}]},
+    {"name": "channel_bed", "z": 9.1, "kind": "flat", "material": "wet_slate", "color": "#2a302e",
+     "line": {"width": 1.0, "heavy": 1.2, "breaks": 0.2, "color": "#0a0c0c"},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1620, 953], "size": [480, 94]}]},
+    {"name": "channel_damp", "z": 9.2, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.6, "clip_to": "channel_bed",
+     "mottle": {"cell": 40, "lo": 0.4, "hi": 0.8},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1620, 953], "size": [480, 94]}]},
+    {"name": "channel_curbs", "z": 9.3, "kind": "block", "material": "wet_slate", "extrude": 8,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1620, 866], "size": [484, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1620, 1002], "size": [484, 12]}
+     ]},
+
+    {"name": "basin_back", "z": 10, "kind": "flat", "color": "#161a19",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2100, 1190], "size": [920, 500]}]},
+    {"name": "basin_face", "z": 10.2, "kind": "flat", "color": "#2c3230",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2160, 1050], "size": [720, 220]}]},
+    {"name": "basin_face_courses", "z": 10.3, "kind": "flat", "material": "tile_joint", "opacity": 0.5, "clip_to": "basin_face",
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2160, 0], "size": [720, 3], "repeat": {"line": [[2160, 980], [2160, 1140]], "count": 5}},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1830, 960], "size": [3, 40], "repeat": {"grid": [10, 6], "step": [80, 40], "stagger": 40}}
+     ]},
+    {"name": "basin_face_damp", "z": 10.4, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.55, "clip_to": "basin_face",
+     "mottle": {"cell": 70, "lo": 0.4, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2160, 1080], "size": [720, 260]}]},
+    {"name": "spout_streak", "z": 10.5, "kind": "wash", "color": "shadow_contact", "blend": "multiply", "opacity": 0.55, "clip_to": "basin_face", "blur": 4,
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [1862, 1060], "size": [26, 210]}]},
+    {"name": "basin_floor", "z": 10.6, "kind": "flat", "material": "wet_slate", "color": "#323936",
+     "line": {"width": 1.0, "heavy": 1.2, "breaks": 0.25, "color": "#0a0c0c"},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2160, 1302], "size": [720, 284]}]},
+    {"name": "basin_floor_slabs", "z": 10.7, "kind": "flat", "material": "tile_joint", "opacity": 0.45, "clip_to": "basin_floor",
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2160, 0], "size": [720, 2], "repeat": {"line": [[2160, 1230], [2160, 1390]], "count": 3}},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1860, 1200], "size": [2, 78], "repeat": {"grid": [5, 4], "step": [150, 80], "stagger": 75}}
+     ]},
+    {"name": "basin_puddles", "z": 10.8, "kind": "wash", "color": "water_sheen", "opacity": 0.35, "clip_to": "basin_floor", "blur": 3,
+     "rough": {"amp": 0.6, "soft": 4, "cell": 20},
+     "pieces": [
+       {"icon": "metaballs", "ground": true, "at": [2020, 1330], "size": [180, 90]},
+       {"icon": "cloud", "ground": true, "at": [2330, 1260], "size": [150, 70], "flip": "x"},
+       {"icon": "metaballs", "ground": true, "at": [2250, 1400], "size": [130, 70], "rot": 20}
+     ]},
+    {"name": "basin_floor_dark", "z": 10.9, "kind": "wash", "color": "shadow_contact", "blend": "multiply", "opacity": 0.5, "blur": 20,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2160, 1186], "size": [720, 60]}]},
+
+    {"name": "basin_steps_back", "z": 11, "kind": "flat", "color": "#1a1e1d",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1726, 1190], "size": [160, 500]}]},
+    {"name": "basin_step_treads", "z": 11.1, "kind": "flat", "material": "wet_slate",
+     "line": {"width": 1.0, "heavy": 1.1, "breaks": 0.2, "color": "#0a0c0c"},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1726, 0], "size": [152, 38],
+                 "repeat": {"line": [[1726, 1001], [1726, 1427]], "count": 7}}]},
+    {"name": "basin_step_risers", "z": 11.2, "kind": "flat", "color": "#262c2a",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1726, 0], "size": [152, 32],
+                 "repeat": {"line": [[1726, 966], [1726, 1392]], "count": 7}}]},
+    {"name": "basin_steps_deep", "z": 11.3, "kind": "wash", "color": "shadow_contact", "blend": "multiply", "opacity": 0.4, "blur": 26,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1726, 1350], "size": [160, 200]}]},
+    {"name": "basin_rim", "z": 11.5, "kind": "block", "material": "wet_slate", "extrude": 14,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [2080, 942], "size": [880, 18]},
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [1644, 1190], "size": [16, 500]},
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [1806, 1300], "size": [12, 280]}
+     ]},
+
+    {"name": "tunnel_rim", "z": 12, "kind": "flat", "material": "tile_wall_dark", "line": {"width": 1.2, "heavy": 1.5},
+     "pieces": [
+       {"icon": "bullet", "rot": -90, "at": [2120, 1052], "size": [218, 440]},
+       {"icon": "bullet", "op": "sub", "rot": -90, "at": [2120, 1061], "size": [198, 400]}
+     ]},
+    {"name": "tunnel_void", "z": 12.1, "kind": "flat", "material": "void",
+     "grad": {"to": "well_inner", "y0": 1160, "y1": 960, "curve": 1.6},
+     "pieces": [{"icon": "bullet", "rot": -90, "at": [2120, 1061], "size": [198, 400]}]},
+    {"name": "tunnel_keystone", "z": 12.2, "kind": "flat", "material": "bronze_block", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [2120, 948], "size": [26, 16]}]},
+    {"name": "spout", "z": 12.5, "material": "verdigris",
+     "shade": {"max_radius": 6, "bump": 1.0, "highlight_amount": 0.5},
+     "line": {"width": 1.2, "heavy": 1.4},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [1862, 952], "size": [34, 22]}]},
+
+    {"name": "stair_up_back", "z": 22, "kind": "flat", "color": "#1a1e1d",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1920, 110], "size": [322, 224]}]},
+    {"name": "stair_up_treads", "z": 22.2, "kind": "flat", "material": "wet_slate",
+     "line": {"width": 1.0, "heavy": 1.1, "breaks": 0.2, "color": "#0a0c0c"},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1920, 177], "size": [318, 46]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1920, 110], "size": [318, 46]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1920, 43], "size": [318, 46]}
+     ]},
+    {"name": "stair_up_risers", "z": 22.3, "kind": "flat", "color": "#2c3230",
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1920, 210], "size": [318, 20]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1920, 143], "size": [318, 20]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1920, 76], "size": [318, 20]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1920, 9], "size": [318, 20]}
+     ]},
+    {"name": "stair_up_wear", "z": 22.4, "kind": "wash", "material": "worn", "opacity": 0.14, "clip_to": "stair_up_treads",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1920, 110], "size": [150, 240]}]},
+
+    {"name": "north_wall", "z": 20, "kind": "block", "material": "tile_wall", "extrude": 220,
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [880, -31], "size": [1760, 62]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2320, -31], "size": [480, 62]}
+     ]},
+    {"name": "wall_courses", "z": 20.2, "kind": "flat", "material": "tile_joint", "opacity": 0.45, "clip_to": "north_wall",
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 0], "size": [2600, 3], "repeat": {"line": [[1280, 37], [1280, 212]], "count": 6}},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [30, 18], "size": [3, 36], "repeat": {"grid": [35, 6], "step": [75, 37], "stagger": 37}}
+     ]},
+    {"name": "wall_wainscot", "z": 20.3, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.36, "clip_to": "north_wall",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 178], "size": [2600, 90]}]},
+    {"name": "wall_trim", "z": 20.4, "kind": "flat", "material": "verdigris", "opacity": 0.9, "clip_to": "north_wall",
+     "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 132], "size": [2600, 8]}]},
+    {"name": "wall_damp", "z": 20.5, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.45, "clip_to": "north_wall",
+     "mottle": {"cell": 100, "lo": 0.45, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 110], "size": [2600, 240]}]},
+    {"name": "wall_streaks", "z": 20.6, "kind": "wash", "material": "rust", "blend": "multiply", "opacity": 0.5, "clip_to": "north_wall",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [420, 140], "size": [12, 84]},
+       {"icon": "droplet", "flip": "y", "at": [1180, 136], "size": [10, 70]},
+       {"icon": "droplet", "flip": "y", "at": [1600, 146], "size": [12, 90]},
+       {"icon": "droplet", "flip": "y", "at": [2300, 140], "size": [10, 76]}
+     ]},
+    {"name": "pipes", "z": 20.8, "material": "verdigris",
+     "shade": {"max_radius": 6, "bump": 1.0, "highlight_amount": 0.5},
+     "line": {"width": 1.3, "heavy": 1.6, "breaks": 0.25},
+     "cast": {"dist": 5, "blur": 3, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [870, 96], "size": [1740, 15]},
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [2320, 96], "size": [480, 15]},
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [1100, 164], "size": [900, 10]}
+     ]},
+    {"name": "pipe_valves", "z": 20.85, "material": "bronze", "line": {"width": 1.0, "heavy": 1.1},
+     "pieces": [
+       {"icon": "cog", "at": [1300, 96], "size": [26, 26]},
+       {"icon": "cog", "at": [480, 96], "size": [22, 22]}
+     ]},
+    {"name": "pipe_brackets", "z": 20.9, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [10, 26],
+                 "repeat": {"points": [[60, 96], [760, 96], [1540, 96], [2200, 96], [2480, 96], [700, 164], [1500, 164]]}}]},
+
+    {"name": "pilasters", "z": 23, "kind": "block", "material": "tile_wall_dark", "extrude": 220,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [0, 20], "size": [62, 40],
+                 "repeat": {"points": [[160, 20], [1000, 20], [1746, 20], [2094, 20], [2440, 20]]}}]},
+    {"name": "pilaster_caps", "z": 23.5, "kind": "flat", "material": "bronze_block", "line": {"width": 1.2, "heavy": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [0, 12], "size": [46, 12],
+                 "repeat": {"points": [[160, 12], [1000, 12], [1746, 12], [2094, 12], [2440, 12]]}}]},
+
+    {"name": "west_wall", "z": 28, "kind": "block", "material": "tile_wall_dark", "extrude": 40,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [26, 860], "size": [52, 1240]}]},
+    {"name": "east_wall", "z": 28, "kind": "block", "material": "tile_wall_dark", "extrude": 40,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [2534, 820], "size": [52, 1320]}]}
+  ]
+}

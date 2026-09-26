@@ -121,10 +121,14 @@ class IconLibrary:
     def forget(self, name: str) -> None:
         self._images.pop(name, None)
 
-    def prefetch(self, names: list[str], workers: int = 8) -> None:
-        """Render missing cache files in parallel (renderer calls are subprocesses)."""
+    def prefetch(self, names: list[str], workers: int = 2) -> None:
+        """Render missing cache files in parallel (renderer calls are subprocesses).
+
+        mp10: capped at 2 workers because ten production sessions share the host.
+        """
         from concurrent.futures import ThreadPoolExecutor
 
+        workers = max(1, min(int(workers), 2))
         missing = [n for n in names if not self._cache_png(n).exists()]
 
         def job(name: str) -> None:

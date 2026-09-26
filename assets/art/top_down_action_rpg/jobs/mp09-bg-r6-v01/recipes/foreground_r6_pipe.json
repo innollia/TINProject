@@ -1,0 +1,30 @@
+{
+  "asset": "foreground_r6_pipe",
+  "status": "candidate",
+  "note": "R6 zone 3 (bg_r6_stalls_drainage) foreground occluder: overhead verdigris pipe with a valve and hanger rods along the bottom-left (logical x0..520, y640..700). Full-canvas transparent layer, same origin as the background.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = background origin (logical 0,0)",
+  "seed": 613,
+  "forms": [
+    {"name": "rods", "z": 0, "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.7},
+     "pieces": [{"icon": "square", "at": [0, 1392], "size": [6, 96], "repeat": {"points": [[160, 1392], [520, 1392], [880, 1392]]}}]},
+    {"name": "pipe", "z": 1, "material": "verdigris",
+     "shade": {"max_radius": 8, "bump": 1.1, "highlight_amount": 0.55},
+     "line": {"width": 1.4, "heavy": 1.8, "breaks": 0.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [520, 1330], "size": [1060, 28]}]},
+    {"name": "pipe_joints", "z": 1.5, "material": "verdigris", "line": {"width": 1.0, "heavy": 1.2},
+     "shade": {"max_radius": 6, "bump": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [0, 1330], "size": [18, 38],
+                 "repeat": {"points": [[300, 1330], [700, 1330], [1020, 1330]]}}]},
+    {"name": "hanger_rings", "z": 2, "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.7},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [0, 1330], "size": [10, 34],
+                 "repeat": {"points": [[160, 1330], [520, 1330], [880, 1330]]}}]},
+    {"name": "valve", "z": 2.5, "material": "bronze", "line": {"width": 1.0, "heavy": 1.1},
+     "pieces": [{"icon": "cog", "at": [620, 1302], "size": [34, 34]}]},
+    {"name": "drip_stain", "z": 3, "kind": "wash", "material": "rust", "blend": "multiply", "opacity": 0.5, "clip_to": "pipe",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [420, 1340], "size": [14, 30]}, {"icon": "droplet", "flip": "y", "at": [860, 1338], "size": [12, 26]}]}
+  ]
+}

@@ -1,18 +1,23 @@
 {
   "asset": "prop_h0_counterweight_map",
   "status": "candidate",
-  "note": "prop_h0_counterweight_map (H0 Counterweight Map, state ps_matched, floor layer, no collision). A low bronze-rimmed floor plate: three route-card panels, an inlaid bronze route network, two counterweight posts and the lift-counter dial. No text.",
-  "palette": "palette_h0.json",
+  "note": "mp06 prop_h0_counterweight_map (content prop, floor layer, no collision, H0 area B). From h0-icon-mood-v02 (V1): a low bronze-rimmed floor plate with route-card panels, an inlaid bronze route network, counterweights and the lift-counter dial. Scaled x1.24; rim height x1.24 by hand. The route network is now three cut fragments (two node_graph crops + a git_branch crop) so the original icon does not read. States: ps_matched (cards and counter agree) and ps_contested (one card replaced by a reprinted card with one more line, one new empty card slot and one debt token). No text.",
+  "palette": "palette_h0_mood.json",
   "style": "prop",
-  "canvas": [440, 300],
-  "pivot": [220, 262],
-  "pivot_meaning": "front-bottom centre of the plate rim on the floor",
+  "canvas": [546, 372],
+  "pivot": [273, 327],
+  "pivot_meaning": "front-bottom centre of the plate rim on the floor (floor-layer object)",
+  "scale_all": {"factor": 1.24, "origin": [0, 0]},
   "seed": 103,
+  "frames": [
+    {"name": "ps_matched"},
+    {"name": "ps_contested", "show": ["contested"]}
+  ],
   "forms": [
     {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.3, "blur": 8,
      "pieces": [{"icon": "octagon", "at": [224, 166], "size": [372, 198]}]},
 
-    {"name": "plate_rim", "z": 0, "kind": "block", "material": "bronze_block", "extrude": 9,
+    {"name": "plate_rim", "z": 0, "kind": "block", "material": "bronze_block", "extrude": 11,
      "pieces": [{"icon": "octagon", "at": [220, 160], "size": [364, 190]}]},
     {"name": "plate", "z": 1, "material": "stone_dark",
      "shade": {"bump": 0.12, "ragged": 0.05, "highlight_amount": 0.15},
@@ -24,7 +29,11 @@
      "pieces": [{"icon": "map", "squash": 0.8, "at": [214, 156], "size": [250, 118]}]},
     {"name": "routes", "z": 3, "kind": "flat", "material": "bronze", "opacity": 0.85,
      "line": {"width": 0.8, "heavy": 0.6},
-     "pieces": [{"icon": "node_graph", "squash": 0.8, "at": [212, 154], "size": [150, 84]}]},
+     "pieces": [
+       {"icon": "node_graph", "crop": [0.5, 0.5, 9, 9], "squash": 0.8, "at": [180, 142], "size": [74, 40], "rot": 14},
+       {"icon": "node_graph", "crop": [7, 7, 15.5, 15.5], "squash": 0.8, "at": [252, 166], "size": [70, 38], "rot": -22},
+       {"icon": "git_branch", "crop": [3, 1, 13, 15], "squash": 0.8, "at": [214, 152], "size": [22, 64], "rot": 72}
+     ]},
     {"name": "loose_cards", "z": 3.5, "material": "paper", "shade": {"bump": 0.2},
      "cast": {"dist": 2, "blur": 1.5, "opacity": 0.4, "color": "shade_tint"},
      "pieces": [
@@ -41,6 +50,17 @@
        {"icon": "weight", "at": [392, 178], "size": [22, 26]},
        {"icon": "weight", "at": [76, 128], "size": [30, 34]},
        {"icon": "weight", "at": [98, 140], "size": [22, 26]}
-     ]}
+     ]},
+
+    {"name": "reprint_card", "tags": ["contested"], "hidden": true, "z": 3.6, "material": "paper",
+     "shade": {"bump": 0.2}, "cast": {"dist": 2, "blur": 1.5, "opacity": 0.4, "color": "shade_tint"},
+     "pieces": [{"icon": "file", "ground": true, "rot": 8, "at": [160, 146], "size": [34, 42]}]},
+    {"name": "reprint_line", "tags": ["contested"], "hidden": true, "z": 3.7, "kind": "flat", "material": "paper_mark",
+     "pieces": [{"icon": "square", "ground": true, "rot": 8, "at": [160, 152], "size": [22, 3]}]},
+    {"name": "empty_slot", "tags": ["contested"], "hidden": true, "z": 3.6, "kind": "flat", "material": "floor_joint", "opacity": 0.9,
+     "line": {"width": 0.6, "heavy": 0.5},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "ground": true, "at": [268, 118], "size": [34, 24]}]},
+    {"name": "debt_token", "tags": ["contested"], "hidden": true, "z": 3.8, "material": "bronze",
+     "pieces": [{"icon": "coin", "ground": true, "at": [306, 128], "size": [24, 20]}]}
   ]
 }

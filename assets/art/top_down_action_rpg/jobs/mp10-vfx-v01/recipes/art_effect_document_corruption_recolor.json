@@ -1,0 +1,250 @@
+{
+ "asset": "art_effect_document_corruption_recolor",
+ "status": "candidate",
+ "note": "Document corruption 'recolor' (09 7.3 red span; top_down_row.gd recolor). Red smear behind a token span with a narrow rule under it, and the severity corner tick. The red never comes alone: the rule and tick change the line shape too. Three-slice: the left and right 32 px stay fixed, the middle stretches to the span.",
+ "palette": "palette_mp10.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  64
+ ],
+ "pivot": [
+  0,
+  32
+ ],
+ "pivot_meaning": "left end of the token span on the text line centre",
+ "seed": 2003,
+ "vfx": {
+  "blend": "normal",
+  "cell": [
+   384,
+   64
+  ],
+  "frames": 3,
+  "loop": false,
+  "static_frame": "recolor_3",
+  "art_key": "art_effect_document_corruption",
+  "corruption_mode": "recolor",
+  "line_height_source_px": 64,
+  "slice": {
+   "left": 32,
+   "right": 32
+  }
+ },
+ "forms": [
+  {
+   "name": "recolor_1__rule_1",
+   "tags": [
+    "recolor_1"
+   ],
+   "hidden": true,
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      150.0,
+      56.0
+     ],
+     "size": [
+      240.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     }
+    }
+   ],
+   "emit": 0.3
+  },
+  {
+   "name": "recolor_2__smear_2",
+   "tags": [
+    "recolor_2"
+   ],
+   "hidden": true,
+   "z": 1,
+   "kind": "flat",
+   "material": "fx_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      32.0
+     ],
+     "size": [
+      352.0,
+      36.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 18.0
+     }
+    }
+   ],
+   "opacity": 0.45999999999999996,
+   "rough": {
+    "amp": 0.45,
+    "soft": 2,
+    "cell": 10
+   }
+  },
+  {
+   "name": "recolor_2__rule_3",
+   "tags": [
+    "recolor_2"
+   ],
+   "hidden": true,
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      56.0
+     ],
+     "size": [
+      352.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     }
+    }
+   ],
+   "emit": 0.3
+  },
+  {
+   "name": "recolor_3__smear_4",
+   "tags": [
+    "recolor_3"
+   ],
+   "hidden": true,
+   "z": 1,
+   "kind": "flat",
+   "material": "fx_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      32.0
+     ],
+     "size": [
+      352.0,
+      36.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 18.0
+     }
+    }
+   ],
+   "opacity": 0.54,
+   "rough": {
+    "amp": 0.45,
+    "soft": 2,
+    "cell": 10
+   }
+  },
+  {
+   "name": "recolor_3__rule_5",
+   "tags": [
+    "recolor_3"
+   ],
+   "hidden": true,
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      56.0
+     ],
+     "size": [
+      352.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     }
+    }
+   ],
+   "emit": 0.3
+  },
+  {
+   "name": "recolor_3__tick_6",
+   "tags": [
+    "recolor_3"
+   ],
+   "hidden": true,
+   "z": 3,
+   "kind": "flat",
+   "material": "fx_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      14.5,
+      10.0
+     ],
+     "size": [
+      12.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      10.0,
+      14.5
+     ],
+     "size": [
+      12.0,
+      3.0
+     ],
+     "rot": 90.0,
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     }
+    }
+   ],
+   "emit": 0.3
+  }
+ ],
+ "frames": [
+  {
+   "name": "recolor_1",
+   "show": [
+    "recolor_1"
+   ]
+  },
+  {
+   "name": "recolor_2",
+   "show": [
+    "recolor_2"
+   ]
+  },
+  {
+   "name": "recolor_3",
+   "show": [
+    "recolor_3"
+   ]
+  }
+ ]
+}

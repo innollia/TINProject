@@ -1,0 +1,22 @@
+{
+  "asset": "item_blank_return_form",
+  "status": "candidate",
+  "note": "item_blank_return_form (Blank Return Form, quest item, tint record_grey, used by act_file_return_form) lying on the floor: faded paper sheet with a folded corner, empty field boxes only, bronze registry clip. No text. Copied from h0-icon-mood-v02 and moved onto the unified 128x128 item canvas.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "style_override": {"silhouette": {"width": 1.2, "heavy": 1.0}, "line": {"width": 0.9, "heavy": 1.0}},
+  "canvas": [128, 128],
+  "pivot": [64, 90],
+  "pivot_meaning": "centre of the sheet's lower edge on the floor",
+  "seed": 109,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 3,
+     "pieces": [{"icon": "file", "ground": true, "rot": 14, "at": [67, 65], "size": [58, 72]}]},
+    {"name": "sheet", "z": 0, "material": "paper", "shade": {"bump": 0.25, "highlight_amount": 0.3},
+     "pieces": [{"icon": "file", "ground": true, "rot": 14, "at": [64, 62], "size": [58, 72]}]},
+    {"name": "fields", "z": 1, "kind": "flat", "material": "paper_mark", "opacity": 0.6, "clip_to": "sheet",
+     "pieces": [{"icon": "list_checkboxes", "crop": [1, 1, 15, 10.6], "ground": true, "rot": 14, "at": [62, 68], "size": [36, 24]}]},
+    {"name": "clip", "z": 2, "material": "bronze",
+     "pieces": [{"icon": "paperclip", "rot": 24, "at": [47, 36], "size": [11, 24]}]}
+  ]
+}

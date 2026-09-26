@@ -5,7 +5,8 @@
     py -3 -B build.py ../recipes/player_front.json --frames idle_down --force
 
 Output per frame: output/<asset>/<frame>.png (+ <frame>_shadow.png when the
-recipe has contact-shadow forms) and <frame>.json (manifest: status, size,
+recipe has contact-shadow forms, + <frame>_emit.png when it has emissive forms)
+and <frame>.json (manifest: status, size,
 pivot, icons used with SHA-256, recipe hash, build key).  A frame whose
 manifest build key matches the current recipe + palette + tool code is skipped,
 so an interrupted run can simply be started again.  Progress is appended to
@@ -34,8 +35,16 @@ def resolved_blob(recipe: dict) -> bytes:
     return json.dumps(data, sort_keys=True, ensure_ascii=False).encode("utf-8")
 
 
+def palette_bytes(path: Path) -> bytes:
+    """Palette file bytes plus every palette it ``extends`` (mp07), so editing a base
+    palette still invalidates the frames built from a region palette."""
+    raw = path.read_bytes()
+    base = json.loads(raw.decode("utf-8")).get("extends")
+    return raw + (palette_bytes(path.parent / base) if base else b"")
+
+
 def build_key(recipe: dict, frame: dict, tool_hash: str) -> str:
-    palette = (Path(recipe["_dir"]) / recipe["palette"]).read_bytes()
+    palette = palette_bytes(Path(recipe["_dir"]) / recipe["palette"])
     blob = resolved_blob(recipe) + palette + json.dumps(frame, sort_keys=True).encode() + tool_hash.encode()
     return hashlib.sha256(blob).hexdigest()
 
@@ -95,6 +104,13 @@ def main() -> int:
                 shadow_name = shadow_png.name
             elif shadow_png.exists():
                 shadow_png.unlink()
+            emit_name = None
+            emit_png = out_dir / f"{name}_emit.png"
+            if result.get("emit") is not None:
+                result["emit"].save(emit_png)
+                emit_name = emit_png.name
+            elif emit_png.exists():
+                emit_png.unlink()
             seconds = round(time.time() - t0, 2)
             manifest = {
                 "asset": asset,
@@ -107,6 +123,7 @@ def main() -> int:
                 "pivot": result["pivot"],
                 "pivot_meaning": recipe.get("pivot_meaning", "ground contact point"),
                 "shadow_file": shadow_name,
+                "emit_file": emit_name,
                 "mirror": bool(frame.get("mirror", False)),
                 "recipe": rel(path),
                 "recipe_sha256": hashlib.sha256(resolved_blob(recipe)).hexdigest(),

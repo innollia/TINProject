@@ -1,0 +1,81 @@
+{
+  "asset": "prop_r6_heart_petition_table",
+  "status": "candidate",
+  "note": "prop_r6_heart_petition_table (Heart Petition Table). 1.8 m x 0.9 m, 0.8 m high (110 px/m). Dark court-wood table with a petition sheet of four signature lines and a lidded bronze vessel (Hearth, the speaking heart authority; no organ is shown) joined to the sheet by a cord; inkwell and pen. ps_drafted: only the top line carries a seal, cord lies loose. ps_cosigned: all four lines (operation, pain, refusal, witness) carry seals of different shapes and the cord is clipped to the sheet. No text.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [460, 440],
+  "pivot": [230, 384],
+  "pivot_meaning": "front-bottom centre of the table on the floor",
+  "seed": 623,
+  "frames": [
+    {"name": "prop_r6_petition_draft"},
+    {"name": "prop_r6_petition_cosigned", "hide": ["draft"], "show": ["cosigned"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 10,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 20}, "at": [238, 372], "size": [344, 56]}]},
+    {"name": "legs", "z": 0, "kind": "block", "material": "court_wood", "extrude": 77,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [82, 301], "size": [16, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [378, 301], "size": [16, 12]}
+     ]},
+    {"name": "stretcher", "z": 0.5, "kind": "flat", "material": "court_wood", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [230, 352], "size": [290, 7]}]},
+    {"name": "top", "z": 1, "kind": "block", "material": "court_wood", "extrude": 12,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [230, 234], "size": [324, 140]}]},
+    {"name": "top_wear", "z": 1.2, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.4, "clip_to": "top",
+     "mottle": {"cell": 40, "lo": 0.45, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [230, 240], "size": [330, 160]}]},
+
+    {"name": "sheet", "z": 2, "material": "paper", "shade": {"bump": 0.25},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "ground": true, "rot": -3, "at": [204, 240], "size": [196, 106]}]},
+    {"name": "sheet_lines", "z": 2.2, "kind": "flat", "material": "paper_mark", "opacity": 0.9, "clip_to": "sheet",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [128, 2], "rot": -3, "repeat": {"points": [[190, 208], [191, 228], [192, 248], [193, 268]]}}]},
+    {"name": "seal_top", "z": 2.5, "kind": "flat", "color": "rust", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [{"icon": "circle", "at": [278, 205], "size": [18, 15]}]},
+    {"name": "seals_rest", "tags": ["cosigned"], "hidden": true, "z": 2.5, "kind": "flat", "material": "bronze", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [279, 225], "size": [15, 13], "rot": -3},
+       {"icon": "triangle", "at": [280, 245], "size": [18, 14]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [280, 266], "size": [22, 7], "rot": -3}
+     ]},
+
+    {"name": "vessel_base", "z": 3, "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "circle", "at": [362, 226], "size": [54, 14]}]},
+    {"name": "vessel", "z": 3.2, "material": "bronze",
+     "shade": {"max_radius": 12, "bump": 1.1, "highlight_amount": 0.55},
+     "line": {"width": 1.0, "heavy": 1.3},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.55, "color": "shade_tint"},
+     "pieces": [{"icon": "circle", "at": [362, 198], "size": [66, 58]}]},
+    {"name": "vessel_lid", "z": 3.4, "kind": "block", "material": "bronze_block", "extrude": 6,
+     "pieces": [{"icon": "circle", "at": [362, 170], "size": [58, 18]}]},
+    {"name": "vessel_knob", "z": 3.6, "material": "bronze", "line": {"width": 0.7, "heavy": 0.7},
+     "pieces": [{"icon": "circle", "at": [362, 162], "size": [13, 11]}]},
+    {"name": "vessel_band", "z": 3.5, "kind": "flat", "material": "iron", "opacity": 0.9, "clip_to": "vessel",
+     "pieces": [{"icon": "square", "at": [362, 200], "size": [70, 5]}]},
+
+    {"name": "cord_loose", "tags": ["draft"], "z": 3.8, "kind": "flat", "material": "leather", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "at": [338, 222], "size": [26, 3], "rot": 28},
+       {"icon": "square", "at": [318, 236], "size": [24, 3], "rot": 42},
+       {"icon": "square", "at": [304, 256], "size": [26, 3], "rot": 72},
+       {"icon": "square", "at": [312, 276], "size": [22, 3], "rot": 118}
+     ]},
+    {"name": "cord_pinned", "tags": ["cosigned"], "hidden": true, "z": 3.8, "kind": "flat", "material": "leather", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "at": [336, 216], "size": [24, 3], "rot": 22},
+       {"icon": "square", "at": [314, 206], "size": [24, 3], "rot": 2}
+     ]},
+    {"name": "cord_clip", "tags": ["cosigned"], "hidden": true, "z": 4, "kind": "flat", "material": "bronze", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [298, 206], "size": [12, 9]}]},
+
+    {"name": "inkwell", "z": 3, "kind": "block", "material": "iron", "extrude": 8,
+     "pieces": [{"icon": "circle", "at": [116, 186], "size": [22, 17]}]},
+    {"name": "ink", "z": 3.1, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "at": [116, 186], "size": [12, 9]}]},
+    {"name": "pen", "z": 3.3, "kind": "flat", "material": "paper", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [{"icon": "feather", "at": [132, 170], "size": [20, 30], "rot": 32}]}
+  ]
+}

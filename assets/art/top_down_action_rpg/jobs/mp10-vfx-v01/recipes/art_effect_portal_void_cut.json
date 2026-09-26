@@ -1,0 +1,836 @@
+{
+ "asset": "art_effect_portal_void_cut",
+ "status": "candidate",
+ "note": "Void cut (09 12.10; 12_MAGIC_THEORY 3.3 scissors cut the void). A bright cut line opens into a narrow slit of void with torn paper-like rims and drifting flecks. Kept narrower than a person so it never reads as a walkable door. Opening = frames 1-3, hold loop = 4-5, closing = play 3-1 backwards. Floor contact shadow in _shadow.png.",
+ "palette": "palette_mp10.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  192,
+  352
+ ],
+ "pivot_meaning": "foot of the cut on the floor (field)",
+ "seed": 2007,
+ "vfx": {
+  "blend": "normal",
+  "cell": [
+   384,
+   384
+  ],
+  "frames": 5,
+  "loop": false,
+  "static_frame": "cut_4",
+  "loop_frames": [
+   "cut_4",
+   "cut_5"
+  ]
+ },
+ "forms": [
+  {
+   "name": "cut_1__contact_1",
+   "tags": [
+    "cut_1"
+   ],
+   "hidden": true,
+   "z": 0,
+   "kind": "shadow",
+   "material": "fx_void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      350.0
+     ],
+     "size": [
+      44.0,
+      13.2
+     ]
+    }
+   ],
+   "color": "shadow_contact",
+   "opacity": 0.45,
+   "blur": 3
+  },
+  {
+   "name": "cut_1__cut_2",
+   "tags": [
+    "cut_1"
+   ],
+   "hidden": true,
+   "z": 3,
+   "kind": "flat",
+   "material": "fx_flash",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      221.0
+     ],
+     "size": [
+      5.0,
+      256.0
+     ]
+    }
+   ],
+   "opacity": 1.0,
+   "emit": 1.0,
+   "glow": {
+    "radius": 5,
+    "opacity": 0.6,
+    "color": "lamp_glow"
+   }
+  },
+  {
+   "name": "cut_1__snips_3",
+   "tags": [
+    "cut_1"
+   ],
+   "hidden": true,
+   "z": 4,
+   "kind": "flat",
+   "material": "fx_flash",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      192.0,
+      100.0
+     ],
+     "size": 26.0,
+     "rot": 8.0,
+     "crop": [
+      0.8,
+      4.8,
+      8.8,
+      14.8
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      192.0,
+      340.0
+     ],
+     "size": 20.0,
+     "rot": 8.0,
+     "crop": [
+      0.8,
+      4.8,
+      8.8,
+      14.8
+     ]
+    }
+   ],
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.5,
+    "color": "lamp_glow"
+   }
+  },
+  {
+   "name": "cut_2__contact_4",
+   "tags": [
+    "cut_2"
+   ],
+   "hidden": true,
+   "z": 0,
+   "kind": "shadow",
+   "material": "fx_void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      350.0
+     ],
+     "size": [
+      60.8,
+      18.24
+     ]
+    }
+   ],
+   "color": "shadow_contact",
+   "opacity": 0.45,
+   "blur": 3
+  },
+  {
+   "name": "cut_2__rim_5",
+   "tags": [
+    "cut_2"
+   ],
+   "hidden": true,
+   "z": 1,
+   "kind": "flat",
+   "material": "fx_void_rim",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      221.0
+     ],
+     "size": [
+      24.0,
+      260.0
+     ]
+    }
+   ],
+   "emit": 0.35,
+   "rough": {
+    "amp": 0.55,
+    "soft": 1.5,
+    "cell": 8
+   },
+   "glow": {
+    "radius": 4,
+    "opacity": 0.35,
+    "color": "#8a78a0"
+   }
+  },
+  {
+   "name": "cut_2__void_6",
+   "tags": [
+    "cut_2"
+   ],
+   "hidden": true,
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_void",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      221.0
+     ],
+     "size": [
+      14.0,
+      244.0
+     ]
+    }
+   ],
+   "rough": {
+    "amp": 0.35,
+    "soft": 1.0,
+    "cell": 8
+   }
+  },
+  {
+   "name": "cut_2__cut_7",
+   "tags": [
+    "cut_2"
+   ],
+   "hidden": true,
+   "z": 3,
+   "kind": "flat",
+   "material": "fx_flash",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      221.0
+     ],
+     "size": [
+      5.0,
+      256.0
+     ]
+    }
+   ],
+   "opacity": 0.6,
+   "emit": 1.0,
+   "glow": {
+    "radius": 5,
+    "opacity": 0.6,
+    "color": "lamp_glow"
+   }
+  },
+  {
+   "name": "cut_3__contact_8",
+   "tags": [
+    "cut_3"
+   ],
+   "hidden": true,
+   "z": 0,
+   "kind": "shadow",
+   "material": "fx_void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      350.0
+     ],
+     "size": [
+      77.6,
+      23.28
+     ]
+    }
+   ],
+   "color": "shadow_contact",
+   "opacity": 0.45,
+   "blur": 3
+  },
+  {
+   "name": "cut_3__rim_9",
+   "tags": [
+    "cut_3"
+   ],
+   "hidden": true,
+   "z": 1,
+   "kind": "flat",
+   "material": "fx_void_rim",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      221.0
+     ],
+     "size": [
+      42.0,
+      260.0
+     ]
+    }
+   ],
+   "emit": 0.35,
+   "rough": {
+    "amp": 0.55,
+    "soft": 1.5,
+    "cell": 8
+   },
+   "glow": {
+    "radius": 4,
+    "opacity": 0.35,
+    "color": "#8a78a0"
+   }
+  },
+  {
+   "name": "cut_3__void_10",
+   "tags": [
+    "cut_3"
+   ],
+   "hidden": true,
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_void",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      221.0
+     ],
+     "size": [
+      28.0,
+      244.0
+     ]
+    }
+   ],
+   "rough": {
+    "amp": 0.35,
+    "soft": 1.0,
+    "cell": 8
+   }
+  },
+  {
+   "name": "cut_3__cut_11",
+   "tags": [
+    "cut_3"
+   ],
+   "hidden": true,
+   "z": 3,
+   "kind": "flat",
+   "material": "fx_flash",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      221.0
+     ],
+     "size": [
+      5.0,
+      256.0
+     ]
+    }
+   ],
+   "opacity": 0.3,
+   "emit": 1.0,
+   "glow": {
+    "radius": 5,
+    "opacity": 0.6,
+    "color": "lamp_glow"
+   }
+  },
+  {
+   "name": "cut_3__flecks_12",
+   "tags": [
+    "cut_3"
+   ],
+   "hidden": true,
+   "z": 3,
+   "kind": "flat",
+   "material": "fx_bone",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      158.0,
+      150.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 75.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      222.0,
+      198.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 125.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      164.0,
+      246.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 175.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      230.0,
+      114.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 225.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      152.0,
+      292.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 275.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      218.0,
+      270.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 325.0
+    }
+   ],
+   "opacity": 0.51
+  },
+  {
+   "name": "cut_4__contact_13",
+   "tags": [
+    "cut_4"
+   ],
+   "hidden": true,
+   "z": 0,
+   "kind": "shadow",
+   "material": "fx_void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      350.0
+     ],
+     "size": [
+      84.8,
+      25.44
+     ]
+    }
+   ],
+   "color": "shadow_contact",
+   "opacity": 0.45,
+   "blur": 3
+  },
+  {
+   "name": "cut_4__rim_14",
+   "tags": [
+    "cut_4"
+   ],
+   "hidden": true,
+   "z": 1,
+   "kind": "flat",
+   "material": "fx_void_rim",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      221.0
+     ],
+     "size": [
+      48.0,
+      260.0
+     ]
+    }
+   ],
+   "emit": 0.35,
+   "rough": {
+    "amp": 0.55,
+    "soft": 1.5,
+    "cell": 8
+   },
+   "glow": {
+    "radius": 4,
+    "opacity": 0.35,
+    "color": "#8a78a0"
+   }
+  },
+  {
+   "name": "cut_4__void_15",
+   "tags": [
+    "cut_4"
+   ],
+   "hidden": true,
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_void",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      221.0
+     ],
+     "size": [
+      34.0,
+      244.0
+     ]
+    }
+   ],
+   "rough": {
+    "amp": 0.35,
+    "soft": 1.0,
+    "cell": 8
+   }
+  },
+  {
+   "name": "cut_4__flecks_16",
+   "tags": [
+    "cut_4"
+   ],
+   "hidden": true,
+   "z": 3,
+   "kind": "flat",
+   "material": "fx_bone",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      152.9,
+      142.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 100.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      226.5,
+      190.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 150.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      159.8,
+      238.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 200.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      235.7,
+      106.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 250.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      146.0,
+      284.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 300.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      221.9,
+      262.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 350.0
+    }
+   ],
+   "opacity": 0.85
+  },
+  {
+   "name": "cut_5__contact_17",
+   "tags": [
+    "cut_5"
+   ],
+   "hidden": true,
+   "z": 0,
+   "kind": "shadow",
+   "material": "fx_void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      350.0
+     ],
+     "size": [
+      81.2,
+      24.36
+     ]
+    }
+   ],
+   "color": "shadow_contact",
+   "opacity": 0.45,
+   "blur": 3
+  },
+  {
+   "name": "cut_5__rim_18",
+   "tags": [
+    "cut_5"
+   ],
+   "hidden": true,
+   "z": 1,
+   "kind": "flat",
+   "material": "fx_void_rim",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      221.0
+     ],
+     "size": [
+      45.0,
+      260.0
+     ]
+    }
+   ],
+   "emit": 0.35,
+   "rough": {
+    "amp": 0.55,
+    "soft": 1.5,
+    "cell": 8
+   },
+   "glow": {
+    "radius": 4,
+    "opacity": 0.35,
+    "color": "#8a78a0"
+   }
+  },
+  {
+   "name": "cut_5__void_19",
+   "tags": [
+    "cut_5"
+   ],
+   "hidden": true,
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_void",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      221.0
+     ],
+     "size": [
+      31.0,
+      244.0
+     ]
+    }
+   ],
+   "rough": {
+    "amp": 0.35,
+    "soft": 1.0,
+    "cell": 8
+   }
+  },
+  {
+   "name": "cut_5__flecks_20",
+   "tags": [
+    "cut_5"
+   ],
+   "hidden": true,
+   "z": 3,
+   "kind": "flat",
+   "material": "fx_bone",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      147.8,
+      134.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 125.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      231.0,
+      182.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 175.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      155.6,
+      230.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 225.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      241.4,
+      98.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 275.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      140.0,
+      276.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 325.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      225.8,
+      254.0
+     ],
+     "size": [
+      8.0,
+      10.0
+     ],
+     "rot": 375.0
+    }
+   ],
+   "opacity": 0.85
+  }
+ ],
+ "frames": [
+  {
+   "name": "cut_1",
+   "show": [
+    "cut_1"
+   ]
+  },
+  {
+   "name": "cut_2",
+   "show": [
+    "cut_2"
+   ]
+  },
+  {
+   "name": "cut_3",
+   "show": [
+    "cut_3"
+   ]
+  },
+  {
+   "name": "cut_4",
+   "show": [
+    "cut_4"
+   ]
+  },
+  {
+   "name": "cut_5",
+   "show": [
+    "cut_5"
+   ]
+  }
+ ]
+}

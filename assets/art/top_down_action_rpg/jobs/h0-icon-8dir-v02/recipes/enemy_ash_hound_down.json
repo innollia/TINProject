@@ -1,0 +1,98 @@
+{
+  "asset": "enemy_ash_hound",
+  "view": "down",
+  "status": "candidate",
+  "note": "Ash Hound facing down (front), new. Positions come from the left view with the character depth cheat (north-south length x0.5): head in front and low, back and crest rising behind it, tail rising behind the rump (tilted so it does not read as a spike), hind legs peeking out behind the front legs. Muzzle is its own form so it keeps an outline over the skull. The dog's left is screen right.",
+  "palette": "palette_h0.json",
+  "style": "sprite",
+  "canvas": [384, 384],
+  "pivot": [192, 320],
+  "pivot_meaning": "ground point under the body centre (place this pixel on the floor position)",
+  "seed": 71,
+  "rig": {
+    "stride": 22, "lift": 4, "bob": 2,
+    "limbs": [
+      {"kind": "leg", "phase": 1, "pivot": [213, 282], "len": 54, "tag": "leg_front_left"},
+      {"kind": "leg", "phase": -1, "pivot": [171, 282], "len": 54, "tag": "leg_front_right"},
+      {"kind": "leg", "phase": -1, "pivot": [223, 244], "len": 47, "tag": "leg_hind_left"},
+      {"kind": "leg", "phase": 1, "pivot": [161, 244], "len": 47, "tag": "leg_hind_right"}
+    ],
+    "sway": [{"tag": "tail", "pivot": [202, 204], "rot": 8}]
+  },
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.42, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [192, 316], "size": [84, 84]}]},
+
+    {"name": "tail", "tags": ["upper", "tail"], "z": 0, "material": "ash",
+     "pieces": [{"icon": "comet", "at": [206, 192], "size": [38, 38], "rot": -25}]},
+    {"name": "tail_embers", "tags": ["upper", "tail"], "z": 0.5, "kind": "flat", "material": "ember", "clip_to": "tail",
+     "glow": {"radius": 2.5, "opacity": 0.45, "color": "ember_glow"},
+     "pieces": [{"icon": "comet", "keep": [[9.5, 1, 15.5, 7]], "at": [206, 192], "size": [38, 38], "rot": -25}]},
+
+    {"name": "leg_hind_right", "tags": ["legs", "leg_hind_right"], "z": 0.5, "material": "ash_far",
+     "pieces": [
+       {"icon": "circle", "at": [161, 262], "size": [20, 36]},
+       {"icon": "circle", "at": [160, 281], "size": [13, 20]},
+       {"icon": "circle", "at": [159, 291], "size": [20, 10]}
+     ]},
+    {"name": "leg_hind_left", "tags": ["legs", "leg_hind_left"], "z": 0.5, "material": "ash_far",
+     "pieces": [
+       {"icon": "circle", "at": [223, 262], "size": [20, 36]},
+       {"icon": "circle", "at": [224, 281], "size": [13, 20]},
+       {"icon": "circle", "at": [225, 291], "size": [20, 10]}
+     ]},
+
+    {"name": "body", "tags": ["upper", "body"], "z": 2, "material": "ash",
+     "pieces": [
+       {"icon": "circle", "at": [192, 244], "size": [80, 66]},
+       {"icon": "circle", "at": [192, 270], "size": [66, 42]},
+       {"icon": "circle", "at": [192, 222], "size": [70, 44]},
+       {"icon": "mountains", "at": [192, 207], "size": [66, 28]}
+     ]},
+
+    {"name": "leg_front_right", "tags": ["legs", "leg_front_right"], "z": 3, "material": "ash",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [171, 300], "size": [24, 36]},
+       {"icon": "circle", "at": [171, 320], "size": [14, 26]},
+       {"icon": "circle", "at": [170, 336], "size": [23, 12]}
+     ]},
+    {"name": "leg_front_left", "tags": ["legs", "leg_front_left"], "z": 3, "material": "ash",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [213, 300], "size": [24, 36]},
+       {"icon": "circle", "at": [213, 320], "size": [14, 26]},
+       {"icon": "circle", "at": [214, 336], "size": [23, 12]}
+     ]},
+
+    {"name": "collar", "tags": ["upper", "neck"], "z": 3.5, "material": "bronze",
+     "pieces": [{"icon": "circle", "at": [192, 300], "size": [60, 11]}]},
+    {"name": "collar_tag", "tags": ["upper", "neck"], "z": 3.6, "material": "bronze",
+     "pieces": [{"icon": "tag", "at": [192, 317], "size": [11, 12], "rot": 45}]},
+
+    {"name": "ear_right", "tags": ["upper", "head"], "z": 3.9, "material": "ash",
+     "pieces": [{"icon": "droplet", "at": [170, 251], "size": [16, 28], "rot": -22}]},
+    {"name": "ear_left", "tags": ["upper", "head"], "z": 3.9, "material": "ash",
+     "pieces": [{"icon": "droplet", "at": [214, 251], "size": [16, 28], "rot": 22}]},
+    {"name": "head", "tags": ["upper", "head"], "z": 4, "material": "ash",
+     "shade": {"highlight_amount": 0.6},
+     "pieces": [{"icon": "circle", "at": [192, 276], "size": [60, 48]}]},
+    {"name": "muzzle", "tags": ["upper", "head"], "z": 4.2, "material": "ash",
+     "shade": {"highlight_amount": 0.6},
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [192, 298], "size": [30, 34]}]},
+
+    {"name": "cracks", "tags": ["upper", "cracks"], "z": 6, "kind": "flat", "material": "ember", "clip_to": "body",
+     "glow": {"radius": 2.5, "opacity": 0.5, "color": "ember_glow"},
+     "pieces": [
+       {"icon": "lightning_bolt", "at": [175, 226], "size": [6, 18], "rot": 20},
+       {"icon": "lightning_bolt", "at": [209, 234], "size": [6, 16], "rot": -20}
+     ]},
+
+    {"name": "eye_right", "tags": ["upper", "head"], "z": 7, "kind": "flat", "material": "ember",
+     "glow": {"radius": 2.5, "opacity": 0.65, "color": "ember_glow"},
+     "pieces": [{"icon": "circle", "at": [178, 276], "size": [8, 5], "rot": 15}]},
+    {"name": "eye_left", "tags": ["upper", "head"], "z": 7, "kind": "flat", "material": "ember",
+     "glow": {"radius": 2.5, "opacity": 0.65, "color": "ember_glow"},
+     "pieces": [{"icon": "circle", "at": [206, 276], "size": [8, 5], "rot": -15}]},
+    {"name": "nose", "tags": ["upper", "head"], "z": 7, "kind": "flat", "material": "eye",
+     "pieces": [{"icon": "circle", "at": [192, 311], "size": [12, 8]}]}
+  ]
+}

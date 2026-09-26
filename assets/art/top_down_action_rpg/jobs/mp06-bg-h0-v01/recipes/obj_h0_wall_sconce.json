@@ -1,0 +1,37 @@
+{
+  "asset": "obj_h0_wall_sconce",
+  "status": "candidate",
+  "note": "mp06 H0 object: iron wall sconce with a glass lamp, taken out of the V1 background (sconce_brackets / glass / flames on the north piers). Wall-mounted: the pivot is where the bracket meets the wall face; place it on a pier or wall face and sort it with that wall's floor line (scene item 'sort_y'). Glass and flame are emissive (_emit.png). Scaled x1.24 to the player scale.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [112, 136],
+  "pivot": [56, 113],
+  "pivot_meaning": "wall attachment point: bottom centre of the bracket on the wall face",
+  "scale_all": {"factor": 1.24, "origin": [0, 0]},
+  "seed": 302,
+  "forms": [
+    {"name": "bracket", "z": 1, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [45, 80], "size": [12, 22]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [45, 66], "size": [26, 7]}
+     ]},
+    {"name": "glass", "z": 2, "material": "glass", "emit": 0.85,
+     "glow": {"radius": 12, "opacity": 0.5, "color": "lamp_glow"},
+     "line": {"width": 1.0, "heavy": 1.0},
+     "pieces": [{"icon": "tungsten_light", "crop": [4.3, 0.2, 11.7, 10.6], "flip": "y", "at": [45, 48], "size": [24, 32]}]},
+    {"name": "flame", "z": 3, "kind": "flat", "material": "flame", "emit": 1.0, "clip_to": "glass",
+     "glow": {"radius": 5, "opacity": 0.7, "color": "flame_glow"},
+     "pieces": [{"icon": "fire", "at": [45, 52], "size": [11, 15]}]},
+    {"name": "cage_bars", "z": 3.5, "kind": "flat", "material": "iron", "line": false,
+     "pieces": [
+       {"icon": "square", "at": [39, 48], "size": [2, 30]},
+       {"icon": "square", "at": [51, 48], "size": [2, 30]},
+       {"icon": "square", "at": [45, 44], "size": [22, 2]}
+     ]},
+    {"name": "cap", "z": 4, "material": "iron", "line": {"width": 1.0, "heavy": 1.0},
+     "pieces": [
+       {"icon": "triangle", "at": [45, 29], "size": [22, 10]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [45, 34], "size": [26, 5]}
+     ]}
+  ]
+}

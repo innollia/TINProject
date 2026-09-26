@@ -14,6 +14,12 @@ const MODULE_SCRIPT_PATH: String = "res://modules/rule_rewriting/module.gd"
 
 static var _consts: Dictionary = {}
 
+# Judge-only RuleSet surgery for declared_rule_required. Every parse drops the
+# sentences whose meaning key is listed here, so a removed rule cannot come back by
+# re-parsing the same words. Empty by default, which keeps the simulator an exact
+# copy of the module turn (the parity test runs with it empty).
+static var suppressed_meanings: Dictionary = {}
+
 
 static func limits() -> Dictionary:
 	if _consts.is_empty():
@@ -88,6 +94,35 @@ static func rule_resolution_signature(rules: RuleSet) -> String:
 	return "\n".join(signatures)
 
 
+# Meaning of a sentence without its sources: the same rule written with other words,
+# or at another place, has the same key.
+static func meaning_key(sentence: RuleSentence) -> String:
+	var condition_parts: Array[String] = []
+	for condition: Dictionary in sentence.conditions:
+		condition_parts.append("%s:%s:%s" % [
+			String(condition.get("kind", "")),
+			String(condition.get("target", "")),
+			str(bool(condition.get("negated", false)))
+		])
+	return "%s|%s|%s|%s|%s|%s|%s" % [
+		String(sentence.subject), str(sentence.subject_is_negated),
+		String(sentence.operator), String(sentence.predicate_role),
+		String(sentence.predicate), str(sentence.is_negated), ";".join(condition_parts)
+	]
+
+
+static func _parse(width: int, height: int, entities: Array[RuleGridEntity]) -> RuleSet:
+	var rules := RuleParser.parse(width, height, entities)
+	if suppressed_meanings.is_empty():
+		return rules
+	var kept: Array[RuleSentence] = []
+	for sentence: RuleSentence in rules.sentences:
+		if not suppressed_meanings.has(meaning_key(sentence)):
+			kept.append(sentence)
+	rules.sentences = kept
+	return rules
+
+
 # Mirrors module.gd _word_parse_input.
 static func word_parse_input(state: RuleGridState, rules: RuleSet, disabled_sources: Dictionary) -> Dictionary:
 	var entities: Array[RuleGridEntity] = []
@@ -141,7 +176,7 @@ static func varying_word_sources(states: Array[Dictionary], start_index: int, ne
 # until the rule signature stops changing, and disable only the derived sources that
 # vary inside a cycle.
 static func resolve_word_rules(state: RuleGridState) -> RuleSet:
-	var physical_rules := RuleParser.parse(state.width, state.height, state.entities)
+	var physical_rules := _parse(state.width, state.height, state.entities)
 	var disabled_word_sources: Dictionary = {}
 	var step_limit := mini(_limit(&"MAX_WORD_FIXED_POINT_STEPS", 128), maxi(1, state.entities.size() + 1))
 	for _resolve_pass: int in range(maxi(1, state.entities.size() + 1)):
@@ -154,7 +189,7 @@ static func resolve_word_rules(state: RuleGridState) -> RuleSet:
 			signatures.append(current_signature)
 			var parse_input := word_parse_input(state, current_rules, disabled_word_sources)
 			promoted_by_state.append(parse_input["promoted_ids"])
-			var next_rules := RuleParser.parse(state.width, state.height, parse_input["entities"])
+			var next_rules := _parse(state.width, state.height, parse_input["entities"])
 			var next_signature := rule_resolution_signature(next_rules)
 			if next_signature == current_signature:
 				return next_rules
@@ -383,8 +418,15 @@ static func _find_entity(state: RuleGridState, entity_id: String) -> RuleGridEnt
 
 
 # Canonical, order-independent state key for search dedup.
-# Pass signature_in when the caller already has it; the rule signature is a second
-# full string build and this runs once per generated search node.
-static func state_key(state: RuleGridState, rules: RuleSet, signature_in: String = "") -> String:
-	var signature := signature_in if not signature_in.is_empty() else rule_resolution_signature(rules)
-	return "%s#%s" % [JSON.stringify(state.to_dictionary()), signature]
+# The active rules are a function of the physical state (and of the fixed
+# suppression set during one search), so the key is the physical state alone.
+# signature_in is accepted for callers written against the older key and ignored.
+static func state_key(state: RuleGridState, _rules: RuleSet = null, _signature_in: String = "") -> String:
+	var parts: PackedStringArray = PackedStringArray()
+	for entity: RuleGridEntity in state.entities:
+		parts.append("%s:%s:%d,%d:%d,%d:%d:%d" % [
+			entity.id, String(entity.kind), entity.position.x, entity.position.y,
+			entity.facing.x, entity.facing.y, entity.layer, entity.creation_serial
+		])
+	parts.sort()
+	return "|".join(parts)

@@ -1,0 +1,80 @@
+{
+  "asset": "prop_r6_cure_queue_board",
+  "status": "candidate",
+  "note": "prop_r6_cure_queue_board (Cure Queue Board), wall-mounted. 2.4 m wide, 1.6 m tall, bottom edge 0.8 m above the floor (110 px/m). Dark wood frame and felt panel. ps_numbered: twelve bronze queue plates in order on two rails, told apart only by punched hole patterns (no numbers). ps_reassigned: half of the plates moved to a new lower rail on the right in a different order, some hanging askew, tied with a bronze cord. No text.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [560, 360],
+  "pivot": [280, 330],
+  "pivot_meaning": "wall attach reference: point on the wall's floor line directly below the board centre (place on the wall base line)",
+  "seed": 622,
+  "frames": [
+    {"name": "prop_r6_queue_numbered"},
+    {"name": "prop_r6_queue_reassigned", "hide": ["numbered"], "show": ["reassigned"]}
+  ],
+  "forms": [
+    {"name": "board", "z": 0, "kind": "block", "material": "court_wood", "extrude": 176,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [280, 60], "size": [432, 12]}]},
+    {"name": "felt", "z": 1, "kind": "flat", "color": "#262320",
+     "line": {"width": 1.0, "heavy": 1.3, "breaks": 0.2},
+     "grime": {"stamps": ["metaballs", "cloud"], "size": 20, "soft": 2, "density": 0.3, "strength": 0.3, "color": "grime"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [280, 156], "size": [402, 152]}]},
+    {"name": "corner_studs", "z": 1.5, "kind": "flat", "material": "bronze", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [9, 9], "repeat": {"points": [[74, 74], [486, 74], [74, 234], [486, 234]]}}]},
+    {"name": "rails", "z": 2, "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [280, 100], "size": [360, 6]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [280, 160], "size": [360, 6]}
+     ]},
+
+    {"name": "hooks_n", "tags": ["numbered"], "z": 2.5, "kind": "flat", "material": "iron",
+     "pieces": [
+       {"icon": "square", "at": [125, 110], "size": [3, 12], "repeat": {"grid": [6, 1], "step": [62, 0]}},
+       {"icon": "square", "at": [125, 170], "size": [3, 12], "repeat": {"grid": [6, 1], "step": [62, 0]}}
+     ]},
+    {"name": "plates_n", "tags": ["numbered"], "z": 3, "material": "bronze",
+     "shade": {"max_radius": 5, "bump": 0.7},
+     "line": {"width": 0.8, "heavy": 1.0},
+     "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.55, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [125, 124], "size": [42, 32], "repeat": {"grid": [6, 1], "step": [62, 0]}},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [125, 184], "size": [42, 32], "repeat": {"grid": [6, 1], "step": [62, 0]}}
+     ]},
+    {"name": "plate_holes_n", "tags": ["numbered"], "z": 3.5, "kind": "flat", "color": "#15110f",
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [6, 6], "repeat": {"points": [
+       [125, 124], [180, 120], [194, 128], [236, 118], [250, 124], [264, 130],
+       [310, 120], [310, 130], [360, 124], [374, 124], [436, 120], [422, 128],
+       [118, 184], [132, 184], [180, 178], [194, 190], [243, 184], [305, 178],
+       [312, 184], [319, 190], [360, 180], [374, 188], [424, 178], [436, 190]]}}]},
+
+    {"name": "hooks_r", "tags": ["reassigned"], "hidden": true, "z": 2.5, "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [3, 12], "repeat": {"points": [[125, 110], [187, 110], [249, 110], [125, 170], [187, 170], [249, 170]]}}]},
+    {"name": "plates_r", "tags": ["reassigned"], "hidden": true, "z": 3, "material": "bronze",
+     "shade": {"max_radius": 5, "bump": 0.7},
+     "line": {"width": 0.8, "heavy": 1.0},
+     "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.55, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [0, 0], "size": [42, 32],
+        "repeat": {"points": [[125, 124], [187, 124, 4], [249, 124], [125, 184, -5], [187, 184], [249, 184, 3]]}},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [0, 0], "size": [42, 32],
+        "repeat": {"points": [[330, 214, -8], [376, 218, 6], [422, 214, -3], [352, 170, 10], [404, 172, -12], [446, 168, 5]]}}
+     ]},
+    {"name": "plate_holes_r", "tags": ["reassigned"], "hidden": true, "z": 3.5, "kind": "flat", "color": "#15110f",
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [6, 6], "repeat": {"points": [
+       [125, 124], [180, 120], [194, 128], [243, 124], [256, 124], [118, 184], [132, 184],
+       [180, 184], [249, 178], [249, 190], [324, 214], [338, 214], [376, 212], [376, 224],
+       [422, 214], [352, 166], [352, 176], [398, 172], [410, 172], [446, 164], [446, 174], [440, 168]]}}]},
+    {"name": "rail_b", "tags": ["reassigned"], "hidden": true, "z": 2, "kind": "flat", "material": "bronze_block", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [388, 198], "size": [150, 6], "rot": 3}]},
+    {"name": "cord", "tags": ["reassigned"], "hidden": true, "z": 4, "kind": "flat", "material": "bronze", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "at": [340, 190], "size": [60, 3], "rot": -34},
+       {"icon": "square", "at": [388, 194], "size": [52, 3], "rot": 30},
+       {"icon": "square", "at": [430, 190], "size": [50, 3], "rot": -36},
+       {"icon": "square", "at": [300, 150], "size": [90, 3], "rot": 8}
+     ]},
+
+    {"name": "wall_stain", "z": 5, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.35, "clip_to": "board",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [150, 246], "size": [16, 40]}, {"icon": "droplet", "flip": "y", "at": [420, 244], "size": [14, 34]}]}
+  ]
+}
