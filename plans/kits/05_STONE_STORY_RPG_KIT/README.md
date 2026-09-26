@@ -1,138 +1,138 @@
 # Kit 05 — Stone Story RPG
 
-분할 계획 문서의 중앙. 여기서 시작한다.
+> **2026-09-26 대개편.** 참조 분담이 바뀌었다.
+> **비주얼 · 분위기 · 서사 = Ena: Dream BBQ** (1차 판은 Stone Story 스크린샷을 비주얼로 씁니다 — 오류)
+> **시스템 · UX · 진행 = Stone Story RPG**
+> **절차 생성 = core/procedural (PVE)**
+> 사용자가 바로잡음: *"저런 검은 배경에 글씨 찍찍 아니야. 그런거 아니야. 기획부터 잘못됐어."*
 
-| 문서 | 책임 | 상태 |
-|---|---|---|
-| [01_RENDER_PIPELINE.md](01_RENDER_PIPELINE.md) | 960×540 정수 스케일, 드로잉 규칙, 팔레트, 절차 텍스처 | 작성 |
-| [02_DOMAIN_STATE.md](02_DOMAIN_STATE.md) | 전체 상태 스키마, JSON-safe 규칙, 전 단위 정의 | 작성 |
-| [03_SIMULATION.md](03_SIMULATION.md) | 30Hz 틱, 처리 순서, 적 상태 기계, 투사체, 장애물 | 작성 |
-| [04_COMBAT_STATS_DAMAGE.md](04_COMBAT_STATS_DAMAGE.md) | 스탯 9, 스케일링, 요구치, 데미지 타입 5, 상태 3, 어펙스, 방어, 튜닝 | 작성 |
-| [05_PLAYER_AI.md](05_PLAYER_AI.md) | 자동 조종 목표 스택, 개입 창 3종, 빌드 판독 | 작성 |
-| [06_STAR_LEVEL_AND_GENERATION.md](06_STAR_LEVEL_AND_GENERATION.md) | 스타 레벨, 게이트, 밴드, 절차 생성 결정론 | 작성 |
-| [07_ITEMS_ABILITIES_CRAFTING.md](07_ITEMS_ABILITIES_CRAFTING.md) | 아이템, 강화, 어펙스, 제작 4동사, 인벤토리 상한 | 작성 |
-| [08_ECONOMY_AND_SHOPS.md](08_ECONOMY_AND_SHOPS.md) | 화폐, 상점 재고/가격, 계절, 전설 보상 | 작성 |
-| [09_STONES_VERBS.md](09_STONES_VERBS.md) | 소울스톤 10 = 동사 10, 해금 판정, 패시브 | 작성 |
-| [10_SCREENS_PRESENTATION.md](10_SCREENS_PRESENTATION.md) | 화면 12종, 상태 8종, 좌표 레이아웃, focus 규칙 | 작성 |
-| [11_INPUT.md](11_INPUT.md) | InputMap action, 키 집합, Input Bubble, 재배정 | 작성 |
-| [12_SAVE_LOAD_RESET.md](12_SAVE_LOAD_RESET.md) | versioned JSON, 사망/루프, 리셋, 마이그레이션 | 작성 |
-| [13_CONTENT_SCHEMA.md](13_CONTENT_SCHEMA.md) | authored JSON 필드 단위 정의, 검증 규칙, 금지 | 작성 |
-| [14_TESTS.md](14_TESTS.md) | 자동 테스트 항목 전수, 결정론 테스트 | 작성 |
-| [15_MANUAL_PLAY.md](15_MANUAL_PLAY.md) | 수동 플레이 과제 20개, 기록 양식 | 작성 |
-| [16_ACCEPTANCE.md](16_ACCEPTANCE.md) | 완료 게이트 (Stone Story 규모) | 작성 |
-| [17_OPEN_QUESTIONS.md](17_OPEN_QUESTIONS.md) | 미확정 목록, 구현 차단 단계 | 작성 |
-
-조사 정본: [../../../docs/research/stone_story_rpg/README.md](../../../docs/research/stone_story_rpg/README.md)
-구조 추출: [../../../docs/research/stone_story_rpg/01_stone_story_rpg/structure_extraction.md](../../../docs/research/stone_story_rpg/01_stone_story_rpg/structure_extraction.md)
-DS3 추출: [../../../docs/research/stone_story_rpg/03_dark_souls_3/structure_extraction.md](../../../docs/research/stone_story_rpg/03_dark_souls_3/structure_extraction.md)
-렌더 계약: [../../../docs/research/stone_story_rpg/04_procedural_visuals/_README.md](../../../docs/research/stone_story_rpg/04_procedural_visuals/_README.md)
-사용자 결정: [../../../PROJECT_DECISIONS.md](../../../PROJECT_DECISIONS.md) §21
+**fact 의 원천은 [`IMPLEMENTATION_STATUS.md`](IMPLEMENTATION_STATUS.md) 다.** 계획보다 그 파일을 먼저 믿는다.
+**미결정은 전부 [`17_OPEN_QUESTIONS.md`](17_OPEN_QUESTIONS.md) 에 있다.**
 
 ---
 
-## 0. Kit 목적
+## 0. 게임 (한 문장)
 
-TINProject 본편의 한 구간을 **자동 전투 + 절차 생성 + 제작 시스템**의
-top-down 액션 RPG로 전환하기 위한 기반.
+> **로비에서 지역과 별과 장비를 골라 탐험을 보내면, AI가 그 장비가 만든 정책대로 싸운다.
+> 돌아오면 통화와 해금이 늘어난다.**
 
-Primary Reference는 **Stone Story RPG 하나**, 시스템 보강 축은 **Dark Souls 3(부분)**.
-분위기·스토리·내용의 source는 **Ena: Dream BBQ** (시스템 레퍼런스 아님).
+플레이어는 직 조종하지 않는다. **장비가 유일한 간접 조종 수단**이다.
 
-## 1. 확정된 성질 3가지
+---
 
-1. **플레이어 캐릭터는 AI가 조종한다.** 플레이어는 개입만 한다.
-2. **진행은 스탯이 아니라 동사의 해금이다.** 소울스톤 10개 = 새 동사 10개.
-3. **스타 레벨이 런의 1급 축이다.** `run = (location_id, star_level, run_seed)`.
+## 1. 문서
 
-## 2. 소유권 (사용자 확정)
+### 읽는 순서
 
-이 Kit이 소유하는 경로. **이 밖은 수정하지 않는다.**
+| 순서 | 문서 | 상태 |
+|---|---|---|
+| 1 | [`IMPLEMENTATION_STATUS.md`](IMPLEMENTATION_STATUS.md) | **사실.** 실측 수치 · 결함 · 실행법 |
+| 2 | [`17_OPEN_QUESTIONS.md`](17_OPEN_QUESTIONS.md) | **미결정 목록.** 여기부터 |
 
-```text
+### 설계
+
+| 문서 | 책임 | 상태 |
+|---|---|---|
+| [01_RENDER_PIPELINE.md](01_RENDER_PIPELINE.md) | 비주얼 계약 + V1~V15 검수 | **개정됨 (폐기 기록 포함)** |
+| [04_COMBAT_STATS_DAMAGE.md](04_COMBAT_STATS_DAMAGE.md) | 4속성 · 단일 데미지 · 상성 · 장비 정책 | **개정됨** |
+| [05_PLAYER_AI.md](05_PLAYER_AI.md) | 목표 스택 · 정책 실행 | **개정됨** |
+| [10_SCREENS_PRESENTATION.md](10_SCREENS_PRESENTATION.md) | 로비 · 탐험 2화면 | **개정됨** |
+| [11_INPUT.md](11_INPUT.md) | 6 action · 홀드 예외 · Input Bubble 미구현 | **개정됨** |
+| [02_DOMAIN_STATE.md](02_DOMAIN_STATE.md) | 상태 스키마 | ⚠ 1차 판 (구 시스템 전제) |
+| [03_SIMULATION.md](03_SIMULATION.md) | 틱 순서 · 상태 기계 | ⚠ 1차 판 |
+| [06_STAR_LEVEL_AND_GENERATION.md](06_STAR_LEVEL_AND_GENERATION.md) | 스타 레벨 · 절차 생성 | ⚠ 1차 판 |
+| [07_ITEMS_ABILITIES_CRAFTING.md](07_ITEMS_ABILITIES_CRAFTING.md) | 제작 4동사 | ⚠ 1차 판 |
+| [08_ECONOMY_AND_SHOPS.md](08_ECONOMY_AND_SHOPS.md) | 화폐 · 상점 · 전설 | ⚠ 1차 판 |
+| [09_STONES_VERBS.md](09_STONES_VERBS.md) | 돌 10 = 동사 10 | ⚠ 1차 판 |
+| [12_SAVE_LOAD_RESET.md](12_SAVE_LOAD_RESET.md) | 세이브 | ⚠ 1차 판 |
+| [13_CONTENT_SCHEMA.md](13_CONTENT_SCHEMA.md) | JSON 스키마 | ⚠ 1차 판 |
+| [14_TESTS.md](14_TESTS.md) | 테스트 목록 | ⚠ 1차 판 |
+| [15_MANUAL_PLAY.md](15_MANUAL_PLAY.md) | 수동 과제 | ⚠ 1차 판 |
+| [16_ACCEPTANCE.md](16_ACCEPTANCE.md) | 완료 게이트 | ⚠ 1차 판 |
+| [18_REFERENCE_MAPPING.md](18_REFERENCE_MAPPING.md) | 레퍼런스 매핑 | ⚠ 타인 작성 |
+| [19_REFERENCE_GAME_FLOW.md](19_REFERENCE_GAME_FLOW.md) | Reference Game 흐름 | ⚠ 타인 작성 |
+
+⚠ = **1차 판 그대로다.** 2026-09-26 설계 변경(4속성 · 로비 · 2화면)을 반영하지 않았다.
+구현에 대조하지 말고 **CODE 를 정본으로 읽을 것.**
+
+---
+
+## 2. 확정된 것
+
+### 2.1 소유 경로
+
+```
 plans/kits/05_STONE_STORY_RPG_KIT/**
 docs/research/stone_story_rpg/**
 modules/stone_story_rpg/**
-tests/core/test_stone_story_rpg_*.gd     (신규 파일만)
-app/app_root.gd                          (NORMAL_IDS 등록 1줄만 — 승인 완료)
+tests/core/test_stone_story_rpg_*.gd
+tests/capture_stone_story.gd
+app/app_root.gd        (NORMAL_IDS 1줄 — 승인 완료)
 ```
 
-금지: `core/`, `meta/`, `modules/`의 다른 모듈, `tests/`의 기존 파일,
-`plans/kits/`의 다른 계획, `docs/`의 다른 문서.
+금지: `core/` `meta/` 다른 모듈 다른 계획 기존 테스트 파일.
 
-**AppRoot 등록은 완료됐다.** `modules/stone_story_rpg/` 골격과
-`app/app_root.gd`의 `NORMAL_IDS` 등록이 끝났고 부팅 검증도 통과했다.
-`game_library`는 `catalog`에서 자동으로 이 모듈을 picking한다 (별도 수정 없음).
-`InputRouter`가 `<id>_left/right/up/down/confirm/cancel`을 자동 생성한다.
+### 2.2 Procedural (PVE)
 
-## 3. Phase 구분
+- **소유자가 W2. 동결 계약. 쓰기만 한다.** (`core/procedural/CONTRACT.md`)
+- 쓰는 것: `Procedural.derive_seed` `make_palette` `make_noise` ·
+  `ProceduralShape.build_from_spec` + `step` + `points` · `ProceduralBackdropDynamics` ·
+  `ProceduralCanvas` · `ProceduralPalette` · `ProceduralSeed` · `ProceduralDeformField`
+- **쓰지 않는 것**: `build_sprite` `render_frame` `make_rig` `make_backdrop`
+  (전부 "wave 1 stub" — `push_error` 후 null)
+- 공식 우회로: **shape 를 step 하고 points 를 읽는다.**
+- **정수 스케일러는 PVE 에 없다.** `presentation/frame.gd` 가 직접 구현.
 
-| Phase | 범위 | 상태 |
-|---|---|---|
-| Phase 0a | AppRoot 등록 + 부팅 골격 | **완료** (스모크 exit 0) |
-| Phase 0b | 렌더 파이프라인 (960×540 정수 스케일, ink 헬퍼) | **미착수** |
-| Phase 1 | SSR 구조 ( combat / 생성 / 제작 / 상점 / 돌 / 전설 ) | **계획 완료, 구현 대기** |
-| Phase 2 | Dark Souls 3 보강 (전투 심화, 스탯 빌드) | **자료 1/2 수신. 설계 반영됨** |
-| Phase 3 | 세 해상도 검수 + 자동/수동 검증 | 대기 |
-| Phase 4 | Ena 톤·스토리·콘텐츠 | **자료 1차 수신 (에세이 + 스크린샷 9장)** |
+### 2.3 금지 (프로젝트 규칙)
 
-## 4. 구현 순서
-
-| # | 단계 | 선행 문서 | 완료 조건 |
-|---|---|---|---|
-| 1 | 렌더 파이프라인 | 01 | 960×540 정수 스케일, 선/텍스트 드로잉, 3해상도 캡처 |
-| 2 | 상태 + 틱 + 세이브 | 02, 03, 12 | 결정론, save round-trip |
-| 3 | 스탯 + 데미지 | 04 | 요구치 페널티, 소프트캡, 5속성, 3상태 |
-| 4 | 적 상태 기계 + 전투 | 03, 04 | 행동 전이표 전수, 투사체, 사망 |
-| 5 | 보스 | 03 | 페이즈 체인, 적응형 저항, 컷씬 |
-| 6 | PlayerAI | 05 | 무입력 진행, 개입 창 3종 |
-| 7 | 스타 레벨 + 생성 | 06 | (region, star, seed) 재현 |
-| 8 | 인벤토리/아이템/어펙스/제작 | 07 | 4동사, 어펙스 결정론 |
-| 9 | 경제/상점 | 08 | 가격 증가, 재고, 계절 |
-| 10 | 돌/동사 | 09 | 10 verbs 해금 판정 |
-| 11 | 전설 | 08, 13 | 15개, 선택 + 다중 엔딩 |
-| 12 | 콘텐츠 확장 | 13 | [16](16_ACCEPTANCE.md) 수량 게이트 |
-| 13 | 검증 | 14, 15, 16 | 전부 통과 |
-
-## 5. AGENTS.md 규칙에 대한 이 Kit의 예외 (사용자 확정)
-
-`AGENTS.md` 와 `docs/KIT_WORKFLOW.md` §8 은 각 Kit 계획에
-**이미지 자산의 생성·편집 명세(톤앤매너, 자산군 brief, Gold Standard)** 를 요구한다.
-
-**이 Kit에서는 사용자 결정으로 그 규칙을 대체한다.**
-
-| 항목 | 결정 |
-|---|---|
-| 이미지 자산 | **0개.** `modules/stone_story_rpg/` 아래 이미지 파일 없음 |
-| GPT 이미지 생성/편집 | **호출하지 않는다** |
-| ASCII 문자 렌더링 | **금지** |
-| 절차 비주얼 | `01_RENDER_PIPELINE.md` 가 그 자체가 명세다. 별도 자산 brief 불필요 |
-| 톤앤매너 | Phase 4. Ena 자료 1차 수신 (`02_ena_dream_bbq/`) |
-| `docs/IMAGE_ASSET_WORKFLOW.md` | 이 Kit에 적용되지 않는다 |
-| `docs/VISUAL_DIRECTION.md` §4, §6 | 이 Kit에 적용되지 않는다 |
-| `PROJECT_DECISIONS.md` §10 (IMG1–IMG25) | 이 Kit에 적용되지 않는다 |
-
-- 이것은 **예외**이므로 예외的范围을 여기 명시한다.
-  프로젝트 전체가 아니라 **이 Kit 한정**이다. (범위 미확정 → `17` Q1)
-- 렌더 명세는 자산 brief 를 대체한다. 절차 드로잉에는
-  픽셀 크기·알파·피벗·레이어가 없기 때문이다.
-  대신 `01` §2 드로잉 규칙, §3 팔레트, §4 절차 텍스처가 그 역할을 한다.
-
-## 6. 금지 (모든 단계 공통)
-
-- 계획에 없는 구현
-- 기억으로 채운 레퍼런스 내용
-- `17_OPEN_QUESTIONS.md`의 미확정 항목을 추정으로 채우기
-- **ASCII 문자 렌더링**
-- **이미지 파일 로드 / 이미지 생성**
-- 앵티에일리어싱, 실수 배 스케일, 채움 면
-- 스크린샷에 없는 상시 HUD 요소
-- 색 변화만으로 focus 표현
-- placeholder 사각형을 월드 오브젝트로 완료 처리
-- content ID/문구/대사의 core script 하드코딩
-- 전용 에디터를 완료조건으로 만들기
+- 이미지 파일 · ASCII 문자 렌더링
+- 데미지 타입 5종 (물리/화염/번개/마력/어둠) — 초현실 세계관에서 불가능
+- `core/` 수정 · `app/` 수정(승인 없이) · `git add .`
 - 두 번째 사용처 전의 shared 추상화
-- Retired Prototype 재사용
-- 원작 지명/NPC/소울스톤명 사용
-- `알아서`, `게임답게`, `레퍼런스 느낌으로`로 결정 대체
-- 자동 테스트 통과만으로 완료 선언
-- 소유권 밖 경로 수정
+- 전용 에디터
+
+---
+
+## 3. 현재 수치
+
+| 항목 | 값 |
+|---|---|
+| 내부 버퍼 | 960 × 640 (1920×1280 = 정확히 2배) |
+| 정수 배 | 720p 1 · 1080p 1 · 1440p 2 · 1920×1280 2 |
+| 시뮬레이션 | 30Hz 고정 틱 |
+| 결정론 | PVE `ProceduralSeed` + `derive_index` (호출 순서 무관) |
+| 속성 | 4종 (다리 1–12 · 놀랍다/틀림/동그라미 0–10) |
+| 상성 | 4-사이클 1개 (다리→틀림→동그라미→놀랍다) |
+| 스탠스 | 가드(홀드) · 회피 · 슈퍼아머 |
+| 장비 정책 키 | 14 (`policy_delta`) + hook 5 |
+| 스크립트 언어 | **없다** (사용자 확정) |
+| 테스트 | Kit 49 · 비주얼 계약 15 · 프로젝트 644 |
+
+---
+
+## 4. 다음 작업 (순서 고정)
+
+1. **A1 씬 팔레트 authored 고정** — `17` §A1
+2. **A2 구조물 기하를 명시적 폴리곤으로** — `17` §A2
+3. **A3 개체 실루엣 3종 확정** — `17` §A3
+4. 소품(prop) 시스템 — R6/R8 을 쓸 자리 (§3 미구현)
+5. V13 4해상도 겹침 실측
+6. `02`/`03`/`06`/`13` 계획 문서를 4속성 · 로비 구조에 맞춰 갱신
+
+A1~A3 는 **17_OPEN_QUESTIONS.md** 가 추천을 싣고 있다. 추천대로 처리하거나
+사용자에게 결정 받는다. **추측으로 착수하지 않는다.**
+
+---
+
+## 5. 완료 기준
+
+`16_ACCEPTANCE.md` 는 1차 판이다 (전투 지역 수 · 보스 수 기준).
+실제 기준은:
+
+- [ ] V1~V15 통과 (15/15 — **하한선**)
+- [ ] 사람이 캡처를 보고 "게임 같다"고 판단한다 (**상한선. V 통과로는 부족**)
+- [ ] 12개 씬이 같은 품질로 나온다
+- [ ] 지리 3곳 이상 · 보스 2기 · 전설 1개 완성
+- [ ] 프로젝트 644 무회귀
+- [ ] `03_dark_souls_3` 자료 2차분 반영
+- [ ] `02_ena_dream_bbq` 2차분 반영

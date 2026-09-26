@@ -26,6 +26,7 @@ var pal: ProceduralPalette = null
 var backdrop: StoneStoryBackdrop = null
 var critters: Dictionary = {}          # foe_id -> StoneStoryCritter
 var _player: StoneStoryCritter = null
+var stats: StoneStoryDrawStats = StoneStoryDrawStats.new()
 var _font_res: SystemFont = null
 var _font_checked: bool = false
 
@@ -105,6 +106,10 @@ func _to_px(w: Dictionary) -> Vector2:
 
 
 func _draw() -> void:
+	stats.reset()
+	stats.view_w = VIEW_W
+	stats.view_h = VIEW_H
+	stats.total_pixels = VIEW_W * VIEW_H
 	draw_rect(Rect2i(0, 0, VIEW_W, VIEW_H), StoneStoryPalette.fill(pal))
 	if state.is_empty():
 		_text_center(VIEW_W / 2, VIEW_H / 2, "빈 화면", 14, StoneStoryPalette.text_dim(pal))
@@ -147,15 +152,20 @@ func _draw_space() -> void:
 		var y1: float = horizon * (float(i + 1) / float(bands)) + 1.0
 		var col: Color = StoneStoryPalette.sky_far(pal).lerp(StoneStoryPalette.sky_near(pal), t0)
 		draw_rect(Rect2i(0, int(y0), VIEW_W, int(y1 - y0) + 1), col)
+		stats.note_rect(Rect2i(0, int(y0), VIEW_W, int(y1 - y0) + 1), col, true)
+		stats.note_sky_band()
 
 	# 2) 구름/태양. Ena 씬에는 하늘에 형태가 있다.
 	var sun_at := Vector2(VIEW_W * 0.72, horizon * 0.34)
-	draw_circle(sun_at, 26.0, StoneStoryPalette.sky_far(pal).lightened(0.25))
+	var sun_col: Color = StoneStoryPalette.sky_far(pal).lightened(0.25)
+	draw_circle(sun_at, 26.0, sun_col)
+	stats.note_shape(int(PI * 26.0 * 26.0), sun_col, 52.0 / float(VIEW_H))
 	for i in 7:
 		var cx: float = 40.0 + s.unit(i) * (VIEW_W - 80.0)
 		var cy: float = 24.0 + s.unit(i + 50) * (horizon * 0.55)
 		var cw: float = 26.0 + s.unit(i + 90) * 34.0
 		_cloud(Vector2(cx, cy), cw, StoneStoryPalette.sky_near(pal).lightened(0.35))
+		stats.note_shape(int(cw * cw * 0.5), StoneStoryPalette.sky_near(pal).lightened(0.35))
 
 	# 3) 지평선 아래 = 바닥. 근경으로 갈수록 밝고 포화.
 	var g_bands: int = 6
@@ -166,6 +176,8 @@ func _draw_space() -> void:
 		var gc: Color = StoneStoryPalette.ground(pal).lerp(
 				StoneStoryPalette.ground(pal).darkened(0.35), 1.0 - t0)
 		draw_rect(Rect2i(0, int(y0), VIEW_W, int(y1 - y0) + 1), gc)
+		stats.note_rect(Rect2i(0, int(y0), VIEW_W, int(y1 - y0) + 1), gc, true)
+		stats.note_ground_band()
 
 	# 4) 바닥 결: 면 위에 얹는 얇은 띠. 선이 아니라 면이다.
 	for bi in 3:
@@ -176,12 +188,18 @@ func _draw_space() -> void:
 		var x: float = -fposmod(_player_world().x * PX_PER_UNIT * 0.22, sp) - sp
 		while x < VIEW_W + sp:
 			var w: float = sp * (0.25 + s.unit(bi * 97 + k) * 0.5)
-			draw_rect(Rect2i(int(x), int(y), maxi(2, int(w)), 3), shade)
+			var r := Rect2i(int(x), int(y), maxi(2, int(w)), 3)
+			draw_rect(r, shade)
+			stats.note_rect(r, shade, true)
 			x += sp * (0.6 + s.unit(bi * 31 + k) * 0.8)
 			k += 1
 
 	# 5) 원경 구조물. 화면 높이의 25%+ (V7 큰 것).
 	_draw_far_structure(s, horizon)
+
+
+func _stats_rect(r: Rect2i, col: Color) -> void:
+	stats.note_rect(r, col, true)
 
 
 ## 구름은 3개 원의 합. 채워진 면.
@@ -207,7 +225,10 @@ func _draw_far_structure(s: StoneStoryRng, horizon: float) -> void:
 			for i in 9:
 				var t: float = float(i) / 8.0
 				var rr: float = r * lerpf(1.0, 0.55, t)
-				draw_rect(Rect2i(int(cx - rr), int(base_y - rr * 0.72), int(rr * 2.0), int(rr * 0.72)), col.darkened(t * 0.5))
+				var rr2 := Rect2i(int(cx - rr), int(base_y - rr * 0.72), int(rr * 2.0), int(rr * 0.72))
+				draw_rect(rr2, col.darkened(t * 0.5))
+				_stats_rect(rr2, col.darkened(t * 0.5))
+			_stats_rect(Rect2i(int(cx - r), int(base_y - 14), int(r * 2.0), 14), col)
 			draw_rect(Rect2i(int(cx - r), int(base_y - 14), int(r * 2.0), 14), col)
 			for i in 7:
 				var rx: float = cx - r + float(i) * (r * 2.0 / 6.0)
@@ -219,6 +240,8 @@ func _draw_far_structure(s: StoneStoryRng, horizon: float) -> void:
 			draw_rect(Rect2i(int(cx), int(horizon - 150), 30, 150), col.lightened(0.10))
 		"arch":
 			var aw: float = 150.0
+			_stats_rect(Rect2i(int(cx - aw), int(horizon - 170), 34, 170), col)
+			_stats_rect(Rect2i(int(cx + aw - 34), int(horizon - 170), 34, 170), col)
 			draw_rect(Rect2i(int(cx - aw), int(horizon - 170), 34, 170), col)
 			draw_rect(Rect2i(int(cx + aw - 34), int(horizon - 170), 34, 170), col)
 			draw_rect(Rect2i(int(cx - aw), int(horizon - 186), int(aw * 2.0), 22), col.lightened(0.12))
@@ -248,6 +271,7 @@ func _draw_foes() -> void:
 
 
 func _draw_critter(f: Dictionary, c: StoneStoryCritter) -> void:
+	var attrs: Dictionary = f.get("attributes", {})
 	var at: Vector2 = _to_px(f["pos"])
 	if c == null:
 		draw_circle(at, 16.0, StoneStoryPalette.line(pal), false, 1.0, true)
@@ -268,7 +292,9 @@ func _draw_critter(f: Dictionary, c: StoneStoryCritter) -> void:
 		if c.part_role(i) != &"body":
 			continue
 		var p: Vector2 = origin + pts[i] * S + Vector2(0, bob)
-		draw_circle(p, maxf(2.0, float(rad[i]) * S), col, false, 1.0, true)
+		var br: float = maxf(2.0, float(rad[i]) * S)
+		draw_circle(p, br, col)
+		stats.note_shape(int(PI * br * br * 0.5), col, br * 2.0 / float(VIEW_H))
 		if i > 0:
 			draw_line(origin + pts[i - 1] * S + Vector2(0, bob), p, col, 1.0, true)
 		body_anchor = p
@@ -279,6 +305,7 @@ func _draw_critter(f: Dictionary, c: StoneStoryCritter) -> void:
 			continue
 		var hp: Vector2 = origin + pts[i] * S + Vector2(0, bob)
 		draw_line(body_anchor, hp, col, 1.0, true)
+		stats.note_stroke()
 		draw_ring(hp, maxf(3.0, float(rad[i]) * S), col)
 
 	# 2) 꼬리: 몸에서 뻗는 선. 끝이 가늘다.
@@ -293,10 +320,17 @@ func _draw_critter(f: Dictionary, c: StoneStoryCritter) -> void:
 		if c.part_role(i) != &"limb":
 			continue
 		var t: float = c.body_axis(i)
-		var root: Vector2 = origin + pts[0] * S + (pts[maxi(0, pts.size() - 1)] - pts[0]) * S * t
+		var root: Vector2 = origin + pts[0] * S \
+				+ (pts[maxi(0, pts.size() - 1)] - pts[0]) * S * t
 		var tip: Vector2 = origin + pts[i] * S + Vector2(0, bob)
 		draw_line(root, tip, col, 1.0, true)
-		draw_circle(tip, maxf(1.0, float(rad[i]) * S * 0.9), col, false, 1.0, true)
+		var lr: float = maxf(1.0, float(rad[i]) * S * 0.9)
+		draw_circle(tip, lr, col)
+		stats.note_shape(int(PI * lr * lr * 0.5), col)
+		stats.note_stroke()
+
+	# 4) 눈. 개체에 눈이 없으면 개체로 읽히지 않는다. (V8)
+	_draw_eyes(c, origin, bob, attrs)
 
 	if f["tags"].has("ranged"):
 		draw_ring(Vector2(at.x, at.y - c.extent_y() * S * 0.5 - 6.0), 3.0, dim)
@@ -309,12 +343,33 @@ func _draw_critter(f: Dictionary, c: StoneStoryCritter) -> void:
 func draw_ring(center: Vector2, r: float, col: Color) -> void:
 	if r <= 0.5:
 		draw_rect(Rect2i(Vector2i(center) - Vector2i.ONE, Vector2i(3, 3)), col)
+		stats.note_shape(9, col)
 		return
 	var pts := PackedVector2Array()
 	for i in 13:
 		var a: float = TAU * float(i) / 12.0
 		pts.append(center + Vector2(cos(a) * r, sin(a) * r))
 	draw_polyline(pts, col, 1.0)
+	stats.note_stroke()
+	stats.note_shape(int(PI * r * r * 0.6), col)
+
+
+## 눈의 개수는 **놀랍다**가 정한다. 예측 불가할수록 눈이 많다. (V8)
+func _draw_eyes(c: StoneStoryCritter, origin: Vector2, bob: float, attrs: Dictionary) -> void:
+	var pts := c.points()
+	var surprise: float = float(attrs.get(StoneStoryAttributes.SURPRISE, 0.0))
+	var n: int = 1 + int(floor(surprise / 3.0))          # 1..4
+	var head_at: Vector2 = origin
+	for i in pts.size():
+		if c.part_role(i) == &"head":
+			head_at = origin + pts[i] * FORM_SCALE + Vector2(0, bob)
+	var er: float = 3.0 + 1.5 * float(int(attrs.get(StoneStoryAttributes.ROUND, 0.0)) / 3)
+	var col: Color = StoneStoryPalette.belly(pal).lightened(0.45)
+	for i in n:
+		var spread: float = float(i - (n - 1) / 2) * (er * 2.2)
+		draw_circle(head_at + Vector2(spread, -er * 0.4), er, col)
+		stats.note_shape(int(PI * er * er), col)
+		stats.note_eye()
 
 
 func _draw_status(at: Vector2, build_v: Dictionary, h: float) -> void:

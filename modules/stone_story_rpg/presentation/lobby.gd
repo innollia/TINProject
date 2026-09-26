@@ -20,8 +20,8 @@ const FOCUS_GO := 3
 const FOCUS_COUNT := 4
 
 const REGION_HUB := "region_under_sign"
-const GEAR_ROWS: int = 6
-const ROW_H: int = 24
+const GEAR_ROWS: int = 5
+const ROW_H: int = 30
 
 # 고정 격자. 내용이 바뀌어도 좌표는 이 값뿐이다.
 const X_TITLE := 24
@@ -38,11 +38,11 @@ const Y_HINT := 300 + GEAR_ROWS * ROW_H + 12
 const Y_GO := 512
 const Y_KEYS := 620
 
-const FS_TITLE: int = 18
-const FS_HEAD: int = 14
-const FS_ROW: int = 14
-const FS_SMALL: int = 12
-const FS_BIG: int = 18
+const FS_TITLE: int = 26
+const FS_HEAD: int = 20
+const FS_ROW: int = 20
+const FS_SMALL: int = 16
+const FS_BIG: int = 30
 
 const MAX_ROW_W: int = 400
 const MAX_HINT_W: int = 460
@@ -231,10 +231,40 @@ func _equipped_ids() -> Array:
 
 # --- 그리기 ---------------------------------------------------------
 
+func ink_of() -> Color:
+	return StoneStoryPalette.line(pal)
+
+
+func dim_of() -> Color:
+	return StoneStoryPalette.line_dim(pal)
+
+
+## 로비도 공간이다. 위는 하늘, 아래는 바닥. (V11: 검정 배경 + 흰 글자 금지)
+func _draw_room(ink: Color, dim: Color) -> void:
+	var hz: int = 150
+	var near: Color = StoneStoryPalette.sky_near(pal)
+	var far: Color = StoneStoryPalette.sky_far(pal)
+	for i in 8:
+		var y0: int = int(float(hz) * float(i) / 8.0)
+		var y1: int = int(float(hz) * float(i + 1) / 8.0) + 1
+		draw_rect(Rect2i(0, y0, 960, y1 - y0), far.lerp(near, float(i) / 8.0))
+	# 지평선 아래 = 바닥
+	var gr: Color = StoneStoryPalette.ground(pal)
+	draw_rect(Rect2i(0, hz, 960, 640 - hz), gr)
+	draw_rect(Rect2i(0, hz, 960, 3), gr.lightened(0.30))
+	draw_rect(Rect2i(0, hz + 90, 960, 2), gr.darkened(0.20))
+	# 천장 레일. 큰 구조물 1개 역할.
+	draw_rect(Rect2i(0, 0, 960, 4), StoneStoryPalette.structure(pal))
+	draw_rect(Rect2i(0, 4, 960, 2), StoneStoryPalette.structure(pal).darkened(0.30))
+
+
 func _draw() -> void:
-	draw_rect(Rect2i(0, 0, 960, 640), StoneStoryPalette.fill(pal))
-	if state.is_empty() or content == null or pal == null:
+	if pal != null and (state.is_empty() or content == null):
+		_draw_room(ink_of(), dim_of())
 		return
+	if state.is_empty() or content == null:
+		return
+	_draw_room(ink_of(), dim_of())
 	var ink: Color = StoneStoryPalette.line(pal)
 	var dim: Color = StoneStoryPalette.line_dim(pal)
 	var txt: Color = StoneStoryPalette.text(pal)

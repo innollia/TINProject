@@ -13,8 +13,8 @@
 
 | 묶음 | 번호 | 출처 |
 |---|---|---|
-| Stone Story RPG | **SS-1 ~ SS-10** | [00_user_dumps](../00_user_dumps/2026-09-26_01_wiki_and_screenshots.md) 스크린샷 1~10 |
-| Ena: Dream BBQ | **EN-1 ~ EN-9** | [../../docs/research/stone_story_rpg/02_ena_dream_bbq/00_user_dumps/2026-09-26_01_essay_and_screenshots.md](../../docs/research/stone_story_rpg/02_ena_dream_bbq/00_user_dumps/2026-09-26_01_essay_and_screenshots.md) |
+| Stone Story RPG | **SS-1 ~ SS-10** | [00_user_dumps](../../../docs/research/stone_story_rpg/00_user_dumps/2026-09-26_01_wiki_and_screenshots.md) 스크린샷 1~10 |
+| Ena: Dream BBQ | **EN-1 ~ EN-9** | [../../docs/research/stone_story_rpg/02_ena_dream_bbq/00_user_dumps/2026-09-26_01_essay_and_screenshots.md](../../../docs/research/stone_story_rpg/02_ena_dream_bbq/00_user_dumps/2026-09-26_01_essay_and_screenshots.md) |
 
 - **시각 기준은 SS 만 쓴다.** EN 은 분위기·기법의 source 다. (`README` §5)
 - 아래 표에서 "따라갈 것"이 없으면 그 화면은 **만들지 않는다.**

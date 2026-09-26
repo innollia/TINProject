@@ -20,7 +20,7 @@
 
 | 계획 | Primary Reference | 상태 | 비고 |
 |---|---|---|---|
-| [05_STONE_STORY_RPG_KIT/README.md](05_STONE_STORY_RPG_KIT/README.md) | Stone Story RPG | **재설계 진행 중 — 구현 대기** | 사용자 자료 담당. 이미지 자산 0, 코드로만 절차 비주얼. 4속성(다리/놀랍다/틀림/동그라미) + 장비→AI 정책. 이미지 0 / ASCII 0 / PVE 사용 |
+| [05_STONE_STORY_RPG_KIT/README.md](05_STONE_STORY_RPG_KIT/README.md) | Stone Story RPG (시스템) + Ena: Dream BBQ (비주얼/분위기/서사) | **구현 중 — 비주얼 계약 미달** | 4속성 + 장비→AI 정책. 이미지 0 / ASCII 0 / PVE 사용. 사실은 `IMPLEMENTATION_STATUS.md`, 미결정은 `17_OPEN_QUESTIONS.md` |
 | [04_TOP_DOWN_ACTION_RPG_KIT/README.md](04_TOP_DOWN_ACTION_RPG_KIT/README.md) | BLACK SOULS 2 | **SUPERSEDED — 방향 결정 대기** | 01~12 split plan, world constitution, magic supplement 검토 통과. `modules/top_down_action_rpg/`에 미커밋 구현 존재. 05가 이 슬롯을 대체하는지 미확정이라 파일은 삭제·수정하지 않음 |
 
 `04`와 `05`의 관계는 미확정이다. `PROJECT_DECISIONS.md` §21.1 참조.

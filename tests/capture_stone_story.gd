@@ -37,6 +37,12 @@ func _run() -> void:
 	_module.call("execute_command", &"ssr_equip", {"item_id": "item_board_shield"})
 	_module.call("execute_command", &"ssr_equip", {"item_id": "item_ash_spear"})
 	_module.call("execute_command", &"ssr_set_star", {"star": 12})
+	_module.set("mode", "expedition")
+	_module.call("_start_region", "region_hollow_cistern", 12)
+	if _module.get("_lobby") != null:
+		(_module.get("_lobby") as Node).visible = false
+	if _module.get("_view") != null:
+		(_module.get("_view") as Node).visible = true
 	var lobby: Object = _module.get("_lobby")
 	if lobby != null:
 		lobby.set("focus", 2)

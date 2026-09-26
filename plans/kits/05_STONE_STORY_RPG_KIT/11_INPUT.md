@@ -1,199 +1,145 @@
-# 11 — Input
+# 11 — 입력
 
-물리 키를 domain에 하드코딩하지 않는다. InputMap action + `ModuleContext` 만 쓴다.
+> **2026-09-26 전면 개정.** 1차 판은 6개 action + Input Bubble + 전투 중 개입 입력이었다.
+> 사용자가 "직접 조종 없다"고 명시했으므로 **전투 입력이 없다.** Input Bubble 는
+> 구현되지 않았고 승인 대기다 (D2).
 
 ---
 
-## 1. Action 목록
+## 0. 사용 가능한 키
 
-`app/app_root.gd` 의 `_configure_module_actions()` 가 `NORMAL_IDS` 에서
-`<id>_left/right/up/down/confirm/cancel` 을 자동 생성한다.
-추가 action 은 `app/` 수정이 필요하므로 **기본 6개만 쓴다.**
+`app/app_root.gd::_configure_module_actions` 가 `NORMAL_IDS` 에서 자동 생성한다.
+이 모듈의 action 6개:
 
-| action | 기본 키 | 용도 |
+| action | 키 | 역할 |
 |---|---|---|
-| `stone_story_rpg_left` | `←` | 커서 왼쪽 / 목록 위 |
-| `stone_story_rpg_right` | `→` | 커서 오른쪽 / 목록 아래 |
-| `stone_story_rpg_up` | `↑` | 위 / **가드 홀드** (§3A) |
-| `stone_story_rpg_down` | `↓` | 아래 / 제작대 (§3B) |
-| `stone_story_rpg_confirm` | `Z` | 확정 / 진행 |
-| `stone_story_rpg_cancel` | `X` | 취소 / 닫기 |
+| `stone_story_rpg_up` | `↑` | 로비 포커스 위 / **`guard` 홀드** (탐험) |
+| `stone_story_rpg_down` | `↓` | 로비 포커스 아래 / 제작대(미구현) |
+| `stone_story_rpg_left` | `←` | 로비 값 감소 / 다음 장비 |
+| `stone_story_rpg_right` | `→` | 로비 값 증가 |
+| `stone_story_rpg_confirm` | `Z` | 로비 확정 / 장비 토글 |
+| `stone_story_rpg_cancel` | `X` | 로비 나가기 / **탐험 중단 → 로비 복귀** |
 
-### 1.0 `Esc` 는 이 Kit에서 동작하지 않는다
+### 0.1 `Esc` 는 동작하지 않는다
 
-`app/app_root.gd` 의 `_configure_module_actions()` 가 `<id>_cancel` 에 `KEY_X` 만 바인딩한다.
-`Esc` 는 `meta_cancel` 이고, 이 모듈은 ModuleContext 허용 action 밖을 쓰지 못한다.
+`app_root` 가 `<id>_cancel` 에 `KEY_X` 만 바인딩한다. `Esc` 는 `meta_cancel` 이고
+이 모듈은 ModuleContext 허용 action 밖을 쓰지 못한다.
 
-→ **`Esc` 바인딩 추가는 `app/` 수정이므로 승인 대기다.** `17` A-03.
+→ `Esc` 지원은 `app/` 수정이므로 **승인 대기 (D3).**
 승인 전까지 `Esc` 를 지원한다고 문서화하지 않는다.
-승인되면 이 절과 `15` F-07 을 함께 고친다.
 
-### 1.1 확장 action (Phase 1에 넣지 않음)
+### 0.2 `app/` 를 건드리지 않는 대안
 
-`inventory`, `workbench`, `status`, `jump` 등은 키가 더 필요하다.
-하지만 `app/` 수정은 금지 범위다.
-
-**결정: 확장 action 은 `confirm`/`cancel` 조합으로 표현한다.**
-
-```text
-confirm + up     = 상단 섹션
-confirm + down   = 하단 섹션
-cancel  반복     = 닫기
-```
-
-- 이 방식은 키를 외우게 한다. **Input Bubble 로 배운 키만으로 전 기능 접근 가능해야 한다.**
-- 실제 전 functionality가 이 조합으로 도달되는지 `15_MANUAL_PLAY.md` §8에서 검증한다.
-- 키를 늘리고 싶어지면 그때 `app/` 수정 승인을 요청한다. `17` Q9.
+확장 action (`inventory` `workbench` `jump`) 은 필요 없어졌다.
+**전부 로비의 포커스 4칸으로 접근한다.** (`10_SCREENS_PRESENTATION.md` §1.1)
 
 ---
 
-## 2. 키 집합 (Input Bubble 대상)
+## 1. 엣지 vs 홀드
 
-이 Kit이 요구하는 물리 키:
-
-```text
-← ↑ → ↓   Z   X
-```
-
-8개. 실제 버블 셀에 물리 키 1개씩 고정 배치.
-
-### 2.1 버블 격자
-
-```text
-가상 격자   8열 x 2행
-셀 크기     80 x 80  (내부 픽셀)
-배치        물리 키코드 순서가 아니라 "가장 많이 쓰는 키" 순으로 왼쪽부터
-            ↑ ← ↓ →   Z   X   Esc
-```
-
-- `Esc` 는 버블에 넣지 않는다. 취소 키를 학습시키면 안 된다.
-  → 7개: `↑ ← ↓ → Z X` + 여분 1칸.
-- 버블 그리드는 8열. 남는 칸은 비운다.
-
-### 2.2 상태
-
-| 상태 | 표현 |
-|---|---|
-| `intact` | 온전한 원(1px ring) |
-| `popped` | 원 + 중앙 2px 십자 |
-| `rising` | 아래에서 올라오는 중. y 오프셋 보간 |
-| `restoring` | 채워지는 중. radius 보간 |
-
-- 이동은 정수 프레임 보간. 실수 y.
-  → `01` §2.1 정수 규칙을 지키되, 버블은 화면 전환 연출이므로 예외 허용 범위를
-  `transition_layer` 로 분리한다. **월드 좌표에는 적용하지 않는다.**
-
-### 2.3 흐름
-
-```text
-Phase 1 진입 시 (첫 진입)
-  → rising 7개, 순차 3프레임 간격
-  → intact 정착
-  → 플레이어가 실제 키를 누르면 해당 버블이 popped
-
-Phase 2 진입 시 (키 집합 동일)
-  → 모든 버블 restoring → intact
-  → 1개라도 popped 면 해당 키를 다시 눌러야 함
-```
-
-- 키 집합이 같으면 `restoring` 만 한다. 새 버블 없음.
-- 키 집합이 달라지면 새 키는 `rising`, 필요 없는 키는 `popped` 잔존.
-  → Phase 2 에서 실제 키 집합이 바뀔 때 사용.
-
-### 2.4 버블 트리거
-
-- `docs/KIT_WORKFLOW.md` §7 에 따라 **App/전환층**이 소유한다.
-- 이 모듈은 `requested(&"input_bubble", {"keys": [...]})` 로 요청만 보낸다.
-- `AppRoot` 구현은 `app/` 수정이므로 **별도 승인 필요.** `17` Q10.
-- **Phase 1에서 버블 구현하지 않는다.** 키 힌트를 대체하는 다른 수단도 넣지 않는다.
-  → 사용자가 키를 모르면 키 목록을 `status` 화면에서 볼 수 있게 한다.
-  이건 튜토리얼 텍스트가 아니라 도구 화면이다. `10` §5.11
-
----
-
-## 3. 입력 처리 규칙
+- **기본은 전부 엣지 트리거.** `is_action_just_pressed`.
+- **유일한 홀드 예외: `guard`.** 스탠스이므로 유지해야 한다.
 
 ```gdscript
-func _process(_delta: float) -> void:
-    if context == null or not context.input_enabled:
-        return
-```
-
-- 기본은 **전 action 엣지 트리거.** `is_action_just_pressed` 만 쓴다.
-- 입력 차단 중에는 큐에 넣지 않는다. 드롭한다.
-- 전이 중 입력은 **버린다.** 나중에 실행되지 않는다.
-- `context.is_action_pressed()` 가 아니라 ModuleContext 허용 action 만 쓴다.
-- 버튼 callback 도 `context.input_enabled` 를 확인한다.
-
-### 3A. 유일한 홀드 예외: `guard`
-
-`guard` 는 **스탠스**이므로 홀드여야 한다. 예외는 하나뿐이고, 명시적으로 선언한다.
-
-```gdscript
+# 04 §6
+var GUARD_ACTION := &"stone_story_rpg_up"
 func _guard_held() -> bool:
-    return context != null and context.input_enabled \
-            and context.is_action_pressed(&"stone_story_rpg_up")
+	return context != null and context.input_enabled \
+			and context.is_action_pressed(GUARD_ACTION)
 ```
 
-- 어느 action 을 홀드로 쓸지는 `04` §11.2 와 같다. 기본 `up`.
-- 홀드 중에도 **반복 발화하지 않는다.** 스탠스 유지만 한다.
-- 홀드 해제 즉시 해제. 쿨다운 없음.
-- 기력이 0 이면 홀드 중이어도 강제 해제. → `04` §7.3
-- 나머지 5개 action 은 전부 엣지 트리거.
-
-### 3B. 패널 여는 입력 (6개 패널 → 3개 패턴)
-
-`10` §1 의 패널 6개는 키를 늘리지 않고 3개 패턴으로 도달한다.
-
-| 패널 | 패턴 | 비고 |
-|---|---|---|
-| `inventory` | `confirm` | 전투 중에도 열림 |
-| `workbench` | `confirm` + `down` | 제작대 |
-| `status` | `confirm` + `up` | 스탯 배분 |
-| `shop` | `cancel` (지역 진입 시 자동) | 상점은 자동 개방 |
-| `legend` | `cancel` (지역 선택 화면 경유) | 전설은 지역 선택에서 |
-| `beastiary` | `confirm` + `left` / `right` | `observe` 돌 보유 시 |
-
-- `shop` 과 `legend` 은 **화면 안에서 호출형**이다. 키 조합이 아니라 진입 경로다.
-- 겹치는 조합 없음. 6개 패널 전부 도달 가능.
-- `10` §1 의 "`아이템` 입력" "`작업실` 입력" "`≡` 입력" 표현은
-  **모두 위 표의 조합으로 해석한다.** `≡` 은 글리프이며 키가 아니다.
+- 홀드 중에도 반복 발화하지 않는다. 스탠스 유지만.
+- 기력이 0 이면 강제 해제.
+- **1차 판에서 이 예외를 문서화 안 해서 `guard` 가 표현 불가 상태였다.** 지금은 명시적.
 
 ---
 
-## 4. 포커스 이동 규칙
+## 2. 입력 펌프
+
+`module.gd::_pump_input`
 
 ```gdscript
-func move_focus(dir: int) -> void:
-    if _focus_list.is_empty(): return
-    var idx: int = _focus_list.find(_focus)
-    if idx < 0: idx = 0
-    idx = wrapi(idx + dir, 0, _focus_list.size())
-    _focus = _focus_list[idx]
-    _focus_origin = _focus          # 닫을 때 복귀할 곳
+const LOBBY_ACTIONS := [up, down, left, right, confirm, cancel]
+
+if mode == "lobby":
+    for a in LOBBY_ACTIONS:
+        if _pressed(a) and _lobby.handle(a): return
+    return
+if _pressed(cancel):
+    _to_lobby("돌아왔다")
 ```
 
-- 2D 격자 메뉴는 상/하 우선으로 튀지 않게 `rows` 를 따로 관리.
-- `focus_list` 는 **화면 상태별로** 계산한다. 전역 유지 금지.
-- 포커스 이동 중 렌더 갱신은 그 프레임 끝에 1회만.
+- **실제 키가 눌린 프레임에만** 넘긴다.
+- 모듈 allowlist 밖 action 은 무시한다.
+- `context.input_enabled` 가 false 면 아무것도 안 한다.
+
+> **1차 판 버그**: `_pump_input` 이 키 확인 없이 매 프레임 `lobby.handle()` 을
+> 불렀다. 로비에 머무는 동안 포커스가 매 프레임 회전했다. 테스트가 잡았다.
+
+---
+
+## 3. 탐험 중 조작
+
+- **없다.** `cancel` 로 로비 복귀만.
+- 장비는 탐험 중 동결. (`test_lobby_is_the_only_control_surface`)
+- 이건 버그가 아니라 **설계**다. 플레이어가 전투 중 개입하면 짝퉁이 된다.
+
+---
+
+## 4. Input Bubble — 미구현
+
+`docs/KIT_WORKFLOW.md` §7 은 장르 전환에서 Input Bubble 을 요구한다.
+
+**현재 상태: 이 모듈은 Input Bubble 을 쓰지 않는다.**
+
+- 팩토리/전환층은 `app/` 소유 → **승인 대기 (D2)**
+- 승인 전까지: 버블이 없는 대신 **로비의 포커스 이동**이 키를 가르친다.
+  이건 버블 대체가 아니다. **Phase 1 은 전환이 1회(로비→탐험)뿐**이므로
+  버블이 배울 것이 적다.
+- 키 힌트 문장은 로비 하단에 1줄 있다 (`11_INPUT.md` 의 `Y_KEYS`).
+  이것은 버블 대체가 아니라 **가벼운 안내**이고, 문서화해 둔다.
+
+### 4.1 Phase 2 에서 필요한 것
+
+장르 전환이 2 이상으로 늘면 (로비↔탐험 외에 전설/제작이 추가되면)
+`app/` 전환층에 Input Bubble 을 넣어야 한다. 그때:
+
+- 키 집합: 로비 4칸 + 탐험 1개 = 실제로 6개
+- `Esc` 는 넣지 않는다 (취소 키를 학습시키지 않는다)
+- 버블 격자: 8열 × 2행, 물리 키 고정 셀
 
 ---
 
 ## 5. 마우스
 
-- **마우스가 필요한 기능이 없어야 한다.**
-- 그래도 클릭은 `focus` 이동 + `confirm` 으로 매핑한다 (편의).
-- `docs/UI_IMPLEMENTATION_RULES.md` R2: hover 전용 정보 금지.
+- **필수 아니다.** 키보드만으로 전 기능 도달 (F-05 수동 과제).
+- 그래도 클릭 = focus 이동 + confirm 으로 매핑 (편의).
+- `docs/UI_IMPLEMENTATION_RULES.md` R2: hover 전용 정보 금지. 이 모듈엔 hover 정보가 없다.
 
 ---
 
-## 6. 테스트 항목
+## 6. 테스트
 
-1. `input_enabled = false` 에서 6개 action 전부 무시.
-2. 엣지 트리거: 키 홀드 시 1회만 발화.
-3. 전이 중 입력은 드롭.
-4. 패널 닫으면 `focus_origin` 로 복귀.
-5. 대상 소멸 시 다음 유효 항목으로 이동.
-6. 전원이 비면 닫기 버튼으로 이동.
-7. 키보드만으로 12개 화면 전 기능 도달.
-8. 허용되지 않은 action 은 실행되지 않는다.
+`tests/core/test_stone_story_rpg_core.gd`
+
+| 테스트 | 보장 |
+|---|---|
+| `test_m_input_disabled_blocks_commands` | input 비활성 시 명령 거부 |
+| `test_lobby_focus_and_navigation` | 포커스 순환 · 값 조절 |
+| `test_lobby_is_the_only_control_surface` | 탐험 중 장비 동결 |
+| (수동) F-05 | 키보드만으로 12개 기능 도달 |
+
+**아직 없는 검증**: 홀드된 `guard` 가 실제로 유지되는지 자동 테스트.
+탐험 중 입력을 시뮬레이션해야 해서 미구현. 수동 과제로 남김.
+
+---
+
+## 7. 금지
+
+- 전투 중 플레이어 조작 창
+- 탐험 중 장비 변경
+- `app/` 를 직접 수정 (승인 없이)
+- `Esc` 를 지원한다고 문서화
+- 모듈 allowlist 밖 action 사용
+- 매 프레임 입력 펌프
+- key 하드코딩 (InputMap action 만 쓴다)

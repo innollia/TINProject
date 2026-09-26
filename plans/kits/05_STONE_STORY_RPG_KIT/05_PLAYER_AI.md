@@ -1,211 +1,152 @@
-# 05 — 플레이어 자동 조종 AI
+# 05 — 플레이어 AI
 
-Stone Story RPG 정의: *"플레이어 캐릭터를 직접 조종하지 않는다. AI가 탐험·전투·약탈을 모두 한다.
-그렇다고 idle 게임은 아니다. 물약과 특수 능력은 좋은 타이밍으로 극대화된다."*
+> **2026-09-26 전면 개정.** 1차 판은 "탐험 중 플레이어가 개입하는 창
+> (swap/potion/ability)"이었다. 사용자가 폐기했다:
+> *"플레이어의 캐릭터 조종은 없어. 어디를 탐험할지 고르고 무기를 강화하는 로비에서
+> 무얼 할지 선택을 할 뿐이야."* → **개입 창을 삭제했다.** 이 문서가 유일한 정의다.
 
-→ 이 문서가 그 계약을 구현한다. **플레이어는 직접 공격하지 않는다.**
+---
+
+## 0. 게임의 루프
+
+```text
+로비  ──[탐험을 보낸다]──▶  탐험(AI 조종)  ──[비웠거나 죽었다]──▶  로비
+ ▲                                                                        │
+ └──────────────── 결과 1줄과 함께 돌아온다 ◀──────────────────────────────┘
+```
+
+- **플레이어가 직접 조종하는 시간 = 0.** 전투 중 어떤 키도 AI 를 못 건드린다.
+- 탐험 중 가능한 입력: `X`(cancel) → 로비 복귀. 그것뿐.
+- 장비는 **탐험 중 동결.** (`module.gd` 테스트로 보장)
+- 로비에서 고른 장비가 **탐험 전체의 정책**이 된다.
+
+## 0.1 왜 이 구조인가 (사용자 근거)
+
+*"위험소울 자료조사를 준것은 stone story rpg 짝퉁이 되지 않기 위한 노력이야.
+stone story rpg 에서는 stonescript 코딩언어로 새로운 ui를 정의하고 ai의 움직임을
+미리 정의해서 추가로 조종해. AI의 움직임을 장비를 통해 간접적으로 조종할
+더 많은 방법이 확보될 필요 있음."*
+
+| | 조종 수단 | 조작 위치 |
+|---|---|---|
+| Stone Story RPG | Stonescript (코딩 언어) | UI 정의 + AI 행동 사전 정의 |
+| **이 Kit** | **장비** | 로비에서 장비 조합 |
+
+→ 스크립트 언어는 **없다** (사용자 확정: "우리는 스크립트 없어").
+장비가 그 자리를 대체한다. 돌 10개 중 "스크립트" 동사는 Phase 2 이후 비어 있다.
 
 ---
 
 ## 1. AI 가 정하는 것 / 정하지 않는 것
 
-| AI 가 정함 | AI 가 정하지 않음 |
+| AI 가 정한다 | AI 가 정하지 않는다 |
 |---|---|
-| 스탠스 (가드 / 회피 / 무스탠스) | 데미지 수치 |
-| 손패 교체 (main / off) | 명중 여부 |
+| 스탠스 (가드/회피/무스탠스) | 데미지 수치 |
+| 손패 교체 (main/off) | 명중 여부 |
 | 주문 사용 / 버프 유지 | 크리티컬 여부 |
 | 능력(돌) 사용 | 넉백 방향 |
-| 근접 목표 우선순위 | 상태 축적 결과 |
-| 이동 (전투 중 접근/후퇴) | 사망 판정 |
-| 드랍 수집 여부 | 보상 내용 |
+| 타깃 우선순위 | 사망 판정 |
+| 후퇴 여부 | 보상 내용 |
+| 이동 | 경험치 곡선 |
 
-**금지:** AI 가 `damage` 값을 직접 산출하거나, 판정 결과를 미리 알거나,
+**금지:** AI 가 `damage` 를 직접 산출하거나, 판정 결과를 미리 알거나,
 무적 프레임을 스스로 결정하는 것. AI 는 `intent` 만 낸다.
+
+`systems/combat.gd::resolve_attack` 가 판정자다.
 
 ---
 
 ## 2. 목표 스택
 
-`03` §2의 4단계(의도 결정)에서 이 스택을 평가한다.
+`player_ai.gd::top_goal`
 
-```gdscript
-func decide(state) -> Intent:
-    var goal: int = _top_goal(state)
-    match goal:
-        GOAL.SURVIVE:   return _intent_survive(state)
-        GOAL.CLEAR:     return _intent_clear(state)
-        GOAL.COLLECT:   return _intent_collect(state)
-        GOAL.RETURN:    return _intent_return(state)
-    return _intent_clear(state)
-```
-
-| 우선위 | goal | 진입 조건 | 이탈 조건 |
+| 우선위 | goal | 진입 | 이탈 |
 |---|---|---|---|
-| 1 | `SURVIVE` | hp/max_hp < 0.35, 또는 축적 상태 2종 이상, 또는 기력 0 근접 | 위 3조건 모두 해소 |
-| 2 | `CLEAR` | 적 1체 이상 생존 | 전투 종료 |
-| 3 | `COLLECT` | 드랍 수집 상자가 2개 이상, 전투 종료 | 수집 완료 |
-| 4 | `RETURN` | 그 외 (지역 탐색) | 지역 클리어 |
+| 1 | `SURVIVE` | hp < 35%, 축적 2종 이상, 기력 0 | 전부 해소 |
+| 2 | `CLEAR` | 생존 적 1체 이상 | 전투 종료 |
+| 3 | `COLLECT` | 미수집 상자 2개 이상 | 수집 완료 |
 
-- 우선위가 높을수록 **무조건 우선.** 예를 들어 hp 20%면 드랍을 버리고 도망간다.
-- 이 때문에 `SURVIVE` 진입이 곧 사망이 아니다. 도망 후 회복 후 복귀한다.
+- 1순위가 **무조건 우선.** 드랍을 버리고 빠져나간다.
+- 그래서 `SURVIVE` 진입이 곧 사망이 아니다.
 
 ---
 
-## 3. 빌드 판독 (자동 전투의 핵심)
-
-AI 는 스탯 배분을 읽고 **쓸 수 있는 무기만** 손에 든다.
-
-```gdscript
-func _usable(item_id: String) -> bool:
-    var it := catalog.item(item_id)
-    for stat in it.requirement:
-        if _effective_stat(stat) < it.requirement[stat]:
-            return false        # 요구치 미달 → 사용 불가
-    return true
-
-func _effective_stat(stat: String) -> int:
-    var v: int = state.player.stats[stat]
-    return v * TUNING.two_hand_requirement_divisor if _current_is_two_handed(stat) else v
-```
-
-### 3.1 손패 선택 우선순위
+## 3. 빌드 판독 (장비가 정책을 만드는 경로)
 
 ```text
-1. 요구치를 전부 충족하는 무기 중
-2. 스케일링 가중치 총합이 가장 높은 것
-3. 동점이면 base_total 데미지가 가장 높은 것
-4. 동점이면 공속(attack_frames)이 짧은 것
+장비 인스턴스 + 콘텐츠 정의 병합 (gear_defs)
+  → policy_delta 해석 (gear_policy::resolve)
+  → 4속성 델타 해석 (attributes::resolve)
+  → AI 가 그것을 그대로 실행
 ```
 
-- 손패가 1개뿐이고 요구치 미달 → **그 무기로 싸운다** (페널티).
-  → `04` §3.4. 그래야 "스탯을 못 찍으면 약하다"가 화면에서 보인다.
-- 손패가 2개 →(main/off) 둘 다 요구치 검사 후 위 순위로 배치.
-- 중량 초과 조합은 배제. → `02` §3.3
+**이 경로가 끊기면 게임이 성립하지 않는다.**
+2026-09-26 실제로 끊졌었다: `policy_delta` 가 정의에만 있고 인스턴스에는 없었는데
+해소 함수가 인스턴스만 읽었다. → 방패를 껴도 AI 가 안 바뀌는 상태.
 
-### 3.2 이게 왜 중요인가
+`test_p7_gear_changes_the_ai` / `test_lobby_shows_the_resolved_policy` 가 이걸 막는다.
 
-원작: "모르면 못 이기고, 공략을 알면 극단적으로 유리."
+### 3.1 무기 선택
 
-자동 전투 AI 는 플레이어의 빌드를 **그대로 쓴다.**
-그래서 스탯 배분이 자동 전투의 성능을 직접 결정한다.
-플레이어가 개입하지 않아도 자기 빌드 결과를 본다.
+`player_ai.gd::_best_weapon` — 요구치를 전부 충족하는 무기 중
+스케일링 가중치 합 + 기본 데미지가 가장 큰 것. 미달이면 점수 ×0.35.
 
----
-
-## 4. 스탠스 결정
-
-```gdscript
-func _stance(state) -> StringName:
-    # 순서가 중요하다. 가드(저비용)를 먼저 검사한다.
-    if state.stamina < TUNING["guard_cost"]:
-        return &"neutral"                       # 기력 0 근처: 무방비
-    if _wants_evade(state) and state.stamina >= TUNING["evade_cost"] \
-            and _evade_ready(state):
-        return &"evade"
-    if _wants_guard(state):
-        return &"guard"
-    return &"neutral"
-```
-
-- `guard_cost = 12` < `evade_cost = 34` 이므로 **가드를 먼저 검사한다.**
-  (반대로 쓰면 기력 12~33 구간에서 가드가 도달 불가 상태가 된다)
-- `guard` 는 **홀드를 유지하는 스탠스**다. 매 틱 유지 판정을 한다.
-  → `11_INPUT.md` §3A. 1회 소모가 아니다.
-- `evade` 는 쿨다운이 있다. `evade_cooldown_frames` 경과 후 가능.
-- **대형 무기(superarmor) 보유 시 스탠스를 싹 버리고 밀어붙인다.**
-  `weapon.poise >= superarmor_poise_threshold` 이면 `return &"neutral"` 을 강제하고
-  `superarmor` 플래그만 켠다. → 가드/회피를 동시에 켜지 않는다.
-- `_wants_guard` : HP 비율 < 0.6 이고 off-hand 가 있을 때.
-- `_wants_evade` : 근접 예고가 들어왔고 쿨다운이 지났을 때.
+- 미달이어도 **후보로 남는다.** 약해진 채로 싸워야 요구치 규칙이 보인다.
+- `off`(방패)는 데미지가 가장 큰 것.
+- **AI 가 무게를 본다.** 총 무게가 `max_weight` 를 넘으면 후보에서 빠진다.
 
 ---
 
-## 5. 주문 결정
+## 4. 개입 창 — 삭제
 
-```gdscript
-func _spell_decision(state) -> int:
-    # 0: 유지, 1: 방어 주문, 2: 공격 주문, 3: 회복 주문
-    if state.player.focus < _cheapest_cast_cost:   return 0
-    if state.buffs_active:                        return 0
-    if _hp_ratio(state) < 0.5 and _has_heal(state): return 3
-    if _enemy_count(state) >= 3 and _has_aoe(state): return 1
-    if _single_target_weakness_match(state):        return 2
-    return 0
-```
+1차 판의 `swap_window` / `potion_window` / `ability_window` 는
+**전부 삭제했다.** 플레이어가 전투 중 개입하지 않으므로 창이 존재할 이유가 없다.
 
-- 위력이 지혜/신앙으로 스케일링되므로 **AI 도 스탯을 읽는다.**
-  주문 데미지 예상 = 주문 base × `04` §4.2의 `scaling_ratio`.
-- 주문 슬롯 중 **가장 강한 주문부터** 시도. 빈 슬롯은 건너뛴다.
+대신:
+- **장비 교체**가 개입의 대체다. 그리고 그 교체는 **로비에서** 한다.
+- 물약 자동 사용은 정책이 한다 (`potion_at_hp` / `potion_on_debuff`).
+- 능력 자동 사용도 정책이 한다 (`use_ability_below_hp`).
 
 ---
 
-## 6. 개입 창 3종 (플레이어 조작면)
+## 5. 위젯/기록
 
-플레이어가 실제로 누를 수 있는 것은 이것뿐이다.
-
-| 창 | 발동 조건 | 화면 신호 | 플레이어 입력 | 성공 시 |
-|---|---|---|---|---|
-| `swap_window` | 적의 약점 속성이 바뀜 (보스 페이즈 전환 등) | 무기 옆 `≡` 1개 깜빡임 | 손패 교체 | 다음 타격에 약점 적용 |
-| `potion_window` | 디버프 직전 12프레임 | 대상 위에 `◊` 1개 | 물약 사용 | 디버프 무효화 |
-| `ability_window` | 돌 능력 사용 가능 구간 | 화면 하단 `✶` 1개 | 능력 사용 | 즉시 판정 |
-
-### 6.1 창 규칙
-
-- AI 는 창을 **모른다.** 개입하지 않으면 원래 AI 행동을 한다.
-- 개입 성공은 **시각·청각 아닌 화면 신호**로만 알린다.
-- AI 가 창을 대신 처리하지 않는다. (그러면 개입의 의미가 없다)
-- 창은 **1회 소비.** 여러 번 눌러도 한 번만 효과.
-- 창이 겹치면 우선순위: `potion_window` > `swap_window` > `ability_window`.
-
-### 6.2 물약
-
-- 물약은 소모품 인벤토리. `inventory.materials` 와 별도.
-- 물약 종류 3: `heal` / `cleanse` / `haste`(공속).
-- 개입 없이도 AI 는 **가장 시나리오가 나쁜 시점**에 자동 사용한다.
-  (원작: "물약과 특수 능력은 좋은 타이밍으로 극대화된다" → 자동 사용은 최적이 아니다)
-
-### 6.3 능력 (소울스톤)
-
-- 능력은 `09` §3. 돌별 1개.
-- 발동 쿨다운 프레임소유.
-- `Mind` 계열 돌의 능력(대시·회피)은 AI 도 쓸 수 있다. → 무조건 유리.
+- `player_ai.gd::decide` 반환값:
+  `{stance, goal, policy, attributes, weapon, actions_per_turn, target_id, want_potion, want_ability, retreat}`
+- `trace` 플래그 없음. release 노출 금지.
+  판단이 필요하면 정책 객체 자체를 로비에서 본다 (robi 가 이미 보여준다).
 
 ---
 
-## 7. 수집 AI
+## 6. 이 AI 를 검증하는 방법 (눈으로 안 봐도 된다)
 
-```gdscript
-func _collect_order(state) -> Array[String]:
-    return chest_ids_sorted_by(state, key = distance_from_player, reverse = false)
-```
+| 테스트 | 보장 |
+|---|---|
+| `test_p7_gear_changes_the_ai` | 장비를 바꾸면 AI 스탠스가 실제로 바뀐다 |
+| `test_lobby_shows_the_resolved_policy` | 로비가 해석된 정책을 화면에 보여준다 |
+| `test_lobby_is_the_only_control_surface` | 탐험 중 장비가 안 바뀐다 |
+| `test_m_death_keeps_progress` | 죽어도 자원·레벨이 남는다 |
+| `test_a9_actions_per_turn_from_limbs` | 다리 12 = 1턴 3회 |
 
-- 클리어 후 상자를 가까운 순으로 연다.
-- 개수는 1개/틱. **동시에 여러 상자를 열지 않는다.** (UI 1개만 열림)
-- 상자를 여는 중에도 다음 상자로 이동할 수 있다.
-
----
-
-## 8. AI 결정 로그 (디버그, release 비노출)
-
-```gdscript
-# release 빌드에서 꺼진다
-var trace: bool = false
-var last_intent: Dictionary = {}
-```
-
-- `04` §7 의 강제 규칙: "debug label의 release 노출" 금지.
-- 개발 중 판단이 필요할 때만 `trace = true` 로 켠다.
-- 로그에는 `goal`, `reason`, `stance`, `target_id` 만. 데미지 수는 넣지 않는다.
+**아직 없는 검증 (Phase 2)**: AI 가 "이 빌드로 이 적을 이길 수 있다"를
+사람이 판단하지 않고도 알 수 있는 지표. 지금은 승률을 못 잰다.
 
 ---
 
-## 9. AI 테스트 항목
+## 7. 금지
 
-1. 입력 0으로 전투 완전 진행.
-2. `SURVIVE` 진입 시 드랍 무시.
-3. 요구치 미달 무기만 있으면 **그 무기로** 싸운다.
-4. 가드/회피 스탠스가 기력 부족 시 `neutral` 로 떨어진다.
-5. superarmor 무기 장착 시 스탠스를 선택하지 않는다.
-6. 주문 슬롯 전부 `null` 이면 주문 미사용.
-7. `swap_window` 미사용 시 패널이 닫히고 AI 가 원래 무기로 계속 공격한다.
-8. 같은 입력 시퀬 + 같은 시드 → 같은 AI 행동 열.
+- 전투 중 플레이어 개입 창
+- AI 가 데미지/명중을 만드는 것
+- 장비 동결 해제 (탐험 중)
+- 스크립트 언어
+- 목표 스택에 드랍이 1순위
+- 요구치 미달 무기를 후보에서 outright 제거
+
+## 8. 구현 위치
+
+| 책임 | 파일 |
+|---|---|
+| 목표 스택 · 스탠스 · 타깃 · 무기 선택 | `systems/player_ai.gd` |
+| 정책 해석 · hook | `systems/gear_policy.gd` |
+| 인스턴스+정의 병합 | `domain/run_state.gd::gear_defs` |
+| 정책 표시 | `presentation/lobby.gd::_policy_line` |
