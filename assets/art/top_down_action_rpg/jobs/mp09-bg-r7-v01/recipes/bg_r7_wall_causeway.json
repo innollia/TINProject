@@ -1,169 +1,1679 @@
 {
-  "asset": "bg_r7_wall_causeway",
-  "status": "candidate",
-  "note": "R7 The Hollow Orchard, zone 1 (arrival, west): base_clean only. Layout from BRIEF.md 6.1 (logical px x2): cold basalt Outer Wall face y0..340 across the screen (seam spot x1172..1388 kept plain for the seam object); E16 drainage arch x1960..2360 with a sunken stone pool in front; raised E09 causeway from the west edge (top y840..1120, south slope to 1175) with ditches; root-cracked flagstone path east y700..980 with branches to the seam and the pool. Trees, rubble, fruit, lantern and the gate are separate objects. 60 deg camera, ground 180 px/m, heights 110 px/m.",
-  "palette": "palette_r7.json",
-  "style": "environment",
-  "canvas": [2560, 1440],
-  "pivot": [0, 0],
-  "pivot_meaning": "canvas origin = logical (0,0); 2 source px per logical px",
-  "seed": 701,
-  "include": ["_r7_ground.json"],
-  "forms": [
-    {"name": "ditch_north", "z": 3, "kind": "wash", "color": "root_dark", "opacity": 0.75, "blur": 10,
-     "rough": {"amp": 0.6, "soft": 8, "cell": 30},
-     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [300, 812], "size": [640, 70]}]},
-    {"name": "ditch_south", "z": 3, "kind": "wash", "color": "root_dark", "opacity": 0.75, "blur": 10,
-     "rough": {"amp": 0.6, "soft": 8, "cell": 30},
-     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [300, 1210], "size": [640, 80]}]},
-    {"name": "ditch_damp", "z": 3.1, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.5, "blur": 14,
-     "pieces": [
-       {"icon": "square", "fit": [1, 1, 15, 15], "at": [300, 812], "size": [640, 60]},
-       {"icon": "square", "fit": [1, 1, 15, 15], "at": [300, 1212], "size": [640, 70]}
-     ]},
-
-    {"name": "roots", "z": 3.5, "kind": "flat", "color": "root_dark", "opacity": 0.8,
-     "line": {"width": 0.8, "heavy": 1.0, "color": "#14100c"},
-     "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1060, 1350], "size": [150, 10], "rot": 18},
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1190, 1340], "size": [130, 9], "rot": -26},
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1580, 1270], "size": [150, 10], "rot": 14},
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1720, 1280], "size": [160, 9], "rot": -12},
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1930, 1370], "size": [150, 10], "rot": 22},
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [2080, 1390], "size": [140, 9], "rot": -20},
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [2300, 1240], "size": [150, 10], "rot": 26},
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [2460, 1270], "size": [140, 9], "rot": -18}
-     ]},
-
-    {"name": "stone_halo", "z": 4, "kind": "flat", "color": "loam_joint", "opacity": 0.85, "blur": 2,
-     "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [112, 92],
-        "repeat": {"line": [[720, 930], [1300, 850]], "count": 6, "jitter": {"at": 4}}},
-       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [112, 92],
-        "repeat": {"line": [[780, 1020], [1360, 950]], "count": 6, "jitter": {"at": 4}}},
-       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [112, 92],
-        "repeat": {"line": [[1420, 800], [2520, 780]], "count": 10, "jitter": {"at": 4}}},
-       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [112, 92],
-        "repeat": {"line": [[1480, 900], [2540, 880]], "count": 10, "jitter": {"at": 4}}},
-       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [108, 88],
-        "repeat": {"line": [[1280, 720], [1290, 400]], "count": 5, "jitter": {"at": 4}}},
-       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [108, 88],
-        "repeat": {"line": [[1900, 760], [2130, 560]], "count": 4, "jitter": {"at": 4}}}
-     ]},
-    {"name": "flagstones", "z": 4.2, "material": "root_flag",
-     "shade": {"max_radius": 6, "soft": 0.12, "bump": 0.9, "threshold": 0.44, "highlight": 0.86, "highlight_amount": 0.3, "ragged": 0.15},
-     "line": {"width": 1.1, "heavy": 1.0, "breaks": 0.25, "color": "#15130f", "opacity": 0.85},
-     "rough": {"amp": 0.6, "soft": 2.0, "cell": 12},
-     "cast": {"dist": 2, "blur": 2, "opacity": 0.45, "color": "shade_tint"},
-     "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [100, 80],
-        "repeat": {"line": [[720, 930], [1300, 850]], "count": 6, "jitter": {"at": 4, "rot": 8, "size": 0.12}}},
-       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [100, 80],
-        "repeat": {"line": [[780, 1020], [1360, 950]], "count": 6, "jitter": {"at": 4, "rot": 8, "size": 0.12}}},
-       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [100, 80],
-        "repeat": {"line": [[1420, 800], [2520, 780]], "count": 10, "jitter": {"at": 4, "rot": 8, "size": 0.12}}},
-       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [100, 80],
-        "repeat": {"line": [[1480, 900], [2540, 880]], "count": 10, "jitter": {"at": 4, "rot": 8, "size": 0.12}}},
-       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [96, 76],
-        "repeat": {"line": [[1280, 720], [1290, 400]], "count": 5, "jitter": {"at": 4, "rot": 8, "size": 0.12}}},
-       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [96, 76],
-        "repeat": {"line": [[1900, 760], [2130, 560]], "count": 4, "jitter": {"at": 4, "rot": 8, "size": 0.12}}}
-     ]},
-    {"name": "flag_cracks", "z": 4.4, "kind": "flat", "color": "#15130f", "opacity": 0.7, "clip_to": "flagstones",
-     "pieces": [
-       {"icon": "lightning_bolt", "at": [960, 900], "size": [10, 46], "rot": 70},
-       {"icon": "lightning_bolt", "at": [1700, 790], "size": [9, 40], "rot": 100},
-       {"icon": "lightning_bolt", "at": [2210, 880], "size": [10, 44], "rot": 60}
-     ]},
-    {"name": "worn", "z": 4.6, "kind": "wash", "material": "worn", "opacity": 0.1, "blur": 36,
-     "pieces": [
-       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1600, 860], "size": [1900, 220]},
-       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 560], "size": [180, 400]}
-     ]},
-
-    {"name": "causeway_curbs", "z": 5, "kind": "block", "material": "basalt_dark", "extrude": 62,
-     "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [300, 840], "size": [620, 14]},
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [300, 1114], "size": [620, 14]}
-     ]},
-    {"name": "causeway", "z": 5.2, "kind": "block", "material": "loam", "extrude": 55,
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [290, 978], "size": [600, 266]}]},
-    {"name": "causeway_stones", "z": 5.4, "material": "root_flag",
-     "shade": {"max_radius": 6, "soft": 0.12, "bump": 0.9, "threshold": 0.44, "highlight_amount": 0.3},
-     "line": {"width": 1.1, "heavy": 1.0, "breaks": 0.25, "color": "#15130f", "opacity": 0.85},
-     "rough": {"amp": 0.6, "soft": 2.0, "cell": 12},
-     "clip_to": "causeway",
-     "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 12}, "ground": true, "at": [0, 0], "size": [104, 82],
-        "repeat": {"line": [[40, 920], [560, 920]], "count": 6, "jitter": {"at": 4, "rot": 6, "size": 0.1}}},
-       {"icon": "square", "slice": {"border": 4, "corner": 12}, "ground": true, "at": [0, 0], "size": [104, 82],
-        "repeat": {"line": [[90, 1020], [590, 1020]], "count": 6, "jitter": {"at": 4, "rot": 6, "size": 0.1}}}
-     ]},
-    {"name": "causeway_ramp", "z": 5.6, "kind": "flat", "material": "loam", "color": "#4c4034",
-     "line": {"width": 1.0, "heavy": 1.1, "color": "#120e0a"},
-     "pieces": [{"icon": "square", "poly": [[0, 0], [16, 3], [16, 13], [0, 16]], "fit": [0, 0, 16, 16], "at": [640, 1000], "size": [90, 290]}]},
-
-    {"name": "north_wall", "z": 20, "kind": "block", "material": "basalt", "extrude": 340,
-     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, -31], "size": [2600, 62]}]},
-    {"name": "wall_courses", "z": 20.2, "kind": "flat", "color": "#141319", "opacity": 0.7, "clip_to": "north_wall",
-     "pieces": [
-       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 0], "size": [2600, 4], "repeat": {"line": [[1280, 99], [1280, 297]], "count": 3}},
-       {"icon": "square", "fit": [1, 1, 15, 15], "at": [60, 50], "size": [4, 98], "repeat": {"grid": [10, 4], "step": [288, 99], "stagger": 144}}
-     ]},
-    {"name": "wall_block_tint", "z": 20.3, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.25, "clip_to": "north_wall",
-     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [60, 50], "size": [284, 95], "repeat": {"grid": [10, 4], "step": [288, 99], "stagger": 144, "jitter": {"alpha": 1.0}}}]},
-    {"name": "wall_damp", "z": 20.4, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.4, "clip_to": "north_wall",
-     "mottle": {"cell": 130, "lo": 0.48, "hi": 0.85},
-     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 170], "size": [2600, 360]}]},
-    {"name": "wall_moss", "z": 20.5, "kind": "wash", "color": "moss", "opacity": 0.45, "clip_to": "north_wall", "blur": 10,
-     "rough": {"amp": 0.7, "soft": 8, "cell": 30},
-     "pieces": [
-       {"icon": "cloud", "at": [300, 330], "size": [360, 60]},
-       {"icon": "cloud", "at": [880, 326], "size": [300, 54], "flip": "x"},
-       {"icon": "cloud", "at": [1700, 330], "size": [380, 60]}
-     ]},
-    {"name": "wall_streaks", "z": 20.6, "kind": "wash", "material": "rust", "blend": "multiply", "opacity": 0.4, "clip_to": "north_wall",
-     "pieces": [
-       {"icon": "droplet", "flip": "y", "at": [520, 300], "size": [14, 110]},
-       {"icon": "droplet", "flip": "y", "at": [1560, 290], "size": [12, 96]},
-       {"icon": "droplet", "flip": "y", "at": [2460, 300], "size": [14, 104]}
-     ]},
-    {"name": "survey_studs", "z": 20.8, "kind": "flat", "material": "bronze", "line": {"width": 0.7, "heavy": 0.8},
-     "pieces": [{"icon": "circle", "at": [0, 0], "size": [11, 11], "repeat": {"points": [[140, 250], [420, 250], [700, 250], [980, 250], [1560, 250], [1840, 250], [2460, 250]]}}]},
-    {"name": "survey_ticks", "z": 20.9, "kind": "flat", "material": "bronze", "opacity": 0.8,
-     "pieces": [{"icon": "square", "at": [0, 0], "size": [3, 14], "repeat": {"points": [[140, 266], [420, 266], [700, 266], [980, 266], [1560, 266], [1840, 266], [2460, 266]]}}]},
-
-    {"name": "arch_rim", "z": 21, "kind": "flat", "material": "basalt_dark", "line": {"width": 1.2, "heavy": 1.5},
-     "pieces": [
-       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2160, 273], "size": [424, 134]},
-       {"icon": "circle", "at": [2160, 206], "size": [424, 158]},
-       {"icon": "square", "op": "sub", "fit": [1, 1, 15, 15], "at": [2160, 276], "size": [400, 128]},
-       {"icon": "circle", "op": "sub", "at": [2160, 212], "size": [400, 140]}
-     ]},
-    {"name": "arch_void", "z": 21.1, "kind": "flat", "material": "void",
-     "grad": {"to": "well_inner", "y0": 340, "y1": 150, "curve": 1.5},
-     "pieces": [
-       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2160, 276], "size": [400, 128]},
-       {"icon": "circle", "at": [2160, 212], "size": [400, 140]}
-     ]},
-    {"name": "arch_keystone", "z": 21.2, "kind": "flat", "material": "bronze_block", "line": {"width": 0.8, "heavy": 0.8},
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [2160, 134], "size": [28, 18]}]},
-
-    {"name": "pool_rim", "z": 22, "kind": "block", "material": "basalt", "extrude": 16,
-     "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [2160, 432], "size": [340, 176]},
-       {"icon": "square", "op": "sub", "fit": [1, 1, 15, 15], "at": [2160, 432], "size": [300, 140]}
-     ]},
-    {"name": "pool_water", "z": 22.2, "kind": "flat", "color": "#121615",
-     "pieces": [{"icon": "square", "crop": [3, 3, 13, 13], "fit": [3, 3, 13, 13], "at": [2160, 440], "size": [300, 140]}]},
-    {"name": "pool_sheen", "z": 22.3, "kind": "wash", "color": "#2e3a37", "opacity": 0.55, "clip_to": "pool_water",
-     "pieces": [
-       {"icon": "square", "at": [2100, 410], "size": [90, 3]},
-       {"icon": "square", "at": [2220, 460], "size": [70, 3]},
-       {"icon": "square", "at": [2140, 490], "size": [60, 3]}
-     ]},
-    {"name": "gutter", "z": 22.4, "kind": "flat", "color": "#1a1917",
-     "line": {"width": 0.8, "heavy": 0.9, "color": "#0b0a09"},
-     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2440, 446], "size": [240, 16]}]}
-  ]
+ "asset": "bg_r7_wall_causeway",
+ "status": "candidate",
+ "note": "R7 The Hollow Orchard, zone 1 (arrival, west): base_clean only. Layout from BRIEF.md 6.1 (logical px x2): cold basalt Outer Wall face y0..340 across the screen (seam spot x1172..1388 kept plain for the seam object); E16 drainage arch x1960..2360 with a sunken stone pool in front; raised E09 causeway from the west edge (top y840..1120, south slope to 1175) with ditches; root-cracked flagstone path east y700..980 with branches to the seam and the pool. Trees, rubble, fruit, lantern and the gate are separate objects. 60 deg camera, ground 180 px/m, heights 110 px/m.",
+ "palette": "palette_r7.json",
+ "style": "environment",
+ "canvas": [
+  2560,
+  1440
+ ],
+ "pivot": [
+  0,
+  0
+ ],
+ "pivot_meaning": "canvas origin = logical (0,0); 2 source px per logical px",
+ "seed": 701,
+ "include": [
+  "_r7_ground.json"
+ ],
+ "forms": [
+  {
+   "name": "ditch_north",
+   "z": 3,
+   "kind": "wash",
+   "color": "root_dark",
+   "opacity": 0.75,
+   "blur": 10,
+   "rough": {
+    "amp": 0.6,
+    "soft": 8,
+    "cell": 30
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      300,
+      812
+     ],
+     "size": [
+      640,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ditch_south",
+   "z": 3,
+   "kind": "wash",
+   "color": "root_dark",
+   "opacity": 0.75,
+   "blur": 10,
+   "rough": {
+    "amp": 0.6,
+    "soft": 8,
+    "cell": 30
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      300,
+      1210
+     ],
+     "size": [
+      640,
+      80
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ditch_damp",
+   "z": 3.1,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.5,
+   "blur": 14,
+   "pieces": [
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      300,
+      812
+     ],
+     "size": [
+      640,
+      60
+     ]
+    },
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      300,
+      1212
+     ],
+     "size": [
+      640,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "roots",
+   "z": 3.5,
+   "kind": "flat",
+   "color": "root_dark",
+   "opacity": 0.8,
+   "line": {
+    "width": 0.8,
+    "heavy": 1.0,
+    "color": "#14100c"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      1060,
+      1350
+     ],
+     "size": [
+      150,
+      10
+     ],
+     "rot": 18
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      1190,
+      1340
+     ],
+     "size": [
+      130,
+      9
+     ],
+     "rot": -26
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      1580,
+      1270
+     ],
+     "size": [
+      150,
+      10
+     ],
+     "rot": 14
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      1720,
+      1280
+     ],
+     "size": [
+      160,
+      9
+     ],
+     "rot": -12
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      1930,
+      1370
+     ],
+     "size": [
+      150,
+      10
+     ],
+     "rot": 22
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      2080,
+      1390
+     ],
+     "size": [
+      140,
+      9
+     ],
+     "rot": -20
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      2300,
+      1240
+     ],
+     "size": [
+      150,
+      10
+     ],
+     "rot": 26
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      2460,
+      1270
+     ],
+     "size": [
+      140,
+      9
+     ],
+     "rot": -18
+    }
+   ]
+  },
+  {
+   "name": "stone_halo",
+   "z": 4,
+   "kind": "flat",
+   "color": "loam_joint",
+   "opacity": 0.85,
+   "blur": 2,
+   "pieces": [
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      118,
+      98
+     ],
+     "repeat": {
+      "line": [
+       [
+        720,
+        930
+       ],
+       [
+        1300,
+        850
+       ]
+      ],
+      "count": 6,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    },
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      118,
+      98
+     ],
+     "repeat": {
+      "line": [
+       [
+        780,
+        1020
+       ],
+       [
+        1360,
+        950
+       ]
+      ],
+      "count": 6,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    },
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      118,
+      98
+     ],
+     "repeat": {
+      "line": [
+       [
+        1420,
+        800
+       ],
+       [
+        2520,
+        780
+       ]
+      ],
+      "count": 10,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    },
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      118,
+      98
+     ],
+     "repeat": {
+      "line": [
+       [
+        1480,
+        900
+       ],
+       [
+        2540,
+        880
+       ]
+      ],
+      "count": 10,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    },
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      114,
+      94
+     ],
+     "repeat": {
+      "line": [
+       [
+        1280,
+        720
+       ],
+       [
+        1290,
+        400
+       ]
+      ],
+      "count": 5,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    },
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      114,
+      94
+     ],
+     "repeat": {
+      "line": [
+       [
+        1900,
+        760
+       ],
+       [
+        2130,
+        560
+       ]
+      ],
+      "count": 4,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "flagstones",
+   "z": 4.2,
+   "material": "root_flag",
+   "shade": {
+    "max_radius": 6,
+    "soft": 0.12,
+    "bump": 0.9,
+    "threshold": 0.44,
+    "highlight": 0.86,
+    "highlight_amount": 0.3,
+    "ragged": 0.15
+   },
+   "line": {
+    "width": 1.1,
+    "heavy": 1.0,
+    "breaks": 0.25,
+    "color": "#15130f",
+    "opacity": 0.85
+   },
+   "rough": {
+    "amp": 0.6,
+    "soft": 2.0,
+    "cell": 12
+   },
+   "cast": {
+    "dist": 2,
+    "blur": 2,
+    "opacity": 0.45,
+    "color": "shade_tint"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      100,
+      80
+     ],
+     "repeat": {
+      "line": [
+       [
+        720,
+        930
+       ],
+       [
+        1300,
+        850
+       ]
+      ],
+      "count": 6,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    },
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      100,
+      80
+     ],
+     "repeat": {
+      "line": [
+       [
+        780,
+        1020
+       ],
+       [
+        1360,
+        950
+       ]
+      ],
+      "count": 6,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    },
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      100,
+      80
+     ],
+     "repeat": {
+      "line": [
+       [
+        1420,
+        800
+       ],
+       [
+        2520,
+        780
+       ]
+      ],
+      "count": 10,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    },
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      100,
+      80
+     ],
+     "repeat": {
+      "line": [
+       [
+        1480,
+        900
+       ],
+       [
+        2540,
+        880
+       ]
+      ],
+      "count": 10,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    },
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      96,
+      76
+     ],
+     "repeat": {
+      "line": [
+       [
+        1280,
+        720
+       ],
+       [
+        1290,
+        400
+       ]
+      ],
+      "count": 5,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    },
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      96,
+      76
+     ],
+     "repeat": {
+      "line": [
+       [
+        1900,
+        760
+       ],
+       [
+        2130,
+        560
+       ]
+      ],
+      "count": 4,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "flag_cracks",
+   "z": 4.4,
+   "kind": "flat",
+   "color": "#15130f",
+   "opacity": 0.7,
+   "clip_to": "flagstones",
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      960,
+      900
+     ],
+     "size": [
+      10,
+      46
+     ],
+     "rot": 70
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      1700,
+      790
+     ],
+     "size": [
+      9,
+      40
+     ],
+     "rot": 100
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      2210,
+      880
+     ],
+     "size": [
+      10,
+      44
+     ],
+     "rot": 60
+    }
+   ]
+  },
+  {
+   "name": "worn",
+   "z": 4.6,
+   "kind": "wash",
+   "material": "worn",
+   "opacity": 0.1,
+   "blur": 36,
+   "pieces": [
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      1600,
+      860
+     ],
+     "size": [
+      1900,
+      220
+     ]
+    },
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      1280,
+      560
+     ],
+     "size": [
+      180,
+      400
+     ]
+    }
+   ]
+  },
+  {
+   "name": "causeway_curbs",
+   "z": 5,
+   "kind": "block",
+   "material": "basalt_dark",
+   "extrude": 62,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      300,
+      840
+     ],
+     "size": [
+      620,
+      14
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      300,
+      1114
+     ],
+     "size": [
+      620,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "causeway",
+   "z": 5.2,
+   "kind": "block",
+   "material": "loam",
+   "extrude": 55,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      290,
+      978
+     ],
+     "size": [
+      600,
+      266
+     ]
+    }
+   ],
+   "ao": {
+    "spread": 3,
+    "blur": 12,
+    "opacity": 0.22,
+    "color": "shadow_contact"
+   }
+  },
+  {
+   "name": "causeway_stones",
+   "z": 5.4,
+   "material": "root_flag",
+   "shade": {
+    "max_radius": 6,
+    "soft": 0.12,
+    "bump": 0.9,
+    "threshold": 0.44,
+    "highlight_amount": 0.3
+   },
+   "line": {
+    "width": 1.1,
+    "heavy": 1.0,
+    "breaks": 0.25,
+    "color": "#15130f",
+    "opacity": 0.85
+   },
+   "rough": {
+    "amp": 0.6,
+    "soft": 2.0,
+    "cell": 12
+   },
+   "clip_to": "causeway",
+   "pieces": [
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      104,
+      82
+     ],
+     "repeat": {
+      "line": [
+       [
+        40,
+        920
+       ],
+       [
+        560,
+        920
+       ]
+      ],
+      "count": 6,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    },
+    {
+     "icon": "square",
+     "ground": true,
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      104,
+      82
+     ],
+     "repeat": {
+      "line": [
+       [
+        90,
+        1020
+       ],
+       [
+        590,
+        1020
+       ]
+      ],
+      "count": 6,
+      "jitter": {
+       "at": 6,
+       "rot": 16,
+       "size": 0.2
+      },
+      "icons": [
+       "octagon",
+       "hexagon",
+       "square",
+       "octagon"
+      ],
+      "cycle": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "north_wall",
+   "z": 20,
+   "kind": "block",
+   "material": "basalt",
+   "extrude": 340,
+   "pieces": [
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      1280,
+      -31
+     ],
+     "size": [
+      2600,
+      62
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wall_courses",
+   "z": 20.2,
+   "kind": "flat",
+   "color": "#141319",
+   "opacity": 0.7,
+   "clip_to": "north_wall",
+   "pieces": [
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      1280,
+      0
+     ],
+     "size": [
+      2600,
+      4
+     ],
+     "repeat": {
+      "line": [
+       [
+        1280,
+        99
+       ],
+       [
+        1280,
+        297
+       ]
+      ],
+      "count": 3
+     }
+    },
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      60,
+      50
+     ],
+     "size": [
+      4,
+      98
+     ],
+     "repeat": {
+      "grid": [
+       10,
+       4
+      ],
+      "step": [
+       288,
+       99
+      ],
+      "stagger": 144
+     }
+    }
+   ]
+  },
+  {
+   "name": "wall_block_tint",
+   "z": 20.3,
+   "kind": "wash",
+   "material": "grime",
+   "blend": "multiply",
+   "opacity": 0.25,
+   "clip_to": "north_wall",
+   "pieces": [
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      60,
+      50
+     ],
+     "size": [
+      284,
+      95
+     ],
+     "repeat": {
+      "grid": [
+       10,
+       4
+      ],
+      "step": [
+       288,
+       99
+      ],
+      "stagger": 144,
+      "jitter": {
+       "alpha": 1.0
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "wall_damp",
+   "z": 20.4,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.4,
+   "clip_to": "north_wall",
+   "mottle": {
+    "cell": 130,
+    "lo": 0.48,
+    "hi": 0.85
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      1280,
+      170
+     ],
+     "size": [
+      2600,
+      360
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wall_moss",
+   "z": 20.5,
+   "kind": "wash",
+   "color": "moss",
+   "opacity": 0.45,
+   "clip_to": "north_wall",
+   "blur": 10,
+   "rough": {
+    "amp": 0.7,
+    "soft": 8,
+    "cell": 30
+   },
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      300,
+      330
+     ],
+     "size": [
+      360,
+      60
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      880,
+      326
+     ],
+     "size": [
+      300,
+      54
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      1700,
+      330
+     ],
+     "size": [
+      380,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wall_streaks",
+   "z": 20.6,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.4,
+   "clip_to": "north_wall",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      520,
+      300
+     ],
+     "size": [
+      14,
+      110
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      1560,
+      290
+     ],
+     "size": [
+      12,
+      96
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      2460,
+      300
+     ],
+     "size": [
+      14,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "name": "survey_studs",
+   "z": 20.8,
+   "kind": "flat",
+   "material": "bronze",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      11,
+      11
+     ],
+     "repeat": {
+      "points": [
+       [
+        140,
+        250
+       ],
+       [
+        420,
+        250
+       ],
+       [
+        700,
+        250
+       ],
+       [
+        980,
+        250
+       ],
+       [
+        1560,
+        250
+       ],
+       [
+        1840,
+        250
+       ],
+       [
+        2460,
+        250
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "survey_ticks",
+   "z": 20.9,
+   "kind": "flat",
+   "material": "bronze",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0,
+      0
+     ],
+     "size": [
+      3,
+      14
+     ],
+     "repeat": {
+      "points": [
+       [
+        140,
+        266
+       ],
+       [
+        420,
+        266
+       ],
+       [
+        700,
+        266
+       ],
+       [
+        980,
+        266
+       ],
+       [
+        1560,
+        266
+       ],
+       [
+        1840,
+        266
+       ],
+       [
+        2460,
+        266
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "arch_rim",
+   "z": 21,
+   "kind": "flat",
+   "material": "basalt_dark",
+   "line": {
+    "width": 1.2,
+    "heavy": 1.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      2160,
+      273
+     ],
+     "size": [
+      424,
+      134
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      2160,
+      206
+     ],
+     "size": [
+      424,
+      158
+     ]
+    },
+    {
+     "icon": "square",
+     "op": "sub",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      2160,
+      276
+     ],
+     "size": [
+      400,
+      128
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      2160,
+      212
+     ],
+     "size": [
+      400,
+      140
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arch_void",
+   "z": 21.1,
+   "kind": "flat",
+   "material": "void",
+   "grad": {
+    "to": "well_inner",
+    "y0": 340,
+    "y1": 150,
+    "curve": 1.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      2160,
+      276
+     ],
+     "size": [
+      400,
+      128
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      2160,
+      212
+     ],
+     "size": [
+      400,
+      140
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arch_keystone",
+   "z": 21.2,
+   "kind": "flat",
+   "material": "bronze_block",
+   "line": {
+    "width": 0.8,
+    "heavy": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      2160,
+      134
+     ],
+     "size": [
+      28,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pool_rim",
+   "z": 22,
+   "kind": "block",
+   "material": "basalt",
+   "extrude": 16,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      2160,
+      432
+     ],
+     "size": [
+      340,
+      176
+     ]
+    },
+    {
+     "icon": "square",
+     "op": "sub",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      2160,
+      432
+     ],
+     "size": [
+      300,
+      140
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pool_water",
+   "z": 22.2,
+   "kind": "flat",
+   "color": "#121615",
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "fit": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "at": [
+      2160,
+      440
+     ],
+     "size": [
+      300,
+      140
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pool_sheen",
+   "z": 22.3,
+   "kind": "wash",
+   "color": "#2e3a37",
+   "opacity": 0.55,
+   "clip_to": "pool_water",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      2100,
+      410
+     ],
+     "size": [
+      90,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      2220,
+      460
+     ],
+     "size": [
+      70,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      2140,
+      490
+     ],
+     "size": [
+      60,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gutter",
+   "z": 22.4,
+   "kind": "flat",
+   "color": "#1a1917",
+   "line": {
+    "width": 0.8,
+    "heavy": 0.9,
+    "color": "#0b0a09"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "at": [
+      2440,
+      446
+     ],
+     "size": [
+      240,
+      16
+     ]
+    }
+   ]
+  }
+ ]
 }

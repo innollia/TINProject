@@ -1,0 +1,161 @@
+{
+ "asset": "eq_w28_flintlock_pistol",
+ "status": "candidate",
+ "note": "28 flintlock pistol. Small bore, worn frizzen, checkered grip rubbed smooth. It has misfired more than it has fired.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 128,
+ "forms": [
+  {
+   "name": "lock",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "flintlock",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      400,
+      400
+     ]
+    }
+   ]
+  },
+  {
+   "name": "grip",
+   "z": 2,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      150,
+      372
+     ],
+     "size": [
+      110,
+      46
+     ],
+     "rot": 30
+    },
+    {
+     "icon": "square",
+     "at": [
+      136,
+      392
+     ],
+     "size": [
+      70,
+      34
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "grip_cuts",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.5,
+   "line": false,
+   "clip_to": "grip",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      150,
+      372
+     ],
+     "size": [
+      96,
+      20
+     ],
+     "rot": 30
+    },
+    {
+     "icon": "square",
+     "at": [
+      162,
+      358
+     ],
+     "size": [
+      96,
+      20
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      330,
+      210
+     ],
+     "size": [
+      80.0,
+      55.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      200,
+      300
+     ],
+     "size": [
+      55.0,
+      45.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "lock"
+  },
+  {
+   "name": "dirt_soot",
+   "z": 9.3,
+   "kind": "wash",
+   "material": "soot",
+   "blend": "multiply",
+   "opacity": 0.3,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      300,
+      250
+     ],
+     "size": [
+      108.0,
+      78.0
+     ]
+    }
+   ],
+   "clip_to": "lock"
+  }
+ ]
+}

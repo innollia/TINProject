@@ -1,0 +1,160 @@
+{
+ "asset": "eq_w30_wooden_staff",
+ "status": "candidate",
+ "note": "30 wooden staff. A straight hazel rod with bronze ferrules, a leather thong wound at the middle. Knobby, unremarkable, heavy.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 130,
+ "forms": [
+  {
+   "name": "staff",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      440,
+      40
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "knots",
+   "z": 1,
+   "kind": "flat",
+   "material": "wood",
+   "opacity": 0.7,
+   "line": {
+    "width": 0.7
+   },
+   "clip_to": "staff",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      200,
+      226
+     ],
+     "size": [
+      34,
+      26
+     ],
+     "rot": 8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      330,
+      292
+     ],
+     "size": [
+      28,
+      22
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "thong",
+   "z": 2,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      236
+     ],
+     "size": [
+      54,
+      76
+     ],
+     "rot": 8
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      40,
+      40
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "caps",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      42,
+      230
+     ],
+     "size": [
+      26,
+      46
+     ],
+     "rot": 8
+    },
+    {
+     "icon": "square",
+     "at": [
+      470,
+      282
+     ],
+     "size": [
+      26,
+      46
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "dirt_grime",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "grime",
+   "blend": "multiply",
+   "opacity": 0.35,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      200,
+      70
+     ]
+    }
+   ],
+   "clip_to": "staff"
+  }
+ ]
+}

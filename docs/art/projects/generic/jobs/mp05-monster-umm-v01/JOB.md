@@ -37,10 +37,16 @@
 
 ## 체크리스트
 
-- [ ] 팔레트
-- [ ] 1~4 (+ 모아 보기)
-- [ ] 5~8 (+ 모아 보기)
-- [ ] 9~12 (+ 모아 보기)
-- [ ] 13~16 (+ 모아 보기)
-- [ ] 전체 시트, QA.md, __pycache__ 정리
-- [ ] 맵 시트(8방향 × 3칸): 8방향 기준 확정 대기
+- [x] 팔레트 (`palette_mp05_generic.json`: bone·bone_dark·rotten·rag·rag_dark·ghost·bandage·robe_wine·imp_skin·demon_skin·horn·wing·flame_body·fire_core·hell_glow·soul·arcane·book_leather·moss·steel·porcelain·doll_dress·lace 추가. 나머지는 V1 그대로)
+- [x] 1~4 (+ 모아 보기 `preview/sheet_generic_01_04.png`) — zombie 고침 1회: 둥근 옷 구멍과 가운데 상처가 과녁처럼 보임 → 찢긴 모양, 모자처럼 보이던 머리 → 흐트러진 가닥
+- [x] 5~8 (+ `sheet_generic_05_08.png`) — mummy 고침 1회: 목을 굵게, 든 팔을 앞으로 뻗은 팔로(여전히 조금 어색함)
+- [x] 9~12 (+ `sheet_generic_09_12.png`) — fire_spirit 고침 1회: 불꽃 아이콘 속 빈 구멍이 두 번째 입처럼 보임 → 채움
+- [x] 13~16 (+ `sheet_generic_13_16.png`)
+- [x] 전체 시트 `preview/sheet_generic_monsters_0.5x.png`(게임 크기), `preview/sheet_generic_monsters_1x.png`, QA.md, __pycache__ 없음
+- [ ] 맵 시트(8방향 × 3칸): 8방향 기준 06:40 확정(`docs/art/mass_production/COMMON.md`로 옮겨짐). 다음 할 일: `h0-icon-8dir-v03/tool`의 build8.py·check8.py·export_sheet8.py·iconkit/walk8.py를 이 tool에 넣고, `h0-icon-8dir-v02/JOB.md` '양산 규칙'대로 몬스터마다 방향 레시피 5개(down, down_left, left, up_left, up; `<이름>_<방향>.json`)를 만든다. 사람형은 `h0-icon-8dir-v03/recipes/player_*.json`, 네 발은 `enemy_ash_hound_*.json`에서 시작. 칸 192×192 피벗(96,182), 큰 몸 384×384. 순서 build8 → export_sheet8 → check8. 떠 있는 것(ghost, wraith, fire_spirit, living_grimoire)은 다리 대신 위아래 흔들림.
+
+## 결과 (assets/art/generic/jobs/mp05-monster-umm-v01/)
+
+- 그림: `output/<이름>/<이름>.png` + `_shadow.png` + (눈빛·불꽃·빛 구슬이 있으면) `_emit.png` + `.json`. 16장.
+- 레시피 `recipes/<이름>.json` 16개. 다시 만들기: `tool`에서 `py -3 -B build.py --all`.
+- 도구: `mp05-enemy-b-v01` 최종판 + 새 `grid_sheet.py`(여러 그림을 피벗 기준 격자로 모음).

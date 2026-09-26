@@ -1,0 +1,194 @@
+{
+ "asset": "eq_w34_cursed_book",
+ "status": "candidate",
+ "note": "34 cursed book. An eye pressed into the cover, still faintly lit. Somebody read it in the dark and the dark read back.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 134,
+ "forms": [
+  {
+   "name": "cover",
+   "z": 0,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "book",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      344,
+      344
+     ],
+     "rot": -6
+    }
+   ]
+  },
+  {
+   "name": "eye",
+   "z": 1,
+   "kind": "flat",
+   "material": "void",
+   "opacity": 0.9,
+   "line": false,
+   "clip_to": "cover",
+   "pieces": [
+    {
+     "icon": "eye",
+     "at": [
+      290,
+      250
+     ],
+     "size": [
+      190,
+      150
+     ],
+     "rot": -6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      290,
+      250
+     ],
+     "size": [
+      66,
+      66
+     ]
+    }
+   ]
+  },
+  {
+   "name": "iris",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "ember",
+   "opacity": 0.8,
+   "line": false,
+   "clip_to": "cover",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      290,
+      250
+     ],
+     "size": [
+      40,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "clasps",
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      150,
+      330
+     ],
+     "size": [
+      60,
+      22
+     ],
+     "rot": -6
+    },
+    {
+     "icon": "square",
+     "at": [
+      150,
+      200
+     ],
+     "size": [
+      60,
+      22
+     ],
+     "rot": -6
+    }
+   ]
+  },
+  {
+   "name": "pages",
+   "z": 2,
+   "kind": "flat",
+   "material": "paper",
+   "opacity": 0.9,
+   "line": false,
+   "clip_to": "cover",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      372,
+      250
+     ],
+     "size": [
+      18,
+      260
+     ],
+     "rot": -6
+    }
+   ]
+  },
+  {
+   "name": "dirt_soot",
+   "z": 9.3,
+   "kind": "wash",
+   "material": "soot",
+   "blend": "multiply",
+   "opacity": 0.3,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      300,
+      240
+     ],
+     "size": [
+      144.0,
+      144.0
+     ]
+    }
+   ],
+   "clip_to": "cover"
+  },
+  {
+   "name": "dirt_soot",
+   "z": 9.4,
+   "kind": "wash",
+   "material": "soot",
+   "blend": "multiply",
+   "opacity": 0.5,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      230,
+      320
+     ],
+     "size": [
+      30,
+      46
+     ]
+    }
+   ],
+   "clip_to": "cover"
+  }
+ ]
+}

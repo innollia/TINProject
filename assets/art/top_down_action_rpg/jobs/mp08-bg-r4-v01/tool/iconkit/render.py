@@ -774,6 +774,27 @@ class Renderer:
         pivot = recipe.get("pivot")
         if pivot and frame.get("mirror"):
             pivot = [W - pivot[0], pivot[1]]
+        # mp08: shapes and stamps are cached across frames, so a later frame may not touch
+        # the icon library again; record every icon the frame's forms name (pieces, repeat
+        # icon lists, texture/grime stamps of their materials) so each manifest is complete.
+        for form in forms:
+            names = set()
+            for piece in form.get("pieces", []):
+                if piece.get("icon"):
+                    names.add(piece["icon"])
+                names.update((piece.get("repeat") or {}).get("icons", []) or [])
+            mat = self._material(form)
+            for key in ("texture", "grime", "side_grime"):
+                spec = form.get(key) if isinstance(form.get(key), dict) else mat.get(key)
+                if isinstance(spec, dict):
+                    if spec.get("stamp"):
+                        names.add(spec["stamp"])
+                    names.update(spec.get("stamps", []) or [])
+            for name in names:
+                try:
+                    self.lib.used[name] = self.lib.sha256(name)
+                except KeyError:
+                    pass
         return {
             "image": image,
             "shadow": shadow_img,

@@ -1,0 +1,203 @@
+{
+ "asset": "eq_w08_rite_dagger",
+ "status": "candidate",
+ "note": "8 rite dagger. Bronze blade with a cross cut into the flat, wine-red cloth on the grip, a glass stone in the pommel that is not quite glass. Used for one purpose at a time.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 108,
+ "forms": [
+  {
+   "name": "blade",
+   "z": 0,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "dagger",
+     "at": [
+      268,
+      250
+     ],
+     "size": [
+      352,
+      352
+     ]
+    }
+   ]
+  },
+  {
+   "name": "inlay",
+   "z": 1,
+   "kind": "flat",
+   "material": "glass",
+   "opacity": 0.75,
+   "line": false,
+   "clip_to": "blade",
+   "pieces": [
+    {
+     "icon": "cross",
+     "at": [
+      282,
+      236
+     ],
+     "size": [
+      72,
+      72
+     ],
+     "rot": -45
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      300,
+      218
+     ],
+     "size": [
+      34,
+      46
+     ]
+    }
+   ]
+  },
+  {
+   "name": "guard",
+   "z": 3,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      176,
+      348
+     ],
+     "size": [
+      96,
+      16
+     ],
+     "rot": -45
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      150,
+      372
+     ],
+     "size": [
+      40,
+      40
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "grip",
+   "z": 3,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      150.0,
+      338.0
+     ],
+     "size": [
+      58,
+      17.4
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      168.0,
+      356.0
+     ],
+     "size": [
+      58,
+      17.4
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      186.0,
+      374.0
+     ],
+     "size": [
+      58,
+      17.4
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "pommel_gem",
+   "z": 4,
+   "material": "glass",
+   "emit": 0.35,
+   "glow": {
+    "radius": 5,
+    "opacity": 0.4,
+    "color": "flame_glow"
+   },
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      136,
+      392
+     ],
+     "size": [
+      46,
+      52
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.45,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "metaballs",
+     "at": [
+      300,
+      200
+     ],
+     "size": [
+      110,
+      80
+     ]
+    },
+    {
+     "icon": "sponge",
+     "at": [
+      230,
+      300
+     ],
+     "size": [
+      90,
+      70
+     ]
+    }
+   ],
+   "clip_to": "blade"
+  }
+ ]
+}

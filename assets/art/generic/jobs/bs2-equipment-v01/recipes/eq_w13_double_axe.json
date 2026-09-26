@@ -1,0 +1,139 @@
+{
+ "asset": "eq_w13_double_axe",
+ "status": "candidate",
+ "note": "13 double axe. Two heads back to back on a straight haft. Balanced wrong; it wants to turn in the swing.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 113,
+ "forms": [
+  {
+   "name": "head_l",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "axe",
+     "at": [
+      196,
+      236
+     ],
+     "size": [
+      360,
+      360
+     ],
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "head_r",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "axe",
+     "at": [
+      316,
+      236
+     ],
+     "size": [
+      360,
+      360
+     ]
+    }
+   ]
+  },
+  {
+   "name": "haft",
+   "z": 3,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      372
+     ],
+     "size": [
+      250,
+      40
+     ],
+     "rot": 90
+    }
+   ]
+  },
+  {
+   "name": "band",
+   "z": 4,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      268
+     ],
+     "size": [
+      92,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      360,
+      200
+     ],
+     "size": [
+      60.0,
+      50.0
+     ]
+    }
+   ],
+   "clip_to": "head_r"
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      150,
+      200
+     ],
+     "size": [
+      60.0,
+      50.0
+     ]
+    }
+   ],
+   "clip_to": "head_l"
+  }
+ ]
+}

@@ -77,7 +77,7 @@ def main() -> int:
     built = skipped = 0
     for path in paths:
         recipe = load_recipe(path)
-        if "canvas" not in recipe:
+        if "canvas" not in recipe or "view" in recipe:  # mp05: view recipes belong to build8.py
             continue
         asset = recipe.get("asset", path.stem)
         frames = recipe.get("frames") or [{"name": asset}]

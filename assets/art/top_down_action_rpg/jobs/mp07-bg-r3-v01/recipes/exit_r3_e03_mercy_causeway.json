@@ -1,0 +1,69 @@
+{
+  "asset": "exit_r3_e03_mercy_causeway",
+  "status": "candidate",
+  "note": "Exit object for route_e03_mercy_causeway (R3 -> H0, gate G0 + a held care token), author design. Two stone gateposts at the south sill of the intake gallery with a pair of iron grille leaves and a bronze seal box on the east post. closed: both leaves shut, the seal slot empty; open: the leaves stand swung back beside the posts. No text, no religious sign.",
+  "palette": "palette_r3.json",
+  "style": "prop",
+  "canvas": [520, 480],
+  "pivot": [260, 400],
+  "pivot_meaning": "centre of the opening on the south sill (area A source px 1280,1300)",
+  "seed": 621,
+  "frames": [
+    {"name": "exit_r3_e03_mercy_causeway_closed", "show": ["closed"]},
+    {"name": "exit_r3_e03_mercy_causeway_open", "show": ["open"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 7,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [94, 402], "size": [60, 22]},
+       {"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [434, 402], "size": [60, 22]}
+     ]},
+    {"name": "posts", "z": 0, "kind": "block", "material": "pale_stone", "extrude": 250,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [90, 133], "size": [42, 34]},
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [430, 133], "size": [42, 34]}
+     ]},
+    {"name": "post_caps", "z": 0.5, "kind": "block", "material": "stone_dark", "extrude": 10,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [90, 124], "size": [52, 30]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [430, 124], "size": [52, 30]}
+     ]},
+    {"name": "hinges", "z": 0.6, "kind": "flat", "material": "iron", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "at": [112, 200], "size": [8, 14]},
+       {"icon": "square", "at": [112, 360], "size": [8, 14]},
+       {"icon": "square", "at": [408, 200], "size": [8, 14]},
+       {"icon": "square", "at": [408, 360], "size": [8, 14]}
+     ]},
+    {"name": "seal_box", "z": 0.7, "material": "bronze", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [430, 262], "size": [34, 40]}]},
+    {"name": "seal_slot", "z": 0.8, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "square", "at": [430, 254], "size": [20, 5]}]},
+
+    {"name": "leaf_frames", "tags": ["closed"], "hidden": true, "z": 1, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [260, 172], "size": [300, 10]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [260, 286], "size": [300, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [260, 394], "size": [300, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [260, 283], "size": [8, 226]}
+     ]},
+    {"name": "leaf_bars", "tags": ["closed"], "hidden": true, "z": 1.1, "kind": "flat", "material": "iron", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [4, 220], "repeat": {"line": [[128, 283], [392, 283]], "count": 16}}]},
+    {"name": "leaf_rust", "tags": ["closed"], "hidden": true, "z": 1.2, "kind": "wash", "material": "rust", "blend": "multiply", "opacity": 0.4, "clip_to": "leaf_bars",
+     "mottle": {"cell": 20, "lo": 0.5, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [260, 283], "size": [300, 230]}]},
+
+    {"name": "open_leaf_frames", "tags": ["open"], "hidden": true, "z": 1, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [128, 250], "size": [34, 8], "rot": -30},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [128, 360], "size": [34, 8], "rot": -30},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [392, 250], "size": [34, 8], "rot": 30},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [392, 360], "size": [34, 8], "rot": 30}
+     ]},
+    {"name": "open_leaf_bars", "tags": ["open"], "hidden": true, "z": 1.1, "kind": "flat", "material": "iron", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "at": [0, 0], "size": [4, 220], "repeat": {"line": [[116, 290], [142, 276]], "count": 5}},
+       {"icon": "square", "at": [0, 0], "size": [4, 220], "repeat": {"line": [[378, 276], [404, 290]], "count": 5}}
+     ]}
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "asset": "r3_a_intake_gallery",
+  "status": "candidate",
+  "note": "R3 area A foreground_gallery_rail: a 1 m stone balustrade along the south sill, left open at the Mercy Causeway gate (x1110..1450) and the stretcher ramp (x1990..2310). Drawn over actors standing near the sill. Transparent, same canvas origin as base_clean; contact occlusion goes to the separate _shadow.png.",
+  "palette": "palette_r3.json",
+  "style": "environment_layer",
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = base_clean origin",
+  "seed": 602,
+  "frames": [{"name": "foreground_gallery_rail"}],
+  "forms": [
+    {"name": "posts", "z": 0, "kind": "block", "material": "pale_stone", "extrude": 104,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [26, 16],
+                 "repeat": {"points": [[40, 1188], [240, 1188], [440, 1188], [640, 1188], [840, 1188], [1040, 1188], [1090, 1188],
+                                       [1470, 1188], [1670, 1188], [1870, 1188], [1970, 1188], [2330, 1188], [2530, 1188]]}}]},
+    {"name": "rails", "z": 1, "material": "pale_stone", "line": {"width": 1.0, "heavy": 1.1},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [565, 1190], "size": [1080, 14]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [1720, 1190], "size": [510, 14]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [2430, 1190], "size": [210, 14]}
+     ]},
+    {"name": "balusters", "z": 0.5, "kind": "flat", "material": "pale_stone", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "at": [0, 0], "size": [8, 96], "repeat": {"line": [[80, 1248], [1060, 1248]], "count": 25}},
+       {"icon": "square", "at": [0, 0], "size": [8, 96], "repeat": {"line": [[1500, 1248], [1950, 1248]], "count": 12}},
+       {"icon": "square", "at": [0, 0], "size": [8, 96], "repeat": {"line": [[2360, 1248], [2510, 1248]], "count": 5}}
+     ]},
+    {"name": "rail_grime", "z": 2, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.4,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1284], "size": [2600, 30]}]}
+  ]
+}

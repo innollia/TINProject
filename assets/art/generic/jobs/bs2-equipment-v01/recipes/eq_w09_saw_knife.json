@@ -1,0 +1,160 @@
+{
+ "asset": "eq_w09_saw_knife",
+ "status": "candidate",
+ "note": "9 saw-tooth knife. Somebody filed teeth into a kitchen blade. The teeth are uneven and two are bent flat.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 109,
+ "forms": [
+  {
+   "name": "blade",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "knife",
+     "at": [
+      264,
+      250
+     ],
+     "size": [
+      340,
+      340
+     ]
+    }
+   ]
+  },
+  {
+   "name": "teeth",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      190,
+      330
+     ],
+     "size": [
+      46,
+      46
+     ],
+     "rot": -45,
+     "repeat": {
+      "line": [
+       [
+        196,
+        326
+       ],
+       [
+        372,
+        152
+       ]
+      ],
+      "count": 9,
+      "jitter": {
+       "at": 4.0
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "handle",
+   "z": 3,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      136,
+      378
+     ],
+     "size": [
+      96,
+      34
+     ],
+     "rot": -45
+    },
+    {
+     "icon": "circle",
+     "at": [
+      112,
+      400
+     ],
+     "size": [
+      30,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      300,
+      210
+     ],
+     "size": [
+      60.0,
+      45.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      210,
+      320
+     ],
+     "size": [
+      50.0,
+      40.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "blade"
+  },
+  {
+   "name": "dirt_rust",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.5,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      260,
+      250
+     ],
+     "size": [
+      30,
+      50
+     ]
+    }
+   ],
+   "clip_to": "blade"
+  }
+ ]
+}

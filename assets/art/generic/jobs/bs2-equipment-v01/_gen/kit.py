@@ -12,8 +12,8 @@ from pathlib import Path
 JOB = Path(r"C:\projects\TINProject\assets\art\generic\jobs\bs2-equipment-v01")
 RECIPES = JOB / "recipes"
 
-SQUARE = [512, 512, [256, 256]]
-DOC = [1024, 1024, [512, 512]]
+SQUARE = ([512, 512], [256, 256])
+DOC = ([1024, 1024], [512, 512])
 
 _seed = {"n": 100}
 
@@ -82,19 +82,27 @@ def write_all(items):
 
 
 # ---------------------------------------------------------------- shared looks
-def iron_tarnish(clip, spots=((300, 210, 150, 110), (360, 150, 90, 70), (200, 300, 130, 95))):
-    """The house rust pass every iron thing in this job gets."""
+def iron_tarnish(clip, spots=((300, 210, 150, 110), (360, 150, 90, 70), (200, 300, 130, 95)),
+                 opacity=0.34, shrink=0.5):
+    """The house rust pass every iron thing in this job gets.
+
+    Sizes are halved: at full stamp size the multiply pass reads as brown clouds
+    stuck on top of the metal instead of discoloration inside it.
+    """
     pieces = []
     for i, (x, y, w, h) in enumerate(spots):
-        pieces.append(p(["cloud", "metaballs", "droplet", "sponge"][i % 4], [x, y], [w, h],
+        pieces.append(p(["cloud", "droplet", "sponge", "metaballs"][i % 4], [x, y],
+                        [max(24.0, w * shrink), max(18.0, h * shrink)],
                         **({"flip": "x"} if i % 2 else {})))
-    return patina(pieces, "rust", 0.62, clip=clip)
+    return patina(pieces, "rust", opacity, clip=clip)
 
 
-def damp_stains(clip, spots=((180, 330, 150, 90), (350, 180, 120, 80))):
-    pieces = [p("cloud" if i % 2 == 0 else "metaballs", [x, y], [w, h]) for i, (x, y, w, h) in enumerate(spots)]
-    return stain(pieces, "damp", 0.3, clip=clip)
+def damp_stains(clip, spots=((180, 330, 150, 90), (350, 180, 120, 80)), opacity=0.2):
+    pieces = [p("cloud" if i % 2 == 0 else "droplet", [x, y], [w * 0.55, h * 0.55])
+              for i, (x, y, w, h) in enumerate(spots)]
+    return stain(pieces, "damp", opacity, clip=clip)
 
 
-def soot(clip, spots=((300, 250, 160, 120),)):
-    return stain([p("cloud", [x, y], [w, h]) for x, y, w, h in spots], "soot", 0.45, clip=clip, z=9.3)
+def soot(clip, spots=((300, 250, 160, 120),), opacity=0.3):
+    return stain([p("cloud", [x, y], [w * 0.6, h * 0.6]) for x, y, w, h in spots],
+                 "soot", opacity, clip=clip, z=9.3)

@@ -1,0 +1,179 @@
+{
+ "asset": "eq_w11_hand_axe",
+ "status": "candidate",
+ "note": "11 hand axe. Small head, split handle, one leather thong holding the head on. Chipped away on one side.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 111,
+ "forms": [
+  {
+   "name": "head",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "axe",
+     "at": [
+      268,
+      244
+     ],
+     "size": [
+      336,
+      336
+     ]
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.6,
+   "line": false,
+   "clip_to": "head",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      330,
+      210
+     ],
+     "size": [
+      20,
+      190
+     ],
+     "rot": -18
+    }
+   ]
+  },
+  {
+   "name": "haft",
+   "z": 3,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      166,
+      366
+     ],
+     "size": [
+      230,
+      34
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "thong",
+   "z": 4,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      176,
+      356
+     ],
+     "size": [
+      56,
+      60
+     ],
+     "rot": -45
+    },
+    {
+     "icon": "square",
+     "at": [
+      190,
+      342
+     ],
+     "size": [
+      44,
+      46
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      330,
+      210
+     ],
+     "size": [
+      65.0,
+      55.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      250,
+      290
+     ],
+     "size": [
+      50.0,
+      40.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "head"
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      180,
+      330
+     ],
+     "size": [
+      82.5,
+      49.50000000000001
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      350,
+      180
+     ],
+     "size": [
+      66.0,
+      44.0
+     ]
+    }
+   ],
+   "clip_to": "head"
+  }
+ ]
+}

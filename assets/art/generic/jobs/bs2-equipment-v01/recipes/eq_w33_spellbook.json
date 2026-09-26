@@ -1,0 +1,217 @@
+{
+ "asset": "eq_w33_spellbook",
+ "status": "candidate",
+ "note": "33 spellbook. Faded leather cover, wine cloth spine, four bronze corners, a clasp that no longer catches. The block of pages is a solid grey slab of joined sheets.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 133,
+ "forms": [
+  {
+   "name": "cover",
+   "z": 0,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "book",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      340,
+      340
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pages",
+   "z": 1,
+   "kind": "flat",
+   "material": "paper",
+   "opacity": 0.95,
+   "line": false,
+   "clip_to": "cover",
+   "pieces": [
+    {
+     "icon": "book",
+     "at": [
+      264,
+      262
+     ],
+     "size": [
+      330,
+      330
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spine",
+   "z": 2,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      132,
+      256
+     ],
+     "size": [
+      40,
+      300
+     ]
+    }
+   ]
+  },
+  {
+   "name": "corners",
+   "z": 3,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      104,
+      116
+     ],
+     "size": [
+      70,
+      60
+     ],
+     "rot": 8
+    },
+    {
+     "icon": "square",
+     "at": [
+      104,
+      396
+     ],
+     "size": [
+      70,
+      60
+     ],
+     "rot": -8
+    },
+    {
+     "icon": "square",
+     "at": [
+      408,
+      116
+     ],
+     "size": [
+      70,
+      60
+     ],
+     "rot": -8
+    },
+    {
+     "icon": "square",
+     "at": [
+      408,
+      396
+     ],
+     "size": [
+      70,
+      60
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "clasp",
+   "z": 3,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      172,
+      330
+     ],
+     "size": [
+      70,
+      26
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      186,
+      330
+     ],
+     "size": [
+      30,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "text_block",
+   "z": 4,
+   "kind": "flat",
+   "material": "paper_mark",
+   "opacity": 0.45,
+   "line": false,
+   "clip_to": "cover",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      300,
+      220
+     ],
+     "size": [
+      10,
+      190
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      316,
+      226
+     ],
+     "size": [
+      10,
+      180
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      300,
+      200
+     ],
+     "size": [
+      110.00000000000001,
+      110.00000000000001
+     ]
+    }
+   ],
+   "clip_to": "cover"
+  }
+ ]
+}

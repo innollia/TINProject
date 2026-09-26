@@ -1,0 +1,66 @@
+{
+  "asset": "prop_r7_outer_wall_seam",
+  "status": "candidate",
+  "note": "prop_r7_outer_wall_seam (Outer Wall Seam), wall-mounted on the basalt Outer Wall of bg_r7_wall_causeway. 1.2 m wide, 3.0 m tall (110 px/m). A vertical seam filled with lead-grey filler and three blank bronze gauge plates at 0.8 / 1.6 / 2.4 m. ps_sealed: plates shut, filler intact. ps_reported: a surveyor's bracket at 2.6 m with a plumb line and bob, the gauge plates hinged open (dark sight recesses), fresh scrape marks. Tick marks only, no numbers or text.",
+  "palette": "palette_r7.json",
+  "style": "prop",
+  "canvas": [344, 440],
+  "pivot": [172, 400],
+  "pivot_meaning": "wall attach reference: point on the wall's floor line directly below the seam",
+  "seed": 721,
+  "frames": [
+    {"name": "prop_r7_seam_sealed"},
+    {"name": "prop_r7_seam_reported", "hide": ["sealed"], "show": ["reported"]}
+  ],
+  "forms": [
+    {"name": "seam_shadow", "z": 0, "kind": "wash", "color": "shadow_contact", "opacity": 0.55, "blur": 5,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [176, 236], "size": [66, 336]}]},
+    {"name": "seam_filler", "z": 1, "material": "iron",
+     "shade": {"max_radius": 10, "bump": 0.8, "highlight_amount": 0.3},
+     "line": {"width": 1.1, "heavy": 1.4, "breaks": 0.3},
+     "rough": {"amp": 0.7, "soft": 2, "cell": 10},
+     "pieces": [{"icon": "square", "poly": [[5, 0], [11, 0], [10, 3], [12, 6], [10, 9], [11.5, 12], [10, 16], [6, 16], [4.5, 12], [6, 9], [4, 6], [6, 3]], "fit": [0, 0, 16, 16], "at": [172, 236], "size": [60, 330]}]},
+    {"name": "filler_streaks", "z": 1.2, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.5, "clip_to": "seam_filler",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [170, 330], "size": [18, 120]}]},
+    {"name": "plates", "z": 2, "material": "bronze", "tags": ["sealed"],
+     "shade": {"max_radius": 5, "bump": 0.7},
+     "line": {"width": 0.9, "heavy": 1.1},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.55, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [0, 0], "size": [66, 38], "repeat": {"points": [[172, 312], [172, 224], [172, 136]]}}]},
+    {"name": "plate_ticks", "z": 2.2, "kind": "flat", "color": "#1c130b", "tags": ["sealed"],
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 10], "repeat": {"points": [
+       [150, 308], [158, 310], [166, 308], [174, 310], [182, 308], [190, 310],
+       [150, 220], [160, 222], [170, 220], [180, 222], [190, 220],
+       [152, 132], [164, 134], [176, 132], [188, 134]]}}]},
+    {"name": "plate_rivets", "z": 2.3, "kind": "flat", "material": "bronze_block",
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [5, 5], "repeat": {"points": [[144, 298], [200, 298], [144, 210], [200, 210], [144, 122], [200, 122]]}}]},
+
+    {"name": "plates_open", "z": 2, "material": "bronze", "tags": ["reported"], "hidden": true,
+     "shade": {"max_radius": 5, "bump": 0.7},
+     "line": {"width": 0.9, "heavy": 1.1},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.55, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [0, 0], "size": [66, 12], "repeat": {"points": [[172, 290], [172, 202], [172, 114]]}},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [0, 0], "size": [66, 22], "repeat": {"points": [[172, 324], [172, 236], [172, 148]]}}
+     ]},
+    {"name": "sight_holes", "z": 2.4, "kind": "flat", "material": "void", "tags": ["reported"], "hidden": true,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [50, 14], "repeat": {"points": [[172, 308], [172, 220], [172, 132]]}}]},
+    {"name": "scrapes", "z": 2.5, "kind": "wash", "color": "#4d4c57", "opacity": 0.7, "tags": ["reported"], "hidden": true,
+     "pieces": [
+       {"icon": "square", "at": [120, 262], "size": [30, 3], "rot": -20},
+       {"icon": "square", "at": [226, 180], "size": [26, 3], "rot": 16}
+     ]},
+    {"name": "bracket", "z": 3, "material": "iron", "tags": ["reported"], "hidden": true,
+     "line": {"width": 0.9, "heavy": 1.1},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [206, 110], "size": [14, 30]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [236, 100], "size": [70, 9]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [226, 116], "size": [40, 6], "rot": 32}
+     ]},
+    {"name": "plumb_line", "z": 3.2, "kind": "flat", "material": "rope", "tags": ["reported"], "hidden": true,
+     "pieces": [{"icon": "square", "at": [266, 196], "size": [2, 184]}]},
+    {"name": "plumb_bob", "z": 3.4, "material": "bronze", "tags": ["reported"], "hidden": true, "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "triangle", "flip": "y", "at": [266, 296], "size": [16, 22]}]}
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "asset": "living_armor",
+  "status": "candidate",
+  "note": "Generic battler: living armor (haunted construct). An empty suit of rusted plate standing guard: a closed great helm with only darkness and two faint points behind the visor slit, broad pauldrons, a dented breastplate, a torn wine-dark tabard, both gauntlets resting on the pommel of a large sword planted point-down. Front view, fixed 60 deg camera. No heraldry.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre; ground contact line y=320",
+  "seed": 614,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.42, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [160, 321], "size": [140, 22]}]},
+
+    {"name": "greaves", "z": 1, "material": "steel",
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [146, 282], "size": [26, 70]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [174, 282], "size": [26, 70]},
+       {"icon": "circle", "at": [146, 262], "size": [20, 14]},
+       {"icon": "circle", "at": [174, 262], "size": [20, 14]}
+     ]},
+    {"name": "sabatons", "z": 1.1, "material": "iron",
+     "pieces": [
+       {"icon": "circle", "at": [142, 316], "size": [30, 12]},
+       {"icon": "circle", "at": [178, 316], "size": [30, 12]}
+     ]},
+    {"name": "tabard", "z": 1.5, "material": "robe_wine", "rough": {"amp": 0.45, "cell": 6, "soft": 1.2},
+     "pieces": [
+       {"icon": "bookmark", "at": [160, 262], "size": [52, 80]},
+       {"icon": "triangle", "op": "sub", "at": [148, 300], "size": [10, 14], "rot": 180}
+     ]},
+    {"name": "fauld", "z": 1.6, "material": "steel",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [160, 228], "size": [70, 22]}]},
+    {"name": "breastplate", "z": 2, "material": "steel", "shade": {"highlight_amount": 0.7},
+     "pieces": [
+       {"icon": "shield", "crop": [2, 1, 15, 12], "at": [160, 180], "size": [78, 74]},
+       {"icon": "circle", "op": "sub", "at": [178, 192], "size": [10, 6], "rot": 30}
+     ]},
+    {"name": "plate_ridge", "z": 2.1, "kind": "flat", "color": "#1b1c20", "opacity": 0.7, "clip_to": "breastplate",
+     "pieces": [{"icon": "square", "at": [160, 180], "size": [2, 70]}]},
+
+    {"name": "sword_blade", "z": 2.5, "material": "steel", "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "at": [160, 272], "size": [13, 92]},
+       {"icon": "triangle", "flip": "y", "at": [160, 322], "size": [13, 10]}
+     ]},
+    {"name": "sword_fuller", "z": 2.6, "kind": "flat", "color": "#2d2f35", "clip_to": "sword_blade",
+     "pieces": [{"icon": "square", "at": [160, 262], "size": [2.4, 70]}]},
+    {"name": "crossguard", "z": 2.7, "material": "iron", "line": {"width": 0.6, "heavy": 0.5},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [160, 224], "size": [48, 8]}]},
+    {"name": "grip", "z": 2.8, "material": "leather",
+     "pieces": [{"icon": "square", "at": [160, 212], "size": [7, 20]}]},
+
+    {"name": "arms", "z": 3, "material": "steel",
+     "pieces": [
+       {"icon": "circle", "at": [128, 184], "size": [22, 58], "rot": -24},
+       {"icon": "circle", "at": [192, 184], "size": [22, 58], "rot": 24}
+     ]},
+    {"name": "gauntlets", "z": 3.1, "material": "iron",
+     "pieces": [
+       {"icon": "circle", "at": [150, 206], "size": [20, 18]},
+       {"icon": "circle", "at": [170, 206], "size": [20, 18]}
+     ]},
+    {"name": "pommel", "z": 3.2, "material": "bronze",
+     "pieces": [{"icon": "circle", "at": [160, 198], "size": [12, 11]}]},
+    {"name": "pauldrons", "z": 3.3, "material": "steel", "shade": {"highlight_amount": 0.7},
+     "pieces": [
+       {"icon": "circle", "half": "top", "at": [118, 150], "size": [48, 36], "rot": -14},
+       {"icon": "circle", "half": "top", "at": [202, 150], "size": [48, 36], "rot": 14}
+     ]},
+
+    {"name": "helm", "z": 4, "material": "steel", "shade": {"highlight_amount": 0.7},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [160, 110], "size": [46, 52]},
+       {"icon": "circle", "op": "sub", "at": [172, 92], "size": [8, 5], "rot": -20}
+     ]},
+    {"name": "visor", "z": 4.1, "kind": "flat", "material": "void",
+     "pieces": [
+       {"icon": "square", "at": [160, 106], "size": [34, 5]},
+       {"icon": "circle", "at": [152, 124], "size": [3, 3], "repeat": {"grid": [3, 2], "step": [8, 6]}}
+     ]},
+    {"name": "visor_glow", "z": 4.2, "kind": "flat", "material": "soul", "emit": 0.8,
+     "glow": {"radius": 2.5, "opacity": 0.5, "color": "soul_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [152, 106], "size": [3, 2.4]},
+       {"icon": "circle", "at": [168, 106], "size": [3, 2.4]}
+     ]}
+  ]
+}

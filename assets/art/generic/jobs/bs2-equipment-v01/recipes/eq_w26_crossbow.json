@@ -1,0 +1,154 @@
+{
+ "asset": "eq_w26_crossbow",
+ "status": "candidate",
+ "note": "26 crossbow. Boxy tiller, a prod bent slightly forward, string on a trigger hook. Made to be carried loaded, which is why the string is not right.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 126,
+ "forms": [
+  {
+   "name": "stock",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      360,
+      54
+     ],
+     "rot": 6
+    }
+   ]
+  },
+  {
+   "name": "limb",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "bow_and_arrow",
+     "at": [
+      256,
+      200
+     ],
+     "size": [
+      400,
+      400
+     ],
+     "crop": [
+      0.5,
+      1.0,
+      8.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "string",
+   "z": 2,
+   "kind": "flat",
+   "material": "leather",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      196
+     ],
+     "size": [
+      250,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "trigger",
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      268,
+      268
+     ],
+     "size": [
+      30,
+      44
+     ],
+     "rot": 20
+    },
+    {
+     "icon": "circle",
+     "at": [
+      266,
+      258
+     ],
+     "size": [
+      26,
+      26
+     ]
+    }
+   ]
+  },
+  {
+   "name": "grip",
+   "z": 3,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      166,
+      322
+     ],
+     "size": [
+      50,
+      110
+     ],
+     "rot": 6
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      190
+     ],
+     "size": [
+      110.0,
+      45.0
+     ]
+    }
+   ],
+   "clip_to": "limb"
+  }
+ ]
+}

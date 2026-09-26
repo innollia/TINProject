@@ -1,0 +1,237 @@
+{
+ "asset": "eq_w04_executioner_greatsword",
+ "status": "candidate",
+ "note": "4 executioner greatsword. Long, heavy, and the point is a flat slab instead of a tip - it was never sharpened to kill, only to end. Wrapped grip dark with use.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 104,
+ "forms": [
+  {
+   "name": "blade",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "sword",
+     "at": [
+      256,
+      262
+     ],
+     "size": [
+      400,
+      400
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      368,
+      152
+     ],
+     "size": [
+      104,
+      132
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.45,
+   "line": false,
+   "clip_to": "blade",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      272,
+      246
+     ],
+     "size": [
+      30,
+      250
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "block_tip",
+   "z": 1,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.4,
+   "line": false,
+   "clip_to": "blade",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      368,
+      152
+     ],
+     "size": [
+      86,
+      108
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "grip",
+   "z": 3,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      118.0,
+      354.0
+     ],
+     "size": [
+      86,
+      25.8
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      136.0,
+      372.0
+     ],
+     "size": [
+      86,
+      25.8
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      154.0,
+      390.0
+     ],
+     "size": [
+      86,
+      25.8
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "pommel",
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      92,
+      414
+     ],
+     "size": [
+      48,
+      48
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      92,
+      414
+     ],
+     "size": [
+      21.6,
+      21.6
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      330,
+      180
+     ],
+     "size": [
+      85.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      230,
+      320
+     ],
+     "size": [
+      75.0,
+      50.0
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "sponge",
+     "at": [
+      150,
+      250
+     ],
+     "size": [
+      55.0,
+      45.0
+     ]
+    }
+   ],
+   "clip_to": "blade"
+  },
+  {
+   "name": "dirt_rust",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.6,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      370,
+      150
+     ],
+     "size": [
+      130,
+      90
+     ]
+    }
+   ],
+   "clip_to": "blade"
+  }
+ ]
+}

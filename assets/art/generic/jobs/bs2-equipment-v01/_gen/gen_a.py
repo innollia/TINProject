@@ -23,10 +23,15 @@ from kit import (SQUARE, damp_stains, etch, iron_tarnish, p, patina, soot,  # no
 # --- shared sub-assemblies ----------------------------------------------------
 
 
-def grip_wrap(at, size, rot=45, material="leather"):
-    return {"name": "grip", "z": 3, "material": material,
-            "pieces": [p("square", at, [size, size], rot=rot),
-                       p("square", [at[0] + 12, at[1] - 12], [size * 0.7, size * 0.7], rot=rot)]}
+def grip_wrap(at, size, rot=45, material="leather", bands=3):
+    """Leather cord wound round the grip: short bars across the haft, not a lump on it."""
+    pieces = []
+    dx, dy = (18.0, 18.0) if rot >= 0 else (-18.0, 18.0)
+    for i in range(bands):
+        o = (i - (bands - 1) / 2.0)
+        pieces.append(p("square", [at[0] + dx * o, at[1] + dy * o],
+                        [size, size * 0.3], rot=rot))
+    return {"name": "grip", "z": 3, "material": material, "pieces": pieces}
 
 
 def pommel(at, size, material="iron"):
@@ -48,8 +53,8 @@ ITEMS.append(("eq_w01_rusted_longsword", [
     {"name": "blade", "z": 0, "material": "iron",
      "pieces": [p("sword", [256, 256], [400, 400])]},
     edge_hilite("edge", [268, 236], [26, 300], -45, "blade", "worn", 0.6),
-    grip_wrap([142, 366], 74),
-    pommel([100, 406], 42),
+    grip_wrap([114, 384], 66),
+    pommel([88, 424], 40),
     iron_tarnish("blade"),
     stain([p("droplet", [210, 320], [40, 60]), p("cloud", [300, 200], [110, 70])],
           "rust", 0.5, clip="blade", z=9.1),
@@ -62,8 +67,8 @@ ITEMS.append(("eq_w02_chipped_longsword", [
                   op="add"),
                 p("triangle", [404, 128], [86, 86], rot=225, op="sub")]},
     edge_hilite("edge", [262, 244], [24, 250], -45, "blade", "worn", 0.5),
-    grip_wrap([142, 366], 74, material="leather"),
-    pommel([100, 406], 42),
+    grip_wrap([114, 384], 66, material="leather"),
+    pommel([88, 424], 40),
     iron_tarnish("blade", ((300, 200, 140, 100), (370, 260, 90, 80), (200, 300, 120, 90))),
     stain([p("droplet", [300, 300], [30, 44])], "rust", 0.7, clip="blade", z=9.1),
 ], "2 chipped longsword. A notch bitten out of the point; the tip is a stub now. Dull, pitted, kept because there is nothing better."))
@@ -74,11 +79,12 @@ ITEMS.append(("eq_w03_crusader_longsword", [
      "pieces": [p("sword", [256, 256], [400, 400])]},
     {"name": "inlay", "z": 1, "kind": "flat", "material": "bronze", "opacity": 0.9,
      "line": False, "clip_to": "blade",
-     "pieces": [p("cross", [268, 244], [96, 96], rot=-45),
-                p("circle", [268, 244], [26, 26])]},
+     "pieces": [p("square", [268, 244], [96, 20], rot=-45),
+                p("square", [268, 244], [20, 96], rot=-45),
+                p("circle", [268, 244], [22, 22])]},
     edge_hilite("edge", [286, 226], [18, 260], -45, "blade", "worn", 0.55),
-    grip_wrap([142, 366], 74, material="leather"),
-    pommel([100, 406], 46, "bronze"),
+    grip_wrap([114, 384], 66, material="leather"),
+    pommel([88, 424], 44, "bronze"),
     iron_tarnish("blade", ((330, 190, 120, 90), (200, 320, 120, 80))),
     damp_stains("blade"),
 ], "3 crusader longsword. Plain straight blade, a small cross stamped into the flat near the hilt, bronze pommel gone green-grey. The relic of somebody who never existed."))

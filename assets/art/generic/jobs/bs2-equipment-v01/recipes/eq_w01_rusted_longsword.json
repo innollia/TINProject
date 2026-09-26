@@ -1,20 +1,213 @@
 {
-  "asset": "eq_w01_rusted_longsword",
-  "status": "candidate",
-  "note": "1 rusted longsword. Everyday object gone wrong, not fantasy plate: a plain iron blade gone orange with rust, leather wrap gone hard and cracked. Blood is dark rust stain, never red paint.",
-  "palette": "palette_h0_mood.json",
-  "style": "prop",
-  "canvas": [512, 512],
-  "pivot": [256, 256],
-  "pivot_meaning": "centre",
-  "seed": 101,
-  "forms": [
-    {"name": "blade", "z": 0, "material": "iron",
-     "pieces": [{"icon": "sword", "at": [256, 256], "size": [400, 400]}]},
-    {"name": "wrap", "z": 1, "material": "leather", "clip_to": "blade",
-     "pieces": [{"icon": "square", "at": [150, 362], "size": [70, 70], "rot": 45}]},
-    {"name": "rust", "z": 2, "kind": "wash", "material": "rust", "blend": "multiply", "opacity": 0.55, "clip_to": "blade",
-     "pieces": [{"icon": "cloud", "at": [300, 210], "size": [150, 110]},
-                {"icon": "cloud", "at": [360, 150], "size": [90, 70], "flip": "x"}]}
-  ]
+ "asset": "eq_w01_rusted_longsword",
+ "status": "candidate",
+ "note": "1 rusted longsword. Plain iron long sword, blade gone orange-brown, leather wrap gone hard and cracked. Blood is rust bloom, not red paint.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 101,
+ "forms": [
+  {
+   "name": "blade",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "sword",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      400,
+      400
+     ]
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.6,
+   "line": false,
+   "clip_to": "blade",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      268,
+      236
+     ],
+     "size": [
+      26,
+      300
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "grip",
+   "z": 3,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      124.0,
+      348.0
+     ],
+     "size": [
+      74,
+      22.2
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      142.0,
+      366.0
+     ],
+     "size": [
+      74,
+      22.2
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      384.0
+     ],
+     "size": [
+      74,
+      22.2
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "pommel",
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      100,
+      406
+     ],
+     "size": [
+      42,
+      42
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      100,
+      406
+     ],
+     "size": [
+      18.900000000000002,
+      18.900000000000002
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      300,
+      210
+     ],
+     "size": [
+      75.0,
+      55.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      360,
+      150
+     ],
+     "size": [
+      45.0,
+      35.0
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "sponge",
+     "at": [
+      200,
+      300
+     ],
+     "size": [
+      65.0,
+      47.5
+     ]
+    }
+   ],
+   "clip_to": "blade"
+  },
+  {
+   "name": "dirt_rust",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.5,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      210,
+      320
+     ],
+     "size": [
+      40,
+      60
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      300,
+      200
+     ],
+     "size": [
+      110,
+      70
+     ]
+    }
+   ],
+   "clip_to": "blade"
+  }
+ ]
 }

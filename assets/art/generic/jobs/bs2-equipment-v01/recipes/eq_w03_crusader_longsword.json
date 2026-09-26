@@ -1,0 +1,236 @@
+{
+ "asset": "eq_w03_crusader_longsword",
+ "status": "candidate",
+ "note": "3 crusader longsword. Plain straight blade, a small cross stamped into the flat near the hilt, bronze pommel gone green-grey. The relic of somebody who never existed.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 103,
+ "forms": [
+  {
+   "name": "blade",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "sword",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      400,
+      400
+     ]
+    }
+   ]
+  },
+  {
+   "name": "inlay",
+   "z": 1,
+   "kind": "flat",
+   "material": "bronze",
+   "opacity": 0.9,
+   "line": false,
+   "clip_to": "blade",
+   "pieces": [
+    {
+     "icon": "cross",
+     "at": [
+      268,
+      244
+     ],
+     "size": [
+      96,
+      96
+     ],
+     "rot": -45
+    },
+    {
+     "icon": "circle",
+     "at": [
+      268,
+      244
+     ],
+     "size": [
+      26,
+      26
+     ]
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.55,
+   "line": false,
+   "clip_to": "blade",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      286,
+      226
+     ],
+     "size": [
+      18,
+      260
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "grip",
+   "z": 3,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      124.0,
+      348.0
+     ],
+     "size": [
+      74,
+      22.2
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      142.0,
+      366.0
+     ],
+     "size": [
+      74,
+      22.2
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      384.0
+     ],
+     "size": [
+      74,
+      22.2
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "pommel",
+   "z": 3,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      100,
+      406
+     ],
+     "size": [
+      46,
+      46
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      100,
+      406
+     ],
+     "size": [
+      20.7,
+      20.7
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      330,
+      190
+     ],
+     "size": [
+      60.0,
+      45.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      200,
+      320
+     ],
+     "size": [
+      60.0,
+      40.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "blade"
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      180,
+      330
+     ],
+     "size": [
+      82.5,
+      49.50000000000001
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      350,
+      180
+     ],
+     "size": [
+      66.0,
+      44.0
+     ]
+    }
+   ],
+   "clip_to": "blade"
+  }
+ ]
+}

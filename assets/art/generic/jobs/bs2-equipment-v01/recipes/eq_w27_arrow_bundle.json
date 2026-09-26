@@ -1,0 +1,217 @@
+{
+ "asset": "eq_w27_arrow_bundle",
+ "status": "candidate",
+ "note": "27 arrow bundle. Eleven shafts tied in thirds, three of them with bodkins, one with a bone head somebody sharpened wrong.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 127,
+ "forms": [
+  {
+   "name": "shafts",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "arrow_projectile",
+     "at": [
+      246,
+      268
+     ],
+     "size": [
+      300,
+      300
+     ]
+    },
+    {
+     "icon": "arrow_projectile",
+     "at": [
+      280,
+      236
+     ],
+     "size": [
+      290,
+      290
+     ],
+     "rot": -4
+    },
+    {
+     "icon": "arrow_projectile",
+     "at": [
+      216,
+      300
+     ],
+     "size": [
+      290,
+      290
+     ],
+     "rot": 5
+    }
+   ]
+  },
+  {
+   "name": "points",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "arrow_projectile",
+     "at": [
+      330,
+      168
+     ],
+     "size": [
+      110,
+      110
+     ],
+     "crop": [
+      8.0,
+      1.0,
+      15.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "arrow_projectile",
+     "at": [
+      364,
+      136
+     ],
+     "size": [
+      108,
+      108
+     ],
+     "crop": [
+      8.0,
+      1.0,
+      15.0,
+      8.0
+     ],
+     "rot": -4
+    },
+    {
+     "icon": "arrow_projectile",
+     "at": [
+      300,
+      200
+     ],
+     "size": [
+      108,
+      108
+     ],
+     "crop": [
+      8.0,
+      1.0,
+      15.0,
+      8.0
+     ],
+     "rot": 5
+    }
+   ]
+  },
+  {
+   "name": "fletch",
+   "z": 1,
+   "kind": "flat",
+   "material": "cloth_wine",
+   "opacity": 0.85,
+   "line": false,
+   "clip_to": "shafts",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      150,
+      366
+     ],
+     "size": [
+      56,
+      66
+     ],
+     "rot": 45,
+     "repeat": {
+      "points": [
+       [
+        150,
+        366,
+        0
+       ],
+       [
+        182,
+        336,
+        -4
+       ],
+       [
+        120,
+        396,
+        5
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "tie",
+   "z": 2,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      200,
+      320
+     ],
+     "size": [
+      40,
+      130
+     ],
+     "rot": 38
+    },
+    {
+     "icon": "square",
+     "at": [
+      214,
+      306
+     ],
+     "size": [
+      28,
+      100
+     ],
+     "rot": 38
+    }
+   ]
+  },
+  {
+   "name": "dirt_grime",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "grime",
+   "blend": "multiply",
+   "opacity": 0.3,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      240,
+      280
+     ],
+     "size": [
+      140,
+      100
+     ]
+    }
+   ],
+   "clip_to": "shafts"
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+  "asset": "prop_r7_storm_verge_cut",
+  "status": "candidate",
+  "note": "prop_r7_storm_verge_cut (Storm Verge Cut), floor-layer trace on the scoured Storm Verge ground (bg_r7_crown_verge). A jagged cut 2.4 x 1.2 m laid into the ground, its inside a flat dark violet (no glow; the void-cut light is a separate effect asset). ps_open: raw torn rim, bronze stakes lying loose. ps_phase_matched: eight stakes upright along the cut with a taut cord following its shape, rim trimmed. ps_cut_filed: bronze clamps stitched across the cut and a blank contract tag tied to a stake.",
+  "palette": "palette_r7.json",
+  "style": "prop",
+  "canvas": [560, 320],
+  "pivot": [280, 160],
+  "pivot_meaning": "centre of the cut on the ground (floor layer)",
+  "seed": 723,
+  "frames": [
+    {"name": "prop_r7_cut_open", "show": ["open"]},
+    {"name": "prop_r7_cut_matched", "show": ["matched"]},
+    {"name": "prop_r7_cut_filed", "show": ["filed"]}
+  ],
+  "forms": [
+    {"name": "torn_rim", "z": 0, "kind": "flat", "color": "grit", "opacity": 0.8,
+     "rough": {"amp": 0.9, "soft": 2, "cell": 8},
+     "pieces": [{"icon": "square", "poly": [[0, 8], [2.5, 5.4], [5, 6.8], [8, 4.2], [10.5, 6.2], [13, 4.8], [16, 8], [13.2, 11.2], [10.5, 9.6], [8, 11.8], [5, 9.4], [2.6, 10.8]], "fit": [0, 0, 16, 16], "ground": true, "at": [280, 160], "size": [440, 150]}]},
+    {"name": "cut", "z": 1, "kind": "flat", "material": "void_cut",
+     "line": {"width": 1.2, "heavy": 1.5, "breaks": 0.1, "color": "#07040a"},
+     "grad": {"to": "void_cut", "y0": 120, "y1": 200},
+     "pieces": [{"icon": "square", "poly": [[0, 8], [3, 6.4], [5, 7.4], [8, 5.2], [10.4, 7], [13, 5.8], [16, 8], [13, 10.2], [10.4, 9], [8, 10.8], [5, 8.6], [3, 9.6]], "fit": [0, 0, 16, 16], "ground": true, "at": [280, 160], "size": [420, 130]}]},
+    {"name": "cut_depth", "z": 1.2, "kind": "wash", "color": "#07040a", "opacity": 0.7, "clip_to": "cut", "blur": 6,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [280, 150], "size": [440, 40]}]},
+
+    {"name": "loose_stakes", "tags": ["open"], "hidden": true, "z": 2, "material": "bronze", "line": {"width": 0.7, "heavy": 0.9},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [96, 222], "size": [40, 6], "rot": 20},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [420, 90], "size": [36, 6], "rot": -40},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [470, 236], "size": [38, 6], "rot": 64},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [180, 84], "size": [34, 6], "rot": -10}
+     ]},
+
+    {"name": "matched_stakes", "tags": ["matched", "filed"], "hidden": true, "z": 2, "kind": "block", "material": "bronze_block", "extrude": 26,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 0], "size": [7, 6],
+                 "repeat": {"points": [[64, 132], [128, 100], [196, 108], [270, 84], [350, 100], [420, 94], [478, 126], [360, 196]]}}]},
+    {"name": "cord", "tags": ["matched"], "hidden": true, "z": 2.5, "kind": "flat", "material": "rope",
+     "pieces": [
+       {"icon": "square", "at": [96, 104], "size": [72, 2], "rot": -27},
+       {"icon": "square", "at": [162, 92], "size": [68, 2], "rot": 7},
+       {"icon": "square", "at": [233, 84], "size": [78, 2], "rot": -18},
+       {"icon": "square", "at": [310, 80], "size": [82, 2], "rot": 11},
+       {"icon": "square", "at": [385, 85], "size": [70, 2], "rot": -5},
+       {"icon": "square", "at": [449, 98], "size": [64, 2], "rot": 29}
+     ]},
+    {"name": "trim", "tags": ["matched"], "hidden": true, "z": 0.5, "kind": "wash", "material": "verge_scour", "opacity": 0.6,
+     "pieces": [{"icon": "square", "poly": [[0, 8], [2.5, 5.4], [5, 6.8], [8, 4.2], [10.5, 6.2], [13, 4.8], [16, 8], [13.2, 11.2], [10.5, 9.6], [8, 11.8], [5, 9.4], [2.6, 10.8]], "fit": [0, 0, 16, 16], "ground": true, "at": [280, 160], "size": [436, 146]}]},
+
+    {"name": "clamps", "tags": ["filed"], "hidden": true, "z": 3, "material": "bronze", "line": {"width": 0.8, "heavy": 1.0},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.55, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [16, 58],
+                 "repeat": {"points": [[120, 160, 10], [200, 160, -6], [280, 156, 4], [360, 160, -8], [436, 160, 6]]}}]},
+    {"name": "clamp_pins", "tags": ["filed"], "hidden": true, "z": 3.2, "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [5, 5], "repeat": {"points": [
+       [120, 138], [120, 182], [200, 138], [200, 182], [280, 134], [280, 178], [360, 138], [360, 182], [436, 138], [436, 182]]}}]},
+    {"name": "contract_tag_cord", "tags": ["filed"], "hidden": true, "z": 3.4, "kind": "flat", "material": "rope",
+     "pieces": [{"icon": "square", "at": [364, 214], "size": [2, 30], "rot": 10}]},
+    {"name": "contract_tag", "tags": ["filed"], "hidden": true, "z": 3.5, "material": "paper", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "tag", "at": [370, 238], "size": [24, 34], "rot": 100}]}
+  ]
+}

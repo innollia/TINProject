@@ -19,7 +19,7 @@
        {"icon": "circle", "at": [142, 316], "size": [26, 12]},
        {"icon": "circle", "at": [178, 316], "size": [26, 12]},
        {"icon": "circle", "at": [160, 200], "size": [70, 100]},
-       {"icon": "square", "at": [160, 128], "size": [18, 16]},
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [160, 130], "size": [26, 22]},
        {"icon": "circle", "at": [160, 104], "size": [40, 46]}
      ]},
     {"name": "wraps", "z": 1.1, "kind": "flat", "material": "soot", "opacity": 0.5, "clip_to": "body",
@@ -53,17 +53,16 @@
 
     {"name": "arm_r", "z": 3, "material": "bandage",
      "pieces": [
-       {"icon": "circle", "at": [204, 162], "size": [22, 38], "rot": -58},
-       {"icon": "circle", "at": [222, 160], "size": [26, 30]},
-       {"icon": "circle", "at": [230, 160], "size": [8, 16], "rot": 10},
-       {"icon": "circle", "at": [222, 172], "size": [16, 8]}
+       {"icon": "circle", "at": [206, 170], "size": [22, 50], "rot": -50},
+       {"icon": "circle", "at": [226, 158], "size": [20, 30], "rot": -20},
+       {"icon": "droplet", "at": [232, 142], "size": [18, 22], "rot": 10}
      ]},
     {"name": "arm_r_wraps", "z": 3.1, "kind": "flat", "material": "soot", "opacity": 0.5, "clip_to": "arm_r",
-     "pieces": [{"icon": "square", "at": [206, 150], "size": [1.6, 26], "rot": 30, "repeat": {"grid": [5, 1], "step": [6, 1]}}]},
+     "pieces": [{"icon": "square", "at": [200, 160], "size": [1.6, 26], "rot": 36, "repeat": {"grid": [5, 1], "step": [7, -2]}}]},
     {"name": "arm_end", "z": 3.2, "material": "bandage",
      "pieces": [
-       {"icon": "bookmark", "at": [214, 194], "size": [10, 40], "rot": 6},
-       {"icon": "bookmark", "at": [224, 188], "size": [8, 30], "rot": -10}
+       {"icon": "bookmark", "at": [210, 196], "size": [8, 28], "rot": 8},
+       {"icon": "bookmark", "at": [218, 190], "size": [6, 20], "rot": -8}
      ]}
   ]
 }

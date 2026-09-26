@@ -1,0 +1,145 @@
+{
+ "asset": "eq_w18_pickaxe",
+ "status": "candidate",
+ "note": "18 pickaxe. Long curved pick, one point ground down to a stub. The haft is grey with sweat and stone dust.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 118,
+ "forms": [
+  {
+   "name": "head",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "pickaxe",
+     "at": [
+      278,
+      220
+     ],
+     "size": [
+      368,
+      368
+     ]
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.5,
+   "line": false,
+   "clip_to": "head",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      368,
+      176
+     ],
+     "size": [
+      20,
+      170
+     ],
+     "rot": -12
+    }
+   ]
+  },
+  {
+   "name": "haft",
+   "z": 3,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      168,
+      360
+     ],
+     "size": [
+      280,
+      34
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "wrap",
+   "z": 4,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      180,
+      348
+     ],
+     "size": [
+      70,
+      48
+     ],
+     "rot": -45
+    },
+    {
+     "icon": "square",
+     "at": [
+      196,
+      332
+     ],
+     "size": [
+      54,
+      40
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      360,
+      180
+     ],
+     "size": [
+      75.0,
+      55.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      230,
+      300
+     ],
+     "size": [
+      55.0,
+      45.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "head"
+  }
+ ]
+}

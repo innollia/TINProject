@@ -1,0 +1,166 @@
+{
+ "asset": "eq_w20_glaive",
+ "status": "candidate",
+ "note": "20 glaive. A curved knife blade and a back hook on one haft, both socketed. Meant to hook a man off his horse and open him.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 120,
+ "forms": [
+  {
+   "name": "shaft",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      268,
+      280
+     ],
+     "size": [
+      440,
+      26
+     ],
+     "rot": -52
+    }
+   ]
+  },
+  {
+   "name": "hook",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "hook",
+     "at": [
+      382,
+      158
+     ],
+     "size": [
+      150,
+      150
+     ],
+     "rot": -40
+    }
+   ]
+  },
+  {
+   "name": "blade",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "axe",
+     "at": [
+      366,
+      130
+     ],
+     "size": [
+      230,
+      230
+     ],
+     "crop": [
+      6.0,
+      1.0,
+      15.0,
+      9.0
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "socket",
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      326,
+      200
+     ],
+     "size": [
+      46,
+      56
+     ],
+     "rot": -52
+    }
+   ]
+  },
+  {
+   "name": "wrap",
+   "z": 3,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      272,
+      274
+     ],
+     "size": [
+      76,
+      40
+     ],
+     "rot": -52
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      380,
+      120
+     ],
+     "size": [
+      50.0,
+      40.0
+     ]
+    }
+   ],
+   "clip_to": "blade"
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      400,
+      180
+     ],
+     "size": [
+      45.0,
+      40.0
+     ]
+    }
+   ],
+   "clip_to": "hook"
+  }
+ ]
+}

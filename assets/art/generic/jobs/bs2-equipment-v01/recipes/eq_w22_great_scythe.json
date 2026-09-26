@@ -1,0 +1,181 @@
+{
+ "asset": "eq_w22_great_scythe",
+ "status": "candidate",
+ "note": "22 great scythe. A two-handed snath with a long curved blade set almost flat. The lower horn is bent inward where somebody tried to make it a spear.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 122,
+ "forms": [
+  {
+   "name": "snath",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      346,
+      316
+     ],
+     "size": [
+      330,
+      30
+     ],
+     "rot": 54
+    },
+    {
+     "icon": "square",
+     "at": [
+      410,
+      262
+     ],
+     "size": [
+      150,
+      26
+     ],
+     "rot": 20
+    }
+   ]
+  },
+  {
+   "name": "blade",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "hook",
+     "at": [
+      216,
+      190
+     ],
+     "size": [
+      380,
+      380
+     ],
+     "rot": -18
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      140,
+      300
+     ],
+     "size": [
+      70,
+      90
+     ],
+     "rot": 200
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.55,
+   "line": false,
+   "clip_to": "blade",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      178,
+      268
+     ],
+     "size": [
+      22,
+      250
+     ],
+     "rot": 128
+    }
+   ]
+  },
+  {
+   "name": "brackets",
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      268,
+      344
+     ],
+     "size": [
+      70,
+      40
+     ],
+     "rot": 54
+    },
+    {
+     "icon": "square",
+     "at": [
+      286,
+      322
+     ],
+     "size": [
+      50,
+      30
+     ],
+     "rot": 54
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      200,
+      190
+     ],
+     "size": [
+      100.0,
+      85.0
+     ]
+    }
+   ],
+   "clip_to": "blade"
+  },
+  {
+   "name": "dirt_grime",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "grime",
+   "blend": "multiply",
+   "opacity": 0.35,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      346,
+      316
+     ],
+     "size": [
+      140,
+      70
+     ]
+    }
+   ],
+   "clip_to": "snath"
+  }
+ ]
+}

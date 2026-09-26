@@ -1,0 +1,80 @@
+{
+  "asset": "exit_r3_e17_water_ambulance_bridge",
+  "status": "candidate",
+  "note": "Exit object for route_e17_water_ambulance_bridge at the hospice end (R3 -> R2, gate G2 + R2 root bridge ps_raised), author design; same build as the R2 end so the two ends of the crossing match. A stretcher ramp leaf hinged on the south-east sill of the intake gallery between two gantry posts. closed: leaf raised upright on its chains, the stretcher hook empty; open: leaf lowered over the drop toward the water, two stretcher rails along it. No text.",
+  "palette": "palette_r3.json",
+  "style": "prop",
+  "canvas": [440, 560],
+  "pivot": [220, 330],
+  "pivot_meaning": "centre of the hinge on the south-east sill (area A source px 2150,1300); canvas = area px - (1930, 970)",
+  "seed": 622,
+  "frames": [
+    {"name": "exit_r3_e17_water_ambulance_bridge_closed", "show": ["closed"]},
+    {"name": "exit_r3_e17_water_ambulance_bridge_open", "show": ["open"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.3, "blur": 6,
+     "pieces": [
+       {"icon": "circle", "at": [84, 322], "size": [44, 16]},
+       {"icon": "circle", "at": [364, 322], "size": [44, 16]}
+     ]},
+
+    {"name": "leaf_down", "tags": ["open"], "hidden": true, "z": 1, "kind": "block", "material": "ward_floor_dark", "extrude": 22,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [220, 440], "size": [240, 220]}]},
+    {"name": "leaf_down_planks", "tags": ["open"], "hidden": true, "z": 1.1, "material": "ward_floor",
+     "shade": {"max_radius": 5, "soft": 0.1, "bump": 0.8, "threshold": 0.42, "highlight": 0.86, "highlight_amount": 0.3, "ragged": 0.12},
+     "line": {"width": 0.8, "heavy": 0.8, "breaks": 0.2, "color": "#141012", "opacity": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [220, 346], "size": [232, 30], "repeat": {"grid": [1, 6], "step": [0, 39]}}]},
+    {"name": "stretcher_rails", "tags": ["open"], "hidden": true, "z": 1.2, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [180, 440], "size": [5, 216]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [260, 440], "size": [5, 216]}
+     ]},
+    {"name": "chains_slack", "tags": ["open"], "hidden": true, "z": 3, "kind": "flat", "material": "iron", "line": {"width": 0.4, "heavy": 0.4},
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [7, 10], "repeat": {"line": [[80, 70], [88, 296]], "count": 20}},
+       {"icon": "circle", "op": "sub", "at": [0, 0], "size": [3, 5], "repeat": {"line": [[80, 70], [88, 296]], "count": 20}},
+       {"icon": "circle", "at": [0, 0], "size": [7, 10], "repeat": {"line": [[360, 70], [352, 296]], "count": 20}},
+       {"icon": "circle", "op": "sub", "at": [0, 0], "size": [3, 5], "repeat": {"line": [[360, 70], [352, 296]], "count": 20}}
+     ]},
+
+    {"name": "leaf_up", "tags": ["closed"], "hidden": true, "z": 1, "kind": "block", "material": "ward_floor_dark", "extrude": 220,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [220, 102], "size": [240, 16]}]},
+    {"name": "leaf_up_battens", "tags": ["closed"], "hidden": true, "z": 1.1, "kind": "flat", "material": "wood", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [220, 150], "size": [238, 9]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [220, 230], "size": [238, 9]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [220, 300], "size": [238, 9]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [220, 222], "size": [8, 250], "rot": 46}
+     ]},
+    {"name": "chains_taut", "tags": ["closed"], "hidden": true, "z": 3, "kind": "flat", "material": "iron", "line": {"width": 0.4, "heavy": 0.4},
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [7, 10], "repeat": {"line": [[80, 70], [104, 110]], "count": 5}},
+       {"icon": "circle", "op": "sub", "at": [0, 0], "size": [3, 5], "repeat": {"line": [[80, 70], [104, 110]], "count": 5}},
+       {"icon": "circle", "at": [0, 0], "size": [7, 10], "repeat": {"line": [[360, 70], [336, 110]], "count": 5}},
+       {"icon": "circle", "op": "sub", "at": [0, 0], "size": [3, 5], "repeat": {"line": [[360, 70], [336, 110]], "count": 5}}
+     ]},
+    {"name": "stretcher_hook_empty", "tags": ["closed"], "hidden": true, "z": 3.1, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "at": [376, 200], "size": [16, 5]},
+       {"icon": "square", "at": [382, 208], "size": [4, 14]},
+       {"icon": "square", "at": [376, 240], "size": [16, 5]},
+       {"icon": "square", "at": [382, 248], "size": [4, 14]}
+     ]},
+
+    {"name": "hinge", "z": 2, "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [220, 330], "size": [254, 9]}]},
+    {"name": "gantry_posts", "z": 2.5, "kind": "block", "material": "wood", "extrude": 264,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [80, 49], "size": [24, 14]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [360, 49], "size": [24, 14]}
+     ]},
+    {"name": "gantry_beam", "z": 2.6, "material": "wood", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [220, 60], "size": [308, 12]}]},
+    {"name": "pulleys", "z": 2.7, "kind": "flat", "material": "iron", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "circle", "at": [80, 70], "size": [12, 12]},
+       {"icon": "circle", "at": [360, 70], "size": [12, 12]}
+     ]}
+  ]
+}

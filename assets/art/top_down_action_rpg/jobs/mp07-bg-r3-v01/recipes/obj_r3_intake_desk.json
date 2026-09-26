@@ -1,0 +1,52 @@
+{
+  "asset": "obj_r3_intake_desk",
+  "status": "candidate",
+  "note": "R3 region object (author design) at the place of service_r3_intake_seal / service_r3_care_window. Timber intake desk 2.4 m wide, 0.6 m deep, 1.0 m high, panelled front, blank forms, a seal stamp on its stand, an inkwell and a tray. No text.",
+  "palette": "palette_r3.json",
+  "style": "prop",
+  "canvas": [540, 340],
+  "pivot": [270, 290],
+  "pivot_meaning": "front-bottom centre of the desk on the floor",
+  "seed": 613,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 9,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 26}, "at": [278, 290], "size": [460, 44]}]},
+    {"name": "desk", "z": 0, "kind": "block", "material": "wood", "extrude": 110,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [270, 133], "size": [432, 94]}]},
+    {"name": "panels", "z": 0.5, "kind": "flat", "material": "ward_floor_dark", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [140, 235], "size": [120, 78]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [270, 235], "size": [120, 78]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [400, 235], "size": [120, 78]}
+     ]},
+    {"name": "desk_band", "z": 0.6, "kind": "flat", "material": "bronze",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [270, 188], "size": [424, 6]}]},
+    {"name": "forms", "z": 1, "material": "paper", "shade": {"bump": 0.3},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "file", "ground": true, "rot": 84, "at": [200, 136], "size": [40, 52]},
+       {"icon": "file", "ground": true, "rot": 96, "at": [246, 128], "size": [38, 50]},
+       {"icon": "file", "ground": true, "rot": 90, "at": [226, 132], "size": [38, 50]}
+     ]},
+    {"name": "tray", "z": 1, "kind": "block", "material": "wood", "extrude": 8,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [110, 130], "size": [70, 50]}]},
+    {"name": "tray_slips", "z": 1.1, "kind": "flat", "material": "paper", "opacity": 0.85,
+     "pieces": [{"icon": "square", "at": [110, 124], "size": [56, 30]}]},
+    {"name": "stamp_stand", "z": 1.2, "material": "bronze",
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [360, 138], "size": [44, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [360, 126], "size": [30, 14]},
+       {"icon": "circle", "at": [360, 112], "size": [7, 16]},
+       {"icon": "circle", "at": [360, 101], "size": [15, 14]}
+     ]},
+    {"name": "inkwell", "z": 1.2, "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "circle", "at": [420, 132], "size": [22, 18]},
+       {"icon": "circle", "at": [420, 126], "size": [12, 8]}
+     ]},
+    {"name": "pen", "z": 1.3, "kind": "flat", "material": "paper_mark", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [{"icon": "square", "at": [436, 118], "size": [3, 30], "rot": 30}]},
+    {"name": "desk_wear", "z": 2, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.4, "clip_to": "desk",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [270, 280], "size": [440, 30]}]}
+  ]
+}

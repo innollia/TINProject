@@ -49,7 +49,7 @@
 - [x] obj_r4_weight_lift_car — 1회 고침(바닥 나무판, 도르래 모양)
 - [x] obj_r4_lamp_post, obj_r4_wall_lamp
 - [x] obj_r4_copy_shelf, obj_r4_translation_desk, obj_r4_record_boxes
-- [ ] obj_r4_paper_drift — 1회 고침 중(갈고리처럼 보인 조각 교체)
+- [x] obj_r4_paper_drift — 1회 고침(갈고리처럼 보인 조각 교체)
 - [x] prop_r4_counter_idle / spent
 - [x] prop_r4_slot_empty / filled
 - [x] exit_r4_e04_crownwell_ascent _closed / _open
@@ -57,16 +57,18 @@
 - [x] scene_bg_r4_hall(+ rv_after_canonical, rv_after_glossary_slot), preview/check_bg_r4_hall*_1280x720.png
 
 ### 3. 배경 `bg_r4_stacks`
-- [ ] base_clean, fg_r4_stacks_ladder
-- [ ] prop_r4_stacks_intact / filed
-- [ ] exit_r4_e12_courier_shaft _closed / _open
-- [ ] scene_bg_r4_stacks(+ rv_after_canonical), check 그림
+- [ ] base_clean — 2회 고침 중(우물 바닥을 파인 모양으로, 얼룩·금·빠진 타일)
+- [x] fg_r4_stacks_parapet(사다리 대신 고정 난간벽)
+- [x] prop_r4_stacks_intact / filed — 1회 고침(filed 띠·봉인 크게, 그 칸 어둡게)
+- [x] exit_r4_e12_courier_shaft _closed / _open
+- [x] scene_bg_r4_stacks(+ rv_after_canonical) 작성, 확인 그림은 배경 뒤
 
 ### 4. 배경 `bg_r4_observatory`
-- [ ] base_clean, fg_r4_observatory_parapet
-- [ ] prop_r4_plinth_object / titled
-- [ ] exit_r4_e13_crown_stair _closed / _open
-- [ ] scene_bg_r4_observatory, check 그림
+- [ ] base_clean — 1회 고침 중(UI 표시처럼 보인 금색 원·선 제거, 뚜껑 쇠살, 모서리 빈틈)
+- [x] fg_r4_observatory_parapet
+- [ ] prop_r4_plinth_object / titled — 1회 고침 중(말굽 아치 같던 조각을 가는 띠로)
+- [x] exit_r4_e13_crown_stair _closed / _open
+- [x] scene_bg_r4_observatory 작성, 확인 그림은 배경 뒤
 
 ### 5. 마무리
 - [ ] 오브젝트 모아 보기 시트, QA.md, `__pycache__` 지우기 → R5

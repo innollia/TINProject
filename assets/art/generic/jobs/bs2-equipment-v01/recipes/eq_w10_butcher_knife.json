@@ -1,0 +1,179 @@
+{
+ "asset": "eq_w10_butcher_knife",
+ "status": "candidate",
+ "note": "10 butcher knife. Wide, thin, cheap. The steel is soft and the edge rolls over. It has done one job for years.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 110,
+ "forms": [
+  {
+   "name": "blade",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "knife",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      372,
+      372
+     ]
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.55,
+   "line": false,
+   "clip_to": "blade",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      290,
+      220
+     ],
+     "size": [
+      26,
+      240
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "handle",
+   "z": 3,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128,
+      386
+     ],
+     "size": [
+      110,
+      38
+     ],
+     "rot": -45
+    },
+    {
+     "icon": "square",
+     "at": [
+      106,
+      408
+     ],
+     "size": [
+      26,
+      26
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "rivets",
+   "z": 4,
+   "kind": "flat",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140,
+      374
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      120,
+      394
+     ],
+     "size": [
+      12,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      310,
+      200
+     ],
+     "size": [
+      70.0,
+      50.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      220,
+      310
+     ],
+     "size": [
+      60.0,
+      45.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "blade"
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      250,
+      250
+     ],
+     "size": [
+      110.00000000000001,
+      77.0
+     ]
+    }
+   ],
+   "clip_to": "blade"
+  }
+ ]
+}

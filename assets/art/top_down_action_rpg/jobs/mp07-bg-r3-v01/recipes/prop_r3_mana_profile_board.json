@@ -1,0 +1,59 @@
+{
+  "asset": "prop_r3_mana_profile_board",
+  "status": "candidate",
+  "note": "prop_r3_mana_profile_board (Emission Profile Board), placement layer wall, on the north wall of the intake gallery (area A). Timber-framed slate board 1.4 m wide, 1.2 m high, hung 0.8 m above the floor, with four vertical grooves of peg holes and a chalk ledge. ps_unmeasured -> four empty columns; ps_filed -> each column holds pegs of its own shape at its own height (round, square, triangular, and a bar across the fourth), so retention / emission / overflow / blocked read as four separate columns without text.",
+  "palette": "palette_r3.json",
+  "style": "prop",
+  "canvas": [400, 360],
+  "pivot": [200, 300],
+  "pivot_meaning": "wall mount point: where the north wall meets the floor, directly below the board (area A source px 800,320)",
+  "seed": 611,
+  "frames": [
+    {"name": "prop_r3_profile_blank"},
+    {"name": "prop_r3_profile_filed", "show": ["filed"]}
+  ],
+  "forms": [
+    {"name": "wall_shade", "kind": "shadow", "color": "shadow_contact", "opacity": 0.22, "blur": 10,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 16}, "at": [208, 154], "size": [272, 152]}]},
+    {"name": "frame", "z": 0, "material": "wood", "shade": {"bump": 0.5},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [200, 146], "size": [252, 132]}]},
+    {"name": "slate", "z": 1, "kind": "flat", "material": "stone_dark", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [200, 144], "size": [228, 108]}]},
+    {"name": "slate_wear", "z": 1.1, "kind": "wash", "material": "worn", "opacity": 0.18, "clip_to": "slate",
+     "mottle": {"cell": 30, "lo": 0.5, "hi": 0.9},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [200, 144], "size": [240, 120]}]},
+    {"name": "grooves", "z": 1.2, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 0], "size": [12, 92], "repeat": {"points": [[125, 144], [175, 144], [225, 144], [275, 144]]}}]},
+    {"name": "peg_holes", "z": 1.3, "kind": "flat", "material": "deck_joint",
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [8, 7], "repeat": {"line": [[140, 108], [140, 180]], "count": 5}},
+       {"icon": "circle", "at": [0, 0], "size": [8, 7], "repeat": {"line": [[190, 108], [190, 180]], "count": 5}},
+       {"icon": "circle", "at": [0, 0], "size": [8, 7], "repeat": {"line": [[240, 108], [240, 180]], "count": 5}},
+       {"icon": "circle", "at": [0, 0], "size": [8, 7], "repeat": {"line": [[290, 108], [290, 180]], "count": 5}}
+     ]},
+    {"name": "chalk_ledge", "z": 1.4, "kind": "block", "material": "wood", "extrude": 6,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [200, 208], "size": [240, 10]}]},
+    {"name": "chalk_bits", "z": 1.5, "kind": "flat", "material": "chalk", "opacity": 0.85,
+     "pieces": [
+       {"icon": "square", "at": [150, 206], "size": [14, 4], "rot": 8},
+       {"icon": "square", "at": [262, 206], "size": [10, 4], "rot": -12}
+     ]},
+    {"name": "brackets", "z": 1.6, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "at": [86, 94], "size": [10, 14]},
+       {"icon": "square", "at": [314, 94], "size": [10, 14]}
+     ]},
+
+    {"name": "pegs_round", "tags": ["filed"], "hidden": true, "z": 2, "material": "bronze", "line": {"width": 0.5, "heavy": 0.6},
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [12, 12], "repeat": {"points": [[125, 180], [125, 162], [125, 144]]}}]},
+    {"name": "pegs_square", "tags": ["filed"], "hidden": true, "z": 2, "material": "bronze", "line": {"width": 0.5, "heavy": 0.6},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 0], "size": [12, 12], "repeat": {"points": [[175, 162], [175, 144]]}}]},
+    {"name": "pegs_triangle", "tags": ["filed"], "hidden": true, "z": 2, "material": "bronze", "line": {"width": 0.5, "heavy": 0.6},
+     "pieces": [{"icon": "triangle", "at": [0, 0], "size": [13, 12], "repeat": {"points": [[225, 180], [225, 162], [225, 144], [225, 126]]}}]},
+    {"name": "block_bar", "tags": ["filed"], "hidden": true, "z": 2, "material": "iron", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [275, 126], "size": [28, 7]},
+       {"icon": "circle", "at": [275, 126], "size": [6, 6]}
+     ]}
+  ]
+}

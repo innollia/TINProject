@@ -1,0 +1,229 @@
+{
+ "asset": "eq_w36_swinging_censer",
+ "status": "candidate",
+ "note": "36 swinging censer. A bronze pot on four links, lid vented, coals still warm inside. It swings when the room is empty and nobody is holding it.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 136,
+ "forms": [
+  {
+   "name": "chain",
+   "z": 0,
+   "kind": "flat",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "link",
+     "at": [
+      256,
+      96
+     ],
+     "size": [
+      56,
+      56
+     ],
+     "rot": 45,
+     "repeat": {
+      "line": [
+       [
+        256,
+        60
+       ],
+       [
+        256,
+        200
+       ]
+      ],
+      "count": 4
+     }
+    }
+   ]
+  },
+  {
+   "name": "lid",
+   "z": 1,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      236
+     ],
+     "size": [
+      180,
+      26
+     ],
+     "rot": 2
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      208
+     ],
+     "size": [
+      90,
+      46
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "bowl",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      306
+     ],
+     "size": [
+      220,
+      200
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      396
+     ],
+     "size": [
+      200,
+      24
+     ],
+     "rot": 2
+    }
+   ]
+  },
+  {
+   "name": "vents",
+   "z": 3,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "bowl",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      10,
+      90
+     ],
+     "rot": 20
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      10,
+      90
+     ],
+     "rot": -20
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      10,
+      90
+     ]
+    }
+   ]
+  },
+  {
+   "name": "coals",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "ember",
+   "emit": 0.5,
+   "glow": {
+    "radius": 7,
+    "opacity": 0.5,
+    "color": "flame_glow"
+   },
+   "line": false,
+   "clip_to": "bowl",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      232,
+      300
+     ],
+     "size": [
+      46,
+      30
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      286,
+      306
+     ],
+     "size": [
+      38,
+      26
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.45,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "metaballs",
+     "at": [
+      256,
+      320
+     ],
+     "size": [
+      190,
+      150
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      170,
+      70
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,175 @@
+{
+ "asset": "eq_w23_iron_flail",
+ "status": "candidate",
+ "note": "23 iron flail. Short handle, four links, a studded ball the size of a fist. The chain is bent closed on one link so it can be pocketed.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 123,
+ "forms": [
+  {
+   "name": "handle",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      146,
+      372
+     ],
+     "size": [
+      150,
+      34
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "chain",
+   "z": 1,
+   "kind": "flat",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "link",
+     "at": [
+      246,
+      276
+     ],
+     "size": [
+      64,
+      64
+     ],
+     "rot": 45,
+     "repeat": {
+      "line": [
+       [
+        198,
+        324
+       ],
+       [
+        286,
+        240
+       ]
+      ],
+      "count": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "ball",
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      318,
+      208
+     ],
+     "size": [
+      150,
+      150
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      318,
+      208
+     ],
+     "size": [
+      86,
+      86
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "spikes",
+   "z": 2.5,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      318,
+      130
+     ],
+     "size": [
+      40,
+      56
+     ],
+     "repeat": {
+      "ellipse": [
+       318,
+       208,
+       74,
+       74
+      ],
+      "count": 7,
+      "orient": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      330,
+      200
+     ],
+     "size": [
+      65.0,
+      60.0
+     ]
+    }
+   ],
+   "clip_to": "ball"
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      250,
+      200
+     ],
+     "size": [
+      35.0,
+      70.0
+     ]
+    }
+   ],
+   "clip_to": "chain"
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+{
+  "asset": "prop_r7_shelter_ring_ledger",
+  "status": "candidate",
+  "note": "prop_r7_shelter_ring_ledger (Shelter Ring Ledger): a trestle table 1.6 x 0.8 m, 0.9 m high (110 px/m) in the Shelter Ring. ps_open: an open wooden box of three uneven compartments holding seed pouches, water flasks and wooden memory tags divided by hand, piles spilling. ps_quota_filed: the same goods set into a rack of equal slots, and a closed ledger box with a lead seal and a knotted cord. No text.",
+  "palette": "palette_r7.json",
+  "style": "prop",
+  "canvas": [416, 420],
+  "pivot": [208, 356],
+  "pivot_meaning": "front-bottom centre of the table on the ground",
+  "seed": 724,
+  "frames": [
+    {"name": "prop_r7_ledger_open"},
+    {"name": "prop_r7_ledger_quota", "hide": ["open"], "show": ["quota"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 9,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 18}, "at": [214, 346], "size": [300, 48]}]},
+    {"name": "trestles", "z": 0, "material": "wood", "line": {"width": 0.9, "heavy": 1.1},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [86, 316], "size": [9, 92], "rot": 14},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [106, 316], "size": [9, 92], "rot": -14},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [310, 316], "size": [9, 92], "rot": 14},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [330, 316], "size": [9, 92], "rot": -14}
+     ]},
+    {"name": "top", "z": 1, "kind": "block", "material": "wood", "extrude": 10,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [208, 196], "size": [288, 125]}]},
+    {"name": "top_wear", "z": 1.2, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.4, "clip_to": "top",
+     "mottle": {"cell": 40, "lo": 0.45, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [208, 200], "size": [296, 140]}]},
+
+    {"name": "box", "tags": ["open"], "z": 2, "kind": "block", "material": "wood", "extrude": 22,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [190, 170], "size": [200, 84]}]},
+    {"name": "box_wells", "tags": ["open"], "z": 2.1, "kind": "flat", "color": "#241c14",
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [122, 170], "size": [56, 68]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [196, 170], "size": [80, 68]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [262, 170], "size": [44, 68]}
+     ]},
+    {"name": "pouches", "tags": ["open"], "z": 2.3, "material": "canvas_shelter", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "pouch", "at": [114, 160], "size": [26, 28]},
+       {"icon": "pouch", "at": [134, 170], "size": [24, 26], "rot": 12},
+       {"icon": "pouch", "at": [120, 184], "size": [24, 24], "rot": -10},
+       {"icon": "pouch", "at": [314, 192], "size": [22, 24], "rot": 20}
+     ]},
+    {"name": "flasks", "tags": ["open"], "z": 2.3, "material": "leather", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "circle", "at": [182, 170], "size": [22, 24]},
+       {"icon": "circle", "at": [206, 164], "size": [20, 22]},
+       {"icon": "circle", "at": [214, 184], "size": [20, 22]}
+     ]},
+    {"name": "flask_necks", "tags": ["open"], "z": 2.4, "kind": "flat", "material": "wood",
+     "pieces": [
+       {"icon": "square", "at": [182, 156], "size": [7, 8]},
+       {"icon": "square", "at": [206, 151], "size": [7, 8]},
+       {"icon": "square", "at": [214, 171], "size": [7, 8]}
+     ]},
+    {"name": "tags_pile", "tags": ["open"], "z": 2.3, "material": "wood", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [
+       {"icon": "tag", "at": [258, 160], "size": [18, 26], "rot": 80},
+       {"icon": "tag", "at": [264, 176], "size": [18, 26], "rot": 110},
+       {"icon": "tag", "at": [252, 190], "size": [18, 26], "rot": 60},
+       {"icon": "tag", "at": [300, 210], "size": [18, 26], "rot": 140}
+     ]},
+
+    {"name": "rack", "tags": ["quota"], "hidden": true, "z": 2, "kind": "block", "material": "wood", "extrude": 18,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [170, 170], "size": [180, 84]}]},
+    {"name": "rack_slots", "tags": ["quota"], "hidden": true, "z": 2.1, "kind": "flat", "color": "#241c14",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 0], "size": [48, 30],
+                 "repeat": {"points": [[118, 154], [170, 154], [222, 154], [118, 188], [170, 188], [222, 188]]}}]},
+    {"name": "rack_goods", "tags": ["quota"], "hidden": true, "z": 2.3, "material": "canvas_shelter", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [{"icon": "pouch", "at": [0, 0], "size": [20, 20], "repeat": {"points": [[118, 150], [170, 150], [222, 150]]}}]},
+    {"name": "rack_goods_b", "tags": ["quota"], "hidden": true, "z": 2.3, "material": "wood", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [{"icon": "tag", "at": [0, 0], "size": [16, 22], "rot": 90, "repeat": {"points": [[118, 186], [170, 186], [222, 186]]}}]},
+    {"name": "ledger_box", "tags": ["quota"], "hidden": true, "z": 2.4, "kind": "block", "material": "leather", "extrude": 20,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [302, 170], "size": [64, 52]}]},
+    {"name": "lead_seal", "tags": ["quota"], "hidden": true, "z": 2.6, "kind": "flat", "color": "#6b6d73", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [{"icon": "circle", "at": [302, 196], "size": [16, 14]}]},
+    {"name": "knot", "tags": ["quota"], "hidden": true, "z": 2.7, "material": "rope", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "at": [302, 172], "size": [66, 3]},
+       {"icon": "knot", "at": [322, 208], "size": [20, 16]}
+     ]}
+  ]
+}

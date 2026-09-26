@@ -1,0 +1,103 @@
+{
+  "asset": "marionette",
+  "status": "candidate",
+  "note": "Generic battler: marionette (construct). A carved wooden puppet hanging slightly off the floor: ball joints, a simple carved face with painted eyes, a knife in the right hand, the left arm lifted by its string, head lolling to one side. Strings run up out of frame from the head, hands and knees; two of them are snapped and hang slack. Front view, fixed 60 deg camera.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre; hangs just above the floor - shadow at y=322",
+  "seed": 616,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.32, "blur": 5,
+     "pieces": [{"icon": "circle", "at": [160, 322], "size": [110, 18]}]},
+
+    {"name": "strings", "z": 0.5, "kind": "flat", "material": "paper_mark", "opacity": 0.85,
+     "pieces": [
+       {"icon": "square", "at": [150, 64], "size": [1.2, 64], "rot": 4},
+       {"icon": "square", "at": [100, 100], "size": [1.2, 136], "rot": 2},
+       {"icon": "square", "at": [148, 176], "size": [1.2, 208], "rot": 1},
+       {"icon": "square", "at": [180, 190], "size": [1.2, 236], "rot": -1}
+     ]},
+    {"name": "slack_strings", "z": 0.6, "kind": "flat", "material": "paper_mark", "opacity": 0.85,
+     "pieces": [
+       {"icon": "moon", "at": [222, 214], "size": [22, 56], "rot": 150},
+       {"icon": "square", "at": [230, 176], "size": [1.2, 40], "rot": -10},
+       {"icon": "moon", "at": [196, 116], "size": [16, 40], "rot": 200}
+     ]},
+
+    {"name": "legs", "z": 1, "material": "wood", "shade": {"bump": 0.7},
+     "pieces": [
+       {"icon": "circle", "at": [148, 256], "size": [15, 42], "rot": 6},
+       {"icon": "circle", "at": [146, 294], "size": [13, 38], "rot": -4},
+       {"icon": "circle", "at": [174, 254], "size": [15, 42], "rot": -12},
+       {"icon": "circle", "at": [180, 290], "size": [13, 38], "rot": -2},
+       {"icon": "circle", "at": [142, 314], "size": [20, 10]},
+       {"icon": "circle", "at": [182, 310], "size": [20, 10]}
+     ]},
+    {"name": "knees", "z": 1.2, "material": "leather",
+     "pieces": [
+       {"icon": "circle", "at": [148, 276], "size": [12, 12]},
+       {"icon": "circle", "at": [178, 272], "size": [12, 12]}
+     ]},
+    {"name": "hips", "z": 1.5, "material": "wood",
+     "pieces": [{"icon": "circle", "at": [160, 230], "size": [46, 24]}]},
+    {"name": "waist_joint", "z": 1.6, "material": "leather",
+     "pieces": [{"icon": "circle", "at": [160, 214], "size": [16, 14]}]},
+    {"name": "torso", "z": 2, "material": "wood", "shade": {"bump": 0.7},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [160, 180], "size": [54, 58]}]},
+    {"name": "vest", "z": 2.1, "material": "cloth_wine", "clip_to": "torso",
+     "pieces": [
+       {"icon": "triangle", "at": [146, 184], "size": [28, 60], "rot": 180},
+       {"icon": "triangle", "at": [174, 184], "size": [28, 60], "rot": 180}
+     ]},
+    {"name": "grain", "z": 2.2, "kind": "flat", "color": "#251c15", "opacity": 0.5, "clip_to": "torso",
+     "pieces": [
+       {"icon": "square", "at": [144, 176], "size": [1.4, 40], "rot": 4},
+       {"icon": "square", "at": [174, 176], "size": [1.4, 40], "rot": -4}
+     ]},
+
+    {"name": "arm_l", "z": 3, "material": "wood", "shade": {"bump": 0.7},
+     "pieces": [
+       {"icon": "circle", "at": [120, 146], "size": [13, 36], "rot": 50},
+       {"icon": "circle", "at": [106, 122], "size": [12, 32], "rot": 10},
+       {"icon": "circle", "at": [102, 102], "size": [12, 13]}
+     ]},
+    {"name": "arm_r", "z": 3, "material": "wood", "shade": {"bump": 0.7},
+     "pieces": [
+       {"icon": "circle", "at": [196, 176], "size": [13, 38], "rot": -14},
+       {"icon": "circle", "at": [204, 212], "size": [12, 34], "rot": -8},
+       {"icon": "circle", "at": [207, 232], "size": [13, 13]}
+     ]},
+    {"name": "arm_joints", "z": 3.1, "material": "leather",
+     "pieces": [
+       {"icon": "circle", "at": [134, 158], "size": [11, 11]},
+       {"icon": "circle", "at": [112, 136], "size": [10, 10]},
+       {"icon": "circle", "at": [188, 158], "size": [11, 11]},
+       {"icon": "circle", "at": [200, 196], "size": [10, 10]}
+     ]},
+    {"name": "knife", "z": 3.2, "material": "steel", "cast": {"dist": 2, "blur": 1.2, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "triangle", "flip": "y", "at": [212, 262], "size": [9, 44], "rot": -12},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [209, 240], "size": [16, 4], "rot": -12}
+     ]},
+
+    {"name": "neck", "z": 3.8, "material": "leather",
+     "pieces": [{"icon": "circle", "at": [162, 146], "size": [12, 12]}]},
+    {"name": "head", "z": 4, "material": "wood", "shade": {"bump": 0.8, "highlight_amount": 0.6},
+     "pieces": [{"icon": "circle", "at": [168, 116], "size": [42, 46], "rot": 18}]},
+    {"name": "face", "z": 4.1, "kind": "flat", "material": "eye",
+     "pieces": [
+       {"icon": "circle", "at": [160, 114], "size": [6, 6]},
+       {"icon": "circle", "at": [176, 119], "size": [6, 6]},
+       {"icon": "square", "at": [164, 131], "size": [12, 1.8], "rot": 18}
+     ]},
+    {"name": "cheeks", "z": 4.15, "kind": "flat", "material": "seal_wax", "opacity": 0.5,
+     "pieces": [
+       {"icon": "circle", "at": [154, 124], "size": [8, 5], "rot": 18},
+       {"icon": "circle", "at": [182, 130], "size": [8, 5], "rot": 18}
+     ]},
+    {"name": "hair_paint", "z": 4.2, "material": "hair",
+     "pieces": [{"icon": "circle", "half": "top", "at": [170, 100], "size": [42, 18], "rot": 18}]}
+  ]
+}

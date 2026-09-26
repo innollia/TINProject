@@ -1,0 +1,152 @@
+{
+ "asset": "eq_w32_gem_staff",
+ "status": "candidate",
+ "note": "32 gem staff. Split-ash wand with a bronze claw holding a green glass stone. The stone is warm and it is not supposed to be.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 132,
+ "forms": [
+  {
+   "name": "wand",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "magic_wand",
+     "at": [
+      250,
+      258
+     ],
+     "size": [
+      400,
+      400
+     ],
+     "crop": [
+      1.0,
+      2.0,
+      12.0,
+      15.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gem",
+   "z": 1,
+   "material": "glass",
+   "emit": 0.3,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.45,
+    "color": "flame_glow"
+   },
+   "pieces": [
+    {
+     "icon": "gem",
+     "at": [
+      336,
+      138
+     ],
+     "size": [
+      130,
+      130
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wrap",
+   "z": 2,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      190,
+      330
+     ],
+     "size": [
+      60,
+      90
+     ],
+     "rot": -45
+    },
+    {
+     "icon": "square",
+     "at": [
+      212,
+      308
+     ],
+     "size": [
+      44,
+      62
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "claw",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      300,
+      178
+     ],
+     "size": [
+      40,
+      50
+     ],
+     "rot": -30
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      336,
+      190
+     ],
+     "size": [
+      34,
+      42
+     ],
+     "rot": -20
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.35,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      250,
+      280
+     ],
+     "size": [
+      140,
+      160
+     ]
+    }
+   ],
+   "clip_to": "wand"
+  }
+ ]
+}

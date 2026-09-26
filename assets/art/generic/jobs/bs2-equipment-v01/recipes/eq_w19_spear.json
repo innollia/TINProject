@@ -1,0 +1,165 @@
+{
+ "asset": "eq_w19_spear",
+ "status": "candidate",
+ "note": "19 spear. Long ash shaft, socketed iron head, iron shoe on the butt so it can be planted. Straight and badly balanced.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 119,
+ "forms": [
+  {
+   "name": "shaft",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      268
+     ],
+     "size": [
+      430,
+      26
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "dagger",
+     "at": [
+      366,
+      152
+     ],
+     "size": [
+      190,
+      190
+     ],
+     "crop": [
+      4.0,
+      1.6,
+      14.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "socket",
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      320,
+      200
+     ],
+     "size": [
+      46,
+      54
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "butt",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "cone",
+     "at": [
+      96,
+      414
+     ],
+     "size": [
+      40,
+      56
+     ],
+     "rot": 135
+    }
+   ]
+  },
+  {
+   "name": "wrap",
+   "z": 3,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      262,
+      262
+     ],
+     "size": [
+      70,
+      40
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      380,
+      140
+     ],
+     "size": [
+      50.0,
+      40.0
+     ]
+    }
+   ],
+   "clip_to": "head"
+  },
+  {
+   "name": "dirt_grime",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "grime",
+   "blend": "multiply",
+   "opacity": 0.3,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      200,
+      330
+     ],
+     "size": [
+      140,
+      90
+     ]
+    }
+   ],
+   "clip_to": "shaft"
+  }
+ ]
+}

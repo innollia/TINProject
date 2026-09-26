@@ -1,0 +1,156 @@
+{
+ "asset": "eq_w17_great_sledgehammer",
+ "status": "candidate",
+ "note": "17 great sledgehammer. Slab head, haft twice as thick as a normal hammer's. Built for a job that is not carpentry.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 117,
+ "forms": [
+  {
+   "name": "head",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "sledgehammer",
+     "at": [
+      330,
+      200
+     ],
+     "size": [
+      360,
+      360
+     ]
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.5,
+   "line": false,
+   "clip_to": "head",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      390,
+      168
+     ],
+     "size": [
+      26,
+      190
+     ],
+     "rot": -16
+    }
+   ]
+  },
+  {
+   "name": "haft",
+   "z": 3,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      170,
+      372
+     ],
+     "size": [
+      300,
+      42
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "grip",
+   "z": 4,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128,
+      414
+     ],
+     "size": [
+      90,
+      52
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      380,
+      170
+     ],
+     "size": [
+      85.0,
+      65.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      200,
+      330
+     ],
+     "size": [
+      75.0,
+      55.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "head"
+  },
+  {
+   "name": "dirt_rust",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.5,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "metaballs",
+     "at": [
+      340,
+      190
+     ],
+     "size": [
+      140,
+      110
+     ]
+    }
+   ],
+   "clip_to": "head"
+  }
+ ]
+}

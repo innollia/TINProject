@@ -1,0 +1,133 @@
+{
+ "asset": "eq_w16_war_hammer",
+ "status": "candidate",
+ "note": "16 war hammer. Maul head with a short claw, long haft, iron collar where the wood keeps splitting.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 116,
+ "forms": [
+  {
+   "name": "head",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "hammer",
+     "at": [
+      300,
+      208
+     ],
+     "size": [
+      336,
+      336
+     ]
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.6,
+   "line": false,
+   "clip_to": "head",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      356,
+      176
+     ],
+     "size": [
+      22,
+      150
+     ],
+     "rot": -20
+    }
+   ]
+  },
+  {
+   "name": "haft",
+   "z": 3,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      172,
+      366
+     ],
+     "size": [
+      290,
+      36
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "collar",
+   "z": 4,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      238,
+      300
+     ],
+     "size": [
+      46,
+      60
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      360,
+      180
+     ],
+     "size": [
+      70.0,
+      55.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      250,
+      290
+     ],
+     "size": [
+      50.0,
+      40.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "head"
+  }
+ ]
+}

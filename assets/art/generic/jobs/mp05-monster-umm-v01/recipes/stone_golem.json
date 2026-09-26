@@ -1,0 +1,83 @@
+{
+  "asset": "stone_golem",
+  "status": "candidate",
+  "note": "Generic battler: stone golem (large construct). A heap of fitted boulders: a massive chest stone, boulder shoulders, stacked arms ending in huge fists near the floor, short pillar legs, a small squared head with glowing eye slits sunk between the shoulders; a cold light seeps from the seams, moss in the hollows. Large scale (1.25 of human). Front view, fixed 60 deg camera. No carvings or symbols.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [400, 480],
+  "pivot": [200, 240],
+  "pivot_meaning": "body centre; ground contact line y=398",
+  "seed": 613,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.45, "blur": 5,
+     "pieces": [{"icon": "circle", "at": [200, 399], "size": [280, 36]}]},
+
+    {"name": "legs", "z": 1, "material": "stone_dark", "shade": {"bump": 0.8},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [164, 356], "size": [58, 80]},
+       {"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [236, 356], "size": [58, 80]},
+       {"icon": "circle", "at": [160, 392], "size": [70, 20]},
+       {"icon": "circle", "at": [240, 392], "size": [70, 20]}
+     ]},
+    {"name": "torso", "z": 2, "material": "stone", "shade": {"bump": 0.9},
+     "pieces": [
+       {"icon": "circle", "at": [200, 244], "size": [176, 150]},
+       {"icon": "circle", "at": [200, 306], "size": [120, 60]}
+     ]},
+    {"name": "chest_stone", "z": 2.1, "material": "stone", "shade": {"bump": 0.7},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 18}, "at": [200, 232], "size": [110, 78], "rot": -3}]},
+    {"name": "seams", "z": 2.2, "kind": "flat", "material": "soul", "emit": 0.8, "clip_to": "torso",
+     "glow": {"radius": 4, "opacity": 0.5, "color": "soul_glow"},
+     "pieces": [
+       {"icon": "square", "at": [200, 276], "size": [100, 3], "rot": 3},
+       {"icon": "square", "at": [144, 236], "size": [3, 60], "rot": -8},
+       {"icon": "square", "at": [256, 236], "size": [3, 60], "rot": 6},
+       {"icon": "square", "at": [180, 300], "size": [2.4, 26], "rot": 20}
+     ]},
+
+    {"name": "arms", "z": 3, "material": "stone", "shade": {"bump": 0.9},
+     "pieces": [
+       {"icon": "circle", "at": [100, 254], "size": [54, 82], "rot": 10},
+       {"icon": "circle", "at": [300, 254], "size": [54, 82], "rot": -10}
+     ]},
+    {"name": "fists", "z": 3.1, "material": "stone_dark", "shade": {"bump": 0.9},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 16}, "at": [92, 326], "size": [70, 62], "rot": 6},
+       {"icon": "square", "slice": {"border": 4, "corner": 16}, "at": [308, 326], "size": [70, 62], "rot": -6}
+     ]},
+    {"name": "knuckles", "z": 3.2, "kind": "flat", "color": "#1d1922", "opacity": 0.8, "clip_to": "fists",
+     "pieces": [
+       {"icon": "square", "at": [92, 338], "size": [52, 2.4], "rot": 6},
+       {"icon": "square", "at": [80, 350], "size": [2.4, 18], "rot": 6},
+       {"icon": "square", "at": [100, 352], "size": [2.4, 18], "rot": 6},
+       {"icon": "square", "at": [308, 338], "size": [52, 2.4], "rot": -6},
+       {"icon": "square", "at": [300, 352], "size": [2.4, 18], "rot": -6},
+       {"icon": "square", "at": [320, 350], "size": [2.4, 18], "rot": -6}
+     ]},
+    {"name": "shoulders", "z": 3.3, "material": "stone", "shade": {"bump": 0.9, "highlight_amount": 0.6},
+     "pieces": [
+       {"icon": "circle", "at": [118, 190], "size": [78, 66], "rot": -12},
+       {"icon": "circle", "at": [282, 190], "size": [78, 66], "rot": 12}
+     ]},
+    {"name": "moss", "z": 3.4, "kind": "wash", "blend": "multiply", "material": "moss", "opacity": 0.55, "rough": {"amp": 0.5, "cell": 6, "soft": 1.2},
+     "pieces": [
+       {"icon": "metaballs", "at": [112, 176], "size": [44, 22]},
+       {"icon": "cloud", "at": [290, 182], "size": [36, 16], "rot": 10},
+       {"icon": "metaballs", "at": [236, 310], "size": [34, 16]},
+       {"icon": "cloud", "at": [160, 388], "size": [40, 12]}
+     ]},
+
+    {"name": "head", "z": 4, "material": "stone_dark", "shade": {"bump": 0.7},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [200, 160], "size": [64, 52]}]},
+    {"name": "brow", "z": 4.1, "material": "stone", "shade": {"bump": 0.6},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [200, 146], "size": [72, 16]}]},
+    {"name": "eyes", "z": 4.2, "kind": "flat", "material": "soul", "emit": 1.0,
+     "glow": {"radius": 4, "opacity": 0.6, "color": "soul_glow"},
+     "pieces": [
+       {"icon": "square", "at": [186, 162], "size": [14, 4]},
+       {"icon": "square", "at": [214, 162], "size": [14, 4]}
+     ]}
+  ]
+}

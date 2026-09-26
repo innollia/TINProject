@@ -1,0 +1,154 @@
+{
+ "asset": "eq_w14_iron_club",
+ "status": "candidate",
+ "note": "14 iron club. A knot of scrap bound around a length of wood, studs driven through. It is mostly dents.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 114,
+ "forms": [
+  {
+   "name": "core",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "club",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      340,
+      340
+     ]
+    }
+   ]
+  },
+  {
+   "name": "studs",
+   "z": 2,
+   "kind": "flat",
+   "material": "stone_cap",
+   "line": false,
+   "clip_to": "core",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      200,
+      200
+     ],
+     "size": [
+      30,
+      30
+     ],
+     "repeat": {
+      "ellipse": [
+       256,
+       256,
+       108,
+       108
+      ],
+      "count": 10,
+      "orient": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "stud_bumps",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.6,
+   "line": false,
+   "clip_to": "core",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      196,
+      196
+     ],
+     "size": [
+      18,
+      18
+     ],
+     "repeat": {
+      "ellipse": [
+       256,
+       256,
+       108,
+       108
+      ],
+      "count": 10,
+      "orient": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "haft",
+   "z": 3,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      424
+     ],
+     "size": [
+      56,
+      90
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      300,
+      200
+     ],
+     "size": [
+      75.0,
+      65.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      200,
+      320
+     ],
+     "size": [
+      65.0,
+      50.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "core"
+  }
+ ]
+}

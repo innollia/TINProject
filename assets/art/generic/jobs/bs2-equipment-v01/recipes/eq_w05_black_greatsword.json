@@ -1,0 +1,201 @@
+{
+ "asset": "eq_w05_black_greatsword",
+ "status": "candidate",
+ "note": "5 black greatsword. Blade sooted to a flat black that eats the highlight. Only the faintest orange at the root where the hand never reaches.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 105,
+ "forms": [
+  {
+   "name": "blade",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "sword",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      416,
+      416
+     ]
+    }
+   ]
+  },
+  {
+   "name": "blackened",
+   "z": 1,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.88,
+   "line": false,
+   "clip_to": "blade",
+   "pieces": [
+    {
+     "icon": "sword",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      416,
+      416
+     ]
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "stone_dark",
+   "opacity": 0.9,
+   "line": false,
+   "clip_to": "blade",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      272,
+      234
+     ],
+     "size": [
+      16,
+      280
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "grip",
+   "z": 3,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      122.0,
+      350.0
+     ],
+     "size": [
+      80,
+      24.0
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      140.0,
+      368.0
+     ],
+     "size": [
+      80,
+      24.0
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      158.0,
+      386.0
+     ],
+     "size": [
+      80,
+      24.0
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "pommel",
+   "z": 3,
+   "material": "stone_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      98,
+      408
+     ],
+     "size": [
+      44,
+      44
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      98,
+      408
+     ],
+     "size": [
+      19.8,
+      19.8
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "dirt_soot",
+   "z": 9.3,
+   "kind": "wash",
+   "material": "soot",
+   "blend": "multiply",
+   "opacity": 0.3,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      280,
+      240
+     ],
+     "size": [
+      120.0,
+      90.0
+     ]
+    }
+   ],
+   "clip_to": "blade"
+  },
+  {
+   "name": "dirt_rust",
+   "z": 9.4,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.3,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      330,
+      180
+     ],
+     "size": [
+      90,
+      70
+     ]
+    }
+   ],
+   "clip_to": "blade"
+  }
+ ]
+}

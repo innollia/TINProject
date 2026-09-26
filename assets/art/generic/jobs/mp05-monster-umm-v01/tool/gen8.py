@@ -1,0 +1,132 @@
+"""mp05 addition: write the five 8-direction view recipes of one character from a
+compact 'turntable' spec, so every direction uses the same parts, sizes and colours.
+
+    py -3 -B gen8.py ../specs/skeleton_soldier.json     -> ../recipes/skeleton_soldier_<view>.json
+
+The views are down, down_left, left, up_left, up (right-hand views are mirrored by
+build8.py, see iconkit/walk8.py).  Each part is placed on the character's ground
+plane and turned with it:
+
+    x  = along the character's LEFT side (+), d = forward (+), y = screen y in the down view
+    screen x = cx + x*cos(a) + d*sin(a)
+    screen y = y + depth * (d*cos(a) - x*sin(a))        (a = 0 down, -45, -90, -135, 180 up)
+
+Part keys (besides normal iconkit form keys: name, tags, material/color, kind, z, pieces):
+    at_x/at_d/at_y     where the part's pieces are anchored (pieces are authored around
+                       (cx, at_y) in the down view and moved as one)
+    thick              depth extent; the part's width in a view is w*|cos| + thick*|sin|
+                       (defaults to 'no squeeze' when absent)
+    surface            true: only drawn when the part faces the viewer (face marks, badges)
+    zdepth             z change per px of depth (default 0.1): near parts go in front
+    far_dark           darken the part (shade threshold 0.66) when it is on the far side
+    limb               {"kind": "leg"|"arm", "phase": 1|-1, "joint_y": hip/shoulder y,
+                        "len": px, "role": "thigh"|"foot"|"whole", "group": "leg_left"}
+    views              {"left": {...form overrides...}} applied last for that view
+Legs get rig entries (thigh bends about the hip, foot slides); arms swing about the shoulder.
+"""
+
+from __future__ import annotations
+
+import argparse
+import copy
+import json
+import math
+from pathlib import Path
+
+VIEWS = {"down": 0.0, "down_left": -45.0, "left": -90.0, "up_left": -135.0, "up": 180.0}
+MIRRORS = {"down_left": "down_right", "left": "right", "up_left": "up_right"}
+FORM_KEYS_DROP = ("at_x", "at_d", "at_y", "thick", "surface", "zdepth", "far_dark", "limb", "views")
+
+
+def project(cx, x, d, y, a, depth):
+    return cx + x * math.cos(a) + d * math.sin(a), y + depth * (d * math.cos(a) - x * math.sin(a))
+
+
+def depth_of(x, d, a):
+    return d * math.cos(a) - x * math.sin(a)
+
+
+def build_view(spec: dict, view: str) -> dict:
+    a = math.radians(VIEWS[view])
+    cx = spec["pivot"][0]
+    depth = float(spec.get("depth", 0.5))
+    forms, limbs = [], []
+    for part in spec["parts"]:
+        x, d = float(part.get("at_x", 0.0)), float(part.get("at_d", 0.0))
+        y = float(part.get("at_y", spec["pivot"][1]))
+        dep = depth_of(x, d, a)
+        if part.get("surface"):
+            n = math.hypot(x, d) or 1.0
+            if dep / n < float(part.get("surface_min", 0.05)):
+                continue
+        sx, sy = project(cx, x, d, y, a, depth)
+        dx, dy = sx - cx, sy - y
+        form = {k: copy.deepcopy(v) for k, v in part.items() if k not in FORM_KEYS_DROP}
+        squeeze = None
+        if "thick" in part:
+            w = float(part.get("width", 1.0))
+            squeeze = (abs(math.cos(a)) * w + abs(math.sin(a)) * float(part["thick"])) / w
+        for piece in form.get("pieces", []):
+            px, py = piece["at"]
+            if squeeze is not None:
+                px = cx + (px - cx) * squeeze
+                if piece.get("size") is not None and not isinstance(piece["size"], (int, float)):
+                    piece["size"] = [piece["size"][0] * squeeze if piece["size"][0] else None, piece["size"][1]]
+            piece["at"] = [round(px + dx, 2), round(py + dy, 2)]
+            rep = piece.get("repeat")
+            if rep and "grid" not in rep:
+                raise ValueError(f"{part['name']}: only grid repeats can be turned")
+        form["z"] = round(float(part.get("z", 0.0)) + float(part.get("zdepth", 0.1)) * dep, 3)
+        if part.get("far_dark") and dep < -4:
+            form["shade"] = dict(form.get("shade", {}), threshold=0.66)
+        if part.get("pivot"):
+            px, py = part["pivot"]
+            form["pivot"] = [round(px + dx, 2), round(py + dy, 2)]
+        over = (part.get("views") or {}).get(view)
+        if over:
+            form.update(copy.deepcopy(over))
+        forms.append(form)
+        limb = part.get("limb")
+        if limb and limb.get("role", "whole") in ("thigh", "whole"):
+            jx, jy = project(cx, x, d, float(limb["joint_y"]), a, depth)
+            entry = {"kind": limb["kind"], "phase": limb["phase"], "pivot": [round(jx, 2), round(jy, 2)],
+                     "len": limb["len"]}
+            if limb["kind"] == "leg" and limb.get("foot"):
+                entry.update({"thigh": limb["group"] + "_thigh", "foot": limb["group"] + "_foot"})
+            else:
+                entry["tag"] = limb["group"]
+            limbs.append(entry)
+    recipe = {
+        "asset": spec["asset"], "view": view, "status": "candidate",
+        "note": spec.get("note", "") + f" View {view}; generated by gen8.py from specs/{spec['asset']}.json.",
+        "palette": spec["palette"], "style": spec.get("style", "sprite"),
+        "canvas": spec["canvas"], "pivot": spec["pivot"],
+        "pivot_meaning": spec.get("pivot_meaning", "ground contact point between the feet"),
+        "seed": spec.get("seed", 1),
+        "rig": dict(spec.get("rig", {}), limbs=limbs),
+        "forms": forms,
+    }
+    if spec.get("scale_all"):
+        recipe["scale_all"] = spec["scale_all"]
+    if view in MIRRORS:
+        recipe["mirror_view"] = MIRRORS[view]
+    return recipe
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("specs", nargs="+", type=Path)
+    args = ap.parse_args()
+    for path in args.specs:
+        spec = json.loads(path.read_text(encoding="utf-8"))
+        out_dir = path.resolve().parents[1] / "recipes"
+        for view in VIEWS:
+            recipe = build_view(spec, view)
+            out = out_dir / f"{spec['asset']}_{view}.json"
+            out.write_text(json.dumps(recipe, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+            print("wrote", out.name, len(recipe["forms"]), "forms")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,156 @@
+{
+ "asset": "eq_w06_scimitar",
+ "status": "candidate",
+ "note": "6 scimitar. Curved single edge, knuckle bow at the hilt. Sellsword shape on a village - bent, not made, bent.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 106,
+ "forms": [
+  {
+   "name": "blade",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "cutlass",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      416,
+      416
+     ]
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.6,
+   "line": false,
+   "clip_to": "blade",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      300,
+      220
+     ],
+     "size": [
+      22,
+      250
+     ],
+     "rot": -22
+    }
+   ]
+  },
+  {
+   "name": "knuckle",
+   "z": 3,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      136,
+      372
+     ],
+     "size": [
+      72,
+      56
+     ],
+     "rot": -30
+    },
+    {
+     "icon": "square",
+     "at": [
+      150,
+      350
+     ],
+     "size": [
+      18,
+      60
+     ],
+     "rot": -30
+    }
+   ]
+  },
+  {
+   "name": "pommel",
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      104,
+      412
+     ],
+     "size": [
+      40,
+      40
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      104,
+      412
+     ],
+     "size": [
+      18.0,
+      18.0
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      330,
+      210
+     ],
+     "size": [
+      75.0,
+      55.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      210,
+      300
+     ],
+     "size": [
+      60.0,
+      45.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "blade"
+  }
+ ]
+}

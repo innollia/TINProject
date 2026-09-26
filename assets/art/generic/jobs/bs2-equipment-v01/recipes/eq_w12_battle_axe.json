@@ -1,0 +1,145 @@
+{
+ "asset": "eq_w12_battle_axe",
+ "status": "candidate",
+ "note": "12 battle axe. Long haft, two bronze bands, a bit that has been re-edged so many times it is a shape rather than a blade.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 112,
+ "forms": [
+  {
+   "name": "head",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "axe",
+     "at": [
+      272,
+      236
+     ],
+     "size": [
+      400,
+      400
+     ]
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.55,
+   "line": false,
+   "clip_to": "head",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      350,
+      196
+     ],
+     "size": [
+      26,
+      230
+     ],
+     "rot": -14
+    }
+   ]
+  },
+  {
+   "name": "haft",
+   "z": 3,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      150,
+      382
+     ],
+     "size": [
+      280,
+      38
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "bands",
+   "z": 4,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      214,
+      314
+     ],
+     "size": [
+      64,
+      52
+     ],
+     "rot": -45
+    },
+    {
+     "icon": "square",
+     "at": [
+      186,
+      344
+     ],
+     "size": [
+      56,
+      46
+     ],
+     "rot": -45
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      350,
+      200
+     ],
+     "size": [
+      75.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      250,
+      300
+     ],
+     "size": [
+      60.0,
+      45.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "head"
+  }
+ ]
+}

@@ -1,0 +1,196 @@
+{
+ "asset": "eq_w31_skull_staff",
+ "status": "candidate",
+ "note": "31 skull staff. A child's skull socketed on a rod. The jaw is wired shut. Something small and old was killed for this.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 131,
+ "forms": [
+  {
+   "name": "staff",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      230,
+      330
+     ],
+     "size": [
+      400,
+      36
+     ],
+     "rot": -16
+    }
+   ]
+  },
+  {
+   "name": "socket",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      330,
+      240
+     ],
+     "size": [
+      46,
+      60
+     ],
+     "rot": -16
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "z": 2,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "skull",
+     "at": [
+      386,
+      164
+     ],
+     "size": [
+      230,
+      230
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jaw",
+   "z": 2.5,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      386,
+      258
+     ],
+     "size": [
+      110,
+      30
+     ],
+     "rot": -6
+    },
+    {
+     "icon": "square",
+     "at": [
+      386,
+      252
+     ],
+     "size": [
+      96,
+      10
+     ],
+     "rot": -6
+    }
+   ]
+  },
+  {
+   "name": "eye_sockets",
+   "z": 3,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "skull",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      356,
+      148
+     ],
+     "size": [
+      40,
+      44
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      416,
+      148
+     ],
+     "size": [
+      40,
+      44
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      386,
+      198
+     ],
+     "size": [
+      26,
+      30
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "dirt_grime",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "grime",
+   "blend": "multiply",
+   "opacity": 0.35,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      230,
+      330
+     ],
+     "size": [
+      180,
+      80
+     ]
+    }
+   ],
+   "clip_to": "staff"
+  },
+  {
+   "name": "dirt_grime",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "grime",
+   "blend": "multiply",
+   "opacity": 0.4,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      400,
+      130
+     ],
+     "size": [
+      30,
+      44
+     ]
+    }
+   ],
+   "clip_to": "skull"
+  }
+ ]
+}

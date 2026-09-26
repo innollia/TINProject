@@ -1,0 +1,55 @@
+{
+  "asset": "prop_r7_crown_position_plinth",
+  "status": "candidate",
+  "note": "prop_r7_crown_position_plinth (Crown Position Plinth), stands in the socket of the round Crown Position platform (bg_r7_crown_verge). Basalt drum 1.2 m across, 0.6 m high (110 px/m), bronze ring inlay on top. Five broken, irregular dark shadow shards lie on the platform around it inside ~3 m (the crown itself is above R4 and is not drawn; the shards are placed unevenly so they do not form a symbol). ps_unclaimed: nothing else. ps_claimed: a bronze drawer in the front face with a blank sealed tag, and a small iron stake at each shadow shard. Hidden in game until claimed.",
+  "palette": "palette_r7.json",
+  "style": "prop",
+  "canvas": [672, 600],
+  "pivot": [336, 360],
+  "pivot_meaning": "centre of the plinth's round footprint on the platform surface",
+  "seed": 722,
+  "frames": [
+    {"name": "prop_r7_plinth_unclaimed"},
+    {"name": "prop_r7_plinth_claimed", "show": ["claimed"]}
+  ],
+  "forms": [
+    {"name": "shards", "z": 0, "kind": "flat", "color": "#141319", "opacity": 0.72, "blur": 1.5,
+     "rough": {"amp": 0.5, "soft": 2, "cell": 10},
+     "pieces": [
+       {"icon": "square", "poly": [[0, 8], [5, 5], [16, 7], [7, 11]], "fit": [0, 0, 16, 16], "ground": true, "at": [150, 330], "size": [150, 60], "rot": 12},
+       {"icon": "square", "poly": [[0, 9], [8, 4], [16, 9], [9, 12]], "fit": [0, 0, 16, 16], "ground": true, "at": [262, 196], "size": [120, 56], "rot": -52},
+       {"icon": "square", "poly": [[0, 6], [7, 4], [16, 10], [6, 11]], "fit": [0, 0, 16, 16], "ground": true, "at": [452, 206], "size": [140, 58], "rot": 38},
+       {"icon": "square", "poly": [[0, 9], [9, 5], [16, 8], [8, 12]], "fit": [0, 0, 16, 16], "ground": true, "at": [540, 380], "size": [110, 50], "rot": -14},
+       {"icon": "square", "poly": [[0, 7], [6, 5], [16, 9], [5, 11]], "fit": [0, 0, 16, 16], "ground": true, "at": [372, 500], "size": [130, 54], "rot": 76}
+     ]},
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.45, "blur": 8,
+     "pieces": [{"icon": "circle", "at": [342, 364], "size": [236, 90]}]},
+    {"name": "drum", "z": 1, "kind": "block", "material": "basalt", "extrude": 66,
+     "pieces": [{"icon": "circle", "at": [336, 294], "size": [216, 187]}]},
+    {"name": "drum_bands", "z": 1.2, "kind": "flat", "color": "#141319", "opacity": 0.6, "clip_to": "drum",
+     "pieces": [{"icon": "square", "at": [336, 372], "size": [220, 3]}]},
+    {"name": "top_recess", "z": 1.4, "kind": "flat", "color": "#1a191f",
+     "pieces": [{"icon": "circle", "at": [336, 292], "size": [150, 128]}]},
+    {"name": "top_ring", "z": 1.5, "kind": "flat", "material": "bronze", "opacity": 0.9,
+     "pieces": [
+       {"icon": "circle", "at": [336, 292], "size": [166, 142]},
+       {"icon": "circle", "op": "sub", "at": [336, 292], "size": [152, 130]}
+     ]},
+
+    {"name": "drawer", "tags": ["claimed"], "hidden": true, "z": 2, "kind": "flat", "material": "bronze", "line": {"width": 0.9, "heavy": 1.1},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [336, 420], "size": [70, 34]}]},
+    {"name": "drawer_pull", "tags": ["claimed"], "hidden": true, "z": 2.2, "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [336, 420], "size": [26, 6]}]},
+    {"name": "tag_cord", "tags": ["claimed"], "hidden": true, "z": 2.3, "kind": "flat", "material": "rope",
+     "pieces": [{"icon": "square", "at": [360, 446], "size": [2, 26], "rot": -14}]},
+    {"name": "tag", "tags": ["claimed"], "hidden": true, "z": 2.4, "material": "paper", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "tag", "at": [366, 468], "size": [22, 30], "rot": 96}]},
+    {"name": "tag_seal", "tags": ["claimed"], "hidden": true, "z": 2.5, "kind": "flat", "color": "#6b6d73",
+     "pieces": [{"icon": "circle", "at": [366, 470], "size": [10, 9]}]},
+    {"name": "stakes", "tags": ["claimed"], "hidden": true, "z": 3, "kind": "block", "material": "iron", "extrude": 30,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 0], "size": [8, 6],
+                 "repeat": {"points": [[196, 306], [276, 150], [486, 162], [566, 344], [392, 460]]}}]},
+    {"name": "stake_caps", "tags": ["claimed"], "hidden": true, "z": 3.2, "kind": "flat", "material": "bronze",
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [9, 7], "repeat": {"points": [[196, 302], [276, 146], [486, 158], [566, 340], [392, 456]]}}]}
+  ]
+}

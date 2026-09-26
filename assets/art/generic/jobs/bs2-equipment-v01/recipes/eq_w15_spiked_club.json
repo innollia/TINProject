@@ -1,0 +1,132 @@
+{
+ "asset": "eq_w15_spiked_club",
+ "status": "candidate",
+ "note": "15 spiked club. A studded length of wood with nails bent outward and left in. Two of the nails are teeth.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 115,
+ "forms": [
+  {
+   "name": "core",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "club",
+     "at": [
+      256,
+      264
+     ],
+     "size": [
+      300,
+      300
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spikes",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      150
+     ],
+     "size": [
+      56,
+      80
+     ],
+     "repeat": {
+      "ellipse": [
+       256,
+       264,
+       128,
+       128
+      ],
+      "count": 9,
+      "orient": true,
+      "jitter": {
+       "at": 6.0,
+       "rot": 8.0
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "ferrule",
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      412
+     ],
+     "size": [
+      60,
+      46
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      300,
+      200
+     ],
+     "size": [
+      80.0,
+      60.0
+     ]
+    }
+   ],
+   "clip_to": "spikes"
+  },
+  {
+   "name": "dirt_rust",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.35,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      200,
+      160
+     ]
+    }
+   ]
+  }
+ ]
+}
