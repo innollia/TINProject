@@ -712,6 +712,40 @@ func test_screen_confirm_passes_every_authored_page_including_wait_into_the_choi
 	assert_true(_state_of(game).choice_taken(RETURN_DESK, RETURN_DESK_CHOICE))
 
 
+func test_authored_choice_rows_show_their_whole_text_inside_the_choice_panel() -> void:
+	var game := _spawn()
+	assert_true(_approach_and_interact(game, DESK_NPC))
+	var conversation := _conversation_of(game)
+	var screen := _screen_of(game)
+	for _page: int in range(conversation.pages().size()):
+		screen.submit_confirm()
+	assert_true(conversation.at_choice_set())
+	await wait_process_frames(4)
+	var panel := screen.get_node("%ChoicePanel") as Control
+	var band := screen.get_node("%DialogueBand") as Control
+	var rows := screen.get_node("%ChoiceRows") as VBoxContainer
+	assert_true(panel.is_visible_in_tree())
+	var checked: int = 0
+	for child: Node in rows.get_children():
+		var row := child as TopDownActionRpgRow
+		if row == null or not row.visible:
+			continue
+		var label := row.get_node("Text") as Label
+		var needed: Vector2 = label.get_minimum_size()
+		assert_true(needed.x <= label.size.x + 0.5, "%s needs width %.1f, has %.1f" % [row.row_id, needed.x, label.size.x])
+		assert_true(needed.y <= label.size.y + 0.5, "%s needs height %.1f, has %.1f" % [row.row_id, needed.y, label.size.y])
+		assert_true(panel.get_global_rect().grow(0.5).encloses(row.get_global_rect()), "%s stays inside the choice panel" % row.row_id)
+		checked += 1
+	var expected: int = 0
+	for choice: Dictionary in conversation.choice_rows():
+		if bool(choice.get("visible", false)):
+			expected += 1
+	assert_true(expected > 0)
+	assert_eq(checked, mini(expected, TopDownActionRpgScreen.MAX_CHOICE_ROWS))
+	assert_true(screen.get_global_rect().grow(0.5).encloses(panel.get_global_rect()))
+	assert_false(panel.get_global_rect().grow(-0.5).intersects(band.get_global_rect().grow(-0.5)))
+
+
 func test_combat_build_opens_player_window_and_deterministic_enemy_windows() -> void:
 	var first := _spawn(_fresh_snapshot(CHOIR_ENCOUNTER, 220))
 	var catalog := _catalog_of(first)

@@ -23,7 +23,6 @@ const CHOIR_ENCOUNTER: String = "enc_r1_ash_choir"
 const PLAYER_ACTION: String = "act_ash_sweep"
 const GUARD_ACTION: String = "act_guard_set"
 const ITEM_CATEGORY: String = "item"
-const ATTACK_CATEGORY: String = "attack"
 const NARRATION_LINE: String = "The shadow over the arrival well has no filed owner."
 const PLAYER_SIDE: String = "player_side"
 
@@ -35,12 +34,26 @@ const RUN_TIMEOUT: String = "timeout"
 const START_DEFAULT_BOOT: String = "default_boot"
 const START_CRAFTED_SAVE: String = "crafted_save"
 const DRIVER_MODULE_COMMANDS: String = "module_commands"
+const DRIVER_PLAYER_INPUT: String = "player_input_actions"
 const DRIVER_HELD_ENEMY_ACTIONS: String = "module_commands_with_enemy_actions_held_except_authored_charge"
 const DRIVER_SCREEN_FLAG: String = "screen_flag_without_module_caller"
 const DRIVER_FORCED_RESULT: String = "forced_combat_result"
 const CHARGE_LIFECYCLE: String = "charge"
 const ENEMY_ACTION_OWNERS: Array[String] = ["enemy", "linked_actor"]
 const ENEMY_ACTION_HOLD: int = 4096
+const INPUT_UP: StringName = &"top_down_action_rpg_up"
+const INPUT_DOWN: StringName = &"top_down_action_rpg_down"
+const INPUT_CONFIRM: StringName = &"top_down_action_rpg_confirm"
+const RAIL_STEP_LIMIT: int = 24
+
+const BOUNDED_SURFACES: Array[String] = [
+	"DialogueLayer/DialogueBand", "DialogueLayer/ChoicePanel", "DocumentLayer/DocumentSurface",
+	"NarrationLayer/NarrationBand", "CombatUi/CommandRail", "CombatUi/PlayerBand",
+]
+const EXCLUSIVE_SURFACES: Array[Array] = [
+	["DialogueLayer/ChoicePanel", "DialogueLayer/DialogueBand"],
+	["CombatUi/CommandRail", "CombatUi/PlayerBand"],
+]
 
 const CAPTURE_STATES: Array[StringName] = [
 	TopDownActionRpgScreen.STATE_INPUT_BUBBLE,
@@ -90,10 +103,10 @@ const FIXTURE_DRIVERS: Dictionary = {
 	&"dialogue_choice_focus": DRIVER_MODULE_COMMANDS,
 	&"narration": DRIVER_SCREEN_FLAG,
 	&"combat_command": DRIVER_MODULE_COMMANDS,
-	&"target_select": DRIVER_MODULE_COMMANDS,
+	&"target_select": DRIVER_PLAYER_INPUT,
 	&"charge_counter": DRIVER_HELD_ENEMY_ACTIONS,
-	&"guard_dodge_break_feedback": DRIVER_MODULE_COMMANDS,
-	&"equipment_no_turn": DRIVER_MODULE_COMMANDS,
+	&"guard_dodge_break_feedback": DRIVER_PLAYER_INPUT,
+	&"equipment_no_turn": DRIVER_PLAYER_INPUT,
 	&"document_max": DRIVER_MODULE_COMMANDS,
 	&"document_corrupted": DRIVER_MODULE_COMMANDS,
 	&"aftermath_revisit": DRIVER_FORCED_RESULT,
@@ -173,6 +186,9 @@ func _initialize() -> void:
 	_requested_states = parsed.get("states", CAPTURE_STATES) as Array[StringName]
 	_requested_sizes = parsed.get("sizes", CAPTURE_SIZES) as Array[Vector2i]
 	_headless = DisplayServer.get_name() == "headless"
+	for action: StringName in _declared_actions():
+		if not InputMap.has_action(action):
+			InputMap.add_action(action)
 	create_timer(WATCHDOG_SECONDS, true, false, true).timeout.connect(_on_watchdog)
 	call_deferred("_run")
 
@@ -296,15 +312,21 @@ func _drive_fixture(state_name: StringName, screen: TopDownActionRpgScreen) -> S
 			if _mode() != "combat":
 				return "combat was not entered for %s (mode=%s)" % [String(state_name), _mode()]
 		TopDownActionRpgScreen.STATE_TARGET_SELECT:
-			_module.execute_command(&"combat_category", {"category": ATTACK_CATEGORY})
-			_module.execute_command(&"combat_action", {"action_id": PLAYER_ACTION})
+			var target_rail_failure: String = _player_open_rail_for(PLAYER_ACTION)
+			if not target_rail_failure.is_empty():
+				return "attack rail was not opened by input for %s: %s" % [String(state_name), target_rail_failure]
+			_press(INPUT_CONFIRM)
 			if _combat_of() == null or String(_combat_of().submode) != "target_select":
 				return "target select was not entered for %s (%s)" % [String(state_name), _combat_brief()]
 		TopDownActionRpgScreen.STATE_EQUIPMENT_NO_TURN:
-			_module.execute_command(&"combat_category", {"category": ITEM_CATEGORY})
-			screen.refresh()
+			var item_rail_failure: String = _player_open_category(ITEM_CATEGORY)
+			if not item_rail_failure.is_empty():
+				return "item rail was not opened by input for %s: %s" % [String(state_name), item_rail_failure]
 		TopDownActionRpgScreen.STATE_GUARD_DODGE_BREAK:
-			_module.execute_command(&"combat_action", {"action_id": GUARD_ACTION})
+			var guard_rail_failure: String = _player_open_rail_for(GUARD_ACTION)
+			if not guard_rail_failure.is_empty():
+				return "guard rail was not opened by input for %s: %s" % [String(state_name), guard_rail_failure]
+			_press(INPUT_CONFIRM)
 			var stance_failure: String = _drive_to_stance_feedback()
 			if not stance_failure.is_empty():
 				return "counter feedback state was not produced for %s: %s" % [String(state_name), stance_failure]
@@ -454,6 +476,7 @@ func _collect(state_name: StringName, requested_size: Vector2i) -> Dictionary:
 			var clip: String = _clipped_label(screen, node as Label)
 			if not clip.is_empty():
 				clipped.append(clip)
+	var surfaces: Array[String] = _surface_violations(screen)
 	return {
 		"label": _label(state_name, requested_size),
 		"state": String(state_name),
@@ -472,7 +495,27 @@ func _collect(state_name: StringName, requested_size: Vector2i) -> Dictionary:
 		"shell_hud_nodes": shell_nodes,
 		"ap_labels": ap_labels,
 		"clipped_text": clipped,
+		"surface_overflow": surfaces,
 	}
+
+
+func _surface_violations(screen: TopDownActionRpgScreen) -> Array[String]:
+	var found: Array[String] = []
+	var bounds: Rect2 = screen.get_global_rect().grow(CLIP_TOLERANCE)
+	for path: String in BOUNDED_SURFACES:
+		var surface: Control = screen.get_node_or_null(path) as Control
+		if surface == null or not surface.is_visible_in_tree():
+			continue
+		if not bounds.encloses(surface.get_global_rect()):
+			found.append("%s leaves the screen rect=%s screen=%s" % [path, str(surface.get_global_rect()), str(screen.get_global_rect())])
+	for pair: Array in EXCLUSIVE_SURFACES:
+		var first: Control = screen.get_node_or_null(String(pair[0])) as Control
+		var second: Control = screen.get_node_or_null(String(pair[1])) as Control
+		if first == null or second == null or not first.is_visible_in_tree() or not second.is_visible_in_tree():
+			continue
+		if first.get_global_rect().grow(-CLIP_TOLERANCE).intersects(second.get_global_rect().grow(-CLIP_TOLERANCE)):
+			found.append("%s overlaps %s rects=%s/%s" % [String(pair[0]), String(pair[1]), str(first.get_global_rect()), str(second.get_global_rect())])
+	return found
 
 
 func _clipped_label(screen: TopDownActionRpgScreen, label: Label) -> String:
@@ -482,6 +525,9 @@ func _clipped_label(screen: TopDownActionRpgScreen, label: Label) -> String:
 	if label.autowrap_mode != TextServer.AUTOWRAP_OFF:
 		if label.max_lines_visible > 0 and label.get_line_count() > label.max_lines_visible:
 			return "%s lines=%d max=%d text=%s" % [path, label.get_line_count(), label.max_lines_visible, label.text]
+		var needed_height: float = label.get_minimum_size().y
+		if needed_height > label.size.y + CLIP_TOLERANCE:
+			return "%s needed_height=%d available_height=%d text=%s" % [path, int(ceil(needed_height)), int(floor(label.size.y)), label.text]
 		return ""
 	var host: TopDownActionRpgRow = label.get_parent() as TopDownActionRpgRow
 	if host == null:
@@ -515,6 +561,9 @@ func _record_violations(state_name: StringName, requested_size: Vector2i, report
 	var clipped: Array = report.get("clipped_text", []) if report.get("clipped_text", []) is Array else []
 	if not clipped.is_empty():
 		_violations.append({"kind": "clipped_text", "target": label, "detail": clipped, "severity": "blocking"})
+	var surfaces: Array = report.get("surface_overflow", []) if report.get("surface_overflow", []) is Array else []
+	if not surfaces.is_empty():
+		_violations.append({"kind": "surface_overflow", "target": label, "detail": surfaces, "severity": "blocking"})
 	var root_size: Array = report.get("root_size", []) if report.get("root_size", []) is Array else []
 	if not _headless and (root_size.size() != 2 or int(root_size[0]) != requested_size.x or int(root_size[1]) != requested_size.y):
 		_violations.append({
@@ -722,6 +771,87 @@ func _advance_to_choice_set() -> String:
 		if _conversation_of() != null and _conversation_of().page_index == page_index and _mode() == "dialogue":
 			return "page %d of %s did not advance" % [page_index, String(conversation.conversation_id)]
 	return "choice set not reached after %d advances" % DIALOGUE_LIMIT
+
+
+func _press(action: StringName) -> void:
+	Input.action_press(action)
+	_module.call("_process", 0.0)
+	Input.action_release(action)
+	_module.call("_process", 0.0)
+
+
+func _rail_rows() -> Array[TopDownActionRpgRow]:
+	var rows: Array[TopDownActionRpgRow] = []
+	var screen: TopDownActionRpgScreen = _screen_of()
+	if screen == null:
+		return rows
+	var pool: Variant = screen.get("_command_rows_view")
+	if not pool is Array:
+		return rows
+	for row: Variant in pool:
+		if row is TopDownActionRpgRow and (row as TopDownActionRpgRow).visible:
+			rows.append(row as TopDownActionRpgRow)
+	return rows
+
+
+func _rail_ids() -> Array[String]:
+	var ids: Array[String] = []
+	for row: TopDownActionRpgRow in _rail_rows():
+		ids.append(String(row.row_id))
+	return ids
+
+
+func _focused_rail_id() -> String:
+	for row: TopDownActionRpgRow in _rail_rows():
+		if row.focused:
+			return String(row.row_id)
+	return ""
+
+
+func _player_focus_rail(row_id: String) -> String:
+	for _step: int in range(RAIL_STEP_LIMIT):
+		var ids: Array[String] = _rail_ids()
+		var target: int = ids.find(row_id)
+		if target < 0:
+			return "rail rows %s carry no %s" % [str(ids), row_id]
+		var current: int = ids.find(_focused_rail_id())
+		if current == target:
+			return ""
+		_press(INPUT_DOWN if current < target else INPUT_UP)
+	return "rail focus did not reach %s (focused=%s rows=%s)" % [row_id, _focused_rail_id(), str(_rail_ids())]
+
+
+func _player_open_category(token: String) -> String:
+	var focus_failure: String = _player_focus_rail(token)
+	if not focus_failure.is_empty():
+		return focus_failure
+	_press(INPUT_CONFIRM)
+	var controller: TopDownActionRpgCombatController = _controller_of()
+	if controller == null or String(controller.current_category) != token or String(controller.state.submode) != "command_action":
+		return "category %s was not opened (%s)" % [token, _combat_brief()]
+	return ""
+
+
+func _player_open_rail_for(action_id: String) -> String:
+	var token: String = _rail_token_for(action_id)
+	if token.is_empty():
+		return "no rail category carries %s" % action_id
+	var open_failure: String = _player_open_category(token)
+	if not open_failure.is_empty():
+		return open_failure
+	return _player_focus_rail(action_id)
+
+
+func _rail_token_for(action_id: String) -> String:
+	var controller: TopDownActionRpgCombatController = _controller_of()
+	var catalog: TopDownActionRpgContentLoader.Catalog = _catalog_of()
+	if controller == null or catalog == null:
+		return ""
+	var category: String = String(catalog.record(action_id).get("category", ""))
+	for token: String in TopDownActionRpgScreen.CATEGORY_ROW_TOKENS:
+		if controller.rail_source_categories(token).has(category):
+			return token
+	return ""
 
 
 func _walk_to(interactable_id: String) -> bool:
@@ -933,6 +1063,7 @@ func _write_report() -> bool:
 			"headless runs verify state reachability, resolution request and source audits only",
 			"no pixel evidence is produced or claimed when the display server is headless",
 			"states driven by screen_flag_without_module_caller are presentation fixtures: no module code raises them in play",
+			"states with no module-owned surface (esc_menu is drawn by the app shell) and flag-only fixtures can capture the same pixels as field; identical_pixel_groups lists every such group",
 			"a real human review pass at 720p, FHD and QHD is still required by the kit acceptance gate",
 		],
 	}

@@ -15,10 +15,12 @@ const AFFORDANCE_PORTRAIT: String = "portrait"
 
 const CORRUPTION_MODES: Array[String] = ["recolor", "replace_token", "shatter_line", "drop_glyph"]
 const FOCUSABLE_ROLES: Array[String] = [ROLE_CHOICE, ROLE_COMMAND]
+const WRAPPING_ROLES: Array[String] = [ROLE_CHOICE]
 const TEXT_INSET: float = 10.0
 const FOCUSABLE_TEXT_INSET: float = 24.0
 const CLASS_CHANNEL_INSET: float = 18.0
 const ROW_TEXT_PAD: float = 4.0
+const WRAP_VERTICAL_PAD: float = 12.0
 const TRAILING_FONT_SIZE: int = 12
 
 const CLASS_EXTREME: String = "extreme"
@@ -79,7 +81,20 @@ func _ready() -> void:
 	_trailing_label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
 	_trailing_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	_trailing_label.add_theme_font_size_override("font_size", TRAILING_FONT_SIZE)
+	_text_label.minimum_size_changed.connect(update_minimum_size)
+	_trailing_label.minimum_size_changed.connect(update_minimum_size)
 	_sync()
+
+
+func _get_minimum_size() -> Vector2:
+	if _text_label == null or not WRAPPING_ROLES.has(role) or _text_label.size.x <= 1.0:
+		return Vector2.ZERO
+	var height: float = _text_label.get_minimum_size().y
+	if _trailing_label != null and not _trailing_label.text.is_empty():
+		height += _trailing_label.get_minimum_size().y + ROW_TEXT_PAD * 2.0
+	else:
+		height += WRAP_VERTICAL_PAD * 2.0
+	return Vector2(0.0, ceilf(height))
 
 
 func configure(p_row_id: StringName, p_role: String) -> void:
@@ -195,6 +210,8 @@ func _sync() -> void:
 	_text_label.offset_left = left_inset + _label_offset
 	_text_label.offset_right = -right_inset + _label_offset
 	_text_label.add_theme_color_override("font_color", INK_DISABLED if disabled else INK)
+	var wraps: bool = WRAPPING_ROLES.has(role)
+	_text_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART if wraps else TextServer.AUTOWRAP_OFF
 	var has_trailing: bool = _trailing_label != null and not _trailing_label.text.is_empty()
 	_text_label.offset_top = ROW_TEXT_PAD if has_trailing else 0.0
 	_text_label.offset_bottom = 0.0
@@ -207,6 +224,7 @@ func _sync() -> void:
 		_trailing_label.add_theme_color_override("font_color", INK_DISABLED if disabled else INK_MUTED)
 	var interactive: bool = affordance == AFFORDANCE_NONE and not disabled
 	mouse_filter = Control.MOUSE_FILTER_STOP if interactive else Control.MOUSE_FILTER_IGNORE
+	update_minimum_size()
 	queue_redraw()
 
 
