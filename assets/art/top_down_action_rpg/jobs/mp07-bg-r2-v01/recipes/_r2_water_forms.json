@@ -1,0 +1,17 @@
+{
+  "note": "Shared Glasswater forms for the R2 background recipes (included, not built on its own). Same values as area A.",
+  "forms": [
+    {"name": "water_base", "z": 0, "kind": "flat", "material": "water", "textured": true,
+     "grime": {"stamps": ["cloud", "metaballs"], "size": 240, "soft": 30, "density": 0.2, "strength": 0.14, "color": "water_deep", "lo": 0.3},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "water_mottle_dark", "z": 0.2, "kind": "wash", "material": "water_deep", "blend": "multiply", "opacity": 0.3,
+     "mottle": {"cell": 520, "lo": 0.5, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "silt_haze", "z": 0.3, "kind": "wash", "material": "silt_cloud", "opacity": 0.14,
+     "mottle": {"cell": 240, "lo": 0.6, "hi": 0.9},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "stain_large", "z": 8, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.2,
+     "mottle": {"cell": 520, "lo": 0.55, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]}
+  ]
+}

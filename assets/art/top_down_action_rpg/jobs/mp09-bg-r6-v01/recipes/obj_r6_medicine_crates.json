@@ -1,0 +1,50 @@
+{
+  "asset": "obj_r6_medicine_crates",
+  "status": "candidate",
+  "note": "R6 region object: stack of three clinic supply crates (0.6 m, 110 px/m) with verdigris straps and a stoppered glaze bottle on top. Plank lines and braces, no stencil text. Atmosphere object.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [360, 340],
+  "pivot": [180, 290],
+  "pivot_meaning": "front-bottom centre of the stack on the floor",
+  "seed": 647,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 8,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [186, 282], "size": [250, 40]}]},
+    {"name": "crates_low", "z": 0, "kind": "block", "material": "wood", "extrude": 66,
+     "line": {"width": 1.4, "heavy": 1.8, "breaks": 0.25, "junction": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [124, 177], "size": [108, 94]},
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [238, 185], "size": [104, 88]}
+     ]},
+    {"name": "crates_low_planks", "z": 0.2, "kind": "flat", "material": "tile_joint", "opacity": 0.55, "clip_to": "crates_low",
+     "pieces": [
+       {"icon": "square", "at": [0, 0], "size": [108, 2], "repeat": {"points": [[124, 246], [124, 268], [238, 250], [238, 272]]}},
+       {"icon": "square", "at": [124, 257], "size": [2, 70], "rot": 55},
+       {"icon": "square", "at": [238, 261], "size": [2, 66], "rot": -55}
+     ]},
+    {"name": "straps_low", "z": 0.4, "kind": "flat", "material": "verdigris", "opacity": 0.9, "clip_to": "crates_low",
+     "pieces": [
+       {"icon": "square", "at": [150, 250], "size": [6, 80]},
+       {"icon": "square", "at": [262, 254], "size": [6, 80]}
+     ]},
+    {"name": "crate_top", "z": 1, "kind": "block", "material": "wood", "extrude": 60,
+     "line": {"width": 1.4, "heavy": 1.8, "breaks": 0.25, "junction": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [182, 113], "size": [100, 84]}]},
+    {"name": "crate_top_planks", "z": 1.2, "kind": "flat", "material": "tile_joint", "opacity": 0.55, "clip_to": "crate_top",
+     "pieces": [
+       {"icon": "square", "at": [182, 178], "size": [100, 2]},
+       {"icon": "square", "at": [182, 196], "size": [100, 2]},
+       {"icon": "square", "at": [182, 187], "size": [2, 64], "rot": 58}
+     ]},
+    {"name": "bottle", "z": 2, "material": "glaze",
+     "shade": {"max_radius": 6, "bump": 1.1, "highlight_amount": 0.7},
+     "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [206, 90], "size": [22, 30]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [206, 72], "size": [9, 10]}
+     ]},
+    {"name": "stopper", "z": 2.2, "kind": "flat", "material": "leather",
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [206, 66], "size": [11, 5]}]}
+  ]
+}

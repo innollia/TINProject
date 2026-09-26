@@ -1,22 +1,24 @@
 # TIN 04 아이콘 조합 양산 — 10개 세션 공통 규칙 (2026-09-27)
 
+경로는 전부 TINProject 저장소 루트 기준이다.
+
 > ✅ 기준 확정 (2026-09-27 04시): 분위기는 V1, 빛과 그림자는 게임 코드가 한다, 배경은 배경만 그리고 물건은 오브젝트로 따로 만든다(아래 '사용자 결정', '그리는 규칙'). 지금부터 방향이 필요 없는 그림부터 만든다: 배경, 오브젝트·사물, 아이템, 적 전투 그림, 효과, UI, 초상화. 걸어 다니는 캐릭터(플레이어, NPC 필드 그림, 범용 사람, 맵에서 돌아다니는 몬스터)는 8방향 기준이 아직 미정이라 만들지 않는다. 그것만 남으면 이 파일을 다시 읽고, '캐릭터 스프라이트 형식'이 아직 미정이면 사용자에게 "8방향 기준 대기 중"이라고만 알리고 멈춘다. 준비 단계에서 옛 도구를 복사했거나 옛 팔레트로 계획을 세웠으면 '폴더와 소유권' 규칙대로 새 도구와 V1 팔레트로 바꾼 뒤 시작한다.
 
 ## 사용자 결정 (문서 내용보다 우선)
 - 04 탑다운 액션 RPG 그림을 아이콘 조합 방식으로 양산한다. 사용자가 시험 작업 `h0-icon-collage-v01`의 결과를 보고 "엄청 효과적"이라며 양산을 지시했다. 그래서 14_ISOLATED_ART_JOBS.md §6/§8의 "사용자 검토 전 병렬 양산 금지"는 이 방식에 한해 풀렸다. 개별 그림은 아직 승인 전이고, 결과는 전부 candidate다. 승인은 사용자만 한다.
 - 세션 10개가 동시에 나눠서 만든다. 각 세션은 서브에이전트(spawn_run 등) 없이 직접 작업한다.
-- 대상은 지금 게임에 들어 있는 콘텐츠(`C:\projects\TINProject\modules\top_down_action_rpg\content`)다. `15_NEW_WORLD.md`(《저녁의 해안》)는 사용자 승인 전 초안이라 대상이 아니다.
+- 대상은 지금 게임에 들어 있는 콘텐츠(`modules\top_down_action_rpg\content`)다. `15_NEW_WORLD.md`(《저녁의 해안》)는 사용자 승인 전 초안이라 대상이 아니다.
 - 2026-09-27 사용자 결정: 분위기는 분위기 시험 `h0-icon-mood-v02`의 **V1**(어두운 색, 낡은 재질, 그림에는 확산광만)으로 한다. 빛과 그림자는 게임 코드로 따로 구현한다("빛이랑 그림자는 따로 코드로 구현해도 될 것 같음. 그래서 v1로"). 에셋으로 쓸 그림이므로 캐릭터를 배경 위에 합친 이미지를 만들지 않는다("왜 자꾸 이미지에 캐릭터가 올라가 있는거야. 에셋으로 쓸건데").
 
 ## 기준 자료 (읽기만. 절대 고치지 않음)
-- 화풍·도구 기준 (V1): `C:\projects\TINProject\assets\art\top_down_action_rpg\jobs\h0-icon-mood-v02\`
+- 화풍·도구 기준 (V1): `assets\art\top_down_action_rpg\jobs\h0-icon-mood-v02\`
   - 화풍 기준(눈으로 보고 맞춘다): `preview\asset_bg_h0_v1_1280x720.png`(배경만), `preview\asset_sheet_v1_props_0.5x.png`, `preview\asset_sheet_v1_characters_1x.png`, `output\` 안 그림. `preview_h0_v2*`, `preview_h0_v3*`, `compare_*`는 버린 조명 시험이라 따르지 않는다.
   - 색: `recipes\palette_h0_mood.json` / 레시피 예시: `recipes\*.json`(scene_* 제외) / 도구: `tool\` (build.py, compose_preview.py, review_sheet.py, compare_sheet.py, catalog.py, inspect_icons.py, iconkit\)
   - 주의: 이 시험 배경은 화로·등불·상자 같은 물건까지 배경에 함께 그렸다. 양산에서는 아래 '배경과 오브젝트 분리' 규칙대로 이런 물건을 오브젝트로 따로 만든다.
-  - 기록: `C:\projects\TINProject\docs\art\projects\top_down_action_rpg\jobs\h0-icon-mood-v02\` (QA.md의 아쉬운 점을 먼저 읽는다)
-- 첫 시험 작업(읽기만): `C:\projects\TINProject\assets\art\top_down_action_rpg\jobs\h0-icon-collage-v01\`
-  - 아이콘 목록 그림: `input\at_icons_node2d_catalog_p1.png` ~ `p4.png` (아이콘 원본: `C:\projects\TINProject\addons\at-icons\node2d`)
-  - 기록: `C:\projects\TINProject\docs\art\projects\top_down_action_rpg\jobs\h0-icon-collage-v01\QA.md` (알려진 문제)
+  - 기록: `docs\art\projects\top_down_action_rpg\jobs\h0-icon-mood-v02\` (QA.md의 아쉬운 점을 먼저 읽는다)
+- 첫 시험 작업(읽기만): `assets\art\top_down_action_rpg\jobs\h0-icon-collage-v01\`
+  - 아이콘 목록 그림: `input\at_icons_node2d_catalog_p1.png` ~ `p4.png` (아이콘 원본: `addons\at-icons\node2d`)
+  - 기록: `docs\art\projects\top_down_action_rpg\jobs\h0-icon-collage-v01\QA.md` (알려진 문제)
   - 프롬프트에 "시험 작업의 ○○ 레시피/도구를 복사"라고 적혀 있으면, 같은 이름의 파일을 `h0-icon-mood-v02`에서 복사한다. 색이 어두운 V1 버전이다.
 - 규칙: `docs\IMAGE_ASSET_WORKFLOW.md`, `docs\VISUAL_DIRECTION.md`, `docs\art\projects\top_down_action_rpg\PROJECT_ART_LAYER.md`, `plans\kits\04_TOP_DOWN_ACTION_RPG_KIT\` 의 09(§12 자산군 규격), 13(배경 레이어), 14(작업 폴더)
 - 내용 원본: `modules\top_down_action_rpg\content\<종류>\<id>.json`, 화면 배치: `modules\top_down_action_rpg\presentation\top_down_vector_layer.gd`, `top_down_screen.gd`
@@ -24,7 +26,7 @@
 
 ## 폴더와 소유권
 - 작업 ID는 반드시 `mpNN-`로 시작한다(NN = 세션 번호 두 자리, 예: `mp06-bg-h0-v01`). 다른 번호의 작업 폴더는 읽지도 쓰지도 않는다.
-- 폴더(14 §2): `C:\projects\TINProject\assets\art\top_down_action_rpg\jobs\<작업ID>\` 아래 tool, recipes, input, output, preview + `C:\projects\TINProject\docs\art\projects\top_down_action_rpg\jobs\<작업ID>\` 아래 JOB.md, inputs.json, QA.md. prompt.txt 대신 레시피와 스크립트를 결과 옆에 둔다.
+- 폴더(14 §2): `assets\art\top_down_action_rpg\jobs\<작업ID>\` 아래 tool, recipes, input, output, preview + `docs\art\projects\top_down_action_rpg\jobs\<작업ID>\` 아래 JOB.md, inputs.json, QA.md. prompt.txt 대신 레시피와 스크립트를 결과 옆에 둔다.
 - 시작할 때 `h0-icon-mood-v02`의 `tool\` 폴더 전체(__pycache__ 제외)와 `recipes\palette_h0_mood.json`을 자기 작업 폴더에 복사해서 쓴다. 필요한 기능은 자기 복사본에만 추가하고, 무엇을 왜 바꿨는지 JOB.md에 적는다.
 - 옛 도구(`h0-icon-collage-v01`의 tool)를 이미 복사했으면 `tool\` 폴더를 새 도구로 바꾼다. 자기가 추가한 기능은 JOB.md를 보고 새 도구에 다시 넣는다. 레시피의 `palette`는 `palette_h0_mood.json`(또는 이걸 바탕으로 만든 자기 팔레트)으로 바꾸고, 이미 만든 그림은 다시 build한다.
 - 게임 코드, 씬, content JSON, 규칙 문서는 고치지 않는다(세션 01의 결정 기록 두 줄만 예외). 게임에 연결하지 않는다.
@@ -112,13 +114,13 @@
 | 10 | 없음 | 효과·UI: 불, 물, 번개, 얼음, 독, 회복, 폭발, 연기, 창틀, 버튼 바탕, 아이콘 틀, 커서 |
 
 2순위 (다른 키트):
-- 키트 계획서는 `C:\projects\TINProject\plans\kits\`에 있다. 필요한 그림 목록, 시점, 크기, 화풍은 그 키트 계획서와 모듈(`modules\<폴더 이름>`, 없으면 계획서만)에서 찾는다. 시점은 그 키트를 따른다(옆에서 보는 게임이면 60도 계산을 끈다).
+- 키트 계획서는 `plans\kits\`에 있다. 필요한 그림 목록, 시점, 크기, 화풍은 그 키트 계획서와 모듈(`modules\<폴더 이름>`, 없으면 계획서만)에서 찾는다. 시점은 그 키트를 따른다(옆에서 보는 게임이면 60도 계산을 끈다).
 - 그 키트의 그림은 캐릭터, 배경, 효과, UI까지 전부 담당 세션 하나가 만든다.
 - 05 Stone Story는 그림 파일을 쓰지 않기로 정해져 있어서 대상이 아니다. 키트 문서가 그림 파일을 쓰지 않는다고 하거나 필요한 그림이 분명하지 않으면, 이유를 적고 3순위로 넘어간다.
-- 폴더: `C:\projects\TINProject\assets\art\<폴더 이름>\jobs\<작업ID>\` + `C:\projects\TINProject\docs\art\projects\<폴더 이름>\jobs\<작업ID>\`. 작업 ID는 계속 `mpNN-`로 시작한다.
+- 폴더: `assets\art\<폴더 이름>\jobs\<작업ID>\` + `docs\art\projects\<폴더 이름>\jobs\<작업ID>\`. 작업 ID는 계속 `mpNN-`로 시작한다.
 
 3순위 (범용):
-- 폴더: `C:\projects\TINProject\assets\art\generic\jobs\<작업ID>\` + `C:\projects\TINProject\docs\art\projects\generic\jobs\<작업ID>\`.
+- 폴더: `assets\art\generic\jobs\<작업ID>\` + `docs\art\projects\generic\jobs\<작업ID>\`.
 - 시점은 60도 탑다운, 색은 `palette_h0_mood.json`의 윤곽선·그림자 규칙을 그대로 쓴다. 특정 게임의 이름, 문양, 설정은 넣지 않는다.
 - 먼저 만들 목록을 JOB.md에 정하고(물건·장소·효과는 30개 안팎, 사람·몬스터는 8방향이라 15~20개 안팎), 다 만들면 멈추고 보고한다. 더 만들지는 사용자가 정한다.
 - 형식은 RPG Maker의 구성 방식을 따르고, 크기는 '크기 통일' 표를 따른다:

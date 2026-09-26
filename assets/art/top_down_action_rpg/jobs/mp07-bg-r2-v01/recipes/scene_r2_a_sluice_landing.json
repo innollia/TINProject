@@ -1,0 +1,27 @@
+{
+  "status": "candidate",
+  "note": "R2 area A object placement for base_clean (first-visit states: waterline low, exits closed). Check image only (background + objects, no people, no scene lighting). 'at' = background source px where the object's pivot goes; 'light' is for the game's lighting code (colour, suggested radius in source px, and the lamp position in background source px).",
+  "background": "output/r2_a_sluice_landing/base_clean.png",
+  "scale": 0.5,
+  "items": [
+    {"asset": "prop_r2_waterline_mark", "frame": "prop_r2_waterline_low", "at": [1640, 660], "id": "prop_r2_waterline_mark", "interactive": true},
+    {"asset": "exit_r2_e02_sluice_road", "frame": "exit_r2_e02_sluice_road_closed", "at": [1280, 1300], "id": "exit_e02_sluice_road", "interactive": true},
+    {"asset": "exit_r2_e08_medicine_ferry", "frame": "exit_r2_e08_medicine_ferry_closed", "at": [140, 720], "sort_y": 842, "id": "exit_e08_medicine_ferry", "interactive": true},
+    {"asset": "obj_r2_toll_booth", "frame": "obj_r2_toll_booth", "at": [985, 1262], "id": "toll_booth"},
+    {"asset": "obj_r2_lantern_post", "frame": "obj_r2_lantern_post_left", "at": [1112, 1010], "id": "lantern_walk_south",
+     "light": {"color": "#ffc987", "radius": 300, "at": [1058, 792]}},
+    {"asset": "obj_r2_lantern_post", "frame": "obj_r2_lantern_post", "at": [1488, 530], "id": "lantern_walk_north",
+     "light": {"color": "#ffc987", "radius": 300, "at": [1542, 312]}},
+    {"asset": "obj_r2_lantern_post", "frame": "obj_r2_lantern_post", "at": [420, 612], "id": "lantern_jetty",
+     "light": {"color": "#ffc987", "radius": 300, "at": [474, 394]}},
+    {"asset": "obj_r2_water_cask", "frame": "obj_r2_water_cask", "at": [560, 700], "id": "cask_jetty"},
+    {"asset": "obj_r2_water_cask", "frame": "obj_r2_water_cask", "at": [1112, 1392], "id": "cask_dike"},
+    {"asset": "obj_r2_water_cask", "frame": "obj_r2_water_cask", "at": [2250, 282], "id": "cask_platform"},
+    {"asset": "r2_a_sluice_landing", "frame": "foreground_mooring_piles", "at": [0, 0], "sort_y": 100000, "id": "foreground_mooring_piles"}
+  ],
+  "empty_slots_not_drawn": {
+    "art_prop_route_marker": [[1520, 1300], [460, 660]],
+    "npc_standing_spot": [[1300, 800]]
+  },
+  "out": "preview/check_r2_a_sluice_landing_1280x720.png"
+}

@@ -1,0 +1,37 @@
+{
+  "asset": "h0_a_arrival_approach",
+  "status": "candidate",
+  "note": "mp06 H0 area A foreground: an overhead wooden crossbeam on two stone posts at the bottom-left (brief region x70..440, y570..615 logical). Author design: the beam hangs about 2.2 m up and the posts stand on the bottom edge, so anything walking in this screen is behind or under it and a fixed foreground layer is always drawn correctly over characters. Full-canvas transparent PNG, same origin as base_clean. Floor shadow of the posts in foreground_beam_shadow.png.",
+  "palette": "palette_h0_mood.json",
+  "style": "environment",
+  "style_override": {"background": null, "shadow_output": "separate"},
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = logical (0,0); same origin as base_clean",
+  "seed": 212,
+  "frames": [{"name": "foreground_beam"}],
+  "forms": [
+    {"name": "posts", "z": 1, "kind": "block", "material": "stone_dark", "extrude": 250,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [170, 1172], "size": [50, 28]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [850, 1172], "size": [50, 28]}
+     ]},
+    {"name": "post_bands", "z": 1.5, "kind": "flat", "material": "bronze", "line": {"width": 1.0, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [170, 1290], "size": [50, 8]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [850, 1290], "size": [50, 8]}
+     ]},
+    {"name": "beam", "z": 2, "kind": "block", "material": "wood", "extrude": 44,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [510, 1128], "size": [760, 44]}]},
+    {"name": "beam_brackets", "z": 2.5, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [170, 1174], "size": [58, 16]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [850, 1174], "size": [58, 16]}
+     ]},
+    {"name": "beam_stains", "z": 2.7, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.45, "blur": 6, "clip_to": "beam",
+     "pieces": [
+       {"icon": "cloud", "at": [380, 1160], "size": [120, 40]},
+       {"icon": "cloud", "at": [690, 1150], "size": [90, 34], "flip": "x"}
+     ]}
+  ]
+}

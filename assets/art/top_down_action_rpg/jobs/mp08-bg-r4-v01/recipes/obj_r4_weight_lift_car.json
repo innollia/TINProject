@@ -12,10 +12,13 @@
     {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.45, "blur": 10,
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 30}, "at": [322, 690], "size": [470, 52]}]},
 
-    {"name": "floor_platform", "z": 0, "kind": "block", "material": "iron", "extrude": 11,
+    {"name": "floor_platform", "z": 0, "kind": "block", "material": "wood", "extrude": 11,
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [320, 538], "size": [430, 294]}]},
-    {"name": "floor_pattern", "z": 0.5, "kind": "flat", "color": "#26272d", "opacity": 0.4, "clip_to": "floor_platform",
-     "pieces": [{"icon": "grid_fine", "ground": true, "at": [320, 538], "size": [420, 330]}]},
+    {"name": "floor_pattern", "z": 0.5, "kind": "flat", "color": "#1e1712", "opacity": 0.7, "clip_to": "floor_platform",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [424, 2],
+                 "repeat": {"line": [[320, 428], [320, 668]], "count": 7, "jitter": {"at": 1.5}}}]},
+    {"name": "floor_edge", "z": 0.6, "kind": "flat", "material": "bronze", "clip_to": "floor_platform",
+     "pieces": [{"icon": "square", "at": [320, 681], "size": [430, 6]}]},
 
     {"name": "back_posts", "z": 1, "kind": "block", "material": "iron", "extrude": 294,
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [16, 12],
@@ -42,7 +45,21 @@
     {"name": "pulley_bracket", "z": 3.4, "material": "iron", "line": {"width": 0.9, "heavy": 1.0},
      "pieces": [{"icon": "triangle", "at": [320, 226], "size": [66, 40]}]},
     {"name": "pulley_wheel", "z": 3.6, "material": "bronze", "line": {"width": 1.0, "heavy": 1.2},
-     "pieces": [{"icon": "wheel", "at": [320, 196], "size": [74, 74]}]},
+     "pieces": [
+       {"icon": "circle", "at": [320, 196], "size": [64, 64]},
+       {"icon": "circle", "op": "sub", "at": [320, 196], "size": [40, 40]}
+     ]},
+    {"name": "pulley_hub", "z": 3.7, "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "circle", "at": [320, 196], "size": [18, 18]},
+       {"icon": "square", "at": [320, 196], "size": [44, 5], "rot": 30},
+       {"icon": "square", "at": [320, 196], "size": [44, 5], "rot": -30}
+     ]},
+    {"name": "pulley_groove", "z": 3.65, "kind": "flat", "color": "#2a2116", "opacity": 0.8,
+     "pieces": [
+       {"icon": "circle", "at": [320, 196], "size": [56, 56]},
+       {"icon": "circle", "op": "sub", "at": [320, 196], "size": [50, 50]}
+     ]},
     {"name": "cable", "z": 3.5, "kind": "flat", "material": "iron",
      "pieces": [{"icon": "square", "at": [320, 118], "size": [4, 120]}]},
 

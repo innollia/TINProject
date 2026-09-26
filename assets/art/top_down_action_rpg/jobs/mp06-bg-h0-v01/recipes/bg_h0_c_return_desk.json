@@ -1,0 +1,156 @@
+{
+  "asset": "h0_c_return_desk",
+  "status": "candidate",
+  "note": "mp06 H0 area C (region_h0_undersign_exchange), background only. Author design from BRIEF_H0_AREAS.md section 6: west connection y400..550 logical to area A; the north wall where the return desk and the return lift stand (both objects); the lift shaft pit against the wall under the lift frame; the east third of the room drops into a deep dry pit, crossed by the Mercy Causeway deck (E03) that leaves through the east wall at y300..460. The causeway's south railing and a low ledge at the bottom-left are the foreground frame (bg_h0_c foreground recipe). Same H0 floor and walls as area A, heights at the player scale. No props, people, text, UI or scene light.",
+  "palette": "palette_h0_mood.json",
+  "style": "environment",
+  "style_override": {"shadow_output": "separate"},
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = logical (0,0); 2 source px per logical px",
+  "seed": 231,
+  "include": ["_inc_h0_floor.json"],
+  "frames": [{"name": "base_clean"}],
+  "forms": [
+    {"name": "stains_mid", "z": 2.2, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.28, "blur": 9,
+     "rough": {"amp": 0.6, "soft": 6, "cell": 30},
+     "pieces": [{"icon": "metaballs", "at": [0, 0], "size": [170, 130],
+                 "repeat": {"points": [[420, 700, 10], [880, 1180, -20], [1300, 820, 40], [1700, 1250, 0], [600, 1360, 60],
+                                       [1100, 620, -40], [240, 1000, 20], [1520, 1020, 70], [860, 460, 0], [1860, 700, -10]],
+                            "icons": ["cloud", "metaballs", "sponge"], "jitter": {"size": 0.5}}}]},
+    {"name": "stains_large", "z": 2.3, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.16, "blur": 30,
+     "rough": {"amp": 0.7, "soft": 20, "cell": 80},
+     "pieces": [{"icon": "cloud", "at": [0, 0], "size": [480, 300],
+                 "repeat": {"points": [[700, 900, 0], [1500, 1150, 20], [300, 1250, -15], [1250, 600, 10]],
+                            "icons": ["metaballs", "cloud"], "jitter": {"size": 0.3}}}]},
+
+    {"name": "pit_void", "z": 3, "kind": "flat", "material": "void",
+     "grad": {"to": "well_inner", "y0": 1440, "y1": 240, "curve": 2.0},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2290, 850], "size": [580, 1240]}]},
+    {"name": "pit_far_wall", "z": 3.2, "kind": "flat", "material": "stone_dark",
+     "grad": {"to": "void", "y0": 236, "y1": 340, "curve": 1.3},
+     "grime": {"stamps": ["droplet", "metaballs"], "size": 26, "aspect": 1.6, "soft": 3, "density": 0.4, "strength": 0.4, "color": "grime"},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2290, 288], "size": [580, 104]}]},
+    {"name": "pit_lip", "z": 3.4, "kind": "block", "material": "stone_dark", "extrude": 14,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [2000, 830], "size": [24, 1230]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [2290, 226], "size": [580, 24]}
+     ]},
+
+    {"name": "causeway_deck", "z": 4, "kind": "block", "material": "stone", "extrude": 170,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [2294, 750], "size": [572, 300]}]},
+    {"name": "deck_side_fade", "z": 4.1, "kind": "wash", "material": "void", "blend": "multiply", "blur": 10,
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2294, 960], "size": [600, 50], "alpha": 0.25},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2294, 1005], "size": [600, 50], "alpha": 0.5},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2294, 1055], "size": [600, 60], "alpha": 0.8}
+     ]},
+    {"name": "deck_slabs", "z": 4.2, "kind": "flat", "material": "floor_joint", "opacity": 0.55, "clip_to": "causeway_deck",
+     "pieces": [{"icon": "square", "at": [0, 750], "size": [5, 300],
+                 "repeat": {"line": [[2090, 750], [2530, 750]], "count": 5}}]},
+    {"name": "deck_wear", "z": 4.4, "kind": "wash", "material": "worn", "opacity": 0.4, "blur": 18, "clip_to": "causeway_deck",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2294, 760], "size": [600, 110]}]},
+    {"name": "deck_rail_north_posts", "z": 4.6, "kind": "block", "material": "iron", "extrude": 90,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [12, 10],
+                 "repeat": {"points": [[2040, 505], [2144, 505], [2248, 505], [2352, 505], [2456, 505], [2556, 505]]}}]},
+    {"name": "deck_rail_north", "z": 4.7, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [2300, 502], "size": [540, 8]}]},
+
+    {"name": "lift_pit", "z": 5, "kind": "flat", "material": "void",
+     "grad": {"to": "well_inner", "y0": 468, "y1": 230, "curve": 1.3},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 6}, "at": [1680, 341], "size": [300, 254]}]},
+    {"name": "lift_pit_lip", "z": 5.2, "kind": "flat", "material": "stone_dark", "line": {"width": 1.2, "heavy": 1.4},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [1680, 470], "size": [320, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [1524, 341], "size": [12, 254]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [1836, 341], "size": [12, 254]}
+     ]},
+
+    {"name": "worn_paths", "z": 6, "kind": "wash", "material": "worn", "opacity": 0.5, "blur": 30,
+     "rough": {"amp": 0.6, "soft": 24, "cell": 70},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [600, 950], "size": [1200, 220]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1250, 700], "size": [1500, 200], "rot": -6},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1000, 560], "size": [700, 150]}
+     ]},
+    {"name": "wall_foot_dirt", "z": 6.5, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.6, "blur": 24,
+     "rough": {"amp": 0.75, "soft": 12, "cell": 46},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1000, 250], "size": [2000, 76]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [124, 400], "size": [70, 780]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [124, 1280], "size": [70, 340]},
+       {"icon": "cloud", "at": [160, 286], "size": [260, 150]},
+       {"icon": "cloud", "at": [150, 1380], "size": [260, 150]}
+     ]},
+    {"name": "chips", "z": 6.8, "kind": "flat", "color": "#231d29", "opacity": 0.9,
+     "rough": {"amp": 0.5, "soft": 2, "cell": 10},
+     "pieces": [
+       {"icon": "explosion", "crop": [0.5, 1, 15.5, 12.5], "ground": true, "at": [760, 1240], "size": [90, 60], "rot": 20},
+       {"icon": "explosion", "crop": [0.5, 1, 15.5, 12.5], "ground": true, "at": [1500, 600], "size": [70, 48], "rot": -40, "flip": "x"}
+     ]},
+    {"name": "cracks", "z": 7, "kind": "flat", "material": "floor_joint", "opacity": 0.6,
+     "pieces": [
+       {"icon": "lightning_bolt", "at": [520, 640], "size": [16, 76], "rot": 50},
+       {"icon": "lightning_bolt", "at": [1320, 1240], "size": [16, 70], "rot": -20},
+       {"icon": "lightning_bolt", "at": [1880, 980], "size": [14, 60], "rot": 80},
+       {"icon": "lightning_bolt", "at": [980, 1360], "size": [18, 80], "rot": 130}
+     ]},
+    {"name": "studs", "z": 7.5, "kind": "flat", "material": "bronze", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [{"icon": "circle", "size": [16, 12], "at": [0, 0],
+                 "repeat": {"points": [[360, 585], [1080, 585], [720, 1053], [1440, 1053], [360, 1287], [1800, 819]]}}]},
+
+    {"name": "north_wall", "z": 20, "kind": "block", "material": "stone", "extrude": 192,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [1280, -10], "size": [2640, 60]}]},
+    {"name": "wall_masonry", "z": 20.2, "kind": "flat", "material": "floor_joint", "opacity": 0.5, "clip_to": "north_wall",
+     "pieces": [{"icon": "brick_wall", "invert": true, "crop": [1.2, 1.2, 14.8, 14.8], "fit": [1.2, 1.2, 14.8, 14.8],
+                 "at": [0, 116], "size": [300, 192], "repeat": {"line": [[150, 116], [2550, 116]], "count": 9}}]},
+    {"name": "north_cap", "z": 20.4, "kind": "flat", "material": "stone_cap",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [1280, -10], "size": [2640, 60]}]},
+    {"name": "pipes", "z": 20.6, "material": "iron",
+     "shade": {"max_radius": 6, "bump": 1.0, "highlight_amount": 0.5},
+     "line": {"width": 1.3, "heavy": 1.6, "breaks": 0.25},
+     "cast": {"dist": 5, "blur": 3, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [500, 75], "size": [980, 13]},
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [2200, 75], "size": [700, 13]}
+     ]},
+    {"name": "pipe_brackets", "z": 20.7, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [10, 24],
+                 "repeat": {"points": [[120, 75], [520, 75], [900, 75], [1960, 75], [2420, 75]]}}]},
+    {"name": "rust_streaks", "z": 20.8, "kind": "wash", "material": "rust", "blend": "multiply", "opacity": 0.5, "clip_to": "north_wall",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [120, 128], "size": [12, 90]},
+       {"icon": "droplet", "flip": "y", "at": [900, 124], "size": [10, 80]},
+       {"icon": "droplet", "flip": "y", "at": [1960, 130], "size": [12, 94]},
+       {"icon": "droplet", "flip": "y", "at": [1420, 120], "size": [10, 70]}
+     ]},
+    {"name": "north_piers", "z": 21.5, "kind": "block", "material": "stone_dark", "extrude": 186,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [0, 44], "size": [60, 52],
+                 "repeat": {"points": [[180, 44], [1360, 44], [2000, 44], [2440, 44]]}}]},
+    {"name": "pier_caps", "z": 22, "kind": "flat", "material": "bronze_block", "line": {"width": 1.2, "heavy": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [0, 38], "size": [40, 14],
+                 "repeat": {"points": [[180, 38], [1360, 38], [2000, 38], [2440, 38]]}}]},
+    {"name": "soot_marks", "z": 22.2, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.55, "blur": 8,
+     "pieces": [
+       {"icon": "cloud", "at": [180, 104], "size": [44, 40]},
+       {"icon": "cloud", "at": [1360, 104], "size": [44, 40], "flip": "x"}
+     ]},
+
+    {"name": "west_wall", "z": 23, "kind": "block", "material": "stone", "extrude": 67,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [44, 395], "size": [100, 790]},
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [44, 1285], "size": [100, 350]}
+     ]},
+    {"name": "east_wall", "z": 23, "kind": "block", "material": "stone", "extrude": 67,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [2530, 270], "size": [140, 580]},
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [2530, 1210], "size": [140, 540]}
+     ]},
+    {"name": "side_pillars", "z": 24, "kind": "block", "material": "stone_dark", "extrude": 94,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [0, 0], "size": [116, 84],
+                 "repeat": {"points": [[52, 700], [52, 1180]]}}]},
+    {"name": "pillar_caps", "z": 25, "kind": "flat", "material": "bronze", "line": {"width": 1.2, "heavy": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [0, 0], "size": [70, 30],
+                 "repeat": {"points": [[52, 698], [52, 1178]]}}]}
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "asset": "prop_h0_return_desk",
+  "status": "candidate",
+  "note": "mp06 art design object for service_h0_return_desk (H0 area C). Author design at the player scale: a 2.6 m stone desk, 0.7 m deep and 1.1 m high, with a stone screen behind it holding a barred service window (a clerk stands behind the screen). On the desk: blank slip stacks, a bronze tray of blank forms, a closed ledger and an inkwell. One state. No text or stamp marks.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [664, 470],
+  "pivot": [332, 432],
+  "pivot_meaning": "front-bottom centre of the desk on the floor",
+  "seed": 315,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 10,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 30}, "at": [342, 410], "size": [600, 56]}]},
+
+    {"name": "screen", "z": 0, "kind": "block", "material": "stone", "extrude": 240,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [332, 44], "size": [600, 24]}]},
+    {"name": "window_void", "z": 1, "kind": "flat", "material": "void",
+     "grad": {"to": "well_inner", "y0": 76, "y1": 146, "curve": 1.4},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [332, 110], "size": [230, 70]}]},
+    {"name": "window_bars", "z": 1.5, "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 110], "size": [5, 70],
+                 "repeat": {"line": [[236, 110], [428, 110]], "count": 9}}]},
+    {"name": "window_frame", "z": 2, "kind": "flat", "material": "bronze", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [332, 74], "size": [244, 8]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [332, 148], "size": [252, 9]}
+     ]},
+
+    {"name": "desk", "z": 3, "kind": "block", "material": "stone_dark", "extrude": 123,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 16}, "at": [332, 241], "size": [582, 136]}]},
+    {"name": "desk_panels", "z": 4, "kind": "flat", "material": "stone", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [138, 372], "size": [170, 92]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [332, 372], "size": [170, 92]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [526, 372], "size": [170, 92]}
+     ]},
+    {"name": "desk_band", "z": 4.5, "kind": "flat", "material": "bronze",
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [332, 314], "size": [570, 7]}]},
+
+    {"name": "slip_stacks", "z": 5, "material": "paper", "shade": {"bump": 0.3},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "file", "ground": true, "rot": 80, "at": [150, 236], "size": [48, 60]},
+       {"icon": "file", "ground": true, "rot": 96, "at": [196, 246], "size": [44, 56]}
+     ]},
+    {"name": "tray", "z": 5, "kind": "flat", "material": "bronze", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "ground": true, "at": [456, 242], "size": [124, 66]}]},
+    {"name": "tray_forms", "z": 5.5, "material": "paper", "shade": {"bump": 0.3},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "file", "ground": true, "rot": 86, "at": [446, 238], "size": [42, 52]},
+       {"icon": "file", "ground": true, "rot": 94, "at": [472, 246], "size": [40, 50]}
+     ]},
+    {"name": "ledger", "z": 5, "material": "leather",
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "book", "at": [322, 236], "size": [60, 42]}]},
+    {"name": "inkwell", "z": 5.2, "material": "iron",
+     "pieces": [{"icon": "cylinder", "at": [556, 224], "size": [18, 22]}]}
+  ]
+}

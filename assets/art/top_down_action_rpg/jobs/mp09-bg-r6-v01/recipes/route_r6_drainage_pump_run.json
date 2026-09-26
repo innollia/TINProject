@@ -1,0 +1,63 @@
+{
+  "asset": "route_r6_drainage_pump_run",
+  "status": "candidate",
+  "note": "Internal route drainage_pump_run (r6_replacement_stalls -> r6_drainage_dark, opened by prop_r6_drainage_pump ps_primed) for bg_r6_stalls_drainage. Floor-layer object; canvas origin = background source (1576,776), pivot = basin floor centre (2080,1300). closed: dark water 1.2 m deep fills the basin, covers the lower service steps and the foot of the tunnel arch; a chain hangs between two posts at the top of the steps. open: water pumped down to a shallow strip at the south edge, wet sheen on the steps, chain unhooked and hanging from the left post.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [1008, 728],
+  "pivot": [504, 524],
+  "pivot_meaning": "centre of the basin floor (drawn on the floor layer)",
+  "seed": 635,
+  "style_override": {"silhouette": {"width": 0.0}},
+  "frames": [
+    {"name": "closed"},
+    {"name": "open", "hide": ["closed"], "show": ["open"]}
+  ],
+  "forms": [
+    {"name": "flood", "tags": ["closed"], "z": 0, "kind": "flat", "material": "water_dark", "opacity": 0.96,
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [584, 458], "size": [720, 412]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [150, 520], "size": [152, 290]}
+     ]},
+    {"name": "flood_edge", "tags": ["closed"], "z": 0.3, "kind": "flat", "color": "water_sheen", "opacity": 0.8,
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [584, 254], "size": [720, 4]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [150, 376], "size": [152, 4]}
+     ]},
+    {"name": "flood_ripples", "tags": ["closed"], "z": 0.5, "kind": "wash", "color": "water_sheen", "opacity": 0.45, "clip_to": "flood",
+     "rough": {"amp": 0.5, "soft": 2, "cell": 12},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [260, 300], "size": [70, 3],
+                 "repeat": {"grid": [7, 6], "step": [104, 64], "stagger": 52, "jitter": {"at": 20, "alpha": 0.7, "size": 0.4}}}]},
+    {"name": "flood_reflect", "tags": ["closed"], "z": 0.6, "kind": "wash", "color": "water_sheen", "opacity": 0.25, "clip_to": "flood", "blur": 12,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [544, 286], "size": [460, 40]}]},
+
+    {"name": "shallow", "tags": ["open"], "hidden": true, "z": 0, "kind": "flat", "material": "water_dark", "opacity": 0.85,
+     "rough": {"amp": 0.7, "soft": 6, "cell": 30},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [584, 630], "size": [700, 70]}]},
+    {"name": "wet_sheen", "tags": ["open"], "hidden": true, "z": 0.3, "kind": "wash", "color": "water_sheen", "opacity": 0.3, "blur": 3,
+     "rough": {"amp": 0.6, "soft": 4, "cell": 18},
+     "pieces": [
+       {"icon": "cloud", "at": [150, 400], "size": [130, 60]},
+       {"icon": "cloud", "at": [150, 540], "size": [120, 60], "flip": "x"},
+       {"icon": "metaballs", "ground": true, "at": [420, 500], "size": [160, 70]},
+       {"icon": "cloud", "at": [760, 520], "size": [180, 60]}
+     ]},
+
+    {"name": "post_shadows", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 4,
+     "pieces": [
+       {"icon": "circle", "at": [82, 172], "size": [24, 10]},
+       {"icon": "circle", "at": [222, 172], "size": [24, 10]}
+     ]},
+    {"name": "posts", "z": 1, "kind": "block", "material": "iron", "extrude": 99,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [80, 66], "size": [14, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [220, 66], "size": [14, 12]}
+     ]},
+    {"name": "chain_across", "tags": ["closed"], "z": 1.5, "kind": "flat", "material": "iron", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [{"icon": "link", "rot": 45, "at": [0, 0], "size": [10, 10],
+                 "repeat": {"points": [[90, 82], [104, 88], [118, 92], [132, 94], [146, 95], [160, 95], [174, 94], [188, 92], [202, 88], [212, 82]]}}]},
+    {"name": "chain_hanging", "tags": ["open"], "hidden": true, "z": 1.5, "kind": "flat", "material": "iron", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [{"icon": "link", "rot": 90, "at": [0, 0], "size": [10, 10],
+                 "repeat": {"points": [[88, 84], [90, 96], [91, 108], [92, 120], [92, 132]]}}]}
+  ]
+}

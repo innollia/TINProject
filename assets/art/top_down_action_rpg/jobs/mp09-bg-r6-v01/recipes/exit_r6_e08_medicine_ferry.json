@@ -1,0 +1,62 @@
+{
+  "asset": "exit_r6_e08_medicine_ferry",
+  "status": "candidate",
+  "note": "Exit object for route_e08_medicine_ferry (R6 side, gate_g2_water_recognition) at the north edge of the canal landing stage. Pivot = landing north-edge centre at the waterline (scene source (2400,760)). closed: iron chain slung between the two landing posts with a blank plate, no boat. open: flat-bottomed ferry (1.1 x 2.4 m) moored north of the landing in the canal, a gangplank onto its stern, a mooring rope, ripples. No text.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [400, 560],
+  "pivot": [200, 480],
+  "pivot_meaning": "north edge centre of the landing stage at the waterline",
+  "seed": 632,
+  "frames": [
+    {"name": "closed"},
+    {"name": "open", "hide": ["closed"], "show": ["open"]}
+  ],
+  "forms": [
+    {"name": "chain", "tags": ["closed"], "z": 1, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "link", "rot": 45, "at": [0, 0], "size": [11, 11],
+        "repeat": {"points": [[126, 462], [140, 468], [155, 473], [170, 476], [185, 478], [200, 479], [215, 478], [230, 476], [245, 473], [260, 468], [274, 462]]}}
+     ]},
+    {"name": "chain_plate", "tags": ["closed"], "z": 1.5, "material": "iron", "line": {"width": 0.7, "heavy": 0.8},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [200, 494], "size": [30, 22]}]},
+
+    {"name": "ripples", "tags": ["open"], "hidden": true, "z": 0, "kind": "wash", "color": "water_sheen", "opacity": 0.6,
+     "pieces": [
+       {"icon": "square", "at": [118, 200], "size": [4, 70], "rot": 4},
+       {"icon": "square", "at": [342, 260], "size": [4, 80], "rot": -3},
+       {"icon": "square", "at": [120, 360], "size": [4, 60], "rot": -5},
+       {"icon": "square", "at": [340, 400], "size": [4, 50], "rot": 6},
+       {"icon": "square", "at": [232, 100], "size": [60, 4]}
+     ]},
+    {"name": "hull_shadow", "tags": ["open"], "hidden": true, "kind": "shadow", "color": "shadow_contact", "opacity": 0.5, "blur": 8,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 60}, "at": [236, 300], "size": [206, 370]}]},
+    {"name": "hull", "tags": ["open"], "hidden": true, "z": 1, "kind": "block", "material": "wood", "extrude": 30,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 62}, "at": [230, 276], "size": [198, 360]}]},
+    {"name": "hull_floor", "tags": ["open"], "hidden": true, "z": 1.2, "kind": "flat", "color": "#2a211a",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 52}, "at": [230, 278], "size": [164, 324]}]},
+    {"name": "floorboards", "tags": ["open"], "hidden": true, "z": 1.3, "kind": "flat", "material": "tile_joint", "opacity": 0.6, "clip_to": "hull_floor",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 330], "repeat": {"points": [[196, 278], [230, 278], [264, 278]]}}]},
+    {"name": "thwarts", "tags": ["open"], "hidden": true, "z": 1.5, "kind": "block", "material": "wood", "extrude": 8,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [230, 196], "size": [168, 22]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [230, 344], "size": [168, 22]}
+     ]},
+    {"name": "gunwale_bands", "tags": ["open"], "hidden": true, "z": 1.6, "kind": "flat", "material": "iron", "opacity": 0.85, "clip_to": "hull",
+     "pieces": [{"icon": "square", "at": [230, 452], "size": [200, 5]}]},
+    {"name": "pole", "tags": ["open"], "hidden": true, "z": 1.8, "material": "wood", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [226, 262], "size": [8, 300], "rot": 16}]},
+    {"name": "crate", "tags": ["open"], "hidden": true, "z": 1.9, "kind": "block", "material": "wood", "extrude": 28,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [252, 250], "size": [56, 46]}]},
+    {"name": "crate_band", "tags": ["open"], "hidden": true, "z": 1.95, "kind": "flat", "material": "verdigris", "opacity": 0.9,
+     "pieces": [{"icon": "square", "at": [252, 262], "size": [58, 5]}]},
+    {"name": "gangplank", "tags": ["open"], "hidden": true, "z": 2, "kind": "block", "material": "wood", "extrude": 6,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [212, 452], "size": [58, 84], "rot": -6}]},
+    {"name": "rope", "tags": ["open"], "hidden": true, "z": 2.2, "kind": "flat", "material": "leather", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "at": [150, 452], "size": [3, 30], "rot": 30},
+       {"icon": "square", "at": [138, 470], "size": [3, 20], "rot": -10}
+     ]}
+  ]
+}

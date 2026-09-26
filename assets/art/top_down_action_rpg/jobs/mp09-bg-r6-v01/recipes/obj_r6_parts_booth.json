@@ -1,0 +1,117 @@
+{
+  "asset": "obj_r6_parts_booth",
+  "status": "candidate",
+  "note": "R6 region object: replacement-parts booth of the Replacement Stalls. 1.8 m wide, 1.2 m deep, counter 1.0 m, canvas awning on poles at 2.2 m (110 px/m). Goods are mechanical replacement parts only (brass ball joints, springs, gears, clouded jars, coiled tube, test tubes); no organs. Frame a: ochre awning; frame b: wine awning and other goods. Atmosphere object; no text.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [460, 580],
+  "pivot": [230, 516],
+  "pivot_meaning": "front-bottom centre of the counter on the floor",
+  "seed": 642,
+  "frames": [
+    {"name": "a"},
+    {"name": "b", "hide": ["goods_a"], "show": ["goods_b"], "materials": {"awning": "cloth_wine"}}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 10,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 20}, "at": [238, 488], "size": [350, 80]}]},
+    {"name": "back_panel", "z": 0, "kind": "block", "material": "court_wood", "extrude": 231,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [230, 90], "size": [324, 16]}]},
+    {"name": "back_shelf", "z": 0.5, "kind": "block", "material": "court_wood", "extrude": 8,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [230, 236], "size": [300, 26]}]},
+    {"name": "shelf_items", "z": 0.7, "material": "glaze", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "circle", "at": [120, 222], "size": [22, 26]},
+       {"icon": "circle", "at": [150, 224], "size": [18, 22]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [300, 222], "size": [30, 24]},
+       {"icon": "circle", "at": [340, 224], "size": [20, 22]}
+     ]},
+    {"name": "side_panels", "z": 1, "kind": "block", "material": "court_wood", "extrude": 231,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [72, 153], "size": [8, 111]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [388, 153], "size": [8, 111]}
+     ]},
+    {"name": "counter", "z": 2, "kind": "block", "material": "court_wood", "extrude": 110,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [230, 375], "size": [324, 62]}]},
+    {"name": "counter_panels", "z": 2.2, "kind": "flat", "material": "tile_joint", "opacity": 0.6, "clip_to": "counter",
+     "pieces": [
+       {"icon": "square", "at": [176, 462], "size": [2, 104]},
+       {"icon": "square", "at": [284, 462], "size": [2, 104]},
+       {"icon": "square", "at": [230, 414], "size": [324, 2]}
+     ]},
+    {"name": "counter_grime", "z": 2.3, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.4, "clip_to": "counter",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [230, 500], "size": [330, 40]}]},
+
+    {"name": "goods_a_joints", "tags": ["goods_a"], "z": 3, "material": "bronze", "line": {"width": 0.8, "heavy": 0.9},
+     "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.55, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "ball_and_socket_joint", "at": [120, 360], "size": [40, 40], "rot": -20},
+       {"icon": "cog", "at": [178, 372], "size": [30, 30]},
+       {"icon": "cog", "at": [200, 358], "size": [22, 22]}
+     ]},
+    {"name": "goods_a_springs", "tags": ["goods_a"], "z": 3, "material": "iron", "line": {"width": 0.7, "heavy": 0.8},
+     "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.55, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "spring_joint", "at": [256, 364], "size": [26, 40], "rot": 70},
+       {"icon": "knot", "at": [340, 368], "size": [44, 34]}
+     ]},
+    {"name": "goods_a_jars", "tags": ["goods_a"], "z": 3.2, "material": "glaze", "opacity": 0.9,
+     "shade": {"max_radius": 8, "bump": 1.1, "highlight_amount": 0.7},
+     "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [294, 350], "size": [26, 34]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [382, 352], "size": [22, 28]}
+     ]},
+    {"name": "goods_a_lids", "tags": ["goods_a"], "z": 3.3, "kind": "flat", "material": "bronze_block", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [294, 332], "size": [28, 6]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [382, 337], "size": [24, 6]}
+     ]},
+
+    {"name": "goods_b_tubes", "tags": ["goods_b"], "hidden": true, "z": 3, "material": "glaze", "opacity": 0.9,
+     "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "test_tube", "at": [110, 356], "size": [18, 36]},
+       {"icon": "test_tube", "at": [128, 356], "size": [18, 36]},
+       {"icon": "test_tube", "at": [146, 356], "size": [18, 36]},
+       {"icon": "beaker", "at": [330, 358], "size": [32, 34]}
+     ]},
+    {"name": "goods_b_rack", "tags": ["goods_b"], "hidden": true, "z": 3.1, "kind": "flat", "material": "court_wood", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [128, 372], "size": [66, 8]}]},
+    {"name": "goods_b_parts", "tags": ["goods_b"], "hidden": true, "z": 3.2, "material": "bronze", "line": {"width": 0.8, "heavy": 0.9},
+     "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.55, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "gauge", "at": [222, 360], "size": [36, 36]},
+       {"icon": "wheel", "at": [270, 370], "size": [28, 28]},
+       {"icon": "ball_and_socket_joint", "at": [382, 362], "size": [34, 34], "rot": 30}
+     ]},
+
+    {"name": "poles", "z": 4, "kind": "block", "material": "iron", "extrude": 242,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [76, 270], "size": [8, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [384, 270], "size": [8, 8]}
+     ]},
+    {"name": "awning", "z": 5, "material": "canvas_ochre",
+     "shade": {"max_radius": 18, "bump": 0.6, "highlight_amount": 0.3},
+     "line": {"width": 1.1, "heavy": 1.4},
+     "cast": {"dist": 6, "blur": 4, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [230, 182], "size": [344, 176]}]},
+    {"name": "awning_seams", "z": 5.2, "kind": "flat", "color": "cloth_stripe", "opacity": 0.22, "clip_to": "awning",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [3, 180], "repeat": {"line": [[100, 182], [360, 182]], "count": 6}}]},
+    {"name": "awning_stains", "z": 5.3, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.45, "clip_to": "awning",
+     "pieces": [
+       {"icon": "droplet", "at": [150, 210], "size": [26, 40]},
+       {"icon": "cloud", "at": [300, 150], "size": [90, 50]}
+     ]},
+    {"name": "valance", "z": 5.5, "material": "canvas_ochre", "tags": ["awning"],
+     "line": {"width": 0.9, "heavy": 1.1},
+     "pieces": [{"icon": "circle", "half": "bottom", "at": [0, 0], "size": [36, 30], "repeat": {"line": [[74, 272], [386, 272]], "count": 9}}]},
+    {"name": "hang_hooks", "z": 6, "kind": "flat", "material": "iron", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 26], "repeat": {"points": [[130, 298], [330, 298]]}}]},
+    {"name": "hanging_parts", "z": 6.2, "material": "bronze", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [
+       {"icon": "spring_joint", "at": [130, 322], "size": [16, 24]},
+       {"icon": "ring", "at": [330, 318], "size": [18, 18]}
+     ]}
+  ]
+}

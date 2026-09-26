@@ -135,12 +135,17 @@
 
     {"name": "arch_rim", "z": 21, "kind": "flat", "material": "tile_wall_dark", "line": {"width": 1.2, "heavy": 1.5},
      "pieces": [
-       {"icon": "bullet", "rot": -90, "at": [360, 112], "size": [262, 440]},
-       {"icon": "bullet", "op": "sub", "rot": -90, "at": [360, 120], "size": [242, 400]}
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [360, 155], "size": [424, 170]},
+       {"icon": "circle", "at": [360, 72], "size": [424, 178]},
+       {"icon": "square", "op": "sub", "fit": [1, 1, 15, 15], "at": [360, 159], "size": [400, 162]},
+       {"icon": "circle", "op": "sub", "at": [360, 78], "size": [400, 160]}
      ]},
     {"name": "arch_void", "z": 21.1, "kind": "flat", "material": "void",
      "grad": {"to": "well_inner", "y0": 240, "y1": 20, "curve": 1.3},
-     "pieces": [{"icon": "bullet", "rot": -90, "at": [360, 120], "size": [242, 400]}]},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [360, 159], "size": [400, 162]},
+       {"icon": "circle", "at": [360, 78], "size": [400, 160]}
+     ]},
     {"name": "arch_rails", "z": 21.2, "kind": "flat", "material": "iron", "opacity": 0.45,
      "pieces": [
        {"icon": "square", "at": [300, 200], "size": [9, 80]},

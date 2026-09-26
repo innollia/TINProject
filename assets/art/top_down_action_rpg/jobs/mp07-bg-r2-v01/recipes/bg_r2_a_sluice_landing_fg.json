@@ -1,0 +1,26 @@
+{
+  "asset": "r2_a_sluice_landing",
+  "status": "candidate",
+  "note": "R2 area A foreground_mooring_piles: three tall mooring piles and a sagging rope in the water just south of the ferry jetty. Drawn over actors walking along the south edge of the jetty. Transparent, same canvas origin as base_clean; contact occlusion goes to the separate _shadow.png.",
+  "palette": "palette_r2.json",
+  "style": "environment_layer",
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = base_clean origin",
+  "seed": 302,
+  "frames": [{"name": "foreground_mooring_piles"}],
+  "forms": [
+    {"name": "piles", "z": 0, "kind": "block", "material": "stilt", "extrude": 220,
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [30, 26], "repeat": {"points": [[150, 777], [430, 779], [700, 776]]}}]},
+    {"name": "pile_bands", "z": 0.5, "kind": "flat", "material": "silt_mark", "opacity": 0.5, "clip_to": "piles",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [40, 5],
+                 "repeat": {"points": [[150, 958], [150, 972], [430, 960], [430, 974], [700, 957], [700, 971]]}}]},
+    {"name": "pile_caps", "z": 0.6, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [30, 12], "repeat": {"points": [[150, 800], [430, 802], [700, 799]]}}]},
+    {"name": "rope", "z": 1, "kind": "flat", "material": "cord", "line": {"width": 0.8, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [290, 812], "size": [280, 5], "rot": 1.5},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [565, 813], "size": [270, 5], "rot": -1.5}
+     ]}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "note": "mp06 shared H0 floor for areas B, C and D (included by bg_h0_b / bg_h0_c / bg_h0_d). Same slab floor, joints and large-scale mottling as area A (bg_h0_arrival_approach.json). Stains that are hand-placed live in each area recipe so screens do not repeat. Not built on its own (file name starts with '_').",
+  "forms": [
+    {"name": "joint_base", "z": 0, "kind": "wash", "material": "floor_joint",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "slabs", "z": 1, "material": "floor",
+     "shade": {"max_radius": 7, "soft": 0.1, "bump": 0.9, "threshold": 0.42, "highlight": 0.86, "highlight_amount": 0.35, "ragged": 0.12},
+     "line": {"width": 1.2, "heavy": 1.0, "breaks": 0.15, "color": "#2e2735", "opacity": 0.8},
+     "rough": {"amp": 0.5, "soft": 2.5, "cell": 16},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.55, "color": "shade_tint"},
+     "grime": {"stamps": ["metaballs", "sponge", "cloud"], "size": 30, "soft": 2, "density": 0.16, "strength": 0.2, "color": "grime", "lo": 0.3},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 16}, "at": [0, 117], "size": [366, 240],
+        "repeat": {"grid": [9, 8], "step": [360, 234], "stagger": 180, "jitter": {"at": 3, "size": 0.012}}}
+     ]},
+    {"name": "slab_tint", "z": 1.5, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.24,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 16}, "at": [0, 117], "size": [366, 240],
+        "repeat": {"grid": [9, 8], "step": [360, 234], "stagger": 180, "jitter": {"at": 3, "alpha": 1.0}}}
+     ]},
+    {"name": "mottle_dark", "z": 2, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.14,
+     "mottle": {"cell": 340, "lo": 0.5, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "mottle_light", "z": 2.1, "kind": "wash", "material": "worn", "opacity": 0.1,
+     "mottle": {"cell": 200, "lo": 0.55, "hi": 0.9},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]}
+  ]
+}

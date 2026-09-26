@@ -1,0 +1,38 @@
+{
+  "asset": "obj_r4_paper_drift",
+  "status": "candidate",
+  "note": "R4 loose blank sheets lying flat on the floor (about 0.9 m x 0.6 m). Floor-layer object: place it with layer \"floor\" in the scene. No readable text. Contact shadow separate.",
+  "palette": "palette_r4.json",
+  "style": "prop",
+  "canvas": [340, 260],
+  "pivot": [170, 196],
+  "pivot_meaning": "centre of the paper patch on the floor",
+  "seed": 461,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.3, "blur": 4,
+     "pieces": [
+       {"icon": "square", "ground": true, "at": [124, 176], "size": [86, 60], "rot": 14},
+       {"icon": "square", "ground": true, "at": [196, 196], "size": [90, 62], "rot": -22},
+       {"icon": "square", "ground": true, "at": [238, 162], "size": [70, 50], "rot": 38}
+     ]},
+    {"name": "sheets", "z": 0, "material": "paper", "shade": {"bump": 0.35},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.45, "color": "shade_tint"},
+     "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "ground": true, "at": [122, 172], "size": [84, 58], "rot": 14},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "ground": true, "at": [194, 192], "size": [88, 60], "rot": -22},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "ground": true, "at": [236, 158], "size": [68, 48], "rot": 38},
+       {"icon": "file", "ground": true, "at": [162, 150], "size": [52, 64], "rot": 70}
+     ]},
+    {"name": "folds", "z": 0.5, "kind": "flat", "material": "paper_mark", "opacity": 0.6,
+     "pieces": [
+       {"icon": "square", "ground": true, "at": [194, 192], "size": [80, 2], "rot": -22},
+       {"icon": "square", "ground": true, "at": [122, 172], "size": [2, 52], "rot": 14}
+     ]},
+    {"name": "foxing", "z": 1, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.35, "clip_to": "sheets",
+     "pieces": [
+       {"icon": "cloud", "at": [140, 184], "size": [40, 26]},
+       {"icon": "cloud", "at": [222, 150], "size": [30, 20], "flip": "x"}
+     ]}
+  ]
+}

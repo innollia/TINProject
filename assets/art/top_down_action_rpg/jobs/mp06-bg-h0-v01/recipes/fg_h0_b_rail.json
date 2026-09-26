@@ -1,0 +1,36 @@
+{
+  "asset": "h0_b_exchange_shelf",
+  "status": "candidate",
+  "note": "mp06 H0 area B foreground: low iron railings along the bottom edge on both sides of the south connection (x0..500 and x760..1280 logical), with stone newel posts at the connection. The railing stands on the bottom edge, so nothing walks in front of it. Full-canvas transparent PNG, same origin as base_clean.",
+  "palette": "palette_h0_mood.json",
+  "style": "environment",
+  "style_override": {"background": null, "shadow_output": "separate"},
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = logical (0,0); same origin as base_clean",
+  "seed": 222,
+  "frames": [{"name": "foreground_south_rail"}],
+  "forms": [
+    {"name": "rail_posts", "z": 1, "kind": "block", "material": "iron", "extrude": 112,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [12, 10],
+                 "repeat": {"points": [[40, 1319], [160, 1319], [280, 1319], [400, 1319], [520, 1319], [640, 1319], [760, 1319], [880, 1319],
+                                       [1640, 1319], [1760, 1319], [1880, 1319], [2000, 1319], [2120, 1319], [2240, 1319], [2360, 1319], [2480, 1319]]}}]},
+    {"name": "rails", "z": 2, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [505, 1316], "size": [1010, 9]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [505, 1376], "size": [1010, 7]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [2035, 1316], "size": [1050, 9]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [2035, 1376], "size": [1050, 7]}
+     ]},
+    {"name": "newels", "z": 3, "kind": "block", "material": "stone_dark", "extrude": 134,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [1040, 1289], "size": [40, 30]},
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [1480, 1289], "size": [40, 30]}
+     ]},
+    {"name": "newel_caps", "z": 3.5, "kind": "flat", "material": "bronze", "line": {"width": 1.0, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [1040, 1287], "size": [34, 10]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [1480, 1287], "size": [34, 10]}
+     ]}
+  ]
+}

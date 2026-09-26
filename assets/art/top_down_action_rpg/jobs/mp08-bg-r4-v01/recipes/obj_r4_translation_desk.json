@@ -1,0 +1,67 @@
+{
+  "asset": "obj_r4_translation_desk",
+  "status": "candidate",
+  "note": "R4 Translation Desk where RC-04 starts (conv_r4_translation_desk). Wayfinding object only: content has no prop for it, so it carries no interaction meaning. Ink-stained lacquered desk 2.6 m x 0.9 m x 0.8 m with three empty document trays (person / patient / artifact sentences are not written), an inkwell, a blotter and a pen. No readable text. 226 px/m. Contact shadow separate.",
+  "palette": "palette_r4.json",
+  "style": "prop",
+  "canvas": [720, 420],
+  "pivot": [360, 356],
+  "pivot_meaning": "front-bottom centre of the desk on the floor",
+  "seed": 441,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.45, "blur": 9,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 24}, "at": [362, 350], "size": [620, 46]}]},
+    {"name": "desk", "z": 0, "kind": "block", "material": "lacquer", "extrude": 90,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [360, 178], "size": [588, 176]}]},
+    {"name": "front_panels", "z": 1, "kind": "flat", "color": "#231611", "opacity": 0.55,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [190, 312], "size": [200, 60]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [530, 312], "size": [200, 60]}
+     ]},
+    {"name": "drawer_pulls", "z": 1.2, "kind": "flat", "material": "bronze",
+     "pieces": [
+       {"icon": "circle", "at": [190, 312], "size": [10, 8]},
+       {"icon": "circle", "at": [530, 312], "size": [10, 8]}
+     ]},
+    {"name": "top_edge", "z": 1.4, "kind": "flat", "material": "bronze", "opacity": 0.8,
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [360, 268], "size": [584, 5]}]},
+    {"name": "desk_ink", "z": 1.6, "kind": "flat", "material": "ink_stain", "opacity": 0.35, "blur": 2, "clip_to": "desk",
+     "rough": {"amp": 0.6, "soft": 3, "cell": 10},
+     "pieces": [
+       {"icon": "circle", "ground": true, "at": [470, 236], "size": [40, 26]},
+       {"icon": "circle", "ground": true, "at": [226, 244], "size": [22, 14]},
+       {"icon": "droplet", "ground": true, "at": [498, 250], "size": [10, 14], "rot": 120}
+     ]},
+    {"name": "blotter", "z": 2, "kind": "flat", "material": "leather", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "ground": true, "at": [360, 226], "size": [150, 70]}]},
+    {"name": "trays", "z": 2.2, "kind": "block", "material": "bronze_block", "extrude": 8,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "ground": true, "at": [200, 150], "size": [118, 70]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "ground": true, "at": [360, 146], "size": [118, 70]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "ground": true, "at": [520, 150], "size": [118, 70]}
+     ]},
+    {"name": "tray_sheets", "z": 2.4, "material": "paper", "shade": {"bump": 0.3},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.4, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "ground": true, "at": [200, 147], "size": [96, 52], "rot": 3},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "ground": true, "at": [360, 143], "size": [96, 52], "rot": -2},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "ground": true, "at": [520, 147], "size": [96, 52], "rot": 1}
+     ]},
+    {"name": "sheet_lines", "z": 2.5, "kind": "flat", "material": "paper_mark", "opacity": 0.7,
+     "pieces": [
+       {"icon": "square", "at": [0, 0], "size": [60, 2], "repeat": {"points": [[196, 140], [196, 150], [356, 136], [356, 146], [516, 140], [516, 150]]}}
+     ]},
+    {"name": "loose_sheet", "z": 2.6, "material": "paper", "shade": {"bump": 0.3},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.4, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "ground": true, "at": [372, 222], "size": [70, 44], "rot": 12}]},
+    {"name": "inkwell", "z": 2.8, "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "circle", "at": [468, 222], "size": [24, 18]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [468, 212], "size": [14, 8]}
+     ]},
+    {"name": "ink_surface", "z": 2.9, "kind": "flat", "material": "ink_stain",
+     "pieces": [{"icon": "circle", "at": [468, 209], "size": [9, 5]}]},
+    {"name": "pen", "z": 3, "kind": "flat", "material": "cloth_ink", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [{"icon": "square", "at": [428, 238], "size": [56, 3], "rot": -25}]}
+  ]
+}

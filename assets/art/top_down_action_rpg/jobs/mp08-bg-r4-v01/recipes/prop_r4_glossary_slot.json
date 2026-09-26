@@ -1,0 +1,45 @@
+{
+  "asset": "prop_r4_glossary_slot",
+  "status": "candidate",
+  "note": "prop_r4_glossary_slot, wall-mounted, two states. Bronze frame 1.0 m x 0.7 m standing 0.15 m off the wall, its bottom edge 1.2 m above the floor (scene y = wall base line - 136 src px). ps_empty: an empty holder slot. ps_filled: two paper strips of different tint pushed into the same slot (one craft, two names; no text). No floor shadow.",
+  "palette": "palette_r4.json",
+  "style": "prop",
+  "canvas": [360, 240],
+  "pivot": [180, 176],
+  "pivot_meaning": "bottom centre of the frame where it meets the wall face",
+  "seed": 481,
+  "frames": [
+    {"name": "prop_r4_slot_empty", "hide": ["filled"]},
+    {"name": "prop_r4_slot_filled"}
+  ],
+  "forms": [
+    {"name": "frame", "z": 0, "kind": "block", "material": "bronze_block", "extrude": 79,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [180, 83], "size": [226, 29]}]},
+    {"name": "recess", "z": 1, "kind": "flat", "material": "void",
+     "grad": {"to": "well_inner", "y0": 108, "y1": 170, "curve": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [180, 138], "size": [196, 58]}]},
+    {"name": "holder", "z": 1.5, "kind": "flat", "material": "bronze", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [180, 156], "size": [176, 7]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [96, 146], "size": [6, 26]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [264, 146], "size": [6, 26]}
+     ]},
+    {"name": "holder_gap", "z": 1.6, "kind": "flat", "color": "#07050a",
+     "pieces": [{"icon": "square", "at": [180, 154], "size": [160, 2]}]},
+    {"name": "strip_school", "z": 2, "tags": ["filled"], "material": "paper", "shade": {"bump": 0.35},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [172, 132], "size": [150, 26], "rot": -2}]},
+    {"name": "strip_archive", "z": 2.2, "tags": ["filled"], "color": "#98927f", "shade": {"bump": 0.35},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [190, 141], "size": [150, 26], "rot": 3}]},
+    {"name": "strip_edges", "z": 2.4, "tags": ["filled"], "kind": "flat", "material": "cloth_ink", "opacity": 0.8,
+     "pieces": [
+       {"icon": "square", "at": [100, 134], "size": [4, 22], "rot": -2},
+       {"icon": "square", "at": [262, 140], "size": [4, 22], "rot": 3}
+     ]},
+    {"name": "frame_bolts", "z": 3, "kind": "flat", "material": "bronze",
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [7, 7], "repeat": {"points": [[78, 104], [282, 104], [78, 166], [282, 166]]}}]}
+  ]
+}

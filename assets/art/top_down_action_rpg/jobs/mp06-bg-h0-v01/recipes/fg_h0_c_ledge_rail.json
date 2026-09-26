@@ -1,0 +1,32 @@
+{
+  "asset": "h0_c_return_desk",
+  "status": "candidate",
+  "note": "mp06 H0 area C foreground: (1) a low stone ledge on the bottom edge at the lower left (x0..460 logical) and (2) the south railing of the Mercy Causeway deck, which is in front of anyone walking the causeway and has only the pit in front of it. Full-canvas transparent PNG, same origin as base_clean.",
+  "palette": "palette_h0_mood.json",
+  "style": "environment",
+  "style_override": {"background": null, "shadow_output": "separate"},
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = logical (0,0); same origin as base_clean",
+  "seed": 232,
+  "frames": [{"name": "foreground_ledge_rail"}],
+  "forms": [
+    {"name": "ledge", "z": 1, "kind": "block", "material": "stone", "extrude": 101,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [440, 1318], "size": [920, 48]}]},
+    {"name": "ledge_cap", "z": 1.5, "kind": "flat", "material": "stone_cap", "line": {"width": 1.0, "heavy": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [440, 1318], "size": [900, 36]}]},
+    {"name": "ledge_stains", "z": 1.7, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.4, "blur": 10, "clip_to": "ledge",
+     "pieces": [
+       {"icon": "cloud", "at": [200, 1400], "size": [200, 70]},
+       {"icon": "cloud", "at": [640, 1395], "size": [180, 60], "flip": "x"}
+     ]},
+    {"name": "causeway_rail_posts", "z": 2, "kind": "block", "material": "iron", "extrude": 90,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [12, 10],
+                 "repeat": {"points": [[2040, 805], [2144, 805], [2248, 805], [2352, 805], [2456, 805], [2556, 805]]}}]},
+    {"name": "causeway_rail", "z": 2.5, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [2300, 802], "size": [540, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [2300, 850], "size": [540, 6]}
+     ]}
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "asset": "route_e04_crownwell_ascent",
+  "status": "candidate",
+  "note": "mp06 exit object for route_e04_crownwell_ascent (H0 area B, foot of the north-west stair up to R4). Author design, drawn at the player scale (224 px per metre across, 112 px per metre of height). Two stone jambs 2.3 m, an iron top rail at 2.2 m and an iron bar gate facing the viewer. conditional = gate shut across the stair foot with a padlock; open = both leaves folded against the jambs. Floor shadow in _shadow.png. No text.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [484, 350],
+  "pivot": [242, 318],
+  "pivot_meaning": "centre of the stair foot on the floor line (front face base of the jambs)",
+  "seed": 311,
+  "frames": [
+    {"name": "conditional"},
+    {"name": "open", "show": ["open_part"], "hide": ["closed_part"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 6,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [55, 318], "size": [44, 18]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [445, 318], "size": [44, 18]}
+     ]},
+    {"name": "shadow_gate", "tags": ["closed_part"], "kind": "shadow", "color": "shadow_contact", "opacity": 0.22, "blur": 5,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [250, 322], "size": [350, 10]}]},
+
+    {"name": "jambs", "z": 0, "kind": "block", "material": "stone", "extrude": 258,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [47, 47], "size": [30, 26]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [437, 47], "size": [30, 26]}
+     ]},
+    {"name": "jamb_bands", "z": 1, "kind": "flat", "material": "bronze", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [47, 96], "size": [30, 7]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [47, 290], "size": [30, 7]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [437, 96], "size": [30, 7]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [437, 290], "size": [30, 7]}
+     ]},
+    {"name": "top_rail", "z": 2, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [242, 74], "size": [372, 10]}]},
+
+    {"name": "bars", "tags": ["closed_part"], "z": 3, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 196], "size": [5, 236],
+                 "repeat": {"line": [[74, 196], [410, 196]], "count": 19}}]},
+    {"name": "rails", "tags": ["closed_part"], "z": 3.5, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [242, 110], "size": [352, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [242, 296], "size": [352, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [242, 203], "size": [6, 190]}
+     ]},
+    {"name": "padlock", "tags": ["closed_part"], "z": 4, "material": "iron",
+     "pieces": [{"icon": "lock", "at": [242, 214], "size": [22, 26]}]},
+
+    {"name": "bars_open", "tags": ["open_part"], "hidden": true, "z": 3, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 210], "size": [5, 236],
+        "repeat": {"line": [[70, 210], [106, 210]], "count": 6}},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 210], "size": [5, 236],
+        "repeat": {"line": [[378, 210], [414, 210]], "count": 6}}
+     ]},
+    {"name": "rails_open", "tags": ["open_part"], "hidden": true, "z": 3.5, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [88, 124], "size": [44, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [88, 310], "size": [44, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [396, 124], "size": [44, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [396, 310], "size": [44, 8]}
+     ]}
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "asset": "enemy_residue_cantor",
+  "status": "candidate",
+  "note": "enemy_residue_cantor (R8 Folding School, magic academy; craft labour / medium handler; cluster body, human scale, stateful split_merge, motion residue_lay). Author design: three choristers in dusky robes and pale ruffs pressed into one singing body, mouths open, thin fold-sheets in the outer hands, a shallow bronze basin of medium residue at their feet (support reference: the residue basin of FAM-ARPG-19 Grading Wall, same region). Telegraph (basin overflow): the middle cantor lifts the brimming basin overhead. Signature: the outer two split away while the basin is poured forward, residue running to a spreading pool. Break (medium residue): basin overturned, the three slumped in the spill. Phase 1 First Lay: sheets laid on the floor, one cantor stepped out drawing a dark gash with its hand. Phase 2 Contract Press: the trio squeezed together by contract straps, basin overflowing. Front battler, 60 deg view.",
+  "palette": "palette_mp05_enemies.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre (game draws the enemy centred on its stage position); ground contact line y=320",
+  "seed": 506,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [160, 321], "size": [196, 26]}]},
+
+    {"name": "laid_sheets", "tags": ["laid"], "hidden": true, "z": 0.6, "material": "paper", "shade": {"bump": 0.3},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [110, 334], "size": [40, 30], "rot": -8, "squash": 0.5},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [158, 340], "size": [42, 30], "rot": 4, "squash": 0.5},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [206, 334], "size": [38, 28], "rot": 10, "squash": 0.5}
+     ]},
+
+    {"name": "c2_robe", "tags": ["c", "c2"], "z": 1, "material": "cantor_robe",
+     "pieces": [{"icon": "bell", "crop": [2, 3.0, 14, 12.6], "fit": [2, 3.0, 14, 12.6], "at": [160, 236], "size": [80, 170]}]},
+    {"name": "c2_ruff", "tags": ["c", "c2"], "z": 1.4, "material": "paper", "shade": {"bump": 0.8},
+     "pieces": [{"icon": "cloud", "at": [160, 150], "size": [50, 16]}]},
+    {"name": "c2_face", "tags": ["c", "c2", "c2_head"], "z": 1.5, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [160, 124], "size": [34, 38]}]},
+    {"name": "c2_cap", "tags": ["c", "c2", "c2_head"], "z": 1.6, "material": "coat_dark",
+     "pieces": [{"icon": "circle", "half": "top", "at": [160, 110], "size": [38, 18]}]},
+    {"name": "c2_features", "tags": ["c", "c2", "c2_head"], "z": 1.7, "kind": "flat", "material": "eye",
+     "pieces": [
+       {"icon": "moon", "at": [153, 121], "size": [6, 3], "rot": 180},
+       {"icon": "moon", "at": [167, 121], "size": [6, 3], "rot": 180}
+     ]},
+    {"name": "c2_mouth", "tags": ["c", "c2", "c2_head"], "z": 1.75, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "at": [160, 133], "size": [8, 10]}]},
+
+    {"name": "c1_robe", "tags": ["c", "c1"], "z": 2, "material": "cantor_robe",
+     "pieces": [{"icon": "bell", "crop": [2, 3.0, 14, 12.6], "fit": [2, 3.0, 14, 12.6], "at": [116, 252], "size": [66, 140]}]},
+    {"name": "c1_ruff", "tags": ["c", "c1"], "z": 2.4, "material": "paper", "shade": {"bump": 0.8},
+     "pieces": [{"icon": "cloud", "at": [116, 180], "size": [42, 14]}]},
+    {"name": "c1_face", "tags": ["c", "c1", "c1_head"], "z": 2.5, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [116, 157], "size": [29, 33]}]},
+    {"name": "c1_cap", "tags": ["c", "c1", "c1_head"], "z": 2.6, "material": "coat_dark",
+     "pieces": [{"icon": "circle", "half": "top", "at": [116, 145], "size": [33, 15]}]},
+    {"name": "c1_features", "tags": ["c", "c1", "c1_head"], "z": 2.7, "kind": "flat", "material": "eye",
+     "pieces": [
+       {"icon": "circle", "at": [110, 155], "size": [3.4, 3.8]},
+       {"icon": "circle", "at": [122, 155], "size": [3.4, 3.8]}
+     ]},
+    {"name": "c1_mouth", "tags": ["c", "c1", "c1_head"], "z": 2.75, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "at": [116, 165], "size": [7, 8]}]},
+    {"name": "c1_sheet", "tags": ["c", "c1", "held"], "z": 2.8, "material": "paper", "shade": {"bump": 0.3},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [134, 222], "size": [24, 30], "rot": 12}]},
+    {"name": "c1_hand", "tags": ["c", "c1"], "z": 2.9, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [128, 234], "size": [11, 12]}]},
+
+    {"name": "c3_robe", "tags": ["c", "c3"], "z": 2, "material": "cantor_robe",
+     "pieces": [{"icon": "bell", "crop": [2, 3.0, 14, 12.6], "fit": [2, 3.0, 14, 12.6], "at": [204, 252], "size": [66, 140]}]},
+    {"name": "c3_ruff", "tags": ["c", "c3"], "z": 2.4, "material": "paper", "shade": {"bump": 0.8},
+     "pieces": [{"icon": "cloud", "at": [204, 180], "size": [42, 14]}]},
+    {"name": "c3_face", "tags": ["c", "c3", "c3_head"], "z": 2.5, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [204, 157], "size": [29, 33]}]},
+    {"name": "c3_cap", "tags": ["c", "c3", "c3_head"], "z": 2.6, "material": "coat_dark",
+     "pieces": [{"icon": "circle", "half": "top", "at": [204, 145], "size": [33, 15]}]},
+    {"name": "c3_features", "tags": ["c", "c3", "c3_head"], "z": 2.7, "kind": "flat", "material": "eye",
+     "pieces": [
+       {"icon": "moon", "at": [198, 154], "size": [5, 3], "rot": 180},
+       {"icon": "moon", "at": [210, 154], "size": [5, 3], "rot": 180}
+     ]},
+    {"name": "c3_mouth", "tags": ["c", "c3", "c3_head"], "z": 2.75, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "at": [204, 165], "size": [7, 9]}]},
+    {"name": "c3_sheet", "tags": ["c", "c3", "held"], "z": 2.8, "material": "paper", "shade": {"bump": 0.3},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [186, 222], "size": [24, 30], "rot": -12}]},
+    {"name": "c3_hand", "tags": ["c", "c3", "c3_hand"], "z": 2.9, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [192, 234], "size": [11, 12]}]},
+    {"name": "c3_arm_up", "tags": ["c", "c3", "gash_arm"], "hidden": true, "z": 3, "material": "cantor_robe",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [226, 176], "size": [15, 44], "rot": 28}]},
+    {"name": "c3_hand_up", "tags": ["c", "c3", "gash_arm"], "hidden": true, "z": 3.1, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [238, 156], "size": [11, 12]}]},
+    {"name": "gash", "tags": ["c", "c3", "gash_arm"], "hidden": true, "z": 3.2, "kind": "flat", "material": "void",
+     "glow": {"radius": 3, "opacity": 0.35, "color": "residue_glow"},
+     "pieces": [{"icon": "moon", "at": [234, 214], "size": [14, 64], "rot": 16}]},
+
+    {"name": "c2_arms_up", "tags": ["arms_up"], "hidden": true, "z": 3, "material": "cantor_robe",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [140, 128], "size": [15, 56], "rot": -14},
+       {"icon": "droplet", "flip": "y", "at": [180, 128], "size": [15, 56], "rot": 14}
+     ]},
+    {"name": "c2_hands_up", "tags": ["arms_up"], "hidden": true, "z": 3.1, "material": "surrogate",
+     "pieces": [
+       {"icon": "circle", "at": [134, 100], "size": [11, 12]},
+       {"icon": "circle", "at": [186, 100], "size": [11, 12]}
+     ]},
+    {"name": "c2_arms_pour", "tags": ["arms_pour"], "hidden": true, "z": 3, "material": "cantor_robe",
+     "pieces": [
+       {"icon": "circle", "at": [146, 176], "size": [15, 44], "rot": 30},
+       {"icon": "circle", "at": [176, 176], "size": [15, 44], "rot": -30}
+     ]},
+
+    {"name": "straps", "tags": ["press"], "hidden": true, "z": 4, "material": "paper", "shade": {"bump": 0.45},
+     "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [160, 214], "size": [168, 12], "rot": -4},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [160, 268], "size": [176, 12], "rot": 3}
+     ]},
+    {"name": "strap_wax", "tags": ["press"], "hidden": true, "z": 4.1, "material": "seal_wax",
+     "pieces": [
+       {"icon": "circle", "at": [142, 215], "size": [15, 14]},
+       {"icon": "circle", "at": [182, 267], "size": [15, 14]}
+     ]},
+
+    {"name": "stream", "tags": ["pour"], "hidden": true, "z": 4.3, "material": "residue", "shade": {"bump": 0.6},
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [172, 232], "size": [18, 110], "rot": -6},
+       {"icon": "droplet", "flip": "y", "at": [182, 250], "size": [9, 70], "rot": -12}
+     ]},
+    {"name": "puddle", "tags": ["pool"], "hidden": true, "z": 4.4, "material": "residue", "shade": {"bump": 0.4},
+     "pieces": [
+       {"icon": "metaballs", "at": [160, 322], "size": [220, 40], "squash": 0.6},
+       {"icon": "cloud", "at": [96, 318], "size": [60, 18]},
+       {"icon": "cloud", "at": [226, 320], "size": [64, 18]}
+     ]},
+    {"name": "puddle_sheen", "tags": ["pool"], "hidden": true, "z": 4.45, "kind": "flat", "material": "residue_lit", "emit": 0.5, "clip_to": "puddle",
+     "glow": {"radius": 3, "opacity": 0.35, "color": "residue_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [142, 316], "size": [40, 3]},
+       {"icon": "circle", "at": [190, 324], "size": [30, 2.6]}
+     ]},
+
+    {"name": "basin", "tags": ["basin"], "z": 5, "material": "bronze", "pivot": [160, 302],
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "circle", "half": "bottom", "at": [160, 308], "size": [74, 22]}]},
+    {"name": "basin_rim", "tags": ["basin"], "z": 5.1, "material": "bronze", "pivot": [160, 302], "line": {"width": 0.7, "heavy": 0.6},
+     "pieces": [{"icon": "circle", "at": [160, 299], "size": [76, 12]}]},
+    {"name": "basin_residue", "tags": ["basin"], "z": 5.2, "material": "residue", "pivot": [160, 302], "shade": {"bump": 0.4},
+     "pieces": [{"icon": "circle", "at": [160, 299], "size": [64, 7]}]},
+    {"name": "brim", "tags": ["basin", "brim"], "hidden": true, "z": 5.3, "kind": "flat", "material": "residue_lit", "emit": 0.8, "pivot": [160, 302],
+     "glow": {"radius": 5, "opacity": 0.55, "color": "residue_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [160, 298], "size": [70, 9]},
+       {"icon": "droplet", "flip": "y", "at": [130, 304], "size": [7, 12]},
+       {"icon": "droplet", "flip": "y", "at": [192, 305], "size": [6, 10]}
+     ]}
+  ],
+  "frames": [
+    {"name": "baseline"},
+    {"name": "telegraph",
+     "show": ["arms_up", "brim"],
+     "move": {"basin": {"dy": -214, "rot": -12, "pivot": [160, 302]},
+              "c1_head": {"rot": 10, "pivot": [116, 174]},
+              "c3_head": {"rot": -10, "pivot": [204, 174]},
+              "c2_head": {"dy": 2}}},
+    {"name": "signature",
+     "hide": ["held"],
+     "show": ["arms_pour", "pour", "pool"],
+     "move": {"c1": {"dx": -38, "dy": 2},
+              "c3": {"dx": 38, "dy": 2},
+              "basin": {"dy": -118, "rot": 58, "pivot": [160, 302]}}},
+    {"name": "break",
+     "show": ["pool"],
+     "move": {"basin": {"rot": 180, "dx": 58, "dy": 4, "pivot": [160, 302]},
+              "c2": {"sy": 0.84, "pivot": [160, 322]},
+              "c1": {"rot": -12, "dy": 14, "dx": -6, "pivot": [116, 322]},
+              "c3": {"rot": 13, "dy": 12, "dx": 6, "pivot": [204, 322]}}},
+    {"name": "phase1_first_lay",
+     "hide": ["held", "c3_hand"],
+     "show": ["laid", "gash_arm"],
+     "move": {"c3": {"dx": 26, "dy": 6}}},
+    {"name": "phase2_contract_press",
+     "show": ["press", "pool", "brim"],
+     "move": {"c": {"sx": 0.86, "pivot": [160, 322]},
+              "c1": {"dx": 6},
+              "c3": {"dx": -6}}}
+  ]
+}

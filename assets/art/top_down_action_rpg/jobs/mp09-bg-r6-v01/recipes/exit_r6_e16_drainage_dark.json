@@ -1,0 +1,62 @@
+{
+  "asset": "exit_r6_e16_drainage_dark",
+  "status": "candidate",
+  "note": "Exit object for route_e16_drainage_dark (R6 side, gate_g6_organ_quorum), wall-mounted in the tunnel arch of bg_r6_stalls_drainage. Pivot = arch floor-line centre (scene source (2120,1160)). Arch 2.2 m wide, 1.8 m high (110 px/m). closed: heavy iron grate with a riveted frame fills the arch. open: grate hauled up on chains so only its lower bar ends show under the arch crown; a plank walkway leads into the dark.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [560, 420],
+  "pivot": [280, 300],
+  "pivot_meaning": "wall attach reference: centre of the tunnel arch on the basin floor line",
+  "seed": 634,
+  "frames": [
+    {"name": "closed"},
+    {"name": "open", "hide": ["closed"], "show": ["open"]}
+  ],
+  "forms": [
+    {"name": "arch_shape", "z": -1, "kind": "flat", "color": "#000000", "opacity": 0.0,
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [280, 236], "size": [400, 128]},
+       {"icon": "circle", "at": [280, 172], "size": [400, 140]}
+     ]},
+    {"name": "bars", "tags": ["closed"], "z": 0, "material": "iron",
+     "shade": {"max_radius": 3, "bump": 1.0, "highlight_amount": 0.4},
+     "line": {"width": 0.8, "heavy": 1.0},
+     "clip_to": "arch_shape",
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [100, 200], "size": [9, 210],
+                 "repeat": {"line": [[100, 200], [460, 200]], "count": 13}}]},
+    {"name": "crossbars", "tags": ["closed"], "z": 0.5, "material": "iron",
+     "shade": {"max_radius": 3, "bump": 1.0},
+     "line": {"width": 0.8, "heavy": 1.0},
+     "clip_to": "arch_shape",
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [280, 176], "size": [400, 10]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [280, 262], "size": [400, 10]}
+     ]},
+    {"name": "rivets", "tags": ["closed"], "z": 0.8, "kind": "flat", "material": "bronze",
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [6, 6], "repeat": {"line": [[100, 262], [460, 262]], "count": 13}}]},
+    {"name": "grate_rust", "tags": ["closed"], "z": 0.9, "kind": "wash", "material": "rust", "blend": "multiply", "opacity": 0.55, "clip_to": "bars",
+     "mottle": {"cell": 18, "lo": 0.45, "hi": 0.8},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [280, 220], "size": [400, 220]}]},
+    {"name": "foot_bar", "tags": ["closed"], "z": 1, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [280, 296], "size": [404, 9]}]},
+
+    {"name": "bars_up", "tags": ["open"], "hidden": true, "z": 0, "material": "iron",
+     "shade": {"max_radius": 3, "bump": 1.0},
+     "line": {"width": 0.8, "heavy": 1.0},
+     "clip_to": "arch_shape",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [100, 118], "size": [9, 50],
+                 "repeat": {"line": [[100, 118], [460, 118]], "count": 13}}]},
+    {"name": "bar_up_edge", "tags": ["open"], "hidden": true, "z": 0.5, "material": "iron", "clip_to": "arch_shape",
+     "line": {"width": 0.8, "heavy": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [280, 142], "size": [400, 10]}]},
+    {"name": "chains", "tags": ["open"], "hidden": true, "z": 0.7, "kind": "flat", "material": "iron", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [{"icon": "link", "rot": 90, "at": [0, 0], "size": [9, 9], "repeat": {"points": [[150, 112], [150, 124], [150, 136], [410, 112], [410, 124], [410, 136]]}}]},
+    {"name": "planks_shadow", "tags": ["open"], "hidden": true, "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 5,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [284, 346], "size": [134, 96]}]},
+    {"name": "planks", "tags": ["open"], "hidden": true, "z": 1, "kind": "block", "material": "wood", "extrude": 6,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [280, 336], "size": [124, 96]}]},
+    {"name": "plank_joints", "tags": ["open"], "hidden": true, "z": 1.2, "kind": "flat", "material": "tile_joint", "opacity": 0.6, "clip_to": "planks",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 100], "repeat": {"points": [[250, 336], [280, 336], [310, 336]]}}]}
+  ]
+}

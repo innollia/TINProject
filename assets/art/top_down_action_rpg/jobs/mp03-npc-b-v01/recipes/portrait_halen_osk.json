@@ -1,0 +1,852 @@
+{
+ "asset": "npc_21_halen_osk",
+ "status": "candidate",
+ "note": "Halen Osk dialogue portrait: 3/4 bust turned to the viewer's right, medium store keeper of the MAG_ACADEMY curriculum office. Round ruddy face, thick brows, grey hair under a dark short-brimmed cap, pencil behind the ear, brown shirt, olive apron bib with a pocket holding two ledgers, key ring hanging from the apron strap, bone-white folded-paper school collar. Author design from npc_21 JSON and 04 NPC-21 (male: author design).",
+ "identity": {
+  "npc_id": "npc_21_halen_osk",
+  "display_name": "Halen Osk",
+  "roster_kind": "support",
+  "portrait_key": "portrait_halen_osk",
+  "art_key": "art_npc_support_portrait",
+  "body_key": "body_store_keeper"
+ },
+ "anchors": {
+  "face": [
+   168,
+   124
+  ],
+  "head_center": [
+   160,
+   122
+  ]
+ },
+ "palette": "palette_npc_b.json",
+ "style": "portrait",
+ "canvas": [
+  320,
+  320
+ ],
+ "pivot": [
+  168,
+  124
+ ],
+ "pivot_meaning": "face anchor: midpoint between the eyes (the same pixel in every mp03 portrait)",
+ "seed": 2101,
+ "forms": [
+  {
+   "name": "neck",
+   "z": 0.5,
+   "material": "skin_tan",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      198
+     ],
+     "size": [
+      66,
+      56
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160,
+      230
+     ],
+     "size": [
+      64,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck_shade",
+   "z": 0.6,
+   "kind": "flat",
+   "color": "#86654f",
+   "clip_to": "neck",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      168,
+      180
+     ],
+     "size": [
+      98,
+      48
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shirt",
+   "z": 1,
+   "material": "ho_shirt",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      158,
+      272
+     ],
+     "size": [
+      292,
+      122
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      158,
+      326
+     ],
+     "size": [
+      292,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "name": "apron",
+   "z": 1.5,
+   "material": "ho_apron",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3,
+       0
+      ],
+      [
+       13,
+       0
+      ],
+      [
+       15,
+       16
+      ],
+      [
+       1,
+       16
+      ]
+     ],
+     "at": [
+      164,
+      302
+     ],
+     "size": [
+      132,
+      128
+     ]
+    }
+   ]
+  },
+  {
+   "name": "apron_straps",
+   "z": 1.6,
+   "material": "ho_apron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      118,
+      240
+     ],
+     "size": [
+      13,
+      54
+     ],
+     "rot": 30
+    },
+    {
+     "icon": "circle",
+     "at": [
+      210,
+      242
+     ],
+     "size": [
+      12,
+      52
+     ],
+     "rot": -30
+    }
+   ]
+  },
+  {
+   "name": "pocket",
+   "z": 1.7,
+   "kind": "flat",
+   "color": "#32301b",
+   "opacity": 0.9,
+   "line": {
+    "width": 1.0,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      178,
+      304
+     ],
+     "size": [
+      50,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ledger_a",
+   "z": 1.65,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      169,
+      288
+     ],
+     "size": [
+      15,
+      26
+     ],
+     "rot": -6
+    }
+   ]
+  },
+  {
+   "name": "ledger_b",
+   "z": 1.66,
+   "material": "cr_patch",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      186,
+      286
+     ],
+     "size": [
+      13,
+      28
+     ],
+     "rot": 5
+    }
+   ]
+  },
+  {
+   "name": "key_ring",
+   "z": 1.8,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      112,
+      266
+     ],
+     "size": [
+      26,
+      26
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      112,
+      266
+     ],
+     "size": [
+      19,
+      19
+     ]
+    }
+   ]
+  },
+  {
+   "name": "keys",
+   "z": 1.9,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "key",
+     "at": [
+      104,
+      292
+     ],
+     "size": [
+      22,
+      30
+     ],
+     "rot": 20
+    },
+    {
+     "icon": "key",
+     "at": [
+      123,
+      294
+     ],
+     "size": [
+      20,
+      28
+     ],
+     "rot": 62
+    }
+   ]
+  },
+  {
+   "name": "school_collar",
+   "z": 2,
+   "material": "paper",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      123,
+      228
+     ],
+     "size": [
+      30,
+      28
+     ],
+     "rot": 140
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      142,
+      235
+     ],
+     "size": [
+      30,
+      28
+     ],
+     "rot": 160
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      161,
+      238
+     ],
+     "size": [
+      30,
+      28
+     ],
+     "rot": 180
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      180,
+      235
+     ],
+     "size": [
+      30,
+      28
+     ],
+     "rot": 200
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      198,
+      228
+     ],
+     "size": [
+      28,
+      26
+     ],
+     "rot": 220
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      222
+     ],
+     "size": [
+      100,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "collar_folds",
+   "z": 2.1,
+   "kind": "flat",
+   "color": "#8a7d64",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      132,
+      233
+     ],
+     "size": [
+      2,
+      18
+     ],
+     "rot": -30
+    },
+    {
+     "icon": "circle",
+     "at": [
+      152,
+      238
+     ],
+     "size": [
+      2,
+      18
+     ],
+     "rot": -12
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171,
+      238
+     ],
+     "size": [
+      2,
+      18
+     ],
+     "rot": 12
+    },
+    {
+     "icon": "circle",
+     "at": [
+      189,
+      233
+     ],
+     "size": [
+      2,
+      18
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "z": 5,
+   "material": "hair_grey",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      114
+     ],
+     "size": [
+      118,
+      108
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pencil",
+   "z": 8.4,
+   "kind": "flat",
+   "material": "bronze",
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      117,
+      125
+     ],
+     "size": [
+      6,
+      42
+     ],
+     "rot": -38
+    }
+   ]
+  },
+  {
+   "name": "ear",
+   "z": 5.5,
+   "material": "skin_tan",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110,
+      142
+     ],
+     "size": [
+      19,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ear_inner",
+   "z": 5.6,
+   "kind": "flat",
+   "color": "#86654f",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      109,
+      143
+     ],
+     "size": [
+      8,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "z": 6,
+   "material": "skin_tan",
+   "shade": {
+    "threshold": 0.44,
+    "ragged": 0.06,
+    "soft": 0.34,
+    "highlight_amount": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      131
+     ],
+     "size": [
+      104,
+      100
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      170,
+      170
+     ],
+     "size": [
+      68,
+      38
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      205,
+      147
+     ],
+     "size": [
+      14,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nose_shade",
+   "z": 7,
+   "kind": "flat",
+   "color": "#86654f",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      200,
+      143
+     ],
+     "size": [
+      11,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nostril",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      199,
+      154
+     ],
+     "size": [
+      5.5,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      184,
+      168
+     ],
+     "size": [
+      19,
+      3
+     ],
+     "rot": -7
+    }
+   ]
+  },
+  {
+   "name": "lip_shade",
+   "z": 7.05,
+   "kind": "flat",
+   "color": "#86654f",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      185,
+      173
+     ],
+     "size": [
+      12,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "iris",
+   "z": 7.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      126
+     ],
+     "size": [
+      9.5,
+      9.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      124
+     ],
+     "size": [
+      7,
+      8.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glint",
+   "z": 7.3,
+   "kind": "flat",
+   "color": "eye_glint",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.5,
+      124
+     ],
+     "size": [
+      2.6,
+      2.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.5,
+      122.5
+     ],
+     "size": [
+      2.2,
+      2.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lids",
+   "z": 7.4,
+   "kind": "flat",
+   "color": "ink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      126
+     ],
+     "size": [
+      21,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      142,
+      129
+     ],
+     "size": [
+      21,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      124
+     ],
+     "size": [
+      15,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      194,
+      126.6
+     ],
+     "size": [
+      15,
+      11
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "z": 7.5,
+   "kind": "flat",
+   "material": "hair_grey",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141,
+      110
+     ],
+     "size": [
+      29,
+      8
+     ],
+     "rot": -3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      195,
+      109
+     ],
+     "size": [
+      19,
+      7
+     ],
+     "rot": 4
+    }
+   ]
+  },
+  {
+   "name": "cap",
+   "z": 8,
+   "material": "coat_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      152,
+      94
+     ],
+     "size": [
+      124,
+      84
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      166,
+      150
+     ],
+     "size": [
+      150,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cap_brim",
+   "z": 8.2,
+   "material": "coat_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      99
+     ],
+     "size": [
+      66,
+      13
+     ],
+     "rot": 8
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "portrait_halen_osk"
+  }
+ ]
+}

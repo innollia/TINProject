@@ -1,0 +1,74 @@
+{
+  "asset": "prop_r4_weight_lift_counter",
+  "status": "candidate",
+  "note": "prop_r4_weight_lift_counter, two states. Waist-high instrument stand 1.3 m x 0.6 m x 1.0 m beside the Weight Lift: a rail with three hooks for archive weights and a priority gauge (ticks and needle only, no numbers). ps_idle: three weights hang, needle high, front hatch open. ps_spent: hooks empty, needle at the end of the scale, a small shutter half down over the hatch. 226 px/m. Contact shadow separate.",
+  "palette": "palette_r4.json",
+  "style": "prop",
+  "canvas": [440, 440],
+  "pivot": [220, 376],
+  "pivot_meaning": "front-bottom centre of the stand on the floor",
+  "seed": 471,
+  "frames": [
+    {"name": "prop_r4_counter_idle", "hide": ["spent"]},
+    {"name": "prop_r4_counter_spent", "hide": ["idle"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.45, "blur": 8,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 18}, "at": [222, 372], "size": [320, 38]}]},
+    {"name": "body", "z": 0, "kind": "block", "material": "stone_dark", "extrude": 113,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [220, 204], "size": [294, 118]}]},
+    {"name": "top_plate", "z": 0.5, "kind": "flat", "material": "bronze_block", "line": {"width": 1.0, "heavy": 1.1},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [220, 204], "size": [280, 106]}]},
+    {"name": "front_band", "z": 0.6, "kind": "flat", "material": "bronze",
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [220, 268], "size": [290, 6]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [220, 368], "size": [290, 5]}
+     ]},
+    {"name": "hatch", "z": 1, "kind": "flat", "material": "void",
+     "grad": {"to": "well_inner", "y0": 300, "y1": 344, "curve": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 4}, "at": [220, 322], "size": [120, 48]}]},
+    {"name": "hatch_frame", "z": 1.2, "kind": "flat", "material": "bronze", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 4}, "at": [220, 322], "size": [132, 58]},
+       {"icon": "square", "slice": {"border": 3, "corner": 4}, "op": "sub", "at": [220, 322], "size": [120, 48]}
+     ]},
+    {"name": "shutter", "z": 1.4, "tags": ["spent"], "material": "iron", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [220, 312], "size": [122, 30]}]},
+    {"name": "shutter_ribs", "z": 1.5, "tags": ["spent"], "kind": "flat", "color": "#1b1c20", "opacity": 0.7,
+     "pieces": [
+       {"icon": "square", "at": [220, 306], "size": [116, 2]},
+       {"icon": "square", "at": [220, 316], "size": [116, 2]}
+     ]},
+
+    {"name": "rail_posts", "z": 2, "kind": "block", "material": "iron", "extrude": 57,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 0], "size": [10, 8],
+                 "repeat": {"points": [[104, 108], [256, 108]]}}]},
+    {"name": "rail_bar", "z": 2.2, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [180, 106], "size": [160, 8]}]},
+    {"name": "hooks", "z": 2.3, "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [3, 14], "repeat": {"points": [[136, 117], [180, 117], [224, 117]]}}]},
+    {"name": "weights", "z": 2.5, "tags": ["idle"], "kind": "block", "material": "bronze_block", "extrude": 24,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [0, 0], "size": [24, 14],
+                 "repeat": {"points": [[136, 130], [180, 130], [224, 130]]}}]},
+    {"name": "weight_marks", "z": 2.6, "tags": ["idle"], "kind": "flat", "color": "#2f2117", "opacity": 0.7,
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [20, 2], "repeat": {"points": [[136, 146], [180, 146], [224, 146]]}}]},
+    {"name": "empty_hook_tips", "z": 2.5, "tags": ["spent"], "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [8, 3], "repeat": {"points": [[138, 124], [182, 124], [226, 124]]}}]},
+
+    {"name": "gauge_post", "z": 3, "kind": "block", "material": "iron", "extrude": 62,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [332, 132], "size": [10, 8]}]},
+    {"name": "gauge_bezel", "z": 3.2, "material": "bronze", "line": {"width": 1.0, "heavy": 1.1},
+     "pieces": [{"icon": "circle", "at": [332, 106], "size": [62, 62]}]},
+    {"name": "gauge_face", "z": 3.3, "kind": "flat", "material": "paper",
+     "pieces": [{"icon": "circle", "at": [332, 106], "size": [48, 48]}]},
+    {"name": "gauge_ticks", "z": 3.4, "kind": "flat", "color": "#2a2218",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 6],
+                 "repeat": {"ellipse": [332, 106, 18, 18], "count": 7, "arc": [150, 390], "orient": true}}]},
+    {"name": "needle_idle", "z": 3.6, "tags": ["idle"], "kind": "flat", "color": "#1a1210",
+     "pieces": [{"icon": "square", "at": [325, 99], "size": [3, 22], "rot": -45}]},
+    {"name": "needle_spent", "z": 3.6, "tags": ["spent"], "kind": "flat", "color": "#1a1210",
+     "pieces": [{"icon": "square", "at": [340, 112], "size": [3, 22], "rot": -45}]},
+    {"name": "gauge_pin", "z": 3.7, "kind": "flat", "material": "bronze",
+     "pieces": [{"icon": "circle", "at": [332, 106], "size": [6, 6]}]}
+  ]
+}

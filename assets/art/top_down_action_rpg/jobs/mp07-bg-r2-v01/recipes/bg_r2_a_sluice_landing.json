@@ -26,7 +26,7 @@
                             "jitter": {"size": 0.3, "alpha": 0.5}}}]},
 
     {"name": "mud_banks", "z": 1, "kind": "block", "material": "silt", "extrude": 16,
-     "rough": {"amp": 1.0, "soft": 9, "cell": 70},
+     "rough": {"amp": 0.55, "soft": 6, "cell": 60},
      "pieces": [
        {"icon": "circle", "at": [430, 1290], "size": [1150, 560], "rot": -6},
        {"icon": "square", "fit": [1, 1, 15, 15], "at": [560, 1400], "size": [1200, 200]},
@@ -36,8 +36,8 @@
        {"icon": "circle", "at": [1760, 1330], "size": [420, 180], "rot": -12},
        {"icon": "square", "fit": [1, 1, 15, 15], "at": [2060, 1425], "size": [1100, 110]}
      ]},
-    {"name": "mud_wet_rim", "z": 1.05, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.5, "clip_to": "mud_banks",
-     "mottle": {"cell": 60, "lo": 0.45, "hi": 0.8},
+    {"name": "mud_wet_rim", "z": 1.05, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.25, "clip_to": "mud_banks",
+     "mottle": {"cell": 150, "lo": 0.45, "hi": 0.8},
      "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1240], "size": [2800, 440]}]},
 
     {"name": "boardwalk_joint", "z": 3, "kind": "block", "material": "stilt", "extrude": 30,

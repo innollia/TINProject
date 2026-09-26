@@ -1,0 +1,66 @@
+{
+  "asset": "exit_r6_e07_ash_chute",
+  "status": "candidate",
+  "note": "Exit object for route_e07_ash_chute (R6 side, gate_g1_ash_debt): intake-ticket barrier at the front of the ash-chute landing. Two iron posts 2.2 m apart, 1.1 m high (110 px/m), two swinging half-bars at 0.9 m. closed: bars meet across the landing with an empty ticket clip. open: bars swung inward toward the chute. No text.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [560, 360],
+  "pivot": [280, 330],
+  "pivot_meaning": "centre of the barrier line on the floor (between the two post bases)",
+  "seed": 631,
+  "frames": [
+    {"name": "closed"},
+    {"name": "open", "hide": ["closed"], "show": ["open"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 6,
+     "pieces": [
+       {"icon": "circle", "at": [84, 330], "size": [46, 16]},
+       {"icon": "circle", "at": [484, 330], "size": [46, 16]}
+     ]},
+    {"name": "base_plates", "z": 0, "kind": "block", "material": "iron", "extrude": 5,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [80, 322], "size": [40, 22]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [480, 322], "size": [40, 22]}
+     ]},
+    {"name": "posts", "z": 1, "kind": "block", "material": "iron", "extrude": 121,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [80, 201], "size": [22, 16]},
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [480, 201], "size": [22, 16]}
+     ]},
+    {"name": "post_caps", "z": 1.5, "material": "bronze", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "circle", "at": [80, 194], "size": [26, 18]},
+       {"icon": "circle", "at": [480, 194], "size": [26, 18]}
+     ]},
+    {"name": "hinges", "z": 1.7, "kind": "flat", "material": "bronze_block", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [92, 231], "size": [10, 18]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [468, 231], "size": [10, 18]}
+     ]},
+
+    {"name": "bars_closed", "tags": ["closed"], "z": 2, "material": "verdigris",
+     "shade": {"max_radius": 4, "bump": 0.9},
+     "line": {"width": 0.9, "heavy": 1.1},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [186, 231], "size": [190, 10]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [374, 231], "size": [190, 10]}
+     ]},
+    {"name": "clip", "tags": ["closed"], "z": 2.5, "material": "bronze", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [280, 231], "size": [22, 18]}]},
+    {"name": "ticket", "tags": ["closed"], "z": 2.6, "material": "paper", "shade": {"bump": 0.3},
+     "pieces": [{"icon": "tag", "at": [282, 256], "size": [22, 30], "rot": 94}]},
+
+    {"name": "bars_open", "tags": ["open"], "hidden": true, "z": 2, "material": "verdigris",
+     "shade": {"max_radius": 4, "bump": 0.9},
+     "line": {"width": 0.9, "heavy": 1.1},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [158, 174], "size": [178, 10], "rot": -41},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [402, 174], "size": [178, 10], "rot": 41}
+     ]},
+    {"name": "clip_open", "tags": ["open"], "hidden": true, "z": 2.5, "material": "bronze", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [80, 256], "size": [16, 14]}]}
+  ]
+}

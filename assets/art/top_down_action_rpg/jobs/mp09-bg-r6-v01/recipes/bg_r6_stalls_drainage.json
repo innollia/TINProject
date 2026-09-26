@@ -47,19 +47,20 @@
        {"icon": "explosion", "crop": [0.5, 1, 15.5, 12.5], "ground": true, "at": [240, 820], "size": [64, 44], "rot": 170}
      ]},
 
-    {"name": "channel_face", "z": 9, "kind": "flat", "color": "#2c3230",
+    {"name": "channel_face", "z": 9, "kind": "flat", "color": "#1f2422",
      "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1620, 888], "size": [480, 36]}]},
-    {"name": "channel_bed", "z": 9.1, "kind": "flat", "material": "wet_slate", "color": "#2a302e",
+    {"name": "channel_bed", "z": 9.1, "kind": "flat", "material": "wet_slate", "color": "#222826",
      "line": {"width": 1.0, "heavy": 1.2, "breaks": 0.2, "color": "#0a0c0c"},
      "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1620, 953], "size": [480, 94]}]},
     {"name": "channel_damp", "z": 9.2, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.6, "clip_to": "channel_bed",
      "mottle": {"cell": 40, "lo": 0.4, "hi": 0.8},
      "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1620, 953], "size": [480, 94]}]},
+    {"name": "channel_bed_shade", "z": 9.25, "kind": "wash", "color": "shadow_contact", "blend": "multiply", "opacity": 0.5, "clip_to": "channel_bed", "blur": 8,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1620, 918], "size": [490, 40]}]},
     {"name": "channel_curbs", "z": 9.3, "kind": "block", "material": "wet_slate", "extrude": 8,
-     "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1620, 866], "size": [484, 12]},
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1620, 1002], "size": [484, 12]}
-     ]},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1620, 866], "size": [484, 12]}]},
+    {"name": "channel_lip", "z": 9.35, "kind": "flat", "color": "#505955", "opacity": 0.9,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1620, 1001], "size": [482, 4]}]},
 
     {"name": "basin_back", "z": 10, "kind": "flat", "color": "#161a19",
      "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2100, 1190], "size": [920, 500]}]},
@@ -95,15 +96,15 @@
 
     {"name": "basin_steps_back", "z": 11, "kind": "flat", "color": "#1a1e1d",
      "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1726, 1190], "size": [160, 500]}]},
-    {"name": "basin_step_treads", "z": 11.1, "kind": "flat", "material": "wet_slate",
+    {"name": "basin_step_treads", "z": 11.1, "kind": "flat", "material": "wet_slate", "color": "#343b38",
      "line": {"width": 1.0, "heavy": 1.1, "breaks": 0.2, "color": "#0a0c0c"},
      "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1726, 0], "size": [152, 38],
                  "repeat": {"line": [[1726, 1001], [1726, 1427]], "count": 7}}]},
-    {"name": "basin_step_risers", "z": 11.2, "kind": "flat", "color": "#262c2a",
+    {"name": "basin_step_risers", "z": 11.2, "kind": "flat", "color": "#232927",
      "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1726, 0], "size": [152, 32],
                  "repeat": {"line": [[1726, 966], [1726, 1392]], "count": 7}}]},
-    {"name": "basin_steps_deep", "z": 11.3, "kind": "wash", "color": "shadow_contact", "blend": "multiply", "opacity": 0.4, "blur": 26,
-     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1726, 1350], "size": [160, 200]}]},
+    {"name": "basin_steps_deep", "z": 11.3, "kind": "wash", "color": "shadow_contact", "blend": "multiply", "opacity": 0.6, "blur": 40,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1726, 1330], "size": [170, 320]}]},
     {"name": "basin_rim", "z": 11.5, "kind": "block", "material": "wet_slate", "extrude": 14,
      "pieces": [
        {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [2080, 942], "size": [880, 18]},
@@ -113,14 +114,19 @@
 
     {"name": "tunnel_rim", "z": 12, "kind": "flat", "material": "tile_wall_dark", "line": {"width": 1.2, "heavy": 1.5},
      "pieces": [
-       {"icon": "bullet", "rot": -90, "at": [2120, 1052], "size": [218, 440]},
-       {"icon": "bullet", "op": "sub", "rot": -90, "at": [2120, 1061], "size": [198, 400]}
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2120, 1093], "size": [424, 134]},
+       {"icon": "circle", "at": [2120, 1026], "size": [424, 158]},
+       {"icon": "square", "op": "sub", "fit": [1, 1, 15, 15], "at": [2120, 1096], "size": [400, 128]},
+       {"icon": "circle", "op": "sub", "at": [2120, 1032], "size": [400, 140]}
      ]},
     {"name": "tunnel_void", "z": 12.1, "kind": "flat", "material": "void",
      "grad": {"to": "well_inner", "y0": 1160, "y1": 960, "curve": 1.6},
-     "pieces": [{"icon": "bullet", "rot": -90, "at": [2120, 1061], "size": [198, 400]}]},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2120, 1096], "size": [400, 128]},
+       {"icon": "circle", "at": [2120, 1032], "size": [400, 140]}
+     ]},
     {"name": "tunnel_keystone", "z": 12.2, "kind": "flat", "material": "bronze_block", "line": {"width": 0.8, "heavy": 0.8},
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [2120, 948], "size": [26, 16]}]},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [2120, 954], "size": [26, 16]}]},
     {"name": "spout", "z": 12.5, "material": "verdigris",
      "shade": {"max_radius": 6, "bump": 1.0, "highlight_amount": 0.5},
      "line": {"width": 1.2, "heavy": 1.4},

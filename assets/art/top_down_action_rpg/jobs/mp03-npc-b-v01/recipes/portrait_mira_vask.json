@@ -1,0 +1,800 @@
+{
+ "asset": "npc_20_mira_vask",
+ "status": "candidate",
+ "note": "Mira Vask dialogue portrait: 3/4 bust turned to the viewer's right, course index clerk of the MAG_ACADEMY curriculum office. Ash-blond hair in a low knot, small round glasses, expressionless small mouth, grey-blue robe, bone-white folded-paper school collar, thick index book tucked under the near arm. Author design from npc_20 JSON and 04 NPC-20 (female: author design).",
+ "identity": {
+  "npc_id": "npc_20_mira_vask",
+  "display_name": "Mira Vask",
+  "roster_kind": "support",
+  "portrait_key": "portrait_mira_vask",
+  "art_key": "art_npc_support_portrait",
+  "body_key": "body_clerk"
+ },
+ "anchors": {
+  "face": [
+   168,
+   124
+  ],
+  "head_center": [
+   160,
+   122
+  ]
+ },
+ "palette": "palette_npc_b.json",
+ "style": "portrait",
+ "canvas": [
+  320,
+  320
+ ],
+ "pivot": [
+  168,
+  124
+ ],
+ "pivot_meaning": "face anchor: midpoint between the eyes (the same pixel in every mp03 portrait)",
+ "seed": 2001,
+ "forms": [
+  {
+   "name": "neck",
+   "z": 0.5,
+   "material": "skin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      196
+     ],
+     "size": [
+      50,
+      58
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160,
+      232
+     ],
+     "size": [
+      48,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck_shade",
+   "z": 0.6,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "clip_to": "neck",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      168,
+      178
+     ],
+     "size": [
+      84,
+      46
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hair_knot",
+   "z": 0.8,
+   "material": "hair_ash",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      104,
+      164
+     ],
+     "size": [
+      32,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "robe",
+   "z": 1,
+   "material": "mv_robe",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      158,
+      272
+     ],
+     "size": [
+      250,
+      116
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      158,
+      324
+     ],
+     "size": [
+      250,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "name": "robe_folds",
+   "z": 1.2,
+   "kind": "flat",
+   "color": "#0d1117",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      118,
+      300
+     ],
+     "size": [
+      3,
+      50
+     ],
+     "rot": 6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      210,
+      302
+     ],
+     "size": [
+      3,
+      46
+     ],
+     "rot": -6
+    }
+   ]
+  },
+  {
+   "name": "school_collar",
+   "z": 2,
+   "material": "paper",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      122,
+      228
+     ],
+     "size": [
+      32,
+      30
+     ],
+     "rot": 140
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      141,
+      236
+     ],
+     "size": [
+      32,
+      30
+     ],
+     "rot": 160
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      161,
+      239
+     ],
+     "size": [
+      32,
+      30
+     ],
+     "rot": 180
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      181,
+      236
+     ],
+     "size": [
+      32,
+      30
+     ],
+     "rot": 200
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      199,
+      228
+     ],
+     "size": [
+      30,
+      28
+     ],
+     "rot": 220
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      222
+     ],
+     "size": [
+      98,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "collar_folds",
+   "z": 2.1,
+   "kind": "flat",
+   "color": "#8a7d64",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      131,
+      234
+     ],
+     "size": [
+      2,
+      20
+     ],
+     "rot": -30
+    },
+    {
+     "icon": "circle",
+     "at": [
+      151,
+      240
+     ],
+     "size": [
+      2,
+      20
+     ],
+     "rot": -12
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171,
+      240
+     ],
+     "size": [
+      2,
+      20
+     ],
+     "rot": 12
+    },
+    {
+     "icon": "circle",
+     "at": [
+      190,
+      234
+     ],
+     "size": [
+      2,
+      20
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "index_book",
+   "z": 2.5,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "book",
+     "crop": [
+      3,
+      1,
+      13,
+      15
+     ],
+     "at": [
+      74,
+      300
+     ],
+     "size": [
+      72,
+      62
+     ],
+     "rot": -12
+    }
+   ]
+  },
+  {
+   "name": "book_pages",
+   "z": 2.6,
+   "kind": "flat",
+   "material": "paper",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      108,
+      293
+     ],
+     "size": [
+      6,
+      52
+     ],
+     "rot": -12
+    }
+   ]
+  },
+  {
+   "name": "hair_far",
+   "z": 4.5,
+   "material": "hair_ash",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      207,
+      120
+     ],
+     "size": [
+      13,
+      42
+     ],
+     "rot": -10
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "z": 5,
+   "material": "hair_ash",
+   "shade": {
+    "highlight_amount": 0.6,
+    "highlight": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      110
+     ],
+     "size": [
+      114,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "z": 6,
+   "material": "skin",
+   "shade": {
+    "threshold": 0.44,
+    "ragged": 0.06,
+    "soft": 0.34,
+    "highlight_amount": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      128
+     ],
+     "size": [
+      92,
+      100
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      173,
+      171
+     ],
+     "size": [
+      48,
+      38
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      203,
+      146
+     ],
+     "size": [
+      11,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nose_shade",
+   "z": 7,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      198,
+      142
+     ],
+     "size": [
+      8,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nostril",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      197,
+      152
+     ],
+     "size": [
+      4.5,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      184,
+      167
+     ],
+     "size": [
+      15,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lip_shade",
+   "z": 7.05,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "opacity": 0.65,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      185,
+      171
+     ],
+     "size": [
+      10,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "iris",
+   "z": 7.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      125
+     ],
+     "size": [
+      10.5,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      123
+     ],
+     "size": [
+      7.5,
+      9.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glint",
+   "z": 7.3,
+   "kind": "flat",
+   "color": "eye_glint",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140,
+      122
+     ],
+     "size": [
+      3,
+      3
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192,
+      121
+     ],
+     "size": [
+      2.4,
+      2.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lids",
+   "z": 7.4,
+   "kind": "flat",
+   "color": "ink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      126
+     ],
+     "size": [
+      23,
+      15
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      142,
+      129
+     ],
+     "size": [
+      23,
+      15
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      130.5,
+      124
+     ],
+     "size": [
+      4.5,
+      7
+     ],
+     "rot": -60
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      124
+     ],
+     "size": [
+      16,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      194,
+      126.6
+     ],
+     "size": [
+      16,
+      12
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      202.5,
+      122
+     ],
+     "size": [
+      4,
+      6
+     ],
+     "rot": 60
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "z": 7.5,
+   "kind": "flat",
+   "material": "hair_ash",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141,
+      109
+     ],
+     "size": [
+      24,
+      4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      195,
+      108
+     ],
+     "size": [
+      16,
+      3.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glasses",
+   "z": 7.6,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      125
+     ],
+     "size": [
+      26,
+      23
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      142,
+      125
+     ],
+     "size": [
+      20,
+      17.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      123
+     ],
+     "size": [
+      18,
+      21
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      194,
+      123
+     ],
+     "size": [
+      13,
+      16
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      170,
+      121
+     ],
+     "size": [
+      16,
+      3
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      120,
+      126
+     ],
+     "size": [
+      20,
+      3
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "hair_front",
+   "z": 8,
+   "material": "hair_ash",
+   "shade": {
+    "highlight_amount": 0.6,
+    "highlight": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170,
+      84
+     ],
+     "size": [
+      92,
+      34
+     ],
+     "rot": 12
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      119,
+      132
+     ],
+     "size": [
+      22,
+      54
+     ],
+     "rot": 8
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "portrait_mira_vask"
+  }
+ ]
+}

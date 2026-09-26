@@ -8,7 +8,7 @@
 - g 세션은 메인 컴퓨터가 아닌 다른 컴퓨터에서 돈다. 결과는 git으로 주고받는다(아래 '다른 컴퓨터와 git').
 
 ## 다른 컴퓨터와 git
-- 저장소: `C:\projects\TINProject`, 브랜치 `kit/05-stone-story-rpg`, 원격 `origin`.
+- 저장소: TINProject(`github.com/innollia/TINProject`)의 이 컴퓨터 쪽 클론. 이 파일과 COMMON.md의 경로는 전부 저장소 루트 기준이다. 브랜치 `kit/05-stone-story-rpg`, 원격 `origin`.
 - 시작할 때: 지금 브랜치가 `kit/05-stone-story-rpg`인지 확인하고 `git pull --no-rebase origin kit/05-stone-story-rpg`로 최신을 받는다. 이 파일과 COMMON.md, `assets\art\top_down_action_rpg\jobs\h0-icon-mood-v02\tool`이 있는지 확인한다.
 - 준비: 도구에는 Python 3 + Pillow + numpy, SVG를 그리는 ImageMagick(없으면 Inkscape)이 필요하다. 없으면 `py -3 -m pip install --user pillow numpy`, `winget install -e --id ImageMagick.ImageMagick`으로만 설치해도 된다. 다른 설치는 하지 않는다.
 - 올리기: 단계(A, B, C)가 끝날 때마다 자기 파일만 커밋하고 올린다.
@@ -39,13 +39,13 @@
 - 그래도 애매하면 번호가 작은 세션이 맡는다.
 
 ## 목록
-- 자기 목록을 `C:\projects\TINProject\docs\art\projects\generic\catalog\gNN_list.md`에 쓴다(g06은 자기 docs 작업 폴더). 항목마다 이름, 장르, 우선순위, 형식, 상태(대기/완료/건너뜀).
+- 자기 목록을 `docs\art\projects\generic\catalog\gNN_list.md`에 쓴다(g06은 자기 docs 작업 폴더). 항목마다 이름, 장르, 우선순위, 형식, 상태(대기/완료/건너뜀).
 - 우선순위: A 꼭 있어야 할 기본·클리셰 40개 안팎 → B 흔히 쓰는 것 40개 안팎 → C 있으면 좋은 것. 전부 합쳐 100~150개.
 - BS2 목록 `catalog\g01_bs2_inventory.md`는 메인 컴퓨터에서 파일 이름으로 먼저 만들어 두었다. g02~g05는 목록을 만들 때 이 파일에서 자기 몫을 전부 가져온다. g01이 이 목록에 종류를 더하면, g02~g05는 A 단계를 끝낸 뒤 한 번 더 확인해서 새로 생긴 자기 몫을 목록 끝에 더한다.
 - 다른 세션의 목록 파일은 읽기만 한다. 다른 세션의 작업 폴더는 읽지도 쓰지도 않는다.
 
 ## 만들기
-- 폴더: `C:\projects\TINProject\assets\art\generic\jobs\<작업ID>\` + `C:\projects\TINProject\docs\art\projects\generic\jobs\<작업ID>\` (g06은 generic 대신 `deduction_casework`). 작업 ID는 `gNN-<묶음 이름>-v01`(예: `g04-trees-v01`, `g05-slimes-v01`). 묶음은 종류나 장르로 나눈다.
+- 폴더: `assets\art\generic\jobs\<작업ID>\` + `docs\art\projects\generic\jobs\<작업ID>\` (g06은 generic 대신 `deduction_casework`). 작업 ID는 `gNN-<묶음 이름>-v01`(예: `g04-trees-v01`, `g05-slimes-v01`). 묶음은 종류나 장르로 나눈다.
 - 형식(RPG Maker 구성 방식, 크기는 COMMON.md '크기 통일' 표):
   - 아이콘: 128×128 한 장씩 + 한 줄 16개 시트.
   - 배경: 타일 한 칸 192×192에 맞춘 바닥·벽 타일셋 시트 + 이어 붙인 예시 화면 1장(물건·사람 없이). 전투 배경은 2560×1440.
@@ -62,13 +62,13 @@
 - 최종 보고: 1) 만든 자산 수와 목록 파일 2) 모아 보기 시트 절대 경로 3) 건너뛴 것과 이유 4) 도구에 추가한 기능 5) 아쉬운 점.
 
 ## BS2 참고 규칙 (g01)
-- 참고 폴더: `C:\Users\Sherum\Desktop\common\.game\.인디\.AAA\BLACK SOULS Ⅱ\Graphics`. 이 컴퓨터에 없으면 BS2 목록을 그대로 쓰고 보강은 건너뛴다.
+- 참고 폴더: 이 컴퓨터에 BLACK SOULS II가 설치돼 있으면 그 게임 폴더의 `Graphics`. 없으면 BS2 목록을 그대로 쓰고 보강은 건너뛴다.
 - 그림을 열어 봐도 되는 폴더: Animations, Battlebacks1, Parallaxes, System, Tilesets, Characters. Battlers는 파일 이름만 본다. Pictures, Faces, Titles1, Titles2, 게임 폴더의 おまけ, 압축 파일은 열지 않는다(성인 그림이 섞여 있다). 보다가 성인 그림이 나오면 바로 넘어가고 목록에 넣지 않는다.
 - 목록에는 범용 종류만 적는다(예: 관, 쇠창살, 촛대, 무너진 석상, 감옥 문, 안개 무늬). 성적인 것, 신체 훼손·시체, Alice 관련 모티프(카드, 토끼, 체스판, 티파티 등), BS2 고유 인물·지명·문양은 넣지 않는다.
 - BS2 그림의 픽셀을 잘라 쓰거나, 따라 그리거나, 프로젝트 폴더에 복사하지 않는다. 종류와 쓰임만 가져오고 모양은 아이콘 조합으로 새로 만든다. 여러 장을 모은 참고 시트는 `$KIROCREW_SCRATCH`에만 둔다.
 
 ## 03 키트 (g06)
-- 키트 계획서 `C:\projects\TINProject\plans\kits\03_DEDUCTION_CASEWORK_KIT.md`(같은 이름의 폴더가 있으면 그 안의 문서도)와 모듈 `C:\projects\TINProject\modules\deduction_casework`(없으면 계획서만)에서 필요한 그림 목록, 시점, 크기, 화풍을 찾는다. 지금 들어가 있는 placeholder 그림도 확인해서 바꿀 목록에 넣는다.
+- 키트 계획서 `plans\kits\03_DEDUCTION_CASEWORK_KIT.md`(같은 이름의 폴더가 있으면 그 안의 문서도)와 모듈 `modules\deduction_casework`(없으면 계획서만)에서 필요한 그림 목록, 시점, 크기, 화풍을 찾는다. 지금 들어가 있는 placeholder 그림도 확인해서 바꿀 목록에 넣는다.
 - `The Case of the Golden Idol/game_recovered/**`는 읽기 전용 조사 자료다. 원본 에셋·레이아웃·문구를 복사하지 않는다. 이 컴퓨터에 없으면 계획서와 모듈만 본다.
 - 장면은 게임이 합친다. 배경, 인물(자세별), 단서 물건을 따로 만든다.
 - 스테이지 01부터 순서대로 만든다. 게임 코드·씬·content는 고치지 않는다.

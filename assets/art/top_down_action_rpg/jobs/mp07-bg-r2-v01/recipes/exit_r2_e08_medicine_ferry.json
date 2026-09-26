@@ -1,0 +1,72 @@
+{
+  "asset": "exit_r2_e08_medicine_ferry",
+  "status": "candidate",
+  "note": "Exit object for route_e08_medicine_ferry (R2 -> R6, gate G2), author design. Two mooring posts at the west end of the ferry jetty. closed: a chain hangs across the jetty between the posts and no boat. open: the chain hangs loose from the north post, a flat-bottomed ferry punt lies alongside the south edge of the jetty with a gangplank. No text.",
+  "palette": "palette_r2.json",
+  "style": "prop",
+  "canvas": [600, 720],
+  "pivot": [220, 330],
+  "pivot_meaning": "centre line of the jetty at the chain (area A source px 140,720); canvas = area px + (80, -390)",
+  "seed": 332,
+  "frames": [
+    {"name": "exit_r2_e08_medicine_ferry_closed", "show": ["closed"]},
+    {"name": "exit_r2_e08_medicine_ferry_open", "show": ["open"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 6,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [224, 210], "size": [50, 18]},
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [224, 454], "size": [50, 18]}
+     ]},
+
+    {"name": "hull", "tags": ["open"], "hidden": true, "z": 0, "kind": "block", "material": "wood", "extrude": 30,
+     "pieces": [{"icon": "pill", "ground": true, "at": [270, 560], "size": [380, 120]}]},
+    {"name": "hull_floor", "tags": ["open"], "hidden": true, "z": 0.2, "material": "plank_dark", "shade": {"bump": 0.4},
+     "pieces": [{"icon": "pill", "ground": true, "at": [270, 556], "size": [330, 84]}]},
+    {"name": "hull_benches", "tags": ["open"], "hidden": true, "z": 0.3, "kind": "flat", "material": "wood", "line": {"width": 0.7, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [180, 556], "size": [14, 80]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [360, 556], "size": [14, 80]}
+     ]},
+    {"name": "hull_damp", "tags": ["open"], "hidden": true, "z": 0.35, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.5, "clip_to": "hull",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [270, 600], "size": [400, 30]}]},
+    {"name": "hull_ripple", "tags": ["open"], "hidden": true, "z": -0.1, "kind": "flat", "material": "sheen", "opacity": 0.35,
+     "pieces": [
+       {"icon": "pill", "ground": true, "at": [270, 594], "size": [420, 60]},
+       {"icon": "pill", "ground": true, "op": "sub", "at": [270, 592], "size": [392, 44]}
+     ]},
+    {"name": "punt_pole", "tags": ["open"], "hidden": true, "z": 0.4, "material": "wood", "line": {"width": 0.7, "heavy": 0.7},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [300, 520], "size": [6, 260], "rot": 74}]},
+    {"name": "gangplank", "tags": ["open"], "hidden": true, "z": 0.5, "material": "plank",
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [262, 488], "size": [46, 92]}]},
+    {"name": "gangplank_cleats", "tags": ["open"], "hidden": true, "z": 0.6, "kind": "flat", "material": "deck_joint", "opacity": 0.7,
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [40, 3], "repeat": {"line": [[262, 460], [262, 516]], "count": 4}}]},
+
+    {"name": "posts", "z": 1, "kind": "block", "material": "stilt", "extrude": 121,
+     "pieces": [
+       {"icon": "circle", "at": [220, 76], "size": [30, 26]},
+       {"icon": "circle", "at": [220, 320], "size": [30, 26]}
+     ]},
+    {"name": "post_bands", "z": 1.2, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6}, "clip_to": "posts",
+     "pieces": [
+       {"icon": "square", "at": [220, 108], "size": [36, 6]},
+       {"icon": "square", "at": [220, 352], "size": [36, 6]}
+     ]},
+    {"name": "chain_closed", "tags": ["closed"], "hidden": true, "z": 2, "kind": "flat", "material": "iron", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [9, 13], "repeat": {"line": [[222, 116], [228, 360]], "count": 22}},
+       {"icon": "circle", "op": "sub", "at": [0, 0], "size": [4, 7], "repeat": {"line": [[222, 116], [228, 360]], "count": 22}}
+     ]},
+    {"name": "chain_loose", "tags": ["open"], "hidden": true, "z": 2, "kind": "flat", "material": "iron", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [9, 13], "repeat": {"line": [[222, 116], [214, 206]], "count": 8}},
+       {"icon": "circle", "op": "sub", "at": [0, 0], "size": [4, 7], "repeat": {"line": [[222, 116], [214, 206]], "count": 8}}
+     ]},
+    {"name": "chain_hook", "z": 2.1, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "circle", "at": [222, 114], "size": [10, 10]},
+       {"icon": "circle", "at": [228, 358], "size": [10, 10]}
+     ]}
+  ]
+}

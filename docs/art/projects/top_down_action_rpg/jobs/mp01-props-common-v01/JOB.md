@@ -1,6 +1,6 @@
 # mp01-props-common-v01 — 아이템 2개와 공용 사물 3개
 
-상태: **제작 중, candidate.** 승인은 사용자만 한다. 게임에 연결하지 않는다.
+상태: **탑다운 아이템·공용 사물 10장 완료, candidate.** 승인은 사용자만 한다. 게임에 연결하지 않는다. 검수 기록은 `QA.md`.
 
 ## 기준 (2026-09-27 04시 확정, `C:\Users\Sherum\.kiro\crew\workspace\tin_mass_production\COMMON.md`)
 

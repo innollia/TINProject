@@ -1,0 +1,40 @@
+{
+  "asset": "obj_r2_water_cask",
+  "status": "candidate",
+  "note": "R2 region object (author design). Iron-hooped ration water cask, 0.6 m across, 0.9 m high, closed plank lid with a dipper. Repeated on decks and banks.",
+  "palette": "palette_r2.json",
+  "style": "prop",
+  "canvas": [240, 300],
+  "pivot": [120, 240],
+  "pivot_meaning": "front-bottom centre of the cask on the deck",
+  "seed": 322,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 6,
+     "pieces": [{"icon": "circle", "at": [124, 238], "size": [132, 32]}]},
+    {"name": "body", "z": 0, "kind": "block", "material": "wood", "extrude": 99,
+     "pieces": [{"icon": "circle", "at": [120, 94], "size": [108, 94]}]},
+    {"name": "staves", "z": 0.5, "kind": "flat", "material": "deck_joint", "opacity": 0.45, "clip_to": "body",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 100], "repeat": {"points": [[84, 190], [102, 192], [120, 192], [138, 192], [156, 190]]}}]},
+    {"name": "hoops", "z": 1, "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.8}, "clip_to": "body",
+     "pieces": [
+       {"icon": "square", "at": [120, 166], "size": [120, 9]},
+       {"icon": "square", "at": [120, 219], "size": [120, 9]}
+     ]},
+    {"name": "rim", "z": 1.2, "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "circle", "at": [120, 94], "size": [108, 94]},
+       {"icon": "circle", "op": "sub", "at": [120, 95], "size": [94, 80]}
+     ]},
+    {"name": "lid", "z": 1.3, "material": "wood", "shade": {"bump": 0.4},
+     "pieces": [{"icon": "circle", "at": [120, 95], "size": [94, 80]}]},
+    {"name": "lid_joints", "z": 1.4, "kind": "flat", "material": "deck_joint", "opacity": 0.6, "clip_to": "lid",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 80], "repeat": {"points": [[104, 95], [120, 95], [136, 95]]}}]},
+    {"name": "dipper", "z": 1.5, "material": "iron", "line": {"width": 0.7, "heavy": 0.7},
+     "pieces": [
+       {"icon": "circle", "at": [142, 92], "size": [20, 15]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [118, 82], "size": [44, 4], "rot": 22}
+     ]},
+    {"name": "damp_foot", "z": 2, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.5, "clip_to": "body",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [120, 232], "size": [130, 34]}]}
+  ]
+}

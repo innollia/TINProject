@@ -1,0 +1,69 @@
+{
+  "asset": "route_e02_sluice_road",
+  "status": "candidate",
+  "note": "mp06 exit object for route_e02_sluice_road (H0 area B, west road). Author design at the player scale. conditional = a heavy iron-banded plank lying across the road (north-south) on two sawhorse trestles; open = the plank stands upright against the south trestle and the north trestle is moved beside it, all at the road's south edge. Pivot at the south end so depth sorting stays right in the open state (nothing is left out in the road). Floor shadow in _shadow.png.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [260, 480],
+  "pivot": [110, 440],
+  "pivot_meaning": "floor point at the south end of the barrier (road's south edge)",
+  "seed": 312,
+  "frames": [
+    {"name": "conditional"},
+    {"name": "open", "show": ["open_part"], "hide": ["closed_part"]}
+  ],
+  "forms": [
+    {"name": "shadow_s", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 5,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [116, 442], "size": [84, 16]}]},
+    {"name": "shadow_closed", "tags": ["closed_part"], "kind": "shadow", "color": "shadow_contact", "opacity": 0.3, "blur": 6,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [116, 202], "size": [84, 16]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [128, 320], "size": [30, 250]}
+     ]},
+    {"name": "shadow_open", "tags": ["open_part"], "hidden": true, "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 5,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [186, 442], "size": [84, 16]},
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [66, 442], "size": [44, 14]}
+     ]},
+
+    {"name": "legs_s", "z": 1, "kind": "flat", "material": "wood", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [98, 396], "size": [8, 94], "rot": 12},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [122, 396], "size": [8, 94], "rot": -12}
+     ]},
+    {"name": "bar_s", "z": 1.5, "kind": "block", "material": "wood", "extrude": 12,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [110, 329], "size": [72, 18]}]},
+
+    {"name": "legs_n", "tags": ["closed_part"], "z": 0.5, "kind": "flat", "material": "wood", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [98, 156], "size": [8, 94], "rot": 12},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [122, 156], "size": [8, 94], "rot": -12}
+     ]},
+    {"name": "bar_n", "tags": ["closed_part"], "z": 0.6, "kind": "block", "material": "wood", "extrude": 12,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [110, 89], "size": [72, 18]}]},
+    {"name": "plank", "tags": ["closed_part"], "z": 2, "kind": "block", "material": "wood", "extrude": 28,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [110, 191], "size": [34, 260]}]},
+    {"name": "plank_bands", "tags": ["closed_part"], "z": 2.5, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [110, 110], "size": [40, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [110, 191], "size": [40, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [110, 272], "size": [40, 8]}
+     ]},
+
+    {"name": "legs_n_open", "tags": ["open_part"], "hidden": true, "z": 1, "kind": "flat", "material": "wood", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [168, 396], "size": [8, 94], "rot": 12},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [192, 396], "size": [8, 94], "rot": -12}
+     ]},
+    {"name": "bar_n_open", "tags": ["open_part"], "hidden": true, "z": 1.5, "kind": "block", "material": "wood", "extrude": 12,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [180, 329], "size": [72, 18]}]},
+    {"name": "plank_up", "tags": ["open_part"], "hidden": true, "z": 0.8, "kind": "block", "material": "wood", "extrude": 269,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [62, 161], "size": [34, 20]}]},
+    {"name": "plank_up_bands", "tags": ["open_part"], "hidden": true, "z": 0.9, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [62, 214], "size": [38, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [62, 300], "size": [38, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [62, 386], "size": [38, 8]}
+     ]}
+  ]
+}

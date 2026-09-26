@@ -1,0 +1,67 @@
+{
+  "asset": "exit_r6_e14_under_rail_shunt",
+  "status": "candidate",
+  "note": "Exit object for route_e14_under_rail_shunt (R6 side, gate_g5_labor_pledge), wall-mounted in the rail arch of bg_r6_debt_hall. Pivot = arch floor-line centre (scene source (360,240)). Arch opening 2.2 m wide, 2.2 m high (110 px/m). closed: corrugated iron shutter down with a hasp, a buffer beam on the rails in front of the arch, switch lever upright. open: shutter rolled up into its box at the top, buffer removed, lever thrown. No text.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [560, 440],
+  "pivot": [280, 330],
+  "pivot_meaning": "wall attach reference: centre of the arch on the wall's floor line",
+  "seed": 633,
+  "frames": [
+    {"name": "closed"},
+    {"name": "open", "hide": ["closed"], "show": ["open"]}
+  ],
+  "forms": [
+    {"name": "shutter", "tags": ["closed"], "z": 0, "material": "iron",
+     "shade": {"max_radius": 14, "bump": 0.5, "highlight_amount": 0.3},
+     "line": {"width": 1.1, "heavy": 1.3},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [280, 250], "size": [392, 160]},
+       {"icon": "circle", "at": [280, 172], "size": [392, 156]}
+     ]},
+    {"name": "corrugation", "tags": ["closed"], "z": 0.5, "kind": "flat", "material": "tile_joint", "opacity": 0.55, "clip_to": "shutter",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [280, 0], "size": [400, 2], "repeat": {"line": [[280, 108], [280, 320]], "count": 19}}]},
+    {"name": "shutter_rust", "tags": ["closed"], "z": 0.6, "kind": "wash", "material": "rust", "blend": "multiply", "opacity": 0.5, "clip_to": "shutter",
+     "mottle": {"cell": 30, "lo": 0.5, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [280, 230], "size": [400, 240]}]},
+    {"name": "bottom_bar", "tags": ["closed"], "z": 0.8, "kind": "flat", "material": "bronze_block", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [280, 324], "size": [390, 10]}]},
+    {"name": "hasp", "tags": ["closed"], "z": 0.9, "material": "bronze", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [280, 312], "size": [18, 22]},
+       {"icon": "lock", "at": [280, 336], "size": [16, 18]}
+     ]},
+    {"name": "buffer_shadow", "tags": ["closed"], "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 6,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [284, 362], "size": [280, 26]}]},
+    {"name": "buffer", "tags": ["closed"], "z": 1, "kind": "block", "material": "iron", "extrude": 50,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [280, 300], "size": [260, 20]}]},
+    {"name": "buffer_pads", "tags": ["closed"], "z": 1.2, "material": "bronze", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "circle", "at": [200, 336], "size": [30, 24]},
+       {"icon": "circle", "at": [360, 336], "size": [30, 24]}
+     ]},
+    {"name": "buffer_stripe", "tags": ["closed"], "z": 1.3, "kind": "flat", "color": "rust", "opacity": 0.6, "clip_to": "buffer",
+     "pieces": [{"icon": "square", "at": [280, 322], "size": [262, 6]}]},
+
+    {"name": "lever_base", "z": 2, "kind": "block", "material": "iron", "extrude": 16,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [508, 344], "size": [30, 20]}]},
+    {"name": "lever_up", "tags": ["closed"], "z": 2.2, "material": "iron", "line": {"width": 0.8, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [508, 304], "size": [7, 66]},
+       {"icon": "circle", "at": [508, 270], "size": [13, 13]}
+     ]},
+    {"name": "lever_thrown", "tags": ["open"], "hidden": true, "z": 2.2, "material": "iron", "line": {"width": 0.8, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [530, 314], "size": [7, 66], "rot": 52},
+       {"icon": "circle", "at": [552, 296], "size": [13, 13]}
+     ]},
+
+    {"name": "roll_box", "tags": ["open"], "hidden": true, "z": 0, "kind": "block", "material": "iron", "extrude": 26,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [280, 104], "size": [380, 22]}]},
+    {"name": "roll_box_band", "tags": ["open"], "hidden": true, "z": 0.2, "kind": "flat", "material": "bronze_block", "opacity": 0.9, "clip_to": "roll_box",
+     "pieces": [{"icon": "square", "at": [280, 128], "size": [382, 5]}]},
+    {"name": "slat_edge", "tags": ["open"], "hidden": true, "z": 0.3, "kind": "flat", "material": "bronze_block", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [280, 146], "size": [360, 7]}]}
+  ]
+}

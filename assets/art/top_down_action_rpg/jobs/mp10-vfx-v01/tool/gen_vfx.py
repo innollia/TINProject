@@ -24,9 +24,9 @@ JOB = Path(__file__).resolve().parents[1]
 RECIPES = JOB / "recipes"
 PALETTE = "palette_mp10.json"
 
-# circle.svg paints ~0.4..15.6 of the 16-unit box; with fit "box" a size of
-# 2r*K gives a disc of radius r.
-K_CIRCLE = 16.0 / 15.2
+# circle.svg paints 1..15 of the 16-unit box (measured: span 14 units); with
+# fit "box" a size of 2r*K gives a disc of radius r.
+K_CIRCLE = 16.0 / 14.0
 
 # ----------------------------------------------------------------- palette
 FX_COLORS = {
@@ -698,6 +698,7 @@ def corruption_asset(mode: str, canvas, note: str, seed: int, frames_fn) -> Asse
     A = Asset(f"art_effect_document_corruption_{mode}", canvas, pivot,
               "left end of the token span on the text line centre" if canvas[0] > canvas[1] else "glyph centre",
               note, seed=seed,
+              style_override={"silhouette": {"opacity": 0.0}},
               meta=meta(canvas, 3, static=f"{mode}_3", art_key="art_effect_document_corruption",
                         corruption_mode=mode, line_height_source_px=64,
                         **({"slice": {"left": 32, "right": 32}} if canvas[0] > canvas[1] else {})))
@@ -797,14 +798,15 @@ def art_effect_portal_void_cut() -> Asset:
     top, bottom = 96.0, 346.0
     cy, H = (top + bottom) / 2, bottom - top
     flecks = [(-34, 150), (30, 200), (-28, 250), (38, 120), (-40, 300), (26, 280)]
-    plan = [(0, 0, 1.0, 0.0), (14, 24, 0.6, 0.0), (28, 42, 0.3, 0.6), (34, 48, 0.0, 1.0), (31, 45, 0.0, 1.0)]
+    plan = [(0, 0, 1.0, 0.0), (14, 30, 0.6, 0.0), (28, 50, 0.3, 0.6), (34, 56, 0.0, 1.0), (31, 53, 0.0, 1.0)]
     for i, (w, rim, line_op, fl) in enumerate(plan, 1):
         t = f"cut_{i}"
         A.form(t, "contact", [disc((192, 350), 22 + w * 0.6, squash=0.3)], "fx_void", kind="shadow", z=0,
                color="shadow_contact", opacity=0.45, blur=3)
         if rim:
-            A.form(t, "rim", [piece("diamond", (192, cy), [rim, H + 10])], "fx_void_rim", z=1, emit=0.35,
-                   rough={"amp": 0.55, "soft": 1.5, "cell": 8}, glow=glow(4, 0.35, "#8a78a0"))
+            A.form(t, "rim", [piece("diamond", (192, cy), [rim, H + 12])], "fx_void_rim", z=1, emit=0.6,
+                   rough={"amp": 0.55, "soft": 1.5, "cell": 8}, glow=glow(6, 0.5, "#a08cc0"),
+                   line={"width": 1.0, "heavy": 0.8, "color": "#8a78a0"})
             A.form(t, "void", [piece("diamond", (192, cy), [w, H - 6])], "fx_void", z=2,
                    rough={"amp": 0.35, "soft": 1.0, "cell": 8})
         if line_op:
@@ -817,7 +819,7 @@ def art_effect_portal_void_cut() -> Asset:
             pcs = []
             for k, (dx, y) in enumerate(flecks):
                 drift = (i - 3) * 8
-                pcs.append(piece("triangle", (192 + dx * (1 + 0.15 * (i - 3)), y - drift - k * 2), [8, 10],
+                pcs.append(piece("triangle", (192 + dx * (1 + 0.15 * (i - 3)), y - drift - k * 2), [11, 13],
                                  rot=k * 50 + i * 25))
             A.form(t, "flecks", pcs, "fx_bone", z=3, opacity=fl * 0.85)
         A.frame(t)
@@ -894,18 +896,16 @@ def st_concentration_load() -> Asset:
         for i, (dy, hot) in enumerate(((0, 0.6), (3, 0.8), (6, 1.0), (3, 0.8)), 1):
             t = f"stack{s}_{i}"
             for k in range(s):
-                y = 74 - 13 * k + dy
-                A.form(t, f"ring{k}", arc((192, y), 46 - 4 * k, 7 + (1 if i == 3 else 0), 0, 360, squash=0.3),
+                y = 80 - 12 * k + dy
+                R = 58 - 5 * k
+                A.form(t, f"ring{k}", arc((192, y), R, 8 + (1 if i == 3 else 0), 0, 360, squash=0.3),
                        "fx_amber", z=2 + k, emit=0.35, glow=glow(3, 0.35, "ember_glow"))
-                beads = [polar((192, y), 46 - 4 * k, a) for a in (40, 90, 140)]
-                beads = [(bx, by - (46 - 4 * k) * (1 - 0.3) * math.sin(math.radians(a)) * 0.0)
-                         for (bx, by), a in zip(beads, (40, 90, 140))]
-                A.form(t, f"beads{k}", [disc((192 + (46 - 4 * k) * math.cos(math.radians(a)),
-                                              y + (46 - 4 * k) * 0.3 * math.sin(math.radians(a))), 5)
-                                        for a in (40, 90, 140)], "fx_amber_hot", z=2.5 + k, opacity=hot, emit=hot,
+                A.form(t, f"beads{k}", [disc((192 + (R - 4) * math.cos(math.radians(a)),
+                                              y + (R - 4) * 0.3 * math.sin(math.radians(a))), 5.5)
+                                        for a in (35, 90, 145)], "fx_amber_hot", z=2.5 + k, opacity=hot, emit=hot,
                        glow=glow(3, 0.5, "ember_glow"))
-            A.form(t, "press", chevron((192, 100 + dy), 16, -10, 4) + chevron((172, 104 + dy), 10, -7, 3)
-                   + chevron((212, 104 + dy), 10, -7, 3), "fx_amber", z=1, opacity=0.7)
+            A.form(t, "press", chevron((192, 106 + dy), 18, -11, 5) + chevron((166, 110 + dy), 11, -8, 4)
+                   + chevron((218, 110 + dy), 11, -8, 4), "fx_amber", z=1, opacity=0.75)
             A.frame(t)
     return A
 
@@ -922,7 +922,7 @@ def st_overflowed() -> Asset:
         for k, (x, y) in enumerate(vents):
             f = frac(i / 4.0 + k * 0.37)
             wy = y - 12 - 34 * f
-            wisps.append((piece("droplet", (x + (6 if k % 2 else -6) * f, wy), [12 - 5 * f, 24 - 6 * f]), 1.0 - 0.8 * f))
+            wisps.append((piece("droplet", (x + (6 if k % 2 else -6) * f, wy), [17 - 7 * f, 34 - 9 * f]), 1.0 - 0.8 * f))
         for k, (p, op) in enumerate(wisps):
             A.form(t, f"wisp{k}", [p], "fx_amber_hot", z=3, opacity=op, emit=0.9 * op, glow=glow(4, 0.5, "ember_glow"))
         A.form(t, "rim", arc((192, 84), 58, 6, 190, 350, squash=0.32) + arc((192, 84), 58, 4, 10, 170, squash=0.32),
@@ -930,7 +930,7 @@ def st_overflowed() -> Asset:
         drips = []
         for k, x in enumerate((146, 176, 214, 240)):
             f = frac(i / 4.0 + k * 0.29)
-            drips.append(piece("droplet", (x, 96 + 30 * f), [7, 11]))
+            drips.append(piece("droplet", (x, 96 + 30 * f), [10, 15]))
         A.form(t, "drips", drips, "fx_amber", z=2, emit=0.4)
         A.frame(t)
     return A
@@ -946,8 +946,8 @@ def st_medium_residue() -> Asset:
         for i in range(4):
             t = f"stack{s}_{i + 1}"
             wob = (1.0, 1.03, 1.0, 0.97)[i]
-            A.form(t, "pool", [piece("metaballs", (192, 316), [170 * wob, 44], ground=True),
-                               piece("sponge", (150, 322), [60, 24], ground=True)], "fx_sludge", kind="mass", z=1,
+            A.form(t, "pool", [piece("metaballs", (192, 314), [206 * wob, 54], ground=True),
+                               piece("sponge", (146, 322), [72, 28], ground=True)], "fx_sludge", kind="mass", z=1,
                    shade={"bump": 0.5, "highlight_amount": 0.4}, line={"width": 0.9, "heavy": 0.8, "color": "#9a6c3a"})
             A.form(t, "fibres", [bar((170 + 22 * k, 314 + (k % 2) * 6), 26, 2, -20 + 25 * k) for k in range(3)],
                    "fx_bone", z=2, opacity=0.55)
@@ -983,7 +983,7 @@ def st_misfolded() -> Asset:
                      "st_misfolded (single, tint record_grey; 12_MAGIC_THEORY 3.2 failed rigid fold). Folded paper "
                      "facets hang at wrong angles around the body and wobble; each shows a light face, a shadow "
                      "face and the crease.", 3004, 1)
-    spots = [((120, 110), 44, 20), ((266, 124), 40, -35), ((104, 214), 38, 70), ((282, 236), 42, -110)]
+    spots = [((124, 112), 58, 20), ((262, 126), 52, -35), ((108, 214), 50, 70), ((276, 236), 56, -110)]
     for i in range(4):
         t = f"loop_{i + 1}"
         for k, (c, size, rot) in enumerate(spots):
@@ -1027,11 +1027,11 @@ def st_contract_bound() -> Asset:
 
 def ledger_slip(c, tick: float) -> tuple:
     x, y = c
-    slip = [piece("square", c, [64, 16], slice={"border": 4, "corner": 3})]
-    rule = [bar((x + 6, y), 34, 2, 0.0)]
+    slip = [piece("square", c, [80, 20], slice={"border": 4, "corner": 3})]
+    rule = [bar((x + 8, y), 44, 2.5, 0.0)]
     ticks = []
     if tick > 0:
-        ticks = [piece("checkmark", (x - 22, y - 1), [12 * tick + 2, 10 * tick + 2])]
+        ticks = [piece("checkmark", (x - 27, y - 1), [15 * tick + 2, 12 * tick + 2])]
     return slip, rule, ticks
 
 
@@ -1042,9 +1042,9 @@ def st_recorded() -> Asset:
     for s in range(1, 4):
         for i, (bob, tick) in enumerate(((0, 0.0), (-2, 0.5), (-3, 1.0), (-1, 1.0)), 1):
             t = f"stack{s}_{i}"
-            A.form(t, "tag", polyline([(272, 170), (298, 150 + bob)], 2), "fx_grey", z=1, opacity=0.6)
+            A.form(t, "tag", polyline([(272, 172), (296, 152 + bob)], 2.5), "fx_grey", z=1, opacity=0.7)
             for k in range(s):
-                c = (318, 150 + 30 * k + bob * (1 + 0.3 * k))
+                c = (310, 150 + 34 * k + bob * (1 + 0.3 * k))
                 slip, rule, ticks = ledger_slip(c, tick if k == s - 1 else 1.0)
                 A.form(t, f"slip{k}", slip, "fx_paper", kind="mass", z=2 + k * 0.1,
                        shade={"bump": 0.2, "highlight_amount": 0.25})

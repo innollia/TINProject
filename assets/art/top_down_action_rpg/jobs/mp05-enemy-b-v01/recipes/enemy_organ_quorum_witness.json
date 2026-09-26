@@ -22,7 +22,10 @@
      "pieces": [{"icon": "bell", "crop": [2, 3.4, 14, 11.8], "fit": [2, 3.4, 14, 11.8], "at": [188, 262], "size": [52, 114]}]},
 
     {"name": "robe", "tags": ["merged"], "z": 2, "material": "clinic_cloth",
-     "pieces": [{"icon": "bell", "crop": [2, 3.4, 14, 11.8], "fit": [2, 3.4, 14, 11.8], "at": [160, 250], "size": [166, 138]}]},
+     "pieces": [
+       {"icon": "bell", "crop": [2, 3.0, 14, 12.6], "fit": [2, 3.0, 14, 12.6], "at": [160, 252], "size": [178, 140]},
+       {"icon": "cloud", "at": [160, 314], "size": [184, 16]}
+     ]},
     {"name": "robe_folds", "tags": ["merged"], "z": 2.1, "kind": "flat", "material": "coat_seam", "opacity": 0.6, "clip_to": "robe",
      "pieces": [
        {"icon": "square", "at": [128, 272], "size": [1.8, 70], "rot": 8},
@@ -139,10 +142,11 @@
     {"name": "w4_hand_up", "tags": ["w", "w4", "hands_up"], "hidden": true, "z": 4.1, "material": "surrogate",
      "pieces": [{"icon": "circle", "at": [213, 184], "size": [10, 11]}]},
 
-    {"name": "empty_cowl", "tags": ["lapsed"], "hidden": true, "z": 1.3, "material": "coat_dark",
+    {"name": "empty_cowl", "tags": ["lapsed"], "hidden": true, "z": 2.3, "material": "coat_dark",
+     "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
      "pieces": [
-       {"icon": "cloud", "at": [192, 306], "size": [52, 22]},
-       {"icon": "circle", "at": [204, 296], "size": [26, 16], "rot": -12}
+       {"icon": "cloud", "at": [190, 200], "size": [44, 20], "rot": 8},
+       {"icon": "circle", "at": [200, 192], "size": [22, 14], "rot": -12}
      ]},
 
     {"name": "slips", "tags": ["recorded"], "hidden": true, "z": 4.5, "material": "paper", "shade": {"bump": 0.4},
@@ -172,10 +176,10 @@
     {"name": "break",
      "hide": ["merged", "tubes", "hands_front"],
      "show": ["recorded"],
-     "move": {"w1": {"dx": -26, "rot": -16, "dy": 16, "pivot": [118, 318]},
-              "w2": {"dx": 30, "rot": 18, "dy": 20, "pivot": [201, 318]},
-              "w3": {"dx": -30, "rot": -8, "dy": 8, "pivot": [133, 318]},
-              "w4": {"dx": 30, "rot": 26, "dy": 10, "pivot": [188, 318]},
+     "move": {"w1": {"dx": -16, "rot": -12, "dy": 12, "pivot": [118, 318]},
+              "w2": {"dx": 12, "rot": 12, "dy": 16, "pivot": [201, 318]},
+              "w3": {"dx": -20, "rot": -7, "dy": 6, "pivot": [133, 318]},
+              "w4": {"dx": 16, "rot": 17, "dy": 8, "pivot": [188, 318]},
               "organ": {"dy": 62, "sy": 0.82, "pivot": [160, 250]}}},
     {"name": "phase1_quorum_lapsed",
      "hide": ["w4"],

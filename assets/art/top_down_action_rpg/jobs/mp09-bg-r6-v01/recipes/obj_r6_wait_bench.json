@@ -1,0 +1,36 @@
+{
+  "asset": "obj_r6_wait_bench",
+  "status": "candidate",
+  "note": "R6 region object: Debt Hall waiting bench. 1.8 m long, 0.45 m deep seat at 0.45 m, backrest to 0.9 m (110 px/m), court wood on iron legs. Atmosphere object.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [452, 300],
+  "pivot": [226, 244],
+  "pivot_meaning": "front-bottom centre of the bench on the floor",
+  "seed": 643,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.32, "blur": 7,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 16}, "at": [232, 234], "size": [340, 40]}]},
+    {"name": "back_posts", "z": 0, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "at": [110, 118], "size": [6, 44]},
+       {"icon": "square", "at": [342, 118], "size": [6, 44]}
+     ]},
+    {"name": "backrest", "z": 0.5, "kind": "block", "material": "court_wood", "extrude": 45,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [226, 71], "size": [324, 8]}]},
+    {"name": "legs", "z": 1, "kind": "block", "material": "iron", "extrude": 50,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [96, 190], "size": [10, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [356, 190], "size": [10, 8]}
+     ]},
+    {"name": "seat", "z": 2, "kind": "block", "material": "court_wood", "extrude": 10,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [226, 150], "size": [324, 70]}]},
+    {"name": "seat_planks", "z": 2.2, "kind": "flat", "material": "tile_joint", "opacity": 0.55, "clip_to": "seat",
+     "pieces": [{"icon": "square", "at": [226, 0], "size": [324, 2], "repeat": {"line": [[226, 138], [226, 162]], "count": 2}}]},
+    {"name": "seat_wear", "z": 2.3, "kind": "wash", "material": "worn", "opacity": 0.2, "clip_to": "seat",
+     "pieces": [
+       {"icon": "circle", "at": [150, 150], "size": [70, 50]},
+       {"icon": "circle", "at": [300, 152], "size": [60, 46]}
+     ]}
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "asset": "exit_r2_e02_sluice_road",
+  "status": "candidate",
+  "note": "Exit object for route_e02_sluice_road (R2 -> H0, gate G0 + a held seed case), author design. A counterweighted boom across the Sluice Road dike between two timber posts; a sluice winch wheel on the east post. closed: boom down across the road at 1.1 m. open: boom raised about the west post. No text.",
+  "palette": "palette_r2.json",
+  "style": "prop",
+  "canvas": [560, 560],
+  "pivot": [280, 480],
+  "pivot_meaning": "centre of the road threshold between the two posts (area A source px 1280,1300)",
+  "seed": 331,
+  "frames": [
+    {"name": "exit_r2_e02_sluice_road_closed", "show": ["closed"]},
+    {"name": "exit_r2_e02_sluice_road_open", "move": {"boom": {"rot": -55, "pivot": [90, 355]}}}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 6,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [96, 482], "size": [60, 20]},
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [476, 482], "size": [60, 20]}
+     ]},
+    {"name": "boom_shadow", "tags": ["closed"], "hidden": true, "kind": "shadow", "color": "shadow_contact", "opacity": 0.28, "blur": 8,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [292, 474], "size": [380, 14]}]},
+
+    {"name": "posts", "z": 0, "kind": "block", "material": "wood", "extrude": 140,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [90, 330], "size": [34, 20]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [470, 330], "size": [34, 20]}
+     ]},
+    {"name": "post_bands", "z": 0.5, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6}, "clip_to": "posts",
+     "pieces": [
+       {"icon": "square", "at": [90, 372], "size": [40, 6]},
+       {"icon": "square", "at": [470, 372], "size": [40, 6]},
+       {"icon": "square", "at": [90, 452], "size": [40, 6]},
+       {"icon": "square", "at": [470, 452], "size": [40, 6]}
+     ]},
+    {"name": "post_caps", "z": 1, "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [90, 322], "size": [38, 8]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [470, 322], "size": [38, 8]}
+     ]},
+    {"name": "rest_fork", "z": 1.1, "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "at": [458, 352], "size": [4, 18]},
+       {"icon": "square", "at": [482, 352], "size": [4, 18]}
+     ]},
+    {"name": "winch", "z": 1.2, "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "wheel", "at": [470, 408], "size": [44, 44]}]},
+    {"name": "winch_hub", "z": 1.3, "kind": "flat", "material": "bronze", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [{"icon": "circle", "at": [470, 408], "size": [12, 12]}]},
+
+    {"name": "boom", "tags": ["boom"], "z": 2, "material": "wood",
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.4, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [276, 355], "size": [372, 16]}]},
+    {"name": "boom_bands", "tags": ["boom"], "z": 2.1, "kind": "flat", "material": "iron", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "at": [160, 355], "size": [6, 18]},
+       {"icon": "square", "at": [250, 355], "size": [6, 18]},
+       {"icon": "square", "at": [340, 355], "size": [6, 18]},
+       {"icon": "square", "at": [430, 355], "size": [6, 18]}
+     ]},
+    {"name": "boom_weight", "tags": ["boom"], "z": 2.2, "material": "stone_dark",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [66, 356], "size": [36, 28]}]},
+    {"name": "boom_hinge", "z": 2.3, "kind": "flat", "material": "bronze", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [{"icon": "circle", "at": [90, 355], "size": [11, 11]}]}
+  ]
+}

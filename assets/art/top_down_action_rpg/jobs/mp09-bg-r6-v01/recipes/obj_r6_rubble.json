@@ -1,0 +1,34 @@
+{
+  "asset": "obj_r6_rubble",
+  "status": "candidate",
+  "note": "R6 region object: small heap of broken glazed tiles and stone chunks with dust. Atmosphere object.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [260, 200],
+  "pivot": [130, 150],
+  "pivot_meaning": "centre of the heap's footprint on the floor",
+  "seed": 648,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 6,
+     "pieces": [{"icon": "circle", "at": [134, 146], "size": [150, 46]}]},
+    {"name": "dust", "z": 0, "kind": "wash", "color": "ash_dust", "opacity": 0.3, "blur": 6,
+     "pieces": [{"icon": "cloud", "at": [130, 146], "size": [180, 60]}]},
+    {"name": "stones", "z": 1, "material": "rubble",
+     "shade": {"max_radius": 8, "bump": 1.1},
+     "line": {"width": 1.3, "heavy": 1.7, "breaks": 0.3},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.55, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "rocks", "crop": [2, 2, 12, 12.5], "at": [112, 130], "size": [72, 52], "rot": 10},
+       {"icon": "rocks", "crop": [8.5, 8.5, 14.5, 14.8], "at": [168, 142], "size": [36, 28], "rot": -20},
+       {"icon": "rocks", "crop": [2, 2, 12, 12.5], "at": [82, 146], "size": [40, 30], "rot": 70}
+     ]},
+    {"name": "tile_shards", "z": 1.5, "material": "tile",
+     "shade": {"max_radius": 5, "bump": 0.8},
+     "line": {"width": 1.1, "heavy": 1.4},
+     "pieces": [
+       {"icon": "triangle", "ground": true, "at": [150, 118], "size": [34, 26], "rot": 24},
+       {"icon": "square", "keep": [[0, 16, 16, 0]], "ground": true, "at": [192, 152], "size": [30, 26], "rot": -12},
+       {"icon": "triangle", "ground": true, "at": [70, 160], "size": [26, 20], "rot": 200}
+     ]}
+  ]
+}

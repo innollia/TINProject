@@ -1,0 +1,47 @@
+{
+  "asset": "obj_r6_drain_cover",
+  "status": "candidate",
+  "note": "R6 region object: iron drain covers, floor layer. Frame round: 1.5 m cover for the Gristmarket Ring drain hole. Frame square: 0.6 m tile-floor drain. Dark void under the bars so the cover also works on plain floor. Atmosphere object.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [400, 360],
+  "pivot": [200, 180],
+  "pivot_meaning": "centre of the cover on the floor (floor layer)",
+  "seed": 645,
+  "frames": [
+    {"name": "round"},
+    {"name": "square", "hide": ["round"], "show": ["square"]}
+  ],
+  "forms": [
+    {"name": "round_void", "tags": ["round"], "z": 0, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "at": [200, 180], "size": [240, 208]}]},
+    {"name": "round_bars", "tags": ["round"], "z": 1, "material": "iron",
+     "shade": {"max_radius": 4, "bump": 1.0, "highlight_amount": 0.4},
+     "line": {"width": 0.8, "heavy": 1.0},
+     "clip_to": "round_void",
+     "grime": {"stamps": ["metaballs", "sponge"], "size": 16, "soft": 1.5, "density": 0.5, "strength": 0.45, "color": "rust"},
+     "pieces": [{"icon": "grid_fine", "ground": true, "at": [200, 180], "size": [250, 250]}]},
+    {"name": "round_rim", "tags": ["round"], "z": 2, "kind": "block", "material": "iron", "extrude": 6,
+     "grime": {"stamps": ["metaballs", "sponge"], "size": 16, "soft": 1.5, "density": 0.4, "strength": 0.4, "color": "rust"},
+     "pieces": [
+       {"icon": "circle", "at": [200, 177], "size": [272, 236]},
+       {"icon": "circle", "op": "sub", "at": [200, 177], "size": [236, 204]}
+     ]},
+    {"name": "round_bolts", "tags": ["round"], "z": 2.5, "kind": "flat", "material": "bronze",
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [8, 7], "repeat": {"ellipse": [200, 177, 127, 110], "count": 8, "phase": 22.5}}]},
+
+    {"name": "square_void", "tags": ["square"], "hidden": true, "z": 0, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [200, 180], "size": [96, 82]}]},
+    {"name": "square_bars", "tags": ["square"], "hidden": true, "z": 1, "material": "iron",
+     "shade": {"max_radius": 4, "bump": 1.0, "highlight_amount": 0.4},
+     "line": {"width": 0.8, "heavy": 1.0},
+     "clip_to": "square_void",
+     "grime": {"stamps": ["metaballs", "sponge"], "size": 14, "soft": 1.5, "density": 0.5, "strength": 0.45, "color": "rust"},
+     "pieces": [{"icon": "grid_fine", "ground": true, "at": [200, 180], "size": [108, 108]}]},
+    {"name": "square_rim", "tags": ["square"], "hidden": true, "z": 2, "kind": "block", "material": "iron", "extrude": 5,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [200, 178], "size": [112, 96]},
+       {"icon": "square", "op": "sub", "fit": [1, 1, 15, 15], "at": [200, 178], "size": [96, 82]}
+     ]}
+  ]
+}

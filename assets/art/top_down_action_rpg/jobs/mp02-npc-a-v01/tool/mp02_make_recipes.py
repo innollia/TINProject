@@ -309,12 +309,16 @@ def head_base(pal, skin, outline, neck, ear, plane, z=7.0):
     ]
 
 
-PORTRAIT_GRIME = {"size": 26, "soft": 3.0, "density": 0.1, "strength": 0.16}
+PORTRAIT_GRIME = {"size": 26, "soft": 3.0, "density": 0.08, "strength": 0.1}
 
 
 def cloth(name, z, pieces, material, **kw):
-    """Portrait cloth: fewer, larger and weaker stains than the sprite-size material default."""
+    """Portrait cloth: fewer, larger and weaker stains than the sprite-size material default,
+    and a calmer light/shadow edge (``ragged`` 0.2 -> 0.07) so big folds do not read as camouflage."""
     kw.setdefault("grime", dict(PORTRAIT_GRIME))
+    shade = {"ragged": 0.07}
+    shade.update(kw.pop("shade", {}))
+    kw["shade"] = shade
     return form(name, z, pieces, material=material, **kw)
 
 
@@ -805,6 +809,290 @@ def nera(pal):
 
 
 PORTRAITS = [ilyra, orrin, veya, sable, nera]
+
+
+def tamas(pal):
+    skin = "skin_tan"
+    base, shadow, light, line = skin_colors(pal, skin)
+    hair = "hair_chestnut"
+    hm = pal["materials"][hair]
+    outline = [(160, 58), (196, 62), (210, 94), (212, 122), (207, 150), (197, 176), (183, 196), (163, 193),
+               (140, 180), (124, 156), (116, 124), (116, 88), (132, 64)]
+    plane = ([(176, 98), (173, 120), (187, 152), (179, 161), (186, 173), (190, 198)],
+             [(240, 206), (245, 70), (182, 70)])
+    forms = [
+        form("hair_skull", 0.0, [C((148, 98), (136, 114))], material=hair),
+        # brick coat with lapels, cream cravat, leather strap of the scroll case across the chest
+        cloth("coat", 4.0, [smooth([(130, 228), (176, 234), (214, 230), (256, 244), (294, 264), (310, BOTTOM),
+                                    (10, BOTTOM), (22, 276), (70, 246)], 6)], "cloth_brick"),
+        cloth("lapel_near", 5.0, [P([(132, 224), (170, 244), (162, 302), (122, 256)])], "cloth_brick",
+              shade={"highlight_amount": 0.6}),
+        cloth("lapel_far", 5.0, [P([(210, 226), (190, 246), (206, 300), (232, 256)])], "cloth_brick",
+              shade={"threshold": 0.62}),
+        cloth("cravat", 5.2, [smooth([(150, 220), (180, 230), (204, 222), (198, 252), (180, 270), (162, 252)])],
+              "cloth_cream"),
+        cloth("cravat_knot", 5.3, [C((179, 238), (18, 15))], "cloth_cream", shade={"highlight_amount": 0.6}),
+        form("case_strap", 5.6, [lock([(246, 236), (212, 262), (170, 296), (116, BOTTOM)], 9, 9, 9)],
+             material="leather"),
+        form("strap_buckle", 5.7, [I("square", (190, 280), (12, 10), rot=-38)], material="bronze"),
+    ]
+    forms += head_base(pal, skin, outline, [(148, 166), (192, 172), (196, 236), (144, 238)], (120, 141, 15, 27, 6),
+                       plane)
+    forms += socket_shadows(shadow, (146, 129), (194, 127))
+    forms += nose((173, 116), (187, 152), line, light)
+    forms += mouth((169, 174), (179, 174), (190, 172), line, light, shadow)
+    forms += eye("eye_n", (146, 129), 22, 10.5, 3, 0.15, "#5a4a2e", -1, line)
+    forms += eye("eye_f", (194, 127), 16, 10, -3, 0.15, "#5a4a2e", 1, line)
+    # worried brows: inner ends raised
+    forms += brows([(159, 106), (146, 106), (132, 112)], [(183, 105), (193, 106), (204, 111)], hm["shadow"],
+                   width=(2.8, 2.2, 0.6))
+    forms += [
+        form("hair_top", 13.0, [smooth([(214, 100), (208, 74), (190, 56), (162, 48), (132, 52), (108, 66), (94, 90),
+                                        (90, 118), (98, 136), (110, 126), (116, 104), (130, 92), (150, 88),
+                                        (170, 86), (192, 90), (208, 100)], 6)], material=hair,
+             shade={"highlight_amount": 0.35}),
+        form("fringe_locks", 13.2, [lock([(170, 62), (160, 84), (151, 106)], 6, 12, 2),
+                                    lock([(191, 68), (187, 88), (181, 105)], 5, 10, 2),
+                                    lock([(150, 62), (135, 84), (126, 106)], 5, 11, 2),
+                                    lock([(207, 80), (207, 95), (201, 107)], 4, 8, 1.5)], material=hair,
+             shade={"highlight_amount": 0.55}),
+        form("tufts", 13.1, [lock([(118, 72), (150, 52), (192, 58)], 6, 10, 3),
+                             lock([(160, 54), (176, 45), (192, 48)], 3, 6, 1.5)], material=hair,
+             shade={"highlight_amount": 0.6}),
+        # bronze translation earpiece on the near (right) ear with a wire into the hair
+        form("earpiece", 13.8, [C((118, 146), (11, 13)), I("square", (118, 156), (5, 8))], material="bronze"),
+        marks("earpiece_wire", 13.75, [((118, 140), (122, 118), (130, 104), 1.4, 1.4, 1.0)], "#74603f", 1.0),
+        # quill tucked behind the ear
+        form("quill", 13.6, [I("feather", (104, 112), (18, 54), rot=-24)], material="paper"),
+        # round spectacles
+        form("glass_tint", 14.0, [C((146, 129), (30, 26)), C((194, 127), (21, 24))], kind="flat",
+             material="lens_glass", opacity=0.18),
+        form("glass_frames", 14.1, ring((146, 129), (34, 30), (29, 25)) + ring((194, 127), (25, 28), (20, 23)) +
+             [stroke((163, 126), (171, 122), (181, 125), 1.8, 1.8, 1.8),
+              stroke((129, 128), (122, 130), (115, 135), 1.8, 1.6, 1.2)], kind="flat", color="#2a2228"),
+        form("glass_glint", 14.2, [stroke((136, 121), (140, 118), (146, 117), 0.4, 1.6, 0.4),
+                                   stroke((188, 119), (191, 117), (195, 117), 0.4, 1.2, 0.4)], kind="flat",
+             color="catchlight", opacity=0.7),
+    ]
+    note = ("Tamas Quill (npc_06), translation officer. Author design: slim face, gentle worried brows, round "
+            "spectacles, tousled chestnut hair, quill tucked behind the ear, small bronze translation earpiece on "
+            "the right ear (first hint of the neural translation implant), brick coat with a cream cravat and the "
+            "scroll-case strap. 3/4 bust facing screen right.")
+    return recipe("npc_06_tamas_quill", "portrait_tamas_quill", 106, note, forms)
+
+
+PORTRAITS = [ilyra, orrin, veya, sable, nera, tamas]
+
+
+def bryn(pal):
+    skin = "skin_tan"
+    base, shadow, light, line = skin_colors(pal, skin)
+    hair = "hair_darkbrown"
+    hm = pal["materials"][hair]
+    grey = pal["materials"]["hair_grey"]["light"]
+    outline = [(160, 58), (200, 62), (214, 94), (216, 122), (212, 150), (204, 176), (188, 198), (164, 198),
+               (138, 186), (122, 162), (114, 126), (116, 88), (132, 64)]
+    plane = ([(177, 98), (174, 120), (190, 155), (181, 163), (188, 176), (194, 202)],
+             [(248, 212), (248, 70), (182, 70)])
+    forms = [
+        # olive hood: back mass behind the head, cowl round the neck, front rim framing the face
+        cloth("hood_back", 0.0, [smooth([(80, 112), (94, 58), (138, 26), (196, 26), (236, 58), (250, 118),
+                                         (246, 190), (232, 236), (94, 236), (78, 182)])], "cloth_olive"),
+        cloth("cloak", 4.0, [smooth([(126, 226), (176, 236), (218, 230), (262, 244), (300, 266), (314, BOTTOM),
+                                     (6, BOTTOM), (18, 276), (66, 246)], 6)], "cloth_olive"),
+        cloth("cowl", 4.6, [smooth([(108, 196), (150, 224), (198, 230), (230, 204), (240, 240), (198, 264),
+                                    (148, 264), (100, 242)])], "cloth_olive", shade={"highlight_amount": 0.55}),
+        form("pack_strap_near", 5.5, [lock([(80, 250), (92, 292), (98, BOTTOM)], 12, 13, 13)], material="leather"),
+        form("pack_strap_far", 5.5, [lock([(250, 248), (262, 292), (266, BOTTOM)], 10, 11, 11)], material="leather"),
+        form("rope_coil", 5.7, ring((272, 262), (58, 34), (40, 20), rot=-12) + ring((262, 270), (50, 30), (34, 17),
+                                                                                    rot=-8),
+             material="cloth_sand", shade={"highlight_amount": 0.5}),
+        marks("rope_twist", 5.8, [((250, 252), (272, 246), (296, 256), 0.4, 1.4, 0.4),
+                                  ((244, 262), (262, 258), (284, 268), 0.4, 1.2, 0.4)], "#4a4030", 0.7),
+    ]
+    forms += head_base(pal, skin, outline, [(140, 170), (206, 176), (212, 240), (134, 242)], (116, 142, 16, 30, 6),
+                       plane)
+    forms += socket_shadows(shadow, (146, 129), (194, 127))
+    forms += nose((174, 116), (190, 155), line, light)
+    forms += eye("eye_n", (146, 129), 22, 9, 0, 0.2, "#505458", -1, line)
+    forms += eye("eye_f", (194, 127), 16, 8.5, 0, 0.2, "#505458", 1, line)
+    forms += brows([(160, 113), (146, 108), (130, 111)], [(183, 112), (194, 108), (206, 111)], hm["base"],
+                   width=(4.0, 3.4, 1.0))
+    forms += [
+        marks("weather_lines", 11.6, [((132, 131), (126, 128), (121, 124), 0.3, 1.1, 0.3),
+                                      ((133, 136), (127, 136), (122, 134), 0.3, 1.0, 0.3),
+                                      ((150, 140), (144, 144), (136, 142), 0.3, 1.1, 0.3),
+                                      ((178, 158), (170, 168), (168, 176), 0.4, 1.4, 0.4)], line, 0.45),
+        # full beard with grey streaks, moustache over the mouth
+        form("beard", 12.0, [smooth([(122, 158), (136, 170), (152, 174), (168, 168), (184, 168), (200, 170),
+                                     (212, 156), (214, 174), (206, 196), (190, 214), (166, 218), (142, 208),
+                                     (126, 186)])], material=hair, rough={"amp": 0.35, "soft": 1.0, "cell": 5},
+             shade={"highlight_amount": 0.4}),
+        form("moustache", 12.2, [lock([(160, 172), (170, 166), (182, 165), (194, 168), (202, 176)], 3, 8, 2)],
+             material=hair, shade={"highlight_amount": 0.5}),
+        form("mouth_gap", 12.25, [stroke((170, 180), (181, 181), (193, 179), 0.8, 2.2, 0.8)], kind="flat",
+             color="#241810", opacity=0.9),
+        form("beard_grey", 12.3, dashes((170, 196), 34, 14, 16, 8, 1.3, 71, flow=(0.0, 1.0)), kind="flat",
+             color=grey, opacity=0.6, clip_to="beard"),
+        form("beard_dark", 12.35, dashes((168, 192), 38, 16, 18, 8, 1.4, 72, flow=(0.0, 1.0)), kind="flat",
+             color=hm["shadow"], opacity=0.7, clip_to="beard"),
+        # lens device over his left (far) eye
+        form("lens_strap", 13.9, [lock([(207, 124), (214, 120), (222, 118)], 2.6, 2.6, 2.2)], material="leather"),
+        form("lens_glass", 14.0, [C((194, 127), (20, 18))], material="lens_glass", opacity=0.72),
+        form("lens_ring", 14.1, ring((194, 127), (27, 25), (20, 18)), material="iron"),
+        # hood rim framing the face (drawn over hair and ear)
+        cloth("hood_rim", 13.0, [smooth([(100, 196), (92, 130), (102, 76), (134, 42), (180, 36), (218, 54),
+                                         (236, 96), (240, 152), (232, 200), (216, 204), (218, 160), (214, 110),
+                                         (202, 82), (178, 68), (150, 68), (126, 80), (114, 106), (110, 150),
+                                         (114, 196)], 6)], "cloth_olive", shade={"highlight_amount": 0.5}),
+        wash("hood_shadow", 13.05, [smooth([(118, 104), (132, 80), (160, 70), (196, 76), (214, 96), (212, 112),
+                                            (190, 94), (160, 88), (132, 98), (122, 120)])], "#1a1c10", 0.55,
+             clip_to="face", blur=4.0),
+    ]
+    note = ("Bryn Oskel (npc_07), frontier guide. Author design: weathered face under an olive hood, full dark beard "
+            "with grey streaks, heavy brows, a small iron-rimmed lens over his left eye (first hint of the sensory "
+            "change), pack straps and a rope coil on the far shoulder. 3/4 bust facing screen right.")
+    return recipe("npc_07_bryn_oskel", "portrait_bryn_oskel", 107, note, forms)
+
+
+PORTRAITS = [ilyra, orrin, veya, sable, nera, tamas, bryn]
+
+
+def meral(pal):
+    skin = "skin_deep"
+    base, shadow, light, line = skin_colors(pal, skin)
+    hair = "hair_black"
+    hm = pal["materials"][hair]
+    grey = pal["materials"]["hair_grey"]["light"]
+    outline = [(160, 58), (198, 62), (213, 94), (216, 122), (213, 150), (206, 176), (190, 196), (166, 198),
+               (140, 186), (122, 162), (114, 126), (116, 88), (132, 64)]
+    plane = ([(177, 98), (174, 121), (188, 153), (180, 162), (188, 175), (193, 201)],
+             [(248, 210), (248, 70), (182, 70)])
+    forms = [
+        # headwrap knot and tails behind the head
+        cloth("wrap_knot", 0.5, [C((108, 54), (40, 32), rot=-20), C((92, 66), (24, 20))], "cloth_indigo",
+              shade={"highlight_amount": 0.55}),
+        cloth("wrap_tails", 0.4, [lock([(100, 66), (84, 96), (80, 140)], 12, 14, 5),
+                                  lock([(92, 70), (70, 100), (62, 128)], 9, 11, 4)], "cloth_indigo"),
+        form("hair_back", 0.2, [C((146, 104), (130, 110))], material=hair),
+        # indigo dress, sand shawl, cord with a water-glass drop
+        cloth("dress", 4.0, [smooth([(128, 228), (176, 234), (214, 232), (258, 246), (298, 266), (312, BOTTOM),
+                                     (8, BOTTOM), (20, 278), (68, 248)], 6)], "cloth_indigo"),
+        cloth("shawl", 4.6, [smooth([(112, 234), (150, 256), (174, 290), (196, 258), (222, 238), (266, 248),
+                                     (304, 272), (316, BOTTOM), (4, BOTTOM), (14, 282), (56, 250)], 6)], "cloth_sand"),
+        marks("shawl_folds", 4.8, [((58, 262), (72, 298), (66, 334), 0.6, 2.4, 1.0),
+                                   ((264, 262), (274, 296), (286, 334), 0.6, 2.2, 0.8),
+                                   ((132, 262), (150, 286), (160, 320), 0.5, 1.8, 0.8)], "#3e3526", 0.55),
+        marks("pendant_cord", 5.4, [((150, 226), (160, 250), (174, 268), 1.3, 1.3, 1.3),
+                                    ((204, 228), (192, 250), (178, 268), 1.3, 1.3, 1.3)], "#4f3b2f", 1.0),
+        form("pendant", 5.5, [I("droplet", (176, 280), (15, 22))], material="water_glass"),
+    ]
+    forms += head_base(pal, skin, outline, [(140, 170), (206, 176), (212, 240), (134, 242)], (115, 142, 16, 29, 6),
+                       plane)
+    forms += socket_shadows(shadow, (146, 129), (194, 127))
+    forms += nose((174, 117), (188, 153), line, light)
+    forms += [form("nose_wing", 9.05, [C((170, 156), (10, 8)), C((192, 154), (8, 7))], kind="flat", color=shadow,
+                   opacity=0.35, blur=1.0, clip_to="face")]
+    forms += mouth((167, 176), (180, 177), (193, 176), line, light, shadow)
+    forms += eye("eye_n", (146, 129), 23, 10, 0, 0.12, "#2e1f18", -1, line)
+    forms += eye("eye_f", (194, 127), 17, 9.5, 0, 0.12, "#2e1f18", 1, line)
+    forms += brows([(160, 112), (146, 110), (130, 111)], [(182, 111), (194, 109), (206, 111)], hm["base"],
+                   width=(3.4, 3.0, 0.8))
+    forms += [
+        marks("age_lines", 11.6, [((177, 158), (169, 170), (167, 182), 0.4, 1.4, 0.4),
+                                  ((150, 140), (144, 143), (137, 141), 0.3, 1.1, 0.3),
+                                  ((190, 138), (196, 141), (202, 139), 0.3, 1.0, 0.3)], line, 0.4),
+        # grey-streaked strands escaping the wrap at the near temple
+        form("temple_hair", 12.8, [lock([(118, 94), (111, 114), (116, 136)], 5, 7, 1.5)], material=hair),
+        marks("temple_grey", 12.9, [((120, 96), (113, 114), (117, 132), 0.3, 1.2, 0.3)], grey, 0.8),
+        # indigo headwrap covering the hair, folds running round the head
+        cloth("headwrap", 13.0, [smooth([(216, 104), (212, 78), (196, 58), (166, 46), (134, 48), (108, 62), (92, 86),
+                                         (88, 116), (98, 136), (108, 126), (112, 106), (124, 92), (146, 86),
+                                         (172, 83), (196, 88), (210, 100)], 6)], "cloth_indigo",
+              shade={"highlight_amount": 0.45}),
+        cloth("wrap_band", 13.2, [lock([(212, 96), (184, 80), (150, 78), (118, 90), (100, 112)], 6, 14, 8)],
+              "cloth_indigo", shade={"highlight_amount": 0.6}),
+        marks("wrap_folds", 13.3, [((200, 66), (168, 56), (130, 62), 0.4, 1.8, 0.4),
+                                   ((206, 82), (166, 68), (116, 76), 0.4, 1.6, 0.4),
+                                   ((150, 50), (128, 60), (104, 80), 0.4, 1.4, 0.4)], "#0e1224", 0.65),
+    ]
+    note = ("Meral Dune (npc_08), water and seed broker. Author design: strong jaw, straight brows and a firm "
+            "mouth, indigo headwrap with a knot at the back and grey-streaked hair escaping at the temple, sand "
+            "shawl over an indigo dress, a water-glass drop on a cord. 3/4 bust facing screen right.")
+    return recipe("npc_08_meral_dune", "portrait_meral_dune", 108, note, forms)
+
+
+PORTRAITS = [ilyra, orrin, veya, sable, nera, tamas, bryn, meral]
+
+
+def perrin(pal):
+    skin = "skin_warm"
+    base, shadow, light, line = skin_colors(pal, skin)
+    hair = "hair_white"
+    hm = pal["materials"][hair]
+    # balding: the face outline includes the bare crown
+    outline = [(162, 44), (198, 50), (214, 86), (217, 122), (214, 152), (206, 178), (188, 196), (164, 196),
+               (140, 186), (122, 164), (114, 128), (112, 84), (128, 54)]
+    plane = ([(206, 54), (192, 80), (177, 100), (174, 121), (189, 156), (181, 165), (187, 175), (193, 200)],
+             [(250, 210), (250, 36), (214, 36)])
+    forms = [
+        form("hair_back", 0.0, [smooth([(96, 96), (108, 72), (124, 68), (130, 100), (128, 142), (118, 162),
+                                        (100, 152), (92, 124)])], material=hair, shade={"highlight_amount": 0.45}),
+        # oat cardigan, sage scarf, bronze bell on a cord, wooden name tags
+        cloth("cardigan", 4.0, [smooth([(128, 222), (176, 230), (214, 226), (256, 240), (296, 262), (312, BOTTOM),
+                                        (8, BOTTOM), (20, 272), (66, 240)], 6)], "cloth_oat"),
+        marks("cardigan_edges", 4.3, [((160, 244), (164, 290), (160, 334), 1.2, 2.2, 2.2),
+                                      ((210, 240), (214, 290), (222, 334), 1.0, 2.0, 2.0)], "coat_seam", 0.7),
+        form("cardigan_buttons", 4.5, [C((166, 282), (8, 8)), C((166, 310), (8, 8))], material="wood"),
+        cloth("scarf", 5.0, [smooth([(128, 206), (170, 220), (212, 210), (222, 234), (172, 250), (120, 234)])],
+              "cloth_sage", shade={"highlight_amount": 0.5}),
+        cloth("scarf_tail", 5.1, [lock([(198, 232), (206, 272), (200, 312), (206, BOTTOM)], 16, 16, 12)],
+              "cloth_sage"),
+        marks("bell_cord", 5.4, [((150, 232), (158, 262), (166, 282), 1.4, 1.4, 1.4)], "#4f3b2f", 1.0),
+        form("bell", 5.5, [I("bell", (166, 294), (20, 22))], material="bronze"),
+        form("name_tags", 5.45, [I("tag", (244, 290), (16, 22), rot=-20), I("tag", (258, 300), (14, 20), rot=10)],
+             material="wood"),
+        marks("tag_strings", 5.4, [((236, 270), (240, 280), (242, 286), 1.0, 1.0, 1.0),
+                                   ((236, 270), (250, 284), (256, 294), 1.0, 1.0, 1.0)], "#4f3b2f", 0.9),
+    ]
+    forms += head_base(pal, skin, outline, [(144, 170), (200, 176), (206, 232), (140, 234)], (114, 142, 18, 32, 6),
+                       plane)
+    forms += [form("crown_light", 7.35, [C((150, 70), (40, 20), rot=-15)], kind="flat", color=light, opacity=0.35,
+                   blur=4.0, clip_to="face")]
+    forms += socket_shadows(shadow, (146, 129), (194, 127))
+    forms += nose((174, 118), (188, 156), line, light)
+    forms += [form("nose_round", 9.02, [C((184, 152), (16, 12))], kind="flat", color=light, opacity=0.25, blur=2.0,
+                   clip_to="face")]
+    forms += mouth((167, 174), (179, 178), (192, 172), line, light, shadow)
+    forms += eye("eye_n", (146, 129), 21, 9, 5, 0.3, "#52606a", -1, line)
+    forms += eye("eye_f", (194, 127), 15, 8.5, -5, 0.3, "#52606a", 1, line)
+    forms += brows([(159, 110), (146, 106), (130, 112)], [(183, 109), (193, 106), (205, 112)], hm["shadow"],
+                   width=(3.6, 3.0, 1.0))
+    forms += [
+        marks("wrinkles", 11.6, [((140, 92), (164, 88), (190, 92), 0.3, 1.2, 0.3),
+                                 ((146, 100), (166, 97), (186, 100), 0.3, 1.0, 0.3),
+                                 ((132, 132), (126, 129), (121, 125), 0.3, 1.1, 0.3),
+                                 ((133, 137), (127, 137), (122, 135), 0.3, 1.0, 0.3),
+                                 ((151, 139), (145, 145), (136, 143), 0.4, 1.3, 0.4),
+                                 ((190, 137), (196, 142), (203, 140), 0.3, 1.1, 0.3),
+                                 ((176, 160), (166, 172), (164, 184), 0.4, 1.5, 0.4),
+                                 ((196, 160), (200, 170), (198, 180), 0.3, 1.1, 0.3)], line, 0.45),
+        # wispy white hair round the sides, above the ear
+        form("hair_wisps", 13.0, [lock([(126, 72), (112, 86), (106, 110), (110, 130)], 4, 10, 2),
+                                  lock([(120, 80), (100, 96), (96, 120)], 3, 8, 1.5),
+                                  lock([(208, 72), (218, 90), (220, 112)], 3, 7, 1.5)], material=hair,
+             shade={"highlight_amount": 0.5}),
+        marks("wisp_strands", 13.1, [((114, 80), (104, 96), (100, 116), 0.3, 1.0, 0.3),
+                                     ((130, 64), (120, 70), (112, 80), 0.3, 0.9, 0.3)], hm["light"], 0.7),
+    ]
+    note = ("Perrin Lask (npc_09), continuation registrar. Author design (the documents give no gender): an older "
+            "man, balding with wispy white hair at the sides, droopy kind eyes, soft round nose, wrinkles and a "
+            "gentle smile, oat cardigan with a sage scarf, a small bronze bell on a cord and wooden name tags. "
+            "3/4 bust facing screen right.")
+    return recipe("npc_09_perrin_lask", "portrait_perrin_lask", 109, note, forms)
+
+
+PORTRAITS = [ilyra, orrin, veya, sable, nera, tamas, bryn, meral, perrin]
 
 
 def main() -> int:

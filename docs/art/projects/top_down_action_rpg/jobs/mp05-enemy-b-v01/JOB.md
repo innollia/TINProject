@@ -1,6 +1,6 @@
 # mp05-enemy-b-v01 — 적 9종 전투 그림 (아이콘 조합 양산, 세션 05)
 
-상태: **준비만 끝남.** COMMON.md 맨 위 "⚠ 준비만 할 것" 줄 때문에 레시피 작성, 도구 복사, build는 아직 하지 않았다. 분위기(톤앤매너) 기준이 확정되면 COMMON.md를 다시 읽고 시작한다. 결과는 전부 candidate이고 승인은 사용자만 한다.
+상태: **제작 중 (2026-09-27 기준 확정 뒤 시작).** 분위기 V1(`h0-icon-mood-v02`), 빛·그림자는 게임 코드 담당이라 그림에는 기본 확산광만, 바닥 그림자는 `_shadow.png`, 빛나는 부분은 `_emit.png`로 따로. 결과는 전부 candidate이고 승인은 사용자만 한다.
 
 | 필드 | 값 |
 |---|---|
@@ -10,9 +10,16 @@
 | 대상 | `content/enemies/`의 enemy_kiln_door_ward, enemy_latency_bell_ringer, enemy_mana_triage_surrogate, enemy_organ_quorum_witness, enemy_permit_inspector, enemy_residue_cantor, enemy_seam_arbiter, enemy_worksheet_instructor, enemy_wrong_return_scribe |
 | 카메라 | 60° 내려다보는 정사영(도구 계산 그대로), 정면 한 방향. 방향 세트 없음(09 §12.3) |
 | 알파·피벗 | 투명 PNG, 피벗 = 캔버스 중심(게임이 적 위치를 몸 중심으로 씀). 접촉 그림자는 시험 작업처럼 별도 `_shadow.png` |
-| 팔레트 | **대기.** 톤앤매너 확정 뒤 `recipes/palette_mp05_enemies.json`을 만든다. H0의 윤곽선·그림자·공통 색은 그대로 쓴다 |
-| 금지 | 글자·숫자·UI를 그림에 넣기, 원작 적 복제, 떨어진 효과 그림(전투 효과는 12.4 별도 자산군), 원본 SVG 수정 |
-| 입력 기록 | `inputs.json`은 build 때 작성 |
+| 팔레트 | `recipes/palette_mp05_enemies.json` = `palette_h0_mood.json`(V1 복사본)을 `extends`로 그대로 물려받고 지역 재질만 추가. 윤곽선·그림자·공통 색·sprite 화풍 설정은 바꾸지 않음. 추가 재질: kiln_iron·kiln_brick(R1 가마), seal_wax(봉랍), linen·linen_top(R3 요양원 천), surrogate(대리 몸·창백한 피부), flesh·pulse(R6 살·박동), clinic_cloth(R6 병동 천), uniform·uniform_top(R5 제복), gown_school·slate·marker_red·chalk(R8 학교), cantor_robe·residue·residue_lit(R8 성가대·잔여물), orchard_wood·frost(R7 과수원 나무·서리), ink_body(R1 기록자), mana(차가운 빛). 밝기는 V1 범위(바탕 밝기 약 40~110, 종이·분필이 가장 밝음) |
+| 금지 | 글자·숫자·UI를 그림에 넣기, 원작 적 복제, 떨어진 효과 그림(전투 효과는 12.4 별도 자산군), 원본 SVG 수정, 적을 배경에 얹은 합성 |
+| 입력 기록 | 각 PNG 옆 `.json`에 사용 아이콘 SHA-256·레시피 해시(build.py) |
+
+## 도구 변경 (시험 작업 `h0-icon-mood-v02/tool` 복사본에만)
+
+- `iconkit/icons.py`: 아이콘 변환 병렬 개수 기본값 8 → 2 (세션 10개가 같은 컴퓨터를 씀).
+- `iconkit/render.py`: 팔레트 `extends`(바탕 팔레트를 물려받고 바꾼 것만 적기), 레시피 `offset_all`(모든 조각을 한꺼번에 옮겨 몸 중심을 캔버스 중심에 맞춤, 프레임 이동 뒤에 적용).
+- `build.py`: 건너뛰기 판단(build key)에 `extends` 바탕 팔레트 내용도 포함.
+- 새 `check_edges.py`: 그림이 캔버스 가장자리에 닿거나 32 px 안으로 들어오는지 점검.
 
 ## 크기 (근거: 게임 코드 + COMMON 크기 표)
 
@@ -92,13 +99,13 @@
 
 - [x] 자료 읽기: COMMON, 시험 작업(도구·색·기록·QA·그림), 적 JSON 9개, 기술 20개, 단계 11개, 09 §12.3, 05의 같은 지역 계열, 게임 코드 크기
 - [x] 대상 목록과 적별 설계 (이 문서)
-- [ ] 기준 확정 대기 (COMMON ⚠ 줄)
-- [ ] 도구 복사·팔레트
-- [ ] kiln_door_ward: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기
-- [ ] latency_bell_ringer: baseline / telegraph / signature / break / 모아 보기
-- [ ] mana_triage_surrogate: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기
+- [x] 기준 확정 (COMMON ✅ V1, 2026-09-27 04시)
+- [x] 도구 복사·팔레트
+- [x] kiln_door_ward: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기 (고침 2회: 금을 번개 아이콘 대신 가는 선으로, 몸 중심을 캔버스 중심으로)
+- [x] latency_bell_ringer: baseline / telegraph / signature / break / 모아 보기 (고침 2회: 얼굴·손을 surrogate 색으로, 예고 때 지팡이 높이, 떨어진 지팡이의 가로대 제거)
+- [x] mana_triage_surrogate: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기 (고침 1회: 가운 앞판을 좁혀 가슴 빈자리가 기본에서도 보이게, 군모처럼 보이던 모자를 흰 천 모자로)
 - [ ] organ_quorum_witness: baseline / telegraph / signature / break / phase1 / 모아 보기
-- [ ] permit_inspector: baseline / telegraph / signature / exposure / 모아 보기
+- [x] permit_inspector: baseline / telegraph / signature / exposure / 모아 보기 (고침 없음)
 - [ ] residue_cantor: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기
 - [ ] seam_arbiter: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기
 - [ ] worksheet_instructor: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기

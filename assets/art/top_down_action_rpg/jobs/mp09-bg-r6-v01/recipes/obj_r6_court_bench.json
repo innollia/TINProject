@@ -1,0 +1,52 @@
+{
+  "asset": "obj_r6_court_bench",
+  "status": "candidate",
+  "note": "R6 region object: Debt Court judge's bench on the Debt Hall platform. Desk 3.0 m wide, 0.9 m deep, 1.3 m high (110 px/m), panelled front with a bronze band, closed ledger, stamp and bell on top, high chair back behind. Atmosphere object; no text or emblem.",
+  "palette": "palette_r6.json",
+  "style": "prop",
+  "canvas": [680, 480],
+  "pivot": [340, 416],
+  "pivot_meaning": "front-bottom centre of the desk on the platform",
+  "seed": 644,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 10,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 24}, "at": [348, 406], "size": [566, 50]}]},
+    {"name": "chair_back", "z": 0, "kind": "block", "material": "court_wood", "extrude": 80,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [340, 56], "size": [150, 14]}]},
+    {"name": "chair_crest", "z": 0.5, "kind": "flat", "material": "bronze_block", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [340, 50], "size": [120, 6]}]},
+    {"name": "desk", "z": 1, "kind": "block", "material": "court_wood", "extrude": 143,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [340, 203], "size": [540, 140]}]},
+    {"name": "desk_top", "z": 1.5, "kind": "block", "material": "court_wood", "extrude": 10,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [340, 192], "size": [562, 150]}]},
+    {"name": "front_recess", "z": 2, "kind": "flat", "color": "#241c16", "line": {"width": 0.8, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [170, 350], "size": [150, 90]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [340, 350], "size": [150, 90]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [510, 350], "size": [150, 90]}
+     ]},
+    {"name": "front_band", "z": 2.2, "kind": "flat", "material": "bronze_block", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [340, 290], "size": [542, 8]}]},
+    {"name": "front_studs", "z": 2.3, "kind": "flat", "material": "bronze",
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [7, 7], "repeat": {"line": [[90, 290], [590, 290]], "count": 11}}]},
+    {"name": "desk_grime", "z": 2.4, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.4, "clip_to": "desk",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [340, 396], "size": [560, 40]}]},
+
+    {"name": "ledger", "z": 3, "material": "leather", "line": {"width": 0.9, "heavy": 1.0},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.55, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "ground": true, "rot": -6, "at": [300, 188], "size": [130, 90]}]},
+    {"name": "ledger_pages", "z": 3.2, "kind": "flat", "material": "paper", "opacity": 0.95,
+     "pieces": [{"icon": "square", "ground": true, "rot": -6, "at": [300, 222], "size": [124, 6]}]},
+    {"name": "ledger_strap", "z": 3.3, "kind": "flat", "material": "bronze_block", "opacity": 0.95,
+     "pieces": [{"icon": "square", "ground": true, "rot": -6, "at": [300, 188], "size": [10, 88]}]},
+    {"name": "stamp", "z": 3.5, "material": "bronze", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [450, 196], "size": [32, 9]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [450, 186], "size": [24, 13]},
+       {"icon": "circle", "at": [450, 172], "size": [7, 16]},
+       {"icon": "circle", "at": [450, 162], "size": [13, 12]}
+     ]},
+    {"name": "bell", "z": 3.6, "material": "bronze", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "bell", "at": [160, 176], "size": [28, 28]}]}
+  ]
+}

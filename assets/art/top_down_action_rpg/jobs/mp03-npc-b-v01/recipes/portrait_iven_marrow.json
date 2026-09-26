@@ -1,0 +1,836 @@
+{
+ "asset": "npc_22_iven_marrow",
+ "status": "candidate",
+ "note": "Iven Marrow dialogue portrait: 3/4 bust turned to the viewer's right, weave yard instructor of the MAG_ACADEMY curriculum office. Long face, short auburn beard, wide-brimmed outdoor hat shading the eyes, teal long coat, striped woven scarf with a long tail, a corner of the bone-white school collar, grading board under the near arm. Author design from npc_22 JSON and 04 NPC-22 (male: author design).",
+ "identity": {
+  "npc_id": "npc_22_iven_marrow",
+  "display_name": "Iven Marrow",
+  "roster_kind": "support",
+  "portrait_key": "portrait_iven_marrow",
+  "art_key": "art_npc_support_portrait",
+  "body_key": "body_yard_instructor"
+ },
+ "anchors": {
+  "face": [
+   168,
+   124
+  ],
+  "head_center": [
+   160,
+   122
+  ]
+ },
+ "palette": "palette_npc_b.json",
+ "style": "portrait",
+ "canvas": [
+  320,
+  320
+ ],
+ "pivot": [
+  168,
+  124
+ ],
+ "pivot_meaning": "face anchor: midpoint between the eyes (the same pixel in every mp03 portrait)",
+ "seed": 2201,
+ "forms": [
+  {
+   "name": "neck",
+   "z": 0.5,
+   "material": "skin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      198
+     ],
+     "size": [
+      48,
+      56
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160,
+      230
+     ],
+     "size": [
+      46,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck_shade",
+   "z": 0.6,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "clip_to": "neck",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      168,
+      182
+     ],
+     "size": [
+      84,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "coat",
+   "z": 1,
+   "material": "iv_coat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      158,
+      276
+     ],
+     "size": [
+      258,
+      118
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      158,
+      328
+     ],
+     "size": [
+      258,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lapels",
+   "z": 1.2,
+   "kind": "flat",
+   "color": "#091311",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136,
+      272
+     ],
+     "size": [
+      3,
+      70
+     ],
+     "rot": 18
+    },
+    {
+     "icon": "circle",
+     "at": [
+      214,
+      276
+     ],
+     "size": [
+      3,
+      60
+     ],
+     "rot": -14
+    }
+   ]
+  },
+  {
+   "name": "school_collar",
+   "z": 1.8,
+   "material": "paper",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      115,
+      236
+     ],
+     "size": [
+      28,
+      26
+     ],
+     "rot": 140
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      131,
+      243
+     ],
+     "size": [
+      28,
+      26
+     ],
+     "rot": 160
+    }
+   ]
+  },
+  {
+   "name": "scarf_tail",
+   "z": 2,
+   "material": "iv_scarf",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      196,
+      290
+     ],
+     "size": [
+      32,
+      96
+     ],
+     "rot": -4
+    }
+   ]
+  },
+  {
+   "name": "scarf_wrap",
+   "z": 2.2,
+   "material": "iv_scarf",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      229
+     ],
+     "size": [
+      132,
+      40
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192,
+      244
+     ],
+     "size": [
+      40,
+      28
+     ]
+    }
+   ]
+  },
+  {
+   "name": "scarf_stripes",
+   "z": 2.3,
+   "kind": "flat",
+   "material": "iv_coat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      197,
+      268
+     ],
+     "size": [
+      30,
+      5
+     ],
+     "rot": -4
+    },
+    {
+     "icon": "square",
+     "at": [
+      196,
+      284
+     ],
+     "size": [
+      30,
+      5
+     ],
+     "rot": -4
+    },
+    {
+     "icon": "square",
+     "at": [
+      195,
+      300
+     ],
+     "size": [
+      30,
+      5
+     ],
+     "rot": -4
+    },
+    {
+     "icon": "square",
+     "at": [
+      194,
+      316
+     ],
+     "size": [
+      30,
+      5
+     ],
+     "rot": -4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      150,
+      238
+     ],
+     "size": [
+      80,
+      5
+     ],
+     "rot": 4
+    }
+   ]
+  },
+  {
+   "name": "grading_board",
+   "z": 2.5,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "clipboard",
+     "crop": [
+      2,
+      1,
+      14,
+      15
+     ],
+     "at": [
+      72,
+      298
+     ],
+     "size": [
+      64,
+      72
+     ],
+     "rot": -10
+    }
+   ]
+  },
+  {
+   "name": "board_sheet",
+   "z": 2.6,
+   "kind": "flat",
+   "material": "paper",
+   "line": {
+    "width": 1.0,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      73,
+      304
+     ],
+     "size": [
+      44,
+      50
+     ],
+     "rot": -10
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "z": 5,
+   "material": "hair_auburn",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      112
+     ],
+     "size": [
+      114,
+      108
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ear",
+   "z": 5.5,
+   "material": "skin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110,
+      142
+     ],
+     "size": [
+      17,
+      29
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ear_inner",
+   "z": 5.6,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      109,
+      143
+     ],
+     "size": [
+      7,
+      15
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "z": 6,
+   "material": "skin",
+   "shade": {
+    "threshold": 0.44,
+    "ragged": 0.06,
+    "soft": 0.34,
+    "highlight_amount": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      131
+     ],
+     "size": [
+      90,
+      108
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      174,
+      177
+     ],
+     "size": [
+      52,
+      44
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      203,
+      147
+     ],
+     "size": [
+      12,
+      23
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brim_shade",
+   "z": 6.3,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "clip_to": "face",
+   "opacity": 0.55,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      166,
+      92
+     ],
+     "size": [
+      130,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sideburn",
+   "z": 6.4,
+   "material": "hair_auburn",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      120,
+      122
+     ],
+     "size": [
+      12,
+      28
+     ]
+    }
+   ]
+  },
+  {
+   "name": "beard",
+   "z": 6.5,
+   "material": "hair_auburn",
+   "shade": {
+    "highlight_amount": 0.2
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      167,
+      181
+     ],
+     "size": [
+      82,
+      28
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      178,
+      193
+     ],
+     "size": [
+      38,
+      26
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      128,
+      166
+     ],
+     "size": [
+      11,
+      28
+     ],
+     "rot": -12
+    }
+   ],
+   "rough": {
+    "amp": 0.5,
+    "soft": 1.5,
+    "cell": 5
+   }
+  },
+  {
+   "name": "nose_shade",
+   "z": 7,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      198,
+      143
+     ],
+     "size": [
+      9,
+      23
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nostril",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      197,
+      155
+     ],
+     "size": [
+      5,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mustache",
+   "z": 7.1,
+   "material": "hair_auburn",
+   "shade": {
+    "highlight_amount": 0.1
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      185,
+      164
+     ],
+     "size": [
+      24,
+      5.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "z": 7.2,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      185,
+      170
+     ],
+     "size": [
+      15,
+      2.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "iris",
+   "z": 7.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      125
+     ],
+     "size": [
+      10,
+      10.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      123
+     ],
+     "size": [
+      7.5,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glint",
+   "z": 7.3,
+   "kind": "flat",
+   "color": "eye_glint",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140,
+      122.5
+     ],
+     "size": [
+      2.6,
+      2.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192,
+      121
+     ],
+     "size": [
+      2.2,
+      2.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lids",
+   "z": 7.4,
+   "kind": "flat",
+   "color": "ink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      126
+     ],
+     "size": [
+      22,
+      14
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      142,
+      129
+     ],
+     "size": [
+      22,
+      14
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      124
+     ],
+     "size": [
+      16,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      194,
+      126.6
+     ],
+     "size": [
+      16,
+      11
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "z": 7.5,
+   "kind": "flat",
+   "material": "hair_auburn",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141,
+      110
+     ],
+     "size": [
+      26,
+      5.5
+     ],
+     "rot": -6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      195,
+      109
+     ],
+     "size": [
+      17,
+      5
+     ],
+     "rot": 6
+    }
+   ]
+  },
+  {
+   "name": "hat_crown",
+   "z": 8,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      156,
+      62
+     ],
+     "size": [
+      104,
+      60
+     ]
+    },
+    {
+     "icon": "square",
+     "op": "sub",
+     "at": [
+      156,
+      110
+     ],
+     "size": [
+      140,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hat_band",
+   "z": 8.1,
+   "kind": "flat",
+   "material": "iv_coat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      156,
+      80
+     ],
+     "size": [
+      102,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hat_brim",
+   "z": 8.2,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      162,
+      88
+     ],
+     "size": [
+      196,
+      34
+     ],
+     "rot": 4
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "portrait_iven_marrow"
+  }
+ ]
+}
