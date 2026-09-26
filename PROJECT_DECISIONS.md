@@ -179,7 +179,9 @@ Esc 메뉴는 Esc를 눌렀을 때만 나타난다. 기록 같은 기능도 상�
 - 개인 화풍 코어, 프로젝트 아트 층, 자산군 brief는 각각 별도 파일로 관리한다. 구체 경로와 필수 필드는 [이미지 자산 제작 워크플로](docs/IMAGE_ASSET_WORKFLOW.md)를 따른다.
 - 생성 결과는 자동으로 Gold Standard가 되지 않는다. 에이전트는 후보를 탈락시킬 수 있지만 승격·교체·폐기는 사용자의 명시적 승인으로만 확정한다. 새 기준이 승인되기 전에는 기존 기준이 유효하다.
 - 모든 생성 요청은 독립 작업이다. 정본 문서를 생성 프롬프트에 통째로 직렬화하지 않고 `docs/IMAGE_ASSET_WORKFLOW.md`의 Compact Visual Contract로 컴파일한다. 실제 A/B 원본, 승인 Style Master, 필요한 Gold Standard와 편집 원본은 이미지 입력으로 명시한다.
-- 승인 Style Master가 없는 최초 상태에서는 production 캐릭터를 반복 생성하며 화풍을 찾지 않는다. A/B의 제한된 역할을 단순 피사체에서 먼저 합성해 사용자가 Style Master를 승인한 뒤 production style lock으로 넘어간다.
+- Style Master와 Gold Standard는 생성기가 이미 원본 Style Reference의 화풍을 따라갈 수 있을 때 일관성을 유지하는 기준일 뿐, reference fidelity를 획득시키는 장치가 아니다.
+- 생성기/모델은 production 전에 A/B 원본으로 Generator Style-Fidelity Gate를 통과해야 한다. 원본 화풍을 직접 따라하지 못하면 같은 생성기로 Style Master/Gold Standard를 더 만들지 않고 다른 생성기/모델을 시험한다.
+- 현재 ChatGPT/OpenAI 이미지 생성 경로의 A/B/AB fresh-generation 실험은 원본 그림체 fidelity 실패로 기록한다. 다음 도구 비교는 `docs/research/visual_reference/STYLE_REFERENCE_TOOL_SURVEY_2026-09-26.md`를 따른다.
 - Character Bible은 관계를 비교할 한 장으로, 리깅 파츠는 서로 맞물리는 한 세트로 만든 뒤 기계적으로 분리한다. 애니메이션은 승인 기준 프레임과 포즈 자료를 붙여 프레임별로 만든다.
 - 파일 규격·알파·피벗·레이어·명명·출처 같은 기계 판정은 하드 게이트다. 이를 통과한 후보만 실제 게임 화면에 넣고, 정보 계층과 시각 일관성은 사용자가 최종 승인한다.
 
