@@ -32,7 +32,7 @@ static func apply(state: DescentState, runtime: StratumRuntime, delta: float, bo
 	for membrane: Dictionary in runtime.membranes:
 		if bool(membrane["open"]):
 			continue
-		var near: bool = DescentCollision.distance_to_rect(box, membrane["rect"] as Rect2) <= USE_RADIUS
+		var near: bool = DescentCollision.distance_to_rect(box, membrane["rect"] as Rect2) <= float(membrane.get("radius", USE_RADIUS))
 		var holding: bool = near and MatterLoop.first_index_with_verb(state.carried, String(membrane["verb"])) >= 0
 		if holding and not RequiresBodyGate.is_open(membrane["requires_body"], body):
 			holding = false

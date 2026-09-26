@@ -1,6 +1,6 @@
 # Kit 08 — Descent Exploration (하강 탐사)
 
-> 상태: **구현 착수 가능.** 단 §19 OQ-1~OQ-3이 닫히기 전에는 **presentation 파일부터 시작하지 않는다.**
+> 상태: **domain·systems·authored·save 구현됨, 자동 테스트 7개 파일(수정 후 재실행 전 — 현황 문서 §3).** `presentation/` 은 §19 OQ-1(사용자가 레퍼런스 화면 확인)이 닫힐 때까지 시작하지 않는다. 구현 중 확정한 판정은 **§20**(앞 절과 충돌하면 §20이 정본). 현황: `docs/research/swallow_the_sea/IMPLEMENTATION_STATUS.md`
 > 공통 계약: `docs/KIT_WORKFLOW.md` · 모듈 계약: `docs/MODULE_CONTRACT.md` · 코드 규칙: `docs/CODE_STYLE.md`
 > 조사 근거: `docs/research/swallow_the_sea/SWALLOW_THE_SEA_RESEARCH.md`
 > 라운드 정본: `docs/research/round_2026_09_26/ROUND_PLAN.md` (C1 절차 비주얼 · C2 오디오 · C3 모듈 등록)
@@ -701,6 +701,8 @@ _RENDER (프레임당 1회)
 
 ### 9.2 정확한 스키마
 
+> **§20 D2·D3·D5·D7·D11로 바뀜:** 막은 `tag` 대신 `verb`(plug/feed/strike)와 선택 키 `radius`·`requires_body`, route 는 `blocks_tag` 대신 `blocks_verb` 와 ending 전용 `requires_body`, `requires` 의 `tag_available` 은 `carrying(verb)`, fauna `kind` 에 `remains` 추가. 실제 authored 파일(`modules/descent_exploration/authored/strata/*.json`)이 정본이다.
+
 顶层 키 (모두 **필수**, 하나라도 없으면 로드 거부):
 
 | 키 | 타입 | 제약 |
@@ -738,6 +740,8 @@ _RENDER (프레임당 1회)
 | `next` | String | `kind: "descent"`일 때 다음 층 ID |
 
 ### 9.4 검증 규칙 13개 (`content_validator.gd`, 하나라도 실패하면 층 로드 거부)
+
+> **§20 D9·D10으로 바뀜:** 규칙 7 = descent route 1개 이상·모두 같은 `next`, 규칙 9 = 마지막 층에만 각문 3개.
 
 1. `schema == 1`
 2. `id` == 파일명(`.json` 제거)
@@ -819,6 +823,8 @@ _RENDER (프레임당 1회)
 ```
 
 ### 9.7 작업 예시 2 — `stratum_teeth.json` (구간 2, 첫 분기 — 이 Kit의 핵심 층)
+
+> **§20 D4로 바뀜:** `membrane_brine` 없음(규칙 13 위반). plug 는 `tide_main` 을 멈춘다.
 
 ```json
 {
@@ -1014,6 +1020,8 @@ _RENDER (프레임당 1회)
 - `gallery_vault`는 `kind: "site_route"`이고 `next`를 갖지 않는다(§9.3). 이 route의 효과는 **통과 가능 상태를 만드는 것** 하나이며, 그 상태는 **`sites_done` 에 `gallery_vault` 로 기록된다** (`routes_opened` 가 아니다). `id`는 `exit_`/`mouth.` 접두사를 쓰지 않으므로 §9.3 접두사 규칙에도 예외가 아니다.
 
 ### 9.10 작업 예시 5 — `stratum_floor.json` (구간 5, 결말 3개)
+
+> **§20 D5·D6·D7·D8로 바뀜:** 심장방(뚜껑 막 + 갈비벽), `mouth.heart` 는 `carrying(feed)` + `requires_body {"hands_min":1}`, `mouth.above` 는 `blocks_verb: ["feed"]`.
 
 ```json
 {
@@ -1346,6 +1354,8 @@ nkido render res://modules/descent_exploration/audio/patches/<name>.akkado \
 ## 12. Input
 
 ### 12.1 Game actions — 4개, 그리고 **새 InputMap 액션 0개**
+
+> **§20 D1로 바뀜: action 6개**(`left`/`right` 추가, 새 InputMap 액션은 여전히 0개). 아래 표와 manifest 예시는 원안이다.
 
 | intent | InputMap action | 물리 키 | gameplay 의미 |
 |---|---|---|---|
@@ -2091,3 +2101,57 @@ $bad = Get-ChildItem -Recurse -File 'C:\projects\TINProject\modules\descent_expl
 
 
 
+
+## 20. 구현 중 확정한 판정 (2026-09-27, 사용자 확인 대기)
+
+> 구현 착수 뒤 발견한 **계획서 안의 모순**과 그 판정이다. 사용자가 "질문하지 말고 추천대로 진행"을 지시해(2026-09-27) 아래 추천안을 적용했다. **이 절과 앞 절이 충돌하면 이 절이 정본이다.** 되돌리려면 이 절의 해당 행을 지우고 앞 절을 따르면 된다(코드는 행마다 적은 파일만 바뀐다). 현황 기록: `docs/research/swallow_the_sea/IMPLEMENTATION_STATUS.md`.
+
+### 20.1 OQ 처리
+
+| OQ | 처리 | 근거 |
+|---|---|---|
+| OQ-1 | **열림.** 사용자가 스크린샷을 직접 봐야 한다. `presentation/` 0개 유지 | §19 추천안 자체가 "자의 확정 금지" |
+| OQ-2 | 추천안 적용 — `ending.return` 에 질량 조건 없음 | 사용자 지시(추천대로) |
+| OQ-3 | 추천안 적용 — 이 Kit은 `requested(&"input_profile", …)` 1회 발신 + `set_key_profile`/`get_input_bubble_state` 상태 보관만. 버블 노드 없음. 전환층 쪽 구현은 등록 때 할 일 | 사용자 지시 |
+| OQ-4 | **열림.** W1 매핑표가 필요하다. 구현은 현재 ID로 진행 | 최종 완료 선언만 막는다 |
+| OQ-5 | 추천안 적용 — 층 6개 확정 | 사용자 지시 |
+| OQ-6 | 추천안 적용 — wav 13개가 없으면 `test_manifest_validates_once_the_renders_exist` 가 `pending` 으로 남는다(실패로 전체 스위트를 막지 않는다). wav가 생기면 그대로 강제 단언이 된다 | 사용자 지시 + 다른 병렬 세션의 전체 검증을 빨갛게 만들지 않기 위해 |
+| OQ-7 | 추천안 적용 — `arrival["persist_checkpoint"]: Callable(module_id: String, data: Dictionary)` 를 앵커 최초 진입·`finished` 직전에 부른다. 없으면 조용히 건너뛴다 | 사용자 지시 |
+| OQ-8 | 추천안 적용 — 충돌 없음 | 사용자 지시 |
+| OQ-9 | 등록 때 할 일로 모음(§20.4) | 이 세션은 `app/**` 를 고치지 않는다 |
+
+### 20.2 계획서 모순과 판정
+
+| # | 모순 (어디와 어디) | 판정 | 바뀐 곳 |
+|---|---|---|---|
+| D1 | §12.1 "action 4개, left/right 안 씀" ↔ §4.1 "수평+수직 자유 이동", §4.5 warden 수평 도주, §9 회랑층 틈 x 440/120/280. 4키로는 `facing` 이 한 번도 뒤집히지 않아 회랑층을 통과할 수 없다 | **action 6개** (`up` `down` `left` `right` `confirm` `cancel`). `app_root.gd` 가 `NORMAL_IDS` 마다 `_left`/`_right` 를 이미 묶으므로 W0 수정 0줄. Input Bubble 6칸(↑↓←→ZX) | `module_manifest.tres`, `module.gd`, `domain/run_intent.gd` |
+| D2 | §4.3 "consume 대상 = membranes" ↔ §4.3.1 "막은 **유지**(hold)로 열린다, 도중 소비하면 진행도가 되돌아간다". 게다가 막이 `seed` 를 먹으면 `mouth.heart`(seed 소지)가 영영 안 열린다 | **막은 유지로만 열린다.** `X`(consume)는 `plug` 물질로 흐름(`currents`)을 멈추는 데만 쓴다. `feed`·`weigh` 는 `X` 로 소비되지 않고, `strike` 는 피격 1회를 대신 받을 때 자동 소비된다 | `systems/matter_loop.gd`, `systems/hazard_field.gd` |
+| D3 | §9.2 막 스키마에 `verb` 가 없는데 §4.3 은 `verb`+`tag` 일치를 요구. 사용자 금지 "자물쇠-열쇠" — 특정 `tag` 물질만 여는 막은 열쇠와 자물쇠다 | **막·각문은 `verb`(물질의 성질)로만 맞춘다. `tag` 는 판정에 쓰지 않는다.** `tag_available(verb,tag)` → `carrying(verb)`, `blocks_tag` → `blocks_verb`. 현재 authored 에서 `feed` 물질은 `matter_seed_vial` 하나라 결과는 같다 | `route_resolver.gd`, `content_validator.gd`, `stratum_floor.json` |
+| D4 | §9.7 `membrane_brine` rect `[400,968,200,40]` 가 `exit_teeth_plug` trigger `[400,976,200,32]` 와 겹친다 — 계획서 예시가 자기 규칙 13을 어긴다 | `membrane_brine` 삭제. `matter_brine_plug`(plug 3)를 `tide_main` 안에서 `X` 로 쓰면 그 흐름이 멈춘다(`stilled`, 층 재진입 시 복구). §4.3 plug "흐름을 막는다"와 같다. 세 갈래 표(§9.7)는 그대로 성립 | `stratum_teeth.json` |
+| D5 | §9.10 `heart_meld` rect `[232,780,176,60]` 가 `mouth.heart` trigger `[280,792,80,56]` 와 겹친다(규칙 13 위반) | 심장방을 만든다: `heart_meld` = 뚜껑 `[272,768,96,16]`, 갈비벽 `heart_rib_left`/`heart_rib_right`, `mouth.heart` trigger `[288,800,64,48]` 는 뚜껑 아래. `HEART_MELD_RADIUS 56` 은 막의 유지 반경(`radius` 선택 키, 기본 `USE_RADIUS` 8)으로 쓴다. 화로 입구가 아래 하나뿐이도록 `chimney_lid` 추가 | `stratum_floor.json`, `stratum_runtime.gd` |
+| D6 | §4.7 "각문은 한 번에 하나만 열린다" ↔ `mouth.still` 은 `always` | **구체성 순위**로 하나를 고른다: `carrying` 3 > `fact`·`opened` 2 > `clearance` 1 > `always` 0. `mouth.still` 은 더 구체적인 각문이 없을 때만 열린다. 바닥 구덩이(`exit_floor`)는 언제나 `ending.hollow` | `ending_resolver.gd` |
+| D7 | §13.6.2 "양손이 없으면 `ending.swallow` 만 닫히고 항상 하나는 열린다" ↔ D6 순위에서는 seed 를 든 손 없는 몸에게 `mouth.heart` 가 "열린" 각문으로 뽑혀 `mouth.still` 이 닫힌다(물리적으로는 못 가는데) | 각문에 선택 키 **`requires_body`**(ending 전용). `mouth.heart` 에 `{"hands_min": 1}`. 몸 조건이 닫힌 각문은 순위에서 빠지고 다음 각문이 열린다 | `ending_resolver.gd`, `content_validator.gd`, `stratum_floor.json` |
+| D8 | §13.6.6 경로 ② "`requires_body` 자리에서 물질이 빠진다" ↔ D2(막은 소비하지 않음) | `mouth.heart` 에 들어가는 순간 그 각문의 `carrying` 물질 1개를 소비 기록한다(`site: "mouth.heart"`). §4.3 표 feed "사라짐 — 바닥의 `thing.heart`"와 같다 | `matter_loop.gd`(`spend_on_route`), `module.gd` |
+| D9 | 규칙 7 "`descent` route 정확히 1개" ↔ §9.7 이빨층 `descent` 2개, 규칙 11 "clearance 층에는 대체 descent route" | 규칙 7 = **1개 이상, 모두 같은 `next`** | `content_validator.gd` |
+| D10 | 규칙 9 "`ending` route 3개" 가 모든 층에 걸리면 층 0~4가 전부 거부된다 | 규칙 9 = `next: ""` 인 마지막 층만 `mouth.still/above/heart` 3개, 다른 층은 0개. probe 층은 규칙 9 면제(기존 상수 그대로) | `content_validator.gd` |
+| D11 | §13.6.3 뿌리층 `fix.gardener` `remains_at` ↔ §9.2 fauna `kind` 는 grazer/warden 뿐 — 둘 다 저해라 "저해 없는 층"이 깨진다 | fauna `kind: "remains"` 추가. 위치·순찰 없이 `remains_at` 만 가진다. 스토어가 `state:"dead"` 이고 `den` 이 `region_hollow` 장소일 때만 배치 | `stratum_roots.json`, `content_validator.gd`, `stratum_runtime.gd` |
+| D12 | §13.6.1·§6.7 `arrival["worldstate"]`, `body.missing` 원소 `{part,kind,severity,permanent}`, 장소 요구 `wound` ↔ `core/worldstate` 계약(§13.6.1 "계약이 다르면 계약에 맞춘다") | 도착 키 **`world_state_view`**(`WorldState.ARRIVAL_KEY`), 뷰의 `to_dictionary()` 스냅샷만 읽는다(이 Kit은 core/worldstate 클래스를 참조하지 않는다). 축 키 `body`/`creatures`/`places`. `body.missing` = **부위 이름 문자열 배열**(core `AxisBody`), 모양이 다른 원소는 세지 않는다. 상처 요구 키는 `has_wound` | `domain/worldstate_view.gd`, `systems/body_read.gd`, `systems/requires_body.gd` |
+| D13 | §15.2 단언 수치 ↔ §8 상수 | 무입력 1.0초 뒤 하강 속도는 `SINK_ACCEL` 22(>25 아님). Godot 좌표에서 위로 오르는 속도는 음수. 부력표 d=4·mass 4 는 86−86 = **0** 이라 "가라앉지 못함"(`velocity.y <= 0`), `< 0` 이 아님. 흐름 판정은 몸이 종단 속도로 도착한 상태에서 잰다 | 테스트만 |
+| D14 | §9.9 "`gallery_vault` 의 `opened` 조건이 물리적 봉인이 된다" ↔ §9.3 에는 site_route 와 solid 를 잇는 키가 없고, 봉인은 자물쇠-열쇠다 | `gallery_vault` 는 `sites_done` 기록만 한다. `vault_wall` 은 surge 로 언제나 깨진다 | 없음(현 동작 기록) |
+| D15 | §4.5 "깬 뒤 0.4초 안에 통과해야 다시 굳는다" ↔ 뿌리층 `throat_wall` 두께 200px — 최대 하강 86px/s로 0.4초 안에 못 지나 소프트락 | **깬 뒤 0.4초가 지났고 몸이 벽 밖에 있을 때** 다시 굳는다 | `systems/collision.gd` |
+| D16 | 부위 이름 어휘: 이 계획·Kit 07 은 `arm_left`, core README·테스트는 `left_arm` | 이 Kit은 §8.3 `LIMB_PARTS`/`HAND_PARTS` 그대로. 몸 축 소유자(Kit 06)와 W7에 어휘 확정 **연결 요청** | 없음 |
+| D17 | §9.4 예외 상수 `const PROBE_LAYER_EXEMPT_IDS: PackedStringArray = PackedStringArray([...])` 는 Godot 4.7 에서 상수식이 아니라 파싱 오류 | `const PROBE_LAYER_EXEMPT_IDS: Array[String] = ["stratum_extra_probe"]` (의미 같음, 예외는 여전히 이 1개) | `content_validator.gd` |
+| D18 | §15.2 부정 검사 2 "대소문자 무시 **부분** 일치" ↔ 필수 부모 클래스 `GameModule` 이 `memo` 를 품는다(ga**memo**dule) | 식별자를 snake/camel 단어로 나눠 **단어 단위**로 토큰을 찾는다. `journal_page`·`LoreText` 는 여전히 걸린다 | 테스트만 |
+
+### 20.3 저장 스키마에 영향 없음
+
+위 판정은 `schema: 1` 저장 필드를 바꾸지 않는다(§6.1 표 그대로, `elapsed_play` 는 저장하지 않는다 §6.4).
+
+### 20.4 등록 때 할 일 (W0 · `app/**` — 이 세션은 고치지 않는다)
+
+1. `app/app_root.gd` `NORMAL_IDS` 에 `&"descent_exploration"` 추가. 6개 action 이 기존 루프로 ↑↓←→ Z X 에 묶인다.
+2. `arrival["persist_checkpoint"] = func(module_id: String, data: Dictionary) -> void` — 앵커 저장(OQ-7).
+3. `arrival["world_state_view"] = store.issue_view()` (`WorldState.make_arrival()` 과 같다).
+4. `arrival["request_mutation"] = func(axis: String, patch: Dictionary) -> Dictionary: return store.request_mutation(StringName(axis), patch, &"descent_exploration")` — 없으면 몸 요청을 조용히 건너뛴다.
+5. `requested(&"input_profile", {"required_keys": [...6], "previous": [...]})` 를 전환층 Input Bubble 로 넘기고, 직전 구간 키를 `arrival["previous_required_keys"]` 로 준다(OQ-3).
+6. `entry.tscn` 은 지금 `DescentModule` 하나뿐이다. `DescentView` 는 OQ-1 이 닫힌 뒤 추가된다.

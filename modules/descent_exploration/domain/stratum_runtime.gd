@@ -4,6 +4,7 @@ extends RefCounted
 const DEFAULT_REGROW_SECONDS: float = 0.4
 const DEFAULT_HOLD_SECONDS: float = 0.5
 const DEFAULT_ANCHOR_RADIUS: float = 12.0
+const DEFAULT_HOLD_RADIUS: float = 8.0
 
 var id: String = ""
 var index: int = 0
@@ -66,7 +67,8 @@ static func build(data: Dictionary, state: DescentState = null, world: DescentWo
 			"rect": to_rect(entry.get("rect")),
 			"verb": String(entry.get("verb", "")),
 			"hold_seconds": float(entry.get("hold_seconds", DEFAULT_HOLD_SECONDS)),
-			"requires_body": (entry.get("requires_body", {}) as Dictionary).duplicate(true) if entry.get("requires_body") is Dictionary else {},
+			"radius": float(entry.get("radius", DEFAULT_HOLD_RADIUS)),
+			"requires_body": _requirement(entry),
 			"open": false,
 			"progress": 0.0,
 		})
@@ -88,6 +90,7 @@ static func build(data: Dictionary, state: DescentState = null, world: DescentWo
 			"has_trigger": has_trigger,
 			"requires": requires,
 			"blocks_verb": blocks,
+			"requires_body": _requirement(entry),
 			"next": String(entry.get("next", "")),
 			"open": false,
 			"touching": false,
@@ -140,6 +143,11 @@ static func to_point(source: Variant) -> Vector2:
 		return Vector2.ZERO
 	var values: Array = source
 	return Vector2(float(values[0]), float(values[1]))
+
+
+static func _requirement(entry: Dictionary) -> Dictionary:
+	var source: Variant = entry.get("requires_body")
+	return (source as Dictionary).duplicate(true) if source is Dictionary else {}
 
 
 static func _entries(data: Dictionary, key: String) -> Array[Dictionary]:

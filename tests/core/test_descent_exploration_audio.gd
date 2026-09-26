@@ -49,15 +49,16 @@ func test_events_match_the_plan_table_exactly() -> void:
 		assert_eq(event.max_polyphony, int(row[2]), row[0])
 		assert_almost_eq(event.volume_db, float(row[3]), 0.0001, row[0])
 		assert_almost_eq(event.min_interval_seconds, float(row[4]), 0.0001, row[0])
-		assert_eq(event.file, "res://modules/descent_exploration/audio/%s.wav" % String(row[0]).trim_prefix("desc_"), row[0])
+		assert_eq(String(event.get("file")), "res://modules/descent_exploration/audio/%s.wav" % String(row[0]).trim_prefix("desc_"), row[0])
 
 
 func test_manifest_validates_once_the_renders_exist() -> void:
 	var manifest := _manifest()
 	var missing: Array[String] = []
 	for event: AudioManifestEvent in manifest.events:
-		if not ResourceLoader.exists(event.file):
-			missing.append(event.file.get_file())
+		var path: String = String(event.get("file"))
+		if not ResourceLoader.exists(path):
+			missing.append(path.get_file())
 	if not missing.is_empty():
 		pending("OQ-6: %d wav renders are not in the repository yet (%s)" % [missing.size(), ", ".join(missing)])
 		return

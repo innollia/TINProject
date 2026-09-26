@@ -4,7 +4,7 @@ extends RefCounted
 const MAX_CARRY_MASS: int = 4
 const PICKUP_RADIUS: float = 6.0
 const USE_RADIUS: float = 8.0
-const TARGETLESS_VERBS: Array[String] = ["weigh", "strike"]
+const TARGETLESS_VERBS: Array[String] = ["weigh", "strike", "feed"]
 
 
 static func first_index_with_verb(carried: Array[MatterItem], verb: String) -> int:
@@ -36,7 +36,7 @@ static func tick_pickup(state: DescentState, runtime: StratumRuntime) -> Diction
 	return events
 
 
-static func find_target(state: DescentState, runtime: StratumRuntime, item: MatterItem, body: BodyRead = null) -> Dictionary:
+static func find_target(state: DescentState, runtime: StratumRuntime, item: MatterItem) -> Dictionary:
 	if item == null or TARGETLESS_VERBS.has(item.verb):
 		return {}
 	var box: Rect2 = state.body_box()
@@ -46,32 +46,33 @@ static func find_target(state: DescentState, runtime: StratumRuntime, item: Matt
 				continue
 			if DescentCollision.distance_to_rect(box, current["rect"] as Rect2) <= USE_RADIUS:
 				return {"kind": "current", "entry": current}
-	for membrane: Dictionary in runtime.membranes:
-		if String(membrane["verb"]) != item.verb:
-			continue
-		if DescentCollision.distance_to_rect(box, membrane["rect"] as Rect2) > USE_RADIUS:
-			continue
-		if not RequiresBodyGate.is_open(membrane["requires_body"], body):
-			continue
-		return {"kind": "membrane", "entry": membrane}
 	return {}
 
 
-static func consume(state: DescentState, runtime: StratumRuntime, pressed: bool, body: BodyRead = null) -> Dictionary:
+static func consume(state: DescentState, runtime: StratumRuntime, pressed: bool) -> Dictionary:
 	if not pressed:
 		return {}
 	for index: int in state.carried.size():
 		var item: MatterItem = state.carried[index]
-		var target: Dictionary = find_target(state, runtime, item, body)
+		var target: Dictionary = find_target(state, runtime, item)
 		if target.is_empty():
 			continue
 		var entry: Dictionary = target["entry"]
 		if not state.consume(index, String(entry["id"])):
 			return {"denied": true}
-		if target["kind"] == "current":
-			entry["stilled"] = true
-		else:
-			entry["open"] = true
-			entry["progress"] = 0.0
+		entry["stilled"] = true
 		return {"consumed": true, "matter": item.id, "target": String(entry["id"]), "target_kind": String(target["kind"])}
 	return {"denied": true}
+
+
+static func spend_on_route(state: DescentState, route: Dictionary) -> String:
+	for requirement: Variant in route.get("requires", []) as Array:
+		if not requirement is Dictionary or String((requirement as Dictionary).get("kind", "")) != "carrying":
+			continue
+		var index: int = first_index_with_verb(state.carried, String((requirement as Dictionary).get("verb", "")))
+		if index < 0:
+			continue
+		var matter_id: String = state.carried[index].id
+		if state.consume(index, String(route.get("id", ""))):
+			return matter_id
+	return ""

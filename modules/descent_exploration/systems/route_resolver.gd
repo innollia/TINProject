@@ -44,7 +44,7 @@ static func is_open(route: Dictionary, state: DescentState) -> bool:
 	return requires_met(route.get("requires", []) as Array, state) and not blocked(route, state)
 
 
-static func evaluate(state: DescentState, runtime: StratumRuntime) -> Array[String]:
+static func evaluate(state: DescentState, runtime: StratumRuntime, body: BodyRead = null) -> Array[String]:
 	var completed: Array[String] = []
 	for route: Dictionary in runtime.routes:
 		match String(route["kind"]):
@@ -56,7 +56,7 @@ static func evaluate(state: DescentState, runtime: StratumRuntime) -> Array[Stri
 				if met and not state.sites_done.has(String(route["id"])):
 					state.sites_done.append(String(route["id"]))
 					completed.append(String(route["id"]))
-	var mouth: String = EndingResolver.open_mouth(runtime.ending_routes(), state)
+	var mouth: String = EndingResolver.open_mouth(runtime.ending_routes(), state, body)
 	for route: Dictionary in runtime.ending_routes():
 		route["open"] = route["id"] == mouth
 	return completed

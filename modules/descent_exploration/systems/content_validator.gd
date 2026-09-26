@@ -1,7 +1,7 @@
 class_name DescentContentValidator
 extends RefCounted
 
-const PROBE_LAYER_EXEMPT_IDS: PackedStringArray = PackedStringArray(["stratum_extra_probe"])
+const PROBE_LAYER_EXEMPT_IDS: Array[String] = ["stratum_extra_probe"]
 const SCHEMA: int = 1
 const WIDTH: float = 640.0
 const HEIGHT: float = 1024.0
@@ -125,13 +125,10 @@ static func _rule_structure(layer: Dictionary, file_id: String, errors: Array[Di
 			_fail(errors, 0, file_id, "membranes.verb", "must be plug, feed or strike")
 		if membrane.has("hold_seconds") and (not _is_number(membrane["hold_seconds"]) or float(membrane["hold_seconds"]) <= 0.0):
 			_fail(errors, 0, file_id, "membranes.hold_seconds", "must be positive")
+		if membrane.has("radius") and (not _is_number(membrane["radius"]) or float(membrane["radius"]) <= 0.0):
+			_fail(errors, 0, file_id, "membranes.radius", "must be positive")
 		if membrane.has("requires_body"):
-			if not membrane["requires_body"] is Dictionary:
-				_fail(errors, 0, file_id, "membranes.requires_body", "must be an object")
-			else:
-				for key: Variant in membrane["requires_body"] as Dictionary:
-					if not RequiresBodyGate.KIT_KEYS.has(String(key)) and not RequiresBodyGate.BODY_KEYS.has(String(key)):
-						_fail(errors, 0, file_id, "membranes.requires_body", "unknown capability key " + String(key))
+			_check_requires_body(membrane["requires_body"], file_id, "membranes.requires_body", errors)
 	for entry: Variant in layer["routes"]:
 		var route: Dictionary = _entry(entry, errors, file_id, "routes")
 		if route.is_empty():
@@ -150,6 +147,11 @@ static func _rule_structure(layer: Dictionary, file_id: String, errors: Array[Di
 			_fail(errors, 0, file_id, "routes.next", "a descent route names its next stratum or an empty string")
 		if kind == "ending" and not DescentState.ENDING_IDS.has(String(route.get("next", ""))):
 			_fail(errors, 0, file_id, "routes.next", "an ending route names one of the three endings")
+		if route.has("requires_body"):
+			if kind != "ending":
+				_fail(errors, 0, file_id, "routes.requires_body", "only ending routes carry a body requirement")
+			else:
+				_check_requires_body(route["requires_body"], file_id, "routes.requires_body", errors)
 	for entry: Variant in layer["sites"]:
 		var site: Dictionary = _entry(entry, errors, file_id, "sites")
 		if site.is_empty():
@@ -401,6 +403,15 @@ static func _rule_membrane_triggers(layer: Dictionary, file_id: String, errors: 
 		for trigger: Rect2 in triggers:
 			if rect.intersects(trigger):
 				_fail(errors, 13, file_id, "membranes.%s" % String((entry as Dictionary).get("id", "?")), "overlaps a descent or ending trigger")
+
+
+static func _check_requires_body(value: Variant, file_id: String, key: String, errors: Array[Dictionary]) -> void:
+	if not value is Dictionary:
+		_fail(errors, 0, file_id, key, "must be an object")
+		return
+	for name: Variant in value as Dictionary:
+		if not RequiresBodyGate.KIT_KEYS.has(String(name)) and not RequiresBodyGate.BODY_KEYS.has(String(name)):
+			_fail(errors, 0, file_id, key, "unknown capability key " + String(name))
 
 
 static func _routes(layer: Dictionary, kind: String) -> Array[Dictionary]:

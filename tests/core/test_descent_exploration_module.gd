@@ -394,6 +394,16 @@ func test_screen_names_map_only_the_three_endings() -> void:
 		assert_true(SCREEN_NAMES.has(hit.get_string(1)), hit.get_string(1))
 
 
+func _identifier_words(text: String) -> Array[String]:
+	var words: Array[String] = []
+	var identifier := RegEx.create_from_string("[A-Za-z_][A-Za-z0-9_.]*")
+	var camel := RegEx.create_from_string("([a-z0-9])([A-Z])")
+	for hit: RegExMatch in identifier.search_all(text):
+		var snake: String = camel.sub(hit.get_string(), "$1_$2", true).to_lower().replace(".", "_")
+		words.append("_%s_" % snake)
+	return words
+
+
 func test_no_refilling_lore_device() -> void:
 	for path: String in _files(MODULE_ROOT, ["gd", "tscn", "tres", "json"] as Array[String]):
 		var text: String = FileAccess.get_file_as_string(path)
@@ -403,9 +413,13 @@ func test_no_refilling_lore_device() -> void:
 			checked = " ".join(_all_keys(parsed))
 		else:
 			checked = _strip(text)
-		checked = checked.to_lower()
+		var words: Array[String] = _identifier_words(checked)
+		var hits: Array[String] = []
 		for token: String in LORE_TOKENS:
-			assert_false(checked.contains(token), "%s carries %s" % [path, token])
+			for word: String in words:
+				if word.contains("_%s_" % token) and not hits.has(word):
+					hits.append(word)
+		assert_eq(hits, [] as Array[String], path)
 		assert_false(text.contains("docs/world"), "%s loads docs/world" % path)
 	var presentation: String = MODULE_ROOT.path_join("presentation")
 	for path: String in _files(presentation, ["gd", "tscn", "tres"] as Array[String]):

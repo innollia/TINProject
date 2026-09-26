@@ -189,22 +189,27 @@ func _membrane_runtime(verb: String) -> StratumRuntime:
 	return _runtime({"membranes": [{"id": "gate", "rect": [300, 520, 80, 16], "verb": verb, "hold_seconds": 0.9}]})
 
 
+func _plug_runtime() -> StratumRuntime:
+	return _runtime({"currents": [{"id": "tide_main", "rect": [300, 520, 80, 60], "flow": [0.0, -62.0]}]})
+
+
 func test_consume_refuses_a_verb_that_does_not_fit_the_target() -> void:
-	var runtime := _membrane_runtime("feed")
+	var runtime := _plug_runtime()
 	var state := _state_at(Vector2(340, 515))
 	state.pick_up(MatterItem.create("hammer", 1, "strike", "iron", "stratum_test"))
 	var result: Dictionary = MatterLoop.consume(state, runtime, true)
 	assert_false(bool(result.get("consumed", false)))
 	assert_eq(state.carried.size(), 1)
+	assert_false(bool(runtime.currents[0]["stilled"]))
 
 
 func test_consume_matches_on_verb_and_never_on_tag() -> void:
-	var runtime := _membrane_runtime("feed")
+	var runtime := _plug_runtime()
 	var state := _state_at(Vector2(340, 515))
-	state.pick_up(MatterItem.create("odd_food", 1, "feed", "iron", "stratum_test"))
+	state.pick_up(MatterItem.create("odd_plug", 1, "plug", "iron", "stratum_test"))
 	var result: Dictionary = MatterLoop.consume(state, runtime, true)
 	assert_true(bool(result.get("consumed", false)))
-	assert_true(bool(runtime.membranes[0]["open"]))
+	assert_true(bool(runtime.currents[0]["stilled"]))
 
 
 func test_weigh_matter_is_never_consumed() -> void:
@@ -220,12 +225,12 @@ func test_weigh_matter_is_never_consumed() -> void:
 
 
 func test_consume_skips_a_useless_first_item() -> void:
-	var runtime := _membrane_runtime("feed")
+	var runtime := _plug_runtime()
 	var state := _state_at(Vector2(340, 515), 1)
-	state.pick_up(MatterItem.create("seed", 1, "feed", "seed", "stratum_test"))
+	state.pick_up(MatterItem.create("matter_brine_plug", 3, "plug", "brine", "stratum_test"))
 	var result: Dictionary = MatterLoop.consume(state, runtime, true)
 	assert_true(bool(result.get("consumed", false)))
-	assert_eq(result["matter"], "seed")
+	assert_eq(result["matter"], "matter_brine_plug")
 	assert_eq(state.carried.size(), 1)
 	assert_eq(state.carried[0].verb, "weigh")
 
@@ -238,6 +243,60 @@ func test_consume_without_any_target_changes_nothing() -> void:
 	var result: Dictionary = MatterLoop.consume(state, runtime, true)
 	assert_true(bool(result.get("denied", false)))
 	assert_eq(state.to_save(), before)
+
+
+func test_feed_matter_is_never_spent_by_the_consume_key() -> void:
+	var runtime := _membrane_runtime("feed")
+	var state := _state_at(Vector2(340, 515))
+	state.pick_up(MatterItem.create("matter_seed_vial", 1, "feed", "seed", "stratum_test"))
+	var result: Dictionary = MatterLoop.consume(state, runtime, true)
+	assert_true(bool(result.get("denied", false)))
+	assert_eq(state.carried_ids(), ["matter_seed_vial"] as Array[String])
+	assert_false(bool(runtime.membranes[0]["open"]))
+
+
+func test_holding_the_verb_opens_a_membrane_without_spending_the_matter() -> void:
+	var runtime := _membrane_runtime("feed")
+	var state := _state_at(Vector2(340, 515))
+	state.pick_up(MatterItem.create("matter_seed_vial", 1, "feed", "seed", "stratum_test"))
+	for _step: int in 60:
+		HazardField.apply(state, runtime, H)
+	assert_false(bool(runtime.membranes[0]["open"]))
+	assert_gt(float(runtime.membranes[0]["progress"]), 0.0)
+	state.position = Vector2(340, 400)
+	HazardField.apply(state, runtime, H)
+	assert_eq(float(runtime.membranes[0]["progress"]), 0.0)
+	state.position = Vector2(340, 515)
+	for _step: int in 108:
+		HazardField.apply(state, runtime, H)
+	assert_true(bool(runtime.membranes[0]["open"]))
+	assert_eq(state.carried_ids(), ["matter_seed_vial"] as Array[String])
+	assert_true(state.consumed.is_empty())
+
+
+func test_a_membrane_is_solid_until_it_opens() -> void:
+	var runtime := _membrane_runtime("feed")
+	var state := _state_at(Vector2(340, 505))
+	state.velocity = Vector2(0.0, 80.0)
+	_run(state, runtime, RunIntent.create(false, true), 1.0)
+	assert_almost_eq(state.position.y, 520.0 - 3.5, 0.0001)
+	runtime.membranes[0]["open"] = true
+	_run(state, runtime, RunIntent.create(false, true), 2.0)
+	assert_gt(state.position.y, 540.0)
+
+
+func test_the_heart_mouth_spends_the_feed_matter_it_needs() -> void:
+	var state := DescentState.new_state()
+	state.stratum_id = "stratum_floor"
+	state.pick_up(MatterItem.create("matter_seed_vial", 1, "feed", "seed", "stratum_teeth"))
+	state.pick_up(MatterItem.create("matter_roots_bead", 1, "weigh", "bead", "stratum_roots"))
+	var heart: Dictionary = _floor_runtime().find_route("mouth.heart")
+	assert_eq(MatterLoop.spend_on_route(state, heart), "matter_seed_vial")
+	assert_eq(state.carried_ids(), ["matter_roots_bead"] as Array[String])
+	assert_eq(state.consumed[0], {"matter": "matter_seed_vial", "site": "mouth.heart", "stratum": "stratum_floor"})
+	var still: Dictionary = _floor_runtime().find_route("mouth.still")
+	assert_eq(MatterLoop.spend_on_route(state, still), "")
+	assert_eq(state.carried.size(), 1)
 
 
 func test_plug_matter_stills_the_current_it_is_used_in() -> void:

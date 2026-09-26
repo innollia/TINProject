@@ -23,7 +23,7 @@
     { "id": "return_flow", "rect": [48, 200, 120, 600], "flow": [0.0, -26.0] }
   ],
   "membranes": [
-    { "id": "heart_meld", "rect": [272, 768, 96, 16], "verb": "feed", "hold_seconds": 0.9, "requires_body": { "hands_min": 1 } }
+    { "id": "heart_meld", "rect": [272, 768, 96, 16], "verb": "feed", "hold_seconds": 0.9, "radius": 56, "requires_body": { "hands_min": 1 } }
   ],
   "routes": [
     {
@@ -53,6 +53,7 @@
       "kind": "ending",
       "trigger": [288, 800, 64, 48],
       "requires": [{ "kind": "carrying", "verb": "feed" }],
+      "requires_body": { "hands_min": 1 },
       "next": "ending.swallow"
     }
   ],

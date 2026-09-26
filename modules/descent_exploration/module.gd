@@ -120,6 +120,7 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 		&"reset":
 			load_state({})
 			_seed_run()
+			mutation_requested = false
 			return true
 		&"retry":
 			load_state(save_state())
@@ -274,8 +275,8 @@ func _substep(intent: RunIntent, h: float) -> bool:
 		_persist()
 	for _fact: String in touched["facts"] as Array[String]:
 		_event(&"desc_fact")
-	RouteResolver.evaluate(state, runtime)
-	var used: Dictionary = MatterLoop.consume(state, runtime, intent.consume, body)
+	RouteResolver.evaluate(state, runtime, body)
+	var used: Dictionary = MatterLoop.consume(state, runtime, intent.consume)
 	if bool(used.get("consumed", false)):
 		_event(&"desc_consume")
 	elif bool(used.get("denied", false)):
@@ -295,6 +296,8 @@ func _take_route(route: Dictionary) -> void:
 	if not state.routes_opened.has(route_id):
 		state.routes_opened.append(route_id)
 	if String(route["kind"]) == "ending":
+		if not MatterLoop.spend_on_route(state, route).is_empty():
+			_event(&"desc_consume")
 		var ending: String = EndingResolver.ending_for(route)
 		_begin_ending(ending if not ending.is_empty() else EndingResolver.fallback_ending(runtime.ending_routes()))
 		return

@@ -14,7 +14,7 @@ var _warnings: Array[String] = []
 
 
 static func from_arrival(arrival: Dictionary) -> DescentWorldstateView:
-	var carried: Variant = arrival.get(ARRIVAL_KEY)
+	var carried: Variant = arrival.get(ARRIVAL_KEY, arrival.get(StringName(ARRIVAL_KEY)))
 	if carried is Object and is_instance_valid(carried) and (carried as Object).has_method("to_dictionary"):
 		var snapshot: Variant = (carried as Object).call("to_dictionary")
 		if snapshot is Dictionary:

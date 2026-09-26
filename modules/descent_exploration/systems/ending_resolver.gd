@@ -18,11 +18,17 @@ static func route_specificity(route: Dictionary, state: DescentState) -> int:
 	return best
 
 
-static func open_mouth(routes: Array[Dictionary], state: DescentState) -> String:
+static func eligible(route: Dictionary, state: DescentState, body: BodyRead = null) -> bool:
+	if RouteResolver.blocked(route, state):
+		return false
+	return RequiresBodyGate.is_open(route.get("requires_body", {}), body)
+
+
+static func open_mouth(routes: Array[Dictionary], state: DescentState, body: BodyRead = null) -> String:
 	var chosen: String = ""
 	var chosen_rank: int = -1
 	for route: Dictionary in routes:
-		if RouteResolver.blocked(route, state):
+		if not eligible(route, state, body):
 			continue
 		var rank: int = route_specificity(route, state)
 		if rank > chosen_rank:
@@ -31,9 +37,9 @@ static func open_mouth(routes: Array[Dictionary], state: DescentState) -> String
 	return chosen
 
 
-static func open_mouths(routes: Array[Dictionary], state: DescentState) -> Array[String]:
+static func open_mouths(routes: Array[Dictionary], state: DescentState, body: BodyRead = null) -> Array[String]:
 	var mouths: Array[String] = []
-	var single: String = open_mouth(routes, state)
+	var single: String = open_mouth(routes, state, body)
 	if not single.is_empty():
 		mouths.append(single)
 	return mouths
