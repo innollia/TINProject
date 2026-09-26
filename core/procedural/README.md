@@ -32,6 +32,12 @@ Wave 1 is complete: no stub is left. Tests: `core/procedural/tests/test_shape.gd
 builder, rig, factories, bans). The conventions a Kit needs are below under
 "Wave 1 conventions"; the full text is in each file's header comment.
 
+**Before you build on the rig readings:** `pending/wave1_followup.patch` is written but
+not yet tested (the Godot lock was busy at hand-off). It changes which bone a rig joint
+reads — to the bone its part actually spans — so `get_rotation()` / `get_scale()` of a
+leaf joint change meaning. It also caps `render_frame` squash at 0.35 and speeds up the
+bake. Measured costs and the hand-off notes: `DESIGN_DECISION.md` §15.
+
 ## Hard rules for Kit code
 
 - A Kit never sets a pixel by hand and never names a literal RGB. Colours come

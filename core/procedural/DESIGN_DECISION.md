@@ -854,3 +854,84 @@ W0 가 "그대로 살림" 으로 결정했다. 정본 생성은 그 도구의 `-
 8. **`render_frame` 은 굽지 않고 옮긴다.** 첫 호출에 한 번 굽고, 이후엔 두 관절 리그
    (고정된 밑동, soft 정수리)의 뼈를 따라 구운 그림을 다시 샘플한다. README 의
    "per frame 에 다시 만들지 않는다" 를 지킨다.
+
+
+---
+
+## 15. 마감 기록 — 다음 작업자에게 (2026-09-27)
+
+이 절은 Wave 1 을 맡았던 세션이 대화방을 닫으며 남긴 것이다. 여기만 읽고 이어 갈 수 있게 썼다.
+
+### 15.1 상태
+
+- README 표의 Wave 1 기능(파트 `draw`/`bounds`, 빌더 `compose*`/`outline`, 리그 `step`/
+  `disturb`/`draw`, 팩토리 4개)은 전부 구현돼 있다. 결정은 §14.
+- 검증: 2026-09-27 03:59 KST, `test_shape.gd` 54개 + `test_wave1_visuals.gd` 41개 = 95개 전부
+  통과. 커밋된 코드는 이 검증을 받은 그 파일이다(바이트 크기까지 대조).
+- 시그니처 대조: 마감 때 Godot 을 못 돌려 `tools/procedural_contract_dump.gd --scan` 대신
+  CONTRACT.md 의 동결 함수 89줄(네 클래스)을 소스 선언과 글자로 대조했다. 이름·인자 이름·
+  타입·기본값 유무·반환 타입이 전부 같다. 한 줄(`ProceduralCreatureBuilder._init`)은 도구가
+  `-> void` 를 빼고 적은 표기 차이이며 소스는 커밋된 원본과 같다. 다음 작업자가 첫 Godot
+  실행 때 `--scan` 을 한 번 돌린다.
+- 마감 때 전체 자동 검증(AGENTS.md "완료 전 자동 검증")은 돌리지 못했다. 같은 이유다.
+
+### 15.2 검증 못 한 개선분 — `pending/wave1_followup.patch`
+
+만들었지만 Godot 잠금을 얻지 못해 테스트를 못 돌렸다. 그래서 코드에 넣지 않고 패치로만
+남겼다. 현재 파일에 그대로 적용된다(`git apply --check` 통과). 적용하려면:
+
+```powershell
+git apply core/procedural/pending/wave1_followup.patch
+# 잠금을 잡고 core/procedural/tests 두 파일을 돌린다. 통과하면 README·이 절을 고치고
+# pending/ 을 지운 뒤 core/procedural/** 만 커밋한다. 실패하면 git apply -R 로 되돌린다.
+```
+
+담긴 것 세 가지:
+
+1. **리그 관절이 읽는 뼈를 "그 파트가 걸친 뼈"로 바꾼다. (가장 중요)** 지금은 관절의 뼈가
+   "부모 → 관절"이다. 그런데 파트는 관절에서 자식 쪽으로 자란다. 그래서 디버그 렌더에서
+   머리를 누르면 가슴 파트가 원래 길이대로 그려져, 찌그러진 머리를 뚫고 위로 삐져나왔다.
+   패치는 "관절 → soft 자식 중 파트 축(누적 `rest_rotation` + `part.angle`)과 가장 나란한 자식"
+   의 뼈를 읽는다. soft 자식이 없는 끝 관절은 "부모 → 관절"을 읽는다. rigid 자식(장식)과
+   pinned 자식(고정점)은 뼈가 아니다(지금 루트는 pinned 발까지 평균에 넣어 읽기가 흔들린다).
+   공개 읽기의 뜻이 바뀐다: 끝 관절의 `get_rotation()` 은 늘 0 이고, 그 회전은 부모 관절이
+   가져간다. 06·07·08 이 `get_rotation()`/`get_scale()` 로 텍스처를 움직이기 전에 정할 일이다.
+   테스트 `test_rig_rotation_reads_the_bone` 를 두 개로 바꾼다(`..._its_part_spans`,
+   `test_rig_joint_squashes_along_the_bone_its_part_spans`).
+2. **`render_frame` 의 찌그러짐 한도를 정수리 관절 기본값 0.35 로.** 지금은 `MAX_SQUASH` 0.6
+   이라, 세게 착지하면 폭이 2.5배로 퍼지며 캔버스 밖이 잘린다(디버그 렌더에서 확인). 같은
+   패치에서 재샘플을 원본이 칠해진 영역이 닿는 사각형만 돌게 하고, 자세가 그대로인 프레임은
+   앞 텍스처를 그대로 돌려준다. 테스트 2개 추가.
+3. **굽기 속도.** 조각·세그먼트·파트마다 품는 원을 미리 구해, 그 원까지의 거리가 이미 구한
+   값(+ fusion)보다 멀면 계산을 건너뛴다. 곧은 캡슐은 함수 호출 없이 푼다. 그림은 반올림
+   수준에서만 달라진다. 공개 시그니처는 그대로다.
+
+### 15.3 알려진 한계 (지금 코드 기준, 편집기 빌드 headless 에서 잰 값)
+
+GDScript 픽셀 루프라 느리다. 다른 세션과 CPU 를 나눠 쓸 때 값이라 두 배쯤 흔들린다.
+
+| 경로 | 크기 | 걸린 시간 |
+|---|---|---|
+| `ProceduralCreatureBuilder.compose_canvas()` | 64×48 크리처 픽스처 | 0.24 ~ 0.6 초 |
+| `ProceduralCreatureBuilder.outline()` | 같은 것 | 0.33 ~ 0.54 초 |
+| `ProceduralBodyPart.draw()` | 곧은 파트 / 휜 파트(조각 8개) | 약 12 ms / 약 90 ms |
+| `ProceduralSquishRig.draw()` | 관절 4개 테스트 리그 | 약 100 ms |
+| `Procedural.render_frame()` | 64×48, 매 프레임 | 21 ~ 50 ms (첫 호출 굽기 약 0.65 초) |
+
+- 굽기(`compose*`, `build_sprite`)는 로드 때 한 번만 한다. 계획서(07 §텍스처 캐시, 06
+  `player_view`)도 그렇게 쓴다.
+- `render_frame` 과 `rig.draw()` 는 지금 속도로는 60fps 매 프레임 경로가 못 된다. 여러
+  개체를 움직일 땐 파트를 한 번 굽고 텍스처를 `get_position()`/`get_rotation()`/`get_scale()`
+  로 옮기는 편이 맞다(README "per frame path").
+
+### 15.4 Godot 잠금 파일에서 겪은 일
+
+- 다른 세션이 만든 잠금 파일은 만든 시각·고친 시각이 1601-01-01 로 찍힌다. 그래서 AGENTS.md
+  의 "40분 넘게 남아 있으면 지운다"를 파일 시각으로 판단하면 방금 만든 잠금도 오래된 것으로
+  보인다. 이 세션은 04:44 KST 에 그 판단으로 kit05 의 잠금을 한 번 지웠다(그 순간 godot
+  프로세스는 없었다). 그 뒤로는 "같은 잠금을 직접 40분 지켜봤고 그동안 godot 프로세스가 한
+  번도 없었을 때만" 지웠다.
+- 05:45~06:20 KST 에는 kit01 이 잠금을 쥔 채 긴 판정 작업(`rule_judge`, 04:47 시작)을 돌려서
+  이 세션은 마감 검증을 못 했다.
+- 잠금 절차 보완(예: 잠금 파일 내용에 시작 시각을 적기)은 공용 문서라 이 세션이 고칠 수 없다.
+  정본 반영 대기.
