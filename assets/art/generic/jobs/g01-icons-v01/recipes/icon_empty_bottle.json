@@ -1,0 +1,171 @@
+{
+ "asset": "icon_empty_bottle",
+ "status": "candidate",
+ "note": "Empty tall glass bottle with a long neck, dust at the bottom and a bright glint.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 44256,
+ "meta": {
+  "kind": "icon",
+  "stage": "C",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "glass",
+   "z": 0,
+   "material": "glass_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      90.0
+     ],
+     "size": [
+      44.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      44.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      42.0
+     ],
+     "size": [
+      14.0,
+      34.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      25.0
+     ],
+     "size": [
+      20.0,
+      7.0
+     ]
+    }
+   ],
+   "opacity": 0.9,
+   "shade": {
+    "highlight_amount": 0.7
+   }
+  },
+  {
+   "name": "inside",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      92.0
+     ],
+     "size": [
+      34.0,
+      50.0
+     ]
+    }
+   ],
+   "color": "#1c1824",
+   "clip_to": "glass",
+   "opacity": 0.45
+  },
+  {
+   "name": "dust",
+   "z": 0.7,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      118.0
+     ],
+     "size": [
+      36.0,
+      8.0
+     ]
+    }
+   ],
+   "color": "#6e6448",
+   "clip_to": "glass",
+   "opacity": 0.6
+  },
+  {
+   "name": "glint",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      49.0,
+      88.0
+     ],
+     "size": [
+      7.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      51.0,
+      87.0
+     ],
+     "size": [
+      7.0,
+      44.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      60.0,
+      40.0
+     ],
+     "size": [
+      2.0,
+      26.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "color": "glint",
+   "clip_to": "glass",
+   "opacity": 0.6
+  }
+ ]
+}

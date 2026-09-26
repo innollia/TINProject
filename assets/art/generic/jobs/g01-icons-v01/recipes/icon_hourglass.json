@@ -1,0 +1,313 @@
+{
+ "asset": "icon_hourglass",
+ "status": "candidate",
+ "note": "Hourglass: wooden top and bottom plates with posts, two glass bulbs, sand falling into the lower bulb.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 10176,
+ "meta": {
+  "kind": "icon",
+  "stage": "C",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "glass",
+   "z": 0,
+   "material": "glass_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      42.0
+     ],
+     "size": [
+      58.0,
+      40.0
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       8.72,
+       14.0
+      ],
+      [
+       7.28,
+       14.0
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      84.0
+     ],
+     "size": [
+      58.0,
+      40.0
+     ],
+     "poly": [
+      [
+       7.28,
+       2.0
+      ],
+      [
+       8.72,
+       2.0
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ]
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      40.0
+     ],
+     "size": [
+      58.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      86.0
+     ],
+     "size": [
+      58.0,
+      30.0
+     ]
+    }
+   ],
+   "opacity": 0.95
+  },
+  {
+   "name": "sand_top",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      50.0
+     ],
+     "size": [
+      38.0,
+      20.0
+     ],
+     "poly": [
+      [
+       3.2,
+       2.0
+      ],
+      [
+       12.8,
+       2.0
+      ],
+      [
+       8.6,
+       14.0
+      ],
+      [
+       7.4,
+       14.0
+      ]
+     ]
+    }
+   ],
+   "color": "#b09058",
+   "clip_to": "glass"
+  },
+  {
+   "name": "sand_bottom",
+   "z": 0.6,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      100.0
+     ],
+     "size": [
+      50.0,
+      22.0
+     ]
+    }
+   ],
+   "color": "#b09058",
+   "clip_to": "glass"
+  },
+  {
+   "name": "stream",
+   "z": 0.7,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      78.0
+     ],
+     "size": [
+      2.2,
+      26.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "color": "#c8a868"
+  },
+  {
+   "name": "plates",
+   "z": 1,
+   "kind": "block",
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      18.0
+     ],
+     "size": [
+      76.0,
+      10.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      110.0
+     ],
+     "size": [
+      76.0,
+      10.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "extrude": 4
+  },
+  {
+   "name": "posts",
+   "z": 1.5,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      30.0,
+      64.0
+     ],
+     "size": [
+      6.0,
+      88.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      98.0,
+      64.0
+     ],
+     "size": [
+      6.0,
+      88.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glint",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      46.0,
+      42.0
+     ],
+     "size": [
+      6.0,
+      22.0
+     ],
+     "rot": 20
+    },
+    {
+     "icon": "circle",
+     "at": [
+      48.0,
+      86.0
+     ],
+     "size": [
+      6.0,
+      20.0
+     ],
+     "rot": -20
+    }
+   ],
+   "color": "glint",
+   "clip_to": "glass",
+   "opacity": 0.45
+  }
+ ]
+}

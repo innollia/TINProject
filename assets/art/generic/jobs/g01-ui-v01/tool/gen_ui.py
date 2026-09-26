@@ -12,12 +12,13 @@ from __future__ import annotations
 
 import argparse
 import copy
+import math
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from g01kit import (C, D, F, MOON, P, POLY, R, RR, SPARK, STAR, animate, around, halo, ngon, rframe,  # noqa: E402
-                    ringp, rrect, save, scale, shift, star_pts, sub, turn)
+from g01kit import (C, D, F, MOON, P, POLY, R, RR, SPARK, STAR, animate, around, halo, ngon, poly_abs, rframe,  # noqa: E402
+                    ringp, rrect, save, scale, shift, star_pts, sub, turn, wedge)
 
 RDIR = Path(__file__).resolve().parents[1] / "recipes"
 UI: list = []   # (stage, asset, note, fn) ; fn -> dict(forms, canvas, frames?, meta, pivot?)
@@ -281,6 +282,111 @@ def balloon_idea():
 
 
 # ------------------------------------------------------------------ main
+
+# ================================================================== C
+@ui("C", "ui_slot", "Item slot: dark inset square with an inner shadow along the top-left, thin bronze border and corner rivets.")
+def slot():
+    W = H = 128
+    forms = [
+        F("well", None, rrect(64, 64, 120, 120, 10), 0, "flat", color="#0e0b12", opacity=0.96),
+        F("inner_shadow", None, rframe(64, 64, 120, 120, 10, 10), 0.5, "flat", color="#000000", blur=5,
+          clip_to="well", opacity=0.55),
+        F("border", "bronze", rframe(64, 64, 122, 122, 3.5, 11), 1),
+        F("rivets", "bronze", [C(12, 12, 6), C(116, 12, 6), C(12, 116, 6), C(116, 116, 6)], 2),
+    ]
+    return {"forms": forms, "canvas": (W, H), "meta": {"kind": "ui_9slice", "nine_slice": [32, 32, 32, 32],
+            "content_inset": 12, "preview_size": [200, 128]}}
+
+
+@ui("C", "ui_tab", "Tab base in two states (active, inactive): rounded top corners, open flat bottom, gold or iron top line.")
+def tab():
+    W, H = 160, 64
+    body = rrect(80, 36, 152, 72, 14)
+    frames = []
+    for mat, line_mat, op in (("button_hot", "gold", 1.0), ("button_dark", "iron", 0.9)):
+        frames.append([
+            F("body", mat, body, 0, opacity=op, shade={"ragged": 0.04, "threshold": 0.3, "soft": 0.1, "bump": 0.5}),
+            F("top", line_mat, rframe(80, 36, 152, 72, 3, 14) + [dict(R(80, 10, 160, 20), op="clip")], 1),
+            F("sides", line_mat, [R(5.5, 40, 3, 50), R(154.5, 40, 3, 50)], 1),
+        ])
+    forms, fr = animate(frames, "ui_tab", names=["ui_tab_active", "ui_tab_inactive"])
+    return {"forms": forms, "frames": fr, "canvas": (W, H),
+            "meta": {"kind": "ui_9slice", "nine_slice": [24, 24, 24, 8], "states": [f["name"] for f in fr],
+                     "preview_size": [300, 64]}}
+
+
+@ui("C", "ui_scrollbar_track", "Scrollbar track: narrow dark groove with iron edges and rounded ends.")
+def scrollbar_track():
+    W, H = 32, 192
+    forms = [
+        F("groove", None, rrect(16, 96, 22, 184, 11), 0, "flat", color="#0e0b12", opacity=0.95),
+        F("edge", "iron", rframe(16, 96, 28, 190, 3.5, 14), 1),
+    ]
+    return {"forms": forms, "canvas": (W, H), "meta": {"kind": "ui_9slice", "nine_slice": [8, 16, 8, 16],
+            "preview_size": [32, 360]}}
+
+
+@ui("C", "ui_scrollbar_thumb", "Scrollbar thumb: bevelled bronze capsule, plain middle so it stretches cleanly.")
+def scrollbar_thumb():
+    W, H = 32, 96
+    forms = [F("thumb", "bronze", rrect(16, 48, 22, 88, 11), 0, shade={"ragged": 0.05, "bump": 0.8}),
+             F("shine", None, [R(12, 48, 3, 60)], 1, "flat", color="#e8d8a8", clip_to="thumb", opacity=0.3)]
+    return {"forms": forms, "canvas": (W, H), "meta": {"kind": "ui_9slice", "nine_slice": [8, 16, 8, 16],
+            "preview_size": [32, 200]}}
+
+
+@ui("C", "ui_cursor_arrow", "Arrow cursor: iron arrowhead pointing up-left with a gold edge line and a small tail notch. Hotspot at the tip.")
+def cursor_arrow():
+    W = H = 128
+    pts = [(0, 0), (1, 0.62), (0.58, 0.66), (0.78, 1), (0.6, 1), (0.42, 0.72), (0.14, 0.95)]
+    body = POLY(pts, 40, 44, 64, 76)
+    return {"forms": [F("arrow", "iron", [body], 0, shade={"highlight_amount": 0.7}),
+                      F("edge", "gold", [poly_abs([(8, 6), (72, 53), (40, 56)]), sub(poly_abs([(13, 14), (60, 50), (40, 52)]))],
+                        1, "flat", clip_to="arrow", opacity=0.9)],
+            "canvas": (W, H), "pivot": [8, 6], "meta": {"kind": "ui_cursor", "hotspot": [8, 6]}}
+
+
+@ui("C", "ui_balloon_sleep", "Emotion balloon: pale crescent moon with two sparkles (sleep, no letters), 5-frame pop.")
+def balloon_sleep():
+    moon = [C(58, 56, 40, 40), sub(C(69, 48, 34, 34))]
+    return balloon("ui_balloon_sleep", [F("mark", "gold", moon, 1, shade={"highlight_amount": 0.8}),
+                                        F("stars", "gold", [SPARK(84, 34, 16), SPARK(90, 62, 10)], 1.2)])
+
+
+@ui("C", "ui_battle_transition", "Battle-start transition maps (grey = order of reveal, black first): clockwise swirl and shattered glass. Opaque greyscale 2560x1440.")
+def battle_transition():
+    import random as _random
+    W, H = 2560, 1440
+    cx, cy = W / 2, H / 2
+    swirl = [F("bg", None, [R(cx, cy, W + 200, H + 200)], 0, "flat", color="#000000")]
+    n = 48
+    for k in range(n):
+        v = int(255 * (k + 0.5) / n)
+        a0 = -90 + k * 360.0 / n
+        swirl.append(F(f"w{k}", None, [wedge(cx, cy, 2000, a0 - 0.6, a0 + 360.0 / n + 0.6, steps=4)], 1 + k * 0.001,
+                       "flat", color=f"#{v:02x}{v:02x}{v:02x}"))
+    swirl.append(F("centre", None, [C(cx, cy, 260, 260)], 2, "flat", color="#000000", blur=40, opacity=0.8))
+    rng = _random.Random(307)
+    shards = [F("bg", None, [R(cx, cy, W + 200, H + 200)], 0, "flat", color="#808080")]
+    cols, rows = 16, 9
+    for j in range(rows):
+        for i in range(cols):
+            x0, y0 = i * W / cols, j * H / rows
+            cxs, cys = x0 + W / cols / 2, y0 + H / rows / 2
+            d = math.hypot((cxs - cx) / W, (cys - cy) / H)
+            v = max(0, min(255, int(255 * (d / 0.71) * 0.85 + rng.uniform(0, 38))))
+            jit = lambda: rng.uniform(-40, 40)
+            pts = [(x0 + jit(), y0 + jit()), (x0 + W / cols + jit(), y0 + jit()),
+                   (x0 + W / cols + jit(), y0 + H / rows + jit()), (x0 + jit(), y0 + H / rows + jit())]
+            shards.append(F(f"s{j}_{i}", None, [poly_abs(pts)], 1 + (j * cols + i) * 0.0001, "flat",
+                            color=f"#{v:02x}{v:02x}{v:02x}"))
+    forms, fr = animate([swirl, shards], "ui_battle_transition",
+                        names=["ui_battle_transition_swirl", "ui_battle_transition_shards"])
+    return {"forms": forms, "frames": fr, "canvas": (W, H), "style": "overlay",
+            "meta": {"kind": "ui_transition_map", "opaque": True,
+                     "use": "RPG-Maker-style transition: reveal pixels from black to white over the fade time"}}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--stage", default="all")

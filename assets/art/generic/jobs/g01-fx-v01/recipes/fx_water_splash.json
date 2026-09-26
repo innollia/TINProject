@@ -1,0 +1,956 @@
+{
+ "asset": "fx_water_splash",
+ "status": "candidate",
+ "note": "Water splash: impact ring on the surface, a crown of droplets rises, falls back, ripples spread and fade.",
+ "palette": "palette_g01.json",
+ "style": "fx",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 49590,
+ "meta": {
+  "kind": "fx",
+  "stage": "C",
+  "frames": 5,
+  "cell": [
+   192,
+   192
+  ],
+  "sheet": "fx_water_splash_sheet.png (one row)",
+  "blend": "normal (alpha); additive also works",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "f1_ripple",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      60.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      52.0,
+      10.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "fx_ice",
+   "opacity": 0.9,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_splash",
+   "z": 1,
+   "kind": "flat",
+   "material": "fx_water",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      136.0
+     ],
+     "size": [
+      30.0,
+      12.0
+     ]
+    }
+   ],
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_ripple",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      90.0,
+      27.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      82.0,
+      19.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "fx_ice",
+   "opacity": 0.8,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_crown_halo",
+   "z": 0.95,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      66.0,
+      124.64
+     ],
+     "size": [
+      10.0,
+      30.71
+     ],
+     "rot": -21.42857142857143
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      76.0,
+      121.43
+     ],
+     "size": [
+      10.0,
+      37.14
+     ],
+     "rot": -14.285714285714285
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      86.0,
+      118.21
+     ],
+     "size": [
+      10.0,
+      43.57
+     ],
+     "rot": -7.142857142857142
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      96.0,
+      115.0
+     ],
+     "size": [
+      10.0,
+      50.0
+     ],
+     "rot": 0.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      106.0,
+      118.21
+     ],
+     "size": [
+      10.0,
+      43.57
+     ],
+     "rot": 7.142857142857145
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      116.0,
+      121.43
+     ],
+     "size": [
+      10.0,
+      37.14
+     ],
+     "rot": 14.285714285714285
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      126.0,
+      124.64
+     ],
+     "size": [
+      10.0,
+      30.71
+     ],
+     "rot": 21.42857142857143
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.4,
+   "color": "glow_water",
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_crown",
+   "z": 1,
+   "kind": "flat",
+   "material": "fx_water",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      66.0,
+      124.64
+     ],
+     "size": [
+      10.0,
+      30.71
+     ],
+     "rot": -21.42857142857143
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      76.0,
+      121.43
+     ],
+     "size": [
+      10.0,
+      37.14
+     ],
+     "rot": -14.285714285714285
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      86.0,
+      118.21
+     ],
+     "size": [
+      10.0,
+      43.57
+     ],
+     "rot": -7.142857142857142
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      96.0,
+      115.0
+     ],
+     "size": [
+      10.0,
+      50.0
+     ],
+     "rot": 0.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      106.0,
+      118.21
+     ],
+     "size": [
+      10.0,
+      43.57
+     ],
+     "rot": 7.142857142857145
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      116.0,
+      121.43
+     ],
+     "size": [
+      10.0,
+      37.14
+     ],
+     "rot": 14.285714285714285
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      126.0,
+      124.64
+     ],
+     "size": [
+      10.0,
+      30.71
+     ],
+     "rot": 21.42857142857143
+    }
+   ],
+   "opacity": 1.0,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_ripple",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      120.0,
+      36.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      114.0,
+      30.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "fx_ice",
+   "opacity": 0.7,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_crown_halo",
+   "z": 0.95,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      56.0,
+      116.0
+     ],
+     "size": [
+      10.0,
+      48.0
+     ],
+     "rot": -22.22222222222222
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      66.0,
+      112.0
+     ],
+     "size": [
+      10.0,
+      56.0
+     ],
+     "rot": -16.666666666666668
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      76.0,
+      108.0
+     ],
+     "size": [
+      10.0,
+      64.0
+     ],
+     "rot": -11.11111111111111
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      86.0,
+      104.0
+     ],
+     "size": [
+      10.0,
+      72.0
+     ],
+     "rot": -5.555555555555555
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      96.0,
+      100.0
+     ],
+     "size": [
+      10.0,
+      80.0
+     ],
+     "rot": 0.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      106.0,
+      104.0
+     ],
+     "size": [
+      10.0,
+      72.0
+     ],
+     "rot": 5.555555555555558
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      116.0,
+      108.0
+     ],
+     "size": [
+      10.0,
+      64.0
+     ],
+     "rot": 11.11111111111111
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      126.0,
+      112.0
+     ],
+     "size": [
+      10.0,
+      56.0
+     ],
+     "rot": 16.666666666666668
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      136.0,
+      116.0
+     ],
+     "size": [
+      10.0,
+      48.0
+     ],
+     "rot": 22.22222222222222
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.36000000000000004,
+   "color": "glow_water",
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_crown",
+   "z": 1,
+   "kind": "flat",
+   "material": "fx_water",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      56.0,
+      116.0
+     ],
+     "size": [
+      10.0,
+      48.0
+     ],
+     "rot": -22.22222222222222
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      66.0,
+      112.0
+     ],
+     "size": [
+      10.0,
+      56.0
+     ],
+     "rot": -16.666666666666668
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      76.0,
+      108.0
+     ],
+     "size": [
+      10.0,
+      64.0
+     ],
+     "rot": -11.11111111111111
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      86.0,
+      104.0
+     ],
+     "size": [
+      10.0,
+      72.0
+     ],
+     "rot": -5.555555555555555
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      96.0,
+      100.0
+     ],
+     "size": [
+      10.0,
+      80.0
+     ],
+     "rot": 0.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      106.0,
+      104.0
+     ],
+     "size": [
+      10.0,
+      72.0
+     ],
+     "rot": 5.555555555555558
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      116.0,
+      108.0
+     ],
+     "size": [
+      10.0,
+      64.0
+     ],
+     "rot": 11.11111111111111
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      126.0,
+      112.0
+     ],
+     "size": [
+      10.0,
+      56.0
+     ],
+     "rot": 16.666666666666668
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      136.0,
+      116.0
+     ],
+     "size": [
+      10.0,
+      48.0
+     ],
+     "rot": 22.22222222222222
+    }
+   ],
+   "opacity": 0.9,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_drops",
+   "z": 1.2,
+   "kind": "flat",
+   "material": "fx_water",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      100.14,
+      48.28
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      104.43,
+      49.71
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      135.72,
+      41.39
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      81.24,
+      44.53
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      59.75,
+      37.09
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      51.79,
+      32.74
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    }
+   ],
+   "opacity": 0.9,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_ripple",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      150.0,
+      45.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      144.0,
+      39.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "fx_ice",
+   "opacity": 0.55,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_ripple",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      90.0,
+      27.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      86.0,
+      23.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "fx_ice",
+   "opacity": 0.5,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_drops",
+   "z": 1.2,
+   "kind": "flat",
+   "material": "fx_water",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      46.84,
+      127.76
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      128.7,
+      117.16
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      36.32,
+      102.42
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      111.53,
+      87.12
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      48.06,
+      101.57
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      118.17,
+      78.66
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      35.08,
+      107.54
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      93.9,
+      89.28
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    }
+   ],
+   "opacity": 0.8,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_ripple",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      176.0,
+      52.8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      172.0,
+      48.8
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "fx_ice",
+   "opacity": 0.35,
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_ripple",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      120.0,
+      36.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      116.0,
+      32.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "fx_ice",
+   "opacity": 0.3,
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  }
+ ],
+ "frames": [
+  {
+   "name": "fx_water_splash_1",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "fx_water_splash_2",
+   "show": [
+    "f2"
+   ]
+  },
+  {
+   "name": "fx_water_splash_3",
+   "show": [
+    "f3"
+   ]
+  },
+  {
+   "name": "fx_water_splash_4",
+   "show": [
+    "f4"
+   ]
+  },
+  {
+   "name": "fx_water_splash_5",
+   "show": [
+    "f5"
+   ]
+  }
+ ]
+}

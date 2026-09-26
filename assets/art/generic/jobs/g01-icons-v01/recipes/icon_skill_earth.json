@@ -1,0 +1,498 @@
+{
+ "asset": "icon_skill_earth",
+ "status": "candidate",
+ "note": "Skill tile: ground splitting with jagged rock slabs thrown up and dust.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 83110,
+ "meta": {
+  "kind": "icon",
+  "stage": "C",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      100.0,
+      100.0
+     ]
+    }
+   ],
+   "color": "tint_earth",
+   "clip_to": "plate",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 18,
+    "y1": 114
+   }
+  },
+  {
+   "name": "plate_rim",
+   "z": 5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      115.0,
+      115.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      102.0,
+      102.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "plate_studs",
+   "z": 5.2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dust",
+   "z": 1,
+   "kind": "flat",
+   "material": "fx_dust",
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      44.0,
+      94.0
+     ],
+     "size": [
+      44.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      88.0,
+      96.0
+     ],
+     "size": [
+      40.0,
+      20.0
+     ]
+    }
+   ],
+   "clip_to": "plate",
+   "opacity": 0.6,
+   "blur": 2
+  },
+  {
+   "name": "rocks",
+   "z": 2,
+   "material": "fx_earth",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      40.0,
+      70.0
+     ],
+     "size": [
+      30.0,
+      44.0
+     ],
+     "poly": [
+      [
+       4.4,
+       14.0
+      ],
+      [
+       2.0,
+       6.8
+      ],
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       5.6
+      ],
+      [
+       12.2,
+       14.0
+      ]
+     ],
+     "rot": -18
+    },
+    {
+     "icon": "square",
+     "at": [
+      72.0,
+      56.0
+     ],
+     "size": [
+      34.0,
+      60.0
+     ],
+     "poly": [
+      [
+       3.2,
+       14.0
+      ],
+      [
+       5.6,
+       4.4
+      ],
+      [
+       10.4,
+       2.0
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       12.8,
+       14.0
+      ]
+     ],
+     "rot": 8
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      76.0
+     ],
+     "size": [
+      22.0,
+      34.0
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       4.4,
+       5.6
+      ],
+      [
+       9.2,
+       2.0
+      ],
+      [
+       14.0,
+       9.2
+      ],
+      [
+       11.6,
+       14.0
+      ]
+     ],
+     "rot": 24
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.6
+   }
+  },
+  {
+   "name": "crack",
+   "z": 2.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      30.0,
+      97.0
+     ],
+     "size": [
+      21.48,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -16.7
+    },
+    {
+     "icon": "square",
+     "at": [
+      48.0,
+      98.0
+     ],
+     "size": [
+      18.49,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 26.57
+    },
+    {
+     "icon": "square",
+     "at": [
+      65.0,
+      97.0
+     ],
+     "size": [
+      21.19,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -29.05
+    },
+    {
+     "icon": "square",
+     "at": [
+      83.0,
+      96.0
+     ],
+     "size": [
+      20.3,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 23.96
+    },
+    {
+     "icon": "square",
+     "at": [
+      101.0,
+      97.0
+     ],
+     "size": [
+      19.57,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -18.43
+    },
+    {
+     "icon": "circle",
+     "at": [
+      40.0,
+      94.0
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      56.0,
+      102.0
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      74.0,
+      92.0
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      92.0,
+      100.0
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    }
+   ],
+   "color": "void_violet",
+   "clip_to": "plate"
+  },
+  {
+   "name": "chips",
+   "z": 2.2,
+   "material": "fx_earth",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      30.0,
+      44.0
+     ],
+     "size": [
+      6.0,
+      5.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 20
+    },
+    {
+     "icon": "square",
+     "at": [
+      100.0,
+      40.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      56.0,
+      30.0
+     ],
+     "size": [
+      5.0,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 10
+    }
+   ]
+  }
+ ]
+}

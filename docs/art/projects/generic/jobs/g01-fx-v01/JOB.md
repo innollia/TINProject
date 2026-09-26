@@ -39,6 +39,13 @@
 | B | `fx_poison_cloud` | 192×192 × 5 | Poison cloud: green puffs swell from the ground with rising bubbles, peak, then drift up and thin out. | 완료 |
 | B | `fx_summon_pillar` | 192×192 × 5 | Summon: an arcane ring lights on the ground, a pillar of light rises to full height with rising motes, then fades. | 완료 |
 | B | `fx_wind_blade` | 192×192 × 5 | Wind blades: pale green crescents fly from left to right with streaks, then leave curling wind lines. | 완료 |
+| C | `fx_absorb` | 192×192 × 5 | Absorb: red-violet motes stream inward from all sides along curved paths into a glowing core that pulses. | 완료 |
+| C | `fx_buff_rise` | 192×192 × 5 | Power-up: a warm ring lights under the target, chevrons climb through a rising aura, sparkles pop at the top. | 완료 |
+| C | `fx_earth_spikes` | 192×192 × 5 | Earth spikes: the ground cracks, stone spikes burst up, crumble into flying rocks and a dust cloud. | 완료 |
+| C | `fx_fireworks` | 192×192 × 5 | Fireworks: a spark climbs, bursts into a ring of gold, red and blue stars with trails, then the embers drift down. | 완료 |
+| C | `fx_revive_wings` | 192×192 × 5 | Revival: a warm glow swells, golden wings of light unfold behind it, then shed feathers that drift up. | 완료 |
+| C | `fx_special_flash` | 192×192 × 5 | Special move flash: speed lines converge, a white burst blooms into a big star with rays and a ring, then fades. | 완료 |
+| C | `fx_water_splash` | 192×192 × 5 | Water splash: impact ring on the surface, a crown of droplets rises, falls back, ripples spread and fade. | 완료 |
 
 ## 결과 파일
 
@@ -69,4 +76,4 @@ py -3 -B row_sheet.py
 
 - [x] A 단계 (7개 레시피)
 - [x] B 단계 (9개 레시피)
-- [ ] C 단계 (0개 레시피)
+- [x] C 단계 (7개 레시피)

@@ -1,0 +1,187 @@
+{
+ "asset": "icon_cloak",
+ "status": "candidate",
+ "note": "Hooded travelling cloak: dark green wool with a deep hood, fold lines, bronze clasp.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 51598,
+ "meta": {
+  "kind": "icon",
+  "stage": "C",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "cloak",
+   "z": 0,
+   "material": "cloth_green",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      76.0
+     ],
+     "size": [
+      90.0,
+      88.0
+     ],
+     "poly": [
+      [
+       6.2,
+       2.0
+      ],
+      [
+       9.8,
+       2.0
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       8.0,
+       13.28
+      ],
+      [
+       2.0,
+       14.0
+      ]
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      36.0
+     ],
+     "size": [
+      50.0,
+      44.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hood_in",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      40.0
+     ],
+     "size": [
+      32.0,
+      30.0
+     ]
+    }
+   ],
+   "color": "#0e120e",
+   "clip_to": "cloak",
+   "opacity": 0.9
+  },
+  {
+   "name": "folds",
+   "z": 0.7,
+   "kind": "flat",
+   "material": "herb_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      48.0,
+      84.0
+     ],
+     "size": [
+      4.0,
+      52.0
+     ],
+     "rot": 12
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      88.0
+     ],
+     "size": [
+      4.0,
+      56.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      84.0
+     ],
+     "size": [
+      4.0,
+      52.0
+     ],
+     "rot": -12
+    }
+   ],
+   "clip_to": "cloak",
+   "opacity": 0.7
+  },
+  {
+   "name": "clasp",
+   "z": 1,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      56.0,
+      62.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      72.0,
+      62.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      14.0,
+      3.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ]
+  }
+ ]
+}

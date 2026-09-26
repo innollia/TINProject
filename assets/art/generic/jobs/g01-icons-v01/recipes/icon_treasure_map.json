@@ -1,0 +1,567 @@
+{
+ "asset": "icon_treasure_map",
+ "status": "candidate",
+ "note": "Treasure map: parchment sheet with rolled ends, coastline, little mountains, a dashed route and a red ring target (no letters).",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 17552,
+ "meta": {
+  "kind": "icon",
+  "stage": "C",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "sheet",
+   "z": 0,
+   "material": "paper",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      88.0,
+      72.0
+     ],
+     "poly": [
+      [
+       2.0,
+       2.6
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       13.4
+      ]
+     ],
+     "rot": -8.0
+    }
+   ],
+   "shade": {
+    "bump": 0.35,
+    "highlight_amount": 0.2
+   }
+  },
+  {
+   "name": "rolls",
+   "z": 1,
+   "material": "paper",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      18.45,
+      70.4
+     ],
+     "size": [
+      14.0,
+      76.0
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      109.55,
+      57.6
+     ],
+     "size": [
+      14.0,
+      74.0
+     ],
+     "rot": -8.0
+    }
+   ],
+   "shade": {
+    "bump": 0.9
+   }
+  },
+  {
+   "name": "coast",
+   "z": 1.2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      33.77,
+      50.07
+     ],
+     "size": [
+      13.25,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 10.43
+    },
+    {
+     "icon": "square",
+     "at": [
+      43.53,
+      47.69
+     ],
+     "size": [
+      10.6,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -44.87
+    },
+    {
+     "icon": "square",
+     "at": [
+      53.57,
+      47.29
+     ],
+     "size": [
+      15.02,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 25.69
+    },
+    {
+     "icon": "square",
+     "at": [
+      63.75,
+      47.88
+     ],
+     "size": [
+      9.54,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -34.57
+    },
+    {
+     "icon": "square",
+     "at": [
+      74.93,
+      48.33
+     ],
+     "size": [
+      16.72,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 21.74
+    },
+    {
+     "icon": "square",
+     "at": [
+      89.07,
+      48.36
+     ],
+     "size": [
+      15.16,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -23.95
+    },
+    {
+     "icon": "circle",
+     "at": [
+      39.99,
+      51.22
+     ],
+     "size": [
+      2.0,
+      2.0
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      47.07,
+      44.16
+     ],
+     "size": [
+      2.0,
+      2.0
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      60.07,
+      50.41
+     ],
+     "size": [
+      2.0,
+      2.0
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      67.44,
+      45.34
+     ],
+     "size": [
+      2.0,
+      2.0
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      82.41,
+      51.31
+     ],
+     "size": [
+      2.0,
+      2.0
+     ],
+     "rot": -8.0
+    }
+   ],
+   "color": "#6e5c44",
+   "clip_to": "sheet",
+   "opacity": 0.8
+  },
+  {
+   "name": "sea",
+   "z": 1.1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      59.82,
+      34.29
+     ],
+     "size": [
+      90.0,
+      26.0
+     ],
+     "rot": -8.0
+    }
+   ],
+   "color": "#5a6a78",
+   "clip_to": "sheet",
+   "opacity": 0.35
+  },
+  {
+   "name": "mountains",
+   "z": 1.3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      46.98,
+      86.59
+     ],
+     "size": [
+      14.0,
+      10.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ]
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      59.14,
+      86.9
+     ],
+     "size": [
+      12.0,
+      9.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ]
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      39.61,
+      91.66
+     ],
+     "size": [
+      10.0,
+      8.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ]
+     ],
+     "rot": -8.0
+    }
+   ],
+   "color": "#6e5c44",
+   "clip_to": "sheet",
+   "opacity": 0.75
+  },
+  {
+   "name": "route",
+   "z": 1.4,
+   "kind": "flat",
+   "material": "wax_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      41.07,
+      73.28
+     ],
+     "size": [
+      5.0,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -28.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      49.33,
+      67.37
+     ],
+     "size": [
+      5.0,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -20.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      58.08,
+      64.99
+     ],
+     "size": [
+      5.0,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -12.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      67.45,
+      66.99
+     ],
+     "size": [
+      5.0,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -4.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      77.09,
+      70.91
+     ],
+     "size": [
+      5.0,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 4.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      86.45,
+      72.83
+     ],
+     "size": [
+      5.0,
+      2.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 12.0
+    }
+   ],
+   "clip_to": "sheet",
+   "opacity": 0.85
+  },
+  {
+   "name": "target",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "wax_red",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      94.51,
+      79.91
+     ],
+     "size": [
+      14.0,
+      14.0
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      94.51,
+      79.91
+     ],
+     "size": [
+      9.2,
+      9.2
+     ],
+     "op": "sub",
+     "rot": -8.0
+    }
+   ],
+   "clip_to": "sheet"
+  },
+  {
+   "name": "compass",
+   "z": 1.6,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      92.35,
+      35.78
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ],
+     "rot": -8.0
+    }
+   ],
+   "color": "#6e5c44",
+   "clip_to": "sheet",
+   "opacity": 0.8
+  }
+ ]
+}

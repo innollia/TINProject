@@ -32,6 +32,13 @@
 | B | `ov_leaves` | 768×768 | Falling leaves: sparse brown, rust and wine leaves at random angles with midribs, tiles seamlessly (768). | 완료 |
 | B | `ov_rain` | 768×768 | Rain: thin slanted streaks in two depths (long faint far drops, shorter brighter near drops), tiles seamlessly (768). | 완료 |
 | B | `ov_snow` | 768×768 | Snow: soft flakes in two depths, small far dots and larger blurred near flakes with a few sparkles, tiles seamlessly (768). | 완료 |
+| C | `ov_bubbles` | 768×768 | Bubbles: pale rings of mixed sizes with small highlights, rising, tiles seamlessly (768). | 완료 |
+| C | `ov_dust_motes` | 768×768 | Dust motes: small warm specks and a few larger soft blurred ones, drifting, tiles seamlessly (768). | 완료 |
+| C | `ov_light_circle_color_l` | 768×768 × 2 | Light circle, large (768): blue and red. | 완료 |
+| C | `ov_light_circle_color_m` | 384×384 × 2 | Light circle, medium (384): blue and red. | 완료 |
+| C | `ov_light_circle_color_s` | 192×192 × 2 | Light circle, small (192): blue and red. | 완료 |
+| C | `ov_screen_noise` | 768×768 × 2 | Screen noise: fine grain in three greys plus faint scanlines, two frames to flicker, tiles seamlessly (768). | 완료 |
+| C | `ov_sunbeams` | 2560×1440 | Sunbeams: soft warm shafts slanting down from the upper left, over 2560x1440, low alpha. | 완료 |
 
 ## 결과 파일
 
@@ -62,4 +69,4 @@ py -3 -B tile_preview.py --out ../preview/overlays_all.png
 
 - [x] A 단계 (5개 레시피)
 - [x] B 단계 (4개 레시피)
-- [ ] C 단계 (0개 레시피)
+- [x] C 단계 (7개 레시피)

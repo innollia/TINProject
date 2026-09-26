@@ -18,7 +18,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from g01kit import C, D, F, P, POLY, R, RR, SPARK, animate, halo, poly_abs, save, sub, turn  # noqa: E402
+from g01kit import C, D, F, P, POLY, R, RR, SPARK, animate, halo, poly_abs, ringp, save, sub, turn  # noqa: E402
 
 RDIR = Path(__file__).resolve().parents[1] / "recipes"
 OV: list = []
@@ -194,6 +194,93 @@ def leaves():
                        opacity=0.6))
     return {"forms": forms, "canvas": (T, T),
             "meta": tile_meta({"scroll_hint": "scroll down-right slowly (30-60 px/s); rotate the layer a little for flutter"})}
+
+
+# ================================================================== C
+@ov("C", "ov_screen_noise", "Screen noise: fine grain in three greys plus faint scanlines, two frames to flicker, tiles seamlessly (768).")
+def screen_noise():
+    frames_forms = []
+    for seed in (307, 311):
+        rng = random.Random(seed)
+        fl = [F("scan", None, [R(T / 2, y + 1, T + 8, 1.2) for y in range(0, T, 4)], 0, "flat", color="#000000",
+                opacity=0.18)]
+        for i, (col, op) in enumerate((("#000000", 0.5), ("#8a8494", 0.35), ("#e6e2ee", 0.3))):
+            dots = [R(rng.uniform(0, T), rng.uniform(0, T), s, s) for s in
+                    (rng.uniform(1.0, 2.4) for _ in range(700))]
+            fl.append(F(f"grain{i}", None, wrap(dots, margin=2), 1 + i * 0.1, "flat", color=col, opacity=op))
+        frames_forms.append(fl)
+    forms, frames = animate(frames_forms, "ov_screen_noise", names=["ov_screen_noise_a", "ov_screen_noise_b"])
+    return {"forms": forms, "frames": frames, "canvas": (T, T),
+            "meta": tile_meta({"scroll_hint": "swap a/b every 2-3 frames and jump the offset randomly"})}
+
+
+@ov("C", "ov_bubbles", "Bubbles: pale rings of mixed sizes with small highlights, rising, tiles seamlessly (768).")
+def bubbles():
+    rng = random.Random(313)
+    rings, shines = [], []
+    for _ in range(64):
+        x, y, s = rng.uniform(0, T), rng.uniform(0, T), rng.uniform(8, 34)
+        rings += ringp(x, y, s, s, max(1.2, s * 0.08))
+        shines.append(C(x - s * 0.22, y - s * 0.22, s * 0.22, s * 0.16, rot=-40))
+    forms = [
+        F("fill", None, wrap([C(p["at"][0], p["at"][1], p["size"][0] * 0.9) for p in rings[::2]], margin=4), 0, "flat",
+          color="#9ac8e8", opacity=0.08),
+        F("rings", None, wrap(rings, margin=4), 1, "flat", color="#cfe6ff", opacity=0.5),
+        F("shines", None, wrap(shines, margin=4), 2, "flat", color="#ffffff", opacity=0.7),
+    ]
+    return {"forms": forms, "canvas": (T, T), "meta": tile_meta({"scroll_hint": "scroll up 30-60 px/s with a slow sway"})}
+
+
+@ov("C", "ov_sunbeams", "Sunbeams: soft warm shafts slanting down from the upper left, over 2560x1440, low alpha.")
+def sunbeams():
+    W, H = 2560, 1440
+    rng = random.Random(317)
+    beams, cores = [], []
+    for k in range(7):
+        x0 = 160 + k * 300 + rng.uniform(-60, 60)
+        w0, w1 = rng.uniform(60, 120), rng.uniform(150, 240)
+        dx = 900
+        beams.append(poly_abs([(x0, -60), (x0 + w0, -60), (x0 + w0 + dx + w1 / 2, H + 60), (x0 + dx - w1 / 2, H + 60)]))
+        if k % 2 == 0:
+            m0, m1 = x0 + w0 / 2, x0 + w0 / 2 + dx + w0 / 2
+            cores.append(poly_abs([(m0 - w0 * 0.2, -60), (m0 + w0 * 0.2, -60), (m1 + w1 * 0.15, H + 60),
+                                   (m1 - w1 * 0.15, H + 60)]))
+    forms = [
+        F("beams", None, beams, 0, "flat", color="#ffe8b0", blur=40, opacity=0.2),
+        F("cores", None, cores, 1, "flat", color="#fff4d8", blur=26, opacity=0.14),
+    ]
+    return {"forms": forms, "canvas": (W, H),
+            "meta": {"kind": "overlay_light", "tileable": False, "blend": "additive or screen, 40-80 % strength"}}
+
+
+BLUE_RED = [("blue", "#7ab0ff"), ("red", "#ff7a6a")]
+
+
+@ov("C", "ov_light_circle_color_s", "Light circle, small (192): blue and red.")
+def light_cs():
+    return light_circle("ov_light_circle_color_s", 192, BLUE_RED)
+
+
+@ov("C", "ov_light_circle_color_m", "Light circle, medium (384): blue and red.")
+def light_cm():
+    return light_circle("ov_light_circle_color_m", 384, BLUE_RED)
+
+
+@ov("C", "ov_light_circle_color_l", "Light circle, large (768): blue and red.")
+def light_cl():
+    return light_circle("ov_light_circle_color_l", 768, BLUE_RED)
+
+
+@ov("C", "ov_dust_motes", "Dust motes: small warm specks and a few larger soft blurred ones, drifting, tiles seamlessly (768).")
+def dust_motes():
+    rng = random.Random(331)
+    small = [C(rng.uniform(0, T), rng.uniform(0, T), rng.uniform(2, 4)) for _ in range(120)]
+    big = [C(rng.uniform(0, T), rng.uniform(0, T), rng.uniform(8, 16)) for _ in range(18)]
+    forms = [
+        F("small", None, wrap(small, margin=3), 0, "flat", color="#e6d6b8", blur=0.6, opacity=0.55),
+        F("big", None, wrap(big, margin=12), 1, "flat", color="#e6d6b8", blur=4, opacity=0.3),
+    ]
+    return {"forms": forms, "canvas": (T, T), "meta": tile_meta({"scroll_hint": "drift 5-15 px/s in any direction"})}
 
 
 # ------------------------------------------------------------------ main
