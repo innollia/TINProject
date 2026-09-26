@@ -1,0 +1,26 @@
+{
+  "id": "boss_warden_turned", "name": "돌아선 자", "value": 420,
+  "hp": 700, "poise": 60, "damage": 12,
+  "affinity_attr": "roundness",
+  "attributes": { "limbs": 6, "surprise": 0, "wrongness": 9, "roundness": 5 },
+  "shape": { "size_units": 150, "width_units": 170, "height_units": 130, "motion_events": 8 },
+  "defense": 0.25,
+  "resistances": { "bleed": 0.40, "poison": 0.40, "frost": 0.40 },
+  "immunities": ["unmake", "push"], "tags": ["boss", "humanoid", "ranged", "superarmor"],
+  "adapt_attr": "wrongness",
+  "states": {
+    "cooldown": { "frames": 20, "next": ["cast", "sweep_low"] },
+    "cast":     { "frames": 28, "next": ["recover"], "on_enter": "cast" },
+    "sweep_low": { "frames": 18, "next": ["recover"], "on_enter": "sweep_low" },
+    "recover":  { "frames": 18, "next": ["cooldown"] },
+    "awaken":   { "frames": 60, "next": ["approach"] },
+    "approach": { "frames": 1,  "next": ["approach"] },
+    "stagger":  { "frames": 22, "next": ["recover"], "forced": true }
+  },
+  "behaviors": {
+    "1": { "default_state": "cooldown", "moves": false, "wake_distance": 0 },
+    "2": { "default_state": "approach", "moves": true, "walk_frames_per_unit": 10, "wake_distance": 34 }
+  },
+  "attacks": ["atk_warden_cast", "atk_warden_sweep_low"],
+  "death_drops": [ { "kind": "currency", "min": 200, "max": 260 }, { "kind": "material", "id": "mat_ash", "min": 8, "max": 14 } ]
+}

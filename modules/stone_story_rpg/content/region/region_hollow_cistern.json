@@ -1,0 +1,19 @@
+{
+  "id": "region_hollow_cistern", "name": "빈 기둥 우물", "kind": "combat",
+  "tiles": [ { "y": 0, "height": 190, "wall_density": "navigation" }, { "y": 190, "height": 320, "floor_density": "evidence" }, { "y": 510, "height": 130, "ground_density": "mood" } ],
+  "gates": { "miniboss": { "min_star": 11 }, "obstacles": { "min_star": 11 }, "reg_foes": { "min_star": 1 }, "boss": { "min_star": 3 }, "boss_full": { "min_star": 5 } },
+  "foe_pools": [
+    { "min_star": 1, "max_star": 10, "weight": 5, "ids": ["foe_husk_scrapper", "foe_wall_walker"] },
+    { "min_star": 5, "max_star": 20, "weight": 3, "ids": ["foe_husk_scrapper", "foe_ash_sprite", "foe_warden_elite"] },
+    { "min_star": 16, "max_star": 20, "weight": 1, "ids": ["foe_warden_elite", "foe_ash_sprite"] }
+  ],
+  "obstacle_pool": [ { "min_star": 11, "ids": ["obs_pillar", "obs_rubble"] } ],
+  "spawn_cap": { "b1": 2, "b2": 3, "b3": 5, "b4": 7, "b5": 9 },
+  "boss_chain": [ { "foe_id": "boss_warden_holder", "min_star": 3, "hp_threshold": 0.55 }, { "foe_id": "boss_warden_turned", "min_star": 4, "hp_threshold": 0.00 } ],
+  "miniboss": { "green": "miniboss_bomb_cart" },
+  "drops": { "materials": { "mat_ash": [1, 3] }, "currency": [8, 20] },
+  "chest_tiers": ["common", "giant"],
+  "shop_id": null,
+  "loop_point": { "x": 0, "y": 0 },
+  "props": []
+}

@@ -1,0 +1,25 @@
+{
+  "id": "foe_husk_scrapper", "name": "허물 경비", "value": 20,
+  "hp": 60, "poise": 24, "damage": 7,
+  "affinity_attr": "limbs",
+  "attributes": { "limbs": 4, "surprise": 0, "wrongness": 3, "roundness": 4 },
+  "shape": { "size_units": 44, "width_units": 22, "height_units": 40, "motion_events": 3 },
+  "defense": 0.10,
+  "resistances": { "bleed": 0.0, "poison": 0.30, "frost": 0.0 },
+  "immunities": [], "tags": ["humanoid", "melee"],
+  "states": {
+    "cooldown":  { "frames": 0,  "next": ["slash", "sweep"] },
+    "slash":     { "frames": 12, "next": ["recover"], "on_enter": "slash" },
+    "sweep":     { "frames": 16, "next": ["recover"], "on_enter": "sweep" },
+    "recover":   { "frames": 20, "next": ["cooldown"] },
+    "awaken":    { "frames": 30, "next": ["approach"] },
+    "approach":  { "frames": 1,  "next": ["approach"] },
+    "stagger":   { "frames": 22, "next": ["recover"], "forced": true }
+  },
+  "behaviors": {
+    "1": { "default_state": "cooldown", "moves": false, "wake_distance": 0 },
+    "2": { "default_state": "approach", "moves": true, "walk_frames_per_unit": 4, "wake_distance": 20 }
+  },
+  "attacks": ["atk_scrapper_slash", "atk_scrapper_sweep"],
+  "death_drops": [ { "kind": "currency", "min": 3, "max": 8 } ]
+}

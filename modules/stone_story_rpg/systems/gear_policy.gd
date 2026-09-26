@@ -110,7 +110,10 @@ static func validate_content(policy: Dictionary, where: String) -> Array[String]
 			if not str(v).is_empty() and not StoneStoryAttributes.KEYS.has(StringName(v)):
 				errs.append("bad_counter_attr:%s:%s" % [where, str(v)])
 		elif k == &"actions_per_turn_mod" or k == &"evade_cooldown_mod":
-			if not (v is int) or absi(int(v)) > 3:
+			# JSON 은 정수/실수를 구분하지 않는다. 정수값인 수만 정수 키로 받는다.
+			if not (v is int or v is float):
+				errs.append("mod_not_number:%s:%s" % [where, str(v)])
+			elif float(v) != floorf(float(v)) or absf(float(v)) > 3.0:
 				errs.append("mod_out_of_range:%s:%s" % [where, str(v)])
 		elif v is bool or v is float or v is int or v is String:
 			continue

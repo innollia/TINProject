@@ -98,8 +98,8 @@ static func resolve_attack(weapon: Dictionary, item: Dictionary, affix_db: Dicti
 	var attrs: Dictionary = attacker.get("attributes", {})
 	var crit: bool = false
 	if bool(attacker.get("can_crit", true)):
-		var roll: int = StoneStoryCore.at(
-				StoneStoryCore.stream(int(attacker.get("seed", 1)) + serial, StoneStoryCore.TAG_SIM), 0)
+		var roll: int = StoneStoryCore.stream(
+				int(attacker.get("seed", 1)) + serial, StoneStoryCore.TAG_SIM).at(0)
 		crit = roll % 100 < int(StoneStoryAttributes.crit_chance(attrs, tuning) * 100.0)
 	var raw: float = float(pre["value"]) * float(aff["mult"])
 	if crit:

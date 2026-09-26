@@ -42,13 +42,11 @@ func _read(file_name: String) -> Dictionary:
 
 
 func _signature() -> String:
-	return str(StoneStoryCore.mix(
-			StoneStoryCore.mix(
-					StoneStoryCore.text_hash(JSON.stringify(combat)),
-					StoneStoryCore.text_hash(JSON.stringify(economy))),
-			StoneStoryCore.mix(
-					StoneStoryCore.text_hash(JSON.stringify(generation)),
-					StoneStoryCore.text_hash(JSON.stringify(star_bands)))))
+	var h: int = ProceduralSeed.hash_text(JSON.stringify(combat))
+	h = ProceduralSeed.combine(h, ProceduralSeed.hash_text(JSON.stringify(economy)))
+	h = ProceduralSeed.combine(h, ProceduralSeed.hash_text(JSON.stringify(generation)))
+	h = ProceduralSeed.combine(h, ProceduralSeed.hash_text(JSON.stringify(star_bands)))
+	return str(h)
 
 
 func c(key: String) -> Variant:

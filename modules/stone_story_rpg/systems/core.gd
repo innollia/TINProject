@@ -1,9 +1,8 @@
 class_name StoneStoryCore
 extends RefCounted
 
-## 결정론 RNG. 이 Kit 은 randf()/randi()/Time.get_ticks_* 를 쓰지 않는다.
-
-const MASK: int = 0x7FFFFFFF
+## 이 Kit 이 쓰는 난수 팩토리와 소프트캡 곡선.
+## 발생기는 전부 ProceduralSeed 위다 (systems/rng.gd).
 
 const TAG_TERRAIN := "region.terrain"
 const TAG_OBSTACLE := "region.obstacle"
@@ -21,69 +20,14 @@ const TAG_TEXTURE := "texture"
 const TAG_SIM := "sim.roll"
 const TAG_SURPRISE := "surprise"
 
-const STREAM_SIZE: int = 48
 
-
-static func mix(a: int, b: int) -> int:
-	var x: int = (a ^ (b * 0x9E3779B1)) & MASK
-	x = ((x ^ (x >> 15)) * 0x2545F491) & MASK
-	x = ((x ^ (x >> 13)) * 0x27220A95) & MASK
-	return (x ^ (x >> 16)) & MASK
-
-
-static func text_hash(s: String) -> int:
-	var h: int = 2166136261
-	for i in s.length():
-		h = (h ^ s.unicode_at(i)) & 0xFFFFFFFF
-		h = (h * 16777619) & 0xFFFFFFFF
-	return h & MASK
-
-
-## 상태가 없는 스트림. 재생성 가능. 순서 소비만 한다.
-static func stream(seed_value: int, tag: String) -> PackedInt64Array:
-	var s: int = mix(seed_value, text_hash(tag))
-	var out := PackedInt64Array()
-	out.resize(STREAM_SIZE)
-	for i in STREAM_SIZE:
-		s = (s ^ (s << 13)) & MASK
-		s = (s >> 17) & MASK
-		s = (s ^ (s << 5)) & MASK
-		out[i] = s
-	return out
-
-
-static func at(st: PackedInt64Array, index: int) -> int:
-	if st.is_empty():
-		return 0
-	return st[index % st.size()]
-
-
-static func unit(st: PackedInt64Array, index: int) -> float:
-	return float(at(st, index)) / float(MASK)
-
-
-static func range_int(st: PackedInt64Array, index: int, lo: int, hi: int) -> int:
-	if hi <= lo:
-		return lo
-	return lo + (at(st, index) % (hi - lo + 1))
-
-
-static func weighted(st: PackedInt64Array, index: int, weights: Dictionary) -> Variant:
-	var total: int = 0
-	for k in weights:
-		total += int(weights[k])
-	if total <= 0:
-		return null
-	var roll: int = at(st, index) % total
-	var acc: int = 0
-	for k in weights:
-		acc += int(weights[k])
-		if roll < acc:
-			return k
-	return null
+static func stream(world_seed: int, tag: String) -> StoneStoryRng:
+	return StoneStoryRng.new(world_seed, tag)
 
 
 # --- 소프트캡 -------------------------------------------------------
+## 세 번째 구간은 knee_b 가 아니라 at_knee_b(출력값)에서 이어진다.
+## knee_b 에서 이어 쓰면 1 스텝에 +25 가 들어가는 불연속이 생긴다.
 
 static func effective(value: int, knee_a: float, knee_b: float, slope_b: float, slope_c: float) -> float:
 	if value <= knee_a:

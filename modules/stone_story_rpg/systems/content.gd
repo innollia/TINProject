@@ -84,11 +84,11 @@ func _read_json(path: String) -> Variant:
 
 
 func _signature() -> String:
-	var h: int = 2166136261
+	var h: int = ProceduralSeed.FNV_OFFSET_BASIS
 	for kind in KINDS:
 		for id in db[kind]:
-			h = StoneStoryCore.mix(h, StoneStoryCore.text_hash(kind + str(id)))
-			h = StoneStoryCore.mix(h, StoneStoryCore.text_hash(JSON.stringify(db[kind][id])))
+			h = ProceduralSeed.combine(h, ProceduralSeed.hash_text(kind + str(id)))
+			h = ProceduralSeed.combine(h, ProceduralSeed.hash_text(JSON.stringify(db[kind][id])))
 	return str(h)
 
 
@@ -104,7 +104,7 @@ func item(id: String) -> Dictionary:
 	return get_def("item", id)
 
 
-func make_item_state(item_id: String) -> Dictionary:
+static func make_item_state(item_id: String) -> Dictionary:
 	return {
 		"item_id": item_id,
 		"upgrade_level": 0,

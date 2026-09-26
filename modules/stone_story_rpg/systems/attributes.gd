@@ -39,6 +39,8 @@ const W_ASPECT: float = 0.15
 const W_MOTION: float = 0.12
 const W_MYSTERY: float = 0.18
 const SIZE_EXPONENT: float = 0.70
+## content 가 줄 수 있는 바이어스의 최대치. 미스터리를 없애지 않기 위한 상한.
+const BIAS_LIMIT: float = 6.0
 
 
 static func blank() -> Dictionary:
@@ -56,14 +58,16 @@ static func clamp_limbs(v: int) -> int:
 ## -------------------------------------------------- 놀랍다
 ## 크기가 가장 큰 상관관계지만 **약하다**. 역산 불가.
 ## 작은 개체가 아주 놀랍게 나올 수 있게 exponent 로 포화를 늦춘다.
-static func surprise(base: Dictionary, shape: Dictionary, stream: PackedInt64Array) -> float:
+## content 의 attributes.surprise 는 **바이어스**다. 값을 그대로 쓰는 게 아니라
+## 공식 결과에 더해지는 nudging 이다. 그래서 놀랍다는 미스터리 수치로 남는다.
+static func surprise(base: Dictionary, shape: Dictionary, stream: StoneStoryRng) -> float:
 	var size_rank: float = inverse_size_term(float(shape.get("size_units", 40.0)))
 	var irregular: float = 1.0 - clampf(float(base.get(ROUND, 0.0)) / float(SCALE_MAX), 0.0, 1.0)
 	var aspect: float = aspect_term(float(shape.get("width_units", 20.0)), float(shape.get("height_units", 20.0)))
 	var motion: float = clampf(float(shape.get("motion_events", 0.0)) / 12.0, 0.0, 1.0)
 
-	var mystery: float = StoneStoryCore.unit(stream, 0)
-	var mystery_b: float = StoneStoryCore.unit(stream, 1)
+	var mystery: float = stream.unit(0)
+	var mystery_b: float = stream.unit(1)
 
 	var raw: float = W_SIZE * pow(size_rank, SIZE_EXPONENT) \
 			+ W_IRREGULAR * irregular \
@@ -73,7 +77,9 @@ static func surprise(base: Dictionary, shape: Dictionary, stream: PackedInt64Arr
 
 	# 폭이 있는 스케일. 단조가 아니어서 역산이 안 된다.
 	var spread: float = 0.75 + 0.5 * mystery_b
-	return clamp_scalar(roundf(raw * spread * float(SCALE_MAX)))
+	# 저자가 건네는 바이어스. 미스터리를 없애지 않는 범위로 제한한다.
+	var bias: float = clampf(float(base.get(SURPRISE, 0.0)), -BIAS_LIMIT, BIAS_LIMIT) / BIAS_LIMIT * 1.5
+	return clamp_scalar(roundf(raw * spread * float(SCALE_MAX) + bias))
 
 
 static func inverse_size_term(size_units: float) -> float:

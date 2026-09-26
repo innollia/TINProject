@@ -1,0 +1,24 @@
+{
+  "id": "foe_wall_walker", "name": "거북 등", "value": 34,
+  "hp": 95, "poise": 44, "damage": 9,
+  "affinity_attr": "roundness",
+  "attributes": { "limbs": 4, "surprise": 0, "wrongness": 1, "roundness": 10 },
+  "shape": { "size_units": 96, "width_units": 70, "height_units": 60, "motion_events": 1 },
+  "defense": 0.30,
+  "resistances": { "bleed": 0.0, "poison": 0.0, "frost": 0.0 },
+  "immunities": [], "tags": ["humanoid", "melee", "slow", "superarmor"],
+  "states": {
+    "cooldown": { "frames": 20, "next": ["lunge"] },
+    "lunge":    { "frames": 22, "next": ["recover"], "on_enter": "lunge" },
+    "recover":  { "frames": 26, "next": ["cooldown"] },
+    "awaken":   { "frames": 40, "next": ["approach"] },
+    "approach": { "frames": 1,  "next": ["approach"] },
+    "stagger":  { "frames": 22, "next": ["recover"], "forced": true }
+  },
+  "behaviors": {
+    "1": { "default_state": "cooldown", "moves": false, "wake_distance": 0 },
+    "2": { "default_state": "approach", "moves": true, "walk_frames_per_unit": 10, "wake_distance": 16 }
+  },
+  "attacks": ["atk_walker_lunge"],
+  "death_drops": [ { "kind": "currency", "min": 6, "max": 12 }, { "kind": "material", "id": "mat_ash", "min": 1, "max": 2 } ]
+}

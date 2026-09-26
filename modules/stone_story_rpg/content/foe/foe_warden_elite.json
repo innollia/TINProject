@@ -1,0 +1,25 @@
+{
+  "id": "foe_warden_elite", "name": "감시자", "value": 40,
+  "hp": 78, "poise": 30, "damage": 8,
+  "affinity_attr": "wrongness",
+  "attributes": { "limbs": 8, "surprise": 0, "wrongness": 8, "roundness": 2 },
+  "shape": { "size_units": 62, "width_units": 30, "height_units": 66, "motion_events": 5 },
+  "defense": 0.12,
+  "resistances": { "bleed": 0.20, "poison": 0.40, "frost": 0.0 },
+  "immunities": [], "tags": ["humanoid", "ranged"],
+  "states": {
+    "cooldown": { "frames": 24, "next": ["cast", "reposition"] },
+    "cast":     { "frames": 26, "next": ["recover"], "on_enter": "cast" },
+    "reposition": { "frames": 30, "next": ["cooldown"] },
+    "recover":  { "frames": 18, "next": ["cooldown"] },
+    "awaken":   { "frames": 36, "next": ["approach"] },
+    "approach": { "frames": 1,  "next": ["approach"] },
+    "stagger":  { "frames": 22, "next": ["recover"], "forced": true }
+  },
+  "behaviors": {
+    "1": { "default_state": "cooldown", "moves": false, "wake_distance": 0 },
+    "2": { "default_state": "approach", "moves": true, "walk_frames_per_unit": 5, "wake_distance": 30 }
+  },
+  "attacks": ["atk_elite_cast"],
+  "death_drops": [ { "kind": "currency", "min": 8, "max": 15 } ]
+}

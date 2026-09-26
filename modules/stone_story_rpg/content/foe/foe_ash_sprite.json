@@ -1,0 +1,24 @@
+{
+  "id": "foe_ash_sprite", "name": "재 부양", "value": 24,
+  "hp": 42, "poise": 12, "damage": 6,
+  "affinity_attr": "surprise",
+  "attributes": { "limbs": 6, "surprise": 0, "wrongness": 5, "roundness": 7 },
+  "shape": { "size_units": 14, "width_units": 16, "height_units": 18, "motion_events": 11 },
+  "defense": 0.05,
+  "resistances": { "bleed": 0.0, "poison": 0.0, "frost": 0.50 },
+  "immunities": [], "tags": ["flying", "ranged"],
+  "states": {
+    "cooldown": { "frames": 30, "next": ["cast"] },
+    "cast":     { "frames": 20, "next": ["recover"], "on_enter": "cast" },
+    "recover":  { "frames": 24, "next": ["cooldown"] },
+    "awaken":   { "frames": 20, "next": ["approach"] },
+    "approach": { "frames": 1,  "next": ["approach"] },
+    "stagger":  { "frames": 22, "next": ["recover"], "forced": true }
+  },
+  "behaviors": {
+    "1": { "default_state": "cooldown", "moves": false, "wake_distance": 0 },
+    "2": { "default_state": "approach", "moves": true, "walk_frames_per_unit": 6, "wake_distance": 26 }
+  },
+  "attacks": ["atk_sprite_bolt"],
+  "death_drops": [ { "kind": "currency", "min": 4, "max": 9 } ]
+}

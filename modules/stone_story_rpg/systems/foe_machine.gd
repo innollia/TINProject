@@ -13,7 +13,7 @@ static func make_foe(def: Dictionary, tuning: StoneStoryTuning, star_level: int,
 	# 4-속성은 개체 고유다. 놀랍다만 shape + 시드에서 파생한다.
 	var base: Dictionary = def.get("attributes", {})
 	var shape: Dictionary = def.get("shape", {})
-	var stream: PackedInt64Array = StoneStoryCore.stream(seed_value ^ StoneStoryCore.text_hash(str(def["id"])), StoneStoryCore.TAG_SURPRISE)
+	var stream: StoneStoryRng = StoneStoryCore.stream(seed_value, StoneStoryCore.TAG_SURPRISE + "." + str(def["id"]))
 	var attrs: Dictionary = {
 		StoneStoryAttributes.LIMBS: StoneStoryAttributes.clamp_limbs(int(base.get(StoneStoryAttributes.LIMBS, 1))),
 		StoneStoryAttributes.SURPRISE: StoneStoryAttributes.surprise(base, shape, stream),
@@ -60,7 +60,7 @@ static func make_foe(def: Dictionary, tuning: StoneStoryTuning, star_level: int,
 	}
 
 
-static func step(foe: Dictionary, def: Dictionary, stream: PackedInt64Array, tick: int) -> void:
+static func step(foe: Dictionary, def: Dictionary, stream: StoneStoryRng, tick: int) -> void:
 	if not bool(foe["alive"]):
 		return
 	var states: Dictionary = def.get("states", {})
@@ -128,12 +128,12 @@ static func refresh_distance(foe: Dictionary, target_pos: Dictionary) -> void:
 
 
 ## chill 은 이산 확률 스킵. 결정론 유지.
-static func chill_skips(foe: Dictionary, stream: PackedInt64Array, tick: int) -> bool:
+static func chill_skips(foe: Dictionary, stream: StoneStoryRng, tick: int) -> bool:
 	for s in foe["statuses"]:
 		if str(s["id"]) != "chill":
 			continue
 		var pct: int = floori(float(s.get("magnitude", 0.25)) * 100.0)
-		return StoneStoryCore.at(stream, tick) % 100 < pct
+		return stream.at(tick) % 100 < pct
 	return false
 
 

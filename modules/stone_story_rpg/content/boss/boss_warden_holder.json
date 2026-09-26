@@ -1,0 +1,25 @@
+{
+  "id": "boss_warden_holder", "name": "들고 있는 자", "value": 300,
+  "hp": 520, "poise": 70, "damage": 11,
+  "affinity_attr": "limbs",
+  "attributes": { "limbs": 11, "surprise": 0, "wrongness": 4, "roundness": 3 },
+  "shape": { "size_units": 190, "width_units": 120, "height_units": 180, "motion_events": 4 },
+  "defense": 0.15,
+  "resistances": { "bleed": 0.30, "poison": 0.30, "frost": 0.30 },
+  "immunities": ["unmake", "push", "stun"], "tags": ["boss", "humanoid", "melee", "superarmor"],
+  "states": {
+    "cooldown": { "frames": 26, "next": ["sweep_low", "sweep_high"] },
+    "sweep_low": { "frames": 18, "next": ["recover"], "on_enter": "sweep_low" },
+    "sweep_high": { "frames": 18, "next": ["recover"], "on_enter": "sweep_high" },
+    "recover":  { "frames": 22, "next": ["cooldown"] },
+    "awaken":   { "frames": 90, "next": ["approach"] },
+    "approach": { "frames": 1,  "next": ["approach"] },
+    "stagger":  { "frames": 22, "next": ["recover"], "forced": true }
+  },
+  "behaviors": {
+    "1": { "default_state": "cooldown", "moves": false, "wake_distance": 0 },
+    "2": { "default_state": "approach", "moves": true, "walk_frames_per_unit": 8, "wake_distance": 25 }
+  },
+  "attacks": ["atk_warden_sweep_low", "atk_warden_sweep_high"],
+  "death_drops": [ { "kind": "currency", "min": 120, "max": 180 } ]
+}

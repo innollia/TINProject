@@ -15,10 +15,10 @@ static func build(content: StoneStoryContent, tuning: StoneStoryTuning,
 	if region.is_empty():
 		return {}
 
-	var st_pool: PackedInt64Array = StoneStoryCore.stream(run_seed, StoneStoryCore.TAG_FOE_POOL)
-	var st_place: PackedInt64Array = StoneStoryCore.stream(run_seed, StoneStoryCore.TAG_FOE_PLACE)
-	var st_scale: PackedInt64Array = StoneStoryCore.stream(run_seed, StoneStoryCore.TAG_FOE_SCALE)
-	var st_obs: PackedInt64Array = StoneStoryCore.stream(run_seed, StoneStoryCore.TAG_OBSTACLE)
+	var st_pool: StoneStoryRng = StoneStoryCore.stream(run_seed, StoneStoryCore.TAG_FOE_POOL)
+	var st_place: StoneStoryRng = StoneStoryCore.stream(run_seed, StoneStoryCore.TAG_FOE_PLACE)
+	var st_scale: StoneStoryRng = StoneStoryCore.stream(run_seed, StoneStoryCore.TAG_FOE_SCALE)
+	var st_obs: StoneStoryRng = StoneStoryCore.stream(run_seed, StoneStoryCore.TAG_OBSTACLE)
 
 	var band_id: String = str(tuning.band_of(star_level)["id"])
 	var spawn_cap: int = int(region.get("spawn_cap", {}).get(band_id, 4))
@@ -36,22 +36,22 @@ static func build(content: StoneStoryContent, tuning: StoneStoryTuning,
 	var idx: int = 0
 	var pool_i: int = 0
 	while foes.size() < spawn_cap and pool_i < 24:
-		var picked: Variant = StoneStoryCore.weighted(st_pool, pool_i, pool_weights)
+		var picked: Variant = st_pool.weighted(pool_i, pool_weights)
 		if picked == null:
 			break
 		var def: Dictionary = content.get_def("foe", str(picked))
 		if def.is_empty():
 			break
 		var foe: Dictionary = StoneStoryFoeMachine.make_foe(def, tuning, star_level, run_seed)
-		var span: int = StoneStoryCore.range_int(st_place, idx, 4, 26)
-		var side: int = 1 if StoneStoryCore.unit(st_place, idx + 100) > 0.5 else -1
+		var span: int = st_place.range_int(idx, 4, 26)
+		var side: int = 1 if st_place.unit(idx + 100) > 0.5 else -1
 		foe["pos"] = {
 			"x": int(player["pos"]["x"]) + side * span,
-			"y": int(player["pos"]["y"]) + StoneStoryCore.range_int(st_place, idx + 200, -8, 8),
+			"y": int(player["pos"]["y"]) + st_place.range_int(idx + 200, -8, 8),
 		}
 		var lo: float = float(tuning.generation["foe_scale_min"])
 		var hi: float = float(tuning.generation["foe_scale_max"])
-		var sc: float = lo + StoneStoryCore.unit(st_scale, idx) * (hi - lo)
+		var sc: float = lo + st_scale.unit(idx) * (hi - lo)
 		foe["scale"] = sc
 		foe["hp"] = maxi(1, int(round(float(foe["hp"]) * sc)))
 		foe["hp_max"] = int(foe["hp"])
@@ -90,8 +90,8 @@ static func build(content: StoneStoryContent, tuning: StoneStoryTuning,
 				"obstacle_id": str(ids[i % ids.size()]),
 				"kind": str(od.get("kind", "pillar")),
 				"pos": {
-					"x": int(player["pos"]["x"]) + StoneStoryCore.range_int(st_obs, i, -20, 20),
-					"y": int(player["pos"]["y"]) + StoneStoryCore.range_int(st_obs, i + 50, -10, 10),
+					"x": int(player["pos"]["x"]) + st_obs.range_int(i, -20, 20),
+					"y": int(player["pos"]["y"]) + st_obs.range_int(i + 50, -10, 10),
 				},
 				"blocks_move": bool(od.get("blocks_move", true)),
 				"blocks_sight": bool(od.get("blocks_sight", false)),

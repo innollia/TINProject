@@ -1,0 +1,24 @@
+{
+  "id": "miniboss_bomb_cart", "name": "폭발 수레", "value": 90,
+  "hp": 220, "poise": 50, "damage": 30,
+  "affinity_attr": "wrongness",
+  "attributes": { "limbs": 12, "surprise": 0, "wrongness": 7, "roundness": 6 },
+  "shape": { "size_units": 88, "width_units": 96, "height_units": 64, "motion_events": 2 },
+  "defense": 0.20,
+  "resistances": { "bleed": 0.0, "poison": 0.0, "frost": 0.0 },
+  "immunities": ["unmake", "push"], "tags": ["humanoid", "melee", "slow", "explode", "superarmor"],
+  "states": {
+    "cooldown": { "frames": 30, "next": ["detonate"] },
+    "detonate": { "frames": 6,  "next": ["recover"], "on_enter": "detonate" },
+    "recover":  { "frames": 40, "next": ["cooldown"] },
+    "awaken":   { "frames": 45, "next": ["approach"] },
+    "approach": { "frames": 1,  "next": ["approach"] },
+    "stagger":  { "frames": 22, "next": ["recover"], "forced": true }
+  },
+  "behaviors": {
+    "1": { "default_state": "cooldown", "moves": false, "wake_distance": 0 },
+    "2": { "default_state": "approach", "moves": true, "walk_frames_per_unit": 15, "wake_distance": 22 }
+  },
+  "attacks": ["atk_cart_detonate"],
+  "death_drops": [ { "kind": "currency", "min": 40, "max": 70 }, { "kind": "material", "id": "mat_ash", "min": 4, "max": 8 } ]
+}
