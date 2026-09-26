@@ -17,6 +17,9 @@
 1. [x] 물 규칙·미결 결정 (`GRILLING_STATE.md` §5.1 Q1~Q14)
 2. [x] 계획서 반영 — §10~§20 작성, 모순 18건 정정(§21). 빈칸 0
 3. [ ] domain 구현 + 먼저 쓰는 테스트(§16.2 wave D0 5개)
+   - [x] wave D0 테스트 5개 + domain 13파일 + `systems/passage_resolver.gd`·`transition_rule.gd`·`region_loader.gd`
+   - [x] D0 실행: 5 scripts · 27 tests · 24 pass · 3 pending(entry.tscn·manifest·presentation 없음) · 389 asserts · 종료 코드 0
+   - [ ] content 25룸·아키타입 5 authored → `test_eco_region_loader.gd`·`test_eco_region_graph.gd`·`test_eco_scale_rung_contract.gd`(1·2·4·8·9)
 4. [ ] systems(비시각) 구현 + 테스트
 5. [ ] authored content
 6. [ ] 전체 자동 검증 → 이 파일 갱신 → 커밋·푸시

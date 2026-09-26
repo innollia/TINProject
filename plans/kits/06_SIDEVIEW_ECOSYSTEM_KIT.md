@@ -1834,6 +1834,34 @@ integrity <= 0 → 사망(원인 "fall")
 
 **금지:** `q`·rung에 따라 파츠 수·파츠 종류·파츠 상대 크기가 바뀌는 코드(§4.3-4 R-05).
 
+### 9.14 ability 경계 상수 (§4.2 T-05)
+
+| 상수 | 값 | 술어 |
+|---|---:|---|
+| `ABILITY_FLEX_GAP_MULT` | `0.85` | `w_px ≤ 0.85 × module_px` (= `TIGHT` 배수) |
+| `ABILITY_POISE_FALL_PX` | `2000.0` | `lethal_fall_px > 2000.0` |
+| `ABILITY_LEAP_REACH_PX` | `290.0` | `jump_height + max_climb ≥ 290.0` |
+| `ABILITY_SHELL_POWER` | `2` | `break_power ≥ 2` |
+| `ABILITY_CLAW_POWER` | `4` | `break_power ≥ 4` |
+
+### 9.15 상수가 사는 파일
+
+같은 상수를 두 파일에 두지 않는다. 다른 파일은 아래 주인에게서 읽는다.
+
+| 상수 | 주인 파일 |
+|---|---|
+| §9.1 `TILE` `AASPECT_W` `MASS_DENSITY` `USE_RANGE_RATIO` `FIT_TARGET` `CAMERA_FRAME_MODULES` `VIEWPORT_H`, §9.2 `GRAVITY_BASE`, §9.3 `FALL_DAMAGE_DIVISOR` | `domain/body_rung.gd` (`EcoBodyRung`) |
+| §4.3-3 rung별 수치(`run_speed` `accel` `jump_height` `max_climb` `safe_fall_speed` `break_power`) | `domain/rung_table.gd` (`EcoRungTable.SPEC`). rung 값(`scale`)은 여기 없다 — `EcoLadder`에서만 |
+| §9.14 | `domain/trait.gd` (`EcoTrait`) |
+| §4.6-1 갭 배수 5개 | `domain/gap_class.gd` (`EcoGapClass`) |
+| §4.6 PRESS 3계급, DROP 4계급, STEP 3계급, BREAK hp 1..4 | `domain/passage_kind.gd` (`EcoPassageKind`) |
+| §9.2의 나머지, §9.4 `FALL_DAMAGE_MAX`, §9.6 `USE_RANGE`·`BREAK_*`, §13.1 `SLEEP_HOLD_S` | `systems/player_body.gd` |
+| §9.4 `CREATURE_*`, §9.5, §9.6 `GRAB_MASS_RATIO` `PRESS_PRESSURE_MULT` `CONFINE_RATIO` | `systems/creature_contact.gd` |
+| §4.8 5구간·`SALT_*`·`COMPRESS_FRICTION_MULT` | `systems/settle_system.gd` |
+| §4.5 전이 4종 수치 | `systems/transition_rule.gd` |
+| §9.8 카메라, §9.9~§9.13 | `presentation/`의 해당 파일 |
+| §7.2 아키타입 수치 | 코드에 없다. `content/archetypes/*.json`뿐 |
+
 ---
 
 ## 10. Authored content 형식
@@ -2462,6 +2490,16 @@ Remove-Item C:\projects\_locks\TINProject-godot.lock
 | `test_eco_graph_detects_dead_end` | 막다른 곳이 있는 작은 픽스처(JSON 텍스트)에서 G2가 거짓이 된다 — 검사가 공허하지 않다는 증명 |
 
 **`test_eco_scale_rung_contract.gd`** — §4.10-5의 9개 그대로. 5·6은 `EcoSaveService` + `EcoWorldstateBridge`(스토어는 `WorldState.new()`)로 직접 돌린다 — `enter()` 대신 §14.2의 3~7단계를 수행하는 `EcoSaveService.begin(store, content, ladder) -> Dictionary`를 부른다. 3·7은 `presentation/`이 생길 때까지 `pending`.
+
+**숫자 리터럴 판정 방식 (테스트 1과 §W.5-2 규칙 H가 같이 쓴다):** `domain/`·`systems/`의 `.gd` 본문에서 부동소수 리터럴(정규식 `(?<![\w.])\d+\.\d+(?![\w.])`)을 전부 뽑아 **값으로** 비교한다.
+
+| 값 | 금지 범위 |
+|---|---|
+| `1.0` (`1.00` 등 모든 표기) | 어디서나. 1이 필요한 자리(가득 찬 `integrity`, 배율 기본값)는 정수 리터럴 `1`을 `float` 자리에 쓴다 |
+| `1.38` `1.30` `1.12` `1.26` (옛 연속 스케일) | 어디서나 |
+| rung 값 `0.05` `0.12` `0.28` `0.65` `1.5` `3.6` | 같은 줄에 `scale` `rung` `band` `ladder`(대소문자 무시)가 있을 때. 시간 상수 `JUMP_BUFFER 0.12`·`BREAK_STRIKE_TIME 0.28`과 겹치므로 줄 단위로 가른다 |
+
+`content/**/*.json`에는 키 이름에 `scale`이 들어간 키가 0개다(룸은 band 이름만 쓴다).
 
 **`test_eco_transitions.gd`**
 
