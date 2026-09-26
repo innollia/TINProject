@@ -1,0 +1,343 @@
+{
+ "asset": "icon_longsword",
+ "status": "candidate",
+ "note": "Longsword on the diagonal: pointed steel blade with fuller and edge light, bronze guard, wrapped grip, gem pommel.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 65609,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "blade",
+   "z": 0,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      78.14,
+      49.86
+     ],
+     "size": [
+      16.0,
+      76.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       3.56
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       2.0,
+       3.56
+      ]
+     ],
+     "rot": 45.0
+    }
+   ]
+  },
+  {
+   "name": "fuller",
+   "z": 1,
+   "kind": "flat",
+   "material": "steel_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      73.9,
+      54.1
+     ],
+     "size": [
+      3.2,
+      54.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 45.0
+    }
+   ],
+   "clip_to": "blade",
+   "opacity": 0.7
+  },
+  {
+   "name": "edge_hl",
+   "z": 1.2,
+   "kind": "flat",
+   "material": "steel_light",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      74.11,
+      47.24
+     ],
+     "size": [
+      2.2,
+      70.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       2.96
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       2.0,
+       2.96
+      ]
+     ],
+     "rot": 45.0
+    }
+   ],
+   "clip_to": "blade",
+   "opacity": 0.55
+  },
+  {
+   "name": "grip",
+   "z": 1.5,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      37.84,
+      90.16
+     ],
+     "size": [
+      8.0,
+      22.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 45.0
+    }
+   ]
+  },
+  {
+   "name": "wrap",
+   "z": 1.7,
+   "kind": "flat",
+   "material": "leather_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      42.08,
+      85.92
+     ],
+     "size": [
+      10.0,
+      1.8
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 23.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      37.84,
+      90.16
+     ],
+     "size": [
+      10.0,
+      1.8
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 23.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      33.59,
+      94.41
+     ],
+     "size": [
+      10.0,
+      1.8
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 23.0
+    }
+   ],
+   "clip_to": "grip",
+   "opacity": 0.9
+  },
+  {
+   "name": "guard",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      48.44,
+      79.56
+     ],
+     "size": [
+      44.0,
+      7.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      32.89,
+      64.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      95.11
+     ],
+     "size": [
+      9.0,
+      9.0
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      48.44,
+      79.56
+     ],
+     "size": [
+      12.0,
+      16.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       2.0,
+       8.0
+      ]
+     ],
+     "rot": 45.0
+    }
+   ]
+  },
+  {
+   "name": "pommel",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      27.23,
+      100.77
+     ],
+     "size": [
+      13.0,
+      13.0
+     ],
+     "rot": 45.0
+    }
+   ]
+  },
+  {
+   "name": "pommel_gem",
+   "z": 2.5,
+   "material": "gem_red",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      27.23,
+      100.77
+     ],
+     "size": [
+      6.0,
+      6.0
+     ],
+     "rot": 45.0
+    }
+   ]
+  }
+ ]
+}

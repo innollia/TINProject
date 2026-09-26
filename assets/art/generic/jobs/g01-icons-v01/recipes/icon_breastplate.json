@@ -1,0 +1,353 @@
+{
+ "asset": "icon_breastplate",
+ "status": "candidate",
+ "note": "Steel breastplate: centre ridge, bronze neck trim, iron pauldrons, leather belt with bronze buckle.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 22705,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "plate",
+   "z": 1,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      72.0
+     ],
+     "size": [
+      82.0,
+      82.0
+     ],
+     "poly": [
+      [
+       3.44,
+       2.0
+      ],
+      [
+       12.56,
+       2.0
+      ],
+      [
+       14.0,
+       4.64
+      ],
+      [
+       13.16,
+       14.0
+      ],
+      [
+       2.84,
+       14.0
+      ],
+      [
+       2.0,
+       4.64
+      ]
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      29.0
+     ],
+     "size": [
+      32.0,
+      24.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      21.0,
+      50.0
+     ],
+     "size": [
+      20.0,
+      38.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      107.0,
+      50.0
+     ],
+     "size": [
+      20.0,
+      38.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.3,
+    "bump": 0.75
+   }
+  },
+  {
+   "name": "ridge",
+   "z": 2,
+   "kind": "flat",
+   "material": "steel_light",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      70.0
+     ],
+     "size": [
+      7.0,
+      70.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       2.0,
+       8.0
+      ]
+     ]
+    }
+   ],
+   "clip_to": "plate",
+   "opacity": 0.4
+  },
+  {
+   "name": "trim",
+   "z": 2.5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      29.0
+     ],
+     "size": [
+      42.0,
+      34.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      29.0
+     ],
+     "size": [
+      32.0,
+      24.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "clip_to": "plate"
+  },
+  {
+   "name": "pauldron_l",
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      30.0,
+      42.0
+     ],
+     "size": [
+      34.0,
+      28.0
+     ],
+     "rot": -18
+    },
+    {
+     "icon": "circle",
+     "at": [
+      26.0,
+      54.0
+     ],
+     "size": [
+      26.0,
+      18.0
+     ],
+     "rot": -18
+    }
+   ]
+  },
+  {
+   "name": "pauldron_r",
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      98.0,
+      42.0
+     ],
+     "size": [
+      34.0,
+      28.0
+     ],
+     "rot": 18
+    },
+    {
+     "icon": "circle",
+     "at": [
+      102.0,
+      54.0
+     ],
+     "size": [
+      26.0,
+      18.0
+     ],
+     "rot": 18
+    }
+   ]
+  },
+  {
+   "name": "belt",
+   "z": 4,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      104.0
+     ],
+     "size": [
+      80.0,
+      10.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rivets",
+   "z": 4,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      40.0,
+      38.0
+     ],
+     "size": [
+      3.5,
+      3.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      88.0,
+      38.0
+     ],
+     "size": [
+      3.5,
+      3.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      44.0
+     ],
+     "size": [
+      3.5,
+      3.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "buckle",
+   "z": 5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      104.0
+     ],
+     "size": [
+      13.0,
+      13.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "name": "buckle_hole",
+   "z": 5.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      104.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "color": "void_violet"
+  }
+ ]
+}

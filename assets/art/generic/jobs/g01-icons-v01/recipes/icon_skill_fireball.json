@@ -1,0 +1,382 @@
+{
+ "asset": "icon_skill_fireball",
+ "status": "candidate",
+ "note": "Skill tile: fireball flying to the lower left, flame tongues trailing up-right, embers.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 66729,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      100.0,
+      100.0
+     ]
+    }
+   ],
+   "color": "tint_fire",
+   "clip_to": "plate",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 18,
+    "y1": 114
+   }
+  },
+  {
+   "name": "plate_rim",
+   "z": 5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      115.0,
+      115.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      102.0,
+      102.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "plate_studs",
+   "z": 5.2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      76.0,
+      52.0
+     ],
+     "size": [
+      30.0,
+      50.0
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      88.0,
+      40.0
+     ],
+     "size": [
+      18.0,
+      34.0
+     ],
+     "rot": 40
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      68.0,
+      40.0
+     ],
+     "size": [
+      14.0,
+      28.0
+     ],
+     "rot": 30
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      90.0,
+      62.0
+     ],
+     "size": [
+      14.0,
+      26.0
+     ],
+     "rot": 62
+    },
+    {
+     "icon": "circle",
+     "at": [
+      52.0,
+      76.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ]
+    }
+   ],
+   "blur": 6,
+   "opacity": 0.5,
+   "color": "glow_fire",
+   "clip_to": "plate"
+  },
+  {
+   "name": "flame",
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_fire",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      76.0,
+      52.0
+     ],
+     "size": [
+      30.0,
+      50.0
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      88.0,
+      40.0
+     ],
+     "size": [
+      18.0,
+      34.0
+     ],
+     "rot": 40
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      68.0,
+      40.0
+     ],
+     "size": [
+      14.0,
+      28.0
+     ],
+     "rot": 30
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      90.0,
+      62.0
+     ],
+     "size": [
+      14.0,
+      26.0
+     ],
+     "rot": 62
+    },
+    {
+     "icon": "circle",
+     "at": [
+      52.0,
+      76.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ]
+    }
+   ],
+   "clip_to": "plate"
+  },
+  {
+   "name": "flame_core",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "fx_fire_core",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      66.0,
+      60.0
+     ],
+     "size": [
+      16.0,
+      30.0
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "circle",
+     "at": [
+      54.0,
+      74.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    }
+   ],
+   "clip_to": "plate"
+  },
+  {
+   "name": "hot",
+   "z": 2.8,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      50.0,
+      78.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    }
+   ],
+   "color": "#fff6d0",
+   "clip_to": "plate",
+   "opacity": 0.9
+  },
+  {
+   "name": "embers",
+   "z": 2.6,
+   "kind": "flat",
+   "material": "fx_fire_core",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      36.0,
+      44.0
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      28.0,
+      58.0
+     ],
+     "size": [
+      3.0,
+      3.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      98.0,
+      92.0
+     ],
+     "size": [
+      3.5,
+      3.5
+     ]
+    }
+   ],
+   "clip_to": "plate"
+  }
+ ]
+}

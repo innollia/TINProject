@@ -1,0 +1,348 @@
+{
+ "asset": "ui_gauge_frame",
+ "status": "candidate",
+ "note": "Gauge base, frame part: iron tube with capsule ends, dark channel with inner shadow, bronze end studs.",
+ "palette": "palette_g01.json",
+ "style": "ui",
+ "canvas": [
+  192,
+  48
+ ],
+ "pivot": [
+  96.0,
+  24.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 30064,
+ "meta": {
+  "kind": "ui_9slice",
+  "nine_slice": [
+   24,
+   16,
+   24,
+   16
+  ],
+  "fill_area": [
+   9,
+   9,
+   174,
+   30
+  ],
+  "preview_size": [
+   420,
+   48
+  ],
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "channel",
+   "z": 0,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      24.0
+     ],
+     "size": [
+      148.0,
+      30.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      22.0,
+      24.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      22.0,
+      24.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      24.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      24.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    }
+   ],
+   "color": "void_violet",
+   "opacity": 0.95
+  },
+  {
+   "name": "channel_shadow",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      13.0
+     ],
+     "size": [
+      168.0,
+      10.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      13.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      13.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      13.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      13.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    }
+   ],
+   "color": "#000000",
+   "blur": 2,
+   "clip_to": "channel",
+   "opacity": 0.55
+  },
+  {
+   "name": "tube",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      24.0
+     ],
+     "size": [
+      146.0,
+      42.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      23.0,
+      24.0
+     ],
+     "size": [
+      42.0,
+      42.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      23.0,
+      24.0
+     ],
+     "size": [
+      42.0,
+      42.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      169.0,
+      24.0
+     ],
+     "size": [
+      42.0,
+      42.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      169.0,
+      24.0
+     ],
+     "size": [
+      42.0,
+      42.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      24.0
+     ],
+     "size": [
+      146.0,
+      30.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      23.0,
+      24.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      23.0,
+      24.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      169.0,
+      24.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      169.0,
+      24.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.65
+   }
+  },
+  {
+   "name": "studs",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      7.0,
+      24.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      185.0,
+      24.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ]
+  }
+ ]
+}

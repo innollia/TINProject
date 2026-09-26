@@ -1,0 +1,266 @@
+{
+ "asset": "icon_scroll_sealed",
+ "status": "candidate",
+ "note": "Rolled parchment scroll with a wine ribbon and a red wax seal hanging below.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 82748,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "roll",
+   "z": 0,
+   "material": "paper",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      80.0,
+      32.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -28.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      28.68,
+      82.78
+     ],
+     "size": [
+      12.0,
+      32.0
+     ],
+     "rot": -28.0
+    }
+   ]
+  },
+  {
+   "name": "end",
+   "z": 1,
+   "material": "paper",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      99.32,
+      45.22
+     ],
+     "size": [
+      13.0,
+      32.0
+     ],
+     "rot": -28.0
+    }
+   ],
+   "shade": {
+    "bump": 0.4
+   }
+  },
+  {
+   "name": "spiral",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "paper_mark",
+   "pieces": [
+    {
+     "icon": "spiral",
+     "at": [
+      99.32,
+      45.22
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -28.0
+    }
+   ],
+   "clip_to": "end",
+   "opacity": 0.8
+  },
+  {
+   "name": "ribbon",
+   "z": 2.5,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      58.7,
+      66.82
+     ],
+     "size": [
+      10.0,
+      36.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -28.0
+    }
+   ]
+  },
+  {
+   "name": "tails",
+   "z": 2,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      54.0,
+      94.0
+     ],
+     "size": [
+      11.0,
+      24.0
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       12.2,
+       14.0
+      ],
+      [
+       8.0,
+       11.36
+      ],
+      [
+       3.8,
+       14.0
+      ]
+     ],
+     "rot": 12
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      93.0
+     ],
+     "size": [
+      11.0,
+      22.0
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       12.2,
+       14.0
+      ],
+      [
+       8.0,
+       11.36
+      ],
+      [
+       3.8,
+       14.0
+      ]
+     ],
+     "rot": -16
+    }
+   ]
+  },
+  {
+   "name": "seal",
+   "z": 3,
+   "material": "wax_red",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      59.0,
+      82.0
+     ],
+     "size": [
+      24.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      51.0,
+      88.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      68.0,
+      89.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "seal_mark",
+   "z": 3.5,
+   "kind": "flat",
+   "material": "wax_dark",
+   "pieces": [
+    {
+     "icon": "star",
+     "at": [
+      59.0,
+      82.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    }
+   ],
+   "clip_to": "seal",
+   "opacity": 0.75
+  }
+ ]
+}

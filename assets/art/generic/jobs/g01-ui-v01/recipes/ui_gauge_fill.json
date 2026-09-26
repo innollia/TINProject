@@ -1,0 +1,670 @@
+{
+ "asset": "ui_gauge_fill",
+ "status": "candidate",
+ "note": "Gauge base, fill part in four colours (red life, blue mana, green stamina, gold experience): glossy capsule.",
+ "palette": "palette_g01.json",
+ "style": "ui",
+ "canvas": [
+  192,
+  24
+ ],
+ "pivot": [
+  96.0,
+  12.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 38164,
+ "meta": {
+  "kind": "ui_9slice",
+  "nine_slice": [
+   12,
+   6,
+   12,
+   6
+  ],
+  "states": [
+   "ui_gauge_fill_red",
+   "ui_gauge_fill_blue",
+   "ui_gauge_fill_green",
+   "ui_gauge_fill_gold"
+  ],
+  "preview_size": [
+   300,
+   24
+  ],
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "f1_fill",
+   "z": 0,
+   "material": "liquid_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      12.0
+     ],
+     "size": [
+      168.0,
+      20.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.5,
+    "bump": 0.8
+   },
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_gloss",
+   "z": 1,
+   "kind": "flat",
+   "material": "liquid_red_light",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      7.5
+     ],
+     "size": [
+      168.0,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    }
+   ],
+   "clip_to": "f1_fill",
+   "opacity": 0.55,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_fill",
+   "z": 0,
+   "material": "liquid_blue",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      12.0
+     ],
+     "size": [
+      168.0,
+      20.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.5,
+    "bump": 0.8
+   },
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_gloss",
+   "z": 1,
+   "kind": "flat",
+   "material": "liquid_blue_light",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      7.5
+     ],
+     "size": [
+      168.0,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    }
+   ],
+   "clip_to": "f2_fill",
+   "opacity": 0.55,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_fill",
+   "z": 0,
+   "material": "liquid_green",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      12.0
+     ],
+     "size": [
+      168.0,
+      20.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.5,
+    "bump": 0.8
+   },
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_gloss",
+   "z": 1,
+   "kind": "flat",
+   "material": "liquid_green_light",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      7.5
+     ],
+     "size": [
+      168.0,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    }
+   ],
+   "clip_to": "f3_fill",
+   "opacity": 0.55,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_fill",
+   "z": 0,
+   "material": "liquid_gold",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      12.0
+     ],
+     "size": [
+      168.0,
+      20.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      12.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.5,
+    "bump": 0.8
+   },
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_gloss",
+   "z": 1,
+   "kind": "flat",
+   "material": "liquid_gold_light",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      7.5
+     ],
+     "size": [
+      168.0,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      12.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      7.5
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    }
+   ],
+   "clip_to": "f4_fill",
+   "opacity": 0.55,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  }
+ ],
+ "frames": [
+  {
+   "name": "ui_gauge_fill_red",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "ui_gauge_fill_blue",
+   "show": [
+    "f2"
+   ]
+  },
+  {
+   "name": "ui_gauge_fill_green",
+   "show": [
+    "f3"
+   ]
+  },
+  {
+   "name": "ui_gauge_fill_gold",
+   "show": [
+    "f4"
+   ]
+  }
+ ]
+}

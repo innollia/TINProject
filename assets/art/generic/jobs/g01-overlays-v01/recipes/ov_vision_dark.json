@@ -1,0 +1,205 @@
+{
+ "asset": "ov_vision_dark",
+ "status": "candidate",
+ "note": "Darkness outside the field of view: near-black veil over 2560x1440 with a soft clear hole (wide and narrow).",
+ "palette": "palette_g01.json",
+ "style": "overlay",
+ "canvas": [
+  2560,
+  1440
+ ],
+ "pivot": [
+  1280.0,
+  720.0
+ ],
+ "pivot_meaning": "centre of the image",
+ "seed": 86419,
+ "meta": {
+  "kind": "overlay_mask",
+  "tileable": false,
+  "blend": "normal (alpha) over everything",
+  "hole_centre": [
+   1280.0,
+   720.0
+  ],
+  "note": "move the whole image with the player",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "f1_veil",
+   "z": 0,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      3460.0,
+      2340.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      1180.0,
+      1180.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "dark_veil",
+   "blur": 150,
+   "opacity": 0.96,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_edge",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      1475.0,
+      1475.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      1062.0,
+      1062.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "#120c18",
+   "blur": 180.0,
+   "opacity": 0.35,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_veil",
+   "z": 0,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      3460.0,
+      2340.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      700.0,
+      700.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "dark_veil",
+   "blur": 110,
+   "opacity": 0.96,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_edge",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      875.0,
+      875.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      630.0,
+      630.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "#120c18",
+   "blur": 132.0,
+   "opacity": 0.35,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  }
+ ],
+ "frames": [
+  {
+   "name": "ov_vision_dark_wide",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "ov_vision_dark_narrow",
+   "show": [
+    "f2"
+   ]
+  }
+ ]
+}

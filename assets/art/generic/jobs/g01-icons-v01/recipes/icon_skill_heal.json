@@ -1,0 +1,336 @@
+{
+ "asset": "icon_skill_heal",
+ "status": "candidate",
+ "note": "Skill tile: glowing green cross of light, two herb leaves, sparkles.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 16992,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      100.0,
+      100.0
+     ]
+    }
+   ],
+   "color": "tint_heal",
+   "clip_to": "plate",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 18,
+    "y1": 114
+   }
+  },
+  {
+   "name": "plate_rim",
+   "z": 5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      115.0,
+      115.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      102.0,
+      102.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "plate_studs",
+   "z": 5.2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      58.0
+     ],
+     "size": [
+      20.0,
+      58.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      58.0
+     ],
+     "size": [
+      58.0,
+      20.0
+     ]
+    }
+   ],
+   "blur": 6,
+   "opacity": 0.55,
+   "color": "glow_heal",
+   "clip_to": "plate"
+  },
+  {
+   "name": "cross",
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_heal",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      58.0
+     ],
+     "size": [
+      20.0,
+      58.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      58.0
+     ],
+     "size": [
+      58.0,
+      20.0
+     ]
+    }
+   ],
+   "clip_to": "plate"
+  },
+  {
+   "name": "cross_core",
+   "z": 2.3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      58.0
+     ],
+     "size": [
+      8.0,
+      46.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      58.0
+     ],
+     "size": [
+      46.0,
+      8.0
+     ]
+    }
+   ],
+   "color": "#effff0",
+   "clip_to": "cross",
+   "opacity": 0.7
+  },
+  {
+   "name": "leaves",
+   "z": 2.5,
+   "material": "herb",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      46.0,
+      98.0
+     ],
+     "size": [
+      14.0,
+      28.0
+     ],
+     "rot": -55
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      82.0,
+      98.0
+     ],
+     "size": [
+      14.0,
+      28.0
+     ],
+     "rot": 55
+    }
+   ]
+  },
+  {
+   "name": "sparks",
+   "z": 3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      96.0,
+      30.0
+     ],
+     "size": [
+      13.0,
+      13.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      30.0,
+      32.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      100.0,
+      74.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    }
+   ],
+   "color": "#effff0",
+   "clip_to": "plate"
+  }
+ ]
+}

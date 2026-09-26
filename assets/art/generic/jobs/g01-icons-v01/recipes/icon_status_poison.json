@@ -1,0 +1,277 @@
+{
+ "asset": "icon_status_poison",
+ "status": "candidate",
+ "note": "Status badge: green poison drop with a small bone skull, rising bubbles.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 81645,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "badge",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      106.0,
+      106.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "badge_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      96.0,
+      96.0
+     ]
+    }
+   ],
+   "color": "tint_poison",
+   "clip_to": "badge",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 16,
+    "y1": 112
+   }
+  },
+  {
+   "name": "badge_rim",
+   "z": 5,
+   "material": "silver",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      98.0,
+      98.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "bubbles",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "liquid_green_light",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      88.0,
+      40.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      97.0,
+      55.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      38.0,
+      40.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    }
+   ],
+   "clip_to": "badge",
+   "opacity": 0.85
+  },
+  {
+   "name": "drop",
+   "z": 1,
+   "material": "liquid_green",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      52.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "z": 2,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      68.0
+     ],
+     "size": [
+      26.0,
+      23.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      79.0
+     ],
+     "size": [
+      15.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull_holes",
+   "z": 2.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      58.5,
+      69.0
+     ],
+     "size": [
+      7.0,
+      7.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      69.5,
+      69.0
+     ],
+     "size": [
+      7.0,
+      7.5
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      76.0
+     ],
+     "size": [
+      4.0,
+      4.0
+     ],
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      61.5,
+      82.0
+     ],
+     "size": [
+      1.5,
+      5.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      66.5,
+      82.0
+     ],
+     "size": [
+      1.5,
+      5.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "color": "void_violet"
+  }
+ ]
+}

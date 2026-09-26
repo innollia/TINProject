@@ -1,0 +1,315 @@
+{
+ "asset": "icon_skill_slash",
+ "status": "candidate",
+ "note": "Skill tile: a bright steel crescent slash with two fainter trailing arcs and sparks.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 38543,
+ "meta": {
+  "kind": "icon",
+  "stage": "A",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      100.0,
+      100.0
+     ]
+    }
+   ],
+   "color": "tint_steel",
+   "clip_to": "plate",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 18,
+    "y1": 114
+   }
+  },
+  {
+   "name": "plate_rim",
+   "z": 5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      115.0,
+      115.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      102.0,
+      102.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "plate_studs",
+   "z": 5.2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      56.0,
+      72.0
+     ],
+     "size": [
+      88.0,
+      88.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      47.0,
+      81.0
+     ],
+     "size": [
+      88.0,
+      88.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.55,
+   "color": "glow_steel",
+   "clip_to": "plate"
+  },
+  {
+   "name": "trail",
+   "z": 1.8,
+   "kind": "flat",
+   "material": "fx_steel",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      46.0,
+      82.0
+     ],
+     "size": [
+      66.0,
+      66.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      41.0,
+      87.0
+     ],
+     "size": [
+      66.0,
+      66.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      38.0,
+      90.0
+     ],
+     "size": [
+      44.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      35.0,
+      93.0
+     ],
+     "size": [
+      44.0,
+      44.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "clip_to": "plate",
+   "opacity": 0.5
+  },
+  {
+   "name": "arc",
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_steel",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      56.0,
+      72.0
+     ],
+     "size": [
+      88.0,
+      88.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      47.0,
+      81.0
+     ],
+     "size": [
+      88.0,
+      88.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "clip_to": "plate"
+  },
+  {
+   "name": "sparks",
+   "z": 2.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      94.0,
+      34.0
+     ],
+     "size": [
+      15.0,
+      15.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      28.0,
+      98.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    }
+   ],
+   "color": "#ffffff",
+   "clip_to": "plate",
+   "opacity": 0.9
+  }
+ ]
+}
