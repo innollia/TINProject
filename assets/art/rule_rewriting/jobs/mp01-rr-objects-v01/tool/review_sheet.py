@@ -31,6 +31,7 @@ def main() -> int:
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--scales", default="1,0.5")
     ap.add_argument("--bg", default="#b3a8b7")
+    ap.add_argument("--fg", default="#2a1a2e", help="label colour (mp01: light labels on dark backgrounds)")
     ap.add_argument("--gap", type=int, default=16)
     args = ap.parse_args()
 
@@ -62,7 +63,7 @@ def main() -> int:
             if sh is not None:
                 sheet.alpha_composite(sh.resize(size, resample), (x, y))
             sheet.alpha_composite(im.resize(size, resample), (x, y))
-            draw.text((x, y + size[1] + 2), f"{p.stem} x{s:g}", fill="#2a1a2e", font=label_font)
+            draw.text((x, y + size[1] + 2), f"{p.stem} x{s:g}", fill=args.fg, font=label_font)
             x += cw
         y += rh
     args.out.parent.mkdir(parents=True, exist_ok=True)

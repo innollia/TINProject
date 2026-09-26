@@ -1,0 +1,893 @@
+{
+ "asset": "npc_26_cael_orin",
+ "status": "candidate",
+ "note": "Cael Orin dialogue portrait: 3/4 bust turned to the viewer's right, the inventor kept in the art column (not a student, no institution collar). Old man: high lined forehead, messy white hair sticking out at the back and sides, bushy white brows, deep-set eyes, ink stain on the cheek, hunched near shoulder, loose bone-coloured smock with ink stains, leather drawing tube with bronze caps over the back, a folding rule in the chest pocket. Deliberately the opposite of npc_11 Cael Ren (young runner, rust). Author design from npc_26 JSON and 04 NPC-26 (male, elderly: author design).",
+ "identity": {
+  "npc_id": "npc_26_cael_orin",
+  "display_name": "Cael Orin",
+  "roster_kind": "support",
+  "portrait_key": "portrait_cael_orin",
+  "art_key": "art_npc_support_portrait",
+  "body_key": "body_unassigned_inventor"
+ },
+ "anchors": {
+  "face": [
+   168,
+   124
+  ],
+  "head_center": [
+   160,
+   122
+  ]
+ },
+ "palette": "palette_npc_b.json",
+ "style": "portrait",
+ "canvas": [
+  320,
+  320
+ ],
+ "pivot": [
+  168,
+  124
+ ],
+ "pivot_meaning": "face anchor: midpoint between the eyes (the same pixel in every mp03 portrait)",
+ "seed": 2601,
+ "forms": [
+  {
+   "name": "tube",
+   "z": 0.1,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      84,
+      204
+     ],
+     "size": [
+      26,
+      116
+     ],
+     "rot": -34
+    }
+   ]
+  },
+  {
+   "name": "tube_cap",
+   "z": 0.2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      55,
+      158
+     ],
+     "size": [
+      28,
+      16
+     ],
+     "rot": -34
+    }
+   ]
+  },
+  {
+   "name": "neck",
+   "z": 0.5,
+   "material": "skin_aged",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      194
+     ],
+     "size": [
+      46,
+      54
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160,
+      226
+     ],
+     "size": [
+      44,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck_shade",
+   "z": 0.6,
+   "kind": "flat",
+   "color": "#9a7e70",
+   "clip_to": "neck",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      168,
+      176
+     ],
+     "size": [
+      84,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck_tendon",
+   "z": 0.65,
+   "kind": "flat",
+   "color": "#9a7e70",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      151,
+      214
+     ],
+     "size": [
+      3,
+      34
+     ],
+     "rot": 10
+    }
+   ]
+  },
+  {
+   "name": "smock",
+   "z": 1,
+   "material": "co_smock",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      258
+     ],
+     "size": [
+      276,
+      124
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160,
+      320
+     ],
+     "size": [
+      276,
+      110
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      98,
+      230
+     ],
+     "size": [
+      112,
+      72
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      166,
+      202
+     ],
+     "size": [
+      66,
+      32
+     ]
+    }
+   ],
+   "grime": {
+    "density": 0.1,
+    "strength": 0.22,
+    "size": 7
+   }
+  },
+  {
+   "name": "smock_folds",
+   "z": 1.2,
+   "kind": "flat",
+   "color": "#373126",
+   "opacity": 0.45,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      120,
+      292
+     ],
+     "size": [
+      3,
+      60
+     ],
+     "rot": 10
+    },
+    {
+     "icon": "circle",
+     "at": [
+      150,
+      300
+     ],
+     "size": [
+      3,
+      44
+     ],
+     "rot": 2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      232,
+      296
+     ],
+     "size": [
+      3,
+      50
+     ],
+     "rot": -8
+    }
+   ]
+  },
+  {
+   "name": "pocket",
+   "z": 1.3,
+   "kind": "flat",
+   "color": "#766e5e",
+   "opacity": 0.9,
+   "line": {
+    "width": 1.0,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      206,
+      294
+     ],
+     "size": [
+      34,
+      30
+     ],
+     "rot": -4
+    }
+   ]
+  },
+  {
+   "name": "rule",
+   "z": 1.25,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      201,
+      276
+     ],
+     "size": [
+      9,
+      38
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "rule_marks",
+   "z": 1.26,
+   "kind": "flat",
+   "color": "#1c130b",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      202,
+      266
+     ],
+     "size": [
+      5,
+      1.4
+     ],
+     "rot": 8
+    },
+    {
+     "icon": "square",
+     "at": [
+      201,
+      272
+     ],
+     "size": [
+      4,
+      1.4
+     ],
+     "rot": 8
+    },
+    {
+     "icon": "square",
+     "at": [
+      200,
+      278
+     ],
+     "size": [
+      5,
+      1.4
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "hair_back",
+   "z": 4.8,
+   "material": "hair_white",
+   "shade": {
+    "highlight_amount": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      146,
+      116
+     ],
+     "size": [
+      104,
+      100
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      106,
+      112
+     ],
+     "size": [
+      44,
+      58
+     ],
+     "rot": -80
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      110,
+      150
+     ],
+     "size": [
+      30,
+      40
+     ],
+     "rot": -100
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      120,
+      76
+     ],
+     "size": [
+      12,
+      22
+     ],
+     "rot": -34
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      101,
+      92
+     ],
+     "size": [
+      12,
+      24
+     ],
+     "rot": -62
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      210,
+      106
+     ],
+     "size": [
+      16,
+      24
+     ],
+     "rot": 70
+    }
+   ]
+  },
+  {
+   "name": "ear",
+   "z": 5.5,
+   "material": "skin_aged",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110,
+      142
+     ],
+     "size": [
+      19,
+      33
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ear_inner",
+   "z": 5.6,
+   "kind": "flat",
+   "color": "#9a7e70",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      109,
+      143
+     ],
+     "size": [
+      8,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "z": 6,
+   "material": "skin_aged",
+   "shade": {
+    "threshold": 0.44,
+    "ragged": 0.06,
+    "soft": 0.34,
+    "highlight_amount": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      124
+     ],
+     "size": [
+      96,
+      114
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      172,
+      172
+     ],
+     "size": [
+      52,
+      40
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      204,
+      146
+     ],
+     "size": [
+      13,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wrinkles",
+   "z": 6.8,
+   "kind": "flat",
+   "color": "#553a34",
+   "opacity": 0.4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170,
+      88
+     ],
+     "size": [
+      52,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      170,
+      89.4
+     ],
+     "size": [
+      52,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      168,
+      96
+     ],
+     "size": [
+      46,
+      10
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      168,
+      97.4
+     ],
+     "size": [
+      46,
+      10
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      129,
+      128
+     ],
+     "size": [
+      8,
+      1.6
+     ],
+     "rot": 20
+    },
+    {
+     "icon": "circle",
+     "at": [
+      128,
+      133
+     ],
+     "size": [
+      8,
+      1.6
+     ],
+     "rot": -10
+    },
+    {
+     "icon": "circle",
+     "at": [
+      190,
+      162
+     ],
+     "size": [
+      22,
+      16
+     ],
+     "rot": 20
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      187,
+      160
+     ],
+     "size": [
+      22,
+      16
+     ],
+     "rot": 20
+    }
+   ]
+  },
+  {
+   "name": "sockets",
+   "z": 6.9,
+   "kind": "flat",
+   "color": "#9a7e70",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      125
+     ],
+     "size": [
+      28,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      123
+     ],
+     "size": [
+      20,
+      17
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ink_stain",
+   "z": 6.95,
+   "kind": "flat",
+   "color": "ink_stain",
+   "opacity": 0.75,
+   "pieces": [
+    {
+     "icon": "metaballs",
+     "at": [
+      150,
+      154
+     ],
+     "size": [
+      13,
+      11
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "nose_shade",
+   "z": 7,
+   "kind": "flat",
+   "color": "#9a7e70",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      199,
+      142
+     ],
+     "size": [
+      10,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nostril",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198,
+      155
+     ],
+     "size": [
+      5,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      183,
+      170
+     ],
+     "size": [
+      18,
+      2.6
+     ],
+     "rot": 4
+    }
+   ]
+  },
+  {
+   "name": "lip_shade",
+   "z": 7.05,
+   "kind": "flat",
+   "color": "#9a7e70",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      184,
+      175
+     ],
+     "size": [
+      12,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "iris",
+   "z": 7.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      126
+     ],
+     "size": [
+      9,
+      9
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      124
+     ],
+     "size": [
+      6.5,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glint",
+   "z": 7.3,
+   "kind": "flat",
+   "color": "eye_glint",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.5,
+      124
+     ],
+     "size": [
+      2.6,
+      2.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.5,
+      122.5
+     ],
+     "size": [
+      2.1,
+      2.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lids",
+   "z": 7.4,
+   "kind": "flat",
+   "color": "ink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      125
+     ],
+     "size": [
+      22,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      142,
+      129.4
+     ],
+     "size": [
+      22,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      123
+     ],
+     "size": [
+      15,
+      10
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      194,
+      126.6
+     ],
+     "size": [
+      15,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "z": 7.5,
+   "material": "hair_white",
+   "rough": {
+    "amp": 0.5,
+    "soft": 1.2,
+    "cell": 4
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140,
+      110
+     ],
+     "size": [
+      30,
+      8
+     ],
+     "rot": -8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      196,
+      109
+     ],
+     "size": [
+      19,
+      7
+     ],
+     "rot": 8
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "portrait_cael_orin"
+  }
+ ]
+}

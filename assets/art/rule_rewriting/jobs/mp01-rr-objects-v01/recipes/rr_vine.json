@@ -1,0 +1,36 @@
+{
+  "asset": "rr_vine",
+  "status": "candidate",
+  "note": "Rule Rewrite VINE: a curling green stem rising in an S from a small soil mound, five leaves and a tendril curl at the tip. Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 236,
+  "forms": [
+    {"name": "soil", "z": 0, "material": "rr_crust", "color": "#3b2f25", "shade": {"bump": 0.5},
+     "pieces": [{"icon": "cloud", "at": [96, 156], "size": [50, 14]}]},
+    {"name": "leaves_back", "z": 0.5, "material": "rr_leaf", "shade": {"bump": 0.5},
+     "pieces": [
+       {"icon": "leaf", "rot": -40, "at": [78, 80], "size": [22, 28]},
+       {"icon": "leaf", "rot": 60, "at": [130, 60], "size": [20, 26]}
+     ]},
+    {"name": "stem", "z": 1, "material": "rr_leaf", "shade": {"bump": 0.5},
+     "pieces": [
+       {"icon": "circle", "rot": -22.6, "at": [91, 146], "size": [8, 29]},
+       {"icon": "circle", "rot": 13, "at": [89, 121], "size": [7.5, 30]},
+       {"icon": "circle", "rot": 36, "at": [100, 97], "size": [7, 30]},
+       {"icon": "circle", "rot": 9.5, "at": [110, 74], "size": [6.5, 27]},
+       {"icon": "circle", "rot": -33.7, "at": [106, 53], "size": [6, 24]}
+     ]},
+    {"name": "tendril", "z": 1.5, "material": "rr_leaf", "line": {"width": 0.7, "heavy": 0.5},
+     "pieces": [{"icon": "spiral", "at": [95, 38], "size": [20, 20]}]},
+    {"name": "leaves_front", "z": 2, "material": "rr_leaf", "shade": {"bump": 0.5},
+     "pieces": [
+       {"icon": "leaf", "rot": -60, "at": [68, 120], "size": [26, 34]},
+       {"icon": "leaf", "rot": 50, "at": [124, 100], "size": [26, 34]},
+       {"icon": "leaf", "rot": 70, "at": [112, 146], "size": [22, 28]}
+     ]}
+  ]
+}

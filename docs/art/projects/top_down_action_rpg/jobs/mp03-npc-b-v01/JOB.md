@@ -1,6 +1,6 @@
 # mp03-npc-b-v01 — NPC 11명 필드 그림·대화 초상화
 
-상태: **초상화 제작 중 (V1 기준).** 필드 그림(걸어 다니는 캐릭터)은 COMMON.md의 '캐릭터 스프라이트 형식'이 아직 미정이라 만들지 않는다. 결과는 전부 candidate이고 승인은 사용자만 한다. 게임에 연결하지 않는다.
+상태: **초상화 11장 완료 (V1 기준, candidate). 필드 그림은 8방향 기준 대기.** 필드 그림(걸어 다니는 캐릭터)은 COMMON.md의 '캐릭터 스프라이트 형식'이 아직 미정이라 만들지 않는다. 결과는 전부 candidate이고 승인은 사용자만 한다. 게임에 연결하지 않는다.
 
 | 필드 | 값 |
 |---|---|
@@ -102,23 +102,16 @@ content JSON과 04_CHARACTERS_AND_RELATIONSHIPS.md(§2.4 NPC-20~26, §3 NPC-11~1
 - [x] 작업 폴더, 도구·팔레트를 V1로 교체, 도구 기능 다시 넣기
 - [x] 자료 읽기, 대상 목록, 인물 설계
 - [x] `recipes\palette_npc_b.json`
-- 초상화
-  - [x] 1 Cael Ren
-  - [ ] 2 Ravenna Holt
-  - [ ] 3 Tovan Reed
-  - [ ] 4 Eda Marrow
-  - [ ] 5 Mira Vask
-  - [ ] 6 Halen Osk
-  - [ ] 7 Iven Marrow
-  - [ ] 8 Turo Bex
-  - [ ] 9 Perri Lowe
-  - [ ] 10 Jano Fesk
-  - [ ] 11 Cael Orin
-  - [ ] 초상화 시트(11명, 기준점 표시)
-- 필드 그림 (8방향 기준 확정 뒤)
+- 초상화 (2026-09-27 완료, 검수는 `QA.md`)
+  - [x] 1 Cael Ren · [x] 2 Ravenna Holt · [x] 3 Tovan Reed · [x] 4 Eda Marrow
+  - [x] 5 Mira Vask · [x] 6 Halen Osk · [x] 7 Iven Marrow · [x] 8 Turo Bex
+  - [x] 9 Perri Lowe · [x] 10 Jano Fesk · [x] 11 Cael Orin
+  - [x] 초상화 시트: `preview\sheet_portrait_all.png`(1배, 기준점 십자), `preview\sheet_portrait_all_display_0.275x.png`(88 px)
+- 필드 그림 (8방향 기준 확정 뒤. 다시 시작할 때 COMMON.md의 '캐릭터 스프라이트 형식'부터 읽는다)
   - [ ] 1~11 필드 8방향 × 3칸, 인물마다 모아 보기
   - [ ] 필드 그림 시트(11명)
-- [ ] `inputs.json`(입력 파일과 SHA-256), `QA.md`, `__pycache__` 지우기
+- [x] `inputs.json`(초상화 단계까지. 필드 그림 뒤 다시 잰다), `QA.md`(초상화 부분)
+- [ ] 끝날 때 `inputs.json`·`QA.md` 갱신, `__pycache__` 지우기
 - [ ] 1순위 중간 보고 → 2순위 03 Deduction Casework(`deduction_casework`) → 3순위 범용 특별한 사람(경비병, 기사, 마법사, 성직자, 귀족, 도적)
 
 자산마다: 레시피 → build → read 도구로 직접 확인 → 고치기(최대 2번) → 다음.

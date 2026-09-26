@@ -1,0 +1,40 @@
+{
+  "status": "candidate",
+  "variant": "mp06 H0 area B - background + objects, V1 mood, no scene lighting",
+  "note": "Object placement for h0_b_exchange_shelf (source px of the 2560x1440 background, where each item's pivot goes). Initial states: map ps_matched, E02/E04/E05 barriers conditional. The E05 tram barrier is the shared obj_h0_barrier_arm. 'light' is data for the game's own lighting (colour, radius in source px); nothing is painted. Wall-mounted items carry 'sort_y' = the floor line of their wall or pillar. Review image only, not a content manifest; no people or enemies.",
+  "background": "output/h0_b_exchange_shelf/base_clean.png",
+  "foreground": ["output/h0_b_exchange_shelf/foreground_south_rail.png"],
+  "scale": 0.5,
+  "items": [
+    {"asset": "prop_h0_counterweight_map", "frame": "ps_matched", "at": [1280, 1030], "layer": "floor", "id": "map", "interactive": true},
+    {"asset": "obj_h0_drain_cover", "frame": "obj_h0_drain_cover", "at": [760, 1200], "layer": "floor", "id": "drain_w"},
+    {"asset": "obj_h0_drain_cover", "frame": "obj_h0_drain_cover", "at": [1900, 1180], "layer": "floor", "id": "drain_e"},
+
+    {"asset": "obj_h0_docket_rack", "frame": "obj_h0_docket_rack", "at": [260, 202], "sort_y": 212, "id": "rack_w"},
+    {"asset": "obj_h0_docket_rack", "frame": "obj_h0_docket_rack", "at": [2080, 202], "sort_y": 212, "id": "rack_e"},
+    {"asset": "obj_h0_wall_sconce", "frame": "obj_h0_wall_sconce", "at": [900, 183], "sort_y": 256, "id": "sconce_w",
+     "light": {"color": "#ffc987", "radius": 220}},
+    {"asset": "obj_h0_wall_sconce", "frame": "obj_h0_wall_sconce", "at": [1900, 183], "sort_y": 256, "id": "sconce_e",
+     "light": {"color": "#ffc987", "radius": 220}},
+    {"asset": "obj_h0_post_lantern", "frame": "obj_h0_post_lantern", "at": [52, 684], "sort_y": 826, "id": "lantern_w",
+     "light": {"color": "#ffc987", "radius": 220}},
+    {"asset": "obj_h0_post_lantern", "frame": "obj_h0_post_lantern", "at": [2512, 1094], "sort_y": 1236, "id": "lantern_e",
+     "light": {"color": "#ffc987", "radius": 220}},
+
+    {"asset": "obj_h0_rubble", "frame": "rubble_small", "at": [300, 250], "id": "rubble_nw"},
+    {"asset": "obj_h0_rubble", "frame": "rubble_large", "at": [2330, 262], "id": "rubble_ne"},
+    {"asset": "obj_h0_rubble", "frame": "rubble_small", "at": [1780, 1300], "id": "rubble_se"},
+    {"asset": "obj_h0_crate", "frame": "crate_large", "at": [2140, 380], "id": "crates_ne1"},
+    {"asset": "obj_h0_crate", "frame": "crate_small", "at": [2020, 400], "id": "crates_ne2"},
+    {"asset": "obj_h0_crate", "frame": "crate_stack", "at": [2330, 1290], "id": "crates_se"},
+
+    {"asset": "route_e04_crownwell_ascent", "frame": "conditional", "at": [580, 470], "id": "exit_e04", "interactive": true},
+    {"asset": "obj_h0_barrier_arm", "frame": "conditional", "at": [2100, 1028], "id": "exit_e05", "interactive": true},
+    {"asset": "route_e02_sluice_road", "frame": "conditional", "at": [300, 1040], "id": "exit_e02", "interactive": true},
+    {"asset": "obj_h0_brazier", "frame": "obj_h0_brazier", "at": [980, 1250], "id": "brazier_w",
+     "light": {"color": "#ffb45c", "radius": 300}},
+    {"asset": "obj_h0_brazier", "frame": "obj_h0_brazier", "at": [1560, 1250], "id": "brazier_e",
+     "light": {"color": "#ffb45c", "radius": 300}}
+  ],
+  "out": "preview/h0_b_exchange_shelf_check_1280x720.png"
+}

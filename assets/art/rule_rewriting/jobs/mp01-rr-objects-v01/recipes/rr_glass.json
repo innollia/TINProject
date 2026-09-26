@@ -1,0 +1,29 @@
+{
+  "asset": "rr_glass",
+  "status": "candidate",
+  "note": "Rule Rewrite GLASS: a transparent pane (partly see-through alpha) in a thin iron frame on a low iron stand, with two light streaks. Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 233,
+  "forms": [
+    {"name": "pane", "z": 0, "kind": "flat", "material": "rr_glass", "opacity": 0.42,
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [96, 88], "size": [92, 110]}]},
+    {"name": "streaks", "z": 0.5, "kind": "flat", "color": "#dfeef0", "opacity": 0.6, "clip_to": "pane",
+     "pieces": [
+       {"icon": "circle", "rot": 25, "at": [82, 80], "size": [3.4, 64]},
+       {"icon": "circle", "rot": 25, "at": [102, 70], "size": [2.2, 32]}
+     ]},
+    {"name": "frame", "z": 1, "material": "iron", "shade": {"bump": 0.5},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [96, 34], "size": [102, 7]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [96, 142], "size": [102, 7]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [47, 88], "size": [7, 115]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [145, 88], "size": [7, 115]}
+     ]},
+    {"name": "stand", "z": 2, "kind": "block", "material": "iron", "extrude": 8, "ao": false,
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [96, 146], "size": [118, 12]}]}
+  ]
+}

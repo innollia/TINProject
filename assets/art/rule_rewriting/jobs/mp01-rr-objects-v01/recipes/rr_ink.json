@@ -1,0 +1,27 @@
+{
+  "asset": "rr_ink",
+  "status": "candidate",
+  "note": "Rule Rewrite INK: a small squat dark-blue ink pot with an open neck, a broad quill standing in it, a blank paper band and a drip. No text. Kit view: tops squashed 0.45. Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 215,
+  "forms": [
+    {"name": "bottle", "z": 0, "kind": "block", "material": "rr_ink", "extrude": 46, "ao": false,
+     "pieces": [{"icon": "circle", "squash": 0.45, "at": [96, 97], "size": [78, 78]}]},
+    {"name": "band", "z": 0.5, "kind": "flat", "material": "paper", "opacity": 0.95, "clip_to": "bottle", "line": {"width": 0.7, "heavy": 0.4},
+     "pieces": [{"icon": "square", "at": [96, 144], "size": [78, 10]}]},
+    {"name": "drip", "z": 0.6, "kind": "flat", "color": "#1c2233", "clip_to": "bottle",
+     "pieces": [{"icon": "droplet", "at": [117, 132], "size": [6, 12]}]},
+    {"name": "glint", "z": 0.7, "kind": "flat", "color": "#8a96b8", "opacity": 0.4, "clip_to": "bottle",
+     "pieces": [{"icon": "circle", "at": [71, 138], "size": [5, 22]}]},
+    {"name": "neck", "z": 1, "kind": "block", "material": "rr_ink", "extrude": 12, "ao": false,
+     "pieces": [{"icon": "circle", "squash": 0.45, "at": [96, 85], "size": [32, 32]}]},
+    {"name": "mouth", "z": 1.2, "kind": "flat", "color": "#0e111b",
+     "pieces": [{"icon": "circle", "squash": 0.45, "at": [96, 85], "size": [23, 23]}]},
+    {"name": "quill", "z": 1.5, "material": "paper", "shade": {"bump": 0.4},
+     "pieces": [{"icon": "feather", "rot": 24, "at": [112, 55], "size": [30, 68]}]}
+  ]
+}

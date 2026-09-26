@@ -1,0 +1,29 @@
+{
+  "asset": "rr_turner",
+  "status": "candidate",
+  "note": "Rule Rewrite TURNER: a slate turntable base with a teal rotating disc, tick marks round its edge, a brass hub and a crank arm with a wine grip. Kit view: tops squashed 0.45. Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 235,
+  "forms": [
+    {"name": "base", "z": 0, "kind": "block", "material": "rr_slate", "extrude": 16, "ao": false,
+     "pieces": [{"icon": "circle", "squash": 0.45, "at": [96, 116], "size": [128, 128]}]},
+    {"name": "disc", "z": 1, "kind": "flat", "material": "rr_teal", "textured": true, "line": {"width": 0.9, "heavy": 0.5},
+     "pieces": [{"icon": "circle", "squash": 0.45, "at": [96, 114], "size": [104, 104]}]},
+    {"name": "ticks", "z": 1.5, "kind": "flat", "color": "ink", "opacity": 0.7,
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2.4, 7],
+                 "repeat": {"ellipse": [96, 114, 44, 19.8], "count": 12, "orient": true}}]},
+    {"name": "hub", "z": 2, "kind": "block", "material": "rr_brass", "extrude": 10, "ao": false,
+     "pieces": [{"icon": "circle", "squash": 0.45, "at": [96, 104], "size": [28, 28]}]},
+    {"name": "arm", "z": 3, "material": "rr_brass", "shade": {"bump": 0.6},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "rot": -101, "at": [117, 100], "size": [10, 46]}]},
+    {"name": "grip", "z": 4, "material": "cloth_wine", "shade": {"bump": 0.5},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 4}, "at": [139, 84], "size": [11, 28]},
+       {"icon": "circle", "at": [139, 70], "size": [13, 6]}
+     ]}
+  ]
+}

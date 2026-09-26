@@ -1,0 +1,30 @@
+{
+  "status": "candidate",
+  "note": "bg_r4_hall first-visit object placement (source px, item pivot at 'at'). Objects only: no people, enemies or scene lighting. 'light' entries are for game code; compose_preview ignores them. prop_r4_glossary_slot is hidden at first (hidden_until_condition) and appears in scene_bg_r4_hall_rv_after_glossary_slot.json at (1120, 244). Reserved empty floor for session-01 objects: art_prop_route_marker at (1000, 1300) beside E04 and (2200, 1380) beside E10.",
+  "region": "region_r4_crownwell_archive",
+  "variant": "first_visit",
+  "background": "output/bg_r4_hall/bg_r4_hall.png",
+  "scale": 0.5,
+  "items": [
+    {"id": "copy_shelf_w", "asset": "obj_r4_copy_shelf", "frame": "obj_r4_copy_shelf", "at": [280, 468]},
+    {"id": "copy_shelf_e", "asset": "obj_r4_copy_shelf", "frame": "obj_r4_copy_shelf", "at": [740, 468]},
+    {"id": "wall_lamp_1", "asset": "obj_r4_wall_lamp", "frame": "obj_r4_wall_lamp", "at": [1530, 165], "sort_y": 390,
+     "light": {"color": "#ffc987", "radius": 280}},
+    {"id": "wall_lamp_2", "asset": "obj_r4_wall_lamp", "frame": "obj_r4_wall_lamp", "at": [2420, 165], "sort_y": 390,
+     "light": {"color": "#ffc987", "radius": 280}},
+    {"id": "translation_desk", "asset": "obj_r4_translation_desk", "frame": "obj_r4_translation_desk", "at": [1400, 688]},
+    {"id": "weight_lift_car", "asset": "obj_r4_weight_lift_car", "frame": "obj_r4_weight_lift_car", "at": [2120, 810]},
+    {"id": "prop_r4_weight_lift_counter", "asset": "prop_r4_weight_lift_counter", "frame": "prop_r4_counter_idle", "at": [1640, 1040], "interactive": true},
+    {"id": "record_boxes", "asset": "obj_r4_record_boxes", "frame": "obj_r4_record_boxes", "at": [330, 1040]},
+    {"id": "paper_1", "asset": "obj_r4_paper_drift", "frame": "obj_r4_paper_drift", "at": [1250, 780], "layer": "floor"},
+    {"id": "paper_2", "asset": "obj_r4_paper_drift", "frame": "obj_r4_paper_drift", "at": [480, 1180], "layer": "floor"},
+    {"id": "lamp_post_w", "asset": "obj_r4_lamp_post", "frame": "obj_r4_lamp_post", "at": [130, 1180],
+     "light": {"color": "#ffc987", "radius": 360}},
+    {"id": "lamp_post_e", "asset": "obj_r4_lamp_post", "frame": "obj_r4_lamp_post", "at": [2000, 1230],
+     "light": {"color": "#ffc987", "radius": 360}},
+    {"id": "exit_e04", "asset": "exit_r4_e04_crownwell_ascent", "frame": "exit_r4_e04_crownwell_ascent_closed", "at": [1340, 1205], "interactive": true},
+    {"id": "exit_e10", "asset": "exit_r4_e10_bell_cable_lift", "frame": "exit_r4_e10_bell_cable_lift_closed", "at": [2430, 1275], "interactive": true}
+  ],
+  "foreground": ["output/fg_r4_hall_balustrade/fg_r4_hall_balustrade.png"],
+  "out": "preview/check_bg_r4_hall_1280x720.png"
+}

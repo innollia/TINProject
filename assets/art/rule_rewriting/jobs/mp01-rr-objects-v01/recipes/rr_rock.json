@@ -1,0 +1,30 @@
+{
+  "asset": "rr_rock",
+  "status": "candidate",
+  "note": "Rule Rewrite ROCK: an irregular faceted grey-teal boulder, pale facets, a few cracks. Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 201,
+  "forms": [
+    {"name": "rock", "z": 0, "material": "rr_stone", "shade": {"bump": 0.9, "ragged": 0.3},
+     "pieces": [
+       {"icon": "hexagon", "rot": 12, "at": [98, 114], "size": [124, 90]},
+       {"icon": "octagon", "rot": -8, "at": [76, 100], "size": [72, 62]},
+       {"icon": "hexagon", "rot": 30, "at": [122, 100], "size": [60, 52]}
+     ]},
+    {"name": "facets", "z": 1, "kind": "flat", "color": "#8f9794", "opacity": 0.45, "clip_to": "rock",
+     "pieces": [
+       {"icon": "triangle", "rot": -20, "at": [80, 86], "size": [40, 26]},
+       {"icon": "triangle", "rot": 25, "at": [118, 90], "size": [30, 20]}
+     ]},
+    {"name": "cracks", "z": 2, "kind": "flat", "color": "#1c2120", "opacity": 0.8, "clip_to": "rock",
+     "pieces": [
+       {"icon": "circle", "rot": 28, "at": [102, 112], "size": [1.8, 30]},
+       {"icon": "circle", "rot": -35, "at": [110, 128], "size": [1.6, 20]},
+       {"icon": "circle", "rot": 70, "at": [74, 122], "size": [1.6, 18]}
+     ]}
+  ]
+}

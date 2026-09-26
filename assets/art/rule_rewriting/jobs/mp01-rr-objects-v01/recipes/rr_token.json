@@ -1,0 +1,21 @@
+{
+  "asset": "rr_token",
+  "status": "candidate",
+  "note": "Rule Rewrite TOKEN: a thick brass coin seen slightly from above, a darker inner rim and a diamond mark (no letter or number). Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 212,
+  "forms": [
+    {"name": "coin", "z": 0, "kind": "block", "material": "rr_brass", "extrude": 12, "ao": false,
+     "pieces": [{"icon": "circle", "squash": 0.9, "at": [96, 88], "size": [110, 110]}]},
+    {"name": "rim", "z": 1, "kind": "flat", "color": "#7e6535", "opacity": 0.85, "clip_to": "coin",
+     "pieces": [{"icon": "circle", "minus_icons": [{"icon": "circle", "box": [1.6, 1.6, 14.4, 14.4]}], "squash": 0.9, "at": [96, 88], "size": [92, 92]}]},
+    {"name": "mark", "z": 2, "kind": "flat", "color": "#5a4524", "line": {"width": 0.8, "heavy": 0.5},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "rot": 45, "squash": 0.9, "at": [96, 88], "size": [30, 30]}]},
+    {"name": "mark_dot", "z": 2.2, "kind": "flat", "color": "#c9a864",
+     "pieces": [{"icon": "circle", "at": [96, 88], "size": [8, 7]}]}
+  ]
+}

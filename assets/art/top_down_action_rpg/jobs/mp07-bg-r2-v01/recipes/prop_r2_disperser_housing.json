@@ -1,0 +1,78 @@
+{
+  "asset": "prop_r2_disperser_housing",
+  "status": "candidate",
+  "note": "prop_r2_disperser_housing (Disperser Housing), placement layer wall, on the front wall of the water-council hall in area B. Verdigris copper box 0.9 m wide, 1.4 m high, 0.4 m deep, hung 0.6 m above the deck, with a hopper on top and a fine mesh outlet below. ps_charged -> hopper heaped with pale powder, dust on the lip; ps_spent -> hopper empty with its lid raised, a blank reading card still in the side holder. No smoke or haze (effects are not drawn here). No text.",
+  "palette": "palette_r2.json",
+  "style": "prop",
+  "canvas": [320, 420],
+  "pivot": [150, 350],
+  "pivot_meaning": "wall mount point: where the hall's front wall meets the deck, directly below the housing (area B source px 1280,480)",
+  "seed": 341,
+  "frames": [
+    {"name": "prop_r2_disperser_full", "show": ["full"]},
+    {"name": "prop_r2_disperser_empty", "show": ["empty"]}
+  ],
+  "forms": [
+    {"name": "wall_shade", "kind": "shadow", "color": "shadow_contact", "opacity": 0.22, "blur": 12,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 20}, "at": [160, 262], "size": [178, 176]}]},
+
+    {"name": "side_pipe", "z": 0, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [52, 250], "size": [46, 13]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [34, 250], "size": [9, 24]}
+     ]},
+    {"name": "housing", "z": 1, "kind": "block", "material": "verdigris", "extrude": 154,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [150, 161], "size": [162, 62]}]},
+    {"name": "housing_streaks", "z": 1.2, "kind": "wash", "material": "verdigris_bloom", "opacity": 0.35, "clip_to": "housing",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [98, 238], "size": [12, 70]},
+       {"icon": "droplet", "flip": "y", "at": [196, 232], "size": [10, 56]},
+       {"icon": "droplet", "flip": "y", "at": [150, 228], "size": [9, 44]}
+     ]},
+    {"name": "rivets", "z": 1.3, "kind": "flat", "material": "bronze", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [6, 5], "repeat": {"line": [[82, 200], [218, 200]], "count": 6}},
+       {"icon": "circle", "at": [0, 0], "size": [6, 5], "repeat": {"line": [[82, 290], [218, 290]], "count": 6}}
+     ]},
+    {"name": "outlet_mesh", "z": 1.4, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [{"icon": "grid_fine", "crop": [1, 1, 15, 15], "at": [150, 316], "size": [120, 34]}]},
+    {"name": "outlet_nozzle", "z": 1.5, "material": "iron",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [150, 342], "size": [64, 12]}]},
+    {"name": "wall_brackets", "z": 1.6, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "at": [74, 186], "size": [8, 30]},
+       {"icon": "square", "at": [226, 186], "size": [8, 30]},
+       {"icon": "square", "at": [74, 330], "size": [8, 26]},
+       {"icon": "square", "at": [226, 330], "size": [8, 26]}
+     ]},
+    {"name": "card_holder", "z": 1.7, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [244, 262], "size": [8, 44]}]},
+
+    {"name": "hopper", "z": 2, "kind": "block", "material": "verdigris", "extrude": 40,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [150, 121], "size": [120, 46]}]},
+
+    {"name": "powder_heap", "tags": ["full"], "hidden": true, "z": 3, "material": "powder", "shade": {"bump": 0.6},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [150, 121], "size": [104, 34]},
+       {"icon": "circle", "at": [132, 114], "size": [40, 20]},
+       {"icon": "circle", "at": [166, 112], "size": [48, 22]}
+     ]},
+    {"name": "powder_dust", "tags": ["full"], "hidden": true, "z": 3.1, "kind": "wash", "material": "powder", "opacity": 0.45,
+     "pieces": [
+       {"icon": "sponge", "at": [206, 150], "size": [30, 18]},
+       {"icon": "sponge", "at": [96, 154], "size": [26, 14], "flip": "x"},
+       {"icon": "circle", "at": [150, 188], "size": [110, 8]}
+     ]},
+
+    {"name": "hopper_void", "tags": ["empty"], "hidden": true, "z": 3, "kind": "flat", "material": "void",
+     "grad": {"to": "well_inner", "y0": 106, "y1": 136, "curve": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [150, 122], "size": [104, 32]}]},
+    {"name": "lid_raised", "tags": ["empty"], "hidden": true, "z": 1.9, "material": "verdigris",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [150, 78], "size": [122, 48]}]},
+    {"name": "lid_hinge", "tags": ["empty"], "hidden": true, "z": 1.95, "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "square", "at": [150, 100], "size": [90, 5]}]},
+    {"name": "card", "tags": ["empty"], "hidden": true, "z": 1.8, "material": "paper", "shade": {"bump": 0.3},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [256, 252], "size": [24, 32], "rot": 6}]}
+  ]
+}

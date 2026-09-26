@@ -1,0 +1,80 @@
+{
+  "asset": "exit_r4_e10_bell_cable_lift",
+  "status": "candidate",
+  "note": "E10 Bell-Cable Lift (to R3, gate G3, latency token) gondola standing on the 1.2 m landing of bg_r4_hall. Cabin 1.1 m wide, 1.2 m deep, 2.2 m tall with a bell on the roof; two cables leave east from a roof trolley and run to the canvas edge on purpose (they continue off screen through the east wall opening). _closed: scissor gate drawn across the front, bell clapper tied with a cloth strap. _open: gate folded to the west post, strap gone. 226 px/m. Contact shadow separate.",
+  "palette": "palette_r4.json",
+  "style": "prop",
+  "canvas": [520, 660],
+  "pivot": [250, 596],
+  "pivot_meaning": "front-bottom centre of the cabin floor on the landing",
+  "seed": 501,
+  "frames": [
+    {"name": "exit_r4_e10_bell_cable_lift_closed", "hide": ["open"]},
+    {"name": "exit_r4_e10_bell_cable_lift_open", "hide": ["closed"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.45, "blur": 9,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 20}, "at": [252, 592], "size": [284, 40]}]},
+
+    {"name": "floor", "z": 0, "kind": "block", "material": "wood", "extrude": 10,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [250, 469], "size": [249, 234]}]},
+    {"name": "floor_planks", "z": 0.5, "kind": "flat", "color": "#1e1712", "opacity": 0.6, "clip_to": "floor",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [244, 2], "repeat": {"line": [[250, 400], [250, 560]], "count": 5}}]},
+    {"name": "bench", "z": 0.8, "kind": "block", "material": "wood", "extrude": 50,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [250, 392], "size": [206, 40]}]},
+
+    {"name": "back_posts", "z": 1, "kind": "block", "material": "iron", "extrude": 240,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [16, 12],
+                 "repeat": {"points": [[128, 112], [372, 112]]}}]},
+    {"name": "roof", "z": 2, "kind": "block", "material": "iron", "extrude": 16,
+     "grime": {"stamps": ["metaballs", "sponge"], "size": 16, "soft": 1.5, "density": 0.16, "strength": 0.28, "color": "rust"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [250, 230], "size": [270, 250]}]},
+    {"name": "roof_ribs", "z": 2.2, "kind": "flat", "color": "#1b1c20", "opacity": 0.6, "clip_to": "roof",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [3, 244], "repeat": {"line": [[160, 230], [340, 230]], "count": 4}}]},
+    {"name": "trolley", "z": 2.4, "kind": "block", "material": "iron", "extrude": 30,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [320, 176], "size": [60, 40]}]},
+    {"name": "trolley_wheels", "z": 2.5, "material": "bronze", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "circle", "at": [302, 150], "size": [22, 22]},
+       {"icon": "circle", "at": [338, 150], "size": [22, 22]}
+     ]},
+    {"name": "cables", "z": 2.6, "kind": "flat", "material": "iron",
+     "pieces": [
+       {"icon": "square", "at": [430, 138], "size": [180, 4]},
+       {"icon": "square", "at": [430, 162], "size": [180, 4]}
+     ]},
+    {"name": "bell_yoke", "z": 3, "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [196, 170], "size": [8, 50]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [196, 148], "size": [56, 8]}
+     ]},
+    {"name": "bell", "z": 3.2, "material": "bronze", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [{"icon": "bell", "crop": [2, 1, 14, 13.5], "at": [196, 176], "size": [46, 48]}]},
+    {"name": "bell_strap", "z": 3.4, "tags": ["closed"], "kind": "flat", "material": "cloth_ink", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "at": [196, 192], "size": [48, 6], "rot": -8},
+       {"icon": "square", "at": [211, 204], "size": [5, 20], "rot": 20}
+     ]},
+
+    {"name": "front_posts", "z": 4, "kind": "block", "material": "iron", "extrude": 249,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [18, 14],
+                 "repeat": {"points": [[128, 347], [372, 347]]}}]},
+    {"name": "lintel", "z": 4.2, "kind": "flat", "material": "iron", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [250, 362], "size": [250, 14]}]},
+    {"name": "lintel_band", "z": 4.3, "kind": "flat", "material": "bronze",
+     "pieces": [{"icon": "square", "at": [250, 362], "size": [246, 4]}]},
+    {"name": "scissor_gate", "z": 4.5, "tags": ["closed"], "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "at": [0, 0], "size": [3, 300], "rot": 32, "repeat": {"line": [[110, 480], [390, 480]], "count": 8}},
+       {"icon": "square", "at": [0, 0], "size": [3, 300], "rot": -32, "repeat": {"line": [[110, 480], [390, 480]], "count": 8}},
+       {"icon": "square", "op": "clip", "at": [250, 478], "size": [226, 212]}
+     ]},
+    {"name": "gate_rails", "z": 4.6, "tags": ["closed"], "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "square", "at": [250, 374], "size": [230, 6]},
+       {"icon": "square", "at": [250, 584], "size": [230, 6]}
+     ]},
+    {"name": "gate_folded", "z": 4.5, "tags": ["open"], "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [3, 212], "repeat": {"line": [[140, 478], [156, 478]], "count": 5}}]}
+  ]
+}

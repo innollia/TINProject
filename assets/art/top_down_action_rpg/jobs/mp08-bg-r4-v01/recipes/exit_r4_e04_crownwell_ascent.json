@@ -1,0 +1,73 @@
+{
+  "asset": "exit_r4_e04_crownwell_ascent",
+  "status": "candidate",
+  "note": "E04 Crownwell Ascent (to H0, gate G0, needs blank form 1) barrier at the stair head of bg_r4_hall. Two bronze-barred half gates 0.9 m high between iron posts across the 2.0 m stair head, and a form post with a slot. _closed: leaves shut, slot empty. _open: leaves swung back out of sight, a blank form pushed into the slot. No text. 226 px/m. Contact shadow separate.",
+  "palette": "palette_r4.json",
+  "style": "prop",
+  "canvas": [700, 340],
+  "pivot": [320, 276],
+  "pivot_meaning": "centre of the gate line on the floor (stair head edge)",
+  "seed": 491,
+  "frames": [
+    {"name": "exit_r4_e04_crownwell_ascent_closed", "hide": ["open"]},
+    {"name": "exit_r4_e04_crownwell_ascent_open", "hide": ["closed"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 6,
+     "pieces": [
+       {"icon": "circle", "at": [102, 276], "size": [44, 16]},
+       {"icon": "circle", "at": [540, 276], "size": [44, 16]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [592, 272], "size": [56, 22]}
+     ]},
+    {"name": "leaf_shadow", "tags": ["closed"], "kind": "shadow", "color": "shadow_contact", "opacity": 0.3, "blur": 5,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [320, 278], "size": [430, 12]}]},
+
+    {"name": "leaf_frames", "z": 1, "tags": ["closed"], "kind": "flat", "material": "bronze", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [216, 226], "size": [206, 100]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "op": "sub", "at": [216, 226], "size": [190, 84]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [424, 226], "size": [206, 100]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "op": "sub", "at": [424, 226], "size": [190, 84]}
+     ]},
+    {"name": "leaf_bars", "z": 1.2, "tags": ["closed"], "kind": "flat", "material": "bronze", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "at": [0, 0], "size": [5, 86], "repeat": {"line": [[146, 226], [286, 226]], "count": 6}},
+       {"icon": "square", "at": [0, 0], "size": [5, 86], "repeat": {"line": [[354, 226], [494, 226]], "count": 6}}
+     ]},
+    {"name": "leaf_rail", "z": 1.3, "tags": ["closed"], "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [320, 208], "size": [412, 7]}]},
+    {"name": "latch", "z": 1.4, "tags": ["closed"], "material": "iron", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [320, 232], "size": [16, 26]}]},
+
+    {"name": "posts", "z": 2, "kind": "block", "material": "iron", "extrude": 136,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [22, 16],
+                 "repeat": {"points": [[102, 132], [540, 132]]}}]},
+    {"name": "post_finials", "z": 2.2, "material": "bronze", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "circle", "at": [102, 122], "size": [18, 16]},
+       {"icon": "circle", "at": [540, 122], "size": [18, 16]}
+     ]},
+    {"name": "post_bands", "z": 2.3, "kind": "flat", "material": "bronze",
+     "pieces": [
+       {"icon": "square", "at": [102, 170], "size": [22, 5]},
+       {"icon": "square", "at": [540, 170], "size": [22, 5]},
+       {"icon": "square", "at": [102, 262], "size": [24, 5]},
+       {"icon": "square", "at": [540, 262], "size": [24, 5]}
+     ]},
+    {"name": "folded_hinges", "z": 2.4, "tags": ["open"], "kind": "flat", "material": "bronze", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "at": [118, 208], "size": [8, 94]},
+       {"icon": "square", "at": [524, 208], "size": [8, 94]}
+     ]},
+
+    {"name": "form_post", "z": 3, "kind": "block", "material": "iron", "extrude": 96,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [592, 164], "size": [46, 30]}]},
+    {"name": "form_post_plate", "z": 3.2, "kind": "flat", "material": "bronze_block", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [592, 164], "size": [40, 24]}]},
+    {"name": "form_slot", "z": 3.4, "kind": "flat", "color": "#07050a",
+     "pieces": [{"icon": "square", "at": [592, 166], "size": [30, 3]}]},
+    {"name": "form_sheet", "z": 3.6, "tags": ["open"], "material": "paper", "shade": {"bump": 0.3},
+     "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [592, 150], "size": [28, 30]}]}
+  ]
+}

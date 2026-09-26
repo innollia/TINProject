@@ -1,0 +1,94 @@
+{
+  "asset": "prop_r2_circulator_stack",
+  "status": "candidate",
+  "note": "prop_r2_circulator_stack (Circulator Stack), placement layer wall, on the front wall of the east hut in area B; also the respawn point of rec_r2_census_clone. Iron stack 0.5 m across climbing the wall from 0.5 m to 4 m with a cowl on top, a damper box at 1.3 m and a small peg ledger board beside it. ps_idle -> damper closed, dry pipe, cowl facing west, one free peg slot; ps_vented -> damper lever up, soot around the outlet and down the pipe, cowl turned east toward the next settlement, a tag in the free slot. No smoke (effects are not drawn here). No text.",
+  "palette": "palette_r2.json",
+  "style": "prop",
+  "canvas": [380, 600],
+  "pivot": [180, 540],
+  "pivot_meaning": "wall mount point: where the hut's front wall meets the deck, directly below the stack (area B source px 2120,440)",
+  "seed": 342,
+  "frames": [
+    {"name": "prop_r2_circulator_idle", "show": ["idle"]},
+    {"name": "prop_r2_circulator_vented", "show": ["vented"]}
+  ],
+  "forms": [
+    {"name": "wall_shade", "kind": "shadow", "color": "shadow_contact", "opacity": 0.22, "blur": 12,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 30}, "at": [196, 330], "size": [110, 420]}]},
+
+    {"name": "ledger_board", "z": 0, "material": "wood", "shade": {"bump": 0.4},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [296, 404], "size": [90, 46]}]},
+    {"name": "ledger_holes", "z": 0.1, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [11, 10], "repeat": {"points": [[270, 404], [288, 404], [306, 404], [324, 404]]}}]},
+    {"name": "ledger_pegs", "z": 0.2, "material": "bronze", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "circle", "at": [270, 401], "size": [9, 12]},
+       {"icon": "circle", "at": [288, 401], "size": [9, 12]},
+       {"icon": "circle", "at": [306, 401], "size": [9, 12]}
+     ]},
+    {"name": "ledger_tag", "tags": ["vented"], "hidden": true, "z": 0.3, "material": "paper", "shade": {"bump": 0.3},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "circle", "at": [324, 401], "size": [9, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [330, 424], "size": [16, 22], "rot": 8}
+     ]},
+
+    {"name": "pipe", "z": 1, "kind": "block", "material": "iron", "extrude": 385,
+     "pieces": [{"icon": "circle", "at": [180, 100], "size": [90, 78]}]},
+    {"name": "pipe_rust", "z": 1.1, "kind": "wash", "material": "rust", "blend": "multiply", "opacity": 0.45, "clip_to": "pipe",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [160, 250], "size": [12, 90]},
+       {"icon": "droplet", "flip": "y", "at": [204, 370], "size": [10, 70]}
+     ]},
+    {"name": "flanges", "z": 1.2, "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [180, 190], "size": [104, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [180, 300], "size": [104, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [180, 512], "size": [104, 12]}
+     ]},
+    {"name": "wall_straps", "z": 1.25, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "at": [128, 250], "size": [14, 8]},
+       {"icon": "square", "at": [232, 250], "size": [14, 8]},
+       {"icon": "square", "at": [128, 470], "size": [14, 8]},
+       {"icon": "square", "at": [232, 470], "size": [14, 8]}
+     ]},
+    {"name": "damper_box", "z": 1.3, "kind": "block", "material": "iron", "extrude": 36,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [180, 412], "size": [112, 22]}]},
+    {"name": "damper_pivot", "z": 1.4, "kind": "flat", "material": "bronze", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [{"icon": "circle", "at": [236, 436], "size": [10, 10]}]},
+    {"name": "lever_down", "tags": ["idle"], "hidden": true, "z": 1.5, "material": "iron", "line": {"width": 0.7, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [248, 456], "size": [6, 44], "rot": -30},
+       {"icon": "circle", "at": [259, 474], "size": [11, 11]}
+     ]},
+    {"name": "lever_up", "tags": ["vented"], "hidden": true, "z": 1.5, "material": "iron", "line": {"width": 0.7, "heavy": 0.7},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [250, 416], "size": [6, 44], "rot": 30},
+       {"icon": "circle", "at": [261, 398], "size": [11, 11]}
+     ]},
+
+    {"name": "collar", "z": 2, "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [180, 132], "size": [104, 18]}]},
+    {"name": "cowl_west", "tags": ["idle"], "hidden": true, "z": 2.2, "material": "iron",
+     "pieces": [{"icon": "cone", "rot": 90, "at": [160, 92], "size": [84, 70]}]},
+    {"name": "cowl_west_mouth", "tags": ["idle"], "hidden": true, "z": 2.3, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "at": [124, 94], "size": [16, 50]}]},
+    {"name": "cowl_east", "tags": ["vented"], "hidden": true, "z": 2.2, "material": "iron",
+     "pieces": [{"icon": "cone", "rot": -90, "at": [200, 92], "size": [84, 70]}]},
+    {"name": "cowl_east_mouth", "tags": ["vented"], "hidden": true, "z": 2.3, "kind": "flat", "material": "soot",
+     "pieces": [{"icon": "circle", "at": [236, 94], "size": [16, 50]}]},
+
+    {"name": "soot_top", "tags": ["vented"], "hidden": true, "z": 2.5, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.6, "blur": 4,
+     "pieces": [
+       {"icon": "cloud", "at": [216, 104], "size": [70, 46]},
+       {"icon": "cloud", "at": [180, 150], "size": [100, 40], "flip": "x"}
+     ]},
+    {"name": "soot_streaks", "tags": ["vented"], "hidden": true, "z": 2.6, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.5, "clip_to": "pipe",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [210, 200], "size": [14, 110]},
+       {"icon": "droplet", "flip": "y", "at": [170, 190], "size": [10, 80]},
+       {"icon": "droplet", "flip": "y", "at": [196, 340], "size": [10, 70]}
+     ]}
+  ]
+}

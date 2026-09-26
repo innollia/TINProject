@@ -134,6 +134,14 @@ def main() -> int:
             canvas.alpha_composite(e["shadow"], e["pos"])
     for e in world:
         draw(e)
+    # mp09: full-canvas foreground_* occluder layers (same origin as the background) go on top
+    for fg_path in scene.get("foreground", []):
+        fg = Image.open(JOB / fg_path).convert("RGBA")
+        fg_shadow = (JOB / fg_path).with_name(Path(fg_path).stem + "_shadow.png")
+        if fg_shadow.exists():
+            canvas.alpha_composite(Image.open(fg_shadow).convert("RGBA"), (0, 0))
+        canvas.alpha_composite(fg, (0, 0))
+        emit.occlude(fg, (0, 0))
 
     rgb = np.asarray(canvas.convert("RGB"), dtype=np.float32) / 255.0
     light_spec = scene.get("lighting")
@@ -165,10 +173,12 @@ def main() -> int:
         "size": list(size),
         "background": scene["background"],
         "variant": scene.get("variant"),
+        "foreground": scene.get("foreground", []),
         "lighting": light_spec or "none (painted diffuse top light only)",
         "items": [{"asset": e["item"]["asset"], "frame": e["item"].get("frame"), "at_source_px": e["item"]["at"],
                    "at_logical_px": [round(v * scale, 1) for v in e["item"]["at"]],
-                   "layer": e["item"].get("layer", "world"), "interactive": bool(e["item"].get("interactive"))}
+                   "layer": e["item"].get("layer", "world"), "interactive": bool(e["item"].get("interactive")),
+                   "light": e["item"].get("light")}
                   for e in entries],
     }
     out.with_suffix(".json").write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

@@ -1,0 +1,40 @@
+{
+  "asset": "rr_lava",
+  "status": "candidate",
+  "note": "Rule Rewrite LAVA: a pool of molten rock on the floor with a dark crust rim, crust islands, bubbles and three low flames (emissive). Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 225,
+  "forms": [
+    {"name": "rim", "z": 0, "material": "rr_crust", "shade": {"bump": 0.6},
+     "pieces": [{"icon": "cloud", "ground": true, "at": [96, 124], "size": [158, 92]}]},
+    {"name": "molten", "z": 1, "kind": "flat", "material": "ember", "emit": 0.9, "line": {"width": 0.8, "heavy": 0.5},
+     "grad": {"to": "#ffb040", "y0": 104, "y1": 146},
+     "glow": {"radius": 5, "opacity": 0.4, "color": "ember_glow"},
+     "pieces": [{"icon": "cloud", "ground": true, "at": [96, 126], "size": [128, 70]}]},
+    {"name": "islands", "z": 1.5, "material": "rr_crust", "shade": {"bump": 0.5},
+     "pieces": [
+       {"icon": "hexagon", "at": [74, 120], "size": [26, 14]},
+       {"icon": "hexagon", "rot": 20, "at": [120, 134], "size": [24, 13]},
+       {"icon": "circle", "at": [104, 112], "size": [18, 10]}
+     ]},
+    {"name": "bubbles", "z": 1.8, "kind": "flat", "color": "#fff0b0", "emit": 1.0,
+     "pieces": [
+       {"icon": "circle", "at": [88, 132], "size": [6, 4]},
+       {"icon": "circle", "at": [111, 121], "size": [5, 3.4]}
+     ]},
+    {"name": "flames", "z": 2, "kind": "flat", "material": "flame", "emit": 1.0,
+     "glow": {"radius": 5, "opacity": 0.5, "color": "flame_glow"},
+     "pieces": [
+       {"icon": "fire", "at": [68, 100], "size": [30, 40]},
+       {"icon": "circle", "at": [68, 110], "size": [16, 16]},
+       {"icon": "fire", "at": [124, 106], "size": [24, 32]},
+       {"icon": "circle", "at": [124, 114], "size": [13, 13]},
+       {"icon": "fire", "at": [100, 92], "size": [18, 26]},
+       {"icon": "circle", "at": [100, 98.5], "size": [10, 10]}
+     ]}
+  ]
+}

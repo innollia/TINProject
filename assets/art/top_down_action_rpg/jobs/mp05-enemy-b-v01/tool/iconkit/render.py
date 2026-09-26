@@ -232,7 +232,13 @@ def frame_forms(recipe: dict, frame: dict) -> list:
             continue
         for key, mv in (frame.get("move") or {}).items():
             if key in tags:
-                apply_move(form, mv)
+                # mp05: a list of move dicts is applied in order (e.g. tilt an arm about its
+                # shoulder, then lean the whole body about the feet)
+                if isinstance(mv, list) and mv and isinstance(mv[0], dict):
+                    for step in mv:
+                        apply_move(form, step)
+                else:
+                    apply_move(form, mv)
         for key, mat in (frame.get("materials") or {}).items():
             if key in tags:
                 form["material"] = mat

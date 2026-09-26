@@ -1,0 +1,29 @@
+{
+  "asset": "r2_b_stilt_settlements",
+  "status": "candidate",
+  "note": "R2 area B foreground_deck_rail: a 1 m timber rail along the south edge of the central common deck, on both sides of the walkway opening (x1114..1486 left open). Drawn over actors standing near the deck edge. Transparent, same canvas origin as base_clean; contact occlusion goes to the separate _shadow.png.",
+  "palette": "palette_r2.json",
+  "style": "environment_layer",
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = base_clean origin",
+  "seed": 402,
+  "frames": [{"name": "foreground_deck_rail"}],
+  "forms": [
+    {"name": "rail_posts", "z": 0, "kind": "block", "material": "stilt", "extrude": 104,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [20, 14],
+                 "repeat": {"points": [[812, 1029], [960, 1029], [1104, 1029], [1496, 1029], [1640, 1029], [1748, 1029]]}}]},
+    {"name": "rail_top", "z": 1, "material": "plank_dark", "line": {"width": 1.0, "heavy": 1.1},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [958, 1030], "size": [304, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [1622, 1030], "size": [264, 12]}
+     ]},
+    {"name": "rail_mid", "z": 1.1, "kind": "flat", "material": "cord", "line": {"width": 0.6, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [958, 1086], "size": [296, 4]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [1622, 1086], "size": [256, 4]}
+     ]},
+    {"name": "rail_damp", "z": 1.2, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.4, "clip_to": "rail_posts",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1128], "size": [1000, 30]}]}
+  ]
+}
