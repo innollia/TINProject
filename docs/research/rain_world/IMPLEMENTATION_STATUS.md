@@ -28,6 +28,8 @@
 | `f568f7c3` | domain 13파일 + `systems/` 3파일 + wave D0 테스트 5개 |
 | 이 커밋 | 계획서 E-19·E-20·§9.14·§9.15 등, content 25룸·아키타입 5, authoring 도구, 로더 테스트 2개, 이 인계 문서 |
 
+**푸시 안 됨 (2026-09-27):** `git push origin kit/05-stone-story-rpg`가 거절됐다. 원격에 이 폴더에 없는 커밋 4개(`b542250f` `81b5e716` `48978241` `372b205e` — world·kit04 문서)가 있고, 로컬에는 원격에 없는 커밋 12개가 있다(갈라진 지점 `aec5d9a0`). 병렬 세션 규칙상 pull·rebase·merge를 하지 않으므로 이 세션은 합치지 않았다. 통합 담당(사용자)이 합친 뒤 다시 푸시해야 한다. 이 Kit 커밋은 로컬 브랜치에 있다.
+
 ## 3. 만든 파일
 
 | 경로 (`modules/sideview_ecosystem/` 기준) | class_name | 계획서 |
