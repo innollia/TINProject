@@ -1,6 +1,6 @@
 # TINProject Style Master Manifest
 
-상태: **bootstrap pending — 승인된 Style Master 없음**
+상태: **bootstrap pending — Round 1 실패, 승인된 Style Master 없음**
 
 ## 목적
 
@@ -31,6 +31,8 @@ Style Master는:
 최초 calibration은 production 캐릭터의 복잡한 정체성 조건을 제거한 단순 피사체로 수행한다. A-only, B-only, A+B Compact Visual Contract를 서로 독립적인 생성 시도로 비교한다.
 
 
-## 현재 실행 계획
+## 실행 기록
 
-- `docs/art/style_master/CALIBRATION_PLAN_2026-09-26.md`
+- Round 1 계획: `docs/art/style_master/CALIBRATION_PLAN_2026-09-26.md`
+- Round 1 결과: `docs/art/style_master/CALIBRATION_RESULTS_ROUND_1_2026-09-26.md`
+- 현재 실행 계획: `docs/art/style_master/CALIBRATION_ROUND_2_EDIT_CHAIN_2026-09-26.md`
