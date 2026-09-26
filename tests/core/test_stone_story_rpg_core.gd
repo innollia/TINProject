@@ -487,13 +487,15 @@ func test_lobby_focus_and_navigation() -> void:
 	assert_eq(int(lobby.get("focus")), 3, "L down reaches go")
 	lobby.call("handle", &"stone_story_rpg_up")
 	assert_eq(int(lobby.get("focus")), 2, "L up moves back to gear")
-	# 별 조절
+	# 별 조절. 진실은 state["star_level"] 하나뿐이다.
+	var st: Dictionary = inst.get("state")
+	st["star_level"] = 1
 	lobby.focus = 1
-	lobby.star = 1
 	lobby.call("handle", &"stone_story_rpg_right")
-	assert_eq(int(lobby.get("star")), 2, "L right raises star")
+	assert_eq(int((inst.get("state") as Dictionary)["star_level"]), 2, "L right raises star")
 	lobby.call("handle", &"stone_story_rpg_left")
-	assert_eq(int(lobby.get("star")), 1, "L left lowers star")
+	assert_eq(int((inst.get("state") as Dictionary)["star_level"]), 1, "L left lowers star")
+	assert_eq(int(lobby.call("star_value")), 1, "L lobby reads star from state, not a second copy")
 	# focus 는 0..4 를 순환한다
 	for i in 10:
 		lobby.call("handle", &"stone_story_rpg_down")

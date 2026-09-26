@@ -10,6 +10,8 @@ const PX_PER_UNIT: float = 3.0
 ## 형체 스케일. 정규 형상은 월드 단위이므로 그릴 때 키운다.
 const FORM_SCALE: float = 2.6
 const CENTER := Vector2(480.0, 300.0)
+## 지평선. 화면 높이의 38%. (계약 §4.1)
+const HORIZON_Y: int = 243
 const FONT_SIZES: Array[int] = [8, 10, 12, 14]
 
 var state: Dictionary = {}
@@ -108,8 +110,7 @@ func _draw() -> void:
 		_text_center(VIEW_W / 2, VIEW_H / 2, "빈 화면", 14, StoneStoryPalette.text_dim(pal))
 		return
 	_draw_background()
-	_draw_wall()
-	_draw_ground()
+	_draw_space()
 	_draw_obstacles()
 	_draw_foes()
 	_draw_player()
@@ -123,7 +124,7 @@ func _draw_background() -> void:
 		return
 	for b in StoneStoryBackdrop.draw_order():
 		var pts: PackedVector2Array = backdrop.draw_points(b)
-		var col: Color = StoneStoryPalette.density_color(pal, backdrop.density_role(b))
+		var col: Color = StoneStoryPalette.sky_far(pal)
 		var r: float = 1.0 + float(b) * 0.5
 		for i in pts.size():
 			if i % 3 != 0:
@@ -131,49 +132,98 @@ func _draw_background() -> void:
 			draw_circle(pts[i] * 0.5 + CENTER * 0.5, r, col, false, 1.0, true)
 
 
-## 벽: 세로선만. 대역 안에만 긋고 위�� 갈수록 간격이 벌어진다.
-func _draw_wall() -> void:
-	var col: Color = StoneStoryPalette.line_far(pal)
-	var top: float = 0.0
-	var bottom: float = 172.0
-	var n: int = 26
-	for i in n:
-		var f: float = float(i) / float(n)
-		var x_bottom: float = f * 1040.0 - 40.0
-		var x_top: float = x_bottom - (x_bottom - 40.0) * 0.10
-		if i % 7 == 3:
-			continue                          # 간격을 불규칙하게. 규칙처럼 보이지 않게
-		draw_line(Vector2(x_bottom, bottom), Vector2(x_top, top), col, 1.0, true)
-	draw_line(Vector2(0, bottom), Vector2(VIEW_W, bottom), StoneStoryPalette.line_dim(pal), 1.0, true)
-
-
-## 바닥/지면: 근경 조밀 -> 원경 성김. 대역마다 간격과 길이가 다르다.
-func _draw_ground() -> void:
-	var cam: Vector2 = _player_world()
-	var shift: float = cam.x * PX_PER_UNIT * 0.25
-	var bands: Array = [
-		{"y": 250.0, "spacing": 46.0, "role": 2, "len": 3.0, "jitter": 10.0},
-		{"y": 330.0, "spacing": 26.0, "role": 2, "len": 5.0, "jitter": 7.0},
-		{"y": 420.0, "spacing": 15.0, "role": 1, "len": 6.0, "jitter": 4.0},
-		{"y": 500.0, "spacing": 9.0, "role": 1, "len": 4.0, "jitter": 2.0},
-	]
+## 공간 (2026-09-26 개정). 1차 판은 검정 배경 + 헤어라인이었다. 폐기.
+## 하늘/천장 + 지평선 + 바닥 + 구조물. 면으로 채운다. (계약 §4.1, §4.2)
+func _draw_space() -> void:
 	var s := StoneStoryCore.stream(int(state.get("run_seed", 0)),
-			StoneStoryCore.TAG_TEXTURE + ".ground")
-	for bi in bands.size():
-		var band: Dictionary = bands[bi]
-		var col: Color = StoneStoryPalette.density_color(pal, int(band["role"]))
-		var sp: float = float(band["spacing"])
-		var seg: float = float(band["len"])
-		var y: float = float(band["y"])
-		var jit: float = float(band["jitter"])
+			StoneStoryCore.TAG_TEXTURE + ".space")
+	var horizon: float = float(HORIZON_Y)
+
+	# 1) 하늘: 위에서 지평선으로 내려가는 3단 그라데이션 면.
+	var bands: int = 12
+	for i in bands:
+		var t0: float = float(i) / float(bands)
+		var y0: float = horizon * t0
+		var y1: float = horizon * (float(i + 1) / float(bands)) + 1.0
+		var col: Color = StoneStoryPalette.sky_far(pal).lerp(StoneStoryPalette.sky_near(pal), t0)
+		draw_rect(Rect2i(0, int(y0), VIEW_W, int(y1 - y0) + 1), col)
+
+	# 2) 구름/태양. Ena 씬에는 하늘에 형태가 있다.
+	var sun_at := Vector2(VIEW_W * 0.72, horizon * 0.34)
+	draw_circle(sun_at, 26.0, StoneStoryPalette.sky_far(pal).lightened(0.25))
+	for i in 7:
+		var cx: float = 40.0 + s.unit(i) * (VIEW_W - 80.0)
+		var cy: float = 24.0 + s.unit(i + 50) * (horizon * 0.55)
+		var cw: float = 26.0 + s.unit(i + 90) * 34.0
+		_cloud(Vector2(cx, cy), cw, StoneStoryPalette.sky_near(pal).lightened(0.35))
+
+	# 3) 지평선 아래 = 바닥. 근경으로 갈수록 밝고 포화.
+	var g_bands: int = 6
+	for i in g_bands:
+		var t0: float = float(i) / float(g_bands)
+		var y0: float = horizon + (VIEW_H - horizon) * t0
+		var y1: float = horizon + (VIEW_H - horizon) * (float(i + 1) / float(g_bands)) + 1.0
+		var gc: Color = StoneStoryPalette.ground(pal).lerp(
+				StoneStoryPalette.ground(pal).darkened(0.35), 1.0 - t0)
+		draw_rect(Rect2i(0, int(y0), VIEW_W, int(y1 - y0) + 1), gc)
+
+	# 4) 바닥 결: 면 위에 얹는 얇은 띠. 선이 아니라 면이다.
+	for bi in 3:
+		var sp: float = [64.0, 40.0, 24.0][bi]
+		var y: float = horizon + 40.0 + bi * 54.0
+		var shade: Color = StoneStoryPalette.ground(pal).darkened(0.18 + 0.10 * float(bi))
 		var k: int = 0
-		var x: float = -fposmod(shift, sp) - sp
+		var x: float = -fposmod(_player_world().x * PX_PER_UNIT * 0.22, sp) - sp
 		while x < VIEW_W + sp:
-			var dy: float = s.unit(bi * 97 + k) * jit - jit * 0.5
-			var len_v: float = seg * (0.5 + s.unit(bi * 53 + k))
-			draw_line(Vector2(x, y + dy), Vector2(x + len_v, y + dy), col, 1.0, true)
+			var w: float = sp * (0.25 + s.unit(bi * 97 + k) * 0.5)
+			draw_rect(Rect2i(int(x), int(y), maxi(2, int(w)), 3), shade)
 			x += sp * (0.6 + s.unit(bi * 31 + k) * 0.8)
 			k += 1
+
+	# 5) 원경 구조물. 화면 높이의 25%+ (V7 큰 것).
+	_draw_far_structure(s, horizon)
+
+
+## 구름은 3개 원의 합. 채워진 면.
+func _cloud(at: Vector2, w: float, col: Color) -> void:
+	draw_circle(at, w * 0.5, col)
+	draw_circle(at + Vector2(w * 0.45, w * 0.10), w * 0.36, col)
+	draw_circle(at - Vector2(w * 0.42, w * 0.12), w * 0.32, col)
+	draw_rect(Rect2i(Vector2i(at) - Vector2i(int(w * 0.42), int(w * 0.12)), Vector2i(int(w * 0.84), int(w * 0.16))), col)
+
+
+## 큰 것 1개. 지오메트리 규칙(R9~R12)에서 나온다. content 가 명시한다.
+func _draw_far_structure(s: StoneStoryRng, horizon: float) -> void:
+	var def: Dictionary = content.get_def("region", str(region.get("id", ""))) if content != null else {}
+	var tag: String = str(def.get("structure", "dome"))
+	var cx: float = VIEW_W * 0.30
+	var base_y: float = horizon
+	var col: Color = StoneStoryPalette.structure(pal)
+	var lit: Color = col.lightened(0.18)
+	match tag:
+		"dome":
+			# 돔 립. 어두운 선이 아니라 채워진 면.
+			var r: float = 300.0
+			for i in 9:
+				var t: float = float(i) / 8.0
+				var rr: float = r * lerpf(1.0, 0.55, t)
+				draw_rect(Rect2i(int(cx - rr), int(base_y - rr * 0.72), int(rr * 2.0), int(rr * 0.72)), col.darkened(t * 0.5))
+			draw_rect(Rect2i(int(cx - r), int(base_y - 14), int(r * 2.0), 14), col)
+			for i in 7:
+				var rx: float = cx - r + float(i) * (r * 2.0 / 6.0)
+				draw_rect(Rect2i(int(rx), int(base_y - r * 0.70), 3, int(r * 0.70)), lit)
+		"canyon":
+			draw_rect(Rect2i(0, int(horizon - 190), int(cx - 30.0), 190), col)
+			draw_rect(Rect2i(int(cx + 30.0), int(horizon - 150), VIEW_W - int(cx + 30.0), 150), col.darkened(0.18))
+			draw_rect(Rect2i(int(cx - 30.0), int(horizon - 190), 30, 190), col.lightened(0.10))
+			draw_rect(Rect2i(int(cx), int(horizon - 150), 30, 150), col.lightened(0.10))
+		"arch":
+			var aw: float = 150.0
+			draw_rect(Rect2i(int(cx - aw), int(horizon - 170), 34, 170), col)
+			draw_rect(Rect2i(int(cx + aw - 34), int(horizon - 170), 34, 170), col)
+			draw_rect(Rect2i(int(cx - aw), int(horizon - 186), int(aw * 2.0), 22), col.lightened(0.12))
+		_:
+			draw_rect(Rect2i(int(cx - 120), int(horizon - 120), 240, 120), col)
 
 
 func _draw_obstacles() -> void:

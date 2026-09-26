@@ -80,8 +80,8 @@ static func fresh(tuning: StoneStoryTuning, class_def: Dictionary) -> Dictionary
 		"player": p,
 		"world": {
 			"currency": 0,
-			"unlocked_regions": [],
-			"discovered": {},
+			"unlocked_regions": ["region_under_sign"],
+			"discovered": {"region_under_sign": true},
 			"loop_point": {},
 			"last_star_level": 1,
 			"legend_state": {},
@@ -95,6 +95,25 @@ static func fresh(tuning: StoneStoryTuning, class_def: Dictionary) -> Dictionary
 		"encounter": null,
 		"flags": {},
 	}
+
+
+## 탐험을 비웠을 때 그 지역이 여는 것들. (맵 해금 = 탐험의 유일한 보상)
+static func grant_unlocks(w: Dictionary, region_def: Dictionary) -> Array:
+	var opened: Array = []
+	var list: Array = w.get("unlocked_regions", [])
+	for rid in region_def.get("unlocks", {}).get("regions", []):
+		var r: String = str(rid)
+		if list.has(r):
+			continue
+		list.append(r)
+		w["discovered"][r] = true
+		opened.append(r)
+	w["unlocked_regions"] = list
+	for qid in region_def.get("unlocks", {}).get("quests", []):
+		var q: String = str(qid)
+		if not w.get("quest_counters", {}).has("available:" + q):
+			w["quest_counters"]["available:" + q] = 0
+	return opened
 
 
 static func refresh_max(p: Dictionary, tuning: StoneStoryTuning) -> void:

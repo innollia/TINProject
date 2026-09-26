@@ -36,11 +36,12 @@ func _run() -> void:
 	# 로비에 장비를 하나 끼워 본다
 	_module.call("execute_command", &"ssr_equip", {"item_id": "item_board_shield"})
 	_module.call("execute_command", &"ssr_equip", {"item_id": "item_ash_spear"})
+	_module.call("execute_command", &"ssr_set_star", {"star": 12})
 	var lobby: Object = _module.get("_lobby")
 	if lobby != null:
-		lobby.set("star", 12)
-		lobby.set("focus", 3)
+		lobby.set("focus", 2)
 		lobby.set("gear_index", 0)
+		lobby.call("bind", _module.get("state"), _module.get("content"), _module.get("tuning"))
 	_log.append("mode=" + str(_module.get("mode")))
 	_log.append("policy=" + str(lobby.call("_policy_line")))
 	_log.append("build=" + str(lobby.call("_build_line")))

@@ -395,7 +395,15 @@ func _check_end(enc: Dictionary, p: Dictionary, tick: int) -> void:
 		enc["state"] = "cleared"
 		enc["cleared_at_tick"] = tick
 		state["world"]["loop_point"][str(enc["region_id"])] = p["pos"].duplicate(true)
-		_to_lobby("비웠다. 통화 " + str(int(state["world"]["currency"])))
+		var opened: Array = StoneStoryRunState.grant_unlocks(
+				state["world"], content.get_def("region", str(enc["region_id"])))
+		var line: String = "비웠다. 통화 " + str(int(state["world"]["currency"]))
+		if not opened.is_empty():
+			var names: Array[String] = []
+			for rid in opened:
+				names.append(str(content.get_def("region", str(rid)).get("name", rid)))
+			line += " · 열림: " + " ".join(names)
+		_to_lobby(line)
 	elif int(p["hp"]) <= 0:
 		enc["state"] = "failed"
 		_on_death()
@@ -480,6 +488,7 @@ func _to_lobby(line: String = "") -> void:
 	if _lobby != null:
 		_lobby.visible = true
 		_lobby.bind(state, content, tuning)
+		_lobby.restore_focus()
 		if not line.is_empty():
 			_lobby.report.push_front(line)
 			while _lobby.report.size() > 4:
@@ -502,6 +511,8 @@ var _pending_star: int = 1
 
 
 func _on_region_chosen(rid: String) -> void:
+	if _lobby != null and not _lobby.is_open(rid):
+		return                     # R5: disabled 는 intent 를 내보내지 않는다
 	_pending_region = rid
 
 
