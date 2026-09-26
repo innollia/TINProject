@@ -145,3 +145,41 @@ Primary Reference의:
 - Input Bubble의 App 전환 hook은 별도 계획/소유권 계약이 필요
 
 Odd Road는 reference evidence gate가 닫히지 않아 구현하지 않는다.
+
+## 11. Kit 04 Top-down Action-RPG — 2026-09-27
+
+**새 대화가 시작되면 이 항목을 먼저 읽는다.**
+
+- 현황 정본: **`docs/research/top_down_action_rpg/IMPLEMENTATION_STATUS_2026-09-27.md`**
+- 계획: `plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/README.md` (01–13)
+- Primary Reference: **BLACK SOULS 2 하나**
+
+판정: **자동 게이트 전부 통과. 사용자 플레이 검토 전 단계다.**
+
+2026-09-27 기준선:
+- editor import: exit 0
+- `tests/run_tests.gd`: 644/644
+- Kit 04 core GUT `test_top_down_action_rpg_core.gd`: 19/19, 7076 asserts
+- Kit 04 module GUT `test_top_down_action_rpg_module.gd`: 20/20, 4966 asserts
+- 180-frame headless smoke: exit 0
+- `top_down_action_rpg_playthrough_probe.gd`: **exit 0**, canonical coverage 14/14, budget 7223s/required 3418s, surfaces 23/22
+- `top_down_action_rpg_visual_capture.gd`: **exit 1 — 미완** (필수 16 state 중 14 미도달). 정적 감사는 통과(placeholder/ap/standin/red 0, bars 2/2)
+- catalog: **313 files / 19 kinds** · region 9 · edge 18 · gate 9 · cluster 9 · NPC 21 · enemy 19 · encounter 37 · recovery 7 · group 5 · variant 6 · npc_conversion 5
+
+`tests/core` 전체 GUT의 무관 실패 5건(`test_rule_*` 4건, `test_stone_story_rpg_core` 4 script error)은 Kit 04 소유 밖이라 손대지 않았다.
+
+### 미결 9건
+
+`IMPLEMENTATION_STATUS_2026-09-27` §6의 A–I. 특히 다음 3건이 다음 작업자를 막는다:
+- **A** encounter roster 구성을 계획 `05` §2 FAM 배정까지 복원할 것인가 — 계획의 FAM 이름과 content의 enemy 이름 사이에 대응표가 정본에 없다
+- **B** ending의 catalog 착지와 런타임 구동 — 현재 vocabulary만 있고 commit 경로가 없다
+- **C** 이번 세션의 테스트/harness 변경 5건 승인
+
+### 픽셀 증거
+
+720p/FHD/QHD 캡처는 **headless가 구조적으로 생성하지 못한다**(harness가 design상 거부). 창 있는 실행 또는 사용자 플레이가 필요하다.
+
+### 이미지 자산
+
+프로젝트 이미지 파이프라인은 `docs/art/projects/top_down_action_rpg/`에 있고 H0 background candidate 1장이 있으나 **승인되지 않았다**. approved/와 Gold Standard는 없다. 현재 화면은 vector presentation이다.
+

@@ -438,6 +438,7 @@ Shell은 사용자가 Esc 등으로 호출했을 때만 나타난다. Shell을 �
 
 ### 11.3 GPT와 후처리 경계
 
+- 2026-09-26 사용자 결정: 코드로 그린 그림(아이콘 조합, 도트, SVG/Pillow 절차 그림)을 이 Kit의 최종 그림으로 허용한다. 아래 GPT 전용·기계적 후처리 한정 줄과 공통 Generator Style-Fidelity Gate는 코드 그림에 적용하지 않는다. 그림을 만든 스크립트·SVG 원본을 결과 옆에 두고, 결과는 candidate로 시작하며 승인·Gold Standard 승격은 사용자만 한다. 같은 날 판정을 기다리던 생성형 도구 화풍 시험은 전부 불합격 처리됐다.
 - GPT Image, `image_gen`, 사용자가 허용한 생성형 도구는 구체적인 이미지 제작·편집을 요구하는 별도 run에서만 호출한다.
 - 현재 요청은 샘플 생성·편집·후보 보존을 포함하지만 공통 Generator Style-Fidelity Gate의 예외를 허용한 것은 아니다. 사용자 승인 없는 approved 복사와 병렬 양산은 하지 않는다. 화풍 실패 생성기로 production 장면을 반복 제작하거나 '샘플'로 우회하지 않는다. 이번 잘못 생성한 후보는 반려 기록으로만 보존한다.
 - GPT output은 최종 그림이다. 사람의 재작화, 수동 선 보정, 자산별 색칠 보정은 제작 공정에 넣지 않는다.
@@ -544,7 +545,7 @@ Shell은 사용자가 Esc 등으로 호출했을 때만 나타난다. Shell을 �
 
 - `rigging_full_body_parts`는 mixed cutout/message deformation을 실제로 선택하고 brief를 승인하기 전에는 만들지 않는다. 빈 디렉터리나 placeholder rig를 미리 생성하지 않는다.
 - `investigation_screen`는 이 Kit의 첫 presentation slice에서 별도 investigation mode를 확정하지 않았으므로 활성화하지 않는다.
-- UI icon family, stock photo collage, at-icons composition은 현재 제작 family가 아니다.
+- UI icon family, stock photo collage, at-icons composition은 현재 제작 family가 아니다. 단, 2026-09-26 사용자 결정으로 코드 그림의 아이콘 조합(스크립트·코드로 조합하는 방식 포함)은 11.3에 따라 허용한다.
 
 ### 12.10 Art key registry and Gold Standard gate
 

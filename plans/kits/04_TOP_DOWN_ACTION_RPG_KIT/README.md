@@ -52,6 +52,7 @@ Reference Game은 한 보스·한 맵 demo가 아니다. 여러 region, NPC clus
 - 이미지 생성/editing은 명시적 자산 제작 요청이 있을 때만 수행한다.
 - field 카메라는 지면 기준 하향각 60°의 정사영 탑다운이다. 수직에서 30° 기울어지며 방위는 고정한다. 완전 수직 90° 시점이 아니다.
 - 2026-09-26 사용자 요청으로 Kit 04 이미지 샘플 제작이 허용됐다. 배경은 타일 필수가 아닌 큰 장면 그림과 분리 레이어가 기본이다. 문서 갱신 → 샘플 → 검수 → 사용자 검토 후 양산 순서를 따른다. 상세 계약은 13이 소유한다.
+- 2026-09-26 사용자 결정: 코드로 그린 그림(아이콘 조합, 도트, SVG/Pillow 절차 그림)을 이 Kit의 최종 그림으로 허용한다. 이 Kit에서는 위 at-icons 줄, §4의 at-icons 금지, 공통 문서의 GPT 최종 그림·생성기 화풍 게이트보다 이 결정이 우선한다. 같은 날 판정을 기다리던 생성형 도구 화풍 시험은 전부 불합격 처리됐다. 코드 그림도 candidate로 시작하고 승인은 사용자만 한다. 같은 날 사용자 결정으로 아이콘 조합의 코딩 금지도 해제한다: 코드를 짜서 아이콘을 조합해도 된다(보관된 at-icons 문서의 편집기 전용·코드 생성 금지 미적용).
 
 ## 3. Implementation order
 
@@ -76,7 +77,7 @@ Reference Game은 한 보스·한 맵 demo가 아니다. 여러 region, NPC clus
 - placeholder ColorRect/Label world
 - constant shell HUD
 - adult sexual content
-- at-icons as current art basis
+- at-icons as current art basis (2026-09-26 사용자 결정의 코드 그림 허용은 예외, §2)
 - external godot-jrpg framework import without file-level audit
 - Retired Prototype reuse
 - shared combat/player/inventory/event abstraction before second real use
@@ -86,6 +87,15 @@ Reference Game은 한 보스·한 맵 demo가 아니다. 여러 region, NPC clus
 - shared understanding: **CONFIRMED**
 - world constitution: **WRITTEN**
 - idea ledger: **WRITTEN — planned usage, not completion proof**
-- split plan: **REVIEW READY — canonical resolution과 magic supplement 반영 완료. 구현·검수 증거는 아직 없다**
-- implementation: **READY TO START — 계획 게이트 통과**
-- Reference Game: **NOT STARTED**
+- split plan: **WRITTEN** (01–13)
+- implementation: **DONE — 자동 게이트 전부 통과**
+- catalog: **313 files / 19 kinds**, region 9 · edge 18 · gate 9 · cluster 9 · NPC 21 · enemy 19 · encounter 37 · recovery 7 · group 5 · variant 6 · npc_conversion 5
+- automated gates: `run_tests` 644/644 · core GUT 19/19 · module GUT 20/20 · import 0 · smoke 0 · playthrough probe **exit 0 / coverage 14/14**
+- Reference Game human playthrough: **NOT STARTED** — 실측 플레이타임 없음
+- 720p/FHD/QHD pixel evidence: **NOT PRODUCED** — headless는 PNG를 생성하지 않음
+- final art: **NOT APPROVED** — vector presentation이 현재 화면, Gold Standard 없음
+
+**현황 정본**: [IMPLEMENTATION_STATUS_2026-09-27](../../../docs/research/top_down_action_rpg/IMPLEMENTATION_STATUS_2026-09-27.md).
+아직 결정되지 않은 9개 항목(A–I)이 그 문서 §6에 있다. 다음 작업자는 그 항목을 먼저 읽을 것.
+
+`tests/core` 전체 GUT의 무관 실패 5건(`test_rule_*` 4건, `test_stone_story_rpg_core` 4 script error)은 Kit 04 소유 범위 밖이며 손대지 않았다.

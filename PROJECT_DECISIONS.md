@@ -183,6 +183,7 @@ Esc 메뉴는 Esc를 눌렀을 때만 나타난다. 기록 같은 기능도 상�
 - Style Master와 Gold Standard는 생성기가 이미 원본 Style Reference의 화풍을 따라갈 수 있을 때 일관성을 유지하는 기준일 뿐, reference fidelity를 획득시키는 장치가 아니다.
 - 생성기/모델은 production 전에 A/B 원본으로 Generator Style-Fidelity Gate를 통과해야 한다. 원본 화풍을 직접 따라하지 못하면 같은 생성기로 Style Master/Gold Standard를 더 만들지 않고 다른 생성기/모델을 시험한다.
 - 현재 ChatGPT/OpenAI 이미지 생성 경로의 A/B/AB fresh-generation 실험은 원본 그림체 fidelity 실패로 기록한다. 다음 도구 비교는 `docs/research/visual_reference/STYLE_REFERENCE_TOOL_SURVEY_2026-09-26.md`를 따른다.
+- 2026-09-26 사용자 결정: 판정을 기다리던 생성형 도구 화풍 시험(Nano Banana Pro/Seedream 4.5 비교, Layer GPT Image 2, 내장 imagegen A 단독 등)은 전부 불합격으로 처리한다.
 - Character Bible은 관계를 비교할 한 장으로, 리깅 파츠는 서로 맞물리는 한 세트로 만든 뒤 기계적으로 분리한다. 애니메이션은 승인 기준 프레임과 포즈 자료를 붙여 프레임별로 만든다.
 - 파일 규격·알파·피벗·레이어·명명·출처 같은 기계 판정은 하드 게이트다. 이를 통과한 후보만 실제 게임 화면에 넣고, 정보 계층과 시각 일관성은 사용자가 최종 승인한다.
 
@@ -309,6 +310,7 @@ Rule Rewrite의 `IS 3D`는 사용자 제공 이미지 C의 DOOM식 **1인칭 화
 - 앨리스는 새 세계관·콘텐츠·계획에서 완전히 제외한다. 다른 세계관을 쓰되 앨리스 요소를 변형해 재사용하지 않는다.
 - 사용자가 제공한 실제 플레이 캡처 A~H를 Kit 조사에 반영했다. 후속 세계관 메모를 shared understanding에 반영하고, 계획 범위에 꼭 필요한 상태가 비어 있을 때만 추가 캡처를 요청한 뒤 최종 계획을 확정한다.
 - 계획서는 여러 파일로 분할하며, authored content와 story/world/character 부분에 가장 큰 분량을 준다.
+- 2026-09-26 사용자 결정: 이 Kit는 코드로 그린 그림(아이콘 조합, 도트, SVG/Pillow 절차 그림)을 최종 그림으로 허용한다. 이 Kit에서는 §10의 GPT 최종 그림·기계적 후처리 한정·생성기 화풍 게이트보다 이 결정이 우선한다. 결과는 candidate로 시작하고 승인·Gold Standard 승격은 사용자만 한다. 같은 날 사용자 결정으로 아이콘 조합의 코딩 금지도 해제한다: 이 Kit에서는 코드를 짜서 아이콘을 조합해도 된다(보관된 at-icons 문서의 편집기 전용·코드 생성 금지 미적용).
 
 현재 조사 결과는 [BLACK SOULS 2 통합 조사](docs/research/top_down_action_rpg/BLACK_SOULS_2_RESEARCH.md), [사용자 실제 플레이 A~H](docs/research/top_down_action_rpg/USER_PLAY_REFERENCE_2026-09-25.md), [분할 계획 중앙 해석](docs/research/top_down_action_rpg/PLAN_RESOLUTION.md)에 보존한다. 사용자 세계관 메모와 shared understanding 및 분할 계획 검토가 완료되었으므로, 이제 구현·검증으로 진행한다.
 
@@ -366,3 +368,41 @@ Rule Rewrite의 `IS 3D`는 사용자 제공 이미지 C의 DOOM식 **1인칭 화
 
 `docs/research/stone_story_rpg/README.md` §2의 S1–S14, E1–E5, P1–P5가 `MISSING`인 동안에는
 **어떤 코드도 작성하지 않는다.** 기억으로 채운 Primary Reference 내용은 구현 근거로 인정하지 않는다.
+
+---
+
+# 23. Kit 04 Top-down Action-RPG 구현 상태 — 2026-09-27
+
+## 23.1 확정된 사실
+
+Primary Reference는 **BLACK SOULS 2 하나**로 확정되어 있다. `godot-jrpg`는 파일 단위 감사 없이 채택하지 않았다.
+
+2026-09-27 기준으로 Kit 04는 **자동 게이트 전부 통과** 상태다.
+
+- catalog **313 files / 19 kinds** · region 9 · edge 18 · **gate 9** · cluster 9
+- NPC 21 (14 core + 7 support) · enemy 19 · **encounter 37** · recovery **7 canonical 전부**
+- **group 5** (`GRP-ARPG-01`~`05`) · **variant 6** (`VAR-ARPG-01`~`06`) · npc_conversion encounter 5
+- `run_tests` 644/644 · core GUT 19/19 · module GUT 20/20 · import 0 · smoke 0
+- playthrough probe **exit 0**, canonical coverage **14/14**, budget 7223s (required 3418s), surfaces 23/22
+
+`gate_g8_crown_precedence`는 loader의 `CANONICAL_GATE_IDS`에 원래부터 있었고 **content만 누락**한 상태였다. content를 연결해 gate 9/9가 되었다.
+
+## 23.2 이번 세션에 고친 구조적 결함
+
+encounter roster slot의 **48/80(60%)이 enemy의 자기 `base_region_id` 밖에 배치**돼 있었다. 각 encounter의 roster를 자기 region pool에서 재구성해 **0/78**로 만들었고, 회귀를 막기 위해 loader에 `enemy_region_mismatch` 검사를 연결했다(음성 테스트로 실제 동작 확인).
+
+`05` §2의 `FAM-ARPG-*` 이름과 content의 enemy 이름 사이에 대응표가 정본에 없으므로 **그 매핑을 지어내지 않았다.** region 정합만 보장된다.
+
+## 23.3 미결 — 사용자 결정 필요
+
+`docs/research/top_down_action_rpg/IMPLEMENTATION_STATUS_2026-09-27.md` §6의 A–I 항목을 참조. 핵심 3건:
+
+- **A** encounter roster 구성을 계획 `05` §2 FAM 배정까지 복원할 것인가
+- **B** ending의 catalog 착지와 런타임 구동 — 현재 vocabulary만 있고 commit 경로가 없다
+- **C** 테스트/harness 변경 5건 승인
+
+## 23.4 픽셀 증거와 최종 아트
+
+720p/FHD/QHD 캡처는 **headless가 구조적으로 생성하지 못한다.** visual capture harness가 design상 headless에서 PNG를 거부하므로, 이는 사용자 플레이 검수 게이트에 속한다.
+
+이미지 파이프라인은 `docs/art/projects/top_down_action_rpg/`에 준비돼 있고 H0 background candidate 1장이 있으나 **승인되지 않았다.** approved/와 Gold Standard는 없다. 현재 화면은 vector presentation이며 최종 Gold Standard 증거가 아니다.

@@ -11,6 +11,7 @@
 - H0 candidate: 존재하나 사용자/스타일 판정에서 승인되지 않음
 - approved/Gold Standard: 없음
 - 자동 생성·Gold Standard 자동 승격: 금지
+- 2026-09-26 사용자 결정: 코드로 그린 그림(아이콘 조합, 도트, SVG/Pillow 절차 그림)을 최종 배경·레이어로 허용한다(README §2). 코드 그림에는 §6의 A Style Fidelity Gate를 적용하지 않고, 나머지 하드 게이트·레이어 규칙·§7 승인 흐름은 그대로 적용한다.
 
 ## 1. 제작 단위
 

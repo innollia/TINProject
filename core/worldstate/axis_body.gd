@@ -2,13 +2,13 @@ class_name AxisBody
 extends RefCounted
 
 # PURPOSE: 플레이어 몸 축. 관측 가능한 사실만 저장하고 파생 요약을 저장하지
-# 않는다. 정본: core/worldstate/DESIGN_DECISION.md §2.1, §2.1.1, §2.1.2, §4. OWNER: W7.
+# 않는다. 정본: core/worldstate/DESIGN_DECISION.md §2.1, §2.1.1, §2.1.2, §2.1.3, §4. OWNER: W7.
 #
 # 필드는 네 개뿐이다.
 #   missing  Array[String]      없는 부위. 부재는 사실이다.
 #   wounds   Array[Dictionary]  { part, kind, severity, permanent }
 #   scale    number             몸 스케일. 상수가 아니다. 정규화 금지.
-#   facts    Dictionary         Kit 물리 규칙이 쓰는 관측 값 (선택).
+#   facts    Dictionary         Kit 물리 규칙이 쓰는 관측 값 (선택). "scale" 키는 닫힘.
 #
 # 필드는 두 부류로 나뉜다. 섞지 않는다. (DESIGN_DECISION §2.1.1)
 #   확정 사실 (진행 축)  missing, wounds. 기록된 사실은 지워지지 않는다.
@@ -18,6 +18,13 @@ extends RefCounted
 #                       관측값이 통과 조건이 된다. 정직한 답은 "스토어의 일이 아니다".
 #
 # scale 은 닫힌 6단 사다리 값이다. 연속 실수가 아니다. (DESIGN_DECISION §2.1.2)
+#
+# 몸의 크기는 한 곳에만 산다. facts 안의 "scale" 키는 닫혔다. 그 이름은 최상위
+# scale 필드가 이미 차지한 이름이고, 두 번째로 쓰면 사다리를 우회하는 크기 채널이
+# 하나 더 생긴다. 그래서 그 키가 이름으로 쓰이는 쓰기는 key_unknown 으로 거절한다.
+# (DESIGN_DECISION §2.1.3) 이 검사는 _validate_facts 에 있고, 거기로 오는 길이
+# apply / check_mutation / request_mutation / load_snapshot / load_json / 뷰 재생성
+# 뿐이다. 즉 입구 하나가 막히고 나머지는 증인이 아니라 같은 입구다.
 #
 # 없는 필드는 없는 키로 남는다. 기본값을 만들지 않는다. 그래서 get_* 는 없는
 # 필드에 null 을 돌려준다. "없음"과 "아무것도 없음"을 구분하는 방법은 has_* 다.
@@ -98,6 +105,10 @@ const DERIVED_KEYS: Array[StringName] = [
 	&"hp", &"hp_max", &"hitpoints", &"condition", &"vitality", &"integrity",
 	&"stamina", &"stamina_fraction", &"wound_count", &"missing_count",
 ]
+
+## facts 안에서 사용할 수 없는 이름. 몸의 크기는 최상위 scale 필드에 하나만 산다.
+## 이 목록은 닫혔고 항목은 하나뿐이다. 새 이름을 추측해서 열지 않는다. (§2.1.3)
+const FACTS_RESERVED_KEYS: Array[StringName] = [FIELD_SCALE]
 
 const MAX_JSON_DEPTH: int = 32
 
@@ -325,6 +336,9 @@ static func _records_same_wound(recorded: Dictionary, incoming: Array[Dictionary
 	return false
 
 
+## 사본은 _fields 를 그대로 옮긴다. 그 안에는 검증된 값만 있고, 검증은 facts 의 예약
+## 이름까지 통과해야만 통과한다. 이 객체 자체는 직렬화되지 않으므로 사본이 옮길 수
+## 있는 "아직 오지 않은 상태"는 없다. 그래서 여기 다시 거절할 곳이 없다. (§2.1.3)
 func copy() -> AxisBody:
 	var clone: AxisBody = AxisBody.new()
 	clone._fields = _fields.duplicate(true)
@@ -385,6 +399,11 @@ static func _validate_facts(facts: Dictionary) -> Dictionary:
 		var name: StringName = StringName(key)
 		if DERIVED_KEYS.has(name):
 			return _fail(&"derived_value_forbidden", String(key))
+		## 몸의 크기 이름은 facts 에 들어올 수 없다. 사다리 규칙의 두 번째 통로다.
+		## 이 이름으로 관측값이 들어오면 그 값이 rung 인지 아닌지 아무도 모른다.
+		## 그래서 값을 보지 않고 키째로 거절한다. 지우지도 고치지도 않는다. (§2.1.3)
+		if FACTS_RESERVED_KEYS.has(name):
+			return _fail(&"key_unknown", "facts has no key \"" + String(key) + "\": the body size lives in the body scale field and nowhere else")
 		var value: Variant = facts[key]
 		if value is float and not is_finite(value as float):
 			return _fail(&"value_not_finite", String(key))

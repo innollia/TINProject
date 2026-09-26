@@ -23,6 +23,11 @@ extends RefCounted
 # 사다리 값이며 연속 실수가 아니다 (§2.1.2). 사다리가 아닌 값을 거절하는 것은
 # 정규화가 아니라 값의 영역을 닫는 것이고, 거절된 값은 한 비트도 바뀌지 않는다.
 #
+# 몸의 크기는 한 곳에만 산다 (§2.1.3). facts 안의 "scale" 키는 닫혔고 그 이름으로
+# 쓰기는 key_unknown 으로 거절된다. 이 스토어는 request_mutation 과 load_snapshot
+# 에서 둘 다 같은 입구인 AxisBody.apply 를 거치므로, 쓰기 경로와 복원 경로가 같은
+# 거절을 한다. 어느 쪽도 조용히 키를 떼어내지 않는다.
+#
 # 이 클래스는 Node 가 아니다. 씬 트리, Input, InputMap, get_tree, /root,
 # autoload, 서비스 로케이터를 쓰지 않는다. modules/ 를 한 번도 참조하지 않는다.
 
@@ -274,6 +279,8 @@ func to_json() -> String:
 ##
 ## owners 는 덮어쓰지 않는다. 스냅샷에 적힌 소유자가 이 세션의 선언과 다르면
 ## owner_already_declared 로 실패한다. 이것이 §7 의 "셋을 정합시킨다" 이다.
+## 저장되어 있던 금지 키(§2.1.3 의 facts["scale"])도 같은 취급이다. 조용히 떼어내면
+## 정규화이고, 반쪽만 적용하면 원자성 위반이므로, 있는 그대로 실패한다.
 func load_snapshot(data: Variant) -> Dictionary:
 	if not data is Dictionary:
 		return _fail(REASON_SNAPSHOT_MALFORMED, "snapshot must be a Dictionary")

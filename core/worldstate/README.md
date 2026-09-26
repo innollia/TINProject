@@ -189,6 +189,53 @@ it, and a body with no scale has no scale: `has_scale()` is false, `get_scale()`
 is `null`, no key appears in `to_dictionary()`, and a place that asks for one is
 unmet with `scale_absent`. No rung is a default.
 
+### The size lives in exactly one place
+
+`body.scale` is the only place the body's size is stored. The name `scale` is
+closed inside `facts` — `AxisBody.FACTS_RESERVED_KEYS` holds that one name and
+nothing else — and a write that uses it is refused with `key_unknown`:
+
+```gdscript
+body.apply({"facts": {"scale": 0.13}})["reason"]
+# key_unknown   refused on the name, so 0.65 and 1.0 and "colossal" all say the same thing
+```
+
+The reason is the name, not the number. A rung written in `facts` is not
+`scale_not_rung`; the store never looks at the value, because the name is already
+enough. Two copies of a size make every reader of *how big is this body* capable of
+misreading it, and a ladder with a second channel beside it is a second numeric
+system that nobody chose. Closing the value instead would mean normalising it away
+(`§4`), and letting it through as an observation would reopen the ladder.
+
+Every path that can put a value into a body reaches the one check, so all of them
+say the same thing and change nothing:
+
+| path | result |
+|---|---|
+| `body.apply({"facts": {"scale": …}})` | `key_unknown`, nothing committed |
+| `body.check_mutation(...)` | the same reason, and no value to commit |
+| `store.request_mutation(AXIS_BODY, …)` | the same reason, the store is untouched |
+| `store.load_snapshot(...)` | the same reason, nothing overwritten |
+| `store.load_json(...)` | the same reason, nothing overwritten |
+
+`copy()` is not one of those entrances. It moves already-validated state, and this
+object is not serialised, so there is no unvalidated state for it to move.
+
+**A save that already contains the key fails honestly.** If a file on disk carries
+`facts["scale"]` from before this rule, `load_snapshot` returns `key_unknown` and the
+store keeps everything it had. It is not stripped — stripping is a normalisation,
+and it would hide the loss of an observation from the person who owns the file. It
+is not half applied, because a restore is all or nothing. And the store cannot tell
+a smuggled second size channel from an unrelated measurement, so choosing between
+them would be a guess. The file on disk is left exactly as it was, and the same
+thing happens as for a snapshot whose body scale is off the ladder.
+
+The ban is one name wide. `199.7`, a `1.0` observation, the string `"colossal"`, a
+nested Dictionary and every other `facts` key are still accepted — one closed entry
+is what stops a Kit from concluding that observations are frozen. A *different*
+word for a second size channel is still open; that one is a Kit obligation, and
+`DESIGN_DECISION.md` §2.1.3 says so.
+
 `check_mutation()` answers the same question `apply()` does and commits nothing,
 which is how a Kit asks before it asks:
 
@@ -360,6 +407,7 @@ integration must add it.
 | `test_axes.gd` | per-axis validation, capability-only requirements, absence as `null`, memory as events |
 | `test_view.gd` | the view's public surface is exactly the frozen list, it holds no store reference, it hands out copies, it travels through `arrival`, the creature axis exposes no aggregate |
 | `test_body_classes.gd` | the six rungs, a between-rungs value refused rather than snapped, `1.0` refused on its own reason, absence staying absence, a permanent fact not clearable, a capability changing back, refusals changing nothing, the class of every field, no normalisation of continuous floats |
+| `test_facts_scale_closed.gd` | `facts["scale"]` refused with `key_unknown` through `apply`, `check_mutation`, `request_mutation`, `load_snapshot` and `load_json`, each one changing nothing; a save that already carries the key failing honestly; the reserved list being one name wide; other observations, a rung beside them, and a body with no facts at all unaffected |
 
 ## Open questions
 
@@ -378,11 +426,12 @@ integration must add it.
    state its own policy, as `docs/CODE_STYLE.md` 저장 requires.
 5. **The `facts` dictionary is open.** It is where a Kit records an observed
    number in its own scale. Two use sites confirmed it, which is the bar in
-   `docs/CODE_STYLE.md` 경계. If a third field of the same kind appears, that is
-   the moment to name it. It is `unclassified` on purpose, which leaves one hole:
-   `{"facts": {"scale": 0.13}}` would be accepted and would be a second,
-   unladdered size channel. Whether the store refuses that or a Kit plan forbids it
-   is W0's, and it is recorded in `DESIGN_DECISION.md` §8.
+   `docs/CODE_STYLE.md` 경계. It is `unclassified` on purpose. Its one hole named
+   by W0 — `{"facts": {"scale": 0.13}}` — is closed: `key_unknown` on every path,
+   and a save carrying it fails honestly instead of being stripped. What is left is
+   a second size channel spelled with a different word, which the store does not
+   audit and a Kit plan has to forbid. If a third field of the same kind appears,
+   that is the moment to name it.
 6. **Who calls `focus_place`.** The store owns the cursor and the app moves it
    when a module change or a scripted scene demands it. If a Kit later needs to
    move it, that is a contract change and it goes to W0, not into a Kit.

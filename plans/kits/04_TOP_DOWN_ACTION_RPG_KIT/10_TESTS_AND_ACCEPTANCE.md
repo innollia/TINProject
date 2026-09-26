@@ -1,5 +1,63 @@
 # 테스트와 완료 판정 — Top-down Action-RPG Kit
 
+## 실행 기록 — 2026-09-27
+
+현황 정본: [IMPLEMENTATION_STATUS_2026-09-27](../../../docs/research/top_down_action_rpg/IMPLEMENTATION_STATUS_2026-09-27.md)
+
+| 게이트 | 결과 |
+|---|---|
+| headless import | exit 0 |
+| `tests/run_tests.gd` | **644 / 644 passed** |
+| `test_top_down_action_rpg_core.gd` | **19 / 19**, 7076 asserts |
+| `test_top_down_action_rpg_module.gd` | **20 / 20**, 4966 asserts |
+| smoke 180f fixed-fps 60 | exit 0 |
+| `top_down_action_rpg_playthrough_probe.gd` | **exit 0** · assertions 54 / failed 0 / events 86 |
+| probe canonical coverage | **items 14, unreached 0, missing []** |
+| probe budget | total 7223s / required 3418s · encounters 17/33 · distinct units 163 |
+| probe surfaces | seen 23 / required 22 / missing [] |
+| `top_down_action_rpg_visual_capture.gd` | **exit 1 — 미완** (아래) |
+
+`tests/core` 전체 GUT의 무관 실패 5건은 Kit 04 소유 밖이므로 손대지 않았다: `test_rule_combat_integration`, `test_rule_screen_art_links`, `test_rule_route_content`, `test_rule_ui_art_links`, `test_stone_story_rpg_core`(4 script error, `art/stone_rpg_art_view.gd:1068`). §0.4에 따라 기존 실패로 기록하며 완료 판정에서 면제하지 않는다.
+
+### visual capture 미완 — 근거
+
+이 harness는 2026-09-27 전까지 **한 번도 끝까지 실행된 적이 없다.** headless에서 `RenderingServer.frame_post_draw`가 방영되지 않아 모든 실행이 중단됐고, 그 결과 미검출이던 결함이 남아 있다.
+
+통과한 항목:
+```
+TOPDOWN_CAPTURE_SOURCE placeholder=0 ap=0 standin=0 red=0 bars=2/2
+TOPDOWN_CAPTURE_STATE state=input_bubble reached=input_bubble mode=field
+TOPDOWN_CAPTURE_STATE state=field reached=field mode=field
+```
+금지 항목 실재 없음(placeholder / 상시 AP 게이지 / world standin / 임의 빨간 막대 / HP bar 상수 2/2)이 확인됐다.
+
+미통과 — 필수 16 state 중 14개 미도달:
+```
+TOPDOWN_CAPTURE_FAILED dialogue choice set was not reached
+TOPDOWN_CAPTURE_MISSING_STATES dialogue_choice_focus, narration, combat_command,
+  target_select, charge_counter, guard_dodge_break_feedback, equipment_no_turn,
+  document_max, document_corrupted, aftermath_revisit, failure_death,
+  recovery, success, esc_menu
+```
+content 부족이 아니라 harness의 대화 구동 문제로 보인다(`npc_01_ilyra_senn`가 여는 `conv_h0_return_desk`는 `pages=2 / choices=3`으로 정상, H0 encounter 0건). 추가로 **실패한 run이 report 파일을 남기지 않는다.**
+
+### 픽셀 증거 미생산 — 구조적 이유
+
+`top_down_action_rpg_visual_capture.gd`는 headless에서 PNG를 **의도적으로 거부**한다:
+```gdscript
+report["png_skip_reason"] = "headless_display_server_produces_no_frame_pixels"
+```
+따라서 720p/FHD/QHD 캡처는 창 있는 실행 없이는 자동 게이트로 얻을 수 없고, **사용자 플레이 검수 게이트에 속한다.** 자동화 여부는 미결.
+
+### 이번 세션에 쓴 테스트/harness 변경 (승인 대기)
+
+§0.9에 따라, 구현을 고친 것이 아니라 실제 module 동작을 관측 가능하게 하려고 테스트를 건드린 항목을 여기에 명시한다. 상세는 `IMPLEMENTATION_STATUS_2026-09-27` §4.4.
+
+- `content_loader.gd`: `CANONICAL_ENDING_IDS` 6개 추가. `KIND_ALLOWED`가 엄격 allow-list라 content에 `ending_id`를 넣을 수 없고, `06` §3.5.6도 `end_*`를 index에 등록하지 않으므로 **기존 probe가 계획서와 반대**였다.
+- `top_down_action_rpg_playthrough_probe.gd`: `_settle_after_combat()` 및 `_first_field_intent()`의 bounded settle 추가. 두 곳 모두 module이 **다음** `_process`에서 상태를 정리하는데 harness가 tick을 돌리지 않았다.
+- `top_down_action_rpg_visual_capture.gd`: 거부된 출력 경로에 `quit(2)`, `_settle()`/`_apply_resolution()`의 `frame_post_draw`에 `if not _headless` 가드. 두 번째 수정 전에는 headless 분기에 도달하는 코드가 없었다.
+- `test_top_down_action_rpg_core.gd`: 카운트 상수를 실제 catalog에 맞춤(313 files / 472 records / 37 encounters / 7 recovery / R1 interactables 8).
+
 ## 큰 배경·분리 레이어 추가 검수 — 2026-09-26
 
 제작 정본은 [13](13_LAYERED_ENVIRONMENT_PRODUCTION.md)이다. 아래는 **필요한 검사**이며 이번 문서 갱신만으로 통과한 항목이 아니다.
@@ -761,7 +819,7 @@ rg -n -P --glob '*.gd' --glob '*.tscn' --glob '*.tres' --glob '*.json' 'FAM-ARPG
 ### 16.2 Retired Prototype provenance audit
 
 - 새 module의 모든 source/data/asset에 origin을 기록한다.
-- 허용 origin은 `original TIN code`, `audited exact-file reuse`, `approved GPT image candidate`뿐이다.
+- 허용 origin은 `original TIN code`, `audited exact-file reuse`, `approved GPT image candidate`뿐이다. 2026-09-26 사용자 결정 이후 사용자가 승인한 코드 그림(도트, SVG/Pillow 절차 그림, 코드로 조합한 아이콘. 스크립트·SVG 원본과 출처·라이선스 기록 필요)도 허용 origin이다.
 - Retired Prototype의 idea/dialogue/UI/asset/scene을 import하거나 복사하지 않는다.
 - `modules/top_down_action_rpg/` 아래 file SHA-256이 Retired Prototype file SHA-256과 같은 경우 provenance를 재감사하지 않고 `FAIL`한다.
 - 기존 Retired Prototype이 repository에 남아 있는 것은 이 Kit의 직접 dependency가 아니어야 한다. 남은 prototype 자체의 삭제는 별도 작업이다.
@@ -773,7 +831,7 @@ rg -n -P --glob '*.gd' --glob '*.tscn' --glob '*.tres' --glob '*.json' 'FAM-ARPG
 - brief는 실제 game state, size/format/alpha/pivot/layer, focal priority, source, license/provenance를 기록한다.
 - GPT candidate가 자동으로 Gold Standard가 되지 않는다.
 - 실제 화면에 들어간 candidate는 hard gate와 사용자의 명시적 화면 승인 기록을 가진다.
-- at-icons 조립은 현재 기준이 아니다.
+- at-icons 조립은 현재 기준이 아니다. 단, 2026-09-26 사용자 결정으로 이 Kit에서는 코드를 짜서 아이콘을 조합한 그림을 허용한다(README §2).
 - 출처·라이선스가 없는 asset은 acceptance를 통과할 수 없다.
 
 ## 17. Placeholder와 HUD의 수동 확인

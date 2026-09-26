@@ -52,6 +52,6 @@
 
 ## 이미지
 
-현행 제작 방향은 GPT image 기반이다. at-icons는 현재 제작 기준으로 채택하지 않는다. 이번 one-shot에서 이미지 생성/editing은 asset request가 있을 때만 실행한다.
+현행 제작 방향은 GPT image 기반이다. at-icons는 현재 제작 기준으로 채택하지 않는다. (2026-09-26 사용자 결정: 이 Kit는 코드로 그린 그림을 최종 그림으로 허용하며, 코드를 짜서 아이콘을 조합해도 된다. README §2) 이번 one-shot에서 이미지 생성/editing은 asset request가 있을 때만 실행한다.
 
 계획은 필요한 asset family와 `docs/IMAGE_ASSET_WORKFLOW.md` brief를 먼저 작성하되, candidate를 자동 Gold Standard로 승격하지 않는다.

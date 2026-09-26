@@ -801,3 +801,41 @@ project-wide grilling은 다음 때 끝난다.
 - 사용자가 shared understanding을 명시적으로 확인함
 
 그 전에는 새 초상세 Kit 계획 작성/수정을 시작하지 않는다.
+
+---
+
+# 23. Kit 04 Top-down Action-RPG — 현재 상태 (2026-09-27)
+
+project-wide grilling은 2026-09-24 종료 상태 그대로다. Kit 04는 그 종료 이후 개별 Kit 작업으로 진행됐고, 계획·구현이 끝난 상태다.
+
+## 판정
+
+- shared understanding: **CONFIRMED**
+- 계획 01–13: **WRITTEN**
+- 구현: **DONE**
+- 자동 게이트: **전부 통과** (probe exit 0, coverage 14/14)
+- Reference Game human playthrough: **NOT STARTED** — 실측 플레이타임 없음
+- 720p/FHD/QHD pixel evidence: **NOT PRODUCED** — headless는 PNG를 생성하지 않음
+- 최종 아트: **NOT APPROVED** — vector presentation이 현재 화면
+
+## Current Frontier
+
+decide가 아니라 **결정 대기**다. 진행 전에 아래 9개 중 무엇을 택할지 정해야 한다.
+
+1. encounter roster 구성을 계획 `05` §2 FAM 배정까지 복원할 것인가 (FAM↔enemy 대응표가 정본에 없음)
+2. ending의 catalog 착지와 런타임 구동 경로
+3. 이번 세션의 테스트/harness 변경 5건 승인 여부
+4. visual capture의 남은 15개 상태 처리 범위
+5. 720p/FHD/QHD 캡처를 창 있는 실행으로 자동화할 것인가
+6. 서드파티 자산 참고 기록을 남길 것인가
+7. 생성된 seed 160건 / fallback effect 약 50건의 비-generic성 사람 검수
+8. H0 encounter 0건이 의도된 설계인가
+9. temp의 rvdata2 역공학 작업을 계속할 것인가
+
+상세 근거: `docs/research/top_down_action_rpg/IMPLEMENTATION_STATUS_2026-09-27.md` §6
+
+## 재현
+
+게이트 명령과 카탈로그 수치는 `docs/research/top_down_action_rpg/IMPLEMENTATION_STATUS_2026-09-27.md` §2–§3.
+
+`tests/core` 전체 GUT의 무관 실패 5건(`test_rule_*` 4건, `test_stone_story_rpg_core` 4 script error)은 Kit 04 소유 범위 밖이며 손대지 않았다. 기존 실패로 기록하고 완료 판정에서 면제하지 않는다.

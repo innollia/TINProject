@@ -4,6 +4,8 @@
 
 2026-09-26 최신 참조 정책: B 원본과 B 크롭을 새 생성 입력에서 제외한다. 아래 A/B 표현의 과거 혼합 절차보다 이 결정이 우선한다. 활성 참조는 A 또는 A 캐릭터 배경 분리본이며, 배경 분리본은 원본 픽셀을 유지한 전처리 파생물로 기록한다. 05 Seedream A는 사용자가 화풍 불일치로 판정했으므로 기준 이미지로 승격하지 않는다.
 
+2026-09-26 사용자 결정: 판정을 기다리던 생성형 도구 화풍 시험(Nano Banana Pro/Seedream 4.5 비교, Layer GPT Image 2, 내장 imagegen A 단독 등)은 전부 불합격이다. 04 Top-down Action-RPG Kit는 코드로 그린 그림(아이콘 조합, 도트, SVG/Pillow 절차 그림)을 최종 그림으로 허용한다. 04의 코드 그림에는 생성기 전용 규칙(§4 Generator Style-Fidelity Gate, §5 Compact Visual Contract, GPT 최종 그림·기계적 후처리 한정)을 적용하지 않는다. §2 파일 구조, §9 candidate 시작과 사용자 승인, §10 하드 게이트, §12 실제 게임 화면 승인은 그대로 적용한다. 그림을 만든 스크립트·SVG 원본을 결과 옆에 보존한다. 같은 날 사용자 결정으로 아이콘 조합의 코딩 금지도 해제한다. 04에서는 스크립트·코드로 아이콘을 배치·변형·합성해도 되며, `archive/icon_based_image_assets/`의 편집기 전용·코드 생성 금지는 적용하지 않는다.
+
 이 문서는 GPT 이미지 자산의 입력, 스타일 bootstrap, 후보, 승인, 후처리, 실제 게임 화면 검수를 규정한다. 시각 문법은 `docs/VISUAL_DIRECTION.md`, 조사 근거는 `docs/research/visual_reference/GPT_IMAGE_GAME_ART_PIPELINE_REPORT.md`를 따른다.
 
 Kit의 Reference Game에서는 계획서의 톤앤매너와 이미지 제작 명세를 먼저 확정한다. 필수 장면·인물·단서 자료나 참조 링크를 읽을 수 없어 생성할 내용이 불분명하면 추측으로 생성하지 않고 작업을 멈춰 누락을 기록한다.

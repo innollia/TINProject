@@ -1,3 +1,5 @@
+> 2026-09-26 사용자 결정: 이 문서의 코딩 금지(스크립트·코드로 아이콘을 조합·생성하는 것 금지, 편집기 전용)는 해제됐다. 현재 허용 범위는 04 Top-down Action-RPG Kit이며 `docs/IMAGE_ASSET_WORKFLOW.md` §1을 따른다. 본문은 과거 기록이다.
+
 # at-icons Inkscape 조립 워크플로
 
 ## 1. 목적

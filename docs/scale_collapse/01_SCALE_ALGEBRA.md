@@ -276,7 +276,8 @@ debt, price, toll, progress, completions, access, clearance`다. `scale`은 없�
 |---|---|---|
 | 부류 | **가변 능력** | **확정 사실** |
 | 되돌아오나 | **예.** 6개 rung 값 중 하나로 | **아니오** |
-| 전환 비용을 쌓나 | 안 된다. | **예.** `04` §4 |
+| 전환 비용을 남기나 | 안 된다. | **예.** `04` §4. **단 합이 아니라 최댓값으로 병합된다** |
+| 그 비용이 쌓이는가 | — | **안 된다.** 동일 정체는 1개로 병합되고 총량은 `0.68`에서 유계다. `04` §4.2, §4.7 |
 | 통과 조건이 되나 | 되나. **현재값** 판정 | 되나. `has_wound`. `severity`는 안 됨 |
 | 다른 쪽을 열까 | `wounds`를 요구하는 장소를 통과할 순 없다. `wounds`는 rung을 열지 않는다 | `scale`을 요구하는 장소를 통과할 순 없다 |
 | 다른 쪽을 고치나 | `wounds`를 지우지 않는다 | `scale`을 바꾸지 않는다 |
@@ -292,6 +293,18 @@ debt, price, toll, progress, completions, access, clearance`다. `scale`은 없�
 `test_a_mutable_capability_can_be_changed_and_changed_back`가 그 양쪽을 단언한다.
 **흠터 하나를 다시 재는 것은 새 사실이 아니므로 거절되지 않는다** — 상처의 정체성은
 `part` + `kind`이고 `severity`와 `permanent`는 재측정 가능한 사실의 속성이다.
+
+**그래서 통행료의 병합은 스토어가 아니라 Kit의 규약으로 정본을 갖는다.**
+`AxisBody._records_same_wound()`도 정체를 `part`+`kind`로 판정하고, 재측정을
+거절하지 않는다. 따라서:
+
+- **사라짐은 스토어가 막는다.** 이미 기록된 정체를 담지 않는 `wounds` 배열은
+  `body_fact_is_permanent`로 거절된다. `04` §4.9.
+- **성장은 Kit의 병합 규칙이 막는다.** `severity`를 **더하는** 배열은 스토어가
+  거절하지 않는다. 스토어에 새 refusal를 붙이지 않고(`S-INV-2`) `04` §4.2의
+  `max` 병합을 세 Kit이 공유 helper 하나로 쓴다.
+- **`0.68`이라는 상한은 스토어가 강제하지 않는다.** 스토어에 `severity` 범위
+  판정이 없다. 상한은 규약이 만든다. `06` T4가 그 규약을 단언한다.
 
 `facts`는 **어느 부류에도 들어가지 않는다.** 스토어는 그것을 `CLASS_UNCLASSED`로
 분류하고 내용을 다투지 않는다. `{"facts": {"scale": 0.13}}`이 지금도 통과한다는
@@ -316,7 +329,7 @@ Kit 계획서에서 금지할지는 `core/worldstate/DESIGN_DECISION.md` §8이 
 | scale 쓰기 | `request_mutation(AXIS_BODY, {"scale": 0.12}, requester)` | 있음. **사다리 값만 받는다** |
 | **사다리 강제** | `AxisBody.SCALE_RUNGS`, `SCALE_RUNG_FORBIDDEN`. 사유 `scale_not_rung` / `scale_rung_forbidden` | **있음.** 스토어가 판정한다 |
 | **실패 없이 미리 보기** | `AxisBody.check_mutation(patch)` | **있음.** `apply`와 같은 사유를 돌려주고 아무것도 commit하지 않는다. `value`를 담지 않는다 |
-| 통행료 쓰기 | `request_mutation(AXIS_BODY, {"wounds": get_wounds() + [toll]}, requester)` | 있음 |
+| 통행료 쓰기 | `request_mutation(AXIS_BODY, {"wounds": merge_max(get_wounds(), toll)}, requester)` | 있음. **병합은 Kit 몫**(§6.1) |
 | 요구조건 판정 | `AxisBody.satisfies(requirement)` | 있음. `scale`이 없으면 `scale_absent` |
 | 요구조건 검증 | `AxisBody.validate_requirement()` | 있음. 권한 계열 이름은 `requires_body_not_capability` |
 | 요구조건 가져오기 | `AxisPlace.get_requires_body()` | 있음 |
@@ -331,6 +344,12 @@ Kit 계획서에서 금지할지는 `core/worldstate/DESIGN_DECISION.md` §8이 
 맞는다는 점이 중요하다.** 스토어가 `wound_malformed`로 검증하고 키가 하나라도
 여분이면 거부한다. 그러므로 통행료를 Kit이 조립할 때 실수할 수 없고, 실수하면
 정직한 실패가 난다.
+
+**스토어는 이 축의 상한을 강제하지 않는다.** `_check_wound()`는 `severity`에
+`_is_number()`만 요구하고 범위를 보지 않는다. `CONTRACT.md`도 "A wound `severity`
+of 1.0 … four different questions"라고 명시한다. 따라서 **`0.34`라는 값과
+`0.68`이라는 유계는 모두 `04` §4.2~§4.7의 규약이 만든 것이고 스토어가 지키는
+것이 아니다.** 지키는 것은 **사라짐 한 가지**뿐이다(`body_fact_is_permanent`).
 
 **`scale`의 세이브/로드 복원에 새 API가 필요 없다.** `CONTRACT.md`는
 `FIELD_SCALE: number` 하나를 전유 필드로 갖고 `to_json()`/`load_json()`이 그
@@ -396,7 +415,9 @@ REVERSIBLE   예.  6개 rung 값 중 어느 것으로든.  1.0 은 거절 (K6, s
 ENFORCED BY  core/worldstate.  사다리 밖 유한값 → scale_not_rung.  1.0 → scale_rung_forbidden.
              스냅샷 로드도 같은 사유로 실패하고 아무것도 덮어쓰지 않는다.  절대로 snap/반올림/클램프 없음
 OFF-LADDER   0.065 0.13 0.2 0.3 0.5 0.7 0.9 1.49 2.0 2.5 3.59 0.0 -1.0 199.7 → 전부 거절
-TOLL         rung 1개당 확정 사실 1개, severity 0.34, part "torso", permanent true
+TOLL         방향당 확정 사실 최대 1개.  동일 정체는 max 병합.  part "torso", permanent true
+             kind compressed|stretched, severity 0.34 고정, steps·왕복 횟수와 무관
+             기록 수 상한 2,  severity 합 상한 0.68.  04 §4.2, §4.7, §4.8
 BANDS/PLACE  ≤ 3 adjacent (S-INV-6)
 FIT_TARGET   2.75   (03 §2)
 MATCHED      module_count ∈ [2.1, 3.4]   (정본.  q 창 [0.76364, 1.23636] 은 파생)

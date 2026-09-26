@@ -128,6 +128,9 @@ func _initialize() -> void:
 		return
 	_output_directory = _validate_output_directory(String(parsed.get("output_directory", "")))
 	if _output_directory.is_empty():
+		# A rejected output path must end the run. Returning here would leave the
+		# SceneTree idling with no exit code, which hangs any caller.
+		quit(2)
 		return
 	_requested_states = parsed.get("states", CAPTURE_STATES) as Array[StringName]
 	_requested_sizes = parsed.get("sizes", CAPTURE_SIZES) as Array[Vector2i]
@@ -166,7 +169,8 @@ func _apply_resolution(requested_size: Vector2i) -> void:
 	root.size = requested_size
 	for _frame: int in range(SETTLE_FRAME_COUNT):
 		await process_frame
-		await RenderingServer.frame_post_draw
+		if not _headless:
+			await RenderingServer.frame_post_draw
 
 
 func _prepare(state_name: StringName) -> bool:
@@ -447,7 +451,11 @@ func _capture(state_name: StringName, requested_size: Vector2i, report: Dictiona
 func _settle() -> void:
 	for _frame: int in range(SETTLE_FRAME_COUNT):
 		await process_frame
-		await RenderingServer.frame_post_draw
+		# frame_post_draw never fires under the headless display server, so a
+		# headless run would wait here forever and never reach the headless
+		# branch in _capture().
+		if not _headless:
+			await RenderingServer.frame_post_draw
 
 
 func _drive_to_charge_counter() -> bool:

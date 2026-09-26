@@ -5,6 +5,11 @@
 읽기 전제: `01_SCALE_ALGEBRA.md`, `02_PLACE_REQUIREMENTS.md`, `03_MISMATCH_VISUALS.md`
 §2(반복 수의 법칙), `04_TRANSITIONS.md` 전부.
 
+> **2026-09-26 통행료 병합 판 반영.** 통행료는 authored 대상이 아니다. `toll_count`가
+> 파생 목록에서 사라지고 `toll_identity` / `toll_severity` / `toll_merge`가 들어갔다.
+> **`merge_max`가 정본이다**(`04` §4.2.2). authored 형식은 병합 규칙을 **지정하는
+> 방법이 없고 거부할 뿐**이다 — `§5.2`, `§6`의 `toll_rule_authored`.
+
 **이 문서의 모든 스키마는 `core/procedural/DESIGN_DECISION.md` §1의 규칙을 따른다.**
 JSON-safe, `float`은 Godot JSON 파서 관점의 실수, 없는 키는 기본값.
 전용 editor는 요구하지 않는다(`docs/CODE_STYLE.md`).
@@ -321,7 +326,7 @@ q           = body.scale / band_rung_value
 
 | 트리거 | `from` band | `to_rung` | `steps` | 통행료 | 역방향 |
 |---|---|---|---:|---|---|
-| `trig.drink_keyhole` | `hand` (0.12) | `doll` (0.28) | 1 | `wounds` +1 `stretched` 0.34 | `trig.stretch_keyhole` |
+| `trig.drink_keyhole` | `hand` (0.12) | `doll` (0.28) | 1 | `torso`/`stretched` @ `0.34` 병합 | `trig.stretch_keyhole` |
 | `trig.stretch_keyhole` | `hand` (0.12) | `hand` (0.12) | **0 → 거부** | — | — |
 
 **이 예제는 그대로면 거부된다.** `stair_keyhole`의 band는 `hand`이므로
@@ -339,12 +344,21 @@ intermediate place  loc.stair_landing
 
 | 트리거 | `from` band | `to_rung` | `steps` | 통행료 |
 |---|---|---|---:|---|
-| `trig.drop_to_hand` | `doll` (0.28) | `hand` (0.12) | 1 | +1 `compressed` 0.34 |
-| `trig.rise_to_doll` | `hand` (0.12) | `doll` (0.28) | 1 | +1 `stretched` 0.34 |
+| `trig.drop_to_hand` | `doll` (0.28) | `hand` (0.12) | 1 | `torso`/`compressed` @ `0.34` 병합 |
+| `trig.rise_to_doll` | `hand` (0.12) | `doll` (0.28) | 1 | `torso`/`stretched` @ `0.34` 병합 |
 
 **왕복의 최종 산술 (`04` §5.3).** `0.12`에서 출발해 `0.28`까지 갔다 돌아오면:
-전환 2회, 확정 사실 2개, `severity` 합 `0.68`, 최종 `scale` **정확히 0.12**,
-`wounds`는 `0.12`일 때보다 2개 많다. **`0.12`는 되돌아왔지만 몸은 같지 않다.**
+전환 2회, **새 확정 사실 2개**, `severity` 합 `0.68`, 최종 `scale` **정확히 0.12`,
+`wounds`는
+
+```json
+[ {"part":"torso","kind":"stretched","severity":0.34,"permanent":true},
+  {"part":"torso","kind":"compressed","severity":0.34,"permanent":true} ]
+```
+
+**이 왕복을 다시 해도 이 배열은 변하지 않는다.** `0.68`이 `04` §4.7의 상한이다.
+`0.12`는 되돌아왔지만 몸은 같지 않다. **그 다름의 전부가 두 개의 `kind`다.**
+숫자가 하나 늘어난 것이 아니기 때문에 되돌아온 흔적을 숫자로 재지 않는다.
 
 **이것이 이 사양이 보는 "되돌림의 비용"이다.** 숫자 하나(`0.12`)는 돌아오고
 몸은 돌아오지 않는다. 그래서 `04` §5.4가 불변식 5의 "불완전하게 돌아온다"와
@@ -388,19 +402,31 @@ intermediate place  loc.stair_landing
 | `visual.spec_id` | String | 해당 Kit 지형 파일의 PVE spec 중 하나 | `spec_id`가 없으면 `visual_missing` |
 | `visual.act` | String | `consume` \| `squeeze` \| `pressure` | `kind`와 동일해야 함 |
 | `audio` | Dictionary, 없으면 `{}` | `audio_manifest`의 키와 동일한 형태 | `ROUND_PLAN.md` §C2 |
+| `toll` 계열 키 | **쓸 수 없다** | `toll`, `toll_count`, `toll_kind`, `toll_severity`, `toll_merge`, `toll_mode`, `merge`, `accumulate` 중 하나라도 있으면 `toll_rule_authored` | `§5.2`. 통행료와 병합은 전부 파생이다 |
+
+**`requires.wound.kind`는 `compressed`/`stretched`로 한정되지 않는다.**
+`kind`는 **열린 어휘**이고 그 값은 `requires.wound.kind`와 `body.wounds[].kind`가
+**반드시 같은 문자열이어야** 하는 것만 정본이다. 위 예시의 `cracked`는 Kit이
+저작한 세 번째 상처 종류다. 스케일 시스템이 만드는 종류는 `compressed`와
+`stretched` 두 개뿐이고(`04` §4.2.1), 그 외는 Kit의 저작이다. **어느 종류든
+`04` §4.2의 `max` 병합이 그대로 적용된다.** 병합은 정체 기반이므로 `kind`의 값과
+무관하다.
 
 **`cost` 키가 없다. (2026-09-26 가역 판.)** 이전 판은 트리거마다 `cost`를
 authored 했고 `kind`별 비용이 달랐다. 이제 가격은 `04` §4의 통행료 하나로 통일되고
-**전혀 author가 쓰지 않는다.** 통행료는 `from`과 `to`의 방향 및 `steps`에서
-파생된다.
+**전혀 author가 쓰지 않는다.** 통행료는 `from`과 `to`의 방향에서 파생된다.
 
 ```
-toll_count = steps
-toll_wound = { "part": "torso",
-               "kind": ("compressed" if to_index < from_index else "stretched"),
-               "severity": 0.34,
-               "permanent": true }
+toll_identity = ("torso", "compressed" if to_index < from_index else "stretched")
+toll_wound    = { "part":  "torso",
+                  "kind":   toll_identity[1],
+                  "severity": 0.34,
+                  "permanent": true }
 ```
+
+**`toll_count`는 이제 존재하지 않는다.** 이전 판은 `toll_count = steps`였으나
+`04` §4.2의 병합이 그것을 없앴다. 같은 방향의 rung들은 같은 정체이므로 개수가
+항상 **1**이다. `toll_wound`는 `steps`와 무관하게 **항상 하나**만 만들어진다.
 
 authored `cost`가 남아 있으면 로더가 `trigger_cost_authored`로 거부한다.
 **이유:** authored 비용과 파생 통행료가 겹치면 두 개의 가격이 생기고 어느 것이
@@ -432,11 +458,24 @@ authored `cost`가 남아 있으면 로더가 `trigger_cost_authored`로 거부�
 `from`도 `toll`도 authored가 아니다. `at.approach`의 `band`와 `ladder.json`에서 온다.
 
 ```
-from_rung   = band(at.approach)                    # null 이면 from_rung 없음
-steps       = |index(to_rung) - index(from_rung)|
-toll_count  = steps
-toll_kind   = "compressed" if index(to_rung) < index(from_rung) else "stretched"
+from_rung     = band(at.approach)                    # null 이면 from_rung 없음
+steps         = |index(to_rung) - index(from_rung)|
+toll_kind     = "compressed" if index(to_rung) < index(from_rung) else "stretched"
+toll_identity = (TOLL_PART, toll_kind)               # "torso", toll_kind
+toll_severity = 0.34                                 # TOLL_SEVERITY
+toll_permanent = true
+toll_merge    = "max"                                # TOLL_MERGE.  고정
 ```
+
+**파생값이 6개에서 7개로 늘었다.** 늘어난 것은 `toll_identity`, `toll_severity`,
+`toll_merge`이고 빠진 것은 `toll_count`다. 그 교환이 `04` §4.2의 병합이다.
+
+**authored 형식이 병합 규칙을 표현하는 방법은 하나뿐이다: 그것을 쓸 수 없다는 것.**
+병합은 `max`로 고정되어 있고(`toll_merge`는 파생값이고 `max` 이외의 값을 받지
+않는다), 트리거 JSON에는 병합을 지정하는 키가 **어떤 것도 없다.** 저자가
+`"merge": "sum"`을 쓰면 `toll_rule_authored`, `"merge": "replace"`를 쓰면
+`toll_rule_authored`다. **규칙을 바꿀 수 있는 저작 인터페이스가 존재하지 않는
+것이 그 규칙이 닫혀 있다는 증거다.** `06` T8-18이 그 키들이 0건임을 단언한다.
 
 | 조건 | 거부 reason |
 |---|---|
@@ -444,24 +483,27 @@ toll_kind   = "compressed" if index(to_rung) < index(from_rung) else "stretched"
 | `steps == 0` | `scale_step_zero` |
 | `steps > 2` | `scale_step_too_large` |
 | `cost` 키가 있음 | `trigger_cost_authored` |
+| `toll` / `toll_count` / `toll_kind` / `toll_severity` / `toll_merge` / `toll_mode` / `merge` / `accumulate` 키가 하나라도 있음 | `toll_rule_authored` |
 
 `steps`는 **저장되지 않는다.** 세션 중에 언제나 저절로 다시 계산된다.
 `from`도 저장되지 않는다. `toll`도 저장되지 않는다. 저장되는 것은 `body.scale`
-하나와 `body.wounds`에 쌓인 확정 사실뿐이다.
+하나와 `body.wounds`에 병합되어 남은 확정 사실뿐이다.
 
 ### 5.3 통행료가 쓰는 스토어 API
 
-통행료는 `steps`개의 요청으로, 그 다음 `scale` 1개 요청으로 나간다.
-**통행료가 먼저다.** `04` §1.1.
+통행료는 **1개의 요청**으로 나간다. 그 다음 `scale` 1개 요청으로. **통행료가
+먼저다.** `04` §1.1. **전환마다 요청은 정확히 2개이고 `steps`와 무관하다**(`04` §1).
 
 ```gdscript
 var wounds: Array = []
 if body.has_field(AxisBody.FIELD_WOUNDS):
     wounds = (body.get_wounds() as Array).duplicate(true)
-for k in steps:
-    wounds.append({ "part": "torso", "kind": toll_kind, "severity": 0.34, "permanent": true })
-    if request_mutation(&"body", { "wounds": wounds.duplicate(true) }, requester).ok == false:
-        return   # honest failure.  04 §1.2
+# scale_toll.gd 의 merge_max.  04 §4.2.2.  정체 (part, kind) 안에서만 합친다.
+#   같은 정체가 있으면  severity = max(기존, 0.34),  permanent = 기존 or true,  길이 불변
+#   없으면              1개 추가
+wounds = ScaleToll.merge_max(wounds, { "part": "torso", "kind": toll_kind, "severity": 0.34, "permanent": true })
+if request_mutation(&"body", { "wounds": wounds.duplicate(true) }, requester).ok == false:
+    return   # honest failure.  04 §1.2
 request_mutation(&"body", { "scale": ladder_value(trigger.to_rung) }, requester)
 ```
 
@@ -470,6 +512,9 @@ request_mutation(&"body", { "scale": ladder_value(trigger.to_rung) }, requester)
 **복사본**을 돌려준다(`CONTRACT.md` "`Every get_*` returns null for an absent field`").
 그러므로 첫 반복 전에 반드시 복사본을 떼고 매번 새 복사본을 보낸다.
 
+- **`merge_max`는 세 Kit이 공유 helper 하나로 쓴다.** Kit이 자기 버전을 만들면
+  병합 규칙이 Kit마다 달라지고 그 차이를 아무도 잡지 못한다. `07` **Q16**의
+  `scale_toll.gd`가 그 집이다. `06` T7-8이 Kit 로컬 정의를 0건으로 단언한다.
 - **통행료 요청이 실패하면 `scale` 요청은 나가지 않는다.** 크기를 안 바꾸고
   통행료 일부만 냈다. 이것이 정직한 실패다.
 - `scale` 요청이 실패하면 통행료는 이미 냈고 크기는 그대로다. **이 경우도 그대로
@@ -478,6 +523,8 @@ request_mutation(&"body", { "scale": ladder_value(trigger.to_rung) }, requester)
   job: send the whole list back"이라고 명시한다.
 - `AxisBody.WOUND_FIELDS`가 정확히 4개이므로 이 dict는 `wound_malformed`로
   거부되지 않는다. `severity: 0.34`는 JSON-safe `float`다.
+- **병합은 절대로 `body_fact_is_permanent`를 만들지 않는다.** 이미 기록된 정체를
+  지우지 않기 때문이다. 그 사유가 나오면 병합 구현이 깨진 것이다(`04` §1.2).
 
 
 
@@ -501,15 +548,16 @@ request_mutation(&"body", { "scale": ladder_value(trigger.to_rung) }, requester)
 |---|---|
 | `initial` | `true`/`false`. `true`인 트리거는 전 세계에서 최대 1개 |
 | `initial`과 `band: null` | `at.approach`의 `band`가 `null`이어야 한다. 아니면 `initial_band_not_null` |
-| `initial`과 통행료 | **`initial`은 통행료를 내지 않는다.** `from_rung`이 없으므로 `steps`도 없다. `04` §4 |
+| `initial`과 통행료 | **`initial`은 통행료를 내지 않는다.** `from_rung`이 없으므로 `toll_kind`도 없다. `04` §4 |
 
 `initial` 트리거는 `steps` 검사를 건너뛴다(`from_rung`이 없으므로). `to_rung`은
 `ladder.json`의 `rungs` 중 하나여야 한다. 그것으로 충분하다. 시작 몸이 `speck`(0.05)
 이라는 결정은 `01` §4-K6의 논리와 같다. 정상 크기가 없다.
 
 **`initial`은 통행료 면제다. 최초 한 번뿐이다.** 그것은 크기를 바꾸는 것이 아니라
-**처음 채우는 것**이기 때문이다. `initial` 트리거는 1개뿐이고 그 뒤의 모든 전환은
-`steps`만큼 통행료를 낸다.
+**처음 채우는 것**이이기 때문이다. `initial` 트리거는 1개뿐이고 그 뒤의 모든 전환은
+통행료를 낸다. **이 면제에도 병합 규칙이 그대로 적용된다** — 면제된 트리거는
+통행료를 아예 내지 않으므로 기록을 만들지 않고, 병합할 대상도 없다.
 
 `initial` 트리거는 **저장 전에 반드시 발동한다.** `body.scale`이 `null`인 상태로
 저장할 수 있다는 뜻이고, 그 강제는 `07` Q9에 있다.
@@ -558,6 +606,7 @@ request_mutation(&"body", { "scale": ladder_value(trigger.to_rung) }, requester)
 | `scale_step_zero` | `steps == 0` |
 | `scale_step_too_large` | `steps > 2` |
 | `trigger_cost_authored` | 트리거에 `cost` 키가 있음. `04` §4의 통행료는 파생이다 |
+| `toll_rule_authored` | 트리거에 `toll`, `toll_count`, `toll_kind`, `toll_severity`, `toll_merge`, `toll_mode`, `merge`, `accumulate` 키가 있음. `05` §5.2. 통행료와 **병합 규칙**은 둘 다 파생이고 저작 대상이 아니다 |
 | `initial_count_invalid` | `initial: true`가 2개 이상 |
 | `initial_band_not_null` | `initial`인데 `at.approach`의 `band`가 `null`이 아님 |
 | `wound_malformed` | 통행료 dict가 `WOUND_FIELDS` 4개가 아님 (`AxisBody`가 거부) |
@@ -592,8 +641,8 @@ if max(spans) > 0.427:  reject        # 0.427 = edges[2] - edges[1] = doll 전�
 트리거에 쓰면 `trigger_key_unknown`로 거부한다.
 
 `from`, `from_rung`, `steps`, `toll`, `toll_count`, `toll_kind`, `toll_severity`,
-`scale_delta`, `scale`, `count`, `index`, `visited`, `history`, `cooldown`, `timer`,
-`price`, `cost_points`, `cost`
+`toll_merge`, `toll_mode`, `merge`, `accumulate`, `scale_delta`, `scale`, `count`,
+`index`, `visited`, `history`, `cooldown`, `timer`, `price`, `cost_points`, `cost`
 
 **이 목록이 왜 존재하는가:** `AxisBody`의 `DERIVED_KEYS`와 `NOT_CAPABILITY_KEYS`는
 스토어만 막는다. authored 파일의 키는 스토어에 도달하기 전에 로더가 막아야 한다.
@@ -604,6 +653,12 @@ if max(spans) > 0.427:  reject        # 0.427 = edges[2] - edges[1] = doll 전�
 `cost`가 금지된 것도 같은 이유다. `§5.1`에서 파생된다. **`toll`을 authored에 쓰면
 통행료를 값으로 조작할 수 있다.** 그것은 `NOT_CAPABILITY_KEYS`에 `toll`이 들어 있는
 이유와 같다 — 스토어도 그 이름을 거부한다.
+
+**`merge`와 `accumulate`가 금지된 것이 이번 판에서 새로 추가된 두 항목이다.**
+`04` §4.2의 병합은 **닫힌 규칙**이다. `"sum"`을 쓰면 이전 판의 자기모순이 돌아오고,
+`"replace"`를 쓰면 확정 사실이 지워진다는 뜻이 되어 `body_fact_is_permanent`에
+걸린다. **병합을 고를 수 있는 저작 인터페이스가 없다는 것이 그 규칙이 정본이라는
+증거다.** `06` T8-18이 0건을 단언한다.
 
 ---
 
@@ -616,6 +671,7 @@ if max(spans) > 0.427:  reject        # 0.427 = edges[2] - edges[1] = doll 전�
 | C `descent_exploration` | 위와 동일 + `pressure` 트리거 1개 이상 | 각 1 이상 |
 | 전 Kit | `initial` 트리거 1개 | 1 |
 | 전 Kit | **왕복 트리거 쌍** — 각 `(u,v)` 간선마다 `(v,u)` 1개. `05` §5.1.1 | 모든 간선 |
+| 전 Kit | **`04` §4.2.2의 `merge_max`를 호출한다.** 자기 병합 구현 0개 | 전부 |
 
 **왕복 쌍이 각 Kit의 최소 요구인 이유:** `04` §7-R5는 rung 그래프 전체가 강연결일
 것을 요구한다. 세 Kit이 자기 rung 묶음만 가진 채 서로를 이어 주는 것은 가능하지만,
@@ -630,9 +686,12 @@ if max(spans) > 0.427:  reject        # 0.427 = edges[2] - edges[1] = doll 전�
 `FIT_TARGET` 선언 0건).
 
 **통행료에도 같은 규칙이 적용된다.** `TOLL_SEVERITY = 0.34`, `TOLL_PART = "torso"`,
-`TOLL_KIND_DOWN`, `TOLL_KIND_UP`은 Kit 로컬 상수로 선언하면 안 된다. Kit이
-`0.34` 대신 자기 숫자를 쓰면 그 Kit의 `wounds`가 다른 Kit과 다른 단위가 된다.
+`TOLL_KIND_DOWN`, `TOLL_KIND_UP`, **`TOLL_MERGE = "max"`**는 Kit 로컬 상수로 선언하면
+안 된다. Kit이 `0.34` 대신 자기 숫자를 쓰면 그 Kit의 `wounds`가 다른 Kit과 다른
+단위가 되고, **Kit이 `max` 대신 `sum`을 쓰면 그 Kit의 통행료는 무계가 된다.**
 **저장되는 값이 Kit마다 다른 단위**가 되므로 `CONTRACT.md` "What this store
-cannot police"의 **unit conversion** 위반이다. `06` T7-8이 Kit 로컬 통행료 상수
-선언 0건을 단언한다. 상수의 위치는 `04` §4.1 표가 정본이고 구현 위치는
-`07` Q16이 정한다.
+cannot police"의 **unit conversion** 위반이다. 그러므로 `04` §4.2.2의
+`merge_max`는 `core/procedural/scale_toll.gd` **하나**에만 있고 세 Kit은 그
+함수만 쓴다. 자기 병합을 구현한 Kit 로더는 0건이어야 한다.
+`06` T7-8이 Kit 로컬 통행료 상수 선언 0건을, T8-18이 병합 지정 키 0건을 단언한다.
+상수의 위치는 `04` §4.1 표가 정본이고 구현 위치는 `07` Q16이 정한다.

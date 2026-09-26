@@ -1,3 +1,5 @@
+> 2026-09-26 사용자 결정: 이 문서의 코딩 금지(아트 생성 코드 무효 처리, Inkscape 편집기 전용 조립)는 해제됐다. 현재 허용 범위는 04 Top-down Action-RPG Kit이며 `docs/IMAGE_ASSET_WORKFLOW.md` §1을 따른다. 본문은 과거 기록이다.
+
 # at-icons 조합 방식 실험
 
 이 문서는 `assets/shared_art_study/`에서 옮긴 과거 실험 기록이다. 기존 산출 이미지들은 [`assets/shared_art_study/`](../../../../assets/shared_art_study/)에 원래 위치와 내용 그대로 남아 있다. 현재 제작 기준으로 사용하지 않는다.

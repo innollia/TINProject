@@ -49,6 +49,11 @@ func load_json(text: String) -> Dictionary
 # rule, then — for a permanent-fact field only — body_fact_is_permanent. The value
 # rule is checked before the permanence rule, so a patch that is wrong in both ways
 # names the value first.
+# Inside the `facts` bag the order is fixed the same way and the same precedence
+# holds: a non-String key (value_type_invalid), then derived_value_forbidden, then
+# key_unknown for a name in FACTS_RESERVED_KEYS, then value_not_finite, then
+# value_not_json_safe. The reserved check therefore sits after the derived check,
+# so the order above holds without exception.
 # A patch is a per-field assignment, not a merge. A field the patch does not
 # mention is left exactly as it was, including its absence.
 
@@ -68,6 +73,7 @@ const REQUIREMENT_KEYS: Array[StringName]
 const NOT_CAPABILITY_KEYS: Array[StringName]      # permission-flavoured names, refused
 const THRESHOLD_SUFFIXES: Array[String]           # _min/_max/… stripped before the same check
 const DERIVED_KEYS: Array[StringName]             # summary names, refused everywhere
+const FACTS_RESERVED_KEYS: Array[StringName]      # scale. the one name the ladder already owns
 func has_field(key: StringName) -> bool
 func has_scale() -> bool
 func get_scale() -> Variant                       # null when absent
@@ -129,6 +135,34 @@ func field_class(key: StringName) -> Dictionary
 # Reversibility does not weaken absence. A body with no scale has no scale: `has_scale`
 # is false, `get_scale` is null, no key appears in `to_dictionary`, and a place that
 # asks for one is unmet with "scale_absent". No rung is a default and none is guessed.
+#
+# The body's size lives in exactly one place, which is the top-level `scale` field.
+# `FACTS_RESERVED_KEYS` holds one name — `scale` — and writing that name inside `facts`
+# is refused with `key_unknown`, whatever the value: 0.65, 0.13, 1.0 and "colossal" all
+# get the same reason. The check is on the name and runs before the value is looked at,
+# so a refused write moves nothing. Two copies of a size make every reader of "how big
+# is this body" capable of misreading it, and a ladder with a second channel beside it
+# is a second numeric system nobody chose. `DESIGN_DECISION.md` §2.1.3.
+#   The refusal is `key_unknown` and not `scale_not_rung` on purpose: the rung verdict
+#   reads a value, this one states that the name is not there. A rung written in facts
+#   is refused by the name, not by its number.
+# One entrance, many callers. The check lives in the single `facts` validation, and
+# every path that can put a value into a body reaches it: `apply`, `check_mutation`,
+# `request_mutation`, `load_snapshot`, `load_json`, and the view rebuilding a body from
+# a snapshot. All of them return the same reason and commit nothing. `copy` is not an
+# entrance: it moves already-validated state, and this object is not serialised, so
+# there is no not-yet-validated state for it to move.
+# The ban is one name wide. `199.7`, a `1.0` observation, a rung name as a string, a
+# nested Dictionary, and every other `facts` key are still accepted. A closed list of
+# one entry is what keeps a Kit from discovering that observations are frozen.
+#
+# A snapshot that already carries `facts["scale"]` — one written before this rule —
+# is refused with `key_unknown` and the store keeps every value it had. It is not
+# stripped, because stripping is a normalisation and this store does not normalise; it
+# is not half applied, because a restore is all or nothing; and the store cannot tell a
+# second size channel from an unrelated measurement, so choosing between them would be a
+# guess. The save on disk is also left exactly as it is. This is the same handling as a
+# snapshot whose body scale is off the ladder.
 
 # Every get_* returns null for an absent field. Use has_field / has_scale /
 # has_fact to tell "absent" from "nothing there". This is the whole of the
@@ -226,7 +260,7 @@ strings, and a test pins the mapping.
 | `place_unknown` | no such place id | fix the id or accept that the scene is absent |
 | `patch_not_dictionary` | the patch is not a Dictionary | fix the payload |
 | `patch_empty` | the patch has no keys | do not send no-op writes |
-| `key_unknown` | the key is not a field of that axis | fix the payload |
+| `key_unknown` | the key is not a field of that axis, or it is `scale` inside `facts`, which the ladder already owns | fix the payload. the body size is `body.scale` and one key only |
 | `value_not_json_safe` | Node, Resource, Callable, Vector, NaN, Inf or a non-String key | fix the payload. a save payload holds none of these |
 | `value_type_invalid` | the value has the wrong type for that field | fix the payload |
 | `value_not_finite` | NaN or Inf | fix the payload |
@@ -278,12 +312,13 @@ with `snapshot_malformed` instead of guessing.
 - **Unit conversion.** A Kit that writes `{"facts": {"length_cm": 180}}` has
   done a unit choice, not a conversion, and the store cannot tell. The rule
   stands as a Kit obligation.
-- **A second scale channel.** `scale` is a rung, and `FIELD_CLASSES` says so, but
-  `facts` is open, so `{"facts": {"scale": 0.13}}` would be accepted and would be a
-  second, unladdered size channel. The store classifies `facts` as `unclassified`
-  and does not police its contents beyond the closed `DERIVED_KEYS` list. Whether a
-  Kit may put a second scale there is an open question, recorded in
-  `DESIGN_DECISION.md` §8, not a rule this file grants.
+- **A second scale channel under another name.** `facts["scale"]` is refused with
+  `key_unknown`, on every path, so the name that collides with the ladder cannot carry
+  an unladdered size. `FACTS_RESERVED_KEYS` is not a general audit of `facts`:
+  `{"facts": {"body_size": 0.13}}` is still accepted, because the names inside `facts`
+  are the Kit's and `facts` is `unclassified` by design. What is left open is a second
+  size channel spelled with a different word, and that is a Kit obligation, not a rule
+  this file grants.
 - **Stale content ids.** `den` and any id a Kit puts inside `traits` or a
   `memory` event are resolved by nobody here. Policy belongs to the Kit plan.
 - **Derived values under a name the store does not know.** `DERIVED_KEYS` and
