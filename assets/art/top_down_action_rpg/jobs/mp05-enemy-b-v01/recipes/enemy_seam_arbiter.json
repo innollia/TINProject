@@ -8,6 +8,8 @@
   "pivot": [200, 240],
   "pivot_meaning": "body centre (game draws the enemy centred on its stage position); ground contact line y=430 before scale_all (about y=420 after)",
   "scale_all": {"factor": 0.95, "origin": [200, 240]},
+  "offset_all": [0, 10],
+  "supersample": 2,
   "seed": 507,
   "forms": [
     {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.42, "blur": 5,
@@ -58,14 +60,16 @@
      "pieces": [
        {"icon": "square", "at": [192, 258], "size": [2.4, 250]},
        {"icon": "square", "at": [150, 232], "size": [80, 2.4], "rot": -2},
-       {"icon": "square", "at": [124, 300], "size": [2, 16], "repeat": {"grid": [5, 1], "step": [6, 0]}},
-       {"icon": "square", "at": [136, 300], "size": [30, 1.8], "rot": -28}
+       {"icon": "square", "at": [124, 298], "size": [2, 18], "rot": 14},
+       {"icon": "square", "at": [131, 302], "size": [1.8, 12], "rot": -9},
+       {"icon": "square", "at": [140, 296], "size": [22, 1.8], "rot": 32}
      ]},
     {"name": "chalk_r", "tags": ["panel_r"], "z": 1.4, "kind": "flat", "material": "chalk", "opacity": 0.85,
      "pieces": [
        {"icon": "square", "at": [208, 258], "size": [2.4, 250]},
        {"icon": "square", "at": [250, 234], "size": [80, 2.4], "rot": 2},
-       {"icon": "square", "at": [262, 196], "size": [2, 14], "repeat": {"grid": [3, 1], "step": [6, 0]}}
+       {"icon": "square", "at": [258, 196], "size": [1.8, 14], "rot": -16},
+       {"icon": "square", "at": [268, 190], "size": [16, 1.8], "rot": -38}
      ]},
     {"name": "frost_edges", "tags": ["frost"], "hidden": true, "z": 1.5, "kind": "flat", "material": "frost",
      "pieces": [
@@ -125,18 +129,18 @@
 
     {"name": "branches", "tags": ["beam", "branches"], "z": 2.9, "material": "wood", "shade": {"bump": 0.6},
      "pieces": [
-       {"icon": "circle", "at": [140, 68], "size": [8, 70], "rot": -28},
-       {"icon": "circle", "at": [118, 42], "size": [5, 30], "rot": -62},
-       {"icon": "circle", "at": [130, 40], "size": [4, 22], "rot": 8},
-       {"icon": "circle", "at": [184, 64], "size": [7, 66], "rot": -6},
-       {"icon": "circle", "at": [176, 34], "size": [4, 24], "rot": -32},
-       {"icon": "circle", "at": [194, 36], "size": [4, 20], "rot": 30}
+       {"icon": "circle", "at": [142, 74], "size": [8, 62], "rot": -28},
+       {"icon": "circle", "at": [122, 52], "size": [5, 28], "rot": -62},
+       {"icon": "circle", "at": [134, 50], "size": [4, 20], "rot": 8},
+       {"icon": "circle", "at": [184, 72], "size": [7, 58], "rot": -6},
+       {"icon": "circle", "at": [178, 46], "size": [4, 22], "rot": -32},
+       {"icon": "circle", "at": [192, 48], "size": [4, 18], "rot": 30}
      ]},
     {"name": "branches_r", "tags": ["beam", "branches", "branch_r"], "z": 2.9, "material": "wood", "shade": {"bump": 0.6},
      "pieces": [
-       {"icon": "circle", "at": [254, 68], "size": [8, 70], "rot": 24},
-       {"icon": "circle", "at": [276, 46], "size": [5, 30], "rot": 60},
-       {"icon": "circle", "at": [264, 38], "size": [4, 22], "rot": -10}
+       {"icon": "circle", "at": [252, 74], "size": [8, 62], "rot": 24},
+       {"icon": "circle", "at": [272, 54], "size": [5, 28], "rot": 60},
+       {"icon": "circle", "at": [262, 48], "size": [4, 20], "rot": -10}
      ]},
     {"name": "beam", "tags": ["beam"], "z": 3, "kind": "block", "material": "orchard_wood", "extrude": 20,
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [200, 104], "size": [252, 22]}]},
@@ -167,7 +171,7 @@
     {"name": "baseline"},
     {"name": "telegraph",
      "show": ["seam_glow"],
-     "move": {"beam": {"dy": -26, "rot": -4, "pivot": [200, 115]},
+     "move": {"beam": {"dy": -18, "rot": -4, "pivot": [200, 115]},
               "panel_l": {"dx": -7},
               "panel_r": {"dx": 7}}},
     {"name": "signature",

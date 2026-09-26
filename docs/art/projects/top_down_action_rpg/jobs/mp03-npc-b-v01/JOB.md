@@ -112,7 +112,9 @@ content JSON과 04_CHARACTERS_AND_RELATIONSHIPS.md(§2.4 NPC-20~26, §3 NPC-11~1
   - [ ] 필드 그림 시트(11명)
 - [x] `inputs.json`(초상화 단계까지. 필드 그림 뒤 다시 잰다), `QA.md`(초상화 부분)
 - [ ] 끝날 때 `inputs.json`·`QA.md` 갱신, `__pycache__` 지우기
-- [ ] 1순위 중간 보고 → 2순위 03 Deduction Casework(`deduction_casework`) → 3순위 범용 특별한 사람(경비병, 기사, 마법사, 성직자, 귀족, 도적)
+- [ ] 필드 그림까지 끝나면 최종 보고하고 멈춤. 2026-09-27 COMMON.md 변경으로 세션 03의 2순위(03 Deduction Casework)와 3순위(범용)는 새 세션 g01~g06이 맡는다.
+
+규칙 파일: `C:\projects\TINProject\docs\art\mass_production\COMMON.md` (2026-09-27 워크스페이스에서 저장소로 옮김, 내용 같음).
 
 자산마다: 레시피 → build → read 도구로 직접 확인 → 고치기(최대 2번) → 다음.
 

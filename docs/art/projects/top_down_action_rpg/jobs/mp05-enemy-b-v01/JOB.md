@@ -20,6 +20,16 @@
 - `iconkit/render.py`: 팔레트 `extends`(바탕 팔레트를 물려받고 바꾼 것만 적기), 레시피 `offset_all`(모든 조각을 한꺼번에 옮겨 몸 중심을 캔버스 중심에 맞춤, 프레임 이동 뒤에 적용).
 - `build.py`: 건너뛰기 판단(build key)에 `extends` 바탕 팔레트 내용도 포함.
 - 새 `check_edges.py`: 그림이 캔버스 가장자리에 닿거나 32 px 안으로 들어오는지 점검.
+- `iconkit/render.py`: 프레임 `move` 값에 이동 목록을 주면 차례로 적용(예: 팔을 어깨 기준으로 돌린 뒤 몸 전체를 발 기준으로 기울임).
+- 새 `state_grid.py`: 적 9종 × 상태 6칸 한눈에 보기 시트(칸 이름표는 시트에만, 그림에는 글자 없음).
+- 레시피별 예외: `enemy_seam_arbiter.json`만 `supersample: 2`(키 큰 나무판 돌출 때문에 한 장 90~250초 → 25~65초). 선 두께와 밀도는 같다.
+
+## 결과 (assets/art/top_down_action_rpg/jobs/mp05-enemy-b-v01/)
+
+- 그림: `output/<enemy_id>/<상태>.png` + `_shadow.png` + (빛나는 부분이 있으면) `_emit.png` + `.json`. 47장.
+- 레시피: `recipes/enemy_*.json` 9개, 팔레트 `recipes/palette_mp05_enemies.json`(+ 복사한 `palette_h0_mood.json`).
+- 모아 보기: `preview/sheet_<enemy_id>.png`(1배·0.5배) 9장, 전체 `preview/sheet_enemy_states_0.5x.png`(게임 크기), `preview/sheet_enemy_states_1x.png`.
+- 다시 만들기: `tool` 폴더에서 `py -3 -B build.py --all` → `py -3 -B state_grid.py --scale 0.5 --out ..\preview\sheet_enemy_states_0.5x.png`.
 
 ## 크기 (근거: 게임 코드 + COMMON 크기 표)
 
@@ -104,12 +114,12 @@
 - [x] kiln_door_ward: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기 (고침 2회: 금을 번개 아이콘 대신 가는 선으로, 몸 중심을 캔버스 중심으로)
 - [x] latency_bell_ringer: baseline / telegraph / signature / break / 모아 보기 (고침 2회: 얼굴·손을 surrogate 색으로, 예고 때 지팡이 높이, 떨어진 지팡이의 가로대 제거)
 - [x] mana_triage_surrogate: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기 (고침 1회: 가운 앞판을 좁혀 가슴 빈자리가 기본에서도 보이게, 군모처럼 보이던 모자를 흰 천 모자로)
-- [ ] organ_quorum_witness: baseline / telegraph / signature / break / phase1 / 모아 보기
+- [x] organ_quorum_witness: baseline / telegraph / signature / break / phase1 / 모아 보기 (고침 2회: 무너짐 잘림, 빈 두건 위치, 옷자락 모양)
 - [x] permit_inspector: baseline / telegraph / signature / exposure / 모아 보기 (고침 없음)
-- [ ] residue_cantor: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기
-- [ ] seam_arbiter: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기
-- [ ] worksheet_instructor: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기
-- [ ] wrong_return_scribe: baseline / telegraph / signature / exposure / 모아 보기
-- [ ] 전체 시트, QA.md, __pycache__ 정리
+- [x] residue_cantor: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기 (고침 1회: 계약 띠 길이, 잔여물 줄기 색)
+- [x] seam_arbiter: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기 (고침 1회: 분필 눈금 → 긁힘, 위 여백, supersample 2)
+- [x] worksheet_instructor: baseline / telegraph / signature / break / phase1 / phase2 / 모아 보기 (고침 1회: 분필 눈금 → 낙서)
+- [x] wrong_return_scribe: baseline / telegraph / signature / exposure / 모아 보기 (고침 1회: 뾰족 두건 → 펼친 책 머리)
+- [x] 전체 시트, QA.md, 최종 도구로 전체 다시 빌드(47장), __pycache__ 정리
 
 합계: 상태 그림 36장 + 단계 그림 11장 = 47장.

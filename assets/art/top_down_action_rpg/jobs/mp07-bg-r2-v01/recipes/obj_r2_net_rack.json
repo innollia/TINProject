@@ -22,12 +22,16 @@
      ]},
     {"name": "crossbar", "z": 1, "material": "wood", "line": {"width": 0.8, "heavy": 0.8},
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [210, 106], "size": [300, 10]}]},
-    {"name": "net", "z": 1.5, "kind": "flat", "material": "net", "opacity": 0.95, "line": {"width": 0.5, "heavy": 0.5},
+    {"name": "net", "z": 1.5, "kind": "wash", "material": "net", "opacity": 0.35,
      "rough": {"amp": 0.5, "soft": 1.5, "cell": 14},
      "pieces": [
-       {"icon": "grid_fine", "at": [150, 164], "size": [140, 116], "rot": 2},
-       {"icon": "grid_fine", "at": [272, 160], "size": [130, 104], "rot": -3}
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [150, 166], "size": [138, 112], "rot": 2},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [272, 160], "size": [128, 100], "rot": -3}
      ]},
+    {"name": "net_threads_a", "z": 1.55, "kind": "flat", "material": "net", "clip_to": "net",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 240], "rot": 40, "repeat": {"line": [[40, 160], [380, 160]], "count": 34}}]},
+    {"name": "net_threads_b", "z": 1.56, "kind": "flat", "material": "net", "clip_to": "net",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 240], "rot": -40, "repeat": {"line": [[40, 160], [380, 160]], "count": 34}}]},
     {"name": "net_folds", "z": 1.6, "kind": "wash", "material": "net", "opacity": 0.5,
      "pieces": [
        {"icon": "square", "fit": [1, 1, 15, 15], "at": [210, 112], "size": [270, 12]},

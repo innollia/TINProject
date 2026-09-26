@@ -1,0 +1,91 @@
+{
+  "asset": "exit_r4_e12_courier_shaft",
+  "status": "candidate",
+  "note": "E12 Courier Shaft (to R5, gate G4, sealed plate) hoist over the shaft opening of bg_r4_stacks (opening centre 1520,1120 src, rim 364x244). Four-post iron gantry 2.2 m tall with a pulley on a cross beam and a crank. _closed: wooden hatch lid shut over the opening with a bronze seal bar and an empty sealed-plate holder. _open: lid raised against the back posts, the courier basket hanging in the shaft. The R5 end (exit_r5_e12_courier_shaft) uses the same design in R5 materials. 226 px/m. Contact shadow separate.",
+  "palette": "palette_r4.json",
+  "style": "prop",
+  "canvas": [540, 660],
+  "pivot": [270, 596],
+  "pivot_meaning": "centre of the front edge of the shaft rim on the floor",
+  "seed": 521,
+  "frames": [
+    {"name": "exit_r4_e12_courier_shaft_closed", "hide": ["open"]},
+    {"name": "exit_r4_e12_courier_shaft_open", "hide": ["closed"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 6,
+     "pieces": [
+       {"icon": "circle", "at": [95, 598], "size": [40, 14]},
+       {"icon": "circle", "at": [445, 598], "size": [40, 14]},
+       {"icon": "circle", "at": [95, 354], "size": [36, 12]},
+       {"icon": "circle", "at": [445, 354], "size": [36, 12]}
+     ]},
+
+    {"name": "basket", "z": 0, "tags": ["open"], "material": "wood", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [270, 448], "size": [96, 56]}]},
+    {"name": "basket_weave", "z": 0.2, "tags": ["open"], "kind": "flat", "color": "#1e1712", "opacity": 0.6, "clip_to": "basket",
+     "pieces": [{"icon": "grid_fine", "at": [270, 448], "size": [96, 56]}]},
+    {"name": "basket_rim", "z": 0.3, "tags": ["open"], "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "square", "at": [270, 422], "size": [98, 5]}]},
+
+    {"name": "lid", "z": 1, "tags": ["closed"], "kind": "block", "material": "wood", "extrude": 8,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [270, 470], "size": [326, 212]}]},
+    {"name": "lid_planks", "z": 1.2, "tags": ["closed"], "kind": "flat", "color": "#1e1712", "opacity": 0.6, "clip_to": "lid",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 206], "repeat": {"line": [[160, 470], [380, 470]], "count": 5}}]},
+    {"name": "seal_bar", "z": 1.4, "tags": ["closed"], "kind": "flat", "material": "bronze_block", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [270, 470], "size": [340, 14]}]},
+    {"name": "plate_holder", "z": 1.6, "tags": ["closed"], "material": "bronze_block", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "ground": true, "at": [270, 510], "size": [70, 46]}]},
+    {"name": "plate_slot", "z": 1.7, "tags": ["closed"], "kind": "flat", "color": "#07050a",
+     "pieces": [{"icon": "square", "ground": true, "at": [270, 510], "size": [52, 30]}]},
+    {"name": "lid_ring", "z": 1.8, "tags": ["closed"], "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.8},
+     "pieces": [
+       {"icon": "circle", "ground": true, "at": [270, 420], "size": [30, 30]},
+       {"icon": "circle", "ground": true, "op": "sub", "at": [270, 420], "size": [20, 20]}
+     ]},
+
+    {"name": "back_posts", "z": 2, "kind": "block", "material": "iron", "extrude": 249,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [18, 12],
+                 "repeat": {"points": [[95, 103], [445, 103]]}}]},
+    {"name": "raised_lid", "z": 2.4, "tags": ["open"], "material": "wood", "line": {"width": 1.0, "heavy": 1.1},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [270, 294], "size": [326, 118]}]},
+    {"name": "raised_lid_planks", "z": 2.5, "tags": ["open"], "kind": "flat", "color": "#1e1712", "opacity": 0.6, "clip_to": "raised_lid",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 112], "repeat": {"line": [[160, 294], [380, 294]], "count": 5}}]},
+    {"name": "top_frame", "z": 3, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [270, 225], "size": [372, 256]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "op": "sub", "at": [270, 225], "size": [352, 236]}
+     ]},
+    {"name": "cross_beam", "z": 3.2, "kind": "flat", "material": "iron", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [270, 225], "size": [362, 12]}]},
+    {"name": "rope", "z": 3.3, "kind": "flat", "material": "leather",
+     "pieces": [{"icon": "square", "at": [270, 330], "size": [4, 196]}]},
+    {"name": "pulley", "z": 3.4, "material": "bronze", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [
+       {"icon": "circle", "at": [270, 222], "size": [44, 44]},
+       {"icon": "circle", "op": "sub", "at": [270, 222], "size": [26, 26]}
+     ]},
+    {"name": "pulley_hub", "z": 3.5, "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "circle", "at": [270, 222], "size": [12, 12]}]},
+
+    {"name": "front_posts", "z": 4, "kind": "block", "material": "iron", "extrude": 249,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [20, 14],
+                 "repeat": {"points": [[95, 347], [445, 347]]}}]},
+    {"name": "crank_wheel", "z": 4.4, "material": "bronze", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "circle", "at": [456, 470], "size": [40, 40]},
+       {"icon": "circle", "op": "sub", "at": [456, 470], "size": [28, 28]}
+     ]},
+    {"name": "crank_spokes", "z": 4.5, "kind": "flat", "material": "iron",
+     "pieces": [
+       {"icon": "square", "at": [456, 470], "size": [34, 4], "rot": 30},
+       {"icon": "square", "at": [456, 470], "size": [34, 4], "rot": -60},
+       {"icon": "square", "at": [472, 462], "size": [4, 20], "rot": 30}
+     ]},
+    {"name": "post_bands", "z": 4.6, "kind": "flat", "material": "bronze",
+     "pieces": [
+       {"icon": "square", "at": [95, 560], "size": [22, 5]},
+       {"icon": "square", "at": [445, 560], "size": [22, 5]}
+     ]}
+  ]
+}

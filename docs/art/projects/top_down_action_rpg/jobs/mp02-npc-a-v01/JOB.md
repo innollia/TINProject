@@ -5,7 +5,7 @@
 | 필드 | 값 |
 |---|---|
 | 목적 | 자산 제작: 09 §12.5 `portrait_dialogue`(대화 초상화, 완료)와 §12.2 `gameplay_sprites`(NPC 필드 그림, 대기). 14 §3 목적 목록에는 인물 항목이 없어 09 자산군 이름을 쓴다 |
-| 근거 결정 | `C:\Users\Sherum\.kiro\crew\workspace\tin_mass_production\COMMON.md`(2026-09-27, ✅ 기준 확정 04시): 아이콘 조합 양산, 분위기 V1(`h0-icon-mood-v02`), 빛과 그림자는 게임 코드, 캐릭터를 배경에 합친 검수 그림 금지, 방향 없는 그림(초상화 포함) 먼저, 걸어 다니는 캐릭터는 8방향 기준 확정 뒤. 사용자 지시(세션 02 대화): 한 명씩 필드 그림과 초상화를 끝내고 다음 사람, 마지막에 필드 그림 시트와 초상화 시트를 따로. 필드 그림이 막혀 초상화 10장을 먼저 만들었다 |
+| 근거 결정 | `docs/art/mass_production/COMMON.md`(2026-09-27 저장소로 옮김, ✅ 기준 확정 04시): 아이콘 조합 양산, 분위기 V1(`h0-icon-mood-v02`), 빛과 그림자는 게임 코드, 캐릭터를 배경에 합친 검수 그림 금지, 방향 없는 그림(초상화 포함) 먼저, 걸어 다니는 캐릭터는 8방향 기준 확정 뒤. 사용자 지시(세션 02 대화): 한 명씩 필드 그림과 초상화를 끝내고 다음 사람, 마지막에 필드 그림 시트와 초상화 시트를 따로. 필드 그림이 막혀 초상화 10장을 먼저 만들었다 |
 | 소유권 | 세션 02. 쓰기 범위: `assets/art/top_down_action_rpg/jobs/mp02-npc-a-v01/`, `docs/art/projects/top_down_action_rpg/jobs/mp02-npc-a-v01/`. 게임 코드·씬·content·규칙 문서 수정 없음, 게임 연결 없음, 커밋 없음 |
 | 자산 identity | NPC ID 10개와 각 `appearance.body_key` / `portrait_key`는 content의 실제 값. `art_npc_core_portrait`는 09 §12.10 조회 키이지 자산 ID가 아니다. 파일 이름은 이 작업의 설계 |
 | 입력 계약 버전 | `inputs.json`: COMMON.md, 09, 14, 04 dossier, PROJECT_ART_LAYER 0.1, PERSONAL_STYLE_CORE 0.3, IMAGE_ASSET_WORKFLOW, VISUAL_DIRECTION, V1 팔레트·도구·캐릭터 시트, 화면 코드 2개, content npcs 10개의 SHA-256 |
@@ -99,7 +99,7 @@
 - [ ] 8방향 기준 확정 대기 (COMMON.md '캐릭터 스프라이트 형식')
 - [ ] 필드 그림 01 ~ 10 (인물마다 24칸 + 시트 2장)
 - [ ] 필드 그림 시트
-- [ ] 1순위 중간 보고 → 2순위 02 Odd Road(`plans/kits/02_ODD_ROAD_KIT.md`) → 3순위 평범한 사람(8방향 필요)
+- [ ] 1순위 중간 보고 → 2순위 02 Odd Road(`plans/kits/02_ODD_ROAD_KIT.md`) → 최종 보고 후 멈춤. 3순위(범용 그림)는 2026-09-27 사용자 결정으로 g 세션 담당이라 하지 않음
 
 ## 확인한 사실
 

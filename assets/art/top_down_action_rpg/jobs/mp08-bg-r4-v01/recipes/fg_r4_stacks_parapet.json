@@ -1,0 +1,30 @@
+{
+  "asset": "fg_r4_stacks_parapet",
+  "status": "candidate",
+  "note": "foreground for bg_r4_stacks: a low 1.0 m stone parapet with a square pier along the south-east edge (logical x 950..1280, y 650..720). Fixed structure only (the earlier 'ladder' idea was dropped: a ladder is a movable object). Clear of the E12 shaft (1520,1120 src) and the route-marker spot (1800,1280 src). Transparent full-canvas layer with the background origin.",
+  "palette": "palette_r4.json",
+  "style": "environment",
+  "style_override": {"background": null, "shadow_output": "separate"},
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = background origin",
+  "seed": 406,
+  "forms": [
+    {"name": "parapet", "z": 0, "kind": "block", "material": "stone", "extrude": 113,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [2250, 1338], "size": [660, 60]}]},
+    {"name": "parapet_masonry", "z": 0.2, "kind": "flat", "material": "slate_joint", "opacity": 0.4, "clip_to": "parapet",
+     "pieces": [{"icon": "brick_wall", "invert": true, "crop": [1.2, 1.2, 14.8, 14.8], "fit": [1.2, 1.2, 14.8, 14.8],
+                 "at": [0, 1425], "size": [260, 110], "repeat": {"line": [[2050, 1425], [2450, 1425]], "count": 3}}]},
+    {"name": "coping", "z": 0.5, "kind": "flat", "material": "stone_cap", "line": {"width": 1.2, "heavy": 1.3},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [2250, 1338], "size": [660, 60]}]},
+    {"name": "coping_band", "z": 0.6, "kind": "flat", "material": "bronze_block", "opacity": 0.85,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [2250, 1366], "size": [656, 6]}]},
+    {"name": "end_pier", "z": 1, "kind": "block", "material": "stone_dark", "extrude": 136,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [1922, 1326], "size": [78, 72]}]},
+    {"name": "end_pier_cap", "z": 1.2, "kind": "flat", "material": "bronze_block", "line": {"width": 1.0, "heavy": 1.1},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1922, 1300], "size": [62, 14]}]},
+    {"name": "damp", "z": 1.5, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.45, "clip_to": "parapet",
+     "rough": {"amp": 0.7, "soft": 8, "cell": 30},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2250, 1420], "size": [660, 50]}]}
+  ]
+}

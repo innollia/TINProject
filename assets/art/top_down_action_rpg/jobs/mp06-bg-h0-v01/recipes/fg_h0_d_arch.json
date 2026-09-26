@@ -1,7 +1,7 @@
 {
   "asset": "h0_d_ash_stair",
   "status": "candidate",
-  "note": "mp06 H0 area D foreground: a stone arch over the head of the Ash Stair (posts on the landing just outside the parapets, lintel about 2.8 m up). Characters on the landing behind it are covered by the lintel; characters going down the stair are south of it and below the lintel on screen. Full-canvas transparent PNG, same origin as base_clean.",
+  "note": "mp06 H0 area D foreground: the landing's south parapet (1 m, its outer face running down into the drop and fading dark) on both sides of the stair gap, and a stone arch over the stair head standing on the parapet ends. Everyone on the landing is north of the parapet, and there is only the drop south of it, so a fixed foreground layer is always drawn correctly over characters. Full-canvas transparent PNG, same origin as base_clean.",
   "palette": "palette_h0_mood.json",
   "style": "environment",
   "style_override": {"background": null, "shadow_output": "separate"},
@@ -11,29 +11,49 @@
   "seed": 242,
   "frames": [{"name": "foreground_stair_arch"}],
   "forms": [
-    {"name": "arch_posts", "z": 1, "kind": "block", "material": "stone_dark", "extrude": 314,
+    {"name": "parapet", "z": 1, "kind": "block", "material": "stone", "extrude": 262,
      "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [940, 521], "size": [44, 30]},
-       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [1620, 521], "size": [44, 30]}
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [480, 773], "size": [1020, 30]},
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [2080, 773], "size": [1020, 30]}
      ]},
-    {"name": "post_bands", "z": 1.5, "kind": "flat", "material": "bronze", "line": {"width": 1.0, "heavy": 1.0},
+    {"name": "parapet_cap", "z": 1.2, "kind": "flat", "material": "stone_cap", "line": {"width": 1.0, "heavy": 1.0},
      "pieces": [
-       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [940, 600], "size": [44, 8]},
-       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [940, 800], "size": [44, 8]},
-       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [1620, 600], "size": [44, 8]},
-       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [1620, 800], "size": [44, 8]}
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [480, 773], "size": [1010, 22]},
+       {"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [2080, 773], "size": [1010, 22]}
      ]},
-    {"name": "lintel", "z": 2, "kind": "block", "material": "stone", "extrude": 44,
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [1280, 500], "size": [760, 40]}]},
-    {"name": "lintel_masonry", "z": 2.2, "kind": "flat", "material": "floor_joint", "opacity": 0.45, "clip_to": "lintel",
-     "pieces": [{"icon": "square", "at": [0, 542], "size": [4, 40],
-                 "repeat": {"line": [[1000, 542], [1560, 542]], "count": 6}}]},
-    {"name": "keystone", "z": 2.5, "kind": "flat", "material": "bronze_block", "line": {"width": 1.0, "heavy": 1.2},
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1280, 541], "size": [40, 34]}]},
-    {"name": "lintel_soot", "z": 2.7, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.5, "blur": 8, "clip_to": "lintel",
+    {"name": "parapet_joints", "z": 1.3, "kind": "flat", "material": "floor_joint", "opacity": 0.45, "clip_to": "parapet",
+     "pieces": [{"icon": "square", "at": [0, 850], "size": [4, 110],
+                 "repeat": {"points": [[150, 850], [420, 850], [690, 850], [1860, 850], [2130, 850], [2400, 850]]}}]},
+    {"name": "parapet_fade", "z": 1.5, "kind": "wash", "material": "void", "blend": "multiply", "blur": 12, "clip_to": "parapet",
      "pieces": [
-       {"icon": "cloud", "at": [1200, 556], "size": [220, 30]},
-       {"icon": "cloud", "at": [1400, 552], "size": [160, 26], "flip": "x"}
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 925], "size": [2640, 50], "alpha": 0.3},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 975], "size": [2640, 50], "alpha": 0.55},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1030], "size": [2640, 60], "alpha": 0.8}
+     ]},
+
+    {"name": "arch_posts", "z": 2, "kind": "block", "material": "stone_dark", "extrude": 314,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [966, 551], "size": [48, 30]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [1594, 551], "size": [48, 30]}
+     ]},
+    {"name": "post_bands", "z": 2.5, "kind": "flat", "material": "bronze", "line": {"width": 1.0, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [966, 630], "size": [48, 8]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [966, 830], "size": [48, 8]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [1594, 630], "size": [48, 8]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [1594, 830], "size": [48, 8]}
+     ]},
+    {"name": "lintel", "z": 3, "kind": "block", "material": "stone", "extrude": 44,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [1280, 530], "size": [700, 40]}]},
+    {"name": "lintel_masonry", "z": 3.2, "kind": "flat", "material": "floor_joint", "opacity": 0.45, "clip_to": "lintel",
+     "pieces": [{"icon": "square", "at": [0, 572], "size": [4, 40],
+                 "repeat": {"line": [[1030, 572], [1530, 572]], "count": 6}}]},
+    {"name": "keystone", "z": 3.5, "kind": "flat", "material": "bronze_block", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1280, 571], "size": [40, 34]}]},
+    {"name": "lintel_soot", "z": 3.7, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.5, "blur": 8, "clip_to": "lintel",
+     "pieces": [
+       {"icon": "cloud", "at": [1200, 586], "size": [220, 30]},
+       {"icon": "cloud", "at": [1400, 582], "size": [160, 26], "flip": "x"}
      ]}
   ]
 }

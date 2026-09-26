@@ -4,8 +4,9 @@
   "note": "mp06 object for the internal route return_desk_lift (H0 area C, against the north wall beside the return desk). Author design at the player scale: iron front frame 2.6 m with a top beam, pulley wheel and chains, and a bar grille facing the viewer. The dark shaft pit is part of the area C background; this object stands on its front edge. conditional = grille shut with a padlock, platform down in the shaft (chains run deep); open = grille folded to the left, bronze platform up at floor level. No text.",
   "palette": "palette_h0_mood.json",
   "style": "prop",
-  "canvas": [424, 440],
-  "pivot": [212, 400],
+  "canvas": [440, 444],
+  "pivot": [220, 400],
+  "offset": [8, 0],
   "pivot_meaning": "centre of the front floor line of the lift (front edge of the shaft)",
   "seed": 314,
   "frames": [
@@ -18,14 +19,14 @@
        {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [58, 402], "size": [36, 14]},
        {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [378, 402], "size": [36, 14]}
      ]},
-
-    {"name": "platform", "tags": ["open_part"], "hidden": true, "z": 0, "kind": "flat", "material": "bronze_block",
-     "line": {"width": 1.0, "heavy": 1.2},
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "ground": true, "at": [212, 270], "size": [296, 296]}]},
+    {"name": "platform", "tags": ["open_part"], "hidden": true, "z": 0, "kind": "flat", "material": "bronze_block", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "ground": true, "at": [212, 270], "size": [296, 296]}
+     ]},
     {"name": "platform_rivets", "tags": ["open_part"], "hidden": true, "z": 0.2, "kind": "flat", "material": "bronze", "line": {"width": 0.6, "heavy": 0.6},
-     "pieces": [{"icon": "circle", "at": [0, 0], "size": [9, 7],
-                 "repeat": {"points": [[80, 160], [212, 160], [344, 160], [80, 270], [344, 270], [80, 380], [212, 380], [344, 380]]}}]},
-
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [9, 7], "repeat": {"points": [[80, 160], [212, 160], [344, 160], [80, 270], [344, 270], [80, 380], [212, 380], [344, 380]]}}
+     ]},
     {"name": "chains_deep", "tags": ["closed_part"], "z": 0.5, "kind": "flat", "material": "iron", "line": false, "opacity": 0.9,
      "pieces": [
        {"icon": "square", "at": [196, 200], "size": [3, 280]},
@@ -36,31 +37,36 @@
        {"icon": "square", "at": [196, 162], "size": [3, 200]},
        {"icon": "square", "at": [228, 162], "size": [3, 200]}
      ]},
-
     {"name": "posts", "z": 1, "kind": "block", "material": "iron", "extrude": 291,
      "pieces": [
        {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [52, 99], "size": [22, 20]},
        {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [372, 99], "size": [22, 20]}
      ]},
     {"name": "beam", "z": 2, "kind": "block", "material": "iron", "extrude": 26,
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [212, 71], "size": [360, 24]}]},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [212, 71], "size": [360, 24]}
+     ]},
     {"name": "wheel", "z": 2.5, "material": "iron",
-     "pieces": [{"icon": "wheel", "at": [212, 52], "size": [40, 36]}]},
-
+     "pieces": [
+       {"icon": "wheel", "at": [212, 52], "size": [40, 36]}
+     ]},
     {"name": "bars", "tags": ["closed_part"], "z": 3, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 1.0},
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 269], "size": [4, 262],
-                 "repeat": {"line": [[70, 269], [354, 269]], "count": 17}}]},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 269], "size": [4, 262], "repeat": {"line": [[70, 269], [354, 269]], "count": 17}}
+     ]},
     {"name": "rails", "tags": ["closed_part"], "z": 3.5, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
      "pieces": [
        {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [212, 150], "size": [310, 8]},
        {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [212, 390], "size": [310, 8]}
      ]},
     {"name": "padlock", "tags": ["closed_part"], "z": 4, "material": "iron",
-     "pieces": [{"icon": "lock", "at": [212, 284], "size": [20, 24]}]},
-
+     "pieces": [
+       {"icon": "lock", "at": [212, 284], "size": [20, 24]}
+     ]},
     {"name": "bars_open", "tags": ["open_part"], "hidden": true, "z": 3, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 1.0},
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 272], "size": [4, 262],
-                 "repeat": {"line": [[68, 272], [104, 272]], "count": 6}}]},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 272], "size": [4, 262], "repeat": {"line": [[68, 272], [104, 272]], "count": 6}}
+     ]},
     {"name": "rails_open", "tags": ["open_part"], "hidden": true, "z": 3.5, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
      "pieces": [
        {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [86, 154], "size": [44, 8]},

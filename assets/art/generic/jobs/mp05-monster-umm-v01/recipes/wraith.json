@@ -1,0 +1,60 @@
+{
+  "asset": "wraith",
+  "status": "candidate",
+  "note": "Generic battler: wraith (undead / spirit). A floating black-rag hood and cloak with a ragged, torn hem that ends above the floor, two cold points of light in the darkness of the hood, thin grey skeletal hands on a long wooden snath with a rusted crescent blade over its head. Front view, fixed 60 deg camera. Detached floor shadow.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre; floats - detached shadow at y=326",
+  "seed": 605,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.3, "blur": 7,
+     "pieces": [{"icon": "circle", "at": [160, 326], "size": [128, 20]}]},
+
+    {"name": "snath", "z": 0.5, "material": "wood", "shade": {"bump": 0.6},
+     "pieces": [{"icon": "square", "at": [178, 184], "size": [7, 250], "rot": 26}]},
+    {"name": "blade", "z": 0.6, "material": "iron", "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "moon", "at": [206, 92], "size": [74, 58], "rot": 170}]},
+
+    {"name": "cloak", "z": 1, "material": "rag_dark", "rough": {"amp": 0.5, "cell": 6, "soft": 1.2},
+     "pieces": [
+       {"icon": "bell", "crop": [2, 3.0, 14, 12.6], "fit": [2, 3.0, 14, 12.6], "at": [160, 210], "size": [116, 168]},
+       {"icon": "triangle", "op": "sub", "at": [118, 292], "size": [16, 26], "rot": 180},
+       {"icon": "triangle", "op": "sub", "at": [142, 296], "size": [14, 30], "rot": 180},
+       {"icon": "triangle", "op": "sub", "at": [166, 294], "size": [16, 26], "rot": 180},
+       {"icon": "triangle", "op": "sub", "at": [190, 296], "size": [14, 30], "rot": 180},
+       {"icon": "triangle", "op": "sub", "at": [212, 290], "size": [12, 22], "rot": 180}
+     ]},
+    {"name": "cloak_folds", "z": 1.1, "kind": "flat", "color": "#0a080d", "opacity": 0.8, "clip_to": "cloak",
+     "pieces": [
+       {"icon": "square", "at": [140, 240], "size": [1.8, 110], "rot": 5},
+       {"icon": "square", "at": [180, 240], "size": [1.8, 110], "rot": -5}
+     ]},
+    {"name": "sleeves", "z": 2, "material": "rag_dark", "rough": {"amp": 0.45, "cell": 6, "soft": 1.2},
+     "pieces": [
+       {"icon": "droplet", "at": [124, 186], "size": [30, 66], "rot": -30},
+       {"icon": "droplet", "at": [200, 170], "size": [28, 58], "rot": -40}
+     ]},
+    {"name": "hands", "z": 2.1, "material": "bone_dark",
+     "pieces": [
+       {"icon": "circle", "at": [142, 218], "size": [14, 13]},
+       {"icon": "circle", "at": [134, 224], "size": [4, 12], "rot": 30},
+       {"icon": "circle", "at": [214, 146], "size": [13, 12]},
+       {"icon": "circle", "at": [207, 150], "size": [4, 11], "rot": 30}
+     ]},
+    {"name": "hood", "z": 3, "material": "rag_dark", "rough": {"amp": 0.35, "cell": 6, "soft": 1.0},
+     "pieces": [
+       {"icon": "droplet", "at": [158, 104], "size": [66, 80], "rot": -4},
+       {"icon": "umbrella", "crop": [0.6, 2.3, 15.4, 8.7], "at": [160, 142], "size": [104, 36]}
+     ]},
+    {"name": "hood_hole", "z": 3.1, "kind": "flat", "color": "#040306",
+     "pieces": [{"icon": "circle", "at": [158, 118], "size": [36, 38]}]},
+    {"name": "eyes", "z": 3.2, "kind": "flat", "material": "soul", "emit": 1.0,
+     "glow": {"radius": 4, "opacity": 0.7, "color": "soul_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [151, 116], "size": [4.5, 3.5]},
+       {"icon": "circle", "at": [165, 116], "size": [4.5, 3.5]}
+     ]}
+  ]
+}

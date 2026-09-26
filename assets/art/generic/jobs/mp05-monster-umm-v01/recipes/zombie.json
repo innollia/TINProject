@@ -1,0 +1,86 @@
+{
+  "asset": "zombie",
+  "status": "candidate",
+  "note": "Generic battler: zombie (undead). Hunched, head hanging forward and to one side, jaw slack, grey-green rotting skin through a torn shirt and ragged trousers, the left arm reaching toward the viewer (foreshortened, large hand), the right arm limp, one foot turned in. Front view, fixed 60 deg camera.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre; ground contact line y=320",
+  "seed": 603,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [158, 321], "size": [142, 22]}]},
+
+    {"name": "legs", "z": 1, "material": "rag_dark", "rough": {"amp": 0.35, "cell": 6, "soft": 1.0},
+     "pieces": [
+       {"icon": "circle", "at": [146, 278], "size": [22, 72], "rot": 4},
+       {"icon": "circle", "at": [174, 276], "size": [22, 70], "rot": -8}
+     ]},
+    {"name": "shin_skin", "z": 1.1, "material": "rotten",
+     "pieces": [{"icon": "circle", "at": [177, 300], "size": [13, 26], "rot": -8}]},
+    {"name": "feet", "z": 1.2, "material": "rotten",
+     "pieces": [
+       {"icon": "circle", "at": [141, 316], "size": [22, 11]},
+       {"icon": "circle", "at": [184, 314], "size": [20, 10], "rot": -28}
+     ]},
+
+    {"name": "torso", "z": 2, "material": "rotten",
+     "pieces": [{"icon": "circle", "at": [158, 196], "size": [70, 96], "rot": -6}]},
+    {"name": "shirt", "z": 2.2, "material": "rag", "rough": {"amp": 0.5, "cell": 6, "soft": 1.0},
+     "pieces": [
+       {"icon": "bell", "crop": [2, 3.4, 14, 11.8], "fit": [2, 3.4, 14, 11.8], "at": [158, 204], "size": [84, 104], "rot": -6},
+       {"icon": "cloud", "op": "sub", "at": [146, 190], "size": [30, 18], "rot": 32},
+       {"icon": "triangle", "op": "sub", "at": [180, 236], "size": [18, 22], "rot": 150},
+       {"icon": "triangle", "op": "sub", "at": [140, 250], "size": [14, 18], "rot": 180}
+     ]},
+    {"name": "wound", "z": 2.3, "kind": "flat", "color": "#2a1416", "rough": {"amp": 0.5, "cell": 3, "soft": 0.8},
+     "pieces": [
+       {"icon": "square", "at": [142, 188], "size": [16, 3], "rot": 36},
+       {"icon": "square", "at": [150, 194], "size": [10, 2.4], "rot": 20}
+     ]},
+
+    {"name": "arm_r", "z": 2.4, "material": "rag", "rough": {"amp": 0.35, "cell": 6, "soft": 1.0},
+     "pieces": [{"icon": "circle", "at": [200, 206], "size": [20, 66], "rot": -4}]},
+    {"name": "hand_r", "z": 2.5, "material": "rotten",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [203, 246], "size": [15, 20], "rot": -6}]},
+
+    {"name": "head", "z": 3, "material": "rotten", "shade": {"highlight_amount": 0.3},
+     "pieces": [
+       {"icon": "circle", "at": [146, 134], "size": [38, 40], "rot": -16},
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [148, 152], "size": [24, 16], "rot": -16}
+     ]},
+    {"name": "hair", "z": 3.1, "material": "hair",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [132, 124], "size": [7, 22], "rot": 30},
+       {"icon": "droplet", "flip": "y", "at": [141, 118], "size": [6, 18], "rot": 10},
+       {"icon": "droplet", "flip": "y", "at": [152, 116], "size": [6, 16], "rot": -14},
+       {"icon": "droplet", "flip": "y", "at": [127, 138], "size": [5, 20], "rot": 12},
+       {"icon": "droplet", "flip": "y", "at": [160, 120], "size": [5, 14], "rot": -30}
+     ]},
+    {"name": "face", "z": 3.2, "kind": "flat", "material": "void",
+     "pieces": [
+       {"icon": "circle", "at": [140, 134], "size": [9, 7], "rot": -16},
+       {"icon": "circle", "at": [154, 130], "size": [8, 6], "rot": -16},
+       {"icon": "circle", "at": [151, 154], "size": [12, 9], "rot": -16}
+     ]},
+    {"name": "eye_dots", "z": 3.3, "kind": "flat", "material": "bone",
+     "pieces": [
+       {"icon": "circle", "at": [141, 134], "size": [2.6, 2.6]},
+       {"icon": "circle", "at": [154, 130], "size": [2.4, 2.4]}
+     ]},
+
+    {"name": "arm_l_sleeve", "z": 3.4, "material": "rag", "rough": {"amp": 0.35, "cell": 6, "soft": 1.0},
+     "pieces": [{"icon": "circle", "at": [124, 178], "size": [24, 38], "rot": 30}]},
+    {"name": "arm_l", "z": 3.5, "material": "rotten",
+     "pieces": [{"icon": "circle", "at": [116, 194], "size": [17, 26], "rot": 20}]},
+    {"name": "hand_l", "z": 3.6, "material": "rotten", "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "circle", "at": [110, 210], "size": [26, 22]},
+       {"icon": "circle", "at": [98, 222], "size": [7, 16], "rot": 20},
+       {"icon": "circle", "at": [106, 226], "size": [7, 17], "rot": 6},
+       {"icon": "circle", "at": [115, 226], "size": [7, 17], "rot": -6},
+       {"icon": "circle", "at": [123, 222], "size": [6, 14], "rot": -20}
+     ]}
+  ]
+}

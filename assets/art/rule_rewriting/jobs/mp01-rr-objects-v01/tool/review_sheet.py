@@ -33,6 +33,7 @@ def main() -> int:
     ap.add_argument("--bg", default="#b3a8b7")
     ap.add_argument("--fg", default="#2a1a2e", help="label colour (mp01: light labels on dark backgrounds)")
     ap.add_argument("--gap", type=int, default=16)
+    ap.add_argument("--cols", type=int, default=0, help="wrap after N images (mp01; 0 = one row per scale)")
     args = ap.parse_args()
 
     paths = []
@@ -52,20 +53,25 @@ def main() -> int:
     col_w = [max(int(im.width * max(scales)), 90,
                  max(int(measure.textlength(f"{p.stem} x{s:g}", font=label_font)) + 6 for s in scales)) + gap
              for im, p in zip(images, paths)]
-    sheet = Image.new("RGBA", (sum(col_w) + gap, sum(row_h) + gap), args.bg)
+    cols = args.cols or len(images)  # mp01: wrap long sets into a grid
+    groups = [list(range(i, min(i + cols, len(images)))) for i in range(0, len(images), cols)]
+    width = max(sum(col_w[i] for i in g) for g in groups) + gap
+    sheet = Image.new("RGBA", (width, sum(row_h) * len(groups) + gap), args.bg)
     draw = ImageDraw.Draw(sheet)
     y = gap
     for s, rh in zip(scales, row_h):
-        x = gap
-        for im, sh, p, cw in zip(images, shadows, paths, col_w):
-            size = (max(1, int(im.width * s)), max(1, int(im.height * s)))
-            resample = Image.Resampling.NEAREST if s >= 2 else Image.Resampling.LANCZOS
-            if sh is not None:
-                sheet.alpha_composite(sh.resize(size, resample), (x, y))
-            sheet.alpha_composite(im.resize(size, resample), (x, y))
-            draw.text((x, y + size[1] + 2), f"{p.stem} x{s:g}", fill=args.fg, font=label_font)
-            x += cw
-        y += rh
+        for g in groups:
+            x = gap
+            for i in g:
+                im, sh, p, cw = images[i], shadows[i], paths[i], col_w[i]
+                size = (max(1, int(im.width * s)), max(1, int(im.height * s)))
+                resample = Image.Resampling.NEAREST if s >= 2 else Image.Resampling.LANCZOS
+                if sh is not None:
+                    sheet.alpha_composite(sh.resize(size, resample), (x, y))
+                sheet.alpha_composite(im.resize(size, resample), (x, y))
+                draw.text((x, y + size[1] + 2), f"{p.stem} x{s:g}", fill=args.fg, font=label_font)
+                x += cw
+            y += rh
     args.out.parent.mkdir(parents=True, exist_ok=True)
     sheet.convert("RGB").save(args.out)
     print(args.out, sheet.size)

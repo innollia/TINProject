@@ -1,12 +1,12 @@
 {
   "asset": "prop_r2_circulator_stack",
   "status": "candidate",
-  "note": "prop_r2_circulator_stack (Circulator Stack), placement layer wall, on the front wall of the east hut in area B; also the respawn point of rec_r2_census_clone. Iron stack 0.5 m across climbing the wall from 0.5 m to 4 m with a cowl on top, a damper box at 1.3 m and a small peg ledger board beside it. ps_idle -> damper closed, dry pipe, cowl facing west, one free peg slot; ps_vented -> damper lever up, soot around the outlet and down the pipe, cowl turned east toward the next settlement, a tag in the free slot. No smoke (effects are not drawn here). No text.",
+  "note": "prop_r2_circulator_stack (Circulator Stack), placement layer wall, on the front wall of the east hut in area B; also the respawn point of rec_r2_census_clone. Iron stack 0.5 m across climbing the wall from 0.5 m to 2.9 m with a cowl on top (fix 1: lowered from 4 m so the cowl stays inside the screen), a damper box at 1.3 m and a small peg ledger board beside it. ps_idle -> damper closed, dry pipe, cowl facing west, one free peg slot; ps_vented -> damper lever up, soot around the outlet and down the pipe, cowl turned east toward the next settlement, a tag in the free slot. No smoke (effects are not drawn here). No text.",
   "palette": "palette_r2.json",
   "style": "prop",
   "canvas": [380, 600],
   "pivot": [180, 540],
-  "pivot_meaning": "wall mount point: where the hut's front wall meets the deck, directly below the stack (area B source px 2120,440)",
+  "pivot_meaning": "wall mount point: where the hut's front wall meets the deck, directly below the stack (area B source px 2080,440)",
   "seed": 342,
   "frames": [
     {"name": "prop_r2_circulator_idle", "show": ["idle"]},
@@ -14,7 +14,7 @@
   ],
   "forms": [
     {"name": "wall_shade", "kind": "shadow", "color": "shadow_contact", "opacity": 0.22, "blur": 12,
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 30}, "at": [196, 330], "size": [110, 420]}]},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 30}, "at": [196, 388], "size": [110, 300]}]},
 
     {"name": "ledger_board", "z": 0, "material": "wood", "shade": {"bump": 0.4},
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [296, 404], "size": [90, 46]}]},
@@ -33,25 +33,24 @@
        {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [330, 424], "size": [16, 22], "rot": 8}
      ]},
 
-    {"name": "pipe", "z": 1, "kind": "block", "material": "iron", "extrude": 385,
-     "pieces": [{"icon": "circle", "at": [180, 100], "size": [90, 78]}]},
+    {"name": "pipe", "z": 1, "kind": "block", "material": "iron", "extrude": 270,
+     "pieces": [{"icon": "circle", "at": [180, 215], "size": [90, 78]}]},
     {"name": "pipe_rust", "z": 1.1, "kind": "wash", "material": "rust", "blend": "multiply", "opacity": 0.45, "clip_to": "pipe",
      "pieces": [
-       {"icon": "droplet", "flip": "y", "at": [160, 250], "size": [12, 90]},
-       {"icon": "droplet", "flip": "y", "at": [204, 370], "size": [10, 70]}
+       {"icon": "droplet", "flip": "y", "at": [160, 330], "size": [12, 80]},
+       {"icon": "droplet", "flip": "y", "at": [204, 440], "size": [10, 60]}
      ]},
     {"name": "flanges", "z": 1.2, "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
      "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [180, 190], "size": [104, 12]},
-       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [180, 300], "size": [104, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [180, 310], "size": [104, 12]},
        {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [180, 512], "size": [104, 12]}
      ]},
     {"name": "wall_straps", "z": 1.25, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
      "pieces": [
-       {"icon": "square", "at": [128, 250], "size": [14, 8]},
-       {"icon": "square", "at": [232, 250], "size": [14, 8]},
-       {"icon": "square", "at": [128, 470], "size": [14, 8]},
-       {"icon": "square", "at": [232, 470], "size": [14, 8]}
+       {"icon": "square", "at": [128, 350], "size": [14, 8]},
+       {"icon": "square", "at": [232, 350], "size": [14, 8]},
+       {"icon": "square", "at": [128, 480], "size": [14, 8]},
+       {"icon": "square", "at": [232, 480], "size": [14, 8]}
      ]},
     {"name": "damper_box", "z": 1.3, "kind": "block", "material": "iron", "extrude": 36,
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [180, 412], "size": [112, 22]}]},
@@ -69,26 +68,26 @@
      ]},
 
     {"name": "collar", "z": 2, "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [180, 132], "size": [104, 18]}]},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [180, 247], "size": [104, 18]}]},
     {"name": "cowl_west", "tags": ["idle"], "hidden": true, "z": 2.2, "material": "iron",
-     "pieces": [{"icon": "cone", "rot": 90, "at": [160, 92], "size": [84, 70]}]},
+     "pieces": [{"icon": "cone", "rot": 90, "at": [160, 207], "size": [84, 70]}]},
     {"name": "cowl_west_mouth", "tags": ["idle"], "hidden": true, "z": 2.3, "kind": "flat", "material": "void",
-     "pieces": [{"icon": "circle", "at": [124, 94], "size": [16, 50]}]},
+     "pieces": [{"icon": "circle", "at": [124, 209], "size": [16, 50]}]},
     {"name": "cowl_east", "tags": ["vented"], "hidden": true, "z": 2.2, "material": "iron",
-     "pieces": [{"icon": "cone", "rot": -90, "at": [200, 92], "size": [84, 70]}]},
+     "pieces": [{"icon": "cone", "rot": -90, "at": [200, 207], "size": [84, 70]}]},
     {"name": "cowl_east_mouth", "tags": ["vented"], "hidden": true, "z": 2.3, "kind": "flat", "material": "soot",
-     "pieces": [{"icon": "circle", "at": [236, 94], "size": [16, 50]}]},
+     "pieces": [{"icon": "circle", "at": [236, 209], "size": [16, 50]}]},
 
     {"name": "soot_top", "tags": ["vented"], "hidden": true, "z": 2.5, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.6, "blur": 4,
      "pieces": [
-       {"icon": "cloud", "at": [216, 104], "size": [70, 46]},
-       {"icon": "cloud", "at": [180, 150], "size": [100, 40], "flip": "x"}
+       {"icon": "cloud", "at": [216, 219], "size": [70, 46]},
+       {"icon": "cloud", "at": [180, 265], "size": [100, 40], "flip": "x"}
      ]},
     {"name": "soot_streaks", "tags": ["vented"], "hidden": true, "z": 2.6, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.5, "clip_to": "pipe",
      "pieces": [
-       {"icon": "droplet", "flip": "y", "at": [210, 200], "size": [14, 110]},
-       {"icon": "droplet", "flip": "y", "at": [170, 190], "size": [10, 80]},
-       {"icon": "droplet", "flip": "y", "at": [196, 340], "size": [10, 70]}
+       {"icon": "droplet", "flip": "y", "at": [210, 310], "size": [14, 100]},
+       {"icon": "droplet", "flip": "y", "at": [170, 300], "size": [10, 70]},
+       {"icon": "droplet", "flip": "y", "at": [196, 430], "size": [10, 60]}
      ]}
   ]
 }

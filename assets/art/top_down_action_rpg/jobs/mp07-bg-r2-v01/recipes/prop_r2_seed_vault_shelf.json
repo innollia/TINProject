@@ -1,0 +1,61 @@
+{
+  "asset": "prop_r2_seed_vault_shelf",
+  "status": "candidate",
+  "note": "prop_r2_seed_vault_shelf (Seed Vault Shelf), placement layer prop, inside the front alcove of the seed vault in area C; hidden until its content condition, so the alcove in base_clean is complete without it. Two-level timber shelf 1.6 m wide, 0.45 m deep, 1.5 m high with four case slots. ps_counted -> three seed cases and one empty slot; ps_reissued -> a new case in the fourth slot with a lid of a different colour and a blank tag. Tags carry no text.",
+  "palette": "palette_r2.json",
+  "style": "prop",
+  "canvas": [420, 320],
+  "pivot": [210, 270],
+  "pivot_meaning": "front-bottom centre of the shelf on the alcove floor (area C source px 2150,440)",
+  "seed": 352,
+  "frames": [
+    {"name": "prop_r2_shelf_counted"},
+    {"name": "prop_r2_shelf_reissued", "show": ["reissued"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 7,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [214, 270], "size": [300, 28]}]},
+    {"name": "shelf", "z": 0, "kind": "block", "material": "wood", "extrude": 165,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [210, 70], "size": [288, 70]}]},
+    {"name": "slots", "z": 1, "kind": "flat", "material": "void",
+     "grad": {"to": "well_inner", "y0": 118, "y1": 262, "curve": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [140, 148], "size": [126, 62]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [280, 148], "size": [126, 62]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [140, 226], "size": [126, 62]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [280, 226], "size": [126, 62]}
+     ]},
+    {"name": "cases", "z": 2, "kind": "block", "material": "wood", "extrude": 34,
+     "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [140, 150], "size": [100, 18]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [280, 150], "size": [100, 18]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [140, 228], "size": [100, 18]}
+     ]},
+    {"name": "case_lids", "z": 2.1, "kind": "flat", "material": "bronze", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "at": [140, 150], "size": [100, 6]},
+       {"icon": "square", "at": [280, 150], "size": [100, 6]},
+       {"icon": "square", "at": [140, 228], "size": [100, 6]}
+     ]},
+    {"name": "case_tags", "z": 2.2, "kind": "flat", "material": "paper", "opacity": 0.9,
+     "pieces": [
+       {"icon": "square", "at": [140, 176], "size": [22, 12]},
+       {"icon": "square", "at": [280, 176], "size": [22, 12]},
+       {"icon": "square", "at": [140, 254], "size": [22, 12]}
+     ]},
+    {"name": "empty_slot_dust", "z": 2.3, "kind": "wash", "material": "silt_cloud", "opacity": 0.3,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [280, 250], "size": [110, 12]}]},
+
+    {"name": "new_case", "tags": ["reissued"], "hidden": true, "z": 2.5, "kind": "block", "material": "plank", "extrude": 34,
+     "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [280, 228], "size": [100, 18]}]},
+    {"name": "new_lid", "tags": ["reissued"], "hidden": true, "z": 2.6, "kind": "flat", "material": "verdigris", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [{"icon": "square", "at": [280, 228], "size": [100, 7]}]},
+    {"name": "new_tag", "tags": ["reissued"], "hidden": true, "z": 2.7, "material": "paper", "shade": {"bump": 0.3},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [280, 255], "size": [26, 14]}]},
+
+    {"name": "shelf_damp", "z": 3, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.4, "clip_to": "shelf",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [210, 262], "size": [300, 24]}]}
+  ]
+}

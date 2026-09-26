@@ -1,0 +1,84 @@
+{
+  "asset": "prop_r4_crown_fragment_plinth",
+  "status": "candidate",
+  "note": "prop_r4_crown_fragment_plinth (Crown Observatory), two states; also the respawn prop of rec_r4_crown_continuity. Low stone plinth 1.4 m x 0.8 m x 1.1 m standing on the well cap. Five separate bronze band fragments stand on it (pieces of a broken ring band, never a whole crown, no jewels), each casting its own shadow on the plinth top: five shadows (content, painted in the object). ps_object: fragments and shadows only. ps_titled: each shadow outlined in chalk with a blank paper tag beside it (the shadow filed apart from the object). 226 px/m. Floor contact shadow separate.",
+  "palette": "palette_r4.json",
+  "style": "prop",
+  "canvas": [448, 448],
+  "pivot": [224, 384],
+  "pivot_meaning": "front-bottom centre of the plinth on the dais",
+  "seed": 531,
+  "frames": [
+    {"name": "prop_r4_plinth_object", "hide": ["titled"]},
+    {"name": "prop_r4_plinth_titled"}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.45, "blur": 8,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 20}, "at": [226, 380], "size": [340, 40]}]},
+    {"name": "plinth", "z": 0, "kind": "block", "material": "stone_dark", "extrude": 124,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [224, 181], "size": [316, 157]}]},
+    {"name": "top_band", "z": 0.5, "kind": "flat", "material": "bronze", "opacity": 0.9,
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [224, 262], "size": [312, 6]}]},
+    {"name": "front_panel", "z": 0.6, "kind": "flat", "color": "#262730", "opacity": 0.7, "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 4}, "at": [224, 322], "size": [220, 74]}]},
+    {"name": "base_band", "z": 0.7, "kind": "flat", "material": "bronze_block",
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [224, 376], "size": [316, 8]}]},
+
+    {"name": "fragment_shadows", "z": 1, "kind": "wash", "color": "shadow_contact", "blend": "multiply", "opacity": 0.65, "blur": 2,
+     "clip_to": "plinth",
+     "pieces": [
+       {"icon": "circle", "ground": true, "at": [248, 238], "size": [74, 20], "rot": 18},
+       {"icon": "circle", "ground": true, "at": [162, 206], "size": [70, 20], "rot": 30},
+       {"icon": "circle", "ground": true, "at": [195, 156], "size": [66, 18], "rot": 22},
+       {"icon": "circle", "ground": true, "at": [300, 156], "size": [66, 18], "rot": 26},
+       {"icon": "circle", "ground": true, "at": [334, 206], "size": [60, 18], "rot": 30}
+     ]},
+    {"name": "chalk_outlines", "z": 1.2, "tags": ["titled"], "kind": "flat", "material": "chalk", "opacity": 0.9,
+     "pieces": [
+       {"icon": "circle", "ground": true, "at": [248, 238], "size": [84, 28], "rot": 18},
+       {"icon": "circle", "ground": true, "op": "sub", "at": [248, 238], "size": [78, 23], "rot": 18},
+       {"icon": "circle", "ground": true, "at": [162, 206], "size": [80, 28], "rot": 30},
+       {"icon": "circle", "ground": true, "op": "sub", "at": [162, 206], "size": [74, 23], "rot": 30},
+       {"icon": "circle", "ground": true, "at": [195, 156], "size": [76, 26], "rot": 22},
+       {"icon": "circle", "ground": true, "op": "sub", "at": [195, 156], "size": [70, 21], "rot": 22},
+       {"icon": "circle", "ground": true, "at": [300, 156], "size": [76, 26], "rot": 26},
+       {"icon": "circle", "ground": true, "op": "sub", "at": [300, 156], "size": [70, 21], "rot": 26},
+       {"icon": "circle", "ground": true, "at": [334, 206], "size": [70, 26], "rot": 30},
+       {"icon": "circle", "ground": true, "op": "sub", "at": [334, 206], "size": [64, 21], "rot": 30}
+     ]},
+
+    {"name": "fragments", "z": 2, "kind": "block", "material": "bronze_block", "extrude": 30,
+     "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [
+       {"icon": "ring", "crop": [1, 1, 15, 7], "at": [224, 214], "size": [66, 22], "rot": 4},
+       {"icon": "ring", "crop": [1, 1, 15, 7], "at": [140, 184], "size": [60, 20], "rot": 38},
+       {"icon": "ring", "crop": [1, 1, 15, 7], "at": [172, 134], "size": [56, 20], "rot": -24},
+       {"icon": "ring", "crop": [1, 1, 15, 7], "at": [278, 134], "size": [56, 20], "rot": 20},
+       {"icon": "ring", "crop": [1, 1, 15, 7], "at": [310, 184], "size": [54, 20], "rot": -36}
+     ]},
+    {"name": "fragment_breaks", "z": 2.2, "kind": "flat", "color": "#2f2117", "opacity": 0.8,
+     "pieces": [
+       {"icon": "lightning_bolt", "at": [196, 214], "size": [6, 16], "rot": 10},
+       {"icon": "lightning_bolt", "at": [290, 136], "size": [5, 14], "rot": -8},
+       {"icon": "lightning_bolt", "at": [150, 176], "size": [5, 14], "rot": 30}
+     ]},
+
+    {"name": "tags", "z": 3, "tags": ["titled"], "material": "paper", "line": {"width": 0.7, "heavy": 0.8},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "ground": true, "at": [292, 252], "size": [26, 18], "rot": 10},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "ground": true, "at": [116, 222], "size": [24, 17], "rot": -14},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "ground": true, "at": [150, 122], "size": [22, 16], "rot": 8},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "ground": true, "at": [340, 126], "size": [22, 16], "rot": -6},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "ground": true, "at": [372, 226], "size": [22, 16], "rot": 12}
+     ]},
+    {"name": "tag_strings", "z": 3.2, "tags": ["titled"], "kind": "flat", "material": "cloth_ink",
+     "pieces": [
+       {"icon": "square", "at": [276, 246], "size": [18, 2], "rot": -20},
+       {"icon": "square", "at": [132, 216], "size": [16, 2], "rot": 25},
+       {"icon": "square", "at": [162, 128], "size": [14, 2], "rot": -30},
+       {"icon": "square", "at": [326, 130], "size": [14, 2], "rot": 30},
+       {"icon": "square", "at": [356, 220], "size": [14, 2], "rot": -25}
+     ]}
+  ]
+}

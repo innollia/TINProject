@@ -62,4 +62,4 @@
 - [x] art_prop_magic_concentration_device 2상태 (2번 고침)
 - [x] 모아 보기 시트
 - [x] QA.md, inputs.json
-- [ ] __pycache__ 정리(이 세션 작업이 전부 끝날 때)
+- [x] __pycache__ 정리(`-B`로 실행해서 생기지 않음)

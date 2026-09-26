@@ -1,0 +1,26 @@
+{
+  "status": "candidate",
+  "note": "R2 area C object placement for base_clean (first-visit states: bridge locked, causeway closed, gallery closed). The seed vault shelf is listed with initially_hidden: in the game it appears only after its content condition; it is drawn here so its place in the alcove can be checked. Check image only (background + objects, no people, no scene lighting). 'at' = background source px where the object's pivot goes; 'light' is for the game's lighting code.",
+  "background": "output/r2_c_root_bridge_seed_vault/base_clean.png",
+  "scale": 0.5,
+  "items": [
+    {"asset": "prop_r2_root_bridge_anchor", "frame": "prop_r2_bridge_locked", "at": [790, 990], "layer": "floor", "id": "prop_r2_root_bridge_anchor", "interactive": true},
+    {"asset": "prop_r2_seed_vault_shelf", "frame": "prop_r2_shelf_counted", "at": [2150, 440], "id": "prop_r2_seed_vault_shelf", "interactive": true, "initially_hidden": true},
+    {"asset": "exit_r2_e09_orchard_causeway", "frame": "exit_r2_e09_orchard_causeway_closed", "at": [640, 200], "id": "exit_e09_orchard_causeway", "interactive": true},
+    {"asset": "route_r2_flood_refuge_gallery", "frame": "route_r2_flood_refuge_gallery_closed", "at": [850, 388], "id": "route_flood_refuge_gallery", "interactive": true},
+    {"asset": "obj_r2_lantern_post", "frame": "obj_r2_lantern_post", "at": [1180, 1180], "id": "lantern_south_bank",
+     "light": {"color": "#ffc987", "radius": 300, "at": [1234, 962]}},
+    {"asset": "obj_r2_lantern_post", "frame": "obj_r2_lantern_post_left", "at": [440, 540], "id": "lantern_north_bank",
+     "light": {"color": "#ffc987", "radius": 300, "at": [386, 322]}},
+    {"asset": "obj_r2_lantern_post", "frame": "obj_r2_lantern_post", "at": [1830, 470], "id": "lantern_terrace",
+     "light": {"color": "#ffc987", "radius": 300, "at": [1884, 252]}},
+    {"asset": "obj_r2_water_cask", "frame": "obj_r2_water_cask", "at": [2520, 520], "id": "cask_terrace"},
+    {"asset": "obj_r2_water_cask", "frame": "obj_r2_water_cask", "at": [1420, 1100], "id": "cask_south_bank"},
+    {"asset": "r2_c_root_bridge_seed_vault", "frame": "foreground_root_tangle", "at": [0, 0], "sort_y": 100000, "id": "foreground_root_tangle"}
+  ],
+  "empty_slots_not_drawn": {
+    "art_prop_route_marker": [[840, 200]],
+    "npc_standing_spot": [[1300, 1080]]
+  },
+  "out": "preview/check_r2_c_root_bridge_seed_vault_1280x720.png"
+}
