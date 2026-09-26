@@ -31,3 +31,48 @@ Composition: one full-body adult figure from head to shoes on left two-thirds, a
 - 읽을 수 있는 글자·서명·워터마크가 보이지 않음.
 - 얼굴과 손의 중요도가 배경보다 높음.
 - 사용자 시각 판정과 실제 게임 화면 3종 해상도 검수는 아직 수행하지 않음.
+
+## 2026-09-26 스타일 파이프라인 감사
+
+이 후보는 내용 조건을 꽤 많이 충족했어도 **Style Master bootstrap 이전의 production-first 시도**로 취급한다. 다음 production 생성의 스타일 기준으로 승격하지 않는다.
+
+### 프롬프트에서 과적재된 것
+
+한 번의 생성 요청에 동시에 들어간 요구가 너무 많았다.
+
+- A/B 두 레퍼런스의 선택적 역할 분해와 재합성
+- 미라의 얼굴형·눈·눈썹·머리·핀 개수
+- 의상과 오염 위치
+- 카드와 손 습관
+- 사건 전 상태
+- 전신 + 확대 인셋 2개
+- 배경 정보 제한
+- 팔레트
+- 해부·안전 여백·문자 금지 같은 기술 조건
+
+이 상태에서는 모델이 **검증하기 쉬운 identity/구성 조건을 맞추고, 스타일 조건은 일반적인 애니 콘셉트 아트 prior로 평균내도** 프롬프트의 많은 항목을 충족할 수 있다.
+
+### 특히 약했던 스타일 표현
+
+아래 표현은 현재 `PERSONAL_STYLE_CORE.md` v0.2의 시각 불변식에 비해 너무 일반적이었다.
+
+- `painterly facial planes`
+- `restrained brush texture`
+- `variable-weight dark colored structural lines`
+- `three broad facial value planes`
+- `purposeful weight changes`
+
+이 단어만으로는 A의 얼굴 중앙 구조선/명암 분할이나 B의 선 압력·끊김을 반드시 재현하게 만들지 못한다.
+
+### 다음 시도 조건
+
+미라를 다시 생성하기 전에 `docs/IMAGE_ASSET_WORKFLOW.md` 4절의 Style Master bootstrap을 먼저 수행한다.
+
+Style Master 승인 뒤 미라는:
+1. Style Master + 최소한의 실루엣/색 관계로 **style lock**
+2. 핀 정확히 두 개, 얼굴 특징, 카드 손동작 등은 **identity correction**
+3. 파일 규격과 기술 조건은 **technical correction**
+
+순서로 조인다.
+
+현재 프롬프트는 회귀 비교용 기록으로 보존하며, 다음 생성 요청의 템플릿으로 재사용하지 않는다.
