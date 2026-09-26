@@ -19,7 +19,18 @@ A1·A2·A3 모두 **추천안(-a)** 으로 구현했다. 사용자 확인 전이
 |---|---|---|
 | A1 | A1-a 씬 팔레트 5색 authored | `content/palette/pal_*.json` 3개 · `presentation/palette.gd` (변형은 PVE `shifted`/`mix_roles` 만) |
 | A2 | A2-a 구조물 좌표 폴리곤 | `content/structure/str_*.json` 3개 (돔 · 협곡 · 아치) · `presentation/structure.gd` · 좌표 원본 `content/_source/geometry.py` |
-| A3 | A3-a 실루엣 3종 좌표 폴리곤 | `content/silhouette/sil_*.json` (게 · 각형 · 덩어리) · `presentation/critter.gd` 가 4속성으로 변형 |
+| A3 | ~~A3-a 실루엣 3종 좌표 폴리곤~~ **사용자 반려** | `content/silhouette/sil_*.json` · `presentation/critter.gd` (교체 대상) |
+
+### A3 재개 — 2026-09-27 사용자 반려
+
+> "배경은 몰라도 캐릭터들이 너무 촌스럽지 않니. 내가 기대한건 rainworld식 procedural animation인데.
+> 개체들의 생김새가 정형화된 초현실주의인 점도 문제임"
+
+- **정해진 방향 (사용자)**: Rain World식 절차 애니메이션. 생김새의 정형화된 초현실(눈알 줄기, 단색 몸 + 띠, 거미 다리 다발)을 버린다.
+- **아직 묻지 않은 것** (다음 세션이 번호 붙여 묻는다):
+  1. 플레이어도 같은 방식으로 바꾸는가 — 추천: 예
+  2. 몸 설계 3계열(게·각형·덩어리)을 남기는가, 완전 절차인가 — 추천: 계열은 남기고 시드로 비율을 흔든다
+- 구현 제안과 확인한 제약은 `IMPLEMENTATION_STATUS.md` §5.
 
 아래는 결정 당시의 문제·선택지 기록이다.
 
