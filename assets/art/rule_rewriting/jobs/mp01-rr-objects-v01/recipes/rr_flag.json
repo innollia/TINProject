@@ -1,0 +1,26 @@
+{
+  "asset": "rr_flag",
+  "status": "candidate",
+  "note": "Rule Rewrite FLAG: an iron pole on a stone foot with a brass finial and a gold swallow-tail banner with two fold lines. Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 237,
+  "forms": [
+    {"name": "foot", "z": 0, "kind": "block", "material": "rr_stone", "extrude": 10, "ao": false,
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [70, 144], "size": [44, 12]}]},
+    {"name": "pole", "z": 1, "material": "iron", "shade": {"bump": 0.5},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [70, 88], "size": [7, 118]}]},
+    {"name": "finial", "z": 1.5, "material": "rr_brass",
+     "pieces": [{"icon": "circle", "at": [70, 27], "size": [13, 13]}]},
+    {"name": "banner", "z": 2, "material": "rr_cloth_gold", "shade": {"bump": 0.5},
+     "pieces": [{"icon": "bookmark", "rot": -90, "at": [115, 56], "size": [38, 86]}]},
+    {"name": "folds", "z": 2.5, "kind": "flat", "color": "#86703a", "opacity": 0.6, "clip_to": "banner",
+     "pieces": [
+       {"icon": "square", "at": [100, 56], "size": [3, 42]},
+       {"icon": "square", "at": [126, 56], "size": [3, 42]}
+     ]}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "asset": "rr_pearl",
+  "status": "candidate",
+  "note": "Rule Rewrite PEARL: a large pale pearl resting on a small wine-red cushion with corner tassels. Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 214,
+  "forms": [
+    {"name": "cushion", "z": 0, "material": "cloth_wine", "shade": {"bump": 0.6},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [96, 140], "size": [116, 36]}]},
+    {"name": "tassels", "z": 0.5, "material": "rr_cloth_gold",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [42, 154], "size": [9, 14]},
+       {"icon": "droplet", "flip": "y", "at": [150, 154], "size": [9, 14]}
+     ]},
+    {"name": "pearl", "z": 1, "material": "rr_pearl", "shade": {"bump": 0.5},
+     "pieces": [{"icon": "circle", "at": [96, 98], "size": [82, 82]}]},
+    {"name": "glint", "z": 2, "kind": "flat", "color": "#f2eee9", "opacity": 0.7, "blur": 1,
+     "pieces": [{"icon": "circle", "rot": -30, "at": [79, 80], "size": [18, 11]}]}
+  ]
+}

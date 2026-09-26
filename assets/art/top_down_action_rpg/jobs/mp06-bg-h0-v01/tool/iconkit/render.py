@@ -184,6 +184,26 @@ def scale_forms(forms: list, factor: float, origin) -> None:
                     rep["points"] = [pt(p) + list(p[2:]) for p in rep["points"]]
 
 
+def offset_forms(forms: list, dx: float, dy: float) -> None:
+    """mp06: translate every placement by (dx, dy) px, e.g. to widen a canvas margin
+    without redrawing.  Sizes are unchanged; the recipe's canvas and pivot must be
+    enlarged / moved by the caller to match."""
+    for form in forms:
+        if form.get("pivot"):
+            form["pivot"] = [form["pivot"][0] + dx, form["pivot"][1] + dy]
+        for piece in form.get("pieces", []):
+            piece["at"] = [piece["at"][0] + dx, piece["at"][1] + dy]
+            rep = piece.get("repeat")
+            if rep:
+                if "ellipse" in rep:
+                    cx, cy, rx, ry = rep["ellipse"]
+                    rep["ellipse"] = [cx + dx, cy + dy, rx, ry]
+                if "line" in rep:
+                    rep["line"] = [[x + dx, y + dy] for x, y in rep["line"]]
+                if "points" in rep:
+                    rep["points"] = [[p[0] + dx, p[1] + dy] + list(p[2:]) for p in rep["points"]]
+
+
 def frame_forms(recipe: dict, frame: dict) -> list:
     hide, show = set(frame.get("hide", [])), set(frame.get("show", []))
     out = []
@@ -207,6 +227,9 @@ def frame_forms(recipe: dict, frame: dict) -> list:
     sa = recipe.get("scale_all")
     if sa:
         scale_forms(out, float(sa["factor"]), sa.get("origin", recipe.get("pivot", [0, 0])))
+    off = recipe.get("offset")  # mp06: shift every placement by [dx, dy] final px (after scale_all)
+    if off:
+        offset_forms(out, float(off[0]), float(off[1]))
     if frame.get("mirror"):
         mirror_forms(out, recipe["canvas"][0])
     out.sort(key=lambda f: (f.get("z", 0.0), f["_index"]))

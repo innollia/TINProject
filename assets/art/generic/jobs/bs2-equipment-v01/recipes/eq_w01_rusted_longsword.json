@@ -1,0 +1,20 @@
+{
+  "asset": "eq_w01_rusted_longsword",
+  "status": "candidate",
+  "note": "1 rusted longsword. Everyday object gone wrong, not fantasy plate: a plain iron blade gone orange with rust, leather wrap gone hard and cracked. Blood is dark rust stain, never red paint.",
+  "palette": "palette_h0_mood.json",
+  "style": "prop",
+  "canvas": [512, 512],
+  "pivot": [256, 256],
+  "pivot_meaning": "centre",
+  "seed": 101,
+  "forms": [
+    {"name": "blade", "z": 0, "material": "iron",
+     "pieces": [{"icon": "sword", "at": [256, 256], "size": [400, 400]}]},
+    {"name": "wrap", "z": 1, "material": "leather", "clip_to": "blade",
+     "pieces": [{"icon": "square", "at": [150, 362], "size": [70, 70], "rot": 45}]},
+    {"name": "rust", "z": 2, "kind": "wash", "material": "rust", "blend": "multiply", "opacity": 0.55, "clip_to": "blade",
+     "pieces": [{"icon": "cloud", "at": [300, 210], "size": [150, 110]},
+                {"icon": "cloud", "at": [360, 150], "size": [90, 70], "flip": "x"}]}
+  ]
+}

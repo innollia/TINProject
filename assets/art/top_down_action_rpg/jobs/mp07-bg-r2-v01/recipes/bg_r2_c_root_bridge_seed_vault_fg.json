@@ -1,0 +1,36 @@
+{
+  "asset": "r2_c_root_bridge_seed_vault",
+  "status": "candidate",
+  "note": "R2 area C foreground_root_tangle: thick living roots arching over the south edge of the south bank at the bottom left and trailing into the water. Drawn over actors walking along that edge; the walkway seam (x800..1080) stays clear. Transparent, same canvas origin as base_clean; contact occlusion goes to the separate _shadow.png.",
+  "palette": "palette_r2.json",
+  "style": "environment_layer",
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = base_clean origin",
+  "seed": 502,
+  "frames": [{"name": "foreground_root_tangle"}],
+  "forms": [
+    {"name": "roots", "z": 0, "material": "root",
+     "shade": {"bump": 1.0, "max_radius": 8},
+     "rough": {"amp": 0.4, "soft": 2, "cell": 14},
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [34, 30], "repeat": {"line": [[20, 1150], [150, 1330]], "count": 16, "jitter": {"size": 0.15, "at": 3}}},
+       {"icon": "circle", "at": [0, 0], "size": [28, 24], "repeat": {"line": [[150, 1330], [210, 1400]], "count": 7, "jitter": {"size": 0.15, "at": 3}}},
+       {"icon": "circle", "at": [0, 0], "size": [30, 26], "repeat": {"line": [[120, 1210], [340, 1250]], "count": 16, "jitter": {"size": 0.15, "at": 3}}},
+       {"icon": "circle", "at": [0, 0], "size": [26, 22], "repeat": {"line": [[340, 1250], [420, 1350]], "count": 9, "jitter": {"size": 0.15, "at": 3}}},
+       {"icon": "circle", "at": [0, 0], "size": [22, 18], "repeat": {"line": [[400, 1230], [560, 1260]], "count": 12, "jitter": {"size": 0.15, "at": 3}}},
+       {"icon": "circle", "at": [0, 0], "size": [18, 15], "repeat": {"line": [[560, 1260], [620, 1330]], "count": 7, "jitter": {"size": 0.15, "at": 3}}}
+     ]},
+    {"name": "root_hairs", "z": 0.5, "kind": "flat", "material": "root", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "at": [168, 1370], "size": [3, 40], "rot": 20},
+       {"icon": "square", "at": [424, 1372], "size": [3, 36], "rot": -12},
+       {"icon": "square", "at": [628, 1350], "size": [3, 30], "rot": 8},
+       {"icon": "square", "at": [240, 1260], "size": [3, 28], "rot": 30}
+     ]},
+    {"name": "root_damp", "z": 1, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.45, "clip_to": "roots",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [330, 1360], "size": [700, 120]}]},
+    {"name": "root_silt", "z": 1.1, "kind": "flat", "material": "silt_mark", "opacity": 0.4, "clip_to": "roots",
+     "pieces": [{"icon": "square", "at": [330, 1318], "size": [700, 5]}]}
+  ]
+}

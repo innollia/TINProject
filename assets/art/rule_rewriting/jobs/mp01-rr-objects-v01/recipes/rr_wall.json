@@ -1,0 +1,30 @@
+{
+  "asset": "rr_wall",
+  "status": "candidate",
+  "note": "Rule Rewrite WALL: a slate brick wall segment with a visible top, staggered brick joints on the front. Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 202,
+  "forms": [
+    {"name": "wall", "z": 0, "kind": "block", "material": "rr_slate", "extrude": 62, "ao": false,
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 4}, "at": [96, 76], "size": [152, 44]}]},
+    {"name": "joints", "z": 1, "kind": "flat", "color": "#20252c", "opacity": 0.85, "clip_to": "wall",
+     "pieces": [
+       {"icon": "square", "at": [96, 119], "size": [152, 2.2]},
+       {"icon": "square", "at": [96, 140], "size": [152, 2.2]},
+       {"icon": "square", "at": [58, 108.5], "size": [2.2, 21]},
+       {"icon": "square", "at": [104, 108.5], "size": [2.2, 21]},
+       {"icon": "square", "at": [146, 108.5], "size": [2.2, 21]},
+       {"icon": "square", "at": [81, 129.5], "size": [2.2, 21]},
+       {"icon": "square", "at": [127, 129.5], "size": [2.2, 21]},
+       {"icon": "square", "at": [58, 150], "size": [2.2, 20]},
+       {"icon": "square", "at": [104, 150], "size": [2.2, 20]},
+       {"icon": "square", "at": [146, 150], "size": [2.2, 20]},
+       {"icon": "square", "at": [72, 76], "size": [2.2, 40]},
+       {"icon": "square", "at": [124, 76], "size": [2.2, 40]}
+     ]}
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "asset": "exit_r4_e13_crown_stair",
+  "status": "candidate",
+  "note": "E13 Crown Stair (to R7, gate G4, archive weight) barrier at the foot of the stair in bg_r4_observatory (stair x 222..618 src, foot line y ~405). Iron posts and a stone lintel 2.6 m up; a weight lock box with three hooks beside the east post. _closed: heavy iron portcullis down to the floor, hooks empty. _open: portcullis pulled up into the lintel (only its spike row shows), three archive weights hang on the lock. 226 px/m. Contact shadow separate.",
+  "palette": "palette_r4.json",
+  "style": "prop",
+  "canvas": [660, 460],
+  "pivot": [320, 396],
+  "pivot_meaning": "centre of the stair foot line on the floor",
+  "seed": 541,
+  "frames": [
+    {"name": "exit_r4_e13_crown_stair_closed", "hide": ["open"]},
+    {"name": "exit_r4_e13_crown_stair_open", "hide": ["closed"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 6,
+     "pieces": [
+       {"icon": "circle", "at": [128, 398], "size": [42, 14]},
+       {"icon": "circle", "at": [512, 398], "size": [42, 14]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [572, 394], "size": [58, 22]}
+     ]},
+    {"name": "grille_shadow", "tags": ["closed"], "kind": "shadow", "color": "shadow_contact", "opacity": 0.3, "blur": 5,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [320, 400], "size": [380, 12]}]},
+
+    {"name": "grille_bars", "z": 1, "tags": ["closed"], "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 0], "size": [9, 272],
+                 "repeat": {"line": [[146, 258], [494, 258]], "count": 9}}]},
+    {"name": "grille_rails", "z": 1.2, "tags": ["closed"], "kind": "flat", "material": "iron", "line": {"width": 0.9, "heavy": 1.1},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 180], "size": [372, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 270], "size": [372, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 356], "size": [372, 12]}
+     ]},
+    {"name": "grille_spikes", "z": 1.3, "tags": ["closed"], "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [{"icon": "triangle", "flip": "y", "at": [0, 0], "size": [12, 14], "repeat": {"line": [[146, 390], [494, 390]], "count": 9}}]},
+    {"name": "raised_spikes", "z": 1.3, "tags": ["open"], "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.7},
+     "pieces": [
+       {"icon": "triangle", "flip": "y", "at": [0, 0], "size": [12, 14], "repeat": {"line": [[146, 124], [494, 124]], "count": 9}},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [320, 114], "size": [372, 10]}
+     ]},
+
+    {"name": "posts", "z": 2, "kind": "block", "material": "iron", "extrude": 294,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [24, 16],
+                 "repeat": {"points": [[128, 94], [512, 94]]}}]},
+    {"name": "lintel", "z": 2.4, "kind": "block", "material": "stone_dark", "extrude": 30,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [320, 78], "size": [430, 40]}]},
+    {"name": "lintel_band", "z": 2.5, "kind": "flat", "material": "bronze_block",
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [320, 104], "size": [426, 6]}]},
+
+    {"name": "lock_box", "z": 3, "kind": "block", "material": "bronze_block", "extrude": 90,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [572, 296], "size": [50, 22]}]},
+    {"name": "lock_hooks", "z": 3.2, "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [3, 12], "repeat": {"points": [[558, 330], [572, 330], [586, 330]]}}]},
+    {"name": "lock_weights", "z": 3.4, "tags": ["open"], "kind": "block", "material": "bronze_block", "extrude": 20,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [12, 8],
+                 "repeat": {"points": [[558, 340], [572, 340], [586, 340]]}}]},
+    {"name": "lock_chain", "z": 3.1, "kind": "flat", "material": "iron",
+     "pieces": [{"icon": "square", "at": [546, 200], "size": [3, 190], "rot": -8}]}
+  ]
+}

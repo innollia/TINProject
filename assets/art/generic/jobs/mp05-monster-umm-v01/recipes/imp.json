@@ -1,0 +1,102 @@
+{
+  "asset": "imp",
+  "status": "candidate",
+  "note": "Generic battler: imp (small demon). Small crouching red-brown devil with a big head, short horns and long pointed ears, a wide toothy grin, glowing ember eyes, bat wings with scalloped edges spread behind, a long thin tail ending in an arrow tip, clawed hands on its knees. Small scale (0.7 of human). Front view, fixed 60 deg camera.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [224, 272],
+  "pivot": [112, 136],
+  "pivot_meaning": "body centre; ground contact line y=222",
+  "seed": 608,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 3,
+     "pieces": [{"icon": "circle", "at": [112, 223], "size": [104, 18]}]},
+
+    {"name": "wing_l", "z": 0.5, "material": "wing",
+     "pieces": [
+       {"icon": "triangle", "at": [66, 104], "size": [62, 62], "rot": -64},
+       {"icon": "circle", "op": "sub", "at": [58, 140], "size": [22, 20]},
+       {"icon": "circle", "op": "sub", "at": [42, 124], "size": [18, 18]}
+     ]},
+    {"name": "wing_r", "z": 0.5, "material": "wing",
+     "pieces": [
+       {"icon": "triangle", "at": [158, 104], "size": [62, 62], "rot": 64},
+       {"icon": "circle", "op": "sub", "at": [166, 140], "size": [22, 20]},
+       {"icon": "circle", "op": "sub", "at": [182, 124], "size": [18, 18]}
+     ]},
+    {"name": "wing_bones", "z": 0.6, "kind": "flat", "material": "horn", "opacity": 0.8,
+     "pieces": [
+       {"icon": "square", "at": [66, 100], "size": [2, 52], "rot": -58},
+       {"icon": "square", "at": [58, 116], "size": [1.6, 36], "rot": -24},
+       {"icon": "square", "at": [158, 100], "size": [2, 52], "rot": 58},
+       {"icon": "square", "at": [166, 116], "size": [1.6, 36], "rot": 24}
+     ]},
+    {"name": "tail", "z": 0.7, "material": "imp_skin",
+     "pieces": [
+       {"icon": "circle", "at": [150, 204], "size": [5, 40], "rot": -64},
+       {"icon": "circle", "at": [176, 188], "size": [5, 30], "rot": -20},
+       {"icon": "triangle", "at": [182, 170], "size": [11, 13], "rot": 10}
+     ]},
+
+    {"name": "legs", "z": 1, "material": "imp_skin",
+     "pieces": [
+       {"icon": "circle", "at": [92, 192], "size": [26, 34], "rot": 30},
+       {"icon": "circle", "at": [132, 192], "size": [26, 34], "rot": -30},
+       {"icon": "circle", "at": [88, 216], "size": [22, 11]},
+       {"icon": "circle", "at": [136, 216], "size": [22, 11]}
+     ]},
+    {"name": "body", "z": 1.2, "material": "imp_skin",
+     "pieces": [{"icon": "circle", "at": [112, 174], "size": [50, 52]}]},
+    {"name": "belly", "z": 1.3, "kind": "flat", "material": "imp_skin", "color": "#8a4a3a", "opacity": 0.7, "clip_to": "body",
+     "pieces": [{"icon": "circle", "at": [112, 182], "size": [30, 30]}]},
+    {"name": "arms", "z": 1.4, "material": "imp_skin",
+     "pieces": [
+       {"icon": "circle", "at": [84, 176], "size": [13, 34], "rot": 24},
+       {"icon": "circle", "at": [140, 176], "size": [13, 34], "rot": -24}
+     ]},
+    {"name": "claws", "z": 1.5, "material": "horn",
+     "pieces": [
+       {"icon": "circle", "at": [92, 194], "size": [14, 11]},
+       {"icon": "circle", "at": [132, 194], "size": [14, 11]},
+       {"icon": "triangle", "flip": "y", "at": [87, 201], "size": [3, 6]},
+       {"icon": "triangle", "flip": "y", "at": [92, 202], "size": [3, 6]},
+       {"icon": "triangle", "flip": "y", "at": [97, 201], "size": [3, 6]},
+       {"icon": "triangle", "flip": "y", "at": [127, 201], "size": [3, 6]},
+       {"icon": "triangle", "flip": "y", "at": [132, 202], "size": [3, 6]},
+       {"icon": "triangle", "flip": "y", "at": [137, 201], "size": [3, 6]}
+     ]},
+
+    {"name": "ears", "z": 2, "material": "imp_skin",
+     "pieces": [
+       {"icon": "triangle", "at": [74, 116], "size": [14, 34], "rot": -58},
+       {"icon": "triangle", "at": [150, 116], "size": [14, 34], "rot": 58}
+     ]},
+    {"name": "head", "z": 2.2, "material": "imp_skin",
+     "pieces": [{"icon": "circle", "at": [112, 122], "size": [56, 52]}]},
+    {"name": "horns", "z": 2.3, "material": "horn",
+     "pieces": [
+       {"icon": "triangle", "at": [96, 92], "size": [10, 18], "rot": -14},
+       {"icon": "triangle", "at": [128, 92], "size": [10, 18], "rot": 14}
+     ]},
+    {"name": "brows", "z": 2.4, "kind": "flat", "color": "#3a120c",
+     "pieces": [
+       {"icon": "square", "at": [100, 112], "size": [14, 2.6], "rot": 22},
+       {"icon": "square", "at": [124, 112], "size": [14, 2.6], "rot": -22}
+     ]},
+    {"name": "eyes", "z": 2.5, "kind": "flat", "material": "hell_glow", "emit": 1.0,
+     "glow": {"radius": 3, "opacity": 0.6, "color": "hell_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [101, 119], "size": [8, 6]},
+       {"icon": "circle", "at": [123, 119], "size": [8, 6]}
+     ]},
+    {"name": "mouth", "z": 2.6, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "circle", "half": "bottom", "at": [112, 136], "size": [30, 14]}]},
+    {"name": "teeth", "z": 2.7, "kind": "flat", "material": "bone",
+     "pieces": [
+       {"icon": "triangle", "flip": "y", "at": [102, 134], "size": [4, 5]},
+       {"icon": "triangle", "flip": "y", "at": [109, 134], "size": [4, 5]},
+       {"icon": "triangle", "flip": "y", "at": [116, 134], "size": [4, 5]},
+       {"icon": "triangle", "flip": "y", "at": [123, 134], "size": [4, 5]}
+     ]}
+  ]
+}

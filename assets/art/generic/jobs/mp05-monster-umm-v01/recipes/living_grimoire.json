@@ -1,0 +1,65 @@
+{
+  "asset": "living_grimoire",
+  "status": "candidate",
+  "note": "Generic battler: living grimoire (magic object). A heavy leather book floating open like a jaw: the two covers splay up and down, iron corner caps, the page edges cut into ragged teeth, a single violet eye in the gutter, two ribbon bookmarks hanging like tongues, a broken clasp strap. Small scale (0.7 of human). Front view, fixed 60 deg camera. Pages are blank - no writing or symbols.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [224, 272],
+  "pivot": [112, 136],
+  "pivot_meaning": "body centre; floats - detached shadow at y=226",
+  "seed": 611,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.3, "blur": 6,
+     "pieces": [{"icon": "circle", "at": [112, 228], "size": [100, 16]}]},
+
+    {"name": "ribbons", "z": 0.5, "material": "cloth_wine",
+     "pieces": [
+       {"icon": "bookmark", "at": [100, 186], "size": [10, 50], "rot": 8},
+       {"icon": "bookmark", "at": [122, 190], "size": [9, 42], "rot": -10}
+     ]},
+    {"name": "cover_top", "z": 1, "material": "book_leather", "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [112, 96], "size": [128, 56], "rot": -6}]},
+    {"name": "pages_top", "z": 1.2, "material": "paper", "shade": {"bump": 0.5},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [112, 110], "size": [112, 34], "rot": -6},
+       {"icon": "triangle", "flip": "y", "at": [70, 130], "size": [10, 14], "rot": -6},
+       {"icon": "triangle", "flip": "y", "at": [88, 129], "size": [10, 16], "rot": -6},
+       {"icon": "triangle", "flip": "y", "at": [106, 127], "size": [10, 14], "rot": -6},
+       {"icon": "triangle", "flip": "y", "at": [124, 125], "size": [10, 16], "rot": -6},
+       {"icon": "triangle", "flip": "y", "at": [142, 123], "size": [10, 14], "rot": -6},
+       {"icon": "triangle", "flip": "y", "at": [158, 121], "size": [9, 12], "rot": -6}
+     ]},
+    {"name": "gutter", "z": 1.4, "kind": "flat", "color": "#0e0a12",
+     "pieces": [{"icon": "circle", "at": [112, 140], "size": [104, 22], "rot": -3}]},
+    {"name": "eye", "z": 1.5, "material": "paper", "shade": {"bump": 0.8},
+     "pieces": [{"icon": "circle", "at": [112, 140], "size": [26, 16]}]},
+    {"name": "pupil", "z": 1.6, "kind": "flat", "material": "arcane", "emit": 1.0,
+     "glow": {"radius": 3, "opacity": 0.6, "color": "arcane_glow"},
+     "pieces": [{"icon": "circle", "at": [113, 140], "size": [9, 11]}]},
+    {"name": "pages_bottom", "z": 1.8, "material": "paper", "shade": {"bump": 0.5},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [112, 166], "size": [112, 30], "rot": 3},
+       {"icon": "triangle", "at": [74, 150], "size": [10, 14], "rot": 3},
+       {"icon": "triangle", "at": [92, 151], "size": [10, 16], "rot": 3},
+       {"icon": "triangle", "at": [110, 152], "size": [10, 14], "rot": 3},
+       {"icon": "triangle", "at": [128, 153], "size": [10, 16], "rot": 3},
+       {"icon": "triangle", "at": [146, 154], "size": [10, 14], "rot": 3}
+     ]},
+    {"name": "cover_bottom", "z": 2, "material": "book_leather", "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [112, 182], "size": [128, 34], "rot": 3}]},
+    {"name": "corners", "z": 2.2, "material": "iron", "line": {"width": 0.6, "heavy": 0.5},
+     "pieces": [
+       {"icon": "triangle", "at": [54, 74], "size": [16, 14], "rot": -50},
+       {"icon": "triangle", "at": [172, 64], "size": [16, 14], "rot": 40},
+       {"icon": "triangle", "at": [54, 190], "size": [16, 14], "rot": -130},
+       {"icon": "triangle", "at": [172, 196], "size": [16, 14], "rot": 130}
+     ]},
+    {"name": "strap", "z": 2.3, "material": "leather",
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [176, 170], "size": [8, 44], "rot": -18},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [172, 196], "size": [12, 8], "rot": -18}
+     ]},
+    {"name": "clasp", "z": 2.4, "material": "bronze", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [168, 206], "size": [12, 9], "rot": -18}]}
+  ]
+}

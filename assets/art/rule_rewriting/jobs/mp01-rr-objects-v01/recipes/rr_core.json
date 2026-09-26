@@ -1,0 +1,25 @@
+{
+  "asset": "rr_core",
+  "status": "candidate",
+  "note": "Rule Rewrite CORE: a teal faceted crystal held in a brass hexagon setting with a faintly glowing amber heart (emissive). Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 217,
+  "forms": [
+    {"name": "setting", "z": 0, "material": "rr_brass", "shade": {"bump": 0.6},
+     "pieces": [{"icon": "hexagon", "rot": 90, "minus_icons": [{"icon": "hexagon", "box": [3, 3, 13, 13]}], "at": [96, 94], "size": [124, 116]}]},
+    {"name": "crystal", "z": 1, "material": "rr_teal", "shade": {"bump": 0.7, "highlight_amount": 0.6},
+     "pieces": [{"icon": "hexagon", "rot": 90, "at": [96, 94], "size": [82, 76]}]},
+    {"name": "facets", "z": 1.5, "kind": "flat", "color": "#9cc4c1", "opacity": 0.45, "clip_to": "crystal",
+     "pieces": [
+       {"icon": "triangle", "rot": -90, "at": [78, 84], "size": [30, 22]},
+       {"icon": "triangle", "rot": 90, "at": [114, 102], "size": [24, 18]}
+     ]},
+    {"name": "heart", "z": 2, "kind": "flat", "material": "glass", "emit": 0.6, "line": {"width": 0.7, "heavy": 0.5},
+     "glow": {"radius": 4, "opacity": 0.4, "color": "lamp_glow"},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 2}, "rot": 45, "at": [96, 94], "size": [20, 20]}]}
+  ]
+}

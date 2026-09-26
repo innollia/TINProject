@@ -1,0 +1,750 @@
+{
+ "asset": "npc_24_perri_lowe",
+ "status": "candidate",
+ "note": "Perri Lowe dialogue portrait: 3/4 bust turned to the viewer's right, lineage registrar of the LINEAGE_HOUSE. Short blunt black bob, narrow eyes, dusty-rose robe with a tall standing collar framing the head, bronze buttons, a plain wooden box with bronze corners (no marks) held low in front, wooden token cords at the far side. Author design from npc_24 JSON and 04 NPC-24 (female: author design).",
+ "identity": {
+  "npc_id": "npc_24_perri_lowe",
+  "display_name": "Perri Lowe",
+  "roster_kind": "support",
+  "portrait_key": "portrait_perri_lowe",
+  "art_key": "art_npc_support_portrait",
+  "body_key": "body_lineage_registrar"
+ },
+ "anchors": {
+  "face": [
+   168,
+   124
+  ],
+  "head_center": [
+   160,
+   122
+  ]
+ },
+ "palette": "palette_npc_b.json",
+ "style": "portrait",
+ "canvas": [
+  320,
+  320
+ ],
+ "pivot": [
+  168,
+  124
+ ],
+ "pivot_meaning": "face anchor: midpoint between the eyes (the same pixel in every mp03 portrait)",
+ "seed": 2401,
+ "forms": [
+  {
+   "name": "collar_stand",
+   "z": 0.3,
+   "material": "pl_robe",
+   "shade": {
+    "threshold": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      158,
+      190
+     ],
+     "size": [
+      178,
+      128
+     ]
+    }
+   ]
+  },
+  {
+   "name": "collar_lining",
+   "z": 0.35,
+   "kind": "flat",
+   "color": "#46272f",
+   "clip_to": "collar_stand",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      196
+     ],
+     "size": [
+      150,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hair_far",
+   "z": 0.4,
+   "material": "hair_black",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      206,
+      146
+     ],
+     "size": [
+      18,
+      52
+     ],
+     "rot": -4
+    }
+   ]
+  },
+  {
+   "name": "neck",
+   "z": 0.5,
+   "material": "skin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      198
+     ],
+     "size": [
+      48,
+      56
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160,
+      230
+     ],
+     "size": [
+      46,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck_shade",
+   "z": 0.6,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "clip_to": "neck",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      168,
+      180
+     ],
+     "size": [
+      84,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "robe",
+   "z": 1,
+   "material": "pl_robe",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      158,
+      276
+     ],
+     "size": [
+      252,
+      118
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      158,
+      328
+     ],
+     "size": [
+      252,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "name": "robe_front",
+   "z": 1.2,
+   "kind": "flat",
+   "color": "#190a0e",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170,
+      286
+     ],
+     "size": [
+      3,
+      90
+     ],
+     "rot": 3
+    }
+   ]
+  },
+  {
+   "name": "buttons",
+   "z": 1.3,
+   "kind": "flat",
+   "material": "bronze",
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      176,
+      250
+     ],
+     "size": [
+      7,
+      7
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      177,
+      268
+     ],
+     "size": [
+      7,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "token_cord",
+   "z": 1.4,
+   "kind": "flat",
+   "color": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      226,
+      286
+     ],
+     "size": [
+      2.4,
+      56
+     ],
+     "rot": -6
+    }
+   ]
+  },
+  {
+   "name": "tokens",
+   "z": 1.5,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      224,
+      272
+     ],
+     "size": [
+      11,
+      13
+     ],
+     "rot": -10
+    },
+    {
+     "icon": "square",
+     "at": [
+      227,
+      290
+     ],
+     "size": [
+      11,
+      13
+     ],
+     "rot": 6
+    },
+    {
+     "icon": "square",
+     "at": [
+      229,
+      308
+     ],
+     "size": [
+      11,
+      13
+     ],
+     "rot": -4
+    }
+   ]
+  },
+  {
+   "name": "box_lid",
+   "z": 2,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      150,
+      290
+     ],
+     "size": [
+      92,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "box",
+   "z": 1.9,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      150,
+      316
+     ],
+     "size": [
+      84,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "box_corners",
+   "z": 2.1,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      106,
+      290
+     ],
+     "size": [
+      11,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      194,
+      290
+     ],
+     "size": [
+      11,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      110,
+      312
+     ],
+     "size": [
+      10,
+      14
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      190,
+      312
+     ],
+     "size": [
+      10,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "z": 5,
+   "material": "hair_black",
+   "shade": {
+    "highlight_amount": 0.6,
+    "highlight": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      112
+     ],
+     "size": [
+      116,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "z": 6,
+   "material": "skin",
+   "shade": {
+    "threshold": 0.44,
+    "ragged": 0.06,
+    "soft": 0.34,
+    "highlight_amount": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      128
+     ],
+     "size": [
+      92,
+      100
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      173,
+      171
+     ],
+     "size": [
+      48,
+      38
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      203,
+      146
+     ],
+     "size": [
+      11,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nose_shade",
+   "z": 7,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      198,
+      142
+     ],
+     "size": [
+      8,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nostril",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      197,
+      152
+     ],
+     "size": [
+      4.5,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      184,
+      167
+     ],
+     "size": [
+      15,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lip_shade",
+   "z": 7.05,
+   "kind": "flat",
+   "color": "skin_shadow",
+   "opacity": 0.65,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      185,
+      171
+     ],
+     "size": [
+      10,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "iris",
+   "z": 7.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      126
+     ],
+     "size": [
+      10,
+      8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      124
+     ],
+     "size": [
+      7.5,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glint",
+   "z": 7.3,
+   "kind": "flat",
+   "color": "eye_glint",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140,
+      124.5
+     ],
+     "size": [
+      2.4,
+      2.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192,
+      123
+     ],
+     "size": [
+      2,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lids",
+   "z": 7.4,
+   "kind": "flat",
+   "color": "ink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      125
+     ],
+     "size": [
+      24,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      142,
+      128
+     ],
+     "size": [
+      24,
+      12
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      130,
+      123.5
+     ],
+     "size": [
+      4.5,
+      7
+     ],
+     "rot": -62
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      123
+     ],
+     "size": [
+      17,
+      10
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      194,
+      125.4
+     ],
+     "size": [
+      17,
+      10
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      203,
+      121.5
+     ],
+     "size": [
+      4,
+      6
+     ],
+     "rot": 62
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "z": 7.5,
+   "kind": "flat",
+   "material": "hair_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141,
+      111
+     ],
+     "size": [
+      24,
+      4
+     ],
+     "rot": -3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      195,
+      110
+     ],
+     "size": [
+      16,
+      3.6
+     ],
+     "rot": 3
+    }
+   ]
+  },
+  {
+   "name": "bob",
+   "z": 8,
+   "material": "hair_black",
+   "shade": {
+    "highlight_amount": 0.6,
+    "highlight": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      163,
+      89
+     ],
+     "size": [
+      94,
+      20
+     ],
+     "rot": 3
+    },
+    {
+     "icon": "square",
+     "at": [
+      114,
+      146
+     ],
+     "size": [
+      26,
+      60
+     ],
+     "rot": 3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      126,
+      102
+     ],
+     "size": [
+      40,
+      44
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "portrait_perri_lowe"
+  }
+ ]
+}

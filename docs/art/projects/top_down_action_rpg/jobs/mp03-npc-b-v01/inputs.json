@@ -1,0 +1,331 @@
+{
+  "job_id": "mp03-npc-b-v01",
+  "status": "candidate",
+  "hashes_taken": "2026-09-27, after the 11 portraits; field sprites not made yet (8-direction format still open). Update at the end of the job.",
+  "base_tool": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/tool (copied, then changed as listed in JOB.md)",
+  "read_only_inputs": [
+    {
+      "path": "docs/art/mass_production/COMMON.md",
+      "sha256": "dc7b54226686759b0b53e8fa2a0c19093b0fc50db0bb68bd3cf125d41cc9e8c0",
+      "role": "session rules and user decisions (V1 mood, lighting in code, 8-direction format still open; moved here from the workspace copy on 2026-09-27, same content), read only"
+    },
+    {
+      "path": "plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/09_PRESENTATION_ART_AND_AUDIO.md",
+      "sha256": "87ce02abe618004f4ea56d489f1b824269611fc140bc8238480398463a9dd485",
+      "role": "12.2 gameplay sprites, 12.5 portrait (320x320, 88 px display, 3/4 bust, stable face anchor), 12.10 art keys; read only"
+    },
+    {
+      "path": "plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/14_ISOLATED_ART_JOBS.md",
+      "sha256": "9c57c22c984d36eaa5d9a9263a8dbffe998f496640a86f9ebab4a0cccee6bcbd",
+      "role": "job folder and JOB.md fields; read only"
+    },
+    {
+      "path": "plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/04_CHARACTERS_AND_RELATIONSHIPS.md",
+      "sha256": "f0847217de08a3990612b6cdfdccb636c7893abb7741015ac82408952d0deec0",
+      "role": "only NPC-11..14 (section 3) and NPC-20..26 (section 2.4) were read; no appearance text exists there; read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/presentation/top_down_row.gd",
+      "sha256": "af92ba22f048c0ca9786e9f36bfbf3d3550aceacec752f13816a5b4ccf3c5edf",
+      "role": "_draw_portrait placeholder layout (head centre 50%/38%, radius 20%) used for the face anchor; read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/presentation/top_down_screen.gd",
+      "sha256": "003889892524a939783d6bce864ec8af47b60dc0d0db82e6442702899b9b3c65",
+      "role": "portrait_key registration in the dialogue band; read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/content/npcs/npc_11_cael_ren.json",
+      "sha256": "d26a322a0ded9ac7ef5fad6ad53448a6cb07b4c033ad29a4158296f459bcaf0a",
+      "role": "NPC content (role, capability, appearance keys); read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/content/npcs/npc_12_ravenna_holt.json",
+      "sha256": "1388239ab7e8f079c2a0dee77e03673a8c664a3ec6051f8c68c8849f277e8d10",
+      "role": "NPC content (role, capability, appearance keys); read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/content/npcs/npc_13_tovan_reed.json",
+      "sha256": "f6545cc2af14d7ee291ba8a12d5ebd3cdd6c4c83cf7b5a20224900ea66270dd9",
+      "role": "NPC content (role, capability, appearance keys); read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/content/npcs/npc_14_eda_marrow.json",
+      "sha256": "81aab42f1cfab4f334768b8ec82510e3c462417927715b172f8ad2706ca7b1ba",
+      "role": "NPC content (role, capability, appearance keys); read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/content/npcs/npc_20_mira_vask.json",
+      "sha256": "b0479950babcfdae588352f0fcfc1c0b14e19672dc0f5d5580af61acf495d875",
+      "role": "NPC content (role, capability, appearance keys); read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/content/npcs/npc_21_halen_osk.json",
+      "sha256": "4b6d91104dad91ce8216fe1efc266d8b9e80ad614e1cccb6b331853624426b41",
+      "role": "NPC content (role, capability, appearance keys); read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/content/npcs/npc_22_iven_marrow.json",
+      "sha256": "c6c4709d12cfb0642e60c45e9e2454b2d55cc06fc9d27cddeb73eafd1fe6bb57",
+      "role": "NPC content (role, capability, appearance keys); read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/content/npcs/npc_23_turo_bex.json",
+      "sha256": "69bb9b5b7ce76a409867f51819df37866c3c54af40ac9b67b7cfbed6db46f8ed",
+      "role": "NPC content (role, capability, appearance keys); read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/content/npcs/npc_24_perri_lowe.json",
+      "sha256": "6c1789228bb15010dfa01f3722fd5f1420fd45580f418061145378fcb95fda47",
+      "role": "NPC content (role, capability, appearance keys); read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/content/npcs/npc_25_jano_fesk.json",
+      "sha256": "8d9e946a72ab685bac36a2c1fe1667352cd4e5b4ee02ad769f678087b263f56c",
+      "role": "NPC content (role, capability, appearance keys); read only"
+    },
+    {
+      "path": "modules/top_down_action_rpg/content/npcs/npc_26_cael_orin.json",
+      "sha256": "c21ba1c863f41c35e5865f13962a2a83e8a50991b02a086dfe7d22dbad27e7ad",
+      "role": "NPC content (role, capability, appearance keys); read only"
+    },
+    {
+      "path": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/recipes/palette_h0_mood.json",
+      "sha256": "ccfa41612677c98e366dc9bb77b90e62bd11d9406d1d7d66c783455ebfff9ebc",
+      "role": "V1 palette, copied to recipes/ and extended as palette_npc_b.json; read only"
+    },
+    {
+      "path": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/recipes/player_front.json",
+      "sha256": "923fe175398476cde50d791b323b1896c224e4ca264c918c6f11210130c081bb",
+      "role": "V1 character recipe example (proportions, part vocabulary); read only"
+    },
+    {
+      "path": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/preview/asset_sheet_v1_characters_1x.png",
+      "sha256": "86e78a0d69df030485c52fb4e13dd618000a1b813b750c3bcda6a742d9191cec",
+      "role": "V1 style reference, looked at only; read only"
+    },
+    {
+      "path": "docs/art/projects/top_down_action_rpg/jobs/h0-icon-mood-v02/QA.md",
+      "sha256": "e322d17dd6ea3f5eca8efbd67a55c4eb5f20b59c9e17bcc48f60a256d1e50763",
+      "role": "V1 known issues; read only"
+    },
+    {
+      "path": "docs/art/projects/top_down_action_rpg/jobs/h0-icon-collage-v01/QA.md",
+      "sha256": "65c61dfeac9fa9eb1c146f371bb36ad094c3091441e0d5c229062e0d7818e83d",
+      "role": "first trial known issues; read only"
+    }
+  ],
+  "listed_in_COMMON_but_not_reread_in_this_production_turn": [
+    "docs/IMAGE_ASSET_WORKFLOW.md",
+    "docs/VISUAL_DIRECTION.md",
+    "docs/art/projects/top_down_action_rpg/PROJECT_ART_LAYER.md",
+    "plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/13_LAYERED_ENVIRONMENT_PRODUCTION.md"
+  ],
+  "tool_files": {
+    "tool/build.py": "06292277b48d8a9cc3ed89b3d7384c68df07af8a3dc027dcd0c02eb2c034cb91",
+    "tool/catalog.py": "930547d6124e73c1e0c311bca0c04d89671caf09ea1f2fb44d081a66b4233921",
+    "tool/compare_sheet.py": "69dd3fb674352a7dc83fd079c5e2435ac094bb91781a9555e84c67ac9dc827e4",
+    "tool/compose_preview.py": "f1db3e1c061ed092818af65b7b84cfb4a53d4949a4884a4524f6ec5bf07dcc26",
+    "tool/iconkit/__init__.py": "8e427f70d538d883e0abca11ad7449be1954f70b9c6c8ca192d01a8e2b749582",
+    "tool/iconkit/icons.py": "35ff866950e44b0d8002bcbe4eeab5a4462a4026536ee9c1626be4f156fef69f",
+    "tool/iconkit/lighting.py": "cb3e8aef991f1137e26872133e98a6a0245c677338d4ef80afc2784eecbf5a56",
+    "tool/iconkit/paint.py": "75377ef614aaa26af0151041353a04cd6cd32ded4ba5e476716aca228a912742",
+    "tool/iconkit/raster.py": "89b1663c252adc9c52e4b37854432f6427bfdff03150bc3e577b0673fa601b5f",
+    "tool/iconkit/render.py": "ea42efedf6c696790aa341cba747573974076a29baf3ffca230d40d15b19ddea",
+    "tool/inspect_icons.py": "5426b386c11e87992e67cd0ca08cff1f4d02e2c6a5794796674fff8d3b5aa55d",
+    "tool/review_sheet.py": "5e2848e893854249bd2c5432a8b6d03de4dee7948a21eb36fa3090925f3880f9"
+  },
+  "recipes": {
+    "palette_h0_mood.json": "ccfa41612677c98e366dc9bb77b90e62bd11d9406d1d7d66c783455ebfff9ebc",
+    "palette_npc_b.json": "ca07f333fda50134364b0e9072a7404adc97fc4d8ed858eba727084348b80151",
+    "portrait_cael_orin.json": "bd371f95904d8b812de55232d54482fdd69713f40b75fb7011ed43a37c9fdee3",
+    "portrait_cael_ren.json": "6317feb085dca3b419fb6e2ecb8e6de40db557ceeeae9224e8ab4d60e171705c",
+    "portrait_eda_marrow.json": "bf5fba0a9d0309d4b6dcb50f27c754c37b92c9fd75731333c4f55810a94751bf",
+    "portrait_halen_osk.json": "b973e5266db21a67ff4618210802d622b7f645df30e33de4c2824ca651e16ebb",
+    "portrait_iven_marrow.json": "1cccf5adf565ed67ba1f43e80033526c687b164b27fb8221fa762bebcb7e7564",
+    "portrait_jano_fesk.json": "d0d83148bb5342f57d4fb985ed30aad3789bf45d3477ce3bf87a647b253a7e7a",
+    "portrait_mira_vask.json": "27b94355172f7003465d7a28d8e63ee46a2841649d20e2fe8a566619adf5f22e",
+    "portrait_perri_lowe.json": "94d0437b5cd921fb8b12b0ac7368153736e665a2f66d77ede2daa9b60c4bab2e",
+    "portrait_ravenna_holt.json": "ab47c03f2b3e920db0348487e919d627cfd99b9442090d7add77ad5c6d6d2b41",
+    "portrait_tovan_reed.json": "afcc3df70edec3e239c438aa91db8d759f2d8fb0b9846c3a80036f8e90d8bfef",
+    "portrait_turo_bex.json": "b4ebeab4c4e01412678e5e7415a5b57d7fc2e2df94a5d6d1d6058bd885d53efa"
+  },
+  "icons_used": {
+    "source": "addons/at-icons/node2d (MIT, Valentin Fossati & contributors)",
+    "sha256": {
+      "book": "eb56d2fa5c4b99954976802daa0ed333a58fc09cdd7f8a66adb162b56c5d4d86",
+      "circle": "10ff900c4369c6457383e23cf9eb8473be7195d46a4ef222527fe95e55e0136e",
+      "clipboard": "122958c880c8e29f1f31cbc66863a05e133e55b7ee27790fd21c1652760bf5d4",
+      "cloud": "4026b5c059c1c1cea4f68dfd47235a6dd706f937a520306b1f6ba14cad63a9c6",
+      "coin": "6d99b79aa45e45296c776450eea52e7656fb0c2784b90c77a0c8004382c468c8",
+      "droplet": "ee5b3e0e73859de25abc169d88ead79d9931e3a53177c3f85b223d7a5a6252e1",
+      "feather": "92b672862107aebaba5063b7b8a110862bb9ca5d36bc81d40d6862c2bb85f54c",
+      "hook": "6696a01f0f4f9cd20337dad4889e1e3d6d9636e443ff5b4e0ad2e0981d9df10d",
+      "key": "c48d7084db5d46a65af2d1ed9f05e4320e1da1959b27a9ef729edee740381049",
+      "leaf": "7f40ca8b13c5c716e235f79d8cc1e44765a4de600c2a2ef51c038424a3e875fa",
+      "metaballs": "8cecdfcd1612951d7a20e99b6f9998f6f054ef5ac6902fb298b9f6c10037421e",
+      "moon": "eaea404c0ec3653bb9e25a381cbefeb244a5d0f33fb331549dcf57d80d12d02c",
+      "pill": "657e504a1391dec72284d93317d8cda6973b0ad0f03d9909cec02b5c43207ffa",
+      "sponge": "44a270191adcce911c1e0930a47583c9c7f1a6818080eb8ab6d0b720cb616ebf",
+      "square": "5b29e7f8356b183550c8c0dffb5dffd0db27da9dfa81487889c19c2e967999ab",
+      "tag": "b8101285c6712e85a7635dc4ece1c031903886eb5120916e7ed2f10eac7e5937",
+      "triangle": "c1f0e59667f959b1544e025bb1360d6e9074275fe4c9acaa0b478e3542efcff9"
+    }
+  },
+  "outputs": [
+    {
+      "file": "output/npc_11_cael_ren/portrait_cael_ren.png",
+      "sha256": "21fbcf67019d5bd54b6190137e4c58e9bfd07a784e28f54278b6f6427768ed03",
+      "size": [
+        320,
+        320
+      ],
+      "status": "candidate",
+      "art_key": "art_npc_core_portrait",
+      "face_anchor": [
+        168,
+        124
+      ]
+    },
+    {
+      "file": "output/npc_12_ravenna_holt/portrait_ravenna_holt.png",
+      "sha256": "2b17711cc6e5247cea5e854fd6a9e82728a9f0784de4295c8b9f08eb2b73e4c3",
+      "size": [
+        320,
+        320
+      ],
+      "status": "candidate",
+      "art_key": "art_npc_core_portrait",
+      "face_anchor": [
+        168,
+        124
+      ]
+    },
+    {
+      "file": "output/npc_13_tovan_reed/portrait_tovan_reed.png",
+      "sha256": "026ad60c5155450983aecd1e588e6d6e5464cc2f6887251560acebc01150dfa3",
+      "size": [
+        320,
+        320
+      ],
+      "status": "candidate",
+      "art_key": "art_npc_core_portrait",
+      "face_anchor": [
+        168,
+        124
+      ]
+    },
+    {
+      "file": "output/npc_14_eda_marrow/portrait_eda_marrow.png",
+      "sha256": "9fec393b02a90eb376d82856e4f873473c6c7970606b74ae8b9d5c7fc06cfbdf",
+      "size": [
+        320,
+        320
+      ],
+      "status": "candidate",
+      "art_key": "art_npc_core_portrait",
+      "face_anchor": [
+        168,
+        124
+      ]
+    },
+    {
+      "file": "output/npc_20_mira_vask/portrait_mira_vask.png",
+      "sha256": "1df4a0fa50165effcbedbea1a5897118ca0c61632bdb88639e50c3d7acef05a3",
+      "size": [
+        320,
+        320
+      ],
+      "status": "candidate",
+      "art_key": "art_npc_support_portrait",
+      "face_anchor": [
+        168,
+        124
+      ]
+    },
+    {
+      "file": "output/npc_21_halen_osk/portrait_halen_osk.png",
+      "sha256": "57339347f9db4e5eedc0799bd40ff0a961502b8cac79bd2268cf812c1d72402c",
+      "size": [
+        320,
+        320
+      ],
+      "status": "candidate",
+      "art_key": "art_npc_support_portrait",
+      "face_anchor": [
+        168,
+        124
+      ]
+    },
+    {
+      "file": "output/npc_22_iven_marrow/portrait_iven_marrow.png",
+      "sha256": "1abe7f49295f9f309ca220cdc46d524c2210f160775d8e54c7360596400c8c1e",
+      "size": [
+        320,
+        320
+      ],
+      "status": "candidate",
+      "art_key": "art_npc_support_portrait",
+      "face_anchor": [
+        168,
+        124
+      ]
+    },
+    {
+      "file": "output/npc_23_turo_bex/portrait_turo_bex.png",
+      "sha256": "8b5dbd11a1d149f55b8abf92d1161770e1a755d75b2cee96423fd676b119223d",
+      "size": [
+        320,
+        320
+      ],
+      "status": "candidate",
+      "art_key": "art_npc_support_portrait",
+      "face_anchor": [
+        168,
+        124
+      ]
+    },
+    {
+      "file": "output/npc_24_perri_lowe/portrait_perri_lowe.png",
+      "sha256": "044938763e022f37795c79cb0127ec813d6ba820c776272d3d231101fbce9874",
+      "size": [
+        320,
+        320
+      ],
+      "status": "candidate",
+      "art_key": "art_npc_support_portrait",
+      "face_anchor": [
+        168,
+        124
+      ]
+    },
+    {
+      "file": "output/npc_25_jano_fesk/portrait_jano_fesk.png",
+      "sha256": "048e17d180d9b787f3704d581b29ae651afc86e21a85d31d75d4790d32517afe",
+      "size": [
+        320,
+        320
+      ],
+      "status": "candidate",
+      "art_key": "art_npc_support_portrait",
+      "face_anchor": [
+        168,
+        124
+      ]
+    },
+    {
+      "file": "output/npc_26_cael_orin/portrait_cael_orin.png",
+      "sha256": "723c3f3bb2013f5ae569715c28bd24d827ec056f95031bdaabcaae47848a7f62",
+      "size": [
+        320,
+        320
+      ],
+      "status": "candidate",
+      "art_key": "art_npc_support_portrait",
+      "face_anchor": [
+        168,
+        124
+      ]
+    }
+  ]
+}

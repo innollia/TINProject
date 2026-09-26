@@ -1,0 +1,31 @@
+{
+  "status": "candidate",
+  "note": "R2 area B object placement for base_clean (first-visit states: disperser charged, circulator idle, E17 closed). Check image only (background + objects, no people, no scene lighting). 'at' = background source px where the object's pivot goes; wall objects use the wall-base point. 'light' is for the game's lighting code.",
+  "background": "output/r2_b_stilt_settlements/base_clean.png",
+  "scale": 0.5,
+  "items": [
+    {"asset": "prop_r2_disperser_housing", "frame": "prop_r2_disperser_full", "at": [1280, 480], "id": "prop_r2_disperser_housing", "interactive": true},
+    {"asset": "prop_r2_circulator_stack", "frame": "prop_r2_circulator_idle", "at": [2080, 440], "id": "prop_r2_circulator_stack", "interactive": true},
+    {"asset": "exit_r2_e17_water_ambulance_bridge", "frame": "exit_r2_e17_water_ambulance_bridge_closed", "at": [2360, 940], "id": "exit_e17_water_ambulance_bridge", "interactive": true},
+    {"asset": "obj_r2_net_rack", "frame": "obj_r2_net_rack", "at": [380, 820], "id": "net_rack"},
+    {"asset": "obj_r2_water_cask", "frame": "obj_r2_water_cask", "at": [1700, 790], "id": "cask_common"},
+    {"asset": "obj_r2_water_cask", "frame": "obj_r2_water_cask", "at": [560, 960], "id": "cask_west"},
+    {"asset": "obj_r2_water_cask", "frame": "obj_r2_water_cask", "at": [1760, 566], "id": "cask_hall"},
+    {"asset": "obj_r2_lantern_post", "frame": "obj_r2_lantern_post", "at": [1760, 760], "id": "lantern_common_east",
+     "light": {"color": "#ffc987", "radius": 300, "at": [1814, 542]}},
+    {"asset": "obj_r2_lantern_post", "frame": "obj_r2_lantern_post_left", "at": [820, 760], "id": "lantern_common_west",
+     "light": {"color": "#ffc987", "radius": 300, "at": [766, 542]}},
+    {"asset": "obj_r2_lantern_post", "frame": "obj_r2_lantern_post", "at": [2440, 420], "id": "lantern_east_hut",
+     "light": {"color": "#ffc987", "radius": 300, "at": [2494, 202]}},
+    {"asset": "obj_r2_lantern_post", "frame": "obj_r2_lantern_post", "at": [640, 440], "id": "lantern_west_hut",
+     "light": {"color": "#ffc987", "radius": 300, "at": [694, 222]}},
+    {"asset": "r2_b_stilt_settlements", "frame": "foreground_deck_rail", "at": [0, 0], "sort_y": 100000, "id": "foreground_deck_rail"}
+  ],
+  "empty_slots_not_drawn": {
+    "art_prop_route_marker": [[2250, 900]],
+    "art_prop_recovery_anchor": [[2080, 520]],
+    "art_prop_magic_concentration_device": [[1380, 560]],
+    "npc_standing_spot": [[1280, 940]]
+  },
+  "out": "preview/check_r2_b_stilt_settlements_1280x720.png"
+}

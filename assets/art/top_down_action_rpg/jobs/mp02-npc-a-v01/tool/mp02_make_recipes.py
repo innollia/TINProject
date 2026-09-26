@@ -522,9 +522,6 @@ def ilyra(pal):
     return recipe("npc_01_ilyra_senn", "portrait_ilyra_senn", 101, note, forms)
 
 
-PORTRAITS = [ilyra]
-
-
 def orrin(pal):
     skin = "skin_deep"
     base, shadow, light, line = skin_colors(pal, skin)
@@ -588,9 +585,6 @@ def orrin(pal):
             "stubble, heavy brows and tired lids, ash-grey intake smock, linen quarantine mask pulled down round "
             "the neck, ember-orange quarantine band on the far arm. 3/4 bust facing screen right.")
     return recipe("npc_02_orrin_kest", "portrait_orrin_kest", 102, note, forms)
-
-
-PORTRAITS = [ilyra, orrin]
 
 
 def veya(pal):
@@ -666,9 +660,6 @@ def veya(pal):
     return recipe("npc_03_veya_morcant", "portrait_veya_morcant", 103, note, forms)
 
 
-PORTRAITS = [ilyra, orrin, veya]
-
-
 def sable(pal):
     skin = "skin_tan"
     base, shadow, light, line = skin_colors(pal, skin)
@@ -739,9 +730,6 @@ def sable(pal):
     return recipe("npc_04_sable_halm", "portrait_sable_halm", 104, note, forms)
 
 
-PORTRAITS = [ilyra, orrin, veya, sable]
-
-
 def nera(pal):
     skin = "skin_warm"
     base, shadow, light, line = skin_colors(pal, skin)
@@ -806,9 +794,6 @@ def nera(pal):
             "face, heavy-lidded calm eyes, half smile, long wavy auburn hair over her right shoulder, dusty rose "
             "shawl over a dark brown dress, bronze brooch and the ledger chain. 3/4 bust facing screen right.")
     return recipe("npc_05_nera_voss", "portrait_nera_voss", 105, note, forms)
-
-
-PORTRAITS = [ilyra, orrin, veya, sable, nera]
 
 
 def tamas(pal):
@@ -879,9 +864,6 @@ def tamas(pal):
             "the right ear (first hint of the neural translation implant), brick coat with a cream cravat and the "
             "scroll-case strap. 3/4 bust facing screen right.")
     return recipe("npc_06_tamas_quill", "portrait_tamas_quill", 106, note, forms)
-
-
-PORTRAITS = [ilyra, orrin, veya, sable, nera, tamas]
 
 
 def bryn(pal):
@@ -955,9 +937,6 @@ def bryn(pal):
     return recipe("npc_07_bryn_oskel", "portrait_bryn_oskel", 107, note, forms)
 
 
-PORTRAITS = [ilyra, orrin, veya, sable, nera, tamas, bryn]
-
-
 def meral(pal):
     skin = "skin_deep"
     base, shadow, light, line = skin_colors(pal, skin)
@@ -1020,9 +999,6 @@ def meral(pal):
             "mouth, indigo headwrap with a knot at the back and grey-streaked hair escaping at the temple, sand "
             "shawl over an indigo dress, a water-glass drop on a cord. 3/4 bust facing screen right.")
     return recipe("npc_08_meral_dune", "portrait_meral_dune", 108, note, forms)
-
-
-PORTRAITS = [ilyra, orrin, veya, sable, nera, tamas, bryn, meral]
 
 
 def perrin(pal):
@@ -1092,7 +1068,81 @@ def perrin(pal):
     return recipe("npc_09_perrin_lask", "portrait_perrin_lask", 109, note, forms)
 
 
-PORTRAITS = [ilyra, orrin, veya, sable, nera, tamas, bryn, meral, perrin]
+def juno(pal):
+    skin = "skin_warm"
+    base, shadow, light, line = skin_colors(pal, skin)
+    hair = "hair_honey"
+    hm = pal["materials"][hair]
+    outline = [(160, 58), (196, 62), (211, 94), (213, 122), (209, 148), (199, 172), (184, 190), (164, 188),
+               (142, 178), (124, 156), (116, 124), (116, 88), (132, 64)]
+    plane = ([(176, 100), (173, 121), (184, 148), (178, 156), (186, 168), (190, 193)],
+             [(240, 204), (245, 70), (182, 70)])
+    curls_back = [C((100, 118), (18, 18)), C((94, 136), (16, 16)), C((98, 154), (16, 16)), C((108, 168), (14, 14)),
+                  C((110, 100), (16, 14))]
+    curls_near = [C((112, 104), (14, 14)), C((104, 118), (14, 14)), C((110, 132), (13, 13)), C((104, 146), (13, 13)),
+                  C((114, 156), (12, 12)), C((122, 98), (13, 12)), C((124, 146), (10, 10))]
+    curls_far = [C((213, 104), (13, 13)), C((218, 118), (12, 12)), C((215, 131), (10, 10))]
+    forms = [
+        form("hair_back_mass", 0.15, [smooth([(96, 100), (114, 90), (122, 120), (118, 170), (100, 178), (88, 152),
+                                              (88, 120)])], material=hair, shade={"highlight_amount": 0.3}),
+        form("curls_back", 0.2, curls_back, material=hair, shade={"highlight_amount": 0.3}),
+        form("curls_far", 0.5, curls_far, material=hair, shade={"highlight_amount": 0.3}),
+        # mustard coat with a short cape collar, black stand collar, a blank notice pinned on the chest
+        cloth("coat", 4.0, [smooth([(128, 226), (176, 232), (214, 228), (256, 242), (296, 262), (312, BOTTOM),
+                                    (8, BOTTOM), (20, 274), (66, 244)], 6)], "cloth_mustard"),
+        cloth("cape_collar", 4.8, [smooth([(122, 214), (172, 228), (216, 216), (262, 236), (292, 262), (254, 278),
+                                           (204, 264), (172, 268), (140, 264), (88, 278), (50, 262), (80, 234)], 6)],
+              "cloth_mustard", shade={"highlight_amount": 0.55}),
+        marks("cape_hem", 4.9, [((52, 262), (96, 280), (140, 264), 1.0, 2.2, 1.0),
+                                ((204, 264), (250, 280), (290, 262), 1.0, 2.2, 1.0)], "#3a2c10", 0.7),
+        cloth("stand_collar", 5.0, [smooth([(132, 204), (172, 216), (210, 206), (214, 230), (172, 240), (128, 228)])],
+              "cloth_ink"),
+        form("coat_buttons", 5.1, [C((176, 286), (8, 8)), C((178, 312), (8, 8))], material="bronze"),
+        form("notice", 5.3, [I("square", (96, 296), (24, 30), rot=-6)], material="paper"),
+        form("notice_lines", 5.35, [stroke((88, 290), (96, 289), (104, 288), 0.8, 0.8, 0.8),
+                                    stroke((88, 297), (96, 296), (105, 295), 0.8, 0.8, 0.8),
+                                    stroke((89, 304), (95, 303), (101, 302), 0.8, 0.8, 0.8)], kind="flat",
+             material="paper_mark"),
+        form("notice_pin", 5.4, [C((96, 283), (7, 7))], material="bronze"),
+    ]
+    forms += head_base(pal, skin, outline, [(148, 166), (190, 172), (194, 236), (146, 238)], (120, 141, 15, 27, 6),
+                       plane)
+    forms += socket_shadows(shadow, (146, 129), (194, 127))
+    forms += nose((173, 118), (184, 148), line, light)
+    forms += mouth((167, 168), (178, 170), (191, 166), line, light, shadow,
+                   open_mouth=[(167, 168), (178, 167), (191, 166), (187, 177), (178, 181), (170, 176)])
+    forms += [
+        form("mouth_teeth", 9.52, [C((179, 165), (22, 6))], kind="flat", color="#b3a696", opacity=0.9,
+             clip_to="mouth_open"),
+        form("mouth_tongue", 9.52, [C((180, 181), (16, 9))], kind="flat", color="#6a3035", opacity=0.9,
+             clip_to="mouth_open"),
+    ]
+    forms += eye("eye_n", (146, 129), 22, 13, -2, 0.0, "#5a3a22", -1, line)
+    forms += eye("eye_f", (194, 127), 16, 12, 3, 0.0, "#5a3a22", 1, line)
+    forms += brows([(160, 108), (146, 101), (131, 106)], [(182, 106), (193, 101), (204, 106)], hm["shadow"],
+                   width=(2.6, 2.2, 0.5))
+    forms += [
+        form("hair_near_mass", 12.7, [smooth([(112, 96), (128, 92), (132, 110), (127, 140), (121, 160), (106, 160),
+                                              (98, 134), (102, 108)])], material=hair, shade={"highlight_amount": 0.3}),
+        form("curls_near", 12.8, curls_near, material=hair, shade={"highlight_amount": 0.3}),
+        form("fringe_curls", 12.9, [C((140, 100), (13, 10)), C((151, 99), (12, 10)), C((162, 98), (11, 9)),
+                                    C((196, 101), (11, 9)), C((205, 103), (10, 8))],
+             material=hair, shade={"highlight_amount": 0.3}),
+        # wide-brimmed black hat, tilted, with a mustard band; the brim shades the brow
+        wash("brim_shadow", 12.95, [smooth([(114, 96), (160, 104), (212, 104), (214, 116), (160, 116),
+                                            (116, 110)])], "#20161a", 0.4, clip_to="face", blur=4.0),
+        cloth("hat_brim", 13.5, [C((162, 80), (236, 50), rot=-7)], "cloth_ink", shade={"highlight_amount": 0.4}),
+        cloth("hat_crown", 13.6, [smooth([(108, 70), (114, 34), (140, 16), (184, 12), (212, 26), (220, 60),
+                                          (190, 72), (150, 76)])], "cloth_ink", shade={"highlight_amount": 0.45}),
+        cloth("hat_band", 13.7, [lock([(110, 64), (150, 72), (190, 68), (220, 56)], 7, 9, 7)], "cloth_mustard"),
+    ]
+    note = ("Juno Caster (npc_10), public crier. Author design: young round face caught mid-sentence, honey short "
+            "curls under a wide-brimmed black hat with a mustard band, mustard coat with a short cape collar and "
+            "black stand collar, a blank notice pinned on the chest. 3/4 bust facing screen right.")
+    return recipe("npc_10_juno_caster", "portrait_juno_caster", 110, note, forms)
+
+
+PORTRAITS = [ilyra, orrin, veya, sable, nera, tamas, bryn, meral, perrin, juno]
 
 
 def main() -> int:

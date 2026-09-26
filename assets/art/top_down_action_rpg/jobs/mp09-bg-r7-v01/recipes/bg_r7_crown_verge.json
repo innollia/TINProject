@@ -1,0 +1,122 @@
+{
+  "asset": "bg_r7_crown_verge",
+  "status": "candidate",
+  "note": "R7 The Hollow Orchard, zone 3 (Crown Position and Storm Verge): base_clean only. Layout from BRIEF.md 6.3 (logical px x2): Outer Wall face y0..240 at x0..640 and x1200..1600, broken basalt stubs east of 1600; E13 Crown Stair x680..1160 rising north from y400 between tall cheek walls; empty round Crown Position platform centre (1040,1000) 640x556, 0.3 m high, with an empty socket (the plinth object appears only after it is claimed); ridge shortcut path y560..720 from the verge west to the edge; pale scoured Storm Verge ground x1520..2560 with grit streaks from the east. Shrubs, rubble, cut trace, plinth and gates are objects. 60 deg camera, ground 180 px/m, heights 110 px/m.",
+  "palette": "palette_r7.json",
+  "style": "environment",
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = logical (0,0); 2 source px per logical px",
+  "seed": 703,
+  "include": ["_r7_ground.json"],
+  "forms": [
+    {"name": "verge_ground", "z": 3, "kind": "wash", "material": "verge_scour", "opacity": 0.95, "blur": 50,
+     "rough": {"amp": 0.8, "soft": 40, "cell": 120},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2140, 760], "size": [1300, 1700]}]},
+    {"name": "verge_grit", "z": 3.2, "kind": "wash", "color": "grit", "opacity": 0.4,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1640, 120], "size": [120, 3], "rot": -6,
+                 "repeat": {"grid": [8, 18], "step": [120, 76], "stagger": 60, "jitter": {"at": 30, "size": 0.5, "alpha": 0.7, "rot": 3}}}]},
+    {"name": "verge_scours", "z": 3.3, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.28,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1700, 160], "size": [260, 10], "rot": -6,
+                 "repeat": {"grid": [4, 12], "step": [240, 110], "stagger": 120, "jitter": {"at": 40, "size": 0.4, "alpha": 0.6}}}]},
+
+    {"name": "stone_halo", "z": 4, "kind": "flat", "color": "loam_joint", "opacity": 0.85, "blur": 2,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [108, 88],
+        "repeat": {"line": [[40, 640], [1760, 640]], "count": 15, "jitter": {"at": 4}}},
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [108, 88],
+        "repeat": {"line": [[40, 1140], [620, 1080]], "count": 5, "jitter": {"at": 4}}},
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [104, 86],
+        "repeat": {"line": [[920, 480], [960, 620]], "count": 2, "jitter": {"at": 4}}}
+     ]},
+    {"name": "flagstones", "z": 4.2, "material": "root_flag",
+     "shade": {"max_radius": 6, "soft": 0.12, "bump": 0.9, "threshold": 0.44, "highlight": 0.86, "highlight_amount": 0.3, "ragged": 0.15},
+     "line": {"width": 1.1, "heavy": 1.0, "breaks": 0.25, "color": "#15130f", "opacity": 0.85},
+     "rough": {"amp": 0.6, "soft": 2.0, "cell": 12},
+     "cast": {"dist": 2, "blur": 2, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [98, 78],
+        "repeat": {"line": [[40, 640], [1760, 640]], "count": 15, "jitter": {"at": 5, "rot": 9, "size": 0.12}}},
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [98, 78],
+        "repeat": {"line": [[40, 1140], [620, 1080]], "count": 5, "jitter": {"at": 4, "rot": 8, "size": 0.12}}},
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "ground": true, "at": [0, 0], "size": [94, 76],
+        "repeat": {"line": [[920, 480], [960, 620]], "count": 2, "jitter": {"at": 4, "rot": 8, "size": 0.12}}}
+     ]},
+    {"name": "ridge_cracks", "z": 4.4, "kind": "flat", "color": "#15130f", "opacity": 0.8,
+     "pieces": [
+       {"icon": "lightning_bolt", "at": [260, 640], "size": [16, 150], "rot": 8},
+       {"icon": "lightning_bolt", "at": [1380, 650], "size": [10, 60], "rot": 80}
+     ]},
+
+    {"name": "platform", "z": 6, "kind": "block", "material": "basalt", "extrude": 33,
+     "pieces": [{"icon": "circle", "at": [1040, 967], "size": [640, 556]}]},
+    {"name": "platform_rings", "z": 6.2, "kind": "flat", "color": "#16151b", "opacity": 0.75, "clip_to": "platform",
+     "pieces": [
+       {"icon": "circle", "at": [1040, 967], "size": [500, 434]},
+       {"icon": "circle", "op": "sub", "at": [1040, 967], "size": [494, 428]},
+       {"icon": "circle", "at": [1040, 967], "size": [320, 278]},
+       {"icon": "circle", "op": "sub", "at": [1040, 967], "size": [314, 272]}
+     ]},
+    {"name": "platform_joints", "z": 6.3, "kind": "flat", "color": "#16151b", "opacity": 0.6, "clip_to": "platform",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [3, 90], "repeat": {"ellipse": [1040, 967, 205, 178], "count": 12, "orient": true}}]},
+    {"name": "platform_wear", "z": 6.4, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.35, "clip_to": "platform",
+     "mottle": {"cell": 60, "lo": 0.45, "hi": 0.85},
+     "pieces": [{"icon": "circle", "at": [1040, 967], "size": [640, 556]}]},
+    {"name": "socket", "z": 6.6, "kind": "flat", "color": "#1a191f",
+     "line": {"width": 1.0, "heavy": 1.2, "color": "#09080d"},
+     "pieces": [{"icon": "circle", "at": [1040, 967], "size": [150, 130]}]},
+    {"name": "socket_ring", "z": 6.7, "kind": "flat", "material": "bronze", "opacity": 0.8,
+     "pieces": [
+       {"icon": "circle", "at": [1040, 967], "size": [166, 144]},
+       {"icon": "circle", "op": "sub", "at": [1040, 967], "size": [154, 134]}
+     ]},
+
+    {"name": "stair_back", "z": 18, "kind": "flat", "color": "#16151b",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [920, 205], "size": [484, 420]}]},
+    {"name": "stair_treads", "z": 18.2, "material": "basalt", "kind": "flat",
+     "line": {"width": 1.0, "heavy": 1.2, "breaks": 0.2, "color": "#09080d"},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [920, 0], "size": [480, 46],
+                 "repeat": {"line": [[920, 357], [920, 22]], "count": 6}}]},
+    {"name": "stair_risers", "z": 18.3, "kind": "flat", "color": "#262530",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [920, 0], "size": [480, 20],
+                 "repeat": {"line": [[920, 390], [920, 55]], "count": 6}}]},
+    {"name": "stair_wear", "z": 18.4, "kind": "wash", "material": "worn", "opacity": 0.14, "clip_to": "stair_treads",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [920, 200], "size": [220, 420]}]},
+    {"name": "stair_top_dark", "z": 18.5, "kind": "wash", "color": "shadow_contact", "blend": "multiply", "opacity": 0.45, "blur": 40,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [920, 30], "size": [480, 120]}]},
+
+    {"name": "north_wall", "z": 20, "kind": "block", "material": "basalt", "extrude": 240,
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [330, -31], "size": [660, 62]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1390, -31], "size": [420, 62]}
+     ]},
+    {"name": "stair_cheeks", "z": 20.1, "kind": "block", "material": "basalt_dark", "extrude": 180,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [669, 10], "size": [26, 420]},
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [1171, 10], "size": [26, 420]}
+     ]},
+    {"name": "wall_courses", "z": 20.2, "kind": "flat", "color": "#141319", "opacity": 0.7, "clip_to": "north_wall",
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 0], "size": [2600, 4], "repeat": {"line": [[1280, 80], [1280, 160]], "count": 2}},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [100, 40], "size": [4, 80], "repeat": {"grid": [10, 3], "step": [288, 80], "stagger": 144}}
+     ]},
+    {"name": "wall_damp", "z": 20.4, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.4, "clip_to": "north_wall",
+     "mottle": {"cell": 130, "lo": 0.48, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 130], "size": [2600, 280]}]},
+    {"name": "wall_moss", "z": 20.5, "kind": "wash", "color": "moss", "opacity": 0.4, "clip_to": "north_wall", "blur": 10,
+     "rough": {"amp": 0.7, "soft": 8, "cell": 30},
+     "pieces": [
+       {"icon": "cloud", "at": [300, 232], "size": [360, 56]},
+       {"icon": "cloud", "at": [1400, 228], "size": [300, 50], "flip": "x"}
+     ]},
+    {"name": "wall_stubs", "z": 21, "kind": "block", "material": "basalt_dark", "extrude": 120,
+     "rough": {"amp": 0.5, "soft": 3, "cell": 20},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [1720, 100], "size": [150, 56]},
+       {"icon": "square", "poly": [[0, 3], [9, 0], [16, 6], [16, 16], [0, 16]], "fit": [0, 0, 16, 16], "at": [2000, 180], "size": [170, 60]},
+       {"icon": "square", "poly": [[0, 8], [6, 2], [16, 0], [16, 16], [0, 16]], "fit": [0, 0, 16, 16], "at": [2330, 110], "size": [180, 58]}
+     ]},
+    {"name": "wall_end_break", "z": 21.2, "kind": "flat", "color": "#16151b", "opacity": 0.8,
+     "pieces": [{"icon": "lightning_bolt", "at": [1596, 120], "size": [22, 200], "rot": 4}]}
+  ]
+}

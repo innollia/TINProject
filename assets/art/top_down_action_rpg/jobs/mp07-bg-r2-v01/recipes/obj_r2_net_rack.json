@@ -1,0 +1,50 @@
+{
+  "asset": "obj_r2_net_rack",
+  "status": "candidate",
+  "note": "R2 region object (author design). Net drying rack: two 1.8 m posts 1.6 m apart, a crossbar and a hanging fishing net with cork floats along its lower edge.",
+  "palette": "palette_r2.json",
+  "style": "prop",
+  "canvas": [420, 360],
+  "pivot": [210, 300],
+  "pivot_meaning": "centre of the line between the two post feet on the deck",
+  "seed": 343,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.3, "blur": 7,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [214, 300], "size": [300, 24]},
+       {"icon": "circle", "at": [74, 300], "size": [34, 14]},
+       {"icon": "circle", "at": [354, 300], "size": [34, 14]}
+     ]},
+    {"name": "posts", "z": 0, "kind": "block", "material": "stilt", "extrude": 198,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [70, 96], "size": [16, 12]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [350, 96], "size": [16, 12]}
+     ]},
+    {"name": "crossbar", "z": 1, "material": "wood", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [210, 106], "size": [300, 10]}]},
+    {"name": "net", "z": 1.5, "kind": "wash", "material": "net", "opacity": 0.35,
+     "rough": {"amp": 0.5, "soft": 1.5, "cell": 14},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [150, 166], "size": [138, 112], "rot": 2},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [272, 160], "size": [128, 100], "rot": -3}
+     ]},
+    {"name": "net_threads_a", "z": 1.55, "kind": "flat", "material": "net", "clip_to": "net",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 240], "rot": 40, "repeat": {"line": [[40, 160], [380, 160]], "count": 34}}]},
+    {"name": "net_threads_b", "z": 1.56, "kind": "flat", "material": "net", "clip_to": "net",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [2, 240], "rot": -40, "repeat": {"line": [[40, 160], [380, 160]], "count": 34}}]},
+    {"name": "net_folds", "z": 1.6, "kind": "wash", "material": "net", "opacity": 0.5,
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [210, 112], "size": [270, 12]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [118, 170], "size": [10, 110], "rot": 4},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [300, 160], "size": [10, 90], "rot": -6}
+     ]},
+    {"name": "floats", "z": 1.7, "material": "cord", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [{"icon": "circle", "at": [0, 0], "size": [12, 10],
+                 "repeat": {"points": [[92, 222], [124, 224], [156, 222], [188, 221], [224, 213], [256, 214], [288, 212], [320, 210]]}}]},
+    {"name": "post_caps", "z": 2, "kind": "flat", "material": "iron",
+     "pieces": [
+       {"icon": "square", "at": [70, 102], "size": [18, 6]},
+       {"icon": "square", "at": [350, 102], "size": [18, 6]}
+     ]}
+  ]
+}

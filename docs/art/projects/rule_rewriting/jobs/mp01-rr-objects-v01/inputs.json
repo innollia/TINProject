@@ -1,0 +1,15 @@
+{
+  "job_id": "mp01-rr-objects-v01",
+  "status": "candidate",
+  "hashes_taken": "2026-09-27, at the end of the Rule Rewrite object pass",
+  "read_only_inputs": [
+    {"path": "plans/kits/01_RULE_REWRITE_KIT.md", "sha256": "ed42cbd0f8bfb8d0112a559ce9cc3000b9257e58d0d7432e63cb3e776dcb7e79", "role": "kit plan: 8 screen/art rules (old at-icons assembly no longer current; words keep their own typography)"},
+    {"path": "modules/rule_rewriting/art/README.md", "sha256": "0af817e73ea381b4214a95c97fd30c7506517c3c08383207a33af4568cf6eba4", "role": "noun kind list and per-kind readability notes; old files left untouched"},
+    {"path": "modules/rule_rewriting/art/contact_sheet_720p.png", "sha256": "d019cc65ea9860b7ff99dcfc5c4706eb3f9066a3dbbf08e68146cf1781a4b158", "role": "old art, viewed only for each kind's identity hue; no shape copied"},
+    {"path": "modules/rule_rewriting/presentation/rule_board_view.gd", "sha256": "2de5c8badc1b3995cce8125c568d3e830d44ee5d1c4d9eb493312016f62b5b1a", "role": "one texture per kind (art/<kind>.svg) for 2D cells, 3D Sprite3D and inventory; board cell colours #1a2026 / #20272d"},
+    {"path": "modules/rule_rewriting/content/index.json", "sha256": "e08b57e423ce1ce5e0639c92b5691c19aa73e7d501b55e899ceba8620357db86", "role": "board list; the 16 board JSONs were scanned for the object kinds in use"},
+    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/recipes/palette_h0_mood.json", "sha256": "ccfa41612677c98e366dc9bb77b90e62bd11d9406d1d7d66c783455ebfff9ebc", "role": "V1 palette; recipes/palette_rr.json is this file plus rr_* materials"}
+  ],
+  "tool": "assets/art/rule_rewriting/jobs/mp01-rr-objects-v01/tool (copy of mp01-props-common-v01/tool = V1 tool + workers 2 + decal; review_sheet.py here also has --fg and --cols). Each output .json records its recipe hash, tool version, icons used with SHA-256 and build key",
+  "shape_source": "addons/at-icons/node2d SVG icons (MIT, Valentin Fossati & contributors)"
+}

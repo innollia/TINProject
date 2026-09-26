@@ -1,0 +1,127 @@
+{
+  "asset": "skeleton_soldier",
+  "status": "candidate",
+  "note": "Generic battler: skeleton soldier (undead). Rusted open helmet with a nasal guard, a torn breastplate fragment over the ribcage, a notched sword raised in the right hand, a cracked round wooden shield on the left forearm, faint cold pinpoints in the eye sockets. Front view, fixed 60 deg camera. No text or emblems.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre; ground contact line y=320",
+  "seed": 601,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [160, 321], "size": [138, 22]}]},
+
+    {"name": "legs", "z": 1, "material": "bone",
+     "pieces": [
+       {"icon": "circle", "at": [148, 262], "size": [9, 44], "rot": 6},
+       {"icon": "circle", "at": [146, 300], "size": [8, 36]},
+       {"icon": "circle", "at": [172, 262], "size": [9, 44], "rot": -6},
+       {"icon": "circle", "at": [174, 300], "size": [8, 36]}
+     ]},
+    {"name": "knees_feet", "z": 1.2, "material": "bone_dark",
+     "pieces": [
+       {"icon": "circle", "at": [147, 283], "size": [12, 11]},
+       {"icon": "circle", "at": [173, 283], "size": [12, 11]},
+       {"icon": "circle", "at": [141, 318], "size": [22, 8]},
+       {"icon": "circle", "at": [179, 318], "size": [22, 8]}
+     ]},
+    {"name": "pelvis", "z": 1.5, "material": "bone",
+     "pieces": [
+       {"icon": "circle", "at": [151, 238], "size": [26, 20], "rot": -20},
+       {"icon": "circle", "at": [169, 238], "size": [26, 20], "rot": 20}
+     ]},
+    {"name": "loin", "z": 1.6, "material": "rag",
+     "pieces": [{"icon": "bookmark", "at": [160, 256], "size": [30, 40]}]},
+    {"name": "spine", "z": 1.8, "material": "bone_dark",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [160, 212], "size": [9, 50]}]},
+    {"name": "ribcage", "z": 2, "material": "bone",
+     "pieces": [{"icon": "circle", "at": [160, 176], "size": [60, 54]}]},
+    {"name": "rib_gaps", "z": 2.1, "kind": "flat", "material": "void", "clip_to": "ribcage",
+     "pieces": [
+       {"icon": "circle", "at": [144, 166], "size": [22, 5], "rot": 10},
+       {"icon": "circle", "at": [144, 178], "size": [22, 5], "rot": 12},
+       {"icon": "circle", "at": [145, 190], "size": [20, 5], "rot": 14},
+       {"icon": "circle", "at": [176, 166], "size": [22, 5], "rot": -10},
+       {"icon": "circle", "at": [176, 178], "size": [22, 5], "rot": -12},
+       {"icon": "circle", "at": [175, 190], "size": [20, 5], "rot": -14},
+       {"icon": "square", "at": [160, 196], "size": [30, 12]}
+     ]},
+    {"name": "breastplate", "z": 2.3, "material": "steel", "cast": {"dist": 2.2, "blur": 1.4, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "shield", "half": "left", "at": [148, 172], "size": [30, 46], "rot": 6},
+       {"icon": "circle", "op": "sub", "at": [140, 194], "size": [16, 14]}
+     ]},
+    {"name": "strap", "z": 2.4, "material": "leather",
+     "pieces": [{"icon": "square", "at": [168, 170], "size": [5, 58], "rot": -34}]},
+
+    {"name": "shield", "z": 3, "material": "wood", "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "circle", "at": [112, 214], "size": [56, 58]},
+       {"icon": "circle", "op": "sub", "at": [96, 238], "size": [16, 14]}
+     ]},
+    {"name": "shield_rim", "z": 3.1, "kind": "flat", "material": "iron", "clip_to": "shield",
+     "pieces": [
+       {"icon": "circle", "at": [112, 214], "size": [56, 58]},
+       {"icon": "circle", "op": "sub", "at": [112, 214], "size": [47, 49]}
+     ]},
+    {"name": "shield_crack", "z": 3.2, "kind": "flat", "material": "void", "clip_to": "shield",
+     "pieces": [
+       {"icon": "square", "at": [104, 204], "size": [2, 20], "rot": 24},
+       {"icon": "square", "at": [110, 220], "size": [2, 18], "rot": -16},
+       {"icon": "square", "at": [106, 234], "size": [1.8, 14], "rot": 30}
+     ]},
+    {"name": "shield_boss", "z": 3.3, "material": "iron",
+     "pieces": [{"icon": "circle", "at": [114, 212], "size": [14, 14]}]},
+
+    {"name": "arm_r", "z": 3.4, "material": "bone",
+     "pieces": [
+       {"icon": "circle", "at": [198, 172], "size": [8, 42], "rot": -12},
+       {"icon": "circle", "at": [206, 200], "size": [7, 30], "rot": -40}
+     ]},
+    {"name": "shoulders", "z": 3.5, "material": "bone_dark",
+     "pieces": [
+       {"icon": "circle", "at": [128, 152], "size": [16, 14]},
+       {"icon": "circle", "at": [193, 152], "size": [16, 14]}
+     ]},
+    {"name": "blade", "z": 3.6, "material": "steel", "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "at": [230, 158], "size": [9, 92], "rot": 20},
+       {"icon": "triangle", "at": [246, 113], "size": [9, 14], "rot": 20},
+       {"icon": "triangle", "op": "sub", "at": [238, 140], "size": [7, 7], "rot": -70},
+       {"icon": "triangle", "op": "sub", "at": [226, 172], "size": [6, 6], "rot": 110}
+     ]},
+    {"name": "guard", "z": 3.7, "material": "iron", "line": {"width": 0.6, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [215, 200], "size": [28, 6], "rot": 20},
+       {"icon": "square", "at": [212, 208], "size": [5, 14], "rot": 20}
+     ]},
+    {"name": "hand_r", "z": 3.8, "material": "bone_dark",
+     "pieces": [{"icon": "circle", "at": [212, 210], "size": [13, 12]}]},
+
+    {"name": "skull", "z": 4, "material": "bone",
+     "pieces": [
+       {"icon": "circle", "at": [160, 110], "size": [40, 40]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [160, 131], "size": [24, 12]}
+     ]},
+    {"name": "face_holes", "z": 4.1, "kind": "flat", "material": "void",
+     "pieces": [
+       {"icon": "circle", "at": [152, 111], "size": [10, 11]},
+       {"icon": "circle", "at": [168, 111], "size": [10, 11]},
+       {"icon": "triangle", "flip": "y", "at": [160, 122], "size": [6, 6]},
+       {"icon": "square", "at": [160, 132], "size": [18, 1.6]}
+     ]},
+    {"name": "eye_glow", "z": 4.2, "kind": "flat", "material": "soul", "emit": 0.9,
+     "glow": {"radius": 3, "opacity": 0.6, "color": "soul_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [152, 112], "size": [3.4, 3.4]},
+       {"icon": "circle", "at": [168, 112], "size": [3.4, 3.4]}
+     ]},
+    {"name": "helmet", "z": 4.3, "material": "steel",
+     "pieces": [
+       {"icon": "circle", "half": "top", "at": [160, 98], "size": [48, 30]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [160, 110], "size": [50, 6]},
+       {"icon": "square", "at": [160, 118], "size": [5, 16]}
+     ]}
+  ]
+}

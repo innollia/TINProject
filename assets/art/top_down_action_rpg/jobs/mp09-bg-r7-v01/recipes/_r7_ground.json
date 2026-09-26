@@ -1,0 +1,26 @@
+{
+  "note": "Shared R7 loam ground (included by the three R7 zones). Continuous packed earth with directional strokes, stains in three sizes with falling strength, clods and flat leaf litter. No plants standing up (trees, shrubs are objects).",
+  "forms": [
+    {"name": "ground", "z": 0, "kind": "wash", "material": "loam",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "ground_value", "z": 0.5, "kind": "wash", "material": "loam", "color": "#5e5041", "opacity": 0.5,
+     "mottle": {"cell": 300, "lo": 0.45, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "stain_large", "z": 2, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.22,
+     "mottle": {"cell": 520, "lo": 0.5, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "stain_mid", "z": 2.1, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.18,
+     "mottle": {"cell": 170, "lo": 0.56, "hi": 0.86},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "stain_small", "z": 2.2, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.14,
+     "mottle": {"cell": 44, "lo": 0.62, "hi": 0.9},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "clods", "z": 2.4, "kind": "flat", "color": "root_dark", "opacity": 0.55,
+     "rough": {"amp": 0.6, "soft": 2, "cell": 8},
+     "pieces": [{"icon": "metaballs", "ground": true, "at": [60, 60], "size": [26, 18],
+                 "repeat": {"grid": [16, 10], "step": [170, 150], "stagger": 85, "jitter": {"at": 60, "rot": 180, "size": 0.5, "alpha": 0.6}}}]},
+    {"name": "leaf_litter", "z": 2.6, "kind": "flat", "material": "leaf_dry", "opacity": 0.6,
+     "pieces": [{"icon": "leaf", "ground": true, "at": [100, 90], "size": [16, 10],
+                 "repeat": {"grid": [22, 14], "step": [118, 104], "stagger": 59, "jitter": {"at": 44, "rot": 180, "size": 0.4, "alpha": 0.7}}}]}
+  ]
+}

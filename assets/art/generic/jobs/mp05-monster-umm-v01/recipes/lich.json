@@ -1,0 +1,95 @@
+{
+  "asset": "lich",
+  "status": "candidate",
+  "note": "Generic battler: lich (undead / magic). A skull with violet points of light under a plain iron circlet, a heavy wine-dark robe with a tall stiff collar and a frayed hem, bony hands raised at chest height, two dim arcane orbs floating at its sides (emit layer). Front view, fixed 60 deg camera. No runes, symbols or text.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre; ground contact line y=320",
+  "seed": 607,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [160, 321], "size": [150, 24]}]},
+
+    {"name": "robe", "z": 1, "material": "robe_wine", "rough": {"amp": 0.3, "cell": 6, "soft": 1.0},
+     "pieces": [
+       {"icon": "bell", "crop": [2, 3.0, 14, 12.6], "fit": [2, 3.0, 14, 12.6], "at": [160, 234], "size": [124, 176]},
+       {"icon": "triangle", "op": "sub", "at": [120, 320], "size": [10, 12], "rot": 180},
+       {"icon": "triangle", "op": "sub", "at": [196, 320], "size": [10, 12], "rot": 180}
+     ]},
+    {"name": "robe_trim", "z": 1.1, "kind": "flat", "material": "bronze", "opacity": 0.8, "clip_to": "robe",
+     "pieces": [
+       {"icon": "square", "at": [160, 260], "size": [8, 130]},
+       {"icon": "square", "at": [160, 318], "size": [140, 6]}
+     ]},
+    {"name": "robe_folds", "z": 1.2, "kind": "flat", "color": "coat_seam", "opacity": 0.7, "clip_to": "robe",
+     "pieces": [
+       {"icon": "square", "at": [130, 262], "size": [1.8, 100], "rot": 7},
+       {"icon": "square", "at": [190, 262], "size": [1.8, 100], "rot": -7}
+     ]},
+
+    {"name": "mantle", "z": 2, "material": "robe_wine",
+     "pieces": [{"icon": "umbrella", "crop": [0.6, 2.3, 15.4, 8.7], "at": [160, 152], "size": [128, 44]}]},
+    {"name": "collar", "z": 2.2, "material": "robe_wine", "shade": {"bump": 0.6},
+     "pieces": [
+       {"icon": "triangle", "at": [132, 118], "size": [26, 50], "rot": -18},
+       {"icon": "triangle", "at": [188, 118], "size": [26, 50], "rot": 18}
+     ]},
+
+    {"name": "skull", "z": 3, "material": "bone",
+     "pieces": [
+       {"icon": "circle", "at": [160, 112], "size": [38, 40]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [160, 132], "size": [22, 11]}
+     ]},
+    {"name": "face_holes", "z": 3.1, "kind": "flat", "material": "void",
+     "pieces": [
+       {"icon": "circle", "at": [152, 113], "size": [10, 11]},
+       {"icon": "circle", "at": [168, 113], "size": [10, 11]},
+       {"icon": "triangle", "flip": "y", "at": [160, 124], "size": [5, 6]},
+       {"icon": "square", "at": [160, 133], "size": [16, 1.5]}
+     ]},
+    {"name": "eyes", "z": 3.2, "kind": "flat", "material": "arcane", "emit": 1.0,
+     "glow": {"radius": 3, "opacity": 0.65, "color": "arcane_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [152, 114], "size": [3.6, 3.6]},
+       {"icon": "circle", "at": [168, 114], "size": [3.6, 3.6]}
+     ]},
+    {"name": "circlet", "z": 3.3, "material": "iron", "line": {"width": 0.6, "heavy": 0.5},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [160, 98], "size": [42, 6]},
+       {"icon": "triangle", "at": [148, 92], "size": [6, 8]},
+       {"icon": "triangle", "at": [160, 90], "size": [7, 11]},
+       {"icon": "triangle", "at": [172, 92], "size": [6, 8]}
+     ]},
+
+    {"name": "sleeves", "z": 4, "material": "robe_wine",
+     "pieces": [
+       {"icon": "droplet", "at": [118, 186], "size": [34, 62], "rot": 30},
+       {"icon": "droplet", "at": [202, 186], "size": [34, 62], "rot": -30}
+     ]},
+    {"name": "hands", "z": 4.1, "material": "bone",
+     "pieces": [
+       {"icon": "circle", "at": [134, 208], "size": [13, 12]},
+       {"icon": "circle", "at": [127, 202], "size": [3, 13], "rot": -20},
+       {"icon": "circle", "at": [133, 199], "size": [3, 13]},
+       {"icon": "circle", "at": [139, 200], "size": [3, 12], "rot": 16},
+       {"icon": "circle", "at": [186, 208], "size": [13, 12]},
+       {"icon": "circle", "at": [193, 202], "size": [3, 13], "rot": 20},
+       {"icon": "circle", "at": [187, 199], "size": [3, 13]},
+       {"icon": "circle", "at": [181, 200], "size": [3, 12], "rot": -16}
+     ]},
+
+    {"name": "orbs", "z": 5, "kind": "flat", "material": "arcane", "emit": 0.9,
+     "glow": {"radius": 8, "opacity": 0.55, "color": "arcane_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [82, 170], "size": [22, 22]},
+       {"icon": "circle", "at": [238, 164], "size": [22, 22]}
+     ]},
+    {"name": "orb_cores", "z": 5.1, "kind": "flat", "material": "fire_core", "emit": 0.6,
+     "pieces": [
+       {"icon": "circle", "at": [79, 167], "size": [6, 6]},
+       {"icon": "circle", "at": [235, 161], "size": [6, 6]}
+     ]}
+  ]
+}

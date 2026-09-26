@@ -1,0 +1,35 @@
+{
+  "status": "candidate",
+  "variant": "mp06 H0 area D - background + objects, V1 mood, no scene lighting",
+  "note": "Object placement for h0_d_ash_stair (source px of the 2560x1440 background, where each item's pivot goes). E01 Ash Stair is open and drawn in the base, so it has no object. The stair head and the space under the arch are kept clear. 'light' is data for the game's own lighting; nothing is painted. Wall-mounted items carry 'sort_y'. Review image only, not a content manifest; no people or enemies.",
+  "background": "output/h0_d_ash_stair/base_clean.png",
+  "foreground": ["output/h0_d_ash_stair/foreground_stair_arch.png"],
+  "scale": 0.5,
+  "items": [
+    {"asset": "obj_h0_drain_cover", "frame": "obj_h0_drain_cover", "at": [700, 420], "layer": "floor", "id": "drain_w"},
+    {"asset": "obj_h0_drain_cover", "frame": "obj_h0_drain_cover", "at": [1900, 440], "layer": "floor", "id": "drain_e"},
+
+    {"asset": "obj_h0_docket_rack", "frame": "obj_h0_docket_rack", "at": [460, 202], "sort_y": 212, "id": "rack_w"},
+    {"asset": "obj_h0_docket_rack", "frame": "obj_h0_docket_rack", "at": [2120, 202], "sort_y": 212, "id": "rack_e"},
+    {"asset": "obj_h0_wall_sconce", "frame": "obj_h0_wall_sconce", "at": [1040, 183], "sort_y": 256, "id": "sconce_w",
+     "light": {"color": "#ffc987", "radius": 220}},
+    {"asset": "obj_h0_wall_sconce", "frame": "obj_h0_wall_sconce", "at": [1480, 183], "sort_y": 256, "id": "sconce_e",
+     "light": {"color": "#ffc987", "radius": 220}},
+    {"asset": "obj_h0_post_lantern", "frame": "obj_h0_post_lantern", "at": [52, 554], "sort_y": 696, "id": "lantern_w",
+     "light": {"color": "#ffc987", "radius": 220}},
+    {"asset": "obj_h0_post_lantern", "frame": "obj_h0_post_lantern", "at": [2512, 554], "sort_y": 696, "id": "lantern_e",
+     "light": {"color": "#ffc987", "radius": 220}},
+
+    {"asset": "obj_h0_rubble", "frame": "rubble_small", "at": [520, 250], "id": "rubble_nw"},
+    {"asset": "obj_h0_rubble", "frame": "rubble_large", "at": [2110, 262], "id": "rubble_ne"},
+    {"asset": "obj_h0_rubble", "frame": "rubble_small", "at": [2060, 600], "id": "rubble_se"},
+    {"asset": "obj_h0_crate", "frame": "crate_stack", "at": [300, 520], "id": "crates_w"},
+    {"asset": "obj_h0_crate", "frame": "crate_large", "at": [2260, 500], "id": "crates_e"},
+
+    {"asset": "obj_h0_brazier", "frame": "obj_h0_brazier", "at": [700, 720], "id": "brazier_w",
+     "light": {"color": "#ffb45c", "radius": 300}},
+    {"asset": "obj_h0_brazier", "frame": "obj_h0_brazier", "at": [1860, 720], "id": "brazier_e",
+     "light": {"color": "#ffb45c", "radius": 300}}
+  ],
+  "out": "preview/h0_d_ash_stair_check_1280x720.png"
+}

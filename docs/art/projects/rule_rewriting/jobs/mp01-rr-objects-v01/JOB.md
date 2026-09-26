@@ -1,6 +1,6 @@
 # mp01-rr-objects-v01 — Rule Rewrite 보드 물체 그림 (2순위)
 
-상태: **제작 중, candidate.** 승인은 사용자만 한다. 게임에 연결하지 않는다(모듈의 `art/` 파일은 건드리지 않는다).
+상태: **물체 27장 완료, candidate.** BABA·PLAYER·MOTH·LARK만 8방향 기준 대기. 승인은 사용자만 한다. 게임에 연결하지 않는다(모듈의 `art/` 파일은 건드리지 않는다). 검수 기록은 `QA.md`.
 
 ## 근거
 
@@ -34,15 +34,22 @@
 
 ## 결과 파일
 
-- `assets/art/rule_rewriting/jobs/mp01-rr-objects-v01/output/rr_<kind>/rr_<kind>.png`(+ 빛나는 것만 `_emit.png`, `.json`)
-- `preview/`: 묶음별 모아 보기 시트, 보드 칸 색 위 확인 시트
+- `assets/art/rule_rewriting/jobs/mp01-rr-objects-v01/output/rr_<kind>/rr_<kind>.png`(+ 빛나는 것만 `_emit.png`, `.json`) — 27장
+- `preview/sheet_rr_objects_0.5x.png`: 27장을 보드 칸 색 위에 0.5배로 모은 시트
+- 재실행: `tool` 폴더에서 `py -3 -B build.py --all`
+- 보드 JSON에 쓰인 kind 이름과 파일 이름이 1:1이다(`rr_` 접두사만 붙음). 게임에 넣을 때는 `art/<kind>.svg` 대신 이 PNG를 쓰도록 모듈 쪽 작업이 따로 필요하다
+
+## 도구에서 바꾼 것 (이 작업 복사본만)
+
+- `tool/review_sheet.py`: `--fg`(이름표 색, 어두운 바탕용), `--cols`(여러 줄 격자). 그림 결과에는 영향 없음
 
 ## 진행 체크리스트
 
 - [x] 자료 읽기, 목록, 규격
 - [x] 도구·팔레트 복사, `rr_*` 재질 추가
-- [ ] 묶음 A
-- [ ] 묶음 B
-- [ ] 묶음 C
-- [ ] 묶음 D
-- [ ] 모아 보기 시트, QA.md, inputs.json
+- [x] 묶음 A (PAD 2번 고침)
+- [x] 묶음 B (KEY 1번, INK 2번 고침)
+- [x] 묶음 C (LAMP·BEACON·EMBER·LAVA 1번 고침)
+- [x] 묶음 D (POOL 1번, RUNE 2번 고침)
+- [x] 모아 보기 시트, QA.md, inputs.json
+- [ ] BABA, PLAYER, MOTH, LARK — 8방향 기준 대기

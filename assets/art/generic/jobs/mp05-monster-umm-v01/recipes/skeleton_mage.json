@@ -1,0 +1,98 @@
+{
+  "asset": "skeleton_mage",
+  "status": "candidate",
+  "note": "Generic battler: skeleton mage (undead / magic). Tattered dark hooded robe, a bare skull in the hood with faint violet pinpoints, bony hands, a tall bone-and-wood staff whose top claw holds a dim arcane orb. Front view, fixed 60 deg camera. No runes or text.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre; ground contact line y=320",
+  "seed": 602,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [162, 321], "size": [146, 24]}]},
+
+    {"name": "robe", "z": 1, "material": "rag_dark", "rough": {"amp": 0.45, "cell": 6, "soft": 1.2},
+     "pieces": [
+       {"icon": "bell", "crop": [2, 3.0, 14, 12.6], "fit": [2, 3.0, 14, 12.6], "at": [160, 236], "size": [104, 170]},
+       {"icon": "triangle", "op": "sub", "at": [132, 318], "size": [12, 16], "rot": 180},
+       {"icon": "triangle", "op": "sub", "at": [176, 320], "size": [10, 14], "rot": 180},
+       {"icon": "triangle", "op": "sub", "at": [200, 316], "size": [8, 12], "rot": 180}
+     ]},
+    {"name": "robe_fold", "z": 1.1, "kind": "flat", "color": "coat_seam", "opacity": 0.7, "clip_to": "robe",
+     "pieces": [
+       {"icon": "square", "at": [160, 250], "size": [2, 130]},
+       {"icon": "square", "at": [138, 262], "size": [1.6, 90], "rot": 6},
+       {"icon": "square", "at": [184, 262], "size": [1.6, 90], "rot": -6}
+     ]},
+    {"name": "rope", "z": 1.2, "material": "rag", "clip_to": "robe",
+     "pieces": [{"icon": "square", "at": [160, 206], "size": [110, 5], "rot": 2}]},
+    {"name": "rope_tail", "z": 1.3, "material": "rag",
+     "pieces": [{"icon": "square", "at": [146, 226], "size": [4, 36], "rot": 6}]},
+
+    {"name": "mantle", "z": 2, "material": "rag_dark", "rough": {"amp": 0.4, "cell": 6, "soft": 1.2},
+     "pieces": [{"icon": "umbrella", "crop": [0.6, 2.3, 15.4, 8.7], "at": [160, 150], "size": [118, 44]}]},
+    {"name": "sleeve_l", "z": 2.2, "material": "rag_dark", "rough": {"amp": 0.4, "cell": 6, "soft": 1.2},
+     "pieces": [{"icon": "droplet", "at": [116, 196], "size": [30, 70], "rot": 10}]},
+    {"name": "hand_l", "z": 2.3, "material": "bone",
+     "pieces": [
+       {"icon": "circle", "at": [112, 234], "size": [12, 12]},
+       {"icon": "circle", "at": [108, 244], "size": [3, 12], "rot": 10},
+       {"icon": "circle", "at": [113, 245], "size": [3, 12]},
+       {"icon": "circle", "at": [118, 243], "size": [3, 10], "rot": -10}
+     ]},
+
+    {"name": "hood", "z": 3, "material": "rag_dark", "rough": {"amp": 0.35, "cell": 6, "soft": 1.0},
+     "pieces": [
+       {"icon": "circle", "at": [160, 108], "size": [58, 58]},
+       {"icon": "droplet", "at": [160, 86], "size": [34, 30]}
+     ]},
+    {"name": "hood_hole", "z": 3.1, "kind": "flat", "color": "#0b080e",
+     "pieces": [{"icon": "circle", "at": [160, 116], "size": [38, 38]}]},
+    {"name": "skull", "z": 3.2, "material": "bone", "shade": {"threshold": 0.58},
+     "pieces": [
+       {"icon": "circle", "at": [160, 116], "size": [30, 30]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [160, 131], "size": [18, 9]}
+     ]},
+    {"name": "face_holes", "z": 3.3, "kind": "flat", "material": "void",
+     "pieces": [
+       {"icon": "circle", "at": [154, 116], "size": [8, 9]},
+       {"icon": "circle", "at": [166, 116], "size": [8, 9]},
+       {"icon": "triangle", "flip": "y", "at": [160, 125], "size": [5, 5]},
+       {"icon": "square", "at": [160, 132], "size": [13, 1.4]}
+     ]},
+    {"name": "eye_glow", "z": 3.4, "kind": "flat", "material": "arcane", "emit": 0.9,
+     "glow": {"radius": 3, "opacity": 0.6, "color": "arcane_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [154, 117], "size": [3, 3]},
+       {"icon": "circle", "at": [166, 117], "size": [3, 3]}
+     ]},
+
+    {"name": "staff", "z": 4, "material": "wood", "shade": {"bump": 0.6},
+     "pieces": [
+       {"icon": "square", "at": [208, 208], "size": [7, 220]},
+       {"icon": "circle", "at": [208, 160], "size": [11, 8]},
+       {"icon": "circle", "at": [208, 250], "size": [11, 8]}
+     ]},
+    {"name": "claw", "z": 4.1, "material": "bone",
+     "pieces": [
+       {"icon": "moon", "at": [198, 84], "size": [10, 28], "rot": 20},
+       {"icon": "moon", "flip": "x", "at": [218, 84], "size": [10, 28], "rot": -20},
+       {"icon": "circle", "at": [208, 98], "size": [14, 10]}
+     ]},
+    {"name": "orb", "z": 4.2, "kind": "flat", "material": "arcane", "emit": 0.9,
+     "glow": {"radius": 7, "opacity": 0.6, "color": "arcane_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [208, 80], "size": [20, 20]},
+       {"icon": "circle", "at": [204, 76], "size": [6, 6]}
+     ]},
+    {"name": "sleeve_r", "z": 4.3, "material": "rag_dark", "rough": {"amp": 0.4, "cell": 6, "soft": 1.2},
+     "pieces": [{"icon": "droplet", "at": [200, 172], "size": [28, 56], "rot": -24}]},
+    {"name": "hand_r", "z": 4.4, "material": "bone",
+     "pieces": [
+       {"icon": "circle", "at": [208, 196], "size": [13, 12]},
+       {"icon": "circle", "at": [201, 199], "size": [8, 4]},
+       {"icon": "circle", "at": [201, 204], "size": [8, 4]}
+     ]}
+  ]
+}

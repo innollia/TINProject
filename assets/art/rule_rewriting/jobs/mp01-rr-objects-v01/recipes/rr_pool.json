@@ -1,0 +1,36 @@
+{
+  "asset": "rr_pool",
+  "status": "candidate",
+  "note": "Rule Rewrite POOL: a shallow water pool on the floor with a slate edge, darker depth at the back, two ripple rings and light streaks. Kit view: tops squashed 0.45. Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 231,
+  "forms": [
+    {"name": "edge", "z": 0, "kind": "block", "material": "rr_slate", "extrude": 8, "ao": false,
+     "pieces": [
+       {"icon": "circle", "at": [84, 118], "size": [128, 62]},
+       {"icon": "circle", "at": [118, 126], "size": [96, 50]},
+       {"icon": "circle", "at": [70, 132], "size": [70, 34]}
+     ]},
+    {"name": "water", "z": 1, "kind": "flat", "material": "rr_water", "line": {"width": 1.0, "heavy": 0.4},
+     "grad": {"to": "#6e9cae", "y0": 96, "y1": 146},
+     "pieces": [
+       {"icon": "circle", "at": [85, 118], "size": [108, 48]},
+       {"icon": "circle", "at": [117, 126], "size": [78, 38]},
+       {"icon": "circle", "at": [71, 131], "size": [54, 24]}
+     ]},
+    {"name": "ripples", "z": 2, "kind": "flat", "color": "#9ec3d1", "opacity": 0.5, "clip_to": "water",
+     "pieces": [
+       {"icon": "circle", "minus_icons": [{"icon": "circle", "box": [2.2, 2.2, 13.8, 13.8]}], "squash": 0.45, "at": [78, 118], "size": [44, 44]},
+       {"icon": "circle", "minus_icons": [{"icon": "circle", "box": [2.2, 2.2, 13.8, 13.8]}], "squash": 0.45, "at": [120, 130], "size": [28, 28]}
+     ]},
+    {"name": "streaks", "z": 2.5, "kind": "flat", "color": "#b8d5df", "opacity": 0.55, "clip_to": "water",
+     "pieces": [
+       {"icon": "circle", "rot": -8, "at": [106, 106], "size": [34, 3]},
+       {"icon": "circle", "rot": -8, "at": [70, 136], "size": [18, 2.4]}
+     ]}
+  ]
+}

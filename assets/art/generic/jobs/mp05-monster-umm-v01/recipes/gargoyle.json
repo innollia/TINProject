@@ -1,0 +1,110 @@
+{
+  "asset": "gargoyle",
+  "status": "candidate",
+  "note": "Generic battler: gargoyle (stone construct). A crouching stone beast with thick shoulders, stubby horns, a snarling open mouth, stone bat wings half raised, long clawed fingers resting on the ground between its feet, moss in the crevices and a few cracks, dull amber eyes. Front view, fixed 60 deg camera.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre; ground contact line y=318",
+  "seed": 612,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.42, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [160, 319], "size": [170, 26]}]},
+
+    {"name": "wing_l", "z": 0.5, "material": "stone",
+     "pieces": [
+       {"icon": "triangle", "at": [98, 150], "size": [96, 96], "rot": -50},
+       {"icon": "circle", "op": "sub", "at": [86, 206], "size": [34, 30]},
+       {"icon": "circle", "op": "sub", "at": [58, 180], "size": [26, 26]}
+     ]},
+    {"name": "wing_r", "z": 0.5, "material": "stone",
+     "pieces": [
+       {"icon": "triangle", "at": [222, 150], "size": [96, 96], "rot": 50},
+       {"icon": "circle", "op": "sub", "at": [234, 206], "size": [34, 30]},
+       {"icon": "circle", "op": "sub", "at": [262, 180], "size": [26, 26]}
+     ]},
+    {"name": "haunches", "z": 1, "material": "stone",
+     "pieces": [
+       {"icon": "circle", "at": [118, 262], "size": [58, 70], "rot": 20},
+       {"icon": "circle", "at": [202, 262], "size": [58, 70], "rot": -20},
+       {"icon": "circle", "at": [112, 306], "size": [40, 20]},
+       {"icon": "circle", "at": [208, 306], "size": [40, 20]}
+     ]},
+    {"name": "body", "z": 1.5, "material": "stone",
+     "pieces": [{"icon": "circle", "at": [160, 214], "size": [96, 104]}]},
+    {"name": "arms", "z": 2, "material": "stone",
+     "pieces": [
+       {"icon": "circle", "at": [128, 236], "size": [28, 86], "rot": 12},
+       {"icon": "circle", "at": [192, 236], "size": [28, 86], "rot": -12}
+     ]},
+    {"name": "hands", "z": 2.1, "material": "stone",
+     "pieces": [
+       {"icon": "circle", "at": [140, 296], "size": [30, 20]},
+       {"icon": "circle", "at": [180, 296], "size": [30, 20]}
+     ]},
+    {"name": "claws", "z": 2.2, "material": "stone_dark",
+     "pieces": [
+       {"icon": "triangle", "flip": "y", "at": [130, 308], "size": [5, 12], "rot": 12},
+       {"icon": "triangle", "flip": "y", "at": [139, 310], "size": [5, 12]},
+       {"icon": "triangle", "flip": "y", "at": [148, 308], "size": [5, 12], "rot": -12},
+       {"icon": "triangle", "flip": "y", "at": [172, 308], "size": [5, 12], "rot": 12},
+       {"icon": "triangle", "flip": "y", "at": [181, 310], "size": [5, 12]},
+       {"icon": "triangle", "flip": "y", "at": [190, 308], "size": [5, 12], "rot": -12}
+     ]},
+    {"name": "shoulders", "z": 2.3, "material": "stone", "shade": {"highlight_amount": 0.6},
+     "pieces": [
+       {"icon": "circle", "at": [122, 180], "size": [44, 36], "rot": -18},
+       {"icon": "circle", "at": [198, 180], "size": [44, 36], "rot": 18}
+     ]},
+    {"name": "moss", "z": 2.4, "kind": "wash", "blend": "multiply", "material": "moss", "opacity": 0.55, "rough": {"amp": 0.5, "cell": 5, "soft": 1.0},
+     "pieces": [
+       {"icon": "metaballs", "at": [118, 186], "size": [30, 16]},
+       {"icon": "cloud", "at": [204, 264], "size": [30, 14], "rot": 20},
+       {"icon": "metaballs", "at": [112, 300], "size": [26, 12]},
+       {"icon": "cloud", "at": [96, 150], "size": [24, 12], "rot": -40}
+     ]},
+    {"name": "cracks", "z": 2.5, "kind": "flat", "material": "void", "opacity": 0.8,
+     "pieces": [
+       {"icon": "square", "at": [176, 206], "size": [2, 18], "rot": 24},
+       {"icon": "square", "at": [180, 220], "size": [1.8, 14], "rot": -16},
+       {"icon": "square", "at": [124, 250], "size": [1.8, 16], "rot": -28}
+     ]},
+
+    {"name": "horns", "z": 2.9, "material": "stone_dark",
+     "pieces": [
+       {"icon": "triangle", "at": [140, 122], "size": [14, 26], "rot": -28},
+       {"icon": "triangle", "at": [180, 122], "size": [14, 26], "rot": 28}
+     ]},
+    {"name": "ears", "z": 2.95, "material": "stone",
+     "pieces": [
+       {"icon": "triangle", "at": [124, 146], "size": [12, 24], "rot": -64},
+       {"icon": "triangle", "at": [196, 146], "size": [12, 24], "rot": 64}
+     ]},
+    {"name": "head", "z": 3, "material": "stone",
+     "pieces": [
+       {"icon": "circle", "at": [160, 150], "size": [60, 54]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [160, 170], "size": [44, 22]}
+     ]},
+    {"name": "brow", "z": 3.1, "kind": "flat", "color": "#1d1922",
+     "pieces": [
+       {"icon": "square", "at": [148, 140], "size": [18, 3], "rot": 18},
+       {"icon": "square", "at": [172, 140], "size": [18, 3], "rot": -18}
+     ]},
+    {"name": "eyes", "z": 3.2, "kind": "flat", "material": "ember", "emit": 0.7,
+     "glow": {"radius": 3, "opacity": 0.45, "color": "ember_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [148, 148], "size": [7, 5]},
+       {"icon": "circle", "at": [172, 148], "size": [7, 5]}
+     ]},
+    {"name": "mouth", "z": 3.3, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [160, 174], "size": [30, 11]}]},
+    {"name": "fangs", "z": 3.4, "kind": "flat", "material": "stone_cap", "color": "#8a8290",
+     "pieces": [
+       {"icon": "triangle", "flip": "y", "at": [150, 171], "size": [5, 8]},
+       {"icon": "triangle", "flip": "y", "at": [170, 171], "size": [5, 8]},
+       {"icon": "triangle", "at": [156, 178], "size": [4, 6]},
+       {"icon": "triangle", "at": [164, 178], "size": [4, 6]}
+     ]}
+  ]
+}

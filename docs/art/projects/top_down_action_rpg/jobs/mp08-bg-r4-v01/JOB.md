@@ -39,21 +39,22 @@
 - [x] 자료 읽기(COMMON 확정판, V1 기록·QA·팔레트·배경 레시피·도구, 규칙 문서, region·prop JSON)
 - [x] brief 확정 기준으로 고침
 - [x] V1 `tool/`(__pycache__ 제외)와 `palette_h0_mood.json` 복사, 도구 수정(위 목록)
-- [ ] `palette_r4.json`, `inputs.json`
+- [x] `palette_r4.json`(V1 `palette_h0_mood.json`을 `extends`로 상속, 바꾼 것만 적음), `inputs.json`은 마무리 때
 
 ### 1. 배경 `bg_r4_hall`
-- [ ] base_clean (+ `_shadow`)
-- [ ] fg_r4_hall_balustrade
+- [x] base_clean (+ `_shadow`) — 2회 고침(바닥 채도·얼룩 크기, 화살표처럼 보인 깨진 자리 제거, 판석 이음새)
+- [x] fg_r4_hall_balustrade
 
 ### 2. 오브젝트 (세 구역 공용)
-- [ ] obj_r4_weight_lift_car
-- [ ] obj_r4_lamp_post, obj_r4_wall_lamp
-- [ ] obj_r4_copy_shelf, obj_r4_translation_desk, obj_r4_record_boxes, obj_r4_paper_drift
-- [ ] prop_r4_counter_idle / spent
-- [ ] prop_r4_slot_empty / filled
-- [ ] exit_r4_e04_crownwell_ascent _closed / _open
-- [ ] exit_r4_e10_bell_cable_lift _closed / _open
-- [ ] scene_bg_r4_hall(+ rv_after_canonical, rv_after_glossary_slot), check_bg_r4_hall_1280x720
+- [x] obj_r4_weight_lift_car — 1회 고침(바닥 나무판, 도르래 모양)
+- [x] obj_r4_lamp_post, obj_r4_wall_lamp
+- [x] obj_r4_copy_shelf, obj_r4_translation_desk, obj_r4_record_boxes
+- [ ] obj_r4_paper_drift — 1회 고침 중(갈고리처럼 보인 조각 교체)
+- [x] prop_r4_counter_idle / spent
+- [x] prop_r4_slot_empty / filled
+- [x] exit_r4_e04_crownwell_ascent _closed / _open
+- [x] exit_r4_e10_bell_cable_lift _closed / _open — 1회 고침(승강장 폭 1.2 m에 맞게 1.1 m로)
+- [x] scene_bg_r4_hall(+ rv_after_canonical, rv_after_glossary_slot), preview/check_bg_r4_hall*_1280x720.png
 
 ### 3. 배경 `bg_r4_stacks`
 - [ ] base_clean, fg_r4_stacks_ladder

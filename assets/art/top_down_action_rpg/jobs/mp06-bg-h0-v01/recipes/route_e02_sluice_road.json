@@ -1,10 +1,10 @@
 {
   "asset": "route_e02_sluice_road",
   "status": "candidate",
-  "note": "mp06 exit object for route_e02_sluice_road (H0 area B, west road). Author design at the player scale. conditional = a heavy iron-banded plank lying across the road (north-south) on two sawhorse trestles; open = the plank stands upright against the south trestle and the north trestle is moved beside it, all at the road's south edge. Pivot at the south end so depth sorting stays right in the open state (nothing is left out in the road). Floor shadow in _shadow.png.",
+  "note": "mp06 exit object for route_e02_sluice_road (H0 area B, west road). Author design at the player scale. conditional = a heavy iron-banded plank lying diagonally across the road on two sawhorse trestles (south trestle at the road's south edge, north trestle 0.6 m east and 1.2 m north at the road's north edge); the plank is diagonal because on this fixed 60 deg camera a plank lying straight north-south projects like a standing post. open = the plank stands upright against the south trestle and the north trestle is moved beside it, all at the road's south edge, so nothing is left in the road and depth sorting from the south-end pivot stays right. Floor shadow in _shadow.png.",
   "palette": "palette_h0_mood.json",
   "style": "prop",
-  "canvas": [260, 480],
+  "canvas": [340, 480],
   "pivot": [110, 440],
   "pivot_meaning": "floor point at the south end of the barrier (road's south edge)",
   "seed": 312,
@@ -17,8 +17,8 @@
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [116, 442], "size": [84, 16]}]},
     {"name": "shadow_closed", "tags": ["closed_part"], "kind": "shadow", "color": "shadow_contact", "opacity": 0.3, "blur": 6,
      "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [116, 202], "size": [84, 16]},
-       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [128, 320], "size": [30, 250]}
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [250, 209], "size": [84, 16]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [191, 323], "size": [30, 280], "rot": 30}
      ]},
     {"name": "shadow_open", "tags": ["open_part"], "hidden": true, "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 5,
      "pieces": [
@@ -36,18 +36,18 @@
 
     {"name": "legs_n", "tags": ["closed_part"], "z": 0.5, "kind": "flat", "material": "wood", "line": {"width": 0.9, "heavy": 1.0},
      "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [98, 156], "size": [8, 94], "rot": 12},
-       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [122, 156], "size": [8, 94], "rot": -12}
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [232, 163], "size": [8, 94], "rot": 12},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [256, 163], "size": [8, 94], "rot": -12}
      ]},
     {"name": "bar_n", "tags": ["closed_part"], "z": 0.6, "kind": "block", "material": "wood", "extrude": 12,
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [110, 89], "size": [72, 18]}]},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [244, 96], "size": [72, 18]}]},
     {"name": "plank", "tags": ["closed_part"], "z": 2, "kind": "block", "material": "wood", "extrude": 28,
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [110, 191], "size": [34, 260]}]},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [177, 194], "size": [34, 289], "rot": 30}]},
     {"name": "plank_bands", "tags": ["closed_part"], "z": 2.5, "kind": "flat", "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
      "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [110, 110], "size": [40, 8]},
-       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [110, 191], "size": [40, 8]},
-       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [110, 272], "size": [40, 8]}
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [141, 257], "size": [40, 8], "rot": 30},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [177, 194], "size": [40, 8], "rot": 30},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [213, 132], "size": [40, 8], "rot": 30}
      ]},
 
     {"name": "legs_n_open", "tags": ["open_part"], "hidden": true, "z": 1, "kind": "flat", "material": "wood", "line": {"width": 0.9, "heavy": 1.0},

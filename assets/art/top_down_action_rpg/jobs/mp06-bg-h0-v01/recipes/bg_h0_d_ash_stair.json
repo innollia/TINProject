@@ -1,7 +1,7 @@
 {
   "asset": "h0_d_ash_stair",
   "status": "candidate",
-  "note": "mp06 H0 area D (region_h0_undersign_exchange), background only. Author design from BRIEF_H0_AREAS.md section 7: north passage x540..720 logical from area A through a gap in the north wall; a landing; E01 Ash Stair (route open, drawn in the base) descends south at x500..780 through a cut in solid stone: the treads step down and darken toward the bottom edge, stone parapets run along both sides, and the stone mass on either side of the stairwell bounds the landing. Grey ash dust has drifted up onto the top steps and the landing (flat stains). The arch over the stair head is the foreground frame. Same H0 floor and walls as area A, heights at the player scale. No props, people, text, UI or scene light.",
+  "note": "mp06 H0 area D (region_h0_undersign_exchange), background only. Author design from BRIEF_H0_AREAS.md section 7: north passage x540..720 logical from area A through a gap in the north wall; a landing that ends at a south parapet (the parapet is in the foreground frame because everyone on the landing is behind it); beyond the parapet the ground drops away into darkness; E01 Ash Stair (route open, drawn in the base) descends south at x500..780 through the gap in the parapet, its treads darkening step by step toward the bottom edge. Grey ash dust has drifted up onto the top steps and the landing (flat stains). Same H0 floor and walls as area A, heights at the player scale. No props, people, text, UI or scene light.",
   "palette": "palette_h0_mood.json",
   "style": "environment",
   "style_override": {"shadow_output": "separate"},
@@ -39,9 +39,7 @@
        {"icon": "square", "fit": [1, 1, 15, 15], "at": [540, 250], "size": [1080, 76]},
        {"icon": "square", "fit": [1, 1, 15, 15], "at": [2000, 250], "size": [1120, 76]},
        {"icon": "square", "fit": [1, 1, 15, 15], "at": [124, 560], "size": [70, 640]},
-       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2438, 560], "size": [64, 640]},
-       {"icon": "square", "fit": [1, 1, 15, 15], "at": [500, 880], "size": [960, 60]},
-       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2080, 880], "size": [960, 60]}
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [2438, 560], "size": [64, 640]}
      ]},
     {"name": "chips", "z": 6.8, "kind": "flat", "color": "#231d29", "opacity": 0.9,
      "rough": {"amp": 0.5, "soft": 2, "cell": 10},
@@ -59,12 +57,14 @@
      "pieces": [{"icon": "circle", "size": [16, 12], "at": [0, 0],
                  "repeat": {"points": [[720, 585], [1800, 585], [360, 351], [2160, 351]]}}]},
 
+    {"name": "drop_void", "z": 7.8, "kind": "flat", "material": "void",
+     "grad": {"to": "well_inner", "y0": 1440, "y1": 900, "curve": 1.6},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1200], "size": [2800, 640]}]},
     {"name": "stairwell", "z": 8, "kind": "flat", "material": "void",
      "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1150], "size": [560, 620]}]},
     {"name": "treads", "z": 8.5, "material": "stone",
      "shade": {"max_radius": 6, "soft": 0.1, "bump": 0.8, "threshold": 0.42, "highlight": 0.86, "highlight_amount": 0.4, "ragged": 0.12},
      "line": {"width": 1.2, "heavy": 1.4, "breaks": 0.2},
-     "grad": {"to": "well_inner", "y0": 860, "y1": 1440, "curve": 0.9, "amount": 0.85},
      "grime": {"stamps": ["metaballs", "cloud"], "size": 22, "soft": 2, "density": 0.2, "strength": 0.25, "color": "grime"},
      "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [0, 0], "size": [552, 58],
                  "repeat": {"points": [[1280, 877], [1280, 954], [1280, 1031], [1280, 1108], [1280, 1185], [1280, 1262], [1280, 1339], [1280, 1416]]}}]},
@@ -75,32 +75,18 @@
        {"icon": "cloud", "at": [1420, 956], "size": [220, 44], "flip": "x"},
        {"icon": "cloud", "at": [1260, 1032], "size": [200, 40]}
      ]},
-
-    {"name": "side_mass", "z": 9, "kind": "block", "material": "stone_dark", "extrude": 112,
+    {"name": "tread_depth", "z": 8.8, "kind": "wash", "material": "void", "blend": "multiply", "blur": 14,
      "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [470, 1170], "size": [1000, 560]},
-       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [2090, 1170], "size": [1000, 560]}
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1010], "size": [600, 100], "alpha": 0.15},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1110], "size": [600, 100], "alpha": 0.3},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1210], "size": [600, 100], "alpha": 0.45},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1310], "size": [600, 100], "alpha": 0.6},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1410], "size": [600, 100], "alpha": 0.72}
      ]},
-    {"name": "mass_seams", "z": 9.2, "kind": "flat", "material": "floor_joint", "opacity": 0.5, "clip_to": "side_mass",
+    {"name": "stair_edges", "z": 10, "kind": "flat", "material": "stone_dark", "line": {"width": 1.0, "heavy": 1.2},
      "pieces": [
-       {"icon": "square", "at": [470, 1040], "size": [1000, 4]},
-       {"icon": "square", "at": [2090, 1040], "size": [1000, 4]},
-       {"icon": "square", "at": [470, 1230], "size": [1000, 4]},
-       {"icon": "square", "at": [2090, 1230], "size": [1000, 4]},
-       {"icon": "square", "at": [300, 1135], "size": [4, 190]},
-       {"icon": "square", "at": [700, 1330], "size": [4, 190]},
-       {"icon": "square", "at": [1860, 1135], "size": [4, 190]},
-       {"icon": "square", "at": [2260, 1330], "size": [4, 190]}
-     ]},
-    {"name": "parapets", "z": 10, "kind": "block", "material": "stone", "extrude": 112,
-     "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [983, 1110], "size": [38, 660]},
-       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [1577, 1110], "size": [38, 660]}
-     ]},
-    {"name": "parapet_caps", "z": 10.5, "kind": "flat", "material": "stone_cap", "line": {"width": 1.0, "heavy": 1.0},
-     "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [983, 1110], "size": [30, 652]},
-       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [1577, 1110], "size": [30, 652]}
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [985, 1160], "size": [38, 560]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1575, 1160], "size": [38, 560]}
      ]},
 
     {"name": "north_wall", "z": 20, "kind": "block", "material": "stone", "extrude": 192,

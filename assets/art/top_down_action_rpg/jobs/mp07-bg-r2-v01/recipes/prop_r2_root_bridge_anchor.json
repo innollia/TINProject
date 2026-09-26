@@ -1,0 +1,111 @@
+{
+  "asset": "prop_r2_root_bridge_anchor",
+  "status": "candidate",
+  "note": "prop_r2_root_bridge_anchor (Root Bridge Anchor), placement layer hazard (drawn on the floor layer, under actors), visible_from adjacent. A mat of living roots woven into a 1.45 m wide bridge across the flood channel of area C, held by a chain from a timber anchor post with a winch on the south bank (post placed east of the bridge so it does not block the crossing). ps_locked -> the bridge lies under the flood water as a dark shape, the chain runs into the water and is clamped at the post; ps_raised -> the root deck is lifted to bank level, wet and dripping, the chain is wound on the winch; ps_surveyed -> raised plus survey stakes with cloth scraps along both edges and a chalk centre line. No text.",
+  "palette": "palette_r2.json",
+  "style": "prop",
+  "canvas": [540, 620],
+  "pivot": [400, 540],
+  "pivot_meaning": "foot of the anchor post on the south bank (area C source px 790,990); canvas = area px - (390, 450)",
+  "seed": 351,
+  "frames": [
+    {"name": "prop_r2_bridge_locked", "show": ["locked"]},
+    {"name": "prop_r2_bridge_raised", "show": ["up", "raised"]},
+    {"name": "prop_r2_bridge_surveyed", "show": ["up", "surveyed"]}
+  ],
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 6,
+     "pieces": [
+       {"icon": "circle", "at": [404, 540], "size": [70, 22]},
+       {"icon": "circle", "at": [458, 520], "size": [66, 20]}
+     ]},
+
+    {"name": "sunk_body", "tags": ["locked"], "hidden": true, "z": 0, "kind": "wash", "material": "water_deep", "blend": "multiply", "opacity": 0.65, "blur": 5,
+     "rough": {"amp": 0.5, "soft": 3, "cell": 24},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 30}, "at": [230, 330], "size": [250, 400]}]},
+    {"name": "sunk_roots", "tags": ["locked"], "hidden": true, "z": 0.1, "kind": "wash", "material": "root", "opacity": 0.28, "clip_to": "sunk_body",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [240, 6], "rot": 4, "repeat": {"line": [[230, 150], [230, 510]], "count": 16, "jitter": {"rot": 6, "size": 0.06}}}]},
+    {"name": "sunk_ripples", "tags": ["locked"], "hidden": true, "z": 0.2, "kind": "flat", "material": "sheen", "opacity": 0.3,
+     "pieces": [{"icon": "sea", "crop": [0.5, 0.5, 15.5, 5.2], "at": [0, 0], "size": [120, 8],
+                 "repeat": {"points": [[180, 200], [280, 280], [200, 380], [270, 460]], "jitter": {"size": 0.2}}}]},
+
+    {"name": "deck", "tags": ["up"], "hidden": true, "z": 1, "kind": "block", "material": "root", "extrude": 28,
+     "rough": {"amp": 0.35, "soft": 2, "cell": 16},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 24}, "at": [230, 282], "size": [260, 400]}]},
+    {"name": "deck_strands", "tags": ["up"], "hidden": true, "z": 1.1, "material": "root", "clip_to": "deck",
+     "shade": {"bump": 0.9, "max_radius": 4},
+     "line": {"width": 0.7, "heavy": 0.8, "breaks": 0.3},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [250, 10], "rot": 3,
+                 "repeat": {"line": [[230, 96], [230, 470]], "count": 19, "jitter": {"rot": 5, "size": 0.05, "at": 2}}}]},
+    {"name": "side_roots", "tags": ["up"], "hidden": true, "z": 1.2, "material": "root",
+     "shade": {"bump": 1.0, "max_radius": 8},
+     "rough": {"amp": 0.5, "soft": 2, "cell": 14},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [106, 290], "size": [28, 420], "rot": 1.5},
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [354, 290], "size": [28, 420], "rot": -1.5}
+     ]},
+    {"name": "deck_wet", "tags": ["raised"], "hidden": true, "z": 1.3, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.4, "clip_to": "deck",
+     "mottle": {"cell": 30, "lo": 0.45, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [230, 290], "size": [280, 440]}]},
+    {"name": "drips", "tags": ["raised"], "hidden": true, "z": 1.35, "kind": "flat", "material": "silt_mark", "opacity": 0.45,
+     "pieces": [
+       {"icon": "droplet", "at": [150, 496], "size": [6, 14]},
+       {"icon": "droplet", "at": [210, 500], "size": [5, 12]},
+       {"icon": "droplet", "at": [280, 497], "size": [6, 15]},
+       {"icon": "droplet", "at": [330, 499], "size": [5, 11]}
+     ]},
+    {"name": "deck_ripples", "tags": ["up"], "hidden": true, "z": 0.9, "kind": "flat", "material": "sheen", "opacity": 0.3,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [86, 300], "size": [5, 380]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [374, 300], "size": [5, 380]}
+     ]},
+
+    {"name": "stakes", "tags": ["surveyed"], "hidden": true, "z": 2, "kind": "block", "material": "wood", "extrude": 44,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [0, 0], "size": [8, 6],
+                 "repeat": {"points": [[100, 130], [100, 250], [100, 370], [360, 130], [360, 250], [360, 370]]}}]},
+    {"name": "stake_cloths", "tags": ["surveyed"], "hidden": true, "z": 2.1, "material": "cloth_wine", "shade": {"bump": 0.4},
+     "pieces": [
+       {"icon": "flag_triangular", "crop": [5, 1, 15.5, 9], "at": [110, 138], "size": [18, 12]},
+       {"icon": "flag_triangular", "crop": [5, 1, 15.5, 9], "at": [110, 258], "size": [18, 12], "rot": 8},
+       {"icon": "flag_triangular", "crop": [5, 1, 15.5, 9], "at": [110, 378], "size": [18, 12], "rot": -6},
+       {"icon": "flag_triangular", "crop": [5, 1, 15.5, 9], "at": [370, 138], "size": [18, 12], "rot": 5},
+       {"icon": "flag_triangular", "crop": [5, 1, 15.5, 9], "at": [370, 258], "size": [18, 12]},
+       {"icon": "flag_triangular", "crop": [5, 1, 15.5, 9], "at": [370, 378], "size": [18, 12], "rot": -8}
+     ]},
+    {"name": "chalk_line", "tags": ["surveyed"], "hidden": true, "z": 2.2, "kind": "flat", "material": "chalk", "opacity": 0.7,
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [5, 26], "repeat": {"line": [[230, 110], [230, 470]], "count": 10}}]},
+
+    {"name": "anchor_post", "z": 3, "kind": "block", "material": "stilt", "extrude": 180,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [400, 344], "size": [48, 32]}]},
+    {"name": "post_bands", "z": 3.1, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6}, "clip_to": "anchor_post",
+     "pieces": [
+       {"icon": "square", "at": [400, 390], "size": [54, 7]},
+       {"icon": "square", "at": [400, 500], "size": [54, 7]}
+     ]},
+    {"name": "winch_drum", "z": 3.2, "kind": "block", "material": "iron", "extrude": 40,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [458, 470], "size": [56, 30]}]},
+    {"name": "winch_crank", "z": 3.3, "kind": "flat", "material": "iron", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "at": [490, 494], "size": [16, 5]},
+       {"icon": "square", "at": [498, 484], "size": [5, 22]}
+     ]},
+    {"name": "coils", "tags": ["up"], "hidden": true, "z": 3.4, "kind": "flat", "material": "deck_joint", "opacity": 0.8,
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [3, 36], "repeat": {"line": [[438, 492], [478, 492]], "count": 7}}]},
+
+    {"name": "chain_up", "tags": ["up"], "hidden": true, "z": 3.5, "kind": "flat", "material": "iron", "line": {"width": 0.4, "heavy": 0.4},
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [8, 11], "repeat": {"line": [[396, 390], [364, 470]], "count": 9}},
+       {"icon": "circle", "op": "sub", "at": [0, 0], "size": [3, 5], "repeat": {"line": [[396, 390], [364, 470]], "count": 9}}
+     ]},
+    {"name": "chain_down", "tags": ["locked"], "hidden": true, "z": 3.5, "kind": "flat", "material": "iron", "line": {"width": 0.4, "heavy": 0.4},
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [8, 11], "repeat": {"line": [[396, 430], [346, 520]], "count": 10}},
+       {"icon": "circle", "op": "sub", "at": [0, 0], "size": [3, 5], "repeat": {"line": [[396, 430], [346, 520]], "count": 10}}
+     ]},
+    {"name": "clamp", "tags": ["locked"], "hidden": true, "z": 3.6, "material": "iron", "line": {"width": 0.8, "heavy": 0.9},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [400, 424], "size": [34, 22]},
+       {"icon": "circle", "at": [400, 424], "size": [10, 10]}
+     ]}
+  ]
+}

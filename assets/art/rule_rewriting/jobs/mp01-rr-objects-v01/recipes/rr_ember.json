@@ -1,0 +1,45 @@
+{
+  "asset": "rr_ember",
+  "status": "candidate",
+  "note": "Rule Rewrite EMBER: a small heap of dark coals with glowing cracks, a low flame and a few sparks (emissive). Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 224,
+  "forms": [
+    {"name": "flame", "z": 0, "kind": "flat", "material": "flame", "emit": 1.0,
+     "glow": {"radius": 5, "opacity": 0.5, "color": "flame_glow"},
+     "pieces": [
+       {"icon": "fire", "at": [98, 100], "size": [30, 42]},
+       {"icon": "circle", "at": [98, 111], "size": [16, 16]}
+     ]},
+    {"name": "flame_core", "z": 0.2, "kind": "flat", "color": "#fff0b0", "emit": 1.0, "clip_to": "flame",
+     "pieces": [{"icon": "fire", "at": [98, 108], "size": [14, 20]}]},
+    {"name": "coals", "z": 1, "material": "rr_crust", "shade": {"bump": 0.8},
+     "pieces": [
+       {"icon": "hexagon", "rot": 20, "at": [96, 120], "size": [42, 32]},
+       {"icon": "hexagon", "at": [78, 137], "size": [48, 34]},
+       {"icon": "octagon", "at": [114, 139], "size": [52, 36]},
+       {"icon": "circle", "at": [58, 148], "size": [30, 22]},
+       {"icon": "circle", "at": [136, 149], "size": [28, 20]}
+     ]},
+    {"name": "cracks", "z": 1.5, "kind": "flat", "material": "ember", "emit": 0.9, "clip_to": "coals",
+     "glow": {"radius": 3, "opacity": 0.5, "color": "ember_glow"},
+     "pieces": [
+       {"icon": "circle", "rot": 30, "at": [84, 134], "size": [2.4, 18]},
+       {"icon": "circle", "rot": -40, "at": [115, 138], "size": [2.4, 16]},
+       {"icon": "circle", "at": [98, 122], "size": [9, 5]},
+       {"icon": "circle", "at": [66, 147], "size": [7, 4]},
+       {"icon": "circle", "rot": 10, "at": [132, 150], "size": [2.2, 10]}
+     ]},
+    {"name": "sparks", "z": 2, "kind": "flat", "material": "ember", "emit": 1.0,
+     "glow": {"radius": 2, "opacity": 0.5, "color": "ember_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [82, 76], "size": [3.4, 3.4]},
+       {"icon": "circle", "at": [112, 68], "size": [3, 3]},
+       {"icon": "circle", "at": [101, 56], "size": [2.6, 2.6]}
+     ]}
+  ]
+}

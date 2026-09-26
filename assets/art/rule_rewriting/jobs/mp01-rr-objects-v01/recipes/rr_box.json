@@ -1,0 +1,32 @@
+{
+  "asset": "rr_box",
+  "status": "candidate",
+  "note": "Rule Rewrite BOX: a shallow wooden crate with a plank lid, plank seams, a diagonal brace and brass corner brackets. Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 203,
+  "forms": [
+    {"name": "box", "z": 0, "kind": "block", "material": "rr_wood", "extrude": 58, "ao": false,
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 5}, "at": [96, 76], "size": [112, 52]}]},
+    {"name": "seams", "z": 1, "kind": "flat", "color": "#3a2a1c", "opacity": 0.8, "clip_to": "box",
+     "pieces": [
+       {"icon": "square", "at": [96, 121], "size": [112, 2]},
+       {"icon": "square", "at": [96, 141], "size": [112, 2]},
+       {"icon": "square", "at": [96, 68], "size": [112, 2]},
+       {"icon": "square", "at": [96, 85], "size": [112, 2]}
+     ]},
+    {"name": "brace", "z": 1.5, "kind": "flat", "color": "#9c7c59", "opacity": 0.95, "clip_to": "box",
+     "line": {"width": 0.9, "heavy": 0.6},
+     "pieces": [{"icon": "square", "rot": 36, "at": [96, 131], "size": [9, 92]}]},
+    {"name": "brackets", "z": 2, "kind": "flat", "material": "rr_brass", "line": {"width": 0.7, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [47, 109], "size": [12, 12]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [145, 109], "size": [12, 12]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [47, 153], "size": [12, 12]},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [145, 153], "size": [12, 12]}
+     ]}
+  ]
+}

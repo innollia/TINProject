@@ -1,0 +1,69 @@
+{
+  "asset": "mummy",
+  "status": "candidate",
+  "note": "Generic battler: mummy (undead). A stiff figure wound in yellowed, dirty bandages with dark wrap seams, one arm raised forward, loose bandage ends hanging from the arm and the waist, a single amber eye glinting through a gap in the head wrapping. Front view, fixed 60 deg camera.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre; ground contact line y=320",
+  "seed": 606,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [160, 321], "size": [132, 22]}]},
+
+    {"name": "body", "z": 1, "material": "bandage",
+     "pieces": [
+       {"icon": "circle", "at": [148, 276], "size": [24, 80], "rot": 3},
+       {"icon": "circle", "at": [172, 276], "size": [24, 80], "rot": -3},
+       {"icon": "circle", "at": [142, 316], "size": [26, 12]},
+       {"icon": "circle", "at": [178, 316], "size": [26, 12]},
+       {"icon": "circle", "at": [160, 200], "size": [70, 100]},
+       {"icon": "square", "at": [160, 128], "size": [18, 16]},
+       {"icon": "circle", "at": [160, 104], "size": [40, 46]}
+     ]},
+    {"name": "wraps", "z": 1.1, "kind": "flat", "material": "soot", "opacity": 0.5, "clip_to": "body",
+     "pieces": [
+       {"icon": "square", "at": [160, 92], "size": [50, 1.8], "rot": -12, "repeat": {"grid": [1, 5], "step": [0, 7]}},
+       {"icon": "square", "at": [160, 156], "size": [80, 1.8], "rot": 14, "repeat": {"grid": [1, 9], "step": [0, 10]}},
+       {"icon": "square", "at": [148, 246], "size": [30, 1.8], "rot": -16, "repeat": {"grid": [1, 7], "step": [0, 10]}},
+       {"icon": "square", "at": [172, 246], "size": [30, 1.8], "rot": 16, "repeat": {"grid": [1, 7], "step": [0, 10]}}
+     ]},
+    {"name": "eye_gap", "z": 1.2, "kind": "flat", "material": "void",
+     "pieces": [
+       {"icon": "circle", "at": [152, 104], "size": [14, 6], "rot": -12},
+       {"icon": "circle", "at": [169, 110], "size": [10, 3], "rot": -12}
+     ]},
+    {"name": "eye", "z": 1.3, "kind": "flat", "material": "ember", "emit": 1.0,
+     "glow": {"radius": 3, "opacity": 0.6, "color": "ember_glow"},
+     "pieces": [{"icon": "circle", "at": [152, 104], "size": [4, 3.4]}]},
+    {"name": "waist_end", "z": 1.4, "material": "bandage",
+     "pieces": [
+       {"icon": "bookmark", "at": [184, 250], "size": [12, 46], "rot": -8},
+       {"icon": "bookmark", "at": [192, 262], "size": [9, 34], "rot": -18}
+     ]},
+
+    {"name": "arm_l", "z": 2, "material": "bandage",
+     "pieces": [
+       {"icon": "circle", "at": [118, 186], "size": [20, 70], "rot": 6},
+       {"icon": "droplet", "flip": "y", "at": [114, 226], "size": [15, 20], "rot": 4}
+     ]},
+    {"name": "arm_l_wraps", "z": 2.1, "kind": "flat", "material": "soot", "opacity": 0.5, "clip_to": "arm_l",
+     "pieces": [{"icon": "square", "at": [118, 162], "size": [24, 1.6], "rot": 18, "repeat": {"grid": [1, 7], "step": [0, 10]}}]},
+
+    {"name": "arm_r", "z": 3, "material": "bandage",
+     "pieces": [
+       {"icon": "circle", "at": [204, 162], "size": [22, 38], "rot": -58},
+       {"icon": "circle", "at": [222, 160], "size": [26, 30]},
+       {"icon": "circle", "at": [230, 160], "size": [8, 16], "rot": 10},
+       {"icon": "circle", "at": [222, 172], "size": [16, 8]}
+     ]},
+    {"name": "arm_r_wraps", "z": 3.1, "kind": "flat", "material": "soot", "opacity": 0.5, "clip_to": "arm_r",
+     "pieces": [{"icon": "square", "at": [206, 150], "size": [1.6, 26], "rot": 30, "repeat": {"grid": [5, 1], "step": [6, 1]}}]},
+    {"name": "arm_end", "z": 3.2, "material": "bandage",
+     "pieces": [
+       {"icon": "bookmark", "at": [214, 194], "size": [10, 40], "rot": 6},
+       {"icon": "bookmark", "at": [224, 188], "size": [8, 30], "rot": -10}
+     ]}
+  ]
+}

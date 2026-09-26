@@ -142,6 +142,17 @@ def disc(c, r: float, squash: float = 1.0, **kw) -> dict:
     return piece("circle", c, [2 * r, 2 * r * squash], **kw)
 
 
+def band(c, r: float, squash: float, width: float, a0: float = 0.0, a1: float = 360.0) -> list:
+    """Flattened ring (a band seen from above at an angle) that keeps ``width`` px of
+    thickness at its front and back instead of thinning with the squash."""
+    ow, oh = 2.0 * r, 2.0 * r * squash + width
+    iw, ih = 2.0 * (r - width * 0.35), max(1.0, 2.0 * r * squash - width)
+    add = piece("circle", c, [ow * K_CIRCLE, oh * K_CIRCLE], fit="box")
+    if abs((a1 - a0) - 360.0) > 1e-6:
+        add["poly"] = wedge_poly(a0, a1)
+    return [add, piece("circle", c, [iw, ih], op="sub")]
+
+
 def shard(c, length: float, width: float, a_deg: float, **kw) -> dict:
     """Tapered diamond whose long axis points along a_deg."""
     return piece("diamond", c, [width, length], rot=a_deg + 90.0, **kw)
@@ -1010,17 +1021,17 @@ def st_contract_bound() -> Asset:
     for i, (R, w) in enumerate(((104, 12), (100, 13), (96, 14), (100, 13)), 1):
         t = f"loop_{i}"
         c = (192, 206)
-        A.form(t, "back", arc(c, R, 5, 190, 350, squash=0.26), "fx_cord", z=1, opacity=0.5)
-        A.form(t, "front", arc(c, R, w, 8, 172, squash=0.26), "fx_cord", kind="mass", z=3,
-               shade={"bump": 0.35, "highlight_amount": 0.3}, line={"width": 0.8, "heavy": 0.8, "color": "#a19b8f"})
+        A.form(t, "back", band(c, R, 0.26, 6, 190, 350), "fx_grey", z=1, opacity=0.55)
+        A.form(t, "front", band(c, R, 0.26, w, 8, 172), "fx_grey", kind="mass", z=3,
+               shade={"bump": 0.35, "highlight_amount": 0.35}, line={"width": 0.8, "heavy": 0.8, "color": "#b5ae9f"})
         stitches = []
         for a in range(20, 170, 18):
-            p = (c[0] + (R - w / 2) * math.cos(math.radians(a)), c[1] + (R - w / 2) * 0.26 * math.sin(math.radians(a)))
-            stitches.append(bar(p, w + 2, 2, 90 + (a - 90) * 0.25))
+            p = (c[0] + R * math.cos(math.radians(a)), c[1] + R * 0.26 * math.sin(math.radians(a)))
+            stitches.append(bar(p, w + 2, 2.5, 90 + (a - 90) * 0.25))
         A.form(t, "stitches", stitches, "fx_grey_dark", z=4, opacity=0.9)
-        A.form(t, "knot", [piece("knot", (192, 206 + R * 0.26 + 4), [30, 30], rot=-10 + 4 * (i % 2),
-                                 crop=[1.5, 2.5, 13.5, 14.5])], "fx_cord", kind="mass", z=5,
-               shade={"bump": 0.4, "highlight_amount": 0.3})
+        A.form(t, "knot", [piece("knot", (192, 206 + R * 0.26 + 6), [42, 42], rot=-10 + 4 * (i % 2),
+                                 crop=[1.5, 2.5, 13.5, 14.5])], "fx_grey", kind="mass", z=5,
+               shade={"bump": 0.4, "highlight_amount": 0.35})
         A.frame(t)
     return A
 
@@ -1097,11 +1108,11 @@ def st_tokens() -> Asset:
                 A.form(t, "m2", transform(dark, c, rot=-20), "fx_grey_dark", kind="mass", z=2.1)
                 A.form(t, "m3", [bar(c, 46, 2.5, 70)], "fx_ink", z=2.2)
             elif sid == "st_contract_bound":
-                A.form(t, "m1", arc((64, 62), 36, 8, 8, 172, squash=0.32), "fx_cord", kind="mass", z=2,
-                       shade={"bump": 0.35, "highlight_amount": 0.3})
-                A.form(t, "m2", arc((64, 62), 36, 3, 190, 350, squash=0.32), "fx_cord", z=1.5, opacity=0.6)
-                A.form(t, "m3", [piece("knot", (64, 76), [26, 26], crop=[1.5, 2.5, 13.5, 14.5])], "fx_cord",
-                       kind="mass", z=3, shade={"bump": 0.4, "highlight_amount": 0.3})
+                A.form(t, "m1", band((64, 62), 36, 0.32, 9, 8, 172), "fx_grey", kind="mass", z=2,
+                       shade={"bump": 0.35, "highlight_amount": 0.35})
+                A.form(t, "m2", band((64, 62), 36, 0.32, 4, 190, 350), "fx_grey", z=1.5, opacity=0.6)
+                A.form(t, "m3", [piece("knot", (64, 78), [34, 34], crop=[1.5, 2.5, 13.5, 14.5])], "fx_cord",
+                       kind="mass", z=3, shade={"bump": 0.4, "highlight_amount": 0.35})
             elif sid == "st_recorded":
                 A.form(t, "m1", [piece("square", (64, 60), [52, 44], slice={"border": 4, "corner": 4})], "fx_paper",
                        kind="mass", z=2, shade={"bump": 0.2, "highlight_amount": 0.25})

@@ -1,0 +1,791 @@
+{
+ "asset": "npc_25_jano_fesk",
+ "status": "candidate",
+ "note": "Jano Fesk dialogue portrait: 3/4 bust turned to the viewer's right, circulation board liaison. Tan skin, wet dark-brown fringe, light stubble, navy oilcloth coat with the hood pushed back, a small bronze plumb weight on a cord at the chest, bronze measuring rod held upright at the far side. Author design from npc_25 JSON and 04 NPC-25 (male: author design).",
+ "identity": {
+  "npc_id": "npc_25_jano_fesk",
+  "display_name": "Jano Fesk",
+  "roster_kind": "support",
+  "portrait_key": "portrait_jano_fesk",
+  "art_key": "art_npc_support_portrait",
+  "body_key": "body_circulation_liaison"
+ },
+ "anchors": {
+  "face": [
+   168,
+   124
+  ],
+  "head_center": [
+   160,
+   122
+  ]
+ },
+ "palette": "palette_npc_b.json",
+ "style": "portrait",
+ "canvas": [
+  320,
+  320
+ ],
+ "pivot": [
+  168,
+  124
+ ],
+ "pivot_meaning": "face anchor: midpoint between the eyes (the same pixel in every mp03 portrait)",
+ "seed": 2501,
+ "forms": [
+  {
+   "name": "hood",
+   "z": 0.3,
+   "material": "jf_coat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      146,
+      184
+     ],
+     "size": [
+      156,
+      104
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      96,
+      176
+     ],
+     "size": [
+      48,
+      70
+     ],
+     "rot": 18
+    }
+   ]
+  },
+  {
+   "name": "hood_inner",
+   "z": 0.35,
+   "kind": "flat",
+   "color": "#0e1622",
+   "clip_to": "hood",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      180
+     ],
+     "size": [
+      120,
+      80
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck",
+   "z": 0.5,
+   "material": "skin_tan",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      198
+     ],
+     "size": [
+      52,
+      56
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160,
+      230
+     ],
+     "size": [
+      50,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck_shade",
+   "z": 0.6,
+   "kind": "flat",
+   "color": "#86654f",
+   "clip_to": "neck",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      168,
+      180
+     ],
+     "size": [
+      88,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rod",
+   "z": 0.8,
+   "kind": "flat",
+   "material": "bronze",
+   "line": {
+    "width": 1.0,
+    "heavy": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      250,
+      244
+     ],
+     "size": [
+      8,
+      200
+     ],
+     "rot": 4
+    }
+   ]
+  },
+  {
+   "name": "rod_ring",
+   "z": 0.85,
+   "kind": "flat",
+   "material": "bronze",
+   "line": {
+    "width": 1.0,
+    "heavy": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      257,
+      144
+     ],
+     "size": [
+      16,
+      16
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      257,
+      144
+     ],
+     "size": [
+      9,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "coat",
+   "z": 1,
+   "material": "jf_coat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      158,
+      276
+     ],
+     "size": [
+      268,
+      118
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      158,
+      328
+     ],
+     "size": [
+      268,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "name": "coat_front",
+   "z": 1.2,
+   "kind": "flat",
+   "color": "#060a11",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      176,
+      290
+     ],
+     "size": [
+      3,
+      90
+     ],
+     "rot": 4
+    }
+   ]
+  },
+  {
+   "name": "toggles",
+   "z": 1.3,
+   "kind": "flat",
+   "material": "bronze",
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      180,
+      262
+     ],
+     "size": [
+      14,
+      4.5
+     ],
+     "rot": -6
+    },
+    {
+     "icon": "square",
+     "at": [
+      182,
+      286
+     ],
+     "size": [
+      14,
+      4.5
+     ],
+     "rot": -6
+    },
+    {
+     "icon": "square",
+     "at": [
+      184,
+      310
+     ],
+     "size": [
+      14,
+      4.5
+     ],
+     "rot": -6
+    }
+   ]
+  },
+  {
+   "name": "cord",
+   "z": 1.4,
+   "kind": "flat",
+   "color": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      148,
+      240
+     ],
+     "size": [
+      2.2,
+      38
+     ],
+     "rot": -24
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178,
+      240
+     ],
+     "size": [
+      2.2,
+      38
+     ],
+     "rot": 28
+    }
+   ]
+  },
+  {
+   "name": "plumb",
+   "z": 1.5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      164,
+      268
+     ],
+     "size": [
+      13,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "z": 5,
+   "material": "hair_brown",
+   "shade": {
+    "highlight_amount": 0.8,
+    "highlight": 0.88
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      112
+     ],
+     "size": [
+      116,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ear",
+   "z": 5.5,
+   "material": "skin_tan",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110,
+      142
+     ],
+     "size": [
+      18,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ear_inner",
+   "z": 5.6,
+   "kind": "flat",
+   "color": "#86654f",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      109,
+      143
+     ],
+     "size": [
+      8,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "z": 6,
+   "material": "skin_tan",
+   "shade": {
+    "threshold": 0.44,
+    "ragged": 0.06,
+    "soft": 0.34,
+    "highlight_amount": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      129
+     ],
+     "size": [
+      96,
+      102
+     ]
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      172,
+      172
+     ],
+     "size": [
+      56,
+      40
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      204,
+      146
+     ],
+     "size": [
+      12,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stubble",
+   "z": 6.5,
+   "kind": "flat",
+   "material": "hair_brown",
+   "clip_to": "face",
+   "opacity": 0.3,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      172,
+      184
+     ],
+     "size": [
+      90,
+      38
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      180,
+      160
+     ],
+     "size": [
+      70,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nose_shade",
+   "z": 7,
+   "kind": "flat",
+   "color": "#86654f",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      199,
+      142
+     ],
+     "size": [
+      9,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nostril",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198,
+      153
+     ],
+     "size": [
+      5,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "z": 7.1,
+   "kind": "flat",
+   "color": "lip_line",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      184,
+      168
+     ],
+     "size": [
+      19,
+      3
+     ],
+     "rot": 5
+    }
+   ]
+  },
+  {
+   "name": "lip_shade",
+   "z": 7.05,
+   "kind": "flat",
+   "color": "#86654f",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      185,
+      173
+     ],
+     "size": [
+      12,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "iris",
+   "z": 7.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      125
+     ],
+     "size": [
+      10.5,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      123
+     ],
+     "size": [
+      8,
+      9.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glint",
+   "z": 7.3,
+   "kind": "flat",
+   "color": "eye_glint",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140,
+      122.5
+     ],
+     "size": [
+      2.8,
+      2.8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192,
+      121
+     ],
+     "size": [
+      2.3,
+      2.3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lids",
+   "z": 7.4,
+   "kind": "flat",
+   "color": "ink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142,
+      126
+     ],
+     "size": [
+      23,
+      14
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      142,
+      129.2
+     ],
+     "size": [
+      23,
+      14
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      124
+     ],
+     "size": [
+      16,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "op": "sub",
+     "at": [
+      194,
+      126.8
+     ],
+     "size": [
+      16,
+      11
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "z": 7.5,
+   "kind": "flat",
+   "material": "hair_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141,
+      110
+     ],
+     "size": [
+      26,
+      5.5
+     ],
+     "rot": -5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      195,
+      109
+     ],
+     "size": [
+      17,
+      5
+     ],
+     "rot": 5
+    }
+   ]
+  },
+  {
+   "name": "fringe",
+   "z": 8,
+   "material": "hair_brown",
+   "shade": {
+    "highlight_amount": 0.8,
+    "highlight": 0.88
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160,
+      80
+     ],
+     "size": [
+      100,
+      34
+     ],
+     "rot": 4
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      146,
+      96
+     ],
+     "size": [
+      8,
+      24
+     ],
+     "rot": 8
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      164,
+      98
+     ],
+     "size": [
+      8,
+      26
+     ],
+     "rot": 2
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      181,
+      95
+     ],
+     "size": [
+      7,
+      22
+     ],
+     "rot": -6
+    },
+    {
+     "icon": "droplet",
+     "flip": "y",
+     "at": [
+      121,
+      120
+     ],
+     "size": [
+      12,
+      28
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "portrait_jano_fesk"
+  }
+ ]
+}

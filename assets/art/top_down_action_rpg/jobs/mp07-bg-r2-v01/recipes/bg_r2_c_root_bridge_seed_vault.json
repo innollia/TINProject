@@ -1,0 +1,192 @@
+{
+  "asset": "r2_c_root_bridge_seed_vault",
+  "status": "candidate",
+  "note": "R2 Siltglass Commons, area C (root bridge and seed vault). base_clean only: outer water (north), the north bank, the flood channel, the south bank, the walkway from area B (seam x800..1080 at the bottom), the raised flood-refuge gallery on stilts along the north bank (its first span has stringers only; planks/shutter are the route object), stairs at both gallery ends, the seed vault of siltglass brick with an empty front alcove and a closed side door, and its terrace. The root bridge, shelf, causeway gate and gallery entrance are separate objects. No movable objects, people, text, UI or scene lighting.",
+  "palette": "palette_r2.json",
+  "style": "environment",
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = logical (0,0); 2 source px per logical px",
+  "seed": 501,
+  "include": ["_r2_water_forms.json"],
+  "frames": [{"name": "base_clean"}],
+  "forms": [
+    {"name": "channel_deep", "z": 0.4, "kind": "wash", "material": "water_deep", "blend": "multiply", "opacity": 0.35, "blur": 20,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 770], "size": [2800, 330]}]},
+    {"name": "ripples", "z": 0.5, "kind": "flat", "material": "sheen", "opacity": 0.24,
+     "pieces": [{"icon": "sea", "crop": [0.5, 0.5, 15.5, 5.2], "at": [0, 0], "size": [220, 9],
+                 "repeat": {"points": [[240, 660], [900, 700], [1300, 650], [1650, 760], [2100, 690], [2450, 800], [1100, 860], [300, 880], [1900, 880],
+                                       [300, 120], [900, 80], [1500, 140], [300, 1330], [1500, 1350], [2200, 1320]],
+                            "jitter": {"size": 0.3, "alpha": 0.5}}}]},
+
+    {"name": "north_bank", "z": 1, "kind": "block", "material": "silt", "extrude": 30,
+     "rough": {"amp": 0.4, "soft": 5, "cell": 60},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 380], "size": [2660, 360]}]},
+    {"name": "south_bank", "z": 1, "kind": "block", "material": "silt", "extrude": 36,
+     "rough": {"amp": 0.4, "soft": 5, "cell": 60},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1100], "size": [2660, 280]}]},
+    {"name": "bank_wet", "z": 1.05, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.25,
+     "mottle": {"cell": 150, "lo": 0.45, "hi": 0.8},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 380], "size": [2660, 360]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1100], "size": [2660, 280]}
+     ]},
+    {"name": "bank_silt_lines", "z": 1.1, "kind": "flat", "material": "silt_mark", "opacity": 0.35,
+     "rough": {"amp": 0.6, "soft": 2, "cell": 20},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 574], "size": [2660, 5]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1258], "size": [2660, 5]}
+     ]},
+    {"name": "worn_paths", "z": 1.2, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.3, "blur": 20,
+     "rough": {"amp": 0.6, "soft": 16, "cell": 50},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [780, 1100], "size": [560, 90], "rot": -12},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [640, 380], "size": [110, 360]}
+     ]},
+
+    {"name": "puddles", "z": 1.3, "kind": "flat", "material": "water", "opacity": 0.85,
+     "rough": {"amp": 0.6, "soft": 3, "cell": 22},
+     "pieces": [
+       {"icon": "circle", "ground": true, "at": [1500, 1060], "size": [150, 70], "rot": 8},
+       {"icon": "circle", "ground": true, "at": [260, 1150], "size": [110, 56], "rot": -6},
+       {"icon": "circle", "ground": true, "at": [2200, 1130], "size": [180, 80], "rot": 3},
+       {"icon": "circle", "ground": true, "at": [1250, 250], "size": [120, 54]},
+       {"icon": "circle", "ground": true, "at": [200, 330], "size": [90, 46], "rot": 10}
+     ]},
+    {"name": "puddle_rims", "z": 1.35, "kind": "flat", "material": "sheen", "opacity": 0.3, "clip_to": "puddles",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [0, 0], "size": [160, 6], "repeat": {"points": [[1500, 1036], [260, 1132], [2200, 1100], [1250, 232], [200, 314]]}}]},
+    {"name": "mud_cracks", "z": 1.4, "kind": "flat", "material": "deck_joint", "opacity": 0.45,
+     "pieces": [
+       {"icon": "lightning_bolt", "ground": true, "at": [600, 1160], "size": [16, 70], "rot": 70},
+       {"icon": "lightning_bolt", "ground": true, "at": [1800, 1050], "size": [14, 60], "rot": -40},
+       {"icon": "lightning_bolt", "ground": true, "at": [2400, 1180], "size": [16, 64], "rot": 110},
+       {"icon": "lightning_bolt", "ground": true, "at": [1500, 330], "size": [14, 56], "rot": 30},
+       {"icon": "lightning_bolt", "ground": true, "at": [320, 470], "size": [14, 58], "rot": -70},
+       {"icon": "lightning_bolt", "ground": true, "at": [1100, 470], "size": [12, 50], "rot": 95}
+     ]},
+
+    {"name": "walkway", "z": 2, "kind": "block", "material": "stilt", "extrude": 30,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [940, 1345], "size": [290, 210]}]},
+    {"name": "walkway_planks", "z": 2.1, "material": "plank",
+     "shade": {"max_radius": 5, "soft": 0.1, "bump": 0.8, "threshold": 0.42, "highlight": 0.86, "highlight_amount": 0.3, "ragged": 0.12},
+     "line": {"width": 1.0, "heavy": 0.9, "breaks": 0.2, "color": "#141a16", "opacity": 0.8},
+     "rough": {"amp": 0.35, "soft": 1.5, "cell": 10},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [940, 1262], "size": [276, 35], "repeat": {"grid": [1, 5], "step": [0, 40], "jitter": {"at": 2, "size": 0.012}}}]},
+    {"name": "walkway_edges", "z": 2.2, "kind": "flat", "material": "stilt", "line": {"width": 1.0, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [801, 1345], "size": [12, 210]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [1079, 1345], "size": [12, 210]}
+     ]},
+
+    {"name": "gallery_stilts", "z": 3, "kind": "block", "material": "stilt", "extrude": 100,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [22, 10],
+                 "repeat": {"points": [[780, 415], [940, 415], [1100, 415], [1260, 415], [1420, 415], [1580, 415], [1700, 415]]}}]},
+    {"name": "gallery_stilt_bands", "z": 3.05, "kind": "flat", "material": "silt_mark", "opacity": 0.45, "clip_to": "gallery_stilts",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [34, 5], "repeat": {"points": [[780, 470], [940, 468], [1100, 471], [1260, 469], [1420, 470], [1580, 468], [1700, 471]]}}]},
+    {"name": "gallery_stringers", "z": 3.1, "kind": "flat", "material": "stilt", "line": {"width": 1.0, "heavy": 1.0},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [850, 314], "size": [184, 10]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [850, 384], "size": [184, 10]}
+     ]},
+    {"name": "gallery_deck", "z": 3.2, "kind": "block", "material": "stilt", "extrude": 30,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [1330, 348], "size": [780, 80]}]},
+    {"name": "gallery_planks", "z": 3.25, "material": "plank",
+     "shade": {"max_radius": 5, "soft": 0.1, "bump": 0.8, "threshold": 0.42, "highlight": 0.86, "highlight_amount": 0.3, "ragged": 0.12},
+     "line": {"width": 1.0, "heavy": 0.9, "breaks": 0.2, "color": "#141a16", "opacity": 0.8},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [960, 348], "size": [35, 74], "repeat": {"grid": [19, 1], "step": [40, 0], "jitter": {"at": 1.5, "size": 0.01}}}]},
+    {"name": "gallery_rail_posts", "z": 3.3, "kind": "block", "material": "stilt", "extrude": 62,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [0, 0], "size": [16, 12],
+                 "repeat": {"points": [[950, 320], [1130, 320], [1310, 320], [1490, 320], [1670, 320]]}}]},
+    {"name": "gallery_rail", "z": 3.35, "material": "plank_dark", "line": {"width": 0.9, "heavy": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [1310, 322], "size": [724, 10]}]},
+    {"name": "stairs_up_1", "z": 3.4, "kind": "block", "material": "plank_dark", "extrude": 33,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [690, 447], "size": [20, 80]}]},
+    {"name": "stairs_up_2", "z": 3.41, "kind": "block", "material": "plank_dark", "extrude": 66,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [710, 414], "size": [20, 80]}]},
+    {"name": "stairs_up_3", "z": 3.42, "kind": "block", "material": "plank_dark", "extrude": 99,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [730, 381], "size": [20, 80]}]},
+    {"name": "stairs_up_4", "z": 3.43, "kind": "block", "material": "plank_dark", "extrude": 132,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [750, 348], "size": [20, 80]}]},
+    {"name": "stairs_down_1", "z": 3.43, "kind": "block", "material": "plank_dark", "extrude": 132,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [1730, 348], "size": [20, 80]}]},
+    {"name": "stairs_down_2", "z": 3.42, "kind": "block", "material": "plank_dark", "extrude": 99,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [1750, 381], "size": [20, 80]}]},
+    {"name": "stairs_down_3", "z": 3.41, "kind": "block", "material": "plank_dark", "extrude": 66,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [1770, 414], "size": [20, 80]}]},
+    {"name": "stairs_down_4", "z": 3.4, "kind": "block", "material": "plank_dark", "extrude": 33,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [1790, 447], "size": [20, 80]}]},
+
+    {"name": "terrace", "z": 4, "kind": "block", "material": "siltglass", "extrude": 12,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [2190, 490], "size": [780, 100]}]},
+    {"name": "terrace_joints", "z": 4.05, "kind": "flat", "material": "deck_joint", "opacity": 0.5, "clip_to": "terrace",
+     "pieces": [
+       {"icon": "square", "at": [0, 0], "size": [3, 100], "repeat": {"line": [[1880, 490], [2500, 490]], "count": 8}},
+       {"icon": "square", "at": [2190, 490], "size": [780, 3]}
+     ]},
+    {"name": "vault", "z": 4.5, "kind": "block", "material": "siltglass", "extrude": 330,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [2180, 20], "size": [600, 180]}]},
+    {"name": "vault_brickwork", "z": 4.55, "kind": "flat", "material": "deck_joint", "opacity": 0.42, "clip_to": "vault",
+     "pieces": [
+       {"icon": "brick_wall", "invert": true, "crop": [1.2, 1.2, 14.8, 14.8], "fit": [1.2, 1.2, 14.8, 14.8], "at": [0, 0], "size": [300, 165],
+        "repeat": {"points": [[2030, 192], [2330, 192], [2030, 357], [2330, 357]]}}
+     ]},
+    {"name": "vault_sheen", "z": 4.57, "kind": "wash", "material": "verdigris_bloom", "opacity": 0.12, "clip_to": "vault",
+     "mottle": {"cell": 70, "lo": 0.6, "hi": 0.9},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2180, 270], "size": [620, 360]}]},
+    {"name": "vault_roof", "z": 4.6, "kind": "block", "material": "stilt", "extrude": 20,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [2180, 12], "size": [640, 212]}]},
+    {"name": "vault_roof_boards", "z": 4.62, "kind": "flat", "material": "deck_joint", "opacity": 0.5, "clip_to": "vault_roof",
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [3, 230], "repeat": {"line": [[1890, 12], [2470, 12]], "count": 14}}]},
+    {"name": "vault_roof_damp", "z": 4.64, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.25, "clip_to": "vault_roof",
+     "mottle": {"cell": 90, "lo": 0.5, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2180, 20], "size": [660, 250]}]},
+    {"name": "alcove", "z": 4.7, "kind": "flat", "material": "void",
+     "grad": {"to": "well_inner", "y0": 346, "y1": 220, "curve": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [2150, 330], "size": [324, 220]}]},
+    {"name": "alcove_floor", "z": 4.72, "kind": "flat", "material": "siltglass",
+     "grad": {"to": "well_inner", "y0": 440, "y1": 346, "curve": 1.0},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [2150, 393], "size": [322, 94]}]},
+    {"name": "alcove_frame", "z": 4.75, "kind": "flat", "material": "stone_dark", "line": {"width": 1.0, "heavy": 1.1},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [2150, 214], "size": [352, 16]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [1983, 330], "size": [14, 226]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [2317, 330], "size": [14, 226]}
+     ]},
+    {"name": "vault_door", "z": 4.8, "material": "iron", "line": {"width": 1.0, "heavy": 1.2},
+     "shade": {"bump": 0.5},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [2410, 345], "size": [104, 186]}]},
+    {"name": "vault_door_rivets", "z": 4.85, "kind": "flat", "material": "bronze", "line": {"width": 0.5, "heavy": 0.5},
+     "pieces": [
+       {"icon": "circle", "at": [0, 0], "size": [7, 6], "repeat": {"line": [[2372, 268], [2448, 268]], "count": 5}},
+       {"icon": "circle", "at": [0, 0], "size": [7, 6], "repeat": {"line": [[2372, 420], [2448, 420]], "count": 5}},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [2410, 345], "size": [96, 6]}
+     ]},
+    {"name": "vault_foot_dirt", "z": 4.9, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.5, "blur": 14,
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [2180, 436], "size": [610, 26]}]},
+    {"name": "vault_damp", "z": 4.92, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.45, "clip_to": "vault",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [1920, 160], "size": [14, 96]},
+       {"icon": "droplet", "flip": "y", "at": [2450, 150], "size": [12, 80]},
+       {"icon": "droplet", "flip": "y", "at": [2270, 150], "size": [10, 60]}
+     ]},
+
+    {"name": "stain_mid_banks", "z": 8.1, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.12,
+     "mottle": {"cell": 150, "lo": 0.62, "hi": 0.9},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 380], "size": [2660, 360]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1100], "size": [2660, 280]}
+     ]},
+    {"name": "stain_small_banks", "z": 8.12, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.1,
+     "mottle": {"cell": 44, "lo": 0.7, "hi": 0.95},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 380], "size": [2660, 360]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 1100], "size": [2660, 280]}
+     ]},
+    {"name": "terrace_cracks", "z": 8.5, "kind": "flat", "material": "deck_joint", "opacity": 0.55,
+     "pieces": [
+       {"icon": "lightning_bolt", "at": [1960, 510], "size": [10, 40], "rot": 72},
+       {"icon": "lightning_bolt", "at": [2380, 500], "size": [9, 34], "rot": -60}
+     ]}
+  ]
+}

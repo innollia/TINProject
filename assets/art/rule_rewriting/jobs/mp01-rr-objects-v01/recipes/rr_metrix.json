@@ -1,0 +1,26 @@
+{
+  "asset": "rr_metrix",
+  "status": "candidate",
+  "note": "Rule Rewrite METRIX (inventory preview of the derived aggregate only; on the board the BOX/DOOR boundary stays visible): a thick violet square frame with brass corner brackets around a dark field and a smaller nested frame. Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 238,
+  "forms": [
+    {"name": "field", "z": 0, "kind": "flat", "color": "#232030",
+     "pieces": [{"icon": "square", "at": [96, 96], "size": [110, 110]}]},
+    {"name": "frame", "z": 1, "material": "rr_violet", "shade": {"bump": 0.5},
+     "pieces": [{"icon": "square", "slice": {"border": 3, "corner": 6}, "minus_icons": [{"icon": "square", "box": [2.6, 2.6, 13.4, 13.4]}], "at": [96, 96], "size": [134, 134]}]},
+    {"name": "nested", "z": 2, "kind": "flat", "material": "rr_violet", "opacity": 0.6, "line": {"width": 0.8, "heavy": 0.4},
+     "pieces": [{"icon": "square", "minus_icons": [{"icon": "square", "box": [3, 3, 13, 13]}], "at": [96, 96], "size": [50, 50]}]},
+    {"name": "brackets", "z": 3, "kind": "flat", "material": "rr_brass", "line": {"width": 0.7, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "at": [41, 32], "size": [24, 6]}, {"icon": "square", "at": [32, 41], "size": [6, 24]},
+       {"icon": "square", "at": [151, 32], "size": [24, 6]}, {"icon": "square", "at": [160, 41], "size": [6, 24]},
+       {"icon": "square", "at": [41, 160], "size": [24, 6]}, {"icon": "square", "at": [32, 151], "size": [6, 24]},
+       {"icon": "square", "at": [151, 160], "size": [24, 6]}, {"icon": "square", "at": [160, 151], "size": [6, 24]}
+     ]}
+  ]
+}

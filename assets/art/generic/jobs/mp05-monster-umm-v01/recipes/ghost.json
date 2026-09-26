@@ -1,0 +1,47 @@
+{
+  "asset": "ghost",
+  "status": "candidate",
+  "note": "Generic battler: ghost (undead / spirit). A pale translucent figure floating off the floor, round head and shoulders narrowing to a wisp, long drooping sleeves, hollow eyes and an open mouth, a faint cold light (emit layer) in the chest. Front view, fixed 60 deg camera. Detached soft floor shadow.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre; floats - detached shadow at y=324",
+  "seed": 604,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.25, "blur": 8,
+     "pieces": [{"icon": "circle", "at": [160, 326], "size": [110, 18]}]},
+
+    {"name": "wisp", "z": 1, "material": "ghost", "opacity": 0.82, "emit": 0.25,
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [160, 200], "size": [96, 162]}]},
+    {"name": "tail", "z": 0.9, "material": "ghost", "opacity": 0.42, "emit": 0.15, "rough": {"amp": 0.5, "cell": 7, "soft": 2.0},
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [162, 262], "size": [58, 104]},
+       {"icon": "droplet", "flip": "y", "at": [176, 288], "size": [22, 56], "rot": -14},
+       {"icon": "droplet", "flip": "y", "at": [146, 282], "size": [18, 46], "rot": 16}
+     ]},
+    {"name": "core", "z": 1.2, "kind": "flat", "material": "soul", "emit": 0.7, "clip_to": "wisp", "opacity": 0.5,
+     "glow": {"radius": 10, "opacity": 0.45, "color": "soul_glow"},
+     "pieces": [{"icon": "circle", "at": [160, 176], "size": [30, 36]}]},
+
+    {"name": "sleeves", "z": 2, "material": "ghost", "opacity": 0.8, "emit": 0.2,
+     "pieces": [
+       {"icon": "droplet", "at": [110, 200], "size": [28, 84], "rot": 14},
+       {"icon": "droplet", "at": [210, 200], "size": [28, 84], "rot": -14}
+     ]},
+    {"name": "hands", "z": 2.1, "material": "ghost", "opacity": 0.85,
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [100, 244], "size": [12, 20], "rot": 10},
+       {"icon": "droplet", "flip": "y", "at": [220, 244], "size": [12, 20], "rot": -10}
+     ]},
+
+    {"name": "head", "z": 3, "material": "ghost", "opacity": 0.9, "emit": 0.25,
+     "pieces": [{"icon": "circle", "at": [160, 110], "size": [52, 56]}]},
+    {"name": "face", "z": 3.1, "kind": "flat", "color": "#141a1d", "opacity": 0.9,
+     "pieces": [
+       {"icon": "circle", "at": [149, 108], "size": [11, 15], "rot": -8},
+       {"icon": "circle", "at": [171, 108], "size": [11, 15], "rot": 8},
+       {"icon": "circle", "at": [160, 128], "size": [12, 16]}
+     ]}
+  ]
+}

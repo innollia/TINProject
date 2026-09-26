@@ -1,0 +1,47 @@
+{
+  "asset": "route_r2_flood_refuge_gallery",
+  "status": "candidate",
+  "note": "Internal-route object for flood_refuge_gallery (area C, root bridge -> seed vault, needs prop_r2_waterline_mark ps_raised), author design. Sits on the first span of the raised gallery (base_clean draws only the two stringers there). closed: no planks on the span, the planks stacked on the deck beyond it, a rope barrier across the top of the stairs between two short posts; open: the span is planked and the rope hangs loose from the north post.",
+  "palette": "palette_r2.json",
+  "style": "prop",
+  "canvas": [440, 420],
+  "pivot": [214, 328],
+  "pivot_meaning": "south edge of the first gallery span at deck height (area C source px 850,388); canvas = area px - (636, 60)",
+  "seed": 354,
+  "frames": [
+    {"name": "route_r2_flood_refuge_gallery_closed", "show": ["closed"]},
+    {"name": "route_r2_flood_refuge_gallery_open", "show": ["open"]}
+  ],
+  "forms": [
+    {"name": "span_planks", "tags": ["open"], "hidden": true, "z": 0, "material": "plank",
+     "shade": {"max_radius": 5, "soft": 0.1, "bump": 0.8, "threshold": 0.42, "highlight": 0.86, "highlight_amount": 0.3, "ragged": 0.12},
+     "line": {"width": 0.9, "heavy": 0.9, "breaks": 0.2, "color": "#141a16", "opacity": 0.8},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [144, 288], "size": [35, 74], "repeat": {"grid": [5, 1], "step": [40, 0], "jitter": {"at": 1.5, "size": 0.01}}}]},
+
+    {"name": "plank_stack", "tags": ["closed"], "hidden": true, "z": 0, "kind": "block", "material": "plank", "extrude": 8,
+     "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [350, 300], "size": [76, 22], "rot": 2},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [352, 292], "size": [76, 22], "rot": -3},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [349, 284], "size": [76, 22], "rot": 1},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [351, 276], "size": [76, 22], "rot": -2}
+     ]},
+
+    {"name": "barrier_posts", "z": 1, "kind": "block", "material": "stilt", "extrude": 104,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [134, 137], "size": [18, 14]},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [134, 217], "size": [18, 14]}
+     ]},
+    {"name": "rope_across", "tags": ["closed"], "hidden": true, "z": 2, "kind": "flat", "material": "cord", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [134, 180], "size": [5, 84]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [134, 160], "size": [16, 22]}
+     ]},
+    {"name": "rope_loose", "tags": ["open"], "hidden": true, "z": 2, "kind": "flat", "material": "cord", "line": {"width": 0.6, "heavy": 0.6},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [128, 176], "size": [5, 70], "rot": 8},
+       {"icon": "circle", "at": [124, 212], "size": [14, 8]}
+     ]}
+  ]
+}

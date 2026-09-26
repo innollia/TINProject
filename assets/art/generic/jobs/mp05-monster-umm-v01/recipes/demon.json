@@ -1,0 +1,141 @@
+{
+  "asset": "demon",
+  "status": "candidate",
+  "note": "Generic battler: demon (large). Horned head with ember eyes and fangs, broad dark-red shoulders and chest crossed by glowing skin cracks, clawed hands low at its sides, bat wings spread behind, backward-bent legs on hooves, a ragged loincloth and a tail curling to one side. Large scale (1.25 of human). Front view, fixed 60 deg camera. No symbols.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [400, 480],
+  "pivot": [200, 240],
+  "pivot_meaning": "body centre; ground contact line y=398",
+  "seed": 609,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.42, "blur": 5,
+     "pieces": [{"icon": "circle", "at": [200, 399], "size": [230, 32]}]},
+
+    {"name": "wing_l", "z": 0.3, "material": "wing",
+     "pieces": [
+       {"icon": "triangle", "at": [106, 170], "size": [150, 150], "rot": -58},
+       {"icon": "circle", "op": "sub", "at": [96, 250], "size": [52, 48]},
+       {"icon": "circle", "op": "sub", "at": [58, 222], "size": [40, 40]},
+       {"icon": "circle", "op": "sub", "at": [42, 186], "size": [30, 30]}
+     ]},
+    {"name": "wing_r", "z": 0.3, "material": "wing",
+     "pieces": [
+       {"icon": "triangle", "at": [294, 170], "size": [150, 150], "rot": 58},
+       {"icon": "circle", "op": "sub", "at": [304, 250], "size": [52, 48]},
+       {"icon": "circle", "op": "sub", "at": [342, 222], "size": [40, 40]},
+       {"icon": "circle", "op": "sub", "at": [358, 186], "size": [30, 30]}
+     ]},
+    {"name": "wing_bones", "z": 0.4, "kind": "flat", "material": "horn", "opacity": 0.85,
+     "pieces": [
+       {"icon": "square", "at": [110, 150], "size": [3, 130], "rot": -60},
+       {"icon": "square", "at": [80, 196], "size": [2.4, 80], "rot": -30},
+       {"icon": "square", "at": [290, 150], "size": [3, 130], "rot": 60},
+       {"icon": "square", "at": [320, 196], "size": [2.4, 80], "rot": 30}
+     ]},
+    {"name": "tail", "z": 0.5, "material": "demon_skin",
+     "pieces": [
+       {"icon": "circle", "at": [262, 372], "size": [10, 60], "rot": -70},
+       {"icon": "circle", "at": [302, 352], "size": [9, 44], "rot": -30},
+       {"icon": "triangle", "at": [314, 326], "size": [18, 22], "rot": 18}
+     ]},
+
+    {"name": "legs", "z": 1, "material": "demon_skin",
+     "pieces": [
+       {"icon": "circle", "at": [172, 318], "size": [40, 70], "rot": 12},
+       {"icon": "circle", "at": [228, 318], "size": [40, 70], "rot": -12},
+       {"icon": "circle", "at": [168, 364], "size": [26, 52], "rot": -14},
+       {"icon": "circle", "at": [232, 364], "size": [26, 52], "rot": 14}
+     ]},
+    {"name": "hooves", "z": 1.1, "material": "horn",
+     "pieces": [
+       {"icon": "circle", "half": "top", "at": [166, 394], "size": [32, 16]},
+       {"icon": "circle", "half": "top", "at": [234, 394], "size": [32, 16]}
+     ]},
+    {"name": "loin", "z": 1.2, "material": "rag_dark", "rough": {"amp": 0.4, "cell": 6, "soft": 1.2},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [200, 286], "size": [82, 22]},
+       {"icon": "bookmark", "at": [200, 314], "size": [38, 50]}
+     ]},
+    {"name": "torso", "z": 2, "material": "demon_skin",
+     "pieces": [
+       {"icon": "circle", "at": [200, 212], "size": [136, 110]},
+       {"icon": "circle", "at": [200, 262], "size": [88, 64]}
+     ]},
+    {"name": "muscle_lines", "z": 2.1, "kind": "flat", "color": "#1c0c0d", "opacity": 0.7, "clip_to": "torso",
+     "pieces": [
+       {"icon": "moon", "at": [178, 222], "size": [40, 20], "rot": 180},
+       {"icon": "moon", "flip": "x", "at": [222, 222], "size": [40, 20], "rot": 180},
+       {"icon": "square", "at": [200, 262], "size": [2, 40]},
+       {"icon": "square", "at": [200, 256], "size": [40, 1.8]},
+       {"icon": "square", "at": [200, 272], "size": [36, 1.8]}
+     ]},
+    {"name": "cracks", "z": 2.2, "kind": "flat", "material": "hell_glow", "emit": 0.9, "clip_to": "torso",
+     "glow": {"radius": 3, "opacity": 0.5, "color": "hell_glow"},
+     "pieces": [
+       {"icon": "square", "at": [168, 196], "size": [2.4, 26], "rot": 30},
+       {"icon": "square", "at": [176, 208], "size": [2, 18], "rot": -20},
+       {"icon": "square", "at": [232, 200], "size": [2.4, 24], "rot": -24},
+       {"icon": "square", "at": [226, 213], "size": [2, 16], "rot": 30},
+       {"icon": "square", "at": [206, 246], "size": [2, 20], "rot": 14}
+     ]},
+
+    {"name": "arms", "z": 3, "material": "demon_skin",
+     "pieces": [
+       {"icon": "circle", "at": [128, 222], "size": [42, 88], "rot": 18},
+       {"icon": "circle", "at": [112, 286], "size": [34, 72], "rot": 6},
+       {"icon": "circle", "at": [272, 222], "size": [42, 88], "rot": -18},
+       {"icon": "circle", "at": [288, 286], "size": [34, 72], "rot": -6}
+     ]},
+    {"name": "hands", "z": 3.1, "material": "demon_skin",
+     "pieces": [
+       {"icon": "circle", "at": [110, 326], "size": [30, 26]},
+       {"icon": "circle", "at": [290, 326], "size": [30, 26]}
+     ]},
+    {"name": "claws", "z": 3.2, "material": "horn",
+     "pieces": [
+       {"icon": "triangle", "flip": "y", "at": [99, 342], "size": [5, 12], "rot": 10},
+       {"icon": "triangle", "flip": "y", "at": [108, 344], "size": [5, 12]},
+       {"icon": "triangle", "flip": "y", "at": [117, 342], "size": [5, 12], "rot": -10},
+       {"icon": "triangle", "flip": "y", "at": [283, 342], "size": [5, 12], "rot": 10},
+       {"icon": "triangle", "flip": "y", "at": [292, 344], "size": [5, 12]},
+       {"icon": "triangle", "flip": "y", "at": [301, 342], "size": [5, 12], "rot": -10}
+     ]},
+    {"name": "shoulders", "z": 3.3, "material": "demon_skin", "shade": {"highlight_amount": 0.6},
+     "pieces": [
+       {"icon": "circle", "at": [138, 172], "size": [52, 40], "rot": -16},
+       {"icon": "circle", "at": [262, 172], "size": [52, 40], "rot": 16}
+     ]},
+
+    {"name": "horns", "z": 3.9, "material": "horn",
+     "pieces": [
+       {"icon": "triangle", "at": [168, 118], "size": [18, 40], "rot": -34},
+       {"icon": "triangle", "at": [152, 94], "size": [11, 24], "rot": -8},
+       {"icon": "triangle", "at": [232, 118], "size": [18, 40], "rot": 34},
+       {"icon": "triangle", "at": [248, 94], "size": [11, 24], "rot": 8}
+     ]},
+    {"name": "head", "z": 4, "material": "demon_skin",
+     "pieces": [
+       {"icon": "circle", "at": [200, 150], "size": [58, 60]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [200, 172], "size": [42, 24]}
+     ]},
+    {"name": "brow", "z": 4.1, "kind": "flat", "color": "#1c0c0d",
+     "pieces": [
+       {"icon": "square", "at": [187, 140], "size": [18, 3], "rot": 20},
+       {"icon": "square", "at": [213, 140], "size": [18, 3], "rot": -20}
+     ]},
+    {"name": "eyes", "z": 4.2, "kind": "flat", "material": "hell_glow", "emit": 1.0,
+     "glow": {"radius": 4, "opacity": 0.65, "color": "hell_glow"},
+     "pieces": [
+       {"icon": "circle", "at": [188, 148], "size": [9, 6]},
+       {"icon": "circle", "at": [212, 148], "size": [9, 6]}
+     ]},
+    {"name": "mouth", "z": 4.3, "kind": "flat", "material": "void",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [200, 174], "size": [28, 7]}]},
+    {"name": "fangs", "z": 4.4, "kind": "flat", "material": "bone",
+     "pieces": [
+       {"icon": "triangle", "flip": "y", "at": [190, 177], "size": [5, 9]},
+       {"icon": "triangle", "flip": "y", "at": [210, 177], "size": [5, 9]}
+     ]}
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "asset": "rr_rune",
+  "status": "candidate",
+  "note": "Rule Rewrite RUNE: a violet standing stone with a rounded top, carved with an abstract faintly glowing mark (a hollow triangle with a dot over a bar; not a letter), rubble at its foot. Author's design.",
+  "palette": "palette_rr.json",
+  "style": "prop",
+  "canvas": [192, 192],
+  "pivot": [96, 160],
+  "pivot_meaning": "bottom centre where the object meets the board / 3D floor",
+  "seed": 234,
+  "forms": [
+    {"name": "stone", "z": 0, "material": "rr_violet", "shade": {"bump": 0.6},
+     "pieces": [
+       {"icon": "circle", "at": [96, 82], "size": [88, 88]},
+       {"icon": "square", "slice": {"border": 3, "corner": 5}, "at": [96, 122], "size": [88, 76]}
+     ]},
+    {"name": "cracks", "z": 0.5, "kind": "flat", "color": "#221d30", "opacity": 0.8, "clip_to": "stone",
+     "pieces": [
+       {"icon": "circle", "rot": 20, "at": [66, 70], "size": [1.6, 20]},
+       {"icon": "circle", "rot": -30, "at": [126, 138], "size": [1.6, 16]}
+     ]},
+    {"name": "mark", "z": 1, "kind": "flat", "color": "#b1a8d4", "opacity": 0.9, "emit": 0.4, "clip_to": "stone",
+     "glow": {"radius": 3, "opacity": 0.35, "color": "#b1a8d4"},
+     "pieces": [
+       {"icon": "triangle", "minus_icons": [{"icon": "triangle", "box": [3.6, 4.4, 12.4, 12.6]}], "at": [96, 100], "size": [48, 42]},
+       {"icon": "circle", "at": [96, 106], "size": [8, 8]},
+       {"icon": "square", "at": [96, 134], "size": [42, 3.4]}
+     ]},
+    {"name": "rubble", "z": 2, "material": "rr_stone", "shade": {"bump": 0.6},
+     "pieces": [
+       {"icon": "hexagon", "at": [56, 154], "size": [26, 13]},
+       {"icon": "circle", "at": [138, 155], "size": [20, 11]},
+       {"icon": "circle", "at": [124, 158], "size": [12, 7]}
+     ]}
+  ]
+}

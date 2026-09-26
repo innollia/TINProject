@@ -1,0 +1,227 @@
+{
+  "asset": "enemy_worksheet_instructor",
+  "status": "candidate",
+  "note": "enemy_worksheet_instructor (R8 Folding School, magic academy; grader/labour; humanoid, human scale, stateful transform, motion grade_mark). Author design: a broad-shouldered instructor in a dark green academic gown with a high folded paper collar, spectacles and a square academic cap with a red tassel; a framed slate score board (chalk tally strokes, no text) in the left hand and a long red marking rod in the right (support reference: the hanging score slate of FAM-ARPG-19 Grading Wall, same region). Telegraph (field prop + pose): rod raised overhead, slate thrust forward. Signature (grade mark): body twisted, rod slashed down across the slate leaving a red stroke. Break (overflowed): slate split in two, sheets spilling out of the gown, body thrown back, rod dropped. Phase 1 Second Sheet: a second slate in the other hand, gown folded out of shape (misfolded). Phase 2 Final Mark: the torso has become a large slate and the rod is fixed on as the right arm. Front battler, 60 deg view.",
+  "palette": "palette_mp05_enemies.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre (game draws the enemy centred on its stage position); ground contact line y=320",
+  "seed": 508,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 4,
+     "pieces": [{"icon": "circle", "at": [160, 321], "size": [144, 24]}]},
+
+    {"name": "marker_dropped", "tags": ["dropped"], "hidden": true, "z": 0.5, "material": "marker_red",
+     "pieces": [{"icon": "square", "at": [226, 314], "size": [7, 74], "rot": 78, "squash": 0.8}]},
+
+    {"name": "shoes", "tags": ["body"], "z": 1, "material": "leather",
+     "pieces": [
+       {"icon": "circle", "at": [148, 316], "size": [22, 11]},
+       {"icon": "circle", "at": [172, 316], "size": [22, 11]}
+     ]},
+    {"name": "gown", "tags": ["body"], "z": 2, "material": "gown_school",
+     "pieces": [{"icon": "bell", "crop": [2, 3.0, 14, 12.6], "fit": [2, 3.0, 14, 12.6], "at": [160, 228], "size": [114, 178]}]},
+    {"name": "gown_opening", "tags": ["body"], "z": 2.1, "kind": "flat", "color": "coat_seam", "clip_to": "gown",
+     "pieces": [{"icon": "triangle", "at": [160, 262], "size": [30, 124]}]},
+    {"name": "misfolds", "tags": ["body", "misfold"], "hidden": true, "z": 2.2, "material": "gown_school_top", "shade": {"bump": 0.5},
+     "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "triangle", "at": [128, 262], "size": [34, 30], "rot": 34},
+       {"icon": "triangle", "at": [194, 284], "size": [30, 28], "rot": -46},
+       {"icon": "triangle", "at": [148, 300], "size": [26, 20], "rot": 14},
+       {"icon": "triangle", "at": [186, 232], "size": [22, 20], "rot": 200}
+     ]},
+    {"name": "spill", "tags": ["spill"], "hidden": true, "z": 2.3, "material": "paper", "shade": {"bump": 0.35},
+     "cast": {"dist": 2.2, "blur": 1.4, "opacity": 0.45, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [154, 250], "size": [26, 32], "rot": -18},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [172, 272], "size": [24, 30], "rot": 22},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [146, 294], "size": [26, 30], "rot": -40},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [184, 306], "size": [28, 20], "rot": 64, "squash": 0.7},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [118, 318], "size": [26, 18], "rot": 10, "squash": 0.6},
+       {"icon": "square", "slice": {"border": 3, "corner": 2}, "at": [206, 322], "size": [24, 16], "rot": -12, "squash": 0.6}
+     ]},
+
+    {"name": "slate_body", "tags": ["slate_body"], "hidden": true, "z": 2.5, "kind": "block", "material": "wood", "extrude": 6,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [160, 206], "size": [100, 112]}]},
+    {"name": "slate_body_face", "tags": ["slate_body"], "hidden": true, "z": 2.6, "material": "slate", "shade": {"bump": 0.35},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [160, 206], "size": [86, 98]}]},
+    {"name": "slate_body_marks", "tags": ["slate_body"], "hidden": true, "z": 2.7, "kind": "flat", "material": "chalk", "opacity": 0.75,
+     "pieces": [
+       {"icon": "square", "at": [136, 172], "size": [22, 1.8], "rot": 14},
+       {"icon": "square", "at": [142, 180], "size": [1.8, 14], "rot": -26},
+       {"icon": "moon", "at": [182, 176], "size": [14, 9], "rot": 60},
+       {"icon": "square", "at": [134, 214], "size": [18, 1.8], "rot": -32},
+       {"icon": "square", "at": [150, 226], "size": [26, 1.8], "rot": 6},
+       {"icon": "moon", "at": [136, 240], "size": [10, 7], "rot": 150},
+       {"icon": "square", "at": [178, 248], "size": [30, 1.8], "rot": -8}
+     ]},
+    {"name": "slate_body_stroke", "tags": ["slate_body"], "hidden": true, "z": 2.8, "kind": "flat", "material": "marker_red",
+     "pieces": [
+       {"icon": "square", "at": [172, 196], "size": [4, 70], "rot": 38},
+       {"icon": "square", "at": [150, 232], "size": [4, 40], "rot": -30}
+     ]},
+
+    {"name": "mantle", "tags": ["body"], "z": 3, "material": "gown_school_top",
+     "pieces": [{"icon": "umbrella", "crop": [0.6, 2.3, 15.4, 8.7], "at": [160, 148], "size": [124, 42]}]},
+    {"name": "collar", "tags": ["body"], "z": 3.2, "material": "paper", "shade": {"bump": 0.5},
+     "pieces": [
+       {"icon": "triangle", "at": [145, 128], "size": [26, 26], "rot": -24},
+       {"icon": "triangle", "at": [175, 128], "size": [26, 26], "rot": 24}
+     ]},
+
+    {"name": "face", "tags": ["head"], "z": 3.4, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [160, 106], "size": [32, 36]}]},
+    {"name": "hair", "tags": ["head"], "z": 3.45, "material": "hair",
+     "pieces": [
+       {"icon": "circle", "half": "top", "at": [160, 96], "size": [35, 16]},
+       {"icon": "droplet", "flip": "y", "at": [145, 104], "size": [7, 16], "rot": 8},
+       {"icon": "droplet", "flip": "y", "at": [175, 104], "size": [7, 16], "rot": -8}
+     ]},
+    {"name": "brows", "tags": ["head"], "z": 3.5, "kind": "flat", "material": "hair",
+     "pieces": [
+       {"icon": "square", "at": [153, 102], "size": [8, 2], "rot": 14},
+       {"icon": "square", "at": [167, 102], "size": [8, 2], "rot": -14}
+     ]},
+    {"name": "eyes", "tags": ["head"], "z": 3.5, "kind": "flat", "material": "eye",
+     "pieces": [
+       {"icon": "square", "at": [153, 108], "size": [5, 1.8]},
+       {"icon": "square", "at": [167, 108], "size": [5, 1.8]}
+     ]},
+    {"name": "spectacles", "tags": ["head"], "z": 3.55, "kind": "flat", "material": "bronze",
+     "pieces": [
+       {"icon": "circle", "half": "bottom", "at": [153, 110], "size": [11, 6]},
+       {"icon": "circle", "half": "bottom", "op": "sub", "at": [153, 109.4], "size": [8, 4]},
+       {"icon": "circle", "half": "bottom", "at": [167, 110], "size": [11, 6]},
+       {"icon": "circle", "half": "bottom", "op": "sub", "at": [167, 109.4], "size": [8, 4]}
+     ]},
+    {"name": "mouth", "tags": ["head"], "z": 3.55, "kind": "flat", "color": "skin_shadow",
+     "pieces": [{"icon": "square", "at": [160, 119], "size": [10, 1.6], "rot": -3}]},
+    {"name": "cap_base", "tags": ["head"], "z": 3.6, "material": "gown_school_top",
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [160, 88], "size": [34, 10]}]},
+    {"name": "cap_board", "tags": ["head"], "z": 3.65, "material": "gown_school_top", "shade": {"bump": 0.3, "highlight_amount": 0.6},
+     "pieces": [{"icon": "square", "at": [160, 80], "size": [42, 42], "rot": 45, "squash": 0.34}]},
+    {"name": "tassel", "tags": ["head"], "z": 3.7, "material": "marker_red",
+     "pieces": [
+       {"icon": "square", "at": [178, 86], "size": [1.6, 18], "rot": -8},
+       {"icon": "droplet", "at": [179, 96], "size": [6, 10]}
+     ]},
+
+    {"name": "arm_l", "tags": ["arm_l"], "z": 4, "material": "gown_school",
+     "pieces": [{"icon": "circle", "at": [118, 184], "size": [23, 60], "rot": 12}]},
+    {"name": "slate_frame", "tags": ["slate"], "z": 4.2, "material": "wood", "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [134, 198], "size": [56, 48], "rot": -6}]},
+    {"name": "slate_face", "tags": ["slate"], "z": 4.3, "material": "slate", "shade": {"bump": 0.35},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [134, 198], "size": [46, 38], "rot": -6}]},
+    {"name": "slate_marks", "tags": ["slate"], "z": 4.4, "kind": "flat", "material": "chalk", "opacity": 0.75,
+     "pieces": [
+       {"icon": "square", "at": [123, 188], "size": [14, 1.6], "rot": 18},
+       {"icon": "square", "at": [128, 190], "size": [1.6, 9], "rot": -30},
+       {"icon": "square", "at": [141, 186], "size": [12, 1.6], "rot": -14},
+       {"icon": "square", "at": [124, 203], "size": [9, 1.6], "rot": -40},
+       {"icon": "moon", "at": [137, 203], "size": [9, 6], "rot": 70},
+       {"icon": "square", "at": [141, 210], "size": [16, 1.6], "rot": -6}
+     ]},
+    {"name": "grade_stroke", "tags": ["slate", "stroke"], "hidden": true, "z": 4.45, "kind": "flat", "material": "marker_red",
+     "pieces": [{"icon": "square", "at": [134, 198], "size": [4, 50], "rot": 42}]},
+    {"name": "hand_l", "tags": ["slate_grip"], "z": 4.5, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [128, 220], "size": [13, 13]}]},
+    {"name": "slate_halves", "tags": ["split"], "hidden": true, "z": 4.2, "material": "wood",
+     "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "half": "left", "at": [108, 244], "size": [28, 48], "rot": -26},
+       {"icon": "square", "slice": {"border": 4, "corner": 3}, "half": "right", "at": [142, 256], "size": [28, 48], "rot": 20}
+     ]},
+    {"name": "slate_halves_face", "tags": ["split"], "hidden": true, "z": 4.3, "material": "slate",
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [110, 244], "size": [20, 38], "rot": -26},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [140, 256], "size": [20, 38], "rot": 20}
+     ]},
+
+    {"name": "slate2_frame", "tags": ["slate2"], "hidden": true, "z": 4.6, "material": "wood", "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [194, 206], "size": [50, 44], "rot": 8}]},
+    {"name": "slate2_face", "tags": ["slate2"], "hidden": true, "z": 4.7, "material": "slate", "shade": {"bump": 0.35},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [194, 206], "size": [40, 34], "rot": 8}]},
+    {"name": "slate2_marks", "tags": ["slate2"], "hidden": true, "z": 4.8, "kind": "flat", "material": "chalk", "opacity": 0.8,
+     "pieces": [
+       {"icon": "square", "at": [186, 198], "size": [12, 1.6], "rot": 30},
+       {"icon": "square", "at": [199, 204], "size": [1.6, 10], "rot": 20},
+       {"icon": "moon", "at": [190, 212], "size": [8, 5], "rot": 110}
+     ]},
+
+    {"name": "arm_r", "tags": ["arm_r"], "z": 4, "material": "gown_school",
+     "pieces": [{"icon": "circle", "at": [203, 184], "size": [23, 62], "rot": -8}]},
+    {"name": "marker", "tags": ["arm_r", "marker"], "z": 4.6, "material": "marker_red",
+     "pieces": [
+       {"icon": "square", "at": [210, 254], "size": [7, 84]},
+       {"icon": "triangle", "flip": "y", "at": [210, 302], "size": [7, 14]}
+     ]},
+    {"name": "hand_r", "tags": ["arm_r"], "z": 4.7, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [209, 218], "size": [14, 15]}]},
+
+    {"name": "arm_up", "tags": ["up"], "hidden": true, "z": 4, "material": "gown_school",
+     "pieces": [{"icon": "circle", "at": [208, 124], "size": [22, 58], "rot": 8}]},
+    {"name": "marker_up", "tags": ["up"], "hidden": true, "z": 4.6, "material": "marker_red",
+     "pieces": [
+       {"icon": "square", "at": [214, 70], "size": [7, 52]},
+       {"icon": "triangle", "at": [214, 38], "size": [7, 12]}
+     ]},
+    {"name": "hand_up", "tags": ["up"], "hidden": true, "z": 4.7, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [213, 96], "size": [14, 15]}]},
+
+    {"name": "arm_slash", "tags": ["slash"], "hidden": true, "z": 4.9, "material": "gown_school",
+     "pieces": [{"icon": "circle", "at": [184, 176], "size": [22, 62], "rot": 40}]},
+    {"name": "marker_slash", "tags": ["slash"], "hidden": true, "z": 5, "material": "marker_red",
+     "pieces": [
+       {"icon": "square", "at": [140, 228], "size": [7, 70], "rot": 40},
+       {"icon": "triangle", "flip": "y", "at": [117, 255], "size": [7, 14], "rot": 40}
+     ]},
+    {"name": "hand_slash", "tags": ["slash"], "hidden": true, "z": 5.1, "material": "surrogate",
+     "pieces": [{"icon": "circle", "at": [162, 202], "size": [14, 15]}]},
+
+    {"name": "marker_arm", "tags": ["marker_arm"], "hidden": true, "z": 4.6, "material": "marker_red",
+     "cast": {"dist": 2.5, "blur": 1.5, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "circle", "at": [206, 154], "size": [22, 18]},
+       {"icon": "square", "at": [222, 226], "size": [9, 142], "rot": -12},
+       {"icon": "triangle", "flip": "y", "at": [237, 302], "size": [9, 18], "rot": -12}
+     ]},
+    {"name": "marker_arm_bands", "tags": ["marker_arm"], "hidden": true, "z": 4.7, "material": "bronze", "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [
+       {"icon": "square", "at": [212, 180], "size": [12, 4], "rot": -12},
+       {"icon": "square", "at": [226, 244], "size": [12, 4], "rot": -12}
+     ]}
+  ],
+  "frames": [
+    {"name": "baseline"},
+    {"name": "telegraph",
+     "hide": ["arm_r"],
+     "show": ["up"],
+     "move": {"slate": {"sx": 1.12, "sy": 1.12, "dx": 10, "dy": -4, "pivot": [134, 218]},
+              "slate_grip": {"sx": 1.12, "sy": 1.12, "dx": 10, "dy": -4, "pivot": [134, 218]},
+              "arm_l": {"rot": -14, "pivot": [124, 156]},
+              "head": {"rot": -4, "pivot": [160, 124]}}},
+    {"name": "signature",
+     "hide": ["arm_r"],
+     "show": ["slash", "stroke"],
+     "move": {"head": {"rot": 7, "dx": -3, "pivot": [160, 124]},
+              "slate": {"dx": 4, "dy": 6},
+              "slate_grip": {"dx": 4, "dy": 6},
+              "arm_l": {"rot": -4, "pivot": [124, 156]}}},
+    {"name": "break",
+     "hide": ["slate", "marker"],
+     "show": ["split", "spill", "dropped"],
+     "move": {"head": [{"rot": -12, "pivot": [160, 124]}, {"rot": -6, "pivot": [160, 320]}],
+              "arm_l": [{"rot": 26, "pivot": [124, 156]}, {"rot": -6, "pivot": [160, 320]}],
+              "slate_grip": [{"rot": 26, "pivot": [124, 156]}, {"rot": -6, "pivot": [160, 320]}],
+              "arm_r": [{"rot": -30, "pivot": [198, 156]}, {"rot": -6, "pivot": [160, 320]}],
+              "body": {"rot": -6, "pivot": [160, 320]}}},
+    {"name": "phase1_second_sheet",
+     "hide": ["marker"],
+     "show": ["slate2", "misfold"]},
+    {"name": "phase2_final_mark",
+     "hide": ["slate", "slate_grip", "arm_r", "arm_l"],
+     "show": ["slate_body", "marker_arm", "misfold"]}
+  ]
+}

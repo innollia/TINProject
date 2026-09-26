@@ -1,53 +1,53 @@
 {
   "asset": "obj_r2_toll_booth",
   "status": "candidate",
-  "note": "R2 region object (author design) at the place of service_r2_sluice_road_toll. Reed-walled booth 1.4 m wide, 1.2 m deep, 2.3 m walls, thatched roof with a ridge beam, empty service hatch with a sill, a blank plaque. No text.",
+  "note": "R2 region object (author design) at the place of service_r2_sluice_road_toll. Reed-walled booth 1.2 m wide, 1.0 m deep, 2.1 m walls, thatched roof with a ridge beam, empty service hatch with a sill, a blank plaque. No text. Fix 2: made smaller so it does not tower over the jetty.",
   "palette": "palette_r2.json",
   "style": "prop",
-  "canvas": [400, 620],
-  "pivot": [200, 540],
+  "canvas": [360, 580],
+  "pivot": [180, 500],
   "pivot_meaning": "front-bottom centre of the booth on its plank pad",
   "seed": 323,
   "forms": [
     {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 10,
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 30}, "at": [206, 540], "size": [320, 50]}]},
-    {"name": "body", "z": 0, "kind": "block", "material": "reed", "extrude": 253,
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [200, 194], "size": [252, 187]}]},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 26}, "at": [186, 500], "size": [270, 44]}]},
+    {"name": "body", "z": 0, "kind": "block", "material": "reed", "extrude": 231,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [180, 191], "size": [216, 156]}]},
     {"name": "corner_posts", "z": 0.5, "kind": "flat", "material": "stilt", "line": {"width": 0.8, "heavy": 0.9},
      "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [80, 414], "size": [14, 253]},
-       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [320, 414], "size": [14, 253]}
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [79, 384], "size": [12, 231]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [281, 384], "size": [12, 231]}
      ]},
     {"name": "damp_streaks", "z": 0.6, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.5, "clip_to": "body",
      "pieces": [
-       {"icon": "droplet", "flip": "y", "at": [120, 330], "size": [12, 80]},
-       {"icon": "droplet", "flip": "y", "at": [260, 336], "size": [10, 66]},
-       {"icon": "square", "fit": [1, 1, 15, 15], "at": [200, 522], "size": [260, 40]}
+       {"icon": "droplet", "flip": "y", "at": [110, 312], "size": [11, 70]},
+       {"icon": "droplet", "flip": "y", "at": [236, 318], "size": [9, 58]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [180, 484], "size": [226, 36]}
      ]},
     {"name": "hatch", "z": 1, "kind": "flat", "material": "void",
-     "grad": {"to": "well_inner", "y0": 362, "y1": 438, "curve": 1.3},
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [190, 400], "size": [130, 76]}]},
+     "grad": {"to": "well_inner", "y0": 348, "y1": 412, "curve": 1.3},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [172, 380], "size": [110, 64]}]},
     {"name": "hatch_frame", "z": 1.1, "kind": "flat", "material": "stilt", "line": {"width": 0.8, "heavy": 0.9},
      "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [190, 360], "size": [150, 10]},
-       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [122, 400], "size": [8, 84]},
-       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [258, 400], "size": [8, 84]}
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [172, 346], "size": [128, 9]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [114, 380], "size": [7, 72]},
+       {"icon": "square", "slice": {"border": 4, "corner": 2}, "at": [230, 380], "size": [7, 72]}
      ]},
-    {"name": "sill", "z": 1.2, "kind": "block", "material": "wood", "extrude": 12,
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [190, 442], "size": [158, 18]}]},
+    {"name": "sill", "z": 1.2, "kind": "block", "material": "wood", "extrude": 11,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [172, 418], "size": [134, 16]}]},
     {"name": "plaque", "z": 1.3, "material": "paper", "shade": {"bump": 0.3},
      "cast": {"dist": 2, "blur": 1.5, "opacity": 0.45, "color": "shade_tint"},
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [298, 356], "size": [30, 40]}]},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [262, 334], "size": [26, 34]}]},
     {"name": "plaque_nail", "z": 1.4, "kind": "flat", "material": "iron",
-     "pieces": [{"icon": "circle", "at": [298, 340], "size": [5, 4]}]},
-    {"name": "roof", "z": 2, "kind": "block", "material": "thatch", "extrude": 34,
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 18}, "at": [200, 186], "size": [300, 214]}]},
+     "pieces": [{"icon": "circle", "at": [262, 320], "size": [5, 4]}]},
+    {"name": "roof", "z": 2, "kind": "block", "material": "thatch", "extrude": 30,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 16}, "at": [180, 182], "size": [262, 182]}]},
     {"name": "roof_ridge", "z": 2.1, "kind": "flat", "material": "stilt", "line": {"width": 0.8, "heavy": 0.9},
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [200, 184], "size": [300, 9]}]},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [180, 180], "size": [262, 8]}]},
     {"name": "roof_ties", "z": 2.2, "kind": "flat", "material": "cord", "opacity": 0.8,
-     "pieces": [{"icon": "square", "at": [0, 0], "size": [4, 200], "repeat": {"points": [[110, 186], [200, 186], [290, 186]]}}]},
+     "pieces": [{"icon": "square", "at": [0, 0], "size": [4, 170], "repeat": {"points": [[104, 182], [180, 182], [256, 182]]}}]},
     {"name": "roof_damp", "z": 2.3, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.2, "clip_to": "roof",
      "mottle": {"cell": 90, "lo": 0.5, "hi": 0.85},
-     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [200, 200], "size": [320, 260]}]}
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [180, 196], "size": [280, 230]}]}
   ]
 }

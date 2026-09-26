@@ -1,0 +1,49 @@
+{
+  "id": "palette_r7",
+  "extends": "palette_h0_mood.json",
+  "status": "candidate",
+  "source": "mp09-bg-r7-v01. Inherits palette_h0_mood (V1): ink, shadow, contact shadow, common colours, grime colours and every style unchanged. Adds The Hollow Orchard materials (umber loam, root-cracked flagstones, cold basalt wall, silver-grey hollow bark, dry leaves, pale scoured storm-verge ground, grey-green shelter canvas, void-cut dark, fallen fruit) at the V1 value level.",
+  "colors": {
+    "loam_joint": "#231d17",
+    "root_dark": "#3a2f26",
+    "grit": "#7c7f78",
+    "dust": "#6b6155",
+    "moss": "#3f4631",
+    "void_cut": "#1c1026"
+  },
+  "materials": {
+    "loam": {"base": "#544739", "shadow": "#40362b", "light": "#665849", "side": "#3d3329", "side_shadow": "#29221b", "line": "#120e0a",
+             "texture": {"stamp": "leaf", "pre_rot": 45, "length": 30, "width": 6, "angle": 8, "jitter": 16, "density": 1.2, "strength": 0.13},
+             "grime": {"stamps": ["metaballs", "sponge", "cloud"], "size": 60, "soft": 6, "density": 0.3, "strength": 0.35, "color": "grime", "lo": 0.3}},
+    "root_flag": {"base": "#5a5550", "shadow": "#46423e", "light": "#6c6660", "side": "#403c38", "side_shadow": "#2a2724", "line": "#100e0c",
+                  "texture": {"stamp": "leaf", "pre_rot": 45, "length": 18, "width": 4, "angle": 0, "jitter": 14, "density": 1.0, "strength": 0.1},
+                  "grime": {"stamps": ["metaballs", "cloud"], "size": 30, "soft": 3, "density": 0.35, "strength": 0.35, "color": "grime"}},
+    "basalt": {"base": "#3d3c46", "shadow": "#2d2c35", "light": "#4d4c57", "side": "#302f39", "side_shadow": "#1f1e26", "line": "#0b0a10",
+               "texture": {"stamp": "leaf", "pre_rot": 45, "length": 14, "width": 3.5, "angle": 0, "jitter": 14, "density": 0.9, "strength": 0.09},
+               "grime": {"stamps": ["metaballs", "cloud", "droplet"], "size": 32, "soft": 3, "density": 0.35, "strength": 0.35, "color": "damp"},
+               "side_grime": {"stamps": ["droplet", "metaballs"], "size": 28, "aspect": 1.7, "soft": 3, "density": 0.45, "strength": 0.5, "color": "grime", "foot": 0.75, "foot_curve": 1.6}},
+    "basalt_dark": {"base": "#34333c", "shadow": "#26252d", "light": "#42414b", "side": "#29282f", "side_shadow": "#19181e", "line": "#09080d",
+                    "texture": {"stamp": "leaf", "pre_rot": 45, "length": 14, "width": 3.5, "angle": 0, "jitter": 14, "density": 0.9, "strength": 0.09},
+                    "grime": {"stamps": ["metaballs", "cloud"], "size": 30, "soft": 3, "density": 0.35, "strength": 0.35, "color": "damp"},
+                    "side_grime": {"stamps": ["droplet", "metaballs"], "size": 26, "aspect": 1.7, "soft": 3, "density": 0.45, "strength": 0.5, "color": "grime", "foot": 0.75, "foot_curve": 1.6}},
+    "basalt_cap": {"base": "#1e1d24", "shadow": "#16151b", "light": "#27262e", "side": "#302f39", "side_shadow": "#1f1e26", "line": "#08070b"},
+    "bark_hollow": {"base": "#5f5a52", "shadow": "#47433d", "light": "#756f66", "side": "#47433d", "side_shadow": "#302d29", "line": "#16130f",
+                    "texture": {"stamp": "pill", "pre_rot": -45, "length": 24, "width": 2.4, "angle": 90, "jitter": 10, "density": 1.0, "strength": 0.16},
+                    "grime": {"stamps": ["metaballs", "cloud"], "size": 20, "soft": 2, "density": 0.3, "strength": 0.35, "color": "moss"}},
+    "bark_inner": {"base": "#231e1b", "shadow": "#171311", "light": "#2e2824", "line": "#0a0807"},
+    "leaf_dry": {"base": "#4d4d36", "shadow": "#393926", "light": "#5f5f44", "line": "#121208",
+                 "texture": {"stamp": "leaf", "pre_rot": 45, "length": 8, "width": 3, "angle": 30, "jitter": 40, "density": 0.9, "strength": 0.1}},
+    "verge_scour": {"base": "#62675f", "shadow": "#4d514b", "light": "#757a72", "side": "#4a4e48", "side_shadow": "#333631", "line": "#0e0f0d",
+                    "texture": {"stamp": "leaf", "pre_rot": 45, "length": 40, "width": 4, "angle": 172, "jitter": 6, "density": 1.1, "strength": 0.12},
+                    "grime": {"stamps": ["cloud", "metaballs"], "size": 50, "soft": 6, "density": 0.25, "strength": 0.28, "color": "grime", "lo": 0.3}},
+    "canvas_shelter": {"base": "#4d5549", "shadow": "#3a4137", "light": "#5f675a", "line": "#10130e",
+                       "texture": {"stamp": "leaf", "pre_rot": 45, "length": 12, "width": 3, "angle": 90, "jitter": 10, "density": 0.8, "strength": 0.08},
+                       "grime": {"stamps": ["cloud", "metaballs"], "size": 24, "soft": 3, "density": 0.3, "strength": 0.3, "color": "grime"}},
+    "void_cut": {"base": "#1c1026", "shadow": "#120a19", "light": "#2a1a36", "line": "#07040a"},
+    "fruit": {"base": "#7a5530", "shadow": "#56391f", "light": "#946a40", "line": "#1c1108"},
+    "rope": {"base": "#6a5b44", "shadow": "#4b4030", "light": "#807058", "line": "#16110b"}
+  },
+  "styles": {
+    "environment": {"background": "#544739"}
+  }
+}

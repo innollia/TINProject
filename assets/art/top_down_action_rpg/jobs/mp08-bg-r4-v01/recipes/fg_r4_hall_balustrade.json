@@ -1,0 +1,32 @@
+{
+  "asset": "fg_r4_hall_balustrade",
+  "status": "candidate",
+  "note": "foreground for bg_r4_hall: a low 1.0 m parapet wall along the south-west edge (logical x 0..400, y 653..720) that draws in front of actors. It stays clear of the E04 stair head (x 560..780 logical) and of every object place. Transparent full-canvas layer with the same origin as the background.",
+  "palette": "palette_r4.json",
+  "style": "environment",
+  "style_override": {"background": null, "shadow_output": "separate"},
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = background origin",
+  "seed": 405,
+  "forms": [
+    {"name": "parapet", "z": 0, "kind": "block", "material": "stone", "extrude": 113,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [380, 1338], "size": [780, 60]}]},
+    {"name": "parapet_masonry", "z": 0.2, "kind": "flat", "material": "slate_joint", "opacity": 0.4, "clip_to": "parapet",
+     "pieces": [{"icon": "brick_wall", "invert": true, "crop": [1.2, 1.2, 14.8, 14.8], "fit": [1.2, 1.2, 14.8, 14.8],
+                 "at": [0, 1425], "size": [260, 110], "repeat": {"line": [[130, 1425], [650, 1425]], "count": 3}}]},
+    {"name": "coping", "z": 0.5, "kind": "flat", "material": "stone_cap", "line": {"width": 1.2, "heavy": 1.3},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [380, 1338], "size": [780, 60]}]},
+    {"name": "coping_band", "z": 0.6, "kind": "flat", "material": "bronze_block", "opacity": 0.85,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 3}, "at": [380, 1366], "size": [776, 6]}]},
+    {"name": "end_pier", "z": 1, "kind": "block", "material": "stone_dark", "extrude": 136,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [778, 1326], "size": [78, 72]}]},
+    {"name": "end_pier_cap", "z": 1.2, "kind": "flat", "material": "bronze_block", "line": {"width": 1.0, "heavy": 1.1},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [778, 1300], "size": [62, 14]}]},
+    {"name": "soot", "z": 1.5, "kind": "wash", "material": "soot", "blend": "multiply", "opacity": 0.4, "clip_to": "parapet",
+     "pieces": [
+       {"icon": "droplet", "flip": "y", "at": [240, 1400], "size": [14, 60]},
+       {"icon": "droplet", "flip": "y", "at": [560, 1404], "size": [12, 52]}
+     ]}
+  ]
+}
