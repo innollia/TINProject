@@ -1,8 +1,8 @@
-# Style Master Calibration Round 2 — Reference-Preserving Edit Chain
+# Generator Fidelity Diagnostic — Reference-Preserving Edit Chain
 
-상태: **ready — 다음 생성 실험**
+상태: **diagnostic only — Style Master bootstrap에서 분리**
 
-목적: 새 피사체 생성 단계에서 화풍이 기본 prior로 붕괴하는 문제를 피하고, 먼저 원본 레퍼런스의 실제 픽셀 문법을 보존한 채 내용만 점진적으로 바꿀 수 있는지 확인한다.
+목적: 현재 생성기가 원본 레퍼런스의 실제 픽셀 문법을 편집에서도 보존할 수 있는지 확인한다. 통과하더라도 자동으로 Style Master를 만드는 단계로 이어지지 않는다.
 
 ## 원칙
 
@@ -60,20 +60,9 @@ B-edit-1이 통과한 경우에만 실행.
 목적:
 - B의 구체 모티프를 제거해도 핵심 선/배경 문법이 남는지 확인.
 
-## 합성 단계
+## 판정 이후
 
-A-edit-2와 B-edit-2 중 하나라도 원본 화풍 fidelity를 충분히 유지하면 그 결과를 **base style scaffold**로 사용한다.
-
-그 다음에만 다른 레퍼런스의 역할을 부분 편집으로 추가한다.
-
-예:
-- A 계열이 더 잘 보존되면 A-edit-2를 베이스로 두고 B의 선 굵기/끊김과 배경 밀도만 추가 편집
-- B 계열이 더 잘 보존되면 B-edit-2를 베이스로 두고 A의 얼굴 면 분할과 머리카락 큰 밝기 덩어리만 추가 편집
-
-두 원본을 다시 한 번에 fresh generation으로 평균내지 않는다.
-
-## Style Master 승격 조건
-
-- 원본 A/B와 나란히 봤을 때 “비슷한 분위기”가 아니라 **같은 렌더링 과정으로 그린 것처럼 보이는 수준**이어야 함.
-- 일반적인 고퀄 애니 일러스트로 환원되면 실패.
-- 사용자 명시 승인 전에는 어떤 결과도 Style Master가 아님.
+- A-edit-1/B-edit-1부터 화풍이 무너지면 현재 생성기는 style-critical production에서 제외한다.
+- 편집은 보존되지만 새 피사체 생성은 실패하면, 현재 생성기는 **source-preserving edit 전용**으로만 사용할 수 있다.
+- 새 피사체 생성과 편집 모두 원본 수준으로 보존될 때만 Style Master/Gold Standard 논의를 다시 연다.
+- 다른 생성기/모델 비교는 `docs/research/visual_reference/STYLE_REFERENCE_TOOL_SURVEY_2026-09-26.md`에서 관리한다.
