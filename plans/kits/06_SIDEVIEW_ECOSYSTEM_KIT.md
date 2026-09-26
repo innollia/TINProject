@@ -10,7 +10,7 @@
 > **세계관 노출 금지(정본):** `docs/research/round_2026_09_26/ROUND_PLAN.md` §11.3 — 이 Kit에서의 기계적 집행은 **부록 W**가 정본이다.
 > **물 0건(이 Kit의 결정, 2026-09-27 — `GRILLING_STATE.md` §5.1 Q1, 에이전트 추천·사용자 확인 대기):** `ROUND_PLAN.md` §11.2의 지금 규칙은 "물은 금지가 아니다. 장면의 **조건**이 되면 실패다"이다. Rain World에서 온 물 요소(비 사이클·침수·수위·호흡·수영·수중 전투)는 전부 장면의 조건이므로 이 Kit은 그것을 하나도 두지 않고, 무대로서의 물도 설계하지 않았으므로 0건이다. `docs/world/00_CONSTITUTION.md` 불변식 0-2("물 없음")와도 충돌하지 않는다. 이 기획서에 **물 관련 항목이 1건이라도 남아 있으면 구현하지 않는다.** 기계 집행은 §4.10의 `test_eco_no_water_systems`다.
 > **척도 정본(정본):** `ROUND_PLAN.md` §11.1a(6단 사다리) · §11.1b(가역 + `body` 축 저장) · §11.1d(통행료 최댓값 병합) → `docs/scale_collapse/**`. 그 폴더와 값이 충돌하면 그 폴더가 정본이다. 단 `docs/world/12_SCALE_RULES.md`의 10단계 표는 **사용하지 않는다**(§11.1a "두 번째 숫자 체계는 존재하지 않는다").
-> **2026-09-27 정정:** 이 문서의 후반부(§10~§16·§20)가 비어 있었고 앞부분에 모순이 있었다. 정정 목록은 §21이다. §21과 다른 절이 어긋나면 §21이 이긴다(부록 W는 예외 없이 그대로 이긴다).
+> **2026-09-27 정정:** 이 문서의 후반부(§10~§20)가 비어 있었고 앞부분에 모순이 있었다. 같은 날 후반부를 채우고 모순을 고쳤다. 정정 목록은 §21이다. §21과 다른 절이 어긋나면 §21이 이긴다(부록 W는 예외 없이 그대로 이긴다).
 > **이 기획서의 빈칸이 남아 있으면 구현하지 않는다. "알아서" / "적당히" / "게임답게" / "레퍼런스 느낌으로"는 구현 지시가 아니다.**
 
 **모듈 id:** `sideview_ecosystem`
@@ -147,7 +147,7 @@ rung이 사실의 조건이 되지 않고, 사실이 rung의 조건이 되지 �
 | F-22 | 세계 압력 상승이 낙하를 즉사로 바꾸는 압박 | **따름.** 압축 강도 → 중력 배율 (§4.8) | 캡처에서 낙하 연출, 수치는 우리 결정 |
 | F-23 | 화면 중앙 조작법 설명문 | **따르지 않음.** 0건. Input Bubble만 사용 | `AGENTS.md` 금지 목록 |
 | F-24 | 플레이 중 방 이름/영역 이름 표시 | **따르지 않음.** 잠 화면의 방문 그래프도 이름 0건 | UI 3개 제약 |
-| F-25 | 원작 종명·영역명·개체명 텍스트 | **복제 금지.** 우리 고유 명명 §10.2 | 0-copy. `dredge`는 원작 개체명이라 폐기하고 `anchor`로 교체(§5.2) |
+| F-25 | 원작 종명·영역명·개체명 텍스트 | **복제 금지.** 우리 고유 명명 §10.7 | 0-copy. `dredge`는 원작 개체명이라 폐기하고 `anchor`로 교체(§5.2) |
 | F-26 | 원작 화면 배치·맵 레이아웃 | **복제 금지.** 우리 authored 맵 4개 | 0-copy |
 | F-27 | **작은 포유류 생존자 실루엣** | **따르지 않음.** 개체는 꼬리·귀·콧수로 읽히는 윤곽 0건. `13_REFERENCE_EXCLUSIONS` §1-R3. 몸은 `sprite/body_part.gd` 파츠 합성으로만 만든다 | `body.parts` 값은 0건(§9.13) |
 
@@ -179,14 +179,14 @@ rung이 사실의 조건이 되지 않고, 사실이 rung의 조건이 되지 �
 | R-18 | 평판 기반 행동표(중립/매우양수/음수/상향 성격) | `확인`(존재) | 위키 Scavenger §3.5 | **평판 수치 대신 신체 상태**로 대체 §7.9 |
 | R-19 | 개체 간身材 편차(꼬리·가시·부리 개체마다 다름) | `확인` | 위키 Scavenger §3.5 | ID 기반 개인 편차로 재현 §7.7 |
 | R-20 | 창 1~2개로 사망, 머리 명중 즉사 | `확인` | 위키 Scavenger §3.5 | **무기 0건이므로 무의미.** 우리 근접 판정 §7.10 |
-| R-21 | 기본 출현 영역 목록 | `확인` | 위키 Creatures §3.6 | **영역 이름 복제 금지.** 우리 4영역 §10.2 |
+| R-21 | 기본 출현 영역 목록 | `확인` | 위키 Creatures §3.6 | **영역 이름 복제 금지.** 우리 4영역 §10.7 |
 | R-22 | 맵 데이터 구조(영역/룸 연결/잠금) | **`미확인`** | §5-1 | **우리 결정:** §10.1의 JSON 스키마. region graph + room grid + passage descriptor |
 | R-23 | 잠 화면 구성 상세 | **`미확인`** | §5-2. 캡처 2에서 윤곽만 확인 | **우리 결정:** §11.6.2. 방문 그래프 + 일러스트 + 우하단 버튼 2개. 이름/숫자 0건 |
 | R-24 | 사망 화면 구성 | **`미확인`** | §5-3 | **우리 결정:** §11.6.3. 텍스트 0자, 일러스트 + 버튼 2개 |
 | R-25 | 로딩 화면 구성 | **`미확인`** | §5-4 | **우리 결정:** §11.6.1. 진행 바 0개, 일러스트 자체 움직임이 대기 표현 |
 | R-26 | 입력 스킴 전체 | **`미확인`** | §5-5 | **우리 결정:** §13 |
 | R-27 | 카메라 고정/전환 방식 | **`미확인`** | §5-6 | **우리 결정:** §9.8. 줌 1.0 고정, 룸 경계 클램프, 데드존 |
-| R-28 | 이미지 0개 실루엣 정보량 | **`미완료`** (F3) | `GRILLING_STATE` §5 | **우리 결정:** §11.3. 파츠 9~13개/개체, 실루엣 우선 채색, 초점 규칙으로 가림 |
+| R-28 | 이미지 0개 실루엣 정보량 | **`미완료`** (F3) | `GRILLING_STATE` §5 | **우리 결정:** §11.3. 파츠 8~12개/개체(§7.2 `body_parts`), 실루엣 우선 채색, 초점 규칙으로 가림 |
 | R-29 | 강수 주기 길이 | **`채택하지 않음`** | §5-6, `ROUND_PLAN` §11.2 | **대체:** 420초 압축(settle) 사이클 5구간. 사이클이라는 구조만 가져가고 비는 버린다(§4.8) |
 | R-30 | 낙하 데미지 임계 | **`미확인`** | — | **우리 결정:** §9.3 |
 | R-31 | 텍스트(대사·툴팁) 존재 | `미확인`(본 Kit 금지) | RW5/RW6 파생 | **이 Kit엔 대사 0건.** §16의 테스트가 검사 |
@@ -276,7 +276,7 @@ w_px = AASPECT_W × h_px
 q    = v_rung / v_band
 ```
 
-`h_px`는 몸의 **높이 px**이고, `q`는 `03_MISMATCH_VISUALS` §1의 무차원 변수다. **`q`는 그리지 않는다.** `band`와 `target_body_px`는 authored 룸의 필드 2개이고(`§10.1` 스키마), 그 룸 안에서 고정이다.
+`h_px`는 몸의 **높이 px**이고, `q`는 `03_MISMATCH_VISUALS` §1의 무차원 변수다. **`q`는 그리지 않는다.** `band`와 `target_body_px`는 authored 룸의 필드 2개이고(`§10.2` 스키마), 그 룸 안에서 고정이다.
 
 #### 4.3-3 이 Kit의 rung 표 — 완전 수치
 
@@ -724,7 +724,7 @@ rung이 되돌아오므로 **모든 곳을 다 통과하는 rung은 없다.** �
 | 파일 | 종류 | 한 줄 목적 |
 |---|---|---|
 | `entry.tscn` | 씬 | 앱이 인스턴스하는 진입 씬. `Node2D` 루트 + `WorldHost`(Node2D) + `Camera2D` + `OverlayHost`(Control, 마우스 필터 IGNORE) + `AudioSink`(Node). 여기서 게임플레이를 시작하지 않는다. |
-| `module.gd` | `GameModule` | 모듈 계약 구현. `enter`에서 월드 1회 구성, `_physics_process`에서 `StepDirector` 호출, `save_state`/`load_state`/`migrate_save`, `Esc`를 `menu`로 `requested` 중계, CLI 플래그 파싱(`OS.get_cmdline_user_args()`). |
+| `module.gd` | `GameModule` | 모듈 계약 구현. `enter`에서 월드 1회 구성, `_physics_process`에서 `StepDirector` 호출, `save_state`/`load_state`/`migrate_save`(§14.1), `attach_world_store(store)`(§6.6), 입력 action 런타임 등록(§13.1). Esc는 셸이 먼저 가져가므로 이 모듈은 Esc를 읽지 않는다. `requested.emit(&"menu", {})`는 사망·잠 화면의 `나가다`에서만(§14.3). |
 | `module_manifest.tres` | Resource | `ModuleManifest`. `id = &"sideview_ecosystem"`, `display_name = "아래의 것"`, `save_version = 4`, `input_actions` = §13.1의 5개. **`display_name`은 셸 소유 화면 이름이다.** 이 Kit의 `presentation/`·`systems/`·`domain/`은 이 문자열 리터럴을 **1건도 갖지 않는다**(부록 W §W.2 `T1`). |
 | `audio_events.tres` | Resource | `AudioManifest`. `id_prefix = &"eco"`, 이벤트 14개(§12). **물 관련 이벤트 0건**(비·물소리·수면) — W3가 wav를 `audio/`에 넣기 전까지만 존재하는 파일이어도 등록은 조용히 실패한다. |
 | `domain/trait.gd` | 스크립트(static) | ability 5종의 id/이름/정수 비트 순서. `BitSet` 헬퍼(있음/추가/제거/포함). **저장하지 않는다** |
@@ -734,19 +734,19 @@ rung이 되돌아오므로 **모든 곳을 다 통과하는 rung은 없다.** �
 | `domain/passage_kind.gd` | 스크립트(static) | passage **5종** `GAP/STEP/DROP/BREAK/PRESS`의 문자열↔정수 변환과 기본 검증. `FLOOD`는 **미지의 값**으로 거부한다 |
 | `domain/gap_class.gd` | 스크립트(static) | `GAP`의 `width_class` **5종** `SEAL/HAIRLINE/TIGHT/FIT/WIDE`의 `module_px` 배수(`0.20/0.35/0.85/2.60/4.20`) 테이블 |
 | `domain/passage_spec.gd` | RefCounted `EcoPassageSpec` | authored passage 1개: `id`, `kind`, `cell`, `span`, `width_class`, `height_px`, `fall_px`, `hp`, `mass_required`, `drift`. `from_dictionary(d) -> Dictionary`가 §10.2의 닫힌 키·값 검사를 한다. **`requires` 필드 0건** |
-| `domain/tile_kind.gd` | 스크립트(static) | 타일 문자 → 정수 테이블(§10.3 legend)와 `SOLID` / `BREAKABLE` / `HAZARD` / `TRIGGER` / `ANCHOR` / `EMPTY` 속성 조회. 재질 키는 `mat.*` 17종 중 이 Kit이 쓰는 것만 |
+| `domain/tile_kind.gd` | 스크립트(static) | §10.3 legend 6종의 문자 ↔ 정수, `is_solid(k)`, `is_one_way(k)`, `material_of(k)`. 재질 키는 legend 표의 6개 `mat.*`뿐 |
 | `domain/room_spec.gd` | RefCounted `EcoRoomSpec` | 파싱된 룸 1개의 불변 데이터: `id`, `region_id`, `band`, `target_body_px`, `place_id`, `tiles_w`, `tiles_h`, `terrain`(`PackedByteArray`, §10.3 legend의 정수), `passages[]`, `shelters[]`, `dens[]`, `triggers[]`, `exits[]`, `tethered[]`. **`flood` 필드 0건** |
 | `domain/region_spec.gd` | RefCounted `EcoRegionSpec` | 파싱된 영역 1개: `id`, `display_name`(그리지 않는다), `index`, `rooms[]`(authored 순), `room_ids[]`, `links[]`. |
 | `domain/content_index.gd` | RefCounted | 로드된 전체 콘텐츠: `regions[]`, `rooms`(id→`RoomSpec` 딕셔너리), `archetypes`(id→딕셔너리), `schema`, `world_seed`. |
 | `domain/world_state.gd` | RefCounted `EcoWorldState` | 런타임 세계 상태. 필드 전체는 §6.2 표. **프레젠테이션 상태를 갖지 않는다.** `breath_left`·`head_underwater`·`t_rain` 필드 **0건** |
 | `domain/transition_state.gd` | RefCounted | 진행 중인 rung 전이 1개: `from_rung`, `to_rung`, `trigger_kind`, `trigger_id`, `elapsed`, `hits`, `still_frames`, `witness_frames`, `active`. `reset()`가 전 필드를 되돌린다 |
 | `domain/toll.gd` | 스크립트(static) `EcoToll` | 통행료 wound 2종과 `merge_max(wounds, toll) -> Array` (`04` §4.2). 입력 배열을 고치지 않고 새 배열을 돌려준다 |
-| `domain/save_codec.gd` | 스크립트(static) | `WorldState` ↔ JSON-safe `Dictionary`, `SAVE_VERSION = 4`, v1/v2/v3 마이그레이션, 잘못된 값 정규화, stale content ID 처리 정책 §6.5. `Node`/`Resource`/`Callable`/`Vector`/`NaN`/`Inf`를 넣지 않는다 |
+| `domain/save_codec.gd` | 스크립트(static) | `WorldState` ↔ JSON-safe `Dictionary`, `SAVE_VERSION = 4`, 마이그레이션 체인 0개(§6.5), 잘못된 값 정규화, stale content ID 처리 정책 §6.5. `Node`/`Resource`/`Callable`/`Vector`/`NaN`/`Inf`를 넣지 않는다 |
 | `systems/region_graph.gd` | RefCounted `EcoRegionGraph` | §4.9의 상태 그래프와 단언 G1~G6. 타일을 보지 않는다 |
 | `systems/step_director.gd` | RefCounted | 프레임 처리 순서(§8) 13단계를 실행한다. 서브스텝 4회. `hitstop`과 `rung_cut` 타이머를 소유. `q`는 여기서 1회만 계산한다(§4.10-2 A-01) |
 | `systems/collision_resolver.gd` | RefCounted | AABB vs 타일 스윕 해석. X축 먼저 → Y축. `one_way`는 하강 중이고 이전 프레임 발이 타일 위였을 때만 통과. `PRESS` 하중은 크리처 스태픽 결합. **`q`를 읽지 않는다** |
 | `systems/player_body.gd` | RefCounted | 플레이어 물리 + 입력 의도 해석. §13의 action → `move_axis`/`jump_held`/`use_pressed`/`curl_held`. §9의 수치만 사용. 규칙 판정을 하지 않는다(전이는 `transition_system`이 담당). `h_px`/`w_px`는 `BodyRung.derive(place)`에서 받아 쓴다 |
-| `systems/transition_system.gd` | RefCounted | §4.5 전이 4종의 트리거 감시, 진행도 누적, `t_ability` 반환. 전이 완료 시 **`worldstate_bridge`를 통해 `body` 축에 `scale` 1회 쓰기**, `rung_cut` 이벤트 발생 |
+| `systems/transition_system.gd` | RefCounted | §4.5 전이 4종의 트리거 감시, 진행도 누적, `t_ability` 반환. 전이 완료 시 **`worldstate_bridge`를 통해 `body` 축에 `wounds` → `scale` 요청 2개**(§4.5 C-01), `rung_cut` 이벤트 발생 |
 | `systems/transition_rule.gd` | RefCounted | 전이 1종의 규칙 데이터: `from_rung`, `to_rung`, `trigger_kind`, `trigger_id`, `duration_s`, `hits_required`, `still_seconds`, `witness_count`, `witness_frames`, `cost_kind`. §4.5 표를 그대로 코드로 옮긴 것. **`requires_prior_break` 필드 0건** |
 | `systems/settle_system.gd` | RefCounted | `t_settle` 진행, §4.8 5구간 `press`/중력/마찰 계산, 소금층 압축 누적, 흘림분 유동 판정. **`rain_system.gd`의 대체다. `flooded` 계산 0건** |
 | `systems/creature.gd` | RefCounted | 개체 1개. §7.3 11상태, `senses`, `think()`, `step()`, `to_dictionary()`. |
@@ -759,9 +759,9 @@ rung이 되돌아오므로 **모든 곳을 다 통과하는 rung은 없다.** �
 | `systems/id_allocator.gd` | RefCounted | `(region_id, room_id, den_id)` → 전역 `creature_id` 결정론 할당. §7.6 규칙. |
 | `systems/social_table.gd` | RefCounted | `(archetype_id, rung)` → `[SOCIETY_NEUTRAL, SOCIETY_FLEE, SOCIETY_DEFEND, SOCIETY_ATTACK, SOCIETY_AVOID]` 매핑 **5×3** 표. §7.9. 여기를 고치지 않으면 크리처가 무너진다. |
 | `systems/creature_contact.gd` | RefCounted | 근접 판정, 하중 스태픽 합산, `integrity` 감소 적용. §7.10. |
-| `systems/passage_resolver.gd` | RefCounted | authored passage descriptor를 **실기 기하로** 판정. §4.6 **5종**. `requires`가 아니라 `width_class × module_px` / `height_px` / `hp` / `mass_required`로 판정하고, `requires`는 사전 검증용으로만 쓴다. **`q`를 읽지 않는다.** |
+| `systems/passage_resolver.gd` | RefCounted | authored passage descriptor를 **실기 기하로** 판정. §4.6 **5종**. `width_class × module_px` / `height_px` / `hp` / `mass_required`로만 판정한다(`requires` 필드는 없다, §21 E-03). **`q`를 읽지 않는다.** |
 | `systems/region_loader.gd` | RefCounted | `content/` JSON → `RegionSpec`/`RoomSpec` 트리 파싱 + `ContentIndex` 조립 + 검증(§10.5). **`band`는 rung 이름으로만 받고 `ladder.json`에서 검증한다.** 월드 시드 고정 캡처 지원. |
-| `systems/save_service.gd` | RefCounted | 스냅샷 생성/복원, 마이그레이션 체인, 복구 후 재구성(den/개체 재계산 없이 저장값 그대로). **`body.scale`은 축에서 가져온다**(§6.6.4). |
+| `systems/save_service.gd` | RefCounted | 스냅샷 생성/복원, 파일 쓰기(§14.1 S1~S5), `begin(store, content, ladder)`(§14.2 3~7단계), 복구 후 재구성(den/개체 재계산 없이 저장값 그대로). **`body.scale`은 축에서 가져온다**(§6.6.4). |
 | `presentation/procedural_bridge.gd` | 스크립트(static) | `core/procedural/` C1 스텁과 이 Kit의 호출 사이 **유일한** 어댑터. `domain/`·`systems/`는 이 파일을 모른다. W2 시그니처가 달라도 여기서 맞춘다. `ProceduralScaleFit.signature(q)` 호출은 **여기 한 곳뿐**이다. |
 | `presentation/game_screen.gd` | Control | 화면 루트. 풀사이즈 `ColorRect` + `OverlayHost`만. **상시 HUD 자식 0개.** |
 | `presentation/world_root.gd` | Node2D | 월드 좌표계. 현재 룸 인스턴스, 카메라 추종, `rung_cut` 0.9초. |
@@ -788,7 +788,7 @@ rung이 되돌아오므로 **모든 곳을 다 통과하는 rung은 없다.** �
 
 | 파일 | 종류 | 한 줄 목적 |
 |---|---|---|
-| `content/schema_version.json` | JSON | `{"schema": 1, "content_seed": 0}`. 콘텐츠 시드. |
+| `content/schema_version.json` | JSON | `{"schema": 1, "content_seed": 418324771}`. 콘텐츠 시드(§10.1). |
 | `content/regions/index.json` | JSON | 등록 영역 ID 배열 + `schema`. 로더는 **이 배열만** 본다. |
 | `content/archetypes/index.json` | JSON | 등록 크리처 아키타입 ID 배열(5종). |
 | `content/archetypes/arc_skitter.json` | JSON | `skitter` — 가장 작은 개체, 기본 rung `speck`. `speck`/`hand`엔 비공격, `doll`에서 도망. den lineage 4스테이지. |
@@ -952,16 +952,16 @@ rung이 되돌아오므로 **모든 곳을 다 통과하는 rung은 없다.** �
   "current_band": "doll",
   "previous_room_id": "bone_shelf_02",
   "rooms_visited": [
-    "filter_bed_00", "filter_bed_01", "filter_bed_02", "filter_bed_03",
-    "ash_terrace_00", "ash_terrace_01", "ash_terrace_02",
+    "filter_bed_00", "filter_bed_01", "filter_bed_02", "filter_bed_03", "filter_bed_04", "filter_bed_05",
+    "ash_terrace_00", "ash_terrace_01", "ash_terrace_02", "ash_terrace_03", "ash_terrace_04", "ash_terrace_05",
     "bone_shelf_00", "bone_shelf_01", "bone_shelf_02", "bone_shelf_03"
   ],
-  "broken_walls": ["wall_bs_02_a", "wall_at_03_a"],
-  "compressed_beds": { "salt_bed_fb_03": 0.4 },
+  "broken_walls": ["wall_fb_04_a", "wall_bs_01_a"],
+  "compressed_beds": { "salt_bed_fb_02": 0.4 },
   "drift_drops": { "gap_at_02_drift": 1 },
-  "trigger_flags": { "collapse_floor_at_05": true },
+  "trigger_flags": { "collapse_floor_at_04": true },
   "local_wounds": [],
-  "shelters_touched": ["shelter_fb_00", "shelter_fb_02", "shelter_at_01", "shelter_bs_01"],
+  "shelters_touched": ["shelter_fb_00", "shelter_at_01", "shelter_bs_01"],
   "respawn_room": "bone_shelf_01",
   "respawn_pos_px": [300.0, 792.0],
   "deaths": 4,
@@ -970,14 +970,14 @@ rung이 되돌아오므로 **모든 곳을 다 통과하는 rung은 없다.** �
   "dens": {
     "den_bs_02_0": { "stage": 2, "occupied": true, "creature_id": 120202 },
     "den_bs_02_1": { "stage": 0, "occupied": false, "creature_id": -1 },
-    "den_fb_00_0": { "stage": 3, "occupied": false, "creature_id": -1 }
+    "den_fb_01_0": { "stage": 3, "occupied": false, "creature_id": -1 }
   },
   "creatures": {
     "120202": {
-      "id": 120202, "axis_id": "120202", "archetype_id": "arc_maw", "den_id": "den_bs_02_0",
-      "rung": "hand", "lineage_stage": 2, "alive": true,
+      "id": 120202, "axis_id": "120202", "archetype_id": "arc_anchor", "den_id": "den_bs_02_0",
+      "rung": "doll", "lineage_stage": 2, "alive": true,
       "pos_px": [888.0, 1416.0], "vel_px": [0.0, 0.0],
-      "state": 0, "state_left": 0.18, "hp": 1.8,
+      "state": 0, "state_left": 0.18, "hp": 2.6,
       "killed_by": "none", "think_left": 0.11, "reaction_left": 0.0,
       "tethered": false, "home_room_id": "bone_shelf_02",
       "mem": {
@@ -1342,7 +1342,7 @@ think_left <= 0:  ai_decide.decide(creature, world) →  creature.state / state_
 | `graze_radius_px` | `30` | `confined`와 무관하게 굴린다 |
 
 - **이 판정에는 `width_class`가 직접 들어가지 않는다.** `w_gap`와 개체 `w_px`의 비율만 본다. 그래야 `drift_powder`가 갭을 1계급 먹었을 때(`§4.8`) 판정이 저절로 따라간다 — 별도 코드가 필요 없다.
-- `reg_bone_shelf`(`doll` band, `module_px = 139.636`)의 `FIT` 갭은 `w_gap = 230.4`이고 그 방의 `anchor`(`w_px = 230.4`)와 같다. `230.4 ≤ 1.60 × 230.4`이므로 `confined`가 참이다. 같은 방의 `WIDE` 갭은 `586.5`라서 `586.5 > 368.6`이므로 `confined`가 거짓이다. **`anchor`는 넓은 곳으로 걸어 나올 수 있지만 그쪽에서는 아무것도 못 한다.**
+- `reg_bone_shelf`(`doll` band, `module_px = 139.636`)의 `FIT` 갭은 `w_gap = 2.60 × 139.636 = 363.1`이고 그 방 `anchor`의 `w_px`는 `230.4`다. `363.1 ≤ 1.60 × 230.4 = 368.6`이므로 `confined`가 참이다. 같은 방의 `WIDE` 갭은 `586.5`라서 `586.5 > 368.6`이므로 `confined`가 거짓이다. **`anchor`는 넓은 곳으로 걸어 나올 수 있지만 그쪽에서는 아무것도 못 한다.**
 - 플레이어가 `anchor`를 상대할 때의 선택지는 2개다: 좁은 자리로 들어가서 맞서거나(피해를 받는다), 넓은 자리에서 `DROP 2700`으로 그 위에서 치워버리거나. **어느 쪽도 물이 아니다.** 첫 번째는 접촉이고 두 번째는 무게다.
 - **`anchor`에게 잿불 유리(`mat.ember_glass`) 재질을 붙이지 않는다.** 그 재질은 "조용해야 산다"는 규칙을 가지지만(`06_MATERIALS` §13), 이 Kit은 침묵을 판정하지 않는다. 붙이려면 오디오 판정을 추가해야 하는데 그것은 새 축이다. **0건.**
 
@@ -1546,7 +1546,7 @@ den 개체      : ID = 100000 + region_index * 10000 + room_index * 100 + slot_i
 | 6 | `think_brood_pack` | `AIDecide` | `SC-05` 무리 보정 재평가 | 개별 think 재실행 금지 |
 | 7 | `substep_physics` × 4 | `StepDirector` | 아래 8.3의 서브스텝 순서 4회 반복 | — |
 | 8 | `update_den` | `DenSystem` | `DEAD` 개체 처리, R1~R4 재충전 판정, R6 lineage 판정 | 룸 로드 판정은 별도 |
-| 9 | `commit_transition` | `TransitionSystem` | 완료된 전이 반영 → **`body` 축에 `scale` 1회 쓰기** → `rung_cut` 이벤트 → `save_state()` | — |
+| 9 | `commit_transition` | `TransitionSystem` | 완료된 전이 반영 → **`body` 축에 `wounds` → `scale` 요청 2개**(§4.5 C-01) → `rung_cut` 이벤트 → S2 저장(§14.1) | — |
 | 10 | `update_camera` | `CameraRig` | 데드존 추종, 룸 경계 클램프, 고정 주기 스냅. **줌은 이 단계에서 바꾸지 않는다** | 줌 변경 금지 |
 | 11 | `update_presentation` | presentation | backdrop 스텝, 개체/플레이어 리그 스텝, 트레일 페이드 | 판정 |
 | 12 | `update_overlay` | `BubbleOverlay` | Input Bubble 4상태 전이, 2.4초 주기 갱신 | 게임 상태 변경 |
@@ -1736,7 +1736,7 @@ integrity <= 0 → 사망(원인 "fall")
 | `CAM_SHAKE_DECAY` | `12.0` /s |
 | `CAM_SHAKE_MAX` | `6.0` px |
 | 세로 추종 | **있다.** 데드존·룸 경계 클램프는 x·y 모두에 적용한다. 룸이 화면 프레임보다 작은 축은 룸 중앙에 고정한다(`speck` band 프레임은 `15.5 × 8.7` 타일이라 대부분의 룸에서 두 축 모두 따라간다) |
-| 1080p/1440p | `canvas_items` 스트레치 + `expand`. 논리 1280×720 유지. **`module_count`는 세 해상도에서 동일하다**(`03` §3.3). 배경 레이어는 `parallax` 비율만 조정(§11.2) |
+| 1080p/1440p | `canvas_items` 스트레치, aspect는 `project.godot` 값(현재 `keep`, §20 OQ-4). 논리 1280×720 유지. **`module_count`는 세 해상도에서 동일하다**(`03` §3.3). 배경 레이어는 `parallax` 비율만 조정(§11.2) |
 
 ### 9.9 팔레트 (5역할 고정값, `ProceduralPalette`)
 
@@ -1824,13 +1824,811 @@ integrity <= 0 → 사망(원인 "fall")
 | 사실 | 리그 변화 |
 |---|---|
 | `missing`에 `"arm"` | `LIMB` 2개가 비활성. **충돌 AABB는 바뀌지 않는다**(AABB는 rung과 장소에서만 나온다, AX-17a). `eco_use`의 붙잡기 한도가 `GRAB_MASS_RATIO × 0.5`가 된다(§7.11) |
-| `missing`에 `"leg"` | `LIMB` 2개가 지면支撑을 잃는다. `h_px`는 줄지 않지만 착지 판정이 바뀐다 |
+| `missing`에 `"leg"` | `LIMB` 2개가 땅을 딛지 못한다. `h_px`는 줄지 않지만 착지 판정이 바뀐다 |
 | `missing`에 `"head"` | `EYE` 2개가 사라진다 |
 | `wounds`에 `severity ≥ 2` + `part = "torso"` | `TORSO` 중 1개가 `base_radius × 1.6`으로 부푼다. **실루엣은 fact가 만드는 것이지 rung이 만드는 것이 아니다** |
 | `wounds`에 `kind = "squeezed"` + `severity ≥ 1` | `FOLD` 1개가 눌린 형태로 고정된다 |
+| `wounds`에 `torso/compressed`(이 Kit의 통행료) | `FOLD` 1개가 눌린 형태로 고정된다. `squeezed`와 같은 변화이고 둘 다 있어도 1개만 |
+| `wounds`에 `torso/stretched`(이 Kit의 통행료) | `TORSO` 가운데 파츠의 세로 반지름 × `1.15` |
 | `wounds`에 `kind = "scar"` + `part = "head"` | `HEAD`의 한쪽에 파츠 1개가 추가된다(18 → 19) |
 
 **금지:** `q`·rung에 따라 파츠 수·파츠 종류·파츠 상대 크기가 바뀌는 코드(§4.3-4 R-05).
+
+---
+
+## 10. Authored content 형식
+
+모든 경로는 `modules/sideview_ecosystem/content/` 기준. **이 절에 없는 키는 로더가 `key_unknown`으로 거부한다.** 모든 JSON은 `JSON.parse_string`으로 읽고, 숫자는 전부 float로 들어오므로 정수 필드는 `value == floor(value)`를 검사한 뒤 `int()`로 바꾼다.
+
+### 10.1 파일
+
+| 파일 | 담는 것 |
+|---|---|
+| `schema_version.json` | `{"schema": 1, "content_seed": 418324771}`. 새 게임의 `world_seed = content_seed` |
+| `regions/index.json` | 영역 id 배열(순서 = `region_index`), 시작 룸·쉼터·rung |
+| `regions/reg_*.json` | 영역 1개 = 룸 N개 + link 목록 |
+| `archetypes/index.json` | 아키타입 id 배열 |
+| `archetypes/arc_*.json` | 아키타입 1개(§7.2 수치 + lineage) |
+
+### 10.2 스키마 — 닫힌 키 표
+
+**`regions/index.json`**
+
+| 키 | 타입 | 검증 |
+|---|---|---|
+| `schema` | int | `== 1` |
+| `regions` | Array[String] | 1..10개, 중복 0, 각 파일 `regions/<id>.json` 존재 |
+| `start_room` | String | 어떤 영역의 룸 id |
+| `start_shelter` | String | `start_room` 안의 쉼터 id |
+| `start_rung` | String | 이 Kit의 rung 3개 중 하나 |
+
+**영역 파일 `regions/<id>.json`**
+
+| 키 | 타입 | 검증 |
+|---|---|---|
+| `schema` | int | `== 1` |
+| `id` | String | 파일 이름과 같다 |
+| `display_name` | String | 비어 있지 않음. **어디에도 그리지 않는다**(§W.2-1) |
+| `rooms` | Array[룸] | 1..99개 |
+| `links` | Array[link] | 0개 이상 |
+
+**룸**
+
+| 키 | 타입 | 기본값 | 검증 |
+|---|---|---|---|
+| `id` | String | — | 전 콘텐츠에서 유일. `[a-z0-9_]+` |
+| `band` | String | — | 사다리의 rung 이름 6개 중 하나. **이 Kit은 `speck` `hand` `doll`만 쓴다**(나머지는 `band_not_used`) |
+| `target_body_px` | number | — | `[24.0, 420.0]` |
+| `place_id` | String | `""` | 비어 있거나 `place.` 접두사 |
+| `tiles` | Array[String] | — | 행 수 12..200, 모든 행 길이 같음 16..240, 문자는 §10.3 legend만 |
+| `exits` | Array[exit] | `[]` | |
+| `passages` | Array[passage] | `[]` | |
+| `triggers` | Array[trigger] | `[]` | |
+| `shelters` | Array[shelter] | `[]` | |
+| `dens` | Array[den] | `[]` | 0..9개 |
+| `tethered` | Array[tethered] | `[]` | 0..10개 |
+
+**exit** — 룸 가장자리의 출입구. 룸 전환은 몸 AABB 중심이 이 구간을 넘어 룸 밖으로 나갈 때 일어난다(§8.4).
+
+| 키 | 타입 | 검증 |
+|---|---|---|
+| `id` | String | 룸 안에서 유일 |
+| `side` | String | `left` `right` `top` `bottom` |
+| `from` / `to` | int | 그 변을 따라가는 타일 인덱스 구간, `0 ≤ from ≤ to < 변 길이`. 그 구간의 가장자리 타일은 `.`이어야 한다(`exit_blocked`) |
+| `to_room` / `to_exit` | String | 상대 룸의 exit. **상대도 이쪽을 가리켜야 한다**(`exit_unpaired`). 변은 반대(`left↔right`, `top↔bottom`) |
+
+**link** — §4.9 그래프의 간선. 방향이 있다.
+
+| 키 | 타입 | 검증 |
+|---|---|---|
+| `from` / `to` | String | 룸 id. `from`은 이 영역의 룸, `to`는 아무 영역. 둘 사이에 exit 쌍이 1개 이상(`link_without_exit`) |
+| `via` | String | `""` 또는 passage id. 그 passage는 `from` 또는 `to` 룸에 있다(`via_unknown`). §4.7-1(`via_impassable`) |
+
+**passage** — §4.6. 모든 passage는 rect(`cell` 좌상단 타일, `span` 타일 수)를 갖고, rect 안 타일은 전부 `.`이다(`passage_over_solid`). passage의 물리 형태는 §10.4.
+
+| 키 | 타입 | 해당 kind | 검증 |
+|---|---|---|---|
+| `id` | String | 전부 | 전 콘텐츠에서 유일 |
+| `kind` | String | 전부 | `GAP` `STEP` `DROP` `BREAK` `PRESS`. 그 외(`FLOOD` 포함) `passage_kind_unknown` |
+| `cell` | [int, int] | 전부 | rect가 룸 안 |
+| `span` | [int, int] | 전부 | 각 ≥ 1 |
+| `width_class` | String | `GAP` | `SEAL` `HAIRLINE` `TIGHT` `FIT` `WIDE`. rect 폭 px ≥ `w_gap + 2 × TILE`(`gap_rect_too_narrow`) |
+| `drift` | bool | `GAP` | 기본 `false` |
+| `height_px` | number | `STEP` | `40` `200` `290` 중 하나. rect 높이 px ≥ `height_px` |
+| `fall_px` | number | `DROP` | `1600` `2000` `2700` `4200` 중 하나. `|rect 높이 px − fall_px| ≤ TILE`(`drop_height_mismatch`), rect 바로 아래 행이 고체 |
+| `hp` | int | `BREAK` | `1..4` |
+| `mass_required` | number | `PRESS` | `0.10` `0.80` `12.00` 중 하나 |
+
+kind에 해당하지 않는 키가 있으면 `key_unknown`이다(예: `GAP`에 `hp`).
+
+**trigger** — §4.5. `kind`·`from_rung`·`to_rung`은 authored하지 않는다. `object`가 §4.5 표에서 정한다.
+
+| 키 | 타입 | 검증 |
+|---|---|---|
+| `id` | String | 전 콘텐츠에서 유일 |
+| `object` | String | `salt_bed` `collapse_floor` `salt_dust_bed` `narrow_cradle` |
+| `cell` / `span` | [int, int] | rect가 룸 안. `salt_bed`는 rect 맨 아래 행이 전부 `s`, 그 밖 `s` 0개(`salt_outside_bed`). `collapse_floor`는 rect 맨 아래 행이 전부 `#` — 이 행이 소비되는 판이다 |
+
+**shelter**: `{ "id": String(전 콘텐츠 유일), "cell": [int, int] }` — `cell`은 서는 칸, 그 바로 아래 칸이 고체.
+
+**den**: `{ "id": String, "cell": [int, int], "lineage_of": String(아키타입 id), "stage": int(시작 스테이지, 0..lineage 길이−1) }`.
+
+**tethered**: `{ "axis_id": String("fix." 접두사, 전 콘텐츠 유일), "archetype": String, "cell": [int, int], "rung": String }` — `rung`은 그 아키타입의 `variant_rungs` 중 하나이고 룸 band 이하(CV-06).
+
+**아키타입 `archetypes/<id>.json`**: 키는 `schema`(1), `id`, `axis_name`(축 `creature.archetype`에 쓰는 이름, `arc_` 없는 것), `rung`, `variant_rungs`(1..2개, 인접), `density`, `hp`, `move_speed`, `chase_speed_mult`, `think_period`, `sense_radius_px`, `hearing_radius_px`, `fov_deg`, `reaction_latency`([min, max]), `aggression`, `courage`, `attack_range_ratio`, `attack_windup`, `attack_damage`, `body_parts`, `confined_only`, `graze_radius_px`(0 = 없음), `pack_bonus_count`, `lineage`(배열, 3..4개, 원소 `{"archetype": String 또는 "", "advance_chance": number}`, 마지막 `advance_chance == 0.0`). 값은 §7.2 표와 같다.
+
+**예시 1 — 룸 (축약: `tiles` 12행)**
+
+```json
+{
+  "id": "filter_bed_02", "band": "speck", "target_body_px": 96.0, "place_id": "",
+  "tiles": [
+    "################################",
+    "#..............................#",
+    "#..............................#",
+    "#..............................#",
+    "#..............................#",
+    "#..............................#",
+    "#......................#########",
+    "#......................#########",
+    "#..............ssssss..#########",
+    "#......########################",
+    "................................",
+    "################################"
+  ],
+  "exits": [ { "id": "w", "side": "left", "from": 10, "to": 10, "to_room": "filter_bed_01", "to_exit": "e" } ],
+  "passages": [ { "id": "step_fb_02_up", "kind": "STEP", "cell": [22, 1], "span": [2, 9], "height_px": 200 } ],
+  "triggers": [ { "id": "salt_bed_fb_02", "object": "salt_bed", "cell": [15, 7], "span": [6, 2] } ],
+  "shelters": [], "dens": [], "tethered": []
+}
+```
+
+**예시 2 — link 3개**
+
+```json
+[
+  { "from": "filter_bed_02", "to": "filter_bed_03", "via": "step_fb_02_up" },
+  { "from": "filter_bed_03", "to": "filter_bed_02", "via": "" },
+  { "from": "ash_terrace_04", "to": "ash_terrace_05", "via": "drop_at_04" }
+]
+```
+
+**예시 3 — 아키타입**
+
+```json
+{
+  "schema": 1, "id": "arc_skitter", "axis_name": "skitter", "rung": "speck", "variant_rungs": ["speck", "hand"],
+  "density": 0.22, "hp": 1.0, "move_speed": 96.0, "chase_speed_mult": 1.0, "think_period": 0.16,
+  "sense_radius_px": 260.0, "hearing_radius_px": 300.0, "fov_deg": 118.0, "reaction_latency": [0.05, 0.14],
+  "aggression": 0.2, "courage": 0.85, "attack_range_ratio": 0.22, "attack_windup": 0.22, "attack_damage": 1.0,
+  "body_parts": 8, "confined_only": false, "graze_radius_px": 0.0, "pack_bonus_count": 0,
+  "lineage": [
+    { "archetype": "arc_skitter", "advance_chance": 0.3 },
+    { "archetype": "arc_skitter", "advance_chance": 0.3 },
+    { "archetype": "arc_brood", "advance_chance": 0.2 },
+    { "archetype": "", "advance_chance": 0.0 }
+  ]
+}
+```
+
+### 10.3 타일 legend
+
+| 문자 | 정수 | 이름 | 재질 | 충돌 | 규칙 |
+|---|---:|---|---|---|---|
+| `.` | 0 | `EMPTY` | — | 없음 | |
+| `#` | 1 | `SOLID` | `mat.slate` | 고체 | |
+| `=` | 2 | `ONE_WAY` | `mat.plank` | 위에서만 | 하강 중이고 직전 서브스텝의 발이 타일 윗면 위였을 때만 막는다. `eco_curl` + `eco_jump`로 내려간다(§13.3) |
+| `s` | 3 | `SALT` | `mat.salt` | 고체 | `salt_bed` rect 맨 아래 행에만(§10.2) |
+| `d` | 4 | `DRIFT` | `mat.drift_powder` | 고체 | `press > 0.35`면 윗면 마찰 × `0.86` |
+| `p` | 5 | `SOIL` | `mat.pressed_soil` | 없음 | 안에서 플레이어 속도 × `0.5`. 개체가 안에 1.4초 이상이면 사망(`buried`) |
+
+`mat.*` 문자열은 코드에 **이 6개 표 밖으로 나오지 않는다**. "물"이라는 글자가 들어간 재질 0건.
+
+### 10.4 passage의 물리 형태 (런타임 충돌체)
+
+passage는 타일이 아니라 **rect 안의 AABB 충돌체**다. px 단위이며 룸 좌표계(`x = cell.x × 24`, `y = cell.y × 24`)다.
+
+| kind | 충돌체 | 통과 방향 |
+|---|---|---|
+| `GAP` | rect 맨 위 한 타일 높이의 판. 가운데에 폭 `w_gap = 배수 × module_px`의 구멍. 판 = 구멍 왼쪽 AABB + 오른쪽 AABB 2개 | 위아래. 몸 폭 ≤ `w_gap`이면 구멍으로 지나간다. `w_gap < 1.42 × 몸 폭`이면 구멍 안에서 수평 속도 × `SQUEEZE_SPEED_MULT(0.45)` |
+| `STEP` | rect 바닥에 붙은 높이 `height_px`, 폭 rect 폭의 블록 1개 | 위로 오르는 통로. 내려가기는 늘 된다 |
+| `DROP` | 없음(빈 축). 착지면은 rect 아래 타일 | 아래로만 |
+| `BREAK` | rect 전체 AABB 1개(벽). `broken_walls`에 있으면 없음 | 양쪽. `eco_use` 타격(§13.3)에 `break_power ≥ hp`면 1타에 사라진다. 아니면 변화 0 |
+| `PRESS` | rect 맨 위 한 타일 높이의 판 1개 | 아래로만. 판 위 하중 합(§7.10) ≥ `mass_required`인 동안 판이 `SOLID`에서 빠진다(아래로 떨어진다). 하중이 빠지면 0.5초 뒤 복귀 |
+
+### 10.5 로더 검증 목록
+
+`EcoRegionLoader.load_all() -> Dictionary`는 `{ok, reason, detail, value: EcoContentIndex, errors: PackedStringArray}`를 돌려준다. **오류가 1개라도 있으면 `ok = false`이고 모듈은 룸을 시작하지 않는다.** 오류 문자열 형식은 `"<reason> <위치>"`(예: `"exit_unpaired filter_bed_02/w"`).
+
+| reason | 조건 |
+|---|---|
+| `json_invalid` | 파싱 실패 |
+| `schema_unsupported` | `schema`가 1이 아님 |
+| `key_unknown` | §10.2 표에 없는 키 |
+| `value_invalid` | 타입·범위 위반 |
+| `id_duplicate` | 룸·passage·trigger·shelter·den·tethered id 중복 |
+| `band_not_in_table` / `band_not_used` | band가 사다리에 없음 / 이 Kit이 안 쓰는 rung |
+| `tile_char_unknown` / `tiles_ragged` | legend 밖 문자 / 행 길이 다름 |
+| `exit_blocked` / `exit_unpaired` | §10.2 exit |
+| `link_without_exit` / `via_unknown` / `via_impassable` | §10.2 link, §4.7-1 |
+| `passage_kind_unknown` / `passage_over_solid` / `gap_rect_too_narrow` / `drop_height_mismatch` | §10.2 passage |
+| `salt_outside_bed` | §10.2 trigger |
+| `trigger_object_unknown` | §4.5 표 밖 |
+| `creature_above_band` | den 첫 스테이지·tethered 개체 rung > 룸 band (CV-06) |
+| `den_slots_exceeded` | 룸 den 9개 초과 |
+| `lineage_last_stage_nonzero` | lineage 마지막 `advance_chance ≠ 0.0` |
+| `variant_not_adjacent` | `variant_rungs` 인덱스 차 ≠ 1 (CV-02) |
+| `start_invalid` | `start_room`·`start_shelter`·`start_rung` 불일치 |
+
+### 10.6 사다리 로드
+
+`EcoLadder.LADDER_PATH = "res://content/scale/ladder.json"`(W0 소유). 순서:
+
+1. 그 파일이 있으면 읽어 `05` §2의 표대로 검증한다. 실패하면 **정직한 실패**(`ladder_invalid`) — 대체값으로 넘어가지 않는다.
+2. 파일이 없으면 `EcoWorldstateBridge.store_rung_values()`(= `AxisBody.SCALE_RUNGS` 복사)와 `EcoLadder.FALLBACK_NAMES = ["speck", "hand", "doll", "common", "tall", "colossal"]`(`01` §1 순서)로 같은 표를 만든다. `edges[i] = snappedf(sqrt(v[i] × v[i+1]), 0.001)`, `band_min[0] = 0.0`, `band_max[5] = 99.0`. `source = "store_constant"`.
+3. Kit 안에 사다리 사본 파일 0개(`06_TESTS_AND_GATES` T7-1).
+
+### 10.7 영역 4개 · 룸 25개 · link 그래프 (정본)
+
+**룸** (`band` / `target_body_px`):
+
+| 영역 (index) | 룸 | band / target | 역할 |
+|---|---|---|---|
+| `reg_filter_bed` (0) | `filter_bed_00`~`05` (6) | `speck` / 96 | 시작 쉼터 `shelter_fb_00`(00). `salt_bed_fb_02`(02). hp 2 벽(04) |
+| `reg_ash_terrace` (1) | `ash_terrace_00`~`02` (3) | `speck` / 96 | 00 = `place.ruined_garden`, `fix.gardener`. 01→02 `WIDE` 갭. 쉼터 `shelter_at_01` |
+| | `ash_terrace_03`~`06` (4) | `hand` / 240 | 03→04 `FIT`. `collapse_floor_at_04`, 04→05 `DROP 2700`. 03→06 `DROP 2000`, `collapse_floor_at_06` |
+| `reg_bone_shelf` (2) | `bone_shelf_00`~`06` (7) | `doll` / 384 | 00 = `place.tea_stair`, `fix.butler`. 00→01 `STEP 290`, 01↔02 hp 4 벽, 02↔03 `FIT`(`anchor` den), `salt_dust_bed_bs_04`, 04↔05 `TIGHT`, 05→06 `PRESS 0.80`, `collapse_floor_bs_06`, 06→`seed_vault_00` `DROP 1600`. 쉼터 `shelter_bs_01` |
+| `reg_seed_vault` (3) | `seed_vault_00`~`04` (5) | `hand` / 240 | 00 = `place.mirror_march`, `fix.mirror`, `salt_dust_bed_sv_00`. `narrow_cradle_sv_01`(skitter den 3개 인접), 01↔02 `TIGHT`, 04→`filter_bed_01` `DROP 1600`. 쉼터 `shelter_sv_03` |
+
+**link** (`→` 한 방향, `↔` 양방향 2개. 괄호 = `via`, 없으면 `""`):
+
+```
+fb_00 ↔ fb_01          fb_01 ↔ fb_02          fb_02 → fb_03 (step_fb_02_up)   fb_03 → fb_02
+fb_03 ↔ fb_04          fb_04 ↔ fb_05 (wall_fb_04_a)                           fb_05 ↔ at_00
+at_00 ↔ at_01          at_01 ↔ at_02 (gap_at_01_wide)                         at_02 ↔ at_03
+at_03 ↔ at_04 (gap_at_03_fit)   at_04 → at_05 (drop_at_04)   at_03 → at_06 (drop_at_03)
+at_05 ↔ bs_00          at_06 ↔ sv_00
+bs_00 → bs_01 (step_bs_00_up)   bs_01 → bs_00          bs_01 ↔ bs_02 (wall_bs_01_a)
+bs_02 ↔ bs_03 (gap_bs_02_fit)   bs_03 ↔ bs_04          bs_04 ↔ bs_05 (gap_bs_04_tight)
+bs_05 → bs_06 (plate_bs_05)     bs_06 → sv_00 (drop_bs_06)
+sv_00 ↔ sv_01          sv_01 ↔ sv_02 (gap_sv_01_tight)                        sv_02 ↔ sv_03
+sv_03 ↔ sv_04          sv_04 → fb_01 (drop_sv_04)
+```
+
+(`fb_` = `filter_bed_`, `at_` = `ash_terrace_`, `bs_` = `bone_shelf_`, `sv_` = `seed_vault_`. JSON에는 전체 id를 쓴다.) 이 그래프가 §4.9 G1~G6을 만족한다는 것을 `test_eco_region_graph_fully_connected`가 매 실행 증명한다. 그래프를 바꾸면 이 표를 먼저 고친다.
+
+---
+
+## 11. 화면 (presentation) — 착수 조건부
+
+### 11.0 착수 조건 (행마다 `done`이 되기 전에는 그 행을 쓰는 파일을 만들지 않는다)
+
+기준은 `core/procedural/README.md`의 상태 표다.
+
+| 필요한 것 | 쓰는 파일 | 2026-09-27 상태 |
+|---|---|---|
+| `ProceduralBodyPart.draw()` / `bounds()` | `player_view.gd` `creature_view.gd` `screen_illustration.gd` | done |
+| `ProceduralCreatureBuilder.compose_canvas()` / `outline()` | `player_view.gd` `creature_view.gd` | done |
+| `ProceduralSquishRig.step()` / `disturb()` / `draw()` | `player_view.gd` `creature_view.gd` | done |
+| `ProceduralScaleFit.signature(q)` (W2 신규) | `procedural_bridge.gd`의 5독자 신호 2·3·4 | **없음** (§20 OQ-1) |
+
+`ProceduralBackdropDynamics`·`ProceduralDeformField`·`ProceduralCanvas`·`ProceduralSdf`·`ProceduralPalette`도 `done`이다. 그래도 **배경만 먼저 만들지 않는다** — 개체 없는 화면이 "완성처럼" 보인다. 배경은 플레이어·개체 뷰와 같은 wave에 만든다. **5독자 신호 2·3·4는 OQ-1이 풀릴 때까지 만들지 않는다.** 그동안 화면에서 어긋남을 읽는 수단은 1(화면 프레임 — 카메라 줌이 이미 만든다)과 5(`pitch_scale` — 소리)뿐이다.
+
+**화면 wave의 선행 조건:** domain·systems 테스트(§16.2 wave D0·D1·S)가 전부 통과한 뒤에 시작한다.
+
+### 11.1 노드 구성
+
+`entry.tscn`: `Node2D` 루트(`module.gd`) → `WorldRoot`(Node2D, `world_root.gd`) → `BackdropRoot` + `RoomLayer` + `CreatureLayer` + `PlayerLayer`; `CameraRig`(Node2D → `Camera2D`); `OverlayHost`(Control, `mouse_filter = IGNORE`, 풀스크린 앵커) → `BubbleOverlay`, 3화면; `AudioSink`(Node). 3화면은 기본 `visible = false`. `normal` 상태에서 `OverlayHost`의 보이는 자식은 `BubbleOverlay`뿐이다.
+
+### 11.2 5층 배경
+
+§9.12 표의 5레이어. 각 레이어는 `ProceduralBackdropDynamics` 1개 + 앵커 18..34개. 앵커는 **룸 JSON의 타일에서** 뽑는다: `FOREGROUND` = 룸 가장자리 고체 타일 덩어리 윤곽점, `NEAR`/`MID` = 고체 타일 무게중심을 8칸 격자로 묶은 점, `FAR`/`SKY` = 룸 폭을 18등분한 점. 모양은 판·막·층·기둥(`13_REFERENCE_EXCLUSIONS` §1-R6): `ProceduralSdf`의 사각·캡슐만. 색은 §9.9 역할만.
+
+### 11.3 실루엣 판독 기준 (F3의 수치)
+
+| 대상 | 파츠 수 | 판독 기준 (실제 화면에서 사용자가 판정) |
+|---|---:|---|
+| 플레이어 | 18 (+ 사실 delta, §9.13) | 720p에서 `speck` 몸(`h 96`, 줌 3.4375 → 화면 330px)의 머리·몸통·팔다리가 구분된다 |
+| 개체 | `body_parts` 8..12 | 5 아키타입이 색 없이(명도만) 서로 구분된다 |
+| 배경 | — | 플레이어보다 밝은 배경 요소 0개(§9.9 초점 규칙) |
+
+이 표의 판정은 W2 구현 뒤 실제 캡처로 한다. 판정 전에는 "실루엣이 충분하다"고 쓰지 않는다.
+
+### 11.4 전이 연출
+
+§4.5 B-06: 0.9초 입력 중단, 지형 1.9초 조임(`ProceduralDeformField.excite(1.0, 3 × module_px)`), 카메라 스프링 `(70.0, 0.75)`, 배경 `pulse(0.55)`. 몸 크기는 한 프레임에 바뀐다.
+
+### 11.5 초점 규칙
+
+화면에서 가장 밝은 것은 플레이어(`key_light`)다. 개체는 `body`/`rim`. `danger`는 `BREAK` 벽 1종에만, 휘도 `key_light × 0.82` 이하. 개체가 여러 마리면 플레이어에서 가장 가까운 1마리만 `rim`을 켠다.
+
+### 11.6 세 화면
+
+공통: 풀스크린 `Control`, 배경 `shade` 역할 색으로 채운 절차 캔버스 1장, 가운데 일러스트(`screen_illustration.gd`, 캔버스 높이의 60%), 우하단 `HBoxContainer`(오른쪽·아래 여백 48px)에 `Button`. 버튼 라벨은 §W.2 값만. 첫 버튼에 `grab_focus()`. `ui_left`/`ui_right`로 이동, `ui_accept`로 누른다. 본문 텍스트 0자.
+
+#### 11.6.1 로딩
+
+`enter` 직후 콘텐츠 로드·사다리 로드·룸 구성 동안. 일러스트 = 현재 rung 몸 실루엣이 `ProceduralDeformField`로 느리게 부푸는 것(주기 2.4초). 진행 바 0. 준비가 끝나면 버튼 `계속`(T2) 1개가 나타난다. 누르면 `normal`.
+
+#### 11.6.2 잠
+
+`shelter` 위에서 `eco_curl`을 1.2초 누르면 연다(§14.4). 일러스트 = 웅크린 몸. 왼쪽 1/3에 방문 그래프(`passage_graph_view.gd`): `rooms_visited`의 룸을 원(반지름 6px), link를 1px 선으로. 미방문 룸은 1px 점. **이름·숫자·순서 0.** 버튼 `일어나다`(T5), `나가다`(T6).
+
+#### 11.6.3 사망
+
+`integrity ≤ 0`이 된 프레임 + 0.8초. 일러스트 = 마지막 자세 실루엣이 식어가는 것(명도 1.0 → 0.4, 1.5초). 사망 원인 표시 0. 버튼 `다시`(T3), `나가다`(T4).
+
+---
+
+## 12. 오디오 이벤트 14개 — `audio_events.tres`
+
+`id_prefix = &"eco"`. 버스는 `SFX`·`Music`만(`Voice` 0개, §W.5-2 규칙 D). 파일은 W3가 `modules/sideview_ecosystem/audio/<id>.wav`로 넣는다. 파일이 없으면 등록은 조용히 실패하고 게임은 무음으로 돈다. `pitch_scale = q`(§4.10-3 5번 독자)는 `step`·`land`·`strike` 3종에만.
+
+| # | id | 버스 | 재생 조건 | `max_polyphony` | `volume_db` |
+|---:|---|---|---|---:|---:|
+| 1 | `eco_step` | SFX | 지상 이동 중 `run_speed × 0.35`px마다 | 2 | -12 |
+| 2 | `eco_land` | SFX | 착지(§8.3 7.5) | 2 | -8 |
+| 3 | `eco_jump` | SFX | 점프 시작 | 1 | -10 |
+| 4 | `eco_squeeze` | SFX | 눌림 구간 진입(§10.4 GAP) | 1 | -9 |
+| 5 | `eco_strike` | SFX | `eco_use` 타격 | 2 | -8 |
+| 6 | `eco_shatter` | SFX | `BREAK` 벽 파괴 | 2 | -4 |
+| 7 | `eco_plate` | SFX | `PRESS` 판이 빠짐 | 1 | -6 |
+| 8 | `eco_rung_cut` | SFX | 전이 완료(§11.4) | 1 | -3 |
+| 9 | `eco_settle_load` | Music | `press`가 0.45를 넘는 프레임(§9.10) | 1 | -14 |
+| 10 | `eco_creature_alert` | SFX | 개체 `ALERT` 진입 | 3 | -10 |
+| 11 | `eco_creature_strike` | SFX | 개체 `STRIKE` 명중 | 2 | -6 |
+| 12 | `eco_creature_death` | SFX | 개체 `DEAD` 진입 | 2 | -8 |
+| 13 | `eco_death` | SFX | 플레이어 사망 | 1 | -2 |
+| 14 | `eco_sleep` | Music | 잠 화면 열림 | 1 | -12 |
+
+물·비·수면 소리 이벤트 0건.
+
+---
+
+## 13. 입력
+
+### 13.1 action 5개와 기본 바인딩
+
+`module_manifest.tres`의 `input_actions`는 정확히 이 5개다. `module.gd`는 `enter`에서 `InputMap.has_action` / `action_has_event` 가드를 두고 **런타임에** 등록한다(`input_router.gd`의 관례, `project.godot` 수정 0). 셸이 전역으로 먼저 가져가는 키 **Esc(일시정지) · J(저널) · P · Enter는 쓰지 않는다**(`app/app_root.gd`의 `_input`, `input_router.gd`).
+
+| action | 물리 키 | 쓰임 |
+|---|---|---|
+| `eco_left` | `A`, `←` | 왼쪽 |
+| `eco_right` | `D`, `→` | 오른쪽 |
+| `eco_jump` | `Space`, `W`, `↑` | 점프(누른 시간만큼 높이, §9.2 `JUMP_CUT_MULT`) |
+| `eco_curl` | `S`, `↓` | 웅크리기. `eco_jump`와 함께 = 한 방향 판 내려가기. 쉼터에서 1.2초 = 잠 |
+| `eco_use` | `E`, `K` | 붙잡기/놓기(§7.11) · 벽 타격(§10.4 BREAK) — 앞에 개체가 있으면 붙잡기가 먼저 |
+
+### 13.2 Input Bubble
+
+`first_entry`와 같은 API 이름·4상태(`intact/popped/rising/restoring`), `GRID_COLUMNS = 3`. 셀: `eco_left (0,0)` `eco_jump (1,0)` `eco_right (2,0)` `eco_curl (1,1)` `eco_use (2,1)`. 글리프는 현재 바인딩의 첫 물리 키(§W.3). 이 Kit에 들어올 때 5개가 아래에서 올라오고, 처음 누른 키의 방울이 터진다. 5개가 모두 터지면 오버레이는 보이지 않는다.
+
+### 13.3 입력 → 의도 (`read_input`, §8.2 2단계)
+
+| 의도 | 값 |
+|---|---|
+| `move_axis` | `context.get_axis(&"eco_left", &"eco_right")` (−1, 0, 1) |
+| `jump_held` / `jump_pressed` | 이번 프레임 눌림 / 직전 프레임 안 눌림 → 눌림 |
+| `curl_held` | `eco_curl` 눌림 |
+| `use_pressed` | `eco_use` 직전 안 눌림 → 눌림 |
+| `any_input` | 5개 중 하나라도 눌림 (§4.5 전이 3·4의 무입력 판정) |
+
+`domain/`·`systems/`는 물리 키를 모른다. 테스트는 의도 사전을 직접 넣는다.
+
+---
+
+## 14. 저장 · 불러오기 · 사망 · 부활 · 잠
+
+### 14.1 세이브 파일과 쓰는 때
+
+파일은 1개다: `user://sideview_ecosystem_save.json`(§6.5 형식). `EcoSaveService.write_file(data: Dictionary) -> int`가 같은 폴더의 `sideview_ecosystem_save.json.tmp`에 `JSON.stringify(data, "\t")`를 쓰고 `DirAccess.rename_absolute`로 바꿔 끼운다. 실패하면 `push_warning` 1회를 남기고 게임은 계속 돈다.
+
+**자동 저장은 아래 5곳뿐이다.** 이 밖에서 파일을 쓰지 않는다. 수동 저장 UI 0개, 세이브 슬롯 0개.
+
+| # | 때 | 근거 |
+|---|---|---|
+| S1 | 잠 화면이 열린 프레임 | §14.4 |
+| S2 | rung 전이가 끝난 프레임 | §4.5 B-08 |
+| S3 | 룸 전환이 끝난 프레임(§8.4 6단계 뒤) | 부서진 벽·방문 기록을 잃지 않게 |
+| S4 | 부활 직후 | §14.3 |
+| S5 | `exit()` 안, 입력을 끈 뒤 | 모듈 계약 |
+
+사망한 순간에는 쓰지 않는다. 부활(S4)에서 같이 저장된다.
+
+**모듈 계약 3개:**
+
+| 함수 | 동작 |
+|---|---|
+| `save_state() -> Dictionary` | `EcoSaveCodec.encode(world_state, content_seed, world_seed)`. 파일은 쓰지 않는다(앱이 따로 보관한다) |
+| `load_state(data: Dictionary) -> void` | `EcoSaveCodec.decode(data)` → §6.5 정규화 표. 성공하면 상태를 바꾸고 룸을 다시 구성한다(§8.4 1~6). `schema ≠ 4`면 아무것도 바꾸지 않는다 |
+| `migrate_save(old_version: int, data: Dictionary) -> Dictionary` | `old_version == 4`면 `data.duplicate(true)`, 아니면 `{}`. 마이그레이션 체인 0개(§6.5) |
+
+### 14.2 시작 순서 (`enter`)
+
+| # | 단계 | 실패하면 |
+|---:|---|---|
+| 1 | 입력 action 5개를 런타임 등록(§13.1) | — |
+| 2 | 로딩 화면 표시(§11.6.1). 화면 착수 전(§11.0)에는 `EcoStepDirector.mode = &"loading"`만 바뀐다 | — |
+| 3 | `EcoRegionLoader.load_all()`(§10.5) | 로딩 상태에 머문다. 버튼 0개. `errors` 전부를 `push_error`. 나가는 길은 셸의 Esc 일시정지뿐이다 |
+| 4 | `EcoLadder` 로드(§10.6) | 3과 같다(`ladder_invalid`) |
+| 5 | 세이브 출처: `load_state`가 먼저 불렸으면 그 값 → 없으면 로컬 파일 → 없으면 새 게임 | 파일 파싱 실패는 새 게임 + `push_warning` 1회. 파일을 지우지 않는다 |
+| 6 | 스토어 규칙(§6.5 표의 스토어 3행, §6.6) | 축 rung이 이 Kit의 3개가 아니면 3과 같다 |
+| 7 | 현재 룸 구성(§8.4 1~6) | — |
+| 8 | 로딩 화면에 `계속` 버튼 표시 → 누르면 `mode = &"normal"` | — |
+
+**새 게임 값:** `world_seed = content_seed`, `current_room_id = start_room`, `body_rung = start_rung`, `position_px` = `start_shelter`의 발 기준점(§14.3 식), `respawn_room = start_room`, `respawn_pos_px = position_px`, `shelters_touched = [start_shelter]`. 나머지는 §6.2 기본값.
+
+### 14.3 사망과 부활
+
+**사망:** `integrity ≤ 0.0`이 된 서브스텝. 원인은 낙하(§9.3)·개체 타격(§7.10)·`buried`(§10.3 `p`)·`crush`(§7.10)다. **원인은 저장하지도 보여 주지도 않는다.**
+
+사망 프레임의 순서: 입력 중단 → `deaths += 1` → `t_since_death = 0.0` → `TransitionState.reset()`(B-03) → `holding = false`, `held_creature_id = -1` → `eco_death` 재생 → `mode = &"dying"`. 0.8초 뒤 `mode = &"dead"`(사망 화면, §11.6.3). `dying`·`dead` 동안 시뮬레이션 단계(§8.2 2~13)는 0회 돈다.
+
+**`다시`(T3) = 부활:**
+
+| 바뀌는 것 | 값 |
+|---|---|
+| 위치 | `respawn_room`의 `respawn_pos_px`. 룸이 다르면 §8.4 1~6을 그대로 탄다 |
+| `integrity` | `1.0` |
+| `velocity_px` / `facing` | `(0, 0)` / `1` |
+| 그다음 | S4 저장 → `mode = &"normal"` |
+
+**부활이 빼앗는 것은 0개다.** rung·`wounds`·`broken_walls`·`trigger_flags`·`compressed_beds`·`drift_drops`·`rooms_visited`·`shelters_touched`·`t_settle`은 그대로다. `t_settle`을 되감는 것은 잠뿐이다(§4.8). 개체도 그대로이고 룸을 다시 구성할 때 §7.5 규칙만 돈다. 죽음의 비용은 **되돌아가는 길**이다.
+
+**부활 지점 = 마지막으로 밟은 쉼터**(부록 W T3). 몸 AABB 바닥 중심점이 쉼터 `cell` 칸 안에 있고 `on_ground`인 프레임에: `shelters_touched`에 없으면 추가, `respawn_room = 현재 룸`, `respawn_pos_px = Vector2(cell.x × 24 + 12, (cell.y + 1) × 24)`. 이 순간 파일은 쓰지 않는다(다음 S1~S5에서 같이 저장된다).
+
+**`나가다`(T4·T6):** S5와 같은 저장 → `requested.emit(&"menu", {})` 1회. `&"menu"`는 `app/app_root.gd`가 받는 종류다.
+
+### 14.4 잠
+
+| 항목 | 값 |
+|---|---|
+| 조건 | 쉼터 칸 위에서 `on_ground` + `eco_curl` 연속 `SLEEP_HOLD_S = 1.2`초. 그 룸에 `CHASE`·`STRIKE` 상태 개체가 1마리라도 있거나 `eco_curl`을 떼면 누적이 0으로 |
+| 연 프레임 | `sleeps += 1`, `t_settle = 0.0`, `integrity = 1.0`, 부활 지점 = 이 쉼터, `eco_sleep` 재생, `mode = &"asleep"`, S1 저장. 시뮬레이션 멈춤 |
+| `일어나다`(T5) | 같은 자리에서 `mode = &"normal"`. 입력 버블 상태는 그대로 |
+| `나가다`(T6) | §14.3과 같다 |
+
+잠은 den·개체를 바꾸지 않는다. 쉼터에 `eco_curl`을 누르고 있는 동안 몸은 웅크린 자세(§13.1)이고 1.2초 전에는 아무 표시도 없다.
+
+### 14.5 복구 규칙 한곳 모음
+
+- 로드 정규화·stale id 처리는 **§6.5 표가 정본**이다. 여기서 다시 쓰지 않는다.
+- 이 장르의 복구 수단은 **부활(§14.3)과 잠(§14.4) 두 가지뿐이다.** undo 0, 되감기 0, 체크포인트 UI 0.
+- **처음부터 다시 하기 UI는 없다.** 새 게임은 세이브 파일이 없을 때만 시작된다(개발·테스트는 파일을 지운다).
+
+### 14.6 실패 · 불가 · 성공 — 무엇이 보이는가
+
+| 상태 | 게임 판정 | 화면 | 소리 |
+|---|---|---|---|
+| 불가 — 통로가 몸을 안 받는다 | passage 충돌체가 몸을 막는다(§10.4). 상태 변화 0 | 몸이 멈추고 밀린다. 문자·아이콘·색 강조 0 | 없음 |
+| 불가 — 벽을 못 부순다 | `break_power < hp`. 변화 0 | 타격 스쿼시만 | `eco_strike` |
+| 불가 — 판이 안 빠진다 | 하중 합 < `mass_required`. 변화 0 | 판 위에 그대로 선다 | 없음 |
+| 실패 — 사망 | §14.3 | 사망 화면 | `eco_death` |
+| 성공 — 전이 | §4.5 | §11.4 연출 | `eco_rung_cut` |
+| 성공 — 벽 파괴 | `broken_walls`에 id 추가 | 벽이 사라지고 배경 `pulse` | `eco_shatter` |
+| 성공 — 판이 빠짐 | §10.4 PRESS | 판이 내려간다 | `eco_plate` |
+| 오류 — 콘텐츠·사다리 로드 실패 | 룸 시작 0 | 로딩 화면, 버튼 0 | 없음 |
+
+---
+
+## 15. Reference Game — 10분+
+
+### 15.1 authored 단위 4개가 같은 시스템을 다시 쓴다
+
+authored 단위는 **영역 JSON 1개**다(`GRILLING_STATE` §5.1 Q6). 네 영역은 로더·물리·전이·AI·den·저장을 **하나도 바꾸지 않고** 서로 다른 것을 넣는다.
+
+| 영역 | 이 영역이 새로 넣는 것 |
+|---|---|
+| `reg_filter_bed` (6룸, `speck`) | 시작 쉼터, `salt_bed`(`speck → hand`), `STEP 200`, hp 2 벽. 첫 개체(`skitter` den) |
+| `reg_ash_terrace` (7룸, `speck` 3 · `hand` 4) | 한 영역 안에서 band가 바뀐다. `WIDE`·`FIT` 갭, `collapse_floor` 2개(`hand → doll`), `DROP 2000`·`DROP 2700`, `place.ruined_garden`의 `fix.gardener`, 곁길 drift 갭 `gap_at_02_drift`(link 없음) |
+| `reg_bone_shelf` (7룸, `doll`) | `STEP 290`, hp 4 벽, `anchor` den 옆 `FIT` 갭, `salt_dust_bed`(`doll → hand`), `TIGHT` 갭, `PRESS 0.80`, 세 번째 `collapse_floor`, `DROP 1600` |
+| `reg_seed_vault` (5룸, `hand`) | `narrow_cradle`(`hand → speck`, 개체 3마리 목격), `TIGHT` 갭, `DROP 1600`으로 시작 영역에 되돌아온다. `place.mirror_march`의 `fix.mirror` |
+
+### 15.2 첫 플레이 경로 (정본)
+
+이 경로가 `test_eco_region_graph_fully_connected`의 G1 경로 중 하나이고 수동 과제 M-01(§17)의 대본이다. 시간은 사망 0회 기준 예상치이며 **완료 판정은 실측(§19 E3)으로만 한다.**
+
+| # | 룸 | rung | 하는 일 | 예상 |
+|---:|---|---|---|---:|
+| 1 | `filter_bed_00`→`02` | `speck` | 입력 버블 5개가 올라오고 터진다. 걷기·점프. `skitter`를 처음 본다 | 1:30 |
+| 2 | `filter_bed_02` | `speck → hand` | `salt_bed` 위에 5.0초 서 있는다. 받침이 눌린다 | 0:30 |
+| 3 | `filter_bed_03`→`05` | `hand` | `STEP 200`을 오른다(`speck`으로는 못 오른다). hp 2 벽을 부순다 | 1:30 |
+| 4 | `ash_terrace_00`→`03` | `hand` | `speck` band 룸이라 `q = 2.4`, 몸이 화면 프레임보다 크다(`module_count 6.6 > 6.0`, 잘린다). `fix.gardener`를 지난다. `WIDE` 갭. `03`에서 band가 `hand`로 바뀐다 | 2:00 |
+| 5 | `ash_terrace_03`→`05` | `hand → doll` | `FIT` 갭. `collapse_floor_at_04`에 3회 착지 → 판이 사라진다. `DROP 2700`(`hand`면 즉사) | 1:30 |
+| 6 | `bone_shelf_00`→`03` | `doll` | `STEP 290`. 쉼터 `shelter_bs_01`. hp 4 벽. `anchor` den 옆 `FIT` 갭 | 2:00 |
+| 7 | `bone_shelf_04`→`06` | `doll → hand` | `salt_dust_bed` 무입력 8.0초. `TIGHT` 갭(`doll`은 못 지난다). `PRESS 0.80` 판 | 2:00 |
+| 8 | `bone_shelf_06`→`seed_vault_00`→`02` | `hand → speck` | `DROP 1600`. `narrow_cradle`에서 무입력 12.0초 + `skitter` 3마리가 144px 안에 180프레임 | 2:30 |
+| 9 | `seed_vault_02`→`04`→`filter_bed_01` | `speck` | `TIGHT` 갭. 쉼터 `shelter_sv_03`. `DROP 1600`으로 시작 영역에 돌아온다 | 1:00 |
+| | | | **합계(사망 0회)** | **14:30** |
+
+**반복 가치(2회차 이후):** den 재충전과 lineage 스테이지(§7.5)로 같은 룸의 개체가 바뀐다. `ash_terrace_03 → 06`(`DROP 2000`) → `seed_vault_00` 지름길로 `reg_bone_shelf`를 건너뛸 수 있다. 다른 rung으로 같은 룸에 돌아가면 같은 장소가 다른 크기로 읽힌다(§4.10-3).
+
+### 15.3 이 경로가 요구하는 수치 (authored 검산표)
+
+| 지점 | 필요한 것 | 되는 rung | 안 되는 rung |
+|---|---|---|---|
+| `step_fb_02_up` `STEP 200` | `jump_height + max_climb ≥ 200` | `hand` `doll` | `speck` |
+| `wall_fb_04_a` hp 2 | `break_power ≥ 2` | `hand` `doll` | `speck` |
+| `gap_at_01_wide` `WIDE` (speck band) | `1.65 × q ≤ 4.20` → `q ≤ 2.545` | `speck`(1.0) `hand`(2.4) | `doll`(5.6) |
+| `gap_at_03_fit` `FIT` (hand band) | `q ≤ 1.576` | `speck`(0.417) `hand`(1.0) | `doll`(2.333) |
+| `drop_at_03` `DROP 2000` | `fall_px < lethal_fall_px` | `hand`(2414) `doll`(3004) | `speck`(1889) |
+| `drop_at_04` `DROP 2700` | 같음 | `doll` | `speck` `hand` |
+| `step_bs_00_up` `STEP 290` | `jump_height + max_climb ≥ 290` | `doll` | `speck` `hand` |
+| `wall_bs_01_a` hp 4 | `break_power ≥ 4` | `doll` | `speck` `hand` |
+| `gap_bs_02_fit` `FIT` (doll band) | `q ≤ 1.576` | 전부 | — |
+| `gap_bs_04_tight` `TIGHT` (doll band) | `q ≤ 0.515` | `speck`(0.179) `hand`(0.429) | `doll` |
+| `plate_bs_05` `PRESS 0.80` (doll band) | `0.42 × (q × 384 / 96)³ ≥ 0.80` | `hand`(2.12) `doll`(26.88) | `speck`(0.15) |
+| `drop_bs_06` · `drop_sv_04` `DROP 1600` | `1600 < lethal_fall_px` | 전부 | — |
+| `gap_sv_01_tight` `TIGHT` (hand band) | `q ≤ 0.515` | `speck`(0.417) | `hand` `doll` |
+
+`max_climb`·`jump_height`는 §4.4, `lethal_fall_px`는 §9.4, 갭 배수는 §4.6-1이 정본이다. 이 표와 그 절이 어긋나면 그 절을 따르고 이 표를 고친다. `test_eco_region_graph_fully_connected`가 같은 수로 매 실행 검산한다.
+
+### 15.4 콘텐츠 추가 증명 (core 무수정)
+
+| # | 증명 | 판정 |
+|---:|---|---|
+| 1 | **자동:** `test_eco_content_extension_without_core_change`가 테스트 파일 안의 JSON 문자열로 5번째 영역(`reg_probe_annex`, 2룸, `hand` band, `sv_03 ↔ annex_00` link 1쌍)을 만들고, 기존 4영역과 함께 `EcoRegionLoader.load_from_texts(texts: Dictionary)`로 읽는다 | 오류 0, 룸 27개, 그래프 G1·G2 통과, 새 룸에서 `EcoStepDirector` 600프레임이 오류 없이 돈다 |
+| 2 | **authoring 순서:** `reg_seed_vault`는 마지막에 넣는다. 그 커밋의 변경 경로는 `modules/sideview_ecosystem/content/**`뿐이다(다른 영역 JSON의 link·exit 추가 포함) | `git show --stat <그 커밋>`에 `content/` 밖 경로 0개. 결과를 `IMPLEMENTATION_STATUS.md`에 적는다 |
+| 3 | **하드코딩 탐지:** §18.1 H-01 | 0건 |
+
+`load_from_texts`는 `load_all`과 같은 검증을 한다. `load_all`은 `res://modules/sideview_ecosystem/content/`의 파일을 읽어 `load_from_texts`에 넘기는 얇은 함수다.
+
+---
+
+## 16. 자동 테스트
+
+### 16.1 명령
+
+**작업 중 — 이 Kit 테스트만** (Godot 잠금은 `AGENTS.md` '병렬 세션 작업'대로. 잠금 이름 `kit06`):
+
+```powershell
+New-Item -ItemType Directory -Force C:\projects\_locks | Out-Null
+New-Item -ItemType File -Path C:\projects\_locks\TINProject-godot.lock -Value 'kit06' -ErrorAction Stop
+$GodotExe = 'C:\Program Files (x86)\Steam\steamapps\common\Godot Engine\godot.windows.opt.tools.64.exe'
+$p = Start-Process -FilePath $GodotExe -ArgumentList '--headless --path C:\projects\TINProject --editor --import' -NoNewWindow -Wait -PassThru
+$p = Start-Process -FilePath $GodotExe -ArgumentList '--headless --path C:\projects\TINProject --script addons/gut/gut_cmdln.gd -gdir=res://tests/core -gprefix=test_eco_ -gexit' -NoNewWindow -Wait -PassThru
+$p.ExitCode
+Remove-Item C:\projects\_locks\TINProject-godot.lock
+```
+
+기대 결과: 종료 코드 `0`. GUT 요약에 실패 0. `pending`은 통과로 세지 않고 `IMPLEMENTATION_STATUS.md`에 개수와 이유를 적는다. 새 `class_name`을 추가한 뒤에는 `--import`를 먼저 돌린다(전역 클래스 캐시).
+
+**마무리 — 전체 자동 검증:** `AGENTS.md` '완료 전 자동 검증'의 4명령 그대로. 남의 소유 파일에서 난 실패는 고치지 않고 기록한다.
+
+### 16.2 파일 13개와 쓰는 순서
+
+`tests/core/` 아래 이 13개가 전부다(§1.1). **wave D0의 5개는 domain 코드보다 먼저 쓴다.** 대상 파일이 아직 없는 단언은 `pending("<이유>")`로 둔다 — 통과로 세지 않는다.
+
+| wave | 파일 | 대상 |
+|---|---|---|
+| **D0** | `test_eco_no_water_systems.gd` | §4.10-1 |
+| **D0** | `test_eco_forbidden_systems.gd` | §5.3, §1.4, 머리말의 0개 목록, §18.1 |
+| **D0** | `test_eco_no_lore_exposure.gd` | 부록 W §W.5 |
+| **D0** | `test_eco_ladder_and_rungs.gd` | §4.2~§4.4, §9.3·§9.4, §10.6 |
+| **D0** | `test_eco_passages.gd` | §4.6, §10.2 passage, §10.4 |
+| D1 | `test_eco_region_loader.gd` | §10.1~§10.5, §15.4 |
+| D1 | `test_eco_region_graph.gd` | §4.9 G1~G3·G5·G6, §4.8 |
+| D1 | `test_eco_scale_rung_contract.gd` | §4.10-5 (1·2·4·8·9는 D1, 5·6은 S, 3·7은 P) |
+| S | `test_eco_transitions.gd` | §4.5 |
+| S | `test_eco_player_physics.gd` | §8, §9.1~§9.6 |
+| S | `test_eco_creatures.gd` | §7 |
+| S | `test_eco_save_and_flow.gd` | §6.5, §13.1, §14 |
+| S | `test_eco_worldstate_handover.gd` | §6.6.6 |
+
+### 16.3 파일별 테스트 함수
+
+모든 스캔 테스트는 `res://modules/sideview_ecosystem/`를 `DirAccess`로 재귀 순회해 `.gd` `.tscn` `.tres` `.json` 본문을 `FileAccess.get_as_text()`로 읽는다. 실패 메시지에는 파일 경로·줄 번호·걸린 토큰을 찍는다. 폴더가 없으면 스캔 대상 0개로 통과한다(파일이 생기는 순간부터 막는다).
+
+**`test_eco_no_water_systems.gd`**
+
+| 함수 | 단언 |
+|---|---|
+| `test_eco_no_water_systems` | §4.10-1 토큰 표의 식별자 토큰이 모듈 원문에 0건(대소문자 무시, 부분 일치). 이 Kit 코드는 주석 0개 규칙(`CODE_STYLE`)이라 §4.10-1의 "주석 제거"는 결과가 같다. **문자열 안의 토큰도 잡는다** |
+| `test_eco_no_water_korean_tokens` | 한글 토큰 11개가 모듈 원문에 0건 |
+| `test_eco_no_water_file_names` | 파일·폴더 이름에 식별자 토큰 0건 |
+| `test_eco_no_water_content_keys` | `content/**/*.json`을 파싱해 모든 층의 키에 `flood` `flood_ceiling_px` `flood_floor_px` `max_depth_px` `wet` `drowned` `aquatic_only` 0건, 모든 문자열 값에 `dredge` 0건 |
+| `test_eco_no_water_state_fields` | `EcoWorldState.new()`·`EcoBodyRung`의 프로퍼티 목록(`get_property_list()`)에 `breath_left` `head_underwater` `submerge_limit_px` 0건 |
+
+**`test_eco_forbidden_systems.gd`**
+
+| 함수 | 단언 |
+|---|---|
+| `test_eco_no_forbidden_systems` | §5.3의 금지 파일 이름 전부(물 목록과 스토어 목록 포함)가 모듈 폴더에 0개 |
+| `test_eco_no_inventory_or_tool_system` | `.gd` 식별자를 `_`로 자른 조각 중 `inventory` `item` `items` `tool` `tools` `loot` `pickup` `keyring` `trade` `trading` `shop` `vendor` `currency` `coin` `craft` 0건. `key`는 사전 API라 대상이 아니다 |
+| `test_eco_no_karma_counter` | 식별자 조각 `karma` `reputation` `score` `unlock` `threshold` `progress` 0건. `content/**/*.json` 모든 키에 `count` `threshold` `progress` `requires` `key` `unlock` 0건(§4.7-4) |
+| `test_eco_no_image_files` | 모듈 폴더에 `.png .jpg .jpeg .webp .bmp .svg .ttf .otf .aseprite .kra` 파일 0개 |
+| `test_eco_no_hud_nodes` | `entry.tscn`·`presentation/*.tscn`에 `Label` `RichTextLabel` `ProgressBar` `TextureProgressBar` `TextureRect` `ItemList` `Tree` 노드 0개. `entry.tscn`이 없으면 `pending` |
+| `test_eco_no_map_generation` | 식별자 조각 `generate` + (`room` `map` `level` `layout` `dungeon`) 조합 0건, `procgen` `wfc` 0건. `randi(` `randf(` `randomize(` `RandomNumberGenerator.new(` 0건 — 이 Kit의 난수는 전부 `Procedural.derive_seed` → `ProceduralSeed.make_rng()`다. 룸 타일은 `EcoRoomSpec.terrain` 하나이고, 그 배열에 쓰는 코드는 `region_loader.gd`에만 있다 |
+| `test_eco_no_content_id_in_core` | §18.1 H-01 |
+
+**`test_eco_no_lore_exposure.gd`** — §W.5 그대로: `test_eco_no_player_text_outside_whitelist`(R1~R7), `test_eco_no_refilling_lore_device`(규칙 A~I). R3은 `module_manifest.tres`가, R6은 `presentation/`이 생길 때까지 `pending`.
+
+**`test_eco_ladder_and_rungs.gd`**
+
+| 함수 | 단언 |
+|---|---|
+| `test_eco_ladder_fallback_from_store_constant` | `ladder.json`이 없으면 `EcoLadder`가 `AxisBody.SCALE_RUNGS` 값 + `FALLBACK_NAMES`로 6단을 만든다. `source == "store_constant"`, `edges[i] == snappedf(sqrt(v[i] × v[i+1]), 0.001)`, `band_min[0] == 0.0`, `band_max[5] == 99.0` |
+| `test_eco_ladder_invalid_is_honest_failure` | 순서가 뒤집힌 표 / 이름 5개 / 값 0 이하를 넘기면 `ok == false`, `reason == "ladder_invalid"`. 대체값을 만들지 않는다 |
+| `test_eco_rung_table_matches_spec` | `EcoRungTable`의 3 rung이 §4.4 표와 같다(`run_speed` `accel` `jump_height` `safe_fall_speed` `max_climb` `break_power`). `lethal_fall_px`가 §9.4의 `1889 / 2414 / 3004`(±1) |
+| `test_eco_body_derive_matches_table` | band 3 × rung 3 = 9칸에서 `derive()`의 `q` `h_px` `w_px` `mass` `module_px`가 §4.3-2 식과 같다(±0.001) |
+| `test_eco_abilities_are_derived` | 9칸의 `abilities_in(band)`이 §4.2 술어와 같다. 비트 순서 `FLEX 1 · POISE 2 · LEAP 4 · SHELL 8 · CLAW 16` |
+| `test_eco_poise_drop_requirements` | `DROP` 4계급마다 통과 rung 집합이 §4.6 표와 같다. 어느 rung도 막지 않는 계급·모든 rung을 막는 계급이 authored 룸에 쓰이면 실패 |
+
+**`test_eco_passages.gd`**
+
+| 함수 | 단언 |
+|---|---|
+| `test_eco_passage_schema_closed` | `EcoPassageKind`가 정확히 5종. `FLOOD`·빈 문자열·소문자는 `passage_kind_unknown`. kind에 맞지 않는 키(`GAP`에 `hp`)는 `key_unknown`. 필수 키가 빠지면 `value_invalid` |
+| `test_eco_gap_class_table` | `SEAL 0.20 · HAIRLINE 0.35 · TIGHT 0.85 · FIT 2.60 · WIDE 4.20`, 이 5개뿐 |
+| `test_eco_passable_matches_spec` | `EcoPassageResolver.passable(spec, rung, room)`가 §4.6의 9칸 표와 전 칸 일치(5 kind × authored 계급 전부) |
+| `test_eco_press_classes` | `mass_required` 3계급 `0.10 · 0.80 · 12.00`만 허용. `160.00`은 `value_invalid` |
+| `test_eco_break_needs_power` | `break_power < hp`면 파괴 0, `≥ hp`면 1타에 파괴 |
+
+**`test_eco_region_loader.gd`**
+
+| 함수 | 단언 |
+|---|---|
+| `test_eco_authored_content_loads_clean` | `load_all()`이 `ok`, 오류 0, 영역 4 · 룸 25 · 아키타입 5 |
+| `test_eco_loader_rejects_each_reason` | §10.5의 reason마다 그 오류 하나만 넣은 JSON 텍스트를 `load_from_texts`에 넘기면 그 reason이 `errors`에 있다. reason 전부를 순회한다 |
+| `test_eco_room_order_is_authored_order` | `region_index`·`room_index`가 `index.json`·`rooms` 배열 순서와 같다 |
+| `test_eco_content_extension_without_core_change` | §15.4-1 |
+
+**`test_eco_region_graph.gd`**
+
+| 함수 | 단언 |
+|---|---|
+| `test_eco_region_graph_fully_connected` | authored 콘텐츠에서 §4.9 G1·G2·G3·G5·G6 |
+| `test_eco_settle_never_gates_progress` | drift 갭 전부 `SEAL`, `compressed_beds` 전부 `0.60`, `trigger_flags` 전부 참으로 둔 상태에서 G1(시작 상태에서 쉼터 4개 룸 전부 도달)·G2가 그대로 참 |
+| `test_eco_graph_detects_dead_end` | 막다른 곳이 있는 작은 픽스처(JSON 텍스트)에서 G2가 거짓이 된다 — 검사가 공허하지 않다는 증명 |
+
+**`test_eco_scale_rung_contract.gd`** — §4.10-5의 9개 그대로. 5·6은 `EcoSaveService` + `EcoWorldstateBridge`(스토어는 `WorldState.new()`)로 직접 돌린다 — `enter()` 대신 §14.2의 3~7단계를 수행하는 `EcoSaveService.begin(store, content, ladder) -> Dictionary`를 부른다. 3·7은 `presentation/`이 생길 때까지 `pending`.
+
+**`test_eco_transitions.gd`**
+
+| 함수 | 단언 |
+|---|---|
+| `test_eco_salt_bed_five_seconds` | `speck`으로 rect 안 `on_ground` 4.98초 → 전이 없음, 5.0초 → `hand`. 중간에 벗어나면 0부터 |
+| `test_eco_collapse_floor_three_landings` | 착지 속도 420 이하 3회 → `doll` + `trigger_flags[id] == true` + 그 rect가 빈 공간. 421 착지는 세지 않는다 |
+| `test_eco_salt_dust_bed_eight_still_seconds` | `doll` 무입력 8.0초 → `hand`. 입력 1프레임이면 0부터 |
+| `test_eco_narrow_cradle_needs_three_witnesses` | 무입력 12.0초 + 3마리 180프레임 → `speck`. 2마리면 전이 없음 |
+| `test_eco_toll_merge_max` | `EcoToll.merge_max`: 없으면 추가, 있으면 `severity = max`, `permanent` OR, 입력 배열 불변 |
+| `test_eco_transition_writes_wounds_then_scale` | 가짜 스토어에 요청이 정확히 2개, `wounds` → `scale` 순서, 요청마다 키 1개 |
+| `test_eco_transition_failure_is_honest` | ① 실패 → ② 요청 0, rung 불변. ② 실패 → wound는 남고 rung 불변 |
+| `test_eco_transition_without_store_is_local` | 스토어 없음 → 쓰기 0, `local_wounds`·`body_rung`만 바뀜 |
+| `test_eco_death_resets_progress` | 진행 중 사망 → `TransitionState` 전 필드 기본값 |
+| `test_eco_trigger_has_one_direction` | `salt_bed`에 `hand`로 서 있어도 아무 일 없음. `collapse_floor`에 `doll`로 착지해도 아무 일 없음 |
+
+**`test_eco_player_physics.gd`**
+
+| 함수 | 단언 |
+|---|---|
+| `test_eco_jump_height_per_rung` | 평지에서 점프를 누르고 있으면 최고점 상승이 rung의 `jump_height`(±2px) |
+| `test_eco_jump_cut` | 상승 중 떼면 그 서브스텝에 `velocity.y *= 0.42` |
+| `test_eco_coyote_and_buffer` | §9.2의 코요테·선입력 시간 경계 |
+| `test_eco_fall_damage_formula` | §9.3 공식: 안전 속도 이하 피해 0, 즉사 속도 이상 `integrity` 0 |
+| `test_eco_one_way_platform` | 아래에서 통과, 위에서 선다, `eco_curl + eco_jump`로 내려간다 |
+| `test_eco_gap_squeeze_speed` | `w_gap < 1.42 × w_px` 구멍 안에서 수평 속도가 `× 0.45` |
+| `test_eco_settle_multipliers` | `t_settle` 5구간 경계값에서 `press`·중력 배율·`d` 타일 마찰 배율이 §4.8 표와 같다 |
+| `test_eco_frame_order_is_fixed` | `EcoStepDirector`의 단계 로그가 §8.2의 13단계 이름·순서와 같다. `think()`는 5단계에서만 |
+| `test_eco_room_transition_keeps_rung` | exit를 넘으면 §8.4 순서대로 바뀌고 rung·`t_settle`은 그대로 |
+
+**`test_eco_creatures.gd`**
+
+| 함수 | 단언 |
+|---|---|
+| `test_eco_creature_id_deterministic` | §7.6. 같은 콘텐츠 두 번 로드 → ID 전부 같다 |
+| `test_eco_creature_id_unique` | 전 den × 전 스테이지 × 고정 배치의 ID와 `axis_id`가 전역 유일 |
+| `test_eco_lineage_last_stage_zero` | 마지막 `advance_chance ≠ 0.0`이면 `lineage_last_stage_nonzero` |
+| `test_eco_no_character_specific_refill` | 재충전 확률이 `killed_by`와 §7.5 표로만 정해진다. 아키타입 id를 보는 분기 0 |
+| `test_eco_den_refill_deterministic` | 같은 `world_seed`·den·`rolls`면 같은 결과, `rolls`가 1 늘면 다음 판정 |
+| `test_eco_social_table_complete` | 5 아키타입 × 3 rung = 15칸이 전부 채워져 있고 §7.9와 같다 |
+| `test_eco_sense_reads_rung_not_items` | 감지 입력이 `(거리, 플레이어 rung, 시야, 청각)`뿐 |
+| `test_eco_creature_states_eleven` | 상태 enum이 §7.3의 11개 |
+
+**`test_eco_save_and_flow.gd`**
+
+| 함수 | 단언 |
+|---|---|
+| `test_eco_save_round_trip` | §6.5 예시 사전 → decode → encode → 같은 사전(키·값) |
+| `test_eco_schema_not_4_is_honest_failure` | `schema` 3·5·없음 → 상태 불변, `migrate_save(3, d) == {}` |
+| `test_eco_normalisation_rules` | §6.5 정규화 표의 행마다 1개 픽스처 |
+| `test_eco_save_is_json_safe` | encode 결과에 `Vector2`·`Object`·`NaN`·`Inf` 0 |
+| `test_eco_manifest_contract` | `module_manifest.tres`: `id`, `display_name == "아래의 것"`, `save_version == 4`, `input_actions`가 §13.1의 5개와 순서까지 같다 |
+| `test_eco_input_actions_runtime_registered` | 등록 함수를 두 번 불러도 action·이벤트가 중복되지 않는다. Esc·J·P·Enter 바인딩 0 |
+| `test_eco_death_and_respawn_lossless` | §14.3: 사망 → `dying` 0.8초 → `dead` → 부활. 부활 전후 무손실 목록이 같다 |
+| `test_eco_sleep_resets_settle_only` | §14.4: 잠이 바꾸는 것은 `sleeps` `t_settle` `integrity` 부활 지점뿐 |
+| `test_eco_save_points_are_five` | S1~S5 밖의 프레임에서 `write_file` 호출 0 |
+
+**`test_eco_worldstate_handover.gd`** — §6.6.6의 8개 그대로.
+
+---
+
+## 17. 수동 플레이 과제와 수용 기준
+
+자동 테스트 뒤에 사람이 실제로 한다. 결과는 날짜·해상도·판정을 `docs/research/rain_world/IMPLEMENTATION_STATUS.md`에 적는다. **화면 착수(§11.0) 전에는 M-01~M-12를 할 수 없고, 그 사실을 그대로 적는다.**
+
+| # | 과제 | 통과 기준 |
+|---|---|---|
+| M-01 | 새 게임으로 §15.2 경로를 끝까지(`filter_bed_01` 복귀) | 실측 10:00 이상. 막힌 곳 0 |
+| M-02 | 전이 4종을 각 1회 이상 | 몸이 한 프레임에 바뀐다. 화면에 새 글자 0 |
+| M-03 | `hand`로 `ash_terrace_00`에 선다 | 몸이 화면 프레임보다 커서 잘린다. 카메라가 줌하지 않는다 |
+| M-04 | `doll`로 `gap_bs_04_tight` 앞에 선다 | 못 지나간다. 안내 문자·아이콘·색 강조 0 |
+| M-05 | 낙하·개체·`buried`로 각각 한 번 죽는다 | 사망 화면 → `다시` → 마지막으로 밟은 쉼터. 부활 전후 부서진 벽·rung이 같다 |
+| M-06 | 쉼터에서 잔다 | 잠 화면에 방문 그래프만. `일어나다` 뒤 같은 자리. 압축 사이클이 `QUIET`로 돌아온다 |
+| M-07 | 전이 직후 앱을 끄고 다시 연다 | 같은 룸·같은 rung·같은 부서진 벽 |
+| M-08 | 처음 들어갈 때 입력 버블 | 5개가 아래에서 올라오고, 처음 누른 키의 방울부터 터진다. 글리프가 현재 바인딩과 같다 |
+| M-09 | 1280×720 · 1920×1080 · 2560×1440에서 각각 로딩·사망·잠 화면 | 버튼이 우하단 48px 여백, 겹침 0, 버튼 라벨 밖의 글자 0 |
+| M-10 | 개체 반응 3종 | `doll`에게서 `skitter`가 도망간다. `anchor`는 틈 밖에서 공격하지 않는다. `brood` 3마리가 붙으면 방어로 바뀐다 |
+| M-11 | `PRESSING` 구간을 지나간다 | 점프가 낮아진다(중력 1.35배). 막히는 길 0 |
+| M-12 | 화면 전체 검색 | 상시 HUD·설명문·rung 이름·숫자 0 |
+
+---
+
+## 18. 금지 Shortcut · 하드코딩 탐지
+
+세계관 노출 3조와 척도 3조는 **부록 W §W.6이 정본**이다. 여기는 그 밖의 것이다.
+
+### 18.1 하드코딩 탐지 조건 (자동)
+
+| # | 조건 | 검사 |
+|---|---|---|
+| H-01 | `domain/`·`systems/`에 authored id 리터럴 0건: `filter_bed_` `ash_terrace_` `bone_shelf_` `seed_vault_` `reg_` `arc_` `shelter_` `den_` `fix.` `salt_bed_` `salt_dust_bed_` `collapse_floor_` `narrow_cradle_` `gap_` `wall_` `step_` `drop_` `plate_` `place.` | `test_eco_no_content_id_in_core`. 예외: 로더가 파일 이름 접두사를 검사하는 `"reg_"`와 `"arc_"` 2개(`region_loader.gd` 안에서만), 축 접두사 `"fix."`·`"place."`(`region_loader.gd`·`worldstate_bridge.gd` 안에서만) |
+| H-02 | rung 값 리터럴(`0.05` `0.12` `0.28` `0.65` `1.5` `3.6`) 0건 | `test_eco_scale_is_always_a_rung`, §W.5-2 규칙 H |
+| H-03 | `domain/`·`systems/`에서 `get_node(` `find_child(` `$` 노드 경로 0건 — 화면 객체로 판정하지 않는다 | `test_eco_no_content_id_in_core`에 포함 |
+| H-04 | 아키타입별 분기 0건: `match`·`if`의 비교 대상에 아키타입 id 문자열이 오지 않는다(아키타입 차이는 JSON 수치로만) | H-01로 잡힌다(`arc_`) |
+
+### 18.2 금지 목록 (전부 `- [ ]`, 하나라도 하면 실패)
+
+- [ ] passage를 막거나 여는 데 `requires`·ability 이름·플래그·아이템을 쓴다. 통과는 §10.4의 충돌체와 §4.6의 수치뿐이다.
+- [ ] 막힌 통로·못 부순 벽 앞에서 글자·아이콘·색 강조·진동 패턴으로 이유를 알려 준다.
+- [ ] 카메라가 몸 크기나 `q`에 맞춰 줌·기울기를 바꾼다(§9.8, 룸 전환 때만 1회).
+- [ ] rung 전이를 여러 프레임에 걸쳐 보간한다(B-06).
+- [ ] 룸 타일을 코드로 만들거나 바꿔 저장한다. 바뀐 지형은 `broken_walls`·`trigger_flags`·`compressed_beds`·`drift_drops` 4개로만 기록한다.
+- [ ] 사망 원인·통계·누적 수치(`deaths`·`sleeps` 포함)를 화면에 보이거나 판정 조건으로 쓴다. `deaths`는 §7.5 외 읽기 0.
+- [ ] 세이브 슬롯·수동 저장·처음부터 다시 하기 UI를 만든다.
+- [ ] 튜토리얼 문구·버튼 라벨 밖의 문자열을 화면에 둔다(부록 W).
+- [ ] placeholder `ColorRect`·`Label`을 월드 오브젝트의 최종 표현으로 남긴다.
+- [ ] 모듈 폴더에 이미지·폰트 파일을 넣는다.
+- [ ] 다른 Kit 모듈·`app/**`·`project.godot`을 참조하거나 고친다.
+- [ ] 테스트를 통과시키려고 authored JSON을 빼거나, 단언을 `pending`으로 바꾸거나, 수치를 테스트에 맞춰 고친다. 수치를 바꿀 때는 이 기획서의 표를 먼저 고친다.
+- [ ] `domain/`·`systems/`에 코드 주석을 단다(`CODE_STYLE`). 결정은 이 문서에 쓴다.
+
+---
+
+## 19. 완료 증거
+
+| # | 증거 | 형식 | 적는 곳 |
+|---|---|---|---|
+| E1 | 이 Kit 테스트 13파일 | 실행 명령, 종료 코드, 통과·실패·pending 수, pending 이유 | `docs/research/rain_world/IMPLEMENTATION_STATUS.md` |
+| E2 | 전체 자동 검증 4명령 | 종료 코드 4개, 남의 소유 파일 실패 목록(고치지 않음) | 같은 곳 |
+| E3 | Reference Game 실측 | 시작·끝 시각, 사망 횟수, 10:00 이상 | 같은 곳 |
+| E4 | 해상도 3종 | M-09 결과. 캡처 파일은 저장소에 커밋하지 않는다(모듈 이미지 0 규칙과 섞이지 않게) | 같은 곳 |
+| E5 | 콘텐츠 추가 증명 | §15.4의 1~3 결과와 `reg_seed_vault` 커밋 해시 | 같은 곳 |
+| E6 | 수동 과제 | M-01~M-12 표 | 같은 곳 |
+
+사용자가 직접 플레이해 보기 전에는 **"검토 준비 완료"까지만** 쓴다. 화면 착수 전에는 **"domain·systems 구현, 화면 대기"**로 쓴다.
+
+---
+
+## 20. Open Questions — 구현이 멈추는 지점
+
+| # | 질문 | 멈추는 것 | 누가 | 그동안 |
+|---|---|---|---|---|
+| OQ-1 | `ProceduralScaleFit.signature(q)`가 없다 | 5독자 중 2·3·4의 화면 신호, `test_eco_separation_five_readers`의 화면 쪽 | W2 | 5독자 값은 §4.10-3 식 그대로 `EcoBodyRung`이 계산한다(테스트 8은 식으로 검산). 화면 신호는 만들지 않는다 |
+| OQ-2 | `res://content/scale/ladder.json`이 없다 | 없음 | W0 | §10.6 2번(스토어 상수) |
+| OQ-3 | 오디오 wav가 없다 | 소리 | W3(nkido) | 무음으로 돈다(§12) |
+| OQ-4 | `project.godot`의 스트레치는 `canvas_items` + 기본 aspect(`keep`)다. §9.8의 `expand`와 다르다 | 없음 | W0 | 지금 값(`keep`)을 따른다. 레터박스가 생기는지는 M-09에서 본다 |
+| OQ-5 | 앱이 `attach_world_store(store)`를 부르는 배선이 없다 | 축 저장의 실제 통합 | W0 | 로컬 세이브만(C-06). 테스트는 스토어를 직접 만든다 |
+| OQ-6 | 모듈 등록(`ROUND_PLAN` C3)과 `app_root._configure_module_actions()` 바인딩이 없다 | 앱에서 이 Kit에 들어가기 | W0 | `presentation/dev_probe.tscn`으로만 실행한다 |
+| OQ-7 | `GRILLING_STATE.md` §5.1 Q1~Q14는 에이전트 추천이다 | 사용자가 뒤집으면 그 절 | 사용자 | 추천대로 진행. 뒤집히면 이 문서부터 고친다 |
+| OQ-8 | `docs/scale_collapse/06_TESTS_AND_GATES.md` T4의 분리 하한을 테스트가 읽는 형식 | `test_eco_separation_five_readers` | `docs/scale_collapse` 소유자 | 그 문서의 표를 텍스트로 읽는다. 읽지 못하면 `pending`(통과로 세지 않는다) |
+
+---
+
+## 21. 2026-09-27 정정 목록
+
+본문은 이미 고쳐져 있다. 이 표는 **무엇을 왜 고쳤는지**의 기록이다. 새 규칙이 본문과 어긋나 보이면 이 표의 "새 규칙"이 이긴다.
+
+| # | 어디 | 옛 규칙 | 새 규칙 | 근거 |
+|---|---|---|---|---|
+| E-01 | 머리말, §0.2, §2 F-19, §3 R-29·R-36 | 물 0건의 근거 = "사용자가 금지" / "`ROUND_PLAN` §11.1 물 금지" | 근거 = §11.2의 "조건이 되면 실패"를 이 Kit에 적용한 결과. 결과는 그대로 0건 | `GRILLING_STATE` §5.1 Q1 |
+| E-02 | §6.2, §6.6, §8.2 13단계 | `integrity`를 `body.facts.integrity`로 축에 쓰기-스루 | 이 Kit 세이브에만 있다. 축 쓰기 0 | Q11. `AxisBody.DERIVED_KEYS`가 거부 |
+| E-03 | §4.2, §4.6, §4.7, §4.9, §5.1, §6.1 | passage `requires`에 ability를 적고 대조, ability 비트마스크 저장 | `requires` 필드 없음. 통과는 물리 수치만. ability는 파생 어휘이고 저장 0 | §4.6 원칙 |
+| E-04 | §4.5 | 위로는 비용 0, 아래로는 흉터 1건, 축 쓰기 1회 | 방향마다 통행료 최댓값 병합. `wounds` → `scale` 요청 2개 | Q10, `04_TRANSITIONS` §1·§4 |
+| E-05 | §4.5 전이 1·3, §7.x | `fathom_pool`·`grit_pool`, `requires_prior_break` 선행 조건 | `salt_bed`·`salt_dust_bed`. 선행 조건 0 | §4.10-1 W-01·W-02 |
+| E-06 | §5.1 `ladder.gd`, §10.6 | `ladder.json` 필수 | 없으면 스토어 상수 + `FALLBACK_NAMES` | Q12 |
+| E-07 | §4.6 PRESS | `0.80`(speck)·`12.00`(hand)·`160.00`(doll) | `0.10`·`0.80`·`12.00`. `160.00` 폐기 | 아무 rung도 못 누르는 값 |
+| E-08 | §6.6 | 스토어를 받는 길이 없음 | `attach_world_store(store: WorldState)` | Q14 |
+| E-09 | §5.1, §6.5, §14.1 | 스키마 3, v1~v3 마이그레이션 체인 | 스키마 4, 체인 0. `schema ≠ 4`는 정직한 실패 | 스키마 1~3 파일이 존재한 적 없음 |
+| E-10 | §6.2, §6.5 | `broken_tiles`(타일 인덱스), 모든 트리거를 `trigger_flags`에 | `broken_walls`(BREAK passage id), `trigger_flags`는 `consume`만 | BREAK는 타일이 아니라 passage(§10.4) |
+| E-11 | §9.1 | `ROOM_TILES = (72, 34)` 고정 | 룸마다 authored, 폭 16..240 · 높이 12..200 | `DROP 4200`을 담을 수 없었음 |
+| E-12 | §8.2 2단계 | action 7개 | 5개(§13.1) | Q9 |
+| E-13 | §7.5 | `ProceduralSeed(...).chance`, `refill_roll` 필드 | `Procedural.derive_seed(world_seed, "den/" + id + "/" + str(rolls))` → `randf() < p`, `rolls += 1` | 같은 세이브에서 같은 결과 |
+| E-14 | §7.6 | `ID = 10000 + region×1000 + room×10 + stage + slot` | `100000 + region×10000 + room×100 + slot×10 + stage`, 고정 배치 `+ 90 + tether_index` | 옛 식은 칸이 겹쳤음 |
+| E-15 | §9.8 | 세로 스크롤 없음 | 세로도 따라간다 | 높은 룸(E-11) |
+| E-16 | §11.0 | (없음) | 필요한 `core/procedural` 기능을 기능별로 나열. `ProceduralScaleFit`은 OQ-1 | `core/procedural/README.md` 상태 표 |
+| E-17 | §5.1 `module.gd`·`save_codec.gd`·`save_service.gd`·`passage_resolver.gd`·`transition_system.gd`·`tile_kind.gd`, §5.2 `schema_version.json` | Esc 중계, v1~v3 마이그레이션, `requires` 사전 검증, 축 쓰기 1회, `HAZARD/ANCHOR` 타일 속성, `content_seed: 0` | Esc는 셸 소유, 체인 0, `requires` 0, 요청 2개, §10.3 legend 6종, `content_seed: 418324771` | 위 E-03·E-04·E-09와 §13.1·§10 |
+| E-18 | §6.5 예시 JSON | 콘텐츠에 없는 id(`wall_at_03_a`, `salt_bed_fb_03`, `shelter_fb_02`, `collapse_floor_at_05`) | §10.7에 있는 id | 예시가 정본 콘텐츠와 어긋났음 |
 
 ---
 
@@ -1982,7 +2780,7 @@ WT-2가 허용하는 세 종류에 **`AGENTS.md` Input Bubble 계약**이 요구
 
 ### W.6 금지 Shortcut — 세계관 노출 3조 + 척도 3조
 
-이 기획서에는 금지 목록 절이 따로 없다(후반부가 아직 이 문서에 없다). **여기서 금지 목록을 연다.** **전부 `- [ ]` 체크 항목이고, 전부 §W.5와 §4.10-5의 테스트가 자동 실패시킨다.** "조심한다"가 아니라 "이 코드를 쓰면 테스트가 red다"가 목적이면 적는 항목이다.
+세계관 노출·척도 금지 목록은 **여기가 정본이다.** 그 밖의 금지 목록은 §18이다. **전부 `- [ ]` 체크 항목이고, 전부 §W.5와 §4.10-5의 테스트가 자동 실패시킨다.** "조심한다"가 아니라 "이 코드를 쓰면 테스트가 red다"가 목적이면 적는 항목이다.
 
 **WT-1 — 세계관 정본은 제작 전용이다**
 
