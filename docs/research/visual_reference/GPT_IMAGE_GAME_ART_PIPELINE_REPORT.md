@@ -140,7 +140,29 @@ TIN 적용:
 
 - https://www.reddit.com/r/PromptEngineering/comments/1wcbfjw/i_recovered_the_prompts_behind_openais_own_gpt/
 
-## 10. 원 보고서가 제시한 출처
+## 10. 2026-09-26 실측 교정 — Gold Standard는 fidelity amplifier가 아님
+
+A-only, B-only, A+B fresh-generation 실험에서 현재 ChatGPT/OpenAI 이미지 경로가 원본 A/B의 그림체를 충분히 유지하지 못했다.
+
+이 결과로 이전 보고서의 적용 순서를 교정한다.
+
+- Gold Standard는 **이미 성공한 생성기의 일관성 유지**에 유효하다.
+- Style Master도 **이미 확보된 렌더 문법의 편의 기준**이다.
+- 둘 중 어느 것도 원본 레퍼런스를 제대로 해석하지 못하는 생성기의 style-transfer 능력을 만들어 내지 않는다.
+- 생성기 자체의 reference fidelity가 먼저 검증되어야 한다.
+
+따라서 TIN의 현재 순서는:
+
+1. Generator Style-Fidelity Gate
+2. 통과한 생성기에서 A/B 결합 검증
+3. 필요하면 Style Master
+4. production 후보
+5. 자산군 Gold Standard
+6. 실제 게임 화면 검수
+
+현재 도구 비교는 [Style Reference Tool Survey](STYLE_REFERENCE_TOOL_SURVEY_2026-09-26.md)에 기록한다.
+
+## 11. 원 보고서가 제시한 출처
 
 아래 URL은 공유 대화의 첫 조사 보고서에 제시된 문자열을 보존한 것이다. 이 문서를 작성하면서 각 페이지의 현재 내용을 다시 독립 검증한 것은 아니다.
 
