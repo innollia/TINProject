@@ -739,7 +739,7 @@ rung이 되돌아오므로 **모든 곳을 다 통과하는 rung은 없다.** �
 | `domain/region_spec.gd` | RefCounted `EcoRegionSpec` | 파싱된 영역 1개: `id`, `display_name`(그리지 않는다), `index`, `rooms[]`(authored 순), `room_ids[]`, `links[]`. |
 | `domain/content_index.gd` | RefCounted | 로드된 전체 콘텐츠: `regions[]`, `rooms`(id→`RoomSpec` 딕셔너리), `archetypes`(id→딕셔너리), `schema`, `world_seed`. |
 | `domain/world_state.gd` | RefCounted `EcoWorldState` | 런타임 세계 상태. 필드 전체는 §6.2 표. **프레젠테이션 상태를 갖지 않는다.** `breath_left`·`head_underwater`·`t_rain` 필드 **0건** |
-| `domain/transition_state.gd` | RefCounted | 진행 중인 rung 전이 1개: `from_rung`, `to_rung`, `trigger_kind`, `trigger_id`, `elapsed`, `hits`, `still_frames`, `witness_frames`, `active`. `reset()`가 전 필드를 되돌린다 |
+| `domain/transition_state.gd` | RefCounted | 진행 중인 rung 전이 1개: `from_rung`, `to_rung`, `trigger_kind`, `trigger_id`, `elapsed`, `hits`, `still_seconds`, `witness_frames`, `active`. `reset()`가 전 필드를 되돌린다 |
 | `domain/toll.gd` | 스크립트(static) `EcoToll` | 통행료 wound 2종과 `merge_max(wounds, toll) -> Array` (`04` §4.2). 입력 배열을 고치지 않고 새 배열을 돌려준다 |
 | `domain/save_codec.gd` | 스크립트(static) | `WorldState` ↔ JSON-safe `Dictionary`, `SAVE_VERSION = 4`, 마이그레이션 체인 0개(§6.5), 잘못된 값 정규화, stale content ID 처리 정책 §6.5. `Node`/`Resource`/`Callable`/`Vector`/`NaN`/`Inf`를 넣지 않는다 |
 | `systems/region_graph.gd` | RefCounted `EcoRegionGraph` | §4.9의 상태 그래프와 단언 G1~G6. 타일을 보지 않는다 |
@@ -906,7 +906,7 @@ rung이 되돌아오므로 **모든 곳을 다 통과하는 rung은 없다.** �
 | `still_seconds` | `float` | `0.0` | `salt_dust_bed`·`narrow_cradle` 무입력 누적 s |
 | `witness_frames` | `int` | `0` | `narrow_cradle` 목격 조건 충족 프레임 수 |
 
-`reset()`는 8개 필드를 전부 기본값으로 되돌린다. B-04에 따라 `to_dictionary()`는 **비어 있는 사전 `{}`**을 반환한다(저장 금지). **진행 중 rung은 저장하지 않는다. 성립한 rung만 저장한다**(B-04·B-09).
+`reset()`는 9개 필드를 전부 기본값으로 되돌린다. B-04에 따라 `to_dictionary()`는 **비어 있는 사전 `{}`**을 반환한다(저장 금지). **진행 중 rung은 저장하지 않는다. 성립한 rung만 저장한다**(B-04·B-09).
 
 ### 6.4 `Creature` — `systems/creature.gd` (저장되는 부분만)
 
@@ -1178,11 +1178,11 @@ kind ∈ { "seen_player", "struck_player", "squeezed_by",
   "creature": {
     "fix.gardener": {
       "id": "fix.gardener",
-      "archetype": "warden",
+      "archetype": "brood",
       "stage": 0,
       "state": "dead",
       "traits": {
-        "rung": "hand", "speed_mult": 1.04, "aggression_mult": 0.88,
+        "rung": "speck", "speed_mult": 1.04, "aggression_mult": 0.88,
         "courage_mult": 0.95, "reaction_latency": 0.17, "phase_offset": 0.42,
         "spike_count": 2, "head_bloom": 0.66, "tail_phase": 3.1
       },
@@ -1194,11 +1194,11 @@ kind ∈ { "seen_player", "struck_player", "squeezed_by",
     },
     "120202": {
       "id": "120202",
-      "archetype": "maw",
+      "archetype": "anchor",
       "stage": 2,
       "state": "alive",
       "traits": {
-        "rung": "hand", "speed_mult": 0.97, "aggression_mult": 1.11,
+        "rung": "doll", "speed_mult": 0.97, "aggression_mult": 1.11,
         "courage_mult": 0.8, "reaction_latency": 0.12, "phase_offset": 0.71,
         "spike_count": 2, "head_bloom": 0.35, "tail_phase": 5.02
       },
@@ -1262,9 +1262,9 @@ GUT 1개 파일, 8개 테스트. 스토어(`WorldState.new()` + `declare_owner`)
 
 | 장면 | 이 Kit이 **쓰는** 축 | 이 Kit이 **읽기만** 하는 축 | 이 Kit이 정하는 수치 | 근거 |
 |---|---|---|---|---|
-| `place.ruined_garden` | `body` (`wounds` 통행료, `scale`) / `creature` (`fix.gardener`) | `body` (`missing`, `wounds`), `place` (`tags`, `requires_body`) | 대응 룸 `ash_terrace_00`(`reg_ash_terrace`, `band = speck`) · `requires_body = {}` (요구 0개) · `fix.gardener` = `arc_warden` 고정 배치 개체(`tethered = true`, `home_room_id = "ash_terrace_00"`, `den = ""`, `traits.rung = "hand"`) | **우리 결정.** `DESIGN_DECISION` §5가 지형 대응·아키타입·조건 수치를 열었다 |
-| `place.tea_stair` | `body` (`scale`) | `creature` (`fix.butler`의 `memory`·`traits`), `place` | 대응 룸 `bone_shelf_00`(`reg_bone_shelf`, `band = doll`) · `requires_body = { "scale_min": <doll band_min>, "scale_max": <doll band_max> }` — W0의 place 파일이 `05` §3 형식으로 `band: "doll"`을 적고 스토어 로더가 `ladder.json`에서 편 값 · `fix.butler` = `arc_maw` 고정 배치 개체(`home_room_id = "bone_shelf_00"`, `den = ""`) | **우리 결정.** §5가 조건의 모양만 정하고 값과 개체를 열었다. **숫자 `1.30`을 쓰지 않는다** — rung 이름만 author한다 |
-| `place.mirror_march` | `body` (`scale`) | `body` (`wounds`, `missing`), `creature` (`fix.mirror`가 읽는 기존 축), `place` | 대응 룸 `seed_vault_00`(`reg_seed_vault`, `band = hand`) · `requires_body = { "has_wound": { "part": "torso", "kind": "compressed", "permanent": true } }` — 한 번이라도 작아진 적이 있는 몸. 이 Kit의 아래 전이가 남기는 통행료다 · `fix.mirror` = `arc_anchor` 고정 배치 개체(`home_room_id = "seed_vault_00"`, `traits.rung = "doll"`) | **우리 결정.** §5가 조건의 모양만 정하고 값과 개체를 열었다. `dredge`(원작명) 대신 `anchor`. 스케일 실수 `1.55` 대신 rung |
+| `place.ruined_garden` | `body` (`wounds` 통행료, `scale`) / `creature` (`fix.gardener`) | `body` (`missing`, `wounds`), `place` (`tags`, `requires_body`) | 대응 룸 `ash_terrace_00`(`reg_ash_terrace`, `band = speck`) · `requires_body = {}` (요구 0개) · `fix.gardener` = `arc_brood` 고정 배치 개체(`tethered = true`, `home_room_id = "ash_terrace_00"`, `den = ""`, `traits.rung = "speck"`) | **우리 결정.** `DESIGN_DECISION` §5가 지형 대응·아키타입·조건 수치를 열었다 |
+| `place.tea_stair` | `body` (`scale`) | `creature` (`fix.butler`의 `memory`·`traits`), `place` | 대응 룸 `bone_shelf_00`(`reg_bone_shelf`, `band = doll`) · `requires_body = { "scale_min": <doll band_min>, "scale_max": <doll band_max> }` — W0의 place 파일이 `05` §3 형식으로 `band: "doll"`을 적고 스토어 로더가 `ladder.json`에서 편 값 · `fix.butler` = `arc_maw` 고정 배치 개체(`home_room_id = "bone_shelf_00"`, `den = ""`, `traits.rung = "hand"`) | **우리 결정.** §5가 조건의 모양만 정하고 값과 개체를 열었다. **숫자 `1.30`을 쓰지 않는다** — rung 이름만 author한다 |
+| `place.mirror_march` | `body` (`scale`) | `body` (`wounds`, `missing`), `creature` (`fix.mirror`가 읽는 기존 축), `place` | 대응 룸 `seed_vault_00`(`reg_seed_vault`, `band = hand`) · `requires_body = { "has_wound": { "part": "torso", "kind": "compressed", "permanent": true } }` — 한 번이라도 작아진 적이 있는 몸. 이 Kit의 아래 전이가 남기는 통행료다 · `fix.mirror` = `arc_warden` 고정 배치 개체(`home_room_id = "seed_vault_00"`, `traits.rung = "hand"`) | **우리 결정.** §5가 조건의 모양만 정하고 값과 개체를 열었다. `dredge`(원작명) 대신 `anchor`. 스케일 실수 `1.55` 대신 rung |
 
 **장면별 규칙:**
 
@@ -1273,7 +1273,7 @@ GUT 1개 파일, 8개 테스트. 스토어(`WorldState.new()` + `declare_owner`)
 | AX-15a | 공통 | 세 행 모두 `place` 쓰기 0건(AX-03). `requires_body`는 능력 조건이며 잠금이 아니다(FX-04) |
 | AX-17a | `ruined_garden` | 이 Kit은 `body.missing`을 **읽기만** 한다. 잃은 부위는 그 파츠를 지우고 착지·회피 판정을 바꾼다. **`w_px`와 `h_px`는 rung과 장소에서만 나오므로 통과 판정은 그대로이고 접촉·낙하 판정만 달라진다.** `fix.gardener`는 `doll` rung에서 `ATTACK`이므로 §15 Reference Game에서 처치 가능하고, 처치되면 `state = "dead"` + `memory`에 `killed_by_player` 1건으로 축에 남는다 |
 | AX-17b | `tea_stair` | `fix.butler`는 `memory`에 `squeezed_by` 사건이 있으면 계단 쪽 `PATROL` 경로를 잡는다. **이것은 잠금이 아니다.** `squeezed_by`가 없으면 원래 `PATROL` 경로를 유지하고, `requires_body`가 false여도 그 개체는 그 자리를 지킨다. 통과 가능성은 `STEP`의 물리 판정만 따른다 |
-| AX-18a | `mirror_march` | `fix.mirror`는 `fix.gardener`의 축 값을 **읽되 복제하지 않는다.** 자기 아키타입(`arc_anchor`)의 `body_parts`·`senses`·`confined` 규칙과 자기 `traits`로 재현한다. `traits`를 복사하면 개인 고정 규칙(§7.7)이 깨진다 |
+| AX-18a | `mirror_march` | `fix.mirror`는 `fix.gardener`의 축 값을 **읽되 복제하지 않는다.** 자기 아키타입(`arc_warden`)의 `body_parts`·`senses` 규칙과 자기 `traits`로 재현한다. `traits`를 복사하면 개인 고정 규칙(§7.7)이 깨진다 |
 | AX-19 | 공통 | `place`→룸 대응은 룸 JSON의 `place_id` 한 곳에만 있다(위 표는 그 값의 문서 사본). 코드에 두 번째 대응표를 만들지 않는다 |
 | AX-20 | 공통 | **rung 요구는 경로다.** `tea_stair`의 `doll` 범위를 못 채우면 그 자리는 못 통과하지만, **잠기지는 않는다.** 그 요구를 채우는 authored 경로(`reg_bone_shelf`의 `salt_dust_bed` 전이)가 맵 안에 있고, 그 길은 `requires_body`와 무관하게 열려 있다 |
 
@@ -1439,7 +1439,7 @@ den 개체      : ID = 100000 + region_index * 10000 + room_index * 100 + slot_i
 | `speed_mult` | 0.88 – 1.12 | 균등 |
 | `aggression_mult` | 0.70 – 1.30 | 균등 |
 | `courage_mult` | 0.75 – 1.25 | 균등 |
-| **`rung`** | 아키타입 `variant_rungs`의 **2개 중 1개** | `creature_id`의 `id % 2`로 결정. `anchor`는 1개뿐이라 고정 |
+| **`rung`** | 아키타입 `variant_rungs` 중 **그 룸 band 이하인 후보** | 후보가 2개면 `creature_id`의 `id % 2`, 1개면 그것. `anchor`는 1개뿐이라 고정. den 개체의 `id % 2`는 `lineage_stage % 2`와 같다(§7.6 식의 다른 항은 전부 짝수) |
 | `reaction_latency` | 0.05 – 0.30 s | 균등 |
 | `phase_offset` | 0.0 – 1.0 | 균등. `PATROL` 워프포인트 타이밍 분산용 |
 | `spike_count` | 0 – 5 | **rung 인덱스로** 결정: `rung_index + 1` (2tap). `speck`→1, `hand`→2, `doll`→3 |
@@ -1455,7 +1455,7 @@ den 개체      : ID = 100000 + region_index * 10000 + room_index * 100 + slot_i
 | CV-03 | 그 2택의 **결과만** 저장한다 | `creature.rung`에 rung 이름 1개(§6.4) |
 | CV-04 | `spike_count`는 rung에서 온다 | `floor(scale * 4)` 같은 실수식 0건 |
 | CV-05 | 개체도 그 룸에 대해 어긋날 수 있다 | `q = 0.4286 / 1.0 / 1.75 / 2.33` 중 하나. `03` §8 표에 있는 값뿐이다 |
-| CV-06 | 저지대 룸 저촉 | 개체 rung ≤ 그 룸의 `band`. 위반 시 `region_loader`가 파싱 실패 |
+| CV-06 | 저지대 룸 저촉 | 개체 rung ≤ 그 룸의 `band`. den은 **낼 수 있는 모든 스테이지**의 아키타입이 band 이하 후보를 1개 이상 가져야 하고, tethered는 authored `rung` ≤ band. 위반 시 `region_loader`가 `creature_above_band` |
 
 **원작 따라가기:** "개체마다 꼬리·가시·부리 형태가 다르다"는 관찰(`RAIN_WORLD_RESEARCH` §3.5, `확인`)을 ID 편차로 재현한다. **원작 개체의 실제 형태는 복제하지 않는다.** 꼬리·귀·콧수에 읽히는 윤곽은 금지다(§2 F-27).
 
@@ -1923,7 +1923,7 @@ integrity <= 0 → 사망(원인 "fall")
 | `id` | String | 룸 안에서 유일 |
 | `side` | String | `left` `right` `top` `bottom` |
 | `from` / `to` | int | 그 변을 따라가는 타일 인덱스 구간, `0 ≤ from ≤ to < 변 길이`. 그 구간의 가장자리 타일은 `.`이어야 한다(`exit_blocked`) |
-| `to_room` / `to_exit` | String | 상대 룸의 exit. **상대도 이쪽을 가리켜야 한다**(`exit_unpaired`). 변은 반대(`left↔right`, `top↔bottom`) |
+| `to_room` / `to_exit` | String | 상대 룸의 exit. **상대도 이쪽을 가리켜야 한다**(`exit_unpaired`). 변은 반대(`left↔right`, `top↔bottom`)이고 구간 길이(`to − from`)가 같다(`exit_unpaired`). 넘어간 몸은 상대 exit의 같은 오프셋 칸에 선다 |
 
 **link** — §4.9 그래프의 간선. 방향이 있다.
 
@@ -2062,7 +2062,7 @@ passage는 타일이 아니라 **rect 안의 AABB 충돌체**다. px 단위이�
 | `passage_kind_unknown` / `passage_over_solid` / `gap_rect_too_narrow` / `drop_height_mismatch` | §10.2 passage |
 | `salt_outside_bed` | §10.2 trigger |
 | `trigger_object_unknown` | §4.5 표 밖 |
-| `creature_above_band` | den 첫 스테이지·tethered 개체 rung > 룸 band (CV-06) |
+| `creature_above_band` | den의 lineage 스테이지 중 band 이하 `variant_rungs` 후보가 없는 아키타입이 있음, 또는 tethered `rung` > 룸 band (CV-06) |
 | `den_slots_exceeded` | 룸 den 9개 초과 |
 | `lineage_last_stage_nonzero` | lineage 마지막 `advance_chance ≠ 0.0` |
 | `variant_not_adjacent` | `variant_rungs` 인덱스 차 ≠ 1 (CV-02) |
@@ -2449,7 +2449,7 @@ Remove-Item C:\projects\_locks\TINProject-godot.lock
 | `test_eco_no_map_generation` | 식별자 조각 `generate` + (`room` `map` `level` `layout` `dungeon`) 조합 0건, `procgen` `wfc` 0건. `randi(` `randf(` `randomize(` `RandomNumberGenerator.new(` 0건 — 이 Kit의 난수는 전부 `Procedural.derive_seed` → `ProceduralSeed.make_rng()`다. 룸 타일은 `EcoRoomSpec.terrain` 하나이고, 그 배열에 쓰는 코드는 `region_loader.gd`에만 있다 |
 | `test_eco_no_content_id_in_core` | §18.1 H-01 |
 
-**`test_eco_no_lore_exposure.gd`** — §W.5 그대로: `test_eco_no_player_text_outside_whitelist`(R1~R7), `test_eco_no_refilling_lore_device`(규칙 A~I). R3은 `module_manifest.tres`가, R6은 `presentation/`이 생길 때까지 `pending`.
+**`test_eco_no_lore_exposure.gd`** — §W.5 그대로: `test_eco_no_player_text_outside_whitelist`(R1·R2·R4·R5·R7), `test_eco_manifest_screen_name`(R3), `test_eco_button_labels_present`(R6), `test_eco_no_refilling_lore_device`(규칙 A~I). R3은 `module_manifest.tres`가, R6은 `presentation/`이 생길 때까지 `pending`. **판정 방식:** 규칙 A·G의 토큰은 식별자를 `_`와 대소문자 경계로 자른 **조각 단위**로 맞춘다(`memory`는 `memo`가 아니다. 부분 문자열로 맞추면 동결 축 필드 `creature.memory`와 §5.1의 `ai_memory.gd`가 걸린다). 문자열 내용물은 지우지 않고 검사한다(W.5보다 엄격하다 — 사전 키도 잡힌다). 물 토큰(규칙 I, §4.10-1)은 원문 부분 문자열로 맞춘다.
 
 **`test_eco_ladder_and_rungs.gd`**
 
@@ -2667,6 +2667,8 @@ Remove-Item C:\projects\_locks\TINProject-godot.lock
 | E-16 | §11.0 | (없음) | 필요한 `core/procedural` 기능을 기능별로 나열. `ProceduralScaleFit`은 OQ-1 | `core/procedural/README.md` 상태 표 |
 | E-17 | §5.1 `module.gd`·`save_codec.gd`·`save_service.gd`·`passage_resolver.gd`·`transition_system.gd`·`tile_kind.gd`, §5.2 `schema_version.json` | Esc 중계, v1~v3 마이그레이션, `requires` 사전 검증, 축 쓰기 1회, `HAZARD/ANCHOR` 타일 속성, `content_seed: 0` | Esc는 셸 소유, 체인 0, `requires` 0, 요청 2개, §10.3 legend 6종, `content_seed: 418324771` | 위 E-03·E-04·E-09와 §13.1·§10 |
 | E-18 | §6.5 예시 JSON | 콘텐츠에 없는 id(`wall_at_03_a`, `salt_bed_fb_03`, `shelter_fb_02`, `collapse_floor_at_05`) | §10.7에 있는 id | 예시가 정본 콘텐츠와 어긋났음 |
+| E-19 | §6.6.3 예시, §6.6.7 | `fix.gardener` = `arc_warden`(hand)을 `speck` 룸에, `fix.mirror` = `arc_anchor`(doll)을 `hand` 룸에 | `fix.gardener` = `arc_brood`(speck), `fix.mirror` = `arc_warden`(hand), `fix.butler` rung `hand` | CV-06(개체 rung ≤ 룸 band)과 충돌 |
+| E-20 | §7.7 CV-06, §10.5 | den 첫 스테이지만 band 검사, rung = `variant_rungs[id % 2]` | den이 낼 수 있는 **모든** 스테이지를 검사한다. rung 2택은 룸 band 이하인 후보만 남긴 뒤 `id % 2` | 스테이지가 오르면 band 위 개체가 나올 수 있었음 |
 
 ---
 
