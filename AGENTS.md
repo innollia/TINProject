@@ -13,7 +13,7 @@
 설계 인터뷰, 계획, Kit 또는 게임 화면 작업 전:
 1. `CONTEXT.md`
 2. `PROJECT_DECISIONS.md`
-3. `docs/GRILLING_STATE.md`
+3. `docs/GRILLING_STATE.md` (grilling 트랙 인덱스) 및 해당 트랙의 `docs/grilling/<track>.md`
 4. `docs/DESIGN_PHILOSOPHY.md`
 5. `docs/KIT_WORKFLOW.md`
 6. `docs/VISUAL_DIRECTION.md`
@@ -32,6 +32,7 @@
 - 사실/코드 상태는 에이전트가 조사하고, 설계 선택만 사용자에게 묻는다.
 - 새 결정이 나오면 해당 라운드 안에서 state 문서와 정본 문서에 반영한다.
 - project-wide grilling 종료와 사용자 shared-understanding 확인 전에는 기존 `plans/kits/`를 수정하거나 새 Kit 계획서를 작성하지 않는다.
+- grilling 결과는 트랙마다 파일 하나(`docs/grilling/<track>.md`)에만 기록한다. 한 에이전트는 자기 트랙 파일 하나만 편집하고, 편집 전 재읽기 후 `## 라운드 로그`에 append만 한다(통째 재작성 금지). `docs/GRILLING_STATE.md`는 인덱스이며 설계 결정을 직접 적지 않는다. 상세 절차는 `grill-with-docs` 스킬을 따른다.
 
 문서 간 모순을 발견하면 전체 결정을 재질문하지 말고 충돌한 항목만 정확히 제시한다.
 
