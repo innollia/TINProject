@@ -1,7 +1,7 @@
 {
  "asset": "eq_w26_crossbow",
  "status": "candidate",
- "note": "26 crossbow. Boxy tiller, a prod bent slightly forward, string on a trigger hook. Made to be carried loaded, which is why the string is not right.",
+ "note": "26 crossbow. Boxy tiller, a prod bent slightly forward, string on a nut. Made to be carried loaded, which is why the string is not right.",
  "palette": "palette_h0_mood.json",
  "style": "prop",
  "canvas": [
@@ -23,38 +23,51 @@
     {
      "icon": "square",
      "at": [
-      256,
-      300
+      250,
+      290
      ],
      "size": [
-      360,
-      54
+      380,
+      52
      ],
-     "rot": 6
+     "rot": 8
+    },
+    {
+     "icon": "square",
+     "at": [
+      140,
+      314
+     ],
+     "size": [
+      80,
+      92
+     ],
+     "rot": 8
     }
    ]
   },
   {
-   "name": "limb",
+   "name": "prod",
    "z": 1,
    "material": "iron",
    "pieces": [
     {
      "icon": "bow_and_arrow",
      "at": [
-      256,
-      200
+      232,
+      176
      ],
      "size": [
-      400,
-      400
+      360,
+      240
      ],
      "crop": [
+      1.5,
       0.5,
-      1.0,
-      8.0,
-      12.0
-     ]
+      14.0,
+      15.5
+     ],
+     "rot": 90
     }
    ]
   },
@@ -68,12 +81,41 @@
     {
      "icon": "square",
      "at": [
-      256,
-      196
+      356,
+      176
      ],
      "size": [
-      250,
-      5
+      7,
+      210
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nut",
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      378,
+      176
+     ],
+     "size": [
+      26,
+      46
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      366,
+      176
+     ],
+     "size": [
+      20,
+      20
      ]
     }
    ]
@@ -86,24 +128,24 @@
     {
      "icon": "square",
      "at": [
-      268,
-      268
+      286,
+      288
      ],
      "size": [
-      30,
-      44
+      26,
+      50
      ],
-     "rot": 20
+     "rot": 22
     },
     {
      "icon": "circle",
      "at": [
-      266,
-      258
+      282,
+      274
      ],
      "size": [
-      26,
-      26
+      24,
+      24
      ]
     }
    ]
@@ -116,14 +158,14 @@
     {
      "icon": "square",
      "at": [
-      166,
-      322
+      140,
+      314
      ],
      "size": [
-      50,
-      110
+      56,
+      96
      ],
-     "rot": 6
+     "rot": 8
     }
    ]
   },
@@ -139,16 +181,16 @@
     {
      "icon": "cloud",
      "at": [
-      256,
-      190
+      240,
+      176
      ],
      "size": [
-      110.0,
+      100.0,
       45.0
      ]
     }
    ],
-   "clip_to": "limb"
+   "clip_to": "prod"
   }
  ]
 }

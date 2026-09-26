@@ -16,25 +16,25 @@
  "seed": 125,
  "forms": [
   {
-   "name": "bow",
+   "name": "limb",
    "z": 0,
    "material": "wood",
    "pieces": [
     {
      "icon": "bow_and_arrow",
      "at": [
-      206,
+      236,
       256
      ],
      "size": [
       400,
-      440
+      460
      ],
      "crop": [
+      1.5,
       0.5,
-      1.0,
-      8.0,
-      15.0
+      14.0,
+      15.5
      ]
     }
    ]
@@ -45,15 +45,16 @@
    "kind": "flat",
    "material": "leather",
    "line": false,
+   "clip_to": "limb",
    "pieces": [
     {
      "icon": "square",
      "at": [
-      116,
+      110,
       256
      ],
      "size": [
-      5,
+      7,
       380
      ]
     }
@@ -67,53 +68,82 @@
     {
      "icon": "square",
      "at": [
-      126,
-      256
+      352,
+      226
      ],
      "size": [
-      44,
-      130
+      38,
+      140
      ]
     },
     {
      "icon": "square",
      "at": [
-      126,
+      352,
       300
      ],
      "size": [
-      30,
+      26,
       40
      ]
     }
    ]
   },
   {
-   "name": "nock",
-   "z": 3,
-   "material": "iron",
+   "name": "arrow",
+   "z": 2,
+   "material": "wood",
    "pieces": [
     {
      "icon": "square",
      "at": [
-      116,
+      236,
+      256
+     ],
+     "size": [
+      360,
+      12
+     ],
+     "rot": -42
+    }
+   ]
+  },
+  {
+   "name": "arrowhead",
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      382,
+      122
+     ],
+     "size": [
+      62,
       62
      ],
-     "size": [
-      24,
-      24
-     ],
-     "rot": 45
-    },
+     "rot": 135
+    }
+   ]
+  },
+  {
+   "name": "fletch",
+   "z": 2,
+   "kind": "flat",
+   "material": "cloth_wine",
+   "opacity": 0.85,
+   "line": false,
+   "pieces": [
     {
-     "icon": "square",
+     "icon": "triangle",
      "at": [
-      116,
-      450
+      102,
+      388
      ],
      "size": [
-      24,
-      24
+      54,
+      64
      ],
      "rot": 45
     }
@@ -131,7 +161,7 @@
     {
      "icon": "cloud",
      "at": [
-      210,
+      300,
       250
      ],
      "size": [
@@ -140,7 +170,7 @@
      ]
     }
    ],
-   "clip_to": "bow"
+   "clip_to": "limb"
   }
  ]
 }

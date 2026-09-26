@@ -1,0 +1,550 @@
+{
+ "asset": "bubble_pop",
+ "status": "candidate",
+ "note": "bubble_pop (burst). Five stages, none of them a hovering shell: an intact three-part membrane, a membrane blown out to 1.9x, four ring sectors left as arcs, eight shards thrown out, a star flash in the middle and a flattened surface ring expanding under it. The main image never shows the whole bubble again after f1.",
+ "palette": "palette_fx.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  92.0
+ ],
+ "pivot_meaning": "point of the burst, mid water",
+ "seed": 305,
+ "forms": [
+  {
+   "name": "mem_o",
+   "tags": [
+    "mo"
+   ],
+   "z": 2,
+   "kind": "mass",
+   "material": "bubble_shell",
+   "pivot": [
+    96.0,
+    92.0
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6,
+    "breaks": 0.4
+   },
+   "glow": {
+    "radius": 3,
+    "opacity": 0.45,
+    "color": "water_pale"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      92.0
+     ],
+     "size": [
+      66.0,
+      66.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      92.0
+     ],
+     "size": [
+      51.0,
+      51.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "mem_i",
+   "tags": [
+    "mi"
+   ],
+   "z": 2.1,
+   "kind": "mass",
+   "material": "bubble_shell",
+   "pivot": [
+    96.0,
+    92.0
+   ],
+   "opacity": 0.8,
+   "shade": {
+    "soft": 0.6,
+    "bump": 0.3,
+    "threshold": 0.36,
+    "highlight_amount": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      92.0
+     ],
+     "size": [
+      51.0,
+      51.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      92.0
+     ],
+     "size": [
+      44.6,
+      44.6
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "mem_glow",
+   "tags": [
+    "mg"
+   ],
+   "z": 1,
+   "kind": "mass",
+   "material": "bubble_shell",
+   "pivot": [
+    96.0,
+    92.0
+   ],
+   "opacity": 0.55,
+   "blur": 2.5,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      92.0
+     ],
+     "size": [
+      86.0,
+      86.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arcs",
+   "tags": [
+    "ar"
+   ],
+   "z": 3,
+   "kind": "mass",
+   "material": "bubble_shell",
+   "pivot": [
+    96.0,
+    92.0
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6,
+    "breaks": 0.5
+   },
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "foam"
+   },
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      96.0,
+      70.0
+     ],
+     "size": [
+      86.0,
+      44.0
+     ],
+     "crop": [
+      1.5,
+      0,
+      15.5,
+      8.5
+     ],
+     "rot": -4
+    },
+    {
+     "icon": "ring",
+     "at": [
+      96.0,
+      113.0
+     ],
+     "size": [
+      82.0,
+      42.0
+     ],
+     "crop": [
+      1.5,
+      8,
+      15.5,
+      16
+     ],
+     "rot": 3
+    },
+    {
+     "icon": "ring",
+     "at": [
+      123.0,
+      92.0
+     ],
+     "size": [
+      40.0,
+      74.0
+     ],
+     "crop": [
+      8,
+      1.5,
+      16,
+      14.5
+     ],
+     "rot": 8
+    },
+    {
+     "icon": "ring",
+     "at": [
+      66.0,
+      94.0
+     ],
+     "size": [
+      34.0,
+      58.0
+     ],
+     "crop": [
+      0,
+      2,
+      6,
+      14
+     ],
+     "rot": -10
+    }
+   ]
+  },
+  {
+   "name": "shards",
+   "tags": [
+    "sh"
+   ],
+   "z": 4,
+   "kind": "mass",
+   "material": "bubble_shell",
+   "pivot": [
+    96.0,
+    92.0
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      36.04,
+      75.73
+     ],
+     "size": [
+      17.0,
+      13.0
+     ],
+     "rot": -40
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      82.0,
+      36.0
+     ],
+     "size": [
+      11.0,
+      16.0
+     ],
+     "rot": 170
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      151.78,
+      71.4
+     ],
+     "size": [
+      15.0,
+      12.0
+     ],
+     "rot": 52
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      154.0,
+      86.0
+     ],
+     "size": [
+      10.0,
+      15.0
+     ],
+     "rot": 96
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      147.18,
+      108.64
+     ],
+     "size": [
+      18.0,
+      13.0
+     ],
+     "rot": 140
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      88.0,
+      150.0
+     ],
+     "size": [
+      11.0,
+      16.0
+     ],
+     "rot": 6
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      37.9,
+      96.01
+     ],
+     "size": [
+      14.0,
+      11.0
+     ],
+     "rot": -128
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      66.0,
+      142.0
+     ],
+     "size": [
+      9.0,
+      13.0
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "flash",
+   "tags": [
+    "fl"
+   ],
+   "z": 5,
+   "kind": "flat",
+   "material": "foam",
+   "pivot": [
+    96.0,
+    92.0
+   ],
+   "line": false,
+   "emit": 1.0,
+   "glow": {
+    "radius": 7,
+    "opacity": 0.75,
+    "color": "water_pale"
+   },
+   "pieces": [
+    {
+     "icon": "star",
+     "at": [
+      96.0,
+      92.0
+     ],
+     "size": [
+      46.0,
+      46.0
+     ],
+     "rot": 12
+    }
+   ]
+  },
+  {
+   "name": "ripple",
+   "tags": [
+    "rp"
+   ],
+   "z": 1.5,
+   "kind": "mass",
+   "material": "water_pale",
+   "pivot": [
+    96.0,
+    92.0
+   ],
+   "opacity": 0.55,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      92.0
+     ],
+     "size": [
+      156.0,
+      156.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      92.0
+     ],
+     "size": [
+      146.0,
+      146.0
+     ],
+     "op": "sub"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "f0",
+   "show": [
+    "mem_o",
+    "mem_i",
+    "mem_glow"
+   ]
+  },
+  {
+   "name": "f1",
+   "show": [
+    "mem_o",
+    "mem_i",
+    "mem_glow",
+    "flash"
+   ],
+   "move": {
+    "mo": {
+     "sx": 1.95,
+     "sy": 1.7
+    },
+    "mi": {
+     "sx": 1.25,
+     "sy": 1.15
+    },
+    "mg": {
+     "sx": 1.5,
+     "sy": 1.35
+    },
+    "fl": {
+     "sx": 0.9,
+     "sy": 0.9
+    }
+   }
+  },
+  {
+   "name": "f2",
+   "show": [
+    "mem_i",
+    "mem_glow",
+    "arcs",
+    "flash",
+    "ripple"
+   ],
+   "move": {
+    "mi": {
+     "sx": 1.7,
+     "sy": 1.5
+    },
+    "mg": {
+     "sx": 2.1,
+     "sy": 1.9
+    },
+    "fl": {
+     "sx": 0.62,
+     "sy": 0.62
+    },
+    "rp": {
+     "sx": 1.25,
+     "sy": 0.6
+    }
+   }
+  },
+  {
+   "name": "f3",
+   "show": [
+    "arcs",
+    "shards",
+    "flash",
+    "ripple"
+   ],
+   "move": {
+    "ar": {
+     "rot": 13.0,
+     "sx": 1.6,
+     "sy": 1.5
+    },
+    "sh": {
+     "dx": 14.0,
+     "dy": 11.0
+    },
+    "fl": {
+     "sx": 0.34,
+     "sy": 0.34
+    },
+    "rp": {
+     "sx": 1.9,
+     "sy": 0.52
+    }
+   }
+  },
+  {
+   "name": "f4",
+   "show": [
+    "arcs",
+    "shards",
+    "ripple"
+   ],
+   "move": {
+    "ar": {
+     "rot": 26.0,
+     "sx": 2.15,
+     "sy": 1.9
+    },
+    "sh": {
+     "dx": 30.0,
+     "dy": 24.0
+    },
+    "rp": {
+     "sx": 2.4,
+     "sy": 0.46
+    }
+   }
+  }
+ ],
+ "style_override": {
+  "cast": false,
+  "silhouette": false
+ }
+}

@@ -16,56 +16,143 @@
  "seed": 113,
  "forms": [
   {
-   "name": "head_l",
-   "z": 0,
-   "material": "iron",
-   "pieces": [
-    {
-     "icon": "axe",
-     "at": [
-      196,
-      236
-     ],
-     "size": [
-      360,
-      360
-     ],
-     "flip": "x"
-    }
-   ]
-  },
-  {
-   "name": "head_r",
-   "z": 0,
-   "material": "iron",
-   "pieces": [
-    {
-     "icon": "axe",
-     "at": [
-      316,
-      236
-     ],
-     "size": [
-      360,
-      360
-     ]
-    }
-   ]
-  },
-  {
    "name": "haft",
-   "z": 3,
+   "z": 0,
    "material": "wood",
    "pieces": [
     {
      "icon": "square",
      "at": [
       256,
-      372
+      300
      ],
      "size": [
-      250,
-      40
+      48,
+      370
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      462
+     ],
+     "size": [
+      64,
+      26
+     ],
+     "rot": 4
+    }
+   ]
+  },
+  {
+   "name": "bit_l",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      136,
+      168
+     ],
+     "size": [
+      190,
+      210
+     ],
+     "rot": 270
+    }
+   ]
+  },
+  {
+   "name": "bit_r",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      376,
+      168
+     ],
+     "size": [
+      190,
+      210
+     ],
+     "rot": 90
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      216,
+      168
+     ],
+     "size": [
+      70,
+      130
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      296,
+      168
+     ],
+     "size": [
+      70,
+      130
+     ]
+    }
+   ]
+  },
+  {
+   "name": "edges",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.6,
+   "line": false,
+   "clip_to": "bit_l",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      136,
+      168
+     ],
+     "size": [
+      190,
+      16
+     ],
+     "rot": 270
+    }
+   ]
+  },
+  {
+   "name": "edges_r",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.6,
+   "line": false,
+   "clip_to": "bit_r",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      376,
+      168
+     ],
+     "size": [
+      190,
+      16
      ],
      "rot": 90
     }
@@ -73,7 +160,7 @@
   },
   {
    "name": "band",
-   "z": 4,
+   "z": 3,
    "material": "bronze",
    "pieces": [
     {
@@ -83,34 +170,22 @@
       268
      ],
      "size": [
-      92,
+      110,
       40
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      232
+     ],
+     "size": [
+      96,
+      30
      ]
     }
    ]
-  },
-  {
-   "name": "patina",
-   "z": 9.0,
-   "kind": "wash",
-   "material": "rust",
-   "blend": "multiply",
-   "opacity": 0.34,
-   "line": false,
-   "pieces": [
-    {
-     "icon": "cloud",
-     "at": [
-      360,
-      200
-     ],
-     "size": [
-      60.0,
-      50.0
-     ]
-    }
-   ],
-   "clip_to": "head_r"
   },
   {
    "name": "patina",
@@ -125,15 +200,38 @@
      "icon": "cloud",
      "at": [
       150,
-      200
+      170
      ],
      "size": [
-      60.0,
-      50.0
+      70.0,
+      75.0
      ]
     }
    ],
-   "clip_to": "head_l"
+   "clip_to": "bit_l"
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      362,
+      170
+     ],
+     "size": [
+      70.0,
+      75.0
+     ]
+    }
+   ],
+   "clip_to": "bit_r"
   }
  ]
 }

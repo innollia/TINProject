@@ -1,0 +1,286 @@
+{
+ "asset": "small_flame",
+ "status": "candidate",
+ "note": "small_flame (torch-scale flame). A different shape from the big flame, not a smaller one: three wide leaning tongues instead of one tall droplet, a squat inner body, a round core and one tip spark that appears on two frames. No base pool, no spark trail, 4 frames, emission layer only on the inner layers.",
+ "palette": "palette_fx.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  170.0
+ ],
+ "pivot_meaning": "the surface the flame stands on",
+ "seed": 315,
+ "forms": [
+  {
+   "name": "tongues",
+   "tags": [
+    "tg"
+   ],
+   "z": 1,
+   "kind": "mass",
+   "material": "flame_shell",
+   "pivot": [
+    96.0,
+    170.0
+   ],
+   "emit": 0.3,
+   "rough": {
+    "amp": 0.4,
+    "soft": 2.0,
+    "cell": 9
+   },
+   "shade": {
+    "soft": 0.5,
+    "bump": 0.7,
+    "threshold": 0.45,
+    "highlight_amount": 0.45
+   },
+   "glow": {
+    "radius": 4,
+    "opacity": 0.3,
+    "color": "flame_mid"
+   },
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      76.0,
+      136.0
+     ],
+     "size": [
+      58.0,
+      76.0
+     ],
+     "rot": 196
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      116.0,
+      136.0
+     ],
+     "size": [
+      58.0,
+      76.0
+     ],
+     "rot": 164
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      96.0,
+      130.0
+     ],
+     "size": [
+      66.0,
+      88.0
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "inner",
+   "tags": [
+    "in"
+   ],
+   "z": 2,
+   "kind": "mass",
+   "material": "flame_mid",
+   "pivot": [
+    96.0,
+    170.0
+   ],
+   "emit": 0.75,
+   "rough": {
+    "amp": 0.3,
+    "soft": 1.6,
+    "cell": 7
+   },
+   "glow": {
+    "radius": 5,
+    "opacity": 0.45,
+    "color": "flame_glow"
+   },
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      96.0,
+      140.0
+     ],
+     "size": [
+      40.0,
+      62.0
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "core",
+   "tags": [
+    "cr"
+   ],
+   "z": 3,
+   "kind": "mass",
+   "material": "flame_core",
+   "pivot": [
+    96.0,
+    170.0
+   ],
+   "emit": 1.0,
+   "shade": {
+    "soft": 0.55,
+    "bump": 0.5,
+    "threshold": 0.4,
+    "highlight_amount": 0.7
+   },
+   "glow": {
+    "radius": 7,
+    "opacity": 0.6,
+    "color": "flame_glow"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      148.0
+     ],
+     "size": [
+      26.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tip",
+   "tags": [
+    "tp"
+   ],
+   "z": 3.5,
+   "kind": "mass",
+   "material": "spark",
+   "pivot": [
+    96.0,
+    74.0
+   ],
+   "emit": 1.0,
+   "line": {
+    "width": 0.5,
+    "heavy": 0.3
+   },
+   "glow": {
+    "radius": 3,
+    "opacity": 0.6,
+    "color": "flame_glow"
+   },
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      100.0,
+      70.0
+     ],
+     "size": [
+      13.0,
+      20.0
+     ],
+     "rot": 180
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "f0",
+   "show": [],
+   "move": {
+    "tg": {
+     "sx": 1.05,
+     "sy": 1.0
+    },
+    "in": {
+     "sy": 1.15
+    },
+    "cr": {
+     "sy": 1.23
+    }
+   }
+  },
+  {
+   "name": "f1",
+   "show": [
+    "tip"
+   ],
+   "move": {
+    "tg": {
+     "sx": 1.0,
+     "sy": 1.13
+    },
+    "in": {
+     "sy": 1.12
+    },
+    "cr": {
+     "dx": 3.0,
+     "sy": 1.06
+    },
+    "tp": {
+     "sx": 1.0,
+     "sy": 1.0
+    }
+   }
+  },
+  {
+   "name": "f2",
+   "show": [
+    "tip"
+   ],
+   "move": {
+    "tg": {
+     "sx": 0.95,
+     "sy": 1.0
+    },
+    "in": {
+     "sy": 0.85
+    },
+    "cr": {
+     "dx": 0.0,
+     "sy": 0.77
+    },
+    "tp": {
+     "dy": -8.0,
+     "sx": 0.9,
+     "sy": 0.9
+    }
+   }
+  },
+  {
+   "name": "f3",
+   "show": [],
+   "move": {
+    "tg": {
+     "sx": 1.0,
+     "sy": 0.87
+    },
+    "in": {
+     "sy": 0.88
+    },
+    "cr": {
+     "dx": -3.0,
+     "sy": 0.94
+    }
+   }
+  }
+ ],
+ "style_override": {
+  "cast": false,
+  "silhouette": false
+ }
+}

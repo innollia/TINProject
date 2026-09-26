@@ -1,0 +1,620 @@
+{
+ "asset": "fishing",
+ "status": "candidate",
+ "note": "fishing (hooked fish). One large fish built from the fish icon, a thin line and hook coming down from the top of the cell, and a flattened surface dimple that widens every frame. The fish tugs on a 6-frame loop (body roll, tail wag, bending line) and water is flicked off it on the last four frames.",
+ "palette": "palette_fx.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96,
+  176
+ ],
+ "pivot_meaning": "the water surface the line comes from",
+ "seed": 306,
+ "forms": [
+  {
+   "name": "dimple",
+   "tags": [
+    "dm"
+   ],
+   "z": 1,
+   "kind": "mass",
+   "material": "water_pale",
+   "pivot": [
+    96,
+    74
+   ],
+   "opacity": 0.45,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      74.0
+     ],
+     "size": [
+      80.0,
+      80.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96,
+      74
+     ],
+     "size": [
+      64,
+      26
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      74.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "dimple_wide",
+   "tags": [
+    "dm"
+   ],
+   "z": 1.1,
+   "kind": "flat",
+   "material": "water_mid",
+   "pivot": [
+    96,
+    74
+   ],
+   "opacity": 0.5,
+   "clip_to": "dimple",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      70.0
+     ],
+     "size": [
+      78.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "line",
+   "tags": [
+    "ln"
+   ],
+   "z": 2,
+   "kind": "flat",
+   "material": "water_pale",
+   "pivot": [
+    96,
+    10
+   ],
+   "opacity": 0.8,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      44.0
+     ],
+     "size": [
+      2.6,
+      72.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hook",
+   "tags": [
+    "hk"
+   ],
+   "z": 4.5,
+   "kind": "mass",
+   "material": "bubble_shell",
+   "pivot": [
+    96,
+    84
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "hook",
+     "at": [
+      96.0,
+      84.0
+     ],
+     "size": [
+      20.0,
+      24.0
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "fish4608",
+   "tags": [
+    "f"
+   ],
+   "z": 3,
+   "kind": "mass",
+   "material": "water_mid",
+   "pivot": [
+    98.0,
+    112.0
+   ],
+   "squash_ignored": true,
+   "shade": {
+    "soft": 0.34,
+    "bump": 0.8,
+    "threshold": 0.48,
+    "highlight_amount": 0.45
+   },
+   "pieces": [
+    {
+     "icon": "fish",
+     "at": [
+      109.6,
+      112.0
+     ],
+     "size": [
+      85.84,
+      56.65
+     ],
+     "rot": -6,
+     "squash": 0.62,
+     "crop": [
+      3.4,
+      2.4,
+      15.6,
+      13.6
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      105.2,
+      86.57
+     ],
+     "size": [
+      25.75,
+      22.32
+     ],
+     "rot": -2,
+     "squash": 0.62
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      103.4,
+      135.09
+     ],
+     "size": [
+      18.88,
+      17.17
+     ],
+     "rot": -124,
+     "squash": 0.62
+    },
+    {
+     "name": "_",
+     "icon": "fish",
+     "at": [
+      109.6,
+      120.58
+     ],
+     "size": [
+      73.82,
+      42.92
+     ],
+     "rot": -6.0,
+     "squash": 0.62,
+     "crop": [
+      3.4,
+      7.6,
+      15.6,
+      13.6
+     ],
+     "alpha": 0.5,
+     "op": "sub",
+     "material": "water_deep"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      133.12,
+      105.2
+     ],
+     "size": [
+      8.0,
+      7.0
+     ],
+     "rot": -6,
+     "squash": 0.62
+    },
+    {
+     "name": "_",
+     "icon": "circle",
+     "at": [
+      122.0,
+      100.0
+     ],
+     "size": [
+      9,
+      7
+     ],
+     "rot": -6,
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      133.12,
+      105.2
+     ],
+     "size": [
+      8.0,
+      7.0
+     ],
+     "rot": -6,
+     "squash": 0.62
+    }
+   ],
+   "_eye": [
+    133.05,
+    105.22
+   ]
+  },
+  {
+   "name": "fish4608t",
+   "tags": [
+    "f",
+    "tl"
+   ],
+   "z": 2.99,
+   "kind": "mass",
+   "material": "water_mid",
+   "pivot": [
+    66.68,
+    112.0
+   ],
+   "shade": {
+    "soft": 0.34,
+    "bump": 0.8,
+    "threshold": 0.48,
+    "highlight_amount": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "fish",
+     "at": [
+      66.68,
+      112.0
+     ],
+     "size": [
+      34.8,
+      45.24
+     ],
+     "rot": -6,
+     "squash": 0.62,
+     "crop": [
+      0.1,
+      2.6,
+      4.4,
+      13.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fish4608t",
+   "tags": [
+    "f",
+    "tl"
+   ],
+   "z": 2.99,
+   "kind": "mass",
+   "material": "water_mid",
+   "pivot": [
+    66.68,
+    112.0
+   ],
+   "shade": {
+    "soft": 0.34,
+    "bump": 0.8,
+    "threshold": 0.48,
+    "highlight_amount": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "fish",
+     "at": [
+      66.68,
+      112.0
+     ],
+     "size": [
+      34.8,
+      45.24
+     ],
+     "rot": -6,
+     "squash": 0.62,
+     "crop": [
+      0.1,
+      2.6,
+      4.4,
+      13.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "flick",
+   "tags": [
+    "fk"
+   ],
+   "z": 5,
+   "kind": "mass",
+   "material": "foam",
+   "pivot": [
+    98.0,
+    92.0
+   ],
+   "line": {
+    "width": 0.6,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      54.0,
+      66.0
+     ],
+     "size": [
+      12.0,
+      18.0
+     ],
+     "rot": 146
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      90.0,
+      50.0
+     ],
+     "size": [
+      11.0,
+      17.0
+     ],
+     "rot": 172
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      138.0,
+      72.0
+     ],
+     "size": [
+      12.0,
+      18.0
+     ],
+     "rot": 204
+    },
+    {
+     "icon": "circle",
+     "at": [
+      42.0,
+      94.0
+     ],
+     "size": [
+      7.0,
+      6.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "f0",
+   "show": [],
+   "move": {
+    "f": {
+     "dx": 10.0
+    },
+    "tl": {
+     "dx": 10.0
+    },
+    "ln": {},
+    "hk": {},
+    "dm": {
+     "sx": 1.0,
+     "sy": 1.0
+    }
+   }
+  },
+  {
+   "name": "f1",
+   "show": [],
+   "move": {
+    "f": {
+     "dx": 5.0,
+     "dy": 22.52,
+     "rot": 15.76
+    },
+    "tl": {
+     "dx": 5.0,
+     "dy": 22.52,
+     "rot": 18.0
+    },
+    "ln": {
+     "rot": 7.21
+    },
+    "hk": {
+     "rot": 7.21
+    },
+    "dm": {
+     "sx": 1.13,
+     "sy": 1.05
+    }
+   }
+  },
+  {
+   "name": "f2",
+   "show": [
+    "flick"
+   ],
+   "move": {
+    "f": {
+     "dx": -5.0,
+     "dy": 22.52,
+     "rot": 15.76
+    },
+    "tl": {
+     "dx": -5.0,
+     "dy": 22.52,
+     "rot": 22.0
+    },
+    "ln": {
+     "rot": 7.21
+    },
+    "hk": {
+     "rot": 7.21
+    },
+    "dm": {
+     "sx": 1.26,
+     "sy": 1.1
+    },
+    "fk": {
+     "sx": 1.0,
+     "sy": 1.0
+    }
+   }
+  },
+  {
+   "name": "f3",
+   "show": [
+    "flick"
+   ],
+   "move": {
+    "f": {
+     "dx": -10.0
+    },
+    "tl": {
+     "dx": -10.0
+    },
+    "ln": {},
+    "hk": {},
+    "dm": {
+     "sx": 1.39,
+     "sy": 1.15
+    },
+    "fk": {
+     "dx": 4.0,
+     "dy": -9.0,
+     "sx": 1.22,
+     "sy": 1.22
+    }
+   }
+  },
+  {
+   "name": "f4",
+   "show": [
+    "flick"
+   ],
+   "move": {
+    "f": {
+     "dx": -5.0,
+     "dy": -22.52,
+     "rot": -15.76
+    },
+    "tl": {
+     "dx": -5.0,
+     "dy": -22.52,
+     "rot": -18.0
+    },
+    "ln": {
+     "rot": -7.21
+    },
+    "hk": {
+     "rot": -7.21
+    },
+    "dm": {
+     "sx": 1.52,
+     "sy": 1.2
+    },
+    "fk": {
+     "dx": 8.0,
+     "dy": -18.0,
+     "sx": 1.44,
+     "sy": 1.44
+    }
+   }
+  },
+  {
+   "name": "f5",
+   "show": [
+    "flick"
+   ],
+   "move": {
+    "f": {
+     "dx": 5.0,
+     "dy": -22.52,
+     "rot": -15.76
+    },
+    "tl": {
+     "dx": 5.0,
+     "dy": -22.52,
+     "rot": -22.0
+    },
+    "ln": {
+     "rot": -7.21
+    },
+    "hk": {
+     "rot": -7.21
+    },
+    "dm": {
+     "sx": 1.65,
+     "sy": 1.25
+    },
+    "fk": {
+     "dx": 12.0,
+     "dy": -27.0,
+     "sx": 1.66,
+     "sy": 1.66
+    }
+   }
+  }
+ ],
+ "style_override": {
+  "cast": false,
+  "silhouette": false
+ }
+}

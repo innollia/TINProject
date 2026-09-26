@@ -1,0 +1,493 @@
+{
+ "asset": "splash",
+ "status": "candidate",
+ "note": "splash (crown of water). A wide low mound, a narrow U bowl cut from the lower half of the ring icon with a lit inner rim, five tapered droplet tongues leaning outward, three thin foam spikes inside them, and five thrown droplets. Five frames: the bowl rises and widens, the tongues swing out, the spikes drop out of the last frame and the droplets carry on alone.",
+ "palette": "palette_fx.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  170.0
+ ],
+ "pivot_meaning": "the water surface the splash leaves",
+ "seed": 308,
+ "forms": [
+  {
+   "name": "mound",
+   "tags": [
+    "mo"
+   ],
+   "z": 1,
+   "kind": "mass",
+   "material": "water_pale",
+   "pivot": [
+    96.0,
+    170.0
+   ],
+   "opacity": 0.8,
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "shade": {
+    "soft": 0.5,
+    "bump": 0.6,
+    "threshold": 0.44,
+    "highlight_amount": 0.45
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      170.0
+     ],
+     "size": [
+      112.0,
+      56.0
+     ],
+     "squash": 0.5
+    }
+   ]
+  },
+  {
+   "name": "bowl",
+   "tags": [
+    "bw"
+   ],
+   "z": 2,
+   "kind": "mass",
+   "material": "water_pale",
+   "pivot": [
+    96.0,
+    148.0
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.7
+   },
+   "shade": {
+    "soft": 0.5,
+    "bump": 0.6,
+    "threshold": 0.44,
+    "highlight_amount": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      96.0,
+      150.0
+     ],
+     "size": [
+      88.0,
+      74.0
+     ],
+     "crop": [
+      2.2,
+      8.6,
+      13.8,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rim",
+   "tags": [
+    "bw"
+   ],
+   "z": 2.05,
+   "kind": "flat",
+   "material": "foam",
+   "pivot": [
+    96.0,
+    148.0
+   ],
+   "opacity": 0.7,
+   "clip_to": "bowl",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      96.0,
+      150.0
+     ],
+     "size": [
+      88.0,
+      74.0
+     ],
+     "crop": [
+      2.2,
+      8.6,
+      13.8,
+      16
+     ]
+    },
+    {
+     "icon": "ring",
+     "at": [
+      100.0,
+      145.0
+     ],
+     "size": [
+      88.0,
+      74.0
+     ],
+     "crop": [
+      2.2,
+      8.6,
+      13.8,
+      16
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "tongues",
+   "tags": [
+    "tg"
+   ],
+   "z": 3,
+   "kind": "mass",
+   "material": "water_pale",
+   "pivot": [
+    96.0,
+    130.0
+   ],
+   "shade": {
+    "soft": 0.5,
+    "bump": 0.55,
+    "threshold": 0.42,
+    "highlight_amount": 0.5
+   },
+   "glow": {
+    "radius": 3,
+    "opacity": 0.3,
+    "color": "water_pale"
+   },
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      62.0,
+      108.0
+     ],
+     "size": [
+      26.0,
+      74.0
+     ],
+     "rot": 206
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      130.0,
+      108.0
+     ],
+     "size": [
+      26.0,
+      74.0
+     ],
+     "rot": 154
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      46.0,
+      130.0
+     ],
+     "size": [
+      22.0,
+      56.0
+     ],
+     "rot": 232
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      146.0,
+      130.0
+     ],
+     "size": [
+      22.0,
+      56.0
+     ],
+     "rot": 128
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      96.0,
+      100.0
+     ],
+     "size": [
+      22.0,
+      84.0
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "spikes",
+   "tags": [
+    "sp"
+   ],
+   "z": 3.5,
+   "kind": "mass",
+   "material": "foam",
+   "pivot": [
+    96.0,
+    130.0
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "shade": {
+    "soft": 0.55,
+    "bump": 0.5,
+    "threshold": 0.42,
+    "highlight_amount": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      84.0,
+      96.0
+     ],
+     "size": [
+      12.0,
+      46.0
+     ],
+     "rot": 198
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      110.0,
+      90.0
+     ],
+     "size": [
+      11.0,
+      40.0
+     ],
+     "rot": 162
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      96.0,
+      74.0
+     ],
+     "size": [
+      10.0,
+      34.0
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "drops",
+   "tags": [
+    "dp"
+   ],
+   "z": 4,
+   "kind": "mass",
+   "material": "bubble_shell",
+   "pivot": [
+    96.0,
+    110.0
+   ],
+   "line": {
+    "width": 0.6,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      32.0,
+      78.0
+     ],
+     "size": [
+      13.0,
+      20.0
+     ],
+     "rot": 150
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      66.0,
+      44.0
+     ],
+     "size": [
+      11.0,
+      18.0
+     ],
+     "rot": 170
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      128.0,
+      48.0
+     ],
+     "size": [
+      12.0,
+      19.0
+     ],
+     "rot": 190
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      162.0,
+      84.0
+     ],
+     "size": [
+      13.0,
+      20.0
+     ],
+     "rot": 212
+    },
+    {
+     "icon": "circle",
+     "at": [
+      94.0,
+      20.0
+     ],
+     "size": [
+      8.0,
+      7.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "f0",
+   "show": [
+    "mound"
+   ],
+   "move": {
+    "mo": {
+     "sx": 0.78,
+     "sy": 0.7
+    }
+   }
+  },
+  {
+   "name": "f1",
+   "show": [
+    "mound",
+    "bowl",
+    "tongues"
+   ],
+   "move": {
+    "mo": {
+     "sx": 1.05,
+     "sy": 0.95
+    },
+    "bw": {
+     "sx": 0.86,
+     "sy": 0.5
+    },
+    "tg": {
+     "sy": 0.45
+    }
+   }
+  },
+  {
+   "name": "f2",
+   "show": [
+    "bowl",
+    "tongues",
+    "spikes",
+    "drops"
+   ],
+   "move": {
+    "bw": {
+     "sx": 1.0,
+     "sy": 0.92
+    },
+    "tg": {
+     "sy": 0.9
+    },
+    "sp": {
+     "sy": 0.9
+    },
+    "dp": {
+     "sx": 0.7,
+     "sy": 0.7
+    }
+   }
+  },
+  {
+   "name": "f3",
+   "show": [
+    "bowl",
+    "tongues",
+    "spikes",
+    "drops"
+   ],
+   "move": {
+    "bw": {
+     "sx": 1.12,
+     "sy": 1.2
+    },
+    "tg": {
+     "dx": -4.0,
+     "sy": 1.08
+    },
+    "sp": {
+     "sy": 1.15
+    },
+    "dp": {
+     "dx": 5.0,
+     "dy": -9.0,
+     "sx": 1.0,
+     "sy": 1.0
+    }
+   }
+  },
+  {
+   "name": "f4",
+   "show": [
+    "bowl",
+    "tongues",
+    "drops"
+   ],
+   "move": {
+    "bw": {
+     "sx": 1.24,
+     "sy": 1.34
+    },
+    "tg": {
+     "dx": -9.0,
+     "sy": 1.2
+    },
+    "dp": {
+     "dx": 12.0,
+     "dy": -20.0,
+     "sx": 1.3,
+     "sy": 1.3
+    }
+   }
+  }
+ ],
+ "style_override": {
+  "cast": false,
+  "silhouette": false
+ }
+}

@@ -1,0 +1,565 @@
+{
+ "asset": "bubble",
+ "status": "candidate",
+ "note": "bubble (floating shell). One large three-layer membrane (halo, shell ring, inner film) with a dark bottom rim and a bright top-left rim, two specular dots, and three smaller bubbles rising through it and wrapping at the loop point. Hover motion only: the shell bobs and swells, it does not travel.",
+ "palette": "palette_fx.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  100.0
+ ],
+ "pivot_meaning": "centre of the shell, mid water",
+ "seed": 301,
+ "forms": [
+  {
+   "name": "halo",
+   "tags": [
+    "b"
+   ],
+   "z": 0,
+   "kind": "mass",
+   "material": "water_pale",
+   "pivot": [
+    96.0,
+    100.0
+   ],
+   "opacity": 0.3,
+   "blur": 4.0,
+   "line": false,
+   "shade": {
+    "soft": 0.8,
+    "bump": 0.1,
+    "threshold": 0.4,
+    "highlight_amount": 0.0
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      100.0
+     ],
+     "size": [
+      100.0,
+      100.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      100.0
+     ],
+     "size": [
+      70.0,
+      70.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "shell",
+   "tags": [
+    "b"
+   ],
+   "z": 1,
+   "kind": "mass",
+   "material": "bubble_shell",
+   "pivot": [
+    96.0,
+    100.0
+   ],
+   "opacity": 0.95,
+   "shade": {
+    "soft": 0.6,
+    "bump": 0.3,
+    "threshold": 0.36,
+    "highlight_amount": 0.55
+   },
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.3,
+    "color": "water_pale"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      100.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      100.0
+     ],
+     "size": [
+      77.0,
+      77.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "film",
+   "tags": [
+    "b"
+   ],
+   "z": 2,
+   "kind": "mass",
+   "material": "water_pale",
+   "pivot": [
+    96.0,
+    100.0
+   ],
+   "opacity": 0.14,
+   "line": false,
+   "shade": {
+    "soft": 0.7,
+    "bump": 0.2,
+    "threshold": 0.4,
+    "highlight_amount": 0.2
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      100.0
+     ],
+     "size": [
+      77.0,
+      77.0
+     ],
+     "alpha": 0.5
+    }
+   ]
+  },
+  {
+   "name": "rim_lo",
+   "tags": [
+    "b"
+   ],
+   "z": 3,
+   "kind": "flat",
+   "material": "water_mid",
+   "pivot": [
+    96.0,
+    100.0
+   ],
+   "opacity": 0.95,
+   "clip_to": "shell",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      100.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      89.0,
+      92.0
+     ],
+     "size": [
+      87.0,
+      87.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "rim_hi",
+   "tags": [
+    "b"
+   ],
+   "z": 4,
+   "kind": "flat",
+   "material": "foam",
+   "pivot": [
+    96.0,
+    100.0
+   ],
+   "clip_to": "shell",
+   "line": false,
+   "emit": 0.28,
+   "glow": {
+    "radius": 1.5,
+    "opacity": 0.3,
+    "color": "water_pale"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      100.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      104.0,
+      109.0
+     ],
+     "size": [
+      89.0,
+      89.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "spec",
+   "tags": [
+    "b"
+   ],
+   "z": 5,
+   "kind": "flat",
+   "material": "foam",
+   "pivot": [
+    96.0,
+    100.0
+   ],
+   "line": false,
+   "emit": 0.5,
+   "glow": {
+    "radius": 3,
+    "opacity": 0.6,
+    "color": "foam"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      80.0,
+      81.0
+     ],
+     "size": [
+      15.0,
+      10.0
+     ],
+     "rot": -32
+    },
+    {
+     "icon": "circle",
+     "at": [
+      94.0,
+      70.0
+     ],
+     "size": [
+      8.0,
+      6.0
+     ],
+     "rot": -20
+    }
+   ]
+  },
+  {
+   "name": "rise_t0",
+   "tags": [
+    "t0"
+   ],
+   "z": 2,
+   "kind": "mass",
+   "material": "bubble_shell",
+   "pivot": [
+    66.0,
+    148
+   ],
+   "opacity": 0.8,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "water_pale"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      66.0,
+      148.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      66.0,
+      148.0
+     ],
+     "size": [
+      17.68,
+      17.68
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "rise_t1",
+   "tags": [
+    "t1"
+   ],
+   "z": 2,
+   "kind": "mass",
+   "material": "bubble_shell",
+   "pivot": [
+    122.0,
+    126
+   ],
+   "opacity": 0.8,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "water_pale"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      122.0,
+      126.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      122.0,
+      126.0
+     ],
+     "size": [
+      13.6,
+      13.6
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "rise_t2",
+   "tags": [
+    "t2"
+   ],
+   "z": 2,
+   "kind": "mass",
+   "material": "bubble_shell",
+   "pivot": [
+    90.0,
+    104
+   ],
+   "opacity": 0.8,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "water_pale"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      90.0,
+      104.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      90.0,
+      104.0
+     ],
+     "size": [
+      10.88,
+      10.88
+     ],
+     "op": "sub"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "f0",
+   "move": {
+    "b": {
+     "dx": 6.0,
+     "sx": 1.0,
+     "sy": 1.0
+    },
+    "t0": {},
+    "t1": {
+     "dx": 2.1
+    },
+    "t2": {
+     "dx": 2.27
+    }
+   }
+  },
+  {
+   "name": "f1",
+   "move": {
+    "b": {
+     "dx": 3.0,
+     "dy": 15.59,
+     "sx": 1.06,
+     "sy": 1.06
+    },
+    "t0": {
+     "dx": 2.48,
+     "dy": -27.0
+    },
+    "t1": {
+     "dx": 1.07,
+     "dy": -27.0
+    },
+    "t2": {
+     "dx": -1.32,
+     "dy": -27.0
+    }
+   }
+  },
+  {
+   "name": "f2",
+   "move": {
+    "b": {
+     "dx": -3.0,
+     "dy": 15.59,
+     "sx": 1.06,
+     "sy": 1.06
+    },
+    "t0": {
+     "dx": -0.64,
+     "dy": -54.0
+    },
+    "t1": {
+     "dx": -2.38,
+     "dy": -54.0
+    },
+    "t2": {
+     "dx": -1.93,
+     "dy": -54.0
+    }
+   }
+  },
+  {
+   "name": "f3",
+   "move": {
+    "b": {
+     "dx": -6.0,
+     "sx": 1.0,
+     "sy": 1.0
+    },
+    "t0": {
+     "dx": -2.31,
+     "dy": -81.0
+    },
+    "t1": {
+     "dx": -0.46,
+     "dy": -81.0
+    },
+    "t2": {
+     "dx": 1.82,
+     "dy": -81.0
+    }
+   }
+  },
+  {
+   "name": "f4",
+   "move": {
+    "b": {
+     "dx": -3.0,
+     "dy": -15.59,
+     "sx": 0.94,
+     "sy": 0.94
+    },
+    "t0": {
+     "dx": 1.24,
+     "dy": -108.0
+    },
+    "t1": {
+     "dx": 2.5,
+     "dy": -108.0
+    },
+    "t2": {
+     "dx": 1.46,
+     "dy": -108.0
+    }
+   }
+  },
+  {
+   "name": "f5",
+   "move": {
+    "b": {
+     "dx": 3.0,
+     "dy": -15.59,
+     "sx": 0.94,
+     "sy": 0.94
+    },
+    "t0": {
+     "dx": 2.0,
+     "dy": -135.0
+    },
+    "t1": {
+     "dx": -0.19,
+     "dy": -135.0
+    },
+    "t2": {
+     "dx": -2.2,
+     "dy": -135.0
+    }
+   }
+  }
+ ],
+ "style_override": {
+  "cast": false,
+  "silhouette": false
+ }
+}
