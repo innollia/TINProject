@@ -213,6 +213,73 @@ v0.3에서 연 넷은 모두 납품됐다. 이번에는 여섯을 연다. 쓰는
 6. 사용자 결정이 필요하면 대화 본문에 번호를 붙여 묻는다. 사건 조건이나 계약 해석은 통합 담당에게 연결 요청으로 넘긴다.
 7. 끝낼 때: `git add -- <내 파일>` → `git commit -m "<메시지>" -- <내 파일>` → `git push origin kit/05-stone-story-rpg`. 반영한 번호 / 남은 것 / 연결 요청만 짧게 보고한다.
 
+## 담당 세션 프롬프트 v0.4
+
+붙여넣기용이다. 경로는 다른 컴퓨터의 클론 기준이다. 폴더가 다르면 각 프롬프트 첫 줄의 폴더만 바꾼다.
+
+0번은 다른 세션이 하나도 돌지 않을 때 한 번만 보낸다. 최신 문서를 받은 뒤 1~6번을 따로 연다. 여섯은 쓰는 파일이 겹치지 않는다.
+
+```text
+C:\Users\fixme\Desktop\TINProject 에서 git pull --ff-only origin kit/05-stone-story-rpg 를 한 번 실행하고 결과만 알려 줘.
+```
+
+```text
+[TIN · Kit 04 새 세계 · H0 재작성 담당]
+C:\Users\fixme\Desktop\TINProject 에서 일한다. 쓸 수 있는 파일은 plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/regions/H0.md 하나다. 나머지는 읽기만 한다.
+시작 전에 plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/01_CONTENT_INDEX.md의 '담당 세션 공통 규칙 v0.4'를 읽고 그 순서와 규칙을 그대로 따른다.
+할 일: 같은 파일의 'H0.md v0.2 → v0.3' 표 H0-v4-1~7을 모두 반영해 H0.md를 v0.3으로 올린다. v0.2의 사실·좌표·조건은 유지한다.
+끝낼 때: 공통 규칙 7항대로 내 파일만 커밋·푸시하고 반영한 번호 / 남은 것 / 연결 요청만 짧게 보고한다.
+```
+
+```text
+[TIN · Kit 04 새 세계 · N01 소하 재작성 담당]
+C:\Users\fixme\Desktop\TINProject 에서 일한다. 쓸 수 있는 파일은 plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/characters/N01_SOHA.md 하나다. 나머지는 읽기만 한다.
+시작 전에 plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/01_CONTENT_INDEX.md의 '담당 세션 공통 규칙 v0.4'를 읽고 그 순서와 규칙을 그대로 따른다.
+할 일: 같은 파일의 'N01_SOHA.md v0.2 → v0.3' 표 N01-v4-1~8을 모두 반영해 v0.3으로 올린다. v0.2의 사실·조건·관계 전이는 유지하고 말투와 장면을 다시 쓴다.
+끝낼 때: 공통 규칙 7항대로 내 파일만 커밋·푸시하고 반영한 번호 / 남은 것 / 연결 요청만 짧게 보고한다.
+```
+
+```text
+[TIN · Kit 04 새 세계 · N12 도엘 재작성 담당]
+C:\Users\fixme\Desktop\TINProject 에서 일한다. 쓸 수 있는 파일은 plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/characters/N12_DOEL.md 하나다. 나머지는 읽기만 한다.
+시작 전에 plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/01_CONTENT_INDEX.md의 '담당 세션 공통 규칙 v0.4'를 읽고 그 순서와 규칙을 그대로 따른다.
+할 일: 같은 파일의 'N12_DOEL.md v0.1 → v0.2' 표 N12-v4-1~10을 모두 반영해 v0.2로 올린다. 특히 결말 A/B 대응을 World §11에 맞춘다. v0.1의 사실·조건은 유지한다.
+끝낼 때: 공통 규칙 7항대로 내 파일만 커밋·푸시하고 반영한 번호 / 남은 것 / 연결 요청만 짧게 보고한다.
+```
+
+```text
+[TIN · Kit 04 새 세계 · R1 흰 염전 재작성 담당]
+C:\Users\fixme\Desktop\TINProject 에서 일한다. 쓸 수 있는 파일은 plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/regions/R1.md 하나다. 나머지는 읽기만 한다.
+시작 전에 plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/01_CONTENT_INDEX.md의 '담당 세션 공통 규칙 v0.4'를 읽고 그 순서와 규칙을 그대로 따른다.
+할 일: 같은 파일의 'R1.md v0.1 → v0.2' 표 R1-v4-1~7을 모두 반영해 v0.2로 올린다. v0.1의 구역·좌표·식사 시각 확정 시점은 유지한다.
+끝낼 때: 공통 규칙 7항대로 내 파일만 커밋·푸시하고 반영한 번호 / 남은 것 / 연결 요청만 짧게 보고한다.
+```
+
+```text
+[TIN · Kit 04 새 세계 · N09 지르 인물 담당]
+C:\Users\fixme\Desktop\TINProject 에서 일한다. 쓸 수 있는 파일은 plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/characters/N09_JIR.md 하나다(새로 만든다). 나머지는 읽기만 한다.
+시작 전에 plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/01_CONTENT_INDEX.md의 '담당 세션 공통 규칙 v0.4'를 읽고 그 순서와 규칙을 그대로 따른다. 형식 예시로 characters/N01_SOHA.md를 읽되 내용은 복제하지 않는다.
+할 일: 지도 §5 1~13항을 지르 한 사람에 대해 전부 납품한다. 특히 다음을 쓴다.
+- World §4.2·§4.3 지르 행: 《빨간 구두》의 늙은 병사와 《재투성이 아가씨》를 비튼 사람. 플레이어가 먼저 좋아하게 되는 왕의 광팬
+- World §6.3·지도 §3.3 춤 박자: 기립 의식 때 붉은 구두를 닦고 두드리는 행동, 만나는 사람의 구두를 닦아 주며 두드리는 인사, 박자가 쌓일 때 해안을 보는 반응, 지르가 죽거나 의식에 설 수 없게 될 때, 붉은 구두를 태울 때의 반응. 동기 해설은 쓰지 않는다
+- World §12 D03 원장 소각, §10 B08 왕의 다리, §4.1 지르 행의 가까워지는 행동과 사망 조건
+- 구두 맞추기 방과 의식 장소의 좌표·사물은 R7 소유라 쓰지 않고 연결 요청으로 남긴다
+끝낼 때: 공통 규칙 7항대로 내 파일만 커밋·푸시하고 납품한 항목 / 미작성 / 연결 요청만 짧게 보고한다.
+```
+
+```text
+[TIN · Kit 04 새 세계 · N13 마로 인물 담당]
+C:\Users\fixme\Desktop\TINProject 에서 일한다. 쓸 수 있는 파일은 plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/characters/N13_MARO.md 하나다(새로 만든다). 나머지는 읽기만 한다.
+시작 전에 plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/01_CONTENT_INDEX.md의 '담당 세션 공통 규칙 v0.4'를 읽고 그 순서와 규칙을 그대로 따른다. 형식 예시로 characters/N01_SOHA.md를 읽되 내용은 복제하지 않는다.
+할 일: 지도 §5 1~13항을 마로 한 사람에 대해 전부 납품한다. 특히 다음을 쓴다.
+- World §4.2·§4.3 마로 행: 《콩쥐팥쥐》의 젓갈을 비튼 사람. 잔소리 대장이지만 먼저 좋아하게 되는 밥 짓는 사람
+- World §12 D10 v0.4: 이름 붙은 젓갈 항아리, 식구에게 가는 몫, 항아리 바닥의 손가락 마디와 할머니 장면, 플레이어가 한 숟갈 받는 입력
+- 도엘을 삼킨 물고기를 부엌에서 가르는 장면과 여관 생선국(World §4.2 도엘 행). characters/N12_DOEL.md와 어긋나지 않게 맞춘다
+- 여관 운반판의 시체를 “묻어 주겠다”며 가져가는 행동(regions/H0.md §3), World §4.1 마로 행의 가까워지는 행동과 사망 조건, World §6.2 통화관 뚜껑
+- 공동 부엌과 항아리 창고의 좌표·사물은 R2 소유라 쓰지 않고 연결 요청으로 남긴다
+끝낼 때: 공통 규칙 7항대로 내 파일만 커밋·푸시하고 납품한 항목 / 미작성 / 연결 요청만 짧게 보고한다.
+```
+
 ## 납품 판정
 
 - `집필 중`: 담당이 쓰는 중. root 미검수.
