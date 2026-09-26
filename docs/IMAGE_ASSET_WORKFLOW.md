@@ -145,6 +145,8 @@ A와 B는 서로 다른 역할을 가진 원본 Style Reference다. 텍스트가
 
 문서와 brief는 **컴파일 입력**이고 Compact Visual Contract는 **생성 실행물**이다.
 
+생성 표면이 `revised_prompt` 또는 동등한 실제 전달 프롬프트를 노출하면 원 요청과 함께 기록한다. ChatGPT처럼 rewrite 결과를 직접 볼 수 없는 표면에서는 생성 경계를 lossy compiler로 취급하고, 핵심 불변식이 짧은 계약 안에 남도록 한다.
+
 ## 6. 독립 생성 작업과 대화 branch
 
 모든 생성·편집 요청은 독립 작업으로 구성한다.
