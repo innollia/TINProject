@@ -16,6 +16,8 @@ const ROPE_MIN_LENGTH: float = 24.0
 var charging: bool = false
 var charge_time: float = 0.0
 var hold_time: float = 0.0
+var pressing: bool = false
+var press_time: float = 0.0
 var rope_anchor_index: int = -1
 var rope_length: float = 0.0
 var armed_hook: int = -1
@@ -26,6 +28,14 @@ func charge_fraction() -> float:
 	if not charging:
 		return 0.0
 	return clampf(charge_time / Tuning.TOOL_CHARGE_FULL, 0.0, 1.0)
+
+
+func drop_ready() -> bool:
+	if not pressing:
+		return false
+	if charging:
+		return charge_time >= Tuning.TOOL_CHARGE_FULL + Tuning.TOOL_HOLD_HINT
+	return press_time >= Tuning.TOOL_HOLD_HINT
 
 
 func update(director: RefCounted, input: Dictionary, delta: float) -> void:
@@ -43,7 +53,7 @@ func update(director: RefCounted, input: Dictionary, delta: float) -> void:
 		hold_time += delta
 	else:
 		hold_time = 0.0
-	if bool(input.get("grab_down", false)) and player.tool_cooldown <= 0.0:
+	if bool(input.get("grab_down", false)) and player.tool_cooldown <= 0.0 and not pressing:
 		var target: int = _find_pickup(director, socket)
 		if target >= 0:
 			_take(director, target, held, socket)
@@ -52,6 +62,8 @@ func update(director: RefCounted, input: Dictionary, delta: float) -> void:
 		elif held >= 0:
 			var tool: RefCounted = director.tool_spec(world.bodies[held].tool_id)
 			if tool != null:
+				pressing = true
+				press_time = 0.0
 				match tool.use:
 					"throw", "anchor_line":
 						charging = true
@@ -66,15 +78,24 @@ func update(director: RefCounted, input: Dictionary, delta: float) -> void:
 		elif rope_anchor_index >= 0:
 			release_rope(director)
 			player.tool_cooldown = Tuning.TOOL_COOLDOWN
-	if charging:
+	if pressing:
+		held = world.held_tool_index()
 		if held < 0:
+			pressing = false
 			charging = false
 		else:
-			charge_time = minf(charge_time + delta, Tuning.TOOL_MAX_HOLD)
+			press_time += delta
+			if charging:
+				charge_time = minf(charge_time + delta, Tuning.TOOL_MAX_HOLD)
 			if not bool(input.get("grab_held", false)):
-				_throw(director, held, socket)
+				if drop_ready():
+					drop(director, held, socket)
+					player.tool_cooldown = 0.0
+				elif charging:
+					_throw(director, held, socket)
+					player.tool_cooldown = Tuning.TOOL_COOLDOWN
+				pressing = false
 				charging = false
-				player.tool_cooldown = Tuning.TOOL_COOLDOWN
 	_update_rope(director)
 
 

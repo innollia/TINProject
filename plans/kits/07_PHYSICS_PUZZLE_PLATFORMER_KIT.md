@@ -492,6 +492,9 @@ cosmetic_rng.seed = (run_seed * 2654435761 + 1013904223) & 0x7FFFFFFF
 | `domain/save_codec.gd` | 스크립트(static) | `WorldState` ↔ JSON-safe `Dictionary` 변환, 스키마 버전 1~3 마이그레이션, 잘못된 값 정규화. NaN/Inf/Node/Resource를 절대 넣지 않는다. |
 | `domain/axis_view.gd` | RefCounted | `context.arrival["worldstate"]`의 **읽기 전용 참조**만 보관하고 `body`/`creature`/`place` 세 축의 읽기 accessor만 제공한다. 복사·기본값 생성·쓰기 경로를 갖지 않는다(§14.8.2). |
 | `domain/body_mass.gd` | 스크립트(static) | `PART_MASS` 표(상체 4개 부위 값)와 `player_mass()`/`player_reach_radius()` 두 순수 함수. `body.missing`을 **있는 그대로** 읽어 `player_mass`와 `carry` 반경을 산출한다(§14.8.4). 단위 변환·정규화 없음. |
+| `domain/tuning.gd` | 스크립트(const) | §9 상수표 전부. 다른 파일은 숫자를 직접 쓰지 않고 이 파일을 읽는다(2026-09-27 추가, §21.1). |
+| `systems/content_index.gd` | RefCounted | `content/**/index.json`과 각 JSON을 읽어 `LevelSpec`/`ToolSpec`으로 파싱하는 유일한 로더. 실패한 항목은 버리고 오류 문자열만 모은다(2026-09-27 추가, §21.1). |
+| `systems/input_bubble.gd` | RefCounted | Input Bubble의 상태(프로필·셀·4상태·흡수). 그림은 `presentation/bubble_overlay.gd`가 이 상태만 읽어 그린다(OQ8, 2026-09-27 추가). |
 | `systems/step_director.gd` | RefCounted | 프레임 처리 순서(§4.6)의 14단계를 실행하고 `hitstop`/페이즈 전이를 소유한다. |
 | `systems/contact_buffer.gd` | RefCounted | 물리 시그널을 쌓고 §4.6.1 정렬키로 정렬해 돌려준다. |
 | `systems/selector.gd` | RefCounted | §5.2의 시퀀스 생성, §5.7의 로드 시 재추첨. |
@@ -2362,6 +2365,80 @@ OQ5, OQ7, OQ8, OQ9는 원래 비차단이었고 권장값으로 확정했다.
 | `tests/core/test_no_binary_assets.gd` | W0이 생성. 이 Kit 폴더가 대상에 포함되는지 확인 | `ROUND_PLAN.md` §5 |
 
 ---
+
+## 21. 구현 중 확정한 세부값 (2026-09-27)
+
+§20 위임(“네 추천대로”)에 따라 구현하면서 정한 값이다. 이 절과 앞 절이 충돌하면 이 절이 이긴다. 현재 진행 상황은 `docs/research/mosa_lina/IMPLEMENTATION_STATUS.md`에 있다.
+
+### 21.1 §6.1에 추가한 파일
+`domain/tuning.gd`(§9 상수 전부), `systems/content_index.gd`(유일한 콘텐츠 로더), `systems/input_bubble.gd`(버블 상태). §6.1 표에 등록했다.
+
+### 21.2 화면·물리 공간 구조 (§6.1 `entry.tscn` 서술 대체)
+- `entry.tscn` 루트는 `Node`(`module.gd`, GameModule) 하나와 자식 `GameScreen`(Control, 전체 화면)이다. §6.1의 `Node2D` 루트 서술을 대체한다.
+- 월드는 `GameScreen` 안의 SubViewport(논리 해상도 1280×720)에서 그린다. SubViewportContainer를 창에 맞춰 균등 배율로 키우고 남는 곳은 레터박스로 둔다. 720p/FHD/QHD에서 보이는 월드 범위가 같다. 배율이 정수면 nearest, 아니면 linear 필터.
+- SubViewport는 자기 World2D를 가지므로 **자기 물리 공간**을 가진다. §8.2 물리 값(중력 1400, 감쇠, 수면 임계, 솔버 24회)은 `LevelFactory.configure_space()`가 이 공간에만 건다. `Engine.physics_ticks_per_second = 120`은 `enter`에서 바꾸고 `exit`에서 원래 값으로 되돌린다. 그래서 §20.1의 `project.godot` 요청이 반영되지 않아도 이 Kit은 돈다.
+- 화면 노드 순서: `Base`(ColorRect, 팔레트 `base`) → `WorldView`(월드) → `LevelTitle` → `Fade` → `Hurt`(비네트) → `BubbleOverlay`.
+
+### 21.3 `camera_y`
+레벨 JSON 선택 키 `camera_y`(float). 없으면 `CAM_Y = 288`. 카메라는 가로만 추종(데드존 120, 앞보기 58, 속도 6.5), 세로는 `camera_y` 고정, `bounds ± 40` 안으로 클램프.
+
+### 21.4 `E` 키 규칙 (§13.1과 §9.3·§11.5의 충돌 해소)
+- 손이 비었거나 도구를 들었어도, 손 반경 안에 `TOOL_PLACEMENT`나 바닥의 도구가 있으면 **줍기가 우선**이다(들고 있던 것은 그 자리에 내려놓는다). 쿨다운 0.22s.
+- 던지기형(`throw`·`anchor_line`): 누르는 동안 충전(`TOOL_CHARGE_FULL = 0.6s`에 만충). 떼면 던진다. 보너스 = `TOOL_CHARGE_BONUS × 충전 비율`.
+- 즉시형(`shove`·`cool_field`): 누른 순간 1회 발동.
+- **내려놓기:** 던지기형은 만충 뒤 `TOOL_HOLD_HINT = 0.35s`를 더 누르고 있으면, 즉시형은 발동 뒤 `0.35s` 이상 누르고 있으면 손 옆에 잉크 점이 맥동한다. 그 상태에서 떼면 던지지 않고 그 자리에 내려놓는다. 쿨다운 0. 다시 누르면 다시 집는다.
+- 빈손 + 로프가 걸려 있으면 로프를 푼다.
+
+### 21.5 관측 payload
+`requested(&"observation", …)`에 `text` 키를 넣지 않는다. §14.7 표의 `text` 열은 §11.1③·§11.9-4·§18.7(“표시 문자열 0개”)이 이긴다. id와 정수 `meta`만 보낸다.
+
+### 21.6 슬롯 도구와 줍는 도구의 런타임 id
+- 레벨을 빌드하면 그 슬롯의 도구(`run.tool_ids[cursor]`)가 손에 쥐어진 채 시작한다. 런타임 `spec_id = "tool:dealt"`.
+- `TOOL_PLACEMENT`를 주우면 그 표식이 사라지고 `spec_id = "tool:<표식 id>"` 도구가 생긴다.
+- 저장은 이 id로 한다. 로드 때 `tool:dealt`의 `tool_id`가 현재 슬롯 도구와 다르면(레지스트리에서 사라져 재지정된 경우) 저장값을 버리고 새 도구를 손에 쥐어 준다.
+
+### 21.7 변형 적용 규칙
+- `Mutation.apply`는 레벨 `mutable` 배열에 있는 연산만 적용한다. 조작된 세이브가 허용되지 않은 변형을 넣어도 무시된다.
+- 변형 인자 타입을 연산별로 고정한다: `material_swap`·`hazard_shift`는 int, 나머지는 float. 저장 JSON 왕복이 바이트 단위로 같아진다(§16 `test_save_load_preserves_sequence`).
+
+### 21.8 `place.id` 짝짓기
+만들지 않는다(OQ10). `creature` 축도 이번 판에서 읽지 않는다.
+
+### 21.9 신체 부위 이름
+`PART_MASS` 키는 `core/worldstate`가 실제로 쓰는 `head` `torso` `left_arm` `right_arm`이다. §7.8의 `arm_left` 표기는 쓰지 않는다. `missing`는 문자열 배열로 들어온다(`core/worldstate/README.md`).
+
+### 21.10 Input Bubble 완료 조건
+5개 전부 `popped`이고 흡수 0.45s가 끝나야 완료다. §13.4의 “또는 0.4s 경과”는 §16.1 `test_completion_requires_all_popped`와 충돌하므로 버린다. 버블은 모듈 첫 진입 1회만 뜨고, 완료 여부는 `run.bubble`에 저장된다.
+
+### 21.11 팔레트 역할 매핑
+`ProceduralPalette`에는 `bg_*` 역할이 없다. `presentation/procedural_bridge.gd::palette_roles()`가 Kit 역할을 core 역할로 옮긴다.
+
+| Kit 역할 | core 역할 |
+|---|---|
+| `base` | `fog` |
+| `bg_far` | `fog`와 `bg_near`의 중간 |
+| `bg_near` | `sky_far`. `ink`와 명도차 0.42 미만이면 변형 0~7을 차례로 시도하고, 그래도 모자라면 `shifted()`로 밝힌다 |
+| `bg_fore` | `sky_near` |
+| `ink` / `ink_dim` | `ink` / `body_dark` |
+| `accent` / `goal` / `danger` | `accent` / `key_light` / `danger` |
+| `player` | `rim` |
+| 재료 | paper `belly`, glass `fog`+`rim`(알파 0.62), wood `body`, stone `ground`, iron `shade`, clockwork `accent`, wax `belly` 톤다운, void `ink`(알파 0.4) |
+
+### 21.12 배경 반응
+- 레이어마다 core `ProceduralBackdropDynamics` 1개. core `parallax` = `1 − 보이는 패럴랙스`(far 0.72, near 0.45, fore −0.35). 카메라를 따라가는 스프링 지연이 곧 말랑말랑함이다.
+- §11.3의 `pulse(kind, origin, radius, strength)`는 Kit 래퍼 `presentation/backdrop_dynamics.gd`가 구현하고, 개별 요소 반응은 core 형상의 `kick_node()`로 준다. 한 번에 반응하는 요소는 가까운 순 28개.
+- 노이즈 표류는 쓰지 않는다(무입력 1.8s 정착 조건 때문).
+
+### 21.13 래스터 비용 제한
+- `box`·`segment` 바디는 8×8 절차 텍스처(채움 + 잉크 1px)를 9-slice `StyleBoxTexture`로 늘려 그린다. 큰 지형을 GDScript로 픽셀마다 칠하지 않기 위해서다.
+- 배경 모티프(탑·아치·찻잔·열쇠·쌓은 판·이빨 6종)는 1/4 해상도로 칠하고 linear 필터로 키운다.
+- 텍스처는 레벨 빌드 때 1회 만들고 `GameScreen`이 레벨 단위로 캐시한다.
+
+### 21.14 `load()` 0건
+Kit 안에 `load(` 호출이 없다. 파서는 인스턴스 메서드다(`LevelSpec.new().parse(...)`, `BodySpec.new().parse(...)`, `ToolSpec.new().parse(...)`, `AxisView.new().bind(...)`, `ContentIndex.new().read_default()`). 소리 파일은 core `AudioEventPlayer`가 직접 읽는다.
+
+### 21.15 오디오
+매니페스트 이벤트 id는 `ppp_` 접두사를 붙여 적는다(§12 코드 블록의 접두사 없는 표기 대체). §12 쿨다운은 W3 `AudioManifestEvent`의 `min_interval_seconds` 키로 넣는다. `AudioSink`는 core `AudioEventPlayer`에 넘기기만 하고, 파일이 없으면 조용히 재생하지 않는다.
 
 ## 부록 A. 구현 순서 (wave)
 

@@ -67,8 +67,8 @@ func enter(value: ModuleContext) -> void:
 	_engine_owners += 1
 	Engine.physics_ticks_per_second = Tuning.PHYSICS_HZ
 	Engine.physics_jitter_fix = 0.0
-	content = ContentIndex.load_default()
-	axis = AxisView.from_arrival(context.arrival if context != null else {})
+	content = ContentIndex.new().read_default()
+	axis = AxisView.new().bind(context.arrival if context != null else {})
 	var restored_world: Dictionary = _prepare_run(_pending_state)
 	_entered = true
 	if _screen != null and _screen.has_method("setup"):
@@ -244,7 +244,7 @@ func step(delta: float) -> void:
 			if world.phase_time >= Tuning.CLEAR_DURATION and not run.run_complete:
 				_build_level({})
 				get_world_state().set_phase(PHASE_INTRO)
-	_refresh_screen()
+	_refresh_screen(delta)
 
 
 func _sample_input() -> Dictionary:
@@ -493,9 +493,9 @@ func _emit_audio(events: Array) -> void:
 		_screen.call("on_events", events)
 
 
-func _refresh_screen() -> void:
+func _refresh_screen(delta: float = 0.0) -> void:
 	if _screen != null and _screen.has_method("refresh"):
-		_screen.call("refresh")
+		_screen.call("refresh", delta)
 
 
 func _ensure_actions() -> void:

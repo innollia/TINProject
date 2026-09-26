@@ -8,6 +8,7 @@ const WorldState = preload("res://modules/physics_puzzle_platformer/domain/world
 const SCHEMA: int = 3
 const MODULE_ID: String = "physics_puzzle_platformer"
 const MUTATION_OPS: Array[String] = ["gravity_scale", "material_swap", "prop_size", "prop_offset", "wind", "hazard_shift"]
+const INT_OPS: Array[String] = ["material_swap", "hazard_shift"]
 const SAVED_KINDS: Array[int] = [
 	BodyKind.PLAYER, BodyKind.TOOL_CARRIED, BodyKind.TOOL_PLACEMENT, BodyKind.OBJECTIVE, BodyKind.PROP_DYNAMIC,
 	BodyKind.PROP_SLEEPING, BodyKind.OBSTACLE_DYNAMIC, BodyKind.DECOR_DYNAMIC,
@@ -101,7 +102,8 @@ static func encode_mutations(value: Variant) -> Array:
 			var arg: Variant = (item as Dictionary).get("arg", 0)
 			if not (arg is int or arg is float) or not is_finite(float(arg)):
 				continue
-			result.append({"op": String(item["op"]), "arg": arg})
+			var op: String = String(item["op"])
+			result.append({"op": op, "arg": int(arg) if INT_OPS.has(op) else float(arg)})
 	return result
 
 

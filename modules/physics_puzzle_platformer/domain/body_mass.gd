@@ -2,8 +2,8 @@ extends RefCounted
 
 const Tuning = preload("res://modules/physics_puzzle_platformer/domain/tuning.gd")
 
-const PART_MASS: Dictionary = {"head": 0.10, "torso": 0.30, "arm_left": 0.25, "arm_right": 0.25}
-const ARM_PARTS: Array[String] = ["arm_left", "arm_right"]
+const PART_MASS: Dictionary = {"head": 0.10, "torso": 0.30, "left_arm": 0.25, "right_arm": 0.25}
+const ARM_PARTS: Array[String] = ["left_arm", "right_arm"]
 
 
 static func base_player_mass() -> float:

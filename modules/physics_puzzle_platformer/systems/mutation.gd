@@ -14,7 +14,7 @@ static func apply(spec: RefCounted, mutations: Array) -> Dictionary:
 			continue
 		var op: String = String((item as Dictionary).get("op", ""))
 		var arg: Variant = (item as Dictionary).get("arg", 0)
-		if not OPS.has(op) or not (arg is int or arg is float) or not is_finite(float(arg)):
+		if not OPS.has(op) or not (spec.mutable as Array).has(op) or not (arg is int or arg is float) or not is_finite(float(arg)):
 			continue
 		if _apply_one(copy, op, arg):
 			applied.append({"op": op, "arg": arg})

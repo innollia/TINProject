@@ -3,10 +3,9 @@ extends RefCounted
 var _view: WorldStateView = null
 
 
-static func from_arrival(arrival: Dictionary) -> RefCounted:
-	var wrapper: RefCounted = load("res://modules/physics_puzzle_platformer/domain/axis_view.gd").new()
-	wrapper._view = WorldStateView.from_arrival(arrival)
-	return wrapper
+func bind(arrival: Dictionary) -> RefCounted:
+	_view = WorldStateView.from_arrival(arrival)
+	return self
 
 
 func has_view() -> bool:

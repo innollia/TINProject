@@ -13,13 +13,12 @@ var tool_order: Array[String] = []
 var errors: Array[String] = []
 
 
-static func load_default() -> RefCounted:
-	var index: RefCounted = load("res://modules/physics_puzzle_platformer/systems/content_index.gd").new()
-	index.load_from(CONTENT_ROOT)
-	return index
+func read_default() -> RefCounted:
+	read_from(CONTENT_ROOT)
+	return self
 
 
-func load_from(root: String) -> void:
+func read_from(root: String) -> void:
 	levels.clear()
 	level_order.clear()
 	tools.clear()
@@ -27,7 +26,7 @@ func load_from(root: String) -> void:
 	errors.clear()
 	var tool_ids: Array[String] = _read_index(root + "/tools/index.json", "tools")
 	for tool_id: String in tool_ids:
-		var parsed: Dictionary = ToolSpec.parse(read_json(root + "/tools/" + tool_id + ".json"), tool_id)
+		var parsed: Dictionary = ToolSpec.new().parse(read_json(root + "/tools/" + tool_id + ".json"), tool_id)
 		if bool(parsed["ok"]):
 			tools[tool_id] = parsed["spec"]
 			tool_order.append(tool_id)
@@ -36,7 +35,7 @@ func load_from(root: String) -> void:
 				errors.append("%s: %s" % [tool_id, problem])
 	var level_ids: Array[String] = _read_index(root + "/levels/index.json", "levels")
 	for level_id: String in level_ids:
-		var parsed: Dictionary = LevelSpec.parse(read_json(root + "/levels/" + level_id + ".json"), level_id, tool_order)
+		var parsed: Dictionary = LevelSpec.new().parse(read_json(root + "/levels/" + level_id + ".json"), level_id, tool_order)
 		if bool(parsed["ok"]):
 			levels[level_id] = parsed["spec"]
 			level_order.append(level_id)

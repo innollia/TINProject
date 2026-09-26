@@ -44,12 +44,12 @@ func is_charge_tool() -> bool:
 	return use == "throw" or use == "anchor_line"
 
 
-static func parse(data: Variant, expected_id: String) -> Dictionary:
+func parse(data: Variant, expected_id: String) -> Dictionary:
 	var errors: Array[String] = []
 	if not data is Dictionary:
 		return {"ok": false, "errors": ["tool: not an object"], "spec": null}
 	var raw: Dictionary = data
-	var spec: RefCounted = load("res://modules/physics_puzzle_platformer/domain/tool_spec.gd").new()
+	var spec: RefCounted = self
 	for key: String in FORBIDDEN_KEYS:
 		if raw.has(key):
 			errors.append("tool: forbidden key '%s'" % key)

@@ -169,7 +169,7 @@ func duplicate_spec() -> RefCounted:
 	return copy
 
 
-static func parse(data: Variant, errors: Array[String], label: String) -> RefCounted:
+func parse(data: Variant, errors: Array[String], label: String) -> RefCounted:
 	if not data is Dictionary:
 		errors.append("%s: body is not an object" % label)
 		return null
@@ -177,7 +177,7 @@ static func parse(data: Variant, errors: Array[String], label: String) -> RefCou
 	for key: Variant in raw:
 		if not key is String or not KEYS.has(String(key)):
 			errors.append("%s: unknown key '%s'" % [label, str(key)])
-	var spec: RefCounted = load("res://modules/physics_puzzle_platformer/domain/body_spec.gd").new()
+	var spec: RefCounted = self
 	var regex := RegEx.new()
 	regex.compile(ID_PATTERN)
 	if not raw.get("id") is String or regex.search(String(raw.get("id"))) == null:

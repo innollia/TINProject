@@ -79,9 +79,9 @@ func duplicate_spec() -> RefCounted:
 	return copy
 
 
-static func parse(data: Variant, expected_id: String, known_tools: Array) -> Dictionary:
+func parse(data: Variant, expected_id: String, known_tools: Array) -> Dictionary:
 	var errors: Array[String] = []
-	var spec: RefCounted = load("res://modules/physics_puzzle_platformer/domain/level_spec.gd").new()
+	var spec: RefCounted = self
 	if not data is Dictionary:
 		return {"ok": false, "errors": ["level: not an object"], "spec": null}
 	var raw: Dictionary = data
@@ -154,7 +154,7 @@ static func parse(data: Variant, expected_id: String, known_tools: Array) -> Dic
 		if entry is Dictionary and String((entry as Dictionary).get("kind", "")) == "rift":
 			errors.append("level: rift must not be a body")
 			continue
-		var body: RefCounted = BodySpec.parse(entry, body_errors, "body[%d]" % index)
+		var body: RefCounted = BodySpec.new().parse(entry, body_errors, "body[%d]" % index)
 		if body == null:
 			continue
 		body.index = index
