@@ -1,0 +1,938 @@
+{
+ "asset": "df_noble_lady",
+ "status": "candidate",
+ "note": "귀족 부인 (다크 판타지·고딕, tier A). Dialogue portrait, 3/4 bust, fixed face anchor.",
+ "palette": "palette_g02.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  320
+ ],
+ "pivot": [
+  160,
+  146
+ ],
+ "pivot_meaning": "face anchor = head centre, identical in every g02 portrait",
+ "seed": 13,
+ "forms": [
+  {
+   "name": "neck",
+   "z": 2.9,
+   "tags": [
+    "upper"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      238.0
+     ],
+     "size": [
+      48.0,
+      40.0
+     ]
+    }
+   ],
+   "material": "skin_pale"
+  },
+  {
+   "name": "bodice",
+   "z": 3.2,
+   "tags": [
+    "upper"
+   ],
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      118.6,
+      332.0
+     ],
+     "size": [
+      89.2,
+      156.0
+     ],
+     "half": "left",
+     "crop": [
+      1,
+      0.8,
+      8,
+      10.4
+     ]
+    },
+    {
+     "icon": "shield",
+     "at": [
+      201.4,
+      332.0
+     ],
+     "size": [
+      89.2,
+      156.0
+     ],
+     "half": "left",
+     "crop": [
+      1,
+      0.8,
+      8,
+      10.4
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "shield",
+     "at": [
+      160.0,
+      386.0
+     ],
+     "size": [
+      120.0,
+      68.0
+     ],
+     "half": null,
+     "crop": [
+      0,
+      6,
+      16,
+      15
+     ]
+    }
+   ],
+   "material": "cloth_wine"
+  },
+  {
+   "name": "sleeve_r",
+   "z": 5,
+   "tags": [
+    "upper",
+    "arm_r"
+   ],
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      51.0,
+      360.0
+     ],
+     "size": [
+      54.0,
+      176.0
+     ],
+     "half": "left",
+     "rot": 6
+    }
+   ],
+   "material": "cloth_wine"
+  },
+  {
+   "name": "hand_r",
+   "z": 6,
+   "tags": [
+    "upper",
+    "arm_r",
+    "grip_r"
+   ],
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      46.0,
+      450.0
+     ],
+     "size": [
+      38.0,
+      46.0
+     ],
+     "flip": "y",
+     "rot": 6
+    }
+   ],
+   "material": "cloth_black"
+  },
+  {
+   "name": "sleeve_l",
+   "z": 5,
+   "tags": [
+    "upper",
+    "arm_l"
+   ],
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      269.0,
+      360.0
+     ],
+     "size": [
+      54.0,
+      176.0
+     ],
+     "half": "left",
+     "rot": -6,
+     "flip": "x"
+    }
+   ],
+   "material": "cloth_wine"
+  },
+  {
+   "name": "hand_l",
+   "z": 6,
+   "tags": [
+    "upper",
+    "arm_l",
+    "grip_l"
+   ],
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      274.0,
+      450.0
+     ],
+     "size": [
+      38.0,
+      46.0
+     ],
+     "flip": "yx",
+     "rot": -6
+    }
+   ],
+   "material": "cloth_black"
+  },
+  {
+   "name": "puff",
+   "z": 5.5,
+   "tags": [
+    "upper"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      60.0,
+      290.0
+     ],
+     "size": [
+      80.0,
+      64.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      260.0,
+      290.0
+     ],
+     "size": [
+      80.0,
+      64.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "material": "cloth_wine"
+  },
+  {
+   "name": "face",
+   "z": 9,
+   "tags": [
+    "upper",
+    "head"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      172.0
+     ],
+     "size": [
+      144.0,
+      132.0
+     ]
+    }
+   ],
+   "material": "skin_pale",
+   "shade": {
+    "highlight_amount": 0.28
+   }
+  },
+  {
+   "name": "eye_near",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_open"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      180.0
+     ],
+     "size": [
+      20.0,
+      13.0
+     ]
+    }
+   ],
+   "material": "eye",
+   "kind": "flat"
+  },
+  {
+   "name": "eye_near_hit",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_hit"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      180.0
+     ],
+     "size": [
+      24.0,
+      6.4
+     ],
+     "rot": 16
+    }
+   ],
+   "material": "eye",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "eye_far",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_open",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      180.0
+     ],
+     "size": [
+      16.0,
+      13.0
+     ]
+    }
+   ],
+   "material": "eye",
+   "kind": "flat"
+  },
+  {
+   "name": "eye_far_hit",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_hit",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      180.0
+     ],
+     "size": [
+      19.2,
+      6.4
+     ],
+     "rot": -16
+    }
+   ],
+   "material": "eye",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "brow_calm_146",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_calm"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      152.0
+     ],
+     "size": [
+      24.0,
+      4.8
+     ],
+     "rot": -4
+    }
+   ],
+   "material": "hair_black",
+   "kind": "flat",
+   "hidden": false
+  },
+  {
+   "name": "brow_calm_174",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_calm",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      152.0
+     ],
+     "size": [
+      19.2,
+      4.8
+     ],
+     "rot": 4
+    }
+   ],
+   "material": "hair_black",
+   "kind": "flat",
+   "hidden": false
+  },
+  {
+   "name": "brow_angry_146",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_angry"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      158.0
+     ],
+     "size": [
+      24.0,
+      4.8
+     ],
+     "rot": 20
+    }
+   ],
+   "material": "hair_black",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "brow_angry_174",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_angry",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      158.0
+     ],
+     "size": [
+      19.2,
+      4.8
+     ],
+     "rot": -20
+    }
+   ],
+   "material": "hair_black",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "brow_hurt_146",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_hurt"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      150.0
+     ],
+     "size": [
+      24.0,
+      4.8
+     ],
+     "rot": -17
+    }
+   ],
+   "material": "hair_black",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "brow_hurt_174",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_hurt",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      150.0
+     ],
+     "size": [
+      19.2,
+      4.8
+     ],
+     "rot": 17
+    }
+   ],
+   "material": "hair_black",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "nose",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "nose"
+   ],
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      175.0,
+      200.0
+     ],
+     "size": [
+      12.0,
+      8.0
+     ],
+     "rot": 200
+    }
+   ],
+   "kind": "flat",
+   "color": "skin_shadow"
+  },
+  {
+   "name": "mouth",
+   "z": 11.1,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "mouth_idle"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      218.0
+     ],
+     "size": [
+      22.0,
+      8.0
+     ]
+    }
+   ],
+   "material": "lip",
+   "kind": "flat"
+  },
+  {
+   "name": "mouth_shout",
+   "z": 11.1,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "mouth_shout"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      220.0
+     ],
+     "size": [
+      24.0,
+      18.0
+     ]
+    }
+   ],
+   "material": "mouth",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "mouth_hurt",
+   "z": 11.1,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "mouth_hurt"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      220.0
+     ],
+     "size": [
+      26.0,
+      11.0
+     ],
+     "rot": -8
+    }
+   ],
+   "material": "mouth",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "blush",
+   "z": 10.9,
+   "tags": [
+    "upper",
+    "head",
+    "feature"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      128.0,
+      206.0
+     ],
+     "size": [
+      22.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      212.0,
+      206.0
+     ],
+     "size": [
+      22.0,
+      10.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "material": "blush",
+   "kind": "flat",
+   "opacity": 0.4,
+   "clip_to": "face"
+  },
+  {
+   "name": "bun",
+   "z": 9.6,
+   "tags": [
+    "upper",
+    "head",
+    "hair"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      164.0,
+      50.0
+     ],
+     "size": [
+      76.0,
+      68.0
+     ]
+    }
+   ],
+   "material": "hair_black"
+  },
+  {
+   "name": "hair_back",
+   "z": 0.6,
+   "tags": [
+    "upper",
+    "head",
+    "hair"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      164.0,
+      130.0
+     ],
+     "size": [
+      200.0,
+      184.0
+     ]
+    }
+   ],
+   "material": "hair_black"
+  },
+  {
+   "name": "hair_front",
+   "z": 10,
+   "tags": [
+    "upper",
+    "head",
+    "hair"
+   ],
+   "pieces": [
+    {
+     "icon": "umbrella",
+     "at": [
+      164.0,
+      98.0
+     ],
+     "size": [
+      204.0,
+      88.0
+     ],
+     "crop": [
+      0.6,
+      2.3,
+      15.4,
+      8.7
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      96.0,
+      142.0
+     ],
+     "size": [
+      24.0,
+      48.0
+     ],
+     "flip": "y",
+     "rot": 4
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      232.0,
+      142.0
+     ],
+     "size": [
+      24.0,
+      48.0
+     ],
+     "flip": "yx",
+     "rot": -4
+    }
+   ],
+   "material": "hair_black",
+   "shade": {
+    "highlight_amount": 0.7,
+    "highlight": 0.9
+   }
+  },
+  {
+   "name": "ruff_0",
+   "z": 8,
+   "tags": [
+    "upper"
+   ],
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      160.0,
+      256.0
+     ],
+     "size": [
+      168.0,
+      56.0
+     ]
+    }
+   ],
+   "material": "cloth_white"
+  },
+  {
+   "name": "necklace_1",
+   "z": 8.1,
+   "tags": [
+    "upper",
+    "front"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      122.0,
+      286.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "repeat": {
+      "ellipse": [
+       166.0,
+       266.0,
+       52.0,
+       44.0
+      ],
+      "count": 13,
+      "arc": [
+       20,
+       160
+      ]
+     }
+    }
+   ],
+   "material": "gold"
+  },
+  {
+   "name": "necklace_1_p",
+   "z": 8.2,
+   "tags": [
+    "upper",
+    "front"
+   ],
+   "pieces": [
+    {
+     "icon": "gem",
+     "at": [
+      166.0,
+      326.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    }
+   ],
+   "material": "gold"
+  },
+  {
+   "name": "parasol_r_shaft",
+   "z": 5.5,
+   "tags": [
+    "upper",
+    "arm_r",
+    "weapon_r",
+    "grip_r"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      21.28,
+      526.08
+     ],
+     "size": [
+      10.0,
+      180.0
+     ],
+     "rot": 18.0
+    }
+   ],
+   "material": "iron_dark"
+  },
+  {
+   "name": "parasol_r_canopy",
+   "z": 5.6,
+   "tags": [
+    "upper",
+    "arm_r",
+    "weapon_r",
+    "grip_r"
+   ],
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      11.4,
+      556.52
+     ],
+     "size": [
+      52.0,
+      152.0
+     ],
+     "flip": "y",
+     "rot": 18.0
+    }
+   ],
+   "material": "cloth_black"
+  },
+  {
+   "name": "parasol_r_handle",
+   "z": 5.7,
+   "tags": [
+    "upper",
+    "arm_r",
+    "weapon_r",
+    "grip_r"
+   ],
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      42.1,
+      436.12
+     ],
+     "size": [
+      28.0,
+      28.0
+     ],
+     "rot": 108
+    }
+   ],
+   "material": "iron_dark"
+  }
+ ],
+ "frames": [
+  {
+   "name": "portrait"
+  }
+ ]
+}

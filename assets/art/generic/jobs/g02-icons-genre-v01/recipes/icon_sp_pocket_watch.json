@@ -1,0 +1,247 @@
+{
+ "asset": "icon_sp_pocket_watch",
+ "status": "candidate",
+ "note": "톱니 회중시계 (스팀펑크, tier A). Handheld item icon, flat view, no text.",
+ "palette": "palette_g02.json",
+ "style": "prop",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64,
+  64
+ ],
+ "pivot_meaning": "icon centre",
+ "seed": 306,
+ "forms": [
+  {
+   "name": "loop",
+   "z": 0,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      70.68,
+      16.47
+     ],
+     "size": [
+      22,
+      18
+     ],
+     "rot": 8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      70.68,
+      16.47
+     ],
+     "size": [
+      13,
+      9
+     ],
+     "op": "sub",
+     "rot": 8.0
+    }
+   ],
+   "material": "brass"
+  },
+  {
+   "name": "crown",
+   "z": 0.5,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      68.87,
+      29.34
+     ],
+     "size": [
+      12,
+      12
+     ],
+     "rot": 8.0
+    }
+   ],
+   "material": "brass"
+  },
+  {
+   "name": "case",
+   "z": 1,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      62.89,
+      71.92
+     ],
+     "size": [
+      92,
+      92
+     ],
+     "rot": 8.0
+    }
+   ],
+   "material": "brass",
+   "shade": {
+    "highlight_amount": 0.8
+   }
+  },
+  {
+   "name": "dial",
+   "z": 2,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      62.89,
+      71.92
+     ],
+     "size": [
+      74,
+      74
+     ],
+     "rot": 8.0
+    }
+   ],
+   "material": "paper"
+  },
+  {
+   "name": "gear_a",
+   "z": 2.5,
+   "pieces": [
+    {
+     "icon": "cog",
+     "at": [
+      47.63,
+      79.88
+     ],
+     "size": [
+      36,
+      36
+     ],
+     "rot": 8.0
+    }
+   ],
+   "material": "bronze",
+   "clip_to": "dial"
+  },
+  {
+   "name": "gear_b",
+   "z": 2.6,
+   "pieces": [
+    {
+     "icon": "cog",
+     "at": [
+      80.12,
+      64.25
+     ],
+     "size": [
+      26,
+      26
+     ],
+     "rot": 8.0
+    }
+   ],
+   "material": "brass",
+   "clip_to": "dial"
+  },
+  {
+   "name": "ticks",
+   "z": 3,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      67.34,
+      40.23
+     ],
+     "size": [
+      2.4,
+      6
+     ],
+     "repeat": {
+      "ellipse": [
+       62.89,
+       71.92,
+       32,
+       32
+      ],
+      "count": 12,
+      "orient": true,
+      "phase": -90
+     },
+     "rot": 8.0
+    }
+   ],
+   "material": "iron_dark",
+   "kind": "flat"
+  },
+  {
+   "name": "hands",
+   "z": 3.2,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.56,
+      60.04
+     ],
+     "size": [
+      3,
+      26
+     ],
+     "rot": 8.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      71.09,
+      71.05
+     ],
+     "size": [
+      3,
+      18
+     ],
+     "rot": 70
+    },
+    {
+     "icon": "circle",
+     "at": [
+      62.89,
+      71.92
+     ],
+     "size": [
+      7,
+      7
+     ],
+     "rot": 8.0
+    }
+   ],
+   "material": "iron_dark"
+  },
+  {
+   "name": "glint_dial",
+   "z": 20,
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      49.55,
+      51.87
+     ],
+     "size": [
+      18,
+      36
+     ],
+     "rot": -22
+    }
+   ],
+   "kind": "flat",
+   "color": "white_ink",
+   "opacity": 0.3,
+   "clip_to": "dial"
+  }
+ ]
+}
