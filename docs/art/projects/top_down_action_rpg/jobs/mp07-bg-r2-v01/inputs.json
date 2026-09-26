@@ -1,9 +1,9 @@
 {
   "job_id": "mp07-bg-r2-v01",
-  "status": "prep_only",
-  "hashes_taken": "2026-09-27 04:02 KST, during preparation (rule docs may change before the job starts; re-hash at start)",
+  "status": "candidate",
+  "hashes_taken": "rule and content files 2026-09-27 04:02 KST (preparation); V1 references and COMMON 2026-09-27 06:10 KST",
   "read_only_inputs": [
-    {"path": "C:/Users/Sherum/.kiro/crew/workspace/tin_mass_production/COMMON.md", "sha256": "4071814e009fdbc3fadb89cc07f465f3a2a6490bd1b47549bdea228828eca3c8", "role": "shared rules for the 10 mass-production sessions (prep-only line present)"},
+    {"path": "docs/art/mass_production/COMMON.md", "sha256": "dc7b54226686759b0b53e8fa2a0c19093b0fc50db0bb68bd3cf125d41cc9e8c0", "role": "shared rules for the mass-production sessions (moved into the repository at 05:18 KST; the version followed here: V1 mood, objects separate from backgrounds, lighting in game code)"},
     {"path": "docs/IMAGE_ASSET_WORKFLOW.md", "sha256": "6d2c161c92ac404a8e56bc4e6c98b620c40007d6e5f05481e7c33c4f532b809c", "role": "rule doc: brief required fields, candidate/approval, hard gates"},
     {"path": "docs/VISUAL_DIRECTION.md", "sha256": "a0aa78880d0768c178b0ba8565c571daf0ab9f99b8b1a3b9562cac37a775b7ff", "role": "rule doc: three information grades for background objects"},
     {"path": "docs/art/projects/top_down_action_rpg/PROJECT_ART_LAYER.md", "sha256": "6346e65417891ca5cc227581108075abb46fc85c59b3598862aa2b182597fe52", "role": "project art layer: camera, light, other regions not unified to H0 colours"},
@@ -21,21 +21,21 @@
     {"path": "modules/top_down_action_rpg/content/props/prop_r2_waterline_mark.json", "sha256": "fa6ce29187b79577c6590e4443b4b71b40a7c3904d48c85c243d2f147102b87c", "role": "prop states and art keys"},
     {"path": "modules/top_down_action_rpg/content/recovery/rec_r2_census_clone.json", "sha256": "da644463230dc850a90f65e50dcf5e1c8213654232a134b45967a3b23489021f", "role": "respawn prop (circulator stack), for the recovery-anchor slot"},
     {"path": "modules/top_down_action_rpg/presentation/top_down_vector_layer.gd", "sha256": "8f36e3740c71316d19c53c38fcd0c854a2b9f02bc19ecfd83952faf996995753", "role": "what the module draws now: generic topology, no fixed R2 anchor coordinates"},
-    {"path": "docs/art/projects/top_down_action_rpg/jobs/h0-icon-collage-v01/JOB.md", "sha256": "a0bbbf9a123289531f524e9dcae08c43765b3db93581878e02bcfb9d7cc1dc53", "role": "trial job record: output layout, pivots, tool usage"},
-    {"path": "docs/art/projects/top_down_action_rpg/jobs/h0-icon-collage-v01/QA.md", "sha256": "65c61dfeac9fa9eb1c146f371bb36ad094c3091441e0d5c229062e0d7818e83d", "role": "trial known problems"},
-    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-collage-v01/recipes/bg_h0_arrival_approach.json", "sha256": "3918de38055a6aff2e6549167ee3e8f5cd6ee0993bc9fe2eeaadd58298a422d5", "role": "background recipe, reference only (scale 180 px per metre, 2 source px per logical px)"}
+    {"path": "docs/art/projects/top_down_action_rpg/jobs/h0-icon-mood-v02/JOB.md", "sha256": "28e9ab05f5776aef640feab0ddb668bcde8020cea7634dc245dfbf2d74211ed7", "role": "V1 mood job record"},
+    {"path": "docs/art/projects/top_down_action_rpg/jobs/h0-icon-mood-v02/QA.md", "sha256": "e322d17dd6ea3f5eca8efbd67a55c4eb5f20b59c9e17bcc48f60a256d1e50763", "role": "V1 known weaknesses (stain pattern, readable aperture)"},
+    {"path": "docs/art/projects/top_down_action_rpg/jobs/h0-icon-collage-v01/QA.md", "sha256": "65c61dfeac9fa9eb1c146f371bb36ad094c3091441e0d5c229062e0d7818e83d", "role": "first trial known problems"},
+    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/recipes/bg_h0_arrival_approach.json", "sha256": "a332a0742eafe6a1a6ecb351de8acbba5b399606dd2ea8b44f1ca43c8bd1337a", "role": "V1 background recipe, reference only"},
+    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/recipes/prop_h0_ration_counter.json", "sha256": "c356d68c268943e5baefa72593f9819319206b02c7f043cc961d436cdf335f6d", "role": "V1 prop recipe, reference only"},
+    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/recipes/gate_g0_arrival_declaration.json", "sha256": "25d6a66b51407cbb4c2e27f1849f6c08ab9cfdcf5d59d70b96706cd09d426445", "role": "V1 gate recipe, reference only"},
+    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-collage-v01/input/at_icons_node2d_catalog_p1.png", "sha256": "44f4ebbd5c19b6dc76333dbad52b74bca0e04a21db81af12ed86da5ccadcf11a", "role": "icon catalog page 1 of 4, used to choose icon pieces"}
   ],
-  "style_reference_to_view_at_start": [
-    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-collage-v01/preview/preview_h0_1280x720.png", "sha256": "e032ccb6edf1438e5595188b92ca0bdc71c3bf5c88d80b6494e1f1f245d1d6b3", "status": "candidate, not approved"},
-    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-collage-v01/preview/sheet_player_1x_0.5x.png", "sha256": "a04eb2889f59c4f5fe564417c524cff151befa175de50e583db0df74320de30d", "status": "candidate, not approved"},
-    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-collage-v01/preview/sheet_enemy_props_0.5x.png", "sha256": "156cad95803eb4a15440f14b70578fbee6fc39ad55f49e7a7a299b33e081011d", "status": "candidate, not approved"}
+  "style_reference_viewed": [
+    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/preview/asset_bg_h0_v1_1280x720.png", "sha256": "baaf465b79dd8eaa03034bcf22d46d20c81899fa9327a8bf04675a90aec91c31", "status": "candidate, the user's chosen mood (V1); matched by eye"},
+    {"path": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/preview/asset_sheet_v1_props_0.5x.png", "sha256": "cd28b60435056955e525a1256bac67c5c49d6525634a01bfca5ad90806032bdf", "status": "candidate, matched by eye"}
   ],
   "copied_into_this_job": [
-    {"from": "assets/art/top_down_action_rpg/jobs/h0-icon-collage-v01/recipes/palette_h0.json", "sha256": "6ba743f32be716cfaa130fe80383ca710c007ef743e6830edd26baa25d506fb5", "note": "copied 02:29 KST before the prep-only rule; unchanged"},
-    {"from": "assets/art/top_down_action_rpg/jobs/h0-icon-collage-v01/tool/", "note": "copied 02:29 KST before the prep-only rule; only change: iconkit/icons.py prefetch workers 8 -> 2. Re-check against the reference tool at start"}
+    {"from": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/recipes/palette_h0_mood.json", "sha256": "ccfa41612677c98e366dc9bb77b90e62bd11d9406d1d7d66c783455ebfff9ebc", "note": "unchanged; palette_r2.json extends it"},
+    {"from": "assets/art/top_down_action_rpg/jobs/h0-icon-mood-v02/tool/", "note": "copied 04:36 KST over the preparation-time copy of the old tool; changes listed in JOB.md"}
   ],
-  "pending_inputs": [
-    "tone-and-manner (mood) standard: on its way per the user, 2026-09-27",
-    "character sprite format result (8 directions, trial job h0-icon-8dir-v01): only needed for the player scale check in previews"
-  ]
+  "icon_source": "addons/at-icons/node2d (MIT); per-icon SHA-256 in every output .json"
 }

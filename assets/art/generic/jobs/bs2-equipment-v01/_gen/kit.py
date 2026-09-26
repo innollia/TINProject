@@ -53,7 +53,7 @@ def patina(pieces, material="rust", opacity=0.6, clip=None, z=9.0):
 
 
 def write(asset, forms, note, geom=SQUARE, style="prop", seed=None):
-    canvas, pivot, pv = geom
+    canvas, pivot = geom[0], geom[1]
     if seed is None:
         _seed["n"] += 1
         seed = _seed["n"]

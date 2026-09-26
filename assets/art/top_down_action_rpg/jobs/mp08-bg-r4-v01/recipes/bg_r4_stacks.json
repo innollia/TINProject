@@ -21,12 +21,22 @@
        {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [0, 400], "size": [221, 191],
         "repeat": {"grid": [13, 7], "step": [224, 194], "stagger": 112, "jitter": {"at": 2, "size": 0.01}}}
      ]},
-    {"name": "tile_tint", "z": 1.5, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.32,
+    {"name": "tile_tint", "z": 1.5, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.27,
      "pieces": [
        {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [0, 400], "size": [221, 191],
         "repeat": {"grid": [13, 7], "step": [224, 194], "stagger": 112, "jitter": {"at": 2, "alpha": 1.0}}}
      ]},
-    {"name": "stain_large", "z": 2, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.32,
+    {"name": "sunken_tiles", "z": 1.7, "kind": "flat", "color": "#2c2e34", "opacity": 0.9,
+     "rough": {"amp": 0.6, "soft": 2, "cell": 10},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [1232, 400], "size": [210, 180]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [224, 982], "size": [200, 176]},
+       {"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [2128, 1176], "size": [206, 178]}
+     ]},
+    {"name": "sunken_grit", "z": 1.8, "kind": "wash", "material": "dust", "opacity": 0.3, "clip_to": "sunken_tiles",
+     "mottle": {"cell": 30, "lo": 0.5, "hi": 0.8},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 800], "size": [2600, 1000]}]},
+    {"name": "stain_large", "z": 2, "kind": "wash", "material": "damp", "blend": "multiply", "opacity": 0.28,
      "mottle": {"cell": 600, "lo": 0.5, "hi": 0.85},
      "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 900], "size": [2800, 1200]}]},
     {"name": "stain_mid", "z": 2.1, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.22,

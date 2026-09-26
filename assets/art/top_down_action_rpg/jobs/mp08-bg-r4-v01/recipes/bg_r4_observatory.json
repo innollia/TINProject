@@ -12,7 +12,7 @@
   "forms": [
     {"name": "drop_beyond", "z": -1, "kind": "flat", "material": "void",
      "grad": {"to": "well_inner", "y0": 0, "y1": 260, "curve": 0.8},
-     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 150], "size": [2700, 320]}]},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 150], "size": [3000, 460]}]},
     {"name": "joint_base", "z": 0, "kind": "wash", "material": "slate_joint",
      "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 910], "size": [2800, 1100]}]},
     {"name": "slabs", "z": 1, "material": "floor_high",
@@ -41,16 +41,6 @@
        {"icon": "square", "fit": [1, 1, 15, 15], "at": [1500, 1000], "size": [1500, 160], "rot": -6},
        {"icon": "square", "fit": [1, 1, 15, 15], "at": [700, 560], "size": [700, 120]}
      ]},
-    {"name": "meridian_ring", "z": 2.8, "kind": "flat", "material": "bronze", "opacity": 0.85,
-     "pieces": [
-       {"icon": "circle", "at": [840, 880], "size": [760, 660]},
-       {"icon": "circle", "op": "sub", "at": [840, 880], "size": [748, 650]}
-     ]},
-    {"name": "meridian_line", "z": 2.9, "kind": "flat", "material": "bronze", "opacity": 0.85,
-     "pieces": [
-       {"icon": "square", "at": [1540, 880], "size": [640, 6]},
-       {"icon": "square", "at": [840, 1330], "size": [6, 240]}
-     ]},
     {"name": "cracks", "z": 3, "kind": "flat", "material": "slate_joint", "opacity": 0.55,
      "pieces": [
        {"icon": "lightning_bolt", "at": [300, 1260], "size": [16, 80], "rot": 60},
@@ -71,9 +61,10 @@
      "pieces": [{"icon": "circle", "at": [840, 880], "size": [480, 416]}]},
     {"name": "dais_grille_void", "z": 11.5, "kind": "flat", "material": "void",
      "pieces": [{"icon": "circle", "at": [840, 880], "size": [340, 294]}]},
-    {"name": "dais_grille", "z": 11.7, "kind": "flat", "material": "iron", "line": {"width": 0.9, "heavy": 1.0},
+    {"name": "dais_grille", "z": 11.7, "kind": "flat", "material": "iron", "line": {"width": 0.7, "heavy": 0.8},
      "pieces": [
-       {"icon": "grid_fine", "ground": true, "at": [840, 880], "size": [360, 360]},
+       {"icon": "square", "at": [0, 0], "size": [6, 300], "repeat": {"line": [[690, 880], [990, 880]], "count": 11}},
+       {"icon": "square", "at": [0, 0], "size": [360, 6], "repeat": {"line": [[840, 750], [840, 1010]], "count": 7}},
        {"icon": "circle", "op": "clip", "at": [840, 880], "size": [340, 294]}
      ]},
     {"name": "dais_grille_ring", "z": 11.8, "kind": "flat", "material": "iron", "line": {"width": 1.0, "heavy": 1.1},
@@ -130,13 +121,13 @@
      "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 400], "size": [2600, 56]}]},
 
     {"name": "west_wall", "z": 23, "kind": "block", "material": "stone", "extrude": 30,
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [30, 830], "size": [60, 1260]}]},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [30, 812], "size": [60, 1256]}]},
     {"name": "east_wall", "z": 23, "kind": "block", "material": "stone", "extrude": 30,
-     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [2530, 830], "size": [60, 1260]}]},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [2530, 812], "size": [60, 1256]}]},
     {"name": "side_wall_caps", "z": 23.5, "kind": "flat", "material": "stone_cap",
      "pieces": [
-       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [30, 830], "size": [44, 1260]},
-       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [2530, 830], "size": [44, 1260]}
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [30, 812], "size": [44, 1256]},
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [2530, 812], "size": [44, 1256]}
      ]}
   ]
 }

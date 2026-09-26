@@ -1,0 +1,43 @@
+{
+  "asset": "fire_spirit",
+  "status": "candidate",
+  "note": "Generic battler: fire spirit (elemental). The body itself is flame: a tall flame torso with flame-tongue arms, a brighter core, two dark eye hollows and a mouth, the base narrowing into a wisp above a scorch shadow. The flame parts are also written to the emit layer so game lighting can use them. Front view, fixed 60 deg camera. Loose flame effects are session 10's job; this is only the creature's body.",
+  "palette": "palette_mp05_generic.json",
+  "style": "sprite",
+  "canvas": [320, 384],
+  "pivot": [160, 192],
+  "pivot_meaning": "body centre; floats - detached shadow at y=324",
+  "seed": 610,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.3, "blur": 7,
+     "pieces": [{"icon": "circle", "at": [160, 324], "size": [118, 20]}]},
+
+    {"name": "arms", "z": 1, "material": "flame_body", "emit": 0.7,
+     "pieces": [
+       {"icon": "fire", "at": [104, 188], "size": [48, 78], "rot": -34},
+       {"icon": "fire", "at": [216, 188], "size": [48, 78], "rot": 34}
+     ]},
+    {"name": "body", "z": 2, "material": "flame_body", "emit": 0.75,
+     "pieces": [
+       {"icon": "fire", "at": [160, 176], "size": [118, 176]},
+       {"icon": "droplet", "flip": "y", "at": [162, 270], "size": [46, 76]}
+     ]},
+    {"name": "tongues", "z": 2.1, "material": "flame_body", "emit": 0.7,
+     "pieces": [
+       {"icon": "fire", "at": [132, 104], "size": [30, 48], "rot": -18},
+       {"icon": "fire", "at": [190, 100], "size": [28, 46], "rot": 16}
+     ]},
+    {"name": "core", "z": 2.2, "kind": "flat", "material": "fire_core", "emit": 1.0, "clip_to": "body",
+     "glow": {"radius": 7, "opacity": 0.5, "color": "flame_glow"},
+     "pieces": [
+       {"icon": "fire", "at": [160, 196], "size": [58, 90]},
+       {"icon": "droplet", "flip": "y", "at": [162, 262], "size": [18, 44]}
+     ]},
+    {"name": "face", "z": 3, "kind": "flat", "color": "#2a0e05",
+     "pieces": [
+       {"icon": "droplet", "at": [146, 150], "size": [12, 18], "rot": -12},
+       {"icon": "droplet", "at": [174, 150], "size": [12, 18], "rot": 12},
+       {"icon": "circle", "half": "bottom", "at": [160, 174], "size": [22, 10]}
+     ]}
+  ]
+}

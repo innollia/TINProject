@@ -366,7 +366,7 @@ ITEMS.append(("eq_w23_iron_flail", [
      "pieces": [p("triangle", [318, 130], [40, 56],
                   repeat={"ellipse": [318, 208, 74, 74], "count": 7, "orient": True})]},
     iron_tarnish("ball", ((330, 200, 130, 120),)),
-    iron_tarnish("chain", None),
+    iron_tarnish("chain", ((250, 200, 70, 140),)),
 ], "23 iron flail. Short handle, four links, a studded ball the size of a fist. The chain is bent closed on one link so it can be pocketed."))
 
 # 24 short bow
@@ -374,7 +374,7 @@ ITEMS.append(("eq_w24_short_bow", [
     {"name": "bow", "z": 0, "material": "wood",
      "pieces": [p("bow_and_arrow", [266, 256], [380, 380], crop=[0.5, 1.0, 8.5, 15.0])]},
     {"name": "string", "z": 1, "kind": "flat", "material": "leather", "line": False,
-     "pieces": [p("square", [166, 256], [5, 300])}]},
+     "pieces": [p("square", [166, 256], [5, 300])]},
     {"name": "grip", "z": 3, "material": "leather",
      "pieces": [p("square", [176, 262], [40, 100])]},
     {"name": "nock", "z": 3, "material": "iron",
