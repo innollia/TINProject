@@ -40,7 +40,8 @@ func before_all() -> void:
 func after_all() -> void:
 	if _inst != null:
 		_inst.call("exit")
-	_inst.queue_free()
+		remove_child(_inst)
+		_inst.free()
 
 
 func _drain() -> void:
@@ -155,8 +156,9 @@ func test_v11_ui_is_not_black_with_white_text() -> void:
 	var src: String = _read(LOBBY)
 	assert_false(src.contains("StoneStoryPalette.fill(pal)"),
 			"V11 the lobby must not clear itself to the void colour")
-	assert_true(src.contains("StoneStoryPalette.ground(pal)") or src.contains("StoneStoryPalette.sky_near(pal)"),
-			"V11 the lobby must paint a space surface, not a void")
+	assert_true(src.contains("StoneStorySky.draw") and src.contains("StoneStoryGround.draw"),
+			"V11 the lobby must paint the hub sky and ground, not a void")
+	assert_true(src.contains("StoneStoryPalette.panel(pal)"), "V11 UI sits on coloured tablets")
 
 
 # --- V12 focus 는 형태로 표현된다 --------------------------------------

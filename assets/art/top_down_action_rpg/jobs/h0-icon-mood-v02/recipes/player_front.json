@@ -1,0 +1,103 @@
+{
+  "asset": "player",
+  "status": "candidate",
+  "note": "Player, front view (facing down) on the fixed 60 deg camera: the crown of the head and the shoulder tops are visible and lit, so the face sits low on the head. Idle + 4-frame down walk.",
+  "palette": "palette_h0_mood.json",
+  "style": "sprite",
+  "canvas": [192, 192],
+  "pivot": [96, 186],
+  "pivot_meaning": "ground contact point between the boots (place this pixel on the floor position)",
+  "scale_all": {"factor": 1.04, "origin": [96, 186]},
+  "seed": 41,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 3,
+     "pieces": [{"icon": "circle", "at": [96, 184], "size": [64, 18]}]},
+    {"name": "hair_back", "tags": ["upper", "head"], "z": 0, "material": "hair",
+     "pieces": [
+       {"icon": "circle", "at": [96, 42], "size": [66, 60]},
+       {"icon": "droplet", "flip": "y", "at": [69, 64], "size": [16, 26], "rot": 8},
+       {"icon": "droplet", "flip": "y", "at": [123, 64], "size": [16, 26], "rot": -8}
+     ]},
+
+    {"name": "leg_l", "tags": ["legs", "leg_l"], "z": 1, "material": "trouser",
+     "pieces": [{"icon": "circle", "at": [86, 165], "size": [17, 30]}]},
+    {"name": "leg_r", "tags": ["legs", "leg_r"], "z": 1, "material": "trouser",
+     "pieces": [{"icon": "circle", "at": [106, 165], "size": [17, 30]}]},
+    {"name": "boot_l", "tags": ["legs", "leg_l"], "z": 2, "material": "leather",
+     "pieces": [{"icon": "footsteps", "crop": [2, 2, 7.6, 9.8], "flip": "y", "at": [85, 179], "size": [20, 17]}]},
+    {"name": "boot_r", "tags": ["legs", "leg_r"], "z": 2, "material": "leather",
+     "pieces": [{"icon": "footsteps", "crop": [2, 2, 7.6, 9.8], "flip": "xy", "at": [107, 179], "size": [20, 17]}]},
+
+    {"name": "coat", "tags": ["upper", "body"], "z": 3, "material": "coat",
+     "pieces": [
+       {"icon": "bell", "crop": [1.6, 3.4, 14.4, 10.6], "at": [96, 124], "size": [66, 64]},
+       {"icon": "cloud", "flip": "y", "at": [96, 157], "size": [62, 20]}
+     ]},
+    {"name": "coat_seam", "tags": ["upper", "body"], "z": 3.5, "kind": "flat", "color": "coat_seam",
+     "pieces": [{"icon": "circle", "at": [97, 140], "size": [3, 40]}]},
+
+    {"name": "strap", "tags": ["upper", "strap"], "z": 4, "material": "leather", "cast": false,
+     "pieces": [{"icon": "circle", "at": [103, 118], "size": [5, 76], "rot": -44}]},
+    {"name": "satchel", "tags": ["upper", "satchel"], "z": 4.2, "material": "leather",
+     "pieces": [{"icon": "briefcase", "crop": [1.5, 4.2, 14.5, 15], "at": [129, 154], "size": [24, 18]}]},
+    {"name": "satchel_buckle", "tags": ["upper", "satchel"], "z": 4.5, "kind": "flat", "material": "bronze",
+     "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "square", "at": [129, 151], "size": [6, 5]}]},
+
+    {"name": "arm_l", "tags": ["upper", "arm_l"], "z": 5.5, "material": "coat", "pivot": [68, 96],
+     "pieces": [{"icon": "shield", "half": "left", "at": [65, 117], "size": [18, 44], "rot": 4}]},
+    {"name": "arm_r", "tags": ["upper", "arm_r"], "z": 5.5, "material": "coat", "pivot": [124, 96],
+     "pieces": [{"icon": "shield", "half": "right", "at": [127, 117], "size": [18, 44], "rot": -4}]},
+    {"name": "glove_l", "tags": ["upper", "arm_l"], "z": 6, "material": "leather",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [63, 141], "size": [12, 15], "rot": 6}]},
+    {"name": "glove_r", "tags": ["upper", "arm_r"], "z": 6, "material": "leather",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [129, 141], "size": [12, 15], "rot": -6}]},
+
+    {"name": "capelet", "tags": ["upper", "body"], "z": 7, "material": "coat_top",
+     "pieces": [{"icon": "umbrella", "crop": [0.6, 2.3, 15.4, 8.7], "at": [96, 94], "size": [90, 38]}]},
+    {"name": "clasp", "tags": ["upper", "body"], "z": 7.5, "kind": "flat", "material": "bronze",
+     "line": {"width": 0.6, "heavy": 0.5},
+     "pieces": [{"icon": "coin", "at": [96, 107], "size": [11, 11]}]},
+
+    {"name": "scarf", "tags": ["upper", "head"], "z": 8, "material": "scarf",
+     "pieces": [{"icon": "circle", "at": [96, 79], "size": [50, 18]}]},
+    {"name": "scarf_tail", "tags": ["upper", "scarf_tail"], "z": 8.2, "material": "scarf", "pivot": [109, 84],
+     "pieces": [{"icon": "bookmark", "at": [110, 98], "size": [14, 30], "rot": -6}]},
+
+    {"name": "face", "tags": ["upper", "head"], "z": 9, "material": "skin",
+     "pieces": [{"icon": "circle", "at": [96, 56], "size": [46, 40]}]},
+
+    {"name": "hair_front", "tags": ["upper", "head"], "z": 10, "material": "hair",
+     "shade": {"highlight_amount": 0.75, "highlight": 0.9},
+     "pieces": [
+       {"icon": "cloud", "at": [95, 29], "size": [74, 38]},
+       {"icon": "droplet", "flip": "y", "at": [80, 47], "size": [14, 17], "rot": 12},
+       {"icon": "droplet", "flip": "y", "at": [96, 49], "size": [13, 17]},
+       {"icon": "droplet", "flip": "y", "at": [111, 47], "size": [14, 17], "rot": -12},
+       {"icon": "droplet", "flip": "y", "at": [70, 58], "size": [12, 24], "rot": 5},
+       {"icon": "droplet", "flip": "y", "at": [122, 58], "size": [12, 24], "rot": -5}
+     ]},
+
+    {"name": "eye_l", "tags": ["upper", "head", "face_marks"], "z": 11, "kind": "flat", "material": "eye",
+     "pieces": [{"icon": "circle", "at": [85, 61], "size": [5, 7]}]},
+    {"name": "eye_r", "tags": ["upper", "head", "face_marks"], "z": 11, "kind": "flat", "material": "eye",
+     "pieces": [{"icon": "circle", "at": [107, 61], "size": [5, 7]}]},
+    {"name": "nose", "tags": ["upper", "head", "face_marks"], "z": 11, "kind": "flat", "color": "skin_shadow",
+     "pieces": [{"icon": "moon", "at": [97, 67], "size": [6, 4], "rot": 200}]}
+  ],
+  "frames": [
+    {"name": "idle_down"},
+    {"name": "walk_down_1",
+     "move": {"upper": [0, 1], "leg_l": [0, 3], "leg_r": [0, -5],
+              "arm_l": {"dy": -3, "rot": 3, "pivot": [68, 96]}, "arm_r": {"dy": 3, "rot": 2, "pivot": [124, 96]},
+              "scarf_tail": {"rot": 6, "pivot": [109, 84]}}},
+    {"name": "walk_down_2",
+     "move": {"upper": [0, -1], "scarf_tail": {"rot": -3, "pivot": [109, 84]}}},
+    {"name": "walk_down_3",
+     "move": {"upper": [0, 1], "leg_r": [0, 3], "leg_l": [0, -5],
+              "arm_r": {"dy": -3, "rot": -3, "pivot": [124, 96]}, "arm_l": {"dy": 3, "rot": -2, "pivot": [68, 96]},
+              "scarf_tail": {"rot": -6, "pivot": [109, 84]}}},
+    {"name": "walk_down_4",
+     "move": {"upper": [0, -1], "scarf_tail": {"rot": 3, "pivot": [109, 84]}}}
+  ]
+}

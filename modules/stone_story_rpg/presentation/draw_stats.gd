@@ -26,6 +26,8 @@ var ground_bands: int = 0
 var structure_heights: Array[float] = []
 var colors: Dictionary = {}
 var object_heights: Array[float] = []
+var props_drawn: int = 0
+var prop_breaks: Dictionary = {}
 var view_w: int = 960
 var view_h: int = 640
 
@@ -41,6 +43,19 @@ func reset() -> void:
 	structure_heights.clear()
 	colors.clear()
 	object_heights.clear()
+	props_drawn = 0
+	prop_breaks.clear()
+
+
+func note_structure(height_ratio: float) -> void:
+	if height_ratio > 0.0:
+		structure_heights.append(height_ratio)
+
+
+func note_prop(breaks: String) -> void:
+	props_drawn += 1
+	if not breaks.is_empty():
+		prop_breaks[breaks] = int(prop_breaks.get(breaks, 0)) + 1
 
 
 func note_rect(r: Rect2i, col: Color, filled: bool) -> void:

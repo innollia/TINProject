@@ -333,11 +333,12 @@ func test_bake_is_refused_when_a_rigid_shape_gets_a_deform_field() -> void:
 
 
 func test_outline_has_no_duplicate_points() -> void:
+	# outline() 은 닫힌 윤곽 하나다. 이웃한 두 점(끝 → 처음 포함)이 같으면 안 된다.
 	var builder: ProceduralCreatureBuilder = _rock_builder()
 	var contour: PackedVector2Array = builder.outline()
 	assert_gt(contour.size(), 8, "marching squares found no crossings")
-	for slot: int in range(0, contour.size(), 2):
-		assert_ne(contour[slot], contour[slot + 1], "degenerate segment at %d" % slot)
+	for slot: int in contour.size():
+		assert_ne(contour[slot], contour[(slot + 1) % contour.size()], "repeated point at %d" % slot)
 
 
 func test_part_bounds_agree_with_its_field() -> void:

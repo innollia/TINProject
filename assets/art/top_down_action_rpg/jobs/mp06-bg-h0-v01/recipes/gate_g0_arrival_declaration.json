@@ -1,0 +1,61 @@
+{
+  "asset": "gate_g0_arrival_declaration",
+  "status": "candidate",
+  "note": "gate_g0_arrival_declaration (H0 Arrival Declaration gate, open). Stone portal 2.5 m wide, 1.9 m posts, bronze-banded, pediment crest, a blank bronze docket plate hanging from the lintel and a declaration stamp on a side pedestal. No text.",
+  "palette": "palette_h0.json",
+  "style": "prop",
+  "canvas": [480, 380],
+  "pivot": [240, 360],
+  "pivot_meaning": "centre of the opening on the floor line (front face base)",
+  "seed": 107,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.35, "blur": 7,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [86, 354], "size": [70, 24]},
+       {"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [402, 354], "size": [70, 24]},
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [444, 354], "size": [50, 20]}
+     ]},
+
+    {"name": "posts", "z": 0, "kind": "block", "material": "stone", "extrude": 171,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [84, 169], "size": [50, 44]},
+       {"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [396, 169], "size": [50, 44]}
+     ]},
+    {"name": "post_bands", "z": 1, "kind": "flat", "material": "bronze", "line": {"width": 0.8, "heavy": 0.8},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [84, 214], "size": [50, 9]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [84, 336], "size": [50, 9]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [396, 214], "size": [50, 9]},
+       {"icon": "square", "slice": {"border": 3, "corner": 3}, "at": [396, 336], "size": [50, 9]}
+     ]},
+
+    {"name": "lintel", "z": 2, "kind": "block", "material": "stone", "extrude": 28,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [240, 142], "size": [404, 44]}]},
+    {"name": "lintel_studs", "z": 3, "kind": "flat", "material": "bronze", "line": {"width": 0.7, "heavy": 0.6},
+     "pieces": [{"icon": "circle", "at": [70, 178], "size": [8, 8], "repeat": {"line": [[70, 178], [410, 178]], "count": 9}}]},
+    {"name": "crest", "z": 4, "material": "stone", "shade": {"bump": 0.6},
+     "pieces": [{"icon": "institutional_building", "crop": [0.8, 0.6, 15.2, 5.3], "at": [240, 128], "size": [300, 62]}]},
+    {"name": "crest_disc", "z": 5, "kind": "flat", "material": "bronze", "line": {"width": 0.8, "heavy": 0.7},
+     "pieces": [{"icon": "coin", "at": [240, 134], "size": [26, 22]}]},
+
+    {"name": "chains", "z": 5, "kind": "flat", "material": "bronze_block", "line": {"width": 0.6, "heavy": 0.4},
+     "pieces": [
+       {"icon": "circle", "at": [222, 199], "size": [3.5, 24]},
+       {"icon": "circle", "at": [258, 199], "size": [3.5, 24]}
+     ]},
+    {"name": "docket_plate", "z": 6, "material": "bronze", "cast": {"dist": 4, "blur": 3, "opacity": 0.3, "color": "shade_tint"},
+     "pieces": [{"icon": "banner", "crop": [2.6, 3.3, 13.4, 12.4], "at": [240, 236], "size": [58, 64]}]},
+    {"name": "docket_inlay", "z": 6.5, "kind": "flat", "material": "paper", "opacity": 0.9,
+     "pieces": [{"icon": "banner", "crop": [2.6, 3.3, 13.4, 12.4], "at": [240, 232], "size": [38, 42]}]},
+
+    {"name": "pedestal", "z": 7, "kind": "block", "material": "stone_dark", "extrude": 70,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 8}, "at": [444, 272], "size": [40, 34]}]},
+    {"name": "stamp", "z": 8, "material": "bronze",
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [444, 256], "size": [38, 10]},
+       {"icon": "square", "slice": {"border": 4, "corner": 4}, "at": [444, 244], "size": [28, 15]},
+       {"icon": "circle", "at": [444, 230], "size": [7, 16]},
+       {"icon": "circle", "at": [444, 219], "size": [15, 14]}
+     ]}
+  ]
+}

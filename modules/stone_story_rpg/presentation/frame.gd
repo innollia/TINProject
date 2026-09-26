@@ -1,16 +1,20 @@
 class_name StoneStoryFrame
 extends Control
 
-## 고정 내부 버퍼 960x640 + 정수 배 확대.
-## project.godot 을 고치지 않는다. 비율은 런타임에 잰다.
-## PVE 는 정수 스케일러를 제공하지 않는다. (탐색 결과 확인) 이 클래스가 그 대체다.
+## 논리 좌표는 960x640 안전 영역. 화면비가 넓으면 논리 폭만 MAX_W 까지 넓힌다.
+## 버퍼는 실제 화면 픽셀 크기로 만들고 2D 좌표만 논리 크기로 고정한다(size_2d_override).
+## 면이 실제 해상도에서 래스터화되므로 확대 번짐이 없다.
 
 signal buffer_resized
 
 const VIEW_W: int = 960
 const VIEW_H: int = 640
+const MAX_W: int = 1138
 
-var scale_factor: int = 1
+var scale_factor: float = 1.0
+var view_w: int = VIEW_W
+var safe_x: int = 0
+var pixel_size: Vector2i = Vector2i(VIEW_W, VIEW_H)
 
 var _view: SubViewport = null
 var _display: TextureRect = null
@@ -29,7 +33,6 @@ func _ready() -> void:
 
 
 func _build() -> void:
-	# 여백 = 순수 검정. 뷰포트 밖은 항상 검정이어야 화면 경계가 없다.
 	_backdrop = ColorRect.new()
 	_backdrop.color = Color(0, 0, 0, 1)
 	_backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -38,17 +41,19 @@ func _build() -> void:
 
 	_view = SubViewport.new()
 	_view.size = Vector2i(VIEW_W, VIEW_H)
+	_view.size_2d_override = Vector2i(VIEW_W, VIEW_H)
+	_view.size_2d_override_stretch = true
 	_view.transparent_bg = false
 	_view.render_target_update_mode = SubViewport.UPDATE_ALWAYS
-	_view.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
-	_view.msaa_2d = Viewport.MSAA_DISABLED
+	_view.msaa_2d = Viewport.MSAA_4X
 	_view.use_hdr_2d = false
 	_view.handle_input_locally = false
 	add_child(_view)
 
 	_display = TextureRect.new()
 	_display.texture = _view.get_texture()
-	_display.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_display.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	_display.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_display.stretch_mode = TextureRect.STRETCH_SCALE
 	_display.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_display)
@@ -58,33 +63,45 @@ func get_view() -> SubViewport:
 	return _view
 
 
-## 창 크기가 바뀔 때만. 매 프레임 하지 않는다.
+static func layout_for(logical: Vector2, physical_scale: float) -> Dictionary:
+	var lx: float = maxf(1.0, logical.x)
+	var ly: float = maxf(1.0, logical.y)
+	var w: int = clampi(int(round(float(VIEW_H) * lx / ly)), VIEW_W, MAX_W)
+	var s: float = minf(lx / float(w), ly / float(VIEW_H))
+	var shown := Vector2(float(w) * s, float(VIEW_H) * s)
+	var px := Vector2i(maxi(1, roundi(shown.x * physical_scale)), maxi(1, roundi(shown.y * physical_scale)))
+	return {
+		"view_w": w,
+		"safe_x": (w - VIEW_W) / 2,
+		"logical_scale": s,
+		"shown": shown,
+		"offset": ((Vector2(lx, ly) - shown) * 0.5).floor(),
+		"pixels": px,
+	}
+
+
+func physical_scale() -> float:
+	var vp := get_viewport()
+	if vp == null:
+		return 1.0
+	var vis: Vector2 = vp.get_visible_rect().size
+	var win: Vector2i = DisplayServer.window_get_size()
+	if vis.x <= 0.0 or vis.y <= 0.0 or win.x <= 0 or win.y <= 0:
+		return 1.0
+	return clampf(minf(float(win.x) / vis.x, float(win.y) / vis.y), 0.25, 8.0)
+
+
 func _recompute() -> void:
-	var win := DisplayServer.window_get_size()
-	var logical := size
+	var logical: Vector2 = size
 	if logical.x <= 0.0 or logical.y <= 0.0:
 		logical = Vector2(VIEW_W, VIEW_H)
-	var rx: float = maxf(1.0, float(win.x) / logical.x)
-	var ry: float = maxf(1.0, float(win.y) / logical.y)
-	var k: int = maxi(1, floori(minf(rx, ry)))
-	if k != scale_factor:
-		scale_factor = k
-	_layout(logical)
+	var lay: Dictionary = layout_for(logical, physical_scale())
+	view_w = int(lay["view_w"])
+	safe_x = int(lay["safe_x"])
+	scale_factor = float(lay["logical_scale"])
+	pixel_size = lay["pixels"]
+	_view.size = pixel_size
+	_view.size_2d_override = Vector2i(view_w, VIEW_H)
+	_display.position = lay["offset"]
+	_display.size = lay["shown"]
 	buffer_resized.emit()
-
-
-func _layout(logical: Vector2) -> void:
-	var w: float = float(VIEW_W * scale_factor)
-	var h: float = float(VIEW_H * scale_factor)
-	if w > logical.x:
-		w = logical.x
-	if h > logical.y:
-		h = logical.y
-	_display.position = Vector2(floorf((logical.x - w) * 0.5), floorf((logical.y - h) * 0.5))
-	_display.size = Vector2(w, h)
-	_view.size = Vector2i(VIEW_W, VIEW_H)
-
-
-## 창 크기 -> 내부 정수 배. 검수용.
-static func scale_for(win: Vector2i) -> int:
-	return maxi(1, floori(minf(float(win.x) / float(VIEW_W), float(win.y) / float(VIEW_H))))

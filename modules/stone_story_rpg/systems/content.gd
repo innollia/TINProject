@@ -8,6 +8,7 @@ const ROOT := "res://modules/stone_story_rpg/content/"
 const KINDS: Array[String] = [
 	"region", "foe", "boss", "miniboss", "attack", "item", "enchant", "affix",
 	"recipe", "class", "stone", "spell", "material", "legend", "shop", "obstacle", "prop",
+	"palette", "structure", "silhouette",
 ]
 
 const PREFIX: Dictionary = {
@@ -15,8 +16,19 @@ const PREFIX: Dictionary = {
 	"attack": "atk_", "item": "item_", "enchant": "ench_", "affix": "aff_",
 	"recipe": "rec_", "class": "class_", "stone": "stone_", "spell": "spell_",
 	"material": "mat_", "legend": "legend_", "shop": "shop_", "obstacle": "obs_",
-	"prop": "prop_",
+	"prop": "prop_", "palette": "pal_", "structure": "str_", "silhouette": "sil_",
 }
+
+const SCENE_W: int = 960
+const SCENE_H: int = 640
+const SCENE_HORIZON_Y: int = 243
+const PALETTE_KEYS: Array[String] = ["sky", "horizon", "ground", "structure", "accent"]
+const PALETTE_MIN_SATURATION: float = 0.12
+const WORLD_RULES: Array[String] = ["gravity", "size", "placement"]
+const SILHOUETTE_FORMS: Array[String] = ["crab", "angular", "lump"]
+const LIMB_STYLES: Array[String] = ["splay", "stilt", "stub"]
+const LOOKS: Array[String] = ["sword", "spear", "dagger", "staff", "brand", "shield"]
+const LARGE_RATIO: float = 0.25
 
 var db: Dictionary = {}
 var errors: Array[String] = []
@@ -121,6 +133,188 @@ func _validate() -> void:
 	_validate_foes()
 	_validate_regions()
 	_validate_refs()
+	_validate_visuals()
+
+
+func _validate_visuals() -> void:
+	for id in db["palette"]:
+		var colors: Dictionary = db["palette"][id].get("colors", {})
+		if colors.size() != PALETTE_KEYS.size():
+			errors.append("palette_not_five:" + str(id))
+		for k in PALETTE_KEYS:
+			if not colors.has(k):
+				errors.append("palette_missing:" + str(id) + "/" + k)
+				continue
+			var hex: String = str(colors[k])
+			if not Color.html_is_valid(hex):
+				errors.append("palette_bad_hex:" + str(id) + "/" + k)
+				continue
+			if Color.html(hex).s < PALETTE_MIN_SATURATION:
+				errors.append("palette_achromatic:" + str(id) + "/" + k)
+	for id in db["structure"]:
+		var sd: Dictionary = db["structure"][id]
+		errors.append_array(_check_layers(sd.get("layers", []), "structure:" + str(id)))
+		if str(sd.get("breaks", "")) != "size":
+			errors.append("structure_must_break_size:" + str(id))
+		if visible_ratio(sd.get("layers", [])) < LARGE_RATIO:
+			errors.append("structure_not_large:" + str(id))
+	for id in db["silhouette"]:
+		var sil: Dictionary = db["silhouette"][id]
+		if not SILHOUETTE_FORMS.has(str(sil.get("form", ""))):
+			errors.append("silhouette_bad_form:" + str(id))
+		var body: Array = sil.get("body", [])
+		if body.size() < 5 or not _polygon_ok(body):
+			errors.append("silhouette_bad_body:" + str(id))
+		for q in body:
+			var v: Array = q
+			if absf(float(v[0])) > 0.6 or float(v[1]) > 0.05 or float(v[1]) < -1.1:
+				errors.append("silhouette_out_of_box:" + str(id))
+				break
+		if not sil.get("eyes", {}).has("at"):
+			errors.append("silhouette_no_eyes:" + str(id))
+		var limbs: Dictionary = sil.get("limbs", {})
+		if limbs.get("from", []).size() != 2 or not LIMB_STYLES.has(str(limbs.get("style", ""))):
+			errors.append("silhouette_bad_limbs:" + str(id))
+	for id in db["prop"]:
+		var pd: Dictionary = db["prop"][id]
+		if not pd.has("layers"):
+			errors.append("prop_no_layers:" + str(id))
+			continue
+		errors.append_array(_check_layers(pd["layers"], "prop:" + str(id)))
+	for kind in ["foe", "boss", "miniboss", "class"]:
+		for id in db[kind]:
+			var sid: String = str(db[kind][id].get("silhouette", ""))
+			if sid.is_empty():
+				errors.append("no_silhouette:" + str(id))
+			elif not db["silhouette"].has(sid):
+				errors.append("missing_silhouette:" + str(id) + "/" + sid)
+	for id in db["item"]:
+		var lk: String = str(db["item"][id].get("look", ""))
+		if not lk.is_empty() and not LOOKS.has(lk):
+			errors.append("bad_look:" + str(id))
+	for id in db["obstacle"]:
+		var ol: String = str(db["obstacle"][id].get("look", ""))
+		if not ol.is_empty() and not db["prop"].has(ol):
+			errors.append("missing_look:" + str(id) + "/" + ol)
+	for id in db["region"]:
+		errors.append_array(scene_errors(str(id), db["region"][id]))
+
+
+func scene_errors(id: String, r: Dictionary) -> Array[String]:
+	var out: Array[String] = []
+	var pid: String = str(r.get("palette", ""))
+	if pid.is_empty():
+		out.append("region_no_palette:" + id)
+	elif not db["palette"].has(pid):
+		out.append("missing_palette:" + id + "/" + pid)
+	var sid: String = str(r.get("structure", ""))
+	var broken: Dictionary = {}
+	if sid.is_empty():
+		out.append("region_no_structure:" + id)
+	elif not db["structure"].has(sid):
+		out.append("missing_structure:" + id + "/" + sid)
+	else:
+		var sb: String = str(db["structure"][sid].get("breaks", ""))
+		if not sb.is_empty():
+			broken[sb] = int(broken.get(sb, 0)) + 1
+	out.append_array(_check_layers(r.get("ground_layers", []), "ground:" + id))
+	var seen: Dictionary = {}
+	for raw in r.get("props", []):
+		var p: Dictionary = raw
+		var prop_id: String = str(p.get("prop_id", ""))
+		if not db["prop"].has(prop_id):
+			out.append("missing_prop:" + id + "/" + prop_id)
+			continue
+		if seen.has(prop_id):
+			out.append("prop_duplicate_without_rule:" + id + "/" + prop_id)
+		seen[prop_id] = true
+		var breaks: String = str(p.get("breaks", ""))
+		var y: float = float(p.get("y", SCENE_H))
+		if not breaks.is_empty() and not WORLD_RULES.has(breaks):
+			out.append("unknown_rule:" + id + "/" + prop_id + "/" + breaks)
+			continue
+		if not breaks.is_empty():
+			broken[breaks] = int(broken.get(breaks, 0)) + 1
+		match breaks:
+			"gravity":
+				if y >= float(SCENE_HORIZON_Y):
+					out.append("gravity_break_not_floating:" + id + "/" + prop_id)
+			"placement":
+				if not p.has("twin"):
+					out.append("placement_break_without_twin:" + id + "/" + prop_id)
+			"size":
+				if float(p.get("scale", 1.0)) < 3.0:
+					out.append("size_break_not_oversize:" + id + "/" + prop_id)
+			_:
+				if y < float(SCENE_HORIZON_Y):
+					out.append("prop_floats_without_rule:" + id + "/" + prop_id)
+		if p.has("twin") and breaks != "placement":
+			out.append("twin_without_placement_rule:" + id + "/" + prop_id)
+	for rule in broken:
+		if int(broken[rule]) > 1:
+			out.append("rule_broken_twice:" + id + "/" + str(rule))
+	if broken.size() >= WORLD_RULES.size():
+		out.append("all_rules_broken:" + id)
+	return out
+
+
+func _check_layers(layer_list: Array, tag: String) -> Array[String]:
+	var out: Array[String] = []
+	for raw in layer_list:
+		if typeof(raw) != TYPE_DICTIONARY:
+			out.append("layer_not_dict:" + tag)
+			continue
+		var l: Dictionary = raw
+		if str(l.get("role", "")).is_empty():
+			out.append("layer_no_role:" + tag)
+		var kinds: int = int(l.has("fill")) + int(l.has("beams")) + int(l.has("joints"))
+		if kinds != 1:
+			out.append("layer_kind:" + tag)
+			continue
+		if l.has("fill") and not _polygon_ok(l["fill"]):
+			out.append("layer_bad_polygon:" + tag + "/" + str(l.get("role", "")))
+		for b in l.get("beams", []):
+			if (b as Array).size() != 6:
+				out.append("layer_bad_beam:" + tag)
+				break
+		for j in l.get("joints", []):
+			if (j as Array).size() != 3:
+				out.append("layer_bad_joint:" + tag)
+				break
+	return out
+
+
+func _polygon_ok(raw: Array) -> bool:
+	if raw.size() < 3:
+		return false
+	var pts := PackedVector2Array()
+	for q in raw:
+		var v: Array = q
+		if v.size() < 2:
+			return false
+		pts.append(Vector2(float(v[0]), float(v[1])))
+	return not Geometry2D.triangulate_polygon(pts).is_empty()
+
+
+static func visible_ratio(layer_list: Array) -> float:
+	var top: float = INF
+	var bottom: float = -INF
+	for raw in layer_list:
+		var l: Dictionary = raw
+		var ys: Array[float] = []
+		for q in l.get("fill", []):
+			ys.append(float(q[1]))
+		for b in l.get("beams", []):
+			ys.append(float(b[1]))
+			ys.append(float(b[3]))
+		for j in l.get("joints", []):
+			ys.append(float(j[1]))
+		for y in ys:
+			top = minf(top, y)
+			bottom = maxf(bottom, y)
+	if top == INF:
+		return 0.0
+	return maxf(0.0, clampf(bottom, 0.0, float(SCENE_H)) - clampf(top, 0.0, float(SCENE_H))) / float(SCENE_H)
 
 
 func _validate_items() -> void:

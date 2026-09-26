@@ -621,12 +621,13 @@ draw_polyline(pts, color)
 `JointKind` / `KIND_NAMES` / `JOINT_NAMES` / `SHADE_NAMES` / `Layer` / `FIELD_*`
 enum은 **추가하지 않는다.** (`Kind` 관련 §7-1)
 
-### 6.4 계속 미구현 (의도적)
+### 6.4 dict 팩토리 4개 — 구현됨 (2026-09-27)
 
-`Procedural.build_sprite` / `render_frame` / `make_rig` / `make_backdrop` 4개는
-**구현하지 않는다.** 두 번째 사용처 전 금지. 키트가 클래스를 직접 쓰면 된다.
-`push_error` 스텁 상태를 유지하되, 사유를 "wave 1 stub"이 아닌
-"second use site required"로 문구를 바꾼다.
+`Procedural.build_sprite` / `render_frame` / `make_rig` / `make_backdrop` 은 처음에
+"두 번째 사용처 전 금지"로 미구현이었다. 2026-09-27 사용자 지시("Kit 06·07·08의 화면이
+쓸 core/procedural의 비어 있는 기능(스텁)을 채운다")로 구현했다. 06 계획서의
+`screen_illustration.gd` 가 `build_sprite` 를 쓴다. 넷 다 얇은 껍데기이며 로직은 각
+클래스에 있다. 결정 내용은 §14.
 
 ---
 
@@ -824,3 +825,32 @@ bake는 옳고, 불변이 아니면 bake는 틀린다. `soft_*`는 이 판정에
 `tools/procedural_contract_dump.gd` 는 **owner W9.** 이 엔진은 건드리지 않는다.
 2026-09-26 에 이 파일이 한 번 덮어써졌고(AGENTS.md `### 소유권 침해 시 동작`),
 W0 가 "그대로 살림" 으로 결정했다. 정본 생성은 그 도구의 `--dump` 출력이 담당한다.
+
+
+---
+
+## 14. Wave 1 구현 결정 — 2026-09-27
+
+사용자가 작업 중 질문 없이 추천안대로 진행하라고 지시했다. 아래는 그 과정에서 에이전트가
+고른 것이다. 공개 시그니처(이름·인자 순서·인자 이름·반환 타입)는 하나도 바뀌지 않았다.
+
+1. **리그의 회전·찌그러짐은 정규 형상에서 읽는다.** 관절마다 따로 두던 회전 스프링·
+   squash 스프링은 두 번째 스프링 집합이라 §0 과 부딪혔다. 지우고, 뼈(부모 → 관절)가
+   얼마나 돌고 줄었는지로 `get_rotation()` / `get_scale()` / `draw()` 를 만든다.
+   움직임의 원천은 `disturb()` 임펄스와 `force` 뿐이다.
+2. **리그 전체가 정규 형상 하나다.** 어느 관절에서 `to_shape()` 를 불러도 루트의 것이 나온다.
+   전에는 자식 관절이 자기 하위 트리로 따로 형상을 만들 수 있었다.
+3. **`rest_rotation` 은 라디안, `rest_position` 은 부모 프레임.** 이전 코드는 한쪽에서
+   라디안, 다른 쪽에서 도로 읽었다. `get_rotation()` 과 같은 단위로 맞췄다.
+4. **RIGID 관절은 부모에 정확히 붙어 간다.** 이전 매핑(RIGID → pinned)은 부모가 움직여도
+   제자리에 남았다. pinned 노드로 두고 리그가 매 step 부모 위치에 놓는다. §4.8 대로 이동만
+   상속한다.
+5. **빌더의 부모는 `anchor.parent` 를 따른다.** §4.3·§4.5 의 규약인데 빌더가 무시하고
+   늘 직전 파트에 붙였다. 다리를 몸통에 붙일 수 없었다. `ProceduralShape._build_rigid()`
+   는 Kit 05 가 쓰므로 건드리지 않았다.
+6. **`configure()` 가 JSON 문자열 이름을 받는다.** `"kind": "torso"` 가 조용히 LIMB 가
+   되던 것을 고쳤다. enum 정수 `joint` 도 `at` 으로 바뀐다. (§7-2)
+7. **`wiggle` 은 S 자다.** §1.2 문언대로. 이전 구현은 C 자였다.
+8. **`render_frame` 은 굽지 않고 옮긴다.** 첫 호출에 한 번 굽고, 이후엔 두 관절 리그
+   (고정된 밑동, soft 정수리)의 뼈를 따라 구운 그림을 다시 샘플한다. README 의
+   "per frame 에 다시 만들지 않는다" 를 지킨다.

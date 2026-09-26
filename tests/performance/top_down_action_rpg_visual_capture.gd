@@ -3,9 +3,9 @@ extends SceneTree
 const ENTRY_SCENE: String = "res://modules/top_down_action_rpg/entry.tscn"
 const MODULE_ID: StringName = &"top_down_action_rpg"
 const REPORT_FILE_NAME: String = "top_down_action_rpg_visual_capture_report.json"
-const REPORT_SCHEMA: String = "top_down_action_rpg.visual_capture.v1"
+const REPORT_SCHEMA: String = "top_down_action_rpg.visual_capture.v2"
 const EVIDENCE_CLASS: String = "deterministic_presentation_capture"
-const EVIDENCE_VERSION: String = "1"
+const EVIDENCE_VERSION: String = "2"
 
 const SCREEN_SCRIPT: String = "res://modules/top_down_action_rpg/presentation/top_down_screen.gd"
 const ROW_SCRIPT: String = "res://modules/top_down_action_rpg/presentation/top_down_row.gd"
@@ -26,6 +26,21 @@ const ITEM_CATEGORY: String = "item"
 const ATTACK_CATEGORY: String = "attack"
 const NARRATION_LINE: String = "The shadow over the arrival well has no filed owner."
 const PLAYER_SIDE: String = "player_side"
+
+const RUN_RUNNING: String = "running"
+const RUN_COMPLETE: String = "complete"
+const RUN_FAILED: String = "failed"
+const RUN_TIMEOUT: String = "timeout"
+
+const START_DEFAULT_BOOT: String = "default_boot"
+const START_CRAFTED_SAVE: String = "crafted_save"
+const DRIVER_MODULE_COMMANDS: String = "module_commands"
+const DRIVER_HELD_ENEMY_ACTIONS: String = "module_commands_with_enemy_actions_held_except_authored_charge"
+const DRIVER_SCREEN_FLAG: String = "screen_flag_without_module_caller"
+const DRIVER_FORCED_RESULT: String = "forced_combat_result"
+const CHARGE_LIFECYCLE: String = "charge"
+const ENEMY_ACTION_OWNERS: Array[String] = ["enemy", "linked_actor"]
+const ENEMY_ACTION_HOLD: int = 4096
 
 const CAPTURE_STATES: Array[StringName] = [
 	TopDownActionRpgScreen.STATE_INPUT_BUBBLE,
@@ -69,6 +84,25 @@ const REQUIRED_STATES: Array[StringName] = [
 	TopDownActionRpgScreen.STATE_ESC_MENU,
 ]
 
+const FIXTURE_DRIVERS: Dictionary = {
+	&"input_bubble": DRIVER_SCREEN_FLAG,
+	&"field": DRIVER_MODULE_COMMANDS,
+	&"dialogue_choice_focus": DRIVER_MODULE_COMMANDS,
+	&"narration": DRIVER_SCREEN_FLAG,
+	&"combat_command": DRIVER_MODULE_COMMANDS,
+	&"target_select": DRIVER_MODULE_COMMANDS,
+	&"charge_counter": DRIVER_HELD_ENEMY_ACTIONS,
+	&"guard_dodge_break_feedback": DRIVER_MODULE_COMMANDS,
+	&"equipment_no_turn": DRIVER_MODULE_COMMANDS,
+	&"document_max": DRIVER_MODULE_COMMANDS,
+	&"document_corrupted": DRIVER_MODULE_COMMANDS,
+	&"aftermath_revisit": DRIVER_FORCED_RESULT,
+	&"failure_death": DRIVER_FORCED_RESULT,
+	&"recovery": DRIVER_SCREEN_FLAG,
+	&"success": DRIVER_SCREEN_FLAG,
+	&"esc_menu": DRIVER_SCREEN_FLAG,
+}
+
 const WORLD_LAYER_NODES: Array[String] = [
 	"%FieldLayer", "%CombatLayer", "%FieldLayer/TopologyLayer",
 ]
@@ -102,6 +136,8 @@ const WALK_LIMIT: int = 128
 const DIALOGUE_LIMIT: int = 32
 const COMBAT_LIMIT: int = 240
 const SETTLE_FRAME_COUNT: int = 4
+const WATCHDOG_SECONDS: float = 900.0
+const CLIP_TOLERANCE: float = 0.5
 
 var _output_directory: String = ""
 var _requested_states: Array[StringName] = []
@@ -110,13 +146,15 @@ var _module: GameModule = null
 var _module_context: ModuleContext = null
 var _reports: Array[Dictionary] = []
 var _violations: Array[Dictionary] = []
+var _state_failures: Array[Dictionary] = []
 var _source_audit: Dictionary = {}
 var _static_violations: Array[Dictionary] = []
 var _headless: bool = false
 var _png_written: int = 0
 var _png_refused: int = 0
-var _reports_written: Array[String] = []
-var _failed: bool = false
+var _report_path: String = ""
+var _current_label: String = ""
+var _run_status: String = RUN_RUNNING
 var _done: bool = false
 
 
@@ -135,37 +173,60 @@ func _initialize() -> void:
 	_requested_states = parsed.get("states", CAPTURE_STATES) as Array[StringName]
 	_requested_sizes = parsed.get("sizes", CAPTURE_SIZES) as Array[Vector2i]
 	_headless = DisplayServer.get_name() == "headless"
+	create_timer(WATCHDOG_SECONDS, true, false, true).timeout.connect(_on_watchdog)
 	call_deferred("_run")
 
 
 func _run() -> void:
 	var error: Error = DirAccess.make_dir_recursive_absolute(_output_directory)
-	if error != OK:
-		_fail("could not create output directory: %s" % _output_directory)
-		return
-	if not DirAccess.dir_exists_absolute(_output_directory):
-		_fail("output directory was not created: %s" % _output_directory)
+	if error != OK or not DirAccess.dir_exists_absolute(_output_directory):
+		printerr("TOPDOWN_CAPTURE_FAILED could not create output directory: %s" % _output_directory)
+		_end(2)
 		return
 	_audit_static_sources()
+	if not _write_report():
+		_end(2)
+		return
 	for requested_size: Vector2i in _requested_sizes:
+		if _done:
+			return
 		await _apply_resolution(requested_size)
 		for state_name: StringName in _requested_states:
-			if not await _prepare(state_name):
+			if _done:
 				return
-			var report: Dictionary = _collect(state_name, requested_size)
-			_reports.append(report)
-			if not _record_violations(state_name, requested_size, report):
+			_current_label = _label(state_name, requested_size)
+			var failure: String = await _prepare(state_name)
+			if _done:
 				return
-			if not await _capture(state_name, requested_size, report):
-				return
+			var phase: String = "prepare"
+			if failure.is_empty():
+				await _settle()
+				if _done:
+					return
+				var report: Dictionary = _collect(state_name, requested_size)
+				_record_violations(state_name, requested_size, report)
+				_reports.append(report)
+				phase = "capture"
+				failure = await _capture(state_name, requested_size, report)
+				if _done:
+					return
+			if not failure.is_empty():
+				_record_state_failure(state_name, requested_size, phase, failure)
 			await _teardown()
-	await _write_report()
-	_finish()
+			_write_report()
+	_current_label = ""
+	_complete()
+
+
+func _label(state_name: StringName, requested_size: Vector2i) -> String:
+	return "%s@%dx%d" % [String(state_name), requested_size.x, requested_size.y]
 
 
 func _apply_resolution(requested_size: Vector2i) -> void:
 	if not _headless:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		DisplayServer.window_set_size(requested_size)
+		DisplayServer.window_set_position(Vector2i.ZERO)
 	root.size = requested_size
 	for _frame: int in range(SETTLE_FRAME_COUNT):
 		await process_frame
@@ -173,12 +234,26 @@ func _apply_resolution(requested_size: Vector2i) -> void:
 			await RenderingServer.frame_post_draw
 
 
-func _prepare(state_name: StringName) -> bool:
-	if not await _spawn(_snapshot_for(state_name), state_name):
-		return false
+func _prepare(state_name: StringName) -> String:
+	var spawn_failure: String = await _spawn(_snapshot_for(state_name), state_name)
+	if not spawn_failure.is_empty():
+		return spawn_failure
 	var screen: TopDownActionRpgScreen = _screen_of()
 	if screen == null:
-		return _fail("no screen bound for state %s" % String(state_name))
+		return "no screen bound for state %s" % String(state_name)
+	var fixture_failure: String = _drive_fixture(state_name, screen)
+	if not fixture_failure.is_empty():
+		return fixture_failure
+	var observed: StringName = screen.current_state()
+	if observed != state_name:
+		return "fixture for %s reached %s (mode=%s)" % [String(state_name), String(observed), _mode()]
+	print("TOPDOWN_CAPTURE_STATE state=%s reached=%s mode=%s" % [
+		String(state_name), String(observed), _mode()
+	])
+	return ""
+
+
+func _drive_fixture(state_name: StringName, screen: TopDownActionRpgScreen) -> String:
 	match state_name:
 		TopDownActionRpgScreen.STATE_FIELD:
 			pass
@@ -199,56 +274,53 @@ func _prepare(state_name: StringName) -> bool:
 			screen.refresh()
 		TopDownActionRpgScreen.STATE_DIALOGUE_CHOICE_FOCUS:
 			if not _walk_to(H0_RESIDENT):
-				return _fail("could not reach %s" % H0_RESIDENT)
+				return "could not reach %s" % H0_RESIDENT
 			_module.execute_command(&"interact", {"interactable_id": H0_RESIDENT})
-			if not _advance_to_choice_set():
-				return _fail("dialogue choice set was not reached")
+			var dialogue_failure: String = _advance_to_choice_set()
+			if not dialogue_failure.is_empty():
+				return "dialogue choice set was not reached: " + dialogue_failure
 		TopDownActionRpgScreen.STATE_DOCUMENT_MAX:
 			if not _walk_to(KILN_DOOR_PROP):
-				return _fail("could not reach %s" % KILN_DOOR_PROP)
+				return "could not reach %s (mode=%s)" % [KILN_DOOR_PROP, _mode()]
 			_module.execute_command(&"interact", {"interactable_id": KILN_DOOR_PROP})
 			if _mode() != "dialogue" or String(_conversation_of().document_id).is_empty():
-				return _fail("authored document did not open for %s" % String(state_name))
+				return "authored document did not open for %s (mode=%s)" % [String(state_name), _mode()]
 		TopDownActionRpgScreen.STATE_DOCUMENT_CORRUPTED:
 			if not _walk_to(KILN_DOOR_PROP):
-				return _fail("could not reach %s" % KILN_DOOR_PROP)
+				return "could not reach %s (mode=%s)" % [KILN_DOOR_PROP, _mode()]
 			_module.execute_command(&"interact", {"interactable_id": KILN_DOOR_PROP})
 			_module.execute_command(&"document_advance")
 			if String(_conversation_of().document_id).is_empty():
-				return _fail("authored corruption page was not reached")
+				return "authored corruption page was not reached (mode=%s)" % _mode()
 		TopDownActionRpgScreen.STATE_COMBAT_COMMAND:
 			if _mode() != "combat":
-				return _fail("combat was not entered for %s" % String(state_name))
+				return "combat was not entered for %s (mode=%s)" % [String(state_name), _mode()]
 		TopDownActionRpgScreen.STATE_TARGET_SELECT:
 			_module.execute_command(&"combat_category", {"category": ATTACK_CATEGORY})
 			_module.execute_command(&"combat_action", {"action_id": PLAYER_ACTION})
 			if _combat_of() == null or String(_combat_of().submode) != "target_select":
-				return _fail("target select was not entered for %s" % String(state_name))
+				return "target select was not entered for %s (%s)" % [String(state_name), _combat_brief()]
 		TopDownActionRpgScreen.STATE_EQUIPMENT_NO_TURN:
 			_module.execute_command(&"combat_category", {"category": ITEM_CATEGORY})
 			screen.refresh()
 		TopDownActionRpgScreen.STATE_GUARD_DODGE_BREAK:
 			_module.execute_command(&"combat_action", {"action_id": GUARD_ACTION})
-			if not _stance_is_not_normal():
-				return _fail("counter feedback state was not produced for %s" % String(state_name))
+			var stance_failure: String = _drive_to_stance_feedback()
+			if not stance_failure.is_empty():
+				return "counter feedback state was not produced for %s: %s" % [String(state_name), stance_failure]
 		TopDownActionRpgScreen.STATE_CHARGE_COUNTER:
-			if not _drive_to_charge_counter():
-				return _fail("authored charge counter was not produced for %s" % String(state_name))
+			var charge_failure: String = _drive_to_charge_counter()
+			if not charge_failure.is_empty():
+				return "authored charge counter was not produced for %s: %s" % [String(state_name), charge_failure]
 		TopDownActionRpgScreen.STATE_AFTERMATH_REVISIT:
 			if not _finish_encounter("victory"):
-				return _fail("victory aftermath was not produced for %s" % String(state_name))
+				return "victory aftermath was not produced for %s (%s)" % [String(state_name), _combat_brief()]
 		TopDownActionRpgScreen.STATE_FAILURE_DEATH:
 			if not _finish_encounter("defeat"):
-				return _fail("failure state was not produced for %s" % String(state_name))
+				return "failure state was not produced for %s (%s)" % [String(state_name), _combat_brief()]
 		_:
-			return _fail("no deterministic fixture for state %s" % String(state_name))
-	var observed: StringName = screen.current_state()
-	if observed != state_name:
-		return _fail("fixture for %s reached %s" % [String(state_name), String(observed)])
-	print("TOPDOWN_CAPTURE_STATE state=%s reached=%s mode=%s" % [
-		String(state_name), String(observed), _mode()
-	])
-	return true
+			return "no deterministic fixture for state %s" % String(state_name)
+	return ""
 
 
 func _snapshot_for(state_name: StringName) -> Dictionary:
@@ -261,6 +333,13 @@ func _snapshot_for(state_name: StringName) -> Dictionary:
 		TopDownActionRpgScreen.STATE_DOCUMENT_MAX, TopDownActionRpgScreen.STATE_DOCUMENT_CORRUPTED:
 			return _kiln_document_snapshot()
 	return _combat_snapshot()
+
+
+func _fixture_of(state_name: StringName) -> Dictionary:
+	return {
+		"start": START_DEFAULT_BOOT if _snapshot_for(state_name).is_empty() else START_CRAFTED_SAVE,
+		"driver": String(FIXTURE_DRIVERS.get(state_name, "unknown")),
+	}
 
 
 func _kiln_document_snapshot() -> Dictionary:
@@ -304,13 +383,13 @@ func _install_kiln(snapshot: Dictionary) -> void:
 	world["clocks"][KILN_REGION] = region_clocks
 
 
-func _spawn(snapshot: Dictionary, state_name: StringName) -> bool:
+func _spawn(snapshot: Dictionary, state_name: StringName) -> String:
 	var packed: PackedScene = load(ENTRY_SCENE) as PackedScene
 	if packed == null:
-		return _fail("entry scene did not load for %s" % String(state_name))
+		return "entry scene did not load for %s" % String(state_name)
 	_module = packed.instantiate() as GameModule
 	if _module == null:
-		return _fail("entry scene did not instantiate a module for %s" % String(state_name))
+		return "entry scene did not instantiate a module for %s" % String(state_name)
 	_module_context = ModuleContext.new()
 	_module_context.module_id = MODULE_ID
 	_module_context.input_enabled = true
@@ -323,7 +402,9 @@ func _spawn(snapshot: Dictionary, state_name: StringName) -> bool:
 	_module.enter(_module_context)
 	_module.set_process(false)
 	await process_frame
-	return _state_of() != null and _screen_of() != null
+	if _state_of() == null or _screen_of() == null:
+		return "module did not bind a game state and screen for %s" % String(state_name)
+	return ""
 
 
 func _teardown() -> void:
@@ -345,45 +426,75 @@ func _collect(state_name: StringName, requested_size: Vector2i) -> Dictionary:
 		missing_art.append(String(key))
 	missing_art.sort()
 	var shell_nodes: Array[String] = []
-	var standins: Array[String] = []
 	var visited: Array[Node] = []
 	_collect_nodes(screen, visited)
 	for node: Node in visited:
 		for token: String in SHELL_HUD_TOKENS:
 			if String(node.name).contains(token):
 				shell_nodes.append("%s/%s" % [node.name, token])
-	for node: Node in visited:
-		if not String(node.name).begins_with("%"):
+	var standins: Array[String] = []
+	for layer_path: String in WORLD_LAYER_NODES:
+		var layer: Node = screen.get_node_or_null(layer_path)
+		if layer == null:
 			continue
-		var unique_path: String = String(node.get_path()).get_file()
-		if not WORLD_LAYER_NODES.has(unique_path):
-			continue
-		if node is ColorRect or node is Label:
-			standins.append(unique_path)
+		var layer_nodes: Array[Node] = []
+		_collect_nodes(layer, layer_nodes)
+		for node: Node in layer_nodes:
+			if node is ColorRect or node is Label:
+				standins.append("%s:%s" % [layer_path, String(layer.get_path_to(node))])
 	var ap_labels: Array[String] = []
 	for node: Node in visited:
 		if node is Label:
 			var text: String = String((node as Label).text)
 			if text.begins_with("AP") or text.contains(" AP") or text.to_lower().contains("action point"):
 				ap_labels.append(String(node.name))
+	var clipped: Array[String] = []
+	for node: Node in visited:
+		if node is Label:
+			var clip: String = _clipped_label(screen, node as Label)
+			if not clip.is_empty():
+				clipped.append(clip)
 	return {
+		"label": _label(state_name, requested_size),
 		"state": String(state_name),
+		"fixture": _fixture_of(state_name),
 		"requested_size": [requested_size.x, requested_size.y],
 		"root_size": [root.size.x, root.size.y],
 		"mode": _mode(),
 		"region_id": _state_of().region_id() if _state_of() != null else "",
 		"encounter_id": String(_combat_of().encounter_id) if _combat_of() != null else "",
+		"combat_submode": String(_combat_of().submode) if _combat_of() != null else "",
 		"document_id": String(_conversation_of().document_id) if _conversation_of() != null else "",
 		"conversation_id": String(_conversation_of().conversation_id) if _conversation_of() != null else "",
+		"conversation_page_index": int(_conversation_of().page_index) if _conversation_of() != null else -1,
 		"missing_art_keys": missing_art,
 		"world_layer_standins": standins,
 		"shell_hud_nodes": shell_nodes,
 		"ap_labels": ap_labels,
+		"clipped_text": clipped,
 	}
 
 
-func _record_violations(state_name: StringName, requested_size: Vector2i, report: Dictionary) -> bool:
-	var label: String = "%s@%dx%d" % [String(state_name), requested_size.x, requested_size.y]
+func _clipped_label(screen: TopDownActionRpgScreen, label: Label) -> String:
+	if not label.is_visible_in_tree() or label.text.strip_edges().is_empty():
+		return ""
+	var path: String = String(screen.get_path_to(label))
+	if label.autowrap_mode != TextServer.AUTOWRAP_OFF:
+		if label.max_lines_visible > 0 and label.get_line_count() > label.max_lines_visible:
+			return "%s lines=%d max=%d text=%s" % [path, label.get_line_count(), label.max_lines_visible, label.text]
+		return ""
+	var host: TopDownActionRpgRow = label.get_parent() as TopDownActionRpgRow
+	if host == null:
+		return ""
+	var available: float = host.size.x - label.offset_left + label.offset_right
+	var needed: float = label.get_minimum_size().x
+	if needed > available + CLIP_TOLERANCE:
+		return "%s needed=%d available=%d text=%s" % [path, int(ceil(needed)), int(floor(available)), label.text]
+	return ""
+
+
+func _record_violations(state_name: StringName, requested_size: Vector2i, report: Dictionary) -> void:
+	var label: String = _label(state_name, requested_size)
 	var missing_art: Array = report.get("missing_art_keys", []) if report.get("missing_art_keys", []) is Array else []
 	if not missing_art.is_empty():
 		_violations.append({
@@ -401,6 +512,9 @@ func _record_violations(state_name: StringName, requested_size: Vector2i, report
 	var ap_labels: Array = report.get("ap_labels", []) if report.get("ap_labels", []) is Array else []
 	if not ap_labels.is_empty():
 		_violations.append({"kind": "ap_label", "target": label, "detail": ap_labels, "severity": "blocking"})
+	var clipped: Array = report.get("clipped_text", []) if report.get("clipped_text", []) is Array else []
+	if not clipped.is_empty():
+		_violations.append({"kind": "clipped_text", "target": label, "detail": clipped, "severity": "blocking"})
 	var root_size: Array = report.get("root_size", []) if report.get("root_size", []) is Array else []
 	if not _headless and (root_size.size() != 2 or int(root_size[0]) != requested_size.x or int(root_size[1]) != requested_size.y):
 		_violations.append({
@@ -409,16 +523,31 @@ func _record_violations(state_name: StringName, requested_size: Vector2i, report
 			"detail": {"requested": [requested_size.x, requested_size.y], "actual": root_size},
 			"severity": "blocking",
 		})
-	return true
 
 
-func _capture(state_name: StringName, requested_size: Vector2i, report: Dictionary) -> bool:
+func _record_state_failure(state_name: StringName, requested_size: Vector2i, phase: String, reason: String) -> void:
+	var screen: TopDownActionRpgScreen = _screen_of()
+	var entry: Dictionary = {
+		"label": _label(state_name, requested_size),
+		"state": String(state_name),
+		"requested_size": [requested_size.x, requested_size.y],
+		"phase": phase,
+		"reason": reason,
+		"fixture": _fixture_of(state_name),
+		"mode": _mode(),
+		"observed_state": String(screen.current_state()) if screen != null else "",
+	}
+	_state_failures.append(entry)
+	printerr("TOPDOWN_CAPTURE_STATE_FAILED %s phase=%s reason=%s" % [entry["label"], phase, reason])
+
+
+func _capture(state_name: StringName, requested_size: Vector2i, report: Dictionary) -> String:
 	await _settle()
 	var filename: String = "%s_%dx%d.png" % [String(state_name), requested_size.x, requested_size.y]
 	var path: String = _output_directory.path_join(filename)
 	if FileAccess.file_exists(path) or DirAccess.dir_exists_absolute(path):
 		_png_refused += 1
-		return _fail("refusing to overwrite capture path: %s" % path)
+		return "refusing to overwrite capture path: %s" % path
 	if _headless:
 		report["png_path"] = ""
 		report["pixel_evidence"] = false
@@ -426,26 +555,27 @@ func _capture(state_name: StringName, requested_size: Vector2i, report: Dictiona
 		print("TOPDOWN_CAPTURE_SKIP state=%s size=%dx%d reason=headless" % [
 			String(state_name), requested_size.x, requested_size.y
 		])
-		return true
+		return ""
 	var image: Image = root.get_texture().get_image()
 	if image == null:
-		return _fail("no frame image available for %s" % String(state_name))
+		return "no frame image available for %s" % String(state_name)
 	var actual: Vector2i = Vector2i(image.get_width(), image.get_height())
 	report["image_size"] = [actual.x, actual.y]
-	report["pixel_evidence"] = true
+	report["pixel_evidence"] = false
 	report["png_skip_reason"] = ""
 	if actual != requested_size:
-		return _fail("capture dimensions do not match request for %s: %dx%d" % [String(state_name), actual.x, actual.y])
+		return "capture dimensions do not match request for %s: %dx%d" % [String(state_name), actual.x, actual.y]
 	var error: Error = image.save_png(path)
 	if error != OK:
-		return _fail("could not save capture %s: %s" % [path, error_string(error)])
+		return "could not save capture %s: %s" % [path, error_string(error)]
 	_png_written += 1
+	report["pixel_evidence"] = true
 	report["png_path"] = path
 	report["png_sha256"] = FileAccess.get_sha256(path)
 	print("TOPDOWN_CAPTURE_WROTE state=%s size=%dx%d path=%s" % [
 		String(state_name), requested_size.x, requested_size.y, path
 	])
-	return true
+	return ""
 
 
 func _settle() -> void:
@@ -458,25 +588,85 @@ func _settle() -> void:
 			await RenderingServer.frame_post_draw
 
 
-func _drive_to_charge_counter() -> bool:
+func _drive_to_charge_counter() -> String:
+	var pin_failure: String = _pin_authored_charge()
+	if not pin_failure.is_empty():
+		return pin_failure
+	var last: String = ""
 	for _step: int in range(COMBAT_LIMIT):
 		var controller: TopDownActionRpgCombatController = _controller_of()
 		var combat: TopDownActionRpgCombatState = _combat_of()
 		if controller == null or combat == null:
-			return false
+			return "combat runtime was released (mode=%s)" % _mode()
 		if String(combat.result) != "running":
-			return false
+			return "encounter ended with %s before a charge (%s)" % [String(combat.result), _combat_brief()]
 		if controller.awaiting_reaction and controller.pending_charge != null:
 			var owner_actor: TopDownActionRpgCombatState.ActorState = combat.find_actor(controller.pending_charge.owner_actor_id)
 			if owner_actor != null and owner_actor.charge_state != null and owner_actor.charge_state.is_active():
-				return true
-			return false
+				return ""
+			return "reaction window opened without an active charge (%s)" % _combat_brief()
 		if _player_window_open():
-			_module.execute_command(&"combat_action", {"action_id": PLAYER_ACTION})
-			if combat.submode == "target_select":
-				_module.execute_command(&"combat_target", {"target_actor_id": _focused_target_or_first()})
+			_module.execute_command(&"combat_end_turn")
 		_module.call("_process", 0.0)
-	return false
+		last = _combat_brief()
+	return "no charge after %d steps (%s)" % [COMBAT_LIMIT, last]
+
+
+func _pin_authored_charge() -> String:
+	var combat: TopDownActionRpgCombatState = _combat_of()
+	var catalog: TopDownActionRpgContentLoader.Catalog = _catalog_of()
+	if combat == null or catalog == null:
+		return "no combat runtime to pin a charge on (mode=%s)" % _mode()
+	var charger: TopDownActionRpgCombatState.ActorState = null
+	var charge_action: String = ""
+	for actor: TopDownActionRpgCombatState.ActorState in combat.actors:
+		if actor.side == PLAYER_SIDE or not actor.is_actionable():
+			continue
+		var signature: String = String(catalog.record(_enemy_record_id(catalog, actor)).get("signature_action_id", ""))
+		if not signature.is_empty() and String(catalog.record(signature).get("lifecycle", "")) == CHARGE_LIFECYCLE:
+			charger = actor
+			charge_action = signature
+			break
+	if charger == null:
+		return "no enemy in %s carries a charge signature action" % String(combat.encounter_id)
+	for actor: TopDownActionRpgCombatState.ActorState in combat.actors:
+		if actor.side == PLAYER_SIDE:
+			continue
+		var cooldowns: Dictionary = actor.action_cooldowns.duplicate()
+		for action_id: String in catalog.ids_of_kind("actions"):
+			if not ENEMY_ACTION_OWNERS.has(String(catalog.record(action_id).get("owner", ""))):
+				continue
+			if actor == charger and action_id == charge_action:
+				continue
+			cooldowns[action_id] = ENEMY_ACTION_HOLD
+		actor.action_cooldowns = cooldowns
+	print("TOPDOWN_CAPTURE_CHARGE_PIN encounter=%s charger=%s action=%s" % [
+		String(combat.encounter_id), String(charger.actor_id), charge_action
+	])
+	return ""
+
+
+func _enemy_record_id(catalog: TopDownActionRpgContentLoader.Catalog, actor: TopDownActionRpgCombatState.ActorState) -> String:
+	var key: String = String(actor.actor_id)
+	if not catalog.record(key).is_empty():
+		return key
+	var separator: int = key.rfind("_")
+	return key.substr(0, separator) if separator > 0 else key
+
+
+func _drive_to_stance_feedback() -> String:
+	for _step: int in range(COMBAT_LIMIT):
+		var combat: TopDownActionRpgCombatState = _combat_of()
+		if combat == null or _controller_of() == null:
+			return "combat runtime was released (mode=%s)" % _mode()
+		if _stance_is_not_normal():
+			return ""
+		if String(combat.result) != "running":
+			return "encounter ended with %s before a stance change (%s)" % [String(combat.result), _combat_brief()]
+		if _player_window_open():
+			return "player window reopened without a stance change (%s)" % _combat_brief()
+		_module.call("_process", 0.0)
+	return "no stance change after %d steps (%s)" % [COMBAT_LIMIT, _combat_brief()]
 
 
 func _finish_encounter(result: String) -> bool:
@@ -490,17 +680,19 @@ func _finish_encounter(result: String) -> bool:
 	return true
 
 
-func _focused_target_or_first() -> String:
-	var controller: TopDownActionRpgCombatController = _controller_of()
-	if controller != null and not String(controller.target_focus_actor_id).is_empty():
-		return String(controller.target_focus_actor_id)
+func _combat_brief() -> String:
 	var combat: TopDownActionRpgCombatState = _combat_of()
-	if combat == null:
-		return ""
+	var controller: TopDownActionRpgCombatController = _controller_of()
+	if combat == null or controller == null:
+		return "mode=%s combat=none" % _mode()
+	var charges: Array[String] = []
 	for actor: TopDownActionRpgCombatState.ActorState in combat.actors:
-		if actor.side != PLAYER_SIDE:
-			return String(actor.actor_id)
-	return ""
+		if actor.charge_state != null and actor.charge_state.is_active():
+			charges.append("%s:%s" % [String(actor.actor_id), String(actor.charge_state.stage)])
+	return "mode=%s submode=%s current_actor=%s category=%s tick=%d result=%s awaiting_reaction=%s charges=[%s]" % [
+		_mode(), String(combat.submode), String(controller.current_actor_id), String(controller.current_category),
+		combat.scheduler_tick, String(combat.result), str(controller.awaiting_reaction), ",".join(charges)
+	]
 
 
 func _stance_is_not_normal() -> bool:
@@ -513,18 +705,23 @@ func _stance_is_not_normal() -> bool:
 	return false
 
 
-func _advance_to_choice_set() -> bool:
+func _advance_to_choice_set() -> String:
 	for _page: int in range(DIALOGUE_LIMIT):
 		var conversation: TopDownActionRpgConversationController = _conversation_of()
 		if conversation == null:
-			return false
-		if conversation.at_choice_set():
-			return true
+			return "no conversation controller"
 		if _mode() != "dialogue":
-			return false
+			return "mode is %s, not dialogue" % _mode()
+		if conversation.at_choice_set():
+			if conversation.choice_rows().is_empty():
+				return "choice set of %s has no rows" % String(conversation.conversation_id)
+			return ""
+		var page_index: int = conversation.page_index
 		if not _module.execute_command(&"dialogue_advance"):
-			return false
-	return false
+			return "dialogue_advance was refused at page %d" % page_index
+		if _conversation_of() != null and _conversation_of().page_index == page_index and _mode() == "dialogue":
+			return "page %d of %s did not advance" % [page_index, String(conversation.conversation_id)]
+	return "choice set not reached after %d advances" % DIALOGUE_LIMIT
 
 
 func _walk_to(interactable_id: String) -> bool:
@@ -639,10 +836,47 @@ func _is_red(colour: Color) -> bool:
 	return colour.r > 0.5 and colour.r - colour.g > 0.15 and colour.r - colour.b > 0.15
 
 
+func _missing_pairs() -> Array[String]:
+	var satisfied: Dictionary = {}
+	for report: Dictionary in _reports:
+		satisfied[String(report.get("label", ""))] = true
+	for failure: Dictionary in _state_failures:
+		satisfied.erase(String(failure.get("label", "")))
+	var missing: Array[String] = []
+	for requested_size: Vector2i in _requested_sizes:
+		for state_name: StringName in REQUIRED_STATES:
+			var label: String = _label(state_name, requested_size)
+			if not satisfied.has(label):
+				missing.append(label)
+	return missing
+
+
+func _identical_pixel_groups() -> Array[Dictionary]:
+	var groups: Array[Dictionary] = []
+	for requested_size: Vector2i in _requested_sizes:
+		var by_hash: Dictionary = {}
+		for report: Dictionary in _reports:
+			var digest: String = String(report.get("png_sha256", ""))
+			var size: Array = report.get("requested_size", []) if report.get("requested_size", []) is Array else []
+			if digest.is_empty() or size.size() != 2 or int(size[0]) != requested_size.x or int(size[1]) != requested_size.y:
+				continue
+			if not by_hash.has(digest):
+				by_hash[digest] = []
+			(by_hash[digest] as Array).append(String(report.get("state", "")))
+		for digest: Variant in by_hash:
+			var states: Array = by_hash[digest]
+			if states.size() > 1:
+				groups.append({"requested_size": [requested_size.x, requested_size.y], "png_sha256": String(digest), "states": states})
+	return groups
+
+
 func _write_report() -> bool:
 	var path: String = _output_directory.path_join(REPORT_FILE_NAME)
-	if FileAccess.file_exists(path) or DirAccess.dir_exists_absolute(path):
-		return _fail("refusing to overwrite report path: %s" % path)
+	if _report_path.is_empty():
+		if FileAccess.file_exists(path) or DirAccess.dir_exists_absolute(path):
+			printerr("TOPDOWN_CAPTURE_FAILED refusing to overwrite report path: %s" % path)
+			return false
+		_report_path = path
 	var requested: Array[String] = []
 	for state_name: StringName in _requested_states:
 		requested.append(String(state_name))
@@ -663,11 +897,16 @@ func _write_report() -> bool:
 			if not missing_art_union.has(value):
 				missing_art_union.append(value)
 	missing_art_union.sort()
+	var fixtures: Dictionary = {}
+	for state_name: StringName in REQUIRED_STATES:
+		fixtures[String(state_name)] = _fixture_of(state_name)
 	var payload: Dictionary = {
 		"schema": REPORT_SCHEMA,
 		"module_id": String(MODULE_ID),
 		"evidence_class": EVIDENCE_CLASS,
 		"evidence_version": EVIDENCE_VERSION,
+		"run_status": _run_status,
+		"current_label": _current_label,
 		"godot_version": Engine.get_version_info().get("string", ""),
 		"rendering_method": ProjectSettings.get_setting("rendering/renderer/rendering_method", ""),
 		"display_server": DisplayServer.get_name(),
@@ -676,11 +915,15 @@ func _write_report() -> bool:
 		"human_playthrough_claimed": false,
 		"requested_states": requested,
 		"requested_sizes": sizes,
-		"expected_capture_count": _requested_states.size() * _requested_sizes.size(),
+		"expected_capture_count": REQUIRED_STATES.size() * _requested_sizes.size(),
 		"png_written": _png_written,
 		"png_refused_overwrite": _png_refused,
 		"states_reached": _sorted_keys(reached),
 		"states_missing_from_request": missing_states,
+		"missing_pairs": _missing_pairs(),
+		"state_failures": _state_failures,
+		"identical_pixel_groups": _identical_pixel_groups(),
+		"fixtures": fixtures,
 		"missing_art_keys": missing_art_union,
 		"source_audit": _source_audit,
 		"static_violations": _static_violations,
@@ -689,26 +932,58 @@ func _write_report() -> bool:
 		"limitations": [
 			"headless runs verify state reachability, resolution request and source audits only",
 			"no pixel evidence is produced or claimed when the display server is headless",
+			"states driven by screen_flag_without_module_caller are presentation fixtures: no module code raises them in play",
 			"a real human review pass at 720p, FHD and QHD is still required by the kit acceptance gate",
 		],
 	}
 	var file: FileAccess = FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
-		return _fail("could not open report path: %s" % path)
+		printerr("TOPDOWN_CAPTURE_FAILED could not open report path: %s" % path)
+		return false
 	file.store_string(JSON.stringify(payload, "  ", true))
 	file.flush()
 	var error: Error = file.get_error()
 	file.close()
 	if error != OK:
-		return _fail("could not write report: %s" % error_string(error))
-	_reports_written.append(path)
-	print("TOPDOWN_CAPTURE_REPORT path=%s captures=%d png=%d static_violations=%d runtime_violations=%d" % [
-		path, _reports.size(), _png_written, _static_violations.size(), _violations.size()
-	])
+		printerr("TOPDOWN_CAPTURE_FAILED could not write report: %s" % error_string(error))
+		return false
 	return true
 
 
-func _finish() -> void:
+func _complete() -> void:
+	if _done:
+		return
+	var missing: Array[String] = _missing_pairs()
+	var failed: bool = not missing.is_empty() or not _state_failures.is_empty() \
+		or not _static_violations.is_empty() or not _violations.is_empty()
+	_run_status = RUN_FAILED if failed else RUN_COMPLETE
+	var written: bool = _write_report()
+	print("TOPDOWN_CAPTURE_REPORT path=%s status=%s captures=%d png=%d state_failures=%d static_violations=%d runtime_violations=%d" % [
+		_report_path, _run_status, _reports.size(), _png_written, _state_failures.size(), _static_violations.size(), _violations.size()
+	])
+	if not missing.is_empty():
+		printerr("TOPDOWN_CAPTURE_MISSING_STATES " + ", ".join(missing))
+	if failed:
+		printerr("TOPDOWN_CAPTURE_VIOLATIONS_BLOCKING")
+	_end(0 if written and not failed else 1)
+
+
+func _on_watchdog() -> void:
+	if _done:
+		return
+	_state_failures.append({
+		"label": _current_label,
+		"phase": "watchdog",
+		"reason": "run exceeded %d seconds" % int(WATCHDOG_SECONDS),
+	})
+	_run_status = RUN_TIMEOUT
+	if not _output_directory.is_empty() and DirAccess.dir_exists_absolute(_output_directory):
+		_write_report()
+	printerr("TOPDOWN_CAPTURE_FAILED watchdog: run exceeded %d seconds at %s" % [int(WATCHDOG_SECONDS), _current_label])
+	_end(1)
+
+
+func _end(code: int) -> void:
 	if _done:
 		return
 	_done = true
@@ -718,34 +993,7 @@ func _finish() -> void:
 		root.remove_child(_module)
 		_module.free()
 		_module = null
-	var missing_states: Array[String] = []
-	for state_name: StringName in REQUIRED_STATES:
-		var found: bool = false
-		for report: Dictionary in _reports:
-			if String(report.get("state", "")) == String(state_name):
-				found = true
-				break
-		if not found:
-			missing_states.append(String(state_name))
-	if not missing_states.is_empty():
-		_failed = true
-		printerr("TOPDOWN_CAPTURE_MISSING_STATES " + ", ".join(missing_states))
-	if not _static_violations.is_empty():
-		_failed = true
-	if not _violations.is_empty():
-		_failed = true
-	if not _reports_written.is_empty() and _failed:
-		printerr("TOPDOWN_CAPTURE_VIOLATIONS_BLOCKING")
-		quit(1)
-		return
-	quit(1 if _failed else 0)
-
-
-func _fail(message: String) -> bool:
-	_failed = true
-	printerr("TOPDOWN_CAPTURE_FAILED " + message)
-	_finish()
-	return false
+	quit(code)
 
 
 func _declared_actions() -> Array[StringName]:
@@ -815,6 +1063,12 @@ func _screen_of() -> TopDownActionRpgScreen:
 	if _module == null:
 		return null
 	return _module.get_node_or_null("TopDownScreen") as TopDownActionRpgScreen
+
+
+func _catalog_of() -> TopDownActionRpgContentLoader.Catalog:
+	if _module == null:
+		return null
+	return _module.get("_catalog") as TopDownActionRpgContentLoader.Catalog
 
 
 func _mode() -> String:

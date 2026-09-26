@@ -457,7 +457,7 @@ func _grow_pool(parent: VBoxContainer, view: Array, role: String, minimum_height
 		row.name = "Row%d" % view.size()
 		row.role = role
 		row.custom_minimum_size = Vector2(0.0, minimum_height)
-		row.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		row.size_flags_vertical = Control.SIZE_EXPAND_FILL if role == TopDownActionRpgRow.ROLE_COMMAND else Control.SIZE_FILL
 		row.row_activated.connect(_on_row_activated)
 		parent.add_child(row)
 		view.append(row)
@@ -684,17 +684,18 @@ func _render_dialogue() -> void:
 	var page: Dictionary = conversation_controller.current_page()
 	var has_choices: bool = conversation_controller.at_choice_set() and not conversation_controller.choice_rows().is_empty()
 	_set_visible(_choice_panel, has_choices)
-	if page.is_empty() and not has_choices:
+	var shown: Dictionary = _prompt_page() if page.is_empty() and has_choices else page
+	if shown.is_empty() and not has_choices:
 		_speaker_label.text = ""
 		_body_label.text = ""
 		_set_visible(_portrait_row, false)
 		_set_visible(_dialogue_advance, false)
 		_grow_pool(_choice_rows, _choice_rows_view, TopDownActionRpgRow.ROLE_CHOICE, 48.0)
 		return
-	var presentation: String = conversation_controller.page_presentation_class()
-	var speaker: Dictionary = _page_speaker(page)
+	var presentation: String = String(shown.get("presentation_class", "neutral"))
+	var speaker: Dictionary = _page_speaker(shown)
 	_speaker_label.text = String(speaker.get("display_name", ""))
-	_body_label.text = conversation_controller.page_text()
+	_body_label.text = String(shown.get("text", "")).substr(0, TopDownActionRpgConversationController.MAX_TEXT_LENGTH)
 	_body_label.add_theme_color_override("font_color", INK_MUTED if presentation == "narration" else INK)
 	var appearance: Dictionary = speaker.get("appearance", {}) if speaker.get("appearance", {}) is Dictionary else {}
 	var portrait_key: String = String(appearance.get("portrait_key", ""))
@@ -705,6 +706,13 @@ func _render_dialogue() -> void:
 	_set_visible(_dialogue_advance, not page.is_empty() and not has_choices)
 	_text_column.custom_minimum_size.x = 820.0 if has_choices else 1080.0
 	_render_choice_rows()
+
+
+func _prompt_page() -> Dictionary:
+	var list: Array = conversation_controller.pages()
+	if list.is_empty() or not list[list.size() - 1] is Dictionary:
+		return {}
+	return list[list.size() - 1]
 
 
 func _page_speaker(page: Dictionary) -> Dictionary:

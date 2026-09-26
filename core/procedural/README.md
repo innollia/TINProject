@@ -12,9 +12,10 @@ classes in this folder.
 
 | File | Class | Provides | State |
 |---|---|---|---|
-| `procedural.gd` | `Procedural` | Top level entry. Every generator is reached from one seed. | done for seeds, noise, palette, canvas. Dict factories are stubs. |
+| `procedural.gd` | `Procedural` | Top level entry. Every generator is reached from one seed. Dict factories `build_sprite` / `render_frame` / `make_rig` / `make_backdrop`. | done (factories done 2026-09-27) |
 | `seed.gd` | `ProceduralSeed` | Deterministic `(world_seed, id, version)` digest and draws from it. | done |
 | `noise_field.gd` | `ProceduralNoiseField` | `FastNoiseLite` wrapper with the four frozen named field presets. | done |
+| `shape.gd` | `ProceduralShape` | 정규 형상: `rest` / `points` / `radius` / `links` + per node springs. Spec JSON entry `build_from_spec()`. | done |
 | `raster/canvas.gd` | `ProceduralCanvas` | RGBA8 pixel buffer: fill, line, polygon, circle, ellipse, blur, posterize, blit. | done |
 | `raster/sdf.gd` | `ProceduralSdf` | Signed distance primitives, soft booleans, field rasterisation. | done |
 | `palette/palette.gd` | `ProceduralPalette` | Colour **roles** mapped to colours. No literal RGB anywhere. | done |
@@ -22,13 +23,14 @@ classes in this folder.
 | `anim/spring.gd` | `ProceduralSpring`, `ProceduralSpring.Spring2D` | Damped spring integration, critically damped and under damped. | done |
 | `anim/deform_field.gd` | `ProceduralDeformField` | Grid of per vertex springs pulled by noise. The 말랑말랑 core. | done |
 | `anim/backdrop_dynamics.gd` | `ProceduralBackdropDynamics` | Camera lag, wind and noise motion for backdrop elements. | done |
-| `sprite/body_part.gd` | `ProceduralBodyPart` | Authored part spec: silhouette numbers, roles, joint. | spec done, `draw`/`bounds` are stubs |
-| `sprite/creature_builder.gd` | `ProceduralCreatureBuilder` | Part list container, manifest, compose entry points. | container done, `compose*`/`outline` are stubs |
-| `anim/squish_rig.gd` | `ProceduralSquishRig` | Joint graph, per joint springs, rest pose. | graph done, `step`/`disturb`/`draw` are stubs |
+| `sprite/body_part.gd` | `ProceduralBodyPart` | Authored part spec and its silhouette: `bounds()`, `draw(canvas, palette, pose)`. | done (2026-09-27) |
+| `sprite/creature_builder.gd` | `ProceduralCreatureBuilder` | Part tree → one fused, shaded silhouette: `compose_canvas()`, `compose()`, `outline()`. | done (2026-09-27) |
+| `anim/squish_rig.gd` | `ProceduralSquishRig` | Joint graph on one canonical shape: `step()`, `disturb()`, `draw()`, rotation / squash readings. | done (2026-09-27) |
 
-Wave 1 implements the stubs. Each stub file states exactly what it must
-implement, and each stub returns a safe empty value after `push_error` so a
-missing implementation is loud instead of silently wrong.
+Wave 1 is complete: no stub is left. Tests: `core/procedural/tests/test_shape.gd`
+(canonical shape) and `core/procedural/tests/test_wave1_visuals.gd` (parts,
+builder, rig, factories, bans). The conventions a Kit needs are below under
+"Wave 1 conventions"; the full text is in each file's header comment.
 
 ## Hard rules for Kit code
 
@@ -75,10 +77,13 @@ for spec: Dictionary in authored_parts:
     var part: ProceduralBodyPart = ProceduralBodyPart.new()
     part.configure(spec)          # length, base_radius, tip_radius, bend, wiggle, roles
     builder.add_part(part)
-var canvas: ProceduralCanvas = builder.compose_canvas()   # wave 1
+var canvas: ProceduralCanvas = builder.compose_canvas()   # fused, shaded, outlined
 canvas.posterize(6)                                      # optional build time pass
 var texture: ImageTexture = canvas.to_texture()
 ```
+
+Same thing from one dictionary: `Procedural.build_sprite(spec)` (keys in its
+comment; `tests/fixtures/sprite_critter.json` is a pure JSON example).
 
 Manual path, when the Kit wants to own the drawing: `Procedural.make_canvas()`
 then `ProceduralSdf.stamp_field` / `stroke_field` / `shadow_field` per shape,
@@ -90,11 +95,11 @@ Order matters. Physics first, drawing second, always.
 
 ```gdscript
 # 1. advance the springs
-rig.step(delta)                                  # wave 1 (joint graph)
-deform.step(delta)                               # done
+rig.step(delta)                                  # the whole joint graph, from the root
+deform.step(delta)
 backdrop.set_view_offset(camera_motion)
-backdrop.step(delta)                             # done
-noise.advance(delta, Vector2(14.0, 0.0))         # done, unless a field already advances itself
+backdrop.step(delta)
+noise.advance(delta, Vector2(14.0, 0.0))         # unless a field already advances itself
 
 # 2. read the results
 var offset: Vector2 = backdrop.get_offset(index)
@@ -161,23 +166,67 @@ overshoots, `0.4` to `0.7` is under damped and wobbles, below `0.35` rings.
 - Target: a whole backdrop of 5 layers, 4 to 8 anchors each and one deform
   field, must stay under 2 ms per frame so the motion never costs a frame.
 
-## Wave 1 checklist
+## Wave 1 checklist — done 2026-09-27
 
-| Symbol | Must implement |
-|---|---|
-| `ProceduralBodyPart.bounds()` | Local bounds that match `draw()` exactly. |
-| `ProceduralBodyPart.draw()` | Silhouette from `ProceduralSdf`, fused with `smooth_min`, shaded from palette roles. Fix and document the local pose convention first. |
-| `ProceduralCreatureBuilder.compose_canvas()` | Walk the parts, fuse the union, honour `canvas_size`, `squash` and `facing`. |
-| `ProceduralCreatureBuilder.outline()` | One closed contour of the fused silhouette in pixel space. |
-| `ProceduralCreatureBuilder.compose()` | `compose_canvas()` then `to_texture()`. |
-| `ProceduralSquishRig.step()` | Integrate the graph from the root, inheriting parent transforms. |
-| `ProceduralSquishRig.disturb()` | Impulse into a joint and everything under it. |
-| `ProceduralSquishRig.draw()` | Draw the attached parts through the joint transform, squash non uniformly. |
-| `Procedural.build_sprite()` | Thin factory, spec keys in its own comment. |
-| `Procedural.render_frame()` | Thin factory, spec keys in its own comment. |
-| `Procedural.make_rig()` | Thin factory, spec keys in its own comment. |
-| `Procedural.make_backdrop()` | Thin factory, spec keys in its own comment. |
+| Symbol | Requirement | Done as |
+|---|---|---|
+| `ProceduralBodyPart.bounds()` | Local bounds that match `draw()` exactly. | Silhouette extent + smooth_min bulge + antialias (INK: line) margin. `draw()` at the identity pose never paints outside it. |
+| `ProceduralBodyPart.draw()` | Silhouette from `ProceduralSdf`, fused with `smooth_min`, shaded from palette roles. Pose convention first. | Tapered capsule / wedge / box per segment, `smooth_min` between segments, cel shading from roles only. |
+| `ProceduralCreatureBuilder.compose_canvas()` | Walk the parts, fuse the union, honour `canvas_size`, `squash` and `facing`. | One fused field for all parts, parts[0] roles; parts with another `body_role` painted on top; outline last. |
+| `ProceduralCreatureBuilder.outline()` | One closed contour of the fused silhouette in pixel space. | Marching squares, largest loop, clockwise on screen, no repeated point. |
+| `ProceduralCreatureBuilder.compose()` | `compose_canvas()` then `to_texture()`. | null + `push_error` when refused. |
+| `ProceduralSquishRig.step()` | Integrate the graph from the root, inheriting parent transforms. | One canonical shape for the whole rig. RIGID joints ride their parent exactly. |
+| `ProceduralSquishRig.disturb()` | Impulse into a joint and everything under it. | Whole subtree, weighted by distance from the contact. Nothing outside it. |
+| `ProceduralSquishRig.draw()` | Draw the attached parts through the joint transform, squash non uniformly. | Parts first-to-last in joint order, squashed along the bone, area kept. |
+| `Procedural.build_sprite()` / `render_frame()` / `make_rig()` / `make_backdrop()` | Thin factories, spec keys in their own comment. | Wrong specs are `push_error` + null, never a silent default. |
 
-Until those exist, construct `ProceduralCreatureBuilder`, `ProceduralBodyPart`,
-`ProceduralSquishRig` and `ProceduralBackdropDynamics` directly and do not pass
-a spec dictionary to the `Procedural` factories.
+## Wave 1 conventions
+
+**Body part (`ProceduralBodyPart`).** Local origin = the part's joint, local +X =
+growth axis, `length` along it. `base_radius` / `tip_radius` are the full
+thickness; `radius_at()` / `max_radius()` return half of it. `bend` turns the
+axis toward the tip (degrees), `wiggle` bends it sideways in an S (static shape,
+no time). `configure()` takes enum ints or names, as `String` (JSON) or
+`StringName`. `draw(canvas, palette, pose)` pose keys:
+
+| key | type | meaning |
+|---|---|---|
+| `origin` | Vector2 / [x, y] | canvas px of the joint |
+| `rotation` | float | radians |
+| `scale` | float | uniform |
+| `squash` | float | −0.6..0.6. + = shorter along the axis, wider across (area kept) |
+| `squash_axis` | float | radians, canvas direction of the squash. Default: `rotation` |
+| `deform` | ProceduralDeformField | optional; its `bounds` are in the part's local frame |
+
+Shading uses roles only: `body_role` fill, a crescent on the side away from the
+light (upper left) mixed toward `shade_role`, then per `shade`: VOLUMETRIC adds a
+1 px `key_light` edge, RIM a 1 px `rim_role` edge, INK a 1 px `ink` line, FLAT
+nothing.
+
+**Creature builder.** Parts form a tree: `anchor.parent` (earlier index) picks
+the parent, otherwise the previous part. Joint positions come from `to_shape()`
+(`rest` / `rest_dir`), so the bake and `derive_collider()` point at the same
+places. Canvas px = shape coordinates + `canvas_origin` (the silhouette is
+centred, rounded to whole pixels). `squash` flattens around the bottom centre of
+the silhouette, so the feet stay on their row; `facing < 0` mirrors about the
+canvas centre line. A part whose `body_role` differs from parts[0] (eye, belly,
+markings) is painted on top in its own role. Changing a part after a compose is
+picked up on the next call. `outline()` is clockwise on screen (positive shoelace
+area with y down).
+
+**Squish rig.** The whole rig is one canonical shape; `to_shape()` on any joint
+returns the root's. `rest_position` is in the parent's frame (px),
+`rest_rotation` is radians. SOFT follows the parent with a spring, RIGID rides
+the parent exactly, PINNED stays put; a SOFT root returns to its own rest. Rig
+space is the canvas pixel space of `draw()`. Rotation and squash are read from
+the shape, never kept as extra springs: `get_rotation()` = `rest_rotation` + how
+far the joint's bone turned relative to its parent's; `get_scale()` = bone length
+/ rest length, clamped by the joint's `squash` (≤ `MAX_SQUASH`). Wind is the
+shape's `force` (`to_shape().force`, px). Call `step()` once per frame on one
+joint. `draw()` costs one SDF pass per part: draw into a canvas the size of the
+figure, and only when it moved.
+
+**Factories.** Keys are documented on each function in `procedural.gd`; every
+Vector2 key also takes `[x, y]`. `render_frame(spec)` keeps its state in
+`spec["_frame"]`: pass the same dictionary every frame. It bakes once and then
+only resamples the bake through a two joint rig (planted base, soft crown).

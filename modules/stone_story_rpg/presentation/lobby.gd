@@ -5,13 +5,13 @@ extends Control
 ## 여기서 고르는 것은 ①어디를 ②몇 개로 ③무엇을 unequip/equip ④탐험을 누른다.
 ##
 ## UI 규칙 (docs/UI_WORKFLOW.md, docs/UI_IMPLEMENTATION_RULES.md)
-##   R2  focus 는 **형태**(점선 테두리)로만. 색으로 구분하지 않는다.
-##       선택(장착됨)과 focus(다음 대상)를 다른 표기로 분리한다.
+##   R2  focus 는 **형태**(굵은 테두리 + 왼쪽 막대)로만. 색으로 구분하지 않는다.
+##       선택(장착됨/현재 지역)과 focus(다음 대상)를 다른 표기로 분리한다.
 ##       닫고 열면 이전 focus 로 돌아온다. 대상이 사라지면 다음 유효 항목.
 ##   R3  행 높이와 열 위치를 고정한다. 내용이 바뀌어도 조작 위치가 밀리지 않는다.
 ##       긴 문자열은 고정 폭에서 자른다. 최대 데이터에서 겹침/잘림 0.
-##   R5  disabled 는 형태가 다르다(짧은 실선). 그리고 intent 를 내보내지 않는다.
-## 크기: 12 / 14 / 18. (기존 8/10 은 쓰지 않는다)
+##   R5  disabled 는 형태가 다르다(점선). 그리고 intent 를 내보내지 않는다.
+## 로비는 허브(표지 아래)다. 허브 지역의 팔레트와 장면을 그대로 쓴다. (D-5)
 
 const FOCUS_REGION := 0
 const FOCUS_STAR := 1
@@ -20,32 +20,37 @@ const FOCUS_GO := 3
 const FOCUS_COUNT := 4
 
 const REGION_HUB := "region_under_sign"
+const REGION_ROWS: int = 3
 const GEAR_ROWS: int = 5
-const ROW_H: int = 30
+const ROW_H: int = 28
 
-# 고정 격자. 내용이 바뀌어도 좌표는 이 값뿐이다.
-const X_TITLE := 24
-const X_BODY := 44
-const X_RIGHT := 470
-const Y_TITLE := 44
-const Y_RULE := 58
-const Y_REGION := 100
-const Y_STAR := 200
-const Y_STAR_MARKS := 228
-const Y_GEAR := 268
-const Y_GEAR0 := 300
-const Y_HINT := 300 + GEAR_ROWS * ROW_H + 12
-const Y_GO := 512
-const Y_KEYS := 620
+const SCENE_SHIFT := 140.0
+const LEFT := Rect2(16, 150, 460, 466)
+const INFO := Rect2(492, 452, 452, 164)
+const X_TITLE := 28
+const X_BODY := 52
+const X_RIGHT := 512
+const Y_TITLE := 58
+const Y_REGION := 186
+const Y_STAR := 316
+const Y_STAR_MARKS := 342
+const Y_GEAR := 386
+const Y_GEAR0 := 414
+const Y_HINT := Y_GEAR0 + GEAR_ROWS * ROW_H + 6
+const Y_GO := 596
+const Y_INFO := 482
+const PLAYER_AT := Vector2(826, 434)
+const PLAYER_SCALE := 1.8
 
-const FS_TITLE: int = 26
-const FS_HEAD: int = 20
+const FS_TITLE: int = 30
+const FS_HEAD: int = 22
 const FS_ROW: int = 20
 const FS_SMALL: int = 16
-const FS_BIG: int = 30
+const FS_BIG: int = 26
 
 const MAX_ROW_W: int = 400
-const MAX_HINT_W: int = 460
+const MAX_HINT_W: int = 408
+const MAX_INFO_W: int = 420
 
 var pal: ProceduralPalette = null
 var state: Dictionary = {}
@@ -57,7 +62,12 @@ var region_index: int = 0
 var gear_index: int = 0
 var report: Array[String] = []
 var owned: Array[String] = []
+var layout_boxes: Array = []
+var clock: float = 0.0
 var _focus_memory: int = FOCUS_REGION
+var _hub: Dictionary = {}
+var _preview: StoneStoryCritter = null
+var _preview_key: String = ""
 
 signal region_chosen(region_id: String)
 signal star_changed(value: int)
@@ -65,14 +75,29 @@ signal gear_toggled(item_id: String)
 signal go_requested()
 
 
+func _ready() -> void:
+	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
 func bind(run_state: Dictionary, content_ref: StoneStoryContent, tuning_ref: StoneStoryTuning) -> void:
 	state = run_state
 	content = content_ref
 	tuning = tuning_ref
-	pal = StoneStoryPalette.build("lobby", int(run_state.get("run_seed", 0)))
+	_hub = content.get_def("region", REGION_HUB) if content != null else {}
+	pal = StoneStoryPalette.for_region(content, _hub)
 	_rebuild_owned()
 	_clamp_selection()
+	_preview_key = ""
 	queue_redraw()
+
+
+func _process(delta: float) -> void:
+	clock += delta
+	if _preview != null:
+		_preview.step(delta)
+	if visible:
+		queue_redraw()
 
 
 func _rebuild_owned() -> void:
@@ -179,7 +204,8 @@ func _left() -> void:
 				region_index = wrapi(region_index - 1, 0, regions().size())
 		FOCUS_STAR:
 			_emit_star(maxi(1, star_value() - 1))
-
+		FOCUS_GEAR:
+			gear_index = wrapi(gear_index - 1, 0, maxi(1, mini(GEAR_ROWS, owned.size())))
 		_:
 			pass
 	queue_redraw()
@@ -194,7 +220,6 @@ func _right() -> void:
 				region_index = wrapi(region_index + 1, 0, regions().size())
 		FOCUS_STAR:
 			_emit_star(mini(20, star_value() + 1))
-
 		FOCUS_GEAR:
 			# 다음 칸. 목록 끝이면 처음으로. (R2: 안전한 다음 focus)
 			gear_index = wrapi(gear_index + 1, 0, maxi(1, mini(GEAR_ROWS, owned.size())))
@@ -209,7 +234,6 @@ func _confirm() -> bool:
 			region_chosen.emit(current_region())
 		FOCUS_STAR:
 			_emit_star(star_value())
-
 		FOCUS_GEAR:
 			if gear_index >= owned.size():
 				return false
@@ -231,109 +255,161 @@ func _equipped_ids() -> Array:
 
 # --- 그리기 ---------------------------------------------------------
 
-func ink_of() -> Color:
-	return StoneStoryPalette.line(pal)
+func _ox() -> float:
+	return floorf((maxf(float(StoneStoryFrame.VIEW_W), size.x) - float(StoneStoryFrame.VIEW_W)) * 0.5)
 
 
-func dim_of() -> Color:
-	return StoneStoryPalette.line_dim(pal)
-
-
-## 로비도 공간이다. 위는 하늘, 아래는 바닥. (V11: 검정 배경 + 흰 글자 금지)
-func _draw_room(ink: Color, dim: Color) -> void:
-	var hz: int = 150
-	var near: Color = StoneStoryPalette.sky_near(pal)
-	var far: Color = StoneStoryPalette.sky_far(pal)
-	for i in 8:
-		var y0: int = int(float(hz) * float(i) / 8.0)
-		var y1: int = int(float(hz) * float(i + 1) / 8.0) + 1
-		draw_rect(Rect2i(0, y0, 960, y1 - y0), far.lerp(near, float(i) / 8.0))
-	# 지평선 아래 = 바닥
-	var gr: Color = StoneStoryPalette.ground(pal)
-	draw_rect(Rect2i(0, hz, 960, 640 - hz), gr)
-	draw_rect(Rect2i(0, hz, 960, 3), gr.lightened(0.30))
-	draw_rect(Rect2i(0, hz + 90, 960, 2), gr.darkened(0.20))
-	# 천장 레일. 큰 구조물 1개 역할.
-	draw_rect(Rect2i(0, 0, 960, 4), StoneStoryPalette.structure(pal))
-	draw_rect(Rect2i(0, 4, 960, 2), StoneStoryPalette.structure(pal).darkened(0.30))
+## 로비도 공간이다. 허브의 하늘·바닥·구조물을 그대로 그린다. (V11: 검정 배경 + 흰 글자 금지)
+func _draw_room(ox: float) -> void:
+	var w: float = maxf(float(StoneStoryFrame.VIEW_W), size.x)
+	var hz: float = float(StoneStoryContent.SCENE_HORIZON_Y)
+	var seed_v: int = REGION_HUB.hash()
+	StoneStorySky.draw(self, pal, _hub, w, hz, clock, null, ox, seed_v)
+	StoneStoryGround.draw(self, pal, _hub, w, hz, float(StoneStoryFrame.VIEW_H), null, ox + SCENE_SHIFT, seed_v)
+	if content != null:
+		StoneStoryStructure.draw(self, content.get_def("structure", str(_hub.get("structure", ""))), pal, ox + SCENE_SHIFT, null)
+		for e in StoneStoryProps.placements(content, _hub):
+			StoneStoryProps.draw_shadow(self, e, pal, ox + SCENE_SHIFT, clock, null)
+			StoneStoryProps.draw_one(self, e, pal, ox + SCENE_SHIFT, clock, null)
 
 
 func _draw() -> void:
-	if pal != null and (state.is_empty() or content == null):
-		_draw_room(ink_of(), dim_of())
+	layout_boxes.clear()
+	if pal == null:
 		return
+	var ox: float = _ox()
+	_draw_room(ox)
 	if state.is_empty() or content == null:
 		return
-	_draw_room(ink_of(), dim_of())
-	var ink: Color = StoneStoryPalette.line(pal)
-	var dim: Color = StoneStoryPalette.line_dim(pal)
+	draw_set_transform(Vector2(ox, 0.0))
 	var txt: Color = StoneStoryPalette.text(pal)
+	var dim: Color = StoneStoryPalette.text_dim(pal)
 	var acc: Color = StoneStoryPalette.accent(pal)
-
-	_text(Vector2(X_TITLE, Y_TITLE), "표지 아래", FS_TITLE, txt)
-	_text_right(936, Y_TITLE, "통화 %d" % int(state.get("world", {}).get("currency", 0)), FS_SMALL, dim)
-	draw_line(Vector2(X_TITLE, Y_RULE), Vector2(936, Y_RULE), dim, 1.0, true)
-
-	_draw_regions(ink, dim, txt, acc)
-	_draw_star(ink, dim, txt, acc)
-	_draw_gear(ink, dim, txt, acc)
-	_draw_go(ink, dim, txt, acc)
+	_title()
+	_draw_player_preview()
+	_tablet(LEFT)
+	_tablet(INFO)
+	_draw_regions(txt, dim, acc)
+	_draw_star(txt, dim, acc)
+	_draw_gear(txt, dim, acc)
+	_draw_go(txt, dim, acc)
 	_draw_side(dim, txt)
-	_text(Vector2(X_TITLE, Y_KEYS), "위아래 이동 · 좌우 조절 · Z 확정 · X 돌아가기", FS_SMALL, dim)
+	draw_set_transform(Vector2.ZERO)
 
 
-func _draw_regions(ink: Color, dim: Color, txt: Color, acc: Color) -> void:
-	_head(Vector2(X_TITLE, Y_REGION), "지역", focus == FOCUS_REGION, acc, dim)
-	var open: Array = regions()
-	var shown: Array = []
-	for rid in all_regions():
-		shown.append(rid)
-	for i in mini(shown.size(), 5):
+func _title() -> void:
+	_text(Vector2(X_TITLE, Y_TITLE), str(_hub.get("name", "표지 아래")), FS_TITLE, StoneStoryPalette.text(pal), true)
+	var money: String = "%d" % int(state.get("world", {}).get("currency", 0))
+	var mw: float = font().get_string_size(money, HORIZONTAL_ALIGNMENT_LEFT, -1, FS_HEAD).x
+	var mx: float = 932.0 - mw
+	StoneStoryInk.disc(self, Vector2(mx - 18.0, Y_TITLE - 8.0), 10.0, StoneStoryPalette.ink(pal))
+	StoneStoryInk.disc(self, Vector2(mx - 18.0, Y_TITLE - 8.0), 7.5, StoneStoryPalette.accent(pal))
+	_text(Vector2(mx, Y_TITLE), money, FS_HEAD, StoneStoryPalette.text(pal), true)
+
+
+func _tablet(r: Rect2) -> void:
+	var outer: PackedVector2Array = _rounded(r, 16.0)
+	StoneStoryInk.fill(self, _rounded(Rect2(r.position + Vector2(0, 5), r.size), 16.0), StoneStoryPalette.shadow(pal))
+	StoneStoryInk.fill(self, outer, StoneStoryPalette.panel(pal))
+	StoneStoryInk.edge(self, _rounded(r.grow(-5.0), 12.0), StoneStoryPalette.panel_edge(pal), 2.0)
+
+
+func _rounded(r: Rect2, rad: float) -> PackedVector2Array:
+	var pts := PackedVector2Array()
+	var corners: Array = [
+		[r.position + Vector2(r.size.x - rad, rad), -PI * 0.5],
+		[r.position + Vector2(r.size.x - rad, r.size.y - rad), 0.0],
+		[r.position + Vector2(rad, r.size.y - rad), PI * 0.5],
+		[r.position + Vector2(rad, rad), PI],
+	]
+	for c in corners:
+		for i in 5:
+			var a: float = float(c[1]) + (PI * 0.5) * float(i) / 4.0
+			pts.append((c[0] as Vector2) + Vector2(cos(a), sin(a)) * rad)
+	return pts
+
+
+func _draw_player_preview() -> void:
+	var p: Dictionary = state.get("player", {})
+	var attrs: Dictionary = StoneStoryRunState.resolve_attributes(p, content)
+	var key: String = JSON.stringify(attrs)
+	if _preview == null or key != _preview_key:
+		var cls: Dictionary = content.get_def("class", str(p.get("class_id", "")))
+		var sil: Dictionary = content.get_def("silhouette", str(cls.get("silhouette", "sil_angular")))
+		_preview = StoneStoryCritter.build(sil, attrs, cls.get("shape", {}), 131 + 17, PLAYER_SCALE)
+		_preview_key = key
+	_preview.facing = -1.0
+	_preview.look = Vector2(-1.0, 0.2)
+	var looks: Array = []
+	for g in p.get("gear", []):
+		var def: Dictionary = content.item(str((g as Dictionary).get("item_id", "")))
+		var lk: String = str(def.get("look", ""))
+		if not lk.is_empty() and not looks.has(lk):
+			looks.append(lk)
+	var pol: Dictionary = StoneStoryRunState.resolve_policy(p, content)
+	var stance: String = "guard" if bool(pol.get("always_guard", false)) else "neutral"
+	_preview.draw(self, PLAYER_AT, pal, null, StoneStoryPalette.accent(pal), StoneStoryPalette.sclera(pal))
+	StoneStoryCritter.draw_gear(self, _preview, PLAYER_AT, looks, stance, pal, null)
+
+
+func _draw_regions(txt: Color, dim: Color, acc: Color) -> void:
+	_head(Vector2(X_BODY - 20, Y_REGION), "지역", focus == FOCUS_REGION, acc, txt, dim, REGION_ROWS)
+	var shown: Array = all_regions()
+	for i in mini(shown.size(), REGION_ROWS):
 		var rid: String = str(shown[i])
-		var opened: bool = is_open(rid)
 		var def: Dictionary = content.get_def("region", rid)
-		var y: int = Y_REGION + 26 + i * ROW_H
-		if not opened:
-			# R5 disabled: 짧은 실선 + 흐린 글. confirm 은 아무 일도 하지 않는다.
-			draw_line(Vector2(X_BODY, y - 4), Vector2(X_BODY + 16, y - 4), dim, 1.0, true)
-			_text(Vector2(X_BODY + 24, y), str(def.get("name", rid)) + "   닫힘", FS_ROW, dim)
+		var y: int = Y_REGION + 30 + i * ROW_H
+		var label: String = _fit(str(def.get("name", rid)), 260, FS_ROW)
+		if not is_open(rid):
+			# R5 disabled: 점선 + 흐린 글. confirm 은 아무 일도 하지 않는다.
+			_dashed_rect(Rect2i(X_BODY, y - 17, 300, 22), dim)
+			_text(Vector2(X_BODY + 30, y), label, FS_ROW, dim)
+			_text_right(X_BODY + 292, y, "닫힘", FS_SMALL, dim)
 			continue
 		var sel: bool = rid == current_region()
 		if sel:
-			_focus_box(Rect2i(X_BODY - 8, y - 14, 300, 20), focus == FOCUS_REGION, ink)
-		_text(Vector2(X_BODY, y), str(def.get("name", rid)), FS_ROW, txt)
-		_text_right(X_BODY + 290, y, "★%d" % star_value(), FS_SMALL, (acc if sel else dim))
-	if focus == FOCUS_REGION and open.size() > 0:
-		_text(Vector2(X_BODY, Y_REGION + 26 + mini(shown.size(), 5) * ROW_H),
-				"← → 로 고른다", FS_SMALL, dim)
+			_focus_box(Rect2i(X_BODY - 8, y - 20, 330, 27), focus == FOCUS_REGION, acc)
+		_swatch(Vector2(X_BODY + 10, y - 7), def)
+		_text(Vector2(X_BODY + 30, y), label, FS_ROW, txt if sel else dim)
+		_text_right(X_BODY + 312, y, "★%d" % star_value(), FS_SMALL, acc if sel else dim)
+
+
+func _swatch(c: Vector2, region_def: Dictionary) -> void:
+	var rp: ProceduralPalette = StoneStoryPalette.for_region(content, region_def)
+	StoneStoryInk.disc(self, c, 9.0, StoneStoryPalette.ink(pal))
+	draw_circle(c, 7.5, StoneStoryPalette.sky(rp), true, -1.0, true)
+	var half := PackedVector2Array()
+	for i in 9:
+		var a: float = float(i) / 8.0 * PI
+		half.append(c + Vector2(cos(a), sin(a)) * 7.5)
+	StoneStoryInk.fill(self, half, StoneStoryPalette.ground(rp))
 
 
 ## 별은 폰트가 아니라 절차 도형이다. (이미지 0, 글리프 의존 0)
-func _draw_star(ink: Color, dim: Color, txt: Color, acc: Color) -> void:
-	_head(Vector2(X_TITLE, Y_STAR), "별", focus == FOCUS_STAR, acc, dim)
-	var pitch: int = 22
-	var x: int = X_BODY
-	var y: int = Y_STAR_MARKS
+func _draw_star(txt: Color, dim: Color, acc: Color) -> void:
+	_head(Vector2(X_BODY - 20, Y_STAR), "별", focus == FOCUS_STAR, acc, txt, dim, 1)
+	var pitch: int = 17
 	if focus == FOCUS_STAR:
-		_focus_box(Rect2i(X_BODY - 8, y - 12, 20 * pitch + 60, 20), true, ink)
+		_focus_box(Rect2i(X_BODY - 8, Y_STAR_MARKS - 14, 20 * pitch + 58, 30), true, acc)
 	for i in 20:
 		var on: bool = i < star_value()
-		_mark(Vector2(x + i * pitch, y), on, ink if on else dim, 8)
-	_text(Vector2(X_BODY + 20 * pitch + 20, y + 6), str(star_value()), FS_BIG, txt)
-	_text(Vector2(X_BODY, y + 34), "별이 높을수록 적이 세지고 무엇이 열리느냐가 달라진다", FS_SMALL, dim)
+		_mark(Vector2(X_BODY + 6 + i * pitch, Y_STAR_MARKS), on, acc if on else dim, 6.5)
+	_text(Vector2(X_BODY + 20 * pitch + 12, Y_STAR_MARKS + 9), str(star_value()), FS_BIG, txt)
 
 
-## 20칸 눈금. 채워진 칸만 진하게.
-func _mark(at: Vector2, filled: bool, col: Color, r: int) -> void:
+func _mark(at: Vector2, filled: bool, col: Color, r: float) -> void:
+	var pts := PackedVector2Array()
+	for i in 10:
+		var a: float = -PI * 0.5 + TAU * float(i) / 10.0
+		pts.append(at + Vector2(cos(a), sin(a)) * (r if i % 2 == 0 else r * 0.46))
 	if filled:
-		draw_rect(Rect2i(Vector2i(at) - Vector2i(r / 2, r / 2), Vector2i(r, r)), col)
+		StoneStoryInk.fill(self, pts, col)
 		return
-	draw_rect(Rect2i(Vector2i(at) - Vector2i(r / 2, r / 2), Vector2i(r, r)), col, false, 1.0)
+	StoneStoryInk.edge(self, pts, col, 1.4)
 
 
-func _draw_gear(ink: Color, dim: Color, txt: Color, acc: Color) -> void:
-	_head(Vector2(X_TITLE, Y_GEAR), "장비", focus == FOCUS_GEAR, acc, dim)
-	_text(Vector2(X_RIGHT, Y_GEAR), "Z 로 켜고 끈다", FS_SMALL, dim)
+func _draw_gear(txt: Color, dim: Color, acc: Color) -> void:
+	_head(Vector2(X_BODY - 20, Y_GEAR), "장비", focus == FOCUS_GEAR, acc, txt, dim, GEAR_ROWS)
 	var eq: Array = _equipped_ids()
 	var rows: int = _gear_window_size()
 	for i in rows:
@@ -342,31 +418,23 @@ func _draw_gear(ink: Color, dim: Color, txt: Color, acc: Color) -> void:
 		var on: bool = eq.has(iid)
 		var y: int = Y_GEAR0 + i * ROW_H
 		if i == gear_index:
-			_focus_box(Rect2i(X_BODY - 8, y - 15, 400, 20), focus == FOCUS_GEAR, ink)
+			_focus_box(Rect2i(X_BODY - 8, y - 20, MAX_ROW_W + 16, 27), focus == FOCUS_GEAR, acc)
 		# 선택(장착됨)은 별도 표기. focus 와 다른 형태다.
-		var box: Rect2i = Rect2i(Vector2(X_BODY, y - 11), Vector2i(6, 6))
+		var box := Rect2(Vector2(X_BODY + 2, y - 14), Vector2(12, 12))
 		if on:
 			draw_rect(box, acc)
+			draw_rect(box.grow(1.0), StoneStoryPalette.ink(pal), false, 1.5)
 		else:
-			draw_rect(box, dim, false, 1.0)
-		var label_col: Color = dim
-		var tag_col: Color = dim
-		if i == gear_index:
-			label_col = txt
-		if on:
-			tag_col = acc
-		var label: String = _fit(str(def.get("name", iid)), MAX_ROW_W - 24, FS_ROW)
+			draw_rect(box, dim, false, 1.6)
+		var label: String = _fit(str(def.get("name", iid)), MAX_ROW_W - 180, FS_ROW)
 		var tag: String = _fit(_tag(def), 150, FS_SMALL)
-		_text(Vector2(X_BODY + 16, y), label, FS_ROW, label_col)
-		_text_right(X_BODY + MAX_ROW_W - 8, y, tag, FS_SMALL, tag_col)
+		_text(Vector2(X_BODY + 24, y), label, FS_ROW, txt if (on or i == gear_index) else dim)
+		_text_right(X_BODY + MAX_ROW_W, y, tag, FS_SMALL, acc if on else dim)
 	if rows == 0:
 		_text(Vector2(X_BODY, Y_GEAR0), "가진 것이 없다", FS_ROW, dim)
-
 	var hint: String = _gear_hint()
 	if not hint.is_empty():
 		_text(Vector2(X_BODY, Y_HINT), _fit(hint, MAX_HINT_W, FS_SMALL), FS_SMALL, dim)
-	_text(Vector2(X_BODY, Y_HINT + 20),
-			"열린 지역 %d · 전체 %d" % [regions().size(), all_regions().size()], FS_SMALL, dim)
 
 
 func _tag(def: Dictionary) -> String:
@@ -402,13 +470,19 @@ func _sign(v: int) -> String:
 	return ("+" if v > 0 else "") + str(v)
 
 
-func _draw_go(ink: Color, dim: Color, txt: Color, acc: Color) -> void:
+func _draw_go(txt: Color, dim: Color, acc: Color) -> void:
+	var r := Rect2(X_BODY - 8, Y_GO - 27, 250, 38)
+	var body: PackedVector2Array = _rounded(r, 12.0)
+	StoneStoryInk.fill(self, body, StoneStoryPalette.accent(pal) if focus == FOCUS_GO else StoneStoryPalette.panel_edge(pal))
 	if focus == FOCUS_GO:
-		_focus_box(Rect2i(X_TITLE - 6, Y_GO - 18, 200, 26), true, ink)
-	_text(Vector2(X_TITLE, Y_GO), "탐험을 보낸다", FS_HEAD, txt)
+		StoneStoryInk.edge(self, _rounded(r.grow(4.0), 15.0), StoneStoryPalette.text(pal), 3.0)
+	var ink: Color = StoneStoryPalette.ink(pal) if focus == FOCUS_GO else txt
+	var tri := PackedVector2Array([Vector2(r.end.x - 34, Y_GO - 17), Vector2(r.end.x - 16, Y_GO - 8), Vector2(r.end.x - 34, Y_GO + 1)])
+	StoneStoryInk.fill(self, tri, ink)
+	_text(Vector2(X_BODY + 8, Y_GO), "탐험을 보낸다", FS_HEAD, ink, focus != FOCUS_GO)
 
 
-## 정책/빌드/결과. 고정 좌표 두 줄로 나눠 겹치지 않게 한다. (R3)
+## 정책/빌드/결과. 고정 좌표로 나눠 겹치지 않게 한다. (R3)
 func _draw_side(dim: Color, txt: Color) -> void:
 	var pol: Dictionary = StoneStoryRunState.resolve_policy(state.get("player", {}), content)
 	var a: String = "정책  스탠스=%s  타깃=%s" % [str(pol.get("open_with", "attack")), str(pol.get("focus_priority", "nearest"))]
@@ -416,11 +490,11 @@ func _draw_side(dim: Color, txt: Color) -> void:
 			int(pol.get("actions_per_turn_mod", 0)),
 			"예" if bool(pol.get("always_guard", false)) else "아니오",
 			"예" if bool(pol.get("never_retreat", false)) else "아니오"]
-	_text(Vector2(X_RIGHT, Y_GO - 18), _fit(a, 460, FS_SMALL), FS_SMALL, dim)
-	_text(Vector2(X_RIGHT, Y_GO), _fit(b, 460, FS_SMALL), FS_SMALL, dim)
-	_text(Vector2(X_RIGHT, Y_GO + 20), _fit(_build_line(), 460, FS_SMALL), FS_SMALL, dim)
+	_text(Vector2(X_RIGHT, Y_INFO), _fit(a, MAX_INFO_W, FS_SMALL), FS_SMALL, txt)
+	_text(Vector2(X_RIGHT, Y_INFO + 22), _fit(b, MAX_INFO_W, FS_SMALL), FS_SMALL, dim)
+	_text(Vector2(X_RIGHT, Y_INFO + 44), _fit(_build_line(), MAX_INFO_W, FS_SMALL), FS_SMALL, dim)
 	for i in mini(report.size(), 3):
-		_text(Vector2(X_RIGHT, Y_GO + 44 + i * 20), _fit(str(report[i]), 460, FS_SMALL), FS_SMALL, txt)
+		_text(Vector2(X_RIGHT, Y_INFO + 76 + i * 22), _fit(str(report[i]), MAX_INFO_W, FS_SMALL), FS_SMALL, txt if i == 0 else dim)
 
 
 ## 장비가 만드는 AI 정책. 이 게임의 핵심 정보다.
@@ -442,15 +516,19 @@ func _build_line() -> String:
 			str(p.get("affinity_attr", "limbs"))]
 
 
-func _head(at: Vector2, label: String, focused: bool, acc: Color, dim: Color) -> void:
-	_text(at, label, FS_HEAD, (acc if focused else dim))
+func _head(at: Vector2, label: String, focused: bool, acc: Color, txt: Color, dim: Color, rows: int) -> void:
+	_text(at + Vector2(20, 0), label, FS_HEAD, txt if focused else dim)
 	if focused:
-		draw_line(at + Vector2(-6, -4), at + Vector2(-6, 6), acc, 1.0, true)
+		var h: float = 30.0 + float(rows) * float(ROW_H)
+		draw_rect(Rect2(at.x, at.y - 18.0, 6.0, h), acc)
 
 
-## focus 표시. 색이 아니라 **형태**로만. (R2)
-func _focus_box(r: Rect2i, focused: bool, ink: Color) -> void:
-	_dashed_rect(r, ink if focused else StoneStoryPalette.line_dim(pal))
+## focus 표시. 색이 아니라 **형태**로만. (R2) 굵은 둥근 테두리 = focus, 점선 = focus 가 떠난 현재 선택.
+func _focus_box(r: Rect2i, focused: bool, col: Color) -> void:
+	if focused:
+		StoneStoryInk.edge(self, _rounded(Rect2(r), 8.0), col, 3.0)
+		return
+	_dashed_rect(r, StoneStoryPalette.text_dim(pal))
 
 
 ## 고정 폭에서 자른다. 최대 데이터에서 옆으로 밀리지 않게. (R3)
@@ -468,35 +546,35 @@ func _dashed_rect(r: Rect2i, col: Color) -> void:
 	var y: int = r.position.y
 	var x2: int = r.position.x + r.size.x
 	var y2: int = r.position.y + r.size.y
-	var d: int = 0
 	while x < x2:
-		draw_line(Vector2(x, y), Vector2(mini(x + 5, x2), y), col, 1.0, true)
-		x += 10
-		d += 1
-	x = r.position.x
-	while x < x2:
-		draw_line(Vector2(x, y2), Vector2(mini(x + 5, x2), y2), col, 1.0, true)
-		x += 10
+		draw_line(Vector2(x, y), Vector2(mini(x + 6, x2), y), col, 2.0, true)
+		draw_line(Vector2(x, y2), Vector2(mini(x + 6, x2), y2), col, 2.0, true)
+		x += 11
 	while y < y2:
-		draw_line(Vector2(r.position.x, y), Vector2(r.position.x, mini(y + 5, y2)), col, 1.0, true)
-		y += 10
-	y = r.position.y
-	while y < y2:
-		draw_line(Vector2(x2, y), Vector2(x2, mini(y + 5, y2)), col, 1.0, true)
-		y += 10
+		draw_line(Vector2(r.position.x, y), Vector2(r.position.x, mini(y + 6, y2)), col, 2.0, true)
+		draw_line(Vector2(x2, y), Vector2(x2, mini(y + 6, y2)), col, 2.0, true)
+		y += 11
 
 
-func _text(at: Vector2, s: String, px: int, col: Color) -> void:
+func _box(at: Vector2, s: String, px: int) -> Rect2:
+	var sz: Vector2 = font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, px)
+	return Rect2(Vector2(at.x, at.y - font().get_ascent(px)), sz)
+
+
+func _text(at: Vector2, s: String, px: int, col: Color, outline: bool = false) -> void:
 	if s.is_empty():
 		return
-	draw_string(font(), Vector2i(at), s, HORIZONTAL_ALIGNMENT_LEFT, -1, px, col)
+	if outline:
+		draw_string_outline(font(), at, s, HORIZONTAL_ALIGNMENT_LEFT, -1, px, 6, StoneStoryPalette.ink(pal))
+	draw_string(font(), at, s, HORIZONTAL_ALIGNMENT_LEFT, -1, px, col)
+	layout_boxes.append({"text": s, "rect": _box(at, s, px)})
 
 
-func _text_right(right_x: int, y: int, s: String, px: int, col: Color) -> void:
+func _text_right(right_x: float, y: float, s: String, px: int, col: Color) -> void:
 	if s.is_empty():
 		return
-	var w: int = font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, px).x
-	draw_string(font(), Vector2i(right_x - w, y), s, HORIZONTAL_ALIGNMENT_LEFT, -1, px, col)
+	var w: float = font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, px).x
+	_text(Vector2(right_x - w, y), s, px, col)
 
 
 static var _font_res: SystemFont = null
@@ -506,7 +584,7 @@ static func font() -> Font:
 	if _font_res == null:
 		var f := SystemFont.new()
 		f.font_names = PackedStringArray(["Malgun Gothic", "Gulim", "Arial Unicode MS", "Segoe UI", "sans-serif"])
-		f.antialiasing = TextServer.FONT_ANTIALIASING_NONE
-		f.subpixel_positioning = TextServer.SUBPIXEL_POSITIONING_DISABLED
+		f.font_weight = 700
+		f.antialiasing = TextServer.FONT_ANTIALIASING_GRAY
 		_font_res = f
 	return _font_res

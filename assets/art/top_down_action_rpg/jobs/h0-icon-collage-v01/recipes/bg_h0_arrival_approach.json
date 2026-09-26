@@ -1,0 +1,108 @@
+{
+  "asset": "bg_h0_arrival_approach",
+  "status": "candidate",
+  "note": "Background sample for region_h0_undersign_exchange (module entry region, topology ring_shelf_well), following the H0 Arrival Well approach brief layout: well centre (790,290) logical, outer diameter 220; main passage south x540..720 -> north x550..710; east connection y400..550; low outer walls at the screen sides. Clean base: no props, people, text or UI. 60 deg camera, 180 px per metre at source.",
+  "palette": "palette_h0.json",
+  "style": "environment",
+  "canvas": [2560, 1440],
+  "pivot": [0, 0],
+  "pivot_meaning": "canvas origin = logical (0,0); 2 source px per logical px",
+  "seed": 211,
+  "forms": [
+    {"name": "joint_base", "z": 0, "kind": "wash", "material": "floor_joint",
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+
+    {"name": "slabs", "z": 1, "material": "floor",
+     "shade": {"max_radius": 7, "soft": 0.1, "bump": 0.9, "threshold": 0.42, "highlight": 0.86, "highlight_amount": 0.35, "ragged": 0.12},
+     "line": {"width": 1.2, "heavy": 1.0, "breaks": 0.15, "color": "#8a7d92", "opacity": 0.7},
+     "rough": {"amp": 0.5, "soft": 2.5, "cell": 16},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.5, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 16}, "at": [0, 117], "size": [366, 240],
+        "repeat": {"grid": [9, 8], "step": [360, 234], "stagger": 180, "jitter": {"at": 3, "size": 0.012}}}
+     ]},
+
+    {"name": "slab_tint", "z": 1.5, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.13,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 16}, "at": [0, 117], "size": [366, 240],
+        "repeat": {"grid": [9, 8], "step": [360, 234], "stagger": 180, "jitter": {"at": 3, "alpha": 1.0}}}
+     ]},
+
+    {"name": "mottle_dark", "z": 2, "kind": "wash", "material": "grime", "blend": "multiply", "opacity": 0.07,
+     "mottle": {"cell": 340, "lo": 0.5, "hi": 0.85},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+    {"name": "mottle_light", "z": 2.1, "kind": "wash", "material": "worn", "opacity": 0.15,
+     "mottle": {"cell": 200, "lo": 0.55, "hi": 0.9},
+     "pieces": [{"icon": "square", "fit": [1, 1, 15, 15], "at": [1280, 720], "size": [2800, 1700]}]},
+
+    {"name": "plaza_joint", "z": 3, "kind": "flat", "color": "#9a8da0",
+     "pieces": [{"icon": "circle", "at": [1580, 600], "size": [836, 724]}]},
+    {"name": "plaza_wedges", "z": 4, "material": "floor",
+     "shade": {"max_radius": 7, "soft": 0.1, "bump": 0.9, "threshold": 0.42, "highlight": 0.86, "highlight_amount": 0.35, "ragged": 0.12},
+     "line": {"width": 1.2, "heavy": 1.0, "breaks": 0.15, "color": "#8a7d92", "opacity": 0.7},
+     "rough": {"amp": 0.45, "soft": 2.5, "cell": 16},
+     "cast": {"dist": 3, "blur": 2, "opacity": 0.35, "color": "shade_tint"},
+     "pieces": [{"icon": "aperture", "at": [1580, 600], "size": [826, 715], "rot": 8}]},
+
+    {"name": "worn_paths", "z": 6, "kind": "wash", "material": "worn", "opacity": 0.5, "blur": 30,
+     "rough": {"amp": 0.6, "soft": 24, "cell": 70},
+     "pieces": [
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1262, 800], "size": [320, 1500]},
+       {"icon": "square", "fit": [1, 1, 15, 15], "at": [1930, 955], "size": [1300, 230]}
+     ]},
+
+    {"name": "cracks", "z": 7, "kind": "flat", "material": "floor_joint", "opacity": 0.45,
+     "pieces": [
+       {"icon": "lightning_bolt", "at": [560, 1160], "size": [20, 96], "rot": 72},
+       {"icon": "lightning_bolt", "at": [2130, 1310], "size": [16, 74], "rot": -38},
+       {"icon": "lightning_bolt", "at": [880, 540], "size": [14, 62], "rot": 18},
+       {"icon": "lightning_bolt", "at": [1850, 1180], "size": [14, 60], "rot": 100}
+     ]},
+    {"name": "studs", "z": 7.5, "kind": "flat", "material": "bronze", "line": {"width": 1.0, "heavy": 1.2},
+     "pieces": [{"icon": "circle", "size": [16, 12], "at": [0, 0],
+                 "repeat": {"points": [[720, 351], [1080, 585], [1440, 1053], [1800, 1287], [360, 1287], [2160, 1053], [720, 1287]]}}]},
+
+    {"name": "well_void", "z": 10, "kind": "flat", "material": "void",
+     "grad": {"to": "well_inner", "y0": 590, "y1": 385, "curve": 1.2},
+     "pieces": [{"icon": "circle", "at": [1580, 548], "size": [346, 300]}]},
+    {"name": "well_rim", "z": 11, "kind": "block", "material": "well_rim", "extrude": 32,
+     "pieces": [
+       {"icon": "circle", "at": [1580, 548], "size": [440, 381]},
+       {"icon": "circle", "op": "sub", "at": [1580, 548], "size": [344, 298]}
+     ]},
+    {"name": "rim_clamps", "z": 12, "material": "bronze_block", "clip_to": "well_rim",
+     "shade": {"max_radius": 5, "bump": 0.8}, "line": {"width": 1.4, "heavy": 1.6},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "ground": true, "at": [0, 0], "size": [22, 50],
+                 "repeat": {"ellipse": [1580, 548, 196, 170], "count": 8, "phase": 22.5, "orient": true}}]},
+    {"name": "rim_bolts", "z": 13, "kind": "flat", "material": "bronze", "clip_to": "well_rim",
+     "line": {"width": 1.0, "heavy": 1.0},
+     "pieces": [{"icon": "circle", "size": [9, 8], "at": [0, 0],
+                 "repeat": {"ellipse": [1580, 548, 196, 170], "count": 16, "phase": 0}}]},
+
+    {"name": "north_wall", "z": 20, "kind": "block", "material": "stone", "extrude": 108,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [540, 31], "size": [1160, 70]},
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [2000, 31], "size": [1200, 70]}
+     ]},
+    {"name": "north_piers", "z": 21, "kind": "block", "material": "stone_dark", "extrude": 108,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 10}, "at": [0, 86], "size": [60, 52],
+                 "repeat": {"points": [[170, 86], [520, 86], [866, 86], [1066, 86], [1454, 86], [1790, 86], [2140, 86], [2440, 86]]}}]},
+    {"name": "pier_caps", "z": 22, "kind": "flat", "material": "bronze_block", "line": {"width": 1.2, "heavy": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 5}, "at": [0, 80], "size": [40, 14],
+                 "repeat": {"points": [[170, 80], [520, 80], [866, 80], [1066, 80], [1454, 80], [1790, 80], [2140, 80], [2440, 80]]}}]},
+
+    {"name": "west_wall", "z": 23, "kind": "block", "material": "stone", "extrude": 54,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [44, 800], "size": [100, 1500]}]},
+    {"name": "east_wall", "z": 23, "kind": "block", "material": "stone", "extrude": 54,
+     "pieces": [
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [2530, 404], "size": [140, 690]},
+       {"icon": "square", "slice": {"border": 4, "corner": 14}, "at": [2530, 1280], "size": [140, 468]}
+     ]},
+    {"name": "side_pillars", "z": 24, "kind": "block", "material": "stone_dark", "extrude": 76,
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 12}, "at": [0, 0], "size": [116, 84],
+                 "repeat": {"points": [[52, 430], [52, 830], [52, 1230], [2512, 700], [2512, 1086]]}}]},
+    {"name": "pillar_caps", "z": 25, "kind": "flat", "material": "bronze", "line": {"width": 1.2, "heavy": 1.2},
+     "pieces": [{"icon": "square", "slice": {"border": 4, "corner": 6}, "at": [0, 0], "size": [70, 30],
+                 "repeat": {"points": [[52, 428], [52, 828], [52, 1228], [2512, 698], [2512, 1084]]}}]}
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "id": "stratum_nursery",
+  "index": 3,
+  "location": "loc.nursery",
+  "display_name": "육자층",
+  "world_seed": 30877,
+  "palette": { "scheme": "analogous", "base_hue": 0.94, "saturation": 0.30, "contrast": 0.86, "variant": 3 },
+  "bounds": { "width": 640, "height": 1024 },
+  "spawn": { "position": [80, 96], "facing": 1 },
+  "solids": [
+    { "id": "ground_nursery", "rect": [0, 0, 640, 64], "kind": "ground" },
+    { "id": "wall_left", "rect": [0, 64, 40, 960], "kind": "wall" },
+    { "id": "wall_right", "rect": [600, 64, 40, 960], "kind": "wall" },
+    { "id": "nest_ledge", "rect": [360, 320, 240, 24], "kind": "wall" },
+    { "id": "plaque_ceiling", "rect": [470, 440, 130, 16], "kind": "wall" },
+    { "id": "plaque_floor", "rect": [470, 520, 130, 16], "kind": "wall" },
+    { "id": "plaque_back", "rect": [584, 456, 16, 64], "kind": "wall" },
+    { "id": "plaque_wall", "rect": [470, 456, 16, 64], "kind": "brittle", "regrow_seconds": 0.4 },
+    { "id": "rib_pocket", "rect": [40, 640, 200, 24], "kind": "wall" }
+  ],
+  "currents": [],
+  "membranes": [],
+  "routes": [
+    {
+      "id": "exit_nursery",
+      "kind": "descent",
+      "trigger": [280, 960, 80, 64],
+      "requires": [{ "kind": "always" }],
+      "next": "stratum_gallery"
+    }
+  ],
+  "sites": [
+    { "id": "site_nursery_plaque", "kind": "plaque", "position": [540, 488], "radius": 14, "grants_fact": "vent_above" }
+  ],
+  "matter": [
+    { "id": "matter_nursery_rib", "position": [140, 616], "size": 1, "verb": "weigh", "tag": "rib" }
+  ],
+  "anchors": [
+    { "id": "a1", "position": [80, 300], "radius": 12 }
+  ],
+  "fauna": [
+    { "id": "fauna_nursery_grazer", "kind": "grazer", "position": [320, 500], "patrol": [200, 820] }
+  ],
+  "backdrop": {
+    "wind": [3.0, 4.0],
+    "deform_grid": [[10, 22], [8, 20], [8, 18], [6, 16], [6, 14]],
+    "pulse_on": ["fauna_nursery_grazer", "plaque_wall", "site_nursery_plaque", "matter_nursery_rib"]
+  }
+}

@@ -66,6 +66,8 @@ Kit 2·3의 docs 폴더가 생기면 그쪽으로 옮기고, 여기서는 포인
 
 ## 3. 문서 간 충돌 (미해결 — 사용자 결정 대기)
 
+> **2026-09-27: C1~C4 전부 §5.1 Q2~Q5로 닫았다(에이전트 추천, 사용자 확인 대기).** 아래 본문은 기록으로 남긴다.
+
 루트 문서와 이번 대화의 지시가 어긋난다. 전체를 재질문하지 않고 충돌 항목만 둔다.
 
 ### C1. Kit 슬롯
@@ -100,6 +102,8 @@ Kit 2·3의 docs 폴더가 생기면 그쪽으로 옮기고, 여기서는 포인
 미결: Kit별로 다른 source가 허용되는가, 하나만 유효한가.
 
 ## 4. Current Frontier
+
+> **2026-09-27: F2~F5는 §5.1 Q6~Q9로 닫았다(에이전트 추천, 사용자 확인 대기). 열린 결정 0개.**
 
 **비어 있지 않다.** 아래가 열린 결정이다.
 
@@ -147,6 +151,30 @@ mosa lina 정체 미확인. Swallow the Sea 유사 개발의 구체 범위 미�
 | 카메라 고정/전환 방식 | 미확인 | — |
 | 실루엣 정보량 판정 | 미완료 | F3 |
 | 개발 과정 / 오디오 | 미확인 | — |
+
+## 5.1 2026-09-27 결정 — 에이전트 추천으로 확정, 사용자 확인 대기 · **정본 반영 대기**
+
+사용자 지시(2026-09-27 02:10 KST): "자러 갈 거라서 작업 중간에 질문하지 말고 전부 작업해. 방향을 바꾸는 중요한 질문이면 네 추천대로 해."
+그래서 아래는 **에이전트 추천으로 정한 것**이다. 사용자가 깨어나 뒤집으면 그 답이 이긴다. 계획서(`plans/kits/06_SIDEVIEW_ECOSYSTEM_KIT.md`)에는 이미 반영했다. **공용·타 워크스트림 문서는 이 세션 소유가 아니라 고치지 않았다** — 오른쪽 열의 소유자가 반영해야 한다.
+
+| # | 질문 | 결정 (추천) | 근거 | 정본 반영 대기 |
+|---:|---|---|---|---|
+| **Q1** | **물 규칙.** 계획서 머리말과 `docs/world/00_CONSTITUTION.md` 불변식 0-2는 "물 0건 / 물이 없는 세계"다. `ROUND_PLAN.md` §11.1·§11.2의 지금 문장은 "물은 금지가 아니다. 장면의 조건(메인)이 되면 안 된다"이다 | **Kit 06은 물 0건을 유지한다.** 단 근거를 "세계가 물을 금지한다"에서 **"§11.2의 '조건 금지'를 이 Kit에 적용한 결과"**로 바꾼다. `test_eco_no_water_systems`를 둔다 | ① Rain World에서 온 물 요소(비 사이클·침수·호흡·수영·수중 전투)는 전부 장면의 **조건**이라 §11.2로도 금지다. ② 무대로서의 물은 설계된 것이 없다. 새로 넣으면 빈칸이 생긴다. ③ 0건은 두 문서를 동시에 만족한다. ④ 나중에 무대용 물을 더하는 것은 추가 작업이고, 넣은 물 시스템을 빼는 것은 재작업이다 | W0 `ROUND_PLAN` 변경 없음. **W1:** `00_CONSTITUTION` 불변식 0-2와 `11_CONFLICTS_WITH_PLANS` N1이 아직 폐기된 "물 금지" 판을 인용한다 |
+| **Q2** | C1 Kit 슬롯 | **해소.** Rain World = `06_SIDEVIEW_ECOSYSTEM_KIT`, mosa lina = 07, Swallow the Sea 유사 = 08. 05(Stone Story)는 그대로 | 계획서 3편이 이미 그 번호로 존재한다 | W0: `plans/kits/INDEX.md`에 06·07·08 행 없음 |
+| **Q3** | C2 조사 주체 | **Kit별로 적용.** 루트 SSR6(조사는 전부 사용자)은 Stone Story Kit 규칙이다. 이 Kit은 이미 한 조사를 쓰고 새 외부 조사를 하지 않는다(계획서 §3 "재조사 시도 금지") | SSR 번호 자체가 Stone Story Kit 범위다 | 루트 `docs/GRILLING_STATE.md` 소유자 |
+| **Q4** | C3 코드 전용 비주얼 범위 | **이 라운드 3 Kit(06·07·08)에 적용.** 프로젝트 전체 여부는 이 Kit이 정하지 않는다 | `ROUND_PLAN` §5가 3 Kit 하드 게이트로 이미 정했다 | 루트 `PROJECT_DECISIONS.md` §21.1 소유자 |
+| **Q5** | C4 세계관 source | **Kit별 source 허용.** 이 Kit은 앨리스 포스트아포칼립스(`docs/world/**`)다. 단 부록 W대로 화면에 세계관 문장 0 | `AGENTS.md` "기존 Kit를 쓰는 것은 기존 세계관 계승이 아니다" | 루트 문서 소유자 |
+| **Q6** | F2 authored 단위 | **영역 JSON 1개 = 한 단위**(룸 N개 + 링크 + 통로 + 트리거 + den). 추가는 파일 1개 + `index.json` 1줄 | 계획서 §5.2 콘텐츠 추가 절차 | 없음 |
+| **Q7** | F3 실루엣 판정 | **기준은 계획서 §11.3에 수치로 적었다. 판정은 W2의 `body_part.draw`/`creature_builder.compose` 구현 뒤 실제 화면으로 한다.** 그 전에는 화면 구현을 시작하지 않는다 | `core/procedural/README.md` 상태 표에서 둘 다 stub | W2 |
+| **Q8** | F4 나머지 2 Kit | **이 Kit 범위 밖.** 07·08 계획서가 있다 | — | 없음 |
+| **Q9** | F5 입력 스킴 | **5 action** `eco_left` `eco_right` `eco_jump` `eco_curl` `eco_use`. Esc·J·P·Enter는 셸이 먼저 가져가므로 쓰지 않는다. 계획서 §13 | `app/app_root.gd`가 Esc(일시정지)·J(저널)를 전역 처리한다 | W0: `app_root._configure_module_actions()` 바인딩 추가 |
+| **Q10** | 전이 비용 | **`docs/scale_collapse/04_TRANSITIONS.md` §1·§4의 통행료를 따른다.** 전이마다 `wounds`(최댓값 병합) → `scale` 순서로 요청 2개. 옛 "위로 가면 비용 없음 / 아래로 가면 scar" 폐기 | 계획서 머리말이 척도 값은 그 폴더가 정본이라고 적고 있고, `ROUND_PLAN` §11.1d(W0)가 같은 규칙이다 | 없음 |
+| **Q11** | `body.facts.integrity` | **축에 쓰지 않는다. 이 Kit 로컬 값이다.** | 동결된 `AxisBody.DERIVED_KEYS`가 `integrity`를 `derived_value_forbidden`으로 거부한다. 계획서가 스토어 계약과 어긋나 있었다 | 없음 |
+| **Q12** | `ladder.json`이 없다 | `res://content/scale/ladder.json`(W0)을 먼저 읽고, **없으면** 동결 상수 `AxisBody.SCALE_RUNGS` + `01_SCALE_ALGEBRA` §1의 이름 순서로 같은 표를 만든다. Kit 안에 사다리 사본 파일 0개 | 파일이 저장소에 없다(`07_OPEN_QUESTIONS` 103행) | W0: `ladder.json` 생성 |
+| **Q13** | `ProceduralScaleFit`이 없다 | `q`는 `BodyRung.derive`가 계산한다(`§4.3-2` 식). 5독자 신호는 화면·소리 몫이라 W2가 그 클래스를 만들 때까지 구현하지 않는다 | `core/procedural/`에 그 클래스가 없다 | W2 |
+| **Q14** | 스토어 주입 | 모듈에 `attach_world_store(store: WorldState)` 1개. 앱이 `enter` 전에 부른다. 안 부르면 쓰기 없이 로컬 세이브로만 돈다 | `core/worldstate/README.md` "스토어는 arrival에 없다. 앱이 따로 주입한다" | W0: 앱 배선 |
+
+**이 표로 닫힌 것:** §3 C1~C4, §4 F2~F5. **남은 사용자 결정 0개**(위 추천을 뒤집는 경우 제외).
 
 ## 6. Rejected (이 Kit)
 

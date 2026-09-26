@@ -1,0 +1,70 @@
+{
+  "asset": "player",
+  "status": "candidate",
+  "note": "Player, back view (facing up). Same parts as the front view; hair covers the whole head, satchel on the character's left hip (screen left).",
+  "palette": "palette_h0_mood.json",
+  "style": "sprite",
+  "canvas": [192, 192],
+  "pivot": [96, 186],
+  "pivot_meaning": "ground contact point between the boots (place this pixel on the floor position)",
+  "scale_all": {"factor": 1.04, "origin": [96, 186]},
+  "seed": 43,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 3,
+     "pieces": [{"icon": "circle", "at": [96, 184], "size": [64, 18]}]},
+    {"name": "leg_l", "tags": ["legs", "leg_l"], "z": 1, "material": "trouser",
+     "pieces": [{"icon": "circle", "at": [86, 165], "size": [17, 30]}]},
+    {"name": "leg_r", "tags": ["legs", "leg_r"], "z": 1, "material": "trouser",
+     "pieces": [{"icon": "circle", "at": [106, 165], "size": [17, 30]}]},
+    {"name": "boot_l", "tags": ["legs", "leg_l"], "z": 2, "material": "leather",
+     "pieces": [{"icon": "footsteps", "crop": [2, 10.6, 7.6, 14.6], "at": [86, 180], "size": [18, 13]}]},
+    {"name": "boot_r", "tags": ["legs", "leg_r"], "z": 2, "material": "leather",
+     "pieces": [{"icon": "footsteps", "crop": [2, 10.6, 7.6, 14.6], "flip": "x", "at": [106, 180], "size": [18, 13]}]},
+
+    {"name": "coat", "tags": ["upper", "body"], "z": 3, "material": "coat",
+     "pieces": [
+       {"icon": "bell", "crop": [1.6, 3.4, 14.4, 10.6], "at": [96, 124], "size": [66, 64]},
+       {"icon": "cloud", "flip": "xy", "at": [96, 157], "size": [62, 20]}
+     ]},
+    {"name": "coat_seam", "tags": ["upper", "body"], "z": 3.5, "kind": "flat", "color": "coat_seam",
+     "pieces": [{"icon": "circle", "at": [96, 146], "size": [2.5, 30]}]},
+
+    {"name": "strap", "tags": ["upper", "strap"], "z": 4, "material": "leather", "cast": false,
+     "pieces": [{"icon": "circle", "at": [89, 118], "size": [5, 76], "rot": 44}]},
+    {"name": "satchel", "tags": ["upper", "satchel"], "z": 4.2, "material": "leather",
+     "pieces": [{"icon": "briefcase", "crop": [1.5, 4.2, 14.5, 15], "at": [63, 154], "size": [24, 18]}]},
+
+    {"name": "arm_l", "tags": ["upper", "arm_l"], "z": 5.5, "material": "coat", "pivot": [68, 96],
+     "pieces": [{"icon": "shield", "half": "left", "at": [65, 117], "size": [18, 44], "rot": 4}]},
+    {"name": "arm_r", "tags": ["upper", "arm_r"], "z": 5.5, "material": "coat", "pivot": [124, 96],
+     "pieces": [{"icon": "shield", "half": "right", "at": [127, 117], "size": [18, 44], "rot": -4}]},
+    {"name": "glove_l", "tags": ["upper", "arm_l"], "z": 6, "material": "leather",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [63, 141], "size": [12, 15], "rot": 6}]},
+    {"name": "glove_r", "tags": ["upper", "arm_r"], "z": 6, "material": "leather",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [129, 141], "size": [12, 15], "rot": -6}]},
+
+    {"name": "capelet", "tags": ["upper", "body"], "z": 7, "material": "coat_top",
+     "pieces": [{"icon": "umbrella", "crop": [0.6, 2.3, 15.4, 8.7], "at": [96, 94], "size": [90, 38]}]},
+
+    {"name": "scarf", "tags": ["upper", "head"], "z": 8, "material": "scarf",
+     "pieces": [{"icon": "circle", "at": [96, 80], "size": [50, 18]}]},
+
+    {"name": "hair", "tags": ["upper", "head"], "z": 10, "material": "hair",
+     "shade": {"highlight_amount": 0.75, "highlight": 0.9},
+     "pieces": [
+       {"icon": "circle", "at": [96, 43], "size": [66, 60]},
+       {"icon": "cloud", "flip": "x", "at": [97, 29], "size": [74, 38]},
+       {"icon": "circle", "at": [96, 64], "size": [54, 26]},
+       {"icon": "droplet", "flip": "y", "at": [70, 62], "size": [14, 24], "rot": 8},
+       {"icon": "droplet", "flip": "y", "at": [122, 62], "size": [14, 24], "rot": -8}
+     ]},
+    {"name": "hair_tail", "tags": ["upper", "head"], "z": 10.5, "material": "hair",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [96, 80], "size": [13, 21]}]},
+    {"name": "hair_tie", "tags": ["upper", "head"], "z": 11, "kind": "flat", "material": "bronze",
+     "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "circle", "at": [96, 72], "size": [8, 5]}]}
+  ],
+  "frames": [
+    {"name": "idle_up"}
+  ]
+}

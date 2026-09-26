@@ -1,0 +1,31 @@
+{
+  "job_id": "h0-pixel-trial-v01",
+  "status": "candidate",
+  "method": "code pixel art: Python 3.13.7 + Pillow 12.3.0, drawn at x1 then integer nearest upscale (x4 source, x2 on 1280x720 screen)",
+  "input_images": [],
+  "gold_standard": [],
+  "palette": {
+    "source": "C:/projects/TINProject/assets/art/top_down_action_rpg/jobs/h0-icon-collage-v01/recipes/palette_h0.json",
+    "access": "read only",
+    "used_copy": "C:/projects/TINProject/assets/art/top_down_action_rpg/jobs/h0-pixel-trial-v01/tool/palette_h0_snapshot.json",
+    "sha256_used": "6ba743f32be716cfaa130fe80383ca710c007ef743e6830edd26baa25d506fb5",
+    "sha256_at_job_start": "51950ca29140a68b14acb4aa4494aa6db14948f722d182035b109bb2e3b50e6a",
+    "note": "The source changed while this job ran (well_inner, well_rim base/light/shadow and styles). All outputs were redrawn with the newer copy so both jobs share the same colours."
+  },
+  "inputs": [
+    {"path": "C:/projects/TINProject/modules/top_down_action_rpg/presentation/top_down_vector_layer.gd", "sha256": "8f36e3740c71316d19c53c38fcd0c854a2b9f02bc19ecfd83952faf996995753", "role": "layout: WORLD_ORIGIN, world mapping, topology rings/bars/well, player draw point"},
+    {"path": "C:/projects/TINProject/modules/top_down_action_rpg/presentation/top_down_screen.gd", "sha256": "c9e24eeda289c1dd35b56f10b18b1db07bf93273f7ca1d8095755295ceae4122", "role": "layout: field model (markers, player_position, player_facing, topology)"},
+    {"path": "C:/projects/TINProject/modules/top_down_action_rpg/systems/field_controller.gd", "sha256": "f34038cd231ff0b5ea31525af69dc1af189ce9742f05e53ce6d363b2ff38382f", "role": "layout: interactable order and _anchor_position grid"},
+    {"path": "C:/projects/TINProject/modules/top_down_action_rpg/content/regions/region_h0_undersign_exchange.json", "sha256": "a05476d0a892300c0af42718f53237942ed123ac9acdab4c47c078b51d594df6", "role": "identity: topology ring_shelf_well, exits and gate_g0, props, resident NPC, no encounters"},
+    {"path": "C:/projects/TINProject/modules/top_down_action_rpg/content/props/prop_h0_ration_counter.json", "sha256": "00588096dfdc2d8828ef37253aab9f8462638ab9b7c510f95e08957cd3a3f76e", "role": "identity: layer prop, initial state ps_open"},
+    {"path": "C:/projects/TINProject/modules/top_down_action_rpg/content/props/prop_h0_counterweight_map.json", "sha256": "bc26bd4439a698ae05d636ae71577bfb24e8426d9e15b577d0225045292c7ed8", "role": "identity: layer floor, initial state ps_matched"},
+    {"path": "C:/projects/TINProject/modules/top_down_action_rpg/content/enemies/enemy_ash_hound.json", "sha256": "5460fdff7cfb3d95fdb6b74ef90ef4281c2a042dc1fbe8860ef93b38abf0d7f5", "role": "identity: composite body, human scale, ash_lunge, base region R1"},
+    {"path": "C:/projects/TINProject/modules/top_down_action_rpg/content/items/item_blank_return_form.json", "sha256": "91c953661b02715fcd26424b6d3eab70f562005ae1b52ba8129dd9a2aadd9501", "role": "identity: quest item icon, not a field prop"},
+    {"path": "C:/projects/TINProject/docs/IMAGE_ASSET_WORKFLOW.md", "sha256": "6d2c161c92ac404a8e56bc4e6c98b620c40007d6e5f05481e7c33c4f532b809c", "role": "rules: code art allowed for kit 04, candidate start, hard gate"},
+    {"path": "C:/projects/TINProject/plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/14_ISOLATED_ART_JOBS.md", "sha256": "1b879b11f6088a074a95e25fad0ed646f2724531a3ab42046b5affd145af67fc", "role": "rules: job folder structure, JOB.md fields, isolation"}
+  ],
+  "not_read": [
+    "docs/art/projects/top_down_action_rpg/PROJECT_ART_LAYER.md (palette source note cites its H0 sample proposal; not opened by this job)",
+    "any other file in h0-icon-collage-v01"
+  ]
+}

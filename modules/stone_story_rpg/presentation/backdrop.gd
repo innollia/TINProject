@@ -87,6 +87,16 @@ func density_role(b: int) -> int:
 	return DENSITY[clampi(b, 0, DENSITY.size() - 1)]
 
 
+func offsets(b: int) -> PackedVector2Array:
+	var dyn: ProceduralBackdropDynamics = dynamics.get(b, null)
+	var out := PackedVector2Array()
+	if dyn == null:
+		return out
+	for i in dyn.get_anchor_count():
+		out.append(dyn.get_offset(i))
+	return out
+
+
 ## 근경 -> 원경 순으로 그린다. 뒤에 있는 것이 먼저.
 static func draw_order() -> Array[int]:
 	return [Band.NEAR, Band.MID, Band.FAR]

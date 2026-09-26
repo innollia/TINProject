@@ -686,6 +686,32 @@ func test_field_dialogue_choice_and_document_close_all_return_to_field() -> void
 	assert_true(_field_of(reader).focus_candidates().size() > 0)
 
 
+func test_screen_confirm_passes_every_authored_page_including_wait_into_the_choice_set() -> void:
+	var game := _spawn()
+	assert_true(_approach_and_interact(game, DESK_NPC))
+	assert_eq(_mode_of(game), "dialogue")
+	var conversation := _conversation_of(game)
+	var screen := _screen_of(game)
+	assert_eq(String(conversation.conversation_id), RETURN_DESK)
+	var pages: Array = conversation.pages()
+	var wait_pages: int = 0
+	for page: Variant in pages:
+		if String((page as Dictionary).get("advance", "auto")) == "wait":
+			wait_pages += 1
+	assert_true(wait_pages > 0, "authored return desk carries a wait page")
+	for index: int in range(pages.size()):
+		assert_eq(int(conversation.page_index), index)
+		assert_false(conversation.at_choice_set())
+		assert_eq(screen.current_state(), TopDownActionRpgScreen.STATE_DIALOGUE_CHOICE_FOCUS)
+		screen.submit_confirm()
+	assert_true(conversation.at_choice_set())
+	assert_eq(_mode_of(game), "dialogue")
+	assert_false(conversation.choice_rows().is_empty())
+	assert_eq(String(conversation.focused_choice().get("choice_id", "")), RETURN_DESK_CHOICE)
+	screen.submit_confirm()
+	assert_true(_state_of(game).choice_taken(RETURN_DESK, RETURN_DESK_CHOICE))
+
+
 func test_combat_build_opens_player_window_and_deterministic_enemy_windows() -> void:
 	var first := _spawn(_fresh_snapshot(CHOIR_ENCOUNTER, 220))
 	var catalog := _catalog_of(first)

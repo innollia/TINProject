@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "id": "stratum_gallery",
+  "index": 4,
+  "location": "loc.gallery",
+  "display_name": "전시층",
+  "world_seed": 41190,
+  "palette": { "scheme": "tetradic", "base_hue": 0.74, "saturation": 0.24, "contrast": 1.12, "variant": 1 },
+  "bounds": { "width": 640, "height": 1024 },
+  "spawn": { "position": [320, 64], "facing": 1 },
+  "solids": [
+    { "id": "wall_left", "rect": [0, 0, 40, 1024], "kind": "wall" },
+    { "id": "wall_right", "rect": [600, 0, 40, 1024], "kind": "wall" },
+    { "id": "gallery_deck_a", "rect": [400, 200, 200, 24], "kind": "wall" },
+    { "id": "gallery_deck_b", "rect": [280, 400, 200, 24], "kind": "wall" },
+    { "id": "vault_ceiling", "rect": [470, 520, 130, 16], "kind": "wall" },
+    { "id": "vault_floor", "rect": [470, 584, 130, 16], "kind": "wall" },
+    { "id": "vault_back", "rect": [584, 536, 16, 48], "kind": "wall" },
+    { "id": "vault_wall", "rect": [470, 536, 16, 48], "kind": "brittle", "regrow_seconds": 0.4 },
+    { "id": "gallery_floor", "rect": [0, 1010, 640, 14], "kind": "ground" }
+  ],
+  "currents": [],
+  "membranes": [],
+  "routes": [
+    {
+      "id": "exit_gallery",
+      "kind": "descent",
+      "trigger": [280, 960, 80, 50],
+      "requires": [{ "kind": "always" }],
+      "next": "stratum_floor"
+    },
+    {
+      "id": "gallery_vault",
+      "kind": "site_route",
+      "requires": [{ "kind": "opened", "site_id": "site_nursery_plaque" }],
+      "next": ""
+    }
+  ],
+  "sites": [],
+  "matter": [
+    { "id": "matter_gallery_hammer", "position": [540, 560], "size": 1, "verb": "strike", "tag": "iron" }
+  ],
+  "anchors": [
+    { "id": "a1", "position": [80, 176], "radius": 12 }
+  ],
+  "fauna": [
+    { "id": "fauna_gallery_warden", "kind": "warden", "position": [320, 480], "patrol": [960, 480], "line_y": 240 }
+  ],
+  "backdrop": {
+    "wind": [0.0, 2.0],
+    "deform_grid": [[10, 22], [8, 20], [8, 18], [6, 16], [6, 14]],
+    "pulse_on": ["fauna_gallery_warden", "vault_wall", "matter_gallery_hammer", "gallery_floor"]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "asset": "prop_h0_counterweight_map",
+  "status": "candidate",
+  "note": "prop_h0_counterweight_map (H0 Counterweight Map, state ps_matched, floor layer, no collision). A low bronze-rimmed floor plate: three route-card panels, an inlaid bronze route network, two counterweight posts and the lift-counter dial. No text.",
+  "palette": "palette_h0.json",
+  "style": "prop",
+  "canvas": [440, 300],
+  "pivot": [220, 262],
+  "pivot_meaning": "front-bottom centre of the plate rim on the floor",
+  "seed": 103,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.3, "blur": 8,
+     "pieces": [{"icon": "octagon", "at": [224, 166], "size": [372, 198]}]},
+
+    {"name": "plate_rim", "z": 0, "kind": "block", "material": "bronze_block", "extrude": 9,
+     "pieces": [{"icon": "octagon", "at": [220, 160], "size": [364, 190]}]},
+    {"name": "plate", "z": 1, "material": "stone_dark",
+     "shade": {"bump": 0.12, "ragged": 0.05, "highlight_amount": 0.15},
+     "texture": {"strength": 0.04},
+     "line": {"width": 1.0, "heavy": 0.2, "breaks": 0.2},
+     "pieces": [{"icon": "octagon", "at": [220, 158], "size": [334, 166]}]},
+    {"name": "cards", "z": 2, "material": "paper", "shade": {"bump": 0.15, "ragged": 0.05, "highlight_amount": 0.15},
+     "line": {"width": 0.9, "heavy": 0.8, "breaks": 0.3},
+     "pieces": [{"icon": "map", "squash": 0.8, "at": [214, 156], "size": [250, 118]}]},
+    {"name": "routes", "z": 3, "kind": "flat", "material": "bronze", "opacity": 0.85,
+     "line": {"width": 0.8, "heavy": 0.6},
+     "pieces": [{"icon": "node_graph", "squash": 0.8, "at": [212, 154], "size": [150, 84]}]},
+    {"name": "loose_cards", "z": 3.5, "material": "paper", "shade": {"bump": 0.2},
+     "cast": {"dist": 2, "blur": 1.5, "opacity": 0.4, "color": "shade_tint"},
+     "pieces": [
+       {"icon": "file", "ground": true, "rot": -18, "at": [96, 190], "size": [30, 38]},
+       {"icon": "file", "ground": true, "rot": 12, "at": [300, 214], "size": [30, 38]}
+     ]},
+    {"name": "counter_drum", "z": 5, "material": "bronze_block",
+     "pieces": [{"icon": "cylinder", "at": [368, 150], "size": [46, 60]}]},
+    {"name": "counter_dial", "z": 5.5, "kind": "flat", "material": "paper", "opacity": 0.95,
+     "line": {"width": 0.7, "heavy": 0.5},
+     "pieces": [{"icon": "rotary_dial", "crop": [3.2, 5, 12.8, 14.6], "squash": 0.55, "at": [368, 127], "size": [30, 30]}]},
+    {"name": "weights", "z": 6, "material": "bronze",
+     "pieces": [
+       {"icon": "weight", "at": [392, 178], "size": [22, 26]},
+       {"icon": "weight", "at": [76, 128], "size": [30, 34]},
+       {"icon": "weight", "at": [98, 140], "size": [22, 26]}
+     ]}
+  ]
+}

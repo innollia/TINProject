@@ -692,18 +692,17 @@ func _advance_to_choice_set() -> bool:
 		var conversation: TopDownActionRpgConversationController = _conversation_of()
 		if conversation == null or _mode() != "dialogue":
 			return false
+		if conversation.at_choice_set():
+			return not conversation.choice_rows().is_empty()
 		var page: Dictionary = conversation.current_page()
-		var advance_mode: String = String(page.get("advance", "auto"))
 		_see("dialogue_page")
 		_emit("dialogue_page", "presented", &"dialogue_read", StringName(String(conversation.conversation_id)), {
 			"page_index": conversation.page_index,
 			"page_id": String(page.get("page_id", "")),
 			"speaker": String(page.get("speaker", "")),
 			"presentation_class": String(page.get("presentation_class", "")),
-			"advance": advance_mode,
+			"advance": String(page.get("advance", "auto")),
 		})
-		if page.is_empty() or advance_mode != "auto":
-			return not conversation.choice_rows().is_empty()
 		if not _module.execute_command(&"dialogue_advance"):
 			return false
 	return false

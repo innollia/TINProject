@@ -97,6 +97,25 @@ static func build(content: StoneStoryContent, tuning: StoneStoryTuning,
 				"blocks_sight": bool(od.get("blocks_sight", false)),
 			})
 
+	var work: Array = []
+	var st_drop: StoneStoryRng = StoneStoryCore.stream(run_seed, StoneStoryCore.TAG_DROP)
+	var wi: int = 0
+	for raw in region.get("props", []):
+		var pdef: Dictionary = content.get_def("prop", str((raw as Dictionary).get("prop_id", "")))
+		if str(pdef.get("kind", "")) != "mine":
+			continue
+		var yields: Dictionary = {}
+		var units: int = 0
+		var table: Dictionary = pdef.get("yields", {})
+		for mat in table:
+			var pair: Array = table[mat]
+			var n: int = st_drop.range_int(wi * 7 + 3, int(pair[0]), int(pair[1]))
+			yields[str(mat)] = n
+			units += n
+		var total: int = maxi(1, units) * maxi(1, int(pdef.get("ticks", 30)))
+		work.append({"prop_id": str(pdef["id"]), "ticks_left": total, "ticks_total": total, "yields": yields})
+		wi += 1
+
 	return {
 		"region_id": region_id,
 		"star_level": star_level,
@@ -109,6 +128,7 @@ static func build(content: StoneStoryContent, tuning: StoneStoryTuning,
 		"phase_index": 0,
 		"projectiles": [],
 		"obstacles": obstacles,
+		"work": work,
 		"player_stance": "neutral",
 		"ai_state": "engage",
 		"cleared_at_tick": 0,

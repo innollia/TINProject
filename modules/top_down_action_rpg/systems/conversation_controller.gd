@@ -8,10 +8,8 @@ const RED_PRESENTATION_CLASSES: Array[String] = ["extreme", "hostile", "result",
 const CHOICE_PRESENTATION_CLASSES: Array[String] = ["neutral", "extreme", "unavailable", "result"]
 const RETURN_FOCUS_VALUES: Array[String] = ["field", "choice", "conversation"]
 const DOCUMENT_PRESENTATIONS: Array[String] = ["plain", "redacted", "corrupted"]
-const ADVANCE_AUTO: String = "auto"
 
 const PAGE_ADVANCE_AUTO: String = "page_advanced"
-const PAGE_ADVANCE_WAIT: String = "await_input"
 const PAGE_ADVANCE_END: String = "page_end"
 const DOCUMENT_CLOSED: String = "document_closed"
 const DIALOGUE_CLOSED: String = "closed"
@@ -129,8 +127,6 @@ func advance_page() -> String:
 	var page: Dictionary = current_page()
 	if page.is_empty():
 		return PAGE_ADVANCE_END
-	if String(page.get("advance", ADVANCE_AUTO)) != ADVANCE_AUTO:
-		return PAGE_ADVANCE_WAIT
 	page_index += 1
 	if page_index >= pages().size() and choices().is_empty():
 		return complete()

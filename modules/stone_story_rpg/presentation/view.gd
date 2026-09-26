@@ -2,17 +2,18 @@ class_name StoneStoryView
 extends Control
 
 ## 월드 + HUD 를 그린다. 상태를 읽기만 하고 판정하지 않는다.
-## 형체는 PVE 정규 형상의 points 를 읽어 선으로 잇는다.
+## 순서: 하늘 -> 바닥 -> 구조물(큰 것 1개) -> 뜬 소품 -> 깊이 정렬(소품·장애물·개체) -> 근경 -> HUD
 
-const VIEW_W: int = StoneStoryFrame.VIEW_W
+const SAFE_W: int = StoneStoryFrame.VIEW_W
 const VIEW_H: int = StoneStoryFrame.VIEW_H
-const PX_PER_UNIT: float = 3.0
-## 형체 스케일. 정규 형상은 월드 단위이므로 그릴 때 키운다.
-const FORM_SCALE: float = 2.6
-const CENTER := Vector2(480.0, 300.0)
-## 지평선. 화면 높이의 38%. (계약 §4.1)
-const HORIZON_Y: int = 243
-const FONT_SIZES: Array[int] = [8, 10, 12, 14]
+const HORIZON_Y: int = StoneStoryContent.SCENE_HORIZON_Y
+const PX_PER_UNIT: float = 7.0
+const DEPTH_PX: float = 5.0
+const STAGE_X: float = 480.0
+const STAGE_Y: float = 432.0
+const FS_HUD: int = 18
+const FS_SMALL: int = 16
+const FS_NAME: int = 20
 
 var state: Dictionary = {}
 var encounter: Dictionary = {}
@@ -24,11 +25,15 @@ var message_frames: int = 0
 
 var pal: ProceduralPalette = null
 var backdrop: StoneStoryBackdrop = null
-var critters: Dictionary = {}          # foe_id -> StoneStoryCritter
+var critters: Dictionary = {}
 var _player: StoneStoryCritter = null
+var _last: Dictionary = {}
+var _dying: Array = []
+var _player_class: Dictionary = {}
 var stats: StoneStoryDrawStats = StoneStoryDrawStats.new()
+var clock: float = 0.0
+var hud_boxes: Array = []
 var _font_res: SystemFont = null
-var _font_checked: bool = false
 
 
 func _ready() -> void:
@@ -43,11 +48,13 @@ func bind(run_state: Dictionary, enc: Dictionary, region_def: Dictionary,
 	region = region_def
 	content = content_ref
 	tuning = tuning_ref
-	if pal == null:
-		pal = StoneStoryPalette.build(str(region_def.get("id", "")), int(run_state.get("run_seed", 0)))
+	pal = StoneStoryPalette.for_region(content, region_def)
 	if backdrop == null:
 		backdrop = StoneStoryBackdrop.new()
 	backdrop.build(str(region_def.get("id", "")), int(run_state.get("run_seed", 0)))
+	critters.clear()
+	_last.clear()
+	_dying.clear()
 	_rebuild_critters()
 	queue_redraw()
 
@@ -57,39 +64,61 @@ func say(s: String) -> void:
 	message_frames = 90
 
 
+func _sil(def: Dictionary) -> Dictionary:
+	if content == null:
+		return {}
+	return content.get_def("silhouette", str(def.get("silhouette", "sil_lump")))
+
+
+func _key(f: Dictionary) -> String:
+	if bool(f.get("is_boss", false)):
+		return "boss:" + str(f.get("foe_id", ""))
+	return "foe:" + str(int(f.get("spawn_index", 0)))
+
+
+func _make(f: Dictionary) -> StoneStoryCritter:
+	var def: Dictionary = f.get("def", {})
+	var seed_v: int = int(f.get("seed", 0)) + int(f.get("spawn_index", 0)) * 7919 + str(f.get("foe_id", "")).hash() % 1000
+	var tags: Array = f.get("tags", [])
+	return StoneStoryCritter.build(_sil(def), f.get("attributes", {}), f.get("shape", {}), absi(seed_v),
+			float(f.get("scale", 1.0)), tags.has("flying"))
+
+
 func _rebuild_critters() -> void:
-	critters.clear()
 	var live: Dictionary = {}
 	for f in encounter.get("foes", []):
-		live[str(f["foe_id"])] = true
-		if critters.has(str(f["foe_id"])):
+		var k: String = _key(f)
+		if not bool(f.get("alive", true)):
 			continue
-		critters[str(f["foe_id"])] = StoneStoryCritter.build(
-				str(f["foe_id"]), f.get("attributes", {}), f.get("shape", {}), int(f.get("seed", 0)))
+		live[k] = true
+		if not critters.has(k):
+			critters[k] = _make(f)
 	var b: Dictionary = encounter.get("boss", {})
-	if not b.is_empty():
-		live[str(b["foe_id"])] = true
-		if not critters.has(str(b["foe_id"])):
-			critters[str(b["foe_id"])] = StoneStoryCritter.build(
-					str(b["foe_id"]), b.get("attributes", {}), b.get("shape", {}), int(b.get("seed", 0)))
+	if not b.is_empty() and bool(b.get("alive", true)):
+		var kb: String = _key(b)
+		live[kb] = true
+		if not critters.has(kb):
+			critters[kb] = _make(b)
 	for k in critters.keys():
 		if not live.has(k):
 			critters.erase(k)
 	var p: Dictionary = state.get("player", {})
 	var attrs: Dictionary = StoneStoryRunState.resolve_attributes(p, content)
-	_player = StoneStoryCritter.build("player", attrs, {"motion_events": 4}, int(p.get("level", 1)))
-
-
-
+	_player_class = content.get_def("class", str(p.get("class_id", ""))) if content != null else {}
+	_player = StoneStoryCritter.build(_sil(_player_class), attrs, _player_class.get("shape", {}),
+			int(p.get("level", 1)) * 131 + 17)
 
 
 func _process(delta: float) -> void:
+	clock += delta
 	if backdrop != null:
 		backdrop.step(delta)
-		var cam: Vector2 = _player_world() if _player != null else Vector2.ZERO
-		backdrop.set_view_offset(-cam * 0.4)
+	_sync_anim(delta)
 	for k in critters:
-		critters[k].step(delta)
+		(critters[k] as StoneStoryCritter).step(delta)
+	for d in _dying:
+		(d["critter"] as StoneStoryCritter).step(delta)
+	_dying = _dying.filter(func(d): return (d["critter"] as StoneStoryCritter).dying < 1.0)
 	if _player != null:
 		_player.step(delta)
 	if message_frames > 0:
@@ -97,421 +126,379 @@ func _process(delta: float) -> void:
 	queue_redraw()
 
 
-func _player_world() -> Vector2:
-	return Vector2(float(state["player"]["pos"]["x"]), float(state["player"]["pos"]["y"]))
+func _all_foes() -> Array:
+	var out: Array = []
+	for f in encounter.get("foes", []):
+		out.append(f)
+	var b: Dictionary = encounter.get("boss", {})
+	if not b.is_empty():
+		out.append(b)
+	return out
+
+
+func _sync_anim(delta: float) -> void:
+	if state.is_empty():
+		return
+	var ppos: Vector2 = _world(state["player"]["pos"])
+	var nearest: Vector2 = Vector2.INF
+	var present: Dictionary = {}
+	for f in _all_foes():
+		var k: String = _key(f)
+		present[k] = true
+		var alive: bool = bool(f.get("alive", true))
+		var c: StoneStoryCritter = critters.get(k, null)
+		if c == null and alive:
+			c = _make(f)
+			critters[k] = c
+		if c == null:
+			continue
+		var at: Vector2 = _world(f["pos"])
+		if not alive:
+			if c.dying < 0.0:
+				c.dying = 0.0
+				_dying.append({"critter": c, "at": _to_px(f["pos"]), "boss": bool(f.get("is_boss", false))})
+			critters.erase(k)
+			continue
+		var last: Dictionary = _last.get(k, {})
+		var moved: bool = not last.is_empty() and (last["pos"] as Vector2).distance_to(at) > 0.01
+		c.walk = move_toward(c.walk, 1.0 if moved else 0.0, delta * (6.0 if moved else 2.5))
+		if not last.is_empty() and int(f.get("hp", 0)) < int(last.get("hp", 0)):
+			c.hit = 1.0
+		c.facing = 1.0 if ppos.x >= at.x else -1.0
+		c.look = (ppos - at) * Vector2(1.0, 0.4)
+		c.lean = _attack_lean(f)
+		_last[k] = {"pos": at, "hp": int(f.get("hp", 0))}
+		if nearest == Vector2.INF or absf(at.x - ppos.x) < absf(nearest.x - ppos.x):
+			nearest = at
+	for k in critters.keys():
+		if not present.has(k):
+			critters.erase(k)
+	if _player == null:
+		return
+	var stance: String = str(encounter.get("player_stance", "neutral"))
+	var working: bool = not encounter.get("work", []).is_empty() and _alive_count() == 0
+	if nearest != Vector2.INF:
+		_player.facing = 1.0 if nearest.x >= ppos.x else -1.0
+		_player.look = (nearest - ppos) * Vector2(1.0, 0.4)
+	elif working:
+		_player.facing = -1.0
+		_player.look = Vector2(-1.0, 0.3)
+	var pl: Dictionary = _last.get("player", {})
+	if not pl.is_empty() and int(state["player"]["hp"]) < int(pl.get("hp", 0)):
+		_player.hit = 1.0
+	_last["player"] = {"hp": int(state["player"]["hp"])}
+	match stance:
+		"guard":
+			_player.lean = -0.25
+		"evade":
+			_player.lean = -0.5
+		"superarmor":
+			_player.lean = 0.35
+		_:
+			_player.lean = (0.45 + 0.35 * sin(clock * 5.2)) if nearest != Vector2.INF else 0.0
+	if working:
+		_player.lean = 0.2 + 0.5 * maxf(0.0, sin(clock * 6.0))
+
+
+func _alive_count() -> int:
+	var n: int = 0
+	for f in _all_foes():
+		if bool(f.get("alive", true)):
+			n += 1
+	return n
+
+
+func _attack_lean(f: Dictionary) -> float:
+	var def: Dictionary = f.get("def", {})
+	var sd: Dictionary = def.get("states", {}).get(str(f.get("state_id", "")), {})
+	if str(sd.get("on_enter", "")).is_empty():
+		return 0.0
+	var frames: float = maxf(1.0, float(sd.get("frames", 10)))
+	var k: float = clampf(float(f.get("state_time", 0)) / frames, 0.0, 1.0)
+	return sin(k * PI) * 0.9 - (0.3 if k < 0.25 else 0.0)
+
+
+func _world(w: Dictionary) -> Vector2:
+	return Vector2(float(w.get("x", 0)), float(w.get("y", 0)))
+
+
+func _ox() -> float:
+	return floorf((maxf(float(SAFE_W), size.x) - float(SAFE_W)) * 0.5)
 
 
 func _to_px(w: Dictionary) -> Vector2:
-	return Vector2(CENTER.x + float(w["x"]) * PX_PER_UNIT, CENTER.y + float(w["y"]) * PX_PER_UNIT * 0.6)
+	return Vector2(_ox() + STAGE_X + float(w.get("x", 0)) * PX_PER_UNIT, STAGE_Y + float(w.get("y", 0)) * DEPTH_PX)
+
+
+func _depth_scale(w: Dictionary) -> float:
+	return 1.0 + float(w.get("y", 0)) * 0.012
 
 
 func _draw() -> void:
+	var w: float = maxf(float(SAFE_W), size.x)
+	var ox: float = _ox()
 	stats.reset()
-	stats.view_w = VIEW_W
+	stats.view_w = int(w)
 	stats.view_h = VIEW_H
-	stats.total_pixels = VIEW_W * VIEW_H
-	draw_rect(Rect2i(0, 0, VIEW_W, VIEW_H), StoneStoryPalette.fill(pal))
+	stats.total_pixels = int(w) * VIEW_H
+	hud_boxes.clear()
+	if pal == null:
+		pal = StoneStoryPalette.from_def({})
+	var seed_v: int = str(region.get("id", "")).hash()
+	StoneStorySky.draw(self, pal, region, w, float(HORIZON_Y), clock, stats, ox, seed_v)
+	StoneStoryGround.draw(self, pal, region, w, float(HORIZON_Y), float(VIEW_H), stats, ox, seed_v)
 	if state.is_empty():
-		_text_center(VIEW_W / 2, VIEW_H / 2, "빈 화면", 14, StoneStoryPalette.text_dim(pal))
 		return
-	_draw_background()
-	_draw_space()
-	_draw_obstacles()
-	_draw_foes()
-	_draw_player()
-	_draw_hud()
-	if message_frames > 0:
-		_text_center(VIEW_W / 2, 300, message, 12, StoneStoryPalette.text(pal))
-
-
-func _draw_background() -> void:
-	if backdrop == null:
-		return
-	for b in StoneStoryBackdrop.draw_order():
-		var pts: PackedVector2Array = backdrop.draw_points(b)
-		var col: Color = StoneStoryPalette.sky_far(pal)
-		var r: float = 1.0 + float(b) * 0.5
-		for i in pts.size():
-			if i % 3 != 0:
-				continue
-			draw_circle(pts[i] * 0.5 + CENTER * 0.5, r, col, false, 1.0, true)
-
-
-## 공간 (2026-09-26 개정). 1차 판은 검정 배경 + 헤어라인이었다. 폐기.
-## 하늘/천장 + 지평선 + 바닥 + 구조물. 면으로 채운다. (계약 §4.1, §4.2)
-func _draw_space() -> void:
-	var s := StoneStoryCore.stream(int(state.get("run_seed", 0)),
-			StoneStoryCore.TAG_TEXTURE + ".space")
-	var horizon: float = float(HORIZON_Y)
-
-	# 1) 하늘: 위에서 지평선으로 내려가는 3단 그라데이션 면.
-	var bands: int = 12
-	for i in bands:
-		var t0: float = float(i) / float(bands)
-		var y0: float = horizon * t0
-		var y1: float = horizon * (float(i + 1) / float(bands)) + 1.0
-		var col: Color = StoneStoryPalette.sky_far(pal).lerp(StoneStoryPalette.sky_near(pal), t0)
-		draw_rect(Rect2i(0, int(y0), VIEW_W, int(y1 - y0) + 1), col)
-		stats.note_rect(Rect2i(0, int(y0), VIEW_W, int(y1 - y0) + 1), col, true)
-		stats.note_sky_band()
-
-	# 2) 구름/태양. Ena 씬에는 하늘에 형태가 있다.
-	var sun_at := Vector2(VIEW_W * 0.72, horizon * 0.34)
-	var sun_col: Color = StoneStoryPalette.sky_far(pal).lightened(0.25)
-	draw_circle(sun_at, 26.0, sun_col)
-	stats.note_shape(int(PI * 26.0 * 26.0), sun_col, 52.0 / float(VIEW_H))
-	for i in 7:
-		var cx: float = 40.0 + s.unit(i) * (VIEW_W - 80.0)
-		var cy: float = 24.0 + s.unit(i + 50) * (horizon * 0.55)
-		var cw: float = 26.0 + s.unit(i + 90) * 34.0
-		_cloud(Vector2(cx, cy), cw, StoneStoryPalette.sky_near(pal).lightened(0.35))
-		stats.note_shape(int(cw * cw * 0.5), StoneStoryPalette.sky_near(pal).lightened(0.35))
-
-	# 3) 지평선 아래 = 바닥. 근경으로 갈수록 밝고 포화.
-	var g_bands: int = 6
-	for i in g_bands:
-		var t0: float = float(i) / float(g_bands)
-		var y0: float = horizon + (VIEW_H - horizon) * t0
-		var y1: float = horizon + (VIEW_H - horizon) * (float(i + 1) / float(g_bands)) + 1.0
-		var gc: Color = StoneStoryPalette.ground(pal).lerp(
-				StoneStoryPalette.ground(pal).darkened(0.35), 1.0 - t0)
-		draw_rect(Rect2i(0, int(y0), VIEW_W, int(y1 - y0) + 1), gc)
-		stats.note_rect(Rect2i(0, int(y0), VIEW_W, int(y1 - y0) + 1), gc, true)
-		stats.note_ground_band()
-
-	# 4) 바닥 결: 면 위에 얹는 얇은 띠. 선이 아니라 면이다.
-	for bi in 3:
-		var sp: float = [64.0, 40.0, 24.0][bi]
-		var y: float = horizon + 40.0 + bi * 54.0
-		var shade: Color = StoneStoryPalette.ground(pal).darkened(0.18 + 0.10 * float(bi))
-		var k: int = 0
-		var x: float = -fposmod(_player_world().x * PX_PER_UNIT * 0.22, sp) - sp
-		while x < VIEW_W + sp:
-			var w: float = sp * (0.25 + s.unit(bi * 97 + k) * 0.5)
-			var r := Rect2i(int(x), int(y), maxi(2, int(w)), 3)
-			draw_rect(r, shade)
-			stats.note_rect(r, shade, true)
-			x += sp * (0.6 + s.unit(bi * 31 + k) * 0.8)
-			k += 1
-
-	# 5) 원경 구조물. 화면 높이의 25%+ (V7 큰 것).
-	_draw_far_structure(s, horizon)
-
-
-func _stats_rect(r: Rect2i, col: Color) -> void:
-	stats.note_rect(r, col, true)
-
-
-## 구름은 3개 원의 합. 채워진 면.
-func _cloud(at: Vector2, w: float, col: Color) -> void:
-	draw_circle(at, w * 0.5, col)
-	draw_circle(at + Vector2(w * 0.45, w * 0.10), w * 0.36, col)
-	draw_circle(at - Vector2(w * 0.42, w * 0.12), w * 0.32, col)
-	draw_rect(Rect2i(Vector2i(at) - Vector2i(int(w * 0.42), int(w * 0.12)), Vector2i(int(w * 0.84), int(w * 0.16))), col)
-
-
-## 큰 것 1개. 지오메트리 규칙(R9~R12)에서 나온다. content 가 명시한다.
-func _draw_far_structure(s: StoneStoryRng, horizon: float) -> void:
-	var def: Dictionary = content.get_def("region", str(region.get("id", ""))) if content != null else {}
-	var tag: String = str(def.get("structure", "dome"))
-	var cx: float = VIEW_W * 0.30
-	var base_y: float = horizon
-	var col: Color = StoneStoryPalette.structure(pal)
-	var lit: Color = col.lightened(0.18)
-	match tag:
-		"dome":
-			# 돔 립. 어두운 선이 아니라 채워진 면.
-			var r: float = 300.0
-			for i in 9:
-				var t: float = float(i) / 8.0
-				var rr: float = r * lerpf(1.0, 0.55, t)
-				var rr2 := Rect2i(int(cx - rr), int(base_y - rr * 0.72), int(rr * 2.0), int(rr * 0.72))
-				draw_rect(rr2, col.darkened(t * 0.5))
-				_stats_rect(rr2, col.darkened(t * 0.5))
-			_stats_rect(Rect2i(int(cx - r), int(base_y - 14), int(r * 2.0), 14), col)
-			draw_rect(Rect2i(int(cx - r), int(base_y - 14), int(r * 2.0), 14), col)
-			for i in 7:
-				var rx: float = cx - r + float(i) * (r * 2.0 / 6.0)
-				draw_rect(Rect2i(int(rx), int(base_y - r * 0.70), 3, int(r * 0.70)), lit)
-		"canyon":
-			draw_rect(Rect2i(0, int(horizon - 190), int(cx - 30.0), 190), col)
-			draw_rect(Rect2i(int(cx + 30.0), int(horizon - 150), VIEW_W - int(cx + 30.0), 150), col.darkened(0.18))
-			draw_rect(Rect2i(int(cx - 30.0), int(horizon - 190), 30, 190), col.lightened(0.10))
-			draw_rect(Rect2i(int(cx), int(horizon - 150), 30, 150), col.lightened(0.10))
-		"arch":
-			var aw: float = 150.0
-			_stats_rect(Rect2i(int(cx - aw), int(horizon - 170), 34, 170), col)
-			_stats_rect(Rect2i(int(cx + aw - 34), int(horizon - 170), 34, 170), col)
-			draw_rect(Rect2i(int(cx - aw), int(horizon - 170), 34, 170), col)
-			draw_rect(Rect2i(int(cx + aw - 34), int(horizon - 170), 34, 170), col)
-			draw_rect(Rect2i(int(cx - aw), int(horizon - 186), int(aw * 2.0), 22), col.lightened(0.12))
-		_:
-			draw_rect(Rect2i(int(cx - 120), int(horizon - 120), 240, 120), col)
-
-
-func _draw_obstacles() -> void:
-	for o in encounter.get("obstacles", []):
-		var at: Vector2 = _to_px(o["pos"])
-		var r := Rect2i(Vector2i(at) - Vector2i(10, 20), Vector2i(20, 40))
-		if str(o.get("kind", "")) == "rubble":
-			_dashed_rect(r, StoneStoryPalette.line_dim(pal))
+	var sdef: Dictionary = {}
+	if content != null:
+		sdef = content.get_def("structure", str(region.get("structure", "")))
+	StoneStoryStructure.draw(self, sdef, pal, ox, stats, float(VIEW_H))
+	var entries: Array = []
+	for e in StoneStoryProps.placements(content, region):
+		if StoneStoryProps.is_floating(e):
+			StoneStoryProps.draw_shadow(self, e, pal, ox, clock, stats)
+			StoneStoryProps.draw_one(self, e, pal, ox, clock, stats)
 		else:
-			draw_rect(r, StoneStoryPalette.line(pal), false, 1.0)
-
-
-func _draw_foes() -> void:
-	for f in encounter.get("foes", []):
-		if not bool(f["alive"]):
+			entries.append({"y": float(e["y"]), "kind": "prop", "e": e})
+	for o in encounter.get("obstacles", []):
+		entries.append({"y": _to_px(o["pos"]).y, "kind": "obstacle", "o": o})
+	for f in _all_foes():
+		if not bool(f.get("alive", true)):
 			continue
-		_draw_critter(f, critters.get(str(f["foe_id"]), null))
-	var b: Dictionary = encounter.get("boss", {})
-	if not b.is_empty() and bool(b.get("alive", true)):
-		_draw_critter(b, critters.get(str(b["foe_id"]), null))
-		_draw_boss_bar(b)
+		var c: StoneStoryCritter = critters.get(_key(f), null)
+		if c != null:
+			entries.append({"y": _to_px(f["pos"]).y, "kind": "foe", "f": f, "c": c})
+	for d in _dying:
+		entries.append({"y": (d["at"] as Vector2).y, "kind": "dying", "d": d})
+	if _player != null:
+		entries.append({"y": _to_px(state["player"]["pos"]).y + 0.5, "kind": "player"})
+	entries.sort_custom(func(a, b): return float(a["y"]) < float(b["y"]))
+	for en in entries:
+		match str(en["kind"]):
+			"prop":
+				StoneStoryProps.draw_shadow(self, en["e"], pal, ox, clock, stats)
+				StoneStoryProps.draw_one(self, en["e"], pal, ox, clock, stats)
+			"obstacle":
+				_draw_obstacle(en["o"], ox)
+			"foe":
+				_draw_foe(en["f"], en["c"])
+			"dying":
+				var dd: Dictionary = en["d"]
+				(dd["critter"] as StoneStoryCritter).draw(self, dd["at"], pal, stats,
+						_foe_body(bool(dd["boss"])), StoneStoryPalette.accent(pal))
+			"player":
+				_draw_player()
+	_draw_projectiles()
+	var near_sway := PackedVector2Array()
+	if backdrop != null:
+		near_sway = backdrop.offsets(StoneStoryBackdrop.Band.NEAR)
+	StoneStoryGround.draw_near(self, pal, w, float(VIEW_H), clock, stats, seed_v, near_sway)
+	_draw_hud(w, ox)
+	if message_frames > 0:
+		_text_center(w * 0.5, 300.0, message, FS_HUD)
 
 
-func _draw_critter(f: Dictionary, c: StoneStoryCritter) -> void:
-	var attrs: Dictionary = f.get("attributes", {})
+func _foe_body(is_boss: bool) -> Color:
+	if is_boss:
+		return pal.shifted(StoneStoryPalette.STRUCTURE, 0.30, 1.05)
+	return StoneStoryPalette.ink(pal)
+
+
+func _draw_obstacle(o: Dictionary, ox: float) -> void:
+	var def: Dictionary = content.get_def("obstacle", str(o.get("obstacle_id", ""))) if content != null else {}
+	var look: Dictionary = content.get_def("prop", str(def.get("look", ""))) if content != null else {}
+	var at: Vector2 = _to_px(o["pos"])
+	var k: float = _depth_scale(o["pos"])
+	if look.is_empty():
+		StoneStoryInk.fill(self, StoneStoryInk.ellipse(at + Vector2(0.0, -14.0), 12.0 * k, 16.0 * k, 12), StoneStoryPalette.role(pal, "stone"), stats)
+		return
+	var e: Dictionary = {"def": look, "x": at.x - ox, "y": at.y, "scale": 0.9 * k, "breaks": "", "shadow_y": -1.0}
+	StoneStoryProps.draw_shadow(self, e, pal, ox, clock, stats)
+	StoneStoryProps.draw_one(self, e, pal, ox, clock, stats)
+
+
+func _draw_foe(f: Dictionary, c: StoneStoryCritter) -> void:
 	var at: Vector2 = _to_px(f["pos"])
-	if c == null:
-		draw_circle(at, 16.0, StoneStoryPalette.line(pal), false, 1.0, true)
-		return
-	var bob: float = c.bob_offset()
-	var pts: PackedVector2Array = c.points()
-	var rad: PackedFloat32Array = c.radii()
-	if pts.is_empty():
-		return
-	var col: Color = StoneStoryPalette.line(pal)
-	var dim: Color = StoneStoryPalette.line_dim(pal)
-	var S: float = FORM_SCALE
-	var origin: Vector2 = Vector2(at.x, at.y + 14.0)
-
-	# 0) 몸통: 연결된 윤곽으로 닫는다. 채움 금지.
-	var body_anchor: Vector2 = origin
-	for i in pts.size():
-		if c.part_role(i) != &"body":
-			continue
-		var p: Vector2 = origin + pts[i] * S + Vector2(0, bob)
-		var br: float = maxf(2.0, float(rad[i]) * S)
-		draw_circle(p, br, col)
-		stats.note_shape(int(PI * br * br * 0.5), col, br * 2.0 / float(VIEW_H))
-		if i > 0:
-			draw_line(origin + pts[i - 1] * S + Vector2(0, bob), p, col, 1.0, true)
-		body_anchor = p
-
-	# 1) 머리: 링. 틀림이 높을수록 축에서 벗어나 있다.
-	for i in pts.size():
-		if c.part_role(i) != &"head":
-			continue
-		var hp: Vector2 = origin + pts[i] * S + Vector2(0, bob)
-		draw_line(body_anchor, hp, col, 1.0, true)
-		stats.note_stroke()
-		draw_ring(hp, maxf(3.0, float(rad[i]) * S), col)
-
-	# 2) 꼬리: 몸에서 뻗는 선. 끝이 가늘다.
-	for i in pts.size():
-		if c.part_role(i) != &"tail":
-			continue
-		var tp: Vector2 = origin + pts[i] * S + Vector2(0, bob)
-		draw_line(body_anchor, tp, dim, 1.0, true)
-
-	# 3) 다리: 몸 축에서 바깥으로. 어긋난 각도가 그대로 보인다.
-	for i in pts.size():
-		if c.part_role(i) != &"limb":
-			continue
-		var t: float = c.body_axis(i)
-		var root: Vector2 = origin + pts[0] * S \
-				+ (pts[maxi(0, pts.size() - 1)] - pts[0]) * S * t
-		var tip: Vector2 = origin + pts[i] * S + Vector2(0, bob)
-		draw_line(root, tip, col, 1.0, true)
-		var lr: float = maxf(1.0, float(rad[i]) * S * 0.9)
-		draw_circle(tip, lr, col)
-		stats.note_shape(int(PI * lr * lr * 0.5), col)
-		stats.note_stroke()
-
-	# 4) 눈. 개체에 눈이 없으면 개체로 읽히지 않는다. (V8)
-	_draw_eyes(c, origin, bob, attrs)
-
-	if f["tags"].has("ranged"):
-		draw_ring(Vector2(at.x, at.y - c.extent_y() * S * 0.5 - 6.0), 3.0, dim)
+	var boss: bool = bool(f.get("is_boss", false))
+	c.draw(self, at, pal, stats, _foe_body(boss), StoneStoryPalette.accent(pal))
+	var top: Vector2 = at + Vector2(0.0, -c.hover() - c.height() * 1.02)
+	if f.get("tags", []).has("ranged"):
+		var orb: Vector2 = top + Vector2(sin(clock * 2.0) * 4.0, -8.0)
+		StoneStoryInk.disc(self, orb, 4.0, StoneStoryPalette.accent(pal), stats)
+		StoneStoryInk.disc(self, orb + Vector2(-1.2, -1.2), 1.4, StoneStoryPalette.sclera(pal), stats)
 	if bool(f.get("staggered", false)):
-		_text_center(at.x, at.y - c.extent_y() * S - 16.0, "*", 12, StoneStoryPalette.text(pal))
-	_draw_status(at, f.get("status_build", {}), c.extent_y() * S)
+		for i in 3:
+			var a: float = clock * 4.0 + TAU * float(i) / 3.0
+			StoneStoryInk.disc(self, top + Vector2(cos(a) * 12.0, sin(a) * 4.0 - 6.0), 2.4, StoneStoryPalette.sclera(pal), stats)
+	_draw_status(top, f.get("status_build", {}))
+	if boss:
+		_draw_boss_bar(f, top)
 
 
-## 12분할 링. 1px 고정.
-func draw_ring(center: Vector2, r: float, col: Color) -> void:
-	if r <= 0.5:
-		draw_rect(Rect2i(Vector2i(center) - Vector2i.ONE, Vector2i(3, 3)), col)
-		stats.note_shape(9, col)
-		return
-	var pts := PackedVector2Array()
-	for i in 13:
-		var a: float = TAU * float(i) / 12.0
-		pts.append(center + Vector2(cos(a) * r, sin(a) * r))
-	draw_polyline(pts, col, 1.0)
-	stats.note_stroke()
-	stats.note_shape(int(PI * r * r * 0.6), col)
-
-
-## 눈의 개수는 **놀랍다**가 정한다. 예측 불가할수록 눈이 많다. (V8)
-func _draw_eyes(c: StoneStoryCritter, origin: Vector2, bob: float, attrs: Dictionary) -> void:
-	var pts := c.points()
-	var surprise: float = float(attrs.get(StoneStoryAttributes.SURPRISE, 0.0))
-	var n: int = 1 + int(floor(surprise / 3.0))          # 1..4
-	var head_at: Vector2 = origin
-	for i in pts.size():
-		if c.part_role(i) == &"head":
-			head_at = origin + pts[i] * FORM_SCALE + Vector2(0, bob)
-	var er: float = 3.0 + 1.5 * float(int(attrs.get(StoneStoryAttributes.ROUND, 0.0)) / 3)
-	var col: Color = StoneStoryPalette.belly(pal).lightened(0.45)
-	for i in n:
-		var spread: float = float(i - (n - 1) / 2) * (er * 2.2)
-		draw_circle(head_at + Vector2(spread, -er * 0.4), er, col)
-		stats.note_shape(int(PI * er * er), col)
-		stats.note_eye()
-
-
-func _draw_status(at: Vector2, build_v: Dictionary, h: float) -> void:
-	var y: float = at.y - h - 6.0
+func _draw_status(top: Vector2, build_v: Dictionary) -> void:
+	var col: Color = StoneStoryPalette.sclera(pal)
+	var edge: Color = StoneStoryPalette.ink(pal)
+	var x: float = top.x - 14.0
 	for k in ["bleed", "poison", "frost"]:
 		var v: float = float(build_v.get(k, 0.0))
 		if v <= 0.0:
 			continue
-		var n: int = 1 + int(ceil(v / 25.0))
+		var n: int = clampi(1 + int(ceil(v / 25.0)), 1, 4)
 		for i in n:
-			draw_line(Vector2(at.x - 6.0 + i * 3.0, y), Vector2(at.x - 6.0 + i * 3.0, y - 3.0),
-					StoneStoryPalette.alert(pal), 1.0, true)
+			var p: Vector2 = Vector2(x, top.y - 14.0 - float(i) * 7.0)
+			match k:
+				"bleed":
+					StoneStoryInk.fill(self, PackedVector2Array([p + Vector2(0, -4), p + Vector2(3, 1), p + Vector2(0, 3), p + Vector2(-3, 1)]), edge, stats)
+				"poison":
+					StoneStoryInk.disc(self, p, 3.0, edge, stats)
+					StoneStoryInk.disc(self, p + Vector2(-0.8, -0.8), 1.1, col, stats)
+				_:
+					StoneStoryInk.fill(self, PackedVector2Array([p + Vector2(0, -4), p + Vector2(2, 0), p + Vector2(0, 4), p + Vector2(-2, 0)]), col, stats)
+		x += 14.0
+
+
+func _draw_boss_bar(b: Dictionary, top: Vector2) -> void:
+	var wd: float = 150.0
+	var y: float = top.y - 22.0
+	var ratio: float = clampf(float(b.get("hp", 0)) / maxf(1.0, float(b.get("hp_max", 1))), 0.0, 1.0)
+	var track := Rect2(top.x - wd * 0.5, y, wd, 8.0)
+	draw_rect(track, StoneStoryPalette.ink(pal))
+	draw_rect(Rect2(track.position + Vector2(2.0, 2.0), Vector2((wd - 4.0) * ratio, 4.0)), StoneStoryPalette.sclera(pal))
+	stats.note_rect(Rect2i(track), StoneStoryPalette.ink(pal), true)
 
 
 func _draw_player() -> void:
-	if _player == null:
-		return
 	var p: Dictionary = state["player"]
 	var at: Vector2 = _to_px(p["pos"])
-	var pts: PackedVector2Array = _player.points()
-	var rad: PackedFloat32Array = _player.radii()
-	var col: Color = StoneStoryPalette.text(pal)
-	var origin: Vector2 = Vector2(at.x, at.y + 18.0)
-	# 스탠스 링. 가드면 두 겹.
 	var stance: String = str(encounter.get("player_stance", "neutral"))
-	draw_ring(origin, 26.0, StoneStoryPalette.line_dim(pal))
-	if stance == "guard":
-		draw_ring(origin, 30.0, StoneStoryPalette.accent(pal))
-	elif stance == "superarmor":
-		_dashed_circle(origin, 30.0, StoneStoryPalette.line_dim(pal))
-	for i in pts.size():
-		var role: StringName = _player.part_role(i)
-		var q: Vector2 = origin + pts[i] * FORM_SCALE
-		var r: float = maxf(1.0, float(rad[i]) * FORM_SCALE)
-		if role == &"body":
-			draw_circle(q, r, col, false, 1.0, true)
-		elif role == &"head":
-			draw_ring(q, maxf(3.0, r), col)
-		elif role == &"tail":
-			draw_line(origin + pts[0] * FORM_SCALE, q, col, 1.0, true)
-		else:
-			var t: float = _player.body_axis(i)
-			var root: Vector2 = origin + pts[0] * FORM_SCALE \
-					+ (pts[pts.size() - 1] - pts[0]) * FORM_SCALE * t
-			draw_line(root, q, col, 1.0, true)
-			draw_circle(q, r * 0.9, col, false, 1.0, true)
-	# 기력
-	var smax: int = maxi(1, int(p["stamina_max"]))
-	var fill_n: int = int(float(p["stamina"]) / float(smax) * 24.0)
-	for i in fill_n:
-		draw_line(Vector2(at.x - 12.0 + i, at.y + 22.0), Vector2(at.x - 11.0 + i, at.y + 22.0),
-				StoneStoryPalette.line_dim(pal), 1.0, true)
-	for pj in encounter.get("projectiles", []):
-		draw_rect(Rect2i(Vector2i(_to_px(pj["pos"])), Vector2i(2, 2)), StoneStoryPalette.accent(pal))
-
-
-func _dashed_circle(center: Vector2, r: float, col: Color) -> void:
-	for i in 12:
-		if i % 2 == 1:
-			continue
-		var a0: float = TAU * float(i) / 12.0
-		var a1: float = TAU * float(i + 1) / 12.0
-		draw_line(center + Vector2(cos(a0), sin(a0)) * r,
-				center + Vector2(cos(a1), sin(a1)) * r, col, 1.0, true)
-
-
-func _draw_boss_bar(b: Dictionary) -> void:
-	var at: Vector2 = _to_px(b["pos"])
-	var w: float = 160.0
-	var y: float = at.y - 70.0
-	var ratio: float = float(b["hp"]) / maxf(1.0, float(b["hp_max"]))
-	draw_line(Vector2(at.x - w * 0.5, y), Vector2(at.x + w * 0.5, y),
-			StoneStoryPalette.line_dim(pal), 1.0, true)
-	draw_line(Vector2(at.x - w * 0.5, y), Vector2(at.x - w * 0.5 + w * ratio, y),
-			StoneStoryPalette.line(pal), 1.0, true)
-
-
-func _draw_hud() -> void:
-	var p: Dictionary = state["player"]
-	var w: Dictionary = state["world"]
-	_text(Vector2(12, 20), str(int(w.get("currency", 0))), 12)
-	_text_center(VIEW_W * 0.5, 20, str(region.get("name", "")), 12)
-	_text_right(VIEW_W - 12, 20, "*" + str(int(state.get("star_level", 1))), 12)
-	_text(Vector2(12, VIEW_H - 12), str(int(p["hp"])) + "/" + str(int(p["hp_max"])), 12)
-	# 로비가 유일한 조작면. 현재 장비 = 현재 정책.
-	var ids: Array[String] = []
+	var body_col: Color = StoneStoryPalette.accent(pal)
+	var mark_col: Color = StoneStoryPalette.sclera(pal)
+	if stance == "superarmor":
+		var ring: Color = StoneStoryPalette.accent(pal)
+		ring.a = 0.22 + 0.10 * sin(clock * 6.0)
+		StoneStoryInk.fill(self, StoneStoryInk.ellipse(at, _player.width() * 1.1, _player.width() * 0.32, 22), ring, stats)
+	_player.draw(self, at, pal, stats, body_col, mark_col)
+	var looks: Array = []
 	for g in p.get("gear", []):
-		var it: String = str((g as Dictionary).get("item_id", ""))
-		var def: Dictionary = content.item(it) if content != null else {}
-		ids.append(str(def.get("name", it)))
-	if not ids.is_empty():
-		_text_right(VIEW_W - 12, VIEW_H - 28, "  ".join(ids), 10)
+		var def: Dictionary = content.item(str((g as Dictionary).get("item_id", ""))) if content != null else {}
+		var lk: String = str(def.get("look", ""))
+		if not lk.is_empty() and not looks.has(lk):
+			looks.append(lk)
+	StoneStoryCritter.draw_gear(self, _player, at, looks, stance, pal, stats)
+	var smax: float = maxf(1.0, float(p.get("stamina_max", 1)))
+	var ratio: float = clampf(float(p.get("stamina", 0)) / smax, 0.0, 1.0)
+	var bw: float = 44.0
+	var bar := Rect2(at.x - bw * 0.5, at.y + 10.0, bw, 5.0)
+	draw_rect(bar, StoneStoryPalette.ink(pal))
+	draw_rect(Rect2(bar.position + Vector2(1.0, 1.0), Vector2((bw - 2.0) * ratio, 3.0)), StoneStoryPalette.sclera(pal))
+	_draw_work(at)
 
 
-func _dashed_rect(r: Rect2i, col: Color) -> void:
-	var x: int = r.position.x
-	var y: int = r.position.y
-	var x2: int = r.position.x + r.size.x
-	var y2: int = r.position.y + r.size.y
-	var d: int = 0
-	while x < x2:
-		draw_line(Vector2(x, y), Vector2(mini(x + 3, x2), y), col, 1.0)
-		d += 1
-		x += 6
-	x = r.position.x
-	while x < x2:
-		draw_line(Vector2(x, y2), Vector2(mini(x + 3, x2), y2), col, 1.0)
-		x += 6
-	while y < y2:
-		draw_line(Vector2(x, y), Vector2(x, mini(y + 3, y2)), col, 1.0)
-		y += 6
-	y = r.position.y
-	while y < y2:
-		draw_line(Vector2(x2, y), Vector2(x2, mini(y + 3, y2)), col, 1.0)
-		y += 6
+func _draw_work(at: Vector2) -> void:
+	var work: Array = encounter.get("work", [])
+	if work.is_empty() or _alive_count() > 0:
+		return
+	var job: Dictionary = work[0]
+	var total: float = maxf(1.0, float(job.get("ticks_total", 1)))
+	var done: float = clampf(1.0 - float(job.get("ticks_left", 0)) / total, 0.0, 1.0)
+	var center: Vector2 = at + Vector2(-36.0, -_player.height() - 24.0)
+	var n: int = 12
+	for i in n:
+		var a: float = -PI * 0.5 + TAU * float(i) / float(n)
+		var on: bool = float(i) / float(n) < done
+		StoneStoryInk.disc(self, center + Vector2(cos(a), sin(a)) * 10.0, 2.6 if on else 1.6,
+				StoneStoryPalette.sclera(pal) if on else StoneStoryPalette.ink(pal), stats)
+
+
+func _draw_projectiles() -> void:
+	for pj in encounter.get("projectiles", []):
+		var at: Vector2 = _to_px(pj["pos"]) + Vector2(0.0, -26.0)
+		StoneStoryInk.disc(self, at, 5.0, StoneStoryPalette.accent(pal), stats)
+		StoneStoryInk.disc(self, at + Vector2(-1.5, -1.5), 2.0, StoneStoryPalette.sclera(pal), stats)
+
+
+func _draw_hud(w: float, ox: float) -> void:
+	var p: Dictionary = state["player"]
+	var wd: Dictionary = state.get("world", {})
+	var coin := Vector2(ox + 28.0, 30.0)
+	StoneStoryInk.disc(self, coin, 9.0, StoneStoryPalette.ink(pal), stats)
+	StoneStoryInk.disc(self, coin, 7.0, StoneStoryPalette.accent(pal), stats)
+	StoneStoryInk.disc(self, coin + Vector2(-2.0, -2.0), 2.4, StoneStoryPalette.sclera(pal), stats)
+	_text(Vector2(ox + 44.0, 37.0), str(int(wd.get("currency", 0))), FS_HUD)
+	_text_center(w * 0.5, 38.0, str(region.get("name", "")), FS_NAME)
+	var star_at := Vector2(ox + float(SAFE_W) - 70.0, 30.0)
+	_star(star_at, 10.0)
+	_text(Vector2(star_at.x + 16.0, 37.0), str(int(state.get("star_level", 1))), FS_HUD)
+	var hp: float = float(p.get("hp", 0))
+	var hpm: float = maxf(1.0, float(p.get("hp_max", 1)))
+	var bar := Rect2(ox + 24.0, float(VIEW_H) - 40.0, 180.0, 14.0)
+	draw_rect(bar, StoneStoryPalette.ink(pal))
+	draw_rect(Rect2(bar.position + Vector2(3.0, 3.0), Vector2((bar.size.x - 6.0) * clampf(hp / hpm, 0.0, 1.0), 8.0)), StoneStoryPalette.sclera(pal))
+	stats.note_rect(Rect2i(bar), StoneStoryPalette.ink(pal), true)
+	_text(Vector2(bar.end.x + 12.0, bar.end.y + 1.0), "%d/%d" % [int(hp), int(hpm)], FS_SMALL)
+	var names: Array[String] = []
+	for g in p.get("gear", []):
+		var def: Dictionary = content.item(str((g as Dictionary).get("item_id", ""))) if content != null else {}
+		names.append(str(def.get("name", "")))
+	if not names.is_empty():
+		_text_right(ox + float(SAFE_W) - 24.0, float(VIEW_H) - 26.0, _fit(" · ".join(names), 420, FS_SMALL), FS_SMALL)
+
+
+func _star(c: Vector2, r: float) -> void:
+	var pts := PackedVector2Array()
+	for i in 10:
+		var a: float = -PI * 0.5 + TAU * float(i) / 10.0
+		var rr: float = r if i % 2 == 0 else r * 0.45
+		pts.append(c + Vector2(cos(a), sin(a)) * rr)
+	var outer := PackedVector2Array()
+	for q in pts:
+		outer.append(c + (q - c) * 1.28)
+	StoneStoryInk.fill(self, outer, StoneStoryPalette.ink(pal), stats)
+	StoneStoryInk.fill(self, pts, StoneStoryPalette.accent(pal), stats)
 
 
 func font() -> Font:
 	if _font_res == null:
 		var f := SystemFont.new()
 		f.font_names = PackedStringArray(["Malgun Gothic", "Gulim", "Arial Unicode MS", "Segoe UI", "sans-serif"])
-		f.antialiasing = TextServer.FONT_ANTIALIASING_NONE
-		f.subpixel_positioning = TextServer.SUBPIXEL_POSITIONING_DISABLED
+		f.font_weight = 700
+		f.antialiasing = TextServer.FONT_ANTIALIASING_GRAY
 		_font_res = f
 	return _font_res
+
+
+func _fit(s: String, max_w: int, px: int) -> String:
+	if font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, px).x <= float(max_w):
+		return s
+	var out: String = s
+	while out.length() > 1 and font().get_string_size(out + "…", HORIZONTAL_ALIGNMENT_LEFT, -1, px).x > float(max_w):
+		out = out.substr(0, out.length() - 1)
+	return out + "…"
+
+
+func _box(at: Vector2, s: String, px: int) -> Rect2:
+	var sz: Vector2 = font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, px)
+	var asc: float = font().get_ascent(px)
+	return Rect2(Vector2(at.x, at.y - asc), Vector2(sz.x, sz.y))
 
 
 func _text(at: Vector2, s: String, px: int) -> void:
 	if s.is_empty():
 		return
-	draw_string(font(), Vector2i(at), s, HORIZONTAL_ALIGNMENT_LEFT, -1, px, StoneStoryPalette.text(pal))
+	draw_string_outline(font(), at, s, HORIZONTAL_ALIGNMENT_LEFT, -1, px, 5, StoneStoryPalette.ink(pal))
+	draw_string(font(), at, s, HORIZONTAL_ALIGNMENT_LEFT, -1, px, StoneStoryPalette.text(pal))
+	hud_boxes.append({"text": s, "rect": _box(at, s, px)})
 
 
-func _text_right(right_x: int, y: int, s: String, px: int) -> void:
+func _text_right(right_x: float, y: float, s: String, px: int) -> void:
 	if s.is_empty():
 		return
-	var w: int = font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, px).x
-	draw_string(font(), Vector2i(right_x - w, y), s, HORIZONTAL_ALIGNMENT_LEFT, -1, px, StoneStoryPalette.text(pal))
+	var wd: float = font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, px).x
+	_text(Vector2(right_x - wd, y), s, px)
 
 
-func _text_center(cx: float, y: float, s: String, px: int, col: Color = Color(1, 1, 1)) -> void:
+func _text_center(cx: float, y: float, s: String, px: int) -> void:
 	if s.is_empty():
 		return
-	var w: int = font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, px).x
-	draw_string(font(), Vector2i(int(cx) - w / 2, int(y)), s, HORIZONTAL_ALIGNMENT_LEFT, -1, px, col)
+	var wd: float = font().get_string_size(s, HORIZONTAL_ALIGNMENT_LEFT, -1, px).x
+	_text(Vector2(cx - wd * 0.5, y), s, px)

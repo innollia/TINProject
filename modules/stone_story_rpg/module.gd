@@ -230,8 +230,33 @@ func _tick() -> void:
 
 	# 8~12
 	_reap(enc, p)
+	_tick_work(enc, p)
 	_check_phase(enc, tick)
 	_check_end(enc, p, tick)
+
+
+func _tick_work(enc: Dictionary, p: Dictionary) -> void:
+	var work: Array = enc.get("work", [])
+	if work.is_empty():
+		return
+	var b: Dictionary = enc.get("boss", {})
+	if not b.is_empty() and bool(b.get("alive", true)):
+		return
+	for f in enc.get("foes", []):
+		if bool(f["alive"]):
+			return
+	var job: Dictionary = work[0]
+	job["ticks_left"] = int(job["ticks_left"]) - 1
+	if int(job["ticks_left"]) > 0:
+		return
+	var mats: Dictionary = p["inventory"]["materials"]
+	var got: Dictionary = enc.get("mined", {})
+	for mid in job.get("yields", {}):
+		var n: int = int(job["yields"][mid])
+		mats[str(mid)] = int(mats.get(str(mid), 0)) + n
+		got[str(mid)] = int(got.get(str(mid), 0)) + n
+	enc["mined"] = got
+	work.pop_front()
 
 
 ## 뷰는 상태를 읽기만 한다. 여기서 판정하지 않는다.
@@ -391,13 +416,16 @@ func _check_end(enc: Dictionary, p: Dictionary, tick: int) -> void:
 	for f in enc.get("foes", []):
 		if bool(f["alive"]):
 			alive += 1
-	if boss_dead and alive == 0:
+	if boss_dead and alive == 0 and enc.get("work", []).is_empty():
 		enc["state"] = "cleared"
 		enc["cleared_at_tick"] = tick
 		state["world"]["loop_point"][str(enc["region_id"])] = p["pos"].duplicate(true)
 		var opened: Array = StoneStoryRunState.grant_unlocks(
 				state["world"], content.get_def("region", str(enc["region_id"])))
 		var line: String = "비웠다. 통화 " + str(int(state["world"]["currency"]))
+		var mined: Dictionary = enc.get("mined", {})
+		for mid in mined:
+			line += " · " + str(content.get_def("material", str(mid)).get("name", mid)) + " " + str(int(mined[mid]))
 		if not opened.is_empty():
 			var names: Array[String] = []
 			for rid in opened:

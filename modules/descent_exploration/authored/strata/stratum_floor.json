@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "id": "stratum_floor",
+  "index": 5,
+  "location": "loc.floor",
+  "display_name": "바닥",
+  "world_seed": 33301,
+  "palette": { "scheme": "complementary", "base_hue": 0.52, "saturation": 0.44, "contrast": 1.15, "variant": 1 },
+  "bounds": { "width": 640, "height": 1024 },
+  "spawn": { "position": [320, 96], "facing": 1 },
+  "solids": [
+    { "id": "floor_left", "rect": [0, 940, 280, 84], "kind": "ground" },
+    { "id": "floor_right", "rect": [360, 940, 280, 84], "kind": "ground" },
+    { "id": "wall_left", "rect": [0, 64, 40, 960], "kind": "wall" },
+    { "id": "wall_right", "rect": [600, 64, 40, 960], "kind": "wall" },
+    { "id": "heart_plinth", "rect": [288, 848, 64, 32], "kind": "wall" },
+    { "id": "heart_rib_left", "rect": [272, 784, 16, 64], "kind": "wall" },
+    { "id": "heart_rib_right", "rect": [352, 784, 16, 64], "kind": "wall" },
+    { "id": "chimney_lid", "rect": [40, 144, 128, 16], "kind": "wall" },
+    { "id": "chimney_right", "rect": [168, 144, 16, 656], "kind": "wall" }
+  ],
+  "currents": [
+    { "id": "return_flow", "rect": [48, 200, 120, 600], "flow": [0.0, -26.0] }
+  ],
+  "membranes": [
+    { "id": "heart_meld", "rect": [272, 768, 96, 16], "verb": "feed", "hold_seconds": 0.9, "requires_body": { "hands_min": 1 } }
+  ],
+  "routes": [
+    {
+      "id": "exit_floor",
+      "kind": "descent",
+      "trigger": [280, 940, 80, 84],
+      "requires": [{ "kind": "always" }],
+      "next": ""
+    },
+    {
+      "id": "mouth.still",
+      "kind": "ending",
+      "trigger": [120, 880, 96, 60],
+      "requires": [{ "kind": "always" }],
+      "next": "ending.hollow"
+    },
+    {
+      "id": "mouth.above",
+      "kind": "ending",
+      "trigger": [48, 160, 120, 40],
+      "requires": [{ "kind": "fact", "fact": "vent_above" }],
+      "blocks_verb": ["feed"],
+      "next": "ending.return"
+    },
+    {
+      "id": "mouth.heart",
+      "kind": "ending",
+      "trigger": [288, 800, 64, 48],
+      "requires": [{ "kind": "carrying", "verb": "feed" }],
+      "next": "ending.swallow"
+    }
+  ],
+  "sites": [],
+  "matter": [],
+  "anchors": [
+    { "id": "a1", "position": [320, 120], "radius": 12 }
+  ],
+  "fauna": [
+    { "id": "fauna_warden_floor", "kind": "warden", "position": [560, 300], "patrol": [900, 200], "line_y": 240 }
+  ],
+  "backdrop": {
+    "wind": [0.0, 3.0],
+    "deform_grid": [[10, 22], [8, 20], [8, 18], [6, 16], [6, 14]],
+    "pulse_on": ["heart_plinth", "fauna_warden_floor", "mouth.heart"]
+  }
+}

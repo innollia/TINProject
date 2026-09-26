@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "id": "stratum_halls",
+  "index": 1,
+  "location": "loc.halls",
+  "display_name": "회랑층",
+  "world_seed": 18853,
+  "palette": { "scheme": "triadic", "base_hue": 0.58, "saturation": 0.28, "contrast": 0.98, "variant": 1 },
+  "bounds": { "width": 640, "height": 1024 },
+  "spawn": { "position": [320, 96], "facing": 1 },
+  "solids": [
+    { "id": "ground_halls", "rect": [0, 0, 640, 64], "kind": "ground" },
+    { "id": "wall_left", "rect": [0, 64, 40, 960], "kind": "wall" },
+    { "id": "wall_right", "rect": [600, 64, 40, 960], "kind": "wall" },
+    { "id": "shelf_a_left", "rect": [40, 256, 400, 24], "kind": "wall" },
+    { "id": "halls_brittle_a", "rect": [440, 256, 80, 24], "kind": "brittle", "regrow_seconds": 0.4 },
+    { "id": "shelf_a_right", "rect": [520, 256, 80, 24], "kind": "wall" },
+    { "id": "shelf_b_left", "rect": [40, 496, 80, 24], "kind": "wall" },
+    { "id": "halls_brittle_b", "rect": [120, 496, 80, 24], "kind": "brittle", "regrow_seconds": 0.4 },
+    { "id": "shelf_b_right", "rect": [200, 496, 400, 24], "kind": "wall" },
+    { "id": "shelf_c_left", "rect": [40, 736, 240, 24], "kind": "wall" },
+    { "id": "halls_brittle_c", "rect": [280, 736, 80, 24], "kind": "brittle", "regrow_seconds": 0.4 },
+    { "id": "shelf_c_right", "rect": [360, 736, 240, 24], "kind": "wall" }
+  ],
+  "currents": [],
+  "membranes": [],
+  "routes": [
+    {
+      "id": "exit_halls",
+      "kind": "descent",
+      "trigger": [280, 944, 80, 64],
+      "requires": [{ "kind": "always" }],
+      "next": "stratum_teeth"
+    }
+  ],
+  "sites": [],
+  "matter": [],
+  "anchors": [
+    { "id": "a1", "position": [320, 128], "radius": 12 },
+    { "id": "a2", "position": [160, 576], "radius": 12 }
+  ],
+  "fauna": [],
+  "backdrop": {
+    "wind": [2.0, 5.0],
+    "deform_grid": [[10, 22], [8, 20], [8, 18], [6, 16], [6, 14]],
+    "pulse_on": ["halls_brittle_a", "halls_brittle_b", "halls_brittle_c"]
+  }
+}

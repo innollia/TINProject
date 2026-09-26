@@ -1,0 +1,81 @@
+{
+  "asset": "player",
+  "status": "candidate",
+  "note": "Player, side view facing left; the right view is the same recipe mirrored with the light kept fixed. The satchel hangs on the character's left hip, so it is hidden (far side) when facing right.",
+  "palette": "palette_h0.json",
+  "style": "sprite",
+  "canvas": [192, 192],
+  "pivot": [96, 186],
+  "pivot_meaning": "ground contact point under the body (place this pixel on the floor position)",
+  "scale_all": {"factor": 1.04, "origin": [96, 186]},
+  "seed": 47,
+  "forms": [
+    {"name": "shadow", "kind": "shadow", "color": "shadow_contact", "opacity": 0.4, "blur": 3,
+     "pieces": [{"icon": "circle", "at": [96, 184], "size": [64, 18]}]},
+    {"name": "hair_back", "tags": ["upper", "head"], "z": 0, "material": "hair",
+     "pieces": [
+       {"icon": "circle", "at": [102, 42], "size": [60, 58]},
+       {"icon": "droplet", "flip": "y", "at": [122, 63], "size": [18, 30], "rot": -10}
+     ]},
+
+    {"name": "leg_far", "tags": ["legs", "leg_far"], "z": 0.5, "material": "trouser",
+     "shade": {"threshold": 0.7},
+     "pieces": [{"icon": "circle", "at": [103, 164], "size": [16, 30]}]},
+    {"name": "boot_far", "tags": ["legs", "leg_far"], "z": 0.6, "material": "leather",
+     "shade": {"threshold": 0.7},
+     "pieces": [{"icon": "footsteps", "crop": [2, 2, 7.6, 9.8], "rot": -90, "at": [100, 179], "size": [13, 19]}]},
+    {"name": "leg_near", "tags": ["legs", "leg_near"], "z": 1, "material": "trouser",
+     "pieces": [{"icon": "circle", "at": [91, 166], "size": [17, 30]}]},
+    {"name": "boot_near", "tags": ["legs", "leg_near"], "z": 2, "material": "leather",
+     "pieces": [{"icon": "footsteps", "crop": [2, 2, 7.6, 9.8], "rot": -90, "at": [85, 180], "size": [14, 21]}]},
+
+    {"name": "coat", "tags": ["upper", "body"], "z": 3, "material": "coat",
+     "pieces": [
+       {"icon": "bell", "crop": [1.6, 3.4, 14.4, 10.6], "at": [99, 124], "size": [52, 64]},
+       {"icon": "cloud", "flip": "y", "at": [98, 157], "size": [54, 19]}
+     ]},
+
+    {"name": "strap", "tags": ["upper", "strap"], "z": 4, "material": "leather", "cast": false,
+     "pieces": [{"icon": "circle", "at": [93, 124], "size": [4.5, 54], "rot": -26}]},
+    {"name": "satchel", "tags": ["upper", "satchel"], "z": 4.2, "material": "leather",
+     "pieces": [{"icon": "briefcase", "crop": [1.5, 4.2, 14.5, 15], "at": [106, 152], "size": [22, 18]}]},
+    {"name": "satchel_buckle", "tags": ["upper", "satchel"], "z": 4.5, "kind": "flat", "material": "bronze",
+     "line": {"width": 0.5, "heavy": 0.4},
+     "pieces": [{"icon": "square", "at": [106, 149], "size": [6, 5]}]},
+
+    {"name": "arm", "tags": ["upper", "arm"], "z": 5.5, "material": "coat", "pivot": [97, 96],
+     "pieces": [{"icon": "shield", "half": "left", "at": [95, 118], "size": [18, 44], "rot": 7}]},
+    {"name": "glove", "tags": ["upper", "arm"], "z": 6, "material": "leather",
+     "pieces": [{"icon": "droplet", "flip": "y", "at": [91, 142], "size": [12, 15], "rot": 12}]},
+
+    {"name": "capelet", "tags": ["upper", "body"], "z": 7, "material": "coat_top",
+     "pieces": [{"icon": "umbrella", "crop": [0.6, 2.3, 15.4, 8.7], "at": [99, 94], "size": [70, 36]}]},
+
+    {"name": "scarf", "tags": ["upper", "head"], "z": 8, "material": "scarf",
+     "pieces": [{"icon": "circle", "at": [93, 79], "size": [40, 16]}]},
+    {"name": "scarf_tail", "tags": ["upper", "scarf_tail"], "z": 7.8, "material": "scarf", "pivot": [108, 82],
+     "pieces": [{"icon": "bookmark", "at": [119, 91], "size": [12, 26], "rot": -62}]},
+
+    {"name": "face", "tags": ["upper", "head"], "z": 9, "material": "skin",
+     "pieces": [
+       {"icon": "circle", "at": [84, 57], "size": [36, 38]},
+       {"icon": "droplet", "rot": -90, "at": [67, 61], "size": [7, 9]}
+     ]},
+
+    {"name": "hair_front", "tags": ["upper", "head"], "z": 10, "material": "hair",
+     "shade": {"highlight_amount": 0.75, "highlight": 0.9},
+     "pieces": [
+       {"icon": "cloud", "at": [99, 29], "size": [66, 36]},
+       {"icon": "droplet", "flip": "y", "at": [77, 46], "size": [13, 17], "rot": 22},
+       {"icon": "droplet", "flip": "y", "at": [89, 48], "size": [12, 16], "rot": 8},
+       {"icon": "droplet", "flip": "y", "at": [104, 58], "size": [14, 24], "rot": -4}
+     ]},
+
+    {"name": "eye", "tags": ["upper", "head", "face_marks"], "z": 11, "kind": "flat", "material": "eye",
+     "pieces": [{"icon": "circle", "at": [75, 61], "size": [4, 6]}]}
+  ],
+  "frames": [
+    {"name": "idle_left"},
+    {"name": "idle_right", "mirror": true, "hide": ["satchel"]}
+  ]
+}

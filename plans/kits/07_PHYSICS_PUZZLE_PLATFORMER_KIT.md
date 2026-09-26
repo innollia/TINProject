@@ -2321,7 +2321,19 @@ PNG 캡처는 `tests/` 아래에 있으므로 이미지 0개 하드 게이트의
 
 ## 20. Open Questions — 구현이 멈추는 지점
 
-**아래 항목은 확정하지 않았다. 해당 영역 구현을 시작하기 전에 멈추고 사용자에게 물어야 한다.** 임의로 골라 진행하지 않는다. `AGENTS.md` "구현 에이전트의 임의 판단. 없으면 멈추고 요청한다".
+> **2026-09-27 확정.** 사용자가 작업 중 질문 없이 끝까지 진행하고, 방향을 바꾸는 질문은 "네 추천대로 해"라고 위임했다(2026-09-27 02:10 KST). 그래서 OQ1~OQ9는 아래 표의 **"우리 권장" 열 그대로 확정**이다. 대안 열은 기록으로 남긴다. 구현 중 확정한 세부값은 §21에 적는다.
+>
+> - OQ1 확정: 도구 7종 = `tool_paper_fan`(shove) `tool_glass_rod`(throw) `tool_ember_lash`(throw + `fire_linger`) `tool_lead_weight`(throw) `tool_rope_hook`(anchor_line) `tool_chill_jar`(cool_field) `tool_moth_wing`(shove, §15.4 증명용). use 모드 이름은 §10.4 스키마의 `cool_field`가 정본이다(이 표의 옛 표기 `freeze_field`는 쓰지 않는다).
+> - OQ2 확정: `PLAYER_HP = 5`, `DEAD_RECOVER_DELAY = 0.6s` 자동 복귀.
+> - OQ3 확정: `LEVEL_COUNT = 8`.
+> - OQ4 확정: 세로 고정 `CAM_Y = 288` + 레벨 JSON 선택 키 `camera_y`(§21.3).
+> - OQ5 확정: 코-op 미구현.
+> - OQ6 확정: 변형 6종 그대로.
+> - OQ7 확정: 이 Kit 명칭 유지. `docs/world/04_DISTRICTS.md`가 우선한다고 적어 두었으므로 통합 때 차이만 반영한다.
+> - OQ8 확정: Input Bubble는 모듈 안에 둔다(상태는 `systems/input_bubble.gd`, 그림은 `presentation/bubble_overlay.gd`).
+> - OQ9 확정: `tests/performance/captures/` PNG는 게이트와 충돌하지 않는다.
+
+**(원문, 확정 전 기록)** 아래 항목은 확정하지 않았다. 해당 영역 구현을 시작하기 전에 멈추고 사용자에게 물어야 한다. 임의로 골라 진행하지 않는다. `AGENTS.md` "구현 에이전트의 임의 판단. 없으면 멈추고 요청한다".
 
 | # | 질문 | 우리 권장 | 대안 | 멈추는 범위 |
 |---|---|---|---|---|
@@ -2335,9 +2347,11 @@ PNG 캡처는 `tests/` 아래에 있으므로 이미지 0개 하드 게이트의
 | **OQ8** | Input Bubble를 모듈 안에 두는 것(현재 계획)이 전이층 인계 없이 확정되어도 되는가. | **모듈에 둔다.** 전이층이 없으므로 지금 인계할 대상이 없다. API 이름이 `first_entry`와 동일해 인계 비용은 낮다. | 전이층 버블을 먼저 만들고 이 Kit은 사용만 | `presentation/bubble_overlay.gd` |
 | **OQ9** | `tests/performance/captures/`에 PNG 캡처를 두는 것이 이미지 0개 게이트와 충돌하는가. | **충돌 안 함.** `ROUND_PLAN.md` §5는 각 Kit 폴더를 대상으로 하고 캡처는 `tests/` 아래다. | 캡처를 `docs/` 아래 `.md` 링크로 대체 | `§17.3` |
 
-**미결 상태로 남는 것 중 구현을 막는 것:** OQ1(도구 7종), OQ2(hp), OQ3(런 길이), OQ4(카메라 세로), OQ6(변형 6종). 이 5개는 각각 `content/tools/`, `domain/world_state.gd`, `selector.gd`, `presentation/world_root.gd`, `systems/mutation.gd`를 직접 확정하므로 **해당 파일을 쓰기 전에 반드시 답을 받는다.**
+**차단 해제 (2026-09-27):** OQ1(도구 7종), OQ2(hp), OQ3(런 길이), OQ4(카메라 세로), OQ6(변형 6종)은 위 확정으로 풀렸다. 이 5개가 확정하는 `content/tools/`, `domain/world_state.gd`, `systems/selector.gd`, `presentation/world_root.gd`, `systems/mutation.gd`를 이 확정값으로 작성한다.
 
-OQ5, OQ7, OQ8, OQ9는 비차단이다. 권장값으로 진행하다가 통합 시 수정해도 core를 뜯지 않는다.
+OQ5, OQ7, OQ8, OQ9는 원래 비차단이었고 권장값으로 확정했다.
+
+**OQ10 (새로 연 비차단 항목):** 공유 지형 원본의 위치(§7.8.1). 확정: 이 Kit의 지형 원본은 계속 `content/levels/*.json`이다. `place.id`와 레벨을 짝짓는 필드는 이번 판에 만들지 않는다(§21.8). 공유 지형 스키마가 정해지면 그때 레벨 JSON에 선택 키 1개를 더한다.
 
 ### 20.1 W0에게 요청할 사항 (이 모듈이 직접 건드리지 않는다)
 

@@ -14,6 +14,12 @@ const AFFORDANCE_ADVANCE: String = "advance"
 const AFFORDANCE_PORTRAIT: String = "portrait"
 
 const CORRUPTION_MODES: Array[String] = ["recolor", "replace_token", "shatter_line", "drop_glyph"]
+const FOCUSABLE_ROLES: Array[String] = [ROLE_CHOICE, ROLE_COMMAND]
+const TEXT_INSET: float = 10.0
+const FOCUSABLE_TEXT_INSET: float = 24.0
+const CLASS_CHANNEL_INSET: float = 18.0
+const ROW_TEXT_PAD: float = 4.0
+const TRAILING_FONT_SIZE: int = 12
 
 const CLASS_EXTREME: String = "extreme"
 const CLASS_RESULT: String = "result"
@@ -70,6 +76,9 @@ func _ready() -> void:
 		_trailing_label.name = "Trailing"
 		add_child(_trailing_label)
 		_trailing_label.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_trailing_label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+	_trailing_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_trailing_label.add_theme_font_size_override("font_size", TRAILING_FONT_SIZE)
 	_sync()
 
 
@@ -98,8 +107,7 @@ func set_trailing(value: String) -> void:
 	if _trailing_label == null:
 		return
 	_trailing_label.text = value
-	_trailing_label.add_theme_color_override("font_color", INK_DISABLED if disabled else INK_MUTED)
-	queue_redraw()
+	_sync()
 
 
 func set_focus_state(p_focused: bool) -> void:
@@ -182,12 +190,20 @@ func _sync() -> void:
 	elif selected:
 		body = Color("161d26")
 	_label_offset = _corruption_offset()
-	_text_label.offset_left = 10.0 + _label_offset
-	_text_label.offset_right = -10.0 + _label_offset
+	var left_inset: float = FOCUSABLE_TEXT_INSET if FOCUSABLE_ROLES.has(role) else TEXT_INSET
+	var right_inset: float = CLASS_CHANNEL_INSET if FOCUSABLE_ROLES.has(role) else TEXT_INSET
+	_text_label.offset_left = left_inset + _label_offset
+	_text_label.offset_right = -right_inset + _label_offset
 	_text_label.add_theme_color_override("font_color", INK_DISABLED if disabled else INK)
+	var has_trailing: bool = _trailing_label != null and not _trailing_label.text.is_empty()
+	_text_label.offset_top = ROW_TEXT_PAD if has_trailing else 0.0
+	_text_label.offset_bottom = 0.0
+	_text_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP if has_trailing else VERTICAL_ALIGNMENT_CENTER
 	if _trailing_label != null:
-		_trailing_label.offset_left = 10.0 + _label_offset
-		_trailing_label.offset_right = -10.0 + _label_offset
+		_trailing_label.offset_left = left_inset + _label_offset
+		_trailing_label.offset_right = -right_inset + _label_offset
+		_trailing_label.offset_top = 0.0
+		_trailing_label.offset_bottom = -ROW_TEXT_PAD
 		_trailing_label.add_theme_color_override("font_color", INK_DISABLED if disabled else INK_MUTED)
 	var interactive: bool = affordance == AFFORDANCE_NONE and not disabled
 	mouse_filter = Control.MOUSE_FILTER_STOP if interactive else Control.MOUSE_FILTER_IGNORE

@@ -311,6 +311,7 @@ Rule Rewrite의 `IS 3D`는 사용자 제공 이미지 C의 DOOM식 **1인칭 화
 - 사용자가 제공한 실제 플레이 캡처 A~H를 Kit 조사에 반영했다. 후속 세계관 메모를 shared understanding에 반영하고, 계획 범위에 꼭 필요한 상태가 비어 있을 때만 추가 캡처를 요청한 뒤 최종 계획을 확정한다.
 - 계획서는 여러 파일로 분할하며, authored content와 story/world/character 부분에 가장 큰 분량을 준다.
 - 2026-09-26 사용자 결정: 이 Kit는 코드로 그린 그림(아이콘 조합, 도트, SVG/Pillow 절차 그림)을 최종 그림으로 허용한다. 이 Kit에서는 §10의 GPT 최종 그림·기계적 후처리 한정·생성기 화풍 게이트보다 이 결정이 우선한다. 결과는 candidate로 시작하고 승인·Gold Standard 승격은 사용자만 한다. 같은 날 사용자 결정으로 아이콘 조합의 코딩 금지도 해제한다: 이 Kit에서는 코드를 짜서 아이콘을 조합해도 된다(보관된 at-icons 문서의 편집기 전용·코드 생성 금지 미적용).
+- 2026-09-27 사용자 결정: 아이콘 조합 방식 양산을 지시함. h0-icon-collage-v01을 화풍 기준으로 쓰고 세션 10개가 mp01~mp10 작업 ID로 나눠 제작한다. 결과는 전부 candidate이고 승인은 사용자만 한다. 다른 키트와 범용 그림도 아이콘 조합으로 만든다(탑다운 다음 순위). 움직이는 캐릭터 스프라이트는 실제 RPG Maker 규격의 8방향으로 만든다.
 
 현재 조사 결과는 [BLACK SOULS 2 통합 조사](docs/research/top_down_action_rpg/BLACK_SOULS_2_RESEARCH.md), [사용자 실제 플레이 A~H](docs/research/top_down_action_rpg/USER_PLAY_REFERENCE_2026-09-25.md), [분할 계획 중앙 해석](docs/research/top_down_action_rpg/PLAN_RESOLUTION.md)에 보존한다. 사용자 세계관 메모와 shared understanding 및 분할 계획 검토가 완료되었으므로, 이제 구현·검증으로 진행한다.
 

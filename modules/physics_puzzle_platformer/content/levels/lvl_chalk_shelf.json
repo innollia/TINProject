@@ -1,0 +1,25 @@
+{
+	"schema": 1,
+	"id": "lvl_chalk_shelf",
+	"name": "분필 선반",
+	"parallax_seed": 1041,
+	"spawn": { "x": 140, "y": 470 },
+	"rift": { "x": 1340, "y": 452, "radius": 30 },
+	"bounds": { "min_x": -120, "max_x": 1560, "min_y": -80, "max_y": 620 },
+	"objective_needed": 2,
+	"mutable": [],
+	"mutable_hazards": [],
+	"shuffled": [],
+	"kinematics": [],
+	"bodies": [
+		{ "id": "floor", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [720, 520], "size": [1680, 48] },
+		{ "id": "wall_left", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [-104, 280], "size": [32, 432] },
+		{ "id": "wall_right", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [1544, 280], "size": [32, 432] },
+		{ "id": "step_a", "kind": "tile_static", "shape": "box", "material": "wood", "pos": [460, 440], "size": [176, 24] },
+		{ "id": "step_b", "kind": "tile_static", "shape": "box", "material": "wood", "pos": [700, 376], "size": [176, 24] },
+		{ "id": "pillar", "kind": "tile_static", "shape": "hull", "material": "stone", "pos": [1080, 466], "points": [[-40, 30], [40, 30], [26, -30], [-26, -30]] },
+		{ "id": "crate", "kind": "prop_dynamic", "shape": "box", "material": "paper", "pos": [880, 480], "size": [32, 32] },
+		{ "id": "egg_low", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [300, 485], "size": [22, 22] },
+		{ "id": "egg_high", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [720, 353], "size": [22, 22] }
+	]
+}
