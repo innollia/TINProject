@@ -1,0 +1,215 @@
+{
+ "asset": "icon_bomb",
+ "status": "candidate",
+ "note": "Round black bomb: iron sphere with highlight, bronze cap, curled fuse with a burning spark.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 12184,
+ "meta": {
+  "kind": "icon",
+  "stage": "B",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "fuse",
+   "z": 0,
+   "material": "cloth_brown",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      87.0,
+      32.0
+     ],
+     "size": [
+      10.6,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -53.13
+    },
+    {
+     "icon": "square",
+     "at": [
+      94.0,
+      26.0
+     ],
+     "size": [
+      9.54,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -26.57
+    },
+    {
+     "icon": "square",
+     "at": [
+      101.0,
+      25.0
+     ],
+     "size": [
+      6.92,
+      4.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 18.43
+    },
+    {
+     "icon": "circle",
+     "at": [
+      90.0,
+      28.0
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      98.0,
+      24.0
+     ],
+     "size": [
+      4.0,
+      4.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spark_glow",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      106.0,
+      24.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ],
+   "blur": 5,
+   "opacity": 0.7,
+   "color": "glow_fire"
+  },
+  {
+   "name": "ball",
+   "z": 1,
+   "material": "iron_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      58.0,
+      74.0
+     ],
+     "size": [
+      72.0,
+      72.0
+     ]
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.8
+   }
+  },
+  {
+   "name": "cap",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      42.0
+     ],
+     "size": [
+      20.0,
+      14.0
+     ],
+     "rot": 40
+    }
+   ]
+  },
+  {
+   "name": "spark",
+   "z": 3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      106.0,
+      24.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    }
+   ],
+   "color": "#fff0b0"
+  },
+  {
+   "name": "shine",
+   "z": 2.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      40.0,
+      54.0
+     ],
+     "size": [
+      16.0,
+      10.0
+     ],
+     "rot": -35
+    }
+   ],
+   "color": "glint",
+   "clip_to": "ball",
+   "opacity": 0.4
+  }
+ ]
+}

@@ -1,0 +1,1651 @@
+{
+ "asset": "fx_dark_wave",
+ "status": "candidate",
+ "note": "Dark wave: a void orb pulses, violet shock rings roll outward with shadow spikes and motes, then fade.",
+ "palette": "palette_g01.json",
+ "style": "fx",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 17535,
+ "meta": {
+  "kind": "fx",
+  "stage": "B",
+  "frames": 5,
+  "cell": [
+   192,
+   192
+  ],
+  "sheet": "fx_dark_wave_sheet.png (one row)",
+  "blend": "normal (alpha); additive also works",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "f1_orb_glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      47.6,
+      47.6
+     ]
+    }
+   ],
+   "blur": 6,
+   "opacity": 0.6,
+   "color": "glow_shadow",
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_orb",
+   "z": 1.2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      34.0,
+      34.0
+     ]
+    }
+   ],
+   "color": "#0c0612",
+   "opacity": 1.0,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_orb_rim",
+   "z": 1.3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      34.0,
+      34.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_shadow",
+   "opacity": 1.0,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_orb_glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      61.6,
+      61.6
+     ]
+    }
+   ],
+   "blur": 6,
+   "opacity": 0.6,
+   "color": "glow_shadow",
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_orb",
+   "z": 1.2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      44.0,
+      44.0
+     ]
+    }
+   ],
+   "color": "#0c0612",
+   "opacity": 1.0,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_orb_rim",
+   "z": 1.3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      44.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_shadow",
+   "opacity": 1.0,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_ring",
+   "z": 1.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      80.0,
+      80.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      68.0,
+      68.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_shadow",
+   "opacity": 0.9,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_spikes",
+   "z": 0.8,
+   "kind": "flat",
+   "material": "fx_shadow",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      137.53,
+      107.13
+     ],
+     "size": [
+      36.71,
+      9.84
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       8.8615,
+       13.9142
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       9.5385,
+       4.4858
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      107.13,
+      137.53
+     ],
+     "size": [
+      9.84,
+      36.71
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       4.4858,
+       9.5385
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       13.9142,
+       8.8615
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      65.59,
+      126.41
+     ],
+     "size": [
+      26.87,
+      26.87
+     ],
+     "poly": [
+      [
+       14.0,
+       2.0
+      ],
+      [
+       5.5368,
+       7.9368
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       8.0632,
+       10.4632
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      54.47,
+      84.87
+     ],
+     "size": [
+      36.71,
+      9.84
+     ],
+     "poly": [
+      [
+       14.0,
+       14.0
+      ],
+      [
+       7.1385,
+       2.0858
+      ],
+      [
+       2.0,
+       2.0
+      ],
+      [
+       6.4615,
+       11.5142
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      84.87,
+      54.47
+     ],
+     "size": [
+      9.84,
+      36.71
+     ],
+     "poly": [
+      [
+       14.0,
+       14.0
+      ],
+      [
+       11.5142,
+       6.4615
+      ],
+      [
+       2.0,
+       2.0
+      ],
+      [
+       2.0858,
+       7.1385
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      126.41,
+      65.59
+     ],
+     "size": [
+      26.87,
+      26.87
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       10.4632,
+       8.0632
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       7.9368,
+       5.5368
+      ]
+     ]
+    }
+   ],
+   "opacity": 0.9,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_orb_glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      56.0,
+      56.0
+     ]
+    }
+   ],
+   "blur": 6,
+   "opacity": 0.54,
+   "color": "glow_shadow",
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_orb",
+   "z": 1.2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ]
+    }
+   ],
+   "color": "#0c0612",
+   "opacity": 0.9,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_orb_rim",
+   "z": 1.3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      36.0,
+      36.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_shadow",
+   "opacity": 0.9,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_ring",
+   "z": 1.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      130.0,
+      130.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      118.0,
+      118.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_shadow",
+   "opacity": 0.8,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_ring",
+   "z": 1.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      84.0,
+      84.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      78.0,
+      78.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_shadow",
+   "opacity": 0.6,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_spikes",
+   "z": 0.8,
+   "kind": "flat",
+   "material": "fx_shadow",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      151.06,
+      110.75
+     ],
+     "size": [
+      56.02,
+      15.01
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       8.9228,
+       13.0607
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       9.4772,
+       5.3393
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      124.5,
+      145.36
+     ],
+     "size": [
+      29.0,
+      50.23
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       7.4082,
+       9.7973
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       10.9918,
+       8.6027
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      81.25,
+      151.06
+     ],
+     "size": [
+      15.01,
+      56.02
+     ],
+     "poly": [
+      [
+       14.0,
+       2.0
+      ],
+      [
+       2.9393,
+       8.9228
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       10.6607,
+       9.4772
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      46.64,
+      124.5
+     ],
+     "size": [
+      50.23,
+      29.0
+     ],
+     "poly": [
+      [
+       14.0,
+       2.0
+      ],
+      [
+       6.2027,
+       7.4082
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       7.3973,
+       10.9918
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      40.94,
+      81.25
+     ],
+     "size": [
+      56.02,
+      15.01
+     ],
+     "poly": [
+      [
+       14.0,
+       14.0
+      ],
+      [
+       7.0772,
+       2.9393
+      ],
+      [
+       2.0,
+       2.0
+      ],
+      [
+       6.5228,
+       10.6607
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      67.5,
+      46.64
+     ],
+     "size": [
+      29.0,
+      50.23
+     ],
+     "poly": [
+      [
+       14.0,
+       14.0
+      ],
+      [
+       8.5918,
+       6.2027
+      ],
+      [
+       2.0,
+       2.0
+      ],
+      [
+       5.0082,
+       7.3973
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      110.75,
+      40.94
+     ],
+     "size": [
+      15.01,
+      56.02
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       13.0607,
+       7.0772
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       5.3393,
+       6.5228
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      145.36,
+      67.5
+     ],
+     "size": [
+      50.23,
+      29.0
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       9.7973,
+       8.5918
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       8.6027,
+       5.0082
+      ]
+     ]
+    }
+   ],
+   "opacity": 0.85,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f3_motes",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      66.47,
+      139.18
+     ],
+     "size": [
+      3.18,
+      3.18
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      61.89,
+      78.48
+     ],
+     "size": [
+      4.79,
+      4.79
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      71.69,
+      111.02
+     ],
+     "size": [
+      3.2,
+      3.2
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      43.5,
+      127.87
+     ],
+     "size": [
+      4.11,
+      4.11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      131.26,
+      86.68
+     ],
+     "size": [
+      3.98,
+      3.98
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      48.08,
+      51.74
+     ],
+     "size": [
+      3.1,
+      3.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      42.85,
+      88.11
+     ],
+     "size": [
+      4.18,
+      4.18
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      134.02,
+      118.85
+     ],
+     "size": [
+      4.63,
+      4.63
+     ]
+    }
+   ],
+   "color": "#c8a0ff",
+   "opacity": 0.9,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_orb_glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      42.0,
+      42.0
+     ]
+    }
+   ],
+   "blur": 6,
+   "opacity": 0.42,
+   "color": "glow_shadow",
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_orb",
+   "z": 1.2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    }
+   ],
+   "color": "#0c0612",
+   "opacity": 0.7,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_orb_rim",
+   "z": 1.3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_shadow",
+   "opacity": 0.7,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_ring",
+   "z": 1.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      170.0,
+      170.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      162.0,
+      162.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_shadow",
+   "opacity": 0.5,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_ring",
+   "z": 1.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      124.0,
+      124.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      118.0,
+      118.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_shadow",
+   "opacity": 0.4,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_spikes",
+   "z": 0.8,
+   "kind": "flat",
+   "material": "fx_shadow",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      139.47,
+      107.65
+     ],
+     "size": [
+      28.98,
+      7.76
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       8.8785,
+       13.6785
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       9.5215,
+       4.7215
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      118.5,
+      134.97
+     ],
+     "size": [
+      15.0,
+      25.98
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       7.1215,
+       9.8928
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       11.2785,
+       8.5072
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      84.35,
+      139.47
+     ],
+     "size": [
+      7.76,
+      28.98
+     ],
+     "poly": [
+      [
+       14.0,
+       2.0
+      ],
+      [
+       2.3215,
+       8.8785
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       11.2785,
+       9.5215
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      57.03,
+      118.5
+     ],
+     "size": [
+      25.98,
+      15.0
+     ],
+     "poly": [
+      [
+       14.0,
+       2.0
+      ],
+      [
+       6.1072,
+       7.1215
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       7.4928,
+       11.2785
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      52.53,
+      84.35
+     ],
+     "size": [
+      28.98,
+      7.76
+     ],
+     "poly": [
+      [
+       14.0,
+       14.0
+      ],
+      [
+       7.1215,
+       2.3215
+      ],
+      [
+       2.0,
+       2.0
+      ],
+      [
+       6.4785,
+       11.2785
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      73.5,
+      57.03
+     ],
+     "size": [
+      15.0,
+      25.98
+     ],
+     "poly": [
+      [
+       14.0,
+       14.0
+      ],
+      [
+       8.8785,
+       6.1072
+      ],
+      [
+       2.0,
+       2.0
+      ],
+      [
+       4.7215,
+       7.4928
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      107.65,
+      52.53
+     ],
+     "size": [
+      7.76,
+      28.98
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       13.6785,
+       7.1215
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       4.7215,
+       6.4785
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      134.97,
+      73.5
+     ],
+     "size": [
+      25.98,
+      15.0
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       9.8928,
+       8.8785
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       8.5072,
+       4.7215
+      ]
+     ]
+    }
+   ],
+   "opacity": 0.5,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f4_motes",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      137.76,
+      9.54
+     ],
+     "size": [
+      4.78,
+      4.78
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      95.44,
+      84.67
+     ],
+     "size": [
+      3.18,
+      3.18
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      34.98,
+      19.61
+     ],
+     "size": [
+      3.18,
+      3.18
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      146.54,
+      73.7
+     ],
+     "size": [
+      4.56,
+      4.56
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      181.27,
+      117.63
+     ],
+     "size": [
+      3.41,
+      3.41
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      35.98,
+      177.8
+     ],
+     "size": [
+      3.98,
+      3.98
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      67.19,
+      176.15
+     ],
+     "size": [
+      3.34,
+      3.34
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      162.47,
+      9.78
+     ],
+     "size": [
+      3.87,
+      3.87
+     ]
+    }
+   ],
+   "color": "#c8a0ff",
+   "opacity": 0.7,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_orb_glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    }
+   ],
+   "blur": 6,
+   "opacity": 0.24,
+   "color": "glow_shadow",
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_orb",
+   "z": 1.2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    }
+   ],
+   "color": "#0c0612",
+   "opacity": 0.4,
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_orb_rim",
+   "z": 1.3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_shadow",
+   "opacity": 0.4,
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_ring",
+   "z": 1.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      186.0,
+      186.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      182.0,
+      182.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "color": "glow_shadow",
+   "opacity": 0.25,
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f5_motes",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      66.51,
+      181.19
+     ],
+     "size": [
+      3.91,
+      3.91
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      108.15,
+      151.29
+     ],
+     "size": [
+      4.26,
+      4.26
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      155.61,
+      153.05
+     ],
+     "size": [
+      3.13,
+      3.13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      30.86,
+      79.27
+     ],
+     "size": [
+      3.79,
+      3.79
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      153.22,
+      31.59
+     ],
+     "size": [
+      4.97,
+      4.97
+     ]
+    }
+   ],
+   "color": "#c8a0ff",
+   "opacity": 0.45,
+   "tags": [
+    "f5"
+   ],
+   "hidden": true
+  }
+ ],
+ "frames": [
+  {
+   "name": "fx_dark_wave_1",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "fx_dark_wave_2",
+   "show": [
+    "f2"
+   ]
+  },
+  {
+   "name": "fx_dark_wave_3",
+   "show": [
+    "f3"
+   ]
+  },
+  {
+   "name": "fx_dark_wave_4",
+   "show": [
+    "f4"
+   ]
+  },
+  {
+   "name": "fx_dark_wave_5",
+   "show": [
+    "f5"
+   ]
+  }
+ ]
+}

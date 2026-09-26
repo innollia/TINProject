@@ -211,6 +211,75 @@ def balloon_question():
     return balloon("ui_balloon_question", [F("mark", "gem_blue", hook + [C(67, 79, 13, 13)], 1)])
 
 
+# ================================================================== B
+@ui("B", "ui_window_parchment", "Parchment window: pale paper panel with foxing, rolled top and bottom edges, burnt-brown border, wax dots in the corners.")
+def window_parchment():
+    W = H = 192
+    rolls = []
+    for y in (11, 181):
+        rolls += [R(96, y, 180, 18), C(6, y, 9, 18), C(186, y, 9, 18)]
+    forms = [
+        F("panel", "paper", [R(96, 96, 172, 170)], 0, shade={"bump": 0.25, "highlight_amount": 0.15, "ragged": 0.08},
+          grime={"density": 0.08, "strength": 0.14}, texture={"strength": 0.03}),
+        F("burn", None, rframe(96, 96, 172, 170, 6, 2), 0.5, "flat", color="#6e5c44", blur=2, clip_to="panel",
+          opacity=0.7),
+        F("rolls", "paper", rolls, 1, shade={"bump": 0.9}),
+        F("roll_lines", None, [R(96, 13, 180, 1.4), R(96, 183, 180, 1.4)], 1.5, "flat", color="#6e5c44",
+          clip_to="rolls", opacity=0.8),
+        F("wax", "wax_red", [C(26, 36, 10), C(166, 36, 10), C(26, 156, 10), C(166, 156, 10)], 2),
+    ]
+    return {"forms": forms, "canvas": (W, H), "meta": {"kind": "ui_9slice", "nine_slice": [64, 64, 64, 64],
+            "content_inset": 26, "text_colour_hint": "dark ink on this light panel", "preview_size": [520, 240]}}
+
+
+def heart_pieces(cx, cy, s):
+    """Classic heart: a square turned 45 degrees plus two circles on its upper sides."""
+    k = s / 2.0 * 0.7071
+    return [R(cx, cy, s, s, rot=45), C(cx - k, cy - k, s, s), C(cx + k, cy - k, s, s)]
+
+
+@ui("B", "ui_balloon_heart", "Emotion balloon: red heart (square + two circles), 5-frame pop.")
+def balloon_heart():
+    return balloon("ui_balloon_heart", [F("mark", "gem_red", heart_pieces(64, 58, 30), 1),
+                                        F("shine", None, [C(52, 44, 8, 6, rot=-30)], 1.5, "flat", color="#ffc8c8",
+                                          opacity=0.7)])
+
+
+@ui("B", "ui_balloon_anger", "Emotion balloon: anger mark of four bent red strokes around a gap, 5-frame pop.")
+def balloon_anger():
+    strokes = []
+    for k in range(4):
+        strokes += turn([MOON(64 - 13, 54 - 13, 22, 22)], 90 * k, 64, 54)
+    return balloon("ui_balloon_anger", [F("mark", "gem_red", strokes, 1)])
+
+
+@ui("B", "ui_balloon_sweat", "Emotion balloon: two pale blue sweat drops with highlights, 5-frame pop.")
+def balloon_sweat():
+    return balloon("ui_balloon_sweat", [
+        F("mark", "ice", [D(70, 52, 26, 38, rot=20), D(46, 66, 14, 20, rot=-15)], 1),
+        F("shine", None, [C(66, 58, 5, 9, rot=20)], 1.5, "flat", color="#ffffff", opacity=0.8)])
+
+
+@ui("B", "ui_balloon_silence", "Emotion balloon: three dots (silence), 5-frame pop.")
+def balloon_silence():
+    return balloon("ui_balloon_silence", [F("mark", "iron_dark", [C(40, 56, 14), C(64, 56, 14), C(88, 56, 14)], 1)])
+
+
+@ui("B", "ui_balloon_note", "Emotion balloon: two beamed musical notes built from ellipses and bars, 5-frame pop.")
+def balloon_note():
+    notes = [C(48, 74, 18, 13, rot=-20), C(80, 68, 18, 13, rot=-20), R(56, 50, 4, 46), R(88, 44, 4, 46),
+             R(72, 30, 36, 8, rot=-10)]
+    return balloon("ui_balloon_note", [F("mark", "cloth_violet", notes, 1, shade={"highlight_amount": 0.7})])
+
+
+@ui("B", "ui_balloon_idea", "Emotion balloon: bright gold four-point sparkle with two small ones (sudden idea), 5-frame pop.")
+def balloon_idea():
+    return balloon("ui_balloon_idea", [
+        F("glow", None, [C(64, 54, 40, 40)], 0.8, "flat", color="glow_gold", blur=6, opacity=0.5),
+        F("mark", "gold", [SPARK(64, 54, 50)], 1, shade={"highlight_amount": 0.9}),
+        F("small", "gold", [SPARK(92, 32, 16), SPARK(36, 30, 12)], 1.2)])
+
+
 # ------------------------------------------------------------------ main
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)

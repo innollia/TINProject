@@ -1,0 +1,341 @@
+{
+ "asset": "icon_skill_guard",
+ "status": "candidate",
+ "note": "Skill tile: steel heater shield in front of a pale protective arc.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 75191,
+ "meta": {
+  "kind": "icon",
+  "stage": "B",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      100.0,
+      100.0
+     ]
+    }
+   ],
+   "color": "tint_steel",
+   "clip_to": "plate",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 18,
+    "y1": 114
+   }
+  },
+  {
+   "name": "plate_rim",
+   "z": 5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      115.0,
+      115.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      102.0,
+      102.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "plate_studs",
+   "z": 5.2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "aura",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      78.0,
+      78.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.55,
+   "color": "glow_steel",
+   "clip_to": "plate"
+  },
+  {
+   "name": "arc",
+   "z": 1.2,
+   "kind": "flat",
+   "material": "fx_steel",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      84.0,
+      84.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "clip_to": "plate",
+   "opacity": 0.7
+  },
+  {
+   "name": "shield",
+   "z": 2,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      58.0,
+      70.0
+     ],
+     "poly": [
+      [
+       2.72,
+       2.0
+      ],
+      [
+       13.28,
+       2.0
+      ],
+      [
+       14.0,
+       5.6
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       2.0,
+       5.6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "name": "boss",
+   "z": 2.5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      56.0
+     ],
+     "size": [
+      6.0,
+      44.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      46.0
+     ],
+     "size": [
+      34.0,
+      6.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "clip_to": "shield"
+  },
+  {
+   "name": "sparks",
+   "z": 3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      100.0,
+      30.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      28.0,
+      96.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    }
+   ],
+   "color": "#ffffff",
+   "clip_to": "plate"
+  }
+ ]
+}

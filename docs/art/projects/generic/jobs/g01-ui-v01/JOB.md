@@ -33,6 +33,13 @@
 | A | `ui_gauge_frame` | 192×48 | Gauge base, frame part: iron tube with capsule ends, dark channel with inner shadow, bronze end studs. | 완료 |
 | A | `ui_select_corners` | 128×128 | Selection frame: four gold L brackets with a soft glow and a faint edge line, empty centre. | 완료 |
 | A | `ui_window_stone` | 192×192 | Basic window frame: dark bevelled stone band, bronze inner line, bronze corner diamonds with garnets, near-black panel. | 완료 |
+| B | `ui_balloon_anger` | 128×128 × 5 | Emotion balloon: anger mark of four bent red strokes around a gap, 5-frame pop. | 완료 |
+| B | `ui_balloon_heart` | 128×128 × 5 | Emotion balloon: red heart (square + two circles), 5-frame pop. | 완료 |
+| B | `ui_balloon_idea` | 128×128 × 5 | Emotion balloon: bright gold four-point sparkle with two small ones (sudden idea), 5-frame pop. | 완료 |
+| B | `ui_balloon_note` | 128×128 × 5 | Emotion balloon: two beamed musical notes built from ellipses and bars, 5-frame pop. | 완료 |
+| B | `ui_balloon_silence` | 128×128 × 5 | Emotion balloon: three dots (silence), 5-frame pop. | 완료 |
+| B | `ui_balloon_sweat` | 128×128 × 5 | Emotion balloon: two pale blue sweat drops with highlights, 5-frame pop. | 완료 |
+| B | `ui_window_parchment` | 192×192 | Parchment window: pale paper panel with foxing, rolled top and bottom edges, burnt-brown border, wax dots in the corners. | 완료 |
 
 ## 결과 파일
 
@@ -64,5 +71,5 @@ py -3 -B nine_preview.py --out ../preview/nine_all.png
 ## 진행
 
 - [x] A 단계 (9개 레시피)
-- [ ] B 단계 (0개 레시피)
+- [x] B 단계 (7개 레시피)
 - [ ] C 단계 (0개 레시피)

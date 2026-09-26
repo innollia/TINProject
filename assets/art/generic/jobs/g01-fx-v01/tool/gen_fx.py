@@ -286,6 +286,260 @@ def heal_light():
     return animate([f1, f2, f3, f4, f5], "fx_heal_light")
 
 
+# ================================================================== B
+def arrow_pieces(tx, ty, length, rot, hide_tip=False):
+    """Arrow pointing along +x (then turned by rot about the tip): shaft, head, fletching."""
+    x0 = tx - length
+    shaft = [R((x0 + tx - 12) / 2.0, ty, length - 12, 5.5)]
+    head = [] if hide_tip else [POLY([(0, 0), (1, 0.5), (0, 1), (0.25, 0.5)], tx - 9, ty, 20, 16)]
+    fletch = [D(x0 + 10, ty - 7, 10, 26, rot=-100), D(x0 + 10, ty + 7, 10, 26, rot=-80)]
+    return [turn(shaft, rot, tx, ty), turn(head, rot, tx, ty), turn(fletch, rot, tx, ty)]
+
+
+@fx("B", "fx_arrow_hit", "Arrow hit: an arrow streaks in from the left, strikes with a flash and ring, sticks and quivers as the flash fades.")
+def arrow_hit():
+    rng = random.Random(89)
+    hit = (136, 100)
+
+    def arrow(tx, ty, length, rot, hide_tip=False, op=1.0):
+        shaft, head, fletch = arrow_pieces(tx, ty, length, rot, hide_tip)
+        out = [halo("arrow_glow", None, shaft + head + fletch, 0.8, 4, 0.35 * op, color="glow_steel"),
+               F("shaft", "cork", shaft, 1, opacity=op), F("fletch", "cloth_wine", fletch, 1.1, opacity=op)]
+        if head:
+            out.append(F("head", "steel", head, 1.2, opacity=op))
+        return out
+
+    streaks = lambda x0, x1, op: F("streaks", None, [spindle(x0, hit[1] + o, x1, hit[1] + o * 0.6, 3)
+                                                      for o in (-12, 0, 12)], 0.5, "flat", color="glow_steel",
+                                   opacity=op)
+    f1 = arrow(84, 96, 88, 6) + [streaks(4, 70, 0.5)]
+    f2 = arrow(hit[0], hit[1], 96, 6) + [streaks(20, 110, 0.45),
+                                          F("spark", None, [SPARK(*hit, 24)], 2, "flat", color="#ffffff")]
+    f3 = (arrow(hit[0] - 6, hit[1], 90, 6, hide_tip=True)
+          + light("flash", "fx_white", [POLY(star_pts(8, 0.4), hit[0], hit[1], 66, 66, rot=8)], 2, "glow_steel", 8)
+          + [F("ring", None, ringp(*hit, 60, 60, 3), 1.8, "flat", color="fx_white", opacity=0.8)])
+    f4 = (arrow(hit[0] - 6, hit[1], 90, 10, hide_tip=True)
+          + [F("ring", None, ringp(*hit, 88, 88, 2), 1.8, "flat", color="glow_steel", opacity=0.5),
+             F("chips", "fx_dust", [R(hit[0] + rng.uniform(-10, 30), hit[1] + rng.uniform(-30, 30), 6, 5,
+                                      rot=rng.uniform(0, 90)) for _ in range(6)], 2, "flat")])
+    f5 = arrow(hit[0] - 6, hit[1], 90, 3, hide_tip=True) + [
+        F("ring", None, ringp(*hit, 100, 100, 1.6), 1.8, "flat", color="glow_steel", opacity=0.25)]
+    return animate([f1, f2, f3, f4, f5], "fx_arrow_hit")
+
+
+@fx("B", "fx_summon_pillar", "Summon: an arcane ring lights on the ground, a pillar of light rises to full height with rising motes, then fades.")
+def summon_pillar():
+    rng = random.Random(97)
+    base = 160
+
+    def ground(op, w=150):
+        marks = around(8, CX, base, w * 0.43, w * 0.43 * 0.3, lambda x, y, k, a: POLY([(0.5, 0), (1, 0.5), (0.5, 1), (0, 0.5)],
+                                                                                  x, y, 8, 5))
+        return [halo("ground_glow", None, [C(CX, base, w, w * 0.32)], 0.2, 8, 0.5 * op, color="glow_arcane"),
+                F("ring", "fx_arcane", ringp(CX, base, w, w * 0.32, 3) + ringp(CX, base, w * 0.72, w * 0.23, 2), 0.4,
+                  "flat", opacity=op),
+                F("marks", None, marks, 0.5, "flat", color="#d8e0ff", opacity=op)]
+
+    def pillar(top, width, op):
+        h = base - top
+        return [halo("pillar_glow", None, rrect(CX, top + h / 2, width, h, width / 2), 1, 10, 0.6 * op,
+                     color="glow_arcane"),
+                F("pillar", None, rrect(CX, top + h / 2, width * 0.55, h, width * 0.27), 1.2, "flat", color="#c8d2ff",
+                  blur=4, opacity=0.8 * op),
+                F("pillar_core", None, rrect(CX, top + h / 2, width * 0.18, h, width * 0.09), 1.4, "flat",
+                  color="#ffffff", blur=2, opacity=op)]
+
+    motes = lambda n, y0, y1, op: F("motes", None, [C(CX + rng.uniform(-40, 40), rng.uniform(y0, y1),
+                                                      rng.uniform(3, 6)) for _ in range(n)], 2, "flat",
+                                    color="#d8e0ff", opacity=op)
+    f1 = ground(0.9)
+    f2 = ground(1.0) + pillar(100, 40, 0.8)
+    f3 = ground(1.0) + pillar(-4, 52, 1.0) + [motes(6, 40, 150, 0.9)]
+    f4 = ground(0.7) + pillar(-4, 70, 0.55) + [motes(8, 10, 120, 0.8)]
+    f5 = ground(0.35) + [motes(6, 0, 90, 0.5)]
+    return animate([f1, f2, f3, f4, f5], "fx_summon_pillar")
+
+
+@fx("B", "fx_magic_circle", "Magic circle, looping: double ring with tick marks turning one way and a hexagram with node circles turning the other.")
+def magic_circle():
+    frames = []
+    for k in range(5):
+        a_in, a_out = k * 12.0, -k * 6.0
+        ticks = around(12, CX, CY, 80, 80, lambda x, y, i, a: R(x, y, 3, 9), a0=a_out, a1=a_out + 360, orient=True)
+        dots = around(24, CX, CY, 69, 69, lambda x, y, i, a: C(x, y, 3.2 if i % 2 else 5.5), a0=a_in, a1=a_in + 360)
+        tri_pts = lambda a0: [(CX + 58 * math.cos(math.radians(a0 + j * 120)), CY + 58 * math.sin(math.radians(a0 + j * 120)))
+                              for j in range(4)]
+        hexa = polyline(tri_pts(a_in - 90), 3) + polyline(tri_pts(a_in + 90), 3)
+        hexa += [C(x, y, 8) for x, y in tri_pts(a_in - 90)[:3] + tri_pts(a_in + 90)[:3]]
+        rings = (ringp(CX, CY, 176, 176, 3) + ringp(CX, CY, 124, 124, 2.4) + ringp(CX, CY, 58, 58, 2)
+                 + ringp(CX, CY, 20, 20, 2))
+        fl = [halo("glow", None, rings + hexa, 0.5, 6, 0.55, color="glow_arcane"),
+              F("fill", None, [C(CX, CY, 124, 124)], 0.6, "flat", color="#6a7cf0", opacity=0.12),
+              F("lines", "fx_arcane", rings + ticks + hexa, 1, "flat", opacity=0.95),
+              F("dots", None, dots, 1.2, "flat", color="#d8e0ff", opacity=0.9),
+              F("core", None, [C(CX, CY, 10, 10)], 1.3, "flat", color="#ffffff")]
+        frames.append(fl)
+    return animate(frames, "fx_magic_circle")
+
+
+@fx("B", "fx_explosion", "Explosion: white flash, fireball bursting outward with a shock ring, then rolling dark smoke with embers.")
+def explosion():
+    rng = random.Random(113)
+
+    def puffs(n, r, smin, smax, jitter=0.35):
+        pcs = []
+        for k in range(n):
+            a = math.radians(k * 360.0 / n + rng.uniform(-20, 20))
+            d = r * rng.uniform(1 - jitter, 1)
+            s = rng.uniform(smin, smax)
+            pcs.append(P("cloud", CX + math.cos(a) * d, CY + math.sin(a) * d * 0.85, s, s * 0.7,
+                         rot=rng.uniform(-25, 25)))
+        return pcs
+
+    def smoke(n, r, size, op):
+        return F("smoke", "fx_smoke", [P("cloud", CX + rng.uniform(-r, r), CY + rng.uniform(-r, r * 0.6), size,
+                                         size * 0.62) for _ in range(n)], 0.5, "flat", blur=3, opacity=op)
+
+    f1 = light("core", "fx_white", [C(CX, CY, 46, 46), POLY(star_pts(10, 0.5), CX, CY, 70, 70)], 1, "glow_fire", 8)
+    f2 = (light("fire", "fx_fire", puffs(8, 30, 34, 52) + [C(CX, CY, 70, 64)], 1, "glow_fire", 10)
+          + [F("core", "fx_fire_core", puffs(5, 14, 26, 38) + [C(CX, CY, 44, 40)], 1.2, "flat"),
+             F("hot", None, [C(CX, CY, 30, 28)], 1.4, "flat", color="#fff6d0", blur=4)])
+    f3 = (light("fire", "fx_fire", puffs(11, 50, 44, 66) + [C(CX, CY, 104, 96)], 1, "glow_fire", 12)
+          + [F("deep", "fx_fire_deep", puffs(7, 58, 26, 40), 0.9, "flat", opacity=0.8),
+             F("core", "fx_fire_core", puffs(6, 22, 34, 48) + [C(CX, CY, 60, 54)], 1.2, "flat", opacity=0.95),
+             F("ring", None, ringp(CX, CY, 180, 170, 3), 0.8, "flat", color="#ffe0a0", opacity=0.55)])
+    f4 = [smoke(7, 44, 78, 0.85),
+          halo("underglow", None, puffs(5, 26, 30, 44), 0.7, 8, 0.7, color="glow_fire"),
+          F("embers", "fx_fire_core", [C(CX + rng.uniform(-80, 80), CY + rng.uniform(-80, 70), rng.uniform(3, 6))
+                                       for _ in range(10)], 2, "flat")]
+    f5 = [smoke(7, 52, 82, 0.5),
+          F("embers", "fx_fire_core", [C(CX + rng.uniform(-80, 80), CY + rng.uniform(-86, 50), rng.uniform(2, 4))
+                                       for _ in range(7)], 2, "flat", opacity=0.6)]
+    return animate([f1, f2, f3, f4, f5], "fx_explosion")
+
+
+@fx("B", "fx_poison_cloud", "Poison cloud: green puffs swell from the ground with rising bubbles, peak, then drift up and thin out.")
+def poison_cloud():
+    rng = random.Random(127)
+    base = 150
+
+    def cloud(n, spread, y, size, op):
+        pcs = [P("cloud", CX + rng.uniform(-spread, spread), y + rng.uniform(-spread * 0.4, spread * 0.3), size,
+                 size * 0.62) for _ in range(n)]
+        return [F("cloud_dark", "fx_poison_deep", pcs, 0.8, "flat", blur=3, opacity=op),
+                F("cloud", "fx_poison", scale(pcs, 0.8, CX, y), 1, "flat", blur=4, opacity=op * 0.8)]
+
+    def bubbles(n, y0, y1, op, rings=False):
+        pcs = []
+        for _ in range(n):
+            x, y, s = CX + rng.uniform(-60, 60), rng.uniform(y0, y1), rng.uniform(6, 12)
+            pcs += ringp(x, y, s, s, 1.6) if rings else [C(x, y, s)]
+        return F("bubbles", None, pcs, 2, "flat", color="glow_poison", opacity=op)
+
+    f1 = cloud(3, 24, base, 50, 0.8)
+    f2 = cloud(5, 40, base - 16, 66, 0.85) + [bubbles(3, 90, 130, 0.9)]
+    f3 = cloud(7, 56, base - 30, 80, 0.9) + [bubbles(5, 40, 110, 0.9), bubbles(3, 30, 90, 0.7, rings=True)]
+    f4 = cloud(6, 48, base - 46, 78, 0.6) + [bubbles(4, 20, 80, 0.6, rings=True)]
+    f5 = cloud(5, 46, base - 58, 80, 0.3)
+    return animate([f1, f2, f3, f4, f5], "fx_poison_cloud")
+
+
+@fx("B", "fx_dark_wave", "Dark wave: a void orb pulses, violet shock rings roll outward with shadow spikes and motes, then fade.")
+def dark_wave():
+    rng = random.Random(131)
+
+    def spikes(n, r0, r1, w, op):
+        pcs = []
+        for k in range(n):
+            a = math.radians(k * 360.0 / n + 15)
+            pcs.append(spindle(CX + math.cos(a) * r0, CY + math.sin(a) * r0, CX + math.cos(a) * r1,
+                               CY + math.sin(a) * r1, w))
+        return F("spikes", "fx_shadow", pcs, 0.8, "flat", opacity=op)
+
+    orb = lambda s, op: [halo("orb_glow", None, [C(CX, CY, s * 1.4, s * 1.4)], 1, 6, 0.6 * op, color="glow_shadow"),
+                         F("orb", None, [C(CX, CY, s, s)], 1.2, "flat", color="#0c0612", opacity=op),
+                         F("orb_rim", None, ringp(CX, CY, s, s, 2), 1.3, "flat", color="glow_shadow", opacity=op)]
+    ring = lambda d, t, op: F("ring", None, ringp(CX, CY, d, d, t), 1.5, "flat", color="glow_shadow", opacity=op)
+    motes = lambda n, r, op: F("motes", None, [C(CX + rng.uniform(-r, r), CY + rng.uniform(-r, r), rng.uniform(3, 5))
+                                               for _ in range(n)], 2, "flat", color="#c8a0ff", opacity=op)
+    f1 = orb(34, 1.0)
+    f2 = orb(44, 1.0) + [ring(80, 6, 0.9), spikes(6, 24, 62, 8, 0.9)]
+    f3 = orb(40, 0.9) + [ring(130, 6, 0.8), ring(84, 3, 0.6), spikes(8, 28, 86, 10, 0.85), motes(8, 80, 0.9)]
+    f4 = orb(30, 0.7) + [ring(170, 4, 0.5), ring(124, 3, 0.4), spikes(8, 30, 60, 6, 0.5), motes(8, 88, 0.7)]
+    f5 = orb(20, 0.4) + [ring(186, 2, 0.25), motes(5, 90, 0.45)]
+    return animate([f1, f2, f3, f4, f5], "fx_dark_wave")
+
+
+@fx("B", "fx_holy_light", "Holy light: a golden shaft falls from above, blooms into a four-point star with rays, then sparkles drift down.")
+def holy_light():
+    rng = random.Random(137)
+    base = 150
+
+    def shaft(width, op):
+        return [halo("shaft", None, [POLY([(0.3, 0), (0.7, 0), (1, 1), (0, 1)], CX, (base - 10) / 2, width * 1.6,
+                                          base + 10)], 0.5, 10, 0.5 * op, color="glow_holy"),
+                F("shaft_core", None, [POLY([(0.35, 0), (0.65, 0), (0.8, 1), (0.2, 1)], CX, (base - 10) / 2,
+                                            width * 0.7, base + 10)], 0.6, "flat", color="#fff6d8", blur=5,
+                  opacity=0.6 * op)]
+
+    def rays(n, r, w, op):
+        pcs = [spindle(CX, CY + 10, CX + math.cos(math.radians(k * 360.0 / n)) * r,
+                       CY + 10 + math.sin(math.radians(k * 360.0 / n)) * r, w) for k in range(n)]
+        return F("rays", "fx_holy", pcs, 1.1, "flat", opacity=op)
+
+    ground = lambda w, op: halo("ground", None, [C(CX, base, w, w * 0.3)], 0.3, 8, op, color="glow_holy")
+    f1 = shaft(30, 0.6)
+    f2 = shaft(46, 1.0) + [ground(110, 0.6)]
+    f3 = shaft(50, 0.9) + [ground(140, 0.7), rays(12, 84, 7, 0.8)] + light(
+        "star", "fx_holy", [SPARK(CX, CY + 10, 96)], 1.5, "glow_holy", 10)
+    f4 = shaft(40, 0.5) + [ground(120, 0.4), rays(12, 70, 4, 0.45),
+                           F("sparks", None, sparks(rng, 8, CX, 90, 70, 60, 6, 12), 2, "flat", color="#fff6d8")]
+    f5 = [F("sparks", None, sparks(rng, 7, CX, 120, 70, 50, 4, 9), 2, "flat", color="#fff6d8", opacity=0.6)]
+    return animate([f1, f2, f3, f4, f5], "fx_holy_light")
+
+
+@fx("B", "fx_wind_blade", "Wind blades: pale green crescents fly from left to right with streaks, then leave curling wind lines.")
+def wind_blade():
+    def blade(x, y, s, op):
+        return light("blade", "fx_wind", [C(x, y, s * 0.6, s), sub(C(x - s * 0.14, y, s * 0.6, s))], 1, "glow_wind", 5,
+                     glow_op=0.5 * op, opacity=op)
+
+    def streaks(x0, x1, op, ys=(70, 96, 122)):
+        return F("streaks", None, [spindle(x0, y, x1, y + 2, 3) for y in ys], 0.5, "flat", color="glow_wind", opacity=op)
+
+    def curls(op):
+        pcs = []
+        for (x, y, s, a) in ((120, 70, 30, 0), (150, 110, 24, 120), (100, 130, 20, 240)):
+            pcs += ringp(x, y, s, s, 2) + [sub(wedge(x, y, s, a, a + 110, steps=8))]
+        return F("curls", None, pcs, 0.6, "flat", color="glow_wind", opacity=op)
+
+    f1 = blade(40, 96, 60, 0.9) + [streaks(4, 30, 0.5)]
+    f2 = blade(80, 84, 76, 1.0) + blade(50, 112, 50, 0.8) + [streaks(10, 70, 0.5)]
+    f3 = blade(128, 80, 84, 1.0) + blade(100, 114, 62, 0.9) + blade(64, 96, 44, 0.7) + [streaks(20, 110, 0.45)]
+    f4 = blade(168, 84, 70, 0.6) + blade(146, 118, 52, 0.5) + [streaks(60, 150, 0.35), curls(0.6)]
+    f5 = [streaks(110, 186, 0.25), curls(0.35)]
+    return animate([f1, f2, f3, f4, f5], "fx_wind_blade")
+
+
+@fx("B", "fx_line_slashes", "Line slashes: three straight cuts cross the target one after another, flash where they meet, then fade with sparks.")
+def line_slashes():
+    rng = random.Random(149)
+    cuts = [(30, 40, 162, 152), (162, 44, 30, 148), (22, 100, 170, 92)]
+
+    def cut(i, w, op):
+        return light(f"cut{i}", "fx_white", [spindle(*cuts[i], w)], 1 + i * 0.1, "glow_steel", 5, glow_op=0.55 * op,
+                     opacity=op)
+
+    f1 = cut(0, 10, 1.0)
+    f2 = cut(0, 6, 0.6) + cut(1, 10, 1.0)
+    f3 = cut(0, 4, 0.45) + cut(1, 6, 0.7) + cut(2, 10, 1.0) + light(
+        "flash", "fx_white", [SPARK(CX, CY, 56)], 2, "glow_steel", 8)
+    f4 = cut(0, 3, 0.3) + cut(1, 3, 0.4) + cut(2, 5, 0.55) + [
+        F("sparks", None, sparks(rng, 7, CX, CY, 70, 60, 6, 12), 2, "flat", color="#ffffff", opacity=0.9)]
+    f5 = [F("sparks", None, sparks(rng, 5, CX, CY, 80, 70, 4, 8), 2, "flat", color="glow_steel", opacity=0.5)]
+    return animate([f1, f2, f3, f4, f5], "fx_line_slashes")
+
+
 # ------------------------------------------------------------------ main
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)

@@ -30,6 +30,15 @@
 | A | `fx_lightning_strike` | 192×192 × 5 | Lightning strike: a jagged bolt drops from the top, flashes on the ground with branches and sparks, then leaves an afterglow. | 완료 |
 | A | `fx_slash` | 192×192 × 5 | Sword slash: a steel-white crescent sweeps from upper right to lower left, flashes, thins and fades with sparks. | 완료 |
 | A | `fx_thrust` | 192×192 × 5 | Thrust: a narrow white streak drives from lower left to upper right, a four-point flash and ring burst at the tip. | 완료 |
+| B | `fx_arrow_hit` | 192×192 × 5 | Arrow hit: an arrow streaks in from the left, strikes with a flash and ring, sticks and quivers as the flash fades. | 완료 |
+| B | `fx_dark_wave` | 192×192 × 5 | Dark wave: a void orb pulses, violet shock rings roll outward with shadow spikes and motes, then fade. | 완료 |
+| B | `fx_explosion` | 192×192 × 5 | Explosion: white flash, fireball bursting outward with a shock ring, then rolling dark smoke with embers. | 완료 |
+| B | `fx_holy_light` | 192×192 × 5 | Holy light: a golden shaft falls from above, blooms into a four-point star with rays, then sparkles drift down. | 완료 |
+| B | `fx_line_slashes` | 192×192 × 5 | Line slashes: three straight cuts cross the target one after another, flash where they meet, then fade with sparks. | 완료 |
+| B | `fx_magic_circle` | 192×192 × 5 | Magic circle, looping: double ring with tick marks turning one way and a hexagram with node circles turning the other. | 완료 |
+| B | `fx_poison_cloud` | 192×192 × 5 | Poison cloud: green puffs swell from the ground with rising bubbles, peak, then drift up and thin out. | 완료 |
+| B | `fx_summon_pillar` | 192×192 × 5 | Summon: an arcane ring lights on the ground, a pillar of light rises to full height with rising motes, then fades. | 완료 |
+| B | `fx_wind_blade` | 192×192 × 5 | Wind blades: pale green crescents fly from left to right with streaks, then leave curling wind lines. | 완료 |
 
 ## 결과 파일
 
@@ -59,5 +68,5 @@ py -3 -B row_sheet.py
 ## 진행
 
 - [x] A 단계 (7개 레시피)
-- [ ] B 단계 (0개 레시피)
+- [x] B 단계 (9개 레시피)
 - [ ] C 단계 (0개 레시피)

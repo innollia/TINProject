@@ -1,0 +1,203 @@
+{
+ "asset": "icon_status_silence",
+ "status": "candidate",
+ "note": "Status badge: speech bubble crossed by a red bar (no letters).",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 75570,
+ "meta": {
+  "kind": "icon",
+  "stage": "B",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "badge",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      106.0,
+      106.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "badge_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      96.0,
+      96.0
+     ]
+    }
+   ],
+   "color": "tint_silence",
+   "clip_to": "badge",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 16,
+    "y1": 112
+   }
+  },
+  {
+   "name": "badge_rim",
+   "z": 5,
+   "material": "silver",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      98.0,
+      98.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "bubble",
+   "z": 1,
+   "material": "balloon",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      62.0,
+      58.0
+     ],
+     "size": [
+      64.0,
+      50.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      52.0,
+      88.0
+     ],
+     "size": [
+      16.0,
+      18.0
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       4.4,
+       14.0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dots",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "iron_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      48.0,
+      58.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      62.0,
+      58.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      76.0,
+      58.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ],
+   "opacity": 0.8
+  },
+  {
+   "name": "bar",
+   "z": 2,
+   "material": "gem_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      11.0,
+      92.0
+     ],
+     "rot": 45
+    }
+   ],
+   "clip_to": "badge"
+  }
+ ]
+}

@@ -28,6 +28,10 @@
 | A | `ov_light_circle_m` | 384×384 × 2 | Light circle, medium (384): white and yellow. | 완료 |
 | A | `ov_light_circle_s` | 192×192 × 2 | Light circle, small (192): white and yellow soft radial light, three stacked falloffs. | 완료 |
 | A | `ov_vision_dark` | 2560×1440 × 2 | Darkness outside the field of view: near-black veil over 2560x1440 with a soft clear hole (wide and narrow). | 완료 |
+| B | `ov_fog_thick` | 768×768 | Thick fog: dense layered banks of dark and pale violet-grey, higher alpha, tiles seamlessly (768). | 완료 |
+| B | `ov_leaves` | 768×768 | Falling leaves: sparse brown, rust and wine leaves at random angles with midribs, tiles seamlessly (768). | 완료 |
+| B | `ov_rain` | 768×768 | Rain: thin slanted streaks in two depths (long faint far drops, shorter brighter near drops), tiles seamlessly (768). | 완료 |
+| B | `ov_snow` | 768×768 | Snow: soft flakes in two depths, small far dots and larger blurred near flakes with a few sparkles, tiles seamlessly (768). | 완료 |
 
 ## 결과 파일
 
@@ -57,5 +61,5 @@ py -3 -B tile_preview.py --out ../preview/overlays_all.png
 ## 진행
 
 - [x] A 단계 (5개 레시피)
-- [ ] B 단계 (0개 레시피)
+- [x] B 단계 (4개 레시피)
 - [ ] C 단계 (0개 레시피)

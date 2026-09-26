@@ -126,6 +126,76 @@ def vision_dark():
                      "hole_centre": [W / 2, H / 2], "note": "move the whole image with the player"}}
 
 
+# ================================================================== B
+@ov("B", "ov_fog_thick", "Thick fog: dense layered banks of dark and pale violet-grey, higher alpha, tiles seamlessly (768).")
+def fog_thick():
+    rng = random.Random(211)
+    banks = [C(rng.uniform(0, T), rng.uniform(0, T), rng.uniform(260, 420), rng.uniform(150, 240)) for _ in range(22)]
+    body = [P("cloud", rng.uniform(0, T), rng.uniform(0, T), rng.uniform(220, 340), rng.uniform(90, 140))
+            for _ in range(26)]
+    wisps = [P("cloud", rng.uniform(0, T), rng.uniform(0, T), rng.uniform(160, 260), rng.uniform(40, 70))
+             for _ in range(24)]
+    forms = [
+        F("base", None, [R(T / 2, T / 2, T + 400, T + 400)], -1, "flat", color="fog_dark", opacity=0.22),
+        F("banks", None, wrap(banks, margin=110), 0, "flat", color="fog_dark", blur=70, opacity=0.35),
+        F("body", None, wrap(body, margin=70), 1, "flat", color="fog", blur=40, opacity=0.3),
+        F("wisps", None, wrap(wisps, margin=40), 2, "flat", color="#aaa4bc", blur=18, opacity=0.2),
+    ]
+    return {"forms": forms, "canvas": (T, T), "meta": tile_meta({"scroll_hint": "drift 4-12 px/s sideways"})}
+
+
+@ov("B", "ov_rain", "Rain: thin slanted streaks in two depths (long faint far drops, shorter brighter near drops), tiles seamlessly (768).")
+def rain():
+    rng = random.Random(223)
+
+    def drops(n, lmin, lmax, wmin, wmax):
+        pcs = []
+        for _ in range(n):
+            x, y, ln, w = rng.uniform(0, T), rng.uniform(0, T), rng.uniform(lmin, lmax), rng.uniform(wmin, wmax)
+            pcs.append(R(x, y, w, ln, rot=14))
+        return pcs
+
+    forms = [
+        F("far", None, wrap(drops(170, 30, 52, 1.2, 1.8), margin=6), 0, "flat", color="rain", blur=0.6, opacity=0.28),
+        F("near", None, wrap(drops(70, 44, 72, 2.0, 3.0), margin=6), 1, "flat", color="#c4cce0", blur=0.8, opacity=0.45),
+    ]
+    return {"forms": forms, "canvas": (T, T),
+            "meta": tile_meta({"scroll_hint": "scroll down-left fast (about 900 px/s down, 220 px/s left); layer twice at two speeds"})}
+
+
+@ov("B", "ov_snow", "Snow: soft flakes in two depths, small far dots and larger blurred near flakes with a few sparkles, tiles seamlessly (768).")
+def snow():
+    rng = random.Random(227)
+    far = [C(rng.uniform(0, T), rng.uniform(0, T), rng.uniform(3, 5.5)) for _ in range(190)]
+    near = [C(rng.uniform(0, T), rng.uniform(0, T), rng.uniform(7, 12)) for _ in range(46)]
+    glints = [SPARK(rng.uniform(0, T), rng.uniform(0, T), rng.uniform(9, 14)) for _ in range(10)]
+    forms = [
+        F("far", None, wrap(far, margin=4), 0, "flat", color="snow", blur=0.8, opacity=0.55),
+        F("near", None, wrap(near, margin=8), 1, "flat", color="#f4f2f8", blur=2.4, opacity=0.7),
+        F("glints", None, wrap(glints, margin=8), 2, "flat", color="#ffffff", opacity=0.8),
+    ]
+    return {"forms": forms, "canvas": (T, T),
+            "meta": tile_meta({"scroll_hint": "scroll down slowly (40-80 px/s) with a small sideways sway"})}
+
+
+@ov("B", "ov_leaves", "Falling leaves: sparse brown, rust and wine leaves at random angles with midribs, tiles seamlessly (768).")
+def leaves():
+    rng = random.Random(229)
+    forms = []
+    for i, col in enumerate(("#7a4a26", "#8e5a2c", "#6a2e24")):
+        pcs, ribs = [], []
+        for _ in range(9):
+            x, y = rng.uniform(0, T), rng.uniform(0, T)
+            s, rot = rng.uniform(30, 48), rng.uniform(0, 360)
+            pcs.append(D(x, y, s * 0.55, s, rot=rot))
+            ribs.append(R(x, y, 1.2, s * 0.8, rot=rot))
+        forms.append(F(f"leaf{i}", None, wrap(pcs, margin=4), i, color=col, shade={"bump": 0.8, "highlight_amount": 0.3}))
+        forms.append(F(f"rib{i}", None, wrap(ribs, margin=4), i + 0.5, "flat", color="#2a1a10", clip_to=f"leaf{i}",
+                       opacity=0.6))
+    return {"forms": forms, "canvas": (T, T),
+            "meta": tile_meta({"scroll_hint": "scroll down-right slowly (30-60 px/s); rotate the layer a little for flutter"})}
+
+
 # ------------------------------------------------------------------ main
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)

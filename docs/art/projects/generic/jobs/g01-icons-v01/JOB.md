@@ -49,6 +49,29 @@
 | A | `icon_status_poison` | 128×128 | Status badge: green poison drop with a small bone skull, rising bubbles. | 완료 |
 | A | `icon_status_sleep` | 128×128 | Status badge: pale crescent moon with sparkles (no letters). | 완료 |
 | A | `icon_status_stun` | 128×128 | Status badge: three gold stars circling on a faint orbit, a small swirl below. | 완료 |
+| B | `icon_amulet` | 128×128 | Dark iron amulet: teardrop pendant with a red stone and small spikes, on a silver chain. | 완료 |
+| B | `icon_bomb` | 128×128 | Round black bomb: iron sphere with highlight, bronze cap, curled fuse with a burning spark. | 완료 |
+| B | `icon_boots` | 128×128 | Pair of leather boots: tall shafts with buckled straps, dark soles, one boot slightly behind. | 완료 |
+| B | `icon_crossbow` | 128×128 | Crossbow: wooden stock, curved steel prod with string, loaded bolt, iron trigger. | 완료 |
+| B | `icon_elixir` | 128×128 | Golden elixir: round flask in a thin gold cage, glowing gold liquid with sparkles, crowned gold stopper with a garnet. | 완료 |
+| B | `icon_gem_red` | 128×128 | Cut red gem: crown and pavilion facets in three tones, table highlight, sparkle. | 완료 |
+| B | `icon_gloves` | 128×128 | Leather glove, palm facing out: four fingers, thumb, flared cuff with a bronze stud, stitch lines. | 완료 |
+| B | `icon_herb_bundle` | 128×128 | Bundle of healing herbs: four leafy stems and a violet bud, tied with brown twine. | 완료 |
+| B | `icon_meat_roast` | 128×128 | Roast drumstick: glazed browned meat with grill marks and a bone end. | 완료 |
+| B | `icon_phoenix_feather` | 128×128 | Revival feather: long flame-coloured feather with notched vane, bone quill and a warm glow. | 완료 |
+| B | `icon_ring_gem` | 128×128 | Gold ring with a blue gem held by prongs, sparkle. | 완료 |
+| B | `icon_robe` | 128×128 | Mage robe: violet body flaring to the hem, wide sleeves, gold trim, wine sash with a gem clasp. | 완료 |
+| B | `icon_shield_kite` | 128×128 | Kite shield: dark blue field, gold cross, steel rim, a few rivets. | 완료 |
+| B | `icon_skill_guard` | 128×128 | Skill tile: steel heater shield in front of a pale protective arc. | 완료 |
+| B | `icon_skill_ice` | 128×128 | Skill tile: an ice spear flying up to the right, frost shards and sparkles. | 완료 |
+| B | `icon_skill_shadow` | 128×128 | Skill tile: void orb ringed by violet crescents and motes. | 완료 |
+| B | `icon_spear` | 128×128 | Spear on the diagonal: leaf-shaped steel head, iron socket with a wine tassel, long wooden shaft. | 완료 |
+| B | `icon_spellbook` | 128×128 | Closed spellbook: violet cloth cover, gold corner guards, arcane ring emblem with glow, bronze clasp, page edges. | 완료 |
+| B | `icon_status_atk_up` | 128×128 | Status badge: small sword with a glowing red-orange up arrow. | 완료 |
+| B | `icon_status_curse` | 128×128 | Status badge: a pale cursed eye with a violet slit iris and dripping shadow. | 완료 |
+| B | `icon_status_def_up` | 128×128 | Status badge: small heater shield with a glowing blue up arrow. | 완료 |
+| B | `icon_status_silence` | 128×128 | Status badge: speech bubble crossed by a red bar (no letters). | 완료 |
+| B | `icon_warhammer` | 128×128 | War hammer: square iron head with a back spike, bronze bands, leather-wrapped haft. | 완료 |
 
 ## 결과 파일
 
@@ -79,5 +102,5 @@ py -3 -B icon_sheet.py
 ## 진행
 
 - [x] A 단계 (24개 레시피)
-- [ ] B 단계 (0개 레시피)
+- [x] B 단계 (23개 레시피)
 - [ ] C 단계 (0개 레시피)

@@ -1,0 +1,191 @@
+{
+ "asset": "icon_meat_roast",
+ "status": "candidate",
+ "note": "Roast drumstick: glazed browned meat with grill marks and a bone end.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 99129,
+ "meta": {
+  "kind": "icon",
+  "stage": "B",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "bone",
+   "z": 0,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      92.0,
+      92.0
+     ],
+     "size": [
+      11.0,
+      34.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -45
+    },
+    {
+     "icon": "circle",
+     "at": [
+      104.0,
+      98.0
+     ],
+     "size": [
+      13.0,
+      13.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      98.0,
+      106.0
+     ],
+     "size": [
+      13.0,
+      13.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "meat",
+   "z": 1,
+   "material": "meat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      54.0,
+      56.0
+     ],
+     "size": [
+      68.0,
+      58.0
+     ],
+     "rot": -35
+    },
+    {
+     "icon": "circle",
+     "at": [
+      68.0,
+      70.0
+     ],
+     "size": [
+      44.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "crust",
+   "z": 1.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      48.0,
+      48.0
+     ],
+     "size": [
+      44.0,
+      26.0
+     ],
+     "rot": -35
+    }
+   ],
+   "color": "#a86a40",
+   "clip_to": "meat",
+   "opacity": 0.55
+  },
+  {
+   "name": "marks",
+   "z": 2,
+   "kind": "flat",
+   "material": "leather_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      46.0,
+      58.0
+     ],
+     "size": [
+      30.0,
+      4.0
+     ],
+     "rot": -50
+    },
+    {
+     "icon": "square",
+     "at": [
+      58.0,
+      50.0
+     ],
+     "size": [
+      30.0,
+      4.0
+     ],
+     "rot": -50
+    },
+    {
+     "icon": "square",
+     "at": [
+      62.0,
+      66.0
+     ],
+     "size": [
+      24.0,
+      4.0
+     ],
+     "rot": -50
+    }
+   ],
+   "clip_to": "meat",
+   "opacity": 0.6
+  },
+  {
+   "name": "glaze",
+   "z": 2.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      42.0,
+      42.0
+     ],
+     "size": [
+      16.0,
+      8.0
+     ],
+     "rot": -35
+    }
+   ],
+   "color": "glint",
+   "clip_to": "meat",
+   "opacity": 0.35
+  }
+ ]
+}
