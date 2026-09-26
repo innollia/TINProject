@@ -24,8 +24,6 @@ var pal: ProceduralPalette = null
 var backdrop: StoneStoryBackdrop = null
 var critters: Dictionary = {}          # foe_id -> StoneStoryCritter
 var _player: StoneStoryCritter = null
-var _wall_pts: PackedVector2Array = PackedVector2Array()
-var _ground_pts: PackedVector2Array = PackedVector2Array()
 var _font_res: SystemFont = null
 var _font_checked: bool = false
 
@@ -48,7 +46,6 @@ func bind(run_state: Dictionary, enc: Dictionary, region_def: Dictionary,
 		backdrop = StoneStoryBackdrop.new()
 	backdrop.build(str(region_def.get("id", "")), int(run_state.get("run_seed", 0)))
 	_rebuild_critters()
-	_build_static_lines()
 	queue_redraw()
 
 
@@ -76,19 +73,11 @@ func _rebuild_critters() -> void:
 		if not live.has(k):
 			critters.erase(k)
 	var p: Dictionary = state.get("player", {})
-	var attrs: Dictionary = StoneStoryRunState.resolve_attributes(p)
+	var attrs: Dictionary = StoneStoryRunState.resolve_attributes(p, content)
 	_player = StoneStoryCritter.build("player", attrs, {"motion_events": 4}, int(p.get("level", 1)))
 
 
-func _build_static_lines() -> void:
-	var rid: String = str(region.get("id", ""))
-	var s := StoneStoryCore.stream(int(state.get("run_seed", 0)), StoneStoryCore.TAG_TEXTURE + ".wall." + rid)
-	_wall_pts = PackedVector2Array()
-	for i in 48:
-		_wall_pts.append(Vector2(float(s.range_int(i, 0, 1920)), float(s.range_int(i + 97, 0, 40))))
-	_ground_pts = PackedVector2Array()
-	for i in 90:
-		_ground_pts.append(Vector2(float(s.range_int(i, 0, 1920)), 470.0 + float(s.range_int(i + 61, 0, 150))))
+
 
 
 func _process(delta: float) -> void:
@@ -142,31 +131,49 @@ func _draw_background() -> void:
 			draw_circle(pts[i] * 0.5 + CENTER * 0.5, r, col, false, 1.0, true)
 
 
+## 벽: 세로선만. 대역 안에만 긋고 위�� 갈수록 간격이 벌어진다.
 func _draw_wall() -> void:
-	var col: Color = StoneStoryPalette.line_dim(pal)
-	for i in _wall_pts.size():
-		var p: Vector2 = _wall_pts[i]
-		draw_line(Vector2(p.x, 190.0), Vector2(p.x, 0.0), col, 1.0, true)
+	var col: Color = StoneStoryPalette.line_far(pal)
+	var top: float = 0.0
+	var bottom: float = 172.0
+	var n: int = 26
+	for i in n:
+		var f: float = float(i) / float(n)
+		var x_bottom: float = f * 1040.0 - 40.0
+		var x_top: float = x_bottom - (x_bottom - 40.0) * 0.10
+		if i % 7 == 3:
+			continue                          # 간격을 불규칙하게. 규칙처럼 보이지 않게
+		draw_line(Vector2(x_bottom, bottom), Vector2(x_top, top), col, 1.0, true)
+	draw_line(Vector2(0, bottom), Vector2(VIEW_W, bottom), StoneStoryPalette.line_dim(pal), 1.0, true)
 
 
-## 지면/바닥은 3-밀도 대역으로 그린다. (bg1 라운드: 근경 조밀 -> 원경 성김)
+## 바닥/지면: 근경 조밀 -> 원경 성김. 대역마다 간격과 길이가 다르다.
 func _draw_ground() -> void:
 	var cam: Vector2 = _player_world()
 	var shift: float = cam.x * PX_PER_UNIT * 0.25
 	var bands: Array = [
-		{"y": 300.0, "spacing": 34.0, "role": 2, "len": 3.0},
-		{"y": 420.0, "spacing": 20.0, "role": 1, "len": 5.0},
-		{"y": 500.0, "spacing": 12.0, "role": 0, "len": 7.0},
+		{"y": 250.0, "spacing": 46.0, "role": 2, "len": 3.0, "jitter": 10.0},
+		{"y": 330.0, "spacing": 26.0, "role": 2, "len": 5.0, "jitter": 7.0},
+		{"y": 420.0, "spacing": 15.0, "role": 1, "len": 6.0, "jitter": 4.0},
+		{"y": 500.0, "spacing": 9.0, "role": 1, "len": 4.0, "jitter": 2.0},
 	]
-	for band in bands:
+	var s := StoneStoryCore.stream(int(state.get("run_seed", 0)),
+			StoneStoryCore.TAG_TEXTURE + ".ground")
+	for bi in bands.size():
+		var band: Dictionary = bands[bi]
 		var col: Color = StoneStoryPalette.density_color(pal, int(band["role"]))
 		var sp: float = float(band["spacing"])
 		var seg: float = float(band["len"])
 		var y: float = float(band["y"])
-		var x: float = -fposmod(shift, sp)
+		var jit: float = float(band["jitter"])
+		var k: int = 0
+		var x: float = -fposmod(shift, sp) - sp
 		while x < VIEW_W + sp:
-			draw_line(Vector2(x, y), Vector2(x + seg, y), col, 1.0, true)
-			x += sp
+			var dy: float = s.unit(bi * 97 + k) * jit - jit * 0.5
+			var len_v: float = seg * (0.5 + s.unit(bi * 53 + k))
+			draw_line(Vector2(x, y + dy), Vector2(x + len_v, y + dy), col, 1.0, true)
+			x += sp * (0.6 + s.unit(bi * 31 + k) * 0.8)
+			k += 1
 
 
 func _draw_obstacles() -> void:
@@ -195,20 +202,69 @@ func _draw_critter(f: Dictionary, c: StoneStoryCritter) -> void:
 	if c == null:
 		draw_circle(at, 16.0, StoneStoryPalette.line(pal), false, 1.0, true)
 		return
-	var h: float = c.extent_y() * FORM_SCALE
 	var bob: float = c.bob_offset()
 	var pts: PackedVector2Array = c.points()
 	var rad: PackedFloat32Array = c.radii()
+	if pts.is_empty():
+		return
 	var col: Color = StoneStoryPalette.line(pal)
+	var dim: Color = StoneStoryPalette.line_dim(pal)
+	var S: float = FORM_SCALE
+	var origin: Vector2 = Vector2(at.x, at.y + 14.0)
+
+	# 0) 몸통: 연결된 윤곽으로 닫는다. 채움 금지.
+	var body_anchor: Vector2 = origin
 	for i in pts.size():
-		var p: Vector2 = Vector2(at.x + pts[i].x * FORM_SCALE, at.y + pts[i].y * FORM_SCALE - h * 0.5 + bob)
-		draw_circle(p, maxf(1.0, float(rad[i]) * FORM_SCALE), col, false, 1.0, true)
+		if c.part_role(i) != &"body":
+			continue
+		var p: Vector2 = origin + pts[i] * S + Vector2(0, bob)
+		draw_circle(p, maxf(2.0, float(rad[i]) * S), col, false, 1.0, true)
 		if i > 0:
-			var q: Vector2 = Vector2(at.x + pts[i - 1].x * FORM_SCALE, at.y + pts[i - 1].y * FORM_SCALE - h * 0.5 + bob)
-			draw_line(q, p, col, 1.0, true)
+			draw_line(origin + pts[i - 1] * S + Vector2(0, bob), p, col, 1.0, true)
+		body_anchor = p
+
+	# 1) 머리: 링. 틀림이 높을수록 축에서 벗어나 있다.
+	for i in pts.size():
+		if c.part_role(i) != &"head":
+			continue
+		var hp: Vector2 = origin + pts[i] * S + Vector2(0, bob)
+		draw_line(body_anchor, hp, col, 1.0, true)
+		draw_ring(hp, maxf(3.0, float(rad[i]) * S), col)
+
+	# 2) 꼬리: 몸에서 뻗는 선. 끝이 가늘다.
+	for i in pts.size():
+		if c.part_role(i) != &"tail":
+			continue
+		var tp: Vector2 = origin + pts[i] * S + Vector2(0, bob)
+		draw_line(body_anchor, tp, dim, 1.0, true)
+
+	# 3) 다리: 몸 축에서 바깥으로. 어긋난 각도가 그대로 보인다.
+	for i in pts.size():
+		if c.part_role(i) != &"limb":
+			continue
+		var t: float = c.body_axis(i)
+		var root: Vector2 = origin + pts[0] * S + (pts[maxi(0, pts.size() - 1)] - pts[0]) * S * t
+		var tip: Vector2 = origin + pts[i] * S + Vector2(0, bob)
+		draw_line(root, tip, col, 1.0, true)
+		draw_circle(tip, maxf(1.0, float(rad[i]) * S * 0.9), col, false, 1.0, true)
+
+	if f["tags"].has("ranged"):
+		draw_ring(Vector2(at.x, at.y - c.extent_y() * S * 0.5 - 6.0), 3.0, dim)
 	if bool(f.get("staggered", false)):
-		_text_center(at.x, at.y - h - 14.0, "*", 12, StoneStoryPalette.text(pal))
-	_draw_status(at, f.get("status_build", {}), h)
+		_text_center(at.x, at.y - c.extent_y() * S - 16.0, "*", 12, StoneStoryPalette.text(pal))
+	_draw_status(at, f.get("status_build", {}), c.extent_y() * S)
+
+
+## 12분할 링. 1px 고정.
+func draw_ring(center: Vector2, r: float, col: Color) -> void:
+	if r <= 0.5:
+		draw_rect(Rect2i(Vector2i(center) - Vector2i.ONE, Vector2i(3, 3)), col)
+		return
+	var pts := PackedVector2Array()
+	for i in 13:
+		var a: float = TAU * float(i) / 12.0
+		pts.append(center + Vector2(cos(a) * r, sin(a) * r))
+	draw_polyline(pts, col, 1.0)
 
 
 func _draw_status(at: Vector2, build_v: Dictionary, h: float) -> void:
@@ -231,19 +287,48 @@ func _draw_player() -> void:
 	var pts: PackedVector2Array = _player.points()
 	var rad: PackedFloat32Array = _player.radii()
 	var col: Color = StoneStoryPalette.text(pal)
+	var origin: Vector2 = Vector2(at.x, at.y + 18.0)
+	# 스탠스 링. 가드면 두 겹.
+	var stance: String = str(encounter.get("player_stance", "neutral"))
+	draw_ring(origin, 26.0, StoneStoryPalette.line_dim(pal))
+	if stance == "guard":
+		draw_ring(origin, 30.0, StoneStoryPalette.accent(pal))
+	elif stance == "superarmor":
+		_dashed_circle(origin, 30.0, StoneStoryPalette.line_dim(pal))
 	for i in pts.size():
-		var q: Vector2 = Vector2(at.x + pts[i].x * FORM_SCALE, at.y + pts[i].y * FORM_SCALE + 16.0)
-		draw_circle(q, maxf(1.0, float(rad[i]) * FORM_SCALE), col, false, 1.0, true)
-		if i > 0:
-			draw_line(Vector2(at.x + pts[i - 1].x * FORM_SCALE, at.y + pts[i - 1].y * FORM_SCALE + 16.0), q, col, 1.0, true)
-	# 기력. 스탠스.
+		var role: StringName = _player.part_role(i)
+		var q: Vector2 = origin + pts[i] * FORM_SCALE
+		var r: float = maxf(1.0, float(rad[i]) * FORM_SCALE)
+		if role == &"body":
+			draw_circle(q, r, col, false, 1.0, true)
+		elif role == &"head":
+			draw_ring(q, maxf(3.0, r), col)
+		elif role == &"tail":
+			draw_line(origin + pts[0] * FORM_SCALE, q, col, 1.0, true)
+		else:
+			var t: float = _player.body_axis(i)
+			var root: Vector2 = origin + pts[0] * FORM_SCALE \
+					+ (pts[pts.size() - 1] - pts[0]) * FORM_SCALE * t
+			draw_line(root, q, col, 1.0, true)
+			draw_circle(q, r * 0.9, col, false, 1.0, true)
+	# 기력
 	var smax: int = maxi(1, int(p["stamina_max"]))
-	var fill_n: int = int(float(p["stamina"]) / float(smax) * 20.0)
+	var fill_n: int = int(float(p["stamina"]) / float(smax) * 24.0)
 	for i in fill_n:
-		draw_line(Vector2(at.x - 10.0 + i, at.y + 16.0), Vector2(at.x - 9.0 + i, at.y + 16.0),
+		draw_line(Vector2(at.x - 12.0 + i, at.y + 22.0), Vector2(at.x - 11.0 + i, at.y + 22.0),
 				StoneStoryPalette.line_dim(pal), 1.0, true)
 	for pj in encounter.get("projectiles", []):
 		draw_rect(Rect2i(Vector2i(_to_px(pj["pos"])), Vector2i(2, 2)), StoneStoryPalette.accent(pal))
+
+
+func _dashed_circle(center: Vector2, r: float, col: Color) -> void:
+	for i in 12:
+		if i % 2 == 1:
+			continue
+		var a0: float = TAU * float(i) / 12.0
+		var a1: float = TAU * float(i + 1) / 12.0
+		draw_line(center + Vector2(cos(a0), sin(a0)) * r,
+				center + Vector2(cos(a1), sin(a1)) * r, col, 1.0, true)
 
 
 func _draw_boss_bar(b: Dictionary) -> void:

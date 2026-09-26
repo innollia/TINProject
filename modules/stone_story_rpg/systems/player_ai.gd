@@ -43,8 +43,8 @@ static func alive_foes(enc: Dictionary) -> int:
 static func decide(state: Dictionary, enc: Dictionary, content: StoneStoryContent,
 		tuning: StoneStoryTuning) -> Dictionary:
 	var p: Dictionary = state["player"]
-	var policy: Dictionary = StoneStoryRunState.resolve_policy(p)
-	var attrs: Dictionary = StoneStoryRunState.resolve_attributes(p)
+	var policy: Dictionary = StoneStoryRunState.resolve_policy(p, content)
+	var attrs: Dictionary = StoneStoryRunState.resolve_attributes(p, content)
 	var goal: int = top_goal(p, enc)
 
 	var loadout: Dictionary = _best_weapon(p, content, tuning.cf("two_hand_requirement_divisor"))

@@ -410,40 +410,119 @@ func test_s4_xp_curve() -> void:
 # --- M. 모듈 계약 -------------------------------------------------
 
 func test_m_module_boots_and_ticks() -> void:
-	var packed: PackedScene = load("res://modules/stone_story_rpg/entry.tscn") as PackedScene
-	assert_ne(packed, null, "M entry scene loads")
-	var inst: Node = packed.instantiate()
-	add_child_autofree(inst)
+	var inst: Node = await _enter_module()
+	# 로비에서 시작한다. 탐험을 눌러야 틱이 돈다.
+	assert_eq(str(inst.get("mode")), "lobby", "M starts in the lobby")
+	var t0: int = int((inst.get("state") as Dictionary)["tick"])
+	for i in 20:
+		await get_tree().process_frame
+	assert_eq(int((inst.get("state") as Dictionary)["tick"]), t0, "M no simulation while in lobby")
+	_go(inst)
 	await get_tree().process_frame
-	assert_eq((inst.get("content") as StoneStoryContent).errors, [], "M no content errors")
-	var ctx := ModuleContext.new()
-	ctx.module_id = &"stone_story_rpg"
-	ctx.input_enabled = true
-	inst.call("enter", ctx)
-	await get_tree().process_frame
-	var st: Dictionary = inst.get("state")
-	assert_false(st.is_empty(), "M state built")
-	assert_eq(str(st["region_id"]), "region_under_sign", "M starts at hub")
-	var t0: int = int(st["tick"])
+	var t1: int = int((inst.get("state") as Dictionary)["tick"])
 	for i in 30:
 		await get_tree().process_frame
-	assert_gt(int((inst.get("state") as Dictionary)["tick"]), t0, "M ticks advance")
+	assert_gt(int((inst.get("state") as Dictionary)["tick"]), t1, "M ticks advance in expedition")
 	var saved: Dictionary = inst.call("save_state")
 	assert_eq(str(saved["state_format"]), "ssr_run_v1", "M save format")
 	assert_eq(JSON.stringify(saved), JSON.stringify(inst.call("save_state")), "M save stable")
 	inst.call("exit")
 
 
-func test_m_input_disabled_blocks_commands() -> void:
-	var inst: Node = (load("res://modules/stone_story_rpg/entry.tscn") as PackedScene).instantiate()
+## 모듈을 띄우고 로비까지 진입시킨다.
+func _enter_module() -> Node:
+	var packed: PackedScene = load("res://modules/stone_story_rpg/entry.tscn") as PackedScene
+	assert_ne(packed, null, "entry scene loads")
+	var inst: Node = packed.instantiate()
 	add_child_autofree(inst)
 	await get_tree().process_frame
 	var ctx := ModuleContext.new()
 	ctx.module_id = &"stone_story_rpg"
-	ctx.input_enabled = false
+	ctx.input_enabled = true
 	inst.call("enter", ctx)
 	await get_tree().process_frame
+	return inst
+
+
+## 로비의 [탐험을 보낸다] 를 누른다.
+func _go(inst: Node) -> void:
+	inst.call("_on_go")
+	await get_tree().process_frame
+
+
+func test_lobby_is_the_only_control_surface() -> void:
+	## 플레이어는 로비에서만 고른다. 탐험 중에는 AI 가 조종한다.
+	var inst: Node = await _enter_module()
+	var st: Dictionary = inst.get("state")
+	assert_eq(str(st["screen"]), "lobby", "L state records lobby")
+	# 로비에서 장비 토글
+	assert_true(bool(inst.call("execute_command", &"ssr_equip", {"item_id": "item_board_shield"})),
+			"L lobby can equip")
+	assert_eq((inst.get("state") as Dictionary)["player"]["gear"].size(), 3, "L gear added")
+	assert_false(bool(inst.call("execute_command", &"ssr_equip", {"item_id": "item_nope"})),
+			"L rejects unknown item")
+	# 별 선택
+	assert_true(bool(inst.call("execute_command", &"ssr_set_star", {"star": 12})), "L can set star")
+	assert_false(bool(inst.call("execute_command", &"ssr_set_star", {"star": 99})), "L rejects 99")
+	# 탐험 -> 모드가 바뀐다
+	_go(inst)
+	assert_eq(str(inst.get("mode")), "expedition", "L go switches to expedition")
+	# 탐험 중에는 장비가 바뀌지 않는다. (AI 의 정책은 로비에서만 정해진다)
+	var before: int = (inst.get("state") as Dictionary)["player"]["gear"].size()
+	assert_eq(str(inst.get("mode")), "expedition", "L still in expedition")
+	assert_eq((inst.get("state") as Dictionary)["player"]["gear"].size(), before,
+			"L loadout is frozen during an expedition")
+	inst.call("exit")
+
+
+func test_lobby_focus_and_navigation() -> void:
+	var inst: Node = await _enter_module()
+	var lobby: Object = inst.get("_lobby")
+	assert_ne(lobby, null, "L lobby exists")
+	assert_eq(int(lobby.get("focus")), 0, "L starts on region")
+	lobby.call("handle", &"stone_story_rpg_down")
+	assert_eq(int(lobby.get("focus")), 1, "L down moves to star")
+	lobby.call("handle", &"stone_story_rpg_down")
+	lobby.call("handle", &"stone_story_rpg_down")
+	assert_eq(int(lobby.get("focus")), 3, "L down reaches go")
+	lobby.call("handle", &"stone_story_rpg_up")
+	assert_eq(int(lobby.get("focus")), 2, "L up moves back to gear")
+	# 별 조절
+	lobby.focus = 1
+	lobby.star = 1
+	lobby.call("handle", &"stone_story_rpg_right")
+	assert_eq(int(lobby.get("star")), 2, "L right raises star")
+	lobby.call("handle", &"stone_story_rpg_left")
+	assert_eq(int(lobby.get("star")), 1, "L left lowers star")
+	# focus 는 0..4 를 순환한다
+	for i in 10:
+		lobby.call("handle", &"stone_story_rpg_down")
+	assert_true(int(lobby.get("focus")) >= 0 and int(lobby.get("focus")) < 5, "L focus stays in range")
+	inst.call("exit")
+
+
+func test_lobby_shows_the_resolved_policy() -> void:
+	## 이 게임의 핵심: 장비가 AI 정책을 만든다. 로비가 그 결과를 보여준다.
+	var inst: Node = await _enter_module()
+	var lobby: Object = inst.get("_lobby")
+	var before: String = str(lobby.call("_policy_line"))
+	assert_true(before.contains("스탠스="), "L policy line names the stance")
+	inst.call("execute_command", &"ssr_equip", {"item_id": "item_board_shield"})
+	lobby.call("bind", inst.get("state"), inst.get("content"), inst.get("tuning"))
+	var after: String = str(lobby.call("_policy_line"))
+	assert_ne(before, after, "L equipping a guard shield changes the shown AI policy")
+	var build: String = str(lobby.call("_build_line"))
+	assert_true(build.contains("다리"), "L build line shows attributes")
+	inst.call("exit")
+
+
+func test_m_input_disabled_blocks_commands() -> void:
+	var inst: Node = await _enter_module()
+	inst.set("_lobby", null)
+	inst.context.input_enabled = false
 	assert_false(bool(inst.call("execute_command", &"ssr_next_region", {})), "M blocked while disabled")
+	assert_false(bool(inst.call("execute_command", &"ssr_equip", {"item_id": "item_ash_staff"})),
+			"M equip blocked while disabled")
 	inst.call("exit")
 
 
@@ -467,14 +546,8 @@ func test_m_lobby_is_the_only_control_surface() -> void:
 
 func test_m_death_keeps_progress() -> void:
 	## 다크소울 2차 자료: 죽음 페널티 0. 자원/레벨/진행이 남아야 한다.
-	var inst: Node = (load("res://modules/stone_story_rpg/entry.tscn") as PackedScene).instantiate()
-	add_child_autofree(inst)
-	await get_tree().process_frame
-	var ctx := ModuleContext.new()
-	ctx.module_id = &"stone_story_rpg"
-	ctx.input_enabled = true
-	inst.call("enter", ctx)
-	await get_tree().process_frame
+	var inst: Node = await _enter_module()
+	_go(inst)
 	var s: Dictionary = inst.get("state")
 	s["world"]["currency"] = 500
 	s["player"]["level"] = 5

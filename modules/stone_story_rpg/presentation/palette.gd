@@ -28,10 +28,19 @@ const ALERT_FALLBACK := Color(0.78, 0.24, 0.20, 1.0)
 const ACCENT_FALLBACK := Color(0.30, 0.72, 0.52, 1.0)
 
 
-static func role_color(pal: ProceduralPalette, role: StringName, fallback: Color) -> Color:
+## PVE 팔레트는 색상(role -> Color) 을 준다. 이 게임은 **무채색 1px** 계약이다.
+## 따라서 역할을 읽은 뒤 휘도만 취하고 채도를 버린다.
+## 색을 임의로 새로 만들지는 않는다. PVE 가 정한 "값"만 재사용한다.
+static func grey(src: Color, v: float) -> Color:
+	var l: float = src.get_luminance()
+	var g: float = clampf(lerpf(0.0, 1.0, l) * v, 0.0, 1.0)
+	return Color(g, g, g, 1.0)
+
+
+static func role_grey(pal: ProceduralPalette, role: StringName, fallback: Color, v: float = 1.0) -> Color:
 	if pal == null or not pal.has_role(role):
 		return fallback
-	return pal.get_color(role)
+	return grey(pal.get_color(role), v)
 
 
 ## 배경은 예외 없이 순수 검정이다.
@@ -41,31 +50,31 @@ static func fill(_pal: ProceduralPalette) -> Color:
 
 
 static func line(pal: ProceduralPalette) -> Color:
-	return role_color(pal, &"rim", role_color(pal, &"body", LINE_FALLBACK))
+	return role_grey(pal, &"rim", LINE_FALLBACK, 1.0)
 
 
 static func line_dim(pal: ProceduralPalette) -> Color:
-	return role_color(pal, &"fog", role_color(pal, &"body_dark", LINE_DIM_FALLBACK))
+	return role_grey(pal, &"fog", LINE_DIM_FALLBACK, 1.0)
 
 
 static func line_far(pal: ProceduralPalette) -> Color:
-	return role_color(pal, &"sky_far", role_color(pal, &"fog", LINE_FAR_FALLBACK))
+	return role_grey(pal, &"sky_far", LINE_FAR_FALLBACK, 1.0)
 
 
 static func text(pal: ProceduralPalette) -> Color:
-	return role_color(pal, &"body", LINE_FALLBACK)
+	return role_grey(pal, &"body", LINE_FALLBACK, 1.0)
 
 
 static func text_dim(pal: ProceduralPalette) -> Color:
-	return role_color(pal, &"body_dark", LINE_DIM_FALLBACK)
+	return role_grey(pal, &"body_dark", LINE_DIM_FALLBACK, 1.0)
 
 
 static func alert(pal: ProceduralPalette) -> Color:
-	return role_color(pal, &"danger", ALERT_FALLBACK)
+	return role_grey(pal, &"danger", ALERT_FALLBACK, 1.0)
 
 
 static func accent(pal: ProceduralPalette) -> Color:
-	return role_color(pal, &"accent", role_color(pal, &"key_light", ACCENT_FALLBACK))
+	return role_grey(pal, &"accent", ACCENT_FALLBACK, 1.0)
 
 
 ## 밀도 3단계 -> 실루엣 색. (evidence / navigation / mood)

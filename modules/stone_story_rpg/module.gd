@@ -15,6 +15,9 @@ var ready_gate: bool = false
 
 var _frame: StoneStoryFrame = null
 var _view: StoneStoryView = null
+var _lobby: StoneStoryLobby = null
+## "lobby" 또는 "expedition". 직접 조종은 전부 로비에서만.
+var mode: String = "lobby"
 var _pending: Dictionary = {}
 var _acc: float = 0.0
 var _started: bool = false
@@ -46,7 +49,14 @@ func _build_ui() -> void:
 	_frame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_frame)
 	_view = StoneStoryView.new()
+	_view.visible = false
 	_frame.get_view().add_child(_view)
+	_lobby = StoneStoryLobby.new()
+	_lobby.region_chosen.connect(_on_region_chosen)
+	_lobby.star_changed.connect(_on_star_changed)
+	_lobby.gear_toggled.connect(_on_gear_toggled)
+	_lobby.go_requested.connect(_on_go)
+	_frame.get_view().add_child(_lobby)
 
 
 func enter(value: ModuleContext) -> void:
@@ -65,7 +75,7 @@ func enter(value: ModuleContext) -> void:
 	_pending = {}
 	_started = true
 	_stream = StoneStoryCore.stream(int(state["run_seed"]), StoneStoryCore.TAG_SIM)
-	_refresh_view()
+	_enter_lobby()
 
 
 func exit() -> void:
@@ -169,6 +179,9 @@ func _do_respec(stat: String) -> bool:
 
 func _process(_delta: float) -> void:
 	if not _started or not ready_gate:
+		return
+	_pump_input()
+	if mode == "lobby":
 		return
 	_acc += _delta
 	var hz: int = maxi(1, tuning.ci("sim_hz"))
@@ -382,9 +395,11 @@ func _check_end(enc: Dictionary, p: Dictionary, tick: int) -> void:
 		enc["state"] = "cleared"
 		enc["cleared_at_tick"] = tick
 		state["world"]["loop_point"][str(enc["region_id"])] = p["pos"].duplicate(true)
+		_to_lobby("비웠다. 통화 " + str(int(state["world"]["currency"])))
 	elif int(p["hp"]) <= 0:
 		enc["state"] = "failed"
 		_on_death()
+		_to_lobby("쓰러졌다. 남은 것: 통화 " + str(int(state["world"]["currency"])))
 
 
 func _on_death() -> void:
@@ -440,6 +455,110 @@ func _item_of(p: Dictionary, item_id: String) -> Dictionary:
 		if str(inst.get("item_id", "")) == item_id:
 			return inst
 	return StoneStoryContent.make_item_state(item_id)
+
+
+## 로비 -> 탐험. 플레이어가 누르는 유일한 큰 버튼.
+func _on_go() -> void:
+	if String(state["region_id"]) != String(_pending_region):
+		_start_region(String(_pending_region), int(_pending_star))
+	state["encounter"] = StoneStoryEncounter.build(content, tuning, String(state["region_id"]),
+			int(state["star_level"]), int(state["run_seed"]), state["player"])
+	_stream = StoneStoryCore.stream(int(state["run_seed"]), StoneStoryCore.TAG_SIM)
+	mode = "expedition"
+	if _view != null:
+		_view.visible = true
+	if _lobby != null:
+		_lobby.visible = false
+	_refresh_view()
+
+
+## 탐험 끝나면 로비로. 결과 1줄이 남는다.
+func _to_lobby(line: String = "") -> void:
+	mode = "lobby"
+	if _view != null:
+		_view.visible = false
+	if _lobby != null:
+		_lobby.visible = true
+		_lobby.bind(state, content, tuning)
+		if not line.is_empty():
+			_lobby.report.push_front(line)
+			while _lobby.report.size() > 4:
+				_lobby.report.pop_back()
+
+
+func _enter_lobby() -> void:
+	mode = "lobby"
+	_pending_region = String(state.get("region_id", REGION_HUB))
+	_pending_star = int(state.get("star_level", 1))
+	if _view != null:
+		_view.visible = false
+	if _lobby != null:
+		_lobby.visible = true
+		_lobby.bind(state, content, tuning)
+
+
+var _pending_region: String = REGION_HUB
+var _pending_star: int = 1
+
+
+func _on_region_chosen(rid: String) -> void:
+	_pending_region = rid
+
+
+func _on_star_changed(value: int) -> void:
+	_pending_star = value
+	state["star_level"] = value
+
+
+func _on_gear_toggled(item_id: String) -> void:
+	if item_id.is_empty():
+		return
+	var p: Dictionary = state["player"]
+	var has: bool = false
+	var keep: Array = []
+	for g in p["gear"]:
+		if str((g as Dictionary).get("item_id", "")) == item_id:
+			has = true
+			continue
+		keep.append(g)
+	if has:
+		p["gear"] = keep
+	else:
+		p["gear"].append(StoneStoryContent.make_item_state(item_id))
+	if _lobby != null:
+		_lobby.bind(state, content, tuning)
+
+
+## 로비에서만 입력을 받는다. 탐험 중에는 어떤 키도 AI 를 못 건드린다.
+const LOBBY_ACTIONS: Array[StringName] = [
+	&"stone_story_rpg_up", &"stone_story_rpg_down", &"stone_story_rpg_left",
+	&"stone_story_rpg_right", &"stone_story_rpg_confirm", &"stone_story_rpg_cancel",
+]
+
+
+func _pressed(action: StringName) -> bool:
+	return context != null and context.allows_action(action) and Input.is_action_just_pressed(action)
+
+
+func _lobby_allows() -> bool:
+	return context != null and context.input_enabled
+
+
+func _pump_input() -> void:
+	if context == null or not context.input_enabled:
+		return
+	if mode == "lobby":
+		# 실제 키가 눌린 프레임에만 넘긴다. 매 프레임 보내면 focus 가 회전한다.
+		if _lobby == null or not _lobby_allows():
+			return
+		for action in LOBBY_ACTIONS:
+			if _pressed(action) and _lobby.handle(action):
+				return
+		return
+	# 탐험 중에는 취소로 로비 복귀만 허용한다.
+	# ModuleContext 에 just_pressed 가 없으므로 허용 액션을 직접 확인한다.
+	if _pressed(&"stone_story_rpg_cancel"):
+		_to_lobby("돌아왔다")
 
 
 func _refresh_view() -> void:

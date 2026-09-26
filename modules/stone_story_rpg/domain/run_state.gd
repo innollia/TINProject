@@ -107,15 +107,29 @@ static func refresh_max(p: Dictionary, tuning: StoneStoryTuning) -> void:
 	p["stamina"] = mini(int(p["stamina"]), int(p["stamina_max"]))
 
 
+## 장비는 인스턴스(진행 값) + 콘텐츠 정의(정적 규칙) 두 곳에 나뉘어 있다.
+## attr_delta 와 policy_delta 는 **정의 쪽**에 있다. 그래서 반드시 합쳐야 한다.
+static func gear_defs(p: Dictionary, content: StoneStoryContent) -> Array:
+	var out: Array = []
+	for entry in p.get("gear", []):
+		var inst: Dictionary = entry
+		var def: Dictionary = content.item(str(inst.get("item_id", "")))
+		var merged: Dictionary = def.duplicate(true)
+		for k in inst:
+			merged[k] = inst[k]
+		out.append(merged)
+	return out
+
+
 ## 4-속성 = 개체 기본 ⊕ 착용 장비. 파생이라 저장하지 않는다.
-static func resolve_attributes(p: Dictionary) -> Dictionary:
+static func resolve_attributes(p: Dictionary, content: StoneStoryContent) -> Dictionary:
 	return StoneStoryAttributes.resolve(p.get("base_attributes", StoneStoryAttributes.blank()),
-			p.get("gear", []))
+			gear_defs(p, content))
 
 
 ## 장비가 AI 정책을 바꾼다. 이것이 플레이어의 유일한 간접 조종 수단이다.
-static func resolve_policy(p: Dictionary) -> Dictionary:
-	return StoneStoryGearPolicy.resolve(p.get("gear", []))
+static func resolve_policy(p: Dictionary, content: StoneStoryContent) -> Dictionary:
+	return StoneStoryGearPolicy.resolve(gear_defs(p, content))
 
 
 static func chest_cap(level: int, tuning: StoneStoryTuning) -> int:
