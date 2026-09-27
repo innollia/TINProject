@@ -76,6 +76,18 @@ func _run() -> void:
 	checks += 1
 	if not screen.is_reading():
 		failed += 1; printerr("FAIL: fragment did not open")
+
+	# 5. qw_peek — 키보드로 hover span을 순회할 수 있는가 (마우스 없이 국소 질의)
+	checks += 1
+	if not screen.has_peekable_hovers():
+		failed += 1; printerr("FAIL: no peekable hovers on first fragment (expected a1 to have one)")
+	else:
+		screen.peek_next()
+		await process_frame
+		checks += 1
+		if String(screen.get("_status_line").text).is_empty():
+			failed += 1; printerr("FAIL: peek_next did not populate status line")
+
 	screen.close_reader()  # 뒤로 버튼이 부르는 것과 동일 경로
 	await process_frame
 	checks += 1

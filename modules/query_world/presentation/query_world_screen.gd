@@ -35,6 +35,8 @@ var _mode_reading: bool = false
 var _bundle_overgrown: bool = false   # 뭉탱이 인계: HP 200 몸이 넘어왔는가
 var _result_buttons: Array[Button] = []
 var _preserve_field_focus: bool = true
+var _hover_ids: Array[String] = []   # 현재 열람 파편의 hover span id 목록 (qw_peek 순회용)
+var _hover_index: int = -1           # 키보드로 순회 중인 hover span 인덱스 (-1 = 없음)
 
 
 func _ready() -> void:
@@ -167,6 +169,7 @@ func _build() -> void:
 	_reader_body.focus_mode = Control.FOCUS_ALL
 	_reader_body.meta_hover_started.connect(_on_meta_hover)
 	_reader_body.meta_hover_ended.connect(_on_meta_hover_end)
+	_reader_body.gui_input.connect(_on_reader_body_gui_input)
 	reader_col.add_child(_reader_body)
 	_reader.hide()
 
@@ -305,10 +308,47 @@ func present_fragment(fragment_id: String) -> void:
 		return
 	_mode_reading = true
 	var frag: Dictionary = _state.fragments[fragment_id]
-	_reader_title.text = "%s   ·   단어에 마우스를 올리면 숨은 조각이 드러난다" % fragment_id.to_upper()
+	_reader_title.text = "%s   ·   단어에 마우스를 올리거나 Tab/Shift+Tab으로 숨은 조각을 순회" % fragment_id.to_upper()
 	_reader_body.text = _compose_body(frag)
 	_reader.show()
+	_hover_ids.clear()
+	for h: Variant in (frag.get("hover_reveals", []) as Array):
+		_hover_ids.append(String((h as Dictionary).get("id", "")))
+	_hover_index = -1
+	_focus(_reader_body)
 	_refresh_tracker()
+
+
+## qw_peek — hover의 키보드 전용 대응. 마우스 커서 없이도 국소 질의(hover)를 순회한다.
+## 마우스 hover와 동일한 peek_hover()를 재사용해 같은 hidden 텍스트를 상태선에 낸다.
+func peek_next() -> void:
+	if _hover_ids.is_empty():
+		return
+	_hover_index = (_hover_index + 1) % _hover_ids.size()
+	_peek_current()
+
+
+func peek_prev() -> void:
+	if _hover_ids.is_empty():
+		return
+	if _hover_index <= 0:
+		_hover_index = _hover_ids.size() - 1
+	else:
+		_hover_index -= 1
+	_peek_current()
+
+
+func _peek_current() -> void:
+	if _state == null or _hover_index < 0 or _hover_index >= _hover_ids.size():
+		return
+	var fid: String = _state.last_opened
+	var hidden: String = _state.peek_hover(fid, _hover_ids[_hover_index])
+	if not hidden.is_empty():
+		_status_line.text = "◂ (%d/%d) %s" % [_hover_index + 1, _hover_ids.size(), hidden]
+
+
+func has_peekable_hovers() -> bool:
+	return not _hover_ids.is_empty()
 
 
 ## 본문에 hover 가능한 span을 [url] 메타로 감싼다 → 국소 질의(툴팁 아님).
@@ -345,10 +385,24 @@ func _on_meta_hover_end(_meta: Variant) -> void:
 func close_reader() -> void:
 	_mode_reading = false
 	_reader.hide()
+	_hover_ids.clear()
+	_hover_index = -1
 	if not _result_buttons.is_empty():
 		_focus(_result_buttons[0])
 	else:
 		_focus(_search_field)
+
+
+## 파편 열람 중 Tab/Shift+Tab으로 hover span을 순회(qw_peek, 마우스 없이 국소 질의).
+func _on_reader_body_gui_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		var key := event as InputEventKey
+		if key.keycode == KEY_TAB:
+			if key.shift_pressed:
+				peek_prev()
+			else:
+				peek_next()
+			accept_event()
 
 
 func is_reading() -> bool:
