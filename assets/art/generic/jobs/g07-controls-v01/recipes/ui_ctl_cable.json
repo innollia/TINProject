@@ -1,0 +1,130 @@
+{
+ "asset": "ui_ctl_cable",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Seamless patch-cord strip (Line2D texture), three colours.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  48
+ ],
+ "pivot": [
+  0.0,
+  24.0
+ ],
+ "pivot_meaning": "left end, cord centre line (tile to the right every 192 px)",
+ "seed": 22,
+ "style_override": {
+  "silhouette": false
+ },
+ "forms": [
+  {
+   "name": "body",
+   "z": 0,
+   "material": "cloth_wine",
+   "tags": [
+    "cord"
+   ],
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      24.0
+     ],
+     "size": [
+      260.0,
+      22.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    }
+   ]
+  },
+  {
+   "name": "braid",
+   "z": 1,
+   "kind": "flat",
+   "material": "rubber",
+   "opacity": 0.3,
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      8.0,
+      22.0
+     ],
+     "rot": 30,
+     "repeat": {
+      "line": [
+       [
+        -12,
+        24
+       ],
+       [
+        204,
+        24
+       ]
+      ],
+      "count": 19
+     }
+    }
+   ]
+  },
+  {
+   "name": "sheen",
+   "z": 2,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.1,
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      18.0
+     ],
+     "size": [
+      260.0,
+      4.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "wine",
+   "materials": {
+    "cord": "cloth_wine"
+   }
+  },
+  {
+   "name": "black",
+   "materials": {
+    "cord": "cable"
+   }
+  },
+  {
+   "name": "teal",
+   "materials": {
+    "cord": "paint_teal"
+   }
+  }
+ ]
+}

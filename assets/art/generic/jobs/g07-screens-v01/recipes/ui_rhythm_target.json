@@ -1,0 +1,256 @@
+{
+ "asset": "ui_rhythm_target",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Hit target ring: idle, hit (lit), miss (dim, cracked).",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "target centre",
+ "seed": 46,
+ "forms": [
+  {
+   "name": "ring",
+   "z": 1,
+   "kind": "mass",
+   "material": "bronze",
+   "tags": [
+    "ring"
+   ],
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      160.0,
+      160.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      134.0,
+      134.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "inner_ring",
+   "z": 1.2,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      106.0,
+      106.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "notches",
+   "z": 2,
+   "kind": "mass",
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      6.0,
+      16.0
+     ],
+     "repeat": {
+      "ellipse": [
+       96.0,
+       96.0,
+       74.0,
+       74.0
+      ],
+      "count": 4,
+      "arc": [
+       0,
+       360
+      ],
+      "orient": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "centre",
+   "z": 1.3,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hit_fill",
+   "z": 0.5,
+   "kind": "flat",
+   "material": "lamp_amber_on",
+   "opacity": 0.5,
+   "emit": 1.0,
+   "glow": {
+    "radius": 16,
+    "opacity": 0.6,
+    "color": "glow_amber"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      108.0,
+      108.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "hit"
+   ]
+  },
+  {
+   "name": "miss_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "material": "zone_red",
+   "opacity": 0.3,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      108.0,
+      108.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "miss"
+   ]
+  },
+  {
+   "name": "miss_crack",
+   "z": 3,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.85,
+   "clip_to": "ring",
+   "pieces": [
+    {
+     "icon": "arrow_zigzag",
+     "at": [
+      58.0,
+      70.0
+     ],
+     "size": [
+      30.0,
+      44.0
+     ],
+     "rot": -30
+    },
+    {
+     "icon": "arrow_zigzag",
+     "at": [
+      132.0,
+      124.0
+     ],
+     "size": [
+      26.0,
+      40.0
+     ],
+     "rot": 150
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "miss"
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "hit",
+   "show": [
+    "hit"
+   ],
+   "materials": {
+    "ring": "lamp_amber_on"
+   }
+  },
+  {
+   "name": "miss",
+   "show": [
+    "miss"
+   ],
+   "materials": {
+    "ring": "steel_dark"
+   }
+  }
+ ]
+}

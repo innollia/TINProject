@@ -1,0 +1,481 @@
+{
+ "asset": "ui_ctl_button",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Round push button, three cap colours, unlit and lit.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "button centre",
+ "seed": 14,
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      158.0,
+      158.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 22
+     }
+    }
+   ]
+  },
+  {
+   "name": "ring",
+   "z": 1,
+   "kind": "mass",
+   "material": "bronze",
+   "shade": {
+    "bump": 1.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      120.0,
+      120.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "ring_shadow",
+   "z": 1.2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      92.0,
+      92.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      87.0,
+      87.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "cap_mask",
+   "z": 1.9,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.0,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cap_red_off",
+   "z": 2,
+   "material": "lamp_red_off",
+   "shade": {
+    "bump": 1.25
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "red_off"
+   ]
+  },
+  {
+   "name": "cap_red_on",
+   "z": 2,
+   "material": "lamp_red_on",
+   "shade": {
+    "bump": 1.1
+   },
+   "emit": 1.0,
+   "glow": {
+    "radius": 10,
+    "opacity": 0.55,
+    "color": "glow_red"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "red_on"
+   ]
+  },
+  {
+   "name": "cap_green_off",
+   "z": 2,
+   "material": "lamp_green_off",
+   "shade": {
+    "bump": 1.25
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "green_off"
+   ]
+  },
+  {
+   "name": "cap_green_on",
+   "z": 2,
+   "material": "lamp_green_on",
+   "shade": {
+    "bump": 1.1
+   },
+   "emit": 1.0,
+   "glow": {
+    "radius": 10,
+    "opacity": 0.55,
+    "color": "glow_green"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "green_on"
+   ]
+  },
+  {
+   "name": "cap_amber_off",
+   "z": 2,
+   "material": "lamp_amber_off",
+   "shade": {
+    "bump": 1.25
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "amber_off"
+   ]
+  },
+  {
+   "name": "cap_amber_on",
+   "z": 2,
+   "material": "lamp_amber_on",
+   "shade": {
+    "bump": 1.1
+   },
+   "emit": 1.0,
+   "glow": {
+    "radius": 10,
+    "opacity": 0.55,
+    "color": "glow_amber"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "amber_on"
+   ]
+  },
+  {
+   "name": "cap_glare",
+   "z": 3,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.22,
+   "clip_to": "cap_mask",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      90.6,
+      88.8
+     ],
+     "size": [
+      82.8,
+      82.8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      100.5,
+      102.3
+     ],
+     "size": [
+      91.8,
+      91.8
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "screws",
+   "z": 4,
+   "material": "steel",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      34.0,
+      34.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      158.0,
+      34.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      34.0,
+      158.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      158.0,
+      158.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws_slot",
+   "z": 4.01,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      34.0,
+      34.0
+     ],
+     "size": [
+      7.2,
+      1.44
+     ],
+     "rot": 35.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      158.0,
+      34.0
+     ],
+     "size": [
+      7.2,
+      1.44
+     ],
+     "rot": 58.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      34.0,
+      158.0
+     ],
+     "size": [
+      7.2,
+      1.44
+     ],
+     "rot": 81.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      158.0,
+      158.0
+     ],
+     "size": [
+      7.2,
+      1.44
+     ],
+     "rot": 104.0
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "red_off",
+   "show": [
+    "red_off"
+   ]
+  },
+  {
+   "name": "red_on",
+   "show": [
+    "red_on"
+   ]
+  },
+  {
+   "name": "green_off",
+   "show": [
+    "green_off"
+   ]
+  },
+  {
+   "name": "green_on",
+   "show": [
+    "green_on"
+   ]
+  },
+  {
+   "name": "amber_off",
+   "show": [
+    "amber_off"
+   ]
+  },
+  {
+   "name": "amber_on",
+   "show": [
+    "amber_on"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,131 @@
+{
+ "asset": "ui_scr_sonar_blip",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Contact blip, bright then fading.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "blip centre",
+ "seed": 33,
+ "style_override": {
+  "silhouette": false
+ },
+ "forms": [
+  {
+   "name": "blip_bright",
+   "z": 1,
+   "kind": "flat",
+   "material": "phosphor",
+   "emit": 1.0,
+   "glow": {
+    "radius": 10,
+    "opacity": 0.8,
+    "color": "glow_phosphor"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "bright"
+   ]
+  },
+  {
+   "name": "blip_fade1",
+   "z": 1,
+   "kind": "flat",
+   "material": "phosphor",
+   "opacity": 0.6,
+   "emit": 0.6,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.5,
+    "color": "glow_phosphor"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "fade1"
+   ]
+  },
+  {
+   "name": "blip_fade2",
+   "z": 1,
+   "kind": "flat",
+   "material": "phosphor",
+   "opacity": 0.3,
+   "emit": 0.3,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.3,
+    "color": "glow_phosphor"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "fade2"
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "bright",
+   "show": [
+    "bright"
+   ]
+  },
+  {
+   "name": "fade1",
+   "show": [
+    "fade1"
+   ]
+  },
+  {
+   "name": "fade2",
+   "show": [
+    "fade2"
+   ]
+  }
+ ]
+}

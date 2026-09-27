@@ -1,0 +1,307 @@
+{
+ "asset": "icon_bg_die",
+ "status": "candidate",
+ "note": "g07 future-kit icon (128, flat, no text). at-icons collage, candidate. Six-sided die, faces 1-6 as pips.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "icon centre",
+ "seed": 60,
+ "forms": [
+  {
+   "name": "side",
+   "z": 0,
+   "material": "salt",
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      68.0,
+      69.0
+     ],
+     "size": [
+      100.0,
+      100.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 18
+     }
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "z": 1,
+   "material": "bone",
+   "shade": {
+    "bump": 0.55,
+    "highlight_amount": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      62.0,
+      62.0
+     ],
+     "size": [
+      100.0,
+      100.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 18
+     }
+    }
+   ]
+  },
+  {
+   "name": "pip_tl",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      38.0,
+      38.0
+     ],
+     "size": [
+      17.0,
+      17.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "tl"
+   ]
+  },
+  {
+   "name": "pip_tr",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      86.0,
+      38.0
+     ],
+     "size": [
+      17.0,
+      17.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "tr"
+   ]
+  },
+  {
+   "name": "pip_ml",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      38.0,
+      62.0
+     ],
+     "size": [
+      17.0,
+      17.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "ml"
+   ]
+  },
+  {
+   "name": "pip_mr",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      86.0,
+      62.0
+     ],
+     "size": [
+      17.0,
+      17.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "mr"
+   ]
+  },
+  {
+   "name": "pip_bl",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      38.0,
+      86.0
+     ],
+     "size": [
+      17.0,
+      17.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "bl"
+   ]
+  },
+  {
+   "name": "pip_br",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      86.0,
+      86.0
+     ],
+     "size": [
+      17.0,
+      17.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "br"
+   ]
+  },
+  {
+   "name": "pip_c",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      62.0,
+      62.0
+     ],
+     "size": [
+      17.0,
+      17.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "c"
+   ]
+  },
+  {
+   "name": "pip_one",
+   "z": 2,
+   "kind": "flat",
+   "material": "zone_red",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      62.0,
+      62.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "one"
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "face_1",
+   "show": [
+    "one"
+   ]
+  },
+  {
+   "name": "face_2",
+   "show": [
+    "tl",
+    "br"
+   ]
+  },
+  {
+   "name": "face_3",
+   "show": [
+    "tl",
+    "c",
+    "br"
+   ]
+  },
+  {
+   "name": "face_4",
+   "show": [
+    "tl",
+    "tr",
+    "bl",
+    "br"
+   ]
+  },
+  {
+   "name": "face_5",
+   "show": [
+    "tl",
+    "tr",
+    "bl",
+    "br",
+    "c"
+   ]
+  },
+  {
+   "name": "face_6",
+   "show": [
+    "tl",
+    "tr",
+    "ml",
+    "mr",
+    "bl",
+    "br"
+   ]
+  }
+ ]
+}

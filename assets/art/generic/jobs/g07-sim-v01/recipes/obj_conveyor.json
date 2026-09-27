@@ -1,0 +1,663 @@
+{
+ "asset": "obj_conveyor",
+ "status": "candidate",
+ "note": "g07 future-kit sim object (60 deg top-down). at-icons collage, candidate. Seamless conveyor cell: x_0..2 runs left-right (front face visible), y_0..2 runs up-down; frames 0-1-2 move the cleats 1/3 of their 32 px spacing (play 0-1-2 for +x / +y travel).",
+ "palette": "palette_g07.json",
+ "style": "prop",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  192.0
+ ],
+ "pivot_meaning": "cell bottom centre (grid cell of 192 x 192)",
+ "seed": 201,
+ "style_override": {
+  "silhouette": false
+ },
+ "forms": [
+  {
+   "name": "x_shadow",
+   "z": -10,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      100.0,
+      150.0
+     ],
+     "size": [
+      260.0,
+      96.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "x"
+   ]
+  },
+  {
+   "name": "x_frame",
+   "z": 0,
+   "kind": "block",
+   "material": "steel",
+   "extrude": 47,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      82.5
+     ],
+     "size": [
+      240.0,
+      125.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "x"
+   ]
+  },
+  {
+   "name": "x_belt",
+   "z": 1,
+   "material": "rubber",
+   "shade": {
+    "bump": 0.35
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      82.0
+     ],
+     "size": [
+      240.0,
+      100.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "x"
+   ]
+  },
+  {
+   "name": "x_rails",
+   "z": 2,
+   "material": "steel",
+   "shade": {
+    "bump": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      27.0
+     ],
+     "size": [
+      240.0,
+      10.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      138.0
+     ],
+     "size": [
+      240.0,
+      10.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "x"
+   ]
+  },
+  {
+   "name": "x_roller_caps",
+   "z": 2.5,
+   "material": "steel_dark",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      13.0,
+      13.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        -16,
+        166
+       ],
+       [
+        208,
+        166
+       ]
+      ],
+      "count": 8
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "x"
+   ]
+  },
+  {
+   "name": "x_hazard",
+   "z": 2.4,
+   "kind": "flat",
+   "material": "paint_ochre",
+   "opacity": 0.55,
+   "clip_to": "x_frame",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      10.0,
+      30.0
+     ],
+     "rot": 35,
+     "repeat": {
+      "line": [
+       [
+        -24,
+        182
+       ],
+       [
+        216,
+        182
+       ]
+      ],
+      "count": 16
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "x"
+   ]
+  },
+  {
+   "name": "y_shadow",
+   "z": -10,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      110.0,
+      96.0
+     ],
+     "size": [
+      150.0,
+      240.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "y"
+   ]
+  },
+  {
+   "name": "y_frame",
+   "z": 0,
+   "material": "steel",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      164.0,
+      240.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "y"
+   ]
+  },
+  {
+   "name": "y_belt",
+   "z": 1,
+   "material": "rubber",
+   "shade": {
+    "bump": 0.35
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      130.0,
+      240.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "y"
+   ]
+  },
+  {
+   "name": "y_rails",
+   "z": 2,
+   "material": "steel",
+   "shade": {
+    "bump": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      22.0,
+      96.0
+     ],
+     "size": [
+      10.0,
+      240.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      170.0,
+      96.0
+     ],
+     "size": [
+      10.0,
+      240.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "y"
+   ]
+  },
+  {
+   "name": "x_cleats_0",
+   "z": 1.5,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.8
+   },
+   "clip_to": "x_belt",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      6.0,
+      94.0
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 2
+     },
+     "repeat": {
+      "line": [
+       [
+        -32.0,
+        82
+       ],
+       [
+        224.0,
+        82
+       ]
+      ],
+      "count": 9
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "x0"
+   ]
+  },
+  {
+   "name": "y_cleats_0",
+   "z": 1.5,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.8
+   },
+   "clip_to": "y_belt",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      122.0,
+      6.0
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 2
+     },
+     "repeat": {
+      "line": [
+       [
+        96,
+        -32.0
+       ],
+       [
+        96,
+        224.0
+       ]
+      ],
+      "count": 9
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "y0"
+   ]
+  },
+  {
+   "name": "x_cleats_1",
+   "z": 1.5,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.8
+   },
+   "clip_to": "x_belt",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      6.0,
+      94.0
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 2
+     },
+     "repeat": {
+      "line": [
+       [
+        -21.333333333333336,
+        82
+       ],
+       [
+        234.66666666666666,
+        82
+       ]
+      ],
+      "count": 9
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "x1"
+   ]
+  },
+  {
+   "name": "y_cleats_1",
+   "z": 1.5,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.8
+   },
+   "clip_to": "y_belt",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      122.0,
+      6.0
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 2
+     },
+     "repeat": {
+      "line": [
+       [
+        96,
+        -21.333333333333336
+       ],
+       [
+        96,
+        234.66666666666666
+       ]
+      ],
+      "count": 9
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "y1"
+   ]
+  },
+  {
+   "name": "x_cleats_2",
+   "z": 1.5,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.8
+   },
+   "clip_to": "x_belt",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      6.0,
+      94.0
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 2
+     },
+     "repeat": {
+      "line": [
+       [
+        -10.666666666666668,
+        82
+       ],
+       [
+        245.33333333333334,
+        82
+       ]
+      ],
+      "count": 9
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "x2"
+   ]
+  },
+  {
+   "name": "y_cleats_2",
+   "z": 1.5,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.8
+   },
+   "clip_to": "y_belt",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      122.0,
+      6.0
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 2
+     },
+     "repeat": {
+      "line": [
+       [
+        96,
+        -10.666666666666668
+       ],
+       [
+        96,
+        245.33333333333334
+       ]
+      ],
+      "count": 9
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "y2"
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "x_0",
+   "show": [
+    "x",
+    "x0"
+   ]
+  },
+  {
+   "name": "x_1",
+   "show": [
+    "x",
+    "x1"
+   ]
+  },
+  {
+   "name": "x_2",
+   "show": [
+    "x",
+    "x2"
+   ]
+  },
+  {
+   "name": "y_0",
+   "show": [
+    "y",
+    "y0"
+   ]
+  },
+  {
+   "name": "y_1",
+   "show": [
+    "y",
+    "y1"
+   ]
+  },
+  {
+   "name": "y_2",
+   "show": [
+    "y",
+    "y2"
+   ]
+  }
+ ]
+}

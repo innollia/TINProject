@@ -1,0 +1,173 @@
+{
+ "asset": "ui_ctl_jack_plug",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Loose patch plug for dragging; cord continues with ui_ctl_cable.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  22.0
+ ],
+ "pivot_meaning": "plug tip (the point that goes into ui_ctl_jack)",
+ "seed": 21,
+ "forms": [
+  {
+   "name": "cord",
+   "z": 0,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      176.0
+     ],
+     "size": [
+      18.0,
+      48.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 8
+     }
+    }
+   ]
+  },
+  {
+   "name": "grip",
+   "z": 1,
+   "material": "rubber",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      130.0
+     ],
+     "size": [
+      38.0,
+      54.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 12
+     }
+    }
+   ]
+  },
+  {
+   "name": "grip_ridges",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "plastic_dark",
+   "opacity": 0.6,
+   "clip_to": "grip",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      40.0,
+      3.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        96,
+        112
+       ],
+       [
+        96,
+        148
+       ]
+      ],
+      "count": 5
+     }
+    }
+   ]
+  },
+  {
+   "name": "sleeve",
+   "z": 2,
+   "material": "bronze",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      84.0
+     ],
+     "size": [
+      28.0,
+      50.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "tip_ring",
+   "z": 3,
+   "kind": "flat",
+   "material": "dial_mark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      56.0
+     ],
+     "size": [
+      16.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "tip",
+   "z": 2.5,
+   "material": "bronze",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      38.0
+     ],
+     "size": [
+      12.0,
+      32.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 5
+     }
+    }
+   ]
+  }
+ ]
+}

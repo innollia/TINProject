@@ -1,0 +1,294 @@
+{
+ "asset": "ui_rhythm_note",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Rhythm notes: two tap colours, hold head and hold tail.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "note centre",
+ "seed": 44,
+ "forms": [
+  {
+   "name": "note_mask",
+   "z": 0.5,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      150.0,
+      54.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 25
+     }
+    }
+   ]
+  },
+  {
+   "name": "tap_amber",
+   "z": 1,
+   "material": "lamp_amber_on",
+   "emit": 0.8,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.5,
+    "color": "glow_amber"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      150.0,
+      54.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 25
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "tap_amber"
+   ]
+  },
+  {
+   "name": "tap_teal",
+   "z": 1,
+   "material": "phosphor",
+   "emit": 0.8,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.5,
+    "color": "glow_phosphor"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      150.0,
+      54.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 25
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "tap_teal"
+   ]
+  },
+  {
+   "name": "head",
+   "z": 1,
+   "material": "lamp_amber_on",
+   "emit": 0.8,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.5,
+    "color": "glow_amber"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      150.0,
+      54.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 25
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "head"
+   ]
+  },
+  {
+   "name": "head_mark",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      96.0,
+      92.0
+     ],
+     "size": [
+      32.0,
+      20.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "head"
+   ]
+  },
+  {
+   "name": "tail",
+   "z": 1,
+   "material": "amber_screen",
+   "opacity": 0.8,
+   "emit": 0.6,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      96.0,
+      60.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 28
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "tail"
+   ]
+  },
+  {
+   "name": "rim",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "bronze",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      150.0,
+      54.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 25
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      134.0,
+      38.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 17
+     },
+     "op": "sub"
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "tap_amber",
+    "tap_teal",
+    "head"
+   ]
+  },
+  {
+   "name": "sheen",
+   "z": 2,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.2,
+   "clip_to": "note_mask",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      80.0
+     ],
+     "size": [
+      118.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "tap_amber",
+    "tap_teal",
+    "head"
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "tap_amber",
+   "show": [
+    "tap_amber"
+   ]
+  },
+  {
+   "name": "tap_teal",
+   "show": [
+    "tap_teal"
+   ]
+  },
+  {
+   "name": "hold_head",
+   "show": [
+    "head"
+   ]
+  },
+  {
+   "name": "hold_tail",
+   "show": [
+    "tail"
+   ]
+  }
+ ]
+}

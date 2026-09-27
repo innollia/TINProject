@@ -1,0 +1,93 @@
+{
+ "asset": "ui_os_progress_cell",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Progress fill block; place side by side every 38-40 px inside ui_os_progress_frame.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  48,
+  48
+ ],
+ "pivot": [
+  24.0,
+  24.0
+ ],
+ "pivot_meaning": "cell centre",
+ "seed": 40,
+ "forms": [
+  {
+   "name": "cell",
+   "z": 0,
+   "material": "paint_teal",
+   "tags": [
+    "fill"
+   ],
+   "shade": {
+    "bump": 0.8,
+    "highlight_amount": 0.35
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      24.0,
+      24.0
+     ],
+     "size": [
+      34.0,
+      26.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "cell_sheen",
+   "z": 1,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.14,
+   "clip_to": "cell",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      24.0,
+      15.0
+     ],
+     "size": [
+      28.0,
+      4.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "teal",
+   "materials": {
+    "fill": "paint_teal"
+   }
+  },
+  {
+   "name": "wine",
+   "materials": {
+    "fill": "cloth_wine"
+   }
+  },
+  {
+   "name": "amber",
+   "materials": {
+    "fill": "paint_ochre"
+   }
+  }
+ ]
+}
