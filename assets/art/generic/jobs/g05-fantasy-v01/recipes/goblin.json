@@ -1,0 +1,1422 @@
+{
+ "asset": "goblin",
+ "status": "candidate",
+ "note": "Goblin, front view. Small hunched green humanoid: big head, long pointed ears, hooked nose, yellow eyes, toothy grin, pot belly, rag loincloth, rusty dagger. attack = dagger raised overhead with claws out; hit = knocked back, squeezed eyes, arms flung.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 502,
+ "g05": {
+  "name_ko": "고블린",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      361.6
+     ],
+     "size": [
+      156.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1,
+   "material": "goblin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141.8,
+      301.2
+     ],
+     "size": [
+      20.5,
+      51.1
+     ],
+     "rot": 10.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      137.0,
+      339.7
+     ],
+     "size": [
+      17.4,
+      40.0
+     ],
+     "rot": 2.8
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1.1,
+   "material": "goblin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      132.9,
+      359.3
+     ],
+     "size": [
+      32.8,
+      14.3
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      123.1,
+      365.8
+     ],
+     "size": [
+      6.6,
+      7.9
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      132.9,
+      365.8
+     ],
+     "size": [
+      6.6,
+      7.9
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      142.7,
+      365.8
+     ],
+     "size": [
+      6.6,
+      7.9
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1,
+   "material": "goblin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      178.2,
+      301.2
+     ],
+     "size": [
+      20.5,
+      51.1
+     ],
+     "rot": -10.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      183.0,
+      339.7
+     ],
+     "size": [
+      17.4,
+      40.0
+     ],
+     "rot": -2.8
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1.1,
+   "material": "goblin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      187.1,
+      359.3
+     ],
+     "size": [
+      32.8,
+      14.3
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      177.3,
+      365.8
+     ],
+     "size": [
+      6.6,
+      7.9
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      187.1,
+      365.8
+     ],
+     "size": [
+      6.6,
+      7.9
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      196.9,
+      365.8
+     ],
+     "size": [
+      6.6,
+      7.9
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "torso",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3,
+   "material": "goblin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      236.7
+     ],
+     "size": [
+      78.0,
+      50.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      257.5
+     ],
+     "size": [
+      74.0,
+      64.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      277.5
+     ],
+     "size": [
+      58.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "loincloth",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.3,
+   "material": "cloth_rag",
+   "pieces": [
+    {
+     "icon": "bookmark",
+     "at": [
+      162.0,
+      297.5
+     ],
+     "size": [
+      46.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      281.5
+     ],
+     "size": [
+      70.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "belt",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.5,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      277.5
+     ],
+     "size": [
+      80.0,
+      11.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "buckle",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.55,
+   "kind": "flat",
+   "material": "bronze",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      150.0,
+      277.5
+     ],
+     "size": [
+      11.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "strap",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.6,
+   "material": "leather",
+   "cast": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      158.0,
+      243.1
+     ],
+     "size": [
+      8.0,
+      79.8
+     ],
+     "rot": -46.7
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4,
+   "material": "goblin",
+   "pivot": [
+    119.0232,
+    212.72999999999996
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      107.9,
+      232.3
+     ],
+     "size": [
+      17.2,
+      51.1
+     ],
+     "rot": 29.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      98.9,
+      274.3
+     ],
+     "size": [
+      15.4,
+      50.4
+     ],
+     "rot": -5.4
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.2,
+   "material": "goblin",
+   "pivot": [
+    119.0232,
+    212.72999999999996
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      101.0,
+      298.9
+     ],
+     "size": [
+      21.7,
+      21.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "claws_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.25,
+   "material": "claw",
+   "pivot": [
+    119.0232,
+    212.72999999999996
+   ],
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      108.6,
+      310.2
+     ],
+     "size": [
+      5.2,
+      19.5
+     ],
+     "rot": 174.6
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      102.2,
+      310.8
+     ],
+     "size": [
+      5.2,
+      19.5
+     ],
+     "rot": 174.6
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      95.7,
+      311.4
+     ],
+     "size": [
+      5.2,
+      19.5
+     ],
+     "rot": 174.6
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4,
+   "material": "goblin",
+   "pivot": [
+    200.9768,
+    212.72999999999996
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      214.3,
+      226.7
+     ],
+     "size": [
+      17.2,
+      44.7
+     ],
+     "rot": -43.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      224.3,
+      259.7
+     ],
+     "size": [
+      15.4,
+      44.0
+     ],
+     "rot": 10.0
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.2,
+   "material": "goblin",
+   "pivot": [
+    200.9768,
+    212.72999999999996
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      221.0,
+      280.9
+     ],
+     "size": [
+      21.7,
+      21.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dagger",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 3.9,
+   "material": "iron",
+   "pivot": [
+    200.9768,
+    212.72999999999996
+   ],
+   "pieces": [
+    {
+     "icon": "dagger",
+     "at": [
+      224.0,
+      258.7
+     ],
+     "size": [
+      50.0,
+      50.0
+     ],
+     "rot": -45.0
+    }
+   ]
+  },
+  {
+   "name": "arm_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 8.5,
+   "material": "goblin",
+   "pivot": [
+    200.9768,
+    212.72999999999996
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      218.0,
+      192.7
+     ],
+     "size": [
+      17.2,
+      58.5
+     ],
+     "rot": -139.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      220.0,
+      146.7
+     ],
+     "size": [
+      15.4,
+      65.4
+     ],
+     "rot": 150.0
+    }
+   ]
+  },
+  {
+   "name": "hand_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 8.7,
+   "material": "goblin",
+   "pivot": [
+    200.9768,
+    212.72999999999996
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      205.0,
+      122.9
+     ],
+     "size": [
+      21.7,
+      21.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dagger_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 8.4,
+   "material": "iron",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "dagger",
+     "at": [
+      191.0,
+      104.7
+     ],
+     "size": [
+      50.0,
+      50.0
+     ],
+     "rot": -90.0
+    }
+   ]
+  },
+  {
+   "name": "arm_l_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 4,
+   "material": "goblin",
+   "pivot": [
+    119.0232,
+    212.72999999999996
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      102.0,
+      227.7
+     ],
+     "size": [
+      17.2,
+      51.4
+     ],
+     "rot": 48.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      73.0,
+      244.7
+     ],
+     "size": [
+      15.4,
+      29.7
+     ],
+     "rot": 80.5
+    }
+   ]
+  },
+  {
+   "name": "hand_l_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 4.2,
+   "material": "goblin",
+   "pivot": [
+    119.0232,
+    212.72999999999996
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      61.0,
+      249.0
+     ],
+     "size": [
+      22.6,
+      28.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "claws_l_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 4.25,
+   "material": "claw",
+   "pivot": [
+    119.0232,
+    212.72999999999996
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      49.9,
+      257.7
+     ],
+     "size": [
+      5.4,
+      22.6
+     ],
+     "rot": 260.5
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      48.8,
+      251.0
+     ],
+     "size": [
+      5.4,
+      22.6
+     ],
+     "rot": 260.5
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      47.6,
+      244.3
+     ],
+     "size": [
+      5.4,
+      22.6
+     ],
+     "rot": 260.5
+    }
+   ]
+  },
+  {
+   "name": "neck",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5,
+   "material": "goblin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      208.7
+     ],
+     "size": [
+      34.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ears",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.5,
+   "material": "goblin",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      104.0,
+      170.3
+     ],
+     "size": [
+      24.0,
+      66.0
+     ],
+     "rot": -68.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      216.0,
+      170.3
+     ],
+     "size": [
+      24.0,
+      66.0
+     ],
+     "rot": 68.0,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "ear_in",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.55,
+   "material": "hide_pink",
+   "line": false,
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      108.0,
+      171.3
+     ],
+     "size": [
+      11.0,
+      40.0
+     ],
+     "rot": -68.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      212.0,
+      171.3
+     ],
+     "size": [
+      11.0,
+      40.0
+     ],
+     "rot": 68.0,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7,
+   "material": "goblin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      176.3
+     ],
+     "size": [
+      86.0,
+      78.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      198.3
+     ],
+     "size": [
+      70.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 7.5,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.55,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.35,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      172.3
+     ],
+     "size": [
+      18.0,
+      14.0
+     ],
+     "rot": 12.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      172.3
+     ],
+     "size": [
+      18.0,
+      14.0
+     ],
+     "rot": -12.0
+    }
+   ]
+  },
+  {
+   "name": "pupils",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 7.6,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141.0,
+      172.3
+     ],
+     "size": [
+      5.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      179.0,
+      172.3
+     ],
+     "size": [
+      5.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.7,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      161.3
+     ],
+     "size": [
+      6.0,
+      28.1
+     ],
+     "rot": -72.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      161.3
+     ],
+     "size": [
+      6.0,
+      28.1
+     ],
+     "rot": 72.0,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "eyes_hit",
+   "tags": [
+    "all",
+    "eyes_hit",
+    "head"
+   ],
+   "z": 7.6,
+   "kind": "flat",
+   "material": "eye",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      138.4,
+      169.5
+     ],
+     "size": [
+      5.0,
+      15.7
+     ],
+     "rot": -66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      138.4,
+      175.1
+     ],
+     "size": [
+      5.0,
+      15.7
+     ],
+     "rot": 66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      181.6,
+      169.5
+     ],
+     "size": [
+      5.0,
+      15.7
+     ],
+     "rot": 66.4,
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      181.6,
+      175.1
+     ],
+     "size": [
+      5.0,
+      15.7
+     ],
+     "rot": -66.4,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "nose",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.8,
+   "material": "goblin",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      186.3
+     ],
+     "size": [
+      20.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head",
+    "mouth"
+   ],
+   "z": 7.9,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      202.3
+     ],
+     "size": [
+      40.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      193.9
+     ],
+     "size": [
+      48.0,
+      21.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "teeth",
+   "tags": [
+    "all",
+    "head",
+    "mouth"
+   ],
+   "z": 8.0,
+   "kind": "flat",
+   "material": "tooth",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      150.7,
+      203.8
+     ],
+     "size": [
+      8.4,
+      7.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      203.8
+     ],
+     "size": [
+      8.4,
+      7.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      169.3,
+      203.8
+     ],
+     "size": [
+      8.4,
+      7.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "mouth_open",
+   "tags": [
+    "all",
+    "head",
+    "mouth_open"
+   ],
+   "z": 7.9,
+   "kind": "flat",
+   "material": "mouth",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      206.3
+     ],
+     "size": [
+      40.0,
+      28.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fangs",
+   "tags": [
+    "all",
+    "head",
+    "mouth_open"
+   ],
+   "z": 8.0,
+   "kind": "flat",
+   "material": "tooth",
+   "hidden": true,
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      148.0,
+      198.8
+     ],
+     "size": [
+      7.2,
+      9.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      156.0,
+      198.8
+     ],
+     "size": [
+      7.2,
+      9.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      164.0,
+      198.8
+     ],
+     "size": [
+      7.2,
+      9.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      172.0,
+      198.8
+     ],
+     "size": [
+      7.2,
+      9.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      155.0,
+      215.8
+     ],
+     "size": [
+      9.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      165.0,
+      215.8
+     ],
+     "size": [
+      9.0,
+      7.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "head": {
+     "rot": -5,
+     "pivot": [
+      160,
+      212.72999999999996
+     ]
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "rot": -3,
+     "dy": 4,
+     "sx": 1.05,
+     "sy": 1.05
+    }
+   },
+   "show": [
+    "mouth_open",
+    "atk"
+   ],
+   "hide": [
+    "mouth",
+    "arm_l",
+    "arm_r"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "shadow": {
+     "dx": 6
+    },
+    "arm_l": {
+     "rot": 55,
+     "pivot": [
+      119.0232,
+      212.72999999999996
+     ]
+    },
+    "arm_r": {
+     "rot": -48,
+     "pivot": [
+      200.9768,
+      212.72999999999996
+     ]
+    },
+    "head": {
+     "rot": 10,
+     "pivot": [
+      160,
+      212.72999999999996
+     ]
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "rot": 8,
+     "dx": 10,
+     "dy": -6,
+     "sx": 0.97,
+     "sy": 0.97
+    }
+   },
+   "show": [
+    "eyes_hit",
+    "mouth_open"
+   ],
+   "hide": [
+    "eyes",
+    "mouth"
+   ]
+  }
+ ]
+}

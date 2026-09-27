@@ -1,0 +1,682 @@
+{
+ "asset": "hungry_ghost",
+ "status": "candidate",
+ "note": "Hungry ghost, front view, floating. Emaciated grey spirit with a hugely swollen belly, a needle-thin neck, huge sunken glowing eyes in a gaunt face, a tiny pursed mouth, stick-thin arms clutching at nothing, lower body fading into tattered wisps.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 631,
+ "g05": {
+  "name_ko": "아귀",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.25,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      360.8
+     ],
+     "size": [
+      100.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wisps",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "ghost",
+   "opacity": 0.6,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      134.0,
+      320.0
+     ],
+     "size": [
+      30.0,
+      70.0
+     ],
+     "rot": 12.0,
+     "flip": "y"
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      182.0,
+      326.0
+     ],
+     "size": [
+      26.0,
+      60.0
+     ],
+     "rot": -10.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "belly",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "corpse_grey",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      262.0
+     ],
+     "size": [
+      120.0,
+      110.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "chest",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "corpse_grey",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      196.0
+     ],
+     "size": [
+      60.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ribs",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "kind": "flat",
+   "material": "corpse_grey",
+   "color": "coat_seam",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      190.0
+     ],
+     "size": [
+      44.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      187.0
+     ],
+     "size": [
+      52.8,
+      5.2
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      200.0
+     ],
+     "size": [
+      38.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      197.0
+     ],
+     "size": [
+      45.6,
+      5.2
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      210.0
+     ],
+     "size": [
+      32.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      207.0
+     ],
+     "size": [
+      38.4,
+      5.2
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 2.5,
+   "material": "corpse_grey",
+   "pivot": [
+    136,
+    180
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      116.0,
+      200.0
+     ],
+     "size": [
+      8.0,
+      57.4
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      100.0,
+      241.0
+     ],
+     "size": [
+      8.0,
+      43.6
+     ],
+     "rot": -10.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      180.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      220.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      104.0,
+      262.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 2.6,
+   "material": "corpse_grey",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      104.0,
+      266.0
+     ],
+     "size": [
+      8.8,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      107.3,
+      273.3
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": -24.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      105.1,
+      273.9
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      102.9,
+      273.9
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": 8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      100.7,
+      273.3
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": 24.0
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 2.5,
+   "material": "corpse_grey",
+   "pivot": [
+    184,
+    180
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      204.0,
+      200.0
+     ],
+     "size": [
+      8.0,
+      57.4
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      220.0,
+      241.0
+     ],
+     "size": [
+      8.0,
+      43.6
+     ],
+     "rot": 10.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.0,
+      180.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      224.0,
+      220.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      216.0,
+      262.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 2.6,
+   "material": "corpse_grey",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      216.0,
+      266.0
+     ],
+     "size": [
+      8.8,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      219.3,
+      273.3
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": -24.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      217.1,
+      273.9
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      214.9,
+      273.9
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": 8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      212.7,
+      273.3
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": 24.0
+    }
+   ]
+  },
+  {
+   "name": "neck",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.3,
+   "material": "corpse_grey",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      161.0
+     ],
+     "size": [
+      8.0,
+      32.8
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "corpse_grey",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      118.0
+     ],
+     "size": [
+      64.0,
+      72.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sockets",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.1,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      147.0,
+      112.0
+     ],
+     "size": [
+      20.0,
+      24.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      112.0
+     ],
+     "size": [
+      20.0,
+      24.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.9,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      147.0,
+      114.0
+     ],
+     "size": [
+      7.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      114.0
+     ],
+     "size": [
+      7.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      142.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hair",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "material": "hair",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      140.0,
+      90.0
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": 30.0,
+     "flip": "y"
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      176.0,
+      86.0
+     ],
+     "size": [
+      10.0,
+      22.0
+     ],
+     "rot": -20.0,
+     "flip": "y"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

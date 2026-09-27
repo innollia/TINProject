@@ -1,0 +1,691 @@
+{
+ "asset": "ui_ctl_gauge_round",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Round gauge face, 270 deg scale from 135 to 405 deg (screen angles), red zone at the top end, no numbers.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "dial centre = needle rotation centre (use ui_ctl_needle)",
+ "seed": 11,
+ "forms": [
+  {
+   "name": "back",
+   "z": 0,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      184.0,
+      184.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "z": 1,
+   "material": "enamel",
+   "shade": {
+    "bump": 0.25,
+    "highlight_amount": 0.15
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      146.0,
+      146.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "zone",
+   "z": 2,
+   "kind": "flat",
+   "material": "zone_red",
+   "clip_to": "face",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      134.0,
+      134.0
+     ],
+     "poly": [
+      [
+       8.0,
+       8.0
+      ],
+      [
+       15.6,
+       8.0
+      ],
+      [
+       15.563,
+       8.745
+      ],
+      [
+       15.454,
+       9.483
+      ],
+      [
+       15.273,
+       10.206
+      ],
+      [
+       15.021,
+       10.908
+      ],
+      [
+       14.703,
+       11.583
+      ],
+      [
+       14.319,
+       12.222
+      ],
+      [
+       13.875,
+       12.821
+      ],
+      [
+       13.374,
+       13.374
+      ]
+     ],
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "scale_line",
+   "z": 2.1,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.75,
+   "clip_to": "face",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      135.0,
+      135.0
+     ],
+     "poly": [
+      [
+       8.0,
+       8.0
+      ],
+      [
+       2.626,
+       13.374
+      ],
+      [
+       2.105,
+       12.796
+      ],
+      [
+       1.645,
+       12.168
+      ],
+      [
+       1.252,
+       11.496
+      ],
+      [
+       0.93,
+       10.788
+      ],
+      [
+       0.682,
+       10.05
+      ],
+      [
+       0.511,
+       9.291
+      ],
+      [
+       0.418,
+       8.519
+      ],
+      [
+       0.404,
+       7.741
+      ],
+      [
+       0.471,
+       6.965
+      ],
+      [
+       0.616,
+       6.201
+      ],
+      [
+       0.839,
+       5.455
+      ],
+      [
+       1.137,
+       4.736
+      ],
+      [
+       1.506,
+       4.051
+      ],
+      [
+       1.944,
+       3.408
+      ],
+      [
+       2.446,
+       2.813
+      ],
+      [
+       3.005,
+       2.272
+      ],
+      [
+       3.617,
+       1.791
+      ],
+      [
+       4.275,
+       1.375
+      ],
+      [
+       4.972,
+       1.029
+      ],
+      [
+       5.701,
+       0.756
+      ],
+      [
+       6.454,
+       0.559
+      ],
+      [
+       7.223,
+       0.44
+      ],
+      [
+       8.0,
+       0.4
+      ],
+      [
+       8.777,
+       0.44
+      ],
+      [
+       9.546,
+       0.559
+      ],
+      [
+       10.299,
+       0.756
+      ],
+      [
+       11.028,
+       1.029
+      ],
+      [
+       11.725,
+       1.375
+      ],
+      [
+       12.383,
+       1.791
+      ],
+      [
+       12.995,
+       2.272
+      ],
+      [
+       13.554,
+       2.813
+      ],
+      [
+       14.056,
+       3.408
+      ],
+      [
+       14.494,
+       4.051
+      ],
+      [
+       14.863,
+       4.736
+      ],
+      [
+       15.161,
+       5.455
+      ],
+      [
+       15.384,
+       6.201
+      ],
+      [
+       15.529,
+       6.965
+      ],
+      [
+       15.596,
+       7.741
+      ],
+      [
+       15.582,
+       8.519
+      ],
+      [
+       15.489,
+       9.291
+      ],
+      [
+       15.318,
+       10.05
+      ],
+      [
+       15.07,
+       10.788
+      ],
+      [
+       14.748,
+       11.496
+      ],
+      [
+       14.355,
+       12.168
+      ],
+      [
+       13.895,
+       12.796
+      ],
+      [
+       13.374,
+       13.374
+      ]
+     ],
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      132.4,
+      132.4
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "ticks_major",
+   "z": 3,
+   "kind": "flat",
+   "material": "dial_mark",
+   "clip_to": "face",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      3.2,
+      12.0
+     ],
+     "repeat": {
+      "ellipse": [
+       96.0,
+       96.0,
+       61.0,
+       61.0
+      ],
+      "count": 9,
+      "arc": [
+       135,
+       405
+      ],
+      "orient": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "ticks_minor",
+   "z": 3,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "clip_to": "face",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      1.5,
+      6.0
+     ],
+     "repeat": {
+      "ellipse": [
+       96.0,
+       96.0,
+       63.5,
+       63.5
+      ],
+      "count": 33,
+      "arc": [
+       135,
+       405
+      ],
+      "orient": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "plaque",
+   "z": 3.2,
+   "material": "bronze",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      134.0
+     ],
+     "size": [
+      34.0,
+      11.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "stains",
+   "z": 4,
+   "kind": "wash",
+   "material": "grime",
+   "blend": "multiply",
+   "opacity": 0.32,
+   "clip_to": "face",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      66.0,
+      122.0
+     ],
+     "size": [
+      18.0,
+      28.0
+     ],
+     "rot": 12
+    },
+    {
+     "icon": "metaballs",
+     "at": [
+      124.0,
+      76.0
+     ],
+     "size": [
+      26.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "sponge",
+     "at": [
+      80.0,
+      64.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "hub_hole",
+   "z": 4.5,
+   "kind": "flat",
+   "material": "dial_mark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glass_glare",
+   "z": 6,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.1,
+   "clip_to": "face",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      87.24,
+      84.32
+     ],
+     "size": [
+      134.32,
+      134.32
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      103.3,
+      106.22
+     ],
+     "size": [
+      148.92,
+      148.92
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "bezel",
+   "z": 7,
+   "kind": "mass",
+   "material": "bronze",
+   "shade": {
+    "bump": 1.25
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      176.0,
+      176.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      144.0,
+      144.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "screws",
+   "z": 8,
+   "material": "steel",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      26.72
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      165.28
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      16.0,
+      96.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws_slot",
+   "z": 8.01,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      136.0,
+      26.72
+     ],
+     "size": [
+      5.6,
+      1.12
+     ],
+     "rot": 35.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      136.0,
+      165.28
+     ],
+     "size": [
+      5.6,
+      1.12
+     ],
+     "rot": 58.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      16.0,
+      96.0
+     ],
+     "size": [
+      5.6,
+      1.12
+     ],
+     "rot": 81.0
+    }
+   ]
+  }
+ ]
+}

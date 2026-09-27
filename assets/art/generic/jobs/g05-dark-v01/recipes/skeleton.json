@@ -1,0 +1,1369 @@
+{
+ "asset": "skeleton",
+ "status": "candidate",
+ "note": "Skeleton soldier, front view. Yellowed bones with dark sockets and faint red eye lights, rib cage, rusty sword and a cracked round shield. attack = sword raised overhead, jaw dropped; hit = skull knocked askew, bones rattled sideways, eye lights gone.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 601,
+ "g05": {
+  "name_ko": "해골 병사",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      362.6
+     ],
+     "size": [
+      150.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1,
+   "material": "bone",
+   "pivot": [
+    144,
+    252
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141.0,
+      279.0
+     ],
+     "size": [
+      11.0,
+      55.4
+     ],
+     "rot": 6.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      329.0
+     ],
+     "size": [
+      11.0,
+      47.3
+     ],
+     "rot": 5.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      144.0,
+      252.0
+     ],
+     "size": [
+      16.5,
+      16.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      138.0,
+      306.0
+     ],
+     "size": [
+      16.5,
+      16.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      134.0,
+      352.0
+     ],
+     "size": [
+      16.5,
+      16.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1.1,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      128.0,
+      358.0
+     ],
+     "size": [
+      30.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1,
+   "material": "bone",
+   "pivot": [
+    176,
+    252
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      179.0,
+      279.0
+     ],
+     "size": [
+      11.0,
+      55.4
+     ],
+     "rot": -6.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.0,
+      329.0
+     ],
+     "size": [
+      11.0,
+      47.3
+     ],
+     "rot": -5.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      252.0
+     ],
+     "size": [
+      16.5,
+      16.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182.0,
+      306.0
+     ],
+     "size": [
+      16.5,
+      16.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      186.0,
+      352.0
+     ],
+     "size": [
+      16.5,
+      16.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1.1,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      358.0
+     ],
+     "size": [
+      30.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pelvis",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 2,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      246.0
+     ],
+     "size": [
+      66.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pelvis_holes",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      144.0,
+      248.0
+     ],
+     "size": [
+      14.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      248.0
+     ],
+     "size": [
+      14.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spine",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 2.2,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      150.0
+     ],
+     "size": [
+      13.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      162.0
+     ],
+     "size": [
+      13.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      174.0
+     ],
+     "size": [
+      13.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      186.0
+     ],
+     "size": [
+      13.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      198.0
+     ],
+     "size": [
+      13.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      210.0
+     ],
+     "size": [
+      13.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      222.0
+     ],
+     "size": [
+      13.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      234.0
+     ],
+     "size": [
+      13.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      246.0
+     ],
+     "size": [
+      13.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ribcage",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      182.0
+     ],
+     "size": [
+      96.0,
+      78.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      150.0
+     ],
+     "size": [
+      84.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rib_gaps",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.1,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      172.0
+     ],
+     "size": [
+      80.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      167.6
+     ],
+     "size": [
+      96.0,
+      8.4
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      187.0
+     ],
+     "size": [
+      74.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      182.6
+     ],
+     "size": [
+      88.8,
+      8.4
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      202.0
+     ],
+     "size": [
+      68.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      197.6
+     ],
+     "size": [
+      81.6,
+      8.4
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      217.0
+     ],
+     "size": [
+      62.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      212.6
+     ],
+     "size": [
+      74.4,
+      8.4
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      186.0
+     ],
+     "size": [
+      10.0,
+      70.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "collar",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.2,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      146.0
+     ],
+     "size": [
+      8.0,
+      90.8
+     ],
+     "rot": -90.0
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4,
+   "material": "bone",
+   "pivot": [
+    114,
+    148
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      109.0,
+      174.0
+     ],
+     "size": [
+      9.0,
+      53.9
+     ],
+     "rot": 10.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      102.0,
+      223.0
+     ],
+     "size": [
+      9.0,
+      47.1
+     ],
+     "rot": 5.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      114.0,
+      148.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      104.0,
+      200.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      100.0,
+      246.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.1,
+   "material": "bone",
+   "pivot": [
+    114,
+    148
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      100.0,
+      252.0
+     ],
+     "size": [
+      8.8,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      102.2,
+      259.7
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": -16.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      98.6,
+      259.9
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": 10.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      95.3,
+      258.5
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": 36.0
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4,
+   "material": "bone",
+   "pivot": [
+    206,
+    148
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      211.0,
+      174.0
+     ],
+     "size": [
+      9.0,
+      53.9
+     ],
+     "rot": -10.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      218.0,
+      223.0
+     ],
+     "size": [
+      9.0,
+      47.1
+     ],
+     "rot": -5.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      148.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      216.0,
+      200.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      220.0,
+      246.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.1,
+   "material": "bone",
+   "pivot": [
+    206,
+    148
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      220.0,
+      252.0
+     ],
+     "size": [
+      8.8,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      224.7,
+      258.5
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": -36.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      221.4,
+      259.9
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": -10.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      217.8,
+      259.7
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": 16.0
+    }
+   ]
+  },
+  {
+   "name": "sword",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 3.95,
+   "material": "armor",
+   "pivot": [
+    206,
+    148
+   ],
+   "pieces": [
+    {
+     "icon": "sword",
+     "at": [
+      230.4,
+      190.9
+     ],
+     "size": [
+      120.0,
+      120.0
+     ],
+     "rot": -35.0
+    }
+   ]
+  },
+  {
+   "name": "shield",
+   "tags": [
+    "all",
+    "arm_l",
+    "shield"
+   ],
+   "z": 4.5,
+   "material": "wood",
+   "pivot": [
+    114,
+    148
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      94.0,
+      232.0
+     ],
+     "size": [
+      78.0,
+      82.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shield_rim",
+   "tags": [
+    "all",
+    "arm_l",
+    "shield"
+   ],
+   "z": 4.55,
+   "material": "iron",
+   "pivot": [
+    114,
+    148
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      94.0,
+      232.0
+     ],
+     "size": [
+      80.0,
+      84.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      94.0,
+      232.0
+     ],
+     "size": [
+      66.0,
+      70.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "shield_crack",
+   "tags": [
+    "all",
+    "arm_l",
+    "shield"
+   ],
+   "z": 4.6,
+   "kind": "flat",
+   "material": "void",
+   "pivot": [
+    114,
+    148
+   ],
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      102.0,
+      226.0
+     ],
+     "size": [
+      14.0,
+      40.0
+     ],
+     "rot": 12.0
+    }
+   ]
+  },
+  {
+   "name": "arm_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 4,
+   "material": "bone",
+   "pivot": [
+    206,
+    148
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      227.0,
+      137.0
+     ],
+     "size": [
+      9.0,
+      48.3
+     ],
+     "rot": -117.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      242.0,
+      112.0
+     ],
+     "size": [
+      9.0,
+      31.4
+     ],
+     "rot": 156.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      148.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      248.0,
+      126.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      236.0,
+      98.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hand_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 4.1,
+   "material": "bone",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      234.0,
+      92.0
+     ],
+     "size": [
+      8.8,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      229.3,
+      85.5
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": 144.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      232.6,
+      84.1
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": 170.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      236.2,
+      84.3
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": -164.0
+    }
+   ]
+  },
+  {
+   "name": "sword_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 3.95,
+   "material": "armor",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "sword",
+     "at": [
+      182.3,
+      77.2
+     ],
+     "size": [
+      110.0,
+      110.0
+     ],
+     "rot": -115.0
+    }
+   ]
+  },
+  {
+   "name": "neck",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      136.0
+     ],
+     "size": [
+      14.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull_back",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5.9,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      96.0
+     ],
+     "size": [
+      50.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "skull",
+     "at": [
+      160.0,
+      98.0
+     ],
+     "size": [
+      76.0,
+      78.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 6.2,
+   "kind": "flat",
+   "material": "glow_red",
+   "emit": 0.8,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "glow_red_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      148.0,
+      94.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      94.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jaw_open",
+   "tags": [
+    "all",
+    "head",
+    "mouth_open"
+   ],
+   "z": 5.8,
+   "material": "bone",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "skull",
+     "at": [
+      160.0,
+      110.0
+     ],
+     "size": [
+      64.0,
+      30.0
+     ],
+     "crop": [
+      3,
+      12.5,
+      13,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jaw_gap",
+   "tags": [
+    "all",
+    "head",
+    "mouth_open"
+   ],
+   "z": 5.7,
+   "kind": "flat",
+   "material": "void",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      124.0
+     ],
+     "size": [
+      44.0,
+      16.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "mouth_open": {
+     "dy": 10
+    },
+    "head": {
+     "rot": -6,
+     "pivot": [
+      160,
+      140
+     ]
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "rot": -2,
+     "dy": 4,
+     "sx": 1.04,
+     "sy": 1.04
+    }
+   },
+   "show": [
+    "atk",
+    "mouth_open"
+   ],
+   "hide": [
+    "arm_r"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "shadow": {
+     "dx": -2
+    },
+    "head": {
+     "rot": 20,
+     "dx": 14,
+     "dy": 6,
+     "pivot": [
+      160,
+      140
+     ]
+    },
+    "arm_l": {
+     "rot": 26,
+     "pivot": [
+      114,
+      148
+     ]
+    },
+    "arm_r": {
+     "rot": -30,
+     "pivot": [
+      206,
+      148
+     ]
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "rot": -6,
+     "dx": -2,
+     "dy": -4,
+     "sx": 0.96,
+     "sy": 0.96
+    }
+   },
+   "hide": [
+    "eyes"
+   ]
+  }
+ ]
+}

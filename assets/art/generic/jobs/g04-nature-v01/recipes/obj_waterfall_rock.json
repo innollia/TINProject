@@ -1,0 +1,627 @@
+{
+ "asset": "obj_waterfall_rock",
+ "status": "candidate",
+ "note": "Small waterfall 1.8 m: mossy rock ledge with a notch, falling water sheet with light streaks, foam and a round pool. Static (no animation).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 423,
+ "pivot_meaning": "front edge centre of the pool on the ground",
+ "layer_hint": "world",
+ "canvas": [
+  466,
+  410
+ ],
+ "pivot": [
+  223,
+  327
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.32,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      233,
+      267
+     ],
+     "size": [
+      330,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ledge_back",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "rock_dark",
+   "shade": {
+    "bump": 1.0
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       2.6,
+       5.6
+      ],
+      [
+       5.6,
+       2.6
+      ],
+      [
+       7.04,
+       4.16
+      ],
+      [
+       8.96,
+       4.16
+      ],
+      [
+       10.4,
+       2.0
+      ],
+      [
+       13.4,
+       5.0
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      223,
+      157
+     ],
+     "size": [
+      320,
+      230
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ledge_moss",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "moss",
+   "clip_to": "ledge_back",
+   "rough": {
+    "amp": 0.5,
+    "soft": 1.2,
+    "cell": 5
+   },
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      123,
+      59
+     ],
+     "size": [
+      90,
+      30
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      333,
+      67
+     ],
+     "size": [
+      80,
+      26
+     ],
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "pool_bed",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "hole",
+   "grad": {
+    "to": "well_inner",
+    "y0": -95,
+    "y1": 15
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      223,
+      287
+     ],
+     "size": [
+      280,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pool",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "water",
+   "clip_to": "pool_bed",
+   "shade": {
+    "bump": 0.25
+   },
+   "line": {
+    "width": 0.8,
+    "heavy": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      223,
+      289
+     ],
+     "size": [
+      272,
+      102
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ripples",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "chrome",
+   "opacity": 0.2,
+   "clip_to": "pool",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      223,
+      277
+     ],
+     "size": [
+      90,
+      30
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      223,
+      277
+     ],
+     "size": [
+      140,
+      48
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      223,
+      277
+     ],
+     "size": [
+      190,
+      66
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      223,
+      277
+     ],
+     "size": [
+      84,
+      26
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      223,
+      277
+     ],
+     "size": [
+      134,
+      44
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      223,
+      277
+     ],
+     "size": [
+      184,
+      62
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "falls",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "water",
+   "shade": {
+    "bump": 0.5,
+    "highlight_amount": 0.7
+   },
+   "texture": {
+    "angle": 90
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3.2,
+       2
+      ],
+      [
+       12.8,
+       2
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       2,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      223,
+      177
+     ],
+     "size": [
+      64,
+      200
+     ]
+    }
+   ]
+  },
+  {
+   "name": "streaks",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "chrome",
+   "opacity": 0.35,
+   "clip_to": "falls",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      205,
+      177
+     ],
+     "size": [
+      3,
+      190
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      217,
+      177
+     ],
+     "size": [
+      3,
+      190
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      231,
+      177
+     ],
+     "size": [
+      3,
+      190
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      243,
+      177
+     ],
+     "size": [
+      3,
+      190
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foam",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "snow",
+   "rough": {
+    "amp": 0.5,
+    "soft": 1.0,
+    "cell": 4
+   },
+   "opacity": 0.9,
+   "line": {
+    "width": 0.8,
+    "heavy": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      199,
+      267
+     ],
+     "size": [
+      60,
+      30
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      247,
+      271
+     ],
+     "size": [
+      56,
+      28
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      223,
+      275
+     ],
+     "size": [
+      70,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rim_stones",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "rock",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       5.0,
+       3.2
+      ],
+      [
+       10.4,
+       2
+      ],
+      [
+       14,
+       6.8
+      ],
+      [
+       12.2,
+       14
+      ],
+      [
+       4.4,
+       13.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      73,
+      317
+     ],
+     "size": [
+      70,
+      48
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       5.0,
+       3.2
+      ],
+      [
+       10.4,
+       2
+      ],
+      [
+       14,
+       6.8
+      ],
+      [
+       12.2,
+       14
+      ],
+      [
+       4.4,
+       13.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      363,
+      311
+     ],
+     "size": [
+      76,
+      50
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       5.0,
+       3.2
+      ],
+      [
+       10.4,
+       2
+      ],
+      [
+       14,
+       6.8
+      ],
+      [
+       12.2,
+       14
+      ],
+      [
+       4.4,
+       13.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      113,
+      353
+     ],
+     "size": [
+      48,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       5.0,
+       3.2
+      ],
+      [
+       10.4,
+       2
+      ],
+      [
+       14,
+       6.8
+      ],
+      [
+       12.2,
+       14
+      ],
+      [
+       4.4,
+       13.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      343,
+      351
+     ],
+     "size": [
+      44,
+      30
+     ]
+    }
+   ]
+  }
+ ]
+}

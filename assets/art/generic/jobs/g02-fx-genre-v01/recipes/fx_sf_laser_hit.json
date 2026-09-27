@@ -1,0 +1,847 @@
+{
+ "asset": "fx_sf_laser_hit",
+ "status": "candidate",
+ "note": "레이저 적중 (SF·우주, tier A). 5-frame effect, 192x192 cells. impact at the centre, beam from the left",
+ "palette": "palette_g02.json",
+ "style": "sprite",
+ "style_override": {
+  "silhouette": {
+   "opacity": 0.0
+  },
+  "cast": {
+   "opacity": 0.0
+  }
+ },
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96,
+  96
+ ],
+ "pivot_meaning": "effect origin",
+ "seed": 503,
+ "forms": [
+  {
+   "name": "beam_f0",
+   "z": 1.0,
+   "tags": [
+    "f0"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      46.0,
+      96.0
+     ],
+     "size": [
+      100,
+      7
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 1.0,
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "neon_glow_c"
+   }
+  },
+  {
+   "name": "beam_core_f0",
+   "z": 1.1,
+   "tags": [
+    "f0"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      46.0,
+      96.0
+     ],
+     "size": [
+      100,
+      2.4
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#e8feff",
+   "emit": 1.0
+  },
+  {
+   "name": "ring_f0",
+   "z": 2.0,
+   "tags": [
+    "f0"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      16,
+      16
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "op": "sub"
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 1.0,
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "neon_glow_c"
+   }
+  },
+  {
+   "name": "flash_f0",
+   "z": 3.0,
+   "tags": [
+    "f0"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "star",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      40,
+      40
+     ],
+     "rot": 0
+    }
+   ],
+   "kind": "flat",
+   "color": "#e8feff",
+   "opacity": 1.0,
+   "emit": 1.0
+  },
+  {
+   "name": "beam_f1",
+   "z": 1.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      46.0,
+      96.0
+     ],
+     "size": [
+      100,
+      5
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 1.0,
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "neon_glow_c"
+   }
+  },
+  {
+   "name": "beam_core_f1",
+   "z": 1.101,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      46.0,
+      96.0
+     ],
+     "size": [
+      100,
+      2.4
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#e8feff",
+   "emit": 1.0
+  },
+  {
+   "name": "ring_f1",
+   "z": 2.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      44,
+      44
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      36,
+      36
+     ],
+     "op": "sub"
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 1.0,
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "neon_glow_c"
+   }
+  },
+  {
+   "name": "flash_f1",
+   "z": 3.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "star",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      32,
+      32
+     ],
+     "rot": 18
+    }
+   ],
+   "kind": "flat",
+   "color": "#e8feff",
+   "opacity": 0.75,
+   "emit": 1.0
+  },
+  {
+   "name": "sparks_f1",
+   "z": 4.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      130.16,
+      107.37
+     ],
+     "size": [
+      3,
+      11
+     ],
+     "rot": 108.41120008059868
+    },
+    {
+     "icon": "square",
+     "at": [
+      110.84,
+      128.8
+     ],
+     "size": [
+      3,
+      11
+     ],
+     "rot": 155.64736760113624
+    },
+    {
+     "icon": "square",
+     "at": [
+      81.72,
+      129.05
+     ],
+     "size": [
+      3,
+      11
+     ],
+     "rot": 203.37477800819255
+    },
+    {
+     "icon": "square",
+     "at": [
+      61.71,
+      106.98
+     ],
+     "size": [
+      3,
+      11
+     ],
+     "rot": 252.24716584856498
+    },
+    {
+     "icon": "square",
+     "at": [
+      65.71,
+      76.54
+     ],
+     "size": [
+      3,
+      11
+     ],
+     "rot": 302.7160287765972
+    },
+    {
+     "icon": "square",
+     "at": [
+      92.83,
+      60.14
+     ],
+     "size": [
+      3,
+      11
+     ],
+     "rot": 354.9508797094551
+    },
+    {
+     "icon": "square",
+     "at": [
+      123.09,
+      72.29
+     ],
+     "size": [
+      3,
+      11
+     ],
+     "rot": 408.8093058303866
+    }
+   ],
+   "kind": "flat",
+   "material": "plasma",
+   "opacity": 0.8,
+   "emit": 1.0
+  },
+  {
+   "name": "ring_f2",
+   "z": 2.002,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      70,
+      70
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      60,
+      60
+     ],
+     "op": "sub"
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 0.8,
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "neon_glow_c"
+   }
+  },
+  {
+   "name": "flash_f2",
+   "z": 3.002,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "star",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      24,
+      24
+     ],
+     "rot": 36
+    }
+   ],
+   "kind": "flat",
+   "color": "#e8feff",
+   "opacity": 0.5,
+   "emit": 1.0
+  },
+  {
+   "name": "sparks_f2",
+   "z": 4.002,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      142.97,
+      118.31
+     ],
+     "size": [
+      3,
+      10
+     ],
+     "rot": 115.41120008059868
+    },
+    {
+     "icon": "square",
+     "at": [
+      111.51,
+      145.63
+     ],
+     "size": [
+      3,
+      10
+     ],
+     "rot": 162.64736760113624
+    },
+    {
+     "icon": "square",
+     "at": [
+      69.71,
+      140.86
+     ],
+     "size": [
+      3,
+      10
+     ],
+     "rot": 210.37477800819255
+    },
+    {
+     "icon": "square",
+     "at": [
+      44.91,
+      105.7
+     ],
+     "size": [
+      3,
+      10
+     ],
+     "rot": 259.2471658485649
+    },
+    {
+     "icon": "square",
+     "at": [
+      56.0,
+      62.77
+     ],
+     "size": [
+      3,
+      10
+     ],
+     "rot": 309.7160287765972
+    },
+    {
+     "icon": "square",
+     "at": [
+      97.77,
+      44.03
+     ],
+     "size": [
+      3,
+      10
+     ],
+     "rot": 361.9508797094551
+    },
+    {
+     "icon": "square",
+     "at": [
+      139.01,
+      66.78
+     ],
+     "size": [
+      3,
+      10
+     ],
+     "rot": 415.8093058303866
+    }
+   ],
+   "kind": "flat",
+   "material": "plasma",
+   "opacity": 0.6,
+   "emit": 1.0
+  },
+  {
+   "name": "ring_f3",
+   "z": 2.003,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      86,
+      86
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      74,
+      74
+     ],
+     "op": "sub"
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 0.5,
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "neon_glow_c"
+   }
+  },
+  {
+   "name": "sparks_f3",
+   "z": 4.003,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      153.41,
+      132.45
+     ],
+     "size": [
+      3,
+      9
+     ],
+     "rot": 122.41120008059868
+    },
+    {
+     "icon": "square",
+     "at": [
+      108.22,
+      162.89
+     ],
+     "size": [
+      3,
+      9
+     ],
+     "rot": 169.64736760113624
+    },
+    {
+     "icon": "square",
+     "at": [
+      54.72,
+      150.04
+     ],
+     "size": [
+      3,
+      9
+     ],
+     "rot": 217.37477800819252
+    },
+    {
+     "icon": "square",
+     "at": [
+      28.15,
+      100.45
+     ],
+     "size": [
+      3,
+      9
+     ],
+     "rot": 266.2471658485649
+    },
+    {
+     "icon": "square",
+     "at": [
+      49.38,
+      46.5
+     ],
+     "size": [
+      3,
+      9
+     ],
+     "rot": 316.7160287765972
+    },
+    {
+     "icon": "square",
+     "at": [
+      106.58,
+      28.83
+     ],
+     "size": [
+      3,
+      9
+     ],
+     "rot": 368.9508797094551
+    },
+    {
+     "icon": "square",
+     "at": [
+      156.49,
+      64.93
+     ],
+     "size": [
+      3,
+      9
+     ],
+     "rot": 422.8093058303866
+    }
+   ],
+   "kind": "flat",
+   "material": "plasma",
+   "opacity": 0.3999999999999999,
+   "emit": 1.0
+  },
+  {
+   "name": "ring_f4",
+   "z": 2.004,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      94,
+      94
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      80,
+      80
+     ],
+     "op": "sub"
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 0.25,
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "neon_glow_c"
+   }
+  },
+  {
+   "name": "sparks_f4",
+   "z": 4.004,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.9,
+      149.33
+     ],
+     "size": [
+      3,
+      8
+     ],
+     "rot": 129.4112000805987
+    },
+    {
+     "icon": "square",
+     "at": [
+      100.91,
+      179.86
+     ],
+     "size": [
+      3,
+      8
+     ],
+     "rot": 176.64736760113624
+    },
+    {
+     "icon": "square",
+     "at": [
+      37.25,
+      156.04
+     ],
+     "size": [
+      3,
+      8
+     ],
+     "rot": 224.37477800819252
+    },
+    {
+     "icon": "square",
+     "at": [
+      12.13,
+      91.24
+     ],
+     "size": [
+      3,
+      8
+     ],
+     "rot": 273.2471658485649
+    },
+    {
+     "icon": "square",
+     "at": [
+      46.29,
+      28.29
+     ],
+     "size": [
+      3,
+      8
+     ],
+     "rot": 323.7160287765972
+    },
+    {
+     "icon": "square",
+     "at": [
+      119.08,
+      15.23
+     ],
+     "size": [
+      3,
+      8
+     ],
+     "rot": 375.9508797094551
+    },
+    {
+     "icon": "square",
+     "at": [
+      174.84,
+      67.01
+     ],
+     "size": [
+      3,
+      8
+     ],
+     "rot": 429.8093058303866
+    }
+   ],
+   "kind": "flat",
+   "material": "plasma",
+   "opacity": 0.19999999999999996,
+   "emit": 1.0
+  }
+ ],
+ "frames": [
+  {
+   "name": "f0",
+   "show": [
+    "f0"
+   ]
+  },
+  {
+   "name": "f1",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "f2",
+   "show": [
+    "f2"
+   ]
+  },
+  {
+   "name": "f3",
+   "show": [
+    "f3"
+   ]
+  },
+  {
+   "name": "f4",
+   "show": [
+    "f4"
+   ]
+  }
+ ]
+}

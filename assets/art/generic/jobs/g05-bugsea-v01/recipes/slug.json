@@ -1,0 +1,687 @@
+{
+ "asset": "slug",
+ "status": "candidate",
+ "note": "Giant slug, front view. Glistening dark violet-brown slug rearing up from a trail of slime, a mottled mantle hump, four eye-stalk tentacles (two long with glowing tips), a wet drooping mouth.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  192,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 934,
+ "g05": {
+  "name_ko": "거대 민달팽이",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      357.6
+     ],
+     "size": [
+      280.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "slime",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 0.8,
+   "material": "slime",
+   "opacity": 0.6,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      350.0
+     ],
+     "size": [
+      280.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foot",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "tentacle",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      330.0
+     ],
+     "size": [
+      220.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "tentacle",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      192.0,
+      240.0
+     ],
+     "size": [
+      150.0,
+      220.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      300.0
+     ],
+     "size": [
+      170.0,
+      100.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mantle",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "membrane",
+   "clip_to": "body",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      220.0
+     ],
+     "size": [
+      120.0,
+      90.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mottles",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "kind": "flat",
+   "material": "robe_black",
+   "clip_to": "body",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      162.0,
+      220.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      212.0,
+      210.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      226.0,
+      250.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      260.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stalk_l",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 1.8,
+   "material": "tentacle",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      171.6,
+      139.1
+     ],
+     "size": [
+      12.0,
+      13.9
+     ],
+     "rot": 158.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      166.5,
+      126.1
+     ],
+     "size": [
+      11.3,
+      23.2
+     ],
+     "rot": 158.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      161.4,
+      113.1
+     ],
+     "size": [
+      10.6,
+      23.2
+     ],
+     "rot": 158.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      156.7,
+      100.8
+     ],
+     "size": [
+      9.9,
+      23.2
+     ],
+     "rot": 159.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      152.4,
+      89.4
+     ],
+     "size": [
+      9.1,
+      23.2
+     ],
+     "rot": 159.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      148.5,
+      78.8
+     ],
+     "size": [
+      8.4,
+      23.2
+     ],
+     "rot": 160.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      145.1,
+      69.0
+     ],
+     "size": [
+      7.7,
+      23.2
+     ],
+     "rot": 160.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      143.1,
+      63.3
+     ],
+     "size": [
+      7.0,
+      13.9
+     ],
+     "rot": 161.6
+    }
+   ]
+  },
+  {
+   "name": "tip_l",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 1.9,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.7,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      56.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "feeler_l",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.3,
+   "material": "tentacle",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      162.0,
+      170.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ],
+     "rot": 116.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      154.4,
+      166.8
+     ],
+     "size": [
+      7.2,
+      12.2
+     ],
+     "rot": 108.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      147.6,
+      165.2
+     ],
+     "size": [
+      6.4,
+      12.2
+     ],
+     "rot": 97.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      141.6,
+      165.2
+     ],
+     "size": [
+      5.6,
+      12.2
+     ],
+     "rot": 81.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.4,
+      166.8
+     ],
+     "size": [
+      4.8,
+      12.2
+     ],
+     "rot": 63.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      133.2,
+      168.8
+     ],
+     "size": [
+      4.0,
+      7.3
+     ],
+     "rot": 45.0
+    }
+   ]
+  },
+  {
+   "name": "stalk_r",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 1.8,
+   "material": "tentacle",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      212.4,
+      139.1
+     ],
+     "size": [
+      12.0,
+      13.9
+     ],
+     "rot": -158.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      217.5,
+      126.1
+     ],
+     "size": [
+      11.3,
+      23.2
+     ],
+     "rot": -158.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      222.6,
+      113.1
+     ],
+     "size": [
+      10.6,
+      23.2
+     ],
+     "rot": -158.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      227.3,
+      100.8
+     ],
+     "size": [
+      9.9,
+      23.2
+     ],
+     "rot": -159.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      231.6,
+      89.4
+     ],
+     "size": [
+      9.1,
+      23.2
+     ],
+     "rot": -159.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      235.5,
+      78.8
+     ],
+     "size": [
+      8.4,
+      23.2
+     ],
+     "rot": -160.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      238.9,
+      69.0
+     ],
+     "size": [
+      7.7,
+      23.2
+     ],
+     "rot": -160.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      240.9,
+      63.3
+     ],
+     "size": [
+      7.0,
+      13.9
+     ],
+     "rot": -161.6
+    }
+   ]
+  },
+  {
+   "name": "tip_r",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 1.9,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.7,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      242.0,
+      56.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "feeler_r",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.3,
+   "material": "tentacle",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      222.0,
+      170.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ],
+     "rot": -116.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      229.6,
+      166.8
+     ],
+     "size": [
+      7.2,
+      12.2
+     ],
+     "rot": -108.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      236.4,
+      165.2
+     ],
+     "size": [
+      6.4,
+      12.2
+     ],
+     "rot": -97.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      242.4,
+      165.2
+     ],
+     "size": [
+      5.6,
+      12.2
+     ],
+     "rot": -81.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      247.6,
+      166.8
+     ],
+     "size": [
+      4.8,
+      12.2
+     ],
+     "rot": -63.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      250.8,
+      168.8
+     ],
+     "size": [
+      4.0,
+      7.3
+     ],
+     "rot": -45.0
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.4,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      190.0
+     ],
+     "size": [
+      50.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      195.9
+     ],
+     "size": [
+      60.0,
+      14.7
+     ],
+     "op": "sub"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

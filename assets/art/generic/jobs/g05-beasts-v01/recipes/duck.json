@@ -1,0 +1,385 @@
+{
+ "asset": "duck",
+ "status": "candidate",
+ "note": "Mallard duck, front view. Dark bottle-green head, a pale neck ring, chestnut breast, grey-brown body, a broad dull-yellow bill, orange webbed feet.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 840,
+ "g05": {
+  "name_ko": "오리",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      363.6
+     ],
+     "size": [
+      140.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "ember",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      143.0,
+      331.0
+     ],
+     "size": [
+      8.0,
+      28.9
+     ],
+     "rot": 4.4
+    },
+    {
+     "icon": "fan",
+     "at": [
+      140.0,
+      354.0
+     ],
+     "size": [
+      30.0,
+      18.0
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "ember",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      177.0,
+      331.0
+     ],
+     "size": [
+      8.0,
+      28.9
+     ],
+     "rot": -4.4
+    },
+    {
+     "icon": "fan",
+     "at": [
+      180.0,
+      354.0
+     ],
+     "size": [
+      30.0,
+      18.0
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      280.0
+     ],
+     "size": [
+      150.0,
+      120.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "breast",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "fur_brown",
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      260.0
+     ],
+     "size": [
+      100.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wing_l",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.3,
+   "material": "fur_grey",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      100.0,
+      284.0
+     ],
+     "size": [
+      44.0,
+      100.0
+     ],
+     "rot": 10.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "wing_r",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.3,
+   "material": "fur_grey",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      220.0,
+      284.0
+     ],
+     "size": [
+      44.0,
+      100.0
+     ],
+     "rot": -10.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "neck",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.5,
+   "material": "scale_teal",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      213.0
+     ],
+     "size": [
+      36.0,
+      46.6
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "ring",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.55,
+   "material": "feather_pale",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      228.0
+     ],
+     "size": [
+      40.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "scale_teal",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      178.0
+     ],
+     "size": [
+      70.0,
+      62.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bill",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      206.0
+     ],
+     "size": [
+      40.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      198.0
+     ],
+     "size": [
+      30.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.25,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      172.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      172.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.35,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.2,
+      170.2
+     ],
+     "size": [
+      2.4,
+      2.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.2,
+      170.2
+     ],
+     "size": [
+      2.4,
+      2.1
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

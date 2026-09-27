@@ -1,0 +1,412 @@
+{
+ "asset": "obj_cannon",
+ "status": "candidate",
+ "note": "Naval cannon (pirate / sea) facing east on a wooden truck carriage with small wheels, iron barrel with reinforcing rings, three-ball pile.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 716,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  466,
+  278
+ ],
+ "pivot": [
+  213,
+  200
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 20
+     },
+     "at": [
+      233,
+      160
+     ],
+     "size": [
+      330,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "name": "balls_back",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      63,
+      180
+     ],
+     "size": [
+      30,
+      28
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      89,
+      178
+     ],
+     "size": [
+      30,
+      28
+     ]
+    }
+   ]
+  },
+  {
+   "name": "carriage",
+   "z": 3.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 44,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      193,
+      86.0
+     ],
+     "size": [
+      200,
+      96
+     ]
+    }
+   ]
+  },
+  {
+   "name": "truck0",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      113,
+      182
+     ],
+     "size": [
+      44,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "name": "axle0",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      113,
+      182
+     ],
+     "size": [
+      12,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "name": "truck1",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      273,
+      182
+     ],
+     "size": [
+      44,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "name": "axle1",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      273,
+      182
+     ],
+     "size": [
+      12,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "name": "barrel",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "iron",
+   "shade": {
+    "bump": 1.1
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       4.4
+      ],
+      [
+       2.72,
+       2.6
+      ],
+      [
+       4.4,
+       2.0
+      ],
+      [
+       14,
+       4.16
+      ],
+      [
+       14,
+       11.84
+      ],
+      [
+       4.4,
+       14.0
+      ],
+      [
+       2.72,
+       13.4
+      ],
+      [
+       2,
+       11.6
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      253,
+      100
+     ],
+     "size": [
+      300,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rings",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "clip_to": "barrel",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      153,
+      100
+     ],
+     "size": [
+      10,
+      58.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      233,
+      100
+     ],
+     "size": [
+      10,
+      54.8
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      323,
+      100
+     ],
+     "size": [
+      10,
+      51.2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      395,
+      100
+     ],
+     "size": [
+      14,
+      54
+     ]
+    }
+   ]
+  },
+  {
+   "name": "muzzle",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      399,
+      100
+     ],
+     "size": [
+      20,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bore",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "hole",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      403,
+      100
+     ],
+     "size": [
+      8,
+      26
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cascabel",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      99,
+      100
+     ],
+     "size": [
+      22,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "balls_front",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      75,
+      192
+     ],
+     "size": [
+      30,
+      28
+     ]
+    }
+   ]
+  }
+ ]
+}

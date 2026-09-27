@@ -1,0 +1,235 @@
+{
+ "asset": "ui_pa_panel",
+ "status": "candidate",
+ "note": "녹슨 철판 창틀 (포스트아포칼립스, tier C). 9-slice window frame, margins 48 px, no text.",
+ "palette": "palette_g02.json",
+ "style": "prop",
+ "style_override": {
+  "cast": {
+   "opacity": 0.0
+  }
+ },
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  0,
+  0
+ ],
+ "pivot_meaning": "top-left; 9-slice margins in <id>_9slice.json",
+ "seed": 408,
+ "forms": [
+  {
+   "name": "fill",
+   "z": 0,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      170,
+      170
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#17161a",
+   "opacity": 0.9
+  },
+  {
+   "name": "plate",
+   "z": 1,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      186,
+      186
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      164,
+      164
+     ],
+     "op": "sub"
+    }
+   ],
+   "material": "iron",
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "sponge"
+    ],
+    "size": 14,
+    "density": 0.35,
+    "strength": 0.4,
+    "color": "rust"
+   }
+  },
+  {
+   "name": "weld",
+   "z": 2,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      162,
+      162
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      159,
+      159
+     ],
+     "op": "sub"
+    }
+   ],
+   "material": "rust",
+   "kind": "flat",
+   "opacity": 0.7
+  },
+  {
+   "name": "bolts",
+   "z": 3,
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      12.0,
+      12.0
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "flip": null
+    },
+    {
+     "icon": "hexagon",
+     "at": [
+      180.0,
+      12.0
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "hexagon",
+     "at": [
+      12.0,
+      180.0
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "hexagon",
+     "at": [
+      180.0,
+      180.0
+     ],
+     "size": [
+      10,
+      10
+     ],
+     "flip": "xy"
+    }
+   ],
+   "material": "steel"
+  },
+  {
+   "name": "tape",
+   "z": 2.5,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      170.0,
+      22.0
+     ],
+     "size": [
+      36,
+      11
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      22.0,
+      170.0
+     ],
+     "size": [
+      36,
+      11
+     ],
+     "rot": 45
+    }
+   ],
+   "material": "neon_amber",
+   "opacity": 0.9
+  },
+  {
+   "name": "tape_stripes",
+   "z": 2.6,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      170.0,
+      22.0
+     ],
+     "size": [
+      5,
+      12
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      22.0,
+      170.0
+     ],
+     "size": [
+      5,
+      12
+     ],
+     "rot": 45
+    }
+   ],
+   "material": "cloth_black",
+   "kind": "flat"
+  }
+ ]
+}

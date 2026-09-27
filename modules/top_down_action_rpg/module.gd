@@ -87,6 +87,7 @@ var _actor_definitions: Dictionary = {}
 var _pending_state: Dictionary = {}
 var _held: Dictionary = {}
 var _rail_focus: int = 0
+var _rail_stage: String = ""
 var _aftermath: bool = false
 var _dirty: bool = true
 var _settled_mode: String = ""
@@ -271,10 +272,8 @@ func _on_screen_intent(kind: StringName, payload: Dictionary) -> void:
 			_conversation.cancel()
 		&"document_advance":
 			_conversation.advance_document()
-		INTENT_COMBAT_CATEGORY_FOCUS:
-			_move_rail_focus(int(payload.get("step", 0)), _rail_category_rows())
-		INTENT_COMBAT_ACTION_FOCUS:
-			_move_rail_focus(int(payload.get("step", 0)), _rail_action_rows())
+		INTENT_COMBAT_CATEGORY_FOCUS, INTENT_COMBAT_ACTION_FOCUS:
+			_move_rail_focus(int(payload.get("step", 0)))
 		INTENT_COMBAT_TARGET_FOCUS:
 			_combat_controller.move_target_focus(int(payload.get("step", 0)))
 		&"combat_category":
@@ -294,25 +293,26 @@ func _on_screen_intent(kind: StringName, payload: Dictionary) -> void:
 	_settle()
 
 
-func _move_rail_focus(step: int, rows: int) -> void:
-	_rail_focus = posmod(_rail_focus + step, maxi(1, rows))
+func _move_rail_focus(step: int) -> void:
+	var rows: int = _screen.rail_row_count() if _screen != null else 0
+	_rail_focus = clampi(_rail_focus + step, 0, maxi(0, rows - 1))
 	if _screen != null:
 		_screen.set_rail_focus(_rail_focus)
 
 
-func _rail_category_rows() -> int:
-	return TopDownActionRpgScreen.CATEGORY_ROW_TOKENS.size() + 1
-
-
-func _rail_action_rows() -> int:
-	if _combat_controller == null or _catalog == null:
-		return 0
-	var category: String = String(_combat_controller.current_category)
-	var count: int = 0
-	for entry: Dictionary in _combat_controller.available_commands(_combat_controller.current_actor_id):
-		if String(_catalog.record(String(entry.get("id", ""))).get("category", "")) == category:
-			count += 1
-	return count
+func _sync_rail_stage() -> void:
+	var stage: String = ""
+	if _combat != null and _combat_controller != null:
+		var submode: String = String(_combat.submode)
+		if submode == "command_category":
+			stage = "categories:" + String(_combat_controller.current_actor_id)
+		elif submode in ["command_action", "target_select"]:
+			stage = "actions:%s:%s" % [String(_combat_controller.current_actor_id), String(_combat_controller.current_category)]
+	if stage != _rail_stage:
+		_rail_stage = stage
+		_rail_focus = 0
+	if _screen != null:
+		_screen.set_rail_focus(_rail_focus)
 
 
 func _interact(interactable_id: String) -> void:
@@ -379,6 +379,7 @@ func _cancel_command() -> void:
 		return
 	if not _combat_controller.cancel_target_select():
 		_combat_controller.set_pending_action(&"")
+		_combat_controller.leave_category()
 
 
 func _offer_reaction() -> void:
@@ -620,6 +621,7 @@ func _settle() -> void:
 	_resolve_mode()
 	_screen.set_aftermath_active(_aftermath)
 	_inject_timing_projection()
+	_sync_rail_stage()
 	_screen.refresh()
 	_settled_mode = _game_state.mode
 	_dirty = false

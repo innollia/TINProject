@@ -1,0 +1,964 @@
+{
+ "asset": "harpy",
+ "status": "candidate",
+ "note": "Harpy, front view. Hovering bird-woman monster: brown feathered wings for arms, fully feathered body, grey face with yellow eyes and a wild dark mane, scaly bird legs with hooked talons. attack = wings flung up and talons thrust forward, screeching; hit = wings crumpled, knocked sideways.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  192,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 507,
+ "g05": {
+  "name_ko": "하피",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.34,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      359.4
+     ],
+     "size": [
+      150.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wing_l",
+   "tags": [
+    "all",
+    "wing_l",
+    "wings"
+   ],
+   "z": 1,
+   "material": "feather_brown",
+   "pivot": [
+    162,
+    174
+   ],
+   "pieces": [
+    {
+     "icon": "wing",
+     "at": [
+      119.9,
+      143.2
+     ],
+     "size": [
+      184.0,
+      158.0
+     ],
+     "rot": 8.0,
+     "fit": "box",
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "wing_l_tips",
+   "tags": [
+    "all",
+    "wing_l",
+    "wings"
+   ],
+   "z": 1.1,
+   "material": "feather_black",
+   "pivot": [
+    162,
+    174
+   ],
+   "clip_to": "wing_l",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "wing",
+     "at": [
+      119.9,
+      143.2
+     ],
+     "size": [
+      184.0,
+      158.0
+     ],
+     "rot": 8.0,
+     "fit": "box",
+     "crop": [
+      8.8,
+      0,
+      16,
+      16
+     ],
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "wing_r",
+   "tags": [
+    "all",
+    "wing_r",
+    "wings"
+   ],
+   "z": 1,
+   "material": "feather_brown",
+   "pivot": [
+    222,
+    174
+   ],
+   "pieces": [
+    {
+     "icon": "wing",
+     "at": [
+      264.1,
+      143.2
+     ],
+     "size": [
+      184.0,
+      158.0
+     ],
+     "rot": -8.0,
+     "fit": "box"
+    }
+   ]
+  },
+  {
+   "name": "wing_r_tips",
+   "tags": [
+    "all",
+    "wing_r",
+    "wings"
+   ],
+   "z": 1.1,
+   "material": "feather_black",
+   "pivot": [
+    222,
+    174
+   ],
+   "clip_to": "wing_r",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "wing",
+     "at": [
+      264.1,
+      143.2
+     ],
+     "size": [
+      184.0,
+      158.0
+     ],
+     "rot": -8.0,
+     "fit": "box",
+     "crop": [
+      8.8,
+      0,
+      16,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "thigh_l",
+   "tags": [
+    "all",
+    "leg_l",
+    "legs"
+   ],
+   "z": 2,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      240.0
+     ],
+     "size": [
+      40.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shin_l",
+   "tags": [
+    "all",
+    "leg_l",
+    "legs"
+   ],
+   "z": 1.8,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      163.0,
+      281.0
+     ],
+     "size": [
+      12.0,
+      55.2
+     ],
+     "rot": 11.3
+    }
+   ]
+  },
+  {
+   "name": "talon_l",
+   "tags": [
+    "all",
+    "leg_l",
+    "legs"
+   ],
+   "z": 1.9,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      167.0,
+      320.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ],
+     "rot": -90.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      158.0,
+      320.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ],
+     "rot": -65.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      149.0,
+      320.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ],
+     "rot": -40.0
+    }
+   ]
+  },
+  {
+   "name": "thigh_r",
+   "tags": [
+    "all",
+    "leg_r",
+    "legs"
+   ],
+   "z": 2,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      212.0,
+      240.0
+     ],
+     "size": [
+      40.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shin_r",
+   "tags": [
+    "all",
+    "leg_r",
+    "legs"
+   ],
+   "z": 1.8,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      221.0,
+      281.0
+     ],
+     "size": [
+      12.0,
+      55.2
+     ],
+     "rot": -11.3
+    }
+   ]
+  },
+  {
+   "name": "talon_r",
+   "tags": [
+    "all",
+    "leg_r",
+    "legs"
+   ],
+   "z": 1.9,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      217.0,
+      320.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ],
+     "rot": -50.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      226.0,
+      320.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ],
+     "rot": -25.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      235.0,
+      320.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      80.0,
+      98.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      228.0
+     ],
+     "size": [
+      72.0,
+      64.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "breast",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3.2,
+   "material": "feather_pale",
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      192.0,
+      210.0
+     ],
+     "size": [
+      46.0,
+      76.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "mane",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4,
+   "material": "hair",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      114.0
+     ],
+     "size": [
+      88.0,
+      70.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      154.0,
+      148.0
+     ],
+     "size": [
+      26.0,
+      56.0
+     ],
+     "rot": 16.0,
+     "flip": "y"
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      230.0,
+      148.0
+     ],
+     "size": [
+      26.0,
+      56.0
+     ],
+     "rot": -16.0,
+     "flip": "y"
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      192.0,
+      154.0
+     ],
+     "size": [
+      40.0,
+      50.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "neck",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.2,
+   "material": "pale",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      154.0
+     ],
+     "size": [
+      26.0,
+      28.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5,
+   "material": "pale",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      118.0
+     ],
+     "size": [
+      52.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "crest",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5.5,
+   "material": "feather_black",
+   "pieces": [
+    {
+     "icon": "feather",
+     "at": [
+      176.0,
+      84.0
+     ],
+     "size": [
+      18.0,
+      34.0
+     ],
+     "rot": -30.0
+    },
+    {
+     "icon": "feather",
+     "at": [
+      196.0,
+      78.0
+     ],
+     "size": [
+      18.0,
+      38.0
+     ],
+     "rot": 5.0
+    },
+    {
+     "icon": "feather",
+     "at": [
+      214.0,
+      86.0
+     ],
+     "size": [
+      16.0,
+      30.0
+     ],
+     "rot": 35.0
+    }
+   ]
+  },
+  {
+   "name": "fringe",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5.6,
+   "material": "hair",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      180.0,
+      96.0
+     ],
+     "size": [
+      22.0,
+      26.0
+     ],
+     "rot": 24.0,
+     "flip": "y"
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      204.0,
+      96.0
+     ],
+     "size": [
+      22.0,
+      26.0
+     ],
+     "rot": -24.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 6,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.5,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.3,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      118.0
+     ],
+     "size": [
+      13.0,
+      9.0
+     ],
+     "rot": 14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      204.0,
+      118.0
+     ],
+     "size": [
+      13.0,
+      9.0
+     ],
+     "rot": -14.0
+    }
+   ]
+  },
+  {
+   "name": "pupils",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 6.1,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      118.0
+     ],
+     "size": [
+      4.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      204.0,
+      118.0
+     ],
+     "size": [
+      4.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      109.0
+     ],
+     "size": [
+      3.5,
+      15.2
+     ],
+     "rot": -72.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      204.0,
+      109.0
+     ],
+     "size": [
+      3.5,
+      15.2
+     ],
+     "rot": 72.0,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "eyes_hit",
+   "tags": [
+    "all",
+    "eyes_hit",
+    "head"
+   ],
+   "z": 6.1,
+   "kind": "flat",
+   "material": "eye",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      179.0,
+      116.2
+     ],
+     "size": [
+      3.5,
+      10.0
+     ],
+     "rot": -66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      179.0,
+      119.8
+     ],
+     "size": [
+      3.5,
+      10.0
+     ],
+     "rot": 66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205.0,
+      116.2
+     ],
+     "size": [
+      3.5,
+      10.0
+     ],
+     "rot": 66.4,
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205.0,
+      119.8
+     ],
+     "size": [
+      3.5,
+      10.0
+     ],
+     "rot": -66.4,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head",
+    "mouth"
+   ],
+   "z": 6.1,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      136.0
+     ],
+     "size": [
+      16.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      138.5
+     ],
+     "size": [
+      19.2,
+      6.3
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "mouth_open",
+   "tags": [
+    "all",
+    "head",
+    "mouth_open"
+   ],
+   "z": 6.1,
+   "kind": "flat",
+   "material": "mouth",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      138.0
+     ],
+     "size": [
+      16.0,
+      14.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "shadow": {
+     "sx": 0.85,
+     "sy": 0.85,
+     "pivot": [
+      192,
+      364
+     ]
+    },
+    "wing_l": {
+     "rot": 22,
+     "pivot": [
+      162,
+      174
+     ]
+    },
+    "wing_r": {
+     "rot": -22,
+     "pivot": [
+      222,
+      174
+     ]
+    },
+    "legs": {
+     "dy": -26,
+     "sy": 0.9,
+     "pivot": [
+      192,
+      240
+     ]
+    },
+    "all": {
+     "pivot": [
+      192,
+      366
+     ],
+     "dy": -6,
+     "sx": 1.05,
+     "sy": 1.05
+    }
+   },
+   "show": [
+    "mouth_open"
+   ],
+   "hide": [
+    "mouth"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "shadow": {
+     "dx": 4
+    },
+    "wing_l": {
+     "rot": -14,
+     "pivot": [
+      162,
+      174
+     ]
+    },
+    "wing_r": {
+     "rot": 26,
+     "pivot": [
+      222,
+      174
+     ]
+    },
+    "head": {
+     "rot": -12,
+     "pivot": [
+      192,
+      154
+     ]
+    },
+    "all": {
+     "pivot": [
+      192,
+      366
+     ],
+     "rot": -4,
+     "dy": 8,
+     "sx": 0.94,
+     "sy": 0.94
+    }
+   },
+   "show": [
+    "eyes_hit",
+    "mouth_open"
+   ],
+   "hide": [
+    "eyes",
+    "mouth"
+   ]
+  }
+ ]
+}

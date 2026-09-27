@@ -1,0 +1,402 @@
+{
+ "asset": "obj_phone_booth",
+ "status": "candidate",
+ "note": "Public phone booth 2.4 m (modern / city): red painted frame, grid of small glass panes, domed roof with a blank light strip, phone box inside. Frames: off, on (strip and interior light, emit).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 921,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  254,
+  432
+ ],
+ "pivot": [
+  119,
+  360
+ ],
+ "footprint": [
+  65,
+  268,
+  173,
+  360
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "at": [
+      127,
+      320
+     ],
+     "size": [
+      130,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 2.0,
+   "kind": "block",
+   "material": "paint_red",
+   "extrude": 230,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      119,
+      84.0
+     ],
+     "size": [
+      108,
+      92
+     ]
+    }
+   ]
+  },
+  {
+   "name": "inside",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "glass_dark",
+   "tags": [
+    "off"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      119,
+      251.0
+     ],
+     "size": [
+      84,
+      190
+     ]
+    }
+   ]
+  },
+  {
+   "name": "inside_lit",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "window_lit",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.6,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.4,
+    "color": "window_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      119,
+      251.0
+     ],
+     "size": [
+      84,
+      190
+     ]
+    }
+   ]
+  },
+  {
+   "name": "phone",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "soot",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      101,
+      225.0
+     ],
+     "size": [
+      26,
+      34
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      101,
+      205.0
+     ],
+     "size": [
+      30,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glazing",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "paint_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      119,
+      251.0
+     ],
+     "size": [
+      3,
+      190
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      119,
+      179.0
+     ],
+     "size": [
+      84,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      119,
+      215.0
+     ],
+     "size": [
+      84,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      119,
+      251.0
+     ],
+     "size": [
+      84,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      119,
+      287.0
+     ],
+     "size": [
+      84,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      119,
+      323.0
+     ],
+     "size": [
+      84,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "roof",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "paint_red",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      119,
+      80.0
+     ],
+     "size": [
+      116,
+      60
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      119,
+      124.0
+     ],
+     "size": [
+      112,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "strip_off",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "signal_off",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      119,
+      142.0
+     ],
+     "size": [
+      80,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "strip_on",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "paper",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 1.0,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.5,
+    "color": "lamp_glow"
+   },
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      119,
+      142.0
+     ],
+     "size": [
+      80,
+      14
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off"
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#ffc987",
+    "radius": 240,
+    "at": [
+     119,
+     245.0
+    ]
+   }
+  }
+ ]
+}

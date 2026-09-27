@@ -1,0 +1,330 @@
+{
+ "asset": "penguin",
+ "status": "candidate",
+ "note": "Penguin, front view, standing. Black-backed penguin with a white belly, a dull-gold neck patch, stubby flipper wings, a sharp beak, dark eyes and orange-grey feet.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 847,
+ "g05": {
+  "name_ko": "펭귄",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      363.6
+     ],
+     "size": [
+      130.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "feet",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "ember",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      138.0,
+      356.0
+     ],
+     "size": [
+      34.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182.0,
+      356.0
+     ],
+     "size": [
+      34.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      250.0
+     ],
+     "size": [
+      130.0,
+      220.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      300.0
+     ],
+     "size": [
+      130.0,
+      110.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "belly",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "eye_white",
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      266.0
+     ],
+     "size": [
+      90.0,
+      180.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      300.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck_patch",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.15,
+   "material": "gold",
+   "clip_to": "body",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      130.0,
+      196.0
+     ],
+     "size": [
+      24.0,
+      30.0
+     ],
+     "rot": 20.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      190.0,
+      196.0
+     ],
+     "size": [
+      24.0,
+      30.0
+     ],
+     "rot": -20.0
+    }
+   ]
+  },
+  {
+   "name": "flipper_l",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.3,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      94.0,
+      262.0
+     ],
+     "size": [
+      26.0,
+      100.0
+     ],
+     "rot": 18.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "flipper_r",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.3,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      226.0,
+      262.0
+     ],
+     "size": [
+      26.0,
+      100.0
+     ],
+     "rot": -18.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.4,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      144.0,
+      176.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      176.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.5,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      174.0
+     ],
+     "size": [
+      2.7,
+      2.3
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      174.0,
+      174.0
+     ],
+     "size": [
+      2.7,
+      2.3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "beak",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.5,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      196.0
+     ],
+     "size": [
+      16.0,
+      30.0
+     ],
+     "flip": "y"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

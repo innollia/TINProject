@@ -1,0 +1,105 @@
+{
+ "status": "candidate",
+ "note": "Stage 02 layout. items = objects drawn by compose_preview.py; characters = placements for the game only (never composited in review images); exits = transition hotspot polygons (background px).",
+ "background": "output/bg_s02_foyer/bg_s02_foyer.png",
+ "scale": 0.5,
+ "items": [
+  {
+   "asset": "obj_s02_umbrella_stand",
+   "at": [
+    780.0,
+    835.0
+   ],
+   "id": "umbrellas"
+  },
+  {
+   "asset": "obj_s02_coat_rack",
+   "at": [
+    292.5,
+    1091.2
+   ],
+   "id": "coats"
+  },
+  {
+   "asset": "obj_s02_shoe_row",
+   "at": [
+    730.0,
+    1060.0
+   ],
+   "id": "shoes",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s02_bench_foyer",
+   "at": [
+    1437.5,
+    843.8
+   ],
+   "id": "bench"
+  },
+  {
+   "asset": "obj_s02_yona_bag",
+   "at": [
+    1512.5,
+    734.0
+   ],
+   "id": "yona_bag",
+   "interactive": true,
+   "sort_y": 844.75
+  },
+  {
+   "asset": "obj_s02_photo_table",
+   "at": [
+    1787.5,
+    993.8
+   ],
+   "id": "photos",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s02_wreath",
+   "at": [
+    2192.5,
+    1291.2
+   ],
+   "id": "wreath"
+  },
+  {
+   "asset": "obj_s02_lectern_book",
+   "at": [
+    1555.0,
+    1172.5
+   ],
+   "id": "attendance",
+   "interactive": true
+  }
+ ],
+ "characters": [],
+ "exits": {
+  "trans_foyer_to_dining": [
+   [
+    2030.0,
+    217.0
+   ],
+   [
+    2330.0,
+    367.0
+   ],
+   [
+    2330.0,
+    1135.0
+   ],
+   [
+    2030.0,
+    985.0
+   ]
+  ]
+ },
+ "hotspots": {
+  "hotspot_foyer_attendance": "obj_s02_lectern_book -> cu_s02_attendance",
+  "hotspot_foyer_photos": "obj_s02_photo_table -> cu_s02_photo_young / _wedding / _family",
+  "hotspot_foyer_yona_bag": "obj_s02_yona_bag -> cu_s02_yona_bag_open, cu_s02_funeral_card, cu_s02_preservation_cover",
+  "hotspot_foyer_shoes": "obj_s02_shoe_row -> cu_s02_shoe_soles"
+ },
+ "out": "preview/scene_s02_foyer_bg_objects_1280x720.png"
+}

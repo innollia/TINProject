@@ -1,0 +1,670 @@
+{
+ "asset": "crow",
+ "status": "candidate",
+ "note": "Crow, 3/4 front view facing the lower left. Big black-violet crow standing on thin legs, sheen on the feathers, heavy dark beak, bright bead eye, fanned tail. attack = wings flung open, beak gaping and lunging to peck; hit = feathers ruffled, knocked back, eye shut.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  164,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 807,
+ "g05": {
+  "name_ko": "까마귀",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      362.0
+     ],
+     "size": [
+      150.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "tail"
+   ],
+   "z": 1,
+   "material": "feather_black",
+   "pieces": [
+    {
+     "icon": "feather",
+     "at": [
+      232.0,
+      300.0
+     ],
+     "size": [
+      50.0,
+      90.0
+     ],
+     "rot": 150.0
+    },
+    {
+     "icon": "feather",
+     "at": [
+      250.0,
+      290.0
+     ],
+     "size": [
+      44.0,
+      84.0
+     ],
+     "rot": 130.0
+    },
+    {
+     "icon": "feather",
+     "at": [
+      216.0,
+      306.0
+     ],
+     "size": [
+      44.0,
+      80.0
+     ],
+     "rot": 170.0
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.5,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      148.0,
+      325.0
+     ],
+     "size": [
+      6.0,
+      52.3
+     ],
+     "rot": 4.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      355.0
+     ],
+     "size": [
+      4.0,
+      16.0
+     ],
+     "rot": 50.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      146.0,
+      355.0
+     ],
+     "size": [
+      4.0,
+      10.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      151.0,
+      355.0
+     ],
+     "size": [
+      4.0,
+      14.5
+     ],
+     "rot": -45.0
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.5,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      184.0,
+      325.0
+     ],
+     "size": [
+      6.0,
+      52.3
+     ],
+     "rot": 4.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      355.0
+     ],
+     "size": [
+      4.0,
+      16.0
+     ],
+     "rot": 50.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182.0,
+      355.0
+     ],
+     "size": [
+      4.0,
+      10.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      187.0,
+      355.0
+     ],
+     "size": [
+      4.0,
+      14.5
+     ],
+     "rot": -45.0
+    }
+   ]
+  },
+  {
+   "name": "wing_l_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 1.2,
+   "material": "feather_black",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "wing",
+     "at": [
+      119.0,
+      179.6
+     ],
+     "size": [
+      150.0,
+      128.0
+     ],
+     "rot": 26.0,
+     "fit": "box",
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "wing_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 1.2,
+   "material": "feather_black",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "wing",
+     "at": [
+      209.0,
+      179.6
+     ],
+     "size": [
+      150.0,
+      128.0
+     ],
+     "rot": -26.0,
+     "fit": "box"
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "feather_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      260.0
+     ],
+     "size": [
+      110.0,
+      118.0
+     ],
+     "rot": -10.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      196.0,
+      292.0
+     ],
+     "size": [
+      60.0,
+      80.0
+     ],
+     "rot": 150.0
+    }
+   ]
+  },
+  {
+   "name": "wing_fold",
+   "tags": [
+    "all",
+    "wing"
+   ],
+   "z": 2.5,
+   "material": "feather_black",
+   "pieces": [
+    {
+     "icon": "wing",
+     "at": [
+      206.0,
+      258.0
+     ],
+     "size": [
+      96.0,
+      80.0
+     ],
+     "rot": 70.0,
+     "fit": "box"
+    }
+   ]
+  },
+  {
+   "name": "sheen",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.6,
+   "material": "crystal",
+   "clip_to": "body",
+   "line": false,
+   "opacity": 0.25,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      150.0,
+      236.0
+     ],
+     "size": [
+      50.0,
+      26.0
+     ],
+     "rot": -20.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "feather_black",
+   "pivot": [
+    160,
+    240
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      184.0
+     ],
+     "size": [
+      70.0,
+      66.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "beak",
+   "tags": [
+    "all",
+    "head",
+    "mouth"
+   ],
+   "z": 3.2,
+   "material": "claw",
+   "pivot": [
+    160,
+    240
+   ],
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      104.0,
+      200.0
+     ],
+     "size": [
+      26.0,
+      58.0
+     ],
+     "rot": -118.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      110.0,
+      206.0
+     ],
+     "size": [
+      18.0,
+      40.0
+     ],
+     "rot": -110.0
+    }
+   ]
+  },
+  {
+   "name": "beak_up",
+   "tags": [
+    "all",
+    "head",
+    "mouth_open"
+   ],
+   "z": 3.2,
+   "material": "claw",
+   "hidden": true,
+   "pivot": [
+    160,
+    240
+   ],
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      102.0,
+      190.0
+     ],
+     "size": [
+      24.0,
+      56.0
+     ],
+     "rot": -128.0
+    }
+   ]
+  },
+  {
+   "name": "beak_down",
+   "tags": [
+    "all",
+    "head",
+    "mouth_open"
+   ],
+   "z": 3.1,
+   "material": "claw",
+   "hidden": true,
+   "pivot": [
+    160,
+    240
+   ],
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      112.0,
+      216.0
+     ],
+     "size": [
+      16.0,
+      40.0
+     ],
+     "rot": -96.0
+    }
+   ]
+  },
+  {
+   "name": "gape",
+   "tags": [
+    "all",
+    "head",
+    "mouth_open"
+   ],
+   "z": 3.05,
+   "kind": "flat",
+   "material": "mouth",
+   "hidden": true,
+   "pivot": [
+    160,
+    240
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      116.0,
+      206.0
+     ],
+     "size": [
+      22.0,
+      14.0
+     ],
+     "rot": -20.0
+    }
+   ]
+  },
+  {
+   "name": "eye_ring",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 3.3,
+   "kind": "flat",
+   "material": "eye",
+   "pivot": [
+    160,
+    240
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      176.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye_glint",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 3.35,
+   "kind": "flat",
+   "material": "eye_white",
+   "pivot": [
+    160,
+    240
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      133.0,
+      173.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_hit",
+   "tags": [
+    "all",
+    "head",
+    "eyes_hit"
+   ],
+   "z": 3.3,
+   "kind": "flat",
+   "material": "eye",
+   "hidden": true,
+   "pivot": [
+    160,
+    240
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      177.0
+     ],
+     "size": [
+      3.5,
+      17.2
+     ],
+     "rot": -90.0
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "head": {
+     "rot": -18,
+     "dx": -8,
+     "dy": 10,
+     "pivot": [
+      160,
+      240
+     ]
+    },
+    "all": {
+     "pivot": [
+      190,
+      356
+     ],
+     "rot": -6,
+     "dx": -4
+    }
+   },
+   "show": [
+    "mouth_open",
+    "atk"
+   ],
+   "hide": [
+    "mouth",
+    "wing"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "shadow": {
+     "dx": 6
+    },
+    "head": {
+     "rot": 20,
+     "pivot": [
+      160,
+      240
+     ]
+    },
+    "tail": {
+     "rot": 16,
+     "pivot": [
+      210,
+      290
+     ]
+    },
+    "wing": {
+     "rot": -24,
+     "pivot": [
+      196,
+      230
+     ]
+    },
+    "all": {
+     "pivot": [
+      164,
+      366
+     ],
+     "rot": 8,
+     "dx": 10,
+     "dy": -6,
+     "sx": 0.95,
+     "sy": 0.95
+    }
+   },
+   "show": [
+    "eyes_hit",
+    "mouth_open"
+   ],
+   "hide": [
+    "eyes",
+    "mouth"
+   ]
+  }
+ ]
+}

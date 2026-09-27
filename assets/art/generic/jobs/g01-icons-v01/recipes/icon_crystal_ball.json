@@ -1,0 +1,214 @@
+{
+ "asset": "icon_crystal_ball",
+ "status": "candidate",
+ "note": "Crystal ball: violet sphere with a pale inner swirl and glow, on a bronze stand with three claw feet.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 22524,
+ "meta": {
+  "kind": "icon",
+  "stage": "C",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "aura",
+   "z": 0,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      52.0
+     ],
+     "size": [
+      88.0,
+      88.0
+     ]
+    }
+   ],
+   "blur": 6,
+   "opacity": 0.35,
+   "color": "glow_arcane"
+  },
+  {
+   "name": "stand",
+   "z": 1,
+   "kind": "block",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      104.0
+     ],
+     "size": [
+      62.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      96.0
+     ],
+     "size": [
+      40.0,
+      12.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "extrude": 6
+  },
+  {
+   "name": "claws",
+   "z": 1.5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      38.0,
+      86.0
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": -30
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      90.0,
+      86.0
+     ],
+     "size": [
+      10.0,
+      26.0
+     ],
+     "rot": 30
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      64.0,
+      90.0
+     ],
+     "size": [
+      10.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ball",
+   "z": 2,
+   "material": "gem_violet",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      54.0
+     ],
+     "size": [
+      76.0,
+      76.0
+     ]
+    }
+   ],
+   "shade": {
+    "highlight_amount": 0.7,
+    "threshold": 0.45
+   }
+  },
+  {
+   "name": "swirl",
+   "z": 2.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      60.0,
+      58.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "rot": 30
+    },
+    {
+     "icon": "moon",
+     "at": [
+      70.0,
+      50.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ],
+     "rot": 210
+    }
+   ],
+   "color": "#d8c0ff",
+   "clip_to": "ball",
+   "opacity": 0.5,
+   "blur": 1
+  },
+  {
+   "name": "shine",
+   "z": 3,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      46.0,
+      34.0
+     ],
+     "size": [
+      16.0,
+      10.0
+     ],
+     "rot": -35
+    },
+    {
+     "icon": "circle",
+     "at": [
+      84.0,
+      76.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    }
+   ],
+   "color": "#ffffff",
+   "clip_to": "ball",
+   "opacity": 0.7
+  }
+ ]
+}

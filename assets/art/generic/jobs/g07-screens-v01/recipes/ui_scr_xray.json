@@ -1,0 +1,334 @@
+{
+ "asset": "ui_scr_xray",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. X-ray viewer frame (customs), 9-slice margin 48; blue-black screen with corner marks.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "frame centre",
+ "seed": 89,
+ "forms": [
+  {
+   "name": "body",
+   "z": 0,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.45
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      188.0,
+      188.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 12
+     }
+    }
+   ]
+  },
+  {
+   "name": "screen",
+   "z": 1,
+   "kind": "flat",
+   "material": "water",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      160.0,
+      160.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    }
+   ]
+  },
+  {
+   "name": "tint",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "lamp_blue_off",
+   "opacity": 0.35,
+   "blur": 12,
+   "clip_to": "screen",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      150.0,
+      150.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    }
+   ]
+  },
+  {
+   "name": "brackets",
+   "z": 2,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.55,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      42.0,
+      34.0
+     ],
+     "size": [
+      20.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      34.0,
+      42.0
+     ],
+     "size": [
+      3.0,
+      20.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      42.0,
+      158.0
+     ],
+     "size": [
+      20.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      34.0,
+      150.0
+     ],
+     "size": [
+      3.0,
+      20.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      150.0,
+      34.0
+     ],
+     "size": [
+      20.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      158.0,
+      42.0
+     ],
+     "size": [
+      3.0,
+      20.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      150.0,
+      158.0
+     ],
+     "size": [
+      20.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      158.0,
+      150.0
+     ],
+     "size": [
+      3.0,
+      20.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "screws",
+   "z": 3,
+   "material": "steel",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      14.0,
+      14.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      14.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      14.0,
+      178.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      178.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws_slot",
+   "z": 3.01,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      14.0,
+      14.0
+     ],
+     "size": [
+      5.6,
+      1.12
+     ],
+     "rot": 35.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      178.0,
+      14.0
+     ],
+     "size": [
+      5.6,
+      1.12
+     ],
+     "rot": 58.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      14.0,
+      178.0
+     ],
+     "size": [
+      5.6,
+      1.12
+     ],
+     "rot": 81.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      178.0,
+      178.0
+     ],
+     "size": [
+      5.6,
+      1.12
+     ],
+     "rot": 104.0
+    }
+   ]
+  }
+ ]
+}

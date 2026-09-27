@@ -1,0 +1,846 @@
+{
+ "asset": "obj_door_balcony",
+ "status": "candidate",
+ "note": "Gothic balcony / French double door 1.4 x 2.4 m: dark frame, pointed transom, glazed leaves with mullions, bronze handles. Frames: closed, open (leaves swung toward the viewer, dark room behind).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 519,
+ "pivot_meaning": "bottom centre of the opening on the wall-face floor line (threshold)",
+ "layer_hint": "world",
+ "canvas": [
+  536,
+  510
+ ],
+ "pivot": [
+  264,
+  372
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "tags": [
+    "closed"
+   ],
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      268,
+      374
+     ],
+     "size": [
+      312,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shadow_open",
+   "z": 2.0,
+   "kind": "shadow",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "color": "shadow_contact",
+   "opacity": 0.28,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      268,
+      402
+     ],
+     "size": [
+      412,
+      90
+     ]
+    }
+   ]
+  },
+  {
+   "name": "void",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "grad": {
+    "to": "well_inner",
+    "y0": -252,
+    "y1": 0,
+    "curve": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      264,
+      246.0
+     ],
+     "size": [
+      252,
+      252
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf0",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      201.0,
+      246.0
+     ],
+     "size": [
+      122.0,
+      248
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glass0",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "closed"
+   ],
+   "shade": {
+    "bump": 0.4,
+    "highlight_amount": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      201.0,
+      234.0
+     ],
+     "size": [
+      92.0,
+      194
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mullions0",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "tags": [
+    "closed"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      201.0,
+      234.0
+     ],
+     "size": [
+      4,
+      194
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      201.0,
+      174.0
+     ],
+     "size": [
+      92.0,
+      4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      201.0,
+      234.0
+     ],
+     "size": [
+      92.0,
+      4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      201.0,
+      294.0
+     ],
+     "size": [
+      92.0,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf1",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      327.0,
+      246.0
+     ],
+     "size": [
+      122.0,
+      248
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glass1",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "closed"
+   ],
+   "shade": {
+    "bump": 0.4,
+    "highlight_amount": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      327.0,
+      234.0
+     ],
+     "size": [
+      92.0,
+      194
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mullions1",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "tags": [
+    "closed"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      327.0,
+      234.0
+     ],
+     "size": [
+      4,
+      194
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      327.0,
+      174.0
+     ],
+     "size": [
+      92.0,
+      4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      327.0,
+      234.0
+     ],
+     "size": [
+      92.0,
+      4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      327.0,
+      294.0
+     ],
+     "size": [
+      92.0,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "handles",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "bronze",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      254,
+      252
+     ],
+     "size": [
+      5,
+      20
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      274,
+      252
+     ],
+     "size": [
+      5,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf_open0",
+   "z": 11.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       14,
+       2
+      ],
+      [
+       14,
+       10.88
+      ],
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       5.12
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      104.0,
+      290.0
+     ],
+     "size": [
+      68,
+      340
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf_open_glass0",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "clip_to": "leaf_open0",
+   "shade": {
+    "bump": 0.3,
+    "highlight_amount": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       14,
+       2
+      ],
+      [
+       14,
+       10.88
+      ],
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       5.12
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      104.0,
+      282.0
+     ],
+     "size": [
+      44,
+      282
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf_open1",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       2
+      ],
+      [
+       2,
+       10.88
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       14,
+       5.12
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      424.0,
+      290.0
+     ],
+     "size": [
+      68,
+      340
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf_open_glass1",
+   "z": 14.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "clip_to": "leaf_open1",
+   "shade": {
+    "bump": 0.3,
+    "highlight_amount": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       2
+      ],
+      [
+       2,
+       10.88
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       14,
+       5.12
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      424.0,
+      282.0
+     ],
+     "size": [
+      44,
+      282
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jamb0",
+   "z": 15.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 256,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      126.0,
+      106.0
+     ],
+     "size": [
+      24,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jamb1",
+   "z": 16.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 256,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      402.0,
+      106.0
+     ],
+     "size": [
+      24,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "transom",
+   "z": 17.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       8.0
+      ],
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14,
+       8.0
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      264,
+      80
+     ],
+     "size": [
+      300,
+      84
+     ]
+    }
+   ]
+  },
+  {
+   "name": "transom_glass",
+   "z": 18.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "clip_to": "transom",
+   "shade": {
+    "bump": 0.3,
+    "highlight_amount": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       8.0
+      ],
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14,
+       8.0
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      264,
+      84
+     ],
+     "size": [
+      232,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "transom_bars",
+   "z": 19.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "clip_to": "transom",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      264,
+      84
+     ],
+     "size": [
+      4,
+      60
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2.0
+     },
+     "at": [
+      234.0,
+      85.0
+     ],
+     "size": [
+      78.10249675906654,
+      4
+     ],
+     "rot": -39.80557109226519
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2.0
+     },
+     "at": [
+      294.0,
+      85.0
+     ],
+     "size": [
+      78.10249675906654,
+      4
+     ],
+     "rot": -140.19442890773482
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "closed",
+   "state": "closed"
+  },
+  {
+   "name": "open",
+   "state": "open",
+   "hide": [
+    "closed"
+   ],
+   "show": [
+    "open"
+   ]
+  }
+ ]
+}

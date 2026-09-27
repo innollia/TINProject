@@ -1,0 +1,968 @@
+{
+ "asset": "lizard",
+ "status": "candidate",
+ "note": "Desert lizard, 3/4 front view facing the lower left. Sandy spiny lizard low to the ground: horned head with a frill of spikes, beady eyes, dark bands on its back, splayed clawed legs and a long tapering tail curling back.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  164,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 845,
+ "g05": {
+  "name_ko": "도마뱀",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      359.6
+     ],
+     "size": [
+      230.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "tail"
+   ],
+   "z": 1,
+   "material": "chitin_amber",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      210.0,
+      330.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": -90.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      225.3,
+      329.0
+     ],
+     "size": [
+      28.2,
+      28.2
+     ],
+     "rot": -97.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      238.8,
+      326.1
+     ],
+     "size": [
+      26.3,
+      26.3
+     ],
+     "rot": -106.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      250.5,
+      321.5
+     ],
+     "size": [
+      24.5,
+      24.5
+     ],
+     "rot": -116.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      260.4,
+      315.6
+     ],
+     "size": [
+      22.6,
+      22.6
+     ],
+     "rot": -125.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      268.6,
+      308.5
+     ],
+     "size": [
+      20.8,
+      20.8
+     ],
+     "rot": -136.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      275.0,
+      300.5
+     ],
+     "size": [
+      18.9,
+      20.5
+     ],
+     "rot": -146.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      279.6,
+      291.9
+     ],
+     "size": [
+      17.1,
+      20.5
+     ],
+     "rot": -157.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      282.4,
+      282.8
+     ],
+     "size": [
+      15.2,
+      20.5
+     ],
+     "rot": -168.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      283.5,
+      273.6
+     ],
+     "size": [
+      13.4,
+      20.5
+     ],
+     "rot": -178.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      282.8,
+      264.5
+     ],
+     "size": [
+      11.5,
+      20.5
+     ],
+     "rot": 169.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      280.3,
+      255.6
+     ],
+     "size": [
+      9.7,
+      20.5
+     ],
+     "rot": 158.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      276.0,
+      247.4
+     ],
+     "size": [
+      7.8,
+      20.5
+     ],
+     "rot": 146.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      272.2,
+      242.2
+     ],
+     "size": [
+      6.0,
+      12.3
+     ],
+     "rot": 135.0
+    }
+   ]
+  },
+  {
+   "name": "leg_far_h",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.2,
+   "material": "chitin_amber",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      223.0,
+      336.0
+     ],
+     "size": [
+      16.0,
+      34.2
+     ],
+     "rot": -65.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      236.0,
+      351.0
+     ],
+     "size": [
+      13.0,
+      22.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      233.8,
+      360.8
+     ],
+     "size": [
+      22.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_far_h_claws",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.25,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      228.3,
+      364.4
+     ],
+     "size": [
+      3.1,
+      5.6
+     ],
+     "rot": 190.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      233.1,
+      364.4
+     ],
+     "size": [
+      3.1,
+      5.6
+     ],
+     "rot": 190.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      238.0,
+      364.4
+     ],
+     "size": [
+      3.1,
+      5.6
+     ],
+     "rot": 190.0
+    }
+   ]
+  },
+  {
+   "name": "leg_far_f",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.2,
+   "material": "chitin_amber",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      335.0
+     ],
+     "size": [
+      16.0,
+      28.0
+     ],
+     "rot": -63.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      151.0,
+      350.0
+     ],
+     "size": [
+      13.0,
+      24.6
+     ],
+     "rot": -5.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      149.8,
+      360.8
+     ],
+     "size": [
+      22.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_far_f_claws",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.25,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      144.3,
+      364.4
+     ],
+     "size": [
+      3.1,
+      5.6
+     ],
+     "rot": 190.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      149.1,
+      364.4
+     ],
+     "size": [
+      3.1,
+      5.6
+     ],
+     "rot": 190.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      154.0,
+      364.4
+     ],
+     "size": [
+      3.1,
+      5.6
+     ],
+     "rot": 190.0
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "chitin_amber",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      326.0
+     ],
+     "size": [
+      150.0,
+      60.0
+     ],
+     "rot": -6.0
+    }
+   ]
+  },
+  {
+   "name": "bands",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "chitin_rust",
+   "clip_to": "body",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      318.0
+     ],
+     "size": [
+      14.0,
+      40.0
+     ],
+     "rot": -6.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      166.0,
+      316.0
+     ],
+     "size": [
+      14.0,
+      40.0
+     ],
+     "rot": -6.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      314.0
+     ],
+     "size": [
+      14.0,
+      40.0
+     ],
+     "rot": -6.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      218.0,
+      312.0
+     ],
+     "size": [
+      14.0,
+      40.0
+     ],
+     "rot": -6.0
+    }
+   ]
+  },
+  {
+   "name": "spines",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "chitin_rust",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      110.0,
+      304.0
+     ],
+     "size": [
+      6.0,
+      9.0
+     ],
+     "rot": -7.6
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      129.0,
+      301.9
+     ],
+     "size": [
+      6.7,
+      10.0
+     ],
+     "rot": -4.9
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      150.0,
+      300.7
+     ],
+     "size": [
+      7.3,
+      11.0
+     ],
+     "rot": -1.9
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      171.0,
+      300.5
+     ],
+     "size": [
+      8.0,
+      12.0
+     ],
+     "rot": 1.1
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      190.0,
+      301.3
+     ],
+     "size": [
+      7.3,
+      11.0
+     ],
+     "rot": 3.8
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      209.0,
+      303.1
+     ],
+     "size": [
+      6.7,
+      10.0
+     ],
+     "rot": 6.5
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      230.0,
+      306.0
+     ],
+     "size": [
+      6.0,
+      9.0
+     ],
+     "rot": 9.5
+    }
+   ]
+  },
+  {
+   "name": "leg_h",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3,
+   "material": "chitin_amber",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      227.0,
+      345.0
+     ],
+     "size": [
+      20.0,
+      34.9
+     ],
+     "rot": -69.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      242.0,
+      357.0
+     ],
+     "size": [
+      16.0,
+      20.2
+     ],
+     "rot": -15.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      241.4,
+      364.9
+     ],
+     "size": [
+      26.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_h_claws",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3.05,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      234.9,
+      368.9
+     ],
+     "size": [
+      3.6,
+      6.3
+     ],
+     "rot": 190.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      240.6,
+      368.9
+     ],
+     "size": [
+      3.6,
+      6.3
+     ],
+     "rot": 190.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      246.3,
+      368.9
+     ],
+     "size": [
+      3.6,
+      6.3
+     ],
+     "rot": 190.0
+    }
+   ]
+  },
+  {
+   "name": "leg_f",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3.1,
+   "material": "chitin_amber",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      106.0,
+      346.0
+     ],
+     "size": [
+      20.0,
+      30.3
+     ],
+     "rot": 59.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      94.0,
+      358.0
+     ],
+     "size": [
+      16.0,
+      18.2
+     ],
+     "rot": 18.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      89.4,
+      364.9
+     ],
+     "size": [
+      26.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_f_claws",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3.15,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      82.9,
+      368.9
+     ],
+     "size": [
+      3.6,
+      6.3
+     ],
+     "rot": 190.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      88.6,
+      368.9
+     ],
+     "size": [
+      3.6,
+      6.3
+     ],
+     "rot": 190.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      94.3,
+      368.9
+     ],
+     "size": [
+      3.6,
+      6.3
+     ],
+     "rot": 190.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4,
+   "material": "chitin_amber",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      300.0
+     ],
+     "size": [
+      70.0,
+      52.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      66.0,
+      316.0
+     ],
+     "size": [
+      30.0,
+      60.0
+     ],
+     "rot": -116.0
+    }
+   ]
+  },
+  {
+   "name": "horns",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.9,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      74.0,
+      266.0
+     ],
+     "size": [
+      9.0,
+      22.0
+     ],
+     "rot": -20.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      90.0,
+      270.0
+     ],
+     "size": [
+      9.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      106.0,
+      266.0
+     ],
+     "size": [
+      9.0,
+      22.0
+     ],
+     "rot": 20.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      122.0,
+      262.0
+     ],
+     "size": [
+      9.0,
+      22.0
+     ],
+     "rot": 40.0
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      82.0,
+      296.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      110.0,
+      296.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.3,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      80.2,
+      294.2
+     ],
+     "size": [
+      2.4,
+      2.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      108.2,
+      294.2
+     ],
+     "size": [
+      2.4,
+      2.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.2,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      73.0,
+      322.0
+     ],
+     "size": [
+      2.5,
+      47.6
+     ],
+     "rot": -99.9
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

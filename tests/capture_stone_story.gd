@@ -48,6 +48,10 @@ func _wait(frames: int) -> void:
 
 func _run() -> void:
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	if _step.begins_with("zoo"):
+		await _run_zoo()
+		quit(0)
+		return
 	_module = (load("res://modules/stone_story_rpg/entry.tscn") as PackedScene).instantiate()
 	root.add_child(_module)
 	await _wait(4)
@@ -178,3 +182,121 @@ func _audit(scene: String, win: Vector2i) -> void:
 	var px: Vector2i = frame.pixel_size if frame != null else Vector2i.ZERO
 	print("AUDIT %s %dx%d texts=%d overlaps=%d clipped=%d buffer=%dx%d view_w=%d" % [
 			scene, win.x, win.y, boxes.size(), overlaps, clipped, px.x, px.y, frame.view_w if frame != null else 0])
+
+
+# --- 개체 방향 후보 비교 (zoo) -------------------------------------------
+# --step=zoo : 후보마다 개체 3종을 나란히 걷게 하고 0.1초 간격 6장을 찍는다.
+
+const ZOO_GROUND_Y: float = 470.0
+const ZOO_FRAMES: int = 6
+
+
+static func _zoo_candidates(content: StoneStoryContent) -> Dictionary:
+	var crawler: Dictionary = content.get_def("silhouette", "sil_crawler")
+	var strider: Dictionary = content.get_def("silhouette", "sil_strider")
+	var hauler: Dictionary = content.get_def("silhouette", "sil_hauler")
+	var stilt2: Dictionary = {"form": "strider", "vary": 0.12, "spine": {"nodes": [4, 5], "length": 0.7, "tail": 0.1},
+			"ride": 0.78, "girth": 0.13, "bulge": [0.4, 0.6], "head": {"size": 1.3, "raise": 0.05, "snout": 0.2},
+			"legs": {"span": [0.5, 0.92], "length": 1.15}, "arms": {"at": 0.2, "length": 0.3}}
+	var stilt3: Dictionary = {"form": "crawler", "vary": 0.12, "spine": {"nodes": [3, 4], "length": 0.6, "tail": 0.0},
+			"ride": 0.75, "girth": 0.16, "bulge": [0.4, 0.6], "head": {"size": 1.2, "raise": 0.05, "snout": 0.3},
+			"legs": {"span": [0.1, 0.9], "length": 1.25}}
+	return {
+		"a": {"title": "A 딛고 걷는 짐승 — 다리가 몸을 떠받치고 머리가 앞서며 꼬리가 끌린다", "members": [
+			{"sil": crawler, "attrs": {"limbs": 4, "roundness": 3, "wrongness": 0, "surprise": 2}, "shape": [44, 40]},
+			{"sil": crawler, "attrs": {"limbs": 6, "roundness": 7, "wrongness": 6, "surprise": 0}, "shape": [52, 44]},
+			{"sil": strider, "attrs": {"limbs": 4, "roundness": 2, "wrongness": 1, "surprise": 1}, "shape": [30, 50], "player": true}]},
+		"b": {"title": "B 몸을 끌고 가는 것 — 걷는 다리가 없다. 앞팔을 멀리 박고 몸을 끌어당긴다", "members": [
+			{"sil": hauler, "attrs": {"limbs": 2, "roundness": 4, "wrongness": 0, "surprise": 0}, "shape": [50, 36]},
+			{"sil": hauler, "attrs": {"limbs": 4, "roundness": 10, "wrongness": 2, "surprise": 0}, "shape": [60, 44]},
+			{"sil": hauler, "attrs": {"limbs": 2, "roundness": 5, "wrongness": 8, "surprise": 5}, "shape": [44, 34], "player": true}]},
+		"c": {"title": "C 장대 위의 몸 — 바닥의 재를 피해 몸을 높이 든다. 긴 다리 2~3개로 성큼 딛는다", "members": [
+			{"sil": stilt2, "attrs": {"limbs": 2, "roundness": 4, "wrongness": 0, "surprise": 1}, "shape": [30, 62]},
+			{"sil": stilt3, "attrs": {"limbs": 3, "roundness": 6, "wrongness": 3, "surprise": 0}, "shape": [36, 60]},
+			{"sil": stilt2, "attrs": {"limbs": 2, "roundness": 2, "wrongness": 8, "surprise": 4}, "shape": [26, 56], "player": true}]},
+	}
+
+
+func _run_zoo() -> void:
+	var content := StoneStoryContent.new()
+	content.load_all()
+	DisplayServer.window_set_size(Vector2i(1280, 720))
+	await _wait(20)
+	var cands: Dictionary = _zoo_candidates(content)
+	var region: Dictionary = content.get_def("region", "region_hollow_cistern")
+	var pal: ProceduralPalette = StoneStoryPalette.for_region(content, region)
+	for key in cands:
+		var cand: Dictionary = cands[key]
+		var zoo := Zoo.new()
+		zoo.pal = pal
+		zoo.region = region
+		zoo.title = str(cand["title"])
+		var i: int = 0
+		for m in cand["members"]:
+			var md: Dictionary = m
+			var sh: Array = md["shape"]
+			var c := StoneStoryCritter.build(md["sil"], md["attrs"], {"width_units": sh[0], "height_units": sh[1]},
+					1000 + i * 77, 1.5)
+			zoo.critters.append(c)
+			zoo.player.append(bool(md.get("player", false)))
+			zoo.xs.append(170.0 + 330.0 * float(i))
+			zoo.acc.append(0.0)
+			i += 1
+		root.add_child(zoo)
+		await _wait(90)
+		for k in ZOO_FRAMES:
+			var img: Image = root.get_texture().get_image()
+			var path: String = _out + "%s_f%d.png" % [key, k]
+			img.save_png(path)
+			_saved += 1
+			print("CAPTURE %s" % path)
+			await _wait(6)
+		zoo.queue_free()
+		await _wait(3)
+	print("SAVED_COUNT=%d FAIL=%d OUT=%s" % [_saved, _fail, _out])
+
+
+class Zoo extends Control:
+	var pal: ProceduralPalette = null
+	var region: Dictionary = {}
+	var title: String = ""
+	var critters: Array = []
+	var player: Array = []
+	var xs: Array = []
+	var acc: Array = []
+	var clock: float = 0.0
+	var speed: float = 45.0
+	var _font: SystemFont = null
+
+	func _ready() -> void:
+		set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		_font = SystemFont.new()
+		_font.font_names = PackedStringArray(["Malgun Gothic", "Gulim", "sans-serif"])
+		_font.font_weight = 700
+
+	func _process(delta: float) -> void:
+		clock += delta
+		for i in critters.size():
+			var c: StoneStoryCritter = critters[i]
+			acc[i] = float(acc[i]) + speed * delta
+			if float(acc[i]) >= 7.0:
+				xs[i] = float(xs[i]) + 7.0
+				acc[i] = float(acc[i]) - 7.0
+			c.facing = 1.0
+			c.look = Vector2(1.0, 0.1)
+			c.place(Vector2(float(xs[i]), ZOO_GROUND_Y))
+			c.step(delta)
+		queue_redraw()
+
+	func _draw() -> void:
+		var k: float = size.y / 640.0
+		draw_set_transform(Vector2.ZERO, 0.0, Vector2(k, k))
+		var w: float = size.x / k
+		StoneStorySky.draw(self, pal, region, w, 243.0, clock, null, 0.0, 7)
+		StoneStoryGround.draw(self, pal, region, w, 243.0, 640.0, null, 0.0, 7)
+		for i in critters.size():
+			var c: StoneStoryCritter = critters[i]
+			var tones: Array[Color] = StoneStoryCritter.player_tones(pal) if bool(player[i]) else StoneStoryCritter.foe_tones(pal, false)
+			c.draw(self, Vector2(float(xs[i]), ZOO_GROUND_Y), pal, null, tones[0], tones[1])
+		draw_string_outline(_font, Vector2(24, 44), title, HORIZONTAL_ALIGNMENT_LEFT, -1, 22, 6, StoneStoryPalette.ink(pal))
+		draw_string(_font, Vector2(24, 44), title, HORIZONTAL_ALIGNMENT_LEFT, -1, 22, StoneStoryPalette.text(pal))

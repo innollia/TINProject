@@ -1,0 +1,1342 @@
+{
+ "asset": "soul_wall",
+ "status": "candidate",
+ "note": "Wall of souls, front view. A heaving slab of translucent pale-blue spirit stuff packed with moaning ghostly faces (dark hollow eyes and mouths, a few with cold glowing pupils) and ghostly hands pushing out of it; no bodies or gore, only spirit shapes.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  494
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 632,
+ "g05": {
+  "name_ko": "망자가 뭉친 벽",
+  "size": "큼",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      480.6
+     ],
+     "size": [
+      400.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "slab",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "ghost",
+   "opacity": 0.88,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256.0,
+      290.0
+     ],
+     "size": [
+      400.0,
+      380.0
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      256.0,
+      110.0
+     ],
+     "size": [
+      400.0,
+      80.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_0",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.0,
+   "material": "ghost",
+   "opacity": 0.95,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      170.0
+     ],
+     "size": [
+      70.0,
+      84.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_0_holes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.005,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      123.0,
+      162.0
+     ],
+     "size": [
+      14.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      149.0,
+      162.0
+     ],
+     "size": [
+      14.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      190.0
+     ],
+     "size": [
+      14.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_0_eyes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.008,
+   "kind": "flat",
+   "material": "glow_cyan",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "ghost_glow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      123.0,
+      164.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      149.0,
+      164.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_1",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.01,
+   "material": "ghost",
+   "opacity": 0.95,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      150.0
+     ],
+     "size": [
+      77.0,
+      92.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_1_holes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.0149999999999997,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      241.7,
+      141.2
+     ],
+     "size": [
+      15.4,
+      19.8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      270.3,
+      141.2
+     ],
+     "size": [
+      15.4,
+      19.8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      172.0
+     ],
+     "size": [
+      15.4,
+      24.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_2",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.02,
+   "material": "ghost",
+   "opacity": 0.95,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      376.0,
+      170.0
+     ],
+     "size": [
+      70.0,
+      84.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_2_holes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.025,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      363.0,
+      162.0
+     ],
+     "size": [
+      14.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      389.0,
+      162.0
+     ],
+     "size": [
+      14.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      376.0,
+      190.0
+     ],
+     "size": [
+      14.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_3",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.03,
+   "material": "ghost",
+   "opacity": 0.95,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      290.0
+     ],
+     "size": [
+      63.0,
+      75.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_3_holes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.0349999999999997,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      84.3,
+      282.8
+     ],
+     "size": [
+      12.6,
+      16.2
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      107.7,
+      282.8
+     ],
+     "size": [
+      12.6,
+      16.2
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      308.0
+     ],
+     "size": [
+      12.6,
+      19.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_3_eyes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.038,
+   "kind": "flat",
+   "material": "glow_cyan",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "ghost_glow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      84.3,
+      284.6
+     ],
+     "size": [
+      4.5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      107.7,
+      284.6
+     ],
+     "size": [
+      4.5,
+      4.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_4",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.04,
+   "material": "ghost",
+   "opacity": 0.95,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      270.0
+     ],
+     "size": [
+      84.0,
+      100.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_4_holes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.045,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      190.4,
+      260.4
+     ],
+     "size": [
+      16.8,
+      21.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      221.6,
+      260.4
+     ],
+     "size": [
+      16.8,
+      21.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      294.0
+     ],
+     "size": [
+      16.8,
+      26.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_5",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.05,
+   "material": "ghost",
+   "opacity": 0.95,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      326.0,
+      280.0
+     ],
+     "size": [
+      70.0,
+      84.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_5_holes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.0549999999999997,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      313.0,
+      272.0
+     ],
+     "size": [
+      14.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      339.0,
+      272.0
+     ],
+     "size": [
+      14.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      326.0,
+      300.0
+     ],
+     "size": [
+      14.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_6",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.06,
+   "material": "ghost",
+   "opacity": 0.95,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      416.0,
+      300.0
+     ],
+     "size": [
+      63.0,
+      75.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_6_holes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.065,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      404.3,
+      292.8
+     ],
+     "size": [
+      12.6,
+      16.2
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      427.7,
+      292.8
+     ],
+     "size": [
+      12.6,
+      16.2
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      416.0,
+      318.0
+     ],
+     "size": [
+      12.6,
+      19.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_6_eyes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.068,
+   "kind": "flat",
+   "material": "glow_cyan",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "ghost_glow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      404.3,
+      294.6
+     ],
+     "size": [
+      4.5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      427.7,
+      294.6
+     ],
+     "size": [
+      4.5,
+      4.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_7",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.07,
+   "material": "ghost",
+   "opacity": 0.95,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      156.0,
+      400.0
+     ],
+     "size": [
+      70.0,
+      84.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_7_holes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.0749999999999997,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      143.0,
+      392.0
+     ],
+     "size": [
+      14.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      169.0,
+      392.0
+     ],
+     "size": [
+      14.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      156.0,
+      420.0
+     ],
+     "size": [
+      14.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_8",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.08,
+   "material": "ghost",
+   "opacity": 0.95,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      276.0,
+      390.0
+     ],
+     "size": [
+      77.0,
+      92.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_8_holes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.085,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      261.7,
+      381.2
+     ],
+     "size": [
+      15.4,
+      19.8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      290.3,
+      381.2
+     ],
+     "size": [
+      15.4,
+      19.8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      276.0,
+      412.0
+     ],
+     "size": [
+      15.4,
+      24.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_9",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.09,
+   "material": "ghost",
+   "opacity": 0.95,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      386.0,
+      410.0
+     ],
+     "size": [
+      63.0,
+      75.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_9_holes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.0949999999999998,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      374.3,
+      402.8
+     ],
+     "size": [
+      12.6,
+      16.2
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      397.7,
+      402.8
+     ],
+     "size": [
+      12.6,
+      16.2
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      386.0,
+      428.0
+     ],
+     "size": [
+      12.6,
+      19.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_9_eyes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.098,
+   "kind": "flat",
+   "material": "glow_cyan",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "ghost_glow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      374.3,
+      404.6
+     ],
+     "size": [
+      4.5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      397.7,
+      404.6
+     ],
+     "size": [
+      4.5,
+      4.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hand_0",
+   "tags": [
+    "all",
+    "hands"
+   ],
+   "z": 3,
+   "material": "ghost",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      56.0,
+      220.0
+     ],
+     "size": [
+      16.5,
+      15.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      41.0,
+      219.2
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": 93.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      42.0,
+      214.6
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": 111.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      44.3,
+      210.6
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": 129.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      47.8,
+      207.4
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": 147.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      69.0,
+      227.5
+     ],
+     "size": [
+      18.0,
+      36.3
+     ],
+     "rot": 120.0
+    }
+   ]
+  },
+  {
+   "name": "hand_1",
+   "tags": [
+    "all",
+    "hands"
+   ],
+   "z": 3,
+   "material": "ghost",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      456.0,
+      240.0
+     ],
+     "size": [
+      16.5,
+      15.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      464.2,
+      227.4
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": -147.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      467.7,
+      230.6
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": -129.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      470.0,
+      234.6
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": -111.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      471.0,
+      239.2
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": -93.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      443.0,
+      247.5
+     ],
+     "size": [
+      18.0,
+      36.3
+     ],
+     "rot": -120.0
+    }
+   ]
+  },
+  {
+   "name": "hand_2",
+   "tags": [
+    "all",
+    "hands"
+   ],
+   "z": 3,
+   "material": "ghost",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      66.0,
+      380.0
+     ],
+     "size": [
+      16.5,
+      15.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      55.8,
+      391.0
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": 43.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      52.9,
+      387.3
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": 61.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      51.3,
+      382.9
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": 79.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      51.1,
+      378.2
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": 97.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      80.1,
+      374.9
+     ],
+     "size": [
+      18.0,
+      36.3
+     ],
+     "rot": 70.0
+    }
+   ]
+  },
+  {
+   "name": "hand_3",
+   "tags": [
+    "all",
+    "hands"
+   ],
+   "z": 3,
+   "material": "ghost",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      452.0,
+      370.0
+     ],
+     "size": [
+      16.5,
+      15.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      466.9,
+      368.2
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": -97.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      466.7,
+      372.9
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": -79.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      465.1,
+      377.3
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": -61.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      462.2,
+      381.0
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": -43.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      437.9,
+      364.9
+     ],
+     "size": [
+      18.0,
+      36.3
+     ],
+     "rot": -70.0
+    }
+   ]
+  },
+  {
+   "name": "hand_4",
+   "tags": [
+    "all",
+    "hands"
+   ],
+   "z": 3,
+   "material": "ghost",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      236.0,
+      90.0
+     ],
+     "size": [
+      16.5,
+      15.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      227.0,
+      78.0
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": 143.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      231.1,
+      75.8
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": 161.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      235.7,
+      75.0
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": 179.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      240.4,
+      75.7
+     ],
+     "size": [
+      5.4,
+      30.5
+     ],
+     "rot": -163.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      238.6,
+      104.8
+     ],
+     "size": [
+      18.0,
+      36.3
+     ],
+     "rot": 170.0
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

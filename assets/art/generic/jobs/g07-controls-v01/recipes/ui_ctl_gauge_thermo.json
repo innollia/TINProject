@@ -1,0 +1,226 @@
+{
+ "asset": "ui_ctl_gauge_thermo",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Thermometer column: enamel strip, glass tube and red bulb; the column fill is separate.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  384
+ ],
+ "pivot": [
+  96.0,
+  192.0
+ ],
+ "pivot_meaning": "plate centre",
+ "seed": 63,
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "wood",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      192.0
+     ],
+     "size": [
+      100.0,
+      364.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 22
+     }
+    }
+   ]
+  },
+  {
+   "name": "strip",
+   "z": 0.5,
+   "material": "enamel",
+   "shade": {
+    "bump": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      178.0
+     ],
+     "size": [
+      72.0,
+      296.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    }
+   ]
+  },
+  {
+   "name": "ticks_l",
+   "z": 1,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      12.0,
+      2.4
+     ],
+     "repeat": {
+      "line": [
+       [
+        72,
+        50
+       ],
+       [
+        72,
+        300
+       ]
+      ],
+      "count": 21
+     }
+    }
+   ]
+  },
+  {
+   "name": "ticks_r",
+   "z": 1,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      20.0,
+      3.2
+     ],
+     "repeat": {
+      "line": [
+       [
+        120,
+        50
+       ],
+       [
+        120,
+        300
+       ]
+      ],
+      "count": 6
+     }
+    }
+   ]
+  },
+  {
+   "name": "tube",
+   "z": 2,
+   "material": "glass_pane",
+   "opacity": 0.75,
+   "shade": {
+    "bump": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      178.0
+     ],
+     "size": [
+      22.0,
+      280.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    }
+   ]
+  },
+  {
+   "name": "bulb",
+   "z": 2,
+   "material": "glass_pane",
+   "opacity": 0.85,
+   "shade": {
+    "bump": 1.1
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      330.0
+     ],
+     "size": [
+      48.0,
+      48.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bulb_liquid",
+   "z": 2.5,
+   "material": "paint_red",
+   "shade": {
+    "bump": 1.0
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      330.0
+     ],
+     "size": [
+      34.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cap",
+   "z": 3,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      34.0
+     ],
+     "size": [
+      30.0,
+      14.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 5
+     }
+    }
+   ]
+  }
+ ]
+}

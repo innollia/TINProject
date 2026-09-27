@@ -1,0 +1,525 @@
+{
+ "asset": "ui_ctl_meter",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Signal-strength bar meter, level_0 .. level_5 (green, amber, red).",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  104.0
+ ],
+ "pivot_meaning": "meter centre",
+ "seed": 70,
+ "forms": [
+  {
+   "name": "housing",
+   "z": 0,
+   "material": "plastic_dark",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      100.0
+     ],
+     "size": [
+      158.0,
+      124.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 16
+     }
+    }
+   ]
+  },
+  {
+   "name": "well",
+   "z": 0.5,
+   "kind": "flat",
+   "material": "rubber",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      104.0
+     ],
+     "size": [
+      138.0,
+      100.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 8
+     }
+    }
+   ]
+  },
+  {
+   "name": "bar0_off",
+   "z": 1,
+   "material": "lamp_green_off",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      44.0,
+      134.0
+     ],
+     "size": [
+      18.0,
+      16.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "off0"
+   ]
+  },
+  {
+   "name": "bar0_on",
+   "z": 1,
+   "material": "lamp_green_on",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.5,
+    "color": "glow_green"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      44.0,
+      134.0
+     ],
+     "size": [
+      18.0,
+      16.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "on0"
+   ]
+  },
+  {
+   "name": "bar1_off",
+   "z": 1,
+   "material": "lamp_green_off",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      70.0,
+      126.0
+     ],
+     "size": [
+      18.0,
+      32.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "off1"
+   ]
+  },
+  {
+   "name": "bar1_on",
+   "z": 1,
+   "material": "lamp_green_on",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.5,
+    "color": "glow_green"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      70.0,
+      126.0
+     ],
+     "size": [
+      18.0,
+      32.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "on1"
+   ]
+  },
+  {
+   "name": "bar2_off",
+   "z": 1,
+   "material": "lamp_green_off",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      118.0
+     ],
+     "size": [
+      18.0,
+      48.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "off2"
+   ]
+  },
+  {
+   "name": "bar2_on",
+   "z": 1,
+   "material": "lamp_green_on",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.5,
+    "color": "glow_green"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      118.0
+     ],
+     "size": [
+      18.0,
+      48.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "on2"
+   ]
+  },
+  {
+   "name": "bar3_off",
+   "z": 1,
+   "material": "lamp_amber_off",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      122.0,
+      110.0
+     ],
+     "size": [
+      18.0,
+      64.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "off3"
+   ]
+  },
+  {
+   "name": "bar3_on",
+   "z": 1,
+   "material": "lamp_amber_on",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.5,
+    "color": "glow_amber"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      122.0,
+      110.0
+     ],
+     "size": [
+      18.0,
+      64.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "on3"
+   ]
+  },
+  {
+   "name": "bar4_off",
+   "z": 1,
+   "material": "lamp_red_off",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      148.0,
+      102.0
+     ],
+     "size": [
+      18.0,
+      80.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "off4"
+   ]
+  },
+  {
+   "name": "bar4_on",
+   "z": 1,
+   "material": "lamp_red_on",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.5,
+    "color": "glow_red"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      148.0,
+      102.0
+     ],
+     "size": [
+      18.0,
+      80.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "on4"
+   ]
+  },
+  {
+   "name": "screws",
+   "z": 2,
+   "material": "steel",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      30.0,
+      50.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      162.0,
+      50.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws_slot",
+   "z": 2.01,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      30.0,
+      50.0
+     ],
+     "size": [
+      6.4,
+      1.28
+     ],
+     "rot": 35.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      162.0,
+      50.0
+     ],
+     "size": [
+      6.4,
+      1.28
+     ],
+     "rot": 58.0
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "level_0",
+   "show": [
+    "off0",
+    "off1",
+    "off2",
+    "off3",
+    "off4"
+   ]
+  },
+  {
+   "name": "level_1",
+   "show": [
+    "on0",
+    "off1",
+    "off2",
+    "off3",
+    "off4"
+   ]
+  },
+  {
+   "name": "level_2",
+   "show": [
+    "on0",
+    "on1",
+    "off2",
+    "off3",
+    "off4"
+   ]
+  },
+  {
+   "name": "level_3",
+   "show": [
+    "on0",
+    "on1",
+    "on2",
+    "off3",
+    "off4"
+   ]
+  },
+  {
+   "name": "level_4",
+   "show": [
+    "on0",
+    "on1",
+    "on2",
+    "on3",
+    "off4"
+   ]
+  },
+  {
+   "name": "level_5",
+   "show": [
+    "on0",
+    "on1",
+    "on2",
+    "on3",
+    "on4"
+   ]
+  }
+ ]
+}

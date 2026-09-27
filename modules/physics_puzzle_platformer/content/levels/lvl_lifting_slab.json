@@ -1,0 +1,27 @@
+{
+ "schema": 1, "id": "lvl_lifting_slab", "name": "들리는 판", "parallax_seed": 4451,
+ "spawn": { "x": 120, "y": 470 }, "rift": { "x": 1650, "y": 452, "radius": 30 },
+ "bounds": { "min_x": -120, "max_x": 1800, "min_y": -80, "max_y": 620 },
+ "objective_needed": 3, "mutable": ["prop_size", "hazard_shift", "prop_offset"], "mutable_hazards": [10, 11], "shuffled": [],
+ "kinematics": [{ "id": "lift_a", "from": [500, 470], "to": [500, 300], "duration": 2.2, "loop": "pingpong" },
+  { "id": "lift_b", "from": [900, 300], "to": [900, 470], "duration": 2.2, "loop": "pingpong" }],
+ "bodies": [
+  { "id": "floor", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [840, 520], "size": [1920, 48] },
+  { "id": "wall_left", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [-104, 280], "size": [32, 432] },
+  { "id": "wall_right", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [1784, 280], "size": [32, 432] },
+  { "id": "lift_a", "kind": "tile_kinematic", "shape": "box", "material": "wood", "pos": [500, 470], "size": [120, 20] },
+  { "id": "lift_b", "kind": "tile_kinematic", "shape": "box", "material": "wood", "pos": [900, 300], "size": [120, 20] },
+  { "id": "high_a", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [700, 240], "size": [160, 24] },
+  { "id": "high_b", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [1100, 240], "size": [160, 24] },
+  { "id": "stack_1", "kind": "prop_dynamic", "shape": "box", "material": "wood", "pos": [1300, 482], "size": [30, 28] },
+  { "id": "stack_2", "kind": "prop_dynamic", "shape": "box", "material": "wood", "pos": [1300, 454], "size": [30, 28] },
+  { "id": "stack_3", "kind": "prop_dynamic", "shape": "box", "material": "paper", "pos": [1300, 426], "size": [30, 28] },
+  { "id": "spike_a", "kind": "hazard_static", "shape": "box", "material": "void", "pos": [700, 490], "size": [120, 12] },
+  { "id": "spike_b", "kind": "hazard_static", "shape": "box", "material": "void", "pos": [1100, 490], "size": [120, 12] },
+  { "id": "egg_a", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [700, 210], "size": [22, 22] },
+  { "id": "egg_b", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [1100, 210], "size": [22, 22] },
+  { "id": "egg_c", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [1450, 480], "size": [22, 22] },
+  { "id": "egg_d", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [300, 480], "size": [22, 22] },
+  { "id": "tool_spot", "kind": "tool_placement", "shape": "circle", "material": "goal", "pos": [200, 470], "size": [24, 24], "tool": "tool_rope_hook" }
+ ]
+}

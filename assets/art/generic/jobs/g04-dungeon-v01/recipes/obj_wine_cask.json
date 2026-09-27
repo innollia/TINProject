@@ -1,0 +1,492 @@
+{
+ "asset": "obj_wine_cask",
+ "status": "candidate",
+ "note": "Large wine cask 1.0 m across lying on a wooden cradle, round end facing south with hoops, stave joints and a bronze tap.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 511,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  366,
+  412
+ ],
+ "pivot": [
+  175,
+  324
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.38,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 30
+     },
+     "at": [
+      183,
+      238
+     ],
+     "size": [
+      230,
+      210
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cradle0",
+   "z": 2.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 44,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      175,
+      93.0
+     ],
+     "size": [
+      214,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cradle1",
+   "z": 3.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 44,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      175,
+      249.0
+     ],
+     "size": [
+      214,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "wood",
+   "texture": {
+    "angle": 90
+   },
+   "shade": {
+    "bump": 1.1
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 78
+     },
+     "at": [
+      175,
+      156
+     ],
+     "size": [
+      178,
+      236
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body_hoops",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      175,
+      76
+     ],
+     "size": [
+      180,
+      8
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      175,
+      118
+     ],
+     "size": [
+      180,
+      8
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      175,
+      194
+     ],
+     "size": [
+      180,
+      8
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      175,
+      232
+     ],
+     "size": [
+      180,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body_staves",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.5,
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      115,
+      156
+     ],
+     "size": [
+      2.2,
+      230
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      145,
+      156
+     ],
+     "size": [
+      2.2,
+      230
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      175,
+      156
+     ],
+     "size": [
+      2.2,
+      230
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      205,
+      156
+     ],
+     "size": [
+      2.2,
+      230
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      235,
+      156
+     ],
+     "size": [
+      2.2,
+      230
+     ]
+    }
+   ]
+  },
+  {
+   "name": "end",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      175,
+      254
+     ],
+     "size": [
+      184,
+      124
+     ]
+    }
+   ]
+  },
+  {
+   "name": "end_staves",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "wood",
+   "opacity": 0.45,
+   "clip_to": "end",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      121,
+      254
+     ],
+     "size": [
+      2.2,
+      120
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      157,
+      254
+     ],
+     "size": [
+      2.2,
+      120
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      193,
+      254
+     ],
+     "size": [
+      2.2,
+      120
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      229,
+      254
+     ],
+     "size": [
+      2.2,
+      120
+     ]
+    }
+   ]
+  },
+  {
+   "name": "end_hoop",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      175,
+      254
+     ],
+     "size": [
+      184,
+      124
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      175,
+      254
+     ],
+     "size": [
+      166,
+      108
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "tap",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "bronze",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      175,
+      272
+     ],
+     "size": [
+      14,
+      22
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      175.0,
+      289.0
+     ],
+     "size": [
+      18.0,
+      7
+     ],
+     "rot": 90.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      175,
+      300
+     ],
+     "size": [
+      12,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tap_handle",
+   "z": 11.0,
+   "kind": "mass",
+   "material": "bronze",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      175,
+      260
+     ],
+     "size": [
+      26,
+      7
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,472 @@
+{
+ "asset": "ui_os_titlebtn",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Title-bar buttons (minimise / maximise / close), normal and pressed.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "button centre",
+ "seed": 37,
+ "forms": [
+  {
+   "name": "body",
+   "z": 0,
+   "material": "plastic_beige",
+   "shade": {
+    "bump": 0.35,
+    "highlight_amount": 0.2
+   },
+   "grime": {
+    "strength": 0.12,
+    "density": 0.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      96.0,
+      88.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 7
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "beige"
+   ]
+  },
+  {
+   "name": "body_close",
+   "z": 0,
+   "material": "cloth_wine",
+   "shade": {
+    "bump": 0.35,
+    "highlight_amount": 0.2
+   },
+   "grime": {
+    "strength": 0.12,
+    "density": 0.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      96.0,
+      88.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 7
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "wine"
+   ]
+  },
+  {
+   "name": "pressed_shade",
+   "z": 0.5,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.22,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      92.0,
+      84.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "down"
+   ]
+  },
+  {
+   "name": "bevel_up_l",
+   "z": 1,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.22,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      23.0
+     ],
+     "size": [
+      88.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      19.0,
+      64.0
+     ],
+     "size": [
+      3.0,
+      80.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "up"
+   ]
+  },
+  {
+   "name": "bevel_up_d",
+   "z": 1,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      106.0
+     ],
+     "size": [
+      92.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      110.0,
+      64.0
+     ],
+     "size": [
+      3.0,
+      84.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "up"
+   ]
+  },
+  {
+   "name": "bevel_dn_d",
+   "z": 1,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      23.0
+     ],
+     "size": [
+      88.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      19.0,
+      64.0
+     ],
+     "size": [
+      3.0,
+      80.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "down"
+   ]
+  },
+  {
+   "name": "bevel_dn_l",
+   "z": 1,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.18,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      106.0
+     ],
+     "size": [
+      92.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      110.0,
+      64.0
+     ],
+     "size": [
+      3.0,
+      84.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "down"
+   ]
+  },
+  {
+   "name": "glyph_min",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "tags": [
+    "glyph",
+    "min"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      86.0
+     ],
+     "size": [
+      38.0,
+      9.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ],
+   "hidden": true
+  },
+  {
+   "name": "glyph_max",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "tags": [
+    "glyph",
+    "max"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      42.0,
+      36.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      66.0
+     ],
+     "size": [
+      32.0,
+      22.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "op": "sub"
+    }
+   ],
+   "hidden": true
+  },
+  {
+   "name": "glyph_close",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "tags": [
+    "glyph",
+    "close"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      50.0,
+      10.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      50.0,
+      10.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "rot": -45
+    }
+   ],
+   "hidden": true
+  }
+ ],
+ "frames": [
+  {
+   "name": "min_normal",
+   "show": [
+    "min",
+    "beige",
+    "up"
+   ]
+  },
+  {
+   "name": "min_pressed",
+   "show": [
+    "min",
+    "beige",
+    "down"
+   ],
+   "move": {
+    "glyph": [
+     3,
+     3
+    ]
+   }
+  },
+  {
+   "name": "max_normal",
+   "show": [
+    "max",
+    "beige",
+    "up"
+   ]
+  },
+  {
+   "name": "max_pressed",
+   "show": [
+    "max",
+    "beige",
+    "down"
+   ],
+   "move": {
+    "glyph": [
+     3,
+     3
+    ]
+   }
+  },
+  {
+   "name": "close_normal",
+   "show": [
+    "close",
+    "wine",
+    "up"
+   ]
+  },
+  {
+   "name": "close_pressed",
+   "show": [
+    "close",
+    "wine",
+    "down"
+   ],
+   "move": {
+    "glyph": [
+     3,
+     3
+    ]
+   }
+  }
+ ]
+}

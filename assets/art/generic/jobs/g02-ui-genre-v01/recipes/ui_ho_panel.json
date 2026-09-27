@@ -1,0 +1,309 @@
+{
+ "asset": "ui_ho_panel",
+ "status": "candidate",
+ "note": "호러 긁힌 창틀 (호러·오컬트, tier B). 9-slice window frame, margins 48 px, no text.",
+ "palette": "palette_g02.json",
+ "style": "prop",
+ "style_override": {
+  "cast": {
+   "opacity": 0.0
+  }
+ },
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  0,
+  0
+ ],
+ "pivot_meaning": "top-left; 9-slice margins in <id>_9slice.json",
+ "seed": 404,
+ "forms": [
+  {
+   "name": "fill",
+   "z": 0,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      172,
+      172
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#140f15",
+   "opacity": 0.9
+  },
+  {
+   "name": "rim",
+   "z": 1,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      184,
+      184
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      166,
+      166
+     ],
+     "op": "sub"
+    }
+   ],
+   "material": "cloth_black",
+   "shade": {
+    "bump": 0.5
+   }
+  },
+  {
+   "name": "inner_line",
+   "z": 2,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      160,
+      160
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      157,
+      157
+     ],
+     "op": "sub"
+    }
+   ],
+   "material": "bone",
+   "kind": "flat",
+   "opacity": 0.3
+  },
+  {
+   "name": "filigree",
+   "z": 2.5,
+   "pieces": [
+    {
+     "icon": "leaf",
+     "at": [
+      20.0,
+      20.0
+     ],
+     "size": [
+      18,
+      26
+     ],
+     "flip": null,
+     "rot": 45
+    },
+    {
+     "icon": "leaf",
+     "at": [
+      172.0,
+      20.0
+     ],
+     "size": [
+      18,
+      26
+     ],
+     "flip": "x",
+     "rot": 45
+    },
+    {
+     "icon": "leaf",
+     "at": [
+      20.0,
+      172.0
+     ],
+     "size": [
+      18,
+      26
+     ],
+     "flip": "y",
+     "rot": 45
+    },
+    {
+     "icon": "leaf",
+     "at": [
+      172.0,
+      172.0
+     ],
+     "size": [
+      18,
+      26
+     ],
+     "flip": "xy",
+     "rot": 45
+    }
+   ],
+   "material": "bone",
+   "kind": "flat",
+   "opacity": 0.55
+  },
+  {
+   "name": "scratches",
+   "z": 3,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      150.0,
+      26.0
+     ],
+     "size": [
+      2.2,
+      26
+     ],
+     "rot": 32
+    },
+    {
+     "icon": "square",
+     "at": [
+      158.0,
+      29.0
+     ],
+     "size": [
+      2.2,
+      26
+     ],
+     "rot": 32
+    },
+    {
+     "icon": "square",
+     "at": [
+      166.0,
+      32.0
+     ],
+     "size": [
+      2.2,
+      26
+     ],
+     "rot": 32
+    },
+    {
+     "icon": "square",
+     "at": [
+      30.0,
+      158.0
+     ],
+     "size": [
+      2.2,
+      22
+     ],
+     "rot": 32
+    },
+    {
+     "icon": "square",
+     "at": [
+      38.0,
+      161.0
+     ],
+     "size": [
+      2.2,
+      22
+     ],
+     "rot": 32
+    },
+    {
+     "icon": "square",
+     "at": [
+      46.0,
+      164.0
+     ],
+     "size": [
+      2.2,
+      22
+     ],
+     "rot": 32
+    }
+   ],
+   "material": "blood_dark",
+   "kind": "flat",
+   "opacity": 0.9
+  },
+  {
+   "name": "stain",
+   "z": 1.5,
+   "pieces": [
+    {
+     "icon": "metaballs",
+     "at": [
+      26.0,
+      26.0
+     ],
+     "size": [
+      22,
+      16
+     ],
+     "flip": null
+    },
+    {
+     "icon": "metaballs",
+     "at": [
+      166.0,
+      26.0
+     ],
+     "size": [
+      22,
+      16
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "metaballs",
+     "at": [
+      26.0,
+      166.0
+     ],
+     "size": [
+      22,
+      16
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "metaballs",
+     "at": [
+      166.0,
+      166.0
+     ],
+     "size": [
+      22,
+      16
+     ],
+     "flip": "xy"
+    }
+   ],
+   "material": "grime",
+   "kind": "flat",
+   "opacity": 0.35,
+   "clip_to": "rim"
+  }
+ ]
+}

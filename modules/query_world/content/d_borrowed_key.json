@@ -1,0 +1,36 @@
+{
+  "id": "d_borrowed_key",
+  "title": "빌려 간 열쇠",
+  "seed_query": "열쇠",
+  "fragments": [
+    {
+      "id": "d1",
+      "body": "관리실 열쇠걸이에는 열쇠가 걸려 있지 않았다. 대출 기록부에는 아무도 적혀 있지 않았다.",
+      "search_tags": ["열쇠", "관리실", "대출", "기록부"],
+      "hover_reveals": [
+        { "span_from": 24, "span_to": 30, "hidden": "기록부 마지막 장이 찢겨 나간 자국이 있다." }
+      ],
+      "relations": [ { "to": "d3", "kind": "contradicts" } ]
+    },
+    {
+      "id": "d2",
+      "body": "청소부는 그날 오후 창고 문이 안에서 잠겨 있었다고 말했다.",
+      "search_tags": ["청소부", "창고", "문", "오후"],
+      "hover_reveals": [
+        { "span_from": 0, "span_to": 3, "hidden": "청소부의 출입 시간은 오전으로만 기록돼 있다 — 오후 방문 자체가 기록에 없다." }
+      ],
+      "relations": []
+    },
+    {
+      "id": "d3",
+      "body": "야간 경비는 그 주에 열쇠를 아무에게도 내주지 않았다고 진술했다.",
+      "search_tags": ["경비", "야간", "열쇠", "진술"],
+      "hover_reveals": [],
+      "relations": [ { "to": "d1", "kind": "contradicts" } ]
+    }
+  ],
+  "completion": {
+    "required_ids": ["d1", "d2", "d3"],
+    "conclusion_query": "경비"
+  }
+}

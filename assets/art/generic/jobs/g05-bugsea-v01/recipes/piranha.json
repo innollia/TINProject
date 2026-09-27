@@ -1,0 +1,473 @@
+{
+ "asset": "piranha",
+ "status": "candidate",
+ "note": "Piranha, 3/4 front view facing the lower left, hovering. Deep-bodied dusky grey fish with a rusty red belly, a jutting underbite full of triangle teeth, a mean glowing eye, spiny fins and a forked tail.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 939,
+ "g05": {
+  "name_ko": "이빨 물고기",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.25,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      358.8
+     ],
+     "size": [
+      140.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "fan",
+     "at": [
+      256.0,
+      190.0
+     ],
+     "size": [
+      70.0,
+      80.0
+     ],
+     "rot": 90.0
+    }
+   ]
+  },
+  {
+   "name": "dorsal",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.2,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      180.0,
+      120.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ],
+     "rot": 20.0
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      200.0
+     ],
+     "size": [
+      190.0,
+      150.0
+     ],
+     "rot": -10.0
+    }
+   ]
+  },
+  {
+   "name": "belly",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "crab",
+   "clip_to": "body",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      150.0,
+      250.0
+     ],
+     "size": [
+      150.0,
+      60.0
+     ],
+     "rot": -10.0
+    }
+   ]
+  },
+  {
+   "name": "scales",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "kind": "flat",
+   "material": "stone_dark",
+   "clip_to": "body",
+   "opacity": 0.4,
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      150.0,
+      170.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      150.0,
+      200.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      180.0,
+      170.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      180.0,
+      200.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      210.0,
+      170.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      210.0,
+      200.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "rot": -45.0
+    }
+   ]
+  },
+  {
+   "name": "fin",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      150.0,
+      272.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "rot": 190.0
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.1,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      92.0,
+      234.0
+     ],
+     "size": [
+      60.0,
+      36.0
+     ],
+     "rot": -20.0
+    }
+   ]
+  },
+  {
+   "name": "teeth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "material": "tooth",
+   "line": {
+    "width": 0.4,
+    "heavy": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      72.0,
+      224.0
+     ],
+     "size": [
+      8.0,
+      12.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      83.0,
+      220.0
+     ],
+     "size": [
+      8.0,
+      12.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      94.0,
+      216.0
+     ],
+     "size": [
+      8.0,
+      12.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      105.0,
+      212.0
+     ],
+     "size": [
+      8.0,
+      12.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      70.0,
+      246.0
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      81.0,
+      242.0
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      92.0,
+      238.0
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      103.0,
+      234.0
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      114.0,
+      230.0
+     ],
+     "size": [
+      8.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jaw",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.05,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      258.0
+     ],
+     "size": [
+      70.0,
+      24.0
+     ],
+     "rot": -20.0
+    }
+   ]
+  },
+  {
+   "name": "eye",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "kind": "flat",
+   "material": "glow_red",
+   "emit": 0.7,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "glow_red_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      122.0,
+      180.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pupil",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.35,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      122.0,
+      180.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

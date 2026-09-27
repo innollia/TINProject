@@ -1,0 +1,629 @@
+{
+ "asset": "raccoon",
+ "status": "candidate",
+ "note": "Raccoon, front view, sitting up. Grey-brown raccoon with a black bandit mask, pale muzzle and brows, rounded ears, dark handlike paws raised, a thick ringed tail curled at the side.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 842,
+ "g05": {
+  "name_ko": "너구리",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      363.6
+     ],
+     "size": [
+      150.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "tail"
+   ],
+   "z": 1,
+   "material": "fur_grey",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      190.0,
+      340.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "rot": -105.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      202.2,
+      336.0
+     ],
+     "size": [
+      38.7,
+      38.7
+     ],
+     "rot": -110.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      213.5,
+      331.1
+     ],
+     "size": [
+      37.5,
+      37.5
+     ],
+     "rot": -116.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      223.7,
+      325.4
+     ],
+     "size": [
+      36.2,
+      36.2
+     ],
+     "rot": -122.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      233.0,
+      318.8
+     ],
+     "size": [
+      34.9,
+      34.9
+     ],
+     "rot": -128.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      241.2,
+      311.5
+     ],
+     "size": [
+      33.6,
+      33.6
+     ],
+     "rot": -135.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      248.5,
+      303.3
+     ],
+     "size": [
+      32.4,
+      32.4
+     ],
+     "rot": -141.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      254.8,
+      294.3
+     ],
+     "size": [
+      31.1,
+      31.1
+     ],
+     "rot": -148.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      260.1,
+      284.5
+     ],
+     "size": [
+      29.8,
+      29.8
+     ],
+     "rot": -154.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      264.4,
+      273.8
+     ],
+     "size": [
+      28.5,
+      28.5
+     ],
+     "rot": -161.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      267.7,
+      262.3
+     ],
+     "size": [
+      27.3,
+      27.3
+     ],
+     "rot": -166.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      270.0,
+      250.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ],
+     "rot": -171.9
+    }
+   ]
+  },
+  {
+   "name": "rings",
+   "tags": [
+    "all",
+    "tail"
+   ],
+   "z": 1.05,
+   "kind": "flat",
+   "material": "soot",
+   "clip_to": "tail",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      220.0,
+      330.0
+     ],
+     "size": [
+      34.0,
+      12.0
+     ],
+     "rot": -30.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      234.0,
+      310.0
+     ],
+     "size": [
+      34.0,
+      12.0
+     ],
+     "rot": -16.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      248.0,
+      290.0
+     ],
+     "size": [
+      34.0,
+      12.0
+     ],
+     "rot": -2.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      262.0,
+      270.0
+     ],
+     "size": [
+      34.0,
+      12.0
+     ],
+     "rot": 12.0
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "fur_grey",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      154.0,
+      290.0
+     ],
+     "size": [
+      110.0,
+      140.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      322.0
+     ],
+     "size": [
+      120.0,
+      80.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "belly",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "fur_white",
+   "clip_to": "body",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      304.0
+     ],
+     "size": [
+      60.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "feet",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      120.0,
+      356.0
+     ],
+     "size": [
+      36.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      186.0,
+      356.0
+     ],
+     "size": [
+      36.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "paws",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.4,
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      126.0,
+      256.0
+     ],
+     "size": [
+      18.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182.0,
+      256.0
+     ],
+     "size": [
+      18.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ears",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.9,
+   "material": "fur_grey",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      124.0,
+      170.0
+     ],
+     "size": [
+      26.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.0,
+      170.0
+     ],
+     "size": [
+      26.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "fur_grey",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      208.0
+     ],
+     "size": [
+      84.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mask",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.1,
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      206.0
+     ],
+     "size": [
+      34.0,
+      22.0
+     ],
+     "rot": 10.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      206.0
+     ],
+     "size": [
+      34.0,
+      22.0
+     ],
+     "rot": -10.0
+    }
+   ]
+  },
+  {
+   "name": "muzzle",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      154.0,
+      226.0
+     ],
+     "size": [
+      30.0,
+      34.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.15,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      190.0
+     ],
+     "size": [
+      26.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      190.0
+     ],
+     "size": [
+      26.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      206.0
+     ],
+     "size": [
+      9.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      206.0
+     ],
+     "size": [
+      9.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.4,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      134.0,
+      203.8
+     ],
+     "size": [
+      2.7,
+      2.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      203.8
+     ],
+     "size": [
+      2.7,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nose",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.35,
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      236.0
+     ],
+     "size": [
+      10.0,
+      7.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

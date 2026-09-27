@@ -1,0 +1,2358 @@
+{
+ "asset": "spider",
+ "status": "candidate",
+ "note": "Giant spider, front view. Glossy black-violet spider with a bulbous abdomen marked with a wine hourglass, eight arched hairy legs, a cluster of red eyes and hooked fangs. attack = front legs reared high, fangs spread, body lunging; hit = legs buckled, body tilted, eyes dimmed.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  192,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 901,
+ "g05": {
+  "name_ko": "거대 거미",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      354.6
+     ],
+     "size": [
+      300.0,
+      36.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "abdomen",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "chitin_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      214.0
+     ],
+     "size": [
+      170.0,
+      150.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mark",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.1,
+   "material": "cloth_wine",
+   "clip_to": "abdomen",
+   "pieces": [
+    {
+     "icon": "hourglass",
+     "at": [
+      192.0,
+      204.0
+     ],
+     "size": [
+      44.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hair",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.05,
+   "material": "fur_dark",
+   "clip_to": "abdomen",
+   "line": false,
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      170.0
+     ],
+     "size": [
+      150.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l0",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l0",
+    "front"
+   ],
+   "z": 2.0,
+   "material": "chitin_black",
+   "pivot": [
+    154,
+    268
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      268.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "rot": 168.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      147.6,
+      240.2
+     ],
+     "size": [
+      18.7,
+      31.5
+     ],
+     "rot": 165.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      141.2,
+      219.0
+     ],
+     "size": [
+      17.4,
+      31.5
+     ],
+     "rot": 160.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      134.8,
+      204.6
+     ],
+     "size": [
+      16.1,
+      31.5
+     ],
+     "rot": 149.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      128.4,
+      197.0
+     ],
+     "size": [
+      14.8,
+      31.5
+     ],
+     "rot": 124.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      124.5,
+      195.1
+     ],
+     "size": [
+      13.5,
+      18.9
+     ],
+     "rot": 69.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      122.5,
+      208.2
+     ],
+     "size": [
+      13.5,
+      37.9
+     ],
+     "rot": -2.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      123.3,
+      229.2
+     ],
+     "size": [
+      12.2,
+      63.2
+     ],
+     "rot": -2.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      124.8,
+      262.4
+     ],
+     "size": [
+      10.9,
+      63.2
+     ],
+     "rot": -2.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      126.4,
+      295.6
+     ],
+     "size": [
+      9.6,
+      63.2
+     ],
+     "rot": -2.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      128.1,
+      328.8
+     ],
+     "size": [
+      8.3,
+      63.2
+     ],
+     "rot": -3.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      129.1,
+      346.6
+     ],
+     "size": [
+      7.0,
+      37.9
+     ],
+     "rot": -3.3
+    }
+   ]
+  },
+  {
+   "name": "leg_l0_tip",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l0",
+    "front"
+   ],
+   "z": 2.01,
+   "material": "claw",
+   "pivot": [
+    154,
+    268
+   ],
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      130.0,
+      362.0
+     ],
+     "size": [
+      9.8,
+      11.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l1",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l1"
+   ],
+   "z": 1.9,
+   "material": "chitin_black",
+   "pivot": [
+    148,
+    272
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      146.7,
+      267.3
+     ],
+     "size": [
+      19.0,
+      28.7
+     ],
+     "rot": 164.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      135.6,
+      233.4
+     ],
+     "size": [
+      17.8,
+      47.8
+     ],
+     "rot": 160.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      123.2,
+      203.8
+     ],
+     "size": [
+      16.6,
+      47.8
+     ],
+     "rot": 153.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      110.8,
+      183.4
+     ],
+     "size": [
+      15.4,
+      47.8
+     ],
+     "rot": 141.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      98.4,
+      172.2
+     ],
+     "size": [
+      14.2,
+      47.8
+     ],
+     "rot": 118.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      93.7,
+      168.5
+     ],
+     "size": [
+      13.0,
+      28.7
+     ],
+     "rot": 79.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      85.0,
+      184.7
+     ],
+     "size": [
+      13.0,
+      42.6
+     ],
+     "rot": 3.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      83.3,
+      207.2
+     ],
+     "size": [
+      11.8,
+      70.9
+     ],
+     "rot": 4.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      80.4,
+      244.4
+     ],
+     "size": [
+      10.6,
+      70.9
+     ],
+     "rot": 4.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      77.2,
+      281.6
+     ],
+     "size": [
+      9.4,
+      70.9
+     ],
+     "rot": 5.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      73.7,
+      318.8
+     ],
+     "size": [
+      8.2,
+      70.9
+     ],
+     "rot": 5.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      71.8,
+      338.3
+     ],
+     "size": [
+      7.0,
+      42.6
+     ],
+     "rot": 5.9
+    }
+   ]
+  },
+  {
+   "name": "leg_l1_tip",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l1"
+   ],
+   "z": 1.91,
+   "material": "claw",
+   "pivot": [
+    148,
+    272
+   ],
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      70.0,
+      356.0
+     ],
+     "size": [
+      9.8,
+      11.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l2",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l2"
+   ],
+   "z": 1.8,
+   "material": "chitin_black",
+   "pivot": [
+    142,
+    276
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      139.7,
+      270.4
+     ],
+     "size": [
+      18.0,
+      30.1
+     ],
+     "rot": 157.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      125.6,
+      240.2
+     ],
+     "size": [
+      16.9,
+      50.2
+     ],
+     "rot": 152.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      109.2,
+      213.0
+     ],
+     "size": [
+      15.8,
+      50.2
+     ],
+     "rot": 144.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      92.8,
+      194.2
+     ],
+     "size": [
+      14.7,
+      50.2
+     ],
+     "rot": 131.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      76.4,
+      183.8
+     ],
+     "size": [
+      13.6,
+      50.2
+     ],
+     "rot": 110.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      68.7,
+      180.7
+     ],
+     "size": [
+      12.5,
+      30.1
+     ],
+     "rot": 81.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      58.8,
+      194.8
+     ],
+     "size": [
+      12.5,
+      38.1
+     ],
+     "rot": 5.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      56.6,
+      215.2
+     ],
+     "size": [
+      11.4,
+      63.5
+     ],
+     "rot": 6.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      53.0,
+      248.4
+     ],
+     "size": [
+      10.3,
+      63.5
+     ],
+     "rot": 6.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      49.0,
+      281.6
+     ],
+     "size": [
+      9.2,
+      63.5
+     ],
+     "rot": 7.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      44.6,
+      314.8
+     ],
+     "size": [
+      8.1,
+      63.5
+     ],
+     "rot": 7.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      42.2,
+      332.6
+     ],
+     "size": [
+      7.0,
+      38.1
+     ],
+     "rot": 8.2
+    }
+   ]
+  },
+  {
+   "name": "leg_l2_tip",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l2"
+   ],
+   "z": 1.81,
+   "material": "claw",
+   "pivot": [
+    142,
+    276
+   ],
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      40.0,
+      348.0
+     ],
+     "size": [
+      9.8,
+      11.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l3",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l3"
+   ],
+   "z": 1.7,
+   "material": "chitin_black",
+   "pivot": [
+    136,
+    280
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      133.4,
+      275.5
+     ],
+     "size": [
+      17.0,
+      27.4
+     ],
+     "rot": 149.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      118.0,
+      252.9
+     ],
+     "size": [
+      16.0,
+      45.7
+     ],
+     "rot": 142.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      100.0,
+      232.3
+     ],
+     "size": [
+      15.0,
+      45.7
+     ],
+     "rot": 133.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      82.0,
+      218.3
+     ],
+     "size": [
+      14.0,
+      45.7
+     ],
+     "rot": 120.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      210.9
+     ],
+     "size": [
+      13.0,
+      45.7
+     ],
+     "rot": 103.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      53.6,
+      209.0
+     ],
+     "size": [
+      12.0,
+      27.4
+     ],
+     "rot": 82.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      44.9,
+      218.5
+     ],
+     "size": [
+      12.0,
+      29.1
+     ],
+     "rot": 7.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      42.6,
+      235.2
+     ],
+     "size": [
+      11.0,
+      48.5
+     ],
+     "rot": 8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      39.0,
+      260.4
+     ],
+     "size": [
+      10.0,
+      48.5
+     ],
+     "rot": 8.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      35.0,
+      285.6
+     ],
+     "size": [
+      9.0,
+      48.5
+     ],
+     "rot": 9.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      30.6,
+      310.8
+     ],
+     "size": [
+      8.0,
+      48.5
+     ],
+     "rot": 10.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      28.1,
+      325.1
+     ],
+     "size": [
+      7.0,
+      29.1
+     ],
+     "rot": 10.8
+    }
+   ]
+  },
+  {
+   "name": "leg_l3_tip",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l3"
+   ],
+   "z": 1.71,
+   "material": "claw",
+   "pivot": [
+    136,
+    280
+   ],
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      26.0,
+      336.0
+     ],
+     "size": [
+      9.8,
+      11.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r0",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r0",
+    "front"
+   ],
+   "z": 2.0,
+   "material": "chitin_black",
+   "pivot": [
+    230,
+    268
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      230.0,
+      268.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "rot": -168.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      236.4,
+      240.2
+     ],
+     "size": [
+      18.7,
+      31.5
+     ],
+     "rot": -165.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      242.8,
+      219.0
+     ],
+     "size": [
+      17.4,
+      31.5
+     ],
+     "rot": -160.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      249.2,
+      204.6
+     ],
+     "size": [
+      16.1,
+      31.5
+     ],
+     "rot": -149.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      255.6,
+      197.0
+     ],
+     "size": [
+      14.8,
+      31.5
+     ],
+     "rot": -124.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      259.5,
+      195.1
+     ],
+     "size": [
+      13.5,
+      18.9
+     ],
+     "rot": -69.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      261.5,
+      208.2
+     ],
+     "size": [
+      13.5,
+      37.9
+     ],
+     "rot": 2.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      260.7,
+      229.2
+     ],
+     "size": [
+      12.2,
+      63.2
+     ],
+     "rot": 2.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      259.2,
+      262.4
+     ],
+     "size": [
+      10.9,
+      63.2
+     ],
+     "rot": 2.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      257.6,
+      295.6
+     ],
+     "size": [
+      9.6,
+      63.2
+     ],
+     "rot": 2.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      255.9,
+      328.8
+     ],
+     "size": [
+      8.3,
+      63.2
+     ],
+     "rot": 3.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      254.9,
+      346.6
+     ],
+     "size": [
+      7.0,
+      37.9
+     ],
+     "rot": 3.3
+    }
+   ]
+  },
+  {
+   "name": "leg_r0_tip",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r0",
+    "front"
+   ],
+   "z": 2.01,
+   "material": "claw",
+   "pivot": [
+    230,
+    268
+   ],
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      254.0,
+      362.0
+     ],
+     "size": [
+      9.8,
+      11.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r1",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r1"
+   ],
+   "z": 1.9,
+   "material": "chitin_black",
+   "pivot": [
+    236,
+    272
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      237.3,
+      267.3
+     ],
+     "size": [
+      19.0,
+      28.7
+     ],
+     "rot": -164.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      248.4,
+      233.4
+     ],
+     "size": [
+      17.8,
+      47.8
+     ],
+     "rot": -160.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      260.8,
+      203.8
+     ],
+     "size": [
+      16.6,
+      47.8
+     ],
+     "rot": -153.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      273.2,
+      183.4
+     ],
+     "size": [
+      15.4,
+      47.8
+     ],
+     "rot": -141.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      285.6,
+      172.2
+     ],
+     "size": [
+      14.2,
+      47.8
+     ],
+     "rot": -118.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      290.3,
+      168.5
+     ],
+     "size": [
+      13.0,
+      28.7
+     ],
+     "rot": -79.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      299.0,
+      184.7
+     ],
+     "size": [
+      13.0,
+      42.6
+     ],
+     "rot": -3.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      300.7,
+      207.2
+     ],
+     "size": [
+      11.8,
+      70.9
+     ],
+     "rot": -4.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      303.6,
+      244.4
+     ],
+     "size": [
+      10.6,
+      70.9
+     ],
+     "rot": -4.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      306.8,
+      281.6
+     ],
+     "size": [
+      9.4,
+      70.9
+     ],
+     "rot": -5.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      310.3,
+      318.8
+     ],
+     "size": [
+      8.2,
+      70.9
+     ],
+     "rot": -5.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      312.2,
+      338.3
+     ],
+     "size": [
+      7.0,
+      42.6
+     ],
+     "rot": -5.9
+    }
+   ]
+  },
+  {
+   "name": "leg_r1_tip",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r1"
+   ],
+   "z": 1.91,
+   "material": "claw",
+   "pivot": [
+    236,
+    272
+   ],
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      314.0,
+      356.0
+     ],
+     "size": [
+      9.8,
+      11.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r2",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r2"
+   ],
+   "z": 1.8,
+   "material": "chitin_black",
+   "pivot": [
+    242,
+    276
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      244.3,
+      270.4
+     ],
+     "size": [
+      18.0,
+      30.1
+     ],
+     "rot": -157.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      258.4,
+      240.2
+     ],
+     "size": [
+      16.9,
+      50.2
+     ],
+     "rot": -152.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      274.8,
+      213.0
+     ],
+     "size": [
+      15.8,
+      50.2
+     ],
+     "rot": -144.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      291.2,
+      194.2
+     ],
+     "size": [
+      14.7,
+      50.2
+     ],
+     "rot": -131.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      307.6,
+      183.8
+     ],
+     "size": [
+      13.6,
+      50.2
+     ],
+     "rot": -110.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      315.3,
+      180.7
+     ],
+     "size": [
+      12.5,
+      30.1
+     ],
+     "rot": -81.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      325.2,
+      194.8
+     ],
+     "size": [
+      12.5,
+      38.1
+     ],
+     "rot": -5.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      327.4,
+      215.2
+     ],
+     "size": [
+      11.4,
+      63.5
+     ],
+     "rot": -6.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      331.0,
+      248.4
+     ],
+     "size": [
+      10.3,
+      63.5
+     ],
+     "rot": -6.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      335.0,
+      281.6
+     ],
+     "size": [
+      9.2,
+      63.5
+     ],
+     "rot": -7.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      339.4,
+      314.8
+     ],
+     "size": [
+      8.1,
+      63.5
+     ],
+     "rot": -7.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      341.8,
+      332.6
+     ],
+     "size": [
+      7.0,
+      38.1
+     ],
+     "rot": -8.2
+    }
+   ]
+  },
+  {
+   "name": "leg_r2_tip",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r2"
+   ],
+   "z": 1.81,
+   "material": "claw",
+   "pivot": [
+    242,
+    276
+   ],
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      344.0,
+      348.0
+     ],
+     "size": [
+      9.8,
+      11.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r3",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r3"
+   ],
+   "z": 1.7,
+   "material": "chitin_black",
+   "pivot": [
+    248,
+    280
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      250.6,
+      275.5
+     ],
+     "size": [
+      17.0,
+      27.4
+     ],
+     "rot": -149.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      266.0,
+      252.9
+     ],
+     "size": [
+      16.0,
+      45.7
+     ],
+     "rot": -142.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      284.0,
+      232.3
+     ],
+     "size": [
+      15.0,
+      45.7
+     ],
+     "rot": -133.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      302.0,
+      218.3
+     ],
+     "size": [
+      14.0,
+      45.7
+     ],
+     "rot": -120.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      320.0,
+      210.9
+     ],
+     "size": [
+      13.0,
+      45.7
+     ],
+     "rot": -103.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      330.4,
+      209.0
+     ],
+     "size": [
+      12.0,
+      27.4
+     ],
+     "rot": -82.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      339.1,
+      218.5
+     ],
+     "size": [
+      12.0,
+      29.1
+     ],
+     "rot": -7.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      341.4,
+      235.2
+     ],
+     "size": [
+      11.0,
+      48.5
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      345.0,
+      260.4
+     ],
+     "size": [
+      10.0,
+      48.5
+     ],
+     "rot": -8.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      349.0,
+      285.6
+     ],
+     "size": [
+      9.0,
+      48.5
+     ],
+     "rot": -9.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      353.4,
+      310.8
+     ],
+     "size": [
+      8.0,
+      48.5
+     ],
+     "rot": -10.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      355.9,
+      325.1
+     ],
+     "size": [
+      7.0,
+      29.1
+     ],
+     "rot": -10.8
+    }
+   ]
+  },
+  {
+   "name": "leg_r3_tip",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r3"
+   ],
+   "z": 1.71,
+   "material": "claw",
+   "pivot": [
+    248,
+    280
+   ],
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      358.0,
+      336.0
+     ],
+     "size": [
+      9.8,
+      11.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 3.5,
+   "material": "chitin_black",
+   "pivot": [
+    154,
+    268
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      153.2,
+      264.0
+     ],
+     "size": [
+      20.0,
+      28.1
+     ],
+     "rot": 168.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      144.4,
+      227.2
+     ],
+     "size": [
+      18.8,
+      46.9
+     ],
+     "rot": 165.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      134.8,
+      196.0
+     ],
+     "size": [
+      17.6,
+      46.9
+     ],
+     "rot": 160.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      125.2,
+      174.4
+     ],
+     "size": [
+      16.4,
+      46.9
+     ],
+     "rot": 150.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      115.6,
+      162.4
+     ],
+     "size": [
+      15.2,
+      46.9
+     ],
+     "rot": 126.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      112.9,
+      158.3
+     ],
+     "size": [
+      14.0,
+      28.1
+     ],
+     "rot": 76.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      106.0,
+      160.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ],
+     "rot": -162.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      109.7,
+      148.8
+     ],
+     "size": [
+      12.8,
+      22.9
+     ],
+     "rot": -160.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.7,
+      137.6
+     ],
+     "size": [
+      11.6,
+      22.9
+     ],
+     "rot": -159.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      118.1,
+      126.4
+     ],
+     "size": [
+      10.4,
+      22.9
+     ],
+     "rot": -157.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      122.9,
+      115.2
+     ],
+     "size": [
+      9.2,
+      22.9
+     ],
+     "rot": -156.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      126.8,
+      106.6
+     ],
+     "size": [
+      8.0,
+      13.7
+     ],
+     "rot": -154.8
+    }
+   ]
+  },
+  {
+   "name": "leg_l_atk_tip",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 3.51,
+   "material": "claw",
+   "pivot": [
+    154,
+    268
+   ],
+   "line": false,
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      128.0,
+      104.0
+     ],
+     "size": [
+      11.2,
+      12.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 3.5,
+   "material": "chitin_black",
+   "pivot": [
+    230,
+    268
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      230.8,
+      264.0
+     ],
+     "size": [
+      20.0,
+      28.1
+     ],
+     "rot": -168.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      239.6,
+      227.2
+     ],
+     "size": [
+      18.8,
+      46.9
+     ],
+     "rot": -165.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      249.2,
+      196.0
+     ],
+     "size": [
+      17.6,
+      46.9
+     ],
+     "rot": -160.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      258.8,
+      174.4
+     ],
+     "size": [
+      16.4,
+      46.9
+     ],
+     "rot": -150.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      268.4,
+      162.4
+     ],
+     "size": [
+      15.2,
+      46.9
+     ],
+     "rot": -126.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      271.1,
+      158.3
+     ],
+     "size": [
+      14.0,
+      28.1
+     ],
+     "rot": -76.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      278.0,
+      160.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ],
+     "rot": 162.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      274.3,
+      148.8
+     ],
+     "size": [
+      12.8,
+      22.9
+     ],
+     "rot": 160.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      270.3,
+      137.6
+     ],
+     "size": [
+      11.6,
+      22.9
+     ],
+     "rot": 159.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      265.9,
+      126.4
+     ],
+     "size": [
+      10.4,
+      22.9
+     ],
+     "rot": 157.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      261.1,
+      115.2
+     ],
+     "size": [
+      9.2,
+      22.9
+     ],
+     "rot": 156.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      257.2,
+      106.6
+     ],
+     "size": [
+      8.0,
+      13.7
+     ],
+     "rot": 154.8
+    }
+   ]
+  },
+  {
+   "name": "leg_r_atk_tip",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 3.51,
+   "material": "claw",
+   "pivot": [
+    230,
+    268
+   ],
+   "line": false,
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      104.0
+     ],
+     "size": [
+      11.2,
+      12.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "thorax",
+   "tags": [
+    "all",
+    "body",
+    "head"
+   ],
+   "z": 3,
+   "material": "chitin_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      276.0
+     ],
+     "size": [
+      110.0,
+      88.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 3.3,
+   "kind": "flat",
+   "material": "glow_red",
+   "emit": 0.9,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "glow_red_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      262.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      208.0,
+      262.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      156.0,
+      250.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      228.0,
+      250.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.0,
+      244.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      200.0,
+      244.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      166.0,
+      278.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      218.0,
+      278.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_hit",
+   "tags": [
+    "all",
+    "head",
+    "eyes_hit"
+   ],
+   "z": 3.3,
+   "kind": "flat",
+   "material": "soot",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      264.0
+     ],
+     "size": [
+      16.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      208.0,
+      264.0
+     ],
+     "size": [
+      16.0,
+      5.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fang_l",
+   "tags": [
+    "all",
+    "head",
+    "fangs",
+    "fang_l"
+   ],
+   "z": 3.4,
+   "material": "chitin_black",
+   "pivot": [
+    178,
+    300
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      306.0
+     ],
+     "size": [
+      22.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fang_l_tip",
+   "tags": [
+    "all",
+    "head",
+    "fangs",
+    "fang_l"
+   ],
+   "z": 3.5,
+   "material": "claw",
+   "pivot": [
+    178,
+    300
+   ],
+   "line": {
+    "width": 0.6,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      180.0,
+      326.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ],
+     "rot": 135.0
+    }
+   ]
+  },
+  {
+   "name": "fang_r",
+   "tags": [
+    "all",
+    "head",
+    "fangs",
+    "fang_r"
+   ],
+   "z": 3.4,
+   "material": "chitin_black",
+   "pivot": [
+    206,
+    300
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      208.0,
+      306.0
+     ],
+     "size": [
+      22.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fang_r_tip",
+   "tags": [
+    "all",
+    "head",
+    "fangs",
+    "fang_r"
+   ],
+   "z": 3.5,
+   "material": "claw",
+   "pivot": [
+    206,
+    300
+   ],
+   "line": {
+    "width": 0.6,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      204.0,
+      326.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ],
+     "rot": -135.0,
+     "flip": "x"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "fang_l": {
+     "rot": 16,
+     "pivot": [
+      178,
+      300
+     ]
+    },
+    "fang_r": {
+     "rot": -16,
+     "pivot": [
+      206,
+      300
+     ]
+    },
+    "all": {
+     "pivot": [
+      192,
+      366
+     ],
+     "dy": 4,
+     "sx": 1.04,
+     "sy": 1.04
+    }
+   },
+   "show": [
+    "atk"
+   ],
+   "hide": [
+    "front"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "legs": {
+     "sy": 0.86,
+     "pivot": [
+      192,
+      366
+     ]
+    },
+    "all": {
+     "pivot": [
+      192,
+      366
+     ],
+     "rot": 6,
+     "dy": 6,
+     "sx": 0.95,
+     "sy": 0.95
+    }
+   },
+   "show": [
+    "eyes_hit"
+   ],
+   "hide": [
+    "eyes"
+   ]
+  }
+ ]
+}

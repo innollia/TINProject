@@ -172,7 +172,7 @@ func get_input_bubble_state() -> Dictionary:
 	return out
 
 
-func can_process() -> bool:
+func _can_take_input() -> bool:
 	return context != null and context.input_enabled and ["playing", "first_frame"].has(state.phase) and not state.is_downed() and not state.transition_pending
 
 
@@ -186,7 +186,7 @@ func read_intent() -> RunIntent:
 	_held_surge = surge_now
 	_held_consume = consume_now
 	_pop_bubbles()
-	if not can_process():
+	if not _can_take_input():
 		return RunIntent.new()
 	return RunIntent.create(context.is_action_pressed(ACTION_UP), context.is_action_pressed(ACTION_DOWN), context.is_action_pressed(ACTION_LEFT), context.is_action_pressed(ACTION_RIGHT), surge_edge, consume_edge)
 
@@ -228,7 +228,7 @@ func step_frame(delta: float, override: RunIntent = null) -> void:
 func _frame_intent(override: RunIntent) -> RunIntent:
 	if override == null:
 		return read_intent()
-	if not can_process():
+	if not _can_take_input():
 		return RunIntent.new()
 	return override.copy()
 

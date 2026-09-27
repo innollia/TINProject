@@ -1,0 +1,36 @@
+{
+  "id": "c_no_seed_letter",
+  "title": "부치지 못한 편지",
+  "seed_query": "",
+  "fragments": [
+    {
+      "id": "c1",
+      "body": "서랍 안에서 봉인된 편지가 나왔다. 수신인 칸은 비어 있었다.",
+      "search_tags": ["편지", "서랍", "봉인", "수신인"],
+      "hover_reveals": [
+        { "span_from": 4, "span_to": 6, "hidden": "봉인 밀랍에 눌린 인장은 절반만 찍혀 있다." }
+      ],
+      "relations": []
+    },
+    {
+      "id": "c2",
+      "body": "책상 위 잉크병은 말라 있었지만, 펜촉에는 아직 젖은 잉크가 남아 있었다.",
+      "search_tags": ["잉크", "펜", "책상"],
+      "hover_reveals": [
+        { "span_from": 12, "span_to": 15, "hidden": "젖은 잉크는 이 방에서 최근에 쓴 사람이 있었다는 뜻이다." }
+      ],
+      "relations": []
+    },
+    {
+      "id": "c3",
+      "body": "달력의 한 날짜에만 동그라미가 쳐져 있었다. 오늘로부터 사흘 뒤다.",
+      "search_tags": ["달력", "날짜", "동그라미"],
+      "hover_reveals": [],
+      "relations": []
+    }
+  ],
+  "completion": {
+    "required_ids": ["c1", "c2"],
+    "conclusion_query": ""
+  }
+}

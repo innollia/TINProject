@@ -1,0 +1,239 @@
+{
+ "asset": "ui_scr_terminal",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Old record-viewer terminal frame (Query World), 9-slice margin 48; power lamp off / on.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "frame centre",
+ "seed": 81,
+ "forms": [
+  {
+   "name": "body",
+   "z": 0,
+   "material": "plastic_dark",
+   "shade": {
+    "bump": 0.45
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      188.0,
+      188.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 22
+     }
+    }
+   ]
+  },
+  {
+   "name": "recess",
+   "z": 1,
+   "kind": "flat",
+   "material": "rubber",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      150.0,
+      150.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 18
+     }
+    }
+   ]
+  },
+  {
+   "name": "screen",
+   "z": 2,
+   "material": "screen",
+   "shade": {
+    "bump": 0.3,
+    "highlight_amount": 0.15
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      140.0,
+      140.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 16
+     }
+    }
+   ]
+  },
+  {
+   "name": "inner_glow",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "opacity": 0.08,
+   "blur": 10,
+   "clip_to": "screen",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      120.0,
+      120.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 14
+     }
+    }
+   ]
+  },
+  {
+   "name": "plate",
+   "z": 3,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      40.0,
+      176.0
+     ],
+     "size": [
+      30.0,
+      7.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "vents",
+   "z": 3,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      3.0,
+      10.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        70,
+        12
+       ],
+       [
+        122,
+        12
+       ]
+      ],
+      "count": 8
+     }
+    }
+   ]
+  },
+  {
+   "name": "power_off_f",
+   "z": 3,
+   "material": "lamp_amber_off",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      176.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "power_off"
+   ]
+  },
+  {
+   "name": "power_on_f",
+   "z": 3,
+   "material": "lamp_amber_on",
+   "emit": 1.0,
+   "glow": {
+    "radius": 5,
+    "opacity": 0.55,
+    "color": "glow_amber"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      176.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "power_on"
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "show": [
+    "power_off"
+   ]
+  },
+  {
+   "name": "on",
+   "show": [
+    "power_on"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,445 @@
+{
+ "asset": "obj_guillotine",
+ "status": "candidate",
+ "note": "Guillotine 2.8 m (dark fantasy, empty device only): wooden platform, two grooved posts, crossbeam, raised slanted blade on its weight block, rope, lunette boards.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 521,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  390,
+  506
+ ],
+ "pivot": [
+  185,
+  426
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "at": [
+      195,
+      386
+     ],
+     "size": [
+      260,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "platform",
+   "z": 2.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 30,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      185,
+      346.0
+     ],
+     "size": [
+      240,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "name": "platform_planks",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.45,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      125.0,
+      346.0
+     ],
+     "size": [
+      2.0,
+      94
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      185.0,
+      346.0
+     ],
+     "size": [
+      2.0,
+      94
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      245.0,
+      346.0
+     ],
+     "size": [
+      2.0,
+      94
+     ]
+    }
+   ]
+  },
+  {
+   "name": "post0",
+   "z": 4.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 270,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      127,
+      76.0
+     ],
+     "size": [
+      22,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "groove0",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      135,
+      236
+     ],
+     "size": [
+      4,
+      250
+     ]
+    }
+   ]
+  },
+  {
+   "name": "post1",
+   "z": 6.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 270,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      243,
+      76.0
+     ],
+     "size": [
+      22,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "groove1",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      235,
+      236
+     ],
+     "size": [
+      4,
+      250
+     ]
+    }
+   ]
+  },
+  {
+   "name": "beam",
+   "z": 8.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 22,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      185,
+      51.0
+     ],
+     "size": [
+      160,
+      26
+     ]
+    }
+   ]
+  },
+  {
+   "name": "weight",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      185,
+      150
+     ],
+     "size": [
+      94,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "blade",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "steel",
+   "shade": {
+    "highlight": 0.8,
+    "highlight_amount": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       2
+      ],
+      [
+       14,
+       2
+      ],
+      [
+       14,
+       7.4
+      ],
+      [
+       2,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      185,
+      190
+     ],
+     "size": [
+      94,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "blade_edge",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "chrome",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      185.0,
+      202.0
+     ],
+     "size": [
+      95.0789145920377,
+      3
+     ],
+     "rot": -14.620873988631656
+    }
+   ]
+  },
+  {
+   "name": "rope",
+   "z": 12.0,
+   "kind": "flat",
+   "material": "rope",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      249,
+      126
+     ],
+     "size": [
+      3,
+      140
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      232.0,
+      51.0
+     ],
+     "size": [
+      35.4400902933387,
+      3
+     ],
+     "rot": -163.61045966596524
+    }
+   ]
+  },
+  {
+   "name": "lunette",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "wood",
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      185,
+      320
+     ],
+     "size": [
+      110,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lunette_hole",
+   "z": 14.0,
+   "kind": "flat",
+   "material": "hole",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      185,
+      320
+     ],
+     "size": [
+      32,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lunette_split",
+   "z": 15.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      185,
+      320
+     ],
+     "size": [
+      110,
+      3
+     ]
+    }
+   ]
+  }
+ ]
+}

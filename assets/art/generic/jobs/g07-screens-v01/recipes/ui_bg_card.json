@@ -1,0 +1,662 @@
+{
+ "asset": "ui_bg_card",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Board-game clue cards: suspect (wine), method (teal), place (ochre) with an empty picture window and blank lines, plus the card back.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  256,
+  384
+ ],
+ "pivot": [
+  128.0,
+  192.0
+ ],
+ "pivot_meaning": "card centre",
+ "seed": 93,
+ "forms": [
+  {
+   "name": "card",
+   "z": 0,
+   "material": "bone",
+   "shade": {
+    "bump": 0.3,
+    "highlight_amount": 0.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      192.0
+     ],
+     "size": [
+      244.0,
+      372.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 18
+     }
+    }
+   ]
+  },
+  {
+   "name": "border",
+   "z": 1,
+   "kind": "flat",
+   "material": "cloth_wine",
+   "tags": [
+    "ink"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      192.0
+     ],
+     "size": [
+      220.0,
+      348.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 12
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      192.0
+     ],
+     "size": [
+      210.0,
+      338.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 9
+     },
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "header_suspect",
+   "z": 1.5,
+   "material": "cloth_wine",
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      50.0
+     ],
+     "size": [
+      206.0,
+      42.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 8
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "suspect"
+   ]
+  },
+  {
+   "name": "glyph_suspect",
+   "z": 2,
+   "kind": "flat",
+   "material": "bone",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "human",
+     "at": [
+      128.0,
+      50.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "suspect"
+   ]
+  },
+  {
+   "name": "window_suspect",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "steel_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      168.0
+     ],
+     "size": [
+      180.0,
+      150.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "suspect"
+   ]
+  },
+  {
+   "name": "lines_suspect",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "paper_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      270.0
+     ],
+     "size": [
+      150.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      290.0
+     ],
+     "size": [
+      150.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      310.0
+     ],
+     "size": [
+      120.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "suspect"
+   ]
+  },
+  {
+   "name": "header_method",
+   "z": 1.5,
+   "material": "paint_teal",
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      50.0
+     ],
+     "size": [
+      206.0,
+      42.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 8
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "method"
+   ]
+  },
+  {
+   "name": "glyph_method",
+   "z": 2,
+   "kind": "flat",
+   "material": "bone",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "hand",
+     "at": [
+      128.0,
+      50.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "method"
+   ]
+  },
+  {
+   "name": "window_method",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "steel_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      168.0
+     ],
+     "size": [
+      180.0,
+      150.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "method"
+   ]
+  },
+  {
+   "name": "lines_method",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "paper_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      270.0
+     ],
+     "size": [
+      150.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      290.0
+     ],
+     "size": [
+      150.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      310.0
+     ],
+     "size": [
+      120.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "method"
+   ]
+  },
+  {
+   "name": "header_place",
+   "z": 1.5,
+   "material": "paint_ochre",
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      50.0
+     ],
+     "size": [
+      206.0,
+      42.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 8
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "place"
+   ]
+  },
+  {
+   "name": "glyph_place",
+   "z": 2,
+   "kind": "flat",
+   "material": "bone",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "house",
+     "at": [
+      128.0,
+      50.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "place"
+   ]
+  },
+  {
+   "name": "window_place",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "steel_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      168.0
+     ],
+     "size": [
+      180.0,
+      150.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "place"
+   ]
+  },
+  {
+   "name": "lines_place",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "paper_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      270.0
+     ],
+     "size": [
+      150.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      290.0
+     ],
+     "size": [
+      150.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      310.0
+     ],
+     "size": [
+      120.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "place"
+   ]
+  },
+  {
+   "name": "back_field",
+   "z": 1.5,
+   "material": "cloth_wine",
+   "shade": {
+    "bump": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      192.0
+     ],
+     "size": [
+      206.0,
+      334.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 9
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "back"
+   ]
+  },
+  {
+   "name": "lattice",
+   "z": 2,
+   "kind": "flat",
+   "material": "bronze",
+   "opacity": 0.22,
+   "clip_to": "back_field",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      58.0,
+      60.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "repeat": {
+      "grid": [
+       6,
+       12
+      ],
+      "step": [
+       28,
+       26
+      ]
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "back"
+   ]
+  },
+  {
+   "name": "emblem_ring",
+   "z": 3,
+   "material": "bronze",
+   "shade": {
+    "bump": 1.0
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      128.0,
+      192.0
+     ],
+     "size": [
+      104.0,
+      104.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      128.0,
+      192.0
+     ],
+     "size": [
+      88.0,
+      88.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "back"
+   ]
+  },
+  {
+   "name": "emblem",
+   "z": 3.1,
+   "material": "bronze",
+   "shade": {
+    "bump": 1.0
+   },
+   "pieces": [
+    {
+     "icon": "eye",
+     "at": [
+      128.0,
+      192.0
+     ],
+     "size": [
+      60.0,
+      40.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "back"
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "suspect",
+   "show": [
+    "suspect"
+   ],
+   "materials": {
+    "ink": "cloth_wine"
+   }
+  },
+  {
+   "name": "method",
+   "show": [
+    "method"
+   ],
+   "materials": {
+    "ink": "paint_teal"
+   }
+  },
+  {
+   "name": "place",
+   "show": [
+    "place"
+   ],
+   "materials": {
+    "ink": "paint_ochre"
+   }
+  },
+  {
+   "name": "back",
+   "show": [
+    "back"
+   ]
+  }
+ ]
+}

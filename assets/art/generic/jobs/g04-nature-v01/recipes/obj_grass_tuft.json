@@ -1,0 +1,141 @@
+{
+ "asset": "obj_grass_tuft",
+ "status": "candidate",
+ "note": "Low grass tuft about 0.35 m tall (no collision).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 405,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  202,
+  162
+ ],
+ "pivot": [
+  97,
+  102
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.28,
+   "blur": 5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      101,
+      99
+     ],
+     "size": [
+      96,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "back",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "foliage_dark",
+   "line": {
+    "width": 0.9,
+    "heavy": 1.0
+   },
+   "pieces": [
+    {
+     "icon": "grass",
+     "at": [
+      83,
+      72
+     ],
+     "size": [
+      60,
+      58
+     ]
+    },
+    {
+     "icon": "grass",
+     "at": [
+      117,
+      74
+     ],
+     "size": [
+      54,
+      52
+     ],
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "front",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "grass",
+   "line": {
+    "width": 0.9,
+    "heavy": 1.0
+   },
+   "rough": {
+    "amp": 0.3,
+    "soft": 1.0,
+    "cell": 5
+   },
+   "pieces": [
+    {
+     "icon": "grass",
+     "at": [
+      97,
+      80
+     ],
+     "size": [
+      62,
+      46
+     ]
+    },
+    {
+     "icon": "grass",
+     "at": [
+      67,
+      88
+     ],
+     "size": [
+      36,
+      30
+     ],
+     "rot": -18
+    },
+    {
+     "icon": "grass",
+     "at": [
+      129,
+      87
+     ],
+     "size": [
+      34,
+      32
+     ],
+     "rot": 16,
+     "flip": "x"
+    },
+    {
+     "icon": "grass",
+     "at": [
+      105,
+      72
+     ],
+     "size": [
+      30,
+      54
+     ],
+     "rot": 6
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,471 @@
+{
+ "asset": "umbrella_ghost",
+ "status": "candidate",
+ "note": "Umbrella ghost, front view, hopping. A closed old oil-paper umbrella with ragged wine-red panels and bamboo ribs, one big eye, a long tongue hanging out, and a single hairy leg ending in a wooden geta sandal.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 733,
+ "g05": {
+  "name_ko": "우산 요괴",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      364.0
+     ],
+     "size": [
+      90.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "hide_pink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      162.0,
+      308.0
+     ],
+     "size": [
+      20.0,
+      63.1
+     ],
+     "rot": -4.1
+    }
+   ]
+  },
+  {
+   "name": "geta",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.1,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      164.0,
+      346.0
+     ],
+     "size": [
+      50.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      150.0,
+      358.0
+     ],
+     "size": [
+      8.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      178.0,
+      358.0
+     ],
+     "size": [
+      8.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "canopy",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      170.0
+     ],
+     "size": [
+      150.0,
+      230.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      270.0
+     ],
+     "size": [
+      110.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "panels",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "bark",
+   "clip_to": "canopy",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      130.0,
+      170.0
+     ],
+     "size": [
+      3.0,
+      229.1
+     ],
+     "rot": 15.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      145.0,
+      170.0
+     ],
+     "size": [
+      3.0,
+      223.1
+     ],
+     "rot": 7.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      175.0,
+      170.0
+     ],
+     "size": [
+      3.0,
+      223.1
+     ],
+     "rot": -7.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      190.0,
+      170.0
+     ],
+     "size": [
+      3.0,
+      229.1
+     ],
+     "rot": -15.3
+    }
+   ]
+  },
+  {
+   "name": "tears",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "mountains",
+     "at": [
+      160.0,
+      286.0
+     ],
+     "size": [
+      110.0,
+      20.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "tip",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.9,
+   "material": "bark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      53.0
+     ],
+     "size": [
+      8.0,
+      36.8
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "eye_white",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.4,
+   "kind": "flat",
+   "material": "eye_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      190.0
+     ],
+     "size": [
+      50.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "iris",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.5,
+   "material": "iris",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      192.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pupil",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.55,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      192.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.4,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      234.0
+     ],
+     "size": [
+      50.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      227.3
+     ],
+     "size": [
+      60.0,
+      16.8
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "tongue",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.6,
+   "material": "tongue",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      240.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "rot": 31.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      155.5,
+      248.6
+     ],
+     "size": [
+      18.6,
+      18.6
+     ],
+     "rot": 24.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      152.3,
+      257.1
+     ],
+     "size": [
+      17.1,
+      17.1
+     ],
+     "rot": 16.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      150.4,
+      265.7
+     ],
+     "size": [
+      15.7,
+      17.0
+     ],
+     "rot": 8.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      149.9,
+      274.3
+     ],
+     "size": [
+      14.3,
+      17.0
+     ],
+     "rot": -0.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      150.6,
+      282.9
+     ],
+     "size": [
+      12.9,
+      17.0
+     ],
+     "rot": -9.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      152.7,
+      291.4
+     ],
+     "size": [
+      11.4,
+      17.0
+     ],
+     "rot": -17.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      156.0,
+      299.9
+     ],
+     "size": [
+      10.0,
+      10.2
+     ],
+     "rot": -25.0
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

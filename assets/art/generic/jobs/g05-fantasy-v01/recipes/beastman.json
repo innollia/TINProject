@@ -1,0 +1,1081 @@
+{
+ "asset": "beastman",
+ "status": "candidate",
+ "note": "Beastman (feline), front view. Tawny-furred cat-folk warrior with a dark mane, tufted ears, amber slit eyes, whiskers, leather cuirass and belt, a curved cutlass, long striped tail.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 525,
+ "g05": {
+  "name_ko": "수인",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      362.6
+     ],
+     "size": [
+      160.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "tail"
+   ],
+   "z": 0.8,
+   "material": "fur_tawny",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      232.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ],
+     "rot": -68.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      196.1,
+      237.3
+     ],
+     "size": [
+      17.1,
+      26.3
+     ],
+     "rot": -75.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      210.7,
+      239.9
+     ],
+     "size": [
+      16.2,
+      26.3
+     ],
+     "rot": -84.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      223.8,
+      239.8
+     ],
+     "size": [
+      15.3,
+      26.3
+     ],
+     "rot": -96.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      235.3,
+      236.9
+     ],
+     "size": [
+      14.4,
+      26.3
+     ],
+     "rot": -111.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      245.3,
+      231.4
+     ],
+     "size": [
+      13.6,
+      26.3
+     ],
+     "rot": -126.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      253.8,
+      223.1
+     ],
+     "size": [
+      12.7,
+      26.3
+     ],
+     "rot": -141.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      260.7,
+      212.1
+     ],
+     "size": [
+      11.8,
+      26.3
+     ],
+     "rot": -153.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      266.1,
+      198.4
+     ],
+     "size": [
+      10.9,
+      26.3
+     ],
+     "rot": -162.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      269.5,
+      184.8
+     ],
+     "size": [
+      10.0,
+      15.8
+     ],
+     "rot": -170.1
+    }
+   ]
+  },
+  {
+   "name": "tail_bands",
+   "tags": [
+    "all",
+    "tail"
+   ],
+   "z": 0.85,
+   "kind": "flat",
+   "material": "fur_brown",
+   "clip_to": "tail",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      220.0,
+      256.0
+     ],
+     "size": [
+      18.0,
+      8.0
+     ],
+     "rot": -40.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      236.0,
+      238.0
+     ],
+     "size": [
+      18.0,
+      8.0
+     ],
+     "rot": -24.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      252.0,
+      220.0
+     ],
+     "size": [
+      18.0,
+      8.0
+     ],
+     "rot": -8.0
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1,
+   "material": "fur_tawny",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      139.2,
+      258.0
+     ],
+     "size": [
+      24.0,
+      80.8
+     ],
+     "rot": 6.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      135.1,
+      324.4
+     ],
+     "size": [
+      21.6,
+      68.4
+     ],
+     "rot": 0.2
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1.1,
+   "material": "fur_tawny",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      131.1,
+      357.9
+     ],
+     "size": [
+      38.4,
+      16.8
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      119.6,
+      365.5
+     ],
+     "size": [
+      7.7,
+      9.2
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      131.1,
+      365.5
+     ],
+     "size": [
+      7.7,
+      9.2
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      142.7,
+      365.5
+     ],
+     "size": [
+      7.7,
+      9.2
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1,
+   "material": "fur_tawny",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      180.8,
+      258.0
+     ],
+     "size": [
+      24.0,
+      80.8
+     ],
+     "rot": -6.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.9,
+      324.4
+     ],
+     "size": [
+      21.6,
+      68.4
+     ],
+     "rot": -0.2
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1.1,
+   "material": "fur_tawny",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      188.9,
+      357.9
+     ],
+     "size": [
+      38.4,
+      16.8
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      177.3,
+      365.5
+     ],
+     "size": [
+      7.7,
+      9.2
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      188.9,
+      365.5
+     ],
+     "size": [
+      7.7,
+      9.2
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      200.4,
+      365.5
+     ],
+     "size": [
+      7.7,
+      9.2
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "trousers",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.2,
+   "material": "cloth_rag",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      232.0
+     ],
+     "size": [
+      90.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "torso",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3,
+   "material": "fur_tawny",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      154.8
+     ],
+     "size": [
+      98.0,
+      64.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      196.4
+     ],
+     "size": [
+      82.1,
+      103.7
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      220.4
+     ],
+     "size": [
+      62.6,
+      38.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cuirass",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.2,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      160.0
+     ],
+     "size": [
+      100.0,
+      66.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      206.0
+     ],
+     "size": [
+      80.0,
+      80.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "belt",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.4,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      218.0
+     ],
+     "size": [
+      90.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "buckle",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.45,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "octagon",
+     "at": [
+      160.0,
+      218.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4,
+   "material": "fur_tawny",
+   "pivot": [
+    112.0,
+    126.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      101.9,
+      151.2
+     ],
+     "size": [
+      19.8,
+      61.2
+     ],
+     "rot": 21.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      95.9,
+      203.2
+     ],
+     "size": [
+      17.9,
+      60.5
+     ],
+     "rot": -8.6
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.2,
+   "material": "fur_tawny",
+   "pivot": [
+    112.0,
+    126.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      100.0,
+      232.4
+     ],
+     "size": [
+      23.8,
+      23.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "claws_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.25,
+   "material": "claw",
+   "pivot": [
+    112.0,
+    126.0
+   ],
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      109.0,
+      244.3
+     ],
+     "size": [
+      5.7,
+      16.7
+     ],
+     "rot": 171.4
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      102.0,
+      245.3
+     ],
+     "size": [
+      5.7,
+      16.7
+     ],
+     "rot": 171.4
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      94.9,
+      246.4
+     ],
+     "size": [
+      5.7,
+      16.7
+     ],
+     "rot": 171.4
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4,
+   "material": "fur_tawny",
+   "pivot": [
+    208.0,
+    126.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      219.7,
+      149.9
+     ],
+     "size": [
+      19.8,
+      60.1
+     ],
+     "rot": -26.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      226.7,
+      199.9
+     ],
+     "size": [
+      17.9,
+      59.4
+     ],
+     "rot": 10.2
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.2,
+   "material": "fur_tawny",
+   "pivot": [
+    208.0,
+    126.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      222.0,
+      228.4
+     ],
+     "size": [
+      23.8,
+      23.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cutlass",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.9,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "cutlass",
+     "at": [
+      235.8,
+      188.1
+     ],
+     "size": [
+      96.0,
+      96.0
+     ],
+     "rot": -25.0
+    }
+   ]
+  },
+  {
+   "name": "mane",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.5,
+   "material": "fur_brown",
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      160.0,
+      110.2
+     ],
+     "size": [
+      96.0,
+      60.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      86.2
+     ],
+     "size": [
+      88.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ears",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.6,
+   "material": "fur_tawny",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      134.0,
+      58.2
+     ],
+     "size": [
+      22.0,
+      32.0
+     ],
+     "rot": -14.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      186.0,
+      58.2
+     ],
+     "size": [
+      22.0,
+      32.0
+     ],
+     "rot": 14.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7,
+   "material": "fur_tawny",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      92.2
+     ],
+     "size": [
+      60.0,
+      56.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "muzzle",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.2,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      160.0,
+      106.2
+     ],
+     "size": [
+      40.0,
+      22.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "nose",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.3,
+   "material": "hide_pink",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      98.2
+     ],
+     "size": [
+      10.0,
+      7.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.3,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.5,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.3,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      148.0,
+      86.2
+     ],
+     "size": [
+      12.0,
+      8.0
+     ],
+     "rot": 14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      86.2
+     ],
+     "size": [
+      12.0,
+      8.0
+     ],
+     "rot": -14.0
+    }
+   ]
+  },
+  {
+   "name": "pupils",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.35,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      148.0,
+      86.2
+     ],
+     "size": [
+      3.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      86.2
+     ],
+     "size": [
+      3.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "whiskers",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.4,
+   "kind": "flat",
+   "material": "eye",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      138.0,
+      104.2
+     ],
+     "size": [
+      1.2,
+      24.8
+     ],
+     "rot": 99.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      138.0,
+      110.2
+     ],
+     "size": [
+      1.2,
+      24.8
+     ],
+     "rot": 80.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182.0,
+      104.2
+     ],
+     "size": [
+      1.2,
+      24.8
+     ],
+     "rot": -99.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182.0,
+      110.2
+     ],
+     "size": [
+      1.2,
+      24.8
+     ],
+     "rot": -80.5
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.4,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      112.2
+     ],
+     "size": [
+      14.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      110.1
+     ],
+     "size": [
+      16.8,
+      5.2
+     ],
+     "op": "sub"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

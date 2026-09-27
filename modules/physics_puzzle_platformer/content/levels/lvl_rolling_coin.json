@@ -1,0 +1,23 @@
+{
+ "schema": 1, "id": "lvl_rolling_coin", "name": "구르는 동전", "parallax_seed": 2207,
+ "spawn": { "x": 120, "y": 470 }, "rift": { "x": 1640, "y": 452, "radius": 32 },
+ "bounds": { "min_x": -120, "max_x": 1800, "min_y": -80, "max_y": 620 },
+ "objective_needed": 3, "mutable": ["material_swap", "prop_offset"], "mutable_hazards": [7, 8], "shuffled": [4],
+ "kinematics": [{ "id": "lift_a", "from": [700, 470], "to": [700, 300], "duration": 2.4, "loop": "pingpong" }],
+ "bodies": [
+  { "id": "floor", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [840, 520], "size": [1920, 48] },
+  { "id": "wall_left", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [-104, 280], "size": [32, 432] },
+  { "id": "wall_right", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [1784, 280], "size": [32, 432] },
+  { "id": "ledge_far", "kind": "tile_static", "shape": "box", "material": "wood", "pos": [1440, 440], "size": [240, 24] },
+  { "id": "ball", "kind": "obstacle_dynamic", "shape": "circle", "material": "iron", "pos": [380, 470], "size": [40, 40], "hp": 6 },
+  { "id": "crate_a", "kind": "prop_dynamic", "shape": "box", "material": "wood", "pos": [300, 480], "size": [36, 32] },
+  { "id": "crate_b", "kind": "prop_sleeping", "shape": "box", "material": "glass", "pos": [520, 480], "size": [30, 30] },
+  { "id": "spike_low", "kind": "hazard_static", "shape": "box", "material": "void", "pos": [1160, 490], "size": [96, 12] },
+  { "id": "spike_high", "kind": "hazard_static", "shape": "box", "material": "void", "pos": [1000, 490], "size": [96, 12] },
+  { "id": "lift_a", "kind": "tile_kinematic", "shape": "box", "material": "wood", "pos": [700, 470], "size": [120, 20] },
+  { "id": "egg_a", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [700, 250], "size": [22, 22] },
+  { "id": "egg_b", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [1160, 400], "size": [22, 22] },
+  { "id": "egg_c", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [1440, 405], "size": [22, 22] },
+  { "id": "tool_spot", "kind": "tool_placement", "shape": "circle", "material": "goal", "pos": [200, 470], "size": [24, 24], "tool": "tool_lead_weight" }
+ ]
+}

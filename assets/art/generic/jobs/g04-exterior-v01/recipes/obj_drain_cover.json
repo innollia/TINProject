@@ -1,0 +1,129 @@
+{
+ "asset": "obj_drain_cover",
+ "status": "candidate",
+ "note": "Square iron drain grate 0.6 m in a stone frame, rusted (floor layer, no collision).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 712,
+ "pivot_meaning": "front edge centre of the frame on the floor",
+ "layer_hint": "floor",
+ "canvas": [
+  286,
+  226
+ ],
+ "pivot": [
+  123,
+  143
+ ],
+ "forms": [
+  {
+   "name": "frame",
+   "z": 1.0,
+   "kind": "flat",
+   "material": "stone_dark",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "at": [
+      123,
+      95
+     ],
+     "size": [
+      124,
+      106
+     ],
+     "ground": false
+    }
+   ]
+  },
+  {
+   "name": "void",
+   "z": 2.0,
+   "kind": "flat",
+   "material": "hole",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      123,
+      95
+     ],
+     "size": [
+      100,
+      84
+     ]
+    }
+   ]
+  },
+  {
+   "name": "grate",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "sponge"
+    ],
+    "size": 14,
+    "soft": 1.5,
+    "density": 0.5,
+    "strength": 0.45,
+    "color": "rust"
+   },
+   "pieces": [
+    {
+     "icon": "grid_fine",
+     "at": [
+      123,
+      95
+     ],
+     "size": [
+      112,
+      96
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stain",
+   "z": 4.0,
+   "kind": "wash",
+   "material": "damp",
+   "opacity": 0.3,
+   "blur": 10,
+   "blend": "multiply",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      143,
+      113
+     ],
+     "size": [
+      150,
+      90
+     ]
+    }
+   ]
+  }
+ ]
+}

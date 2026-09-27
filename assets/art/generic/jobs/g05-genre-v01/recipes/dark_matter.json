@@ -1,0 +1,410 @@
+{
+ "asset": "dark_matter",
+ "status": "candidate",
+ "note": "Dark matter mass, front view, floating. A heaving lump of near-black void with a faint violet rim, specks of starlight drifting inside, a tilted ring of debris orbiting it and one huge pale eye opening in the middle.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  192,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 1024,
+ "g05": {
+  "name_ko": "암흑 물질 덩어리",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      354.2
+     ],
+     "size": [
+      180.0,
+      24.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ring_back",
+   "tags": [
+    "all",
+    "ring"
+   ],
+   "z": 1,
+   "material": "stone_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      214.0
+     ],
+     "size": [
+      330.0,
+      80.0
+     ],
+     "rot": -12.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      206.0
+     ],
+     "size": [
+      290.0,
+      56.0
+     ],
+     "rot": -12.0,
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      250.0
+     ],
+     "size": [
+      400.0,
+      80.0
+     ],
+     "rot": -12.0,
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "mass",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "void",
+   "line": {
+    "width": 1.0,
+    "heavy": 1.0,
+    "color": "glow_violet_c"
+   },
+   "glow": {
+    "radius": 5,
+    "opacity": 0.35,
+    "color": "glow_violet_c"
+   },
+   "emit": 0.2,
+   "pieces": [
+    {
+     "icon": "metaballs",
+     "at": [
+      192.0,
+      200.0
+     ],
+     "size": [
+      230.0,
+      210.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      206.0
+     ],
+     "size": [
+      190.0,
+      180.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stars",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "kind": "flat",
+   "material": "glow_white",
+   "emit": 0.9,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "glow_violet_c"
+   },
+   "clip_to": "mass",
+   "pieces": [
+    {
+     "icon": "star",
+     "at": [
+      132.0,
+      160.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "star",
+     "at": [
+      242.0,
+      140.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "star",
+     "at": [
+      262.0,
+      230.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "star",
+     "at": [
+      152.0,
+      260.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "star",
+     "at": [
+      202.0,
+      270.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "star",
+     "at": [
+      112.0,
+      210.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "star",
+     "at": [
+      222.0,
+      180.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye_white",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.4,
+   "kind": "flat",
+   "material": "eye_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      204.0
+     ],
+     "size": [
+      70.0,
+      44.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "iris",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.5,
+   "kind": "flat",
+   "material": "glow_violet",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "glow_violet_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      204.0
+     ],
+     "size": [
+      34.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pupil",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.6,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      204.0
+     ],
+     "size": [
+      10.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ring_front",
+   "tags": [
+    "all",
+    "ring"
+   ],
+   "z": 3,
+   "material": "stone_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      214.0
+     ],
+     "size": [
+      330.0,
+      80.0
+     ],
+     "rot": -12.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      206.0
+     ],
+     "size": [
+      290.0,
+      56.0
+     ],
+     "rot": -12.0,
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      176.0
+     ],
+     "size": [
+      400.0,
+      80.0
+     ],
+     "rot": -12.0,
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "debris",
+   "tags": [
+    "all",
+    "ring"
+   ],
+   "z": 3.1,
+   "material": "rubble",
+   "pieces": [
+    {
+     "icon": "rocks",
+     "at": [
+      42.0,
+      236.0
+     ],
+     "size": [
+      26.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "rocks",
+     "at": [
+      332.0,
+      186.0
+     ],
+     "size": [
+      22.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "hexagon",
+     "at": [
+      292.0,
+      250.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

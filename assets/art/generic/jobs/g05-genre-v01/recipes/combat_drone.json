@@ -1,0 +1,648 @@
+{
+ "asset": "combat_drone",
+ "status": "candidate",
+ "note": "Combat drone, front view, hovering. Armoured gunmetal quad-rotor with hazard-yellow panels, four shrouded rotors on struts, a central red camera eye, a twin-barrel gun pod slung underneath, blinking status lights.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 1026,
+ "g05": {
+  "name_ko": "전투 드론",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.28,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      361.4
+     ],
+     "size": [
+      120.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "strut_l0",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      93.0,
+      165.0
+     ],
+     "size": [
+      10.0,
+      83.3
+     ],
+     "rot": 112.1
+    }
+   ]
+  },
+  {
+   "name": "rotor_l0",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.2,
+   "material": "metal_robot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      56.0,
+      150.0
+     ],
+     "size": [
+      66.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      56.0,
+      150.0
+     ],
+     "size": [
+      54.0,
+      12.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "blades_l0",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.15,
+   "kind": "flat",
+   "material": "armor_dark",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      56.0,
+      150.0
+     ],
+     "size": [
+      54.0,
+      6.0
+     ],
+     "rot": 8.0
+    }
+   ]
+  },
+  {
+   "name": "strut_l1",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      105.0,
+      193.0
+     ],
+     "size": [
+      10.0,
+      59.9
+     ],
+     "rot": 62.5
+    }
+   ]
+  },
+  {
+   "name": "rotor_l1",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.3,
+   "material": "metal_robot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      80.0,
+      206.0
+     ],
+     "size": [
+      66.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      80.0,
+      206.0
+     ],
+     "size": [
+      54.0,
+      12.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "blades_l1",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.25,
+   "kind": "flat",
+   "material": "armor_dark",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      80.0,
+      206.0
+     ],
+     "size": [
+      54.0,
+      6.0
+     ],
+     "rot": 8.0
+    }
+   ]
+  },
+  {
+   "name": "strut_r0",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      227.0,
+      165.0
+     ],
+     "size": [
+      10.0,
+      83.3
+     ],
+     "rot": -112.1
+    }
+   ]
+  },
+  {
+   "name": "rotor_r0",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.2,
+   "material": "metal_robot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      264.0,
+      150.0
+     ],
+     "size": [
+      66.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      264.0,
+      150.0
+     ],
+     "size": [
+      54.0,
+      12.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "blades_r0",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.15,
+   "kind": "flat",
+   "material": "armor_dark",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      264.0,
+      150.0
+     ],
+     "size": [
+      54.0,
+      6.0
+     ],
+     "rot": 8.0
+    }
+   ]
+  },
+  {
+   "name": "strut_r1",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      215.0,
+      193.0
+     ],
+     "size": [
+      10.0,
+      59.9
+     ],
+     "rot": -62.5
+    }
+   ]
+  },
+  {
+   "name": "rotor_r1",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.3,
+   "material": "metal_robot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      240.0,
+      206.0
+     ],
+     "size": [
+      66.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      240.0,
+      206.0
+     ],
+     "size": [
+      54.0,
+      12.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "blades_r1",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.25,
+   "kind": "flat",
+   "material": "armor_dark",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      240.0,
+      206.0
+     ],
+     "size": [
+      54.0,
+      6.0
+     ],
+     "rot": 8.0
+    }
+   ]
+  },
+  {
+   "name": "hull",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "metal_robot",
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      160.0,
+      184.0
+     ],
+     "size": [
+      110.0,
+      80.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "panels",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "paint_yellow",
+   "clip_to": "hull",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      118.0,
+      193.0
+     ],
+     "size": [
+      6.0,
+      39.7
+     ],
+     "rot": -154.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      138.0,
+      193.0
+     ],
+     "size": [
+      6.0,
+      39.7
+     ],
+     "rot": -154.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      158.0,
+      193.0
+     ],
+     "size": [
+      6.0,
+      39.7
+     ],
+     "rot": -154.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      193.0
+     ],
+     "size": [
+      6.0,
+      39.7
+     ],
+     "rot": -154.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      193.0
+     ],
+     "size": [
+      6.0,
+      39.7
+     ],
+     "rot": -154.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      218.0,
+      193.0
+     ],
+     "size": [
+      6.0,
+      39.7
+     ],
+     "rot": -154.8
+    }
+   ]
+  },
+  {
+   "name": "eye_ring",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "kind": "flat",
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      184.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.3,
+   "kind": "flat",
+   "material": "glow_red",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "glow_red_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      184.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pupil",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.35,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      184.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gunpod",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.5,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      236.0
+     ],
+     "size": [
+      50.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      150.0,
+      258.0
+     ],
+     "size": [
+      8.0,
+      30.8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      258.0
+     ],
+     "size": [
+      8.0,
+      30.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "status",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.6,
+   "kind": "flat",
+   "material": "glow_green",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "glow_green_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      120.0,
+      164.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      200.0,
+      164.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

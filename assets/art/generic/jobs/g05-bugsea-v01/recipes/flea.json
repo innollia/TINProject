@@ -1,0 +1,585 @@
+{
+ "asset": "flea",
+ "status": "candidate",
+ "note": "Giant flea, front view. Glossy rust-brown armoured flea with bristly spines, a small head with a piercing beak and tiny glowing eyes, short front legs and huge coiled hind legs ready to spring.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 933,
+ "g05": {
+  "name_ko": "거대 벼룩",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      360.6
+     ],
+     "size": [
+      200.0,
+      24.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hind_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "chitin_rust",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      85.0,
+      265.0
+     ],
+     "size": [
+      36.0,
+      98.6
+     ],
+     "rot": 125.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      57.0,
+      295.0
+     ],
+     "size": [
+      18.0,
+      117.2
+     ],
+     "rot": -7.3
+    }
+   ]
+  },
+  {
+   "name": "front_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 2.5,
+   "material": "chitin_rust",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      128.1,
+      302.9
+     ],
+     "size": [
+      10.0,
+      16.9
+     ],
+     "rot": 33.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      121.6,
+      314.8
+     ],
+     "size": [
+      9.0,
+      28.2
+     ],
+     "rot": 25.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      116.5,
+      329.0
+     ],
+     "size": [
+      8.0,
+      28.2
+     ],
+     "rot": 14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      114.6,
+      342.8
+     ],
+     "size": [
+      7.0,
+      28.2
+     ],
+     "rot": 1.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      114.8,
+      350.7
+     ],
+     "size": [
+      6.0,
+      16.9
+     ],
+     "rot": -13.0
+    }
+   ]
+  },
+  {
+   "name": "hind_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "chitin_rust",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      235.0,
+      265.0
+     ],
+     "size": [
+      36.0,
+      98.6
+     ],
+     "rot": -125.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      263.0,
+      295.0
+     ],
+     "size": [
+      18.0,
+      117.2
+     ],
+     "rot": 7.3
+    }
+   ]
+  },
+  {
+   "name": "front_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 2.5,
+   "material": "chitin_rust",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      191.9,
+      302.9
+     ],
+     "size": [
+      10.0,
+      16.9
+     ],
+     "rot": -33.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      198.4,
+      314.8
+     ],
+     "size": [
+      9.0,
+      28.2
+     ],
+     "rot": -25.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      203.5,
+      329.0
+     ],
+     "size": [
+      8.0,
+      28.2
+     ],
+     "rot": -14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205.4,
+      342.8
+     ],
+     "size": [
+      7.0,
+      28.2
+     ],
+     "rot": -1.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205.2,
+      350.7
+     ],
+     "size": [
+      6.0,
+      16.9
+     ],
+     "rot": 13.0
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "chitin_rust",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      250.0
+     ],
+     "size": [
+      150.0,
+      170.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "segments",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "chitin_black",
+   "clip_to": "body",
+   "opacity": 0.4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      220.0
+     ],
+     "size": [
+      140.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      250.0
+     ],
+     "size": [
+      140.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      280.0
+     ],
+     "size": [
+      140.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      310.0
+     ],
+     "size": [
+      140.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bristles",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      90.0,
+      300.0
+     ],
+     "size": [
+      4.5,
+      12.0
+     ],
+     "rot": -85.2
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      90.8,
+      258.6
+     ],
+     "size": [
+      4.8,
+      12.7
+     ],
+     "rot": -89.1
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      93.0,
+      212.6
+     ],
+     "size": [
+      5.0,
+      13.5
+     ],
+     "rot": -84.4
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      103.1,
+      174.9
+     ],
+     "size": [
+      5.3,
+      14.2
+     ],
+     "rot": -53.7
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      124.3,
+      161.8
+     ],
+     "size": [
+      5.6,
+      14.9
+     ],
+     "rot": -13.3
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      149.9,
+      159.9
+     ],
+     "size": [
+      5.9,
+      15.6
+     ],
+     "rot": 0.8
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      170.1,
+      159.9
+     ],
+     "size": [
+      5.9,
+      15.6
+     ],
+     "rot": -0.8
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      195.7,
+      161.8
+     ],
+     "size": [
+      5.6,
+      14.9
+     ],
+     "rot": 13.3
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      216.9,
+      174.9
+     ],
+     "size": [
+      5.3,
+      14.2
+     ],
+     "rot": 53.7
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      227.0,
+      212.6
+     ],
+     "size": [
+      5.0,
+      13.5
+     ],
+     "rot": 84.4
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      229.2,
+      258.6
+     ],
+     "size": [
+      4.8,
+      12.7
+     ],
+     "rot": 89.1
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      230.0,
+      300.0
+     ],
+     "size": [
+      4.5,
+      12.0
+     ],
+     "rot": 85.2
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "chitin_rust",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      300.0
+     ],
+     "size": [
+      60.0,
+      44.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.1,
+   "kind": "flat",
+   "material": "glow_red",
+   "emit": 0.8,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "glow_red_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      146.0,
+      296.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      174.0,
+      296.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "beak",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      334.0
+     ],
+     "size": [
+      10.0,
+      34.0
+     ],
+     "flip": "y"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

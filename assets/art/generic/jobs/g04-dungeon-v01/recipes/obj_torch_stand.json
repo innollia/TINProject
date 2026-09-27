@@ -1,0 +1,406 @@
+{
+ "asset": "obj_torch_stand",
+ "status": "candidate",
+ "note": "Free-standing iron torch stand, 1.8 m: tripod foot, pole, cup with a pitch-soaked fuel bundle. Frames: off (charred fuel), on (glowing fuel + emit). Flame effect is not drawn: anchors.flame_anchor marks where the game adds it.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 504,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  202,
+  344
+ ],
+ "pivot": [
+  93,
+  276
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.35,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      101,
+      274
+     ],
+     "size": [
+      90,
+      26
+     ]
+    }
+   ]
+  },
+  {
+   "name": "feet",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      74.0,
+      258.0
+     ],
+     "size": [
+      49.678969393496885,
+      9
+     ],
+     "rot": 139.89909245378777
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      112.0,
+      258.0
+     ],
+     "size": [
+      49.678969393496885,
+      9
+     ],
+     "rot": 40.10090754621224
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      91.0,
+      262.0
+     ],
+     "size": [
+      40.19950248448356,
+      8
+     ],
+     "rot": 95.71059313749964
+    }
+   ]
+  },
+  {
+   "name": "pole",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      93,
+      176
+     ],
+     "size": [
+      11,
+      150
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      93,
+      242
+     ],
+     "size": [
+      18,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      93,
+      156
+     ],
+     "size": [
+      16,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cup",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "cauldron",
+     "at": [
+      93,
+      94
+     ],
+     "size": [
+      50,
+      34
+     ],
+     "crop": [
+      0.8,
+      5.6,
+      15.2,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cup_rim",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      93,
+      80
+     ],
+     "size": [
+      44,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fuel_off",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "soot",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "rough": {
+    "amp": 0.35,
+    "soft": 1.0,
+    "cell": 4
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      93,
+      72
+     ],
+     "size": [
+      30,
+      26
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      95,
+      64.2
+     ],
+     "size": [
+      27.0,
+      15.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fuel_on",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "ember",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.8,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.6,
+    "color": "ember_glow"
+   },
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "rough": {
+    "amp": 0.35,
+    "soft": 1.0,
+    "cell": 4
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      93,
+      72
+     ],
+     "size": [
+      30,
+      26
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      95,
+      64.2
+     ],
+     "size": [
+      27.0,
+      15.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fuel_wraps",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "soot",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "opacity": 0.75,
+   "clip_to": "fuel_on",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      93,
+      67.32
+     ],
+     "size": [
+      27.6,
+      3
+     ],
+     "rot": -8
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      93,
+      76.68
+     ],
+     "size": [
+      28.799999999999997,
+      3
+     ],
+     "rot": 6
+    }
+   ]
+  },
+  {
+   "name": "fuel_wraps_off",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "ash",
+   "tags": [
+    "off"
+   ],
+   "opacity": 0.6,
+   "clip_to": "fuel_off",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      93,
+      67.32
+     ],
+     "size": [
+      27.6,
+      3
+     ],
+     "rot": -8
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      93,
+      76.68
+     ],
+     "size": [
+      28.799999999999997,
+      3
+     ],
+     "rot": 6
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off",
+   "anchors": {
+    "flame_anchor": [
+     93,
+     62
+    ]
+   }
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#ffb45c",
+    "radius": 320,
+    "at": [
+     93,
+     62
+    ]
+   },
+   "anchors": {
+    "flame_anchor": [
+     93,
+     62
+    ]
+   }
+  }
+ ]
+}

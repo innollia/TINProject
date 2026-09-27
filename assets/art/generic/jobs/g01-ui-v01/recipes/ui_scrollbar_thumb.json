@@ -1,0 +1,133 @@
+{
+ "asset": "ui_scrollbar_thumb",
+ "status": "candidate",
+ "note": "Scrollbar thumb: bevelled bronze capsule, plain middle so it stretches cleanly.",
+ "palette": "palette_g01.json",
+ "style": "ui",
+ "canvas": [
+  32,
+  96
+ ],
+ "pivot": [
+  16.0,
+  48.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 4480,
+ "meta": {
+  "kind": "ui_9slice",
+  "nine_slice": [
+   8,
+   16,
+   8,
+   16
+  ],
+  "preview_size": [
+   32,
+   200
+  ],
+  "stage": "C",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "thumb",
+   "z": 0,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      16.0,
+      48.0
+     ],
+     "size": [
+      22.0,
+      66.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      16.0,
+      15.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      16.0,
+      81.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      16.0,
+      15.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      16.0,
+      81.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ],
+   "shade": {
+    "ragged": 0.05,
+    "bump": 0.8
+   }
+  },
+  {
+   "name": "shine",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      12.0,
+      48.0
+     ],
+     "size": [
+      3.0,
+      60.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "color": "#e8d8a8",
+   "clip_to": "thumb",
+   "opacity": 0.3
+  }
+ ]
+}

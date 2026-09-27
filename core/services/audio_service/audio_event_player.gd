@@ -56,6 +56,8 @@ func setup(event_manifest: AudioManifest, bus_volumes: SettingsService = null, b
 			continue
 		if item.max_polyphony < 1 or item.file.is_empty():
 			continue
+		if not ResourceLoader.exists(item.file):
+			continue
 		var stream: Variant = ResourceLoader.load(item.file)
 		if not (stream is AudioStream):
 			_setup_errors.append("event '%s': '%s' is not an AudioStream" % [String(item.id), item.file])

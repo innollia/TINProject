@@ -1,0 +1,633 @@
+{
+ "asset": "giant_frog",
+ "status": "candidate",
+ "note": "Giant frog, front view, squatting. Warty mottled green toad with bulging golden eyes on top, a huge wide mouth, pale throat sac, splayed front feet and folded hind legs at the sides.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  192,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 824,
+ "g05": {
+  "name_ko": "거대 개구리",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      355.6
+     ],
+     "size": [
+      300.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hind_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "frog",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      82.0,
+      316.0
+     ],
+     "size": [
+      110.0,
+      90.0
+     ],
+     "rot": 20.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      62.0,
+      352.0
+     ],
+     "size": [
+      90.0,
+      24.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hindtoes_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.1,
+   "material": "frog",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      82.0,
+      360.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      62.0,
+      360.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      42.0,
+      360.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hind_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "frog",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      302.0,
+      316.0
+     ],
+     "size": [
+      110.0,
+      90.0
+     ],
+     "rot": -20.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      322.0,
+      352.0
+     ],
+     "size": [
+      90.0,
+      24.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hindtoes_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.1,
+   "material": "frog",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      302.0,
+      360.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      322.0,
+      360.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      342.0,
+      360.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "frog",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      280.0
+     ],
+     "size": [
+      250.0,
+      170.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "throat",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "belly",
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      318.0
+     ],
+     "size": [
+      150.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "warts",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.3,
+   "kind": "flat",
+   "material": "leaf_dark",
+   "clip_to": "body",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      102.0,
+      250.0
+     ],
+     "size": [
+      14.0,
+      11.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      132.0,
+      220.0
+     ],
+     "size": [
+      14.0,
+      11.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      262.0,
+      226.0
+     ],
+     "size": [
+      14.0,
+      11.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      288.0,
+      260.0
+     ],
+     "size": [
+      14.0,
+      11.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      92.0,
+      290.0
+     ],
+     "size": [
+      14.0,
+      11.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      296.0,
+      296.0
+     ],
+     "size": [
+      14.0,
+      11.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "front_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3,
+   "material": "frog",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      127.0,
+      336.0
+     ],
+     "size": [
+      26.0,
+      42.6
+     ],
+     "rot": 17.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      108.0,
+      360.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      122.0,
+      360.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      360.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "front_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3,
+   "material": "frog",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      257.0,
+      336.0
+     ],
+     "size": [
+      26.0,
+      42.6
+     ],
+     "rot": -17.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      248.0,
+      360.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      262.0,
+      360.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      276.0,
+      360.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      290.0
+     ],
+     "size": [
+      200.0,
+      24.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      281.6
+     ],
+     "size": [
+      240.0,
+      25.2
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "eye_l",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.4,
+   "material": "frog",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      122.0,
+      196.0
+     ],
+     "size": [
+      70.0,
+      66.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye_r",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.4,
+   "material": "frog",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      262.0,
+      196.0
+     ],
+     "size": [
+      70.0,
+      66.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.5,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.35,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.25,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      122.0,
+      196.0
+     ],
+     "size": [
+      46.0,
+      42.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      262.0,
+      196.0
+     ],
+     "size": [
+      46.0,
+      42.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pupils",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.55,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      122.0,
+      198.0
+     ],
+     "size": [
+      30.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      262.0,
+      198.0
+     ],
+     "size": [
+      30.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nostrils",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3.3,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      244.0
+     ],
+     "size": [
+      7.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      244.0
+     ],
+     "size": [
+      7.0,
+      5.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

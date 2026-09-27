@@ -72,6 +72,25 @@
 | B | `icon_status_def_up` | 128×128 | Status badge: small heater shield with a glowing blue up arrow. | 완료 |
 | B | `icon_status_silence` | 128×128 | Status badge: speech bubble crossed by a red bar (no letters). | 완료 |
 | B | `icon_warhammer` | 128×128 | War hammer: square iron head with a back spike, bronze bands, leather-wrapped haft. | 완료 |
+| C | `icon_bone_material` | 128×128 | Two old crossed bones (crafting material), yellowed with grime. | 완료 |
+| C | `icon_cloak` | 128×128 | Hooded travelling cloak: dark green wool with a deep hood, fold lines, bronze clasp. | 완료 |
+| C | `icon_coin_pouch` | 128×128 | Leather coin pouch tied with a wine cord, frilled neck, silver coins spilling in front. | 완료 |
+| C | `icon_crown` | 128×128 | Gold crown: band with five points tipped with pearls, red and blue gems on the band. | 완료 |
+| C | `icon_crystal_ball` | 128×128 | Crystal ball: violet sphere with a pale inner swirl and glow, on a bronze stand with three claw feet. | 완료 |
+| C | `icon_empty_bottle` | 128×128 | Empty tall glass bottle with a long neck, dust at the bottom and a bright glint. | 완료 |
+| C | `icon_hourglass` | 128×128 | Hourglass: wooden top and bottom plates with posts, two glass bulbs, sand falling into the lower bulb. | 완료 |
+| C | `icon_jade_pendant` | 128×128 | Eastern jade ornament: pale green jade disc with a centre hole, tied wine knot above, long silk tassel below. | 완료 |
+| C | `icon_katana` | 128×128 | Eastern single-edged sword: long gently curved blade with a pale temper line, round dark guard, diamond-wrapped hilt. | 완료 |
+| C | `icon_scimitar` | 128×128 | Scimitar on the diagonal: broad curved steel blade, short bronze guard, wrapped grip, round pommel. | 완료 |
+| C | `icon_scythe` | 128×128 | Great scythe: long dark wooden snath with bone grips and a huge blackened crescent blade. | 완료 |
+| C | `icon_skill_drain` | 128×128 | Skill tile: red life motes spiralling into a dark violet vortex. | 완료 |
+| C | `icon_skill_earth` | 128×128 | Skill tile: ground splitting with jagged rock slabs thrown up and dust. | 완료 |
+| C | `icon_skill_holy` | 128×128 | Skill tile: radiant golden eight-point star inside a halo ring with thin rays. | 완료 |
+| C | `icon_status_confuse` | 128×128 | Status badge: three nested pink-violet crescents turning in a swirl with small sparkles. | 완료 |
+| C | `icon_status_haste` | 128×128 | Status badge: double chevron pointing right with speed streaks (faster). | 완료 |
+| C | `icon_status_regen` | 128×128 | Status badge: two green leaves inside a looping arrow (healing over time). | 완료 |
+| C | `icon_treasure_map` | 128×128 | Treasure map: parchment sheet with rolled ends, coastline, little mountains, a dashed route and a red ring target (no letters). | 완료 |
+| C | `icon_war_fan` | 128×128 | Iron war fan, half open: wine-red silk between iron ribs, gold edge, pivot rivet with a tassel. | 완료 |
 
 ## 결과 파일
 
@@ -103,4 +122,4 @@ py -3 -B icon_sheet.py
 
 - [x] A 단계 (24개 레시피)
 - [x] B 단계 (23개 레시피)
-- [ ] C 단계 (0개 레시피)
+- [x] C 단계 (19개 레시피)

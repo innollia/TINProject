@@ -1,0 +1,895 @@
+{
+ "asset": "giant_knight",
+ "status": "candidate",
+ "note": "Giant knight, front view (twice human height). Colossal dark plate armour with tarnished gold trim, a tall plumed great helm with violet eye light in the slit, torn wine cape, both gauntlets resting on the pommel of a huge greatsword planted point-down in front.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  512,
+  768
+ ],
+ "pivot": [
+  256,
+  748
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 625,
+ "g05": {
+  "name_ko": "거대 기사",
+  "size": "거대",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      734.6
+     ],
+     "size": [
+      380.0,
+      44.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cape",
+   "tags": [
+    "all",
+    "cape"
+   ],
+   "z": 0.5,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "bell",
+     "at": [
+      256.0,
+      470.5
+     ],
+     "size": [
+      360.0,
+      500.0
+     ],
+     "crop": [
+      1.6,
+      1.4,
+      14.4,
+      11.6
+     ]
+    },
+    {
+     "icon": "mountains",
+     "at": [
+      256.0,
+      710.5
+     ],
+     "size": [
+      340.0,
+      60.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      201.5,
+      515.1
+     ],
+     "size": [
+      77.6,
+      183.7
+     ],
+     "rot": 7.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      189.4,
+      656.7
+     ],
+     "size": [
+      70.8,
+      152.8
+     ],
+     "rot": 1.7
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1.1,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      176.6,
+      727.1
+     ],
+     "size": [
+      113.3,
+      49.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      187.4,
+      696.4
+     ],
+     "size": [
+      80.9,
+      56.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      310.5,
+      515.1
+     ],
+     "size": [
+      77.6,
+      183.7
+     ],
+     "rot": -7.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      322.6,
+      656.7
+     ],
+     "size": [
+      70.8,
+      152.8
+     ],
+     "rot": -1.7
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1.1,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      335.4,
+      727.1
+     ],
+     "size": [
+      113.3,
+      49.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      324.6,
+      696.4
+     ],
+     "size": [
+      80.9,
+      56.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knee_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.3,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      191.3,
+      592.8
+     ],
+     "size": [
+      80.9,
+      60.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knee_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.3,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      320.7,
+      592.8
+     ],
+     "size": [
+      80.9,
+      60.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "breastplate",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.0,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      260.5
+     ],
+     "size": [
+      274.9,
+      110.4
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      256.0,
+      340.9
+     ],
+     "size": [
+      222.6,
+      179.4
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "faulds",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 2.9,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "bell",
+     "at": [
+      256.0,
+      447.5
+     ],
+     "size": [
+      185.7,
+      89.7
+     ],
+     "crop": [
+      1.6,
+      1.4,
+      14.4,
+      11.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tabard",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.2,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "bookmark",
+     "at": [
+      256.0,
+      472.0
+     ],
+     "size": [
+      78.6,
+      151.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "belt",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.3,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      431.5
+     ],
+     "size": [
+      164.3,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gorget",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.4,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      228.5
+     ],
+     "size": [
+      144.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 5,
+   "material": "armor_dark",
+   "pivot": [
+    125.07249999999999,
+    230.5
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110.1,
+      290.5
+     ],
+     "size": [
+      63.9,
+      146.1
+     ],
+     "rot": 14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      165.5,
+      384.0
+     ],
+     "size": [
+      58.3,
+      176.5
+     ],
+     "rot": -64.6
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 5.2,
+   "material": "armor",
+   "pivot": [
+    125.07249999999999,
+    230.5
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      236.0,
+      424.7
+     ],
+     "size": [
+      72.2,
+      72.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 5,
+   "material": "armor_dark",
+   "pivot": [
+    386.9275,
+    230.5
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      401.9,
+      290.5
+     ],
+     "size": [
+      63.9,
+      146.1
+     ],
+     "rot": -14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      346.5,
+      384.0
+     ],
+     "size": [
+      58.3,
+      176.5
+     ],
+     "rot": 64.6
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 5.2,
+   "material": "armor",
+   "pivot": [
+    386.9275,
+    230.5
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      276.0,
+      424.7
+     ],
+     "size": [
+      72.2,
+      72.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "blade",
+   "tags": [
+    "all",
+    "sword"
+   ],
+   "z": 4.6,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256.0,
+      587.5
+     ],
+     "size": [
+      44.0,
+      280.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      256.0,
+      741.5
+     ],
+     "size": [
+      44.0,
+      40.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "fuller",
+   "tags": [
+    "all",
+    "sword"
+   ],
+   "z": 4.65,
+   "kind": "flat",
+   "material": "armor_dark",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256.0,
+      587.5
+     ],
+     "size": [
+      8.0,
+      250.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "guard",
+   "tags": [
+    "all",
+    "sword"
+   ],
+   "z": 4.7,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256.0,
+      443.5
+     ],
+     "size": [
+      150.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "grip",
+   "tags": [
+    "all",
+    "sword"
+   ],
+   "z": 4.55,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256.0,
+      407.5
+     ],
+     "size": [
+      18.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pommel",
+   "tags": [
+    "all",
+    "sword"
+   ],
+   "z": 4.8,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      367.5
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pauldron_l",
+   "tags": [
+    "all",
+    "pauldron"
+   ],
+   "z": 5.5,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      119.1,
+      234.5
+     ],
+     "size": [
+      110.0,
+      80.0
+     ],
+     "rot": -14.0
+    }
+   ]
+  },
+  {
+   "name": "pauldron_trim_l",
+   "tags": [
+    "all",
+    "pauldron"
+   ],
+   "z": 5.55,
+   "material": "gold",
+   "clip_to": "pauldron_l",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      119.1,
+      254.5
+     ],
+     "size": [
+      104.0,
+      30.0
+     ],
+     "rot": -14.0
+    }
+   ]
+  },
+  {
+   "name": "pauldron_r",
+   "tags": [
+    "all",
+    "pauldron"
+   ],
+   "z": 5.5,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      392.9,
+      234.5
+     ],
+     "size": [
+      110.0,
+      80.0
+     ],
+     "rot": 14.0
+    }
+   ]
+  },
+  {
+   "name": "pauldron_trim_r",
+   "tags": [
+    "all",
+    "pauldron"
+   ],
+   "z": 5.55,
+   "material": "gold",
+   "clip_to": "pauldron_r",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      392.9,
+      254.5
+     ],
+     "size": [
+      104.0,
+      30.0
+     ],
+     "rot": 14.0
+    }
+   ]
+  },
+  {
+   "name": "helm",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      166.1
+     ],
+     "size": [
+      96.0,
+      80.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256.0,
+      192.1
+     ],
+     "size": [
+      88.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plume",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.9,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "feather",
+     "at": [
+      266.0,
+      102.1
+     ],
+     "size": [
+      50.0,
+      90.0
+     ],
+     "rot": 10.0
+    }
+   ]
+  },
+  {
+   "name": "helm_trim",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.1,
+   "material": "gold",
+   "clip_to": "helm",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256.0,
+      168.1
+     ],
+     "size": [
+      10.0,
+      90.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "visor",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.2,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256.0,
+      180.1
+     ],
+     "size": [
+      70.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.3,
+   "kind": "flat",
+   "material": "glow_violet",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "glow_violet_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      240.0,
+      180.1
+     ],
+     "size": [
+      12.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      272.0,
+      180.1
+     ],
+     "size": [
+      12.0,
+      6.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

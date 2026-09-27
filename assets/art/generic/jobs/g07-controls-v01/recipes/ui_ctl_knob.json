@@ -1,0 +1,411 @@
+{
+ "asset": "ui_ctl_knob",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Rotary knob: 'base' scale plate and 'knob' (rotate it in game) drawn separately.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "rotation centre; knob pointer points up at 0 deg",
+ "seed": 16,
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.55
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      178.0,
+      178.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "base"
+   ]
+  },
+  {
+   "name": "scale_major",
+   "z": 1,
+   "kind": "flat",
+   "material": "enamel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      3.0,
+      10.0
+     ],
+     "repeat": {
+      "ellipse": [
+       96.0,
+       96.0,
+       80.0,
+       80.0
+      ],
+      "count": 11,
+      "arc": [
+       135,
+       405
+      ],
+      "orient": true
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "base"
+   ]
+  },
+  {
+   "name": "scale_minor",
+   "z": 1,
+   "kind": "flat",
+   "material": "enamel",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      1.5,
+      5.0
+     ],
+     "repeat": {
+      "ellipse": [
+       96.0,
+       96.0,
+       81.5,
+       81.5
+      ],
+      "count": 21,
+      "arc": [
+       135,
+       405
+      ],
+      "orient": true
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "base"
+   ]
+  },
+  {
+   "name": "scale_zone",
+   "z": 1,
+   "kind": "flat",
+   "material": "zone_red",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      174.0,
+      174.0
+     ],
+     "poly": [
+      [
+       8.0,
+       8.0
+      ],
+      [
+       15.6,
+       8.0
+      ],
+      [
+       15.563,
+       8.745
+      ],
+      [
+       15.454,
+       9.483
+      ],
+      [
+       15.273,
+       10.206
+      ],
+      [
+       15.021,
+       10.908
+      ],
+      [
+       14.703,
+       11.583
+      ],
+      [
+       14.319,
+       12.222
+      ],
+      [
+       13.875,
+       12.821
+      ],
+      [
+       13.374,
+       13.374
+      ]
+     ],
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      168.0,
+      168.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "base"
+   ]
+  },
+  {
+   "name": "seat",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "rubber",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      118.0,
+      118.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "base"
+   ]
+  },
+  {
+   "name": "knurl",
+   "z": 2,
+   "material": "rubber",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      5.0,
+      11.0
+     ],
+     "repeat": {
+      "ellipse": [
+       96,
+       96,
+       54,
+       54
+      ],
+      "count": 40,
+      "orient": true
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "knob"
+   ]
+  },
+  {
+   "name": "skirt",
+   "z": 2.1,
+   "material": "plastic_dark",
+   "shade": {
+    "bump": 1.1
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      108.0,
+      108.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "knob"
+   ]
+  },
+  {
+   "name": "top",
+   "z": 3,
+   "material": "plastic_dark",
+   "shade": {
+    "bump": 0.7,
+    "highlight_amount": 0.35
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      82.0,
+      82.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "knob"
+   ]
+  },
+  {
+   "name": "pointer",
+   "z": 4,
+   "kind": "flat",
+   "material": "enamel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      70.0
+     ],
+     "size": [
+      7.0,
+      34.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "knob"
+   ]
+  },
+  {
+   "name": "dimple",
+   "z": 4,
+   "kind": "flat",
+   "material": "rubber",
+   "opacity": 0.55,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "knob"
+   ]
+  },
+  {
+   "name": "top_glare",
+   "z": 5,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.12,
+   "clip_to": "top",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      91.08,
+      89.44
+     ],
+     "size": [
+      75.44,
+      75.44
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      100.1,
+      101.74
+     ],
+     "size": [
+      83.64,
+      83.64
+     ],
+     "op": "sub"
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "knob"
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "base",
+   "show": [
+    "base"
+   ]
+  },
+  {
+   "name": "knob",
+   "show": [
+    "knob"
+   ]
+  }
+ ]
+}

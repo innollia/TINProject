@@ -1,0 +1,373 @@
+{
+ "asset": "obj_handcart",
+ "status": "candidate",
+ "note": "Two-wheeled wooden handcart, bed 1.2 x 0.8 m, spoked wheel on the near side, two long handles to the east and a resting leg.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 706,
+ "pivot_meaning": "centre of the wheel axle on the ground",
+ "layer_hint": "world",
+ "canvas": [
+  482,
+  328
+ ],
+ "pivot": [
+  193,
+  250
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.32,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      233,
+      190
+     ],
+     "size": [
+      330,
+      140
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wheel_far",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      183,
+      118
+     ],
+     "size": [
+      104,
+      64
+     ]
+    }
+   ]
+  },
+  {
+   "name": "handle_far",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      359.0,
+      154.0
+     ],
+     "size": [
+      142.772546380598,
+      8
+     ],
+     "rot": 11.309932474020213
+    }
+   ]
+  },
+  {
+   "name": "bed",
+   "z": 4.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 34,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      183,
+      97.0
+     ],
+     "size": [
+      216,
+      118
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bed_inside",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      183,
+      97.0
+     ],
+     "size": [
+      196,
+      98
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bed_planks",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.45,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      129.0,
+      97.0
+     ],
+     "size": [
+      2.0,
+      112
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      183.0,
+      97.0
+     ],
+     "size": [
+      2.0,
+      112
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      237.0,
+      97.0
+     ],
+     "size": [
+      2.0,
+      112
+     ]
+    }
+   ]
+  },
+  {
+   "name": "side_planks",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.55,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      183,
+      173.0
+     ],
+     "size": [
+      210,
+      2.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg",
+   "z": 8.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 50,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      349,
+      194.0
+     ],
+     "size": [
+      9,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "handle_near",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      366.0,
+      206.0
+     ],
+     "size": [
+      157.2895419282541,
+      8
+     ],
+     "rot": 11.738571206722323
+    }
+   ]
+  },
+  {
+   "name": "wheel",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "shade": {
+    "bump": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      183,
+      214
+     ],
+     "size": [
+      108,
+      68
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spokes",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "wood",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "clip_to": "wheel",
+   "pieces": [
+    {
+     "icon": "wheel",
+     "at": [
+      183,
+      214
+     ],
+     "size": [
+      96,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tyre",
+   "z": 12.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      183,
+      214
+     ],
+     "size": [
+      108,
+      68
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      183,
+      214
+     ],
+     "size": [
+      94,
+      56
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "hub",
+   "z": 13.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      183,
+      214
+     ],
+     "size": [
+      16,
+      11
+     ]
+    }
+   ]
+  }
+ ]
+}

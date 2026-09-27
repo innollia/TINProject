@@ -1,0 +1,232 @@
+{
+ "asset": "icon_status_confuse",
+ "status": "candidate",
+ "note": "Status badge: three nested pink-violet crescents turning in a swirl with small sparkles.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 2274,
+ "meta": {
+  "kind": "icon",
+  "stage": "C",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "badge",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      106.0,
+      106.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "badge_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      96.0,
+      96.0
+     ]
+    }
+   ],
+   "color": "tint_curse",
+   "clip_to": "badge",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 16,
+    "y1": 112
+   }
+  },
+  {
+   "name": "badge_rim",
+   "z": 5,
+   "material": "silver",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      98.0,
+      98.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      74.0,
+      74.0
+     ],
+     "rot": 0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      52.0,
+      52.0
+     ],
+     "rot": 120
+    },
+    {
+     "icon": "moon",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": 240
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.5,
+   "color": "glow_shadow",
+   "clip_to": "badge"
+  },
+  {
+   "name": "swirl",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      74.0,
+      74.0
+     ],
+     "rot": 0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      52.0,
+      52.0
+     ],
+     "rot": 120
+    },
+    {
+     "icon": "moon",
+     "at": [
+      64.0,
+      62.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": 240
+    }
+   ],
+   "color": "#d890d8"
+  },
+  {
+   "name": "sparks",
+   "z": 2.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "stars",
+     "at": [
+      96.0,
+      36.0
+     ],
+     "size": [
+      13.0,
+      13.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    },
+    {
+     "icon": "stars",
+     "at": [
+      30.0,
+      92.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "crop": [
+      1.0,
+      4.6,
+      8.6,
+      14.0
+     ]
+    }
+   ],
+   "color": "#ffe0ff",
+   "clip_to": "badge"
+  }
+ ]
+}

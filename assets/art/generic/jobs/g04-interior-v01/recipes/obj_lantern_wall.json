@@ -1,0 +1,333 @@
+{
+ "asset": "obj_lantern_wall",
+ "status": "candidate",
+ "note": "Wall lantern: iron plate and scrolled bracket, hanging glass lantern with cage and cap. Frames: off, on (lit glass, emit).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 613,
+ "pivot_meaning": "centre of the wall plate = attach point on the wall face",
+ "layer_hint": "wall",
+ "canvas": [
+  156,
+  204
+ ],
+ "pivot": [
+  72,
+  56
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.25,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "at": [
+      80,
+      86
+     ],
+     "size": [
+      34,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "iron",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      72,
+      56
+     ],
+     "size": [
+      22,
+      36
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      72.0,
+      62.0
+     ],
+     "size": [
+      24.0,
+      6
+     ],
+     "rot": 90.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2.5
+     },
+     "at": [
+      75.0,
+      78.0
+     ],
+     "size": [
+      10.0,
+      5
+     ],
+     "rot": 53.13010235415598
+    },
+    {
+     "icon": "spiral",
+     "at": [
+      62,
+      66
+     ],
+     "size": 16,
+     "rot": 90
+    }
+   ]
+  },
+  {
+   "name": "hook",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      78,
+      88
+     ],
+     "size": [
+      3,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cap",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      78,
+      100
+     ],
+     "size": [
+      34,
+      16
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      78,
+      92
+     ],
+     "size": [
+      8,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glass_off",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "off"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      78,
+      122
+     ],
+     "size": [
+      26,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glass_on",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "glass",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.9,
+   "glow": {
+    "radius": 9,
+    "opacity": 0.55,
+    "color": "lamp_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      78,
+      122
+     ],
+     "size": [
+      26,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cage",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      65,
+      122
+     ],
+     "size": [
+      3,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      91,
+      122
+     ],
+     "size": [
+      3,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      78,
+      122
+     ],
+     "size": [
+      3,
+      36
+     ]
+    }
+   ]
+  },
+  {
+   "name": "base",
+   "z": 9.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      78,
+      130.0
+     ],
+     "size": [
+      32,
+      16
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off"
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#ffc987",
+    "radius": 320,
+    "at": [
+     78,
+     122
+    ]
+   }
+  }
+ ]
+}

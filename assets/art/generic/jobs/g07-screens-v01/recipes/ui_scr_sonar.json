@@ -1,0 +1,577 @@
+{
+ "asset": "ui_scr_sonar",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Round scope (sonar / radar) face: bezel, phosphor grid, bearing ticks.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  192.0,
+  192.0
+ ],
+ "pivot_meaning": "screen centre",
+ "seed": 31,
+ "forms": [
+  {
+   "name": "bezel",
+   "z": 0,
+   "kind": "mass",
+   "material": "steel_dark",
+   "shade": {
+    "bump": 1.1
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      380.0,
+      380.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      312.0,
+      312.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "lip",
+   "z": 1,
+   "kind": "mass",
+   "material": "bronze",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      316.0,
+      316.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      300.0,
+      300.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "screen",
+   "z": 2,
+   "material": "screen",
+   "shade": {
+    "bump": 0.35,
+    "highlight_amount": 0.2
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      302.0,
+      302.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "inner_glow",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "opacity": 0.1,
+   "blur": 18,
+   "clip_to": "screen",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      230.0,
+      230.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ring_1",
+   "z": 3,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "opacity": 0.85,
+   "emit": 0.35,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      226.4,
+      226.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      223.2,
+      223.2
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "ring_2",
+   "z": 3,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "opacity": 0.85,
+   "emit": 0.35,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      151.6,
+      151.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      148.4,
+      148.4
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "ring_3",
+   "z": 3,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "opacity": 0.85,
+   "emit": 0.35,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      76.8,
+      76.8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      73.6,
+      73.6
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "cross",
+   "z": 3,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "opacity": 0.75,
+   "emit": 0.35,
+   "clip_to": "screen",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      2.2,
+      296.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      296.0,
+      2.2
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "bearing_minor",
+   "z": 3.2,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "opacity": 0.85,
+   "emit": 0.35,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      1.6,
+      6.0
+     ],
+     "repeat": {
+      "ellipse": [
+       192.0,
+       192.0,
+       144.0,
+       144.0
+      ],
+      "count": 72,
+      "arc": [
+       0,
+       360
+      ],
+      "orient": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "bearing_major",
+   "z": 3.3,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "emit": 0.4,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      2.8,
+      12.0
+     ],
+     "repeat": {
+      "ellipse": [
+       192.0,
+       192.0,
+       141.0,
+       141.0
+      ],
+      "count": 12,
+      "arc": [
+       0,
+       360
+      ],
+      "orient": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "glass_glare",
+   "z": 4,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.07,
+   "clip_to": "screen",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      173.88,
+      167.84
+     ],
+     "size": [
+      277.84,
+      277.84
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      207.1,
+      213.14
+     ],
+     "size": [
+      308.04,
+      308.04
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "screws",
+   "z": 5,
+   "material": "steel",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      352.4,
+      256.81
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      259.6,
+      351.25
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      127.19,
+      352.4
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      32.75,
+      259.6
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      31.6,
+      127.19
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      124.4,
+      32.75
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.81,
+      31.6
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      351.25,
+      124.4
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws_slot",
+   "z": 5.01,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      352.4,
+      256.81
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 35.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      259.6,
+      351.25
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 58.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      127.19,
+      352.4
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 81.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      32.75,
+      259.6
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 104.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      31.6,
+      127.19
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 127.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      124.4,
+      32.75
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 150.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      256.81,
+      31.6
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 173.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      351.25,
+      124.4
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 196.0
+    }
+   ]
+  }
+ ]
+}

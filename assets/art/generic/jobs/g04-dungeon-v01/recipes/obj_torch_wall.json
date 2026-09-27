@@ -1,0 +1,420 @@
+{
+ "asset": "obj_torch_wall",
+ "status": "candidate",
+ "note": "Wall torch: riveted iron plate, arm and ring holding a wooden torch. Frames: off, on (glowing head + emit). Flame effect not drawn (anchors.flame_anchor).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 505,
+ "pivot_meaning": "centre of the wall plate = attach point on the wall face",
+ "layer_hint": "wall",
+ "canvas": [
+  142,
+  210
+ ],
+ "pivot": [
+  64,
+  99
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.28,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      71,
+      107
+     ],
+     "size": [
+      30,
+      44
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      73,
+      139
+     ],
+     "size": [
+      18,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "iron",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      64,
+      99
+     ],
+     "size": [
+      26,
+      38
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate_rivets",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64,
+      87
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64,
+      111
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      64.0,
+      122.0
+     ],
+     "size": [
+      26.0,
+      7
+     ],
+     "rot": 90.0
+    }
+   ]
+  },
+  {
+   "name": "stick",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      66.5,
+      117.0
+     ],
+     "size": [
+      68.18357573492314,
+      10
+     ],
+     "rot": -85.79464299829141
+    }
+   ]
+  },
+  {
+   "name": "ring",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      65,
+      135
+     ],
+     "size": [
+      24,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      65,
+      134
+     ],
+     "size": [
+      14,
+      5
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "fuel_off",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "soot",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "rough": {
+    "amp": 0.35,
+    "soft": 1.0,
+    "cell": 4
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      70,
+      73
+     ],
+     "size": [
+      22,
+      28
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      72,
+      64.6
+     ],
+     "size": [
+      19.8,
+      16.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fuel_on",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "ember",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.8,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.6,
+    "color": "ember_glow"
+   },
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "rough": {
+    "amp": 0.35,
+    "soft": 1.0,
+    "cell": 4
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      70,
+      73
+     ],
+     "size": [
+      22,
+      28
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      72,
+      64.6
+     ],
+     "size": [
+      19.8,
+      16.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fuel_wraps",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "soot",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "opacity": 0.75,
+   "clip_to": "fuel_on",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      70,
+      67.96
+     ],
+     "size": [
+      20.240000000000002,
+      3
+     ],
+     "rot": -8
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      70,
+      78.04
+     ],
+     "size": [
+      21.119999999999997,
+      3
+     ],
+     "rot": 6
+    }
+   ]
+  },
+  {
+   "name": "fuel_wraps_off",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "ash",
+   "tags": [
+    "off"
+   ],
+   "opacity": 0.6,
+   "clip_to": "fuel_off",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      70,
+      67.96
+     ],
+     "size": [
+      20.240000000000002,
+      3
+     ],
+     "rot": -8
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      70,
+      78.04
+     ],
+     "size": [
+      21.119999999999997,
+      3
+     ],
+     "rot": 6
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off",
+   "anchors": {
+    "flame_anchor": [
+     70,
+     59
+    ]
+   }
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#ffb45c",
+    "radius": 300,
+    "at": [
+     70,
+     59
+    ]
+   },
+   "anchors": {
+    "flame_anchor": [
+     70,
+     59
+    ]
+   }
+  }
+ ]
+}

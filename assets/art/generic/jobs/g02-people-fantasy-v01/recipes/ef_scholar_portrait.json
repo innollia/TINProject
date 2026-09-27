@@ -1,0 +1,955 @@
+{
+ "asset": "ef_scholar",
+ "status": "candidate",
+ "note": "선비 (동양 판타지, tier C). Dialogue portrait, 3/4 bust, fixed face anchor.",
+ "palette": "palette_g02.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  320
+ ],
+ "pivot": [
+  160,
+  146
+ ],
+ "pivot_meaning": "face anchor = head centre, identical in every g02 portrait",
+ "seed": 59,
+ "forms": [
+  {
+   "name": "neck",
+   "z": 2.9,
+   "tags": [
+    "upper"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      238.0
+     ],
+     "size": [
+      48.0,
+      40.0
+     ]
+    }
+   ],
+   "material": "skin"
+  },
+  {
+   "name": "torso",
+   "z": 3,
+   "tags": [
+    "upper"
+   ],
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      111.6,
+      336.0
+     ],
+     "size": [
+      103.2,
+      172.0
+     ],
+     "half": "left",
+     "crop": [
+      1,
+      0.8,
+      8,
+      10.4
+     ]
+    },
+    {
+     "icon": "shield",
+     "at": [
+      208.4,
+      336.0
+     ],
+     "size": [
+      103.2,
+      172.0
+     ],
+     "half": "left",
+     "crop": [
+      1,
+      0.8,
+      8,
+      10.4
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "bell",
+     "at": [
+      160.0,
+      498.0
+     ],
+     "size": [
+      264.0,
+      264.0
+     ],
+     "crop": [
+      1.6,
+      7,
+      14.4,
+      12
+     ]
+    }
+   ],
+   "material": "cloth_white"
+  },
+  {
+   "name": "sleeve_r",
+   "z": 5,
+   "tags": [
+    "upper",
+    "arm_r"
+   ],
+   "pieces": [
+    {
+     "icon": "bell",
+     "at": [
+      40.0,
+      370.0
+     ],
+     "size": [
+      88.0,
+      192.0
+     ],
+     "crop": [
+      1.6,
+      3.4,
+      14.4,
+      12
+     ],
+     "rot": 6
+    }
+   ],
+   "material": "cloth_white"
+  },
+  {
+   "name": "hand_r",
+   "z": 6,
+   "tags": [
+    "upper",
+    "arm_r",
+    "grip_r"
+   ],
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      46.0,
+      458.0
+     ],
+     "size": [
+      38.0,
+      46.0
+     ],
+     "flip": "y"
+    }
+   ],
+   "material": "skin"
+  },
+  {
+   "name": "sleeve_l",
+   "z": 5,
+   "tags": [
+    "upper",
+    "arm_l"
+   ],
+   "pieces": [
+    {
+     "icon": "bell",
+     "at": [
+      280.0,
+      370.0
+     ],
+     "size": [
+      88.0,
+      192.0
+     ],
+     "crop": [
+      1.6,
+      3.4,
+      14.4,
+      12
+     ],
+     "rot": -6
+    }
+   ],
+   "material": "cloth_white"
+  },
+  {
+   "name": "hand_l",
+   "z": 6,
+   "tags": [
+    "upper",
+    "arm_l",
+    "grip_l"
+   ],
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      274.0,
+      458.0
+     ],
+     "size": [
+      38.0,
+      46.0
+     ],
+     "flip": "y"
+    }
+   ],
+   "material": "skin"
+  },
+  {
+   "name": "face",
+   "z": 9,
+   "tags": [
+    "upper",
+    "head"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      172.0
+     ],
+     "size": [
+      144.0,
+      132.0
+     ]
+    }
+   ],
+   "material": "skin",
+   "shade": {
+    "highlight_amount": 0.28
+   }
+  },
+  {
+   "name": "eye_near",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_open"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      180.0
+     ],
+     "size": [
+      20.0,
+      13.0
+     ]
+    }
+   ],
+   "material": "eye",
+   "kind": "flat"
+  },
+  {
+   "name": "eye_near_hit",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_hit"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      180.0
+     ],
+     "size": [
+      24.0,
+      6.4
+     ],
+     "rot": 16
+    }
+   ],
+   "material": "eye",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "eye_far",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_open",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      180.0
+     ],
+     "size": [
+      16.0,
+      13.0
+     ]
+    }
+   ],
+   "material": "eye",
+   "kind": "flat"
+  },
+  {
+   "name": "eye_far_hit",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_hit",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      180.0
+     ],
+     "size": [
+      19.2,
+      6.4
+     ],
+     "rot": -16
+    }
+   ],
+   "material": "eye",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "brow_calm_146",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_calm"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      152.0
+     ],
+     "size": [
+      24.0,
+      4.8
+     ],
+     "rot": -4
+    }
+   ],
+   "material": "hair_black",
+   "kind": "flat",
+   "hidden": false
+  },
+  {
+   "name": "brow_calm_174",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_calm",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      152.0
+     ],
+     "size": [
+      19.2,
+      4.8
+     ],
+     "rot": 4
+    }
+   ],
+   "material": "hair_black",
+   "kind": "flat",
+   "hidden": false
+  },
+  {
+   "name": "brow_angry_146",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_angry"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      158.0
+     ],
+     "size": [
+      24.0,
+      4.8
+     ],
+     "rot": 20
+    }
+   ],
+   "material": "hair_black",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "brow_angry_174",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_angry",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      158.0
+     ],
+     "size": [
+      19.2,
+      4.8
+     ],
+     "rot": -20
+    }
+   ],
+   "material": "hair_black",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "brow_hurt_146",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_hurt"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      150.0
+     ],
+     "size": [
+      24.0,
+      4.8
+     ],
+     "rot": -17
+    }
+   ],
+   "material": "hair_black",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "brow_hurt_174",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_hurt",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      150.0
+     ],
+     "size": [
+      19.2,
+      4.8
+     ],
+     "rot": 17
+    }
+   ],
+   "material": "hair_black",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "nose",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "nose"
+   ],
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      175.0,
+      200.0
+     ],
+     "size": [
+      12.0,
+      8.0
+     ],
+     "rot": 200
+    }
+   ],
+   "kind": "flat",
+   "color": "skin_shadow"
+  },
+  {
+   "name": "mouth",
+   "z": 11.1,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "mouth_idle"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      218.0
+     ],
+     "size": [
+      24.0,
+      5.2
+     ]
+    }
+   ],
+   "material": "mouth",
+   "kind": "flat"
+  },
+  {
+   "name": "mouth_shout",
+   "z": 11.1,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "mouth_shout"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      220.0
+     ],
+     "size": [
+      24.0,
+      18.0
+     ]
+    }
+   ],
+   "material": "mouth",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "mouth_hurt",
+   "z": 11.1,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "mouth_hurt"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      220.0
+     ],
+     "size": [
+      26.0,
+      11.0
+     ],
+     "rot": -8
+    }
+   ],
+   "material": "mouth",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "goatee",
+   "z": 11.3,
+   "tags": [
+    "upper",
+    "head",
+    "feature"
+   ],
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      170.0,
+      240.0
+     ],
+     "size": [
+      30.0,
+      36.0
+     ],
+     "flip": "y"
+    }
+   ],
+   "material": "hair_black"
+  },
+  {
+   "name": "hair_back",
+   "z": 0.6,
+   "tags": [
+    "upper",
+    "head",
+    "hair"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      164.0,
+      130.0
+     ],
+     "size": [
+      200.0,
+      184.0
+     ]
+    }
+   ],
+   "material": "hair_black"
+  },
+  {
+   "name": "hair_front",
+   "z": 10,
+   "tags": [
+    "upper",
+    "head",
+    "hair"
+   ],
+   "pieces": [
+    {
+     "icon": "umbrella",
+     "at": [
+      164.0,
+      98.0
+     ],
+     "size": [
+      204.0,
+      88.0
+     ],
+     "crop": [
+      0.6,
+      2.3,
+      15.4,
+      8.7
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      96.0,
+      142.0
+     ],
+     "size": [
+      24.0,
+      48.0
+     ],
+     "flip": "y",
+     "rot": 4
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      232.0,
+      142.0
+     ],
+     "size": [
+      24.0,
+      48.0
+     ],
+     "flip": "yx",
+     "rot": -4
+    }
+   ],
+   "material": "hair_black",
+   "shade": {
+    "highlight_amount": 0.7,
+    "highlight": 0.9
+   }
+  },
+  {
+   "name": "gat_brim",
+   "z": 12,
+   "tags": [
+    "upper",
+    "head",
+    "hair"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      164.0,
+      102.0
+     ],
+     "size": [
+      300.0,
+      44.0
+     ]
+    }
+   ],
+   "material": "cloth_black",
+   "opacity": 0.8
+  },
+  {
+   "name": "gat_crown",
+   "z": 12.1,
+   "tags": [
+    "upper",
+    "head",
+    "hair"
+   ],
+   "pieces": [
+    {
+     "icon": "cylinder",
+     "at": [
+      164.0,
+      54.0
+     ],
+     "size": [
+      92.0,
+      88.0
+     ]
+    }
+   ],
+   "material": "cloth_black",
+   "opacity": 0.9
+  },
+  {
+   "name": "gat_beads",
+   "z": 11.7,
+   "tags": [
+    "upper",
+    "head",
+    "hair"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      100.0,
+      142.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        100.0,
+        142.0
+       ],
+       [
+        144.0,
+        286.0
+       ]
+      ],
+      "count": 8
+     }
+    },
+    {
+     "icon": "circle",
+     "at": [
+      228.0,
+      142.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        228.0,
+        142.0
+       ],
+       [
+        184.0,
+        286.0
+       ]
+      ],
+      "count": 8
+     }
+    }
+   ],
+   "material": "gold"
+  },
+  {
+   "name": "belt_0",
+   "z": 4,
+   "tags": [
+    "upper"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      418.0
+     ],
+     "size": [
+      192.0,
+      12.0
+     ]
+    }
+   ],
+   "material": "cloth_navy"
+  },
+  {
+   "name": "fan_r_fan",
+   "z": 6.0,
+   "tags": [
+    "upper",
+    "arm_r",
+    "weapon_r",
+    "grip_r"
+   ],
+   "pieces": [
+    {
+     "icon": "umbrella",
+     "at": [
+      46.0,
+      406.0
+     ],
+     "size": [
+      92.0,
+      57.04
+     ],
+     "crop": [
+      0.6,
+      2.3,
+      15.4,
+      8.7
+     ],
+     "rot": 0.0
+    }
+   ],
+   "material": "cloth_white"
+  },
+  {
+   "name": "fan_r_ribs",
+   "z": 6.05,
+   "tags": [
+    "upper",
+    "arm_r",
+    "weapon_r",
+    "grip_r"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      26.08,
+      433.28
+     ],
+     "size": [
+      4.0,
+      48.0
+     ],
+     "rot": -50
+    },
+    {
+     "icon": "square",
+     "at": [
+      35.02,
+      426.44
+     ],
+     "size": [
+      4.0,
+      48.0
+     ],
+     "rot": -25
+    },
+    {
+     "icon": "square",
+     "at": [
+      46.0,
+      424.0
+     ],
+     "size": [
+      4.0,
+      48.0
+     ],
+     "rot": 0
+    },
+    {
+     "icon": "square",
+     "at": [
+      56.98,
+      426.44
+     ],
+     "size": [
+      4.0,
+      48.0
+     ],
+     "rot": 25
+    },
+    {
+     "icon": "square",
+     "at": [
+      65.92,
+      433.28
+     ],
+     "size": [
+      4.0,
+      48.0
+     ],
+     "rot": 50
+    }
+   ],
+   "material": "wood",
+   "kind": "flat",
+   "clip_to": "fan_r_fan"
+  }
+ ],
+ "frames": [
+  {
+   "name": "portrait"
+  }
+ ]
+}

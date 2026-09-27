@@ -1,0 +1,215 @@
+{
+ "asset": "obj_hitching_post",
+ "status": "candidate",
+ "note": "Western hitching rail 2 m: two weathered posts, a horizontal rail, rope knot and a small water trough.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 923,
+ "pivot_meaning": "centre of the rail's ground line",
+ "layer_hint": "world",
+ "canvas": [
+  502,
+  272
+ ],
+ "pivot": [
+  243,
+  164
+ ],
+ "footprint": [
+  73,
+  146,
+  413,
+  234
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.32,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "at": [
+      251,
+      160
+     ],
+     "size": [
+      390,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "post0",
+   "z": 2.0,
+   "kind": "block",
+   "material": "wood_pale",
+   "extrude": 108,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      83,
+      47.0
+     ],
+     "size": [
+      20,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "post1",
+   "z": 3.0,
+   "kind": "block",
+   "material": "wood_pale",
+   "extrude": 108,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      403,
+      47.0
+     ],
+     "size": [
+      20,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rail",
+   "z": 4.0,
+   "kind": "block",
+   "material": "wood_pale",
+   "extrude": 16,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      243,
+      47.0
+     ],
+     "size": [
+      360,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knot",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "rope",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      283,
+      60
+     ],
+     "size": [
+      18,
+      22
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2.0
+     },
+     "at": [
+      280.0,
+      81.0
+     ],
+     "size": [
+      26.68332812825267,
+      4
+     ],
+     "rot": 102.9946167919165
+    }
+   ]
+  },
+  {
+   "name": "trough",
+   "z": 6.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 40,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      273,
+      164.0
+     ],
+     "size": [
+      180,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "trough_water",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "water",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      273,
+      164.0
+     ],
+     "size": [
+      160,
+      44
+     ]
+    }
+   ]
+  }
+ ]
+}

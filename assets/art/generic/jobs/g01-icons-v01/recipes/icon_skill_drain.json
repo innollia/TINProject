@@ -1,0 +1,394 @@
+{
+ "asset": "icon_skill_drain",
+ "status": "candidate",
+ "note": "Skill tile: red life motes spiralling into a dark violet vortex.",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 35596,
+ "meta": {
+  "kind": "icon",
+  "stage": "C",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      100.0,
+      100.0
+     ]
+    }
+   ],
+   "color": "tint_curse",
+   "clip_to": "plate",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 18,
+    "y1": 114
+   }
+  },
+  {
+   "name": "plate_rim",
+   "z": 5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      115.0,
+      115.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      102.0,
+      102.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "plate_studs",
+   "z": 5.2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      15.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      15.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      113.0,
+      113.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      56.0,
+      56.0
+     ]
+    }
+   ],
+   "blur": 6,
+   "opacity": 0.55,
+   "color": "glow_shadow",
+   "clip_to": "plate"
+  },
+  {
+   "name": "vortex",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "fx_shadow",
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      58.0,
+      58.0
+     ],
+     "rot": 20
+    },
+    {
+     "icon": "moon",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      42.0,
+      42.0
+     ],
+     "rot": 200
+    }
+   ],
+   "clip_to": "plate",
+   "opacity": 0.9
+  },
+  {
+   "name": "core",
+   "z": 2,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ],
+   "color": "#0c0612"
+  },
+  {
+   "name": "trails",
+   "z": 2.2,
+   "kind": "flat",
+   "material": "fx_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      88.46,
+      79.57
+     ],
+     "size": [
+      30.02,
+      3.99
+     ],
+     "poly": [
+      [
+       14.0,
+       4.3865
+      ],
+      [
+       6.7468,
+       2.0
+      ],
+      [
+       2.0,
+       10.409
+      ],
+      [
+       6.8532,
+       14.0
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      40.11,
+      82.57
+     ],
+     "size": [
+      8.78,
+      30.27
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       11.8241,
+       7.021
+      ],
+      [
+       14.0,
+       2.0
+      ],
+      [
+       6.5759,
+       6.579
+      ]
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      60.24,
+      36.75
+     ],
+     "size": [
+      19.84,
+      20.67
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       8.327,
+       10.0038
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       10.073,
+       8.3962
+      ]
+     ]
+    }
+   ],
+   "clip_to": "plate",
+   "opacity": 0.6
+  },
+  {
+   "name": "motes",
+   "z": 2.5,
+   "material": "gem_red",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      103.47,
+      78.36
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      75.63,
+      95.95
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      35.72,
+      97.71
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      34.46,
+      58.79
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      50.32,
+      26.41
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      84.57,
+      39.49
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    }
+   ]
+  }
+ ]
+}

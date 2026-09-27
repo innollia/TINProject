@@ -1,0 +1,327 @@
+{
+ "asset": "ui_ctl_toggle",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Toggle switch: down = off, up = on (lamp lit).",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "toggle centre",
+ "seed": 13,
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "steel",
+   "shade": {
+    "bump": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      112.0,
+      152.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 18
+     }
+    }
+   ]
+  },
+  {
+   "name": "plate_groove",
+   "z": 0.5,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.35,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      96.0,
+      136.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 14
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      92.0,
+      132.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "nut",
+   "z": 1,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      58.0,
+      58.0
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "hole",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "steel_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lever_up",
+   "z": 3,
+   "material": "steel",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      68.0
+     ],
+     "size": [
+      16.0,
+      58.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 7
+     }
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      38.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "up"
+   ]
+  },
+  {
+   "name": "lever_down",
+   "z": 3,
+   "material": "steel",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      124.0
+     ],
+     "size": [
+      16.0,
+      58.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 7
+     }
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      154.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "down"
+   ]
+  },
+  {
+   "name": "lamp_rim",
+   "z": 1,
+   "material": "steel_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      160.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lamp_off",
+   "z": 1.2,
+   "material": "lamp_green_off",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      160.0
+     ],
+     "size": [
+      11.0,
+      11.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "down"
+   ]
+  },
+  {
+   "name": "lamp_on",
+   "z": 1.2,
+   "material": "lamp_green_on",
+   "emit": 1.0,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.5,
+    "color": "glow_green"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      160.0
+     ],
+     "size": [
+      11.0,
+      11.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "up"
+   ]
+  },
+  {
+   "name": "screws",
+   "z": 2,
+   "material": "steel",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      32.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws_slot",
+   "z": 2.01,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      32.0
+     ],
+     "size": [
+      7.2,
+      1.44
+     ],
+     "rot": 35.0
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "down",
+   "show": [
+    "down"
+   ]
+  },
+  {
+   "name": "up",
+   "show": [
+    "up"
+   ]
+  }
+ ]
+}

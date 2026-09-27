@@ -1,0 +1,1020 @@
+{
+ "asset": "obj_steam_boiler",
+ "status": "candidate",
+ "note": "Steampunk boiler: riveted copper drum on brick saddles, iron firebox with vented door, smoke stack, pressure gauge, valve wheel and pipe run. Frames: off, on (firebox glow and gauge lamp, emit).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 905,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  588,
+  554
+ ],
+ "pivot": [
+  274,
+  475
+ ],
+ "footprint": [
+  49,
+  355,
+  539,
+  475
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.38,
+   "blur": 12,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 30
+     },
+     "at": [
+      294,
+      405
+     ],
+     "size": [
+      440,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "saddle0",
+   "z": 2.0,
+   "kind": "block",
+   "material": "brick",
+   "extrude": 52,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      234,
+      362.0
+     ],
+     "size": [
+      60,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "saddle1",
+   "z": 3.0,
+   "kind": "block",
+   "material": "brick",
+   "extrude": 52,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      424,
+      362.0
+     ],
+     "size": [
+      60,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "firebox",
+   "z": 4.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 110,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      104,
+      305.0
+     ],
+     "size": [
+      110,
+      120
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fire_door",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      104,
+      424.0
+     ],
+     "size": [
+      64,
+      54
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vents_off",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "off"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      86,
+      424.0
+     ],
+     "size": [
+      7,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      98,
+      424.0
+     ],
+     "size": [
+      7,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      110,
+      424.0
+     ],
+     "size": [
+      7,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      122,
+      424.0
+     ],
+     "size": [
+      7,
+      32
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vents_on",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "ember",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.9,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.6,
+    "color": "ember_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      86,
+      424.0
+     ],
+     "size": [
+      7,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      98,
+      424.0
+     ],
+     "size": [
+      7,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      110,
+      424.0
+     ],
+     "size": [
+      7,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      122,
+      424.0
+     ],
+     "size": [
+      7,
+      32
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stack",
+   "z": 8.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 230,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      104,
+      57.95
+     ],
+     "size": [
+      44,
+      38.104
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stack_rings",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "soot",
+   "clip_to": "stack",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      104,
+      231.0
+     ],
+     "size": [
+      46,
+      38.104
+     ],
+     "half": "bottom",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      104,
+      225.0
+     ],
+     "size": [
+      46,
+      38.104
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      104,
+      121.0
+     ],
+     "size": [
+      46,
+      38.104
+     ],
+     "half": "bottom",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      104,
+      115.0
+     ],
+     "size": [
+      46,
+      38.104
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "drum",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "copper",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 62
+     },
+     "at": [
+      324,
+      357
+     ],
+     "size": [
+      344,
+      128
+     ]
+    }
+   ]
+  },
+  {
+   "name": "drum_bands",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "clip_to": "drum",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      234,
+      357
+     ],
+     "size": [
+      12,
+      128
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      329,
+      357
+     ],
+     "size": [
+      12,
+      128
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      424,
+      357
+     ],
+     "size": [
+      12,
+      128
+     ]
+    }
+   ]
+  },
+  {
+   "name": "drum_rivets",
+   "z": 12.0,
+   "kind": "flat",
+   "material": "bronze",
+   "clip_to": "drum",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      224,
+      315
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      224,
+      339
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      224,
+      363
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      224,
+      387
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      244,
+      315
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      244,
+      339
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      244,
+      363
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      244,
+      387
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      319,
+      315
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      319,
+      339
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      319,
+      363
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      319,
+      387
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      339,
+      315
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      339,
+      339
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      339,
+      363
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      339,
+      387
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      414,
+      315
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      414,
+      339
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      414,
+      363
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      414,
+      387
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      434,
+      315
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      434,
+      339
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      434,
+      363
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      434,
+      387
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dome",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "copper",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      374,
+      287
+     ],
+     "size": [
+      60,
+      34
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      374,
+      303
+     ],
+     "size": [
+      46,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pipe",
+   "z": 14.0,
+   "kind": "mass",
+   "material": "copper",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      511.0,
+      355.0
+     ],
+     "size": [
+      38.0,
+      16
+     ],
+     "rot": 0.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      530.0,
+      406.0
+     ],
+     "size": [
+      118.0,
+      16
+     ],
+     "rot": 90.0
+    }
+   ]
+  },
+  {
+   "name": "valve_stem",
+   "z": 15.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      530,
+      325
+     ],
+     "size": [
+      8,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "valve_wheel",
+   "z": 16.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "wheel",
+     "at": [
+      530,
+      309
+     ],
+     "size": [
+      38,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gauge",
+   "z": 17.0,
+   "kind": "mass",
+   "material": "chrome",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      278,
+      333
+     ],
+     "size": [
+      40,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gauge_face",
+   "z": 18.0,
+   "kind": "flat",
+   "material": "paper",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      278,
+      333
+     ],
+     "size": [
+      30,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gauge_needle",
+   "z": 19.0,
+   "kind": "flat",
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      283.0,
+      328.0
+     ],
+     "size": [
+      14.142135623730951,
+      3
+     ],
+     "rot": -45.0
+    }
+   ]
+  },
+  {
+   "name": "gauge_lamp_off",
+   "z": 20.0,
+   "kind": "flat",
+   "material": "signal_off",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      308,
+      319
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gauge_lamp_on",
+   "z": 21.0,
+   "kind": "flat",
+   "material": "signal_amber",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "signal_amber_glow"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      308,
+      319
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off"
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#ff9a4a",
+    "radius": 260,
+    "at": [
+     104,
+     419
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "status": "candidate",
+ "note": "Stage 01 layout. items = objects drawn by compose_preview.py; characters = placements for the game only (never composited in review images); exits = transition hotspot polygons.",
+ "background": "output/bg_s01_corridor/bg_s01_corridor.png",
+ "scale": 0.5,
+ "items": [
+  {
+   "asset": "obj_s01_sink",
+   "at": [
+    760,
+    1088
+   ],
+   "id": "sink"
+  },
+  {
+   "asset": "obj_s01_disinfect_tool",
+   "at": [
+    690,
+    800
+   ],
+   "id": "disinfect_tool",
+   "interactive": true,
+   "sort_y": 1089
+  },
+  {
+   "asset": "obj_s01_guard_board",
+   "at": [
+    1360,
+    430
+   ],
+   "id": "guard_board",
+   "layer": "floor",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_copier",
+   "at": [
+    2260,
+    1250
+   ],
+   "id": "copier",
+   "interactive": true
+  }
+ ],
+ "characters": [],
+ "exits": {
+  "trans_corridor_to_lab": [
+   [
+    180,
+    300
+   ],
+   [
+    500,
+    300
+   ],
+   [
+    500,
+    1080
+   ],
+   [
+    180,
+    1080
+   ]
+  ]
+ },
+ "hotspots": {
+  "hotspot_corridor_instruments": "obj_s01_disinfect_tool",
+  "hotspot_corridor_copier": "obj_s01_copier",
+  "hotspot_corridor_guard_log": "obj_s01_guard_board"
+ },
+ "out": "preview/scene_s01_corridor_bg_objects_1280x720.png"
+}

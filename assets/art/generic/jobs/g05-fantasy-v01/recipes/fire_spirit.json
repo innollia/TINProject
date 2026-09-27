@@ -1,0 +1,734 @@
+{
+ "asset": "fire_spirit",
+ "status": "candidate",
+ "note": "Fire spirit, front view. Hovering elemental of layered flame tongues (dark red rim, orange body, yellow-white core) with dark coal eyes and flame arms, trailing into a wisp; whole body is emissive. attack = flares up tall with arms flung high, mouth roaring; hit = flame squashed and bent aside, eyes squeezed.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 512,
+ "g05": {
+  "name_ko": "불 정령",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      360.4
+     ],
+     "size": [
+      120.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "outer",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "fire_outer",
+   "emit": 0.8,
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "fire",
+     "at": [
+      160.0,
+      214.0
+     ],
+     "size": [
+      190.0,
+      250.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171.4,
+      254.0
+     ],
+     "size": [
+      87.4,
+      105.0
+     ]
+    },
+    {
+     "icon": "fire",
+     "at": [
+      106.0,
+      250.0
+     ],
+     "size": [
+      90.0,
+      130.0
+     ],
+     "rot": -18.0,
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      100.6,
+      270.8
+     ],
+     "size": [
+      41.4,
+      54.6
+     ]
+    },
+    {
+     "icon": "fire",
+     "at": [
+      214.0,
+      250.0
+     ],
+     "size": [
+      90.0,
+      130.0
+     ],
+     "rot": 18.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      219.4,
+      270.8
+     ],
+     "size": [
+      41.4,
+      54.6
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      316.0
+     ],
+     "size": [
+      90.0,
+      110.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "mid",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.5,
+   "material": "fire_mid",
+   "emit": 0.9,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "fire",
+     "at": [
+      160.0,
+      226.0
+     ],
+     "size": [
+      150.0,
+      196.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      169.0,
+      257.4
+     ],
+     "size": [
+      69.0,
+      82.3
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      306.0
+     ],
+     "size": [
+      64.0,
+      80.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "core",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3,
+   "material": "fire_core",
+   "emit": 1.0,
+   "line": false,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.4,
+    "color": "flame_glow"
+   },
+   "pieces": [
+    {
+     "icon": "fire",
+     "at": [
+      160.0,
+      244.0
+     ],
+     "size": [
+      96.0,
+      124.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      165.8,
+      263.8
+     ],
+     "size": [
+      44.2,
+      52.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 3.5,
+   "material": "fire_outer",
+   "emit": 0.85,
+   "pivot": [
+    110,
+    240
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "fire",
+     "at": [
+      68.0,
+      222.0
+     ],
+     "size": [
+      52.0,
+      96.0
+     ],
+     "rot": -40.0,
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.9,
+      237.4
+     ],
+     "size": [
+      23.9,
+      40.3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l_c",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 3.6,
+   "material": "fire_mid",
+   "emit": 0.95,
+   "pivot": [
+    110,
+    240
+   ],
+   "line": false,
+   "pieces": [
+    {
+     "icon": "fire",
+     "at": [
+      68.0,
+      228.0
+     ],
+     "size": [
+      30.0,
+      56.0
+     ],
+     "rot": -40.0,
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      66.2,
+      237.0
+     ],
+     "size": [
+      13.8,
+      23.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 3.5,
+   "material": "fire_outer",
+   "emit": 0.85,
+   "pivot": [
+    210,
+    240
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "fire",
+     "at": [
+      252.0,
+      222.0
+     ],
+     "size": [
+      52.0,
+      96.0
+     ],
+     "rot": 40.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      255.1,
+      237.4
+     ],
+     "size": [
+      23.9,
+      40.3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r_c",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 3.6,
+   "material": "fire_mid",
+   "emit": 0.95,
+   "pivot": [
+    210,
+    240
+   ],
+   "line": false,
+   "pieces": [
+    {
+     "icon": "fire",
+     "at": [
+      252.0,
+      228.0
+     ],
+     "size": [
+      30.0,
+      56.0
+     ],
+     "rot": 40.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      253.8,
+      237.0
+     ],
+     "size": [
+      13.8,
+      23.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "eyes"
+   ],
+   "z": 4,
+   "kind": "flat",
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      138.0,
+      236.0
+     ],
+     "size": [
+      20.0,
+      26.0
+     ],
+     "rot": -10.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182.0,
+      236.0
+     ],
+     "size": [
+      20.0,
+      26.0
+     ],
+     "rot": 10.0
+    }
+   ]
+  },
+  {
+   "name": "pupils",
+   "tags": [
+    "all",
+    "eyes"
+   ],
+   "z": 4.1,
+   "kind": "flat",
+   "material": "glow_white",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "lamp_glow"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      138.0,
+      238.0
+     ],
+     "size": [
+      6.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182.0,
+      238.0
+     ],
+     "size": [
+      6.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_hit",
+   "tags": [
+    "all",
+    "eyes_hit"
+   ],
+   "z": 4.1,
+   "kind": "flat",
+   "material": "soot",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.4,
+      235.2
+     ],
+     "size": [
+      5.0,
+      15.7
+     ],
+     "rot": -66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.4,
+      240.8
+     ],
+     "size": [
+      5.0,
+      15.7
+     ],
+     "rot": 66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      183.6,
+      235.2
+     ],
+     "size": [
+      5.0,
+      15.7
+     ],
+     "rot": 66.4,
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      183.6,
+      240.8
+     ],
+     "size": [
+      5.0,
+      15.7
+     ],
+     "rot": -66.4,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "mouth"
+   ],
+   "z": 4,
+   "kind": "flat",
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      272.0
+     ],
+     "size": [
+      34.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      266.1
+     ],
+     "size": [
+      40.8,
+      14.7
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "mouth_open",
+   "tags": [
+    "all",
+    "mouth_open"
+   ],
+   "z": 4,
+   "kind": "flat",
+   "material": "soot",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      276.0
+     ],
+     "size": [
+      40.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "embers",
+   "tags": [
+    "all",
+    "embers"
+   ],
+   "z": 1.5,
+   "material": "fire_mid",
+   "emit": 1.0,
+   "line": {
+    "width": 0.6,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "fire",
+     "at": [
+      76.0,
+      150.0
+     ],
+     "size": [
+      20.0,
+      26.0
+     ],
+     "rot": -10.0
+    },
+    {
+     "icon": "fire",
+     "at": [
+      250.0,
+      170.0
+     ],
+     "size": [
+      16.0,
+      22.0
+     ],
+     "rot": 12.0
+    },
+    {
+     "icon": "fire",
+     "at": [
+      220.0,
+      110.0
+     ],
+     "size": [
+      14.0,
+      18.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "arm_l": {
+     "rot": 40,
+     "pivot": [
+      110,
+      240
+     ]
+    },
+    "arm_r": {
+     "rot": -40,
+     "pivot": [
+      210,
+      240
+     ]
+    },
+    "embers": {
+     "dy": -20
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "dy": -6,
+     "sx": 0.94,
+     "sy": 1.16
+    }
+   },
+   "show": [
+    "mouth_open"
+   ],
+   "hide": [
+    "mouth"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "shadow": {
+     "dx": 4
+    },
+    "arm_l": {
+     "rot": -30,
+     "pivot": [
+      110,
+      240
+     ]
+    },
+    "arm_r": {
+     "rot": 6,
+     "pivot": [
+      210,
+      240
+     ]
+    },
+    "embers": {
+     "dx": 10
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "rot": 10,
+     "dx": -6,
+     "sx": 1.04,
+     "sy": 0.84
+    }
+   },
+   "show": [
+    "eyes_hit",
+    "mouth_open"
+   ],
+   "hide": [
+    "eyes",
+    "mouth"
+   ]
+  }
+ ]
+}

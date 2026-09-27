@@ -1,0 +1,21 @@
+{
+ "schema": 1, "id": "lvl_clockwork_bell", "name": "태엽 종", "parallax_seed": 9109,
+ "spawn": { "x": 120, "y": 470 }, "rift": { "x": 1660, "y": 452, "radius": 30 },
+ "bounds": { "min_x": -120, "max_x": 1800, "min_y": -80, "max_y": 620 },
+ "objective_needed": 3, "mutable": ["prop_size", "wind"], "mutable_hazards": [], "shuffled": [],
+ "kinematics": [{ "id": "clapper", "from": [820, 420], "to": [1120, 420], "duration": 2.8, "loop": "pingpong" }],
+ "bodies": [
+  { "id": "floor", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [840, 520], "size": [1920, 48] },
+  { "id": "wall_left", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [-104, 280], "size": [32, 432] },
+  { "id": "wall_right", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [1784, 280], "size": [32, 432] },
+  { "id": "bell_rim", "kind": "tile_static", "shape": "hull", "material": "iron", "pos": [500, 450], "points": [[-70, 46], [70, 46], [40, -46], [-40, -46]] },
+  { "id": "clapper", "kind": "tile_kinematic", "shape": "box", "material": "iron", "pos": [820, 420], "size": [120, 20] },
+  { "id": "weight_a", "kind": "prop_dynamic", "shape": "box", "material": "iron", "pos": [1300, 478], "size": [36, 36] },
+  { "id": "weight_b", "kind": "prop_dynamic", "shape": "box", "material": "wood", "pos": [1360, 480], "size": [32, 32] },
+  { "id": "weight_c", "kind": "prop_dynamic", "shape": "circle", "material": "clockwork", "pos": [680, 480], "size": [28, 28] },
+  { "id": "weight_d", "kind": "prop_dynamic", "shape": "box", "material": "paper", "pos": [1500, 482], "size": [28, 28] },
+  { "id": "egg_a", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [500, 380], "size": [22, 22] },
+  { "id": "egg_b", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [970, 370], "size": [22, 22] },
+  { "id": "egg_c", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [1420, 480], "size": [22, 22] }
+ ]
+}

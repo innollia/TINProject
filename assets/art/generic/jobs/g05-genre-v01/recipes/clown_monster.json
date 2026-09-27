@@ -1,0 +1,943 @@
+{
+ "asset": "clown_monster",
+ "status": "candidate",
+ "note": "Clown monster, front view. Too-tall stooped harlequin creature: chalk-white face split by a grin of needle teeth ear to ear, glowing red pinprick eyes, ruffled wine collar, faded diamond-patched costume with pom-poms, spindly arms with long clawed fingers.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 1022,
+ "g05": {
+  "name_ko": "광대 괴물",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      362.6
+     ],
+     "size": [
+      160.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1,
+   "material": "cloth_blue",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141.2,
+      248.7
+     ],
+     "size": [
+      22.5,
+      86.6
+     ],
+     "rot": 6.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.3,
+      321.8
+     ],
+     "size": [
+      20.8,
+      75.2
+     ],
+     "rot": 0.7
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1.1,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      132.5,
+      357.4
+     ],
+     "size": [
+      36.4,
+      12.7
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      349.5
+     ],
+     "size": [
+      26.0,
+      14.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1,
+   "material": "cloth_blue",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      178.8,
+      248.7
+     ],
+     "size": [
+      22.5,
+      86.6
+     ],
+     "rot": -6.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      183.7,
+      321.8
+     ],
+     "size": [
+      20.8,
+      75.2
+     ],
+     "rot": -0.7
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1.1,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      187.5,
+      357.4
+     ],
+     "size": [
+      36.4,
+      12.7
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.0,
+      349.5
+     ],
+     "size": [
+      26.0,
+      14.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "torso",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      173.9
+     ],
+     "size": [
+      80.2,
+      110.4
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      138.2
+     ],
+     "size": [
+      82.4,
+      37.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      213.0
+     ],
+     "size": [
+      46.2,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "diamonds",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.1,
+   "kind": "flat",
+   "material": "cloth_blue",
+   "clip_to": "torso",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      136.0,
+      168.0
+     ],
+     "size": [
+      24.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "diamond",
+     "at": [
+      184.0,
+      168.0
+     ],
+     "size": [
+      24.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "diamond",
+     "at": [
+      160.0,
+      204.0
+     ],
+     "size": [
+      24.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "diamond",
+     "at": [
+      136.0,
+      240.0
+     ],
+     "size": [
+      24.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "diamond",
+     "at": [
+      184.0,
+      240.0
+     ],
+     "size": [
+      24.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pompoms",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.2,
+   "material": "clown_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      158.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      188.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      218.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4,
+   "material": "cloth_wine",
+   "pivot": [
+    116.65,
+    128.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      98.4,
+      160.7
+     ],
+     "size": [
+      18.2,
+      81.2
+     ],
+     "rot": 29.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      83.4,
+      230.7
+     ],
+     "size": [
+      16.9,
+      80.8
+     ],
+     "rot": -4.9
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.2,
+   "material": "clown_white",
+   "pivot": [
+    116.65,
+    128.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      86.7,
+      269.8
+     ],
+     "size": [
+      18.2,
+      18.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fingers_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 4.3,
+   "material": "clown_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      79.9,
+      285.0
+     ],
+     "size": [
+      3.5,
+      36.9
+     ],
+     "rot": 21.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      84.4,
+      285.0
+     ],
+     "size": [
+      3.5,
+      34.6
+     ],
+     "rot": 7.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      88.9,
+      285.0
+     ],
+     "size": [
+      3.5,
+      34.6
+     ],
+     "rot": -7.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      93.4,
+      285.0
+     ],
+     "size": [
+      3.5,
+      36.9
+     ],
+     "rot": -21.7
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4,
+   "material": "cloth_wine",
+   "pivot": [
+    203.35,
+    128.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      221.5,
+      159.6
+     ],
+     "size": [
+      18.2,
+      79.4
+     ],
+     "rot": -29.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      236.5,
+      227.6
+     ],
+     "size": [
+      16.9,
+      78.9
+     ],
+     "rot": 5.0
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.2,
+   "material": "clown_white",
+   "pivot": [
+    203.35,
+    128.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      233.3,
+      265.8
+     ],
+     "size": [
+      18.2,
+      18.2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fingers_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 4.3,
+   "material": "clown_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      226.6,
+      281.0
+     ],
+     "size": [
+      3.5,
+      36.9
+     ],
+     "rot": 21.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      231.1,
+      281.0
+     ],
+     "size": [
+      3.5,
+      34.6
+     ],
+     "rot": 7.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      235.6,
+      281.0
+     ],
+     "size": [
+      3.5,
+      34.6
+     ],
+     "rot": -7.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      240.1,
+      281.0
+     ],
+     "size": [
+      3.5,
+      36.9
+     ],
+     "rot": -21.7
+    }
+   ]
+  },
+  {
+   "name": "collar",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "flower",
+     "at": [
+      160.0,
+      124.0
+     ],
+     "size": [
+      110.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7,
+   "material": "clown_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      106.6
+     ],
+     "size": [
+      56.0,
+      62.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hair",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.9,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      126.0,
+      96.6
+     ],
+     "size": [
+      34.0,
+      34.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194.0,
+      96.6
+     ],
+     "size": [
+      34.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye_marks",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.1,
+   "kind": "flat",
+   "material": "cloth_blue",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      147.0,
+      100.6
+     ],
+     "size": [
+      14.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "diamond",
+     "at": [
+      173.0,
+      100.6
+     ],
+     "size": [
+      14.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.2,
+   "kind": "flat",
+   "material": "glow_red",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "glow_red_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      147.0,
+      100.6
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      100.6
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nose",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.3,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      112.6
+     ],
+     "size": [
+      14.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.25,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      126.6
+     ],
+     "size": [
+      54.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      121.0
+     ],
+     "size": [
+      64.8,
+      16.8
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "teeth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.3,
+   "kind": "flat",
+   "material": "tooth",
+   "line": {
+    "width": 0.4,
+    "heavy": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      138.4,
+      127.6
+     ],
+     "size": [
+      4.3,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      143.2,
+      127.6
+     ],
+     "size": [
+      4.3,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      148.0,
+      127.6
+     ],
+     "size": [
+      4.3,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      152.8,
+      127.6
+     ],
+     "size": [
+      4.3,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      157.6,
+      127.6
+     ],
+     "size": [
+      4.3,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      162.4,
+      127.6
+     ],
+     "size": [
+      4.3,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      167.2,
+      127.6
+     ],
+     "size": [
+      4.3,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      172.0,
+      127.6
+     ],
+     "size": [
+      4.3,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      176.8,
+      127.6
+     ],
+     "size": [
+      4.3,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      181.6,
+      127.6
+     ],
+     "size": [
+      4.3,
+      6.0
+     ],
+     "flip": "y"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

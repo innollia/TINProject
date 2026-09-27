@@ -1,9 +1,40 @@
 # Kit 06 `sideview_ecosystem` — 구현 현황 · 인계
 
+> **2026-09-27 부모(통합 담당) 전달 — 사용자 지시. 이 파일의 다른 내용과 부모 지시문보다 우선한다.**
+> 1. 중요한 결정(생물의 생김새와 움직임, 화면 구성·조작, 범위, 레퍼런스 해석, '사용자 확인 대기' 항목)은 추천안으로 확정하지 말고 번호 질문으로 부모에게 보고한다. 부모 지시문의 '사용자에게 묻지 않는다'는 기술 선택에만 해당한다. `AGENTS.md` '중요한 결정은 사용자에게 묻는다'.
+> 2. 절차적 생물: 기준은 Rain World 수준의 절차 애니메이션 품질이다. 그 품질이면 촉수 덩어리·눈알 여러 개·다리 다발도 된다. 거미만 안 된다. 구조가 서로 다른 후보 2~4개를 시험 캡처와 함께 질문으로 올린다. `AGENTS.md` '절차적 생물·괴물 디자인'.
+> 3. 사용자 결정(2026-09-27, §5.1 Q1): 풍경으로서의 웅덩이는 넣어도 된다. 작업이 크게 느려지면 넣지 않는다. 비 주기·침수·수영·호흡 같은 물 규칙은 계속 0건이다. 웅덩이를 넣으면 `test_eco_no_water_systems`가 풍경 웅덩이만 막지 않게 고치고 규칙 쪽 금지는 그대로 둔다. 이 결정은 계획서 머리말의 '물 관련 항목이 1건이라도 남으면 구현하지 않는다'와 `docs/world/00_CONSTITUTION.md` 불변식 0-2('물 없음')보다 우선한다(풍경 웅덩이에만 해당). 사용자 선택 때문에 이미 한 작업을 되돌려야 하면 되돌리지 않는다.
+
+
 > 이 파일은 사실 기록이다. 테스트를 돌리지 않은 것을 통과로 쓰지 않는다.
 > 결정은 `GRILLING_STATE.md` §5.1, 규격은 `plans/kits/06_SIDEVIEW_ECOSYSTEM_KIT.md`가 정본이다.
 
-상태: **domain·로더·콘텐츠 1차안 완료, systems·화면 미착수** (2026-09-27, 첫 세션 종료)
+상태: **D0·D1 완료, S wave 절반(systems 코드 전부 작성·테스트 2/5 파일), 화면 미착수** (2026-09-27, 두 번째 세션 sub-kit06 — 비용 절감 지시로 중간 종료)
+
+## 0-A. 두 번째 세션 결과와 정확한 다음 단계 (이 절이 §3~§5보다 새것)
+
+**테스트(실제 실행, 2026-09-27):** `--editor --import` 종료 0 → `-gdir=res://tests/core -gprefix=test_eco_` 9 scripts · 53 tests · **52 pass · 1 pending · 실패 0** · 686 asserts · 종료 코드 0. pending 1 = `test_eco_button_labels_present`(presentation/ 없음). content 25룸이 실제 로더를 처음으로 통과했다(오류 0).
+
+**새로 만든 파일:** `systems/` region_graph, settle_system, collision_resolver, player_body, transition_system(규칙 파일은 기존), step_director, worldstate_bridge, save_service, creature, creature_archetype, creature_manager, ai_sense, ai_decide, ai_memory, den_system, id_allocator, social_table, creature_contact / `domain/` save_codec, body_axis, creature_axis / `module.gd`, `module_manifest.tres`, `audio_events.tres`(14개, wav 없음 → 무음), `entry.tscn`(최소 노드만) / 테스트 `test_eco_region_graph.gd`(3), `test_eco_transitions.gd`(10), `test_eco_player_physics.gd`(9), `test_eco_region_loader.gd`에 `test_eco_loader_rejects_each_reason`(25 reason 전부)·`test_eco_content_extension_without_core_change`(27룸 + 새 룸에서 StepDirector 600프레임) 추가.
+
+**다음 작업자가 할 순서 (이 순서 그대로):**
+1. `tests/core/test_eco_creatures.gd` 8개 — 대상 `EcoCreatureManager.all_ids()`(ID 결정론·유일), `EcoDenSystem.refill_chance/roll`, `EcoSocialTable.TABLE`(15칸), `EcoCreature.State`(11개), `EcoAISense.sense` 인자.
+2. `tests/core/test_eco_save_and_flow.gd` 9개 — `EcoSaveCodec.encode/decode`(§6.5 예시 왕복·정규화), `module.gd`의 `migrate_save`·`register_actions`(두 번 불러도 중복 0), `EcoStepDirector._die→respawn`(0.8초 뒤 `dead`), `_check_shelter`(curl 1.2초 → `asleep`), `EcoSaveService.write_log`(S1~S5만).
+3. `tests/core/test_eco_worldstate_handover.gd` 8개 — 스토어는 `WorldState.new()` + `declare_owner(&"body"/&"creature", EcoWorldstateBridge.REQUESTER)`. `EcoSaveService.begin(bridge, index, table, saved)`가 §14.2 3~7단계다. narrow_cradle 전이는 `EcoTransitionSystem.probe(world, room, {"witnesses": 3}, dt)` 720회 후 `commit`.
+4. `tests/core/test_eco_scale_rung_contract.gd` 9개 — 3·7은 pending. 8은 `docs/scale_collapse/03_MISMATCH_VISUALS.md`의 `SEPARATION = 1.76`을 정규식으로 읽는다(06 문서 T4에는 하한이 없다 — OQ-8 해소).
+5. 위 테스트에서 드러나는 버그 수정 → P wave(§11). `module.gd`는 `get_node_or_null("OverlayHost")`를 찾는데 `entry.tscn`에서는 `OverlayLayer/OverlayHost`다 — 화면을 만들 때 경로를 맞춘다. 지금은 못 찾으면 바로 `normal`로 넘어간다.
+
+**이미 이렇게 진행함 (에이전트 추천 채택, 사용자가 뒤집을 수 있음):**
+- 풍경 웅덩이(§5.1 Q1 사용자 결정): **넣지 않았다**(작업이 느려지는 쪽). 물 규칙 0건 그대로.
+- `test_eco_settle_never_gates_progress`는 drift 갭 전부 SEAL로만 검사한다. 계획서의 "trigger_flags 전부 참"은 collapse_floor 3개를 다 없애 `doll`이 될 길을 지우므로 G1이 구조적으로 거짓이 된다 — trigger_flags는 압축 채널이 아니고(E-10) consume 간선 제거는 G2가 이미 한다. **계획서 §16.3 정정 E-21 반영 대기.**
+- 축 `creature.den`은 스토어가 빈 문자열을 거부한다(`AxisCreature` FIELD_DEN 비어 있지 않은 String). 그래서 죽은 개체·고정 배치 개체는 `den` 키를 패치에서 **뺀다**(§6.6.3의 `""`로 비우기 대신). 정본 반영 대기.
+- SC-06 피해 0.35배는 §7.10 일반식이 아니라 SC-06 목록(`maw` `anchor` `brood`)에만 적용.
+- 점프 적분은 반 스텝 중력(velocity Verlet)이라 최고점이 `jump_height`와 ±2px 안에서 맞는다.
+- 코드 금지 토큰 때문에: 난수는 `ProceduralSeed.unit()/range_f()`만(`randf(` 문자열 금지), `1.0`·`1.12`·`1.30` 리터럴 대신 정수 `1`과 `0.88 + 0.24 × u` 꼴.
+
+**사용자에게 올릴 질문 (답이 없으면 추천안으로 확정 — 부모 지시):**
+1. 플레이어가 개체를 죽이는 수단. 계획서는 `fix.gardener`를 처치 가능하다고 하지만 `eco_use`는 붙잡기/벽 타격뿐이고 개체 타격 규칙이 없다. 지금 코드는 환경(낙하·판 압착·흙 매립)으로만 죽는다. 추천: 붙잡아 들고 `DROP`·판 위로 옮겨 죽이는 현재 방식 유지(새 조작 0).
+2. 개체 생김새·움직임 후보 2~4개(AGENTS.md 절차적 생물 규칙) — 화면 wave 전이라 **아직 후보를 만들지 않았다**. P wave 첫 작업.
 
 ## 0. 다음 작업자가 먼저 읽을 것 (이 순서)
 

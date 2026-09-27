@@ -1,0 +1,143 @@
+{
+ "asset": "ui_os_bubble",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Messenger bubbles, 9-slice margin 48 (tail sits in a bottom corner): left = other person (beige), right = me (teal).",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  86.0
+ ],
+ "pivot_meaning": "bubble centre",
+ "seed": 84,
+ "forms": [
+  {
+   "name": "body",
+   "z": 0,
+   "material": "plastic_beige",
+   "tags": [
+    "bubble"
+   ],
+   "shade": {
+    "bump": 0.4
+   },
+   "grime": {
+    "strength": 0.12
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      86.0
+     ],
+     "size": [
+      180.0,
+      152.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 40
+     }
+    }
+   ]
+  },
+  {
+   "name": "tail_l",
+   "z": 0,
+   "material": "plastic_beige",
+   "tags": [
+    "bubble",
+    "left"
+   ],
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      30.0,
+      170.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": 200
+    }
+   ],
+   "hidden": true
+  },
+  {
+   "name": "tail_r",
+   "z": 0,
+   "material": "plastic_beige",
+   "tags": [
+    "bubble",
+    "right"
+   ],
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      162.0,
+      170.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": 160
+    }
+   ],
+   "hidden": true
+  },
+  {
+   "name": "sheen",
+   "z": 1,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.1,
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      26.0
+     ],
+     "size": [
+      120.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "left",
+   "show": [
+    "left"
+   ],
+   "materials": {
+    "bubble": "plastic_beige"
+   }
+  },
+  {
+   "name": "right",
+   "show": [
+    "right"
+   ],
+   "materials": {
+    "bubble": "paint_teal"
+   }
+  }
+ ]
+}

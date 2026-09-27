@@ -762,6 +762,289 @@ def status_def_up():
     ]
 
 
+# ================================================================== C: items
+@icon("C", "icon_coin_pouch", "Leather coin pouch tied with a wine cord, frilled neck, silver coins spilling in front.")
+def coin_pouch():
+    coins = [(40, 108, 0), (62, 112, 0), (86, 106, 0)]
+    forms = [
+        F("pouch", "leather", [C(64, 78, 80, 66), POLY([(0.25, 0), (0.75, 0), (1, 1), (0, 1)], 64, 44, 44, 20)], 0,
+          shade={"highlight_amount": 0.4}),
+        F("frill", "leather", [D(52, 30, 12, 22, rot=-20), D(64, 27, 12, 24), D(76, 30, 12, 22, rot=20)], 0.5),
+        F("folds", "leather_dark", [RR(50, 80, 4, 34, rot=10), RR(76, 80, 4, 34, rot=-10)], 0.7, "flat",
+          clip_to="pouch", opacity=0.6),
+        F("cord", "cloth_wine", [R(64, 43, 50, 6), D(80, 52, 6, 18, flip="y", rot=-10), D(86, 50, 6, 16, flip="y", rot=-25)], 1),
+    ]
+    z = 2.0
+    for i, (x, y, r) in enumerate(coins):
+        forms.append(F(f"coin{i}", "silver", [C(x, y, 30, 12)], z, "block", extrude=4))
+        forms.append(F(f"coin{i}_mark", None, ringp(x, y, 20, 8, 1.6), z + 0.01, "flat", color="#55575f",
+                       clip_to=f"coin{i}", opacity=0.6))
+        z += 0.1
+    return forms
+
+
+@icon("C", "icon_treasure_map", "Treasure map: parchment sheet with rolled ends, coastline, little mountains, a dashed route and a red ring target (no letters).")
+def treasure_map():
+    g = g45(-8)
+    route = [R(40 + k * 9, 70 - 6 * math.sin(k * 0.9), 5, 2, rot=-20 + k * 8) for k in range(6)]
+    return [
+        F("sheet", "paper", g([POLY([(0, 0.05), (1, 0), (1, 1), (0, 0.95)], 64, 64, 88, 72)]), 0,
+          shade={"bump": 0.35, "highlight_amount": 0.2}),
+        F("rolls", "paper", g([C(18, 64, 14, 76), C(110, 64, 14, 74)]), 1, shade={"bump": 0.9}),
+        F("coast", None, g(polyline([(30, 44), (42, 48), (50, 42), (62, 50), (70, 46), (84, 54), (98, 50)], 2)), 1.2,
+          "flat", color="#6e5c44", clip_to="sheet", opacity=0.8),
+        F("sea", None, g([C(64, 34, 90, 26)]), 1.1, "flat", color="#5a6a78", clip_to="sheet", opacity=0.35),
+        F("mountains", None, g([POLY(TRI_UP, 44, 84, 14, 10), POLY(TRI_UP, 56, 86, 12, 9), POLY(TRI_UP, 36, 88, 10, 8)]),
+          1.3, "flat", color="#6e5c44", clip_to="sheet", opacity=0.75),
+        F("route", "wax_red", g(route), 1.4, "flat", clip_to="sheet", opacity=0.85),
+        F("target", "wax_red", g(ringp(92, 84, 14, 14, 2.4)), 1.5, "flat", clip_to="sheet"),
+        F("compass", None, g([SPARK(96, 40, 12)]), 1.6, "flat", color="#6e5c44", clip_to="sheet", opacity=0.8),
+    ]
+
+
+@icon("C", "icon_empty_bottle", "Empty tall glass bottle with a long neck, dust at the bottom and a bright glint.")
+def empty_bottle():
+    glass = [RR(64, 90, 44, 60), C(64, 62, 44, 18), RR(64, 42, 14, 34), C(64, 25, 20, 7)]
+    return [
+        F("glass", "glass_dark", glass, 0, opacity=0.9, shade={"highlight_amount": 0.7}),
+        F("inside", None, [RR(64, 92, 34, 50)], 0.5, "flat", color="#1c1824", clip_to="glass", opacity=0.45),
+        F("dust", None, [C(64, 118, 36, 8)], 0.7, "flat", color="#6e6448", clip_to="glass", opacity=0.6),
+        F("glint", None, [C(49, 88, 7, 44), sub(C(51, 87, 7, 44)), R(60, 40, 2, 26)], 1, "flat", color="glint",
+          clip_to="glass", opacity=0.6),
+    ]
+
+
+@icon("C", "icon_crystal_ball", "Crystal ball: violet sphere with a pale inner swirl and glow, on a bronze stand with three claw feet.")
+def crystal_ball():
+    return [
+        halo("aura", None, [C(64, 52, 88, 88)], 0, 6, 0.35, color="glow_arcane"),
+        F("stand", "bronze", [C(64, 104, 62, 16), R(64, 96, 40, 12)], 1, "block", extrude=6),
+        F("claws", "bronze", [D(38, 86, 10, 26, rot=-30), D(90, 86, 10, 26, rot=30), D(64, 90, 10, 22)], 1.5),
+        F("ball", "gem_violet", [C(64, 54, 76, 76)], 2, shade={"highlight_amount": 0.7, "threshold": 0.45}),
+        F("swirl", None, [MOON(60, 58, 40, 40, rot=30), MOON(70, 50, 26, 26, rot=210)], 2.5, "flat", color="#d8c0ff",
+          clip_to="ball", opacity=0.5, blur=1),
+        F("shine", None, [C(46, 34, 16, 10, rot=-35), C(84, 76, 5, 5)], 3, "flat", color="#ffffff", clip_to="ball",
+          opacity=0.7),
+    ]
+
+
+def bone_piece(x0, y0, x1, y1, w):
+    ang = math.degrees(math.atan2(y1 - y0, x1 - x0))
+    length = math.hypot(x1 - x0, y1 - y0)
+    nx, ny = -math.sin(math.radians(ang)), math.cos(math.radians(ang))
+    out = [R((x0 + x1) / 2, (y0 + y1) / 2, length, w, rot=ang)]
+    for (x, y) in ((x0, y0), (x1, y1)):
+        out += [C(x + nx * w * 0.55, y + ny * w * 0.55, w * 1.35), C(x - nx * w * 0.55, y - ny * w * 0.55, w * 1.35)]
+    return out
+
+
+@icon("C", "icon_bone_material", "Two old crossed bones (crafting material), yellowed with grime.")
+def bone_material():
+    return [
+        F("bone_back", "bone", bone_piece(28, 28, 100, 100, 12), 0),
+        F("bone_front", "bone", bone_piece(100, 30, 28, 102, 12), 1),
+    ]
+
+
+@icon("C", "icon_hourglass", "Hourglass: wooden top and bottom plates with posts, two glass bulbs, sand falling into the lower bulb.")
+def hourglass():
+    upper = POLY([(0, 0), (1, 0), (0.56, 1), (0.44, 1)], 64, 42, 58, 40)
+    lower = POLY([(0.44, 0), (0.56, 0), (1, 1), (0, 1)], 64, 84, 58, 40)
+    return [
+        F("glass", "glass_dark", [upper, lower, C(64, 40, 58, 30), C(64, 86, 58, 30)], 0, opacity=0.95),
+        F("sand_top", None, [POLY([(0.1, 0), (0.9, 0), (0.55, 1), (0.45, 1)], 64, 50, 38, 20)], 0.5, "flat",
+          color="#b09058", clip_to="glass"),
+        F("sand_bottom", None, [C(64, 100, 50, 22)], 0.6, "flat", color="#b09058", clip_to="glass"),
+        F("stream", None, [R(64, 78, 2.2, 26)], 0.7, "flat", color="#c8a868"),
+        F("plates", "wood", [R(64, 18, 76, 10), R(64, 110, 76, 10)], 1, "block", extrude=4),
+        F("posts", "wood", [R(30, 64, 6, 88), R(98, 64, 6, 88)], 1.5),
+        F("glint", None, [C(46, 42, 6, 22, rot=20), C(48, 86, 6, 20, rot=-20)], 2, "flat", color="glint",
+          clip_to="glass", opacity=0.45),
+    ]
+
+
+# ================================================================== C: equipment (listed before the g07 split)
+@icon("C", "icon_scimitar", "Scimitar on the diagonal: broad curved steel blade, short bronze guard, wrapped grip, round pommel.")
+def scimitar():
+    g = g45(40)
+    blade = [C(92, 58, 70, 110), sub(C(104, 58, 70, 110)), sub(R(64, 102, 90, 30))]
+    return [
+        F("blade", "steel", g(blade + [R(62, 82, 8, 12)]), 0),
+        F("edge_hl", "steel_light", g([C(90, 58, 66, 106), sub(C(93, 58, 66, 106)), sub(R(64, 102, 90, 30))]), 0.5,
+          "flat", clip_to="blade", opacity=0.45),
+        F("guard", "bronze", g([RR(64, 90, 30, 7), C(50, 92, 7), C(78, 88, 7)]), 1),
+        F("grip", "leather", g([RR(64, 104, 8, 20)]), 0.8),
+        F("pommel", "bronze", g([C(64, 117, 11)]), 1),
+    ]
+
+
+@icon("C", "icon_scythe", "Great scythe: long dark wooden snath with bone grips and a huge blackened crescent blade.")
+def scythe():
+    g = g45(38)
+    blade = [C(44, 34, 80, 50), sub(C(46, 41, 80, 50)), sub(R(96, 40, 30, 60))]
+    return [
+        F("snath", "wood_dark", g([R(84, 72, 8, 104)]), 0, color="#3a2c22"),
+        F("grips", "bone", g([R(84, 74, 12, 7), R(84, 108, 11, 7)]), 0.5),
+        F("blade", "iron_dark", g(blade), 1, shade={"highlight_amount": 0.7}),
+        F("edge", "steel_light", g([C(44, 33, 80, 50), sub(C(44.5, 35.5, 80, 50)), sub(R(96, 40, 30, 60))]), 1.5,
+          "flat", clip_to="blade", opacity=0.55),
+        F("collar", "bronze", g([R(84, 30, 12, 14)]), 2),
+    ]
+
+
+@icon("C", "icon_katana", "Eastern single-edged sword: long gently curved blade with a pale temper line, round dark guard, diamond-wrapped hilt.")
+def katana():
+    g = g45(43)
+    keep = dict(R(60, 48, 40, 80), op="clip")
+    blade = [C(160, 40, 222, 222), sub(C(168, 40, 222, 222)), keep]
+    hl = [C(160, 40, 222, 222), sub(C(162, 40, 222, 222)), keep]
+    wraps = [POLY(DIAMOND, 64, 97 + k * 6.5, 6, 6) for k in range(4)]
+    return [
+        F("blade", "steel", g(blade + [POLY([(0, 1), (0.25, 0), (1, 1)], 57.7, 4.5, 8, 7)]), 0),
+        F("temper", "steel_light", g(hl), 0.5, "flat", clip_to="blade", opacity=0.6),
+        F("guard", "iron_dark", g([C(64, 90, 24, 9)]), 1),
+        F("hilt", "cloth_blue", g([RR(64, 106, 9, 28)]), 0.8),
+        F("wrap", "gold", g(wraps), 1.2, "flat", clip_to="hilt", opacity=0.9),
+        F("cap", "iron_dark", g([RR(64, 121, 10, 5)]), 1.3),
+    ]
+
+
+@icon("C", "icon_war_fan", "Iron war fan, half open: wine-red silk between iron ribs, gold edge, pivot rivet with a tassel.")
+def war_fan():
+    cx, cy, r = 64, 100, 62
+    sails = [wedge(cx, cy, r, 205, 335, steps=24), sub(wedge(cx, cy, 20, 200, 340, steps=12))]
+    ribs = [spindle(cx, cy, cx + math.cos(math.radians(a)) * r * 0.98, cy + math.sin(math.radians(a)) * r * 0.98, 4)
+            for a in range(210, 336, 18)]
+    return [
+        F("silk", "cloth_wine", sails, 0),
+        F("edge", "gold", [wedge(cx, cy, r + 2, 205, 335, steps=24), sub(wedge(cx, cy, r - 4, 200, 340, steps=24))], 1),
+        F("ribs", "iron", ribs, 1.5),
+        F("pivot", "bronze", [C(cx, cy, 12)], 2),
+        F("tassel", "cloth_wine", [R(cx, cy + 12, 3, 14), D(cx, cy + 22, 8, 16, flip="y")], 1.8),
+    ]
+
+
+@icon("C", "icon_jade_pendant", "Eastern jade ornament: pale green jade disc with a centre hole, tied wine knot above, long silk tassel below.")
+def jade_pendant():
+    return [
+        F("cord", "cloth_wine", [R(64, 16, 3, 20)], 0),
+        F("knot", "cloth_wine", [POLY(DIAMOND, 64, 32, 22, 22), C(52, 32, 9), C(76, 32, 9)], 1),
+        F("disc", "gem_green", ringp(64, 66, 48, 48, 15), 2, color="#6a9a78", shade={"highlight_amount": 0.6}),
+        F("disc_vein", None, [C(56, 58, 20, 8, rot=-30)], 2.5, "flat", color="#c8e8d0", clip_to="disc", opacity=0.35),
+        F("bead", "gold", [C(64, 96, 10)], 3),
+        F("tassel", "cloth_wine", [R(64 + dx, 112, 3, 24) for dx in (-6, -3, 0, 3, 6)], 2.8),
+    ]
+
+
+@icon("C", "icon_crown", "Gold crown: band with five points tipped with pearls, red and blue gems on the band.")
+def crown():
+    points = [POLY(TRI_UP, x, 50 - (8 if i == 2 else 0), 18, 34 + (8 if i == 2 else 0)) for i, x in enumerate((28, 46, 64, 82, 100))]
+    return [
+        F("crown", "gold", points + [R(64, 76, 88, 30)], 0, shade={"highlight_amount": 0.85}),
+        F("rim", "gold_dark", [R(64, 64, 88, 3), R(64, 88, 88, 3)], 0.5, "flat", clip_to="crown", opacity=0.7),
+        F("pearls", "bone", [C(28, 32, 8), C(46, 32, 8), C(64, 24, 9), C(82, 32, 8), C(100, 32, 8)], 1),
+        F("gems_r", "gem_red", [C(64, 76, 14, 14)], 1),
+        F("gems_b", "gem_blue", [C(38, 76, 10, 10), C(90, 76, 10, 10)], 1),
+    ]
+
+
+@icon("C", "icon_cloak", "Hooded travelling cloak: dark green wool with a deep hood, fold lines, bronze clasp.")
+def cloak():
+    body = POLY([(0.35, 0), (0.65, 0), (1, 1), (0.5, 0.94), (0, 1)], 64, 76, 90, 88)
+    return [
+        F("cloak", "cloth_green", [body, C(64, 36, 50, 44)], 0),
+        F("hood_in", None, [C(64, 40, 32, 30)], 0.5, "flat", color="#0e120e", clip_to="cloak", opacity=0.9),
+        F("folds", "herb_dark", [RR(48, 84, 4, 52, rot=12), RR(64, 88, 4, 56), RR(80, 84, 4, 52, rot=-12)], 0.7,
+          "flat", clip_to="cloak", opacity=0.7),
+        F("clasp", "bronze", [C(56, 62, 10), C(72, 62, 10), R(64, 62, 14, 3)], 1),
+    ]
+
+
+# ================================================================== C: skills
+@icon("C", "icon_skill_earth", "Skill tile: ground splitting with jagged rock slabs thrown up and dust.")
+def skill_earth():
+    rocks = [POLY([(0.2, 1), (0, 0.4), (0.5, 0), (1, 0.3), (0.85, 1)], 40, 70, 30, 44, rot=-18),
+             POLY([(0.1, 1), (0.3, 0.2), (0.7, 0), (1, 0.5), (0.9, 1)], 72, 56, 34, 60, rot=8),
+             POLY([(0, 1), (0.2, 0.3), (0.6, 0), (1, 0.6), (0.8, 1)], 96, 76, 22, 34, rot=24)]
+    return skill_plate("tint_earth") + [
+        F("dust", "fx_dust", [P("cloud", 44, 94, 44, 22), P("cloud", 88, 96, 40, 20)], 1, "flat", clip_to="plate",
+          opacity=0.6, blur=2),
+        F("rocks", "fx_earth", rocks, 2, shade={"highlight_amount": 0.6}),
+        F("crack", None, polyline([(20, 100), (40, 94), (56, 102), (74, 92), (92, 100), (110, 94)], 4), 2.5, "flat",
+          color="void_violet", clip_to="plate"),
+        F("chips", "fx_earth", [R(30, 44, 6, 5, rot=20), R(100, 40, 5, 5, rot=45), R(56, 30, 5, 4, rot=10)], 2.2),
+    ]
+
+
+@icon("C", "icon_skill_drain", "Skill tile: red life motes spiralling into a dark violet vortex.")
+def skill_drain():
+    motes = [C(64 + math.cos(math.radians(a)) * r, 64 + math.sin(math.radians(a)) * r, s)
+             for a, r, s in ((20, 42, 9), (70, 34, 7), (130, 44, 8), (190, 30, 6), (250, 40, 9), (310, 32, 6))]
+    trails = [spindle(64 + math.cos(math.radians(a)) * r, 64 + math.sin(math.radians(a)) * r,
+                      64 + math.cos(math.radians(a + 40)) * r * 0.45, 64 + math.sin(math.radians(a + 40)) * r * 0.45, 4)
+              for a, r, s in ((20, 42, 9), (130, 44, 8), (250, 40, 9))]
+    return skill_plate("tint_curse") + [
+        halo("glow", None, [C(64, 64, 56, 56)], 1, 6, 0.55, color="glow_shadow", clip_to="plate"),
+        F("vortex", "fx_shadow", [MOON(64, 64, 58, 58, rot=20), MOON(64, 64, 42, 42, rot=200)], 1.5, "flat",
+          clip_to="plate", opacity=0.9),
+        F("core", None, [C(64, 64, 22, 22)], 2, "flat", color="#0c0612"),
+        F("trails", "fx_red", trails, 2.2, "flat", clip_to="plate", opacity=0.6),
+        F("motes", "gem_red", motes, 2.5),
+    ]
+
+
+@icon("C", "icon_skill_holy", "Skill tile: radiant golden eight-point star inside a halo ring with thin rays.")
+def skill_holy():
+    rays = [spindle(64, 64, 64 + math.cos(math.radians(a)) * 54, 64 + math.sin(math.radians(a)) * 54, 5)
+            for a in range(0, 360, 30)]
+    star = [POLY(star_pts(8, 0.42), 64, 64, 64, 64, rot=22.5)]
+    return skill_plate("tint_holy") + [
+        halo("glow", None, star + [C(64, 64, 70, 70)], 1, 7, 0.55, color="glow_holy", clip_to="plate"),
+        F("rays", "fx_holy", rays, 1.5, "flat", clip_to="plate", opacity=0.7),
+        F("ring", "fx_holy", ringp(64, 64, 86, 86, 3), 1.8, "flat", clip_to="plate", opacity=0.85),
+        F("star", "gold", star, 2, shade={"highlight_amount": 0.9}),
+        F("core", None, [C(64, 64, 14, 14)], 2.5, "flat", color="#fff8e0"),
+    ]
+
+
+# ================================================================== C: status
+@icon("C", "icon_status_confuse", "Status badge: three nested pink-violet crescents turning in a swirl with small sparkles.")
+def status_confuse():
+    swirl = [MOON(64, 62, 74, 74, rot=0), MOON(64, 62, 52, 52, rot=120), MOON(64, 62, 30, 30, rot=240)]
+    return status_badge("tint_curse") + [
+        halo("glow", None, swirl, 1, 4, 0.5, color="glow_shadow", clip_to="badge"),
+        F("swirl", None, swirl, 2, "flat", color="#d890d8"),
+        F("sparks", None, [SPARK(96, 36, 13), SPARK(30, 92, 10)], 2.5, "flat", color="#ffe0ff", clip_to="badge"),
+    ]
+
+
+@icon("C", "icon_status_regen", "Status badge: two green leaves inside a looping arrow (healing over time).")
+def status_regen():
+    loop = ringp(64, 64, 76, 76, 7) + [sub(wedge(64, 64, 50, 300, 340, steps=6))]
+    head = [POLY([(0, 0), (1, 0.5), (0, 1)], 86, 37, 20, 20, rot=30)]
+    return status_badge("tint_heal") + [
+        halo("glow", None, loop + head, 1, 4, 0.5, color="glow_heal", clip_to="badge"),
+        F("loop", "fx_heal", loop + head, 2, "flat"),
+        F("leaves", "herb", [D(56, 66, 18, 34, rot=-35), D(72, 66, 18, 34, rot=35)], 2.5),
+        F("veins", "herb_dark", [R(56, 66, 1.5, 24, rot=-35), R(72, 66, 1.5, 24, rot=35)], 2.7, "flat",
+          clip_to="leaves", opacity=0.7),
+    ]
+
+
+@icon("C", "icon_status_haste", "Status badge: double chevron pointing right with speed streaks (faster).")
+def status_haste():
+    chev = [(0, 0), (0.45, 0), (1, 0.5), (0.45, 1), (0, 1), (0.55, 0.5)]
+    shapes = [POLY(chev, 58, 64, 34, 50), POLY(chev, 84, 64, 34, 50)]
+    streaks = [spindle(16, y, 44, y, 4) for y in (50, 64, 78)]
+    return status_badge("tint_wind") + [
+        F("streaks", None, streaks, 1, "flat", color="glow_wind", clip_to="badge", opacity=0.7),
+        halo("glow", None, shapes, 1.5, 4, 0.5, color="glow_wind", clip_to="badge"),
+        F("chevrons", "fx_wind", shapes, 2, "flat"),
+        F("chev_core", None, [POLY(chev, 58, 64, 20, 30), POLY(chev, 84, 64, 20, 30)], 2.2, "flat", color="#ffffff",
+          clip_to="chevrons", opacity=0.4),
+    ]
+
+
 # ------------------------------------------------------------------ main
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)

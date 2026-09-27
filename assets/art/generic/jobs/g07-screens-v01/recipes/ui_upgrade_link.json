@@ -1,0 +1,95 @@
+{
+ "asset": "ui_upgrade_link",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Connector between upgrade nodes, dim / lit.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  48
+ ],
+ "pivot": [
+  0.0,
+  24.0
+ ],
+ "pivot_meaning": "left end; seamless every 192 px (48 px bolt spacing)",
+ "seed": 92,
+ "style_override": {
+  "silhouette": false
+ },
+ "forms": [
+  {
+   "name": "pipe",
+   "z": 0,
+   "material": "steel_dark",
+   "tags": [
+    "pipe"
+   ],
+   "shade": {
+    "bump": 1.0
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      24.0
+     ],
+     "size": [
+      240.0,
+      12.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 5
+     }
+    }
+   ]
+  },
+  {
+   "name": "bolts",
+   "z": 1,
+   "material": "bronze",
+   "shade": {
+    "bump": 1.1
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        0,
+        24
+       ],
+       [
+        192,
+        24
+       ]
+      ],
+      "count": 5
+     }
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "dim"
+  },
+  {
+   "name": "lit",
+   "materials": {
+    "pipe": "amber_screen"
+   }
+  }
+ ]
+}

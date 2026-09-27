@@ -1,0 +1,303 @@
+{
+ "asset": "ui_ctl_throttle",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Throttle track: the handle (ui_ctl_throttle_handle) slides along the slot, y 58..326.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  384
+ ],
+ "pivot": [
+  96.0,
+  192.0
+ ],
+ "pivot_meaning": "slot centre",
+ "seed": 17,
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      192.0
+     ],
+     "size": [
+      150.0,
+      364.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 20
+     }
+    }
+   ]
+  },
+  {
+   "name": "slot",
+   "z": 1,
+   "kind": "flat",
+   "material": "void",
+   "grad": {
+    "to": "well_inner",
+    "y0": 40,
+    "y1": 344
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      192.0
+     ],
+     "size": [
+      30.0,
+      304.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 14
+     }
+    }
+   ]
+  },
+  {
+   "name": "slot_lip",
+   "z": 1.1,
+   "kind": "flat",
+   "material": "steel",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      192.0
+     ],
+     "size": [
+      36.0,
+      310.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 16
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      192.0
+     ],
+     "size": [
+      30.0,
+      304.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 14
+     },
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "notches",
+   "z": 2,
+   "kind": "flat",
+   "material": "steel",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      22.0,
+      4.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        56,
+        62
+       ],
+       [
+        56,
+        322
+       ]
+      ],
+      "count": 9
+     }
+    }
+   ]
+  },
+  {
+   "name": "zone_top",
+   "z": 2,
+   "kind": "flat",
+   "material": "zone_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      136.0,
+      86.0
+     ],
+     "size": [
+      9.0,
+      80.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "zone_bottom",
+   "z": 2,
+   "kind": "flat",
+   "material": "paint_teal",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      136.0,
+      298.0
+     ],
+     "size": [
+      9.0,
+      80.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "screws",
+   "z": 3,
+   "material": "steel",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      38.0,
+      36.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      36.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      38.0,
+      348.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      348.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws_slot",
+   "z": 3.01,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      38.0,
+      36.0
+     ],
+     "size": [
+      7.2,
+      1.44
+     ],
+     "rot": 35.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      154.0,
+      36.0
+     ],
+     "size": [
+      7.2,
+      1.44
+     ],
+     "rot": 58.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      38.0,
+      348.0
+     ],
+     "size": [
+      7.2,
+      1.44
+     ],
+     "rot": 81.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      154.0,
+      348.0
+     ],
+     "size": [
+      7.2,
+      1.44
+     ],
+     "rot": 104.0
+    }
+   ]
+  }
+ ]
+}

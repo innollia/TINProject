@@ -1,0 +1,782 @@
+{
+ "asset": "yeti",
+ "status": "candidate",
+ "note": "Yeti, front view. Hulking ape of shaggy pale-grey fur, dark leathery face with small glowing blue eyes, heavy brow and fangs, huge hands and flat feet, frost-matted fur tufts.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  494
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 522,
+ "g05": {
+  "name_ko": "설인",
+  "size": "큼",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      483.6
+     ],
+     "size": [
+      300.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      205.1,
+      390.8
+     ],
+     "size": [
+      82.3,
+      99.6
+     ],
+     "rot": 13.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      193.4,
+      448.4
+     ],
+     "size": [
+      68.6,
+      70.9
+     ],
+     "rot": 8.0
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1.1,
+   "material": "snout",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      175.3,
+      485.4
+     ],
+     "size": [
+      123.5,
+      30.9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      306.9,
+      390.8
+     ],
+     "size": [
+      82.3,
+      99.6
+     ],
+     "rot": -13.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      318.6,
+      448.4
+     ],
+     "size": [
+      68.6,
+      70.9
+     ],
+     "rot": -8.0
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1.1,
+   "material": "snout",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      336.7,
+      485.4
+     ],
+     "size": [
+      123.5,
+      30.9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "torso",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      300.3
+     ],
+     "size": [
+      250.0,
+      160.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      336.4
+     ],
+     "size": [
+      190.0,
+      120.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tufts",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.1,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      136.0,
+      280.3
+     ],
+     "size": [
+      16.5,
+      19.5
+     ],
+     "rot": -26.6
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      174.1,
+      264.3
+     ],
+     "size": [
+      18.3,
+      21.7
+     ],
+     "rot": -18.8
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      216.0,
+      253.6
+     ],
+     "size": [
+      20.2,
+      23.8
+     ],
+     "rot": -9.5
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      257.9,
+      250.3
+     ],
+     "size": [
+      22.0,
+      26.0
+     ],
+     "rot": 0.5
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      296.0,
+      253.6
+     ],
+     "size": [
+      20.2,
+      23.8
+     ],
+     "rot": 9.5
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      334.1,
+      263.0
+     ],
+     "size": [
+      18.3,
+      21.7
+     ],
+     "rot": 18.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      376.0,
+      280.3
+     ],
+     "size": [
+      16.5,
+      19.5
+     ],
+     "rot": 26.6
+    }
+   ]
+  },
+  {
+   "name": "chest",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.2,
+   "material": "fur_white",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256.0,
+      304.3
+     ],
+     "size": [
+      120.0,
+      60.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4,
+   "material": "fur_white",
+   "pivot": [
+    150.005,
+    240.29999999999995
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      130.4,
+      277.9
+     ],
+     "size": [
+      68.9,
+      108.9
+     ],
+     "rot": 27.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      110.4,
+      357.9
+     ],
+     "size": [
+      63.6,
+      107.1
+     ],
+     "rot": 0.5
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.2,
+   "material": "snout",
+   "pivot": [
+    150.005,
+    240.29999999999995
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110.0,
+      408.2
+     ],
+     "size": [
+      79.5,
+      99.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "claws_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.25,
+   "material": "claw",
+   "pivot": [
+    150.005,
+    240.29999999999995
+   ],
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      133.4,
+      452.2
+     ],
+     "size": [
+      19.1,
+      55.6
+     ],
+     "rot": 180.5
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      109.6,
+      452.0
+     ],
+     "size": [
+      19.1,
+      55.6
+     ],
+     "rot": 180.5
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      85.7,
+      451.7
+     ],
+     "size": [
+      19.1,
+      55.6
+     ],
+     "rot": 180.5
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4,
+   "material": "fur_white",
+   "pivot": [
+    361.995,
+    240.29999999999995
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      381.6,
+      276.8
+     ],
+     "size": [
+      68.9,
+      107.0
+     ],
+     "rot": -28.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      401.6,
+      354.8
+     ],
+     "size": [
+      63.6,
+      105.2
+     ],
+     "rot": -0.6
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.2,
+   "material": "snout",
+   "pivot": [
+    361.995,
+    240.29999999999995
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      402.0,
+      404.2
+     ],
+     "size": [
+      79.5,
+      99.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "claws_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.25,
+   "material": "claw",
+   "pivot": [
+    361.995,
+    240.29999999999995
+   ],
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      426.3,
+      447.7
+     ],
+     "size": [
+      19.1,
+      55.6
+     ],
+     "rot": 179.4
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      402.4,
+      448.0
+     ],
+     "size": [
+      19.1,
+      55.6
+     ],
+     "rot": 179.4
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      378.6,
+      448.2
+     ],
+     "size": [
+      19.1,
+      55.6
+     ],
+     "rot": 179.4
+    }
+   ]
+  },
+  {
+   "name": "hair",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.5,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256.0,
+      177.1
+     ],
+     "size": [
+      120.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      211.1
+     ],
+     "size": [
+      100.0,
+      96.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.2,
+   "material": "snout",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      256.0,
+      221.1
+     ],
+     "size": [
+      70.0,
+      80.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "brow",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.3,
+   "material": "snout",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      199.1
+     ],
+     "size": [
+      70.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 7.35,
+   "kind": "flat",
+   "material": "glow_cyan",
+   "emit": 0.7,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "glow_cyan_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      240.0,
+      209.1
+     ],
+     "size": [
+      10.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      272.0,
+      209.1
+     ],
+     "size": [
+      10.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nostrils",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.4,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      250.0,
+      227.1
+     ],
+     "size": [
+      7.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      262.0,
+      227.1
+     ],
+     "size": [
+      7.0,
+      5.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.4,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      245.1
+     ],
+     "size": [
+      40.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fangs",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.45,
+   "kind": "flat",
+   "material": "tooth",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      244.0,
+      241.1
+     ],
+     "size": [
+      7.0,
+      13.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      268.0,
+      241.1
+     ],
+     "size": [
+      7.0,
+      13.0
+     ],
+     "flip": "y"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

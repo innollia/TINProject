@@ -1,0 +1,473 @@
+{
+ "asset": "ui_scr_wave",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Oscilloscope with a 478x298 phosphor screen (centre 288,176); put ui_scr_wave_strip on it.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  576,
+  384
+ ],
+ "pivot": [
+  288.0,
+  176.0
+ ],
+ "pivot_meaning": "screen centre",
+ "seed": 34,
+ "forms": [
+  {
+   "name": "body",
+   "z": 0,
+   "material": "plastic_dark",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      288.0,
+      192.0
+     ],
+     "size": [
+      570.0,
+      378.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 36
+     }
+    }
+   ]
+  },
+  {
+   "name": "recess",
+   "z": 1,
+   "kind": "flat",
+   "material": "rubber",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      288.0,
+      176.0
+     ],
+     "size": [
+      496.0,
+      316.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 30
+     }
+    }
+   ]
+  },
+  {
+   "name": "screen",
+   "z": 2,
+   "material": "screen",
+   "shade": {
+    "bump": 0.3,
+    "highlight_amount": 0.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      288.0,
+      176.0
+     ],
+     "size": [
+      478.0,
+      298.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 26
+     }
+    }
+   ]
+  },
+  {
+   "name": "grid_v",
+   "z": 3,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "opacity": 0.6,
+   "emit": 0.3,
+   "clip_to": "screen",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      1.6,
+      284.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        68,
+        176
+       ],
+       [
+        508,
+        176
+       ]
+      ],
+      "count": 11
+     }
+    }
+   ]
+  },
+  {
+   "name": "grid_h",
+   "z": 3,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "opacity": 0.6,
+   "emit": 0.3,
+   "clip_to": "screen",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      466.0,
+      1.6
+     ],
+     "repeat": {
+      "line": [
+       [
+        288,
+        44
+       ],
+       [
+        288,
+        308
+       ]
+      ],
+      "count": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "axes",
+   "z": 3.1,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "opacity": 0.85,
+   "emit": 0.35,
+   "clip_to": "screen",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      288.0,
+      176.0
+     ],
+     "size": [
+      3.0,
+      290.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      288.0,
+      176.0
+     ],
+     "size": [
+      470.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "axis_ticks",
+   "z": 3.2,
+   "kind": "flat",
+   "material": "phosphor_dim",
+   "opacity": 0.7,
+   "emit": 0.3,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      1.4,
+      8.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        68,
+        176
+       ],
+       [
+        508,
+        176
+       ]
+      ],
+      "count": 51
+     }
+    }
+   ]
+  },
+  {
+   "name": "knob_a",
+   "z": 5,
+   "material": "plastic_dark",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      436.0,
+      356.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knob_b",
+   "z": 5,
+   "material": "plastic_dark",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      492.0,
+      356.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knob_marks",
+   "z": 5.5,
+   "kind": "flat",
+   "material": "enamel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      436.0,
+      348.0
+     ],
+     "size": [
+      3.0,
+      10.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      496.0,
+      351.0
+     ],
+     "size": [
+      3.0,
+      10.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "rot": 40
+    }
+   ]
+  },
+  {
+   "name": "lamp_rim",
+   "z": 5,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      356.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lamp",
+   "z": 5.2,
+   "material": "lamp_green_on",
+   "emit": 1.0,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.5,
+    "color": "glow_green"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      356.0
+     ],
+     "size": [
+      11.0,
+      11.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws",
+   "z": 6,
+   "material": "steel",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      34.0,
+      34.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      542.0,
+      34.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      34.0,
+      350.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      542.0,
+      350.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws_slot",
+   "z": 6.01,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      34.0,
+      34.0
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 35.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      542.0,
+      34.0
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 58.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      34.0,
+      350.0
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 81.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      542.0,
+      350.0
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 104.0
+    }
+   ]
+  }
+ ]
+}

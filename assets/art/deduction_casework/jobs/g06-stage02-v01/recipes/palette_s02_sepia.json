@@ -1,0 +1,1944 @@
+{
+ "id": "palette_s02_sepia",
+ "status": "candidate",
+ "source": "g06 (03 Deduction Casework kit). Copy of palette_h0_mood.json (V1): ink, shadow, common colours and styles unchanged. Added: Stage 02 Morren mansion: ink-green wallpaper, red-brown wood, wine and moss cloth, brass, grey grave clay (13C); mourning clothes and identity colours of the Morrens, Silla Beck, Yona Pale, Peter Rohn (13A-1). Sepia variant for the old family photographs (A2).",
+ "colors": {
+  "ink": "#0f0d0b",
+  "shade_tint": "#1c1814",
+  "shadow_contact": "#0f0c0b",
+  "floor": "#645747",
+  "floor_shadow": "#4f4538",
+  "floor_light": "#7a6a56",
+  "floor_joint": "#1e1915",
+  "worn": "#776755",
+  "grime": "#786851",
+  "damp": "#6e614d",
+  "rust": "#695743",
+  "soot": "#2e2820",
+  "well_void": "#070606",
+  "well_inner": "#27211c",
+  "bronze": "#77664f",
+  "paper": "#c6ac87",
+  "eye": "#14110e",
+  "skin_shadow": "#9a8468",
+  "coat_seam": "#171311",
+  "ember_glow": "#d8b488",
+  "flame_glow": "#ebc797",
+  "lamp_glow": "#fedaa8",
+  "cloth_stripe": "#988367",
+  "foxing": "#887459",
+  "eye_white": "#d4b993",
+  "lid_line": "#1a1612",
+  "mouth": "#483b2f",
+  "blood_mark": "#3c2f25",
+  "joint_dark": "#1d1913",
+  "reflect": "#c3ac8b",
+  "corner": "#1c1813",
+  "void_room": "#16130f",
+  "clay_grey": "#8d7b62",
+  "soup": "#867358",
+  "soup_skin": "#9f896a",
+  "wine": "#30251f",
+  "rain": "#8d7c65",
+  "night_sky": "#26221c",
+  "stain_disinfect": "#867257",
+  "under_eye": "#8a7a63",
+  "powder": "#e9cba2",
+  "magnet_yellow": "#917e5e"
+ },
+ "materials": {
+  "hair": {
+   "base": "#2f2821",
+   "shadow": "#1c1713",
+   "light": "#4e4336",
+   "line": "#090806",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 9,
+    "width": 2.2,
+    "angle": 70,
+    "jitter": 25,
+    "density": 0.9,
+    "strength": 0.1
+   }
+  },
+  "skin": {
+   "base": "#e0c199",
+   "shadow": "#a18a6d",
+   "light": "#feddaf",
+   "line": "#524537",
+   "shade": {
+    "threshold": 0.5,
+    "highlight_amount": 0.35
+   }
+  },
+  "coat": {
+   "base": "#443b31",
+   "shadow": "#2b251f",
+   "light": "#635647",
+   "line": "#0d0b09",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 88,
+    "jitter": 10,
+    "density": 0.8,
+    "strength": 0.08
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.22,
+    "color": "grime"
+   }
+  },
+  "coat_dark": {
+   "base": "#3a322a",
+   "shadow": "#241f1a",
+   "light": "#54493d",
+   "line": "#0b0a08",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 10,
+    "width": 2.5,
+    "angle": 20,
+    "jitter": 20,
+    "density": 0.8,
+    "strength": 0.07
+   }
+  },
+  "coat_top": {
+   "base": "#55493d",
+   "shadow": "#342d26",
+   "light": "#766755",
+   "line": "#0c0a09",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 10,
+    "width": 2.5,
+    "angle": 15,
+    "jitter": 20,
+    "density": 0.8,
+    "strength": 0.08
+   }
+  },
+  "scarf": {
+   "base": "#5d4b3d",
+   "shadow": "#3b2f26",
+   "light": "#7d6653",
+   "line": "#181310",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 8,
+    "width": 2.5,
+    "angle": 10,
+    "jitter": 20,
+    "density": 0.8,
+    "strength": 0.07
+   }
+  },
+  "leather": {
+   "base": "#4d4234",
+   "shadow": "#2f281f",
+   "light": "#6c5c48",
+   "line": "#120f0c"
+  },
+  "trouser": {
+   "base": "#2f2922",
+   "shadow": "#1d1915",
+   "light": "#463c32",
+   "line": "#080706"
+  },
+  "bronze": {
+   "base": "#77664f",
+   "shadow": "#4b4031",
+   "light": "#ab9371",
+   "line": "#191510",
+   "shade": {
+    "highlight": 0.88,
+    "highlight_amount": 0.7
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "sponge"
+    ],
+    "size": 12,
+    "soft": 1.0,
+    "density": 0.35,
+    "strength": 0.35,
+    "color": "rust"
+   }
+  },
+  "eye": {
+   "base": "#14110e"
+  },
+  "ash": {
+   "base": "#494034",
+   "shadow": "#2c261f",
+   "light": "#6f614e",
+   "line": "#0e0c0a",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.4,
+    "angle": 8,
+    "jitter": 22,
+    "density": 1.0,
+    "strength": 0.14
+   }
+  },
+  "ash_far": {
+   "base": "#373027",
+   "shadow": "#221e18",
+   "light": "#4f4437",
+   "line": "#0a0807"
+  },
+  "ember": {
+   "base": "#9e8263",
+   "light": "#d8b68b"
+  },
+  "flame": {
+   "base": "#e5c290",
+   "light": "#fff7bf"
+  },
+  "glass": {
+   "base": "#d4b58a",
+   "shadow": "#9d8565",
+   "light": "#fff7c1",
+   "line": "#241e17",
+   "shade": {
+    "threshold": 0.35,
+    "highlight_amount": 0.6
+   }
+  },
+  "stone": {
+   "base": "#675949",
+   "shadow": "#4c4236",
+   "light": "#7f6e5a",
+   "side": "#453c31",
+   "side_shadow": "#2b251f",
+   "line": "#0f0d0b",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 14,
+    "width": 3.5,
+    "angle": 0,
+    "jitter": 14,
+    "density": 0.9,
+    "strength": 0.09
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "cloud",
+     "droplet"
+    ],
+    "size": 34,
+    "soft": 3,
+    "density": 0.35,
+    "strength": 0.35,
+    "color": "grime"
+   },
+   "side_grime": {
+    "stamps": [
+     "droplet",
+     "metaballs"
+    ],
+    "size": 30,
+    "aspect": 1.7,
+    "soft": 3,
+    "density": 0.45,
+    "strength": 0.5,
+    "color": "grime",
+    "foot": 0.75,
+    "foot_curve": 1.6
+   }
+  },
+  "stone_dark": {
+   "base": "#54493c",
+   "shadow": "#3c342b",
+   "light": "#6b5d4c",
+   "side": "#362e26",
+   "side_shadow": "#211c17",
+   "line": "#0c0a09",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 14,
+    "width": 3.5,
+    "angle": 0,
+    "jitter": 14,
+    "density": 0.9,
+    "strength": 0.09
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "cloud"
+    ],
+    "size": 30,
+    "soft": 3,
+    "density": 0.35,
+    "strength": 0.35,
+    "color": "grime"
+   },
+   "side_grime": {
+    "stamps": [
+     "droplet",
+     "metaballs"
+    ],
+    "size": 26,
+    "aspect": 1.7,
+    "soft": 3,
+    "density": 0.45,
+    "strength": 0.5,
+    "color": "grime",
+    "foot": 0.75,
+    "foot_curve": 1.6
+   }
+  },
+  "stone_cap": {
+   "base": "#26211b",
+   "shadow": "#1a1713",
+   "light": "#312b23",
+   "side": "#453c31",
+   "side_shadow": "#2b251f",
+   "line": "#0a0907"
+  },
+  "rubble": {
+   "base": "#5a4e40",
+   "shadow": "#3d352c",
+   "light": "#746552",
+   "line": "#0c0a09",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 8,
+    "width": 3,
+    "angle": 30,
+    "jitter": 40,
+    "density": 0.9,
+    "strength": 0.1
+   }
+  },
+  "bronze_block": {
+   "base": "#6f604a",
+   "shadow": "#483e2f",
+   "light": "#9f8969",
+   "side": "#4f4434",
+   "side_shadow": "#332c22",
+   "line": "#18140f",
+   "texture": {
+    "stamp": "pill",
+    "pre_rot": -45,
+    "length": 10,
+    "width": 2,
+    "angle": 0,
+    "jitter": 6,
+    "density": 0.7,
+    "strength": 0.06
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "sponge"
+    ],
+    "size": 14,
+    "soft": 1.0,
+    "density": 0.35,
+    "strength": 0.35,
+    "color": "rust"
+   }
+  },
+  "iron": {
+   "base": "#4c4337",
+   "shadow": "#2f2922",
+   "light": "#786a56",
+   "side": "#362f27",
+   "side_shadow": "#211d18",
+   "line": "#0d0c0a",
+   "shade": {
+    "highlight": 0.86,
+    "highlight_amount": 0.55
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "sponge"
+    ],
+    "size": 16,
+    "soft": 1.5,
+    "density": 0.4,
+    "strength": 0.45,
+    "color": "rust"
+   }
+  },
+  "wood": {
+   "base": "#4e4334",
+   "shadow": "#322b22",
+   "light": "#6c5d48",
+   "side": "#3a3126",
+   "side_shadow": "#241f18",
+   "line": "#100e0b",
+   "texture": {
+    "stamp": "pill",
+    "pre_rot": -45,
+    "length": 22,
+    "width": 2.2,
+    "angle": 0,
+    "jitter": 4,
+    "density": 0.9,
+    "strength": 0.12
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "cloud"
+    ],
+    "size": 18,
+    "soft": 2,
+    "density": 0.3,
+    "strength": 0.3,
+    "color": "grime"
+   }
+  },
+  "cloth_wine": {
+   "base": "#483b30",
+   "shadow": "#2d251e",
+   "light": "#635243",
+   "line": "#120e0b",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 90,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.08
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.2,
+    "color": "grime"
+   }
+  },
+  "paper": {
+   "base": "#c6ac87",
+   "shadow": "#978367",
+   "light": "#e9cb9f",
+   "line": "#4e4335",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 10,
+    "width": 3,
+    "angle": 0,
+    "jitter": 10,
+    "density": 0.8,
+    "strength": 0.05
+   },
+   "grime": {
+    "stamps": [
+     "sponge",
+     "metaballs"
+    ],
+    "size": 10,
+    "soft": 1.0,
+    "density": 0.25,
+    "strength": 0.28,
+    "color": "foxing"
+   }
+  },
+  "paper_mark": {
+   "base": "#a28d6e"
+  },
+  "void": {
+   "base": "#070606"
+  },
+  "floor": {
+   "base": "#645747",
+   "shadow": "#4f4538",
+   "light": "#7a6a56",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 34,
+    "width": 7,
+    "angle": 2,
+    "jitter": 9,
+    "density": 1.3,
+    "strength": 0.14
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "sponge",
+     "cloud"
+    ],
+    "size": 80,
+    "soft": 6,
+    "density": 0.3,
+    "strength": 0.4,
+    "color": "grime",
+    "lo": 0.3
+   }
+  },
+  "floor_joint": {
+   "base": "#1e1915"
+  },
+  "worn": {
+   "base": "#776755",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 40,
+    "width": 8,
+    "angle": 90,
+    "jitter": 8,
+    "density": 0.8,
+    "strength": 0.05
+   }
+  },
+  "grime": {
+   "base": "#786851"
+  },
+  "damp": {
+   "base": "#6e614d"
+  },
+  "rust": {
+   "base": "#695743"
+  },
+  "soot": {
+   "base": "#2e2820"
+  },
+  "inlay": {
+   "base": "#786854"
+  },
+  "well_rim": {
+   "base": "#6d5e4d",
+   "shadow": "#51463a",
+   "light": "#86755f",
+   "side": "#4a4035",
+   "side_shadow": "#2d2721",
+   "line": "#0f0d0b",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 18,
+    "width": 4,
+    "angle": 0,
+    "jitter": 20,
+    "density": 0.9,
+    "strength": 0.1
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "cloud"
+    ],
+    "size": 34,
+    "soft": 3,
+    "density": 0.4,
+    "strength": 0.4,
+    "color": "damp"
+   },
+   "side_grime": {
+    "stamps": [
+     "droplet",
+     "metaballs"
+    ],
+    "size": 22,
+    "aspect": 1.6,
+    "soft": 2,
+    "density": 0.5,
+    "strength": 0.5,
+    "color": "damp",
+    "foot": 0.6,
+    "foot_curve": 1.5
+   }
+  },
+  "well_inner": {
+   "base": "#27211c"
+  },
+  "skin_light": {
+   "base": "#dec098",
+   "shadow": "#a0896d",
+   "light": "#fbdaae",
+   "line": "#524537",
+   "shade": {
+    "threshold": 0.5,
+    "highlight_amount": 0.35
+   }
+  },
+  "skin_mid": {
+   "base": "#bca17f",
+   "shadow": "#867259",
+   "light": "#dabc94",
+   "line": "#44392d",
+   "shade": {
+    "threshold": 0.5,
+    "highlight_amount": 0.3
+   }
+  },
+  "skin_old": {
+   "base": "#c9ad89",
+   "shadow": "#907b61",
+   "light": "#e4c69d",
+   "line": "#4e4134",
+   "shade": {
+    "threshold": 0.5,
+    "highlight_amount": 0.3
+   }
+  },
+  "skin_dark": {
+   "base": "#77654f",
+   "shadow": "#514536",
+   "light": "#917c61",
+   "line": "#251f18",
+   "shade": {
+    "threshold": 0.5,
+    "highlight_amount": 0.3
+   }
+  },
+  "hair_brown": {
+   "base": "#382f25",
+   "shadow": "#211c16",
+   "light": "#544838",
+   "line": "#0a0806",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 9,
+    "width": 2.2,
+    "angle": 70,
+    "jitter": 25,
+    "density": 0.9,
+    "strength": 0.1
+   }
+  },
+  "hair_black": {
+   "base": "#241f19",
+   "shadow": "#15120f",
+   "light": "#3f362c",
+   "line": "#070605",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 9,
+    "width": 2.2,
+    "angle": 70,
+    "jitter": 25,
+    "density": 0.9,
+    "strength": 0.1
+   }
+  },
+  "hair_greybrown": {
+   "base": "#514638",
+   "shadow": "#342d24",
+   "light": "#70614d",
+   "line": "#100d0b",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 9,
+    "width": 2.2,
+    "angle": 70,
+    "jitter": 25,
+    "density": 0.9,
+    "strength": 0.1
+   }
+  },
+  "hair_grey": {
+   "base": "#a59073",
+   "shadow": "#766853",
+   "light": "#c5ac89",
+   "line": "#302a22"
+  },
+  "hair_white": {
+   "base": "#c5ac89",
+   "shadow": "#927f65",
+   "light": "#e4c79f",
+   "line": "#3b3329"
+  },
+  "shoe_black": {
+   "base": "#241f19",
+   "shadow": "#16130f",
+   "light": "#3f362c",
+   "line": "#060504"
+  },
+  "shoe_brown": {
+   "base": "#443a2e",
+   "shadow": "#2c251d",
+   "light": "#5e503f",
+   "line": "#100e0b"
+  },
+  "labcoat": {
+   "base": "#c1a986",
+   "shadow": "#9f8b6e",
+   "light": "#dfc39a",
+   "line": "#40382c",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 90,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.07
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.12,
+    "color": "grime"
+   },
+   "shade": {
+    "threshold": 0.42
+   }
+  },
+  "shirt_white": {
+   "base": "#c2aa87",
+   "shadow": "#8e7c62",
+   "light": "#dbc098",
+   "line": "#3e362a",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 85,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.05
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.18,
+    "color": "grime"
+   }
+  },
+  "bandage": {
+   "base": "#dfc39b",
+   "shadow": "#a59072",
+   "light": "#f7d8ab",
+   "line": "#524738",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 8,
+    "width": 2.5,
+    "angle": 0,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.12
+   }
+  },
+  "gauze": {
+   "base": "#d7bc95",
+   "shadow": "#9e8a6d",
+   "light": "#f0d1a6",
+   "line": "#504637"
+  },
+  "blood": {
+   "base": "#3c2f25",
+   "shadow": "#271e18",
+   "light": "#514033",
+   "line": "#0f0b09"
+  },
+  "blood_dry": {
+   "base": "#332820",
+   "shadow": "#211a14",
+   "light": "#45372b",
+   "line": "#0d0a08"
+  },
+  "silver": {
+   "base": "#b9a383",
+   "shadow": "#83735c",
+   "light": "#ebcea6",
+   "line": "#2e2921",
+   "shade": {
+    "highlight": 0.85,
+    "highlight_amount": 0.7
+   }
+  },
+  "glass_clear": {
+   "base": "#b39e7f",
+   "shadow": "#84755f",
+   "light": "#f7d9af",
+   "line": "#393229",
+   "shade": {
+    "threshold": 0.4,
+    "highlight_amount": 0.7
+   }
+  },
+  "brass": {
+   "base": "#8d795d",
+   "shadow": "#5d503d",
+   "light": "#baa17b",
+   "line": "#1d1812",
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "sponge"
+    ],
+    "size": 14,
+    "soft": 1.5,
+    "density": 0.35,
+    "strength": 0.35,
+    "color": "rust"
+   },
+   "shade": {
+    "highlight": 0.87,
+    "highlight_amount": 0.7
+   }
+  },
+  "paper_ivory": {
+   "base": "#cdb28c",
+   "shadow": "#9c876a",
+   "light": "#e9cba0",
+   "line": "#4f4435",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 10,
+    "width": 3,
+    "angle": 0.0,
+    "jitter": 10,
+    "density": 0.8,
+    "strength": 0.05
+   },
+   "grime": {
+    "stamps": [
+     "sponge",
+     "metaballs"
+    ],
+    "size": 10,
+    "soft": 1.0,
+    "density": 0.25,
+    "strength": 0.28,
+    "color": "foxing"
+   },
+   "shade": {
+    "bump": 0.25,
+    "highlight_amount": 0.25
+   }
+  },
+  "paper_white": {
+   "base": "#d9be97",
+   "shadow": "#a79274",
+   "light": "#f3d5a9",
+   "line": "#544939",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 10,
+    "width": 3,
+    "angle": 0.0,
+    "jitter": 10,
+    "density": 0.8,
+    "strength": 0.05
+   },
+   "grime": {
+    "stamps": [
+     "sponge",
+     "metaballs"
+    ],
+    "size": 10,
+    "soft": 1.0,
+    "density": 0.25,
+    "strength": 0.28,
+    "color": "foxing"
+   },
+   "shade": {
+    "bump": 0.25,
+    "highlight_amount": 0.25
+   }
+  },
+  "paper_cream": {
+   "base": "#c8af89",
+   "shadow": "#998669",
+   "light": "#e3c69c",
+   "line": "#4f4435",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 10,
+    "width": 3,
+    "angle": 0.0,
+    "jitter": 10,
+    "density": 0.8,
+    "strength": 0.05
+   },
+   "grime": {
+    "stamps": [
+     "sponge",
+     "metaballs"
+    ],
+    "size": 10,
+    "soft": 1.0,
+    "density": 0.25,
+    "strength": 0.28,
+    "color": "foxing"
+   },
+   "shade": {
+    "bump": 0.25,
+    "highlight_amount": 0.25
+   }
+  },
+  "card_olive": {
+   "base": "#817158",
+   "shadow": "#5d523f",
+   "light": "#9d896b",
+   "line": "#231f18",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 10,
+    "width": 3,
+    "angle": 0.0,
+    "jitter": 10,
+    "density": 0.8,
+    "strength": 0.05
+   }
+  },
+  "ink_line": {
+   "base": "#302922",
+   "shadow": "#1f1b16",
+   "light": "#443b31",
+   "line": "#0d0b0a"
+  },
+  "ink_blue": {
+   "base": "#443d34",
+   "shadow": "#2e2923",
+   "light": "#64594b",
+   "line": "#13110f"
+  },
+  "ink_red": {
+   "base": "#544235",
+   "shadow": "#3a2e24",
+   "light": "#705b48",
+   "line": "#15100c"
+  },
+  "pencil": {
+   "base": "#5a4f40",
+   "shadow": "#3e362c",
+   "light": "#786955",
+   "line": "#171410"
+  },
+  "plastic_black": {
+   "base": "#2c261f",
+   "shadow": "#1a1713",
+   "light": "#483f33",
+   "line": "#080705",
+   "side": "#201c17",
+   "side_shadow": "#15120f",
+   "shade": {
+    "highlight": 0.86,
+    "highlight_amount": 0.6
+   }
+  },
+  "plastic_beige": {
+   "base": "#9e8a6c",
+   "shadow": "#776751",
+   "light": "#b8a17e",
+   "line": "#2a251c",
+   "side": "#827159",
+   "side_shadow": "#615442",
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 16,
+    "soft": 2,
+    "density": 0.3,
+    "strength": 0.3,
+    "color": "grime"
+   }
+  },
+  "screen_dark": {
+   "base": "#2a261f",
+   "shadow": "#1a1813",
+   "light": "#473f33",
+   "line": "#090907",
+   "shade": {
+    "threshold": 0.38,
+    "highlight_amount": 0.55
+   }
+  },
+  "screen_glow": {
+   "base": "#786b54",
+   "shadow": "#544b3b",
+   "light": "#a08e71",
+   "line": "#1d1a15"
+  },
+  "metal_grey": {
+   "base": "#6d5f4d",
+   "shadow": "#4a4135",
+   "light": "#96846a",
+   "line": "#15130f",
+   "side": "#554b3d",
+   "side_shadow": "#393229",
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "sponge"
+    ],
+    "size": 14,
+    "soft": 1.5,
+    "density": 0.35,
+    "strength": 0.35,
+    "color": "rust"
+   },
+   "shade": {
+    "highlight": 0.86,
+    "highlight_amount": 0.55
+   }
+  },
+  "metal_dark": {
+   "base": "#4e4437",
+   "shadow": "#342e25",
+   "light": "#6f624f",
+   "line": "#0e0c0a",
+   "side": "#3b342a",
+   "side_shadow": "#26211b",
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "sponge"
+    ],
+    "size": 14,
+    "soft": 1.5,
+    "density": 0.35,
+    "strength": 0.35,
+    "color": "rust"
+   },
+   "shade": {
+    "highlight": 0.86,
+    "highlight_amount": 0.5
+   }
+  },
+  "steel": {
+   "base": "#95836a",
+   "shadow": "#685b4a",
+   "light": "#c7ae8d",
+   "line": "#211d18",
+   "shade": {
+    "highlight": 0.84,
+    "highlight_amount": 0.8
+   }
+  },
+  "rubber": {
+   "base": "#332c24",
+   "shadow": "#1f1b16",
+   "light": "#4a4134",
+   "line": "#090806"
+  },
+  "cork": {
+   "base": "#6e5e48",
+   "shadow": "#4c4132",
+   "light": "#857258",
+   "line": "#1a1611",
+   "texture": {
+    "stamp": "metaballs",
+    "pre_rot": 0,
+    "length": 6,
+    "width": 6,
+    "angle": 0,
+    "jitter": 40,
+    "density": 0.8,
+    "strength": 0.12
+   }
+  },
+  "felt_green": {
+   "base": "#504738",
+   "shadow": "#373126",
+   "light": "#675c48",
+   "line": "#14130e"
+  },
+  "leather_brown": {
+   "base": "#4d4234",
+   "shadow": "#2f281f",
+   "light": "#6c5c48",
+   "line": "#120f0c",
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "cloud"
+    ],
+    "size": 18,
+    "soft": 2,
+    "density": 0.3,
+    "strength": 0.3,
+    "color": "grime"
+   }
+  },
+  "leather_black": {
+   "base": "#2e2720",
+   "shadow": "#1c1814",
+   "light": "#453c30",
+   "line": "#080706"
+  },
+  "cloth_red": {
+   "base": "#5d4b3d",
+   "shadow": "#3b2f26",
+   "light": "#7d6653",
+   "line": "#181310",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 10,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.07
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.2,
+    "color": "grime"
+   }
+  },
+  "wall_green": {
+   "base": "#4f4637",
+   "shadow": "#3a3428",
+   "light": "#625744",
+   "line": "#13110d",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 40,
+    "width": 8,
+    "angle": 90,
+    "jitter": 8,
+    "density": 0.8,
+    "strength": 0.05
+   }
+  },
+  "wall_green_dark": {
+   "base": "#413a2d",
+   "shadow": "#2f2a21",
+   "light": "#534939",
+   "line": "#0f0d0a"
+  },
+  "wainscot": {
+   "base": "#473b2e",
+   "shadow": "#30281f",
+   "light": "#5c4e3d",
+   "line": "#0f0c09",
+   "side": "#382f24",
+   "side_shadow": "#241e18",
+   "texture": {
+    "stamp": "pill",
+    "pre_rot": -45,
+    "length": 22,
+    "width": 2.2,
+    "angle": 0.0,
+    "jitter": 4,
+    "density": 0.9,
+    "strength": 0.12
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "cloud"
+    ],
+    "size": 18,
+    "soft": 2,
+    "density": 0.3,
+    "strength": 0.3,
+    "color": "grime"
+   }
+  },
+  "wood_red": {
+   "base": "#524535",
+   "shadow": "#362d23",
+   "light": "#685744",
+   "line": "#120f0c",
+   "side": "#41372b",
+   "side_shadow": "#2b241c",
+   "texture": {
+    "stamp": "pill",
+    "pre_rot": -45,
+    "length": 22,
+    "width": 2.2,
+    "angle": 0.0,
+    "jitter": 4,
+    "density": 0.9,
+    "strength": 0.12
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "cloud"
+    ],
+    "size": 18,
+    "soft": 2,
+    "density": 0.3,
+    "strength": 0.3,
+    "color": "grime"
+   }
+  },
+  "wood_dark": {
+   "base": "#4a3f31",
+   "shadow": "#2f281f",
+   "light": "#615340",
+   "line": "#0f0d0a",
+   "side": "#393126",
+   "side_shadow": "#252019",
+   "texture": {
+    "stamp": "pill",
+    "pre_rot": -45,
+    "length": 22,
+    "width": 2.2,
+    "angle": 0.0,
+    "jitter": 4,
+    "density": 0.9,
+    "strength": 0.12
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "cloud"
+    ],
+    "size": 18,
+    "soft": 2,
+    "density": 0.3,
+    "strength": 0.3,
+    "color": "grime"
+   }
+  },
+  "wood_ochre": {
+   "base": "#695a45",
+   "shadow": "#453b2d",
+   "light": "#847156",
+   "line": "#17130f",
+   "side": "#524636",
+   "side_shadow": "#362e23",
+   "texture": {
+    "stamp": "pill",
+    "pre_rot": -45,
+    "length": 22,
+    "width": 2.2,
+    "angle": 0.0,
+    "jitter": 4,
+    "density": 0.9,
+    "strength": 0.12
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "cloud"
+    ],
+    "size": 18,
+    "soft": 2,
+    "density": 0.3,
+    "strength": 0.3,
+    "color": "grime"
+   }
+  },
+  "parquet": {
+   "base": "#473c2e",
+   "shadow": "#352d23",
+   "light": "#594c3b",
+   "line": "#0f0d0a",
+   "texture": {
+    "stamp": "pill",
+    "pre_rot": -45,
+    "length": 30,
+    "width": 3,
+    "angle": 0,
+    "jitter": 4,
+    "density": 1.0,
+    "strength": 0.12
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "sponge"
+    ],
+    "size": 120,
+    "soft": 14,
+    "density": 0.08,
+    "strength": 0.25,
+    "color": "grime",
+    "lo": 0.2
+   }
+  },
+  "marble_dark": {
+   "base": "#594e3f",
+   "shadow": "#443b30",
+   "light": "#6f614f",
+   "line": "#15120f",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 60,
+    "width": 3,
+    "angle": 30,
+    "jitter": 40,
+    "density": 0.6,
+    "strength": 0.1
+   }
+  },
+  "marble_light": {
+   "base": "#8a7860",
+   "shadow": "#6c5e4b",
+   "light": "#a38e71",
+   "line": "#231e18",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 60,
+    "width": 3,
+    "angle": 30,
+    "jitter": 40,
+    "density": 0.6,
+    "strength": 0.1
+   }
+  },
+  "curtain_green": {
+   "base": "#59503e",
+   "shadow": "#3d362a",
+   "light": "#746750",
+   "line": "#13110d",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 90,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.08
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.2,
+    "color": "grime"
+   }
+  },
+  "tablecloth": {
+   "base": "#c1a986",
+   "shadow": "#988569",
+   "light": "#dabf97",
+   "line": "#41382c",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 18,
+    "width": 3,
+    "angle": 0,
+    "jitter": 10,
+    "density": 0.6,
+    "strength": 0.05
+   }
+  },
+  "clay_grey": {
+   "base": "#8d7b62",
+   "shadow": "#6a5d4a",
+   "light": "#a59072",
+   "line": "#221d17",
+   "texture": {
+    "stamp": "metaballs",
+    "pre_rot": 0,
+    "length": 8,
+    "width": 8,
+    "angle": 0,
+    "jitter": 40,
+    "density": 0.8,
+    "strength": 0.15
+   }
+  },
+  "mud": {
+   "base": "#42392d",
+   "shadow": "#2f2920",
+   "light": "#55493a",
+   "line": "#0e0c09"
+  },
+  "grass_dark": {
+   "base": "#40392c",
+   "shadow": "#2e2920",
+   "light": "#534939",
+   "line": "#0f0d0a",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 14,
+    "width": 3,
+    "angle": 90,
+    "jitter": 30,
+    "density": 1.2,
+    "strength": 0.14
+   }
+  },
+  "stone_wall": {
+   "base": "#645747",
+   "shadow": "#4a4034",
+   "light": "#7b6c57",
+   "line": "#14120f",
+   "side": "#473e32",
+   "side_shadow": "#2f2921",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": 45,
+    "length": 14,
+    "width": 3.5,
+    "angle": 0,
+    "jitter": 14,
+    "density": 0.9,
+    "strength": 0.09
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "droplet"
+    ],
+    "size": 60,
+    "soft": 6,
+    "density": 0.1,
+    "strength": 0.35,
+    "color": "damp",
+    "lo": 0.25
+   }
+  },
+  "glass_booth": {
+   "base": "#5f5545",
+   "shadow": "#484035",
+   "light": "#8c7c64",
+   "line": "#181612",
+   "shade": {
+    "threshold": 0.4,
+    "highlight_amount": 0.6
+   }
+  },
+  "glass_rain": {
+   "base": "#4f473a",
+   "shadow": "#3c352c",
+   "light": "#726552",
+   "line": "#13110e",
+   "shade": {
+    "threshold": 0.4,
+    "highlight_amount": 0.6
+   }
+  },
+  "mourning_black": {
+   "base": "#302a22",
+   "shadow": "#1e1a15",
+   "light": "#453c30",
+   "line": "#070605",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 90,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.06
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.1,
+    "color": "grime"
+   }
+  },
+  "suit_brown": {
+   "base": "#3e352a",
+   "shadow": "#2a241c",
+   "light": "#544839",
+   "line": "#0c0a08",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 90,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.06
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.12,
+    "color": "grime"
+   }
+  },
+  "suit_greybrown": {
+   "base": "#493f32",
+   "shadow": "#302921",
+   "light": "#5f5241",
+   "line": "#0f0d0a",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 90,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.06
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.12,
+    "color": "grime"
+   }
+  },
+  "dress_navy": {
+   "base": "#463f34",
+   "shadow": "#302b23",
+   "light": "#5f5546",
+   "line": "#0f0d0b",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 90,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.06
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.12,
+    "color": "grime"
+   }
+  },
+  "cardigan_greybrown": {
+   "base": "#7a6b55",
+   "shadow": "#594d3d",
+   "light": "#948166",
+   "line": "#211d17",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 0,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.12
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.12,
+    "color": "grime"
+   }
+  },
+  "jacket_plum": {
+   "base": "#4d4236",
+   "shadow": "#332c24",
+   "light": "#635646",
+   "line": "#0f0d0a",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 90,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.07
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.12,
+    "color": "grime"
+   }
+  },
+  "blouse_cream": {
+   "base": "#c9af8a",
+   "shadow": "#988468",
+   "light": "#e1c59b",
+   "line": "#433a2d",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 85,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.05
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.1,
+    "color": "grime"
+   }
+  },
+  "vest_darkbrown": {
+   "base": "#42392d",
+   "shadow": "#2c261e",
+   "light": "#594d3d",
+   "line": "#0d0b08",
+   "texture": {
+    "stamp": "leaf",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 0,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.1
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.12,
+    "color": "grime"
+   }
+  },
+  "apron_black": {
+   "base": "#28221c",
+   "shadow": "#191611",
+   "light": "#3b332a",
+   "line": "#060605",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 90,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.06
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.1,
+    "color": "grime"
+   }
+  },
+  "suit_threepiece": {
+   "base": "#3e362b",
+   "shadow": "#29241c",
+   "light": "#534839",
+   "line": "#0b0a08",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 90,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.06
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.1,
+    "color": "grime"
+   }
+  },
+  "skirt_dark": {
+   "base": "#3e362b",
+   "shadow": "#29231d",
+   "light": "#54493b",
+   "line": "#0d0b09",
+   "texture": {
+    "stamp": "feather",
+    "pre_rot": -45,
+    "length": 11,
+    "width": 2.5,
+    "angle": 90,
+    "jitter": 12,
+    "density": 0.8,
+    "strength": 0.06
+   },
+   "grime": {
+    "stamps": [
+     "cloud",
+     "metaballs"
+    ],
+    "size": 12,
+    "soft": 1.5,
+    "density": 0.25,
+    "strength": 0.1,
+    "color": "grime"
+   }
+  },
+  "tie_green": {
+   "base": "#433d30",
+   "shadow": "#2d2920",
+   "light": "#584f3e",
+   "line": "#100f0b"
+  },
+  "stocking_dark": {
+   "base": "#2e2820",
+   "shadow": "#1d1914",
+   "light": "#41382d",
+   "line": "#080705"
+  },
+  "glove_grey": {
+   "base": "#7e6e58",
+   "shadow": "#5c5140",
+   "light": "#978469",
+   "line": "#1f1b16"
+  },
+  "hair_auburn_grey": {
+   "base": "#594c3c",
+   "shadow": "#3c3228",
+   "light": "#776650",
+   "line": "#120f0c"
+  },
+  "hair_chestnut": {
+   "base": "#41372a",
+   "shadow": "#2b241c",
+   "light": "#584a3a",
+   "line": "#0d0b09"
+  },
+  "hair_greyish_brown": {
+   "base": "#776752",
+   "shadow": "#54493a",
+   "light": "#907d64",
+   "line": "#191511"
+  },
+  "hair_silver": {
+   "base": "#c2aa88",
+   "shadow": "#8f7d64",
+   "light": "#e1c59d",
+   "line": "#352e25"
+  }
+ },
+ "styles": {
+  "sprite": {
+   "supersample": 3,
+   "light": [
+    -0.42,
+    -0.62,
+    0.66
+   ],
+   "noise_cell": 9,
+   "edge_pad": 16,
+   "shade": {
+    "soft": 0.28,
+    "bump": 1.15,
+    "threshold": 0.52,
+    "edge": 0.03,
+    "ragged": 0.2,
+    "highlight": 0.93,
+    "highlight_amount": 0.5
+   },
+   "line": {
+    "width": 0.9,
+    "heavy": 1.0,
+    "breaks": 0.32,
+    "junction": 0.7
+   },
+   "silhouette": {
+    "width": 1.3,
+    "heavy": 1.0,
+    "color": "ink"
+   },
+   "texture": {
+    "strength": 0.06,
+    "density": 0.8
+   },
+   "cast": {
+    "dist": 2.2,
+    "blur": 1.2,
+    "opacity": 0.5,
+    "color": "shade_tint"
+   },
+   "shadow_output": "separate"
+  },
+  "prop": {
+   "supersample": 2,
+   "light": [
+    -0.42,
+    -0.62,
+    0.66
+   ],
+   "noise_cell": 12,
+   "edge_pad": 24,
+   "shade": {
+    "soft": 0.25,
+    "bump": 1.0,
+    "threshold": 0.48,
+    "edge": 0.03,
+    "ragged": 0.18,
+    "highlight": 0.92,
+    "highlight_amount": 0.5
+   },
+   "line": {
+    "width": 1.2,
+    "heavy": 1.4,
+    "breaks": 0.3,
+    "junction": 1.0
+   },
+   "silhouette": {
+    "width": 1.8,
+    "heavy": 1.3,
+    "color": "ink"
+   },
+   "texture": {
+    "strength": 0.07,
+    "density": 0.9
+   },
+   "cast": {
+    "dist": 3.0,
+    "blur": 2.0,
+    "opacity": 0.45,
+    "color": "shade_tint"
+   },
+   "ao": {
+    "spread": 3,
+    "blur": 7,
+    "opacity": 0.55,
+    "color": "shadow_contact"
+   },
+   "shadow_output": "separate"
+  },
+  "environment": {
+   "supersample": 1,
+   "light": [
+    -0.42,
+    -0.62,
+    0.66
+   ],
+   "noise_cell": 26,
+   "edge_pad": 96,
+   "background": "#645747",
+   "shade": {
+    "soft": 0.2,
+    "bump": 0.9,
+    "threshold": 0.48,
+    "edge": 0.04,
+    "ragged": 0.2,
+    "highlight": 0.92,
+    "highlight_amount": 0.45
+   },
+   "line": {
+    "width": 2.0,
+    "heavy": 2.2,
+    "breaks": 0.35,
+    "junction": 1.6
+   },
+   "texture": {
+    "strength": 0.08,
+    "density": 1.0
+   },
+   "cast": {
+    "dist": 6.0,
+    "blur": 5.0,
+    "opacity": 0.4,
+    "color": "shade_tint"
+   },
+   "ao": {
+    "spread": 4,
+    "blur": 16,
+    "opacity": 0.5,
+    "color": "shadow_contact"
+   },
+   "shadow_output": "multiply"
+  }
+ }
+}

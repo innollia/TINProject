@@ -2,7 +2,7 @@ class_name AudioManifestEvent
 extends Resource
 
 @export var id: StringName = &""
-@export_file("*.wav,*.ogg,*.mp3") var file: String = ""
+@export_file("*.wav", "*.ogg", "*.mp3") var file: String = ""
 @export var bus: StringName = &"SFX"
 @export_range(1, 64, 1) var max_polyphony: int = 1
 @export var volume_db: float = 0.0

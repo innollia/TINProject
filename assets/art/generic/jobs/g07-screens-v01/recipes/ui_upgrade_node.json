@@ -1,0 +1,264 @@
+{
+ "asset": "ui_upgrade_node",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Upgrade-tree node: locked (padlock), open (plus), bought (lit, check).",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "node centre",
+ "seed": 91,
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      150.0,
+      150.0
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "rim",
+   "z": 1,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      132.0,
+      132.0
+     ],
+     "rot": 30
+    },
+    {
+     "icon": "hexagon",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      120.0,
+      120.0
+     ],
+     "rot": 30,
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "core_locked",
+   "z": 2,
+   "material": "plastic_dark",
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      118.0,
+      118.0
+     ],
+     "rot": 30
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "locked"
+   ]
+  },
+  {
+   "name": "lock",
+   "z": 3,
+   "material": "steel",
+   "shade": {
+    "bump": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "lock",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      42.0,
+      50.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "locked"
+   ]
+  },
+  {
+   "name": "core_open",
+   "z": 2,
+   "material": "paint_ochre",
+   "shade": {
+    "bump": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      118.0,
+      118.0
+     ],
+     "rot": 30
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "open"
+   ]
+  },
+  {
+   "name": "plus",
+   "z": 3,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.75,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      46.0,
+      12.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 4
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      12.0,
+      46.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 4
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "open"
+   ]
+  },
+  {
+   "name": "core_bought",
+   "z": 2,
+   "material": "lamp_amber_on",
+   "emit": 1.0,
+   "glow": {
+    "radius": 10,
+    "opacity": 0.55,
+    "color": "glow_amber"
+   },
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      118.0,
+      118.0
+     ],
+     "rot": 30
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "bought"
+   ]
+  },
+  {
+   "name": "check",
+   "z": 3,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "checkmark",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      58.0,
+      46.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "bought"
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "locked",
+   "show": [
+    "locked"
+   ]
+  },
+  {
+   "name": "open",
+   "show": [
+    "open"
+   ]
+  },
+  {
+   "name": "bought",
+   "show": [
+    "bought"
+   ]
+  }
+ ]
+}

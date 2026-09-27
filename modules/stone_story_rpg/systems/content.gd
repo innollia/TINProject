@@ -25,8 +25,9 @@ const SCENE_HORIZON_Y: int = 243
 const PALETTE_KEYS: Array[String] = ["sky", "horizon", "ground", "structure", "accent"]
 const PALETTE_MIN_SATURATION: float = 0.12
 const WORLD_RULES: Array[String] = ["gravity", "size", "placement"]
-const SILHOUETTE_FORMS: Array[String] = ["crab", "angular", "lump"]
-const LIMB_STYLES: Array[String] = ["splay", "stilt", "stub"]
+const SILHOUETTE_FORMS: Array[String] = ["crawler", "strider", "hauler"]
+## A3-a 좌표 실루엣의 키. 몸 설계(A3-b)에는 오면 안 된다 (스토크 눈알·분홍 띠·뿔 되살림 방지).
+const SILHOUETTE_RETIRED: Array[String] = ["body", "mark", "horns", "eyes", "limbs"]
 const LOOKS: Array[String] = ["sword", "spear", "dagger", "staff", "brand", "shield"]
 const LARGE_RATIO: float = 0.25
 
@@ -159,22 +160,7 @@ func _validate_visuals() -> void:
 		if visible_ratio(sd.get("layers", [])) < LARGE_RATIO:
 			errors.append("structure_not_large:" + str(id))
 	for id in db["silhouette"]:
-		var sil: Dictionary = db["silhouette"][id]
-		if not SILHOUETTE_FORMS.has(str(sil.get("form", ""))):
-			errors.append("silhouette_bad_form:" + str(id))
-		var body: Array = sil.get("body", [])
-		if body.size() < 5 or not _polygon_ok(body):
-			errors.append("silhouette_bad_body:" + str(id))
-		for q in body:
-			var v: Array = q
-			if absf(float(v[0])) > 0.6 or float(v[1]) > 0.05 or float(v[1]) < -1.1:
-				errors.append("silhouette_out_of_box:" + str(id))
-				break
-		if not sil.get("eyes", {}).has("at"):
-			errors.append("silhouette_no_eyes:" + str(id))
-		var limbs: Dictionary = sil.get("limbs", {})
-		if limbs.get("from", []).size() != 2 or not LIMB_STYLES.has(str(limbs.get("style", ""))):
-			errors.append("silhouette_bad_limbs:" + str(id))
+		errors.append_array(body_plan_errors(str(id), db["silhouette"][id]))
 	for id in db["prop"]:
 		var pd: Dictionary = db["prop"][id]
 		if not pd.has("layers"):
@@ -198,6 +184,31 @@ func _validate_visuals() -> void:
 			errors.append("missing_look:" + str(id) + "/" + ol)
 	for id in db["region"]:
 		errors.append_array(scene_errors(str(id), db["region"][id]))
+
+
+## 몸 설계 (A3-b): 척추 노드 수 · 비율 범위. 좌표 실루엣 키는 거부한다.
+func body_plan_errors(id: String, sil: Dictionary) -> Array[String]:
+	var out: Array[String] = []
+	if not SILHOUETTE_FORMS.has(str(sil.get("form", ""))):
+		out.append("silhouette_bad_form:" + id)
+	for k in SILHOUETTE_RETIRED:
+		if sil.has(k):
+			out.append("silhouette_retired_key:" + id + "/" + k)
+	var sp: Dictionary = sil.get("spine", {})
+	var nr: Array = sp.get("nodes", [])
+	if nr.size() != 2 or int(nr[0]) < 3 or int(nr[1]) > 12 or int(nr[0]) > int(nr[1]):
+		out.append("silhouette_bad_spine:" + id)
+	var ranges: Dictionary = {"ride": [0.0, 0.8], "girth": [0.05, 0.5], "vary": [0.0, 0.4]}
+	for k in ranges:
+		var v: float = float(sil.get(k, -1.0))
+		if v < float(ranges[k][0]) or v > float(ranges[k][1]):
+			out.append("silhouette_out_of_range:" + id + "/" + str(k))
+	var len_v: float = float(sp.get("length", 0.0))
+	if len_v < 0.4 or len_v > 2.0:
+		out.append("silhouette_out_of_range:" + id + "/spine.length")
+	if not sil.get("head", {}).has("size"):
+		out.append("silhouette_no_head:" + id)
+	return out
 
 
 func scene_errors(id: String, r: Dictionary) -> Array[String]:

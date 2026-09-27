@@ -1,0 +1,429 @@
+{
+ "asset": "obj_neon_sign",
+ "status": "candidate",
+ "note": "Cyberpunk neon sign on a wall bracket, no text: dark backing plate with a pink ring, cyan zigzag and bar tubes, cable and mounting bolts. Frames: off, on (tubes lit, emit).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 912,
+ "pivot_meaning": "centre of the back plate = attach point on the wall face",
+ "layer_hint": "wall",
+ "canvas": [
+  314,
+  238
+ ],
+ "pivot": [
+  149,
+  109
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.26,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      157,
+      117
+     ],
+     "size": [
+      190,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "steel",
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      149,
+      109
+     ],
+     "size": [
+      184,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate_inner",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "screen_off",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "at": [
+      149,
+      109
+     ],
+     "size": [
+      170,
+      90
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bolts",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "chrome",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      65,
+      65
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      233,
+      65
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      65,
+      153
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      233,
+      153
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tube_pink_off",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "glass_dark",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      105,
+      109
+     ],
+     "size": [
+      64,
+      64
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      105,
+      109
+     ],
+     "size": [
+      50,
+      50
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "tube_pink_on",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "neon_pink",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 1.0,
+   "glow": {
+    "radius": 9,
+    "opacity": 0.7,
+    "color": "neon_pink_glow"
+   },
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      105,
+      109
+     ],
+     "size": [
+      64,
+      64
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      105,
+      109
+     ],
+     "size": [
+      50,
+      50
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "tube_cyan_off",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "glass_dark",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "arrow_zigzag",
+     "at": [
+      179,
+      101
+     ],
+     "size": [
+      60,
+      40
+     ],
+     "rot": 0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      189,
+      135
+     ],
+     "size": [
+      80,
+      7
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      189,
+      75
+     ],
+     "size": [
+      50,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tube_cyan_on",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "neon_cyan",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 1.0,
+   "glow": {
+    "radius": 9,
+    "opacity": 0.7,
+    "color": "neon_cyan_glow"
+   },
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "arrow_zigzag",
+     "at": [
+      179,
+      101
+     ],
+     "size": [
+      60,
+      40
+     ],
+     "rot": 0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      189,
+      135
+     ],
+     "size": [
+      80,
+      7
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      189,
+      75
+     ],
+     "size": [
+      50,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cable",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "rubber",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      245.0,
+      154.0
+     ],
+     "size": [
+      34.0,
+      3
+     ],
+     "rot": 61.92751306414704
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      251.0,
+      184.0
+     ],
+     "size": [
+      30.265491900843113,
+      3
+     ],
+     "rot": 97.59464336859145
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off"
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": [
+    {
+     "color": "#ff7aa8",
+     "radius": 260,
+     "at": [
+      105,
+      109
+     ]
+    },
+    {
+     "color": "#7ef0f4",
+     "radius": 240,
+     "at": [
+      183,
+      109
+     ]
+    }
+   ]
+  }
+ ]
+}

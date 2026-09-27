@@ -1,0 +1,933 @@
+{
+ "asset": "skeleton_pirate",
+ "status": "candidate",
+ "note": "Skeleton pirate, front view. Bony pirate in a tattered long wine coat with brass buttons, a black tricorn with a bone-coloured trim, a green eye light in one socket, a rusty cutlass raised, a wooden peg leg.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 1032,
+ "g05": {
+  "name_ko": "해골 해적",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      362.6
+     ],
+     "size": [
+      160.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "bone",
+   "pivot": [
+    144,
+    252
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      279.0
+     ],
+     "size": [
+      11.0,
+      55.2
+     ],
+     "rot": 4.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      139.0,
+      329.0
+     ],
+     "size": [
+      11.0,
+      47.1
+     ],
+     "rot": 2.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      144.0,
+      252.0
+     ],
+     "size": [
+      16.5,
+      16.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      306.0
+     ],
+     "size": [
+      16.5,
+      16.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      138.0,
+      352.0
+     ],
+     "size": [
+      16.5,
+      16.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.1,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      130.0,
+      358.0
+     ],
+     "size": [
+      34.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "peg",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      279.0
+     ],
+     "size": [
+      14.0,
+      59.0
+     ],
+     "rot": -4.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      181.0,
+      331.0
+     ],
+     "size": [
+      10.0,
+      53.5
+     ],
+     "rot": -2.3
+    }
+   ]
+  },
+  {
+   "name": "coat",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "bell",
+     "at": [
+      160.0,
+      220.0
+     ],
+     "size": [
+      140.0,
+      170.0
+     ],
+     "crop": [
+      1.6,
+      1.4,
+      14.4,
+      11.6
+     ]
+    },
+    {
+     "icon": "mountains",
+     "at": [
+      160.0,
+      300.0
+     ],
+     "size": [
+      140.0,
+      26.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      290.0
+     ],
+     "size": [
+      50.0,
+      120.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "ribcage",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.5,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      190.0
+     ],
+     "size": [
+      64.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rib_gaps",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.6,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      180.0
+     ],
+     "size": [
+      54.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      176.2
+     ],
+     "size": [
+      64.8,
+      7.4
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      193.0
+     ],
+     "size": [
+      48.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      189.2
+     ],
+     "size": [
+      57.6,
+      7.4
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      206.0
+     ],
+     "size": [
+      42.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      202.2
+     ],
+     "size": [
+      50.4,
+      7.4
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "lapels",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.7,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      130.0,
+      180.0
+     ],
+     "size": [
+      30.0,
+      80.0
+     ],
+     "rot": 10.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      190.0,
+      180.0
+     ],
+     "size": [
+      30.0,
+      80.0
+     ],
+     "rot": -10.0
+    }
+   ]
+  },
+  {
+   "name": "buttons",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.8,
+   "material": "brass",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      124.0,
+      200.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      124.0,
+      220.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      124.0,
+      240.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      196.0,
+      200.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      196.0,
+      220.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      196.0,
+      240.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sash",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.9,
+   "material": "cloth_blue",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      236.0
+     ],
+     "size": [
+      90.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 3,
+   "material": "bone",
+   "pivot": [
+    116,
+    150
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110.0,
+      175.0
+     ],
+     "size": [
+      9.0,
+      52.3
+     ],
+     "rot": 13.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      103.0,
+      222.0
+     ],
+     "size": [
+      9.0,
+      44.9
+     ],
+     "rot": 2.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      116.0,
+      150.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      104.0,
+      200.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      102.0,
+      244.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 3.1,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      102.0,
+      250.0
+     ],
+     "size": [
+      8.2,
+      7.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      105.3,
+      256.7
+     ],
+     "size": [
+      2.7,
+      15.3
+     ],
+     "rot": -26.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      102.0,
+      257.5
+     ],
+     "size": [
+      2.7,
+      15.3
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      98.7,
+      256.7
+     ],
+     "size": [
+      2.7,
+      15.3
+     ],
+     "rot": 26.0
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 3,
+   "material": "bone",
+   "pivot": [
+    204,
+    150
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      220.0,
+      163.0
+     ],
+     "size": [
+      9.0,
+      42.1
+     ],
+     "rot": -50.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      235.0,
+      151.0
+     ],
+     "size": [
+      9.0,
+      50.9
+     ],
+     "rot": 177.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      204.0,
+      150.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      236.0,
+      176.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      234.0,
+      126.0
+     ],
+     "size": [
+      13.5,
+      13.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 3.1,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      234.0,
+      120.0
+     ],
+     "size": [
+      8.2,
+      7.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      230.7,
+      113.3
+     ],
+     "size": [
+      2.7,
+      15.3
+     ],
+     "rot": 154.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      234.0,
+      112.5
+     ],
+     "size": [
+      2.7,
+      15.3
+     ],
+     "rot": -180.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      237.3,
+      113.3
+     ],
+     "size": [
+      2.7,
+      15.3
+     ],
+     "rot": -154.0
+    }
+   ]
+  },
+  {
+   "name": "cutlass",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 3.05,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "cutlass",
+     "at": [
+      221.1,
+      86.5
+     ],
+     "size": [
+      90.0,
+      90.0
+     ],
+     "rot": -65.0
+    }
+   ]
+  },
+  {
+   "name": "sleeves",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 3.2,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      111.0,
+      170.0
+     ],
+     "size": [
+      22.0,
+      48.9
+     ],
+     "rot": 14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      218.0,
+      161.0
+     ],
+     "size": [
+      22.0,
+      43.3
+     ],
+     "rot": -51.8
+    }
+   ]
+  },
+  {
+   "name": "skull_back",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.9,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      106.0
+     ],
+     "size": [
+      44.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "skull",
+     "at": [
+      160.0,
+      110.0
+     ],
+     "size": [
+      64.0,
+      66.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.2,
+   "kind": "flat",
+   "material": "glow_green",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "glow_green_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      150.0,
+      106.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hat",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.5,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      70.0
+     ],
+     "size": [
+      130.0,
+      52.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      62.0
+     ],
+     "size": [
+      76.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hat_trim",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.55,
+   "material": "bone_old",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      70.0
+     ],
+     "size": [
+      130.0,
+      52.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      66.0
+     ],
+     "size": [
+      116.0,
+      42.0
+     ],
+     "flip": "y",
+     "op": "sub"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

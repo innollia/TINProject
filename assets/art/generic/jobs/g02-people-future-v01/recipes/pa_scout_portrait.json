@@ -1,0 +1,1005 @@
+{
+ "asset": "pa_scout",
+ "status": "candidate",
+ "note": "방독면 정찰병 (포스트아포칼립스, tier C). Dialogue portrait, 3/4 bust, fixed face anchor.",
+ "palette": "palette_g02.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  320
+ ],
+ "pivot": [
+  160,
+  146
+ ],
+ "pivot_meaning": "face anchor = head centre, identical in every g02 portrait",
+ "seed": 101,
+ "forms": [
+  {
+   "name": "neck",
+   "z": 2.9,
+   "tags": [
+    "upper"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      238.0
+     ],
+     "size": [
+      48.0,
+      40.0
+     ]
+    }
+   ],
+   "material": "skin"
+  },
+  {
+   "name": "torso",
+   "z": 3,
+   "tags": [
+    "upper"
+   ],
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      111.6,
+      336.0
+     ],
+     "size": [
+      103.2,
+      172.0
+     ],
+     "half": "left",
+     "crop": [
+      1,
+      0.8,
+      8,
+      10.4
+     ]
+    },
+    {
+     "icon": "shield",
+     "at": [
+      208.4,
+      336.0
+     ],
+     "size": [
+      103.2,
+      172.0
+     ],
+     "half": "left",
+     "crop": [
+      1,
+      0.8,
+      8,
+      10.4
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "bell",
+     "at": [
+      160.0,
+      416.0
+     ],
+     "size": [
+      200.0,
+      100.0
+     ],
+     "crop": [
+      1.6,
+      7,
+      14.4,
+      12
+     ]
+    }
+   ],
+   "material": "cloth_olive"
+  },
+  {
+   "name": "poncho",
+   "z": 7.2,
+   "tags": [
+    "upper"
+   ],
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      370.0
+     ],
+     "size": [
+      300.0,
+      220.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      286.0
+     ],
+     "size": [
+      212.0,
+      60.0
+     ]
+    }
+   ],
+   "material": "cloth_khaki"
+  },
+  {
+   "name": "poncho_stripes",
+   "z": 7.3,
+   "tags": [
+    "upper"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      322.0
+     ],
+     "size": [
+      236.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      358.0
+     ],
+     "size": [
+      176.0,
+      12.0
+     ]
+    }
+   ],
+   "material": "cloth_olive",
+   "kind": "flat",
+   "clip_to": "poncho"
+  },
+  {
+   "name": "sleeve_r",
+   "z": 5,
+   "tags": [
+    "upper",
+    "arm_r"
+   ],
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      51.0,
+      360.0
+     ],
+     "size": [
+      54.0,
+      176.0
+     ],
+     "half": "left",
+     "rot": 6
+    }
+   ],
+   "material": "cloth_khaki"
+  },
+  {
+   "name": "hand_r",
+   "z": 6,
+   "tags": [
+    "upper",
+    "arm_r",
+    "grip_r"
+   ],
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      46.0,
+      450.0
+     ],
+     "size": [
+      38.0,
+      46.0
+     ],
+     "flip": "y",
+     "rot": 6
+    }
+   ],
+   "material": "rubber"
+  },
+  {
+   "name": "sleeve_l",
+   "z": 5,
+   "tags": [
+    "upper",
+    "arm_l"
+   ],
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      269.0,
+      360.0
+     ],
+     "size": [
+      54.0,
+      176.0
+     ],
+     "half": "left",
+     "rot": -6,
+     "flip": "x"
+    }
+   ],
+   "material": "cloth_khaki"
+  },
+  {
+   "name": "hand_l",
+   "z": 6,
+   "tags": [
+    "upper",
+    "arm_l",
+    "grip_l"
+   ],
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      274.0,
+      450.0
+     ],
+     "size": [
+      38.0,
+      46.0
+     ],
+     "flip": "yx",
+     "rot": -6
+    }
+   ],
+   "material": "rubber"
+  },
+  {
+   "name": "face",
+   "z": 9,
+   "tags": [
+    "upper",
+    "head"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      172.0
+     ],
+     "size": [
+      144.0,
+      132.0
+     ]
+    }
+   ],
+   "material": "skin",
+   "shade": {
+    "highlight_amount": 0.28
+   }
+  },
+  {
+   "name": "eye_near",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_open"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      180.0
+     ],
+     "size": [
+      17.0,
+      22.0
+     ]
+    }
+   ],
+   "material": "eye",
+   "kind": "flat"
+  },
+  {
+   "name": "eye_near_glint",
+   "z": 11.05,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_open"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      138.6,
+      175.16
+     ],
+     "size": [
+      5.78,
+      5.78
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "white_ink",
+   "opacity": 0.75
+  },
+  {
+   "name": "eye_near_hit",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_hit"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      180.0
+     ],
+     "size": [
+      24.0,
+      6.4
+     ],
+     "rot": 16
+    }
+   ],
+   "material": "eye",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "eye_far",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_open",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      180.0
+     ],
+     "size": [
+      13.6,
+      22.0
+     ]
+    }
+   ],
+   "material": "eye",
+   "kind": "flat"
+  },
+  {
+   "name": "eye_far_glint",
+   "z": 11.05,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_open",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      194.6,
+      175.16
+     ],
+     "size": [
+      4.62,
+      5.78
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "white_ink",
+   "opacity": 0.75
+  },
+  {
+   "name": "eye_far_hit",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "eyes_hit",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      180.0
+     ],
+     "size": [
+      19.2,
+      6.4
+     ],
+     "rot": -16
+    }
+   ],
+   "material": "eye",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "brow_calm_146",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_calm"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      152.0
+     ],
+     "size": [
+      26.0,
+      6.8
+     ],
+     "rot": -4
+    }
+   ],
+   "material": "hair",
+   "kind": "flat",
+   "hidden": false
+  },
+  {
+   "name": "brow_calm_174",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_calm",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      152.0
+     ],
+     "size": [
+      20.8,
+      6.8
+     ],
+     "rot": 4
+    }
+   ],
+   "material": "hair",
+   "kind": "flat",
+   "hidden": false
+  },
+  {
+   "name": "brow_angry_146",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_angry"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      158.0
+     ],
+     "size": [
+      26.0,
+      6.8
+     ],
+     "rot": 20
+    }
+   ],
+   "material": "hair",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "brow_angry_174",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_angry",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      158.0
+     ],
+     "size": [
+      20.8,
+      6.8
+     ],
+     "rot": -20
+    }
+   ],
+   "material": "hair",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "brow_hurt_146",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_hurt"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      150.0
+     ],
+     "size": [
+      26.0,
+      6.8
+     ],
+     "rot": -17
+    }
+   ],
+   "material": "hair",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "brow_hurt_174",
+   "z": 11.2,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "brow_hurt",
+    "far"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      150.0
+     ],
+     "size": [
+      20.8,
+      6.8
+     ],
+     "rot": 17
+    }
+   ],
+   "material": "hair",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "nose",
+   "z": 11,
+   "tags": [
+    "upper",
+    "head",
+    "nose"
+   ],
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      175.0,
+      200.0
+     ],
+     "size": [
+      12.0,
+      8.0
+     ],
+     "rot": 200
+    }
+   ],
+   "kind": "flat",
+   "color": "skin_shadow"
+  },
+  {
+   "name": "mouth",
+   "z": 11.1,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "mouth_idle"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      218.0
+     ],
+     "size": [
+      24.0,
+      5.2
+     ]
+    }
+   ],
+   "material": "mouth",
+   "kind": "flat"
+  },
+  {
+   "name": "mouth_shout",
+   "z": 11.1,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "mouth_shout"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      220.0
+     ],
+     "size": [
+      24.0,
+      18.0
+     ]
+    }
+   ],
+   "material": "mouth",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "mouth_hurt",
+   "z": 11.1,
+   "tags": [
+    "upper",
+    "head",
+    "feature",
+    "mouth_hurt"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      220.0
+     ],
+     "size": [
+      26.0,
+      11.0
+     ],
+     "rot": -8
+    }
+   ],
+   "material": "mouth",
+   "kind": "flat",
+   "hidden": true
+  },
+  {
+   "name": "hood_back",
+   "z": 0.7,
+   "tags": [
+    "upper",
+    "head",
+    "hair"
+   ],
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      164.0,
+      130.0
+     ],
+     "size": [
+      264.0,
+      280.0
+     ]
+    }
+   ],
+   "material": "cloth_khaki"
+  },
+  {
+   "name": "hood_rim",
+   "z": 10.5,
+   "tags": [
+    "upper",
+    "head",
+    "hair"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      164.0,
+      156.0
+     ],
+     "size": [
+      224.0,
+      216.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      164.0,
+      186.0
+     ],
+     "size": [
+      160.0,
+      160.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      164.0,
+      286.0
+     ],
+     "size": [
+      240.0,
+      80.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "material": "cloth_khaki"
+  },
+  {
+   "name": "mask",
+   "z": 11.6,
+   "tags": [
+    "upper",
+    "head",
+    "feature"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      194.0
+     ],
+     "size": [
+      148.0,
+      120.0
+     ]
+    }
+   ],
+   "material": "rubber"
+  },
+  {
+   "name": "mask_lens",
+   "z": 11.7,
+   "tags": [
+    "upper",
+    "head",
+    "feature"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      178.0
+     ],
+     "size": [
+      42.0,
+      38.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      200.0,
+      178.0
+     ],
+     "size": [
+      42.0,
+      38.0
+     ]
+    }
+   ],
+   "material": "lens"
+  },
+  {
+   "name": "mask_filter",
+   "z": 11.8,
+   "tags": [
+    "upper",
+    "head",
+    "feature"
+   ],
+   "pieces": [
+    {
+     "icon": "cylinder",
+     "at": [
+      170.0,
+      238.0
+     ],
+     "size": [
+      56.0,
+      48.0
+     ]
+    }
+   ],
+   "material": "iron"
+  },
+  {
+   "name": "rifle_r_barrel",
+   "z": 5.6,
+   "tags": [
+    "upper",
+    "arm_r",
+    "weapon_r",
+    "grip_r",
+    "side_r"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      5.2,
+      575.54
+     ],
+     "size": [
+      12.0,
+      160.0
+     ],
+     "rot": 198.0
+    }
+   ],
+   "material": "iron_dark"
+  },
+  {
+   "name": "rifle_r_body",
+   "z": 5.7,
+   "tags": [
+    "upper",
+    "arm_r",
+    "weapon_r",
+    "grip_r",
+    "side_r"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      37.34,
+      476.62
+     ],
+     "size": [
+      24.0,
+      68.0
+     ],
+     "rot": 198.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      52.66,
+      410.1
+     ],
+     "size": [
+      28.0,
+      68.0
+     ],
+     "rot": 206
+    }
+   ],
+   "material": "wood"
+  },
+  {
+   "name": "rifle_r_front_body",
+   "z": 6.3,
+   "tags": [
+    "upper",
+    "arm_r",
+    "weapon_r",
+    "grip_r",
+    "front_r"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      46.0,
+      438.0
+     ],
+     "size": [
+      44.0,
+      37.4
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      46.0,
+      466.0
+     ],
+     "size": [
+      24.2,
+      28.0
+     ]
+    }
+   ],
+   "material": "iron_dark",
+   "hidden": true
+  },
+  {
+   "name": "rifle_r_front_bore",
+   "z": 6.4,
+   "tags": [
+    "upper",
+    "arm_r",
+    "weapon_r",
+    "grip_r",
+    "front_r"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      46.0,
+      434.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ],
+   "material": "void",
+   "kind": "flat",
+   "hidden": true
+  }
+ ],
+ "frames": [
+  {
+   "name": "portrait"
+  }
+ ]
+}

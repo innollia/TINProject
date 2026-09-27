@@ -1,0 +1,36 @@
+{
+  "id": "b_quiet_ferry",
+  "title": "조용한 나룻배",
+  "seed_query": "나룻배",
+  "fragments": [
+    {
+      "id": "b1",
+      "body": "나룻배는 새벽 첫 배가 뜨기 전에 이미 강 건너편에 매여 있었다.",
+      "search_tags": ["나룻배", "새벽", "강", "건너편"],
+      "hover_reveals": [
+        { "span_from": 8, "span_to": 10, "hidden": "첫 배 시각표는 05:30 — 그런데 배는 04:00에 이미 건너가 있었다." }
+      ],
+      "relations": [ { "to": "b2", "kind": "contradicts" } ]
+    },
+    {
+      "id": "b2",
+      "body": "뱃사공은 밤새 이쪽 나루에서 배를 지켰다고 말했다.",
+      "search_tags": ["뱃사공", "나루", "밤"],
+      "hover_reveals": [],
+      "relations": [ { "to": "b1", "kind": "contradicts" } ]
+    },
+    {
+      "id": "b3",
+      "body": "젖은 밧줄이 건너편 말뚝에 감겨 있었고, 매듭은 서두른 흔적이 있었다.",
+      "search_tags": ["밧줄", "말뚝", "매듭", "건너편"],
+      "hover_reveals": [
+        { "span_from": 0, "span_to": 3, "hidden": "밧줄은 뱃사공이 쓰는 것과 다른 종류다." }
+      ],
+      "relations": []
+    }
+  ],
+  "completion": {
+    "required_ids": ["b1", "b2", "b3"],
+    "conclusion_query": "뱃사공"
+  }
+}

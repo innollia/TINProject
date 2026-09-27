@@ -259,7 +259,7 @@ static func sanitize_world(raw: Dictionary) -> Dictionary:
 		for key: String in ["x", "y", "angle", "vx", "vy", "av", "hp", "t", "tool_cooldown"]:
 			numbers.append(body.get(key, 0.0))
 		var finite: bool = _all_finite(numbers)
-		var held: bool = body.get("held", false) is bool and bool(body["held"]) and kind == BodyKind.TOOL_CARRIED and not held_seen
+		var held: bool = body.get("held", false) is bool and bool(body.get("held", false)) and kind == BodyKind.TOOL_CARRIED and not held_seen
 		if held:
 			held_seen = true
 		world["bodies"].append({
@@ -271,10 +271,10 @@ static func sanitize_world(raw: Dictionary) -> Dictionary:
 			"vx": clampf(_number(body.get("vx", 0.0), 0.0), -Tuning.MAX_LINEAR_VEL, Tuning.MAX_LINEAR_VEL),
 			"vy": clampf(_number(body.get("vy", 0.0), 0.0), -Tuning.MAX_LINEAR_VEL, Tuning.MAX_LINEAR_VEL),
 			"av": clampf(_number(body.get("av", 0.0), 0.0), -Tuning.MAX_ANGULAR_VEL, Tuning.MAX_ANGULAR_VEL),
-			"sleeping": body.get("sleeping", false) is bool and bool(body["sleeping"]),
+			"sleeping": body.get("sleeping", false) is bool and bool(body.get("sleeping", false)),
 			"hp": _number(body.get("hp", 3.0), 0.0),
-			"destroyed": (body.get("destroyed", false) is bool and bool(body["destroyed"])) or not finite,
-			"collected": body.get("collected", false) is bool and bool(body["collected"]),
+			"destroyed": (body.get("destroyed", false) is bool and bool(body.get("destroyed", false))) or not finite,
+			"collected": body.get("collected", false) is bool and bool(body.get("collected", false)),
 			"t": maxf(_number(body.get("t", 0.0), 0.0), 0.0),
 			"held": held,
 			"tool_id": String(body.get("tool_id", "")) if body.get("tool_id", "") is String else "",
@@ -313,7 +313,7 @@ static func _decode_bubble(value: Variant) -> Dictionary:
 	if not value is Dictionary:
 		return result
 	var raw: Dictionary = value
-	result["done"] = raw.get("done", false) is bool and bool(raw["done"])
+	result["done"] = raw.get("done", false) is bool and bool(raw.get("done", false))
 	if raw.get("states", {}) is Dictionary:
 		for key: Variant in raw["states"]:
 			var state: Variant = raw["states"][key]

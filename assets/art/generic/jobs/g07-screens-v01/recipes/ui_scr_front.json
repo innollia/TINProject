@@ -1,0 +1,247 @@
+{
+ "asset": "ui_scr_front",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Weather-map front strips: warm (half discs), cold (triangles), occluded (both).",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  96
+ ],
+ "pivot": [
+  0.0,
+  62.0
+ ],
+ "pivot_meaning": "left end of the front line; seamless every 384 px (Line2D texture)",
+ "seed": 88,
+ "style_override": {
+  "silhouette": false
+ },
+ "forms": [
+  {
+   "name": "line",
+   "z": 0,
+   "kind": "flat",
+   "material": "paint_red",
+   "tags": [
+    "front"
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      62.0
+     ],
+     "size": [
+      420.0,
+      6.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "warm",
+   "z": 1,
+   "kind": "flat",
+   "material": "paint_red",
+   "tags": [
+    "front",
+    "warm"
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      28.0,
+      14.0
+     ],
+     "half": "top",
+     "repeat": {
+      "line": [
+       [
+        32,
+        52
+       ],
+       [
+        352,
+        52
+       ]
+      ],
+      "count": 6
+     }
+    }
+   ],
+   "hidden": true
+  },
+  {
+   "name": "cold",
+   "z": 1,
+   "kind": "flat",
+   "material": "paint_teal",
+   "tags": [
+    "front",
+    "cold"
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      26.0,
+      20.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        32,
+        50
+       ],
+       [
+        352,
+        50
+       ]
+      ],
+      "count": 6
+     }
+    }
+   ],
+   "hidden": true
+  },
+  {
+   "name": "occ_semis",
+   "z": 1,
+   "kind": "flat",
+   "material": "paint_violet",
+   "tags": [
+    "front",
+    "occluded"
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      26.0,
+      13.0
+     ],
+     "half": "top",
+     "repeat": {
+      "line": [
+       [
+        32,
+        52
+       ],
+       [
+        352,
+        52
+       ]
+      ],
+      "count": 6
+     }
+    }
+   ],
+   "hidden": true
+  },
+  {
+   "name": "occ_tris",
+   "z": 1,
+   "kind": "flat",
+   "material": "paint_violet",
+   "tags": [
+    "front",
+    "occluded"
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      22.0,
+      17.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        64,
+        51
+       ],
+       [
+        384,
+        51
+       ]
+      ],
+      "count": 6
+     }
+    }
+   ],
+   "hidden": true
+  }
+ ],
+ "frames": [
+  {
+   "name": "warm",
+   "show": [
+    "warm"
+   ],
+   "materials": {
+    "front": "paint_red"
+   }
+  },
+  {
+   "name": "cold",
+   "show": [
+    "cold"
+   ],
+   "materials": {
+    "front": "paint_teal"
+   }
+  },
+  {
+   "name": "occluded",
+   "show": [
+    "occluded"
+   ],
+   "materials": {
+    "front": "paint_violet"
+   }
+  }
+ ]
+}

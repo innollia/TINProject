@@ -1,0 +1,239 @@
+{
+ "asset": "ui_ctl_jack",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Switchboard jack socket, empty and with a plug in it (cord hangs down).",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "socket centre",
+ "seed": 20,
+ "forms": [
+  {
+   "name": "nut",
+   "z": 0,
+   "material": "steel",
+   "shade": {
+    "bump": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      108.0,
+      108.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "washer",
+   "z": 1,
+   "material": "bronze",
+   "shade": {
+    "bump": 1.1
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      74.0,
+      74.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hole",
+   "z": 2,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      38.0,
+      38.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hole_ring",
+   "z": 2.1,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      42.0,
+      42.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      37.0,
+      37.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "cord",
+   "z": 3,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      172.0
+     ],
+     "size": [
+      18.0,
+      70.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 8
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "plugged"
+   ]
+  },
+  {
+   "name": "relief",
+   "z": 3.5,
+   "material": "rubber",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      130.0
+     ],
+     "size": [
+      32.0,
+      44.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 11
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "plugged"
+   ]
+  },
+  {
+   "name": "plug_face",
+   "z": 4,
+   "material": "bronze",
+   "shade": {
+    "bump": 1.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      50.0,
+      50.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "plugged"
+   ]
+  },
+  {
+   "name": "plug_ring",
+   "z": 4.2,
+   "kind": "flat",
+   "material": "bronze_block",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      34.0,
+      34.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "plugged"
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "empty"
+  },
+  {
+   "name": "plugged",
+   "show": [
+    "plugged"
+   ]
+  }
+ ]
+}

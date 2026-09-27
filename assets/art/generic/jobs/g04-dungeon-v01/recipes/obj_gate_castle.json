@@ -1,0 +1,1303 @@
+{
+ "asset": "obj_gate_castle",
+ "status": "candidate",
+ "note": "Castle gate for a 2.6 x 3.4 m arched opening: stone jambs and arch with voussoir joints, two heavy studded oak leaves with iron bands and ring handles. Frames: closed, open (leaves swung inward, seen through the dark opening).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 516,
+ "pivot_meaning": "bottom centre of the opening on the wall-face floor line (threshold)",
+ "layer_hint": "world",
+ "canvas": [
+  736,
+  518
+ ],
+ "pivot": [
+  364,
+  439
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.32,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "at": [
+      368,
+      443
+     ],
+     "size": [
+      618,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "void",
+   "z": 2.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "grad": {
+    "to": "well_inner",
+    "y0": -357,
+    "y1": 0,
+    "curve": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       6.32
+      ],
+      [
+       2.72,
+       4.16
+      ],
+      [
+       4.4,
+       2.6
+      ],
+      [
+       8.0,
+       2.0
+      ],
+      [
+       11.6,
+       2.6
+      ],
+      [
+       13.28,
+       4.16
+      ],
+      [
+       14,
+       6.32
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      364,
+      260.5
+     ],
+     "size": [
+      468,
+      357
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf_open0",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "clip_to": "void",
+   "texture": {
+    "angle": 90
+   },
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       5.6
+      ],
+      [
+       14,
+       2.0
+      ],
+      [
+       14,
+       10.4
+      ],
+      [
+       2,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      214,
+      270.5
+     ],
+     "size": [
+      90,
+      417
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf_open1",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "clip_to": "void",
+   "texture": {
+    "angle": 90
+   },
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       2.0
+      ],
+      [
+       14,
+       5.6
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       2,
+       10.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      514,
+      270.5
+     ],
+     "size": [
+      90,
+      417
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaves",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "closed"
+   ],
+   "shade": {
+    "bump": 0.3
+   },
+   "texture": {
+    "angle": 90
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       6.32
+      ],
+      [
+       2.72,
+       4.16
+      ],
+      [
+       4.4,
+       2.6
+      ],
+      [
+       8.0,
+       2.0
+      ],
+      [
+       11.6,
+       2.6
+      ],
+      [
+       13.28,
+       4.16
+      ],
+      [
+       14,
+       6.32
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      364,
+      260.5
+     ],
+     "size": [
+      468,
+      357
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf_joints",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "tags": [
+    "closed"
+   ],
+   "opacity": 0.6,
+   "clip_to": "leaves",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      188,
+      280.5
+     ],
+     "size": [
+      2.4,
+      317
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      246,
+      280.5
+     ],
+     "size": [
+      2.4,
+      317
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      306,
+      280.5
+     ],
+     "size": [
+      2.4,
+      317
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      422,
+      280.5
+     ],
+     "size": [
+      2.4,
+      317
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      482,
+      280.5
+     ],
+     "size": [
+      2.4,
+      317
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      540,
+      280.5
+     ],
+     "size": [
+      2.4,
+      317
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      364,
+      260.5
+     ],
+     "size": [
+      5,
+      357
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bands",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "clip_to": "leaves",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      364,
+      139
+     ],
+     "size": [
+      468,
+      16
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      364,
+      249
+     ],
+     "size": [
+      468,
+      16
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      364,
+      369
+     ],
+     "size": [
+      468,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "studs",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "bronze",
+   "tags": [
+    "closed"
+   ],
+   "clip_to": "leaves",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      139
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      139
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      234,
+      139
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      274,
+      139
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      314,
+      139
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      354,
+      139
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      394,
+      139
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      434,
+      139
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      474,
+      139
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      514,
+      139
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      554,
+      139
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      249
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      249
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      234,
+      249
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      274,
+      249
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      314,
+      249
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      354,
+      249
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      394,
+      249
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      434,
+      249
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      474,
+      249
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      514,
+      249
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      554,
+      249
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      369
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      369
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      234,
+      369
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      274,
+      369
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      314,
+      369
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      354,
+      369
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      394,
+      369
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      434,
+      369
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      474,
+      369
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      514,
+      369
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      554,
+      369
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rings",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      332,
+      289
+     ],
+     "size": [
+      30,
+      30
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      396,
+      289
+     ],
+     "size": [
+      30,
+      30
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      332,
+      289
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      396,
+      289
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "jamb0",
+   "z": 10.0,
+   "kind": "block",
+   "material": "stone",
+   "extrude": 250,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      98.0,
+      169.0
+     ],
+     "size": [
+      64,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jamb2",
+   "z": 11.0,
+   "kind": "block",
+   "material": "stone",
+   "extrude": 250,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      630.0,
+      169.0
+     ],
+     "size": [
+      64,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arch_stones",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "stone",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       6.32
+      ],
+      [
+       2.72,
+       4.16
+      ],
+      [
+       4.4,
+       2.6
+      ],
+      [
+       8.0,
+       2.0
+      ],
+      [
+       11.6,
+       2.6
+      ],
+      [
+       13.28,
+       4.16
+      ],
+      [
+       14,
+       6.32
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      364,
+      238.5
+     ],
+     "size": [
+      596,
+      401
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       6.32
+      ],
+      [
+       2.72,
+       4.16
+      ],
+      [
+       4.4,
+       2.6
+      ],
+      [
+       8.0,
+       2.0
+      ],
+      [
+       11.6,
+       2.6
+      ],
+      [
+       13.28,
+       4.16
+      ],
+      [
+       14,
+       6.32
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      364,
+      261.5
+     ],
+     "size": [
+      466,
+      359
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "arch_joints",
+   "z": 13.0,
+   "kind": "flat",
+   "material": "floor_joint",
+   "opacity": 0.55,
+   "clip_to": "arch_stones",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      104.01,
+      186.36
+     ],
+     "size": [
+      59.21635443618481,
+      3
+     ],
+     "rot": -176.23372507295247
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      135.37,
+      140.95
+     ],
+     "size": [
+      53.15486807433539,
+      3
+     ],
+     "rot": -167.8363258806639
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      194.3,
+      103.93
+     ],
+     "size": [
+      42.21229838580935,
+      3
+     ],
+     "rot": -156.01469797114174
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      273.71,
+      79.76
+     ],
+     "size": [
+      29.397027609531,
+      3
+     ],
+     "rot": -134.27243370585472
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      364.0,
+      71.37
+     ],
+     "size": [
+      22.399999999999977,
+      3
+     ],
+     "rot": -90.00000000000001
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      454.29,
+      79.76
+     ],
+     "size": [
+      29.397027609531033,
+      3
+     ],
+     "rot": -45.72756629414539
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      533.7,
+      103.93
+     ],
+     "size": [
+      42.21229838580935,
+      3
+     ],
+     "rot": -23.985302028858246
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      592.63,
+      140.95
+     ],
+     "size": [
+      53.15486807433539,
+      3
+     ],
+     "rot": -12.163674119336095
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      623.99,
+      186.36
+     ],
+     "size": [
+      59.216354436184815,
+      3
+     ],
+     "rot": -3.7662749270475646
+    }
+   ]
+  },
+  {
+   "name": "keystone",
+   "z": 14.0,
+   "kind": "flat",
+   "material": "stone_dark",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3.2,
+       2
+      ],
+      [
+       12.8,
+       2
+      ],
+      [
+       10.4,
+       14
+      ],
+      [
+       5.6,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      364,
+      76
+     ],
+     "size": [
+      40,
+      44
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "closed",
+   "state": "closed"
+  },
+  {
+   "name": "open",
+   "state": "open",
+   "hide": [
+    "closed"
+   ],
+   "show": [
+    "open"
+   ]
+  }
+ ]
+}

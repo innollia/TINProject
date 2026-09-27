@@ -151,6 +151,7 @@ const COMBAT_LIMIT: int = 240
 const SETTLE_FRAME_COUNT: int = 4
 const WATCHDOG_SECONDS: float = 900.0
 const CLIP_TOLERANCE: float = 0.5
+const READING_BODY_FONT_SIZE: int = 24
 
 var _output_directory: String = ""
 var _requested_states: Array[StringName] = []
@@ -477,6 +478,7 @@ func _collect(state_name: StringName, requested_size: Vector2i) -> Dictionary:
 			if not clip.is_empty():
 				clipped.append(clip)
 	var surfaces: Array[String] = _surface_violations(screen)
+	var small_reading: Array[String] = _small_reading_text(screen)
 	return {
 		"label": _label(state_name, requested_size),
 		"state": String(state_name),
@@ -496,7 +498,32 @@ func _collect(state_name: StringName, requested_size: Vector2i) -> Dictionary:
 		"ap_labels": ap_labels,
 		"clipped_text": clipped,
 		"surface_overflow": surfaces,
+		"small_reading_text": small_reading,
 	}
+
+
+func _small_reading_text(screen: TopDownActionRpgScreen) -> Array[String]:
+	var found: Array[String] = []
+	var body: Node = screen.get_node_or_null("%DocumentBody")
+	if body == null or not (body as CanvasItem).is_visible_in_tree():
+		return found
+	var floor_size: int = READING_BODY_FONT_SIZE
+	var conversation: TopDownActionRpgConversationController = _conversation_of()
+	var catalog: TopDownActionRpgContentLoader.Catalog = screen.catalog
+	if conversation != null and catalog != null:
+		var record: Dictionary = catalog.record(String(conversation.document_id))
+		var reading: Dictionary = record.get("reading", {}) if record.get("reading", {}) is Dictionary else {}
+		floor_size = maxi(floor_size, int(reading.get("min_font_size", 0)))
+	for row: Node in body.get_children():
+		if not row is TopDownActionRpgRow or not (row as CanvasItem).is_visible_in_tree():
+			continue
+		var label: Label = row.get_node_or_null("Text") as Label
+		if label == null or label.text.strip_edges().is_empty():
+			continue
+		var size: int = label.get_theme_font_size("font_size")
+		if size < floor_size:
+			found.append("%s font_size=%d required=%d" % [String(screen.get_path_to(label)), size, floor_size])
+	return found
 
 
 func _surface_violations(screen: TopDownActionRpgScreen) -> Array[String]:
@@ -564,6 +591,9 @@ func _record_violations(state_name: StringName, requested_size: Vector2i, report
 	var surfaces: Array = report.get("surface_overflow", []) if report.get("surface_overflow", []) is Array else []
 	if not surfaces.is_empty():
 		_violations.append({"kind": "surface_overflow", "target": label, "detail": surfaces, "severity": "blocking"})
+	var small_reading: Array = report.get("small_reading_text", []) if report.get("small_reading_text", []) is Array else []
+	if not small_reading.is_empty():
+		_violations.append({"kind": "small_reading_text", "target": label, "detail": small_reading, "severity": "blocking"})
 	var root_size: Array = report.get("root_size", []) if report.get("root_size", []) is Array else []
 	if not _headless and (root_size.size() != 2 or int(root_size[0]) != requested_size.x or int(root_size[1]) != requested_size.y):
 		_violations.append({

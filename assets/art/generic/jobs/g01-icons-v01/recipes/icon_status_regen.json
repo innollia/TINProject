@@ -1,0 +1,384 @@
+{
+ "asset": "icon_status_regen",
+ "status": "candidate",
+ "note": "Status badge: two green leaves inside a looping arrow (healing over time).",
+ "palette": "palette_g01.json",
+ "style": "icon",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 12580,
+ "meta": {
+  "kind": "icon",
+  "stage": "C",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "badge",
+   "z": 0,
+   "material": "plate",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      106.0,
+      106.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "badge_tint",
+   "z": 0.5,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      96.0,
+      96.0
+     ]
+    }
+   ],
+   "color": "tint_heal",
+   "clip_to": "badge",
+   "opacity": 0.95,
+   "grad": {
+    "to": "plate_low",
+    "y0": 16,
+    "y1": 112
+   }
+  },
+  {
+   "name": "badge_rim",
+   "z": 5,
+   "material": "silver",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      112.0,
+      112.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      98.0,
+      98.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "glow",
+   "z": 1,
+   "kind": "flat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      76.0,
+      76.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      62.0,
+      62.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      87.49,
+      42.35
+     ],
+     "size": [
+      46.98,
+      43.3
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       8.3851,
+       2.0
+      ],
+      [
+       9.6258,
+       2.8855
+      ],
+      [
+       10.7634,
+       3.9212
+      ],
+      [
+       11.7825,
+       5.0933
+      ],
+      [
+       12.6693,
+       6.3858
+      ],
+      [
+       13.4118,
+       7.7813
+      ],
+      [
+       14.0,
+       9.2608
+      ]
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      86.0,
+      37.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       2.0,
+       14.0
+      ]
+     ],
+     "rot": 30
+    }
+   ],
+   "blur": 4,
+   "opacity": 0.5,
+   "color": "glow_heal",
+   "clip_to": "badge"
+  },
+  {
+   "name": "loop",
+   "z": 2,
+   "kind": "flat",
+   "material": "fx_heal",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      76.0,
+      76.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      64.0
+     ],
+     "size": [
+      62.0,
+      62.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      87.49,
+      42.35
+     ],
+     "size": [
+      46.98,
+      43.3
+     ],
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       8.3851,
+       2.0
+      ],
+      [
+       9.6258,
+       2.8855
+      ],
+      [
+       10.7634,
+       3.9212
+      ],
+      [
+       11.7825,
+       5.0933
+      ],
+      [
+       12.6693,
+       6.3858
+      ],
+      [
+       13.4118,
+       7.7813
+      ],
+      [
+       14.0,
+       9.2608
+      ]
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      86.0,
+      37.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "poly": [
+      [
+       2.0,
+       2.0
+      ],
+      [
+       14.0,
+       8.0
+      ],
+      [
+       2.0,
+       14.0
+      ]
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "leaves",
+   "z": 2.5,
+   "material": "herb",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      56.0,
+      66.0
+     ],
+     "size": [
+      18.0,
+      34.0
+     ],
+     "rot": -35
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      72.0,
+      66.0
+     ],
+     "size": [
+      18.0,
+      34.0
+     ],
+     "rot": 35
+    }
+   ]
+  },
+  {
+   "name": "veins",
+   "z": 2.7,
+   "kind": "flat",
+   "material": "herb_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      56.0,
+      66.0
+     ],
+     "size": [
+      1.5,
+      24.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": -35
+    },
+    {
+     "icon": "square",
+     "at": [
+      72.0,
+      66.0
+     ],
+     "size": [
+      1.5,
+      24.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "rot": 35
+    }
+   ],
+   "clip_to": "leaves",
+   "opacity": 0.7
+  }
+ ]
+}

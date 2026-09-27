@@ -1,0 +1,178 @@
+{
+ "status": "candidate",
+ "note": "Stage 01 layout. items = objects drawn by compose_preview.py; characters = placements for the game only (never composited in review images); exits = transition hotspot polygons.",
+ "background": "output/bg_s01_lab/bg_s01_lab.png",
+ "scale": 0.5,
+ "items": [
+  {
+   "asset": "obj_s01_stim_desk",
+   "at": [
+    1030.0,
+    722.5
+   ],
+   "id": "stim_desk"
+  },
+  {
+   "asset": "obj_s01_printer_two_sheets",
+   "at": [
+    807.5,
+    818.8
+   ],
+   "id": "printer",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_task_board",
+   "at": [
+    2080.0,
+    538.0
+   ],
+   "id": "task_board",
+   "interactive": true,
+   "layer": "floor"
+  },
+  {
+   "asset": "obj_s01_wall_clock",
+   "frame": "t0213",
+   "at": [
+    1867.5,
+    215.8
+   ],
+   "id": "clock",
+   "layer": "floor"
+  },
+  {
+   "asset": "obj_s01_lab_bench",
+   "at": [
+    1330.0,
+    1047.5
+   ],
+   "id": "bench",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_bloody_gauze",
+   "at": [
+    1080.0,
+    1197.5
+   ],
+   "id": "gauze",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_first_aid_open",
+   "at": [
+    1175.9,
+    1248.0
+   ],
+   "id": "first_aid",
+   "sort_y": 1230.0
+  },
+  {
+   "asset": "obj_s01_disinfect_floor",
+   "at": [
+    905.0,
+    1079.5
+   ],
+   "id": "disinfectant"
+  },
+  {
+   "asset": "obj_s01_lens_case_broken",
+   "at": [
+    978.5,
+    996.5
+   ],
+   "id": "lens_case",
+   "interactive": true,
+   "sort_y": 1098.5
+  }
+ ],
+ "characters": [
+  {
+   "asset": "chr_s01_mira_seated_injured",
+   "at": [
+    1055.0,
+    1097.5
+   ]
+  },
+  {
+   "asset": "chr_s01_grell_tending",
+   "at": [
+    1305.0,
+    1260.0
+   ]
+  },
+  {
+   "asset": "chr_s01_ed_door",
+   "at": [
+    2305.0,
+    1235.0
+   ]
+  }
+ ],
+ "exits": {
+  "trans_lab_to_booth": [
+   [
+    742.5,
+    106.8
+   ],
+   [
+    280.0,
+    338.0
+   ],
+   [
+    280.0,
+    690.0
+   ],
+   [
+    742.5,
+    458.8
+   ]
+  ],
+  "trans_lab_to_locker": [
+   [
+    1580.0,
+    88.0
+   ],
+   [
+    1805.0,
+    200.5
+   ],
+   [
+    1805.0,
+    872.5
+   ],
+   [
+    1580.0,
+    760.0
+   ]
+  ],
+  "trans_lab_to_corridor": [
+   [
+    2305.0,
+    434.5
+   ],
+   [
+    2530.0,
+    547.0
+   ],
+   [
+    2530.0,
+    1235.0
+   ],
+   [
+    2305.0,
+    1122.5
+   ]
+  ]
+ },
+ "hotspots": {
+  "hotspot_lab_bench": "chr_s01_mira_seated_injured",
+  "hotspot_lab_lens_case": "obj_s01_lens_case_broken",
+  "hotspot_lab_stim_calibration": "obj_s01_printer_two_sheets#sheet_calibration",
+  "hotspot_lab_stim_behavior": "obj_s01_printer_two_sheets#sheet_behavior",
+  "hotspot_lab_task_board": "obj_s01_task_board",
+  "hotspot_lab_grell_gauze": "chr_s01_grell_tending + obj_s01_bloody_gauze"
+ },
+ "out": "preview/scene_s01_lab_bg_objects_1280x720.png"
+}

@@ -1,0 +1,1023 @@
+{
+ "asset": "obj_piano",
+ "status": "candidate",
+ "note": "Upright piano 1.5 m wide, 1.3 m high against a wall: dark lacquered case, candle brackets (unlit), keyboard shelf, pedals. Frames: closed (fallboard down), open (keys visible).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 618,
+ "pivot_meaning": "front-bottom centre on the floor; the back face stands on the wall line",
+ "layer_hint": "world",
+ "canvas": [
+  420,
+  344
+ ],
+ "pivot": [
+  202,
+  268
+ ],
+ "footprint": [
+  67,
+  174,
+  337,
+  268
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.34,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 14
+     },
+     "at": [
+      210,
+      224
+     ],
+     "size": [
+      290,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "case",
+   "z": 2.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 136,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      202,
+      63.0
+     ],
+     "size": [
+      270,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "panel",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "wood",
+   "opacity": 0.5,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      202,
+      136.0
+     ],
+     "size": [
+      220,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brackets",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "gold",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      92,
+      136.0
+     ],
+     "size": [
+      6,
+      20
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      312,
+      136.0
+     ],
+     "size": [
+      6,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "legs",
+   "z": 5.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 60,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      78,
+      186.0
+     ],
+     "size": [
+      14,
+      40
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      326,
+      186.0
+     ],
+     "size": [
+      14,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lower",
+   "z": 6.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 58,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      202,
+      166.0
+     ],
+     "size": [
+      250,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pedals",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "gold",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      186,
+      256
+     ],
+     "size": [
+      12,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      202,
+      256
+     ],
+     "size": [
+      12,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      218,
+      256
+     ],
+     "size": [
+      12,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "keybed",
+   "z": 8.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 12,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      202,
+      172.0
+     ],
+     "size": [
+      270,
+      48
+     ]
+    }
+   ]
+  },
+  {
+   "name": "keys_white",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "paper",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      202,
+      174.0
+     ],
+     "size": [
+      250,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "name": "keys_joints",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "paper_mark",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      80,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      90,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      100,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      110,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      120,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      130,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      140,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      150,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      160,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      170,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      180,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      190,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      200,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      210,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      220,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      230,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      240,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      250,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      260,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      270,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      280,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      290,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      300,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      310,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 0.6
+     },
+     "at": [
+      320,
+      174.0
+     ],
+     "size": [
+      1.2,
+      32
+     ]
+    }
+   ]
+  },
+  {
+   "name": "keys_black",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "soot",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      85,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      95,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      115,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      125,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      135,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      155,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      165,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      185,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      195,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      205,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      225,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      235,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      255,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      265,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      275,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      295,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      305,
+      166.0
+     ],
+     "size": [
+      6,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fallboard",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "tags": [
+    "closed"
+   ],
+   "shade": {
+    "bump": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      202,
+      172.0
+     ],
+     "size": [
+      262,
+      40
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "closed",
+   "state": "closed"
+  },
+  {
+   "name": "open",
+   "state": "open",
+   "hide": [
+    "closed"
+   ],
+   "show": [
+    "open"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,869 @@
+{
+ "asset": "tengu",
+ "status": "candidate",
+ "note": "Tengu, front view. Red-faced mountain goblin with a very long nose, bristling pale brows and beard, a small black cap, black feathered wings, dark blue mountain-ascetic robe with pom-pom sash, tall one-toothed wooden sandals, feather fan in hand.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  192,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 721,
+ "g05": {
+  "name_ko": "텐구",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      361.6
+     ],
+     "size": [
+      190.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wing_l",
+   "tags": [
+    "all",
+    "wings"
+   ],
+   "z": 0.5,
+   "material": "feather_black",
+   "pieces": [
+    {
+     "icon": "wing",
+     "at": [
+      140.9,
+      108.5
+     ],
+     "size": [
+      170.0,
+      150.0
+     ],
+     "rot": 30.0,
+     "fit": "box",
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "wing_r",
+   "tags": [
+    "all",
+    "wings"
+   ],
+   "z": 0.5,
+   "material": "feather_black",
+   "pieces": [
+    {
+     "icon": "wing",
+     "at": [
+      243.1,
+      108.5
+     ],
+     "size": [
+      170.0,
+      150.0
+     ],
+     "rot": -30.0,
+     "fit": "box"
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1,
+   "material": "cloth_blue",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      171.7,
+      251.5
+     ],
+     "size": [
+      24.8,
+      72.1
+     ],
+     "rot": 6.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      168.2,
+      309.2
+     ],
+     "size": [
+      22.5,
+      60.4
+     ],
+     "rot": -0.1
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1.1,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      163.9,
+      340.0
+     ],
+     "size": [
+      36.0,
+      15.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1,
+   "material": "cloth_blue",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      212.3,
+      251.5
+     ],
+     "size": [
+      24.8,
+      72.1
+     ],
+     "rot": -6.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      215.8,
+      309.2
+     ],
+     "size": [
+      22.5,
+      60.4
+     ],
+     "rot": 0.1
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1.1,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      220.1,
+      340.0
+     ],
+     "size": [
+      36.0,
+      15.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "geta_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.3,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      168.2,
+      352.0
+     ],
+     "size": [
+      40.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      168.2,
+      362.0
+     ],
+     "size": [
+      10.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "geta_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.3,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      215.8,
+      352.0
+     ],
+     "size": [
+      40.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      215.8,
+      362.0
+     ],
+     "size": [
+      10.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "robe",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3,
+   "material": "cloth_blue",
+   "pieces": [
+    {
+     "icon": "bell",
+     "at": [
+      192.0,
+      220.0
+     ],
+     "size": [
+      150.0,
+      200.0
+     ],
+     "crop": [
+      1.6,
+      1.4,
+      14.4,
+      11.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sash",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.3,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      212.0
+     ],
+     "size": [
+      110.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pompoms",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.4,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      162.0,
+      166.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182.0,
+      166.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      202.0,
+      166.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      222.0,
+      166.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4,
+   "material": "cloth_blue",
+   "pivot": [
+    147.0,
+    130.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      139.1,
+      154.5
+     ],
+     "size": [
+      27.3,
+      61.0
+     ],
+     "rot": 17.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      134.1,
+      204.5
+     ],
+     "size": [
+      25.4,
+      60.3
+     ],
+     "rot": -6.4
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.2,
+   "material": "oni_red",
+   "pivot": [
+    147.0,
+    130.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      137.0,
+      232.1
+     ],
+     "size": [
+      21.5,
+      21.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4,
+   "material": "cloth_blue",
+   "pivot": [
+    237.0,
+    130.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      250.0,
+      170.0
+     ],
+     "size": [
+      27.3,
+      93.7
+     ],
+     "rot": -18.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      265.0,
+      190.0
+     ],
+     "size": [
+      25.4,
+      49.1
+     ],
+     "rot": -174.3
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.2,
+   "material": "oni_red",
+   "pivot": [
+    237.0,
+    130.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      267.0,
+      172.1
+     ],
+     "size": [
+      21.5,
+      21.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fan",
+   "tags": [
+    "all",
+    "fan"
+   ],
+   "z": 4.5,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "feather",
+     "at": [
+      243.0,
+      136.0
+     ],
+     "size": [
+      18.0,
+      50.0
+     ],
+     "rot": -36.0
+    },
+    {
+     "icon": "feather",
+     "at": [
+      255.0,
+      136.0
+     ],
+     "size": [
+      18.0,
+      50.0
+     ],
+     "rot": -18.0
+    },
+    {
+     "icon": "feather",
+     "at": [
+      267.0,
+      136.0
+     ],
+     "size": [
+      18.0,
+      50.0
+     ]
+    },
+    {
+     "icon": "feather",
+     "at": [
+      279.0,
+      136.0
+     ],
+     "size": [
+      18.0,
+      50.0
+     ],
+     "rot": 18.0
+    },
+    {
+     "icon": "feather",
+     "at": [
+      291.0,
+      136.0
+     ],
+     "size": [
+      18.0,
+      50.0
+     ],
+     "rot": 36.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7,
+   "material": "oni_red",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      97.1
+     ],
+     "size": [
+      60.0,
+      64.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "beard",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.1,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      192.0,
+      127.1
+     ],
+     "size": [
+      64.0,
+      40.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.3,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      85.1
+     ],
+     "size": [
+      26.0,
+      12.0
+     ],
+     "rot": -14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      208.0,
+      85.1
+     ],
+     "size": [
+      26.0,
+      12.0
+     ],
+     "rot": 14.0
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.25,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      95.1
+     ],
+     "size": [
+      9.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      95.1
+     ],
+     "size": [
+      9.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.35,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      92.9
+     ],
+     "size": [
+      2.7,
+      2.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      204.0,
+      92.9
+     ],
+     "size": [
+      2.7,
+      2.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nose",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.5,
+   "material": "oni_red",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      99.1
+     ],
+     "size": [
+      18.0,
+      18.0
+     ],
+     "rot": 10.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      190.4,
+      105.3
+     ],
+     "size": [
+      16.9,
+      16.9
+     ],
+     "rot": 18.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      187.9,
+      111.5
+     ],
+     "size": [
+      15.7,
+      15.7
+     ],
+     "rot": 25.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.5,
+      117.5
+     ],
+     "size": [
+      14.6,
+      14.6
+     ],
+     "rot": 32.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.2,
+      123.5
+     ],
+     "size": [
+      13.4,
+      14.3
+     ],
+     "rot": 38.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      175.1,
+      129.5
+     ],
+     "size": [
+      12.3,
+      14.3
+     ],
+     "rot": 43.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      169.0,
+      135.3
+     ],
+     "size": [
+      11.1,
+      14.3
+     ],
+     "rot": 48.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      162.0,
+      141.1
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "rot": 52.4
+    }
+   ]
+  },
+  {
+   "name": "cap",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.6,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      192.0,
+      65.1
+     ],
+     "size": [
+      26.0,
+      20.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

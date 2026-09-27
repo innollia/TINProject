@@ -1,0 +1,312 @@
+{
+ "asset": "obj_wall_shackles",
+ "status": "candidate",
+ "note": "Wall shackles (dark fantasy): riveted iron plate with two chains ending in open cuffs, rust.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 526,
+ "pivot_meaning": "centre of the wall plate = attach point on the wall face",
+ "layer_hint": "wall",
+ "canvas": [
+  234,
+  258
+ ],
+ "pivot": [
+  109,
+  87
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.22,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "at": [
+      117,
+      117
+     ],
+     "size": [
+      110,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "iron",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      109,
+      87
+     ],
+     "size": [
+      96,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate_rivets",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      71,
+      87
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      147,
+      87
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      109,
+      87
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "chains",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "link",
+     "at": [
+      79,
+      107
+     ],
+     "size": 16,
+     "rot": -45
+    },
+    {
+     "icon": "link",
+     "at": [
+      77,
+      120
+     ],
+     "size": 16,
+     "rot": 45
+    },
+    {
+     "icon": "link",
+     "at": [
+      75,
+      133
+     ],
+     "size": 16,
+     "rot": -45
+    },
+    {
+     "icon": "link",
+     "at": [
+      73,
+      146
+     ],
+     "size": 16,
+     "rot": 45
+    },
+    {
+     "icon": "link",
+     "at": [
+      71,
+      159
+     ],
+     "size": 16,
+     "rot": -45
+    },
+    {
+     "icon": "link",
+     "at": [
+      69,
+      172
+     ],
+     "size": 16,
+     "rot": 45
+    },
+    {
+     "icon": "link",
+     "at": [
+      67,
+      185
+     ],
+     "size": 16,
+     "rot": -45
+    },
+    {
+     "icon": "link",
+     "at": [
+      139,
+      107
+     ],
+     "size": 16,
+     "rot": -45
+    },
+    {
+     "icon": "link",
+     "at": [
+      142,
+      120
+     ],
+     "size": 16,
+     "rot": 45
+    },
+    {
+     "icon": "link",
+     "at": [
+      145,
+      133
+     ],
+     "size": 16,
+     "rot": -45
+    },
+    {
+     "icon": "link",
+     "at": [
+      148,
+      146
+     ],
+     "size": 16,
+     "rot": 45
+    },
+    {
+     "icon": "link",
+     "at": [
+      151,
+      159
+     ],
+     "size": 16,
+     "rot": -45
+    },
+    {
+     "icon": "link",
+     "at": [
+      154,
+      172
+     ],
+     "size": 16,
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "cuffs",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "grime": {
+    "stamps": [
+     "metaballs",
+     "sponge"
+    ],
+    "size": 10,
+    "soft": 1,
+    "density": 0.5,
+    "strength": 0.4,
+    "color": "rust"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      65,
+      207
+     ],
+     "size": [
+      34,
+      24
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      65,
+      207
+     ],
+     "size": [
+      22,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      157,
+      195
+     ],
+     "size": [
+      34,
+      24
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      157,
+      195
+     ],
+     "size": [
+      22,
+      14
+     ],
+     "op": "sub"
+    }
+   ]
+  }
+ ]
+}

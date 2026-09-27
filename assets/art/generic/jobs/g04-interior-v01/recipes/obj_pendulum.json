@@ -1,0 +1,237 @@
+{
+ "asset": "obj_pendulum",
+ "status": "candidate",
+ "note": "Great pendulum 2.4 m (gothic clockwork): dark wooden A-frame on a plinth, brass suspension and a long rod with a heavy brass bob.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 621,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  350,
+  396
+ ],
+ "pivot": [
+  167,
+  320
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.34,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "at": [
+      175,
+      290
+     ],
+     "size": [
+      220,
+      80
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plinth",
+   "z": 2.0,
+   "kind": "block",
+   "material": "stone_dark",
+   "extrude": 18,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      167,
+      267.0
+     ],
+     "size": [
+      210,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "frame",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      118.0,
+      186.0
+     ],
+     "size": [
+      242.33035303073365,
+      16
+     ],
+     "rot": -73.21016962881527
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      216.0,
+      186.0
+     ],
+     "size": [
+      242.33035303073365,
+      16
+     ],
+     "rot": -106.78983037118475
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      167.0,
+      230.0
+     ],
+     "size": [
+      124.0,
+      10
+     ],
+     "rot": 0.0
+    }
+   ]
+  },
+  {
+   "name": "crown",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      167,
+      66
+     ],
+     "size": [
+      60,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      167,
+      48
+     ],
+     "size": [
+      26,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rod",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      167,
+      150
+     ],
+     "size": [
+      5,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bob",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "gold",
+   "shade": {
+    "bump": 1.2,
+    "highlight_amount": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      167,
+      236
+     ],
+     "size": [
+      64,
+      64
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bob_ring",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "bronze",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      167,
+      236
+     ],
+     "size": [
+      44,
+      44
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      167,
+      236
+     ],
+     "size": [
+      36,
+      36
+     ],
+     "op": "sub"
+    }
+   ]
+  }
+ ]
+}

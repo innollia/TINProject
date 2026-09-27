@@ -1,0 +1,583 @@
+{
+ "asset": "obj_chandelier",
+ "status": "candidate",
+ "note": "Gothic chandelier hanging at 2.2 m: chain, gold stem and ring, six glass lamp globes. Frames: off, on (globes lit, emit). Hangs above characters (layer_hint overhead).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 611,
+ "pivot_meaning": "floor point directly below the fixture (drawn at its hanging height above it)",
+ "layer_hint": "overhead",
+ "canvas": [
+  318,
+  490
+ ],
+ "pivot": [
+  159,
+  386
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.18,
+   "blur": 12,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      386
+     ],
+     "size": [
+      170,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "chain",
+   "z": 2.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      44
+     ],
+     "size": [
+      7,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      56
+     ],
+     "size": [
+      7,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      68
+     ],
+     "size": [
+      7,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      80
+     ],
+     "size": [
+      7,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      92
+     ],
+     "size": [
+      7,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      104
+     ],
+     "size": [
+      7,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      116
+     ],
+     "size": [
+      7,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      128
+     ],
+     "size": [
+      7,
+      11
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      140
+     ],
+     "size": [
+      7,
+      11
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stem",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      159,
+      120
+     ],
+     "size": [
+      12,
+      60
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      88
+     ],
+     "size": [
+      20,
+      14
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      158
+     ],
+     "size": [
+      26,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ring",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "gold",
+   "shade": {
+    "bump": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      154
+     ],
+     "size": [
+      176,
+      62
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      154
+     ],
+     "size": [
+      156,
+      48
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "cups_back",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "gold",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      82.79,
+      142.5
+     ],
+     "size": [
+      20,
+      9
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159.0,
+      127.0
+     ],
+     "size": [
+      20,
+      9
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      235.21,
+      142.5
+     ],
+     "size": [
+      20,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "globes_back_off",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      82.79,
+      128.5
+     ],
+     "size": [
+      18,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159.0,
+      113.0
+     ],
+     "size": [
+      18,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      235.21,
+      128.5
+     ],
+     "size": [
+      18,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "globes_back_on",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "glass",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.95,
+   "glow": {
+    "radius": 7,
+    "opacity": 0.55,
+    "color": "lamp_glow"
+   },
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      82.79,
+      128.5
+     ],
+     "size": [
+      18,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159.0,
+      113.0
+     ],
+     "size": [
+      18,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      235.21,
+      128.5
+     ],
+     "size": [
+      18,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cups_front",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "gold",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      235.21,
+      173.5
+     ],
+     "size": [
+      20,
+      9
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159.0,
+      189.0
+     ],
+     "size": [
+      20,
+      9
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      82.79,
+      173.5
+     ],
+     "size": [
+      20,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "globes_front_off",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      235.21,
+      159.5
+     ],
+     "size": [
+      18,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159.0,
+      175.0
+     ],
+     "size": [
+      18,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      82.79,
+      159.5
+     ],
+     "size": [
+      18,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "globes_front_on",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "glass",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.95,
+   "glow": {
+    "radius": 7,
+    "opacity": 0.55,
+    "color": "lamp_glow"
+   },
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      235.21,
+      159.5
+     ],
+     "size": [
+      18,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159.0,
+      175.0
+     ],
+     "size": [
+      18,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      82.79,
+      159.5
+     ],
+     "size": [
+      18,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "finial",
+   "z": 11.0,
+   "kind": "mass",
+   "material": "gold",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      159,
+      176
+     ],
+     "size": [
+      16,
+      18
+     ],
+     "flip": "y"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off"
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#ffc987",
+    "radius": 520,
+    "at": [
+     159,
+     154
+    ]
+   }
+  }
+ ]
+}

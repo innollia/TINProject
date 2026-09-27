@@ -1,0 +1,442 @@
+{
+ "asset": "obj_fence_wood",
+ "status": "candidate",
+ "note": "Rustic wooden fence segment 2 m long (east-west): three posts, two rails. Frames: normal, broken (top rail snapped and hanging, middle post leaning, a plank on the ground). Tile the segment every 352 px; the vertical run is obj_fence_wood_v.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 701,
+ "pivot_meaning": "middle post base on the ground",
+ "layer_hint": "world",
+ "canvas": [
+  484,
+  240
+ ],
+ "pivot": [
+  236,
+  172
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.32,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "at": [
+      242,
+      169
+     ],
+     "size": [
+      372,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rail_low",
+   "z": 2.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 12,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      236,
+      118.0
+     ],
+     "size": [
+      352,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rail_top",
+   "z": 3.0,
+   "kind": "block",
+   "material": "wood",
+   "tags": [
+    "whole"
+   ],
+   "extrude": 12,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      236,
+      74.0
+     ],
+     "size": [
+      352,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rail_top_l",
+   "z": 4.0,
+   "kind": "block",
+   "material": "wood",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "extrude": 12,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      148,
+      74.0
+     ],
+     "size": [
+      176,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rail_hang",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "texture": {
+    "angle": 22
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      316.0,
+      114.0
+     ],
+     "size": [
+      150.78461459976612,
+      12
+     ],
+     "rot": 21.80140948635181
+    }
+   ]
+  },
+  {
+   "name": "plank_ground",
+   "z": 6.0,
+   "kind": "block",
+   "material": "wood",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "extrude": 4,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      356,
+      186
+     ],
+     "size": [
+      110,
+      12
+     ],
+     "rot": -6,
+     "ground": true
+    }
+   ]
+  },
+  {
+   "name": "post0",
+   "z": 7.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 116,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      60,
+      49.5
+     ],
+     "size": [
+      15,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "name": "post0_cap",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "wood",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      60,
+      44.5
+     ],
+     "size": [
+      17,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "post1",
+   "z": 9.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 116,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      412,
+      49.5
+     ],
+     "size": [
+      15,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "name": "post1_cap",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "wood",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      412,
+      44.5
+     ],
+     "size": [
+      17,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "post_mid",
+   "z": 11.0,
+   "kind": "block",
+   "material": "wood",
+   "tags": [
+    "whole"
+   ],
+   "extrude": 116,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      236,
+      49.5
+     ],
+     "size": [
+      15,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "name": "post_mid_cap",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "whole"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      236,
+      44.5
+     ],
+     "size": [
+      17,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "post_lean",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "texture": {
+    "angle": 100
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      246,
+      116
+     ],
+     "size": [
+      15,
+      116
+     ],
+     "rot": 12
+    }
+   ]
+  },
+  {
+   "name": "nails",
+   "z": 14.0,
+   "kind": "flat",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      60,
+      132
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      60,
+      88
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      412,
+      132
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      412,
+      88
+     ],
+     "size": [
+      4,
+      3.6
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "normal",
+   "state": "normal",
+   "hide": [
+    "broken"
+   ]
+  },
+  {
+   "name": "broken",
+   "state": "broken",
+   "hide": [
+    "whole"
+   ],
+   "show": [
+    "broken"
+   ]
+  }
+ ]
+}

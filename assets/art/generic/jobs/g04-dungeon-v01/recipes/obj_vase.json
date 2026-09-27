@@ -1,0 +1,622 @@
+{
+ "asset": "obj_vase",
+ "status": "candidate",
+ "note": "Tall floor vase 0.8 m, blue-grey glaze with bronze and bone bands. Frames: normal, broken (low jagged remains and shards on the floor).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 512,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  234,
+  210
+ ],
+ "pivot": [
+  114,
+  134
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      122,
+      130
+     ],
+     "size": [
+      100,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "ceramic",
+   "tags": [
+    "whole"
+   ],
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       6.32,
+       2.0
+      ],
+      [
+       9.68,
+       2.0
+      ],
+      [
+       9.2,
+       3.2
+      ],
+      [
+       10.64,
+       4.64
+      ],
+      [
+       13.04,
+       7.52
+      ],
+      [
+       12.8,
+       10.4
+      ],
+      [
+       10.88,
+       12.8
+      ],
+      [
+       9.44,
+       14.0
+      ],
+      [
+       6.56,
+       14.0
+      ],
+      [
+       5.12,
+       12.8
+      ],
+      [
+       3.2,
+       10.4
+      ],
+      [
+       2.96,
+       7.52
+      ],
+      [
+       5.36,
+       4.64
+      ],
+      [
+       6.8,
+       3.2
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      114,
+      88
+     ],
+     "size": [
+      92,
+      92
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bands",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "bronze",
+   "tags": [
+    "whole"
+   ],
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      114,
+      66
+     ],
+     "size": [
+      90,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      114,
+      104
+     ],
+     "size": [
+      88,
+      10
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      114,
+      122
+     ],
+     "size": [
+      60,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "band_dots",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "paper",
+   "tags": [
+    "whole"
+   ],
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      84,
+      104
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      99,
+      104
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      114,
+      104
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      129,
+      104
+     ],
+     "size": [
+      5,
+      5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      144,
+      104
+     ],
+     "size": [
+      5,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "whole"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      114,
+      44
+     ],
+     "size": [
+      30,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rim",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "ceramic",
+   "tags": [
+    "whole"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      114,
+      44
+     ],
+     "size": [
+      34,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      114,
+      44
+     ],
+     "size": [
+      26,
+      7
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "remains",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "ceramic",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3.2,
+       14
+      ],
+      [
+       2.24,
+       6.8
+      ],
+      [
+       4.4,
+       2.0
+      ],
+      [
+       6.2,
+       6.8
+      ],
+      [
+       8.0,
+       2.6
+      ],
+      [
+       9.92,
+       7.4
+      ],
+      [
+       11.84,
+       3.2
+      ],
+      [
+       13.76,
+       7.4
+      ],
+      [
+       12.8,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      114,
+      114
+     ],
+     "size": [
+      88,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "remains_inside",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "clip_to": "remains",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      114,
+      100
+     ],
+     "size": [
+      60,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shards",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "ceramic",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       6.8,
+       2
+      ],
+      [
+       14,
+       5.6
+      ],
+      [
+       10.4,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      56,
+      142
+     ],
+     "size": [
+      30,
+      18.0
+     ],
+     "rot": 20
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       6.8,
+       2
+      ],
+      [
+       14,
+       5.6
+      ],
+      [
+       10.4,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      166,
+      146
+     ],
+     "size": [
+      26,
+      15.6
+     ],
+     "rot": -30
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       6.8,
+       2
+      ],
+      [
+       14,
+       5.6
+      ],
+      [
+       10.4,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      184,
+      126
+     ],
+     "size": [
+      20,
+      12.0
+     ],
+     "rot": 50
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       6.8,
+       2
+      ],
+      [
+       14,
+       5.6
+      ],
+      [
+       10.4,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      78,
+      156
+     ],
+     "size": [
+      22,
+      13.2
+     ],
+     "rot": -10
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       6.8,
+       2
+      ],
+      [
+       14,
+       5.6
+      ],
+      [
+       10.4,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      132,
+      160
+     ],
+     "size": [
+      18,
+      10.799999999999999
+     ],
+     "rot": 70
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "normal",
+   "state": "normal",
+   "hide": [
+    "broken"
+   ]
+  },
+  {
+   "name": "broken",
+   "state": "broken",
+   "hide": [
+    "whole"
+   ],
+   "show": [
+    "broken"
+   ]
+  }
+ ]
+}

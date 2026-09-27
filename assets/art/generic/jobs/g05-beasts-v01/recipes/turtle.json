@@ -1,0 +1,496 @@
+{
+ "asset": "turtle",
+ "status": "candidate",
+ "note": "Sea turtle, front view. Big turtle with a high domed barnacle-crusted olive shell of hexagon plates, a beaked head poking forward under the rim with calm eyes, broad front flippers and small rear flippers splayed, pale belly plate edge.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  192,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 846,
+ "g05": {
+  "name_ko": "??",
+  "size": "??",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      355.6
+     ],
+     "size": [
+      300.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rear_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 0.9,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      92.0,
+      330.0
+     ],
+     "size": [
+      60.0,
+      30.0
+     ],
+     "rot": -20.0
+    }
+   ]
+  },
+  {
+   "name": "flipper_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "leaf",
+     "at": [
+      74.0,
+      304.0
+     ],
+     "size": [
+      84.0,
+      46.0
+     ],
+     "rot": 30.0,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "rear_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 0.9,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      292.0,
+      330.0
+     ],
+     "size": [
+      60.0,
+      30.0
+     ],
+     "rot": 20.0
+    }
+   ]
+  },
+  {
+   "name": "flipper_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "leaf",
+     "at": [
+      310.0,
+      304.0
+     ],
+     "size": [
+      84.0,
+      46.0
+     ],
+     "rot": 150.0
+    }
+   ]
+  },
+  {
+   "name": "shell",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      262.0
+     ],
+     "size": [
+      270.0,
+      190.0
+     ],
+     "half": "top"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      262.0
+     ],
+     "size": [
+      270.0,
+      44.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plates",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "chitin_amber",
+   "clip_to": "shell",
+   "opacity": 0.55,
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      128.0,
+      224.0
+     ],
+     "size": [
+      50.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "hexagon",
+     "at": [
+      192.0,
+      202.0
+     ],
+     "size": [
+      50.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "hexagon",
+     "at": [
+      256.0,
+      224.0
+     ],
+     "size": [
+      50.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "hexagon",
+     "at": [
+      92.0,
+      254.0
+     ],
+     "size": [
+      50.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "hexagon",
+     "at": [
+      292.0,
+      254.0
+     ],
+     "size": [
+      50.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "hexagon",
+     "at": [
+      162.0,
+      256.0
+     ],
+     "size": [
+      50.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "hexagon",
+     "at": [
+      222.0,
+      256.0
+     ],
+     "size": [
+      50.0,
+      44.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "barnacles",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "bone_old",
+   "clip_to": "shell",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      112.0,
+      234.0
+     ],
+     "size": [
+      12.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      252.0,
+      194.0
+     ],
+     "size": [
+      12.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      292.0,
+      244.0
+     ],
+     "size": [
+      12.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      214.0
+     ],
+     "size": [
+      12.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rim",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.3,
+   "material": "belly",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      276.0
+     ],
+     "size": [
+      262.0,
+      24.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plastron",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.8,
+   "material": "belly",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      300.0
+     ],
+     "size": [
+      200.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      316.0
+     ],
+     "size": [
+      74.0,
+      62.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      290.0
+     ],
+     "size": [
+      60.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "beak",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.1,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      192.0,
+      344.0
+     ],
+     "size": [
+      24.0,
+      16.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      308.0
+     ],
+     "size": [
+      10.0,
+      11.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      212.0,
+      308.0
+     ],
+     "size": [
+      10.0,
+      11.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3000000000000003,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      169.8,
+      305.6
+     ],
+     "size": [
+      3.0,
+      2.9
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      209.8,
+      305.6
+     ],
+     "size": [
+      3.0,
+      2.9
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

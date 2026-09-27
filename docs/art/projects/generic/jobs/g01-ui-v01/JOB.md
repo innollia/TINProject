@@ -40,6 +40,13 @@
 | B | `ui_balloon_silence` | 128×128 × 5 | Emotion balloon: three dots (silence), 5-frame pop. | 완료 |
 | B | `ui_balloon_sweat` | 128×128 × 5 | Emotion balloon: two pale blue sweat drops with highlights, 5-frame pop. | 완료 |
 | B | `ui_window_parchment` | 192×192 | Parchment window: pale paper panel with foxing, rolled top and bottom edges, burnt-brown border, wax dots in the corners. | 완료 |
+| C | `ui_balloon_sleep` | 128×128 × 5 | Emotion balloon: pale crescent moon with two sparkles (sleep, no letters), 5-frame pop. | 완료 |
+| C | `ui_battle_transition` | 2560×1440 × 2 | Battle-start transition maps (grey = order of reveal, black first): clockwise swirl and shattered glass. Opaque greyscale 2560x1440. | 완료 |
+| C | `ui_cursor_arrow` | 128×128 | Arrow cursor: iron arrowhead pointing up-left with a gold edge line and a small tail notch. Hotspot at the tip. | 완료 |
+| C | `ui_scrollbar_thumb` | 32×96 | Scrollbar thumb: bevelled bronze capsule, plain middle so it stretches cleanly. | 완료 |
+| C | `ui_scrollbar_track` | 32×192 | Scrollbar track: narrow dark groove with iron edges and rounded ends. | 완료 |
+| C | `ui_slot` | 128×128 | Item slot: dark inset square with an inner shadow along the top-left, thin bronze border and corner rivets. | 완료 |
+| C | `ui_tab` | 160×64 × 2 | Tab base in two states (active, inactive): rounded top corners, open flat bottom, gold or iron top line. | 완료 |
 
 ## 결과 파일
 
@@ -72,4 +79,4 @@ py -3 -B nine_preview.py --out ../preview/nine_all.png
 
 - [x] A 단계 (9개 레시피)
 - [x] B 단계 (7개 레시피)
-- [ ] C 단계 (0개 레시피)
+- [x] C 단계 (7개 레시피)

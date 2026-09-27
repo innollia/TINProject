@@ -1,0 +1,725 @@
+{
+ "asset": "elephant",
+ "status": "candidate",
+ "note": "Elephant, front view. Huge wrinkled slate-grey elephant facing the viewer: great flapping ears, a long trunk curling at the tip, two pale curved tusks, small eyes, pillar legs with toenails.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  640,
+  640
+ ],
+ "pivot": [
+  320,
+  620
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 844,
+ "g05": {
+  "name_ko": "코끼리",
+  "size": "거대",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      320.0,
+      603.6
+     ],
+     "size": [
+      460.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ears",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 1,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      150.0,
+      250.0
+     ],
+     "size": [
+      200.0,
+      250.0
+     ],
+     "rot": -10.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      490.0,
+      250.0
+     ],
+     "size": [
+      200.0,
+      250.0
+     ],
+     "rot": 10.0
+    }
+   ]
+  },
+  {
+   "name": "ears_in",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 1.05,
+   "material": "hide_pink",
+   "opacity": 0.35,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      256.0
+     ],
+     "size": [
+      150.0,
+      200.0
+     ],
+     "rot": -10.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      480.0,
+      256.0
+     ],
+     "size": [
+      150.0,
+      200.0
+     ],
+     "rot": 10.0
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.5,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      320.0,
+      380.0
+     ],
+     "size": [
+      380.0,
+      300.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 2,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "cylinder",
+     "at": [
+      220.0,
+      530.0
+     ],
+     "size": [
+      100.0,
+      170.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nails_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 2.1,
+   "material": "bone_old",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      194.0,
+      606.0
+     ],
+     "size": [
+      22.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      220.0,
+      606.0
+     ],
+     "size": [
+      22.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      246.0,
+      606.0
+     ],
+     "size": [
+      22.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 2,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "cylinder",
+     "at": [
+      420.0,
+      530.0
+     ],
+     "size": [
+      100.0,
+      170.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nails_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 2.1,
+   "material": "bone_old",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      394.0,
+      606.0
+     ],
+     "size": [
+      22.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      420.0,
+      606.0
+     ],
+     "size": [
+      22.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      446.0,
+      606.0
+     ],
+     "size": [
+      22.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      320.0,
+      250.0
+     ],
+     "size": [
+      220.0,
+      200.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wrinkles",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.1,
+   "kind": "flat",
+   "material": "stone_dark",
+   "clip_to": "head",
+   "opacity": 0.4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      320.0,
+      200.0
+     ],
+     "size": [
+      80.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      320.0,
+      216.0
+     ],
+     "size": [
+      80.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      320.0,
+      232.0
+     ],
+     "size": [
+      80.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tusks",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      260.0,
+      380.0
+     ],
+     "size": [
+      60.0,
+      70.0
+     ],
+     "rot": -160.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      380.0,
+      380.0
+     ],
+     "size": [
+      60.0,
+      70.0
+     ],
+     "rot": 160.0,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "trunk",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.5,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      320.0,
+      300.0
+     ],
+     "size": [
+      80.0,
+      80.0
+     ],
+     "rot": 3.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      319.2,
+      319.7
+     ],
+     "size": [
+      76.7,
+      76.7
+     ],
+     "rot": 1.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      319.3,
+      338.8
+     ],
+     "size": [
+      73.3,
+      73.3
+     ],
+     "rot": -1.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      320.1,
+      357.2
+     ],
+     "size": [
+      70.0,
+      70.0
+     ],
+     "rot": -3.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      321.7,
+      374.8
+     ],
+     "size": [
+      66.7,
+      66.7
+     ],
+     "rot": -6.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      324.0,
+      391.5
+     ],
+     "size": [
+      63.3,
+      63.3
+     ],
+     "rot": -9.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      327.0,
+      407.2
+     ],
+     "size": [
+      60.0,
+      60.0
+     ],
+     "rot": -12.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      330.7,
+      421.9
+     ],
+     "size": [
+      56.7,
+      56.7
+     ],
+     "rot": -15.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      335.0,
+      435.3
+     ],
+     "size": [
+      53.3,
+      53.3
+     ],
+     "rot": -19.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      339.9,
+      447.6
+     ],
+     "size": [
+      50.0,
+      50.0
+     ],
+     "rot": -24.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      345.3,
+      458.5
+     ],
+     "size": [
+      46.7,
+      46.7
+     ],
+     "rot": -29.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      351.3,
+      468.0
+     ],
+     "size": [
+      43.3,
+      43.3
+     ],
+     "rot": -35.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      357.8,
+      476.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "rot": -43.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      364.8,
+      482.4
+     ],
+     "size": [
+      36.7,
+      36.7
+     ],
+     "rot": -52.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      372.2,
+      487.1
+     ],
+     "size": [
+      33.3,
+      33.3
+     ],
+     "rot": -63.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      380.0,
+      490.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": -76.0
+    }
+   ]
+  },
+  {
+   "name": "trunk_rings",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.55,
+   "kind": "flat",
+   "material": "stone_dark",
+   "clip_to": "trunk",
+   "opacity": 0.4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      316.0,
+      340.0
+     ],
+     "size": [
+      60.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      322.0,
+      370.0
+     ],
+     "size": [
+      52.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      328.0,
+      400.0
+     ],
+     "size": [
+      44.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      334.0,
+      430.0
+     ],
+     "size": [
+      36.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      340.0,
+      460.0
+     ],
+     "size": [
+      28.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.4,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      260.0,
+      250.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      380.0,
+      250.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.5,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.9,
+      246.9
+     ],
+     "size": [
+      4.2,
+      3.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      376.9,
+      246.9
+     ],
+     "size": [
+      4.2,
+      3.6
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

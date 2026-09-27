@@ -1,0 +1,716 @@
+{
+ "asset": "ui_tab",
+ "status": "candidate",
+ "note": "Tab base in two states (active, inactive): rounded top corners, open flat bottom, gold or iron top line.",
+ "palette": "palette_g01.json",
+ "style": "ui",
+ "canvas": [
+  160,
+  64
+ ],
+ "pivot": [
+  80.0,
+  32.0
+ ],
+ "pivot_meaning": "centre of the canvas (flat view: icon / UI / effect)",
+ "seed": 73132,
+ "meta": {
+  "kind": "ui_9slice",
+  "nine_slice": [
+   24,
+   24,
+   24,
+   8
+  ],
+  "states": [
+   "ui_tab_active",
+   "ui_tab_inactive"
+  ],
+  "preview_size": [
+   300,
+   64
+  ],
+  "stage": "C",
+  "list": "docs/art/projects/generic/catalog/g01_list.md"
+ },
+ "forms": [
+  {
+   "name": "f1_body",
+   "z": 0,
+   "material": "button_hot",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      36.0
+     ],
+     "size": [
+      124.0,
+      72.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      36.0
+     ],
+     "size": [
+      152.0,
+      44.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      18.0,
+      14.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      18.0,
+      58.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      14.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      58.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    }
+   ],
+   "opacity": 1.0,
+   "shade": {
+    "ragged": 0.04,
+    "threshold": 0.3,
+    "soft": 0.1,
+    "bump": 0.5
+   },
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_top",
+   "z": 1,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      36.0
+     ],
+     "size": [
+      124.0,
+      72.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      36.0
+     ],
+     "size": [
+      152.0,
+      44.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      18.0,
+      14.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      18.0,
+      58.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      14.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      58.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      36.0
+     ],
+     "size": [
+      124.0,
+      66.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      36.0
+     ],
+     "size": [
+      146.0,
+      44.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      18.0,
+      14.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      18.0,
+      58.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      14.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      58.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      10.0
+     ],
+     "size": [
+      160.0,
+      20.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "clip"
+    }
+   ],
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f1_sides",
+   "z": 1,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      5.5,
+      40.0
+     ],
+     "size": [
+      3.0,
+      50.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      154.5,
+      40.0
+     ],
+     "size": [
+      3.0,
+      50.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "tags": [
+    "f1"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_body",
+   "z": 0,
+   "material": "button_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      36.0
+     ],
+     "size": [
+      124.0,
+      72.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      36.0
+     ],
+     "size": [
+      152.0,
+      44.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      18.0,
+      14.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      18.0,
+      58.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      14.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      58.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    }
+   ],
+   "opacity": 0.9,
+   "shade": {
+    "ragged": 0.04,
+    "threshold": 0.3,
+    "soft": 0.1,
+    "bump": 0.5
+   },
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_top",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      36.0
+     ],
+     "size": [
+      124.0,
+      72.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      36.0
+     ],
+     "size": [
+      152.0,
+      44.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      18.0,
+      14.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      18.0,
+      58.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      14.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      58.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      36.0
+     ],
+     "size": [
+      124.0,
+      66.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      36.0
+     ],
+     "size": [
+      146.0,
+      44.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      18.0,
+      14.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      18.0,
+      58.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      14.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      58.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      80.0,
+      10.0
+     ],
+     "size": [
+      160.0,
+      20.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ],
+     "op": "clip"
+    }
+   ],
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  },
+  {
+   "name": "f2_sides",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      5.5,
+      40.0
+     ],
+     "size": [
+      3.0,
+      50.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      154.5,
+      40.0
+     ],
+     "size": [
+      3.0,
+      50.0
+     ],
+     "crop": [
+      3,
+      3,
+      13,
+      13
+     ]
+    }
+   ],
+   "tags": [
+    "f2"
+   ],
+   "hidden": true
+  }
+ ],
+ "frames": [
+  {
+   "name": "ui_tab_active",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "ui_tab_inactive",
+   "show": [
+    "f2"
+   ]
+  }
+ ]
+}

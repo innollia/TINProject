@@ -1,0 +1,647 @@
+{
+ "asset": "mimic_door",
+ "status": "candidate",
+ "note": "Door mimic, front view. Arched iron-banded wooden door in a stone frame whose middle splits into a fanged mouth with a long tongue lolling out; two yellow eyes glare through the barred window above.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 627,
+ "g05": {
+  "name_ko": "미믹(문)",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      361.6
+     ],
+     "size": [
+      210.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "frame",
+   "tags": [
+    "all",
+    "frame"
+   ],
+   "z": 1,
+   "material": "stone_dark",
+   "pieces": [
+    {
+     "icon": "doorway",
+     "at": [
+      160.0,
+      214.0
+     ],
+     "size": [
+      220.0,
+      310.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door",
+   "tags": [
+    "all",
+    "door"
+   ],
+   "z": 2,
+   "material": "wood_door",
+   "pieces": [
+    {
+     "icon": "door",
+     "at": [
+      160.0,
+      222.0
+     ],
+     "size": [
+      170.0,
+      280.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bands",
+   "tags": [
+    "all",
+    "door"
+   ],
+   "z": 2.2,
+   "material": "iron",
+   "clip_to": "door",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      180.0
+     ],
+     "size": [
+      172.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      300.0
+     ],
+     "size": [
+      172.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hinges",
+   "tags": [
+    "all",
+    "door"
+   ],
+   "z": 2.3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      90.0,
+      180.0
+     ],
+     "size": [
+      30.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      90.0,
+      300.0
+     ],
+     "size": [
+      30.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "window",
+   "tags": [
+    "all",
+    "door"
+   ],
+   "z": 2.4,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      132.0
+     ],
+     "size": [
+      70.0,
+      44.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "door"
+   ],
+   "z": 2.5,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.9,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      144.0,
+      132.0
+     ],
+     "size": [
+      16.0,
+      11.0
+     ],
+     "rot": 12.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      132.0
+     ],
+     "size": [
+      16.0,
+      11.0
+     ],
+     "rot": -12.0
+    }
+   ]
+  },
+  {
+   "name": "pupils",
+   "tags": [
+    "all",
+    "door"
+   ],
+   "z": 2.55,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      144.0,
+      132.0
+     ],
+     "size": [
+      4.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      132.0
+     ],
+     "size": [
+      4.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bars",
+   "tags": [
+    "all",
+    "door"
+   ],
+   "z": 2.6,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      142.0,
+      132.0
+     ],
+     "size": [
+      5.0,
+      46.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      132.0
+     ],
+     "size": [
+      5.0,
+      46.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      178.0,
+      132.0
+     ],
+     "size": [
+      5.0,
+      46.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "door"
+   ],
+   "z": 2.7,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      250.0
+     ],
+     "size": [
+      140.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "teeth",
+   "tags": [
+    "all",
+    "door"
+   ],
+   "z": 2.8,
+   "material": "tooth",
+   "line": {
+    "width": 0.6,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      104.0,
+      231.0
+     ],
+     "size": [
+      14.4,
+      18.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      120.0,
+      229.9
+     ],
+     "size": [
+      14.4,
+      15.8
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      136.0,
+      228.8
+     ],
+     "size": [
+      14.4,
+      13.7
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      152.0,
+      230.5
+     ],
+     "size": [
+      14.4,
+      16.9
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      168.0,
+      229.4
+     ],
+     "size": [
+      14.4,
+      14.8
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      184.0,
+      231.0
+     ],
+     "size": [
+      14.4,
+      18.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      200.0,
+      229.9
+     ],
+     "size": [
+      14.4,
+      15.8
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      216.0,
+      228.8
+     ],
+     "size": [
+      14.4,
+      13.7
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      112.0,
+      272.0
+     ],
+     "size": [
+      14.4,
+      16.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      128.0,
+      273.0
+     ],
+     "size": [
+      14.4,
+      14.1
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      144.0,
+      273.9
+     ],
+     "size": [
+      14.4,
+      12.2
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      272.5
+     ],
+     "size": [
+      14.4,
+      15.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      176.0,
+      273.4
+     ],
+     "size": [
+      14.4,
+      13.1
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      192.0,
+      272.0
+     ],
+     "size": [
+      14.4,
+      16.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      208.0,
+      273.0
+     ],
+     "size": [
+      14.4,
+      14.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tongue",
+   "tags": [
+    "all",
+    "door"
+   ],
+   "z": 2.9,
+   "material": "tongue",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      262.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": 32.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      147.8,
+      273.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ],
+     "rot": 26.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      143.1,
+      284.2
+     ],
+     "size": [
+      26.0,
+      26.0
+     ],
+     "rot": 19.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      139.7,
+      295.7
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "rot": 13.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      137.7,
+      307.4
+     ],
+     "size": [
+      22.0,
+      23.2
+     ],
+     "rot": 6.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      137.1,
+      319.3
+     ],
+     "size": [
+      20.0,
+      23.2
+     ],
+     "rot": -0.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      137.8,
+      331.6
+     ],
+     "size": [
+      18.0,
+      23.2
+     ],
+     "rot": -6.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      344.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "rot": -12.8
+    }
+   ]
+  },
+  {
+   "name": "ring",
+   "tags": [
+    "all",
+    "door"
+   ],
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      216.0,
+      250.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

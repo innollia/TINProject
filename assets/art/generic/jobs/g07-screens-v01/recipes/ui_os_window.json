@@ -1,0 +1,310 @@
+{
+ "asset": "ui_os_window",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Retro OS window 9-slice (margin 48): title bar in the top band, empty client area.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "frame centre",
+ "seed": 36,
+ "forms": [
+  {
+   "name": "frame",
+   "z": 0,
+   "material": "plastic_beige",
+   "shade": {
+    "bump": 0.3,
+    "highlight_amount": 0.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      188.0,
+      188.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 5
+     }
+    }
+   ]
+  },
+  {
+   "name": "bevel_light",
+   "z": 1,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.2,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      5.5
+     ],
+     "size": [
+      180.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      5.5,
+      96.0
+     ],
+     "size": [
+      3.0,
+      180.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "bevel_dark",
+   "z": 1,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.55,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      186.5
+     ],
+     "size": [
+      184.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      186.5,
+      96.0
+     ],
+     "size": [
+      3.0,
+      184.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "title",
+   "z": 2,
+   "material": "paint_teal",
+   "tags": [
+    "title"
+   ],
+   "shade": {
+    "bump": 0.4,
+    "highlight_amount": 0.25
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      22.0
+     ],
+     "size": [
+      176.0,
+      26.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "title_sheen",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.08,
+   "clip_to": "title",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      14.0
+     ],
+     "size": [
+      170.0,
+      5.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "menu_mark",
+   "z": 3,
+   "material": "plastic_beige",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      22.0,
+      22.0
+     ],
+     "size": [
+      13.0,
+      13.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "client",
+   "z": 2,
+   "kind": "flat",
+   "material": "plastic_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      113.0
+     ],
+     "size": [
+      176.0,
+      138.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "client_bevel_dark",
+   "z": 2.2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      45.0
+     ],
+     "size": [
+      176.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      9.5,
+      113.0
+     ],
+     "size": [
+      3.0,
+      138.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "client_bevel_light",
+   "z": 2.2,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.14,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      181.0
+     ],
+     "size": [
+      176.0,
+      2.5
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      182.5,
+      113.0
+     ],
+     "size": [
+      2.5,
+      138.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "active",
+   "materials": {
+    "title": "paint_teal"
+   }
+  },
+  {
+   "name": "inactive",
+   "materials": {
+    "title": "steel_dark"
+   }
+  }
+ ]
+}

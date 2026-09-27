@@ -1,0 +1,567 @@
+{
+ "asset": "obj_fireplace",
+ "status": "candidate",
+ "note": "Stone fireplace against a wall: 1.6 m surround with masonry joints, wooden mantel, chimney breast, arched firebox with brick back, iron grate and logs, hearth slab. Frames: off (ash, cold logs), on (glowing logs and coals, emit). Flame effect not drawn (anchors.flame_anchor).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 609,
+ "pivot_meaning": "front-bottom centre on the floor; the back face stands on the wall line",
+ "layer_hint": "world",
+ "canvas": [
+  460,
+  472
+ ],
+ "pivot": [
+  224,
+  383
+ ],
+ "footprint": [
+  80,
+  305,
+  368,
+  383
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.34,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "at": [
+      230,
+      363
+     ],
+     "size": [
+      330,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hearth",
+   "z": 2.0,
+   "kind": "block",
+   "material": "stone_dark",
+   "extrude": 7,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      224,
+      396.0
+     ],
+     "size": [
+      336,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "breast",
+   "z": 3.0,
+   "kind": "block",
+   "material": "stone",
+   "extrude": 118,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      224,
+      60.0
+     ],
+     "size": [
+      224,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "surround",
+   "z": 4.0,
+   "kind": "block",
+   "material": "stone",
+   "extrude": 140,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      224,
+      204.0
+     ],
+     "size": [
+      288,
+      78
+     ]
+    }
+   ]
+  },
+  {
+   "name": "masonry",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "floor_joint",
+   "opacity": 0.42,
+   "clip_to": "surround",
+   "pieces": [
+    {
+     "icon": "brick_wall",
+     "at": [
+      224,
+      313.0
+     ],
+     "size": [
+      300,
+      156
+     ],
+     "invert": true,
+     "crop": [
+      1.2,
+      1.2,
+      14.8,
+      14.8
+     ],
+     "fit": [
+      1.2,
+      1.2,
+      14.8,
+      14.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "opening",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "hole",
+   "grad": {
+    "to": "well_inner",
+    "y0": -104,
+    "y1": 0,
+    "curve": 1.4
+   },
+   "pieces": [
+    {
+     "icon": "bullet",
+     "at": [
+      224,
+      331
+     ],
+     "size": [
+      104,
+      158
+     ],
+     "rot": -90
+    }
+   ]
+  },
+  {
+   "name": "firebrick",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "brick",
+   "opacity": 0.35,
+   "clip_to": "opening",
+   "pieces": [
+    {
+     "icon": "brick_wall",
+     "at": [
+      224,
+      325
+     ],
+     "size": [
+      120,
+      70
+     ],
+     "invert": true,
+     "crop": [
+      1.2,
+      1.2,
+      14.8,
+      14.8
+     ],
+     "fit": [
+      1.2,
+      1.2,
+      14.8,
+      14.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "inner_glow",
+   "z": 8.0,
+   "kind": "wash",
+   "material": "ember",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "opacity": 0.55,
+   "blend": "normal",
+   "blur": 10,
+   "clip_to": "opening",
+   "emit": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      224,
+      343
+     ],
+     "size": [
+      120,
+      80
+     ]
+    }
+   ]
+  },
+  {
+   "name": "grate",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "iron",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      224,
+      369
+     ],
+     "size": [
+      112,
+      8
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      180,
+      361
+     ],
+     "size": [
+      7,
+      22
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      268,
+      361
+     ],
+     "size": [
+      7,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "logs_off",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "bark",
+   "tags": [
+    "off"
+   ],
+   "texture": {
+    "angle": 0
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 11
+     },
+     "at": [
+      216,
+      353
+     ],
+     "size": [
+      96,
+      22
+     ],
+     "rot": -6
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      236,
+      341
+     ],
+     "size": [
+      84,
+      20
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "ash",
+   "z": 11.0,
+   "kind": "mass",
+   "material": "ash",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      224,
+      371
+     ],
+     "size": [
+      110,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "logs_on",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "soot",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "texture": {
+    "angle": 0
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 11
+     },
+     "at": [
+      216,
+      353
+     ],
+     "size": [
+      96,
+      22
+     ],
+     "rot": -6
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      236,
+      341
+     ],
+     "size": [
+      84,
+      20
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "log_embers",
+   "z": 13.0,
+   "kind": "flat",
+   "material": "ember",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.9,
+   "glow": {
+    "radius": 5,
+    "opacity": 0.6,
+    "color": "ember_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      216,
+      357
+     ],
+     "size": [
+      80,
+      6
+     ],
+     "rot": -6
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      236,
+      345
+     ],
+     "size": [
+      66,
+      5
+     ],
+     "rot": 8
+    }
+   ]
+  },
+  {
+   "name": "coals",
+   "z": 14.0,
+   "kind": "mass",
+   "material": "ember",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.8,
+   "glow": {
+    "radius": 7,
+    "opacity": 0.6,
+    "color": "ember_glow"
+   },
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      224,
+      371
+     ],
+     "size": [
+      110,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mantel",
+   "z": 15.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 13,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      224,
+      212.5
+     ],
+     "size": [
+      312,
+      47
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off",
+   "anchors": {
+    "flame_anchor": [
+     224,
+     335
+    ]
+   }
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#ffb45c",
+    "radius": 420,
+    "at": [
+     224,
+     335
+    ]
+   },
+   "anchors": {
+    "flame_anchor": [
+     224,
+     335
+    ]
+   }
+  }
+ ]
+}

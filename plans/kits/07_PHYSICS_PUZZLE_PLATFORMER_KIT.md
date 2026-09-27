@@ -2440,6 +2440,12 @@ Kit 안에 `load(` 호출이 없다. 파서는 인스턴스 메서드다(`LevelS
 ### 21.15 오디오
 매니페스트 이벤트 id는 `ppp_` 접두사를 붙여 적는다(§12 코드 블록의 접두사 없는 표기 대체). §12 쿨다운은 W3 `AudioManifestEvent`의 `min_interval_seconds` 키로 넣는다. `AudioSink`는 core `AudioEventPlayer`에 넘기기만 하고, 파일이 없으면 조용히 재생하지 않는다.
 
+### 21.16 강체 위치 쓰기
+게임 코드와 테스트가 RigidBody2D 위치를 직접 바꿀 때는 StepDirector.place_rigid()만 쓴다. 노드 global_position과 PhysicsServer2D의 변환을 함께 쓴다. 노드 값만 쓰면 접촉 처리 직후 프레임에 물리 서버가 옛 위치로 되돌린다(2026-09-27 wave 3 스모크 실패 원인).
+
+### 21.17 레벨 이름·ID — 사용자 확인 대기
+§11.9-2 화이트리스트와 §15.2·§15.3 레벨 표의 이름 4개와 ID 1개가 다르다(구르는/굴러가는 동전, 들리는 판 lvl_lifting_slab/널빤지 다리 lvl_slab_bridge, 미끄러운 먹/잉크, 부러진/금 간 이빨). 플레이어가 보는 글자라 사용자에게 물었다. 답이 올 때까지 레벨 JSON 작성을 멈춘다. 에이전트 추천은 §11.9-2 쪽. 질문 전문은 docs/research/mosa_lina/IMPLEMENTATION_STATUS.md.
+
 ## 부록 A. 구현 순서 (wave)
 
 | 웨이브 | 파일 | 선행 조건 |

@@ -1,0 +1,669 @@
+{
+ "asset": "cat",
+ "status": "candidate",
+ "note": "Cat, front view, sitting. Sleek black-grey cat with a curled tail, tall pointed ears, glowing yellow eyes with slit pupils, small pink nose, white whiskers, a wine ribbon with a tiny bell.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 822,
+ "g05": {
+  "name_ko": "고양이",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      362.6
+     ],
+     "size": [
+      150.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "tail"
+   ],
+   "z": 0.8,
+   "material": "fur_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      200.0,
+      346.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "rot": -95.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      215.1,
+      343.1
+     ],
+     "size": [
+      20.9,
+      22.6
+     ],
+     "rot": -106.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      227.9,
+      337.9
+     ],
+     "size": [
+      19.8,
+      22.6
+     ],
+     "rot": -118.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      238.3,
+      330.7
+     ],
+     "size": [
+      18.7,
+      22.6
+     ],
+     "rot": -130.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      246.4,
+      322.1
+     ],
+     "size": [
+      17.6,
+      22.6
+     ],
+     "rot": -143.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      252.3,
+      312.2
+     ],
+     "size": [
+      16.5,
+      22.6
+     ],
+     "rot": -154.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.2,
+      301.6
+     ],
+     "size": [
+      15.5,
+      22.6
+     ],
+     "rot": -165.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      257.9,
+      290.6
+     ],
+     "size": [
+      14.4,
+      22.6
+     ],
+     "rot": -176.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      257.7,
+      279.5
+     ],
+     "size": [
+      13.3,
+      22.6
+     ],
+     "rot": 173.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      255.6,
+      268.8
+     ],
+     "size": [
+      12.2,
+      22.6
+     ],
+     "rot": 163.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      251.7,
+      258.9
+     ],
+     "size": [
+      11.1,
+      22.6
+     ],
+     "rot": 153.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      247.1,
+      251.4
+     ],
+     "size": [
+      10.0,
+      13.6
+     ],
+     "rot": 141.3
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "fur_dark",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      290.0
+     ],
+     "size": [
+      120.0,
+      150.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      330.0
+     ],
+     "size": [
+      130.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "chest",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.1,
+   "material": "fur_grey",
+   "clip_to": "body",
+   "opacity": 0.6,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      290.0
+     ],
+     "size": [
+      50.0,
+      90.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.5,
+   "material": "fur_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      139.0,
+      321.0
+     ],
+     "size": [
+      22.0,
+      69.7
+     ],
+     "rot": 1.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      356.0
+     ],
+     "size": [
+      30.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.5,
+   "material": "fur_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      181.0,
+      321.0
+     ],
+     "size": [
+      22.0,
+      69.7
+     ],
+     "rot": -1.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.0,
+      356.0
+     ],
+     "size": [
+      30.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ribbon",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      236.0
+     ],
+     "size": [
+      70.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bell",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.1,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      248.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ears",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.8,
+   "material": "fur_dark",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      134.0,
+      164.0
+     ],
+     "size": [
+      30.0,
+      44.0
+     ],
+     "rot": -14.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      186.0,
+      164.0
+     ],
+     "size": [
+      30.0,
+      44.0
+     ],
+     "rot": 14.0
+    }
+   ]
+  },
+  {
+   "name": "ears_in",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.85,
+   "material": "hide_pink",
+   "line": false,
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      135.0,
+      170.0
+     ],
+     "size": [
+      14.0,
+      24.0
+     ],
+     "rot": -14.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      185.0,
+      170.0
+     ],
+     "size": [
+      14.0,
+      24.0
+     ],
+     "rot": 14.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "fur_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      200.0
+     ],
+     "size": [
+      84.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.7,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      143.0,
+      196.0
+     ],
+     "size": [
+      18.0,
+      14.0
+     ],
+     "rot": 10.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      177.0,
+      196.0
+     ],
+     "size": [
+      18.0,
+      14.0
+     ],
+     "rot": -10.0
+    }
+   ]
+  },
+  {
+   "name": "pupils",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.25,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      143.0,
+      196.0
+     ],
+     "size": [
+      4.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      177.0,
+      196.0
+     ],
+     "size": [
+      4.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nose",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "material": "hide_pink",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      212.0
+     ],
+     "size": [
+      10.0,
+      7.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      157.0,
+      219.0
+     ],
+     "size": [
+      1.8,
+      9.1
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      163.0,
+      219.0
+     ],
+     "size": [
+      1.8,
+      9.1
+     ],
+     "rot": -45.0
+    }
+   ]
+  },
+  {
+   "name": "whiskers",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.4,
+   "kind": "flat",
+   "material": "fur_white",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      129.0,
+      210.0
+     ],
+     "size": [
+      1.4,
+      39.3
+     ],
+     "rot": 101.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      129.0,
+      220.0
+     ],
+     "size": [
+      1.4,
+      38.7
+     ],
+     "rot": 84.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      191.0,
+      210.0
+     ],
+     "size": [
+      1.4,
+      39.3
+     ],
+     "rot": -101.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      191.0,
+      220.0
+     ],
+     "size": [
+      1.4,
+      38.7
+     ],
+     "rot": -84.0
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

@@ -1,0 +1,968 @@
+{
+ "asset": "obj_iron_maiden",
+ "status": "candidate",
+ "note": "Iron maiden (dark fantasy, empty): tall riveted iron cabinet on a plinth with a hooded helm top. Frames: closed, open (doors swung aside, spikes inside, dark empty interior).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 523,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  404,
+  396
+ ],
+ "pivot": [
+  194,
+  288
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "tags": [
+    "closed"
+   ],
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "at": [
+      202,
+      258
+     ],
+     "size": [
+      150,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shadow_open",
+   "z": 2.0,
+   "kind": "shadow",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "at": [
+      202,
+      278
+     ],
+     "size": [
+      280,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plinth",
+   "z": 3.0,
+   "kind": "block",
+   "material": "stone_dark",
+   "extrude": 20,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      194,
+      236.0
+     ],
+     "size": [
+      128,
+      64
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shell",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       11.84,
+       2.96
+      ],
+      [
+       12.8,
+       5.6
+      ],
+      [
+       12.08,
+       14.0
+      ],
+      [
+       3.92,
+       14.0
+      ],
+      [
+       3.2,
+       5.6
+      ],
+      [
+       4.16,
+       2.96
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      194,
+      168
+     ],
+     "size": [
+      116,
+      200
+     ]
+    }
+   ]
+  },
+  {
+   "name": "inside",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "grad": {
+    "to": "well_inner",
+    "y0": -200,
+    "y1": -26
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       11.84,
+       2.96
+      ],
+      [
+       12.8,
+       5.6
+      ],
+      [
+       12.08,
+       14.0
+      ],
+      [
+       3.92,
+       14.0
+      ],
+      [
+       3.2,
+       5.6
+      ],
+      [
+       4.16,
+       2.96
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      194,
+      174
+     ],
+     "size": [
+      92,
+      176
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spikes",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "steel",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      166,
+      118
+     ],
+     "size": [
+      10,
+      16
+     ],
+     "rot": 90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      166,
+      144
+     ],
+     "size": [
+      10,
+      16
+     ],
+     "rot": 90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      166,
+      170
+     ],
+     "size": [
+      10,
+      16
+     ],
+     "rot": 90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      166,
+      196
+     ],
+     "size": [
+      10,
+      16
+     ],
+     "rot": 90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      166,
+      222
+     ],
+     "size": [
+      10,
+      16
+     ],
+     "rot": 90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      222,
+      118
+     ],
+     "size": [
+      10,
+      16
+     ],
+     "rot": -90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      222,
+      144
+     ],
+     "size": [
+      10,
+      16
+     ],
+     "rot": -90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      222,
+      170
+     ],
+     "size": [
+      10,
+      16
+     ],
+     "rot": -90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      222,
+      196
+     ],
+     "size": [
+      10,
+      16
+     ],
+     "rot": -90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      222,
+      222
+     ],
+     "size": [
+      10,
+      16
+     ],
+     "rot": -90
+    }
+   ]
+  },
+  {
+   "name": "doors",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.0,
+       2.0
+      ],
+      [
+       11.84,
+       2.96
+      ],
+      [
+       12.8,
+       5.6
+      ],
+      [
+       12.08,
+       14.0
+      ],
+      [
+       3.92,
+       14.0
+      ],
+      [
+       3.2,
+       5.6
+      ],
+      [
+       4.16,
+       2.96
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      194,
+      174
+     ],
+     "size": [
+      100,
+      184
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door_split",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "soot",
+   "tags": [
+    "closed"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      194,
+      178
+     ],
+     "size": [
+      3,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bands",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "clip_to": "doors",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      194,
+      118
+     ],
+     "size": [
+      100,
+      8
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      194,
+      178
+     ],
+     "size": [
+      100,
+      8
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      194,
+      238
+     ],
+     "size": [
+      100,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rivets",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "bronze",
+   "tags": [
+    "closed"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      158,
+      118
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176,
+      118
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      212,
+      118
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      230,
+      118
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      158,
+      178
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176,
+      178
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      212,
+      178
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      230,
+      178
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      158,
+      238
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176,
+      238
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      212,
+      238
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      230,
+      238
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door_open0",
+   "z": 11.0,
+   "kind": "mass",
+   "material": "iron",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       14,
+       2
+      ],
+      [
+       14,
+       11.6
+      ],
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       4.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      108,
+      194
+     ],
+     "size": [
+      64,
+      210
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door_open0_spikes",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "steel",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      118,
+      138
+     ],
+     "size": [
+      10,
+      14
+     ],
+     "rot": -90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      118,
+      166
+     ],
+     "size": [
+      10,
+      14
+     ],
+     "rot": -90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      118,
+      194
+     ],
+     "size": [
+      10,
+      14
+     ],
+     "rot": -90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      118,
+      222
+     ],
+     "size": [
+      10,
+      14
+     ],
+     "rot": -90
+    }
+   ]
+  },
+  {
+   "name": "door_open1",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "iron",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       2
+      ],
+      [
+       2,
+       11.6
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       14,
+       4.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      280,
+      194
+     ],
+     "size": [
+      64,
+      210
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door_open1_spikes",
+   "z": 14.0,
+   "kind": "mass",
+   "material": "steel",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      270,
+      138
+     ],
+     "size": [
+      10,
+      14
+     ],
+     "rot": 90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      270,
+      166
+     ],
+     "size": [
+      10,
+      14
+     ],
+     "rot": 90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      270,
+      194
+     ],
+     "size": [
+      10,
+      14
+     ],
+     "rot": 90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      270,
+      222
+     ],
+     "size": [
+      10,
+      14
+     ],
+     "rot": 90
+    }
+   ]
+  },
+  {
+   "name": "helm",
+   "z": 15.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      194,
+      74
+     ],
+     "size": [
+      64,
+      44
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.0,
+       2
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       2,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      194,
+      48
+     ],
+     "size": [
+      30,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "helm_slit",
+   "z": 16.0,
+   "kind": "flat",
+   "material": "hole",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      194,
+      76
+     ],
+     "size": [
+      34,
+      5
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "closed",
+   "state": "closed"
+  },
+  {
+   "name": "open",
+   "state": "open",
+   "hide": [
+    "closed"
+   ],
+   "show": [
+    "open"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,617 @@
+{
+ "asset": "ui_ctl_keypad",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Symbol keypad (12 keys with shapes, no digits) and an empty display. idle / accepted.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  192.0,
+  192.0
+ ],
+ "pivot_meaning": "plate centre; keys are a 3x4 grid at x 96/192/288, y 124 + 66*row",
+ "seed": 71,
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      192.0
+     ],
+     "size": [
+      372.0,
+      372.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 26
+     }
+    }
+   ]
+  },
+  {
+   "name": "display",
+   "z": 1,
+   "kind": "flat",
+   "material": "screen",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      50.0
+     ],
+     "size": [
+      280.0,
+      44.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 8
+     }
+    }
+   ]
+  },
+  {
+   "name": "display_rim",
+   "z": 1.1,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      50.0
+     ],
+     "size": [
+      290.0,
+      54.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      50.0
+     ],
+     "size": [
+      280.0,
+      44.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "keys",
+   "z": 2,
+   "material": "plastic_beige",
+   "shade": {
+    "bump": 0.7,
+    "highlight_amount": 0.35
+   },
+   "grime": {
+    "strength": 0.15
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      124.0
+     ],
+     "size": [
+      80.0,
+      56.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      124.0
+     ],
+     "size": [
+      80.0,
+      56.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      288.0,
+      124.0
+     ],
+     "size": [
+      80.0,
+      56.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      190.0
+     ],
+     "size": [
+      80.0,
+      56.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      190.0
+     ],
+     "size": [
+      80.0,
+      56.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      288.0,
+      190.0
+     ],
+     "size": [
+      80.0,
+      56.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      256.0
+     ],
+     "size": [
+      80.0,
+      56.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      256.0
+     ],
+     "size": [
+      80.0,
+      56.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      288.0,
+      256.0
+     ],
+     "size": [
+      80.0,
+      56.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      322.0
+     ],
+     "size": [
+      80.0,
+      56.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      322.0
+     ],
+     "size": [
+      80.0,
+      56.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      288.0,
+      322.0
+     ],
+     "size": [
+      80.0,
+      56.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    }
+   ]
+  },
+  {
+   "name": "glyphs",
+   "z": 3,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      124.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      192.0,
+      124.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "diamond",
+     "at": [
+      288.0,
+      124.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "star",
+     "at": [
+      96.0,
+      190.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "moon",
+     "at": [
+      192.0,
+      190.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "heart",
+     "at": [
+      288.0,
+      190.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "spade",
+     "at": [
+      96.0,
+      256.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "club",
+     "at": [
+      192.0,
+      256.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      288.0,
+      256.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "hexagon",
+     "at": [
+      96.0,
+      322.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "plus",
+     "at": [
+      192.0,
+      322.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "snowflake",
+     "at": [
+      288.0,
+      322.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lamp_off_f",
+   "z": 2,
+   "material": "lamp_green_off",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      340.0,
+      50.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "lamp_off"
+   ]
+  },
+  {
+   "name": "lamp_on_f",
+   "z": 2,
+   "material": "lamp_green_on",
+   "emit": 1.0,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.55,
+    "color": "glow_green"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      340.0,
+      50.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "lamp_on"
+   ]
+  },
+  {
+   "name": "screws",
+   "z": 4,
+   "material": "steel",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      26.0,
+      26.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      358.0,
+      26.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      26.0,
+      358.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      358.0,
+      358.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws_slot",
+   "z": 4.01,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      26.0,
+      26.0
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 35.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      358.0,
+      26.0
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 58.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      26.0,
+      358.0
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 81.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      358.0,
+      358.0
+     ],
+     "size": [
+      8.0,
+      1.6
+     ],
+     "rot": 104.0
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle",
+   "show": [
+    "lamp_off"
+   ]
+  },
+  {
+   "name": "accepted",
+   "show": [
+    "lamp_on"
+   ]
+  }
+ ]
+}

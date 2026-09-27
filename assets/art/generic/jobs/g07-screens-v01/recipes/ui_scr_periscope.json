@@ -1,0 +1,337 @@
+{
+ "asset": "ui_scr_periscope",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Periscope view overlay 2560x1440: dark mask with a round view, bezel, bearing ticks, stadia cross hair, north mark.",
+ "palette": "palette_g07.json",
+ "style": "prop",
+ "canvas": [
+  2560,
+  1440
+ ],
+ "pivot": [
+  1280.0,
+  720.0
+ ],
+ "pivot_meaning": "screen centre (view circle radius 600)",
+ "seed": 85,
+ "supersample": 1,
+ "style_override": {
+  "silhouette": {
+   "width": 2.0,
+   "heavy": 1.0
+  }
+ },
+ "forms": [
+  {
+   "name": "mask",
+   "z": 0,
+   "kind": "flat",
+   "material": "void",
+   "opacity": 0.97,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      2760.0,
+      1640.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 4
+     }
+    },
+    {
+     "icon": "circle",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      1200.0,
+      1200.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "bezel",
+   "z": 1,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      1260.0,
+      1260.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      1200.0,
+      1200.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "bezel_lip",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "bronze",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      1208.0,
+      1208.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      1194.0,
+      1194.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "bearing",
+   "z": 2,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.45,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      3.0,
+      18.0
+     ],
+     "repeat": {
+      "ellipse": [
+       1280.0,
+       720.0,
+       574.0,
+       574.0
+      ],
+      "count": 72,
+      "arc": [
+       0,
+       360
+      ],
+      "orient": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "bearing_major",
+   "z": 2,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      5.0,
+      36.0
+     ],
+     "repeat": {
+      "ellipse": [
+       1280.0,
+       720.0,
+       566.0,
+       566.0
+      ],
+      "count": 8,
+      "arc": [
+       0,
+       360
+      ],
+      "orient": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "cross",
+   "z": 2,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.55,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      950.0,
+      720.0
+     ],
+     "size": [
+      480.0,
+      4.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      1610.0,
+      720.0
+     ],
+     "size": [
+      480.0,
+      4.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      1280.0,
+      430.0
+     ],
+     "size": [
+      4.0,
+      360.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      1280.0,
+      1010.0
+     ],
+     "size": [
+      4.0,
+      360.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "stadia",
+   "z": 2,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      3.0,
+      22.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        830.0,
+        720.0
+       ],
+       [
+        1730.0,
+        720.0
+       ]
+      ],
+      "count": 19
+     }
+    }
+   ]
+  },
+  {
+   "name": "centre",
+   "z": 2,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      1280.0,
+      720.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "north",
+   "z": 2.2,
+   "kind": "flat",
+   "material": "paint_red",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      1280.0,
+      62.0
+     ],
+     "size": [
+      44.0,
+      34.0
+     ],
+     "rot": 180
+    }
+   ]
+  }
+ ]
+}

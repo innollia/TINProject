@@ -1,0 +1,548 @@
+{
+ "asset": "obj_clock_grandfather",
+ "status": "candidate",
+ "note": "Grandfather clock 2.1 m against a wall: dark wood case, hood with a bone dial, hour marks and hands (no numerals), trunk window showing the brass pendulum.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 614,
+ "pivot_meaning": "front-bottom centre on the floor; the back face stands on the wall line",
+ "layer_hint": "world",
+ "canvas": [
+  228,
+  410
+ ],
+ "pivot": [
+  108,
+  344
+ ],
+ "footprint": [
+  60,
+  294,
+  156,
+  344
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.34,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "at": [
+      114,
+      322
+     ],
+     "size": [
+      110,
+      56
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plinth",
+   "z": 2.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 34,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      108,
+      285.0
+     ],
+     "size": [
+      96,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "trunk",
+   "z": 3.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 132,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      108,
+      152.0
+     ],
+     "size": [
+      78,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "window",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "glass_dark",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      108,
+      246.0
+     ],
+     "size": [
+      44,
+      96
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pendulum",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "gold",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "clip_to": "window",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      108,
+      230.0
+     ],
+     "size": [
+      3,
+      60
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      108,
+      270.0
+     ],
+     "size": [
+      22,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hood",
+   "z": 6.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 58,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      108,
+      94.0
+     ],
+     "size": [
+      96,
+      52
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dial",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "paper",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      108,
+      149.0
+     ],
+     "size": [
+      52,
+      52
+     ]
+    }
+   ]
+  },
+  {
+   "name": "marks",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      129.0,
+      149.0
+     ],
+     "size": [
+      4.0,
+      2
+     ],
+     "rot": 0.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      126.19,
+      159.5
+     ],
+     "size": [
+      3.999999999999999,
+      2
+     ],
+     "rot": 30.00000000000001
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      118.5,
+      167.19
+     ],
+     "size": [
+      3.9999999999999836,
+      2
+     ],
+     "rot": 59.999999999999865
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      108.0,
+      170.0
+     ],
+     "size": [
+      4.0,
+      2
+     ],
+     "rot": 90.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      97.5,
+      167.19
+     ],
+     "size": [
+      3.9999999999999827,
+      2
+     ],
+     "rot": 120.00000000000011
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      89.81,
+      159.5
+     ],
+     "size": [
+      3.999999999999999,
+      2
+     ],
+     "rot": 150.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      87.0,
+      149.0
+     ],
+     "size": [
+      4.0,
+      2
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      89.81,
+      138.5
+     ],
+     "size": [
+      3.999999999999999,
+      2
+     ],
+     "rot": -150.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      97.5,
+      130.81
+     ],
+     "size": [
+      4.000000000000009,
+      2
+     ],
+     "rot": -119.99999999999997
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      108.0,
+      128.0
+     ],
+     "size": [
+      4.0,
+      2
+     ],
+     "rot": -90.00000000000001
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      118.5,
+      130.81
+     ],
+     "size": [
+      3.9999999999999836,
+      2
+     ],
+     "rot": -59.999999999999865
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      126.19,
+      138.5
+     ],
+     "size": [
+      3.999999999999999,
+      2
+     ],
+     "rot": -30.00000000000001
+    }
+   ]
+  },
+  {
+   "name": "hands",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      108.0,
+      140.0
+     ],
+     "size": [
+      18.0,
+      3
+     ],
+     "rot": -90.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      114.0,
+      151.0
+     ],
+     "size": [
+      12.649110640673518,
+      3
+     ],
+     "rot": 18.43494882292201
+    }
+   ]
+  },
+  {
+   "name": "crest",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       4.4,
+       5.6
+      ],
+      [
+       8.0,
+       2
+      ],
+      [
+       11.6,
+       5.6
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      108,
+      60
+     ],
+     "size": [
+      90,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "finials",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "gold",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      68,
+      56
+     ],
+     "size": [
+      10,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      148,
+      56
+     ],
+     "size": [
+      10,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      108,
+      44
+     ],
+     "size": [
+      10,
+      12
+     ]
+    }
+   ]
+  }
+ ]
+}

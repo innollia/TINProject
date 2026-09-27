@@ -1,0 +1,529 @@
+{
+ "asset": "fx_pi_cannon_smoke",
+ "status": "candidate",
+ "note": "대포 연기 (해적·바다, tier B). 5-frame effect, 192x192 cells. cannon mouth at the left, blast toward +x",
+ "palette": "palette_g02.json",
+ "style": "sprite",
+ "style_override": {
+  "silhouette": {
+   "opacity": 0.0
+  },
+  "cast": {
+   "opacity": 0.0
+  }
+ },
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  20,
+  110
+ ],
+ "pivot_meaning": "effect origin",
+ "seed": 507,
+ "forms": [
+  {
+   "name": "flash_f0",
+   "z": 2.0,
+   "tags": [
+    "f0"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "star",
+     "at": [
+      44.0,
+      110.0
+     ],
+     "size": [
+      50,
+      60
+     ],
+     "rot": 90
+    }
+   ],
+   "kind": "flat",
+   "material": "flame",
+   "opacity": 1.0,
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "flame_glow"
+   }
+  },
+  {
+   "name": "core_f0",
+   "z": 2.1,
+   "tags": [
+    "f0"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      38.0,
+      110.0
+     ],
+     "size": [
+      26,
+      22
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#fff2c8",
+   "opacity": 1.0,
+   "emit": 1.0
+  },
+  {
+   "name": "smoke_f0",
+   "z": 1.0,
+   "tags": [
+    "f0"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      78.0,
+      103.0
+     ],
+     "size": [
+      62.0,
+      44.4
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      60.8,
+      114.8
+     ],
+     "size": [
+      49.0,
+      36.6
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      91.0,
+      102.2
+     ],
+     "size": [
+      40.4,
+      32.0
+     ]
+    }
+   ],
+   "kind": "mass",
+   "material": "ash",
+   "opacity": 0.8,
+   "line": {
+    "width": 0.8,
+    "heavy": 0.7
+   }
+  },
+  {
+   "name": "flash_f1",
+   "z": 2.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "star",
+     "at": [
+      54.0,
+      110.0
+     ],
+     "size": [
+      70,
+      84
+     ],
+     "rot": 90
+    }
+   ],
+   "kind": "flat",
+   "material": "flame",
+   "opacity": 0.7,
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "flame_glow"
+   }
+  },
+  {
+   "name": "core_f1",
+   "z": 2.101,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      46.0,
+      110.0
+     ],
+     "size": [
+      26,
+      22
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#fff2c8",
+   "opacity": 0.6,
+   "emit": 1.0
+  },
+  {
+   "name": "smoke_f1",
+   "z": 1.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      93.0,
+      100.5
+     ],
+     "size": [
+      72.0,
+      51.400000000000006
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      69.8,
+      118.8
+     ],
+     "size": [
+      56.5,
+      42.1
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      108.5,
+      95.7
+     ],
+     "size": [
+      47.400000000000006,
+      37.0
+     ]
+    }
+   ],
+   "kind": "mass",
+   "material": "ash",
+   "opacity": 0.9,
+   "line": {
+    "width": 0.8,
+    "heavy": 0.7
+   }
+  },
+  {
+   "name": "embers_f1",
+   "z": 3.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110.0,
+      74.0
+     ],
+     "size": [
+      4,
+      4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      134.0,
+      130.0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ember",
+   "opacity": 0.75,
+   "emit": 1.0
+  },
+  {
+   "name": "smoke_f2",
+   "z": 1.002,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      108.0,
+      98.0
+     ],
+     "size": [
+      82.0,
+      58.400000000000006
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      78.8,
+      122.8
+     ],
+     "size": [
+      64.0,
+      47.6
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      126.0,
+      89.2
+     ],
+     "size": [
+      54.400000000000006,
+      42.0
+     ]
+    }
+   ],
+   "kind": "mass",
+   "material": "ash",
+   "opacity": 0.85,
+   "line": {
+    "width": 0.8,
+    "heavy": 0.7
+   }
+  },
+  {
+   "name": "embers_f2",
+   "z": 3.002,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      68.0
+     ],
+     "size": [
+      4,
+      4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      158.0,
+      130.0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ember",
+   "opacity": 0.5,
+   "emit": 1.0
+  },
+  {
+   "name": "smoke_f3",
+   "z": 1.003,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      120.0,
+      96.0
+     ],
+     "size": [
+      90.0,
+      64.0
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      86.0,
+      126.0
+     ],
+     "size": [
+      70.0,
+      52.0
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      140.0,
+      84.0
+     ],
+     "size": [
+      60.0,
+      46.0
+     ]
+    }
+   ],
+   "kind": "mass",
+   "material": "ash",
+   "opacity": 0.7,
+   "line": {
+    "width": 0.8,
+    "heavy": 0.7
+   }
+  },
+  {
+   "name": "embers_f3",
+   "z": 3.003,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      62.0
+     ],
+     "size": [
+      4,
+      4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182.0,
+      130.0
+     ],
+     "size": [
+      3,
+      3
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ember",
+   "opacity": 0.25,
+   "emit": 1.0
+  },
+  {
+   "name": "smoke_f4",
+   "z": 1.004,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      126.0,
+      95.0
+     ],
+     "size": [
+      94.0,
+      66.80000000000001
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      89.6,
+      127.6
+     ],
+     "size": [
+      73.0,
+      54.2
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      147.0,
+      81.4
+     ],
+     "size": [
+      62.800000000000004,
+      48.0
+     ]
+    }
+   ],
+   "kind": "mass",
+   "material": "ash",
+   "opacity": 0.45,
+   "line": {
+    "width": 0.8,
+    "heavy": 0.7
+   }
+  }
+ ],
+ "frames": [
+  {
+   "name": "f0",
+   "show": [
+    "f0"
+   ]
+  },
+  {
+   "name": "f1",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "f2",
+   "show": [
+    "f2"
+   ]
+  },
+  {
+   "name": "f3",
+   "show": [
+    "f3"
+   ]
+  },
+  {
+   "name": "f4",
+   "show": [
+    "f4"
+   ]
+  }
+ ]
+}

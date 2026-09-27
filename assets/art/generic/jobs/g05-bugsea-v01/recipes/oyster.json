@@ -1,0 +1,785 @@
+{
+ "asset": "oyster",
+ "status": "candidate",
+ "note": "Pearl oyster monster, front view. A giant craggy grey oyster gaping open: jagged shell edges like teeth, a lolling pale tongue of flesh, two eye stalks peeking over the rim and a glowing pearl held inside.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 938,
+ "g05": {
+  "name_ko": "진주 굴 괴물",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      359.6
+     ],
+     "size": [
+      220.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "upper",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      210.0
+     ],
+     "size": [
+      230.0,
+      140.0
+     ],
+     "half": "top"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      212.0
+     ],
+     "size": [
+      230.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "upper_ridges",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.1,
+   "kind": "flat",
+   "material": "stone_dark",
+   "clip_to": "upper",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      112.0,
+      182.0
+     ],
+     "size": [
+      4.0,
+      116.8
+     ],
+     "rot": 56.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      182.0
+     ],
+     "size": [
+      4.0,
+      81.4
+     ],
+     "rot": 36.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      182.0
+     ],
+     "size": [
+      4.0,
+      65.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.0,
+      182.0
+     ],
+     "size": [
+      4.0,
+      81.4
+     ],
+     "rot": -36.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      208.0,
+      182.0
+     ],
+     "size": [
+      4.0,
+      116.8
+     ],
+     "rot": -56.3
+    }
+   ]
+  },
+  {
+   "name": "inside",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.5,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      250.0
+     ],
+     "size": [
+      210.0,
+      90.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nacre",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.6,
+   "material": "ghost",
+   "opacity": 0.35,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      260.0
+     ],
+     "size": [
+      180.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pearl",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.7,
+   "kind": "flat",
+   "material": "glow_white",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "lamp_glow"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      244.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tongue",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.8,
+   "material": "hide_pink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      270.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "rot": 33.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      135.1,
+      278.6
+     ],
+     "size": [
+      37.1,
+      37.1
+     ],
+     "rot": 25.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      131.8,
+      287.1
+     ],
+     "size": [
+      34.3,
+      34.3
+     ],
+     "rot": 15.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      130.2,
+      295.7
+     ],
+     "size": [
+      31.4,
+      31.4
+     ],
+     "rot": 5.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      130.2,
+      304.3
+     ],
+     "size": [
+      28.6,
+      28.6
+     ],
+     "rot": -5.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      131.8,
+      312.9
+     ],
+     "size": [
+      25.7,
+      25.7
+     ],
+     "rot": -15.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      135.1,
+      321.4
+     ],
+     "size": [
+      22.9,
+      22.9
+     ],
+     "rot": -25.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      330.0
+     ],
+     "size": [
+      20.0,
+      20.0
+     ],
+     "rot": -33.7
+    }
+   ]
+  },
+  {
+   "name": "teeth_up",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.9,
+   "material": "bone_old",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      72.7,
+      230.0
+     ],
+     "size": [
+      15.7,
+      16.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      90.2,
+      228.7
+     ],
+     "size": [
+      15.7,
+      13.4
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      107.6,
+      227.4
+     ],
+     "size": [
+      15.7,
+      10.9
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      125.1,
+      229.4
+     ],
+     "size": [
+      15.7,
+      14.7
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      142.5,
+      228.1
+     ],
+     "size": [
+      15.7,
+      12.2
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      230.0
+     ],
+     "size": [
+      15.7,
+      16.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      177.5,
+      228.7
+     ],
+     "size": [
+      15.7,
+      13.4
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      194.9,
+      227.4
+     ],
+     "size": [
+      15.7,
+      10.9
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      212.4,
+      229.4
+     ],
+     "size": [
+      15.7,
+      14.7
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      229.8,
+      228.1
+     ],
+     "size": [
+      15.7,
+      12.2
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      247.3,
+      230.0
+     ],
+     "size": [
+      15.7,
+      16.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "lower",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      300.0
+     ],
+     "size": [
+      236.0,
+      120.0
+     ],
+     "half": "bottom"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      298.0
+     ],
+     "size": [
+      236.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "teeth_lo",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "bone_old",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      79.0,
+      285.0
+     ],
+     "size": [
+      16.2,
+      14.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      97.0,
+      286.1
+     ],
+     "size": [
+      16.2,
+      11.8
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      115.0,
+      287.2
+     ],
+     "size": [
+      16.2,
+      9.5
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      133.0,
+      285.6
+     ],
+     "size": [
+      16.2,
+      12.9
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      151.0,
+      286.7
+     ],
+     "size": [
+      16.2,
+      10.6
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      169.0,
+      285.0
+     ],
+     "size": [
+      16.2,
+      14.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      187.0,
+      286.1
+     ],
+     "size": [
+      16.2,
+      11.8
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      205.0,
+      287.2
+     ],
+     "size": [
+      16.2,
+      9.5
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      223.0,
+      285.6
+     ],
+     "size": [
+      16.2,
+      12.9
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      241.0,
+      286.7
+     ],
+     "size": [
+      16.2,
+      10.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stalk_l",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 0.8,
+   "material": "hide_pink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110.0,
+      135.0
+     ],
+     "size": [
+      10.0,
+      57.4
+     ],
+     "rot": 158.2
+    }
+   ]
+  },
+  {
+   "name": "eye_l",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 0.9,
+   "material": "eye_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      98.0,
+      104.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pupil_l",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 0.95,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      98.0,
+      106.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stalk_r",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 0.8,
+   "material": "hide_pink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      210.0,
+      135.0
+     ],
+     "size": [
+      10.0,
+      57.4
+     ],
+     "rot": -158.2
+    }
+   ]
+  },
+  {
+   "name": "eye_r",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 0.9,
+   "material": "eye_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      222.0,
+      104.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pupil_r",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 0.95,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      222.0,
+      106.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

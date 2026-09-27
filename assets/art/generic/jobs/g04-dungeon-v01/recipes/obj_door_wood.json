@@ -1,0 +1,554 @@
+{
+ "asset": "obj_door_wood",
+ "status": "candidate",
+ "note": "Wooden plank door 1.1 m x 2.1 m in a dark wood frame: iron straps, studs, ring handle. Frames: closed, open (dark doorway, leaf swung inward, seen through the opening).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 510,
+ "pivot_meaning": "bottom centre of the opening on the wall-face floor line (threshold)",
+ "layer_hint": "world",
+ "canvas": [
+  362,
+  366
+ ],
+ "pivot": [
+  177,
+  302
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      181,
+      304
+     ],
+     "size": [
+      250,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "void",
+   "z": 2.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "grad": {
+    "to": "well_inner",
+    "y0": -224,
+    "y1": 0,
+    "curve": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      177,
+      190
+     ],
+     "size": [
+      198,
+      224
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf_open",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "clip_to": "void",
+   "texture": {
+    "angle": 90
+   },
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       6.08
+      ],
+      [
+       14,
+       2.0
+      ],
+      [
+       14,
+       9.92
+      ],
+      [
+       2,
+       14.0
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      111,
+      182
+     ],
+     "size": [
+      66,
+      250
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "closed"
+   ],
+   "shade": {
+    "bump": 0.35
+   },
+   "texture": {
+    "angle": 90
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      177,
+      190
+     ],
+     "size": [
+      198,
+      224
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf_joints",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "tags": [
+    "closed"
+   ],
+   "opacity": 0.55,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      111,
+      190
+     ],
+     "size": [
+      2.2,
+      218
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      144,
+      190
+     ],
+     "size": [
+      2.2,
+      218
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      177,
+      190
+     ],
+     "size": [
+      2.2,
+      218
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      210,
+      190
+     ],
+     "size": [
+      2.2,
+      218
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      243,
+      190
+     ],
+     "size": [
+      2.2,
+      218
+     ]
+    }
+   ]
+  },
+  {
+   "name": "straps",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      143,
+      126
+     ],
+     "size": [
+      128,
+      13
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      143,
+      250
+     ],
+     "size": [
+      128,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "name": "studs",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "bronze",
+   "tags": [
+    "closed"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      91,
+      126
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      123,
+      126
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      155,
+      126
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      187,
+      126
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      91,
+      250
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      123,
+      250
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      155,
+      250
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      187,
+      250
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "handle_plate",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      239,
+      190
+     ],
+     "size": [
+      18,
+      26
+     ]
+    }
+   ]
+  },
+  {
+   "name": "handle_ring",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      239,
+      204
+     ],
+     "size": [
+      22,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      239,
+      204
+     ],
+     "size": [
+      14,
+      14
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "jamb0",
+   "z": 10.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 230,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      69,
+      63.0
+     ],
+     "size": [
+      18,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jamb1",
+   "z": 11.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 230,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      285,
+      63.0
+     ],
+     "size": [
+      18,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lintel",
+   "z": 12.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 20,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      177,
+      47.0
+     ],
+     "size": [
+      236,
+      18
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "closed",
+   "state": "closed"
+  },
+  {
+   "name": "open",
+   "state": "open",
+   "hide": [
+    "closed"
+   ],
+   "show": [
+    "open"
+   ]
+  }
+ ]
+}

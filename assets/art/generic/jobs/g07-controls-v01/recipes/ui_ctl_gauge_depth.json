@@ -1,0 +1,316 @@
+{
+ "asset": "ui_ctl_gauge_depth",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Vertical depth gauge: glass tube, scale on the left, safe / deep bands on the right. The marker (ui_ctl_gauge_depth_marker) slides on x=96 between y 52 and 332.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  384
+ ],
+ "pivot": [
+  96.0,
+  192.0
+ ],
+ "pivot_meaning": "tube centre",
+ "seed": 61,
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      192.0
+     ],
+     "size": [
+      112.0,
+      362.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 16
+     }
+    }
+   ]
+  },
+  {
+   "name": "tube",
+   "z": 1,
+   "material": "screen_glass",
+   "shade": {
+    "bump": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      192.0
+     ],
+     "size": [
+      38.0,
+      302.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 17
+     }
+    }
+   ]
+  },
+  {
+   "name": "scale_minor",
+   "z": 2,
+   "kind": "flat",
+   "material": "enamel",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      14.0,
+      2.4
+     ],
+     "repeat": {
+      "line": [
+       [
+        58,
+        52
+       ],
+       [
+        58,
+        332
+       ]
+      ],
+      "count": 29
+     }
+    }
+   ]
+  },
+  {
+   "name": "scale_major",
+   "z": 2.1,
+   "kind": "flat",
+   "material": "enamel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      24.0,
+      4.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        54,
+        52
+       ],
+       [
+        54,
+        332
+       ]
+      ],
+      "count": 8
+     }
+    }
+   ]
+  },
+  {
+   "name": "band_safe",
+   "z": 2,
+   "kind": "flat",
+   "material": "paint_teal",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      134.0,
+      122.0
+     ],
+     "size": [
+      9.0,
+      140.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "band_deep",
+   "z": 2,
+   "kind": "flat",
+   "material": "zone_red",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      134.0,
+      262.0
+     ],
+     "size": [
+      9.0,
+      140.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "caps",
+   "z": 3,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      34.0
+     ],
+     "size": [
+      62.0,
+      22.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      350.0
+     ],
+     "size": [
+      62.0,
+      22.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    }
+   ]
+  },
+  {
+   "name": "tube_glare",
+   "z": 3,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.1,
+   "clip_to": "tube",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      86.2,
+      189.6
+     ],
+     "size": [
+      27.6,
+      27.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      89.5,
+      194.1
+     ],
+     "size": [
+      30.6,
+      30.6
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "screws",
+   "z": 4,
+   "material": "steel",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      16.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      368.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws_slot",
+   "z": 4.01,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      16.0
+     ],
+     "size": [
+      6.4,
+      1.28
+     ],
+     "rot": 35.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      368.0
+     ],
+     "size": [
+      6.4,
+      1.28
+     ],
+     "rot": 58.0
+    }
+   ]
+  }
+ ]
+}

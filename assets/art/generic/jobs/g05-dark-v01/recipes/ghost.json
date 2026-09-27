@@ -1,0 +1,1007 @@
+{
+ "asset": "ghost",
+ "status": "candidate",
+ "note": "Ghost, front view. Hovering pale blue-grey shroud spirit, see-through, with hollow dark eye holes lit by cold cyan points, wailing mouth, wispy arms and a trailing tail. attack = swells and lunges with arms outstretched, mouth screaming; hit = flickers flat and tilted, eyes squeezed.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 603,
+ "g05": {
+  "name_ko": "유령",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.25,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      359.8
+     ],
+     "size": [
+      110.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "ghost",
+   "opacity": 0.84,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      250.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ],
+     "rot": -21.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      163.8,
+      261.0
+     ],
+     "size": [
+      81.8,
+      81.8
+     ],
+     "rot": -16.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      166.4,
+      271.7
+     ],
+     "size": [
+      73.6,
+      73.6
+     ],
+     "rot": -10.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      167.8,
+      282.2
+     ],
+     "size": [
+      65.3,
+      65.3
+     ],
+     "rot": -4.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      167.9,
+      292.5
+     ],
+     "size": [
+      57.1,
+      57.1
+     ],
+     "rot": 2.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      166.8,
+      302.5
+     ],
+     "size": [
+      48.9,
+      48.9
+     ],
+     "rot": 9.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      164.4,
+      312.2
+     ],
+     "size": [
+      40.7,
+      40.7
+     ],
+     "rot": 17.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.9,
+      321.7
+     ],
+     "size": [
+      32.4,
+      32.4
+     ],
+     "rot": 24.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      156.0,
+      331.0
+     ],
+     "size": [
+      24.2,
+      24.2
+     ],
+     "rot": 30.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      150.0,
+      340.0
+     ],
+     "size": [
+      16.0,
+      20.1
+     ],
+     "rot": 36.9
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 2,
+   "material": "ghost",
+   "pivot": [
+    110,
+    160
+   ],
+   "opacity": 0.84,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110.0,
+      160.0
+     ],
+     "size": [
+      34.0,
+      34.0
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      100.5,
+      170.2
+     ],
+     "size": [
+      31.0,
+      31.0
+     ],
+     "rot": 40.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      92.1,
+      180.6
+     ],
+     "size": [
+      28.0,
+      28.0
+     ],
+     "rot": 36.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      84.8,
+      191.4
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "rot": 31.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      78.5,
+      202.5
+     ],
+     "size": [
+      22.0,
+      24.5
+     ],
+     "rot": 27.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      73.3,
+      213.9
+     ],
+     "size": [
+      19.0,
+      24.5
+     ],
+     "rot": 22.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      69.1,
+      225.6
+     ],
+     "size": [
+      16.0,
+      24.5
+     ],
+     "rot": 17.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      66.0,
+      237.7
+     ],
+     "size": [
+      13.0,
+      24.5
+     ],
+     "rot": 11.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      250.0
+     ],
+     "size": [
+      10.0,
+      24.5
+     ],
+     "rot": 6.8
+    }
+   ]
+  },
+  {
+   "name": "arm_l_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 2,
+   "material": "ghost",
+   "hidden": true,
+   "opacity": 0.84,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110.0,
+      160.0
+     ],
+     "size": [
+      36.0,
+      36.0
+     ],
+     "rot": 102.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      98.9,
+      157.2
+     ],
+     "size": [
+      33.0,
+      33.0
+     ],
+     "rot": 105.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      88.5,
+      154.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": 109.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      78.9,
+      150.2
+     ],
+     "size": [
+      27.0,
+      27.0
+     ],
+     "rot": 113.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      70.0,
+      146.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "rot": 117.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      61.9,
+      141.2
+     ],
+     "size": [
+      21.0,
+      21.0
+     ],
+     "rot": 122.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      54.5,
+      136.0
+     ],
+     "size": [
+      18.0,
+      18.6
+     ],
+     "rot": 128.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      47.9,
+      130.2
+     ],
+     "size": [
+      15.0,
+      18.6
+     ],
+     "rot": 133.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      42.0,
+      124.0
+     ],
+     "size": [
+      12.0,
+      18.6
+     ],
+     "rot": 139.8
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 2,
+   "material": "ghost",
+   "pivot": [
+    210,
+    160
+   ],
+   "opacity": 0.84,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      210.0,
+      160.0
+     ],
+     "size": [
+      34.0,
+      34.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      219.5,
+      170.2
+     ],
+     "size": [
+      31.0,
+      31.0
+     ],
+     "rot": -40.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      227.9,
+      180.6
+     ],
+     "size": [
+      28.0,
+      28.0
+     ],
+     "rot": -36.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      235.2,
+      191.4
+     ],
+     "size": [
+      25.0,
+      25.0
+     ],
+     "rot": -31.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      241.5,
+      202.5
+     ],
+     "size": [
+      22.0,
+      24.5
+     ],
+     "rot": -27.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      246.7,
+      213.9
+     ],
+     "size": [
+      19.0,
+      24.5
+     ],
+     "rot": -22.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      250.9,
+      225.6
+     ],
+     "size": [
+      16.0,
+      24.5
+     ],
+     "rot": -17.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      254.0,
+      237.7
+     ],
+     "size": [
+      13.0,
+      24.5
+     ],
+     "rot": -11.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      250.0
+     ],
+     "size": [
+      10.0,
+      24.5
+     ],
+     "rot": -6.8
+    }
+   ]
+  },
+  {
+   "name": "arm_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 2,
+   "material": "ghost",
+   "hidden": true,
+   "opacity": 0.84,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      210.0,
+      160.0
+     ],
+     "size": [
+      36.0,
+      36.0
+     ],
+     "rot": -102.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      221.1,
+      157.2
+     ],
+     "size": [
+      33.0,
+      33.0
+     ],
+     "rot": -105.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      231.5,
+      154.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": -109.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      241.1,
+      150.2
+     ],
+     "size": [
+      27.0,
+      27.0
+     ],
+     "rot": -113.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      250.0,
+      146.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "rot": -117.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      258.1,
+      141.2
+     ],
+     "size": [
+      21.0,
+      21.0
+     ],
+     "rot": -122.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      265.5,
+      136.0
+     ],
+     "size": [
+      18.0,
+      18.6
+     ],
+     "rot": -128.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      272.1,
+      130.2
+     ],
+     "size": [
+      15.0,
+      18.6
+     ],
+     "rot": -133.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      278.0,
+      124.0
+     ],
+     "size": [
+      12.0,
+      18.6
+     ],
+     "rot": -139.8
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3,
+   "material": "ghost",
+   "opacity": 0.84,
+   "pieces": [
+    {
+     "icon": "ghost",
+     "at": [
+      160.0,
+      190.0
+     ],
+     "size": [
+      170.0,
+      190.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      142.0
+     ],
+     "size": [
+      150.0,
+      120.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sockets",
+   "tags": [
+    "all",
+    "eyes",
+    "body"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      130.0,
+      160.0
+     ],
+     "size": [
+      34.0,
+      42.0
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      190.0,
+      160.0
+     ],
+     "size": [
+      34.0,
+      42.0
+     ],
+     "rot": 8.0
+    }
+   ]
+  },
+  {
+   "name": "pupils",
+   "tags": [
+    "all",
+    "eyes",
+    "body"
+   ],
+   "z": 3.3,
+   "kind": "flat",
+   "material": "glow_cyan",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.7,
+    "color": "ghost_glow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      130.0,
+      164.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      190.0,
+      164.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_hit",
+   "tags": [
+    "all",
+    "eyes_hit",
+    "body"
+   ],
+   "z": 3.3,
+   "kind": "flat",
+   "material": "void",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      128.0,
+      158.5
+     ],
+     "size": [
+      6.0,
+      19.6
+     ],
+     "rot": -66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      128.0,
+      165.5
+     ],
+     "size": [
+      6.0,
+      19.6
+     ],
+     "rot": 66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      158.5
+     ],
+     "size": [
+      6.0,
+      19.6
+     ],
+     "rot": 66.4,
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      165.5
+     ],
+     "size": [
+      6.0,
+      19.6
+     ],
+     "rot": -66.4,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "mouth",
+    "body"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      214.0
+     ],
+     "size": [
+      30.0,
+      36.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth_open",
+   "tags": [
+    "all",
+    "mouth_open",
+    "body"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "void",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      222.0
+     ],
+     "size": [
+      48.0,
+      64.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wisps",
+   "tags": [
+    "all",
+    "wisps"
+   ],
+   "z": 0.5,
+   "material": "ghost",
+   "opacity": 0.5,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "wind",
+     "at": [
+      70.0,
+      120.0
+     ],
+     "size": [
+      50.0,
+      36.0
+     ]
+    },
+    {
+     "icon": "wind",
+     "at": [
+      256.0,
+      260.0
+     ],
+     "size": [
+      46.0,
+      32.0
+     ],
+     "flip": "x"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "shadow": {
+     "sx": 1.2,
+     "sy": 1.2,
+     "pivot": [
+      160,
+      364
+     ]
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "dy": -10,
+     "sx": 1.06,
+     "sy": 1.06
+    }
+   },
+   "show": [
+    "mouth_open",
+    "atk"
+   ],
+   "hide": [
+    "mouth",
+    "arm_l",
+    "arm_r"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "arm_l": {
+     "rot": -30,
+     "pivot": [
+      110,
+      160
+     ]
+    },
+    "arm_r": {
+     "rot": -20,
+     "pivot": [
+      210,
+      160
+     ]
+    },
+    "wisps": {
+     "dx": 10
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "rot": -6,
+     "dx": 4,
+     "sx": 1.08,
+     "sy": 0.84
+    }
+   },
+   "show": [
+    "eyes_hit",
+    "mouth_open"
+   ],
+   "hide": [
+    "eyes",
+    "mouth"
+   ]
+  }
+ ]
+}

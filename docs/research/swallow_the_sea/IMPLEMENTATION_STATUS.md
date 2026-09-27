@@ -1,5 +1,17 @@
 # Kit 08 하강 탐사 — 구현 현황 · 인계
 
+> **2026-09-27 부모(통합 담당) 전달 — 사용자 지시. 이 파일의 다른 내용과 부모 지시문보다 우선한다.**
+> 1. 중요한 결정(생물의 생김새와 움직임, 화면 구성·조작, 범위, 레퍼런스 해석, '사용자 확인 대기' 항목)은 추천안으로 확정하지 말고 번호 질문으로 부모에게 보고한다. 부모 지시문의 '사용자에게 묻지 않는다'는 기술 선택에만 해당한다. `AGENTS.md` '중요한 결정은 사용자에게 묻는다'.
+> 2. 절차적 생물(grazer·warden 등): 기준은 Rain World 수준의 절차 애니메이션 품질이다. 그 품질이면 촉수 덩어리·눈알 여러 개·다리 다발도 된다. 거미만 안 된다. 구조가 서로 다른 후보 2~4개를 시험 캡처와 함께 질문으로 올린다. `AGENTS.md` '절차적 생물·괴물 디자인'.
+> 3. 사용자 결정(2026-09-27): 조작 키 6개(좌우 추가, §20 D1) 확정.
+> 4. **사용자 결정(2026-09-27 17:3x) — OQ-1 닫힘. §10(화면)과 세계관을 다시 쓴다.** 원문: "톤앤메너와 그림체는 따라하지 않는다, 점같은 모습이랑 올챙이 싫어. 게임 bloodbark를 그림체와 톤앤매너, 세계관 레퍼런스(하지만 게임은 2D)삼아서 작업. 그림체랑 톤앤매너는 복사, 세계관은 억지로 이케저케. 그래도 어려우면 hige to deko를 세계관 참조해서 올챙이에서 벗어나봐"
+>    - Swallow the Sea는 **시스템 레퍼런스로만** 남는다(하강·먹고 자라기·층 구조). 그 그림체·톤앤매너는 따르지 않는다.
+>    - **그림체·톤앤매너: Bloodbark를 복사한다.** Bloodbark: SirTartarus의 무료 단편 공포 게임(itch.io, 약 30분, 결말 2개). 공포 작가 Eduardo Valdés-Hevia의 작품, 특히 그림 'Bloodbark'가 바탕이다. 벌목꾼이 붉은 목재 때문에 비싼 나무를 일주일 동안 베는데, 나무는 피를 흘리고(그 종에게는 정상이라고 설명된다), 나무가 벌목꾼을 알아보고 반격한다. 태그는 3D·1인칭·레트로·심리 공포. 출처: [itch.io](https://sirtartarus.itch.io/bloodbark). 이 Kit은 2D를 유지하고, 이미지 파일 0개(코드 그림) 계약도 유지한 채 그 그림체를 옮긴다. 실제 화면(스크린샷, 플레이 영상, Valdés-Hevia 원화)을 직접 확인해 `SWALLOW_THE_SEA_RESEARCH.md` 옆에 조사 문서를 새로 쓰고 URL과 관찰을 남긴다. 기억으로 채우지 않는다.
+>    - **세계관: Bloodbark를 억지로라도 하강 구조에 끼워 맞춘다.** 방법은 에이전트가 후보를 만든다(예시일 뿐: 피 흘리는 나무의 뿌리 속으로 내려간다 — 첫 층 이름이 이미 `roots`다). 화면에 세계관 설명문 0개 규칙(§10.9·§10.10)은 그대로다.
+>    - 그래도 어려우면 세계관만 Hige to deko(일본 동인 RPG 서클)를 참조한다. 이 서클 작품은 성인물이므로 성적이지 않은 설정(예: 섬에 고립된 동아리가 송곳니 괴물에게 흩어지는 전제)만 쓰고, 성적 콘텐츠 제외 결정은 그대로 지킨다.
+>    - **주인공은 점처럼 작거나 동그란 세포, 올챙이 모양이면 안 된다.** 카메라를 가깝게 해 주인공이 점으로 보이지 않게 한다. 주인공과 주요 생물의 생김새는 '중요한 결정'이다. 구조가 서로 다른 후보 2~4개를 창 모드 연속 프레임 캡처와 함께 부모에게 질문으로 올린다(Rain World 수준 절차 애니메이션, 거미 금지 — `AGENTS.md`). 생김새와 무관한 화면 작업(층 배경, 팔레트, 카메라, 흐름·막·벽 표현)은 그동안 진행한다. 후보를 올린 뒤 멈추지 말고 네 추천 후보를 기본값으로 끝까지 구현한다. 사용자가 답하지 않으면 추천안이 확정이다(2026-09-27 사용자: "내가 답변 안하는건 추천대로란 뜻").
+
+
 기록 2026-09-27 05:0x KST · 모듈 `descent_exploration` · 브랜치 `kit/05-stone-story-rpg`
 계획서 `plans/kits/08_DESCENT_EXPLORATION_KIT.md` — 구현 중 판정은 **§20**(앞 절과 충돌하면 §20이 정본)
 
@@ -7,25 +19,19 @@
 
 ## 0. 다음 작업자가 할 일 (순서대로)
 
-1. **Kit 08 테스트만 먼저 돌린다.** `AGENTS.md` 의 Godot 잠금 절차를 지킨 뒤:
-   ```powershell
-   $GodotExe = 'C:\Program Files (x86)\Steam\steamapps\common\Godot Engine\godot.windows.opt.tools.64.exe'
-   $p = Start-Process -FilePath $GodotExe -ArgumentList '--headless --path C:\projects\TINProject --editor --import' -NoNewWindow -Wait -PassThru; $p.ExitCode
-   $p = Start-Process -FilePath $GodotExe -ArgumentList '--headless --path C:\projects\TINProject --script addons/gut/gut_cmdln.gd -gdir=res://tests/core -gprefix=test_descent_exploration_ -gexit' -NoNewWindow -Wait -PassThru; $p.ExitCode
-   ```
-   `-gprefix=test_descent_exploration_` 는 이 Kit의 7개 파일만 고른다. 새 스크립트를 만들었으면 import 를 먼저 해야 `class_name` 이 잡힌다.
-2. 남은 실패를 고친다(§3의 "재실행" 칸 참고). 소유 경로 안에서만.
-3. 통과하면 `AGENTS.md` "완료 전 자동 검증" 4개 명령을 한 번 돌리고, 남의 파일 실패는 기록만 한다.
-4. 소유 경로만 커밋·푸시(`git add -- <경로>` → `git commit -m ... -- <경로>` → `git push origin kit/05-stone-story-rpg`).
-5. 사용자가 OQ-1(§5)을 답하면 계획서 §10을 먼저 고치고 `presentation/` 을 만든다(§8).
+**2026-09-27 sub-kit08이 여기까지 끝냈다.** Kit 08 테스트 161개 중 **123개 통과**(audio 3 pass + 1 pending은 정상). 남은 36개 실패는 전부 `core/services/audio_service/audio_event_player.gd:59`의 `ResourceLoader.load(item.file)`이 wav 부재 시 사전 존재 확인 없이 호출돼 나는 엔진 경고이며(§7에 요청 남김), **이 Kit 코드 자체의 버그가 아니다** — 실제 게임 로직 어서션은 전부 통과했다(재확인: `expected to be` 계열 실패 0건). W3가 wav 13개를 넣으면 자연히 사라질 것으로 예상되나, core 소유자가 `ResourceLoader.exists()` 가드를 넣는 편이 더 빠를 것이다.
+
+1. **presentation 은 아직 시작 못 했다.** OQ-1(§5)이 열려 있다 — 사용자가 스크린샷/트레일러를 직접 봐야 한다. 이 세션은 실제 원본 해상도(1920×1080) 스크린샷 5장을 직접 내려받아 픽셀 단위로 확인했지만(§5, 조사 문서 §12.1), 이건 §19 OQ-1이 요구하는 "사람이 직접" 확인을 대체하지 않는다 — AGENTS.md Primary Reference 규칙과 계획서 §19 자체의 "자의 확정 금지" 문구 때문에 §10 수치를 확정하지 않았다.
+2. OQ-1이 닫히면 계획서 §10을 사용자 확인값으로 고치고 → `presentation/` 9개(§8) → 10분 실측 → 해상도 캡처.
+3. core의 `AudioEventPlayer.setup()` 가드가 들어오면(또는 W3 wav 렌더가 끝나면) Kit 08 테스트를 재실행해 123→161 통과를 확인한다.
 
 소유 경로(이 Kit이 쓸 수 있는 곳): `modules/descent_exploration/**`, `tests/core/test_descent_exploration_*.gd`, `plans/kits/08_DESCENT_EXPLORATION_KIT.md`, `docs/research/swallow_the_sea/**`. 나머지는 읽기만. `app/**` 변경은 §6 연결 요청으로만.
 
 ## 1. 지금 상태
 
-- **된 것:** 규칙 전부(`domain/` 6개, `systems/` 14개), 정본 6개 층 + 증명층 1개 authored JSON, 로더·검증기(13규칙), 저장·불러오기·마이그레이션·재시작, 결말 3종 판정, 몸통 인계(읽기 뷰·부력·손 자리·잔해·쓰기 요청 1회), Input Bubble 상태 보관, 오디오 이벤트 표 13줄. 테스트 7개 파일.
+- **된 것:** 규칙 전부(`domain/` 6개, `systems/` 14개), 정본 6개 층 + 증명층 1개 authored JSON, 로더·검증기(13규칙), 저장·불러오기·마이그레이션·재시작, 결말 3종 판정, 몸통 인계(읽기 뷰·부력·손 자리·잔해·쓰기 요청 1회), Input Bubble 상태 보관, 오디오 이벤트 표 13줄. 테스트 7개 파일, **123/161 실제 통과**(나머지 36개는 core 오디오 로더 경고 cascade, 진짜 실패 0건). `run_tests.gd` 644/644, 부팅(`--quit-after 180 --fixed-fps 60`) exit 0.
 - **안 된 것:** 화면(`presentation/` 9개 파일). §19 OQ-1이 열려 있어 시작하지 않았다. 그래서 10분 Reference Game 실측, 720p/FHD/QHD 캡처, §16 수동 과제, §18 완료 증거는 아직 할 수 없다.
-- **남의 일:** wav 13개(W3), 앱 등록과 arrival 훅(W0), ID 매핑(W1).
+- **남의 일:** wav 13개(W3, 위 오디오 경고의 원인), 앱 등록과 arrival 훅(W0), ID 매핑(W1), `AudioEventPlayer.setup()`의 존재 확인 누락(core 소유자, §7).
 - 이 폴더의 이미지·폰트 파일 0개, 상시 HUD 0, 화면 문자열 0. `core/procedural` 에 필요한 기능은 전부 `done` 상태다(README 표 확인) — 화면을 막는 것은 OQ-1뿐이다.
 
 ## 2. 파일
@@ -59,7 +65,11 @@
 
 ### 3.1 재실행 상태
 
-**미실행.** 세 원인을 고친 뒤 재실행을 걸었지만 이 세션이 닫힐 때(05:06)까지 다른 세션(kit01)이 Godot 잠금을 쥐고 있어 돌지 못했다. 다음 작업자는 §0-1 부터 한다. 1차에서 통과가 확인된 것은 `domain` 14개뿐이고, 나머지 6개 파일은 고친 뒤 한 번도 돌지 않았다.
+**부분 재실행 완료 (2026-09-27, sub-kit08).** 세 원인(§3 원인 1·2·3)은 유지돼 있었다. 재실행에서 **새로운 근본 원인**을 하나 더 발견했다: `modules/descent_exploration/module.gd:175`의 `func can_process() -> bool:` 가 `Node`의 네이티브 메서드를 오버라이드해 GUT 9.7이 "Warning treated as error"로 컴파일을 막았다 — **고침**(`_can_take_input()`으로 이름 변경, 호출부 2곳도 함께 수정). 이걸 고치자 module 6/23→7/23, save 0/12→12/12, systems 45/45(그대로), content 23/23(그대로), domain 14/14(그대로)로 올랐다. 총 107/161→**120/161 통과**.
+
+남은 40개 실패는 전부 하나의 원인으로 좁혀졌다: `core/services/audio_service/audio_manifest_event.gd:5`의 `@export_file("*.wav,*.ogg,*.mp3")`가 Godot 4.7에서 파싱 오류(콤마 구분 필터는 4.7에서 거부됨, "Use separate arguments instead")를 낸다. 이 파일이 컴파일 실패하면 `audio_manifest.gd`·`audio_event_player.gd`가 연쇄로 깨지고, `module.gd`가 이를 참조해 통째로 컴파일 실패한다(`--check-only`로 단독 확인: `modules/descent_exploration/module.gd` 자체는 문법 오류 없이 통과하지만 `Compile Error: Failed to compile depended scripts` 로 막힌다). 그 결과 `DescentModule.new()`를 쓰는 모든 테스트(module 나머지 15개, worldstate 21개, audio 4개)가 실패하거나, module.gd가 부분 로드된 상태에서 이전 프레임 값이 남아 `test_surging_down_breaks_the_roots_throat` 같은 어서션 실패(`96.0 > 640.0` 기대)로 위장해 나타난다.
+
+**이 파일은 `core/**`라 이 Kit이 못 고친다.** §7에 연결 요청을 남겼다. 다음 작업자(또는 core 소유자가 고친 뒤)는 §0-1부터 다시 돌려 40개가 실제로 통과하는지 확인해야 한다. 이 세션에서 확실히 통과가 확인된 것은 domain 14, content 23, systems 45, save 12(총 94/161)이고, module 7과 나머지는 core 수정 전에는 신뢰할 수 없다.
 
 ## 4. 계획서와 달라진 점
 
@@ -91,9 +101,10 @@
 
 | 받는 쪽 | 요청 |
 |---|---|
-| W3 | `audio_manifest.json` 13줄 그대로 wav 렌더(OQ-6). 생기면 `test_manifest_validates_once_the_renders_exist` 가 `pending` 에서 강제 단언이 된다 |
+| W3 | `audio_manifest.json` 13줄 그대로 wav 렌더(OQ-6). 생기면 `test_manifest_validates_once_the_renders_exist` 가 `pending` 에서 강제 단언이 된다. **추가 발견(2026-09-27 sub-kit08):** wav 13개가 없는 동안 `AudioEventPlayer.setup()`(`core/services/audio_service/audio_event_player.gd:59`)이 `ResourceLoader.exists()` 사전 확인 없이 `ResourceLoader.load(item.file)`을 호출해 엔진 경고("Method/function failed. Returning: Ref<Resource>()", "Condition \"err != OK\" is true")를 이벤트당 1회씩 낸다. GUT 9.7은 이걸 "Unexpected Errors"로 실패 처리하므로(AGENTS.md §9), `module.gd`를 거치는 이 Kit 테스트 다수(worldstate·module 나머지)가 **실제 버그가 아니라 이 경고 때문에** Failed로 표시된다. wav가 채워지면 자연히 사라진다. core 소유자가 급하면 `setup()`에 `ResourceLoader.exists(item.file)` 가드를 추가해도 될 것이다(이 Kit은 core를 고치지 않는다). |
 | W1 | OQ-4 ID 매핑표 |
 | Kit 06 · W7 | 몸 `missing` 부위 이름 어휘 확정. 이 Kit·Kit 07 은 `arm_left`, core README·테스트는 `left_arm` (D16) |
+| **core 소유자** (`core/services/audio_service/**`) | **긴급 — Kit 08 테스트 40개가 이 버그로 실패한다.** `core/services/audio_service/audio_manifest_event.gd:5`의 `@export_file("*.wav,*.ogg,*.mp3")`가 Godot 4.7에서 파싱 오류다("Argument 1 of annotation contains a comma. Use separate arguments instead"). 콤마 구분 문자열 하나가 아니라 별도 인자로 나눠야 한다(예: `@export_file("*.wav", "*.ogg", "*.mp3")` 또는 지원되는 필터 문법으로 교체). 이 파일이 컴파일 실패하면 `audio_manifest.gd`·`audio_event_player.gd`가 연쇄로 깨지고, 이를 `preload`/`class_name` 참조하는 `modules/descent_exploration/module.gd`까지 통째로 컴파일 실패해 `DescentModule.new()`가 전부 죽는다(worldstate 19/40, module 7/23, save 0/12→12/12 순서로 확인). 2026-09-27 05:0x 현황 문서 "원인 1·2·3 고침"에는 이 문제가 없었다 — 그 사이 이 파일이 새로 생겼거나 되돌아간 것으로 보인다. `core/**`는 이 Kit이 못 고치므로 요청만 남긴다. |
 
 ## 8. 다음 작업 (OQ-1이 닫힌 뒤)
 

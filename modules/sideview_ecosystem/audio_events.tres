@@ -1,0 +1,121 @@
+[gd_resource type="Resource" script_class="AudioManifest" load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://core/services/audio_service/audio_manifest.gd" id="1"]
+[ext_resource type="Script" path="res://core/services/audio_service/audio_manifest_event.gd" id="2"]
+
+[sub_resource type="Resource" id="ev_1"]
+script = ExtResource("2")
+id = &"eco_step"
+file = "res://modules/sideview_ecosystem/audio/eco_step.wav"
+bus = &"SFX"
+max_polyphony = 2
+volume_db = -12.0
+
+[sub_resource type="Resource" id="ev_2"]
+script = ExtResource("2")
+id = &"eco_land"
+file = "res://modules/sideview_ecosystem/audio/eco_land.wav"
+bus = &"SFX"
+max_polyphony = 2
+volume_db = -8.0
+
+[sub_resource type="Resource" id="ev_3"]
+script = ExtResource("2")
+id = &"eco_jump"
+file = "res://modules/sideview_ecosystem/audio/eco_jump.wav"
+bus = &"SFX"
+max_polyphony = 1
+volume_db = -10.0
+
+[sub_resource type="Resource" id="ev_4"]
+script = ExtResource("2")
+id = &"eco_squeeze"
+file = "res://modules/sideview_ecosystem/audio/eco_squeeze.wav"
+bus = &"SFX"
+max_polyphony = 1
+volume_db = -9.0
+
+[sub_resource type="Resource" id="ev_5"]
+script = ExtResource("2")
+id = &"eco_strike"
+file = "res://modules/sideview_ecosystem/audio/eco_strike.wav"
+bus = &"SFX"
+max_polyphony = 2
+volume_db = -8.0
+
+[sub_resource type="Resource" id="ev_6"]
+script = ExtResource("2")
+id = &"eco_shatter"
+file = "res://modules/sideview_ecosystem/audio/eco_shatter.wav"
+bus = &"SFX"
+max_polyphony = 2
+volume_db = -4.0
+
+[sub_resource type="Resource" id="ev_7"]
+script = ExtResource("2")
+id = &"eco_plate"
+file = "res://modules/sideview_ecosystem/audio/eco_plate.wav"
+bus = &"SFX"
+max_polyphony = 1
+volume_db = -6.0
+
+[sub_resource type="Resource" id="ev_8"]
+script = ExtResource("2")
+id = &"eco_rung_cut"
+file = "res://modules/sideview_ecosystem/audio/eco_rung_cut.wav"
+bus = &"SFX"
+max_polyphony = 1
+volume_db = -3.0
+
+[sub_resource type="Resource" id="ev_9"]
+script = ExtResource("2")
+id = &"eco_settle_load"
+file = "res://modules/sideview_ecosystem/audio/eco_settle_load.wav"
+bus = &"Music"
+max_polyphony = 1
+volume_db = -14.0
+
+[sub_resource type="Resource" id="ev_10"]
+script = ExtResource("2")
+id = &"eco_creature_alert"
+file = "res://modules/sideview_ecosystem/audio/eco_creature_alert.wav"
+bus = &"SFX"
+max_polyphony = 3
+volume_db = -10.0
+
+[sub_resource type="Resource" id="ev_11"]
+script = ExtResource("2")
+id = &"eco_creature_strike"
+file = "res://modules/sideview_ecosystem/audio/eco_creature_strike.wav"
+bus = &"SFX"
+max_polyphony = 2
+volume_db = -6.0
+
+[sub_resource type="Resource" id="ev_12"]
+script = ExtResource("2")
+id = &"eco_creature_death"
+file = "res://modules/sideview_ecosystem/audio/eco_creature_death.wav"
+bus = &"SFX"
+max_polyphony = 2
+volume_db = -8.0
+
+[sub_resource type="Resource" id="ev_13"]
+script = ExtResource("2")
+id = &"eco_death"
+file = "res://modules/sideview_ecosystem/audio/eco_death.wav"
+bus = &"SFX"
+max_polyphony = 1
+volume_db = -2.0
+
+[sub_resource type="Resource" id="ev_14"]
+script = ExtResource("2")
+id = &"eco_sleep"
+file = "res://modules/sideview_ecosystem/audio/eco_sleep.wav"
+bus = &"Music"
+max_polyphony = 1
+volume_db = -12.0
+
+[resource]
+script = ExtResource("1")
+id_prefix = &"eco"
+events = Array[ExtResource("2")]([SubResource("ev_1"), SubResource("ev_2"), SubResource("ev_3"), SubResource("ev_4"), SubResource("ev_5"), SubResource("ev_6"), SubResource("ev_7"), SubResource("ev_8"), SubResource("ev_9"), SubResource("ev_10"), SubResource("ev_11"), SubResource("ev_12"), SubResource("ev_13"), SubResource("ev_14")])

@@ -993,6 +993,58 @@ func _await_charge(game: GameModule) -> TopDownActionRpgCombatState.ActorState:
 	return null
 
 
+func test_command_rail_stage_and_focus_follow_one_owner_without_wrapping() -> void:
+	var game := _spawn(_fresh_snapshot(CHOIR_ENCOUNTER, 220))
+	var screen := _screen_of(game)
+	var combat := _combat_of(game)
+	var controller := _controller_of(game)
+	for enemy_id: String in _roster_actor_ids(_catalog_of(game), _catalog_of(game).record(CHOIR_ENCOUNTER)):
+		_hold_actor_from_actions(game, enemy_id)
+	var category_rows: int = TopDownActionRpgScreen.CATEGORY_ROW_TOKENS.size() + 1
+	assert_eq(String(combat.submode), "command_category")
+	assert_eq(screen.rail_row_count(), category_rows)
+	_press(game, &"top_down_action_rpg_up")
+	assert_eq(int(game.get("_rail_focus")), 0, "no wrap above the first category")
+	for _index: int in range(category_rows + 4):
+		_press(game, &"top_down_action_rpg_down")
+	assert_eq(int(game.get("_rail_focus")), category_rows - 1, "no wrap below the last category row")
+	assert_eq(int(screen.get("_rail_focus")), int(game.get("_rail_focus")))
+	for _index: int in range(category_rows + 4):
+		_press(game, &"top_down_action_rpg_up")
+	_press(game, &"top_down_action_rpg_down")
+	_press(game, &"top_down_action_rpg_down")
+	assert_eq(int(game.get("_rail_focus")), 2)
+	_press(game, &"top_down_action_rpg_confirm")
+	assert_eq(String(combat.submode), "command_action")
+	assert_eq(String(controller.current_category), TopDownActionRpgScreen.CATEGORY_ROW_TOKENS[2])
+	assert_eq(int(game.get("_rail_focus")), 0, "opening a category starts at its first row")
+	assert_eq(int(screen.get("_rail_focus")), 0)
+	var action_rows: int = screen.rail_row_count()
+	assert_gt(action_rows, 1)
+	for _index: int in range(action_rows + 4):
+		_press(game, &"top_down_action_rpg_down")
+	assert_eq(int(game.get("_rail_focus")), action_rows - 1, "no wrap below the Back row")
+	assert_eq(int(screen.get("_rail_focus")), int(game.get("_rail_focus")))
+	_press(game, &"top_down_action_rpg_cancel")
+	assert_eq(String(combat.submode), "command_category", "cancel from the action list returns the domain to the category list")
+	assert_eq(screen.rail_row_count(), category_rows)
+	assert_eq(int(game.get("_rail_focus")), 0)
+	assert_eq(screen.current_state(), TopDownActionRpgScreen.STATE_COMBAT_COMMAND)
+	assert_true(game.execute_command(&"combat_category", {"category": "attack"}))
+	assert_true(game.execute_command(&"combat_action", {"action_id": PLAYER_ACTION}))
+	assert_true(game.execute_command(&"combat_target", {"target_actor_id": "enemy_ember_clerk"}))
+	for _index: int in range(COMBAT_LIMIT):
+		game.call("_process", 0.0)
+		if _controller_of(game) == null or (String(_combat_of(game).submode) == "command_category" and _player_window_open(game)):
+			break
+	assert_not_null(_controller_of(game))
+	assert_true(_player_window_open(game))
+	assert_eq(String(_combat_of(game).submode), "command_category")
+	assert_eq(_screen_of(game).rail_row_count(), category_rows, "the next window opens on categories, not the last action list")
+	assert_eq(int(game.get("_rail_focus")), 0)
+	assert_eq(int(screen.get("_rail_focus")), 0)
+
+
 func test_combat_defeat_requests_recovery_and_returns_to_rebuilt_field() -> void:
 	var game := _spawn(_fresh_snapshot(CHOIR_ENCOUNTER, 1))
 	assert_eq(_mode_of(game), "combat")
@@ -1120,10 +1172,11 @@ func test_presentation_exposes_all_sixteen_current_state_values_through_fixture_
 	screen.refresh()
 	assert_eq(screen.current_state(), TopDownActionRpgScreen.STATE_COMBAT_COMMAND)
 	seen.append(screen.current_state())
-	controller.current_category = "item"
+	controller.set_category("item")
 	screen.refresh()
 	assert_eq(screen.current_state(), TopDownActionRpgScreen.STATE_EQUIPMENT_NO_TURN)
 	seen.append(screen.current_state())
+	controller.leave_category()
 	controller.current_category = "attack"
 	enemy.stance_state = "guard"
 	screen.refresh()

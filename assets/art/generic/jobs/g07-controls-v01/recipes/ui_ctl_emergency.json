@@ -1,0 +1,453 @@
+{
+ "asset": "ui_ctl_emergency",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Emergency mushroom button behind a flip guard: guarded, guard open, pressed.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "button centre",
+ "seed": 19,
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "paint_ochre",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      170.0,
+      170.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 20
+     }
+    }
+   ]
+  },
+  {
+   "name": "stripes",
+   "z": 0.5,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.85,
+   "clip_to": "plate",
+   "cut_by": [
+    "inner"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      14.0,
+      300.0
+     ],
+     "rot": 45,
+     "repeat": {
+      "line": [
+       [
+        -120,
+        96
+       ],
+       [
+        312,
+        96
+       ]
+      ],
+      "count": 19
+     }
+    }
+   ]
+  },
+  {
+   "name": "inner",
+   "z": 1,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      126.0,
+      126.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 16
+     }
+    }
+   ]
+  },
+  {
+   "name": "base_ring",
+   "z": 2,
+   "kind": "mass",
+   "material": "steel",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      100.0,
+      100.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      80.0,
+      80.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "cap_mask",
+   "z": 2.9,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.0,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      86.0,
+      86.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cap_up",
+   "z": 3,
+   "material": "paint_red",
+   "shade": {
+    "bump": 1.35
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      86.0,
+      86.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "cap_up"
+   ]
+  },
+  {
+   "name": "cap_down",
+   "z": 3,
+   "material": "lamp_red_off",
+   "shade": {
+    "bump": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      98.0
+     ],
+     "size": [
+      78.0,
+      78.0
+     ]
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "cap_down"
+   ]
+  },
+  {
+   "name": "cap_glare",
+   "z": 3.5,
+   "kind": "flat",
+   "material": "glare",
+   "opacity": 0.2,
+   "clip_to": "cap_mask",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      90.84,
+      89.12
+     ],
+     "size": [
+      79.12,
+      79.12
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      100.3,
+      102.02
+     ],
+     "size": [
+      87.72,
+      87.72
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "hinge",
+   "z": 5,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      24.0
+     ],
+     "size": [
+      112.0,
+      14.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 5
+     }
+    },
+    {
+     "icon": "circle",
+     "at": [
+      44.0,
+      24.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      148.0,
+      24.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cover",
+   "z": 4,
+   "material": "glass_pane",
+   "opacity": 0.42,
+   "shade": {
+    "bump": 0.4,
+    "highlight_amount": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      134.0,
+      134.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 26
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "guard"
+   ]
+  },
+  {
+   "name": "cover_frame",
+   "z": 4.2,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      134.0,
+      134.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 26
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      118.0,
+      118.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 20
+     },
+     "op": "sub"
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "guard"
+   ]
+  },
+  {
+   "name": "cover_open",
+   "z": 4,
+   "material": "glass_pane",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      12.0
+     ],
+     "size": [
+      134.0,
+      16.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "guard_open"
+   ]
+  },
+  {
+   "name": "cover_open_frame",
+   "z": 4.2,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      12.0
+     ],
+     "size": [
+      134.0,
+      16.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      12.0
+     ],
+     "size": [
+      118.0,
+      8.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "op": "sub"
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "guard_open"
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "guarded",
+   "show": [
+    "guard",
+    "cap_up"
+   ]
+  },
+  {
+   "name": "open",
+   "show": [
+    "guard_open",
+    "cap_up"
+   ]
+  },
+  {
+   "name": "pressed",
+   "show": [
+    "guard_open",
+    "cap_down"
+   ]
+  }
+ ]
+}
