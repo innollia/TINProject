@@ -1,0 +1,585 @@
+{
+ "asset": "slime",
+ "status": "candidate",
+ "note": "Slime, front view. Wet green teardrop blob with a darker core, puddle foot and two dark eyes. attack = leaps up stretched with a fanged mouth, hit = squashed flat and tilted with squeezed eyes.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 501,
+ "g05": {
+  "name_ko": "슬라임",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      359.6
+     ],
+     "size": [
+      206.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "slime",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      258.0
+     ],
+     "size": [
+      196.0,
+      206.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      336.0
+     ],
+     "size": [
+      240.0,
+      62.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      62.0,
+      354.0
+     ],
+     "size": [
+      40.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      262.0,
+      356.0
+     ],
+     "size": [
+      44.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "core",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.5,
+   "material": "slime_dark",
+   "clip_to": "body",
+   "opacity": 0.55,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      304.0
+     ],
+     "size": [
+      86.0,
+      66.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      286.0
+     ],
+     "size": [
+      40.0,
+      32.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bubbles",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.7,
+   "material": "slime",
+   "clip_to": "body",
+   "line": {
+    "width": 0.6,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      214.0,
+      246.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      118.0,
+      320.0
+     ],
+     "size": [
+      11.0,
+      11.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      330.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "eyes"
+   ],
+   "z": 6,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      126.0,
+      262.0
+     ],
+     "size": [
+      24.0,
+      34.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194.0,
+      262.0
+     ],
+     "size": [
+      24.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "eyes"
+   ],
+   "z": 6.1,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      120.7,
+      254.5
+     ],
+     "size": [
+      7.2,
+      8.8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      188.7,
+      254.5
+     ],
+     "size": [
+      7.2,
+      8.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "tags": [
+    "all",
+    "brows"
+   ],
+   "z": 6.3,
+   "kind": "flat",
+   "material": "eye",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      126.0,
+      238.0
+     ],
+     "size": [
+      7.0,
+      32.5
+     ],
+     "rot": -70.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194.0,
+      238.0
+     ],
+     "size": [
+      7.0,
+      32.5
+     ],
+     "rot": 70.0,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "eyes_hit",
+   "tags": [
+    "all",
+    "eyes_hit"
+   ],
+   "z": 6,
+   "kind": "flat",
+   "material": "eye",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      123.4,
+      257.4
+     ],
+     "size": [
+      6.0,
+      24.8
+     ],
+     "rot": -66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      123.4,
+      266.6
+     ],
+     "size": [
+      6.0,
+      24.8
+     ],
+     "rot": 66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      196.6,
+      257.4
+     ],
+     "size": [
+      6.0,
+      24.8
+     ],
+     "rot": 66.4,
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      196.6,
+      266.6
+     ],
+     "size": [
+      6.0,
+      24.8
+     ],
+     "rot": -66.4,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "mouth"
+   ],
+   "z": 6,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      296.0
+     ],
+     "size": [
+      34.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      287.6
+     ],
+     "size": [
+      40.8,
+      21.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "mouth_open",
+   "tags": [
+    "all",
+    "mouth_open"
+   ],
+   "z": 6,
+   "kind": "flat",
+   "material": "mouth",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      304.0
+     ],
+     "size": [
+      64.0,
+      46.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fangs",
+   "tags": [
+    "all",
+    "mouth_open"
+   ],
+   "z": 6.2,
+   "kind": "flat",
+   "material": "tooth",
+   "hidden": true,
+   "line": {
+    "width": 0.6,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      142.0,
+      289.5
+     ],
+     "size": [
+      10.8,
+      13.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      154.0,
+      289.5
+     ],
+     "size": [
+      10.8,
+      13.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      166.0,
+      289.5
+     ],
+     "size": [
+      10.8,
+      13.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      178.0,
+      289.5
+     ],
+     "size": [
+      10.8,
+      13.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      152.0,
+      321.5
+     ],
+     "size": [
+      14.4,
+      9.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      168.0,
+      321.5
+     ],
+     "size": [
+      14.4,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth_hurt",
+   "tags": [
+    "all",
+    "mouth_hurt"
+   ],
+   "z": 6,
+   "kind": "flat",
+   "material": "mouth",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      304.0
+     ],
+     "size": [
+      26.0,
+      20.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "shadow": {
+     "sx": 0.78,
+     "sy": 0.78,
+     "pivot": [
+      160,
+      364
+     ]
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "dy": -20,
+     "sx": 0.88,
+     "sy": 1.14
+    }
+   },
+   "show": [
+    "mouth_open",
+    "brows"
+   ],
+   "hide": [
+    "mouth"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "rot": 7,
+     "dx": 8,
+     "sx": 1.12,
+     "sy": 0.84
+    }
+   },
+   "show": [
+    "eyes_hit",
+    "mouth_hurt"
+   ],
+   "hide": [
+    "eyes",
+    "mouth"
+   ]
+  }
+ ]
+}

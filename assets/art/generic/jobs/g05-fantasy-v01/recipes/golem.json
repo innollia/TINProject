@@ -1,0 +1,1084 @@
+{
+ "asset": "golem",
+ "status": "candidate",
+ "note": "Stone golem, front view. Huge stacked-rock body, small head with a glowing eye slit, boulder shoulders, block fists, glowing rune cracks, moss. attack = both fists raised overhead to smash; hit = knocked back, eye light dimmed.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  494
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 506,
+ "g05": {
+  "name_ko": "돌 골렘",
+  "size": "큼",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      482.6
+     ],
+     "size": [
+      330.0,
+      36.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "leg_l"
+   ],
+   "z": 0.9,
+   "material": "stone_dark",
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      190.0,
+      466.0
+     ],
+     "size": [
+      116.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l_fill",
+   "tags": [
+    "all",
+    "leg_l"
+   ],
+   "z": 0.95,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      194.0,
+      414.6
+     ],
+     "size": [
+      86.0,
+      73.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "leg_l"
+   ],
+   "z": 1,
+   "material": "stone_dark",
+   "pieces": [
+    {
+     "icon": "rocks",
+     "at": [
+      194.0,
+      410.0
+     ],
+     "size": [
+      100.0,
+      92.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "leg_r"
+   ],
+   "z": 0.9,
+   "material": "stone_dark",
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      322.0,
+      466.0
+     ],
+     "size": [
+      116.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r_fill",
+   "tags": [
+    "all",
+    "leg_r"
+   ],
+   "z": 0.95,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      318.0,
+      414.6
+     ],
+     "size": [
+      86.0,
+      73.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "leg_r"
+   ],
+   "z": 1,
+   "material": "stone_dark",
+   "pieces": [
+    {
+     "icon": "rocks",
+     "at": [
+      318.0,
+      410.0
+     ],
+     "size": [
+      100.0,
+      92.0
+     ],
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "hips_fill",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 1.95,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      357.0
+     ],
+     "size": [
+      168.6,
+      80.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hips",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 2,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "rocks",
+     "at": [
+      256.0,
+      352.0
+     ],
+     "size": [
+      196.0,
+      100.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "torso",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "octagon",
+     "at": [
+      256.0,
+      256.0
+     ],
+     "size": [
+      232.0,
+      190.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "belly_fill",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.0500000000000003,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      250.0,
+      322.8
+     ],
+     "size": [
+      151.4,
+      76.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "belly",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.1,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "rocks",
+     "at": [
+      250.0,
+      318.0
+     ],
+     "size": [
+      176.0,
+      96.0
+     ],
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "core_ring",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.3,
+   "material": "stone_dark",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256.0,
+      238.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "runes",
+   "tags": [
+    "all",
+    "torso",
+    "runes"
+   ],
+   "z": 3.4,
+   "kind": "flat",
+   "material": "glow_cyan",
+   "emit": 0.8,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "glow_cyan_c"
+   },
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      198.0,
+      262.0
+     ],
+     "size": [
+      20.0,
+      56.0
+     ],
+     "rot": 20.0
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      314.0,
+      280.0
+     ],
+     "size": [
+      16.0,
+      46.0
+     ],
+     "rot": -25.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      238.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "moss",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.6,
+   "material": "moss",
+   "clip_to": "torso",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      196.0
+     ],
+     "size": [
+      70.0,
+      34.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      328.0,
+      300.0
+     ],
+     "size": [
+      46.0,
+      24.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4,
+   "material": "stone_dark",
+   "pivot": [
+    124,
+    196
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      114.0,
+      262.0
+     ],
+     "size": [
+      70.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      108.0,
+      336.0
+     ],
+     "size": [
+      64.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fist_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.3,
+   "material": "stone",
+   "pivot": [
+    124,
+    196
+   ],
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      106.0,
+      404.0
+     ],
+     "size": [
+      100.0,
+      90.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knuckle_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.4,
+   "material": "stone_dark",
+   "pivot": [
+    124,
+    196
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      84.0,
+      380.0
+     ],
+     "size": [
+      18.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      106.0,
+      380.0
+     ],
+     "size": [
+      18.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.0,
+      380.0
+     ],
+     "size": [
+      18.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shoulder_l_fill",
+   "tags": [
+    "all",
+    "shoulders"
+   ],
+   "z": 4.95,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      124.0,
+      200.9
+     ],
+     "size": [
+      96.3,
+      78.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shoulder_l",
+   "tags": [
+    "all",
+    "shoulders"
+   ],
+   "z": 5,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "rocks",
+     "at": [
+      124.0,
+      196.0
+     ],
+     "size": [
+      112.0,
+      98.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 4,
+   "material": "stone_dark",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      116.0,
+      152.0
+     ],
+     "size": [
+      70.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      156.0,
+      104.0
+     ],
+     "size": [
+      64.0,
+      66.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fist_l_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 4.3,
+   "material": "stone",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      168.0,
+      76.0
+     ],
+     "size": [
+      100.0,
+      90.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4,
+   "material": "stone_dark",
+   "pivot": [
+    388,
+    196
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      398.0,
+      262.0
+     ],
+     "size": [
+      70.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      404.0,
+      336.0
+     ],
+     "size": [
+      64.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fist_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.3,
+   "material": "stone",
+   "pivot": [
+    388,
+    196
+   ],
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      406.0,
+      404.0
+     ],
+     "size": [
+      100.0,
+      90.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knuckle_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.4,
+   "material": "stone_dark",
+   "pivot": [
+    388,
+    196
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      384.0,
+      380.0
+     ],
+     "size": [
+      18.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      406.0,
+      380.0
+     ],
+     "size": [
+      18.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      428.0,
+      380.0
+     ],
+     "size": [
+      18.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shoulder_r_fill",
+   "tags": [
+    "all",
+    "shoulders"
+   ],
+   "z": 4.95,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      388.0,
+      200.9
+     ],
+     "size": [
+      96.3,
+      78.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shoulder_r",
+   "tags": [
+    "all",
+    "shoulders"
+   ],
+   "z": 5,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "rocks",
+     "at": [
+      388.0,
+      196.0
+     ],
+     "size": [
+      112.0,
+      98.0
+     ],
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "arm_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 4,
+   "material": "stone_dark",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      396.0,
+      152.0
+     ],
+     "size": [
+      70.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      356.0,
+      104.0
+     ],
+     "size": [
+      64.0,
+      66.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fist_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 4.3,
+   "material": "stone",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "hexagon",
+     "at": [
+      344.0,
+      76.0
+     ],
+     "size": [
+      100.0,
+      90.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256.0,
+      152.0
+     ],
+     "size": [
+      92.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brow_fill",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.05,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      124.1
+     ],
+     "size": [
+      86.0,
+      33.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brow",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.1,
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "rocks",
+     "at": [
+      256.0,
+      122.0
+     ],
+     "size": [
+      100.0,
+      42.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "visor",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.2,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256.0,
+      158.0
+     ],
+     "size": [
+      64.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 6.3,
+   "kind": "flat",
+   "material": "glow_cyan",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.7,
+    "color": "glow_cyan_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      240.0,
+      158.0
+     ],
+     "size": [
+      14.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      272.0,
+      158.0
+     ],
+     "size": [
+      14.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_hit",
+   "tags": [
+    "all",
+    "head",
+    "eyes_hit"
+   ],
+   "z": 6.3,
+   "kind": "flat",
+   "material": "glow_cyan",
+   "emit": 0.4,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.3,
+    "color": "glow_cyan_c"
+   },
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      240.0,
+      160.0
+     ],
+     "size": [
+      12.0,
+      3.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      272.0,
+      160.0
+     ],
+     "size": [
+      12.0,
+      3.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "shoulders": {
+     "dy": -10
+    },
+    "head": {
+     "dy": 6
+    },
+    "all": {
+     "pivot": [
+      256,
+      494
+     ],
+     "dy": 2,
+     "sx": 1.03,
+     "sy": 1.03
+    }
+   },
+   "show": [
+    "atk"
+   ],
+   "hide": [
+    "arm_l",
+    "arm_r"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "shadow": {
+     "dx": 2
+    },
+    "arm_l": {
+     "rot": 12,
+     "pivot": [
+      124,
+      196
+     ]
+    },
+    "arm_r": {
+     "rot": -8,
+     "pivot": [
+      388,
+      196
+     ]
+    },
+    "head": {
+     "rot": 8,
+     "pivot": [
+      256,
+      190
+     ]
+    },
+    "all": {
+     "pivot": [
+      256,
+      494
+     ],
+     "rot": 5,
+     "dx": 2,
+     "dy": -4,
+     "sx": 0.96,
+     "sy": 0.96
+    }
+   },
+   "show": [
+    "eyes_hit"
+   ],
+   "hide": [
+    "eyes"
+   ]
+  }
+ ]
+}

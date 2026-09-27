@@ -1,0 +1,1172 @@
+{
+ "asset": "living_armor",
+ "status": "candidate",
+ "note": "Living armor, front view. Empty rust-stained plate armor animated by a dark void: great helm with a slit through which two violet lights burn, wine tabard, kite shield, long sword. attack = sword raised overhead behind the shield; hit = helm knocked askew, frame tilting, lights snuffed.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 607,
+ "g05": {
+  "name_ko": "살아 있는 갑옷",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      361.6
+     ],
+     "size": [
+      170.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.7,
+      254.6
+     ],
+     "size": [
+      33.9,
+      86.5
+     ],
+     "rot": 6.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      132.6,
+      322.6
+     ],
+     "size": [
+      30.9,
+      72.6
+     ],
+     "rot": 0.1
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1.1,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      127.8,
+      356.3
+     ],
+     "size": [
+      49.5,
+      21.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      132.6,
+      342.9
+     ],
+     "size": [
+      35.3,
+      24.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      183.3,
+      254.6
+     ],
+     "size": [
+      33.9,
+      86.5
+     ],
+     "rot": -6.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      187.4,
+      322.6
+     ],
+     "size": [
+      30.9,
+      72.6
+     ],
+     "rot": -0.1
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1.1,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.2,
+      356.3
+     ],
+     "size": [
+      49.5,
+      21.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      187.4,
+      342.9
+     ],
+     "size": [
+      35.3,
+      24.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knee_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.3,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      132.7,
+      291.8
+     ],
+     "size": [
+      35.3,
+      26.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knee_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.3,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      187.3,
+      291.8
+     ],
+     "size": [
+      35.3,
+      26.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "breastplate",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.0,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      148.5
+     ],
+     "size": [
+      116.4,
+      52.8
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      171.3
+     ],
+     "size": [
+      94.2,
+      85.8
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "faulds",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 2.9,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "bell",
+     "at": [
+      160.0,
+      227.5
+     ],
+     "size": [
+      81.1,
+      42.9
+     ],
+     "crop": [
+      1.6,
+      1.4,
+      14.4,
+      11.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tabard",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.2,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "bookmark",
+     "at": [
+      160.0,
+      234.0
+     ],
+     "size": [
+      34.3,
+      72.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "belt",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.3,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      211.5
+     ],
+     "size": [
+      71.7,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gorget",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.4,
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      116.5
+     ],
+     "size": [
+      61.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4,
+   "material": "armor",
+   "pivot": [
+    104.56,
+    118.5
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      93.3,
+      141.3
+     ],
+     "size": [
+      26.7,
+      60.2
+     ],
+     "rot": 26.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      85.3,
+      189.3
+     ],
+     "size": [
+      24.3,
+      59.3
+     ],
+     "rot": -7.3
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.2,
+   "material": "armor",
+   "pivot": [
+    104.56,
+    118.5
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      88.6,
+      217.4
+     ],
+     "size": [
+      29.1,
+      29.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4,
+   "material": "armor",
+   "pivot": [
+    215.44,
+    118.5
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      222.8,
+      145.6
+     ],
+     "size": [
+      26.7,
+      65.4
+     ],
+     "rot": -15.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      227.8,
+      200.6
+     ],
+     "size": [
+      24.3,
+      64.6
+     ],
+     "rot": 4.8
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.2,
+   "material": "armor",
+   "pivot": [
+    215.44,
+    118.5
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      225.4,
+      231.4
+     ],
+     "size": [
+      29.1,
+      29.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sword",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 3.9,
+   "material": "armor",
+   "pivot": [
+    215.44,
+    118.5
+   ],
+   "pieces": [
+    {
+     "icon": "sword",
+     "at": [
+      222.8,
+      266.8
+     ],
+     "size": [
+      128.0,
+      128.0
+     ],
+     "rot": 139.0
+    }
+   ]
+  },
+  {
+   "name": "shield",
+   "tags": [
+    "all",
+    "arm_l",
+    "shield"
+   ],
+   "z": 4.6,
+   "material": "armor_dark",
+   "pivot": [
+    104.56,
+    118.5
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      80.6,
+      208.5
+     ],
+     "size": [
+      86.0,
+      116.0
+     ],
+     "poly": [
+      [
+       14.5,
+       1.5
+      ],
+      [
+       14.463,
+       2.508
+      ],
+      [
+       14.331,
+       3.515
+      ],
+      [
+       14.087,
+       4.522
+      ],
+      [
+       13.722,
+       5.53
+      ],
+      [
+       13.229,
+       6.537
+      ],
+      [
+       12.601,
+       7.545
+      ],
+      [
+       11.835,
+       8.553
+      ],
+      [
+       10.925,
+       9.56
+      ],
+      [
+       8.0,
+       14.5
+      ],
+      [
+       5.075,
+       9.56
+      ],
+      [
+       4.165,
+       8.553
+      ],
+      [
+       3.399,
+       7.545
+      ],
+      [
+       2.771,
+       6.537
+      ],
+      [
+       2.278,
+       5.53
+      ],
+      [
+       1.913,
+       4.522
+      ],
+      [
+       1.669,
+       3.515
+      ],
+      [
+       1.537,
+       2.508
+      ],
+      [
+       1.5,
+       1.5
+      ]
+     ],
+     "fit": [
+      1.5,
+      1.5,
+      14.5,
+      14.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shield_face",
+   "tags": [
+    "all",
+    "arm_l",
+    "shield"
+   ],
+   "z": 4.65,
+   "material": "cloth_wine",
+   "pivot": [
+    104.56,
+    118.5
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      80.6,
+      204.5
+     ],
+     "size": [
+      64.0,
+      88.0
+     ],
+     "poly": [
+      [
+       14.5,
+       1.5
+      ],
+      [
+       14.463,
+       2.507
+      ],
+      [
+       14.331,
+       3.515
+      ],
+      [
+       14.087,
+       4.523
+      ],
+      [
+       13.722,
+       5.53
+      ],
+      [
+       13.229,
+       6.537
+      ],
+      [
+       12.601,
+       7.545
+      ],
+      [
+       11.835,
+       8.553
+      ],
+      [
+       10.925,
+       9.56
+      ],
+      [
+       8.0,
+       14.5
+      ],
+      [
+       5.075,
+       9.56
+      ],
+      [
+       4.165,
+       8.553
+      ],
+      [
+       3.399,
+       7.545
+      ],
+      [
+       2.771,
+       6.537
+      ],
+      [
+       2.278,
+       5.53
+      ],
+      [
+       1.913,
+       4.523
+      ],
+      [
+       1.669,
+       3.515
+      ],
+      [
+       1.537,
+       2.507
+      ],
+      [
+       1.5,
+       1.5
+      ]
+     ],
+     "fit": [
+      1.5,
+      1.5,
+      14.5,
+      14.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shield_band",
+   "tags": [
+    "all",
+    "arm_l",
+    "shield"
+   ],
+   "z": 4.7,
+   "material": "armor",
+   "pivot": [
+    104.56,
+    118.5
+   ],
+   "clip_to": "shield_face",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      80.6,
+      198.5
+     ],
+     "size": [
+      12.0,
+      90.0
+     ],
+     "rot": -30.0
+    }
+   ]
+  },
+  {
+   "name": "arm_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 4,
+   "material": "armor",
+   "pivot": [
+    215.44,
+    118.5
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      236.4,
+      124.5
+     ],
+     "size": [
+      26.7,
+      53.0
+     ],
+     "rot": -74.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      246.4,
+      109.5
+     ],
+     "size": [
+      24.3,
+      55.9
+     ],
+     "rot": 152.4
+    }
+   ]
+  },
+  {
+   "name": "hand_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 4.2,
+   "material": "armor",
+   "pivot": [
+    215.44,
+    118.5
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      235.4,
+      91.4
+     ],
+     "size": [
+      29.1,
+      29.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sword_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 3.9,
+   "material": "armor",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "sword",
+     "at": [
+      189.8,
+      67.2
+     ],
+     "size": [
+      112.0,
+      112.0
+     ],
+     "rot": -110.0
+    }
+   ]
+  },
+  {
+   "name": "pauldron_l",
+   "tags": [
+    "all",
+    "pauldron"
+   ],
+   "z": 5,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      100.6,
+      120.5
+     ],
+     "size": [
+      58.0,
+      44.0
+     ],
+     "rot": -14.0
+    }
+   ]
+  },
+  {
+   "name": "pauldron_r",
+   "tags": [
+    "all",
+    "pauldron"
+   ],
+   "z": 5,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      219.4,
+      120.5
+     ],
+     "size": [
+      58.0,
+      44.0
+     ],
+     "rot": 14.0
+    }
+   ]
+  },
+  {
+   "name": "helm",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      80.4
+     ],
+     "size": [
+      58.0,
+      50.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      98.4
+     ],
+     "size": [
+      54.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "helm_crest",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.1,
+   "material": "armor_dark",
+   "clip_to": "helm",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      78.4
+     ],
+     "size": [
+      8.0,
+      56.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "visor",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.2,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      90.4
+     ],
+     "size": [
+      44.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 7.3,
+   "kind": "flat",
+   "material": "glow_violet",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "glow_violet_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      150.0,
+      90.4
+     ],
+     "size": [
+      8.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      90.4
+     ],
+     "size": [
+      8.0,
+      5.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "breaths",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.25,
+   "kind": "flat",
+   "material": "armor_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      144.0,
+      110.4
+     ],
+     "size": [
+      3.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      152.0,
+      110.4
+     ],
+     "size": [
+      3.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      110.4
+     ],
+     "size": [
+      3.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      168.0,
+      110.4
+     ],
+     "size": [
+      3.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      176.0,
+      110.4
+     ],
+     "size": [
+      3.0,
+      10.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "shield": {
+     "dx": 8,
+     "dy": -10
+    },
+    "head": {
+     "rot": -4,
+     "pivot": [
+      160,
+      118.5
+     ]
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "dy": 4,
+     "sx": 1.04,
+     "sy": 1.04
+    }
+   },
+   "show": [
+    "atk"
+   ],
+   "hide": [
+    "arm_r"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "shadow": {
+     "dx": -2
+    },
+    "head": {
+     "rot": 24,
+     "dx": 12,
+     "dy": 4,
+     "pivot": [
+      160,
+      118.5
+     ]
+    },
+    "arm_r": {
+     "rot": -10,
+     "pivot": [
+      215.44,
+      118.5
+     ]
+    },
+    "arm_l": {
+     "rot": 14,
+     "pivot": [
+      104.56,
+      118.5
+     ]
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "rot": -6,
+     "dy": -4,
+     "sx": 0.96,
+     "sy": 0.96
+    }
+   },
+   "hide": [
+    "eyes"
+   ]
+  }
+ ]
+}

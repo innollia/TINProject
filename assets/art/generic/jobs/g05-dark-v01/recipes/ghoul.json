@@ -1,0 +1,1439 @@
+{
+ "asset": "ghoul",
+ "status": "candidate",
+ "note": "Ghoul, front view. Gaunt grey-violet corpse-eater crouched low: bald head with long pointed ears, sunken glowing eyes, wide mouth crowded with teeth, bony shoulders, long arms with hooked claws touching the ground, rag loincloth. attack = pounces up with both claws spread, mouth gaping; hit = flinches back, eyes squeezed.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 609,
+ "g05": {
+  "name_ko": "구울",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      360.6
+     ],
+     "size": [
+      200.0,
+      24.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "thigh_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "ghoul",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      116.0,
+      312.0
+     ],
+     "size": [
+      44.0,
+      70.0
+     ],
+     "rot": 34.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      105.0,
+      346.0
+     ],
+     "size": [
+      22.0,
+      33.7
+     ],
+     "rot": -22.6
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.1,
+   "material": "ghoul",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      106.0,
+      360.0
+     ],
+     "size": [
+      40.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      95.0,
+      368.0
+     ],
+     "size": [
+      6.0,
+      10.0
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      106.0,
+      368.0
+     ],
+     "size": [
+      6.0,
+      10.0
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      117.0,
+      368.0
+     ],
+     "size": [
+      6.0,
+      10.0
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "thigh_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "ghoul",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      204.0,
+      312.0
+     ],
+     "size": [
+      44.0,
+      70.0
+     ],
+     "rot": -34.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      215.0,
+      346.0
+     ],
+     "size": [
+      22.0,
+      33.7
+     ],
+     "rot": 22.6
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.1,
+   "material": "ghoul",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      214.0,
+      360.0
+     ],
+     "size": [
+      40.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      203.0,
+      368.0
+     ],
+     "size": [
+      6.0,
+      10.0
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      214.0,
+      368.0
+     ],
+     "size": [
+      6.0,
+      10.0
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      225.0,
+      368.0
+     ],
+     "size": [
+      6.0,
+      10.0
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "torso",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 2,
+   "material": "ghoul",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      262.0
+     ],
+     "size": [
+      100.0,
+      110.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      226.0
+     ],
+     "size": [
+      128.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ribs",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "ghoul",
+   "color": "coat_seam",
+   "opacity": 0.4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      244.0
+     ],
+     "size": [
+      70.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      240.4
+     ],
+     "size": [
+      84.0,
+      6.3
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      258.0
+     ],
+     "size": [
+      62.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      254.4
+     ],
+     "size": [
+      74.4,
+      6.3
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      272.0
+     ],
+     "size": [
+      54.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      268.4
+     ],
+     "size": [
+      64.8,
+      6.3
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "loin",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 2.3,
+   "material": "cloth_rag",
+   "pieces": [
+    {
+     "icon": "bookmark",
+     "at": [
+      160.0,
+      318.0
+     ],
+     "size": [
+      50.0,
+      40.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      302.0
+     ],
+     "size": [
+      84.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 3,
+   "material": "ghoul",
+   "pivot": [
+    102,
+    226
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      102.0,
+      226.0
+     ],
+     "size": [
+      34.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      85.0,
+      258.0
+     ],
+     "size": [
+      20.0,
+      79.5
+     ],
+     "rot": 28.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      72.0,
+      318.0
+     ],
+     "size": [
+      16.0,
+      62.2
+     ],
+     "rot": -8.1
+    }
+   ]
+  },
+  {
+   "name": "claw_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 3.2,
+   "material": "claw",
+   "pivot": [
+    102,
+    226
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      82.0,
+      355.0
+     ],
+     "size": [
+      5.0,
+      23.4
+     ],
+     "rot": -33.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      76.0,
+      355.0
+     ],
+     "size": [
+      5.0,
+      19.8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      70.0,
+      355.0
+     ],
+     "size": [
+      5.0,
+      23.4
+     ],
+     "rot": 33.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      76.0,
+      344.0
+     ],
+     "size": [
+      20.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 3,
+   "material": "ghoul",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      102.0,
+      226.0
+     ],
+     "size": [
+      34.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      76.0,
+      203.0
+     ],
+     "size": [
+      20.0,
+      76.4
+     ],
+     "rot": 131.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      47.0,
+      152.0
+     ],
+     "size": [
+      16.0,
+      61.9
+     ],
+     "rot": 173.9
+    }
+   ]
+  },
+  {
+   "name": "claw_l_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 3.2,
+   "material": "claw",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      51.2,
+      112.0
+     ],
+     "size": [
+      5.0,
+      29.7
+     ],
+     "rot": -149.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      44.0,
+      112.0
+     ],
+     "size": [
+      5.0,
+      25.8
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      36.8,
+      112.0
+     ],
+     "size": [
+      5.0,
+      29.7
+     ],
+     "rot": 149.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      44.0,
+      126.0
+     ],
+     "size": [
+      20.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 3,
+   "material": "ghoul",
+   "pivot": [
+    218,
+    226
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      218.0,
+      226.0
+     ],
+     "size": [
+      34.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      235.0,
+      258.0
+     ],
+     "size": [
+      20.0,
+      79.5
+     ],
+     "rot": -28.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      248.0,
+      318.0
+     ],
+     "size": [
+      16.0,
+      62.2
+     ],
+     "rot": 8.1
+    }
+   ]
+  },
+  {
+   "name": "claw_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 3.2,
+   "material": "claw",
+   "pivot": [
+    218,
+    226
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      238.0,
+      355.0
+     ],
+     "size": [
+      5.0,
+      23.4
+     ],
+     "rot": 33.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      244.0,
+      355.0
+     ],
+     "size": [
+      5.0,
+      19.8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      250.0,
+      355.0
+     ],
+     "size": [
+      5.0,
+      23.4
+     ],
+     "rot": -33.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      244.0,
+      344.0
+     ],
+     "size": [
+      20.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 3,
+   "material": "ghoul",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      218.0,
+      226.0
+     ],
+     "size": [
+      34.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      244.0,
+      203.0
+     ],
+     "size": [
+      20.0,
+      76.4
+     ],
+     "rot": -131.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      273.0,
+      152.0
+     ],
+     "size": [
+      16.0,
+      61.9
+     ],
+     "rot": -173.9
+    }
+   ]
+  },
+  {
+   "name": "claw_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 3.2,
+   "material": "claw",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      268.8,
+      112.0
+     ],
+     "size": [
+      5.0,
+      29.7
+     ],
+     "rot": 149.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      276.0,
+      112.0
+     ],
+     "size": [
+      5.0,
+      25.8
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      283.2,
+      112.0
+     ],
+     "size": [
+      5.0,
+      29.7
+     ],
+     "rot": -149.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      276.0,
+      126.0
+     ],
+     "size": [
+      20.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ears",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.5,
+   "material": "ghoul",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      110.0,
+      160.0
+     ],
+     "size": [
+      20.0,
+      58.0
+     ],
+     "rot": -70.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      210.0,
+      160.0
+     ],
+     "size": [
+      20.0,
+      58.0
+     ],
+     "rot": 70.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5,
+   "material": "ghoul",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      168.0
+     ],
+     "size": [
+      70.0,
+      70.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      192.0
+     ],
+     "size": [
+      54.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sockets",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5.2,
+   "kind": "flat",
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      145.0,
+      166.0
+     ],
+     "size": [
+      20.0,
+      16.0
+     ],
+     "rot": 12.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      175.0,
+      166.0
+     ],
+     "size": [
+      20.0,
+      16.0
+     ],
+     "rot": -12.0
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 5.3,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.8,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      145.0,
+      167.0
+     ],
+     "size": [
+      7.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      175.0,
+      167.0
+     ],
+     "size": [
+      7.0,
+      6.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_hit",
+   "tags": [
+    "all",
+    "eyes_hit",
+    "head"
+   ],
+   "z": 5.35,
+   "kind": "flat",
+   "material": "soot",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      143.8,
+      164.9
+     ],
+     "size": [
+      4.0,
+      11.9
+     ],
+     "rot": -66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      143.8,
+      169.1
+     ],
+     "size": [
+      4.0,
+      11.9
+     ],
+     "rot": 66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.2,
+      164.9
+     ],
+     "size": [
+      4.0,
+      11.9
+     ],
+     "rot": 66.4,
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.2,
+      169.1
+     ],
+     "size": [
+      4.0,
+      11.9
+     ],
+     "rot": -66.4,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head",
+    "mouth"
+   ],
+   "z": 5.3,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      196.0
+     ],
+     "size": [
+      44.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      191.8
+     ],
+     "size": [
+      52.8,
+      14.7
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "teeth",
+   "tags": [
+    "all",
+    "head",
+    "mouth"
+   ],
+   "z": 5.4,
+   "kind": "flat",
+   "material": "tooth",
+   "line": {
+    "width": 0.4,
+    "heavy": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      144.6,
+      197.0
+     ],
+     "size": [
+      4.6,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      149.7,
+      197.0
+     ],
+     "size": [
+      4.6,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      154.9,
+      197.0
+     ],
+     "size": [
+      4.6,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      197.0
+     ],
+     "size": [
+      4.6,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      165.1,
+      197.0
+     ],
+     "size": [
+      4.6,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      170.3,
+      197.0
+     ],
+     "size": [
+      4.6,
+      6.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      175.4,
+      197.0
+     ],
+     "size": [
+      4.6,
+      6.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "mouth_open",
+   "tags": [
+    "all",
+    "head",
+    "mouth_open"
+   ],
+   "z": 5.3,
+   "kind": "flat",
+   "material": "mouth",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      202.0
+     ],
+     "size": [
+      48.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fangs",
+   "tags": [
+    "all",
+    "head",
+    "mouth_open"
+   ],
+   "z": 5.4,
+   "kind": "flat",
+   "material": "tooth",
+   "hidden": true,
+   "line": {
+    "width": 0.4,
+    "heavy": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      142.9,
+      192.5
+     ],
+     "size": [
+      5.1,
+      9.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      148.6,
+      192.5
+     ],
+     "size": [
+      5.1,
+      9.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      154.3,
+      192.5
+     ],
+     "size": [
+      5.1,
+      9.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      192.5
+     ],
+     "size": [
+      5.1,
+      9.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      165.7,
+      192.5
+     ],
+     "size": [
+      5.1,
+      9.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      171.4,
+      192.5
+     ],
+     "size": [
+      5.1,
+      9.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      177.1,
+      192.5
+     ],
+     "size": [
+      5.1,
+      9.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      146.7,
+      214.0
+     ],
+     "size": [
+      4.8,
+      8.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      152.0,
+      214.0
+     ],
+     "size": [
+      4.8,
+      8.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      157.3,
+      214.0
+     ],
+     "size": [
+      4.8,
+      8.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      162.7,
+      214.0
+     ],
+     "size": [
+      4.8,
+      8.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      168.0,
+      214.0
+     ],
+     "size": [
+      4.8,
+      8.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      173.3,
+      214.0
+     ],
+     "size": [
+      4.8,
+      8.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "shadow": {
+     "sx": 0.8,
+     "sy": 0.8,
+     "pivot": [
+      160,
+      364
+     ]
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "dy": -18,
+     "sx": 1.04,
+     "sy": 1.04
+    }
+   },
+   "show": [
+    "mouth_open",
+    "atk"
+   ],
+   "hide": [
+    "mouth",
+    "arm_l",
+    "arm_r"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "shadow": {
+     "dx": -2
+    },
+    "head": {
+     "rot": 16,
+     "pivot": [
+      160,
+      214
+     ]
+    },
+    "arm_l": {
+     "rot": 22,
+     "pivot": [
+      102,
+      226
+     ]
+    },
+    "arm_r": {
+     "rot": -30,
+     "pivot": [
+      218,
+      226
+     ]
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "rot": -7,
+     "dy": -6,
+     "sx": 0.96,
+     "sy": 0.96
+    }
+   },
+   "show": [
+    "eyes_hit",
+    "mouth_open"
+   ],
+   "hide": [
+    "eyes",
+    "mouth"
+   ]
+  }
+ ]
+}

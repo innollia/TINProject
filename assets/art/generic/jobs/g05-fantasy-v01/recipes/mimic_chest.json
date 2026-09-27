@@ -1,0 +1,1026 @@
+{
+ "asset": "mimic_chest",
+ "status": "candidate",
+ "note": "Mimic, front view. Iron-banded wooden treasure chest whose lid is a jaw: rows of teeth, glowing eyes in the dark mouth, lolling tongue. attack = lid flung wide, tongue lashing; hit = lid snapped almost shut, box tilted.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 505,
+ "g05": {
+  "name_ko": "미믹(보물상자)",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      359.6
+     ],
+     "size": [
+      220.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "box",
+   "tags": [
+    "all",
+    "box"
+   ],
+   "z": 2,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      306.0
+     ],
+     "size": [
+      200.0,
+      118.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bands",
+   "tags": [
+    "all",
+    "box"
+   ],
+   "z": 2.3,
+   "material": "iron",
+   "clip_to": "box",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      98.0,
+      306.0
+     ],
+     "size": [
+      20.0,
+      120.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      222.0,
+      306.0
+     ],
+     "size": [
+      20.0,
+      120.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      252.0
+     ],
+     "size": [
+      204.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lockplate",
+   "tags": [
+    "all",
+    "box"
+   ],
+   "z": 2.6,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      160.0,
+      286.0
+     ],
+     "size": [
+      36.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "keyhole",
+   "tags": [
+    "all",
+    "box"
+   ],
+   "z": 2.7,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "keyhole",
+     "at": [
+      160.0,
+      288.0
+     ],
+     "size": [
+      12.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "feet",
+   "tags": [
+    "all",
+    "box"
+   ],
+   "z": 1.8,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      74.0,
+      362.0
+     ],
+     "size": [
+      26.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      246.0,
+      362.0
+     ],
+     "size": [
+      26.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "maw",
+   "tags": [
+    "all",
+    "maw"
+   ],
+   "z": 1.5,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      238.0
+     ],
+     "size": [
+      188.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "maw",
+    "eyes"
+   ],
+   "z": 1.7,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.9,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      126.0,
+      236.0
+     ],
+     "size": [
+      20.0,
+      12.0
+     ],
+     "rot": 10.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194.0,
+      236.0
+     ],
+     "size": [
+      20.0,
+      12.0
+     ],
+     "rot": -10.0
+    }
+   ]
+  },
+  {
+   "name": "pupils",
+   "tags": [
+    "all",
+    "maw",
+    "eyes"
+   ],
+   "z": 1.75,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      126.0,
+      236.0
+     ],
+     "size": [
+      5.0,
+      11.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194.0,
+      236.0
+     ],
+     "size": [
+      5.0,
+      11.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_hit",
+   "tags": [
+    "all",
+    "maw",
+    "eyes_hit"
+   ],
+   "z": 1.7,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.9,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "glow_yellow_c"
+   },
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      126.0,
+      237.0
+     ],
+     "size": [
+      3.5,
+      21.3
+     ],
+     "rot": -95.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194.0,
+      237.0
+     ],
+     "size": [
+      3.5,
+      21.3
+     ],
+     "rot": -84.3
+    }
+   ]
+  },
+  {
+   "name": "teeth_low",
+   "tags": [
+    "all",
+    "box"
+   ],
+   "z": 1.9,
+   "material": "tooth",
+   "line": {
+    "width": 0.6,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      85.3,
+      248.0
+     ],
+     "size": [
+      16.8,
+      16.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      104.0,
+      249.0
+     ],
+     "size": [
+      16.8,
+      14.1
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      122.7,
+      249.9
+     ],
+     "size": [
+      16.8,
+      12.2
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      141.3,
+      248.5
+     ],
+     "size": [
+      16.8,
+      15.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      249.4
+     ],
+     "size": [
+      16.8,
+      13.1
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      178.7,
+      248.0
+     ],
+     "size": [
+      16.8,
+      16.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      197.3,
+      249.0
+     ],
+     "size": [
+      16.8,
+      14.1
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      216.0,
+      249.9
+     ],
+     "size": [
+      16.8,
+      12.2
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      234.7,
+      248.5
+     ],
+     "size": [
+      16.8,
+      15.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tongue",
+   "tags": [
+    "all",
+    "tongue"
+   ],
+   "z": 2.8,
+   "material": "tongue",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      168.0,
+      262.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": -30.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.5,
+      272.9
+     ],
+     "size": [
+      28.3,
+      28.3
+     ],
+     "rot": -23.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      177.3,
+      283.7
+     ],
+     "size": [
+      26.6,
+      26.6
+     ],
+     "rot": -15.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      179.5,
+      294.6
+     ],
+     "size": [
+      24.9,
+      24.9
+     ],
+     "rot": -7.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.1,
+      305.4
+     ],
+     "size": [
+      23.1,
+      23.1
+     ],
+     "rot": 1.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      179.0,
+      316.3
+     ],
+     "size": [
+      21.4,
+      21.6
+     ],
+     "rot": 9.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.3,
+      327.1
+     ],
+     "size": [
+      19.7,
+      21.6
+     ],
+     "rot": 17.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      338.0
+     ],
+     "size": [
+      18.0,
+      21.6
+     ],
+     "rot": 25.3
+    }
+   ]
+  },
+  {
+   "name": "lid",
+   "tags": [
+    "all",
+    "lid"
+   ],
+   "z": 3,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      198.0
+     ],
+     "size": [
+      206.0,
+      76.0
+     ],
+     "half": "top"
+    },
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      200.0
+     ],
+     "size": [
+      206.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lid_bands",
+   "tags": [
+    "all",
+    "lid"
+   ],
+   "z": 3.2,
+   "material": "iron",
+   "clip_to": "lid",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      98.0,
+      180.0
+     ],
+     "size": [
+      20.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      222.0,
+      180.0
+     ],
+     "size": [
+      20.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      202.0
+     ],
+     "size": [
+      208.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "teeth_up",
+   "tags": [
+    "all",
+    "lid"
+   ],
+   "z": 2.9,
+   "material": "tooth",
+   "line": {
+    "width": 0.6,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      79.0,
+      216.0
+     ],
+     "size": [
+      16.2,
+      20.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      97.0,
+      214.8
+     ],
+     "size": [
+      16.2,
+      17.6
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      115.0,
+      213.6
+     ],
+     "size": [
+      16.2,
+      15.2
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      133.0,
+      215.4
+     ],
+     "size": [
+      16.2,
+      18.8
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      151.0,
+      214.2
+     ],
+     "size": [
+      16.2,
+      16.4
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      169.0,
+      216.0
+     ],
+     "size": [
+      16.2,
+      20.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      187.0,
+      214.8
+     ],
+     "size": [
+      16.2,
+      17.6
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      205.0,
+      213.6
+     ],
+     "size": [
+      16.2,
+      15.2
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      223.0,
+      215.4
+     ],
+     "size": [
+      16.2,
+      18.8
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      241.0,
+      214.2
+     ],
+     "size": [
+      16.2,
+      16.4
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "maw_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 1.4,
+   "kind": "flat",
+   "material": "mouth",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      206.0
+     ],
+     "size": [
+      196.0,
+      110.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tongue_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 4,
+   "material": "tongue",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      156.0,
+      256.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ],
+     "rot": 66.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      141.8,
+      263.1
+     ],
+     "size": [
+      30.5,
+      30.5
+     ],
+     "rot": 59.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      129.6,
+      271.3
+     ],
+     "size": [
+      29.1,
+      29.1
+     ],
+     "rot": 53.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      118.9,
+      280.2
+     ],
+     "size": [
+      27.6,
+      27.6
+     ],
+     "rot": 47.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      109.5,
+      289.5
+     ],
+     "size": [
+      26.2,
+      26.2
+     ],
+     "rot": 43.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      101.0,
+      299.0
+     ],
+     "size": [
+      24.7,
+      24.7
+     ],
+     "rot": 40.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      93.1,
+      308.4
+     ],
+     "size": [
+      23.3,
+      24.1
+     ],
+     "rot": 40.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      85.4,
+      317.4
+     ],
+     "size": [
+      21.8,
+      24.1
+     ],
+     "rot": 41.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      77.6,
+      325.8
+     ],
+     "size": [
+      20.4,
+      24.1
+     ],
+     "rot": 45.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      69.3,
+      333.2
+     ],
+     "size": [
+      18.9,
+      24.1
+     ],
+     "rot": 51.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      60.2,
+      339.3
+     ],
+     "size": [
+      17.5,
+      24.1
+     ],
+     "rot": 60.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      50.0,
+      344.0
+     ],
+     "size": [
+      16.0,
+      24.1
+     ],
+     "rot": 70.7
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "lid": {
+     "dy": -46,
+     "rot": -6,
+     "pivot": [
+      160,
+      206
+     ]
+    },
+    "eyes": {
+     "dy": -22
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "rot": -3,
+     "sx": 1.04,
+     "sy": 1.04
+    }
+   },
+   "show": [
+    "atk"
+   ],
+   "hide": [
+    "tongue"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "shadow": {
+     "dx": 4
+    },
+    "lid": {
+     "dy": 34,
+     "rot": 7,
+     "pivot": [
+      160,
+      206
+     ]
+    },
+    "maw": {
+     "dy": 8
+    },
+    "tongue": {
+     "dy": -18
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "rot": 8,
+     "dx": 6,
+     "dy": -4
+    }
+   },
+   "show": [
+    "eyes_hit"
+   ],
+   "hide": [
+    "eyes"
+   ]
+  }
+ ]
+}

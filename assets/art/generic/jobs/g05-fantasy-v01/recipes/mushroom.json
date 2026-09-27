@@ -1,0 +1,804 @@
+{
+ "asset": "mushroom",
+ "status": "candidate",
+ "note": "Mushroom monster, front view. Dull red spotted cap over pale gills, stout stem body with a grumpy face, stubby arms and feet. attack = hops up with the cap tipped forward, mouth wide; hit = squashed, cap knocked askew, eyes squeezed.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 511,
+ "g05": {
+  "name_ko": "버섯 괴물",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      361.6
+     ],
+     "size": [
+      170.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "mushroom_stem",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      130.0,
+      354.0
+     ],
+     "size": [
+      46.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "mushroom_stem",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      190.0,
+      354.0
+     ],
+     "size": [
+      46.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stem",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "mushroom_stem",
+   "pieces": [
+    {
+     "icon": "cylinder",
+     "at": [
+      160.0,
+      290.0
+     ],
+     "size": [
+      116.0,
+      140.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      336.0
+     ],
+     "size": [
+      120.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 2.5,
+   "material": "mushroom_stem",
+   "pivot": [
+    108,
+    262
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      95.0,
+      281.0
+     ],
+     "size": [
+      20.0,
+      53.0
+     ],
+     "rot": 34.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      80.0,
+      306.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 2.5,
+   "material": "mushroom_stem",
+   "pivot": [
+    212,
+    262
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      225.0,
+      281.0
+     ],
+     "size": [
+      20.0,
+      53.0
+     ],
+     "rot": -34.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      240.0,
+      306.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "eyes",
+    "body"
+   ],
+   "z": 3,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      276.0
+     ],
+     "size": [
+      18.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.0,
+      276.0
+     ],
+     "size": [
+      18.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "eyes",
+    "body"
+   ],
+   "z": 3.1,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      132.0,
+      271.2
+     ],
+     "size": [
+      5.4,
+      5.7
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      271.2
+     ],
+     "size": [
+      5.4,
+      5.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brows",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      258.0
+     ],
+     "size": [
+      5.0,
+      23.7
+     ],
+     "rot": -74.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.0,
+      258.0
+     ],
+     "size": [
+      5.0,
+      23.7
+     ],
+     "rot": 74.0,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "eyes_hit",
+   "tags": [
+    "all",
+    "eyes_hit",
+    "body"
+   ],
+   "z": 3.1,
+   "kind": "flat",
+   "material": "eye",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      134.4,
+      273.2
+     ],
+     "size": [
+      4.5,
+      15.5
+     ],
+     "rot": -66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      134.4,
+      278.8
+     ],
+     "size": [
+      4.5,
+      15.5
+     ],
+     "rot": 66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      185.6,
+      273.2
+     ],
+     "size": [
+      4.5,
+      15.5
+     ],
+     "rot": 66.4,
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      185.6,
+      278.8
+     ],
+     "size": [
+      4.5,
+      15.5
+     ],
+     "rot": -66.4,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "body",
+    "mouth"
+   ],
+   "z": 3,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      306.0
+     ],
+     "size": [
+      30.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      310.2
+     ],
+     "size": [
+      36.0,
+      10.5
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "mouth_open",
+   "tags": [
+    "all",
+    "body",
+    "mouth_open"
+   ],
+   "z": 3,
+   "kind": "flat",
+   "material": "mouth",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      310.0
+     ],
+     "size": [
+      38.0,
+      28.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gills",
+   "tags": [
+    "all",
+    "cap"
+   ],
+   "z": 4,
+   "material": "mushroom_stem",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      222.0
+     ],
+     "size": [
+      210.0,
+      44.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gill_lines",
+   "tags": [
+    "all",
+    "cap"
+   ],
+   "z": 4.1,
+   "kind": "flat",
+   "material": "mushroom_cap",
+   "clip_to": "gills",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      55.0,
+      226.0
+     ],
+     "size": [
+      3.0,
+      39.5
+     ],
+     "rot": 51.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      76.0,
+      226.0
+     ],
+     "size": [
+      3.0,
+      35.0
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      97.0,
+      226.0
+     ],
+     "size": [
+      3.0,
+      31.1
+     ],
+     "rot": 36.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      118.0,
+      226.0
+     ],
+     "size": [
+      3.0,
+      27.9
+     ],
+     "rot": 26.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      139.0,
+      226.0
+     ],
+     "size": [
+      3.0,
+      25.8
+     ],
+     "rot": 14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      226.0
+     ],
+     "size": [
+      3.0,
+      25.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      181.0,
+      226.0
+     ],
+     "size": [
+      3.0,
+      25.8
+     ],
+     "rot": -14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      202.0,
+      226.0
+     ],
+     "size": [
+      3.0,
+      27.9
+     ],
+     "rot": -26.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      223.0,
+      226.0
+     ],
+     "size": [
+      3.0,
+      31.1
+     ],
+     "rot": -36.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      244.0,
+      226.0
+     ],
+     "size": [
+      3.0,
+      35.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      265.0,
+      226.0
+     ],
+     "size": [
+      3.0,
+      39.5
+     ],
+     "rot": -51.3
+    }
+   ]
+  },
+  {
+   "name": "cap",
+   "tags": [
+    "all",
+    "cap"
+   ],
+   "z": 5,
+   "material": "mushroom_cap",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      186.0
+     ],
+     "size": [
+      248.0,
+      170.0
+     ],
+     "half": "top"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      196.0
+     ],
+     "size": [
+      250.0,
+      44.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spots",
+   "tags": [
+    "all",
+    "cap"
+   ],
+   "z": 5.2,
+   "material": "spot",
+   "clip_to": "cap",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      90.0,
+      170.0
+     ],
+     "size": [
+      40.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      136.0
+     ],
+     "size": [
+      50.0,
+      34.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      244.0,
+      176.0
+     ],
+     "size": [
+      34.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      138.0,
+      198.0
+     ],
+     "size": [
+      26.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      218.0,
+      128.0
+     ],
+     "size": [
+      20.0,
+      16.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "shadow": {
+     "sx": 0.8,
+     "sy": 0.8,
+     "pivot": [
+      160,
+      364
+     ]
+    },
+    "cap": {
+     "rot": -8,
+     "dy": 6,
+     "pivot": [
+      160,
+      222
+     ]
+    },
+    "arm_l": {
+     "rot": 60,
+     "pivot": [
+      108,
+      262
+     ]
+    },
+    "arm_r": {
+     "rot": -60,
+     "pivot": [
+      212,
+      262
+     ]
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "dy": -18,
+     "sx": 0.96,
+     "sy": 1.06
+    }
+   },
+   "show": [
+    "mouth_open"
+   ],
+   "hide": [
+    "mouth"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "shadow": {
+     "dx": 2
+    },
+    "cap": {
+     "rot": 14,
+     "dx": 8,
+     "pivot": [
+      160,
+      222
+     ]
+    },
+    "arm_l": {
+     "rot": -20,
+     "pivot": [
+      108,
+      262
+     ]
+    },
+    "arm_r": {
+     "rot": 30,
+     "pivot": [
+      212,
+      262
+     ]
+    },
+    "all": {
+     "pivot": [
+      160,
+      366
+     ],
+     "rot": 5,
+     "sx": 1.06,
+     "sy": 0.9
+    }
+   },
+   "show": [
+    "eyes_hit",
+    "mouth_open"
+   ],
+   "hide": [
+    "eyes",
+    "mouth"
+   ]
+  }
+ ]
+}

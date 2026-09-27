@@ -1,0 +1,1382 @@
+{
+ "asset": "minotaur",
+ "status": "candidate",
+ "note": "Minotaur, front view. Huge dark-brown bull-man: wide muzzle with a bronze nose ring, long curved horns, small red eyes, shaggy shoulders, leather belt and loincloth, hooves, great maul. attack = maul raised overhead with both hands, bellowing; hit = head snapped aside, staggering.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  494
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 508,
+ "g05": {
+  "name_ko": "미노타우로스",
+  "size": "큼",
+  "generator": "tool/make_recipes.py",
+  "priority": "A"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      483.6
+     ],
+     "size": [
+      290.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1,
+   "material": "fur_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      211.0,
+      368.6
+     ],
+     "size": [
+      62.9,
+      107.0
+     ],
+     "rot": 10.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      200.8,
+      442.1
+     ],
+     "size": [
+      54.3,
+      82.6
+     ],
+     "rot": 4.4
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1.1,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "cylinder",
+     "at": [
+      198.3,
+      476.0
+     ],
+     "size": [
+      59.5,
+      59.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1,
+   "material": "fur_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      301.0,
+      368.6
+     ],
+     "size": [
+      62.9,
+      107.0
+     ],
+     "rot": -10.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      311.2,
+      442.1
+     ],
+     "size": [
+      54.3,
+      82.6
+     ],
+     "rot": -4.4
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1.1,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "cylinder",
+     "at": [
+      313.7,
+      476.0
+     ],
+     "size": [
+      59.5,
+      59.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "torso",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3,
+   "material": "fur_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      253.6
+     ],
+     "size": [
+      240.0,
+      120.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      280.8
+     ],
+     "size": [
+      170.0,
+      120.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      320.8
+     ],
+     "size": [
+      146.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "chest_fur",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.2,
+   "material": "fur_dark",
+   "clip_to": "torso",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      233.6
+     ],
+     "size": [
+      180.0,
+      70.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      256.0,
+      283.6
+     ],
+     "size": [
+      60.0,
+      70.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "belt",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.5,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      324.8
+     ],
+     "size": [
+      176.0,
+      24.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "buckle",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.55,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "octagon",
+     "at": [
+      256.0,
+      324.8
+     ],
+     "size": [
+      28.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "loincloth",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.3,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "bookmark",
+     "at": [
+      256.0,
+      370.8
+     ],
+     "size": [
+      86.0,
+      84.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      334.8
+     ],
+     "size": [
+      150.0,
+      28.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4,
+   "material": "fur_brown",
+   "pivot": [
+    147.32,
+    203.6
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      132.1,
+      242.2
+     ],
+     "size": [
+      51.1,
+      100.8
+     ],
+     "rot": 21.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      119.1,
+      322.2
+     ],
+     "size": [
+      46.2,
+      99.1
+     ],
+     "rot": -3.0
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.2,
+   "material": "fur_brown",
+   "pivot": [
+    147.32,
+    203.6
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      121.3,
+      369.4
+     ],
+     "size": [
+      58.3,
+      58.3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4,
+   "material": "fur_brown",
+   "pivot": [
+    364.68,
+    203.6
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      377.7,
+      238.6
+     ],
+     "size": [
+      51.1,
+      92.5
+     ],
+     "rot": -20.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      373.3,
+      293.6
+     ],
+     "size": [
+      46.2,
+      69.1
+     ],
+     "rot": 40.9
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.2,
+   "material": "fur_brown",
+   "pivot": [
+    364.68,
+    203.6
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      356.0,
+      319.4
+     ],
+     "size": [
+      58.3,
+      58.3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "maul",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.5,
+   "material": "iron",
+   "pivot": [
+    364.68,
+    203.6
+   ],
+   "pieces": [
+    {
+     "icon": "sledgehammer",
+     "at": [
+      374.1,
+      386.4
+     ],
+     "size": [
+      150.0,
+      150.0
+     ],
+     "rot": 121.0
+    }
+   ]
+  },
+  {
+   "name": "arm_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 8.6,
+   "material": "fur_brown",
+   "pivot": [
+    364.68,
+    203.6
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      384.7,
+      198.6
+     ],
+     "size": [
+      51.1,
+      59.1
+     ],
+     "rot": -104.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      350.3,
+      166.6
+     ],
+     "size": [
+      46.2,
+      137.5
+     ],
+     "rot": 116.4
+    }
+   ]
+  },
+  {
+   "name": "hand_r_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 8.799999999999999,
+   "material": "fur_brown",
+   "pivot": [
+    364.68,
+    203.6
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      296.0,
+      145.4
+     ],
+     "size": [
+      58.3,
+      58.3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 8.7,
+   "material": "fur_brown",
+   "pivot": [
+    147.32,
+    203.6
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      127.3,
+      201.6
+     ],
+     "size": [
+      51.1,
+      58.1
+     ],
+     "rot": 95.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      174.7,
+      173.6
+     ],
+     "size": [
+      46.2,
+      160.5
+     ],
+     "rot": -111.1
+    }
+   ]
+  },
+  {
+   "name": "hand_l_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 8.899999999999999,
+   "material": "fur_brown",
+   "pivot": [
+    147.32,
+    203.6
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      242.0,
+      153.4
+     ],
+     "size": [
+      58.3,
+      58.3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "maul_atk",
+   "tags": [
+    "all",
+    "atk"
+   ],
+   "z": 8.5,
+   "material": "iron",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "sledgehammer",
+     "at": [
+      198.7,
+      105.6
+     ],
+     "size": [
+      160.0,
+      160.0
+     ],
+     "rot": -105.0
+    }
+   ]
+  },
+  {
+   "name": "hump",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5,
+   "material": "fur_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      201.6
+     ],
+     "size": [
+      124.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "horns",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.4,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      218.0,
+      146.5
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "rot": 97.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      207.8,
+      144.7
+     ],
+     "size": [
+      20.5,
+      20.5
+     ],
+     "rot": 102.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      198.4,
+      142.1
+     ],
+     "size": [
+      19.1,
+      19.1
+     ],
+     "rot": 108.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      189.6,
+      138.7
+     ],
+     "size": [
+      17.6,
+      17.6
+     ],
+     "rot": 114.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      181.6,
+      134.6
+     ],
+     "size": [
+      16.2,
+      17.6
+     ],
+     "rot": 120.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      174.4,
+      129.7
+     ],
+     "size": [
+      14.7,
+      17.6
+     ],
+     "rot": 127.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      167.8,
+      124.1
+     ],
+     "size": [
+      13.3,
+      17.6
+     ],
+     "rot": 134.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      162.0,
+      117.7
+     ],
+     "size": [
+      11.8,
+      17.6
+     ],
+     "rot": 141.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      156.9,
+      110.5
+     ],
+     "size": [
+      10.4,
+      17.6
+     ],
+     "rot": 147.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      152.5,
+      102.6
+     ],
+     "size": [
+      8.9,
+      17.6
+     ],
+     "rot": 154.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      148.9,
+      93.9
+     ],
+     "size": [
+      7.5,
+      17.6
+     ],
+     "rot": 160.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      146.0,
+      84.5
+     ],
+     "size": [
+      6.0,
+      17.6
+     ],
+     "rot": 165.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      294.0,
+      146.5
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "rot": -97.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      304.2,
+      144.7
+     ],
+     "size": [
+      20.5,
+      20.5
+     ],
+     "rot": -102.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      313.6,
+      142.1
+     ],
+     "size": [
+      19.1,
+      19.1
+     ],
+     "rot": -108.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      322.4,
+      138.7
+     ],
+     "size": [
+      17.6,
+      17.6
+     ],
+     "rot": -114.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      330.4,
+      134.6
+     ],
+     "size": [
+      16.2,
+      17.6
+     ],
+     "rot": -120.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      337.6,
+      129.7
+     ],
+     "size": [
+      14.7,
+      17.6
+     ],
+     "rot": -127.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      344.2,
+      124.1
+     ],
+     "size": [
+      13.3,
+      17.6
+     ],
+     "rot": -134.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      350.0,
+      117.7
+     ],
+     "size": [
+      11.8,
+      17.6
+     ],
+     "rot": -141.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      355.1,
+      110.5
+     ],
+     "size": [
+      10.4,
+      17.6
+     ],
+     "rot": -147.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      359.5,
+      102.6
+     ],
+     "size": [
+      8.9,
+      17.6
+     ],
+     "rot": -154.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      363.1,
+      93.9
+     ],
+     "size": [
+      7.5,
+      17.6
+     ],
+     "rot": -160.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      366.0,
+      84.5
+     ],
+     "size": [
+      6.0,
+      17.6
+     ],
+     "rot": -165.5
+    }
+   ]
+  },
+  {
+   "name": "ears",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.5,
+   "material": "fur_brown",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      200.0,
+      164.5
+     ],
+     "size": [
+      20.0,
+      40.0
+     ],
+     "rot": -100.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      312.0,
+      164.5
+     ],
+     "size": [
+      20.0,
+      40.0
+     ],
+     "rot": 100.0,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7,
+   "material": "fur_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      158.5
+     ],
+     "size": [
+      88.0,
+      76.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      256.0,
+      180.5
+     ],
+     "size": [
+      84.0,
+      90.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "tuft",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.1,
+   "material": "fur_dark",
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256.0,
+      124.5
+     ],
+     "size": [
+      60.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "muzzle",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.5,
+   "material": "snout",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      202.5
+     ],
+     "size": [
+      74.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nostrils",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.6,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      241.0,
+      200.5
+     ],
+     "size": [
+      12.0,
+      9.0
+     ],
+     "rot": -20.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      271.0,
+      200.5
+     ],
+     "size": [
+      12.0,
+      9.0
+     ],
+     "rot": 20.0
+    }
+   ]
+  },
+  {
+   "name": "ring",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.7,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256.0,
+      218.5
+     ],
+     "size": [
+      26.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head",
+    "eyes"
+   ],
+   "z": 7.4,
+   "kind": "flat",
+   "material": "glow_red",
+   "emit": 0.7,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "glow_red_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      232.0,
+      164.5
+     ],
+     "size": [
+      12.0,
+      8.0
+     ],
+     "rot": 16.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      280.0,
+      164.5
+     ],
+     "size": [
+      12.0,
+      8.0
+     ],
+     "rot": -16.0
+    }
+   ]
+  },
+  {
+   "name": "eyes_hit",
+   "tags": [
+    "all",
+    "eyes_hit",
+    "head"
+   ],
+   "z": 7.45,
+   "kind": "flat",
+   "material": "eye",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      230.8,
+      162.4
+     ],
+     "size": [
+      4.5,
+      12.1
+     ],
+     "rot": -66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      230.8,
+      166.6
+     ],
+     "size": [
+      4.5,
+      12.1
+     ],
+     "rot": 66.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      281.2,
+      162.4
+     ],
+     "size": [
+      4.5,
+      12.1
+     ],
+     "rot": 66.4,
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      281.2,
+      166.6
+     ],
+     "size": [
+      4.5,
+      12.1
+     ],
+     "rot": -66.4,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head",
+    "mouth"
+   ],
+   "z": 7.55,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      220.5
+     ],
+     "size": [
+      44.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      223.8
+     ],
+     "size": [
+      52.8,
+      8.4
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "mouth_open",
+   "tags": [
+    "all",
+    "head",
+    "mouth_open"
+   ],
+   "z": 7.55,
+   "kind": "flat",
+   "material": "mouth",
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      226.5
+     ],
+     "size": [
+      44.0,
+      22.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  },
+  {
+   "name": "attack",
+   "move": {
+    "head": {
+     "rot": -4,
+     "dy": 6,
+     "pivot": [
+      256,
+      203.6
+     ]
+    },
+    "all": {
+     "pivot": [
+      256,
+      494
+     ],
+     "dy": 2,
+     "sx": 1.03,
+     "sy": 1.03
+    }
+   },
+   "show": [
+    "mouth_open",
+    "atk"
+   ],
+   "hide": [
+    "mouth",
+    "arm_l",
+    "arm_r"
+   ]
+  },
+  {
+   "name": "hit",
+   "move": {
+    "shadow": {
+     "dx": 4
+    },
+    "arm_l": {
+     "rot": 28,
+     "pivot": [
+      147.32,
+      203.6
+     ]
+    },
+    "arm_r": {
+     "rot": -16,
+     "pivot": [
+      364.68,
+      203.6
+     ]
+    },
+    "head": {
+     "rot": 14,
+     "pivot": [
+      256,
+      203.6
+     ]
+    },
+    "all": {
+     "pivot": [
+      256,
+      494
+     ],
+     "rot": 6,
+     "dx": 4,
+     "dy": -4,
+     "sx": 0.96,
+     "sy": 0.96
+    }
+   },
+   "show": [
+    "eyes_hit",
+    "mouth_open"
+   ],
+   "hide": [
+    "eyes",
+    "mouth"
+   ]
+  }
+ ]
+}
