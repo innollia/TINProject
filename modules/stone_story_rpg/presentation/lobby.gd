@@ -335,7 +335,7 @@ func _draw_player_preview() -> void:
 	var key: String = JSON.stringify(attrs)
 	if _preview == null or key != _preview_key:
 		var cls: Dictionary = content.get_def("class", str(p.get("class_id", "")))
-		var sil: Dictionary = content.get_def("silhouette", str(cls.get("silhouette", "sil_angular")))
+		var sil: Dictionary = content.get_def("silhouette", str(cls.get("silhouette", "sil_strider")))
 		_preview = StoneStoryCritter.build(sil, attrs, cls.get("shape", {}), 131 + 17, PLAYER_SCALE)
 		_preview_key = key
 	_preview.facing = -1.0
@@ -348,7 +348,8 @@ func _draw_player_preview() -> void:
 			looks.append(lk)
 	var pol: Dictionary = StoneStoryRunState.resolve_policy(p, content)
 	var stance: String = "guard" if bool(pol.get("always_guard", false)) else "neutral"
-	_preview.draw(self, PLAYER_AT, pal, null, StoneStoryPalette.accent(pal), StoneStoryPalette.sclera(pal))
+	var tones: Array[Color] = StoneStoryCritter.player_tones(pal)
+	_preview.draw(self, PLAYER_AT, pal, null, tones[0], tones[1])
 	StoneStoryCritter.draw_gear(self, _preview, PLAYER_AT, looks, stance, pal, null)
 
 

@@ -114,64 +114,180 @@ func test_a2_regions_name_their_structure() -> void:
 	assert_false(src.contains("_draw_far_structure"), "A2 the rectangle-stack drawer is gone")
 
 
-# --- A3 --------------------------------------------------------------
+# --- A3-b 절차 애니메이션 개체 -----------------------------------------
 
-func test_a3_three_silhouettes_and_every_creature_uses_one() -> void:
+const GROUND_AT := Vector2(400.0, 500.0)
+const CRITTER_SRC := "res://modules/stone_story_rpg/presentation/critter.gd"
+
+
+func test_a3_three_body_plans_and_every_creature_uses_one() -> void:
 	var forms: Array = []
 	for sid in _content.ids("silhouette"):
-		forms.append(str(_content.get_def("silhouette", str(sid)).get("form", "")))
+		var def: Dictionary = _content.get_def("silhouette", str(sid))
+		forms.append(str(def.get("form", "")))
+		assert_eq(_content.body_plan_errors(str(sid), def), [] as Array[String], "A3 %s is a valid body plan" % sid)
 	forms.sort()
-	assert_eq(forms, ["angular", "crab", "lump"], "A3 three silhouettes")
+	assert_eq(forms, ["crawler", "hauler", "strider"], "A3 three body plans")
 	for kind in ["foe", "boss", "miniboss", "class"]:
 		for id in _content.ids(kind):
-			var sid: String = str(_content.get_def(kind, str(id)).get("silhouette", ""))
-			assert_true(_content.db["silhouette"].has(sid), "A3 %s uses an authored silhouette" % id)
+			var sid2: String = str(_content.get_def(kind, str(id)).get("silhouette", ""))
+			assert_true(_content.db["silhouette"].has(sid2), "A3 %s uses an authored body plan" % id)
 
 
-func _critter(attrs: Dictionary, sil_id: String = "sil_angular") -> StoneStoryCritter:
-	return StoneStoryCritter.build(_content.get_def("silhouette", sil_id), attrs, {"width_units": 30, "height_units": 50}, 7)
+func test_a3_retired_coordinate_silhouette_is_rejected() -> void:
+	var bad: Dictionary = {"id": "sil_x", "form": "crab", "body": [[0, 0]], "mark": [], "eyes": {"stalk": 0.2},
+			"spine": {"nodes": [5, 6], "length": 1.0}, "ride": 0.3, "girth": 0.2, "vary": 0.1, "head": {"size": 1.0}}
+	var errs: Array[String] = _content.body_plan_errors("sil_x", bad)
+	assert_has(errs, "silhouette_bad_form:sil_x")
+	assert_has(errs, "silhouette_retired_key:sil_x/mark", "A3 the pink band is gone")
+	assert_has(errs, "silhouette_retired_key:sil_x/eyes", "A3 stalk eyes are gone")
+	var src: String = _read(CRITTER_SRC)
+	assert_false(src.contains("stalk"), "A3 no stalk eyes")
+	assert_false(src.contains("horn"), "A3 no horns")
+	assert_true(src.contains("static func ik("), "A3 limbs are solved by IK")
 
 
-func test_a3_attributes_reshape_the_silhouette() -> void:
-	var base: Dictionary = {"limbs": 2, "surprise": 0.0, "wrongness": 0.0, "roundness": 0.0}
-	var plain := _critter(base)
-	var r := base.duplicate()
-	r["roundness"] = 10.0
-	assert_gt(_critter(r).body.size(), plain.body.size(), "A3 roundness rounds the corners")
-	var l := base.duplicate()
-	l["limbs"] = 8
-	assert_eq(_critter(l).leg_count, 8, "A3 limbs is the leg count")
-	var s := base.duplicate()
-	s["surprise"] = 9.0
-	assert_eq(_critter(s).eye_count, 4, "A3 surprise adds eyes")
-	assert_eq(plain.eye_count, 1, "A3 every creature has an eye")
-	var w := base.duplicate()
-	w["wrongness"] = 10.0
-	var bw: Rect2 = StoneStoryInk.bounds(_critter(w).body)
-	var bp: Rect2 = StoneStoryInk.bounds(plain.body)
-	assert_almost_eq(bp.end.x, -bp.position.x, 0.02, "A3 wrongness 0 is symmetric")
-	assert_gt(bw.end.x, -bw.position.x * 1.15, "A3 wrongness swells one side")
+func _critter(attrs: Dictionary, sil_id: String = "sil_strider", fly: bool = false) -> StoneStoryCritter:
+	var c := StoneStoryCritter.build(_content.get_def("silhouette", sil_id), attrs,
+			{"width_units": 30, "height_units": 50}, 7, 1.0, fly)
+	c.place(GROUND_AT)
+	return c
 
 
-func test_a3_silhouettes_stay_distinct() -> void:
-	# 정규 좌표(폭·높이 배율 전) 기준. 실제 키는 content 의 shape 가 정한다.
-	var a: Dictionary = {"limbs": 4, "surprise": 0.0, "wrongness": 0.0, "roundness": 0.0}
-	var crab: Rect2 = StoneStoryInk.bounds(_critter(a, "sil_crab").body)
-	var ang: Rect2 = StoneStoryInk.bounds(_critter(a, "sil_angular").body)
-	var lump: Rect2 = StoneStoryInk.bounds(_critter(a, "sil_lump").body)
-	assert_lt(crab.size.y / crab.size.x, 0.5, "A3 the crab body is flat")
-	assert_gt(ang.size.y / ang.size.x, 0.65, "A3 the angular body is not flat")
-	assert_gt(lump.size.y / lump.size.x, 0.65, "A3 the lump body is not flat")
-	assert_gt(crab.size.x / crab.size.y, ang.size.x / ang.size.y * 1.5, "A3 the crab is much wider than the angular one")
-	# 몸이 땅에서 뜬 높이: 덩어리(바닥에 붙음) < 각형(짧은 다리) < 게(다리 위에 걸림)
-	assert_lt(-lump.end.y, 0.05, "A3 the lump sits on the ground")
-	assert_gt(-ang.end.y, -lump.end.y + 0.1, "A3 the angular body stands higher than the lump")
-	assert_gt(-crab.end.y, -ang.end.y + 0.1, "A3 the crab body hangs highest on its legs")
-	assert_false(_content.get_def("silhouette", "sil_angular").get("horns", []).is_empty(), "A3 only the angular one has horns")
-	assert_true(_content.get_def("silhouette", "sil_lump").get("horns", []).is_empty())
-	assert_eq(_critter(a, "sil_crab").leg_style, "splay")
-	assert_eq(_critter(a, "sil_angular").leg_style, "stilt")
-	assert_eq(_critter(a, "sil_lump").leg_style, "stub")
+## 게임처럼 앵커가 칸 단위(7px)로 뛴다. 몸은 스스로 따라가야 한다.
+func _run(c: StoneStoryCritter, seconds: float, speed: float = 0.0) -> void:
+	var x: float = c.anchor.x
+	var acc: float = 0.0
+	for i in int(seconds * 60.0):
+		acc += speed / 60.0
+		if absf(acc) >= 7.0:
+			x += signf(acc) * 7.0
+			acc -= signf(acc) * 7.0
+		c.facing = 1.0 if speed >= 0.0 else -1.0
+		c.place(Vector2(x, GROUND_AT.y))
+		c.step(1.0 / 60.0)
+
+
+func _base(limbs: int) -> Dictionary:
+	return {"limbs": limbs, "surprise": 0.0, "wrongness": 0.0, "roundness": 0.0}
+
+
+func _mean_rad(c: StoneStoryCritter) -> float:
+	var s: float = 0.0
+	for r in c.rad:
+		s += r
+	return s / float(maxi(1, c.rad.size()))
+
+
+func _leg_lengths(c: StoneStoryCritter) -> Array[float]:
+	var out: Array[float] = []
+	for L in c.limbs:
+		if str(L["kind"]) == "leg" or str(L["kind"]) == "pull":
+			out.append(float(L["l1"]) + float(L["l2"]))
+	return out
+
+
+func test_a3_attributes_drive_the_body() -> void:
+	var crawl := _critter(_base(8), "sil_crawler")
+	assert_eq(crawl.leg_count, 8, "A3 limbs is the limb count")
+	assert_eq(crawl.legs_n, 8, "A3 a crawler walks on all of them")
+	var walker := _critter(_base(4))
+	assert_eq([walker.legs_n, walker.arms_n], [2, 2], "A3 a strider stands on two and carries two")
+	var haul := _critter(_base(4), "sil_hauler")
+	assert_eq(haul.arms_n, 4, "A3 a hauler pulls itself with its arms")
+	var fat := _base(4)
+	fat["roundness"] = 10.0
+	assert_gt(_mean_rad(_critter(fat)), _mean_rad(walker) * 1.4, "A3 roundness thickens the body")
+	assert_true(walker.ridges, "A3 low roundness shows a ridged back")
+	assert_false(_critter(fat).ridges)
+	var sur := _base(4)
+	sur["surprise"] = 9.0
+	assert_eq(_critter(sur).eye_count, 3, "A3 surprise adds small eyes")
+	assert_eq(walker.eye_count, 1, "A3 every creature has an eye")
+	var legs0: Array[float] = _leg_lengths(crawl)
+	assert_almost_eq(legs0.max(), legs0.min(), 0.001, "A3 wrongness 0 is symmetric")
+	assert_eq(crawl.kink_at, -1, "A3 wrongness 0 keeps the spine straight")
+	var wr := _base(8)
+	wr["wrongness"] = 10.0
+	var bent := _critter(wr, "sil_crawler")
+	var legs1: Array[float] = _leg_lengths(bent)
+	assert_gt(legs1.max(), legs1.min() * 1.3, "A3 wrongness lengthens one leg")
+	assert_gte(bent.kink_at, 0, "A3 wrongness kinks the spine")
+
+
+func test_a3_ik_keeps_bone_lengths_and_planted_feet_touch_the_ground() -> void:
+	for sid in ["sil_crawler", "sil_strider", "sil_hauler"]:
+		var c := _critter(_base(6), sid)
+		_run(c, 2.5, 70.0)
+		var planted: int = 0
+		for i in c.limbs.size():
+			var d: Dictionary = c.limbs[i]
+			var kind: String = str(d["kind"])
+			if kind != "leg" and kind != "pull" and kind != "arm":
+				continue
+			var lp: PackedVector2Array = c.limb_points(i)
+			assert_almost_eq(lp[0].distance_to(lp[1]), float(d["l1"]), 0.01, "A3 %s upper bone keeps its length" % sid)
+			assert_almost_eq(lp[1].distance_to(lp[2]), float(d["l2"]), 0.01, "A3 %s lower bone keeps its length" % sid)
+			if kind != "arm" and c.planted(i):
+				planted += 1
+				assert_almost_eq((d["foot"] as Vector2).y, GROUND_AT.y, 0.01, "A3 %s a planted foot is on the ground" % sid)
+		assert_gt(planted, 0, "A3 %s stands on something" % sid)
+
+
+func test_a3_walking_steps_alternate_and_the_tail_drags() -> void:
+	var c := _critter(_base(6), "sil_crawler")
+	_run(c, 1.0)
+	var steps0: int = c.steps_taken
+	c.max_concurrent_steps = 0
+	_run(c, 1.5, 70.0)
+	var last: int = c.nodes.size() - 1
+	var lag_head: float = c._target(0).x - c.nodes[0].x
+	var lag_tail: float = c._target(last).x - c.nodes[last].x
+	_run(c, 1.5, 70.0)
+	assert_gte(c.steps_taken - steps0, 8, "A3 the feet step on their own while it walks")
+	assert_gt(c.max_concurrent_steps, 0)
+	assert_lt(c.max_concurrent_steps, c.legs_n, "A3 never lifts every foot at once")
+	assert_gt(lag_tail, lag_head + 2.0, "A3 the tail trails behind the head")
+	_run(c, 2.0)
+	var rest_tail: float = absf(c._target(last).x - c.nodes[last].x)
+	assert_lt(rest_tail, lag_tail, "A3 the tail catches up when it stops")
+
+
+func test_a3_body_plans_stay_distinct() -> void:
+	var crawl := _critter(_base(6), "sil_crawler")
+	var walk := _critter(_base(4), "sil_strider")
+	var haul := _critter(_base(4), "sil_hauler")
+	for c in [crawl, walk, haul]:
+		_run(c, 1.0)
+	var H: float = walk.size_px.y
+	var head_h := func(c: StoneStoryCritter) -> float: return (GROUND_AT.y - c.nodes[0].y) / c.size_px.y
+	var length := func(c: StoneStoryCritter) -> float: return absf(c.nodes[0].x - c.nodes[c.nodes.size() - 1].x) / c.size_px.y
+	assert_gt(head_h.call(walk), head_h.call(crawl) + 0.2, "A3 the strider holds its head up")
+	assert_gt(length.call(crawl), length.call(walk) * 1.3, "A3 the crawler is long and low")
+	for i in range(1, haul.tail_from):
+		assert_lt(GROUND_AT.y - haul.nodes[i].y - haul.rad[i], H * 0.12, "A3 the hauler drags its body on the ground")
+	var fly := _critter(_base(5), "sil_hauler", true)
+	_run(fly, 1.0)
+	assert_eq(fly.tentacles_n, 5, "A3 a flyer hangs tentacles instead of legs")
+	assert_eq(fly.legs_n, 0)
+	for p in fly.nodes:
+		assert_gt(GROUND_AT.y - p.y, fly.size_px.y * 0.3, "A3 a flyer floats")
+
+
+func test_a3_player_uses_the_same_rig() -> void:
+	var cls: Dictionary = _content.get_def("class", "class_ashbound")
+	assert_eq(str(cls.get("silhouette", "")), "sil_strider", "A3 the player is a strider too")
+	var c := StoneStoryCritter.build(_content.get_def("silhouette", "sil_strider"), cls.get("base_attributes", {}),
+			cls.get("shape", {}), 148)
+	c.place(GROUND_AT)
+	_run(c, 0.5)
+	var weapon: Dictionary = {}
+	for L in c.limbs:
+		if bool(L.get("weapon", false)):
+			weapon = L
+	assert_false(weapon.is_empty(), "A3 the player holds the weapon in a hand")
+	var sh: Vector2 = c.nodes[int(weapon["node"])]
+	assert_lt(c.hand_point(GROUND_AT).distance_to(sh), float(weapon["l1"]) + float(weapon["l2"]) + 0.5, "A3 the hand is on the arm")
 
 
 # --- V9 소품 규칙 ------------------------------------------------------

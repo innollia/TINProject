@@ -67,7 +67,7 @@ func say(s: String) -> void:
 func _sil(def: Dictionary) -> Dictionary:
 	if content == null:
 		return {}
-	return content.get_def("silhouette", str(def.get("silhouette", "sil_lump")))
+	return content.get_def("silhouette", str(def.get("silhouette", "sil_hauler")))
 
 
 func _key(f: Dictionary) -> String:
@@ -301,8 +301,8 @@ func _draw() -> void:
 				_draw_foe(en["f"], en["c"])
 			"dying":
 				var dd: Dictionary = en["d"]
-				(dd["critter"] as StoneStoryCritter).draw(self, dd["at"], pal, stats,
-						_foe_body(bool(dd["boss"])), StoneStoryPalette.accent(pal))
+				var dt: Array[Color] = StoneStoryCritter.foe_tones(pal, bool(dd["boss"]))
+				(dd["critter"] as StoneStoryCritter).draw(self, dd["at"], pal, stats, dt[0], dt[1])
 			"player":
 				_draw_player()
 	_draw_projectiles()
@@ -313,12 +313,6 @@ func _draw() -> void:
 	_draw_hud(w, ox)
 	if message_frames > 0:
 		_text_center(w * 0.5, 300.0, message, FS_HUD)
-
-
-func _foe_body(is_boss: bool) -> Color:
-	if is_boss:
-		return pal.shifted(StoneStoryPalette.STRUCTURE, 0.30, 1.05)
-	return StoneStoryPalette.ink(pal)
 
 
 func _draw_obstacle(o: Dictionary, ox: float) -> void:
@@ -337,7 +331,8 @@ func _draw_obstacle(o: Dictionary, ox: float) -> void:
 func _draw_foe(f: Dictionary, c: StoneStoryCritter) -> void:
 	var at: Vector2 = _to_px(f["pos"])
 	var boss: bool = bool(f.get("is_boss", false))
-	c.draw(self, at, pal, stats, _foe_body(boss), StoneStoryPalette.accent(pal))
+	var tones: Array[Color] = StoneStoryCritter.foe_tones(pal, boss)
+	c.draw(self, at, pal, stats, tones[0], tones[1])
 	var top: Vector2 = at + Vector2(0.0, -c.hover() - c.height() * 1.02)
 	if f.get("tags", []).has("ranged"):
 		var orb: Vector2 = top + Vector2(sin(clock * 2.0) * 4.0, -8.0)
@@ -388,13 +383,12 @@ func _draw_player() -> void:
 	var p: Dictionary = state["player"]
 	var at: Vector2 = _to_px(p["pos"])
 	var stance: String = str(encounter.get("player_stance", "neutral"))
-	var body_col: Color = StoneStoryPalette.accent(pal)
-	var mark_col: Color = StoneStoryPalette.sclera(pal)
+	var tones: Array[Color] = StoneStoryCritter.player_tones(pal)
 	if stance == "superarmor":
 		var ring: Color = StoneStoryPalette.accent(pal)
 		ring.a = 0.22 + 0.10 * sin(clock * 6.0)
 		StoneStoryInk.fill(self, StoneStoryInk.ellipse(at, _player.width() * 1.1, _player.width() * 0.32, 22), ring, stats)
-	_player.draw(self, at, pal, stats, body_col, mark_col)
+	_player.draw(self, at, pal, stats, tones[0], tones[1])
 	var looks: Array = []
 	for g in p.get("gear", []):
 		var def: Dictionary = content.item(str((g as Dictionary).get("item_id", ""))) if content != null else {}
