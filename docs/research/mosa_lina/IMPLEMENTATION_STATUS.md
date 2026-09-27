@@ -1,6 +1,6 @@
 # Kit 07 physics_puzzle_platformer — 구현 현황 (인계용)
 
-최종 갱신: 2026-09-27 17:10 KST. 작성: sub-kit07 세션(Godot 잠금 이름 `sub-kit07`). 다음 작업자는 이 문서부터 읽는다.
+최종 갱신: 2026-09-27 18:10 KST. 작성: sub-kit07 세션(Godot 잠금 이름 `sub-kit07`). 다음 작업자는 이 문서부터 읽는다.
 
 - 계획서: `plans/kits/07_PHYSICS_PUZZLE_PLATFORMER_KIT.md` (§20 OQ1~OQ10 확정, §21 구현 중 확정값)
 - 쓸 수 있는 경로: `modules/physics_puzzle_platformer/**`, `tests/core/test_ppp_*.gd`, 위 계획서, `docs/research/mosa_lina/**`
@@ -94,3 +94,14 @@ wave 0~4, wave 6(F) 코드가 돌고 wave 3 스모크 테스트가 통과한다.
 - 이 PC의 저장소는 `C:\Users\fixme\Desktop\TINProject`, Godot 콘솔은 `C:\Users\fixme\Downloads\Godot_v4.7.2-stable_win64.exe\Godot_v4.7.2-stable_win64_console.exe`.
 - Godot 잠금은 `C:\projects\_locks\TINProject-godot.lock`.
 - `audio/` 폴더는 없다. W3가 wav를 넣을 때 만든다. 파일이 없으면 `AudioSink`는 조용히 재생하지 않는다.
+
+## 18:10 KST 갱신 (이 절이 위 내용보다 우선)
+
+- 오디오 core 수정 반영 확인: ppp 테스트의 오디오 오류 0.
+- **G 완료:** 레벨 7(lvl_rolling_coin lvl_glass_gallery lvl_lifting_slab lvl_wind_ledger lvl_slippery_ink lvl_broken_teeth lvl_hollow_keyhole), 도구 5. **레벨 이름 사용자 답 대기 -- 지금은 A안(§11.9-2). B안이면 JSON 
+ame 문자열 4개와 lvl_lifting_slab→lvl_slab_bridge(파일명·index 1줄)만 교체.**
+- **H 완료:** presentation/dev_probe.tscn/.gd. 창 모드로 레벨마다 지정 해상도 SubViewport 캡처, 시간알→틈 최단 보행 경로 길이 출력. 실행: Godot_v4.7.2-stable_win64.exe --path <저장소> --resolution 1280x720 res://modules/physics_puzzle_platformer/presentation/dev_probe.tscn -- --out=<폴더> --size=1920x1080.
+- **I 완료:** 테스트 12파일 97개 통과, 1 보류(	est_restore_keeps_mutations).
+- **J 완료:** lvl_clockwork_bell + 	ool_moth_wing, 변경은 content/ 안 JSON 2개 + index 2줄뿐(커밋 e3e3cfb1·34183792). core 무수정.
+- **K(에이전트 몫):** 9레벨 × 720p/FHD/QHD 캡처 27장 docs/research/mosa_lina/captures/. 보행 경로 합계 93.6초(9레벨) — 걷기만으로는 10분이 안 된다. 10분 근거는 퍼즐 판단 시간이어야 하며 사람 실측이 필요하다.
+- **한계:** 레벨은 모든 시간알이 닿으면 먹히고 틈이 열리는지까지 자동 검증했다(	est_ppp_reference_content). 도구가 **필요한** 퍼즐인지(걷기·점프만으로 풀리는지)는 검증하지 않았다.
