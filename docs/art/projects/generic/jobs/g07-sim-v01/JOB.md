@@ -24,4 +24,4 @@ B (2)
 - [x] obj_container — closed / open, 10피트 컨테이너 2.4×3.0×2.6 m, 문이 보는 쪽(열면 상자 3개), 빈 이름판(닫힘에만)
 - [x] obj_shard_pile — small / medium / large (돌·놋쇠·수정 파편, 수정만 약한 _emit)
 C (6)
-- [ ] obj_pallet_stack, obj_freight_wagon, obj_rail_tile, obj_mine_cart, obj_conveyor_end, obj_crane_hook
+- 건너뜀(2026-09-27 사장님 지시: 전체 이미지 3000장 도달, 새 자산 시작 금지): obj_pallet_stack, obj_freight_wagon, obj_rail_tile, obj_mine_cart, obj_conveyor_end, obj_crane_hook

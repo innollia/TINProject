@@ -152,39 +152,41 @@
 
 | # | 이름 | 자산 ID | 근거 키트 | 형식 | 묶음 | 상태 |
 |---|---|---|---|---|---|---|
-| 87 | 크랭크 손잡이(회전) | ui_ctl_crank | K4 K1 | 계기 192 | g07-controls-v01 | 대기 |
-| 88 | 경고 줄무늬 테 | ui_ctl_hazard | K5 K6 | 9칸 | g07-controls-v01 | 대기 |
-| 89 | 큰 속도계 | ui_ctl_speedo | K6 | 계기 384 | g07-controls-v01 | 대기 |
-| 90 | 출발 안내판 틀 + 빈 판 조각 | ui_scr_flapboard | K6 | 9칸 + 96 칸 | g07-screens-v01 | 대기 |
-| 91 | 툴팁 틀 | ui_os_tooltip | K11 | 9칸 | g07-screens-v01 | 대기 |
-| 92 | 작업 표시줄 | ui_os_taskbar | K11 | 9칸 192×64 | g07-screens-v01 | 대기 |
-| 93 | 박자 점 3개 | ui_rhythm_beat | K8 | 192, 4상태 | g07-screens-v01 | 대기 |
-| 94 | 원형 진행 링(8칸) | ui_progress_ring | K11 K12 | 192, 9상태 | g07-screens-v01 | 대기 |
-| 95 | 점수판 틀(숫자 칸 비움) | ui_scr_tally | K12 K8 | 9칸 | g07-screens-v01 | 대기 |
-| 96 | 예보 기호: 바람 | icon_fc_wind | K3 | 아이콘 | g07-icons-v01 | 대기 |
-| 97 | 예보 기호: 맑은 밤 | icon_fc_night | K3 | 아이콘 | g07-icons-v01 | 대기 |
-| 98 | 데스크톱 아이콘: 음악 | icon_os_music | K11 K8 | 아이콘 | g07-icons-v01 | 대기 |
-| 99 | 데스크톱 아이콘: 좋아요 | icon_os_heart | K11 | 아이콘 | g07-icons-v01 | 대기 |
-| 100 | 데스크톱 아이콘: 따르는 사람 | icon_os_follower | K11 | 아이콘 | g07-icons-v01 | 대기 |
-| 101 | 보드게임 표식 칩 3종(원·별·해골) | icon_bg_token | K9 K12 | 아이콘, 3종 | g07-icons-v01 | 대기 |
-| 102 | 우편 행낭 수레 | obj_mail_cart | K2 | 오브젝트 | g07-devices-v01 | 대기 |
-| 103 | 소포 미끄럼틀 | obj_parcel_chute | K2 K6 | 오브젝트 | g07-devices-v01 | 대기 |
-| 104 | 우량계 | obj_rain_gauge | K3 | 오브젝트 | g07-devices-v01 | 대기 |
-| 105 | 송출 표시등(벽) | obj_onair_lamp | K3 | 오브젝트(벽 피벗), 2상태 | g07-devices-v01 | 대기 |
-| 106 | 계류 기둥 | obj_bollard | K4 K6 | 오브젝트 | g07-devices-v01 | 대기 |
-| 107 | 수로 표지 부표(붉은·푸른) | obj_marker_buoy | K4 K6 | 오브젝트(물 위), 2종 | g07-devices-v01 | 대기 |
-| 108 | 격벽 문(닫힘·열림) | obj_bulkhead_door | K5 | 오브젝트, 2상태 | g07-devices-v01 | 대기 |
-| 109 | 둥근 창(벽) | obj_porthole | K5 | 오브젝트(벽 피벗) | g07-devices-v01 | 대기 |
-| 110 | 보면대 | obj_music_stand | K8 | 오브젝트 | g07-devices-v01 | 대기 |
-| 111 | 유령 포획 장치(닫힘·열림) | obj_ghost_trap | K10 | 오브젝트, 2상태 | g07-devices-v01 | 대기 |
-| 112 | 소금 원(바닥) | obj_salt_circle | K10 | 오브젝트(바닥 레이어) | g07-devices-v01 | 대기 |
-| 113 | 심장 박동 모니터(꺼짐·켜짐) | obj_heart_monitor | K10 | 오브젝트, 2상태 | g07-devices-v01 | 대기 |
-| 114 | 관찰 수조 | obj_specimen_tank | K10 | 오브젝트 | g07-devices-v01 | 대기 |
-| 115 | 짐 팔레트 | obj_pallet_stack | K6 | 오브젝트 | g07-sim-v01 | 대기 |
-| 116 | 화물 차량 | obj_freight_wagon | K6 | 오브젝트 | g07-sim-v01 | 대기 |
-| 117 | 선로 칸(직선·굽음) | obj_rail_tile | K6 | 타일 192 | g07-sim-v01 | 대기 |
-| 118 | 광차(빈·가득) | obj_mine_cart | K12 | 오브젝트, 2상태 | g07-sim-v01 | 대기 |
-| 119 | 컨베이어 끝·모퉁이 칸 | obj_conveyor_end | K2 K6 | 타일 192 | g07-sim-v01 | 대기 |
-| 120 | 기중기 갈고리(빈·짐) | obj_crane_hook | K6 | 오브젝트(매달림 피벗), 2상태 | g07-sim-v01 | 대기 |
+| 87 | 크랭크 손잡이(회전) | ui_ctl_crank | K4 K1 | 계기 192 | g07-controls-v01 | 건너뜀 |
+| 88 | 경고 줄무늬 테 | ui_ctl_hazard | K5 K6 | 9칸 | g07-controls-v01 | 건너뜀 |
+| 89 | 큰 속도계 | ui_ctl_speedo | K6 | 계기 384 | g07-controls-v01 | 건너뜀 |
+| 90 | 출발 안내판 틀 + 빈 판 조각 | ui_scr_flapboard | K6 | 9칸 + 96 칸 | g07-screens-v01 | 건너뜀 |
+| 91 | 툴팁 틀 | ui_os_tooltip | K11 | 9칸 | g07-screens-v01 | 건너뜀 |
+| 92 | 작업 표시줄 | ui_os_taskbar | K11 | 9칸 192×64 | g07-screens-v01 | 건너뜀 |
+| 93 | 박자 점 3개 | ui_rhythm_beat | K8 | 192, 4상태 | g07-screens-v01 | 건너뜀 |
+| 94 | 원형 진행 링(8칸) | ui_progress_ring | K11 K12 | 192, 9상태 | g07-screens-v01 | 건너뜀 |
+| 95 | 점수판 틀(숫자 칸 비움) | ui_scr_tally | K12 K8 | 9칸 | g07-screens-v01 | 건너뜀 |
+| 96 | 예보 기호: 바람 | icon_fc_wind | K3 | 아이콘 | g07-icons-v01 | 건너뜀 |
+| 97 | 예보 기호: 맑은 밤 | icon_fc_night | K3 | 아이콘 | g07-icons-v01 | 건너뜀 |
+| 98 | 데스크톱 아이콘: 음악 | icon_os_music | K11 K8 | 아이콘 | g07-icons-v01 | 건너뜀 |
+| 99 | 데스크톱 아이콘: 좋아요 | icon_os_heart | K11 | 아이콘 | g07-icons-v01 | 건너뜀 |
+| 100 | 데스크톱 아이콘: 따르는 사람 | icon_os_follower | K11 | 아이콘 | g07-icons-v01 | 건너뜀 |
+| 101 | 보드게임 표식 칩 3종(원·별·해골) | icon_bg_token | K9 K12 | 아이콘, 3종 | g07-icons-v01 | 건너뜀 |
+| 102 | 우편 행낭 수레 | obj_mail_cart | K2 | 오브젝트 | g07-devices-v01 | 건너뜀 |
+| 103 | 소포 미끄럼틀 | obj_parcel_chute | K2 K6 | 오브젝트 | g07-devices-v01 | 건너뜀 |
+| 104 | 우량계 | obj_rain_gauge | K3 | 오브젝트 | g07-devices-v01 | 건너뜀 |
+| 105 | 송출 표시등(벽) | obj_onair_lamp | K3 | 오브젝트(벽 피벗), 2상태 | g07-devices-v01 | 건너뜀 |
+| 106 | 계류 기둥 | obj_bollard | K4 K6 | 오브젝트 | g07-devices-v01 | 건너뜀 |
+| 107 | 수로 표지 부표(붉은·푸른) | obj_marker_buoy | K4 K6 | 오브젝트(물 위), 2종 | g07-devices-v01 | 건너뜀 |
+| 108 | 격벽 문(닫힘·열림) | obj_bulkhead_door | K5 | 오브젝트, 2상태 | g07-devices-v01 | 건너뜀 |
+| 109 | 둥근 창(벽) | obj_porthole | K5 | 오브젝트(벽 피벗) | g07-devices-v01 | 건너뜀 |
+| 110 | 보면대 | obj_music_stand | K8 | 오브젝트 | g07-devices-v01 | 건너뜀 |
+| 111 | 유령 포획 장치(닫힘·열림) | obj_ghost_trap | K10 | 오브젝트, 2상태 | g07-devices-v01 | 건너뜀 |
+| 112 | 소금 원(바닥) | obj_salt_circle | K10 | 오브젝트(바닥 레이어) | g07-devices-v01 | 건너뜀 |
+| 113 | 심장 박동 모니터(꺼짐·켜짐) | obj_heart_monitor | K10 | 오브젝트, 2상태 | g07-devices-v01 | 건너뜀 |
+| 114 | 관찰 수조 | obj_specimen_tank | K10 | 오브젝트 | g07-devices-v01 | 건너뜀 |
+| 115 | 짐 팔레트 | obj_pallet_stack | K6 | 오브젝트 | g07-sim-v01 | 건너뜀 |
+| 116 | 화물 차량 | obj_freight_wagon | K6 | 오브젝트 | g07-sim-v01 | 건너뜀 |
+| 117 | 선로 칸(직선·굽음) | obj_rail_tile | K6 | 타일 192 | g07-sim-v01 | 건너뜀 |
+| 118 | 광차(빈·가득) | obj_mine_cart | K12 | 오브젝트, 2상태 | g07-sim-v01 | 건너뜀 |
+| 119 | 컨베이어 끝·모퉁이 칸 | obj_conveyor_end | K2 K6 | 타일 192 | g07-sim-v01 | 건너뜀 |
+| 120 | 기중기 갈고리(빈·짐) | obj_crane_hook | K6 | 오브젝트(매달림 피벗), 2상태 | g07-sim-v01 | 건너뜀 |
 
 합계 120개 (A 42 · B 44 · C 34).
+
+- 2026-09-27 사장님 지시("전체 이미지가 목표 3000장을 넘었다. 지금 만들고 있는 자산 묶음까지만 마무리해라. 새 자산을 더 시작하지 마라")에 따라 A·B까지 86개를 완료하고 C 34개(87~120)는 시작하지 않고 건너뛰었다. 다시 하게 되면 C 표의 형식 그대로 이어서 만들면 된다.

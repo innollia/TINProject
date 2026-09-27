@@ -44,4 +44,4 @@ B (14)
 - [x] obj_seance_table — unlit / lit (촛불 3개·수정구 _emit)
 - [x] obj_bell_rack — 낮은·가운데·높은 종 + 펠트 망치
 C (13)
-- [ ] obj_mail_cart, obj_parcel_chute, obj_rain_gauge, obj_onair_lamp, obj_bollard, obj_marker_buoy, obj_bulkhead_door, obj_porthole, obj_music_stand, obj_ghost_trap, obj_salt_circle, obj_heart_monitor, obj_specimen_tank
+- 건너뜀(2026-09-27 사장님 지시: 전체 이미지 3000장 도달, 새 자산 시작 금지): obj_mail_cart, obj_parcel_chute, obj_rain_gauge, obj_onair_lamp, obj_bollard, obj_marker_buoy, obj_bulkhead_door, obj_porthole, obj_music_stand, obj_ghost_trap, obj_salt_circle, obj_heart_monitor, obj_specimen_tank

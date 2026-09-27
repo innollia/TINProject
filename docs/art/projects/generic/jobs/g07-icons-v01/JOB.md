@@ -25,4 +25,4 @@ B (9)
 - [x] icon_fc_snow, icon_fc_storm, icon_fc_fog, icon_fc_snow_indoor
 - [x] icon_os_mail(숫자 없는 알림 점), icon_os_web, icon_os_settings, icon_os_terminal, icon_os_webcam(켜진 빨간 등, _emit)
 C (6)
-- [ ] icon_fc_wind, icon_fc_night, icon_os_music, icon_os_heart, icon_os_follower, icon_bg_token
+- 건너뜀(2026-09-27 사장님 지시: 전체 이미지 3000장 도달, 새 자산 시작 금지): icon_fc_wind, icon_fc_night, icon_os_music, icon_os_heart, icon_os_follower, icon_bg_token

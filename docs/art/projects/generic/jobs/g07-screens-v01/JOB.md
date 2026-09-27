@@ -45,4 +45,4 @@ B (9)
 - [x] ui_upgrade_node(locked/open/bought) + ui_upgrade_link(dim/lit, 192마다 이어짐)
 - [x] ui_bg_card(suspect/method/place/back, 256×384)
 C (6)
-- [ ] ui_scr_flapboard, ui_os_tooltip, ui_os_taskbar, ui_rhythm_beat, ui_progress_ring, ui_scr_tally
+- 건너뜀(2026-09-27 사장님 지시: 전체 이미지 3000장 도달, 새 자산 시작 금지): ui_scr_flapboard, ui_os_tooltip, ui_os_taskbar, ui_rhythm_beat, ui_progress_ring, ui_scr_tally

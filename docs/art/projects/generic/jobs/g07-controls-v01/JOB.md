@@ -54,6 +54,6 @@ B (10)
 - [x] ui_ctl_selector — pos_1 / pos_2 / pos_3
 - [x] ui_ctl_panel — 리벳 판, 9-slice 여백 48 (`ui_ctl_panel_9s_check.png`)
 C (3)
-- [ ] ui_ctl_crank, ui_ctl_hazard, ui_ctl_speedo
+- 건너뜀(2026-09-27 사장님 지시: 전체 이미지 3000장 도달, 새 자산 시작 금지): ui_ctl_crank, ui_ctl_hazard, ui_ctl_speedo
 
 모아 보기: `assets\art\generic\jobs\g07-controls-v01\preview\review_*.png`
