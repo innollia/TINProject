@@ -1,0 +1,739 @@
+{
+ "asset": "obj_sf_console",
+ "status": "candidate",
+ "note": "Sci-fi control console 1.4 m wide: steel cabinet, sloped control deck with key grid, sliders and indicator lamps, upright screen panel. Frames: off, on (screen and lamps lit, emit).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 903,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  400,
+  374
+ ],
+ "pivot": [
+  192,
+  302
+ ],
+ "footprint": [
+  66,
+  196,
+  318,
+  302
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 14
+     },
+     "at": [
+      200,
+      254
+     ],
+     "size": [
+      270,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screen_panel",
+   "z": 2.0,
+   "kind": "block",
+   "material": "steel",
+   "extrude": 96,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      192,
+      45.0
+     ],
+     "size": [
+      236,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screen_off",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "screen_off",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      192,
+      100.0
+     ],
+     "size": [
+      204,
+      74
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screen_on",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "screen_on",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.85,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.45,
+    "color": "screen_glow"
+   },
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      192,
+      100.0
+     ],
+     "size": [
+      204,
+      74
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screen_graph",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "neon_cyan",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 1.0,
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "line_graph",
+     "at": [
+      152,
+      104.0
+     ],
+     "size": [
+      90,
+      50
+     ]
+    },
+    {
+     "icon": "bar_graph",
+     "at": [
+      252,
+      106.0
+     ],
+     "size": [
+      60,
+      44
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      192,
+      70.0
+     ],
+     "size": [
+      190,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cabinet",
+   "z": 6.0,
+   "kind": "block",
+   "material": "steel",
+   "extrude": 76,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      192,
+      179.0
+     ],
+     "size": [
+      252,
+      94
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cabinet_panels",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "steel_light",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      130,
+      264.0
+     ],
+     "size": [
+      110,
+      56
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      254,
+      264.0
+     ],
+     "size": [
+      110,
+      56
+     ]
+    }
+   ]
+  },
+  {
+   "name": "vents",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "soot",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      130,
+      256.0
+     ],
+     "size": [
+      80,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      130,
+      264.0
+     ],
+     "size": [
+      80,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      130,
+      272.0
+     ],
+     "size": [
+      80,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      130,
+      280.0
+     ],
+     "size": [
+      80,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "deck",
+   "z": 9.0,
+   "kind": "block",
+   "material": "steel_light",
+   "extrude": 10,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      192,
+      168.0
+     ],
+     "size": [
+      244,
+      84
+     ]
+    }
+   ]
+  },
+  {
+   "name": "keys",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "steel",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "grid_fine",
+     "at": [
+      140,
+      174.0
+     ],
+     "size": [
+      96,
+      44
+     ],
+     "crop": [
+      1,
+      1,
+      15,
+      15
+     ],
+     "ground": true
+    }
+   ]
+  },
+  {
+   "name": "sliders",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      232,
+      172.0
+     ],
+     "size": [
+      4,
+      40
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      248,
+      172.0
+     ],
+     "size": [
+      4,
+      40
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      264,
+      172.0
+     ],
+     "size": [
+      4,
+      40
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      280,
+      172.0
+     ],
+     "size": [
+      4,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "slider_knobs",
+   "z": 12.0,
+   "kind": "flat",
+   "material": "chrome",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      232,
+      160.0
+     ],
+     "size": [
+      10,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      248,
+      174.0
+     ],
+     "size": [
+      10,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      264,
+      166.0
+     ],
+     "size": [
+      10,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      280,
+      178.0
+     ],
+     "size": [
+      10,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lamps_g_off",
+   "z": 13.0,
+   "kind": "flat",
+   "material": "signal_off",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      296,
+      152.0
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      296,
+      168.0
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      296,
+      184.0
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lamps_g_on",
+   "z": 14.0,
+   "kind": "flat",
+   "material": "signal_green",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "signal_green_glow"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      296,
+      152.0
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      296,
+      168.0
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      296,
+      184.0
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lamps_r_off",
+   "z": 15.0,
+   "kind": "flat",
+   "material": "signal_off",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      86,
+      158.0
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      86,
+      176.0
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lamps_r_on",
+   "z": 16.0,
+   "kind": "flat",
+   "material": "signal_red",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "signal_red_glow"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      86,
+      158.0
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      86,
+      176.0
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off"
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#7ed0c8",
+    "radius": 300,
+    "at": [
+     192,
+     100.0
+    ]
+   }
+  }
+ ]
+}

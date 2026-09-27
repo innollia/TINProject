@@ -1,0 +1,1041 @@
+{
+ "asset": "obj_shelf",
+ "status": "candidate",
+ "note": "Open storage shelf 1.2 m wide, 1.6 m high, 0.4 m deep, against a wall; drawn like the bookshelf (compartments on the front face). Frames: full (jars, baskets, sacks, bottles), empty.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 605,
+ "pivot_meaning": "front-bottom centre on the floor; the back face stands on the wall line",
+ "layer_hint": "world",
+ "canvas": [
+  356,
+  344
+ ],
+ "pivot": [
+  172,
+  275
+ ],
+ "footprint": [
+  64,
+  213,
+  280,
+  275
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.34,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      178,
+      247
+     ],
+     "size": [
+      232,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "case",
+   "z": 2.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 168,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      172,
+      76.0
+     ],
+     "size": [
+      216,
+      62
+     ]
+    }
+   ]
+  },
+  {
+   "name": "recess",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "void",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      172,
+      189
+     ],
+     "size": [
+      196,
+      156
+     ]
+    }
+   ]
+  },
+  {
+   "name": "back_joints",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.3,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      100.0,
+      191.0
+     ],
+     "size": [
+      2.2,
+      164
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      136.0,
+      191.0
+     ],
+     "size": [
+      2.2,
+      164
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      172.0,
+      191.0
+     ],
+     "size": [
+      2.2,
+      164
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      208.0,
+      191.0
+     ],
+     "size": [
+      2.2,
+      164
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      244.0,
+      191.0
+     ],
+     "size": [
+      2.2,
+      164
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl0_jars",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "clay",
+   "tags": [
+    "full"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      94,
+      248.31
+     ],
+     "size": [
+      29.062761042977158,
+      33.37084003893403
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      94,
+      234.63
+     ],
+     "size": [
+      17.437656625786293,
+      6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      179.06,
+      251.04
+     ],
+     "size": [
+      22.478637657275783,
+      27.920953421015284
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      179.06,
+      240.08
+     ],
+     "size": [
+      13.48718259436547,
+      6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      223.54,
+      251.7
+     ],
+     "size": [
+      26.82379182794543,
+      26.608546604663267
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      223.54,
+      241.39
+     ],
+     "size": [
+      16.09427509676726,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl0_sacks",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "cloth_ochre",
+   "tags": [
+    "full"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "pouch",
+     "at": [
+      149.06,
+      249
+     ],
+     "size": [
+      32,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl0_bottles",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "full"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      129.06,
+      253
+     ],
+     "size": [
+      10,
+      22
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      129.06,
+      238
+     ],
+     "size": [
+      4,
+      10
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      207.54,
+      253
+     ],
+     "size": [
+      10,
+      22
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      207.54,
+      238
+     ],
+     "size": [
+      4,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl1_jars",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "clay",
+   "tags": [
+    "full"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      94,
+      209.72
+     ],
+     "size": [
+      25.82104938607668,
+      26.55110621770393
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      94,
+      199.45
+     ],
+     "size": [
+      15.492629631646007,
+      6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      209.82,
+      208.35
+     ],
+     "size": [
+      24.515921566180193,
+      29.303540914480553
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      209.82,
+      196.7
+     ],
+     "size": [
+      14.709552939708114,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl1_sacks",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "cloth_ochre",
+   "tags": [
+    "full"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "pouch",
+     "at": [
+      145.82,
+      207
+     ],
+     "size": [
+      32,
+      34
+     ]
+    },
+    {
+     "icon": "pouch",
+     "at": [
+      179.82,
+      207
+     ],
+     "size": [
+      32,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl1_bottles",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "full"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      125.82,
+      211
+     ],
+     "size": [
+      10,
+      22
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      125.82,
+      196
+     ],
+     "size": [
+      4,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl2_jars",
+   "z": 11.0,
+   "kind": "mass",
+   "material": "clay",
+   "tags": [
+    "full"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      164.92
+     ],
+     "size": [
+      27.678049120242108,
+      32.16898566251879
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      151.83
+     ],
+     "size": [
+      16.606829472145265,
+      6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      187.68,
+      165.29
+     ],
+     "size": [
+      29.322416313315824,
+      31.42229891138541
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      187.68,
+      152.58
+     ],
+     "size": [
+      17.593449787989492,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl2_baskets",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "thatch",
+   "tags": [
+    "full"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 7
+     },
+     "at": [
+      102,
+      170
+     ],
+     "size": [
+      40,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      102,
+      159
+     ],
+     "size": [
+      40,
+      9
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 7
+     },
+     "at": [
+      231.0,
+      170
+     ],
+     "size": [
+      40,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      231.0,
+      159
+     ],
+     "size": [
+      40,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl2_weave",
+   "z": 13.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "tags": [
+    "full"
+   ],
+   "opacity": 0.55,
+   "clip_to": "lvl2_baskets",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      102,
+      170
+     ],
+     "size": [
+      36,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      102,
+      176
+     ],
+     "size": [
+      34,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      231.0,
+      170
+     ],
+     "size": [
+      36,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      231.0,
+      176
+     ],
+     "size": [
+      34,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl2_bottles",
+   "z": 14.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "full"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      138,
+      169
+     ],
+     "size": [
+      10,
+      22
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      138,
+      154
+     ],
+     "size": [
+      4,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl3_jars",
+   "z": 15.0,
+   "kind": "mass",
+   "material": "clay",
+   "tags": [
+    "full"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      128,
+      125.23
+     ],
+     "size": [
+      23.5145605821146,
+      27.54973426364187
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      128,
+      114.45
+     ],
+     "size": [
+      14.10873634926876,
+      6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      157.51,
+      123.67
+     ],
+     "size": [
+      26.877071866887604,
+      30.65325471816051
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      157.51,
+      111.35
+     ],
+     "size": [
+      16.12624312013256,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl3_baskets",
+   "z": 16.0,
+   "kind": "mass",
+   "material": "thatch",
+   "tags": [
+    "full"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 7
+     },
+     "at": [
+      216.39,
+      128
+     ],
+     "size": [
+      40,
+      22
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      216.39,
+      117
+     ],
+     "size": [
+      40,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl3_weave",
+   "z": 17.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "tags": [
+    "full"
+   ],
+   "opacity": 0.55,
+   "clip_to": "lvl3_baskets",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      216.39,
+      128
+     ],
+     "size": [
+      36,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      216.39,
+      134
+     ],
+     "size": [
+      34,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lvl3_sacks",
+   "z": 18.0,
+   "kind": "mass",
+   "material": "cloth_ochre",
+   "tags": [
+    "full"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "pouch",
+     "at": [
+      98,
+      123
+     ],
+     "size": [
+      32,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "name": "boards",
+   "z": 19.0,
+   "kind": "flat",
+   "material": "wood",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      172,
+      223
+     ],
+     "size": [
+      200,
+      7
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      172,
+      181
+     ],
+     "size": [
+      200,
+      7
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      172,
+      139
+     ],
+     "size": [
+      200,
+      7
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      172,
+      267
+     ],
+     "size": [
+      200,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "top_board",
+   "z": 20.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      172,
+      71.0
+     ],
+     "size": [
+      224,
+      66
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "full",
+   "state": "full"
+  },
+  {
+   "name": "empty",
+   "state": "empty",
+   "hide": [
+    "full"
+   ]
+  }
+ ]
+}

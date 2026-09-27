@@ -1,0 +1,215 @@
+{
+ "asset": "obj_log_fallen",
+ "status": "candidate",
+ "note": "Fallen log about 1.8 m long lying slightly diagonal, cut end with rings, moss and a broken branch stub.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 409,
+ "pivot_meaning": "centre of the log's ground contact",
+ "layer_hint": "world",
+ "canvas": [
+  460,
+  238
+ ],
+ "pivot": [
+  218,
+  150
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.4,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      230,
+      142
+     ],
+     "size": [
+      330,
+      62
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "bark",
+   "texture": {
+    "angle": -8
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 34
+     },
+     "at": [
+      210,
+      110
+     ],
+     "size": [
+      300,
+      76
+     ],
+     "rot": -8
+    }
+   ]
+  },
+  {
+   "name": "stub",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "bark",
+   "texture": {
+    "angle": 70
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      168.0,
+      64.0
+     ],
+     "size": [
+      48.33218389437829,
+      16
+     ],
+     "rot": -114.44395478041653
+    }
+   ]
+  },
+  {
+   "name": "end",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "wood_cut",
+   "shade": {
+    "bump": 0.4,
+    "highlight_amount": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      356,
+      90
+     ],
+     "size": [
+      52,
+      74
+     ],
+     "rot": -8
+    }
+   ]
+  },
+  {
+   "name": "rings",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.45,
+   "clip_to": "end",
+   "pieces": [
+    {
+     "icon": "target",
+     "at": [
+      356,
+      90
+     ],
+     "size": [
+      38,
+      56
+     ],
+     "rot": -8
+    }
+   ]
+  },
+  {
+   "name": "moss",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "moss",
+   "clip_to": "body",
+   "rough": {
+    "amp": 0.5,
+    "soft": 1.5,
+    "cell": 6
+   },
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      148,
+      80
+     ],
+     "size": [
+      110,
+      30
+     ],
+     "rot": -8
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      258,
+      68
+     ],
+     "size": [
+      70,
+      22
+     ],
+     "rot": -8,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "sprouts",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "grass",
+   "line": {
+    "width": 0.8,
+    "heavy": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "sprout",
+     "at": [
+      98,
+      74
+     ],
+     "size": [
+      26,
+      24
+     ],
+     "rot": -10
+    },
+    {
+     "icon": "grass",
+     "at": [
+      288,
+      132
+     ],
+     "size": [
+      40,
+      18
+     ]
+    }
+   ]
+  }
+ ]
+}

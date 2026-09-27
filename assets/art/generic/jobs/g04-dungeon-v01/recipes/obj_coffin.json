@@ -1,0 +1,749 @@
+{
+ "asset": "obj_coffin",
+ "status": "candidate",
+ "note": "Gothic coffin 2.0 m long lying east-west (head to the west), dark wood, bronze cross inlay, iron handles. Frames: closed, open (lid on the floor in front, empty wine-cloth lining).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 507,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  504,
+  382
+ ],
+ "pivot": [
+  242,
+  196
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.38,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       5.6
+      ],
+      [
+       4.64,
+       2
+      ],
+      [
+       14,
+       4.16
+      ],
+      [
+       14,
+       11.84
+      ],
+      [
+       4.64,
+       14
+      ],
+      [
+       2,
+       10.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      252,
+      148
+     ],
+     "size": [
+      374,
+      116
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 2.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 52,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       5.6
+      ],
+      [
+       4.64,
+       2
+      ],
+      [
+       14,
+       4.16
+      ],
+      [
+       14,
+       11.84
+      ],
+      [
+       4.64,
+       14
+      ],
+      [
+       2,
+       10.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      242,
+      92.5
+     ],
+     "size": [
+      360,
+      103
+     ]
+    }
+   ]
+  },
+  {
+   "name": "handles",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      182,
+      172
+     ],
+     "size": [
+      24,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      282,
+      172
+     ],
+     "size": [
+      24,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      372,
+      172
+     ],
+     "size": [
+      24,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182,
+      170
+     ],
+     "size": [
+      14,
+      6
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      282,
+      170
+     ],
+     "size": [
+      14,
+      6
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      372,
+      170
+     ],
+     "size": [
+      14,
+      6
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "lid",
+   "z": 4.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "tags": [
+    "closed"
+   ],
+   "extrude": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       5.6
+      ],
+      [
+       4.64,
+       2
+      ],
+      [
+       14,
+       4.16
+      ],
+      [
+       14,
+       11.84
+      ],
+      [
+       4.64,
+       14
+      ],
+      [
+       2,
+       10.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      242,
+      86
+     ],
+     "size": [
+      350,
+      96
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cross",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "bronze",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      266,
+      84
+     ],
+     "size": [
+      250,
+      9
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      172,
+      84
+     ],
+     "size": [
+      9,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lid_studs",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "bronze",
+   "tags": [
+    "closed"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      92,
+      84
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      392,
+      56
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      392,
+      112
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      162,
+      46
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      162,
+      122
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "inside",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "grad": {
+    "to": "well_inner",
+    "y0": -155.0,
+    "y1": -52.0
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       5.6
+      ],
+      [
+       4.64,
+       2
+      ],
+      [
+       14,
+       4.16
+      ],
+      [
+       14,
+       11.84
+      ],
+      [
+       4.64,
+       14
+      ],
+      [
+       2,
+       10.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      242,
+      92.5
+     ],
+     "size": [
+      330,
+      82
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lining",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "cloth_wine",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       5.6
+      ],
+      [
+       4.64,
+       2
+      ],
+      [
+       14,
+       4.16
+      ],
+      [
+       14,
+       11.84
+      ],
+      [
+       4.64,
+       14
+      ],
+      [
+       2,
+       10.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      242,
+      92.5
+     ],
+     "size": [
+      336,
+      88
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       5.6
+      ],
+      [
+       4.64,
+       2
+      ],
+      [
+       14,
+       4.16
+      ],
+      [
+       14,
+       11.84
+      ],
+      [
+       4.64,
+       14
+      ],
+      [
+       2,
+       10.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      242,
+      94.5
+     ],
+     "size": [
+      300,
+      62
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "pillow",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "cloth_wine",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 14
+     },
+     "at": [
+      110,
+      92.5
+     ],
+     "size": [
+      44,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shadow_lid",
+   "z": 10.0,
+   "kind": "shadow",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       5.6
+      ],
+      [
+       4.64,
+       2
+      ],
+      [
+       14,
+       4.16
+      ],
+      [
+       14,
+       11.84
+      ],
+      [
+       4.64,
+       14
+      ],
+      [
+       2,
+       10.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      258,
+      270
+     ],
+     "size": [
+      360,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lid_floor",
+   "z": 11.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "extrude": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       5.6
+      ],
+      [
+       4.64,
+       2
+      ],
+      [
+       14,
+       4.16
+      ],
+      [
+       14,
+       11.84
+      ],
+      [
+       4.64,
+       14
+      ],
+      [
+       2,
+       10.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      252,
+      258
+     ],
+     "size": [
+      350,
+      96
+     ],
+     "rot": 4
+    }
+   ]
+  },
+  {
+   "name": "lid_floor_cross",
+   "z": 12.0,
+   "kind": "flat",
+   "material": "bronze",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      276,
+      256
+     ],
+     "size": [
+      250,
+      9
+     ],
+     "rot": 4
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      182,
+      250
+     ],
+     "size": [
+      9,
+      60
+     ],
+     "rot": 4
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "closed",
+   "state": "closed"
+  },
+  {
+   "name": "open",
+   "state": "open",
+   "hide": [
+    "closed"
+   ],
+   "show": [
+    "open"
+   ]
+  }
+ ]
+}

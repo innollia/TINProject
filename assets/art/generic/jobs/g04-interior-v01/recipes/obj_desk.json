@@ -1,0 +1,402 @@
+{
+ "asset": "obj_desk",
+ "status": "candidate",
+ "note": "Wooden writing desk 1.2 x 0.6 m, 0.76 m high: drawer pedestal on the right, two legs on the left, a few loose papers on top.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 601,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  366,
+  288
+ ],
+ "pivot": [
+  175,
+  216
+ ],
+ "footprint": [
+  66,
+  120,
+  284,
+  216
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.34,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 14
+     },
+     "at": [
+      183,
+      172
+     ],
+     "size": [
+      236,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_back",
+   "z": 2.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 74,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      77,
+      52.0
+     ],
+     "size": [
+      9,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pedestal",
+   "z": 3.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 74,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      239,
+      96.0
+     ],
+     "size": [
+      76,
+      86
+     ]
+    }
+   ]
+  },
+  {
+   "name": "drawers",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "wood_pale",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      239,
+      152.0
+     ],
+     "size": [
+      66,
+      20
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      239,
+      176.0
+     ],
+     "size": [
+      66,
+      20
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      239,
+      200.0
+     ],
+     "size": [
+      66,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knobs",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "bronze",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      239,
+      152.0
+     ],
+     "size": [
+      7,
+      6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      239,
+      176.0
+     ],
+     "size": [
+      7,
+      6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      239,
+      200.0
+     ],
+     "size": [
+      7,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "top",
+   "z": 6.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      175,
+      86.0
+     ],
+     "size": [
+      218,
+      96
+     ]
+    }
+   ]
+  },
+  {
+   "name": "top_joints",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.45,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      175,
+      70.0
+     ],
+     "size": [
+      210,
+      2.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      175,
+      102.0
+     ],
+     "size": [
+      210,
+      2.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_front",
+   "z": 8.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 74,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      77,
+      134.0
+     ],
+     "size": [
+      9,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "papers",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "paper",
+   "shade": {
+    "bump": 0.25
+   },
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "cast": {
+    "dist": 2,
+    "blur": 1.5,
+    "opacity": 0.4,
+    "color": "shade_tint"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      135,
+      90.0
+     ],
+     "size": [
+      46,
+      58
+     ],
+     "rot": 78,
+     "ground": true
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      171,
+      80.0
+     ],
+     "size": [
+      42,
+      54
+     ],
+     "rot": 96,
+     "ground": true
+    }
+   ]
+  },
+  {
+   "name": "paper_marks",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "paper_mark",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      135,
+      82.0
+     ],
+     "size": [
+      30,
+      2
+     ],
+     "rot": -12
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      135,
+      90.0
+     ],
+     "size": [
+      30,
+      2
+     ],
+     "rot": -12
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      135,
+      98.0
+     ],
+     "size": [
+      30,
+      2
+     ],
+     "rot": -12
+    }
+   ]
+  }
+ ]
+}

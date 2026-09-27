@@ -1,0 +1,1003 @@
+{
+ "asset": "obj_wardrobe",
+ "status": "candidate",
+ "note": "Two-door wardrobe 1.1 m wide, 2.1 m high, against a wall: panelled doors, cornice, feet. Frames: closed, open (doors swung toward the viewer, hanging clothes inside).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 606,
+ "pivot_meaning": "front-bottom centre on the floor; the back face stands on the wall line",
+ "layer_hint": "world",
+ "canvas": [
+  430,
+  470
+ ],
+ "pivot": [
+  209,
+  349
+ ],
+ "footprint": [
+  110,
+  263,
+  308,
+  349
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "tags": [
+    "closed"
+   ],
+   "color": "shadow_contact",
+   "opacity": 0.35,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "at": [
+      215,
+      309
+     ],
+     "size": [
+      214,
+      96
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shadow_open",
+   "z": 2.0,
+   "kind": "shadow",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "at": [
+      215,
+      329
+     ],
+     "size": [
+      300,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "feet",
+   "z": 3.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 10,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      121,
+      297.0
+     ],
+     "size": [
+      14,
+      80
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      297,
+      297.0
+     ],
+     "size": [
+      14,
+      80
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 4.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 200,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      209,
+      96.0
+     ],
+     "size": [
+      198,
+      86
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cornice",
+   "z": 5.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 12,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      209,
+      84.0
+     ],
+     "size": [
+      212,
+      92
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door0",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "wood",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      160,
+      239.0
+     ],
+     "size": [
+      92,
+      190
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door0_panels",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "closed"
+   ],
+   "shade": {
+    "bump": 0.5
+   },
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      160,
+      193.0
+     ],
+     "size": [
+      70,
+      78
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      160,
+      289.0
+     ],
+     "size": [
+      70,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door1",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "wood",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      258,
+      239.0
+     ],
+     "size": [
+      92,
+      190
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door1_panels",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "closed"
+   ],
+   "shade": {
+    "bump": 0.5
+   },
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      258,
+      193.0
+     ],
+     "size": [
+      70,
+      78
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      258,
+      289.0
+     ],
+     "size": [
+      70,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "handles",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "bronze",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      201,
+      239.0
+     ],
+     "size": [
+      5,
+      22
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      217,
+      239.0
+     ],
+     "size": [
+      5,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "inside",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "grad": {
+    "to": "well_inner",
+    "y0": -210,
+    "y1": -10,
+    "curve": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      209,
+      239.0
+     ],
+     "size": [
+      184,
+      190
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rod",
+   "z": 12.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      209,
+      161
+     ],
+     "size": [
+      176,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cloth0",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "cloth_wine",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "shade": {
+    "bump": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      143,
+      233.17
+     ],
+     "size": [
+      30,
+      128.34706490263133
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      143,
+      171
+     ],
+     "size": [
+      32,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cloth1",
+   "z": 14.0,
+   "kind": "mass",
+   "material": "cloth_blue",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "shade": {
+    "bump": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      171,
+      218.24
+     ],
+     "size": [
+      30,
+      98.48162212931607
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      171,
+      171
+     ],
+     "size": [
+      32,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cloth2",
+   "z": 15.0,
+   "kind": "mass",
+   "material": "coat",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "shade": {
+    "bump": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      201,
+      231.66
+     ],
+     "size": [
+      30,
+      125.31587206650464
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      201,
+      171
+     ],
+     "size": [
+      32,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cloth3",
+   "z": 16.0,
+   "kind": "mass",
+   "material": "cloth_green",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "shade": {
+    "bump": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      233,
+      231.52
+     ],
+     "size": [
+      30,
+      125.03530615128636
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      233,
+      171
+     ],
+     "size": [
+      32,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cloth4",
+   "z": 17.0,
+   "kind": "mass",
+   "material": "cloth_ochre",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "shade": {
+    "bump": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      263,
+      219.93
+     ],
+     "size": [
+      30,
+      101.86871570334523
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      263,
+      171
+     ],
+     "size": [
+      32,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hooks",
+   "z": 18.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "clothes_hanger",
+     "at": [
+      143,
+      163
+     ],
+     "size": [
+      26,
+      14
+     ],
+     "crop": [
+      0.5,
+      4,
+      15.5,
+      13
+     ]
+    },
+    {
+     "icon": "clothes_hanger",
+     "at": [
+      171,
+      163
+     ],
+     "size": [
+      26,
+      14
+     ],
+     "crop": [
+      0.5,
+      4,
+      15.5,
+      13
+     ]
+    },
+    {
+     "icon": "clothes_hanger",
+     "at": [
+      201,
+      163
+     ],
+     "size": [
+      26,
+      14
+     ],
+     "crop": [
+      0.5,
+      4,
+      15.5,
+      13
+     ]
+    },
+    {
+     "icon": "clothes_hanger",
+     "at": [
+      233,
+      163
+     ],
+     "size": [
+      26,
+      14
+     ],
+     "crop": [
+      0.5,
+      4,
+      15.5,
+      13
+     ]
+    },
+    {
+     "icon": "clothes_hanger",
+     "at": [
+      263,
+      163
+     ],
+     "size": [
+      26,
+      14
+     ],
+     "crop": [
+      0.5,
+      4,
+      15.5,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door_open0",
+   "z": 19.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "shade": {
+    "bump": 0.4
+   },
+   "texture": {
+    "angle": 90
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       14,
+       2
+      ],
+      [
+       14,
+       10.76
+      ],
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       5.24
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      87.0,
+      274.0
+     ],
+     "size": [
+      46,
+      260
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door_open0_panel",
+   "z": 20.0,
+   "kind": "flat",
+   "material": "wood_pale",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "opacity": 0.6,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "clip_to": "door_open0",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       14,
+       2
+      ],
+      [
+       14,
+       10.76
+      ],
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       5.24
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      87.0,
+      274.0
+     ],
+     "size": [
+      30,
+      220
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door_open1",
+   "z": 21.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "shade": {
+    "bump": 0.4
+   },
+   "texture": {
+    "angle": 90
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       2
+      ],
+      [
+       2,
+       10.76
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       14,
+       5.24
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      331.0,
+      274.0
+     ],
+     "size": [
+      46,
+      260
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door_open1_panel",
+   "z": 22.0,
+   "kind": "flat",
+   "material": "wood_pale",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "opacity": 0.6,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "clip_to": "door_open1",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       2
+      ],
+      [
+       2,
+       10.76
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       14,
+       5.24
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      331.0,
+      274.0
+     ],
+     "size": [
+      30,
+      220
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "closed",
+   "state": "closed"
+  },
+  {
+   "name": "open",
+   "state": "open",
+   "hide": [
+    "closed"
+   ],
+   "show": [
+    "open"
+   ]
+  }
+ ]
+}

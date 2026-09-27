@@ -1,0 +1,617 @@
+{
+ "asset": "obj_gravestone",
+ "status": "candidate",
+ "note": "Weathered gravestone on a low plinth with a small grave mound. Frames: arch, cross, broken (top half fallen in front, cracks).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 708,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  268,
+  292
+ ],
+ "pivot": [
+  126,
+  166
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.34,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      134,
+      152
+     ],
+     "size": [
+      150,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mound",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "earth",
+   "shade": {
+    "bump": 0.6
+   },
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      126,
+      196
+     ],
+     "size": [
+      150,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "grass",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "grass",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "grass",
+     "at": [
+      70,
+      196
+     ],
+     "size": [
+      34,
+      18
+     ]
+    },
+    {
+     "icon": "grass",
+     "at": [
+      186,
+      200
+     ],
+     "size": [
+      30,
+      16
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "grass",
+     "at": [
+      134,
+      214
+     ],
+     "size": [
+      26,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plinth",
+   "z": 4.0,
+   "kind": "block",
+   "material": "rock",
+   "extrude": 14,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      126,
+      133.0
+     ],
+     "size": [
+      132,
+      38
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arch",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "marble",
+   "tags": [
+    "arch"
+   ],
+   "shade": {
+    "bump": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       5.84
+      ],
+      [
+       2.96,
+       3.68
+      ],
+      [
+       5.0,
+       2.36
+      ],
+      [
+       8.0,
+       2
+      ],
+      [
+       11.0,
+       2.36
+      ],
+      [
+       13.04,
+       3.68
+      ],
+      [
+       14,
+       5.84
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      126,
+      98
+     ],
+     "size": [
+      108,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arch_border",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "floor_joint",
+   "tags": [
+    "arch"
+   ],
+   "opacity": 0.45,
+   "clip_to": "arch",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       5.84
+      ],
+      [
+       2.96,
+       3.68
+      ],
+      [
+       5.0,
+       2.36
+      ],
+      [
+       8.0,
+       2
+      ],
+      [
+       11.0,
+       2.36
+      ],
+      [
+       13.04,
+       3.68
+      ],
+      [
+       14,
+       5.84
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      126,
+      100
+     ],
+     "size": [
+      88,
+      92
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       5.84
+      ],
+      [
+       2.96,
+       3.68
+      ],
+      [
+       5.0,
+       2.36
+      ],
+      [
+       8.0,
+       2
+      ],
+      [
+       11.0,
+       2.36
+      ],
+      [
+       13.04,
+       3.68
+      ],
+      [
+       14,
+       5.84
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      126,
+      102
+     ],
+     "size": [
+      78,
+      80
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "arch_mark",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "floor_joint",
+   "tags": [
+    "arch"
+   ],
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      126,
+      90
+     ],
+     "size": [
+      6,
+      34
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      126,
+      82
+     ],
+     "size": [
+      22,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cross",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "marble",
+   "tags": [
+    "cross"
+   ],
+   "hidden": true,
+   "shade": {
+    "bump": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      126,
+      96
+     ],
+     "size": [
+      24,
+      116
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      126,
+      68
+     ],
+     "size": [
+      84,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "broken_stump",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "marble",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "shade": {
+    "bump": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       4.16
+      ],
+      [
+       4.4,
+       2.0
+      ],
+      [
+       6.56,
+       5.84
+      ],
+      [
+       8.6,
+       2.96
+      ],
+      [
+       11.6,
+       6.8
+      ],
+      [
+       14,
+       3.44
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      126,
+      128
+     ],
+     "size": [
+      108,
+      52
+     ]
+    }
+   ]
+  },
+  {
+   "name": "broken_top",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "marble",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       2,
+       5.84
+      ],
+      [
+       2.96,
+       3.68
+      ],
+      [
+       5.0,
+       2.36
+      ],
+      [
+       8.0,
+       2
+      ],
+      [
+       11.0,
+       2.36
+      ],
+      [
+       13.04,
+       3.68
+      ],
+      [
+       14,
+       5.84
+      ],
+      [
+       14,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      190,
+      200
+     ],
+     "size": [
+      96,
+      58
+     ],
+     "rot": -72,
+     "squash": 0.9
+    }
+   ]
+  },
+  {
+   "name": "cracks",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "floor_joint",
+   "tags": [
+    "arch"
+   ],
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      142,
+      102
+     ],
+     "size": [
+      7,
+      60
+     ],
+     "rot": -12
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "arch",
+   "state": "normal",
+   "hide": [
+    "cross",
+    "broken"
+   ]
+  },
+  {
+   "name": "cross",
+   "state": "normal",
+   "hide": [
+    "arch",
+    "broken"
+   ],
+   "show": [
+    "cross"
+   ]
+  },
+  {
+   "name": "broken",
+   "state": "broken",
+   "hide": [
+    "arch",
+    "cross"
+   ],
+   "show": [
+    "broken"
+   ]
+  }
+ ]
+}

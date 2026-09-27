@@ -1,0 +1,386 @@
+{
+ "asset": "obj_rock_large",
+ "status": "candidate",
+ "note": "Large boulder about 1.4 m wide and 1 m tall, faceted, damp stains and moss, two small stones at its foot.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 408,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  406,
+  316
+ ],
+ "pivot": [
+  189,
+  217
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      203,
+      209
+     ],
+     "size": [
+      270,
+      76
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "rock",
+   "shade": {
+    "bump": 1.25
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2.72,
+       9.68
+      ],
+      [
+       3.92,
+       5.6
+      ],
+      [
+       6.8,
+       2.96
+      ],
+      [
+       10.4,
+       3.2
+      ],
+      [
+       12.8,
+       6.08
+      ],
+      [
+       13.64,
+       9.92
+      ],
+      [
+       12.32,
+       13.16
+      ],
+      [
+       8.0,
+       14.0
+      ],
+      [
+       3.68,
+       13.04
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      189,
+      129
+     ],
+     "size": [
+      256,
+      178
+     ]
+    }
+   ]
+  },
+  {
+   "name": "facet",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "rock",
+   "shade": {
+    "bump": 0.6,
+    "highlight_amount": 0.7
+   },
+   "clip_to": "body",
+   "line": {
+    "width": 1.0,
+    "heavy": 0.8,
+    "breaks": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2.0,
+       10.4
+      ],
+      [
+       4.64,
+       3.44
+      ],
+      [
+       9.44,
+       2.0
+      ],
+      [
+       14.0,
+       5.6
+      ],
+      [
+       10.4,
+       10.64
+      ],
+      [
+       5.6,
+       14.0
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      165,
+      89
+     ],
+     "size": [
+      150,
+      86
+     ]
+    }
+   ]
+  },
+  {
+   "name": "side_facet",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "rock_dark",
+   "clip_to": "body",
+   "shade": {
+    "bump": 0.7
+   },
+   "line": {
+    "width": 1.0,
+    "heavy": 0.8,
+    "breaks": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       6.2,
+       2.0
+      ],
+      [
+       14.0,
+       4.4
+      ],
+      [
+       14.0,
+       12.2
+      ],
+      [
+       9.2,
+       14.0
+      ],
+      [
+       2.0,
+       11.6
+      ],
+      [
+       4.4,
+       6.2
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      259,
+      159
+     ],
+     "size": [
+      130,
+      116
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cracks",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "floor_joint",
+   "opacity": 0.6,
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      229,
+      137
+     ],
+     "size": [
+      8,
+      70
+     ],
+     "rot": -18
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      129,
+      157
+     ],
+     "size": [
+      6,
+      44
+     ],
+     "rot": 30
+    }
+   ]
+  },
+  {
+   "name": "moss",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "moss",
+   "clip_to": "body",
+   "rough": {
+    "amp": 0.5,
+    "soft": 1.5,
+    "cell": 6
+   },
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      149,
+      61
+     ],
+     "size": [
+      90,
+      34
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      239,
+      67
+     ],
+     "size": [
+      60,
+      24
+     ],
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "pebbles",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "rock_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       5.6,
+       2.6
+      ],
+      [
+       11.6,
+       2
+      ],
+      [
+       14,
+       8.6
+      ],
+      [
+       9.2,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      307,
+      201
+     ],
+     "size": [
+      46,
+      32
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       8.0
+      ],
+      [
+       6.8,
+       2
+      ],
+      [
+       14,
+       5.6
+      ],
+      [
+       11.6,
+       14
+      ],
+      [
+       4.4,
+       12.8
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      69,
+      205
+     ],
+     "size": [
+      34,
+      24
+     ]
+    }
+   ]
+  }
+ ]
+}

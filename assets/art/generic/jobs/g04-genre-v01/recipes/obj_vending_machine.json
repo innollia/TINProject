@@ -1,0 +1,1085 @@
+{
+ "asset": "obj_vending_machine",
+ "status": "candidate",
+ "note": "Drink vending machine 0.9 m wide, 1.85 m high (modern / city): red body, product window with three rows of cans and bottles, button column, coin slot, pickup hatch, no text or logo. Frames: off, on (lit window and buttons, emit).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 901,
+ "pivot_meaning": "front-bottom centre on the floor; the back face stands on the wall line",
+ "layer_hint": "world",
+ "canvas": [
+  310,
+  424
+ ],
+ "pivot": [
+  149,
+  349
+ ],
+ "footprint": [
+  68,
+  232,
+  230,
+  349
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 14
+     },
+     "at": [
+      155,
+      297
+     ],
+     "size": [
+      180,
+      124
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 2.0,
+   "kind": "block",
+   "material": "paint_red",
+   "extrude": 194,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      149,
+      96.5
+     ],
+     "size": [
+      162,
+      117
+     ]
+    }
+   ]
+  },
+  {
+   "name": "top_vents",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "soot",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      149,
+      72.5
+     ],
+     "size": [
+      120,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      149,
+      84.5
+     ],
+     "size": [
+      120,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      149,
+      96.5
+     ],
+     "size": [
+      120,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      149,
+      108.5
+     ],
+     "size": [
+      120,
+      3
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      149,
+      120.5
+     ],
+     "size": [
+      120,
+      3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "header",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "plastic",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      149,
+      171
+     ],
+     "size": [
+      150,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "window_off",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "off"
+   ],
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      131,
+      237
+     ],
+     "size": [
+      104,
+      120
+     ]
+    }
+   ]
+  },
+  {
+   "name": "window_on",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "screen_on",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.75,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.4,
+    "color": "screen_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      131,
+      237
+     ],
+     "size": [
+      104,
+      120
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rack0",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "chrome",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      131,
+      217
+     ],
+     "size": [
+      98,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rack1",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "chrome",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      131,
+      255
+     ],
+     "size": [
+      98,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rack2",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "chrome",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      131,
+      293
+     ],
+     "size": [
+      98,
+      4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cans_paint_red",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "paint_red",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      93,
+      207
+     ],
+     "size": [
+      12,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      93,
+      195
+     ],
+     "size": [
+      12,
+      5
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      150,
+      245
+     ],
+     "size": [
+      12,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      150,
+      233
+     ],
+     "size": [
+      12,
+      5
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      112,
+      279
+     ],
+     "size": [
+      11,
+      26
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cans_paint_teal",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "paint_teal",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      112,
+      203
+     ],
+     "size": [
+      11,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      169,
+      241
+     ],
+     "size": [
+      11,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      131,
+      283
+     ],
+     "size": [
+      12,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      131,
+      271
+     ],
+     "size": [
+      12,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cans_hazard",
+   "z": 12.0,
+   "kind": "flat",
+   "material": "hazard",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      131,
+      207
+     ],
+     "size": [
+      12,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      131,
+      195
+     ],
+     "size": [
+      12,
+      5
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      93,
+      241
+     ],
+     "size": [
+      11,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      150,
+      279
+     ],
+     "size": [
+      11,
+      26
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cans_plastic",
+   "z": 13.0,
+   "kind": "flat",
+   "material": "plastic",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      150,
+      203
+     ],
+     "size": [
+      11,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      112,
+      245
+     ],
+     "size": [
+      12,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      112,
+      233
+     ],
+     "size": [
+      12,
+      5
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      169,
+      283
+     ],
+     "size": [
+      12,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      169,
+      271
+     ],
+     "size": [
+      12,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cans_cloth_blue",
+   "z": 14.0,
+   "kind": "flat",
+   "material": "cloth_blue",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      169,
+      207
+     ],
+     "size": [
+      12,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      169,
+      195
+     ],
+     "size": [
+      12,
+      5
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      131,
+      241
+     ],
+     "size": [
+      11,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      93,
+      283
+     ],
+     "size": [
+      12,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      93,
+      271
+     ],
+     "size": [
+      12,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glass_sheen",
+   "z": 15.0,
+   "kind": "flat",
+   "material": "chrome",
+   "opacity": 0.25,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      114.0,
+      235.0
+     ],
+     "size": [
+      119.01260437449471,
+      6
+     ],
+     "rot": -65.15761089454482
+    }
+   ]
+  },
+  {
+   "name": "panel",
+   "z": 16.0,
+   "kind": "flat",
+   "material": "plastic",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      205,
+      231
+     ],
+     "size": [
+      30,
+      96
+     ]
+    }
+   ]
+  },
+  {
+   "name": "buttons_off",
+   "z": 17.0,
+   "kind": "flat",
+   "material": "signal_off",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      205,
+      193
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205,
+      206
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205,
+      219
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205,
+      232
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205,
+      245
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205,
+      258
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "buttons_on",
+   "z": 18.0,
+   "kind": "flat",
+   "material": "signal_amber",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "signal_amber_glow"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      205,
+      193
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205,
+      206
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205,
+      219
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205,
+      232
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205,
+      245
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      205,
+      258
+     ],
+     "size": [
+      9,
+      8.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "coin_slot",
+   "z": 19.0,
+   "kind": "flat",
+   "material": "hole",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      205,
+      275
+     ],
+     "size": [
+      12,
+      4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      205,
+      287
+     ],
+     "size": [
+      18,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hatch",
+   "z": 20.0,
+   "kind": "flat",
+   "material": "hole",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      137,
+      319
+     ],
+     "size": [
+      112,
+      26
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hatch_flap",
+   "z": 21.0,
+   "kind": "flat",
+   "material": "plastic",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      137,
+      313
+     ],
+     "size": [
+      108,
+      10
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off"
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#7ed0c8",
+    "radius": 280,
+    "at": [
+     131,
+     237
+    ]
+   }
+  }
+ ]
+}

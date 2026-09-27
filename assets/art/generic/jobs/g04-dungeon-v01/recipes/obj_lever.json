@@ -1,0 +1,232 @@
+{
+ "asset": "obj_lever",
+ "status": "candidate",
+ "note": "Floor lever on a stone block: iron arm with a wooden knob. Frames: up, down.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 509,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  190,
+  216
+ ],
+ "pivot": [
+  89,
+  150
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.35,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      95,
+      132
+     ],
+     "size": [
+      72,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "base",
+   "z": 2.0,
+   "kind": "block",
+   "material": "stone_dark",
+   "extrude": 18,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      89,
+      109.0
+     ],
+     "size": [
+      64,
+      46
+     ]
+    }
+   ]
+  },
+  {
+   "name": "slot",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "hole",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      89,
+      109.0
+     ],
+     "size": [
+      12,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_up",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "iron",
+   "tags": [
+    "up"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      77.0,
+      78.5
+     ],
+     "size": [
+      65.55150646628954,
+      8
+     ],
+     "rot": -111.4767909795404
+    }
+   ]
+  },
+  {
+   "name": "knob_up",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "tags": [
+    "up"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64,
+      46
+     ],
+     "size": [
+      18,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_down",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "iron",
+   "tags": [
+    "down"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      106.0,
+      103.5
+     ],
+     "size": [
+      35.73513677041127,
+      8
+     ],
+     "rot": -17.92791976200724
+    }
+   ]
+  },
+  {
+   "name": "knob_down",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "tags": [
+    "down"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      125,
+      98
+     ],
+     "size": [
+      18,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hinge",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      89,
+      109.0
+     ],
+     "size": [
+      14,
+      11
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "up",
+   "state": "up"
+  },
+  {
+   "name": "down",
+   "state": "down",
+   "hide": [
+    "up"
+   ],
+   "show": [
+    "down"
+   ]
+  }
+ ]
+}

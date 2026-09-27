@@ -1,0 +1,476 @@
+{
+ "asset": "obj_tree_oak",
+ "status": "candidate",
+ "note": "Broad-leaf tree (young oak), about 4.8 m tall with a 2.2 m crown. Dark back crown, trunk with root flare and branch stubs, lighter front clumps. No face (tree monsters are g05).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 401,
+ "pivot_meaning": "trunk base centre on the ground",
+ "layer_hint": "world",
+ "canvas": [
+  542,
+  670
+ ],
+ "pivot": [
+  270,
+  553
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.4,
+   "blur": 12,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      288,
+      549
+     ],
+     "size": [
+      300,
+      92
+     ]
+    }
+   ]
+  },
+  {
+   "name": "crown_back",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "foliage_dark",
+   "rough": {
+    "amp": 0.45,
+    "soft": 2.0,
+    "cell": 9
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      270,
+      253
+     ],
+     "size": [
+      370,
+      280
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      160,
+      208
+     ],
+     "size": [
+      205,
+      140
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      382,
+      218
+     ],
+     "size": [
+      210,
+      150
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      120,
+      298
+     ],
+     "size": [
+      150,
+      125
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      422,
+      303
+     ],
+     "size": [
+      150,
+      125
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      270,
+      133
+     ],
+     "size": [
+      250,
+      170
+     ]
+    },
+    {
+     "icon": "leaf",
+     "at": [
+      74,
+      261
+     ],
+     "size": 36,
+     "rot": -70
+    },
+    {
+     "icon": "leaf",
+     "at": [
+      468,
+      283
+     ],
+     "size": 34,
+     "rot": 64
+    },
+    {
+     "icon": "circle",
+     "at": [
+      94,
+      283
+     ],
+     "size": [
+      64,
+      54
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      150,
+      113
+     ],
+     "size": [
+      70,
+      58
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      230,
+      75
+     ],
+     "size": [
+      76,
+      60
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      330,
+      83
+     ],
+     "size": [
+      70,
+      56
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      416,
+      133
+     ],
+     "size": [
+      66,
+      54
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      454,
+      253
+     ],
+     "size": [
+      60,
+      52
+     ]
+    }
+   ]
+  },
+  {
+   "name": "trunk",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "bark",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      270,
+      458
+     ],
+     "size": [
+      48,
+      190
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      270,
+      545
+     ],
+     "size": [
+      98,
+      28
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      240,
+      541
+     ],
+     "size": [
+      44,
+      24
+     ],
+     "rot": -24
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      301,
+      542
+     ],
+     "size": [
+      40,
+      22
+     ],
+     "rot": 26
+    }
+   ]
+  },
+  {
+   "name": "branches",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "bark",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      228.0,
+      360.0
+     ],
+     "size": [
+      112.16059914247963,
+      18
+     ],
+     "rot": -129.93638314696992
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      317.0,
+      350.0
+     ],
+     "size": [
+      116.10340218959993,
+      16
+     ],
+     "rot": -47.79270236571328
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      273.0,
+      337.0
+     ],
+     "size": [
+      92.19544457292888,
+      20
+     ],
+     "rot": -86.26860300083955
+    }
+   ]
+  },
+  {
+   "name": "knot",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "hole",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      278,
+      443
+     ],
+     "size": [
+      12,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "crown_low",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "foliage",
+   "rough": {
+    "amp": 0.45,
+    "soft": 2.0,
+    "cell": 9
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170,
+      321
+     ],
+     "size": [
+      170,
+      124
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      368,
+      327
+     ],
+     "size": [
+      176,
+      130
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      270,
+      341
+     ],
+     "size": [
+      182,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "crown_top",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "foliage",
+   "rough": {
+    "amp": 0.45,
+    "soft": 2.0,
+    "cell": 9
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      208,
+      173
+     ],
+     "size": [
+      200,
+      150
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      342,
+      161
+     ],
+     "size": [
+      170,
+      128
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      264,
+      253
+     ],
+     "size": [
+      210,
+      146
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      124,
+      235
+     ],
+     "size": [
+      110,
+      96
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      410,
+      241
+     ],
+     "size": [
+      116,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "name": "crown_damp",
+   "z": 8.0,
+   "kind": "wash",
+   "material": "damp",
+   "opacity": 0.25,
+   "blur": 10,
+   "clip_to": "crown_low",
+   "blend": "multiply",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      310,
+      303
+     ],
+     "size": [
+      260,
+      90
+     ]
+    }
+   ]
+  }
+ ]
+}

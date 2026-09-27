@@ -1,0 +1,443 @@
+{
+ "asset": "obj_brazier",
+ "status": "candidate",
+ "note": "Iron brazier on three legs, bowl 0.7 m wide. Frames: off (grey ash, charcoal), on (glowing coals + emit). Flame effect not drawn (anchors.flame_anchor).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 506,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  274,
+  256
+ ],
+ "pivot": [
+  129,
+  175
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.4,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      137,
+      171
+     ],
+     "size": [
+      150,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "legs",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      93.0,
+      148.0
+     ],
+     "size": [
+      51.419840528729765,
+      9
+     ],
+     "rot": -76.50426671920418
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      165.0,
+      148.0
+     ],
+     "size": [
+      51.419840528729765,
+      9
+     ],
+     "rot": -103.49573328079582
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      129.0,
+      156.0
+     ],
+     "size": [
+      50.0,
+      9
+     ],
+     "rot": -90.0
+    }
+   ]
+  },
+  {
+   "name": "feet",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      87,
+      173
+     ],
+     "size": [
+      16,
+      8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171,
+      173
+     ],
+     "size": [
+      16,
+      8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      129,
+      181
+     ],
+     "size": [
+      16,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bowl",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "iron",
+   "shade": {
+    "bump": 1.1
+   },
+   "pieces": [
+    {
+     "icon": "cauldron",
+     "at": [
+      129,
+      105
+     ],
+     "size": [
+      128,
+      72
+     ],
+     "crop": [
+      0.8,
+      5.6,
+      15.2,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "inside",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      129,
+      71
+     ],
+     "size": [
+      112,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ash",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "ash",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      129,
+      73
+     ],
+     "size": [
+      98,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "charcoal",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "soot",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      105,
+      71
+     ],
+     "size": [
+      22,
+      10
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      137,
+      68
+     ],
+     "size": [
+      20,
+      9
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      74
+     ],
+     "size": [
+      18,
+      8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      125,
+      76
+     ],
+     "size": [
+      16,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "coals",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "ember",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.75,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.6,
+    "color": "ember_glow"
+   },
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      129,
+      72
+     ],
+     "size": [
+      100,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "coal_lumps",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "ember",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.9,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "shade": {
+    "highlight_amount": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      103,
+      69
+     ],
+     "size": [
+      22,
+      10
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      135,
+      66
+     ],
+     "size": [
+      22,
+      10
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      159,
+      72
+     ],
+     "size": [
+      18,
+      8
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      123,
+      75
+     ],
+     "size": [
+      18,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bowl_rim",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      129,
+      69
+     ],
+     "size": [
+      124,
+      30
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      129,
+      69
+     ],
+     "size": [
+      112,
+      24
+     ],
+     "op": "sub"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off",
+   "anchors": {
+    "flame_anchor": [
+     129,
+     63
+    ]
+   }
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#ffb45c",
+    "radius": 380,
+    "at": [
+     129,
+     55
+    ]
+   },
+   "anchors": {
+    "flame_anchor": [
+     129,
+     63
+    ]
+   }
+  }
+ ]
+}

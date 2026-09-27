@@ -1,0 +1,937 @@
+{
+ "asset": "obj_bar_door",
+ "status": "candidate",
+ "note": "Iron-barred gate (portcullis) for a 1.2 m x 2.2 m dungeon opening: iron frame, 8 bars with spiked feet, 3 crossbars, rivets. Frames: closed, open (grille raised into the lintel).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 508,
+ "pivot_meaning": "bottom centre of the opening on the wall-face floor line (threshold)",
+ "layer_hint": "world",
+ "canvas": [
+  376,
+  382
+ ],
+ "pivot": [
+  182,
+  316
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "tags": [
+    "closed"
+   ],
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      186,
+      318
+     ],
+     "size": [
+      250,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shadow_posts",
+   "z": 2.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.32,
+   "blur": 5,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      68,
+      318
+     ],
+     "size": [
+      30,
+      14
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      308,
+      318
+     ],
+     "size": [
+      30,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "grille",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "shade": {
+    "bump": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      86.0,
+      201.0
+     ],
+     "size": [
+      9,
+      214
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      113.43,
+      201.0
+     ],
+     "size": [
+      9,
+      214
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      140.86,
+      201.0
+     ],
+     "size": [
+      9,
+      214
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      168.29,
+      201.0
+     ],
+     "size": [
+      9,
+      214
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      195.71,
+      201.0
+     ],
+     "size": [
+      9,
+      214
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      223.14,
+      201.0
+     ],
+     "size": [
+      9,
+      214
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      250.57,
+      201.0
+     ],
+     "size": [
+      9,
+      214
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      278.0,
+      201.0
+     ],
+     "size": [
+      9,
+      214
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spikes",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      86.0,
+      313
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      113.43,
+      313
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      140.86,
+      313
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      168.29,
+      313
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      195.71,
+      313
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      223.14,
+      313
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      250.57,
+      313
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      278.0,
+      313
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "crossbars",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      182,
+      120
+     ],
+     "size": [
+      212,
+      10
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      182,
+      196
+     ],
+     "size": [
+      212,
+      10
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      182,
+      272
+     ],
+     "size": [
+      212,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bolts",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "bronze",
+   "tags": [
+    "closed"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      86,
+      120
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      141,
+      120
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      196,
+      120
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      251,
+      120
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      86,
+      196
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      141,
+      196
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      196,
+      196
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      251,
+      196
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      86,
+      272
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      141,
+      272
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      196,
+      272
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      251,
+      272
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "grille_raised",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "iron",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "shade": {
+    "bump": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      86.0,
+      96.0
+     ],
+     "size": [
+      9,
+      28
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      113.43,
+      96.0
+     ],
+     "size": [
+      9,
+      28
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      140.86,
+      96.0
+     ],
+     "size": [
+      9,
+      28
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      168.29,
+      96.0
+     ],
+     "size": [
+      9,
+      28
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      195.71,
+      96.0
+     ],
+     "size": [
+      9,
+      28
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      223.14,
+      96.0
+     ],
+     "size": [
+      9,
+      28
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      250.57,
+      96.0
+     ],
+     "size": [
+      9,
+      28
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      278.0,
+      96.0
+     ],
+     "size": [
+      9,
+      28
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spikes_raised",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "iron",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      86.0,
+      115
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      113.43,
+      115
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      140.86,
+      115
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      168.29,
+      115
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      195.71,
+      115
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      223.14,
+      115
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      250.57,
+      115
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      278.0,
+      115
+     ],
+     "size": [
+      11,
+      12
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "post0",
+   "z": 9.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 232,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      62,
+      74.0
+     ],
+     "size": [
+      22,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "post1",
+   "z": 10.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 232,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      302,
+      74.0
+     ],
+     "size": [
+      22,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lintel",
+   "z": 11.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 26,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      182,
+      48.0
+     ],
+     "size": [
+      264,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lintel_rivets",
+   "z": 12.0,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      82,
+      71
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      132,
+      71
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182,
+      71
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      232,
+      71
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      282,
+      71
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "closed",
+   "state": "closed"
+  },
+  {
+   "name": "open",
+   "state": "open",
+   "hide": [
+    "closed"
+   ],
+   "show": [
+    "open"
+   ]
+  }
+ ]
+}
