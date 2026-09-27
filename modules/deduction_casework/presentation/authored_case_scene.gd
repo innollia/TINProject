@@ -23,6 +23,8 @@ const MUTED: Color = Color("9aa1ab")
 const FOCUS: Color = Color("d6b56c")
 const SELECTED: Color = Color("8fb7a5")
 const ERROR: Color = Color("d58f84")
+const BAR_SCRIM: Color = Color(0.03, 0.04, 0.06, 0.82)
+const BADGE_FILL: Color = Color(0.03, 0.04, 0.06, 0.88)
 
 @onready var _stage_panel: PanelContainer = get_node_or_null("%StagePanel")
 @onready var _stage_index: Label = get_node_or_null("%StageIndex")
@@ -45,8 +47,7 @@ var _rejected: bool = false
 
 func _ready() -> void:
 	_apply_styles()
-	if _stage_panel != null and not _stage_panel.draw.is_connected(_draw_stage_backdrop):
-		_stage_panel.draw.connect(_draw_stage_backdrop)
+	resized.connect(queue_redraw)
 	_sync()
 
 
@@ -72,17 +73,40 @@ func _sync() -> void:
 		_rebuild()
 	_update_bar()
 	_update_boxes()
-	if _stage_panel != null:
-		_stage_panel.queue_redraw()
+	queue_redraw()
 
 
-func _draw_stage_backdrop() -> void:
-	if _stage_panel == null:
-		return
-	var texture := DeductionArtCandidateLookup.scene_texture(String(_snapshot.get("scene_id", "")))
+## 장면 배경 candidate를 화면 전체에 불투명하게(cover) 깐다. 없으면 아무것도 그리지 않아 기존 placeholder 화면 그대로.
+func _draw() -> void:
+	var texture := DeductionArtCandidateLookup.scene_texture(_case_id(), String(_snapshot.get("scene_id", "")))
 	if texture == null:
 		return
-	_stage_panel.draw_texture_rect(texture, Rect2(Vector2.ZERO, _stage_panel.size), false, Color(1.0, 1.0, 1.0, 0.28))
+	var full_rect := Rect2(Vector2.ZERO, size)
+	draw_texture_rect_region(texture, full_rect, _cover_region(texture.get_size(), full_rect.size))
+
+
+func _case_id() -> String:
+	return String(_snapshot.get("case_id", ""))
+
+
+func _cover_region(texture_size: Vector2, target_size: Vector2) -> Rect2:
+	if texture_size.x <= 0.0 or texture_size.y <= 0.0 or target_size.x <= 0.0 or target_size.y <= 0.0:
+		return Rect2(Vector2.ZERO, texture_size)
+	var target_ratio := target_size.x / target_size.y
+	var region_size := texture_size
+	if texture_size.x / texture_size.y > target_ratio:
+		region_size.x = texture_size.y * target_ratio
+	else:
+		region_size.y = texture_size.x / target_ratio
+	return Rect2((texture_size - region_size) * 0.5, region_size)
+
+
+func _contain_rect(texture_size: Vector2, target: Rect2) -> Rect2:
+	if texture_size.x <= 0.0 or texture_size.y <= 0.0:
+		return target
+	var scale := minf(target.size.x / texture_size.x, target.size.y / texture_size.y)
+	var drawn := texture_size * scale
+	return Rect2(target.position + (target.size - drawn) * 0.5, drawn)
 
 
 func _rebuild() -> void:
@@ -214,11 +238,13 @@ func _draw_box(box: Control) -> void:
 		ink = FOCUS
 		width = 3.0
 	box.draw_rect(rect, fill, true)
-	var art_texture := DeductionArtCandidateLookup.hotspot_texture(String(box.get_meta(&"box_id", "")))
+	var art_texture: Texture2D = null
+	if kind == KIND_TARGET:
+		art_texture = DeductionArtCandidateLookup.hotspot_texture(_case_id(), String(box.get_meta(&"box_id", "")))
 	if art_texture != null:
-		var art_alpha := 1.0 if enabled else 0.45
-		box.draw_texture_rect(art_texture, rect, false, Color(1.0, 1.0, 1.0, art_alpha))
-		box.draw_rect(rect, Color(0.0, 0.0, 0.0, 0.28 if enabled else 0.45), true)
+		var art_rect := _contain_rect(art_texture.get_size(), rect.grow(-6.0))
+		box.draw_texture_rect(art_texture, art_rect, false, Color(1.0, 1.0, 1.0, 1.0 if enabled else 0.4))
+		box.draw_rect(Rect2(Vector2.ZERO, Vector2(30.0, 30.0)), BADGE_FILL, true)
 	else:
 		_draw_hatch(box, size, Color(ink.r, ink.g, ink.b, 0.22 if enabled else 0.1))
 	box.draw_rect(rect, ink, false, width)
@@ -361,6 +387,8 @@ func _apply_styles() -> void:
 		if label is Label:
 			(label as Label).add_theme_color_override("font_color", MUTED)
 			(label as Label).add_theme_font_size_override("font_size", 12)
+			(label as Label).add_theme_color_override("font_outline_color", Color(0.02, 0.02, 0.03, 1.0))
+			(label as Label).add_theme_constant_override("outline_size", 5)
 	if _empty_state != null:
 		_empty_state.add_theme_color_override("font_color", MUTED)
 		_empty_state.add_theme_font_size_override("font_size", 13)

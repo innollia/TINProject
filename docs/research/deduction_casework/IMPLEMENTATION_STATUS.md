@@ -1,6 +1,22 @@
 # 03 Deduction Casework — 구현 현황
 
+> **2026-09-27 부모(통합 담당) 전달 — 이 파일의 다른 내용보다 우선한다.**
+> 1. 아래 3번의 "stage01 한 잡만 존재"는 틀렸다. 부모가 확인한 결과(17:2x): `assets/art/deduction_casework/jobs/g06-stage02-v01/`(본 그림 72장, 커밋됨)과 `g06-stage03-v01/`(본 그림 60장, 아직 미커밋 — g06 그림 세션 소유라 이 Kit이 커밋하지 않는다)이 있다. case_02·case_03에도 같은 방식으로 경로를 잇는다. 파일이 없으면 placeholder로 돌아가는 규칙은 그대로다.
+> 2. 배경을 투명도 0.28로 옅게 깐 것은 사용자 결정과 다르다. 사용자는 "상자 대신 후보 그림이 들어간 실제 게임 화면을 보고 판정"하기로 했다. 배경은 불투명하게 그린다. 글자·테두리·포커스가 안 보이면 UI 쪽 대비를 조정한다.
+> 3. 자동 검증(import, 이 Kit 테스트, 12-stage route/solve, run_tests, 180프레임 부팅)과 창 모드 720p/FHD/QHD 캡처를 아직 한 번도 돌리지 않았다. Godot 잠금이 풀리면 이것부터 한다.
+
+
 작성: sub-kit03 (2026-09-27)
+
+## 2차 실행 (2026-09-27 17:4x) — 위 부모 전달 1~3 처리 완료
+
+- `art_candidates.json` schema 2: 사건별로 나눔(scene_locker·scene_service가 사건마다 겹침). 1·2·3번 사건의 장면 14개·핫스팟 전부 연결, 경로 누락 0. 핫스팟→그림 대응은 g06 `recipes/scene_s0N_*.json`의 `hotspots` 항목의 첫 물건 그림을 따랐다. 1번 사물함은 JOB.md대로 `open.png`.
+- 배경을 화면 전체에 불투명(cover)하게 그림. 핫스팟 그림은 비율 유지(contain), 번호 뱃지·제목 외곽선으로 대비 확보.
+- 흰 사각형 버그 수정: 그리기 중 텍스처 참조가 풀려 흰색으로 그려졌다 → 조회기가 로드한 텍스처를 캐시.
+- 검증: import 오류 0 / Kit GUT 20/20(1872 asserts, 12-stage route/solve·save/load/reset 포함, 새 `test_deduction_casework_art.gd` 4개) / run_tests 644/644 / 180프레임 부팅 오류 0 / 창 모드 캡처 42장(3사건×14장면×3해상도). 직접 본 결과: 그림이 제자리에 보이고 글자·번호·포커스 테두리 모두 읽힌다.
+- 캡처 도구: `docs/research/deduction_casework/tools/capture_scenes.gd`.
+- `g06-stage03-v01` 그림 파일은 커밋하지 않음(g06 세션 소유).
+- 알려진 점: 핫스팟은 여전히 격자 카드이고 배경 위의 제자리(좌표)에 놓이지 않는다. recipes에 좌표가 있어 옮길 수 있지만 화면 문법을 바꾸는 일이라 이번엔 하지 않았다.
 
 ## 이번 세션에서 한 일
 
