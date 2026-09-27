@@ -43,8 +43,11 @@ PROMPT = """아래는 디스코드 대화다. '나'가 innollia 본인이다.
 
 
 def call(prompt):
+    # 모델이 파일을 남겨도 저장소 밖(raw/model_strays)에 떨어지게 작업 폴더를 옮긴다.
+    stray = os.path.join(RAW, "model_strays")
+    os.makedirs(stray, exist_ok=True)
     out = subprocess.run(["kiro-cli", "chat", "--no-interactive", "--model", MODEL,
-                          "--trust-tools=", prompt],
+                          "--trust-tools=", prompt], cwd=stray,
                          capture_output=True, timeout=400, encoding="utf-8", errors="replace")
     raw = ANSI.sub("", (out.stdout or "") + "\n" + (out.stderr or ""))
     return "\n".join(l for l in raw.splitlines() if not l.startswith(("[warn]", "[tool]")))
