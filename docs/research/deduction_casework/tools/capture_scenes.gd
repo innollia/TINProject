@@ -4,7 +4,7 @@ extends SceneTree
 ## 출력: user:// 가 아닌 저장소 밖 절대 경로(OUT_DIR). 게임 코드·저장 파일은 건드리지 않는다.
 
 const ENTRY_SCENE := "res://modules/deduction_casework/entry.tscn"
-const OUT_DIR := "C:/Users/fixme/workplace/kirocrew-workspace/subagent_d481ca36/captures"
+const OUT_DIR := "C:/Users/fixme/workplace/kirocrew-workspace/subagent_68c47786/captures"
 const CASES: Array[String] = ["case_01_saint_orin", "case_02_morren_empty_chair", "case_03_n153_last_tour"]
 const SIZES: Array[Vector2i] = [Vector2i(1280, 720), Vector2i(1920, 1080), Vector2i(2560, 1440)]
 const ACTIONS: Array[String] = [

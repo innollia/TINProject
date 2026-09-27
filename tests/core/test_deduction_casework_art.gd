@@ -57,6 +57,9 @@ func test_world_layout_boxes_stay_keyboard_and_mouse_reachable() -> void:
 	const AuthoredCaseScene = preload("res://modules/deduction_casework/presentation/authored_case_scene.gd")
 	assert_eq(AuthoredCaseScene.HOTSPOT_LAYOUT, "world", "사용자 확정: world 배치")
 	var scene: Control = (load("res://modules/deduction_casework/presentation/authored_case_scene.tscn") as PackedScene).instantiate()
+	## 씬 루트는 전체 anchor(0,0,1,1)라 opposite anchor가 서로 달라 size를 직접 대입하면
+	## "non-equal opposite anchors" 경고가 뜬다. anchor를 0으로 풀어 offset(=size)만으로 크기를 정한다.
+	scene.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	add_child_autofree(scene)
 	scene.size = Vector2(1280, 720)
 	var data := _case_json("case_01_saint_orin")

@@ -210,8 +210,8 @@ func test_entry_mounts_case_screen_and_generic_placeholder_boxes() -> void:
 	assert_not_null(mounted)
 	if mounted == null:
 		return
-	var target_grid := mounted.get_node_or_null("%TargetGrid") as GridContainer
-	var exit_grid := mounted.get_node_or_null("%ExitGrid") as GridContainer
+	var target_grid := mounted.get_node_or_null("%WorldLayer")
+	var exit_grid := mounted.get_node_or_null("%WorldLayer")
 	var stage_index := mounted.get_node_or_null("%StageIndex") as Label
 	var surface_state := mounted.get_node_or_null("%SurfaceState") as Label
 	var empty_state := mounted.get_node_or_null("%EmptyState") as Label
@@ -225,8 +225,8 @@ func test_entry_mounts_case_screen_and_generic_placeholder_boxes() -> void:
 	assert_eq(String(surface_state.text), "STAGE")
 	if empty_state != null:
 		assert_false(empty_state.visible)
-	var target_boxes := _boxes(target_grid)
-	var exit_boxes := _boxes(exit_grid)
+	var target_boxes := _boxes_of_kind(target_grid, &"target")
+	var exit_boxes := _boxes_of_kind(exit_grid, &"exit")
 	assert_eq(target_boxes.size(), 6)
 	assert_eq(exit_boxes.size(), 3)
 	var focusable := _strings(initial["focusable_ids"])
@@ -301,7 +301,7 @@ func test_scene_hotspot_click_opens_message_detail_and_restores_focus() -> void:
 	assert_eq(StringName(detail_close.intent), &"cancel")
 	var mounted := world.get_child(0) as DeductionAuthoredCaseScene
 	assert_not_null(mounted)
-	var target_boxes := _boxes(_target_grid(mounted))
+	var target_boxes := _boxes_of_kind(_target_grid(mounted), &"target")
 	assert_eq(target_boxes.size(), 6)
 	for box: Control in target_boxes:
 		assert_false(bool(box.get_meta(&"enabled")))
@@ -316,7 +316,7 @@ func test_scene_hotspot_click_opens_message_detail_and_restores_focus() -> void:
 	assert_eq(_strings(runtime.focusable_ids()), _strings(restored["focusable_ids"]))
 	await get_tree().process_frame
 	assert_false(detail.visible)
-	var restored_boxes := _boxes(_target_grid(mounted))
+	var restored_boxes := _boxes_of_kind(_target_grid(mounted), &"target")
 	assert_eq(restored_boxes.size(), 6)
 	assert_eq(String(restored_boxes[0].get_meta(&"box_id")), START_FOCUS_ID)
 	for box: Control in restored_boxes:
@@ -371,8 +371,8 @@ func test_region_transition_replaces_snapshot_and_restores_origin_focus() -> voi
 		return
 	assert_eq(String((booth_scene.get_node("%StageIndex") as Label).text), "STAGE 2/4")
 	assert_eq(String((booth_scene.get_node("%SurfaceState") as Label).text), "STAGE")
-	assert_eq(_boxes(booth_scene.get_node("%TargetGrid") as GridContainer).size(), 4)
-	assert_eq(_boxes(booth_scene.get_node("%ExitGrid") as GridContainer).size(), 1)
+	assert_eq(_boxes_of_kind(_target_grid(booth_scene), &"target").size(), 4)
+	assert_eq(_boxes_of_kind(_target_grid(booth_scene), &"exit").size(), 1)
 	var returned := runtime.dispatch(&"interact", {"target_id": "trans_booth_to_lab"})
 	assert_true(bool(returned.get("accepted", false)))
 	var restored: Dictionary = returned["snapshot"]
@@ -388,8 +388,8 @@ func test_region_transition_replaces_snapshot_and_restores_origin_focus() -> voi
 	if lab_scene == null:
 		return
 	assert_eq(String((lab_scene.get_node("%StageIndex") as Label).text), "STAGE 1/4")
-	assert_eq(_boxes(lab_scene.get_node("%TargetGrid") as GridContainer).size(), 6)
-	var focus_box := _box_by_id(_boxes(lab_scene.get_node("%TargetGrid") as GridContainer), START_FOCUS_ID)
+	assert_eq(_boxes_of_kind(_target_grid(lab_scene), &"target").size(), 6)
+	var focus_box := _box_by_id(_boxes_of_kind(_target_grid(lab_scene), &"target"), START_FOCUS_ID)
 	assert_not_null(focus_box)
 	if focus_box != null:
 		assert_true(focus_box.has_focus())
@@ -1315,19 +1315,29 @@ func _solve_active_case(runtime: DeductionCaseRuntime) -> void:
 	runtime.case_state.case_progress_by_id[String(definition.id)] = progress.to_dict()
 
 
-func _boxes(grid: GridContainer) -> Array[Control]:
+## world 배치(HOTSPOT_LAYOUT="world")에서는 핫스팟이 %TargetGrid/%ExitGrid가 아니라
+## %WorldLayer의 자식으로 함께 들어간다(authored_case_scene.gd `_rebuild()`). kind로 나눠 받는다.
+func _boxes(container: Node) -> Array[Control]:
 	var result: Array[Control] = []
-	if grid == null:
+	if container == null:
 		return result
-	for child: Node in grid.get_children():
+	for child: Node in container.get_children():
 		var box := child as Control
 		if box != null and box.has_meta(&"box_id"):
 			result.append(box)
 	return result
 
 
-func _target_grid(mounted: DeductionAuthoredCaseScene) -> GridContainer:
-	return mounted.get_node_or_null("%TargetGrid") as GridContainer if mounted != null else null
+func _boxes_of_kind(container: Node, kind: StringName) -> Array[Control]:
+	var result: Array[Control] = []
+	for box: Control in _boxes(container):
+		if box.get_meta(&"kind", &"target") == kind:
+			result.append(box)
+	return result
+
+
+func _target_grid(mounted: DeductionAuthoredCaseScene) -> Node:
+	return mounted.get_node_or_null("%WorldLayer") if mounted != null else null
 
 
 func _step(runtime: DeductionCaseRuntime, intent: StringName, payload: Dictionary = {}) -> Dictionary:

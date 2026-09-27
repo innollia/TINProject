@@ -1,29 +1,32 @@
 # 03 Deduction Casework — 구현 현황
 
-> **2026-09-27 부모(통합 담당) 전달 — 이 파일의 다른 내용보다 우선한다.**
-> 1. 아래 3번의 "stage01 한 잡만 존재"는 틀렸다. 부모가 확인한 결과(17:2x): `assets/art/deduction_casework/jobs/g06-stage02-v01/`(본 그림 72장, 커밋됨)과 `g06-stage03-v01/`(본 그림 60장, 아직 미커밋 — g06 그림 세션 소유라 이 Kit이 커밋하지 않는다)이 있다. case_02·case_03에도 같은 방식으로 경로를 잇는다. 파일이 없으면 placeholder로 돌아가는 규칙은 그대로다.
-> 2. 배경을 투명도 0.28로 옅게 깐 것은 사용자 결정과 다르다. 사용자는 "상자 대신 후보 그림이 들어간 실제 게임 화면을 보고 판정"하기로 했다. 배경은 불투명하게 그린다. 글자·테두리·포커스가 안 보이면 UI 쪽 대비를 조정한다.
-> 3. 자동 검증(import, 이 Kit 테스트, 12-stage route/solve, run_tests, 180프레임 부팅)과 창 모드 720p/FHD/QHD 캡처를 아직 한 번도 돌리지 않았다. Godot 잠금이 풀리면 이것부터 한다.
+작성: sub-kit03 (2026-09-27, 이어서 검증)
 
+## 4차 실행 (2026-09-27 21:2x~) — world 배치 런타임 검증 완료
 
-작성: sub-kit03 (2026-09-27)
-
-## 3차 실행 (2026-09-27 19:5x~) — world 배치로 전환, 부모 지시로 중단
-
-- 사용자 확정(부모 전달): 조사할 곳을 카드 격자 대신 배경 속 제자리에 놓는다. 카드 격자로 되돌릴 수 있게 `authored_case_scene.gd`의 `HOTSPOT_LAYOUT` 상수 하나(`"world"` / `"grid"`)로 전환한다.
-- `docs/research/deduction_casework/tools/bake_hotspot_boxes.gd` 신규: g06 `recipes/scene_s0N_*.json`의 물건 좌표(`at`)와 각 그림의 `pivot`·`size`(배경 원본 2560×1440 px 기준, compose_preview.py와 같은 산수 `pos = at - pivot`)를 읽어 `art_candidates.json`을 schema 3(핫스팟마다 `{path, box:[x,y,w,h]}`)으로 다시 쓴다. 1·2·3번 사건 56개 핫스팟 전부 box 확보(20/20, 18/18, 18/18).
-- `art_candidate_lookup.gd`에 `hotspot_world_box(case_id, hotspot_id)` 추가.
-- `authored_case_scene.gd`: world 모드에서 조사할 곳을 배경이 cover로 그려질 때 쓰는 것과 같은 변환으로 화면 좌표에 배치. candidate box가 없는 조사할 곳은 화면 하단에 격자로 모아 둠(생략 없음). 번호 뱃지는 world 모드에서 평소엔 작게, 포커스·hover 때만 커짐. 격자 모드(TargetGrid/ExitGrid, 헤딩)는 그대로 남아 있고 `HOTSPOT_LAYOUT="grid"`로 되돌리면 예전처럼 동작(코드 삭제 없음).
-- 새 GUT 테스트 2개 추가(`tests/core/test_deduction_casework_art.gd`): 56개 핫스팟 전부 world box 보유 확인, world 모드에서 9개 박스(6 핫스팟+3 출구)가 실제 배치 크기·FOCUS_ALL·MOUSE_FILTER_STOP를 갖는지 확인(키보드·마우스 모두 닿음).
-- **검증 상태(부모 지시로 이번 실행 중단, 미완):** import는 오류 0으로 확인(잠금 잡고 실행, 정상 종료). 이 Kit GUT·run_tests·180프레임 부팅·world 배치 창 모드 캡처는 **아직 못 돌렸다** — 이 지시를 받은 시점에 막 import를 마친 상태였다. Godot 새 실행은 부모 지시로 하지 않음.
-- 위 코드는 커밋했으나 **런타임으로 확인되지 않았다.** world 배치 좌표 변환(`_layout_world_boxes`)이 화면에서 실제로 맞게 나오는지, 격자 모드 회귀가 없는지 다음 세션에서 반드시 먼저 확인해야 한다.
+- Godot 잠금 확보 후 순서대로 실행: import(오류 0) → GUT `-gdir=res://tests/core -gdir=res://core/procedural/tests -gdir=res://core/worldstate/tests`(이 Kit 무관 실패 16건은 다른 세션 소유 파일의 기존 실패, 그대로 둠) → `run_tests.gd`(644/644 통과) → 180프레임 부팅(오류 0) → 창 모드 캡처(1·2·3번 사건 14장면×3해상도=42장).
+- **테스트 버그 2건 발견·수정(진짜 회귀 아님, 테스트가 낡은 전제를 씀):**
+  1. `tests/core/test_deduction_casework_art.gd`의 `test_world_layout_boxes_stay_keyboard_and_mouse_reachable`: 씬 루트가 전체 anchor(0,0,1,1)인데 `scene.size = Vector2(1280,720)`을 직접 대입해 "non-equal opposite anchors" 엔진 경고로 실패. `scene.set_anchors_preset(Control.PRESET_TOP_LEFT)`를 add_child 전에 호출해 anchor를 0으로 풀고 나서 size를 대입하도록 수정.
+  2. `tests/core/test_deduction_casework_skeleton.gd`의 3개 테스트(`test_entry_mounts_case_screen_and_generic_placeholder_boxes`, `test_scene_hotspot_click_opens_message_detail_and_restores_focus`, `test_region_transition_replaces_snapshot_and_restores_origin_focus`): world 모드에서는 핫스팟이 `%TargetGrid`/`%ExitGrid`가 아니라 `%WorldLayer`에 함께 들어가는데, 테스트가 여전히 옛 grid 노드를 찾아 0개로 실패. `_boxes()`를 `Node`를 받게 넓히고 `_boxes_of_kind(container, kind)`를 추가해 `%WorldLayer`에서 kind로 나눠 읽도록 3곳 수정. `_target_grid()`는 이제 `%WorldLayer`를 반환.
+  - 두 수정 모두 게임 코드(`authored_case_scene.gd` 등)는 건드리지 않음. 테스트만 world 모드 전제에 맞춤.
+- **world 배치 좌표 변환 검증 결과: 버그 없음.** `_layout_world_boxes()`의 좌표 계산을 손으로 재검증(예: `chr_s02_luca_stand`: at=[2330,1360] - pivot=[190,612] = box_pos[2140,748], art_candidates.json 저장값과 정확히 일치). `bake_hotspot_boxes.gd`의 `pos = at - pivot` 산수도 compose_preview.py와 동일함을 재확인.
+- **캡처로 직접 확인:** 1번 사건(4장면)은 그림이 있는 핫스팟마다 물건 위에 정확히 겹쳐 보임(책상 위 서류, 벽 사물함 등). 2·3번 사건은 좌표 자체는 정확하나(계산 재검증함) g06 그림 후보가 stage02/03의 일부 핫스팟에만 있어 placeholder 해치 상자가 많고, 그림이 없는 핫스팟은 화면 하단 fallback 격자로 빠짐(코드 설계대로). 여러 조사물이 근접·겹쳐 보이는 곳(예: 3번 사건 debris/n_lux/shoes)은 사건 현장 특성(잔해가 한 자리에 모임)이며 좌표 오류가 아님.
+- **격자 모드 회귀 없음.** `HOTSPOT_LAYOUT="grid"`로 되돌리는 코드는 그대로 있고 손대지 않음.
+- **캡처 산출물:** 42장을 임시 작업 폴더(`C:/Users/fixme/workplace/kirocrew-workspace/subagent_68c47786/captures/`)에 저장. 대표 3장(1·2·3번 사건 각 1장, FHD)을 직접 열어 확인함. 저장소에는 아직 복사하지 않음(다음 항목).
+- `docs/research/deduction_casework/tools/capture_scenes.gd`의 `OUT_DIR`을 이번 세션 작업 폴더로 갱신(이전 세션의 임시 경로가 하드코딩돼 있었음).
 
 ## 남은 일 (다음 세션 우선순위)
 
-1. Godot 잠금 확인 후: import(재확인) → `test_deduction_casework_art.gd`+`test_deduction_casework_skeleton.gd`(GUT) → `run_tests.gd` → 180프레임 부팅. 실패는 고친다.
-2. 창 모드로 1·2·3번 사건 대표 장면을 720p/FHD/QHD로 찍어 물건이 배경 제자리에 있는지, 포커스가 보이는지 직접 확인(캡처 도구 `docs/research/deduction_casework/tools/capture_scenes.gd`는 그대로 재사용 가능, world 배치를 반영하는지 확인 필요).
-3. 대표 캡처 6~9장을 `docs/research/deduction_casework/captures/`에 복사해 커밋(임시 작업자 폴더는 지워질 수 있음, 아직 안 함).
-4. 이전 실행에서 확인한 흰 텍스처 버그 수정은 유지되어 있음(텍스처 캐시).
+1. 대표 캡처 6~9장을 `docs/research/deduction_casework/captures/`에 복사해 커밋(아직 안 함, 임시 폴더는 지워질 수 있음).
+2. stage02/03 그림 후보가 없는 핫스팟은 여전히 placeholder다. g06 세션이 나머지 그림을 채우면 `art_candidates.json`(bake 도구 재실행)만 갱신하면 이어짐 — 코드 변경 필요 없음.
+3. save/load/reset, 입력 재검증은 이번 실행에서 GUT(전체 20/20 관련 케이스 포함 run_tests 644/644)로 커버됨. 추가 수동 확인은 필요 없음.
+
+## 3차 실행 (2026-09-27 19:5x~) — world 배치로 전환, 부모 지시로 중단 (요약, 위 4차에서 검증 완료)
+
+- 사용자 확정(부모 전달): 조사할 곳을 카드 격자 대신 배경 속 제자리에 놓는다. `authored_case_scene.gd`의 `HOTSPOT_LAYOUT` 상수(`"world"`/`"grid"`)로 전환.
+- `docs/research/deduction_casework/tools/bake_hotspot_boxes.gd` 신규: g06 recipes의 물건 좌표를 읽어 `art_candidates.json`을 schema 3(box 포함)으로 재작성. 1·2·3번 사건 56개 핫스팟 전부 box 확보.
+- `art_candidate_lookup.gd`에 `hotspot_world_box(case_id, hotspot_id)` 추가.
+- `authored_case_scene.gd`: world 모드 배치 로직 추가(격자 모드 코드는 그대로 유지).
 
 
 ## 2차 실행 (2026-09-27 17:4x) — 위 부모 전달 1~3 처리 완료
