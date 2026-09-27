@@ -44,4 +44,6 @@ $P = 'C:\Users\fixme\AppData\Local\Programs\Python\Python312\python.exe'
 
 ## 판정 늘리기
 
+작업자는 캡처를 형님께 올리기 전에 분신을 먼저 돌린다. 통과한 것과 퇴짜 받은 것을 모두 형님께 보여 준다. 분신이 틀렸는지 형님이 봐야 고칠 수 있다.
+
 형님이 새 판정을 내리면 `judgments.jsonl`에 한 줄 더한다. 대상 설명에는 판정 결론을 넣지 않는다.
