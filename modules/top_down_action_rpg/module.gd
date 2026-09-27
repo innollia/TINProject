@@ -31,7 +31,7 @@ const INTENT_COMBAT_REACTION: StringName = &"combat_reaction"
 const INTENT_COMBAT_RECEIVE: StringName = &"combat_receive"
 
 const PLAYER_SIDE: String = "player_side"
-const PLAYER_DISPLAY_NAME: String = "Continuity Head"
+const PLAYER_DISPLAY_NAME: String = "연속성 담당자"
 const PLAYER_MAX_HP: int = 220
 const PLAYER_MAX_MP: int = 40
 const PLAYER_ACTION_SLOTS: int = 1
@@ -89,6 +89,8 @@ var _held: Dictionary = {}
 var _rail_focus: int = 0
 var _rail_stage: String = ""
 var _aftermath: bool = false
+var _success_active: bool = false
+var _recovery_surface_active: bool = false
 var _dirty: bool = true
 var _settled_mode: String = ""
 var _bound: bool = false
@@ -107,6 +109,8 @@ func enter(value: ModuleContext) -> void:
 	_held.clear()
 	_rail_focus = 0
 	_aftermath = false
+	_success_active = false
+	_recovery_surface_active = false
 	_catalog = _load_catalog()
 	if _catalog != null:
 		content_signature = _catalog.content_signature
@@ -182,6 +186,7 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 		&"move", &"field_move":
 			if not _field_commands_allowed():
 				return false
+			_clear_post_encounter_surfaces()
 			_field.move(_direction_from(payload), false)
 		&"focus", &"field_focus":
 			if not _field_commands_allowed():
@@ -190,6 +195,7 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 		&"interact", &"field_interact":
 			if not _field_commands_allowed():
 				return false
+			_clear_post_encounter_surfaces()
 			_interact(String(payload.get("interactable_id", "")))
 		&"accept_recovery":
 			_accept_recovery()
@@ -206,6 +212,11 @@ func execute_command(command: StringName, payload: Dictionary = {}) -> bool:
 
 func _field_commands_allowed() -> bool:
 	return _game_state.mode == "field" or _game_state.mode == "field_return"
+
+
+func _clear_post_encounter_surfaces() -> void:
+	_success_active = false
+	_recovery_surface_active = false
 
 
 func _direction_from(payload: Dictionary) -> Vector2:
@@ -238,6 +249,8 @@ func _dispatch_action(action: StringName) -> void:
 			_accept_recovery()
 		return
 	_aftermath = false
+	_success_active = false
+	_recovery_surface_active = false
 	if MOVE_VECTORS.has(action):
 		if _game_state.mode == "field":
 			_field.move(MOVE_VECTORS[action], false)
@@ -255,6 +268,8 @@ func _on_screen_intent(kind: StringName, payload: Dictionary) -> void:
 		return
 	_dirty = true
 	_aftermath = false
+	_success_active = false
+	_recovery_surface_active = false
 	match kind:
 		INTENT_FIELD_MOVE:
 			_field.move(_direction_from(payload), false)
@@ -483,12 +498,16 @@ func _finish_encounter() -> void:
 		_grant_rewards(record)
 		_persist_vitals()
 		_aftermath = true
+		_success_active = true
 		_game_state.set_mode("field_return")
 		return
 	var recovery_id: String = String(block.get("recovery_event_id", ""))
 	if not recovery_id.is_empty():
 		_recovery.request_recovery(_catalog.record(recovery_id))
 		if not _recovery.pending_definition.is_empty():
+			_aftermath = false
+			_recovery_surface_active = true
+			_game_state.set_mode("recovery")
 			return
 	_aftermath = false
 	_game_state.set_mode("field_return")
@@ -586,9 +605,17 @@ func _accept_recovery() -> void:
 		return
 	_field.rebuild_region()
 	_aftermath = false
+	_recovery_surface_active = true
+	_combat = null
+	_combat_controller = null
+	_rail_focus = 0
+	_bound = false
+	_game_state.combat["active_encounter_id"] = ""
+	_game_state.combat["result"] = ""
 	var queued: String = String(outcome.get("queued_encounter_id", ""))
 	if not queued.is_empty():
 		_field.pending_encounter(_catalog.record(queued))
+	_game_state.set_mode("field")
 
 
 func _return_to_field() -> void:
@@ -620,6 +647,8 @@ func _settle() -> void:
 		_bind_screen()
 	_resolve_mode()
 	_screen.set_aftermath_active(_aftermath)
+	_screen.set_success_active(_success_active)
+	_screen.set_recovery_surface(_recovery_surface_active)
 	_inject_timing_projection()
 	_sync_rail_stage()
 	_screen.refresh()

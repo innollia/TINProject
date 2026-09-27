@@ -42,15 +42,15 @@ const INTENT_COMBAT_RECEIVE: StringName = &"combat_receive"
 const CATEGORY_SKILL_MAGIC: String = "skill"
 const CATEGORY_ROW_TOKENS: Array[String] = ["attack", CATEGORY_SKILL_MAGIC, "defend", "item", "escape", "equipment"]
 const CATEGORY_LABELS: Dictionary = {
-	"attack": "Attack",
-	"skill": "Skill/Magic",
-	"defend": "Defend",
-	"item": "Item",
-	"escape": "Escape",
-	"equipment": "Equipment",
+	"attack": "공격",
+	"skill": "기술/마법",
+	"defend": "방어",
+	"item": "아이템",
+	"escape": "도주",
+	"equipment": "장비",
 }
-const LABEL_END_TURN: String = "End Turn"
-const LABEL_BACK: String = "Back"
+const LABEL_END_TURN: String = "차례 종료"
+const LABEL_BACK: String = "뒤로"
 const LABEL_ACTIONS_PREFIX: String = "행동 "
 
 const MAX_CHOICE_ROWS: int = 6
@@ -58,12 +58,17 @@ const MAX_DOCUMENT_LINES: int = TopDownActionRpgGameState.DOCUMENT_PAGE_LINE_CAP
 const DOCUMENT_TITLE_LINE_BUDGET: int = MAX_DOCUMENT_LINES - 1
 const FIELD_MOVE_AXIS: StringName = &"field_move_axis"
 const TARGET_MODE_LABELS: Dictionary = {
-	"SELF": "self",
-	"ONE_ENEMY": "one enemy",
-	"ONE_ALLY": "one ally",
-	"ALL_ENEMIES": "all enemies",
-	"ALL_ALLIES": "all allies",
-	"RANDOM_ENEMY": "random",
+	"SELF": "자신",
+	"ONE_ENEMY": "적 하나",
+	"ONE_ALLY": "동료 하나",
+	"ALL_ENEMIES": "적 전체",
+	"ALL_ALLIES": "동료 전체",
+	"RANDOM_ENEMY": "무작위",
+}
+const RESOURCE_KEY_LABELS: Dictionary = {
+	"hp": "체력",
+	"mp": "마나",
+	"equipment_charge": "장비 충전량",
 }
 const COMBAT_ACTIVE_MODES: Array[String] = ["encounter_prepare", "encounter_transition", "combat", "encounter_result"]
 const CORRUPTED_PRESENTATION: String = "corrupted"
@@ -391,12 +396,14 @@ func _resolve_state() -> StringName:
 		"service":
 			return STATE_EQUIPMENT_NO_TURN
 		"recovery":
-			return STATE_FAILURE_DEATH
+			return STATE_RECOVERY
 		"encounter_result":
 			if String(combat_state.result) in ["victory", "escape"]:
 				return STATE_SUCCESS
 			return STATE_FAILURE_DEATH
 		"field_return":
+			if _success_active:
+				return STATE_SUCCESS
 			return STATE_AFTERMATH_REVISIT
 		"encounter_prepare", "encounter_transition":
 			return STATE_COMBAT_COMMAND
@@ -468,7 +475,7 @@ func _on_row_activated(row_id: StringName) -> void:
 
 func submit_row(row_id: StringName) -> void:
 	match _state:
-		STATE_FIELD, STATE_AFTERMATH_REVISIT, STATE_RECOVERY, STATE_INPUT_BUBBLE:
+		STATE_FIELD, STATE_AFTERMATH_REVISIT, STATE_RECOVERY, STATE_SUCCESS, STATE_INPUT_BUBBLE:
 			_submit(INTENT_FIELD_INTERACT, {"interactable_id": String(row_id)})
 		STATE_DIALOGUE_CHOICE_FOCUS:
 			_submit(INTENT_CHOICE_CONFIRM, {"choice_id": String(row_id)})
@@ -492,13 +499,13 @@ func _submit_command_row(row_id: StringName) -> void:
 
 
 func submit_move(direction: Vector2) -> void:
-	if _state in [STATE_FIELD, STATE_AFTERMATH_REVISIT, STATE_RECOVERY, STATE_INPUT_BUBBLE]:
+	if _state in [STATE_FIELD, STATE_AFTERMATH_REVISIT, STATE_RECOVERY, STATE_SUCCESS, STATE_INPUT_BUBBLE]:
 		_submit(INTENT_FIELD_MOVE, {"direction": direction, "axis": FIELD_MOVE_AXIS})
 
 
 func submit_focus(step: int) -> void:
 	match _state:
-		STATE_FIELD, STATE_AFTERMATH_REVISIT, STATE_RECOVERY, STATE_INPUT_BUBBLE:
+		STATE_FIELD, STATE_AFTERMATH_REVISIT, STATE_RECOVERY, STATE_SUCCESS, STATE_INPUT_BUBBLE:
 			_submit(INTENT_FIELD_FOCUS, {"step": step})
 		STATE_DIALOGUE_CHOICE_FOCUS:
 			_submit(INTENT_DIALOGUE_FOCUS, {"step": step})
@@ -513,7 +520,7 @@ func submit_focus(step: int) -> void:
 
 func submit_confirm() -> void:
 	match _state:
-		STATE_FIELD, STATE_AFTERMATH_REVISIT, STATE_RECOVERY, STATE_INPUT_BUBBLE:
+		STATE_FIELD, STATE_AFTERMATH_REVISIT, STATE_RECOVERY, STATE_SUCCESS, STATE_INPUT_BUBBLE:
 			var focused: TopDownActionRpgFieldController.Interactable = field_controller.focused_interactable()
 			_submit(INTENT_FIELD_INTERACT, {"interactable_id": String(focused.interactable_id) if focused != null else ""})
 		STATE_DIALOGUE_CHOICE_FOCUS:
@@ -1062,10 +1069,10 @@ func _rail_row_model(category: String) -> Array:
 			rows.append({
 				"id": token,
 				"label": String(CATEGORY_LABELS.get(token, token)),
-				"trailing": "" if available else "unavailable",
+				"trailing": "" if available else "사용 불가",
 				"presentation_class": "neutral",
 				"available": available,
-				"detail": "" if available else "encounter policy",
+				"detail": "" if available else "교전 정책",
 			})
 		rows.append({
 			"id": LABEL_END_TURN,
@@ -1073,7 +1080,7 @@ func _rail_row_model(category: String) -> Array:
 			"trailing": "",
 			"presentation_class": "result",
 			"available": true,
-			"detail": "close command window",
+			"detail": "명령창 닫기",
 		})
 		return rows
 	for row: Dictionary in _submenu_row_model(category):
@@ -1161,35 +1168,35 @@ func _action_detail(record: Dictionary, available: bool, reason: String) -> Stri
 		return ""
 	var intent: Dictionary = record.get("intent", {}) if record.get("intent", {}) is Dictionary else {}
 	var cost: Dictionary = record.get("cost", {}) if record.get("cost", {}) is Dictionary else {}
-	var parts: Array = [String(TARGET_MODE_LABELS.get(String(intent.get("target_mode", "SELF")), "self"))]
-	parts.append("turn " + str(int(cost.get("turn_cost", 1))))
+	var parts: Array = [String(TARGET_MODE_LABELS.get(String(intent.get("target_mode", "SELF")), "자신"))]
+	parts.append("차례 소모 " + str(int(cost.get("turn_cost", 1))))
 	var resources: Dictionary = cost.get("resource_costs", {}) if cost.get("resource_costs", {}) is Dictionary else {}
 	for key: String in TopDownActionRpgGameState.COMBAT_RESOURCE_KEYS:
 		if int(resources.get(key, 0)) > 0:
-			parts.append(key + " " + str(int(resources[key])))
+			parts.append(String(RESOURCE_KEY_LABELS.get(key, key)) + " " + str(int(resources[key])))
 	return "  ".join(parts)
 
 
 func _reason_label(reason: String) -> String:
 	match reason:
 		"skipped_cooldown":
-			return "cooldown"
+			return "재사용 대기"
 		"skipped_insufficient_resource":
-			return "resource"
+			return "자원 부족"
 		"skipped_blocked_by_status":
-			return "blocked"
+			return "상태이상으로 차단"
 		"skipped_phase_invalidated":
-			return "phase"
+			return "국면 종료"
 		"skipped_no_valid_target":
-			return "no target"
+			return "대상 없음"
 		"skipped_action_unavailable":
-			return "unavailable"
+			return "사용 불가"
 		"skipped_dead_actor":
-			return "no actor"
+			return "행동 주체 없음"
 		"":
 			return ""
 		_:
-			return "unavailable"
+			return "사용 불가"
 
 
 func _render_player_band(actor: TopDownActionRpgCombatState.ActorState) -> void:
@@ -1197,8 +1204,8 @@ func _render_player_band(actor: TopDownActionRpgCombatState.ActorState) -> void:
 		_set_visible(_player_band, false)
 		return
 	_player_name.text = actor.display_name
-	_player_hp.text = "HP " + str(actor.hp) + " / " + str(actor.max_hp)
-	_player_mp.text = "MP " + str(actor.mp) + " / " + str(actor.max_mp)
+	_player_hp.text = "체력 " + str(actor.hp) + " / " + str(actor.max_hp)
+	_player_mp.text = "마나 " + str(actor.mp) + " / " + str(actor.max_mp)
 	_action_slots.text = LABEL_ACTIONS_PREFIX + str(_free_slots(actor))
 	var instances: Array = []
 	for instance: TopDownActionRpgCombatState.StatusInstance in actor.status_instances:

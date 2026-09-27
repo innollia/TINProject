@@ -265,7 +265,47 @@ temp의 `rvdata2.py`는 이 게임의 **커스텀 Marshal dialect**를 역공학
 이미지 파이프라인: `docs/art/projects/top_down_action_rpg/PROJECT_ART_LAYER.md` · `asset_briefs/h0_layered_environment_pilot.md` · 계획 [13_LAYERED_ENVIRONMENT_PRODUCTION](../../../plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/13_LAYERED_ENVIRONMENT_PRODUCTION.md)
 H0 background candidate는 존재하나 **승인되지 않았다**(1672×941, A 참조 누락, 일반 던전 렌더 수렴). `assets/art/approved/`와 Gold Standard는 **없다**.
 
-현재 화면은 vector protocol-diagram presentation이다. 최종 Gold Standard art 승인 증거는 없다.
+## 10. 2026-09-27 kirocrew-worker 세션 — 전투 UI 한국어화 + 복구/성공 화면 버그 수정
+
+쓴 경로: `modules/top_down_action_rpg/module.gd`, `modules/top_down_action_rpg/presentation/top_down_screen.gd`, `tests/core/test_top_down_action_rpg_module.gd`, 이 문서.
+
+### 10.1 복구·성공 화면이 한 번도 켜지지 않는 문제 — 근본 원인과 수정
+
+`01_SYSTEM_UX.md` §3.2는 `RECOVERY`를 별도 mode로 못박는다. 실제 코드는:
+
+1. `_finish_encounter()`가 recovery를 요청해도 `_game_state.mode`를 `"recovery"`로 절대 바꾸지 않았다. mode는 `"combat"`에 남아 전투 화면이 계속 보였다.
+2. `top_down_screen.gd`의 `_resolve_state()`는 `mode == "recovery"`일 때 `STATE_FAILURE_DEATH`(실패 화면)를 반환했다. `STATE_RECOVERY`가 반환된 적이 없다.
+3. victory 시 `_success_active = true`는 세팅됐지만, `submit_move`/`submit_focus`/`submit_confirm`/`submit_row`가 `STATE_SUCCESS`를 field-input 허용 상태 목록에 포함하지 않아 success 화면에서 다음 입력으로 field로 못 넘어갔다(playthrough probe의 `aftermath_yields_to_first_field_intent`에서 확인).
+
+수정:
+- `_finish_encounter()`: recovery 요청 성공 시 `_game_state.set_mode("recovery")`를 명시.
+- `_accept_recovery()`: recovery 확인 시 combat 잔여 상태를 정리하고 `mode`를 `"field"`로 전환(recovery 화면은 aftermath/success와 동일하게 `_recovery_surface_active` 플래그로 다음 field 입력까지 유지).
+- `top_down_screen.gd`의 `_resolve_state()`: `"recovery": return STATE_RECOVERY`로 교정(기존 `STATE_FAILURE_DEATH` 오매핑 삭제).
+- `submit_move`/`submit_focus`/`submit_confirm`/`submit_row`에 `STATE_SUCCESS`를 field-input 허용 목록에 추가.
+- `_dispatch_action`/`_on_screen_intent`에서 매 입력마다 `_success_active`/`_recovery_surface_active`를 리셋(기존에는 `_aftermath`만 리셋해 화면이 안 넘어갈 여지가 있었다).
+
+기존 `test_combat_defeat_requests_recovery_and_returns_to_rebuilt_field`와 `test_combat_victory_aftermath_stays_visible_until_first_field_intent`는 이 버그를 그대로 고정하고 있었다(defeat 직후 `STATE_FAILURE_DEATH`, victory 직후 `STATE_AFTERMATH_REVISIT`을 기대). `01_SYSTEM_UX.md`의 RECOVERY mode 계약에 맞춰 두 테스트를 `STATE_RECOVERY`/`STATE_SUCCESS` 기대로 교정했다.
+
+### 10.2 전투 화면 글 한국어화
+
+`top_down_screen.gd`의 하드코딩 영어 텍스트를 전부 한국어로 교체했다: `HP`/`MP` 표시, 분류 목록의 `unavailable`/`encounter policy`/`close command window`, 행동 상세의 target mode 기본값·`turn N`·자원 소모 라벨(신설 `RESOURCE_KEY_LABELS`), 스킵 이유 7종(`_reason_label`). `module.gd`의 `PLAYER_DISPLAY_NAME`("Continuity Head" → "연속성 담당자", 새 세계(`world_new`) 캐릭터명이 정해지면 그쪽이 우선).
+
+### 10.3 검증
+
+이 세션에서 실행:
+
+| 게이트 | 결과 |
+|---|---|
+| `run_tests.gd` | **644 / 644** |
+| Kit 04 core GUT | **19 / 19**, 7116 asserts |
+| Kit 04 module GUT | **23 / 23**, 5035 asserts |
+| playthrough probe | **exit 0**, assertions 54 / failed 0, coverage 14/14 |
+| 부팅 `--quit-after 180 --fixed-fps 60` | exit 0 |
+
+창 모드 visual capture로 recovery/success 화면이 field와 다른 픽셀을 갖는지(§8.4-3에서 지적된 harness 미호출 문제)는 이 세션 범위 밖 — 그 항목은 모듈이 `set_recovery_surface`/`set_success_active`를 실제 흐름에서 호출하는지의 harness 픽스처 문제였고, 이번 수정으로 모듈 로직 자체(mode 전환, 화면 상태 매핑)는 정상화됐다. 다음 visual capture 실행 시 두 화면이 field와 다른 픽셀을 가져야 한다.
+
+남은 것: §8.4-4(전투 UI 대부분 영어)는 이번 세션에서 §10.2로 해소. §9.3에서 언급된 harness가 실제 recovery/success 흐름(패배→복구, victory→success)으로 캡처를 구동하도록 바꾸는 작업은 여전히 남아 있다(캡처 스크립트 쪽 작업, 이 세션은 게임 로직만 수정).
+
 
 
 ---
