@@ -1,0 +1,45 @@
+{
+  "id": "a_missing_lamp",
+  "title": "사라진 등불",
+  "seed_query": "등불",
+  "fragments": [
+    {
+      "id": "a1",
+      "body": "관리인은 그날 밤 창고의 등불이 꺼져 있었다고 적었다. 자기는 자정 전에 창고를 떠났다고 진술했다.",
+      "search_tags": ["등불", "창고", "관리인", "자정"],
+      "hover_reveals": [
+        { "span_from": 33, "span_to": 39, "hidden": "출입 기록에는 00:41 퇴근으로 찍혀 있다 — 진술과 어긋난다." }
+      ],
+      "relations": [ { "to": "a3", "kind": "contradicts" } ]
+    },
+    {
+      "id": "a2",
+      "body": "등불은 창고 안쪽 선반에서 발견되지 않았다. 대신 뒷문 밖 진흙 위에 떨어져 있었다.",
+      "search_tags": ["등불", "뒷문", "진흙", "선반"],
+      "hover_reveals": [
+        { "span_from": 20, "span_to": 22, "hidden": "진흙 위 발자국은 창고 안쪽을 향한다 — 누군가 들고 나온 게 아니라 들고 들어왔다." }
+      ],
+      "relations": []
+    },
+    {
+      "id": "a3",
+      "body": "야간 순찰자는 자정 무렵 창고 근처에서 관리인을 보았다고 말했다.",
+      "search_tags": ["순찰", "자정", "관리인", "목격"],
+      "hover_reveals": [],
+      "relations": [ { "to": "a1", "kind": "contradicts" } ]
+    },
+    {
+      "id": "a4",
+      "body": "창고 장부의 마지막 줄에는 '기름을 다시 채울 것'이라고 급하게 쓰여 있었다.",
+      "search_tags": ["장부", "기름", "창고"],
+      "hover_reveals": [
+        { "span_from": 4, "span_to": 6, "hidden": "필체가 관리인의 것과 다르다." }
+      ],
+      "relations": []
+    }
+  ],
+  "completion": {
+    "required_ids": ["a1", "a2", "a3"],
+    "conclusion_query": "관리인"
+  }
+}
