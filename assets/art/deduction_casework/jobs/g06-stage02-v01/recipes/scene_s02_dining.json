@@ -1,0 +1,182 @@
+{
+ "status": "candidate",
+ "note": "Stage 02 layout. items = objects drawn by compose_preview.py; characters = placements for the game only (never composited in review images); exits = transition hotspot polygons (background px).",
+ "background": "output/bg_s02_dining/bg_s02_dining.png",
+ "scale": 0.5,
+ "items": [
+  {
+   "asset": "obj_s02_chair_family",
+   "at": [
+    720,
+    1040
+   ],
+   "id": "chair_helen"
+  },
+  {
+   "asset": "obj_s02_chair_family",
+   "at": [
+    1280,
+    1040
+   ],
+   "id": "chair_luca"
+  },
+  {
+   "asset": "obj_s02_chair_family",
+   "at": [
+    1840,
+    1040
+   ],
+   "id": "chair_eva"
+  },
+  {
+   "asset": "obj_s02_dining_table",
+   "at": [
+    1280,
+    1180
+   ],
+   "id": "table"
+  },
+  {
+   "asset": "obj_s02_setting_guest",
+   "at": [
+    1840,
+    940
+   ],
+   "id": "guest_setting",
+   "interactive": true,
+   "sort_y": 1181
+  },
+  {
+   "asset": "obj_s02_teacup",
+   "at": [
+    800,
+    952
+   ],
+   "id": "silla_cup",
+   "interactive": true,
+   "sort_y": 1181
+  },
+  {
+   "asset": "obj_s02_seat_plan",
+   "at": [
+    1080,
+    905
+   ],
+   "id": "seat_plan",
+   "interactive": true,
+   "sort_y": 1181
+  },
+  {
+   "asset": "obj_s02_chair_silla",
+   "at": [
+    720,
+    1330
+   ],
+   "id": "chair_silla"
+  },
+  {
+   "asset": "obj_s02_chair_peter",
+   "at": [
+    1280,
+    1330
+   ],
+   "id": "chair_peter"
+  },
+  {
+   "asset": "obj_s02_chair_guest",
+   "at": [
+    2010,
+    1390
+   ],
+   "id": "chair_guest",
+   "interactive": true
+  }
+ ],
+ "characters": [
+  {
+   "asset": "chr_s02_helen_stand",
+   "at": [
+    300,
+    1330
+   ]
+  },
+  {
+   "asset": "chr_s02_eva_stand",
+   "at": [
+    520,
+    1370
+   ]
+  },
+  {
+   "asset": "chr_s02_luca_stand",
+   "at": [
+    2330,
+    1360
+   ]
+  }
+ ],
+ "exits": {
+  "trans_dining_to_foyer": [
+   [
+    90,
+    330
+   ],
+   [
+    330,
+    330
+   ],
+   [
+    330,
+    1000
+   ],
+   [
+    90,
+    1000
+   ]
+  ],
+  "trans_dining_to_study": [
+   [
+    2250,
+    330
+   ],
+   [
+    2490,
+    330
+   ],
+   [
+    2490,
+    1000
+   ],
+   [
+    2250,
+    1000
+   ]
+  ],
+  "trans_dining_to_service": [
+   [
+    1600,
+    380
+   ],
+   [
+    1760,
+    380
+   ],
+   [
+    1760,
+    1000
+   ],
+   [
+    1600,
+    1000
+   ]
+  ]
+ },
+ "hotspots": {
+  "hotspot_dining_guest_seat": "obj_s02_setting_guest + obj_s02_chair_guest -> cu_s02_guest_setting",
+  "hotspot_dining_visual_seats": "the six chairs (obj_s02_chair_family x3, _silla, _peter, _guest)",
+  "hotspot_dining_seat_plan": "obj_s02_seat_plan -> cu_s02_seat_plan",
+  "hotspot_dining_silla_cup": "obj_s02_teacup -> cu_s02_teacup",
+  "hotspot_dining_ruca_pocket": "chr_s02_luca_stand (right sleeve) -> cu_s02_pill_bottle, cu_s02_pharmacy_receipt, cu_s02_luca_notebook"
+ },
+ "out": "preview/scene_s02_dining_bg_objects_1280x720.png"
+}

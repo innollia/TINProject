@@ -1,0 +1,187 @@
+{
+ "asset": "cu_s02_pill_bottle",
+ "status": "candidate",
+ "note": "B4-1: Luca's empty prescription bottle, label scraped off, a little white powder left at the bottom.",
+ "palette": "palette_s02_morren.json",
+ "style": "prop",
+ "canvas": [
+  700,
+  760
+ ],
+ "pivot": [
+  350.0,
+  380.0
+ ],
+ "pivot_meaning": "image centre",
+ "seed": 513,
+ "forms": [
+  {
+   "name": "shadow",
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.35,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      355.0,
+      440.0
+     ],
+     "size": [
+      250.0,
+      520.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bottle",
+   "z": 1.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      350.0,
+      430.0
+     ],
+     "size": [
+      260.0,
+      520.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      350.0,
+      690.0
+     ],
+     "size": [
+      260.0,
+      60.0
+     ]
+    }
+   ],
+   "material": "glass",
+   "color": "#5a3a22",
+   "line": {
+    "width": 1.6,
+    "heavy": 1.8,
+    "breaks": 0.25
+   },
+   "opacity": 0.9
+  },
+  {
+   "name": "cap",
+   "z": 1.1,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      350.0,
+      135.0
+     ],
+     "size": [
+      200.0,
+      90.0
+     ]
+    }
+   ],
+   "material": "plastic_black",
+   "line": {
+    "width": 1.6,
+    "heavy": 1.8,
+    "breaks": 0.25
+   }
+  },
+  {
+   "name": "label_scraped",
+   "z": 1.2,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      350.0,
+      410.0
+     ],
+     "size": [
+      220.0,
+      220.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "paper_ivory",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.7,
+    "breaks": 0.1
+   }
+  },
+  {
+   "name": "scrape",
+   "z": 1.3,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      350.0,
+      400.0
+     ],
+     "size": [
+      200.0,
+      160.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "glass",
+   "color": "#5a3a22",
+   "opacity": 0.8,
+   "clip_to": "label_scraped"
+  },
+  {
+   "name": "powder",
+   "z": 1.4,
+   "pieces": [
+    {
+     "icon": "sponge",
+     "at": [
+      350.0,
+      650.0
+     ],
+     "size": [
+      140.0,
+      40.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "powder"
+  }
+ ]
+}

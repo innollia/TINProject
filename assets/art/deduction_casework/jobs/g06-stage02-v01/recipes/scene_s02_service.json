@@ -1,0 +1,89 @@
+{
+ "status": "candidate",
+ "note": "Stage 02 layout. items = objects drawn by compose_preview.py; characters = placements for the game only (never composited in review images); exits = transition hotspot polygons (background px).",
+ "background": "output/bg_s02_service/bg_s02_service.png",
+ "scale": 0.5,
+ "items": [
+  {
+   "asset": "obj_s02_key_board",
+   "at": [
+    1850,
+    300
+   ],
+   "id": "key_board",
+   "layer": "floor",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s02_butler_desk",
+   "at": [
+    1850,
+    1250
+   ],
+   "id": "desk"
+  },
+  {
+   "asset": "obj_s02_payroll_ledger",
+   "at": [
+    1690,
+    986
+   ],
+   "id": "payroll",
+   "interactive": true,
+   "sort_y": 1251
+  }
+ ],
+ "characters": [
+  {
+   "asset": "chr_s02_peter_stand",
+   "at": [
+    2330,
+    1310
+   ]
+  }
+ ],
+ "exits": {
+  "trans_service_to_dining": [
+   [
+    60,
+    360
+   ],
+   [
+    300,
+    360
+   ],
+   [
+    300,
+    1040
+   ],
+   [
+    60,
+    1040
+   ]
+  ],
+  "trans_service_to_study": [
+   [
+    560,
+    380
+   ],
+   [
+    820,
+    380
+   ],
+   [
+    820,
+    1040
+   ],
+   [
+    560,
+    1040
+   ]
+  ]
+ },
+ "hotspots": {
+  "hotspot_service_peter": "chr_s02_peter_stand",
+  "hotspot_service_key_list": "obj_s02_key_board + obj_s02_butler_desk (spec chart) -> cu_s02_key_spec",
+  "hotspot_service_payroll": "obj_s02_payroll_ledger -> cu_s02_payroll"
+ },
+ "out": "preview/scene_s02_service_bg_objects_1280x720.png"
+}

@@ -1,0 +1,95 @@
+{
+ "asset": "obj_s02_window_soil",
+ "status": "candidate",
+ "note": "C4: thin grey wet clay on the study window sill with one narrow V-groove print (compare cu_s02_shoe_soles / cu_s02_footprints).",
+ "palette": "palette_s02_morren.json",
+ "style": "prop",
+ "canvas": [
+  200,
+  70
+ ],
+ "pivot": [
+  100.0,
+  44.0
+ ],
+ "pivot_meaning": "sill contact line",
+ "seed": 423,
+ "forms": [
+  {
+   "name": "soil",
+   "z": 1.0,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      100.0,
+      36.0
+     ],
+     "size": [
+      150.0,
+      36.0
+     ]
+    },
+    {
+     "icon": "metaballs",
+     "at": [
+      70.0,
+      40.0
+     ],
+     "size": [
+      60.0,
+      20.0
+     ]
+    }
+   ],
+   "material": "clay_grey",
+   "line": {
+    "width": 0.9,
+    "heavy": 1.0,
+    "breaks": 0.2
+   }
+  },
+  {
+   "name": "wet",
+   "z": 1.1,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      140.0,
+      38.0
+     ],
+     "size": [
+      30.0,
+      14.0
+     ],
+     "rot": 90.0
+    }
+   ],
+   "kind": "flat",
+   "color": "rain",
+   "opacity": 0.3
+  },
+  {
+   "name": "v_groove",
+   "z": 1.2,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      104.0,
+      34.0
+     ],
+     "size": [
+      30.0,
+      12.0
+     ],
+     "rot": 180.0
+    }
+   ],
+   "kind": "flat",
+   "material": "mud",
+   "opacity": 0.9
+  }
+ ]
+}

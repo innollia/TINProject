@@ -1,0 +1,80 @@
+{
+ "status": "candidate",
+ "note": "Stage 02 layout. items = objects drawn by compose_preview.py; characters = placements for the game only (never composited in review images); exits = transition hotspot polygons (background px).",
+ "background": "output/bg_s02_grave/bg_s02_grave.png",
+ "scale": 0.5,
+ "items": [
+  {
+   "asset": "obj_s02_gravestones",
+   "at": [
+    560,
+    1130
+   ],
+   "id": "stones"
+  },
+  {
+   "asset": "obj_s02_footprint_trail",
+   "at": [
+    1060,
+    1252
+   ],
+   "id": "footprints",
+   "layer": "floor",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s02_case44_page",
+   "at": [
+    1480,
+    1290
+   ],
+   "id": "case44_page",
+   "layer": "floor",
+   "interactive": true
+  }
+ ],
+ "characters": [],
+ "exits": {
+  "trans_grave_to_study": [
+   [
+    1900,
+    360
+   ],
+   [
+    2240,
+    360
+   ],
+   [
+    2240,
+    820
+   ],
+   [
+    1900,
+    820
+   ]
+  ],
+  "trans_grave_to_dining": [
+   [
+    2340,
+    560
+   ],
+   [
+    2520,
+    560
+   ],
+   [
+    2520,
+    1220
+   ],
+   [
+    2340,
+    1220
+   ]
+  ]
+ },
+ "hotspots": {
+  "hotspot_grave_footprints": "obj_s02_footprint_trail -> cu_s02_footprints",
+  "hotspot_grave_case44": "obj_s02_case44_page -> cu_s02_case44"
+ },
+ "out": "preview/scene_s02_grave_bg_objects_1280x720.png"
+}

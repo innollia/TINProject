@@ -1,0 +1,544 @@
+{
+ "asset": "cu_s02_pharmacy_receipt",
+ "status": "candidate",
+ "note": "B4-2: narrow pharmacy receipt with the same-day date and a pickup stamp (text = game text).",
+ "palette": "palette_s02_morren.json",
+ "style": "prop",
+ "canvas": [
+  520,
+  960
+ ],
+ "pivot": [
+  260.0,
+  480.0
+ ],
+ "pivot_meaning": "image centre",
+ "seed": 514,
+ "forms": [
+  {
+   "name": "shadow",
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.35,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3.0,
+       3.0
+      ],
+      [
+       13.0,
+       3.0
+      ],
+      [
+       13.0,
+       13.0
+      ],
+      [
+       3.0,
+       13.0
+      ]
+     ],
+     "fit": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      270.0,
+      492.0
+     ],
+     "size": [
+      300.0,
+      880.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sheet",
+   "z": 1.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3.0,
+       3.0
+      ],
+      [
+       13.0,
+       3.0
+      ],
+      [
+       13.0,
+       13.0
+      ],
+      [
+       3.0,
+       13.0
+      ]
+     ],
+     "fit": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      260.0,
+      480.0
+     ],
+     "size": [
+      300.0,
+      880.0
+     ]
+    }
+   ],
+   "material": "paper_white",
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   },
+   "shade": {
+    "bump": 0.2,
+    "highlight_amount": 0.2
+   },
+   "grime": {
+    "stamps": [
+     "sponge",
+     "metaballs",
+     "cloud"
+    ],
+    "size": 34,
+    "soft": 4,
+    "density": 0.07,
+    "strength": 0.2,
+    "color": "foxing",
+    "lo": 0.25
+   }
+  },
+  {
+   "name": "tear",
+   "z": 2.0,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      130.0,
+      920.0
+     ],
+     "size": [
+      30.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      920.0
+     ],
+     "size": [
+      30.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      190.0,
+      920.0
+     ],
+     "size": [
+      30.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      220.0,
+      920.0
+     ],
+     "size": [
+      30.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      250.0,
+      920.0
+     ],
+     "size": [
+      30.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      280.0,
+      920.0
+     ],
+     "size": [
+      30.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      310.0,
+      920.0
+     ],
+     "size": [
+      30.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      340.0,
+      920.0
+     ],
+     "size": [
+      30.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      370.0,
+      920.0
+     ],
+     "size": [
+      30.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      400.0,
+      920.0
+     ],
+     "size": [
+      30.0,
+      20.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "paper_white"
+  },
+  {
+   "name": "rows",
+   "z": 5.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      214.4,
+      92.0
+     ],
+     "size": [
+      148.8,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      246.32,
+      122.0
+     ],
+     "size": [
+      212.64,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      232.64,
+      152.0
+     ],
+     "size": [
+      185.28,
+      4.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ink_line",
+   "opacity": 0.5
+  },
+  {
+   "name": "items",
+   "z": 5.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      214.4,
+      262.0
+     ],
+     "size": [
+      148.8,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      246.32,
+      298.0
+     ],
+     "size": [
+      212.64,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      232.64,
+      334.0
+     ],
+     "size": [
+      185.28,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      218.96,
+      370.0
+     ],
+     "size": [
+      157.92,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      250.88,
+      406.0
+     ],
+     "size": [
+      221.76,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      237.2,
+      442.0
+     ],
+     "size": [
+      194.4,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      223.52,
+      478.0
+     ],
+     "size": [
+      167.04,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      255.44,
+      514.0
+     ],
+     "size": [
+      230.88,
+      4.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ink_line",
+   "opacity": 0.5
+  },
+  {
+   "name": "total_line",
+   "z": 3.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      260.0,
+      602.0
+     ],
+     "size": [
+      240.0,
+      4.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ink_line",
+   "opacity": 0.6
+  },
+  {
+   "name": "total",
+   "z": 5.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      297.2,
+      632.0
+     ],
+     "size": [
+      74.4,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      313.16,
+      668.0
+     ],
+     "size": [
+      106.32,
+      4.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ink_line",
+   "opacity": 0.5
+  },
+  {
+   "name": "stamp",
+   "z": 3.1,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      300.0,
+      780.0
+     ],
+     "size": [
+      120.0,
+      120.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ink_blue",
+   "opacity": 0.3,
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   }
+  }
+ ]
+}

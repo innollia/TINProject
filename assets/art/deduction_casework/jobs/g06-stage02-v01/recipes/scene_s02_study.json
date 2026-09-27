@@ -1,0 +1,117 @@
+{
+ "status": "candidate",
+ "note": "Stage 02 layout. items = objects drawn by compose_preview.py; characters = placements for the game only (never composited in review images); exits = transition hotspot polygons (background px).",
+ "background": "output/bg_s02_study/bg_s02_study.png",
+ "scale": 0.5,
+ "items": [
+  {
+   "asset": "obj_s02_wall_safe",
+   "at": [
+    2023.8,
+    565.9
+   ],
+   "id": "safe",
+   "layer": "floor",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s02_window_soil",
+   "at": [
+    707.5,
+    536.0
+   ],
+   "id": "sill_soil",
+   "layer": "floor",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s02_sofa",
+   "at": [
+    1105.0,
+    1172.5
+   ],
+   "id": "sofa"
+  },
+  {
+   "asset": "obj_s02_desk_will",
+   "at": [
+    1755.0,
+    1247.5
+   ],
+   "id": "desk",
+   "interactive": true
+  }
+ ],
+ "characters": [
+  {
+   "asset": "chr_s02_silla_slumped",
+   "at": [
+    992.5,
+    1228.8
+   ]
+  }
+ ],
+ "exits": {
+  "trans_study_to_dining": [
+   [
+    2330.0,
+    383.0
+   ],
+   [
+    2555.0,
+    495.5
+   ],
+   [
+    2555.0,
+    1247.5
+   ],
+   [
+    2330.0,
+    1135.0
+   ]
+  ],
+  "trans_study_to_service": [
+   [
+    255.0,
+    350.5
+   ],
+   [
+    55.0,
+    450.5
+   ],
+   [
+    55.0,
+    1122.5
+   ],
+   [
+    255.0,
+    1022.5
+   ]
+  ],
+  "trans_study_to_grave": [
+   [
+    855.0,
+    -13.5
+   ],
+   [
+    530.0,
+    149.0
+   ],
+   [
+    530.0,
+    613.0
+   ],
+   [
+    855.0,
+    450.5
+   ]
+  ]
+ },
+ "hotspots": {
+  "hotspot_study_record_gap": "obj_s02_wall_safe -> cu_s02_safe_gap",
+  "hotspot_study_will": "obj_s02_desk_will -> cu_s02_will",
+  "hotspot_study_silla": "chr_s02_silla_slumped",
+  "hotspot_study_window_sill": "obj_s02_window_soil -> cu_s02_window_soil"
+ },
+ "out": "preview/scene_s02_study_bg_objects_1280x720.png"
+}
