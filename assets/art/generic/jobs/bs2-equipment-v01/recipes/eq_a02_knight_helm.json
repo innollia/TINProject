@@ -1,0 +1,277 @@
+{
+ "asset": "eq_a02_knight_helm",
+ "status": "candidate",
+ "note": "38 knight helm. A great helm with a cross visor, two eye slits and three breath holes. Kept because it fits.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 102,
+ "forms": [
+  {
+   "name": "skull_edge",
+   "z": -1,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "tragedy_mask",
+     "at": [
+      256,
+      226
+     ],
+     "size": [
+      368,
+      398
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "tragedy_mask",
+     "at": [
+      256,
+      226
+     ],
+     "size": [
+      340,
+      370
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dome",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      104
+     ],
+     "size": [
+      336,
+      200
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      396
+     ],
+     "size": [
+      430,
+      200
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "visor",
+   "z": 2,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.85,
+   "line": false,
+   "clip_to": "skull",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      212
+     ],
+     "size": [
+      300,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      262
+     ],
+     "size": [
+      26,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye_slots",
+   "z": 2,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "skull",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      200,
+      186
+     ],
+     "size": [
+      104,
+      20
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      312,
+      186
+     ],
+     "size": [
+      104,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "breath",
+   "z": 2,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "skull",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      206,
+      322
+     ],
+     "size": [
+      40,
+      40
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      322
+     ],
+     "size": [
+      40,
+      40
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      306,
+      322
+     ],
+     "size": [
+      40,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "band",
+   "z": 2.5,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      156
+     ],
+     "size": [
+      310,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      196,
+      200
+     ],
+     "size": [
+      75.0,
+      65.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      330,
+      300
+     ],
+     "size": [
+      75.0,
+      65.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "skull"
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      104
+     ],
+     "size": [
+      145.0,
+      85.0
+     ]
+    }
+   ],
+   "clip_to": "dome"
+  }
+ ]
+}

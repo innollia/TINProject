@@ -1,0 +1,188 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_carrot",
+  "note": "carrot lying on the ground with its tip to the lower left, cut end upper right, three dark ridges, a small tuft of greens. No text.",
+  "seed": 3201,
+  "forms": [
+    {
+      "name": "greens",
+      "z": 0,
+      "material": "carrot_top",
+      "pieces": [
+        {
+          "icon": "grass",
+          "at": [
+            82,
+            26
+          ],
+          "size": [
+            36,
+            28
+          ],
+          "crop": [
+            2.6,
+            3.0,
+            14.0,
+            15.6
+          ],
+          "rot": 25
+        },
+        {
+          "icon": "grass",
+          "at": [
+            74,
+            32
+          ],
+          "size": [
+            24,
+            19
+          ],
+          "crop": [
+            2.6,
+            3.0,
+            14.0,
+            15.6
+          ],
+          "rot": 56,
+          "opacity": 0.9
+        }
+      ]
+    },
+    {
+      "name": "body",
+      "z": 1,
+      "material": "carrot",
+      "rough": {
+        "amp": 0.3,
+        "soft": 1.0,
+        "cell": 6
+      },
+      "shade": {
+        "bump": 1.05,
+        "highlight_amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            64,
+            70
+          ],
+          "size": [
+            56,
+            92
+          ],
+          "rot": -205
+        }
+      ]
+    },
+    {
+      "name": "cut",
+      "z": 2,
+      "kind": "flat",
+      "material": "carrot_ridge",
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            79,
+            38
+          ],
+          "size": [
+            24,
+            22
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -25
+        }
+      ]
+    },
+    {
+      "name": "ridges",
+      "z": 3,
+      "kind": "flat",
+      "material": "carrot_dark",
+      "opacity": 0.5,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            48,
+            88
+          ],
+          "size": [
+            10,
+            40
+          ],
+          "rot": -205
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            60,
+            68
+          ],
+          "size": [
+            10,
+            40
+          ],
+          "rot": -205
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            72,
+            48
+          ],
+          "size": [
+            10,
+            38
+          ],
+          "rot": -205
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 4,
+      "kind": "flat",
+      "material": "carrot_ridge",
+      "opacity": 0.3,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            52,
+            78
+          ],
+          "size": [
+            9,
+            34
+          ],
+          "rot": -215
+        }
+      ]
+    }
+  ]
+}

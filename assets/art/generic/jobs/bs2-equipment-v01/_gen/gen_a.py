@@ -95,13 +95,13 @@ ITEMS.append(("eq_w04_executioner_greatsword", [
      "pieces": [p("sword", [256, 262], [400, 400]),
                 p("square", [368, 152], [104, 132], rot=-45)]},
     edge_hilite("edge", [272, 246], [30, 250], -45, "blade", "worn", 0.45),
-    {"name": "block_tip", "z": 1, "kind": "flat", "material": "stone_cap", "opacity": 0.4,
+    {"name": "block_tip", "z": 1, "kind": "flat", "material": "stone_cap", "opacity": 0.22,
      "line": False, "clip_to": "blade",
      "pieces": [p("square", [368, 152], [86, 108], rot=-45)]},
     grip_wrap([136, 372], 86, material="leather"),
     pommel([92, 414], 48),
     iron_tarnish("blade", ((330, 180, 170, 120), (230, 320, 150, 100), (150, 250, 110, 90))),
-    stain([p("cloud", [370, 150], [130, 90])], "rust", 0.6, clip="blade", z=9.1),
+    stain([p("cloud", [370, 150], [130, 90])], "rust", 0.3, clip="blade", z=9.1),
 ], "4 executioner greatsword. Long, heavy, and the point is a flat slab instead of a tip - it was never sharpened to kill, only to end. Wrapped grip dark with use."))
 
 # 5 black greatsword
@@ -257,17 +257,21 @@ ITEMS.append(("eq_w14_iron_club", [
 
 # 15 spiked club
 ITEMS.append(("eq_w15_spiked_club", [
-    {"name": "core", "z": 0, "material": "wood",
-     "pieces": [p("club", [256, 264], [300, 300])]},
-    {"name": "spikes", "z": 1, "material": "iron",
-     "pieces": [p("triangle", [256, 150], [56, 80],
-                  repeat={"ellipse": [256, 264, 128, 128], "count": 9, "orient": True,
-                          "jitter": {"at": 6.0, "rot": 8.0}})]},
+    {"name": "haft", "z": 0, "material": "wood",
+     "pieces": [p("square", [222, 366], [300, 40], rot=40),
+                p("square", [100, 470], [36, 36], rot=40)]},
+    {"name": "head", "z": 1, "material": "iron",
+     "pieces": [p("circle", [312, 208], [230, 230]),
+                p("square", [312, 208], [120, 120], rot=30)]},
+    {"name": "spikes", "z": 2, "material": "iron",
+     "pieces": [p("triangle", [312, 208], [54, 82],
+                  repeat={"ellipse": [312, 208, 132, 132], "count": 8, "orient": True,
+                          "jitter": {"at": 5.0, "rot": 7.0}})]},
     {"name": "ferrule", "z": 2, "material": "iron",
-     "pieces": [p("square", [256, 412], [60, 46])]},
-    iron_tarnish("spikes", ((300, 200, 160, 120),)),
-    stain([p("cloud", [256, 300], [200, 160])], "rust", 0.35, z=9.1),
-], "15 spiked club. A studded length of wood with nails bent outward and left in. Two of the nails are teeth."))
+     "pieces": [p("square", [252, 320], [64, 44], rot=40)]},
+    iron_tarnish("head", ((312, 208, 230, 230),)),
+    iron_tarnish("spikes", ((312, 208, 300, 300),)),
+], "15 spiked club. An iron ball of scrap on a long haft with nails driven outward and left in. Two of the nails are teeth."))
 
 # 16 war hammer
 ITEMS.append(("eq_w16_war_hammer", [
@@ -329,18 +333,21 @@ ITEMS.append(("eq_w19_spear", [
 # 20 glaive
 ITEMS.append(("eq_w20_glaive", [
     {"name": "shaft", "z": 0, "material": "wood",
-     "pieces": [p("square", [268, 280], [440, 26], rot=-52)]},
-    {"name": "hook", "z": 1, "material": "iron",
-     "pieces": [p("hook", [382, 158], [150, 150], rot=-40)]},
+     "pieces": [p("square", [256, 292], [450, 24], rot=-52)]},
     {"name": "blade", "z": 1, "material": "iron",
-     "pieces": [p("axe", [366, 130], [230, 230], crop=[6.0, 1.0, 15.0, 9.0], rot=8)]},
+     "pieces": [p("axe", [372, 156], [300, 300], rot=-50)]},
+    {"name": "spur", "z": 1, "material": "iron",
+     "pieces": [p("hook", [438, 250], [130, 130], crop=[2.5, 5.0, 13.0, 15.0], rot=32)]},
     {"name": "socket", "z": 2, "material": "iron",
-     "pieces": [p("square", [326, 200], [46, 56], rot=-52)]},
+     "pieces": [p("square", [320, 214], [50, 62], rot=-52)]},
+    {"name": "collar", "z": 2, "material": "bronze",
+     "pieces": [p("square", [296, 238], [42, 50], rot=-52)]},
     {"name": "wrap", "z": 3, "material": "leather",
-     "pieces": [p("square", [272, 274], [76, 40], rot=-52)]},
-    iron_tarnish("blade", ((380, 120, 100, 80),)),
-    iron_tarnish("hook", ((400, 180, 90, 80),)),
-], "20 glaive. A curved knife blade and a back hook on one haft, both socketed. Meant to hook a man off his horse and open him."))
+     "pieces": [p("square", [262, 286], [76, 38], rot=-52),
+                p("square", [276, 272], [56, 30], rot=-52)]},
+    iron_tarnish("blade", ((390, 140, 130, 110),)),
+    iron_tarnish("spur", ((440, 250, 100, 90),)),
+], "20 glaive. An axe head socketed on a long haft with a back hook. Meant to hook a man off his horse and open him."))
 
 # 21 sickle
 ITEMS.append(("eq_w21_sickle", [
@@ -392,63 +399,67 @@ ITEMS.append(("eq_w23_iron_flail", [
 
 # 24 short bow
 ITEMS.append(("eq_w24_short_bow", [
-    {"name": "limb", "z": 0, "material": "wood",
-     "pieces": [p("bow_and_arrow", [248, 256], [380, 400], crop=[1.5, 0.5, 14.0, 15.5])]},
-    {"name": "string", "z": 1, "kind": "flat", "material": "leather",
-     "line": False, "clip_to": "limb",
-     "pieces": [p("square", [134, 256], [7, 300])]},
-    {"name": "grip", "z": 3, "material": "leather",
-     "pieces": [p("square", [352, 232], [34, 92]),
-                p("square", [352, 280], [24, 34])]},
-    {"name": "arrow", "z": 2, "material": "wood",
-     "pieces": [p("square", [248, 256], [330, 11], rot=-42)]},
-    {"name": "arrowhead", "z": 2, "material": "iron",
-     "pieces": [p("triangle", [378, 134], [58, 58], rot=135)]},
-    {"name": "fletch", "z": 2, "kind": "flat", "material": "cloth_wine", "opacity": 0.85,
-     "line": False,
-     "pieces": [p("triangle", [126, 372], [50, 60], rot=45)]},
-    stain([p("cloud", [300, 250], [90, 200])], "grime", 0.3, clip="limb", z=9.1),
+    {"name": "bow", "z": 0, "material": "wood",
+     "pieces": [p("bow_and_arrow", [256, 256], [400, 400])]},
+    {"name": "grip", "z": 2, "material": "leather",
+     "pieces": [p("square", [178, 258], [30, 96]),
+                p("square", [178, 258], [20, 60], rot=45)]},
+    {"name": "nocks", "z": 2, "material": "iron",
+     "pieces": [p("square", [104, 106], [22, 22], rot=45),
+                p("square", [104, 406], [22, 22], rot=45)]},
+    {"name": "fletch", "z": 2, "kind": "flat", "material": "cloth_wine", "opacity": 0.8,
+     "line": False, "clip_to": "bow",
+     "pieces": [p("triangle", [128, 372], [56, 66], rot=45)]},
+    {"name": "limb_bands", "z": 2, "kind": "flat", "material": "stone_cap",
+     "opacity": 0.35, "line": False, "clip_to": "bow",
+     "pieces": [p("circle", [400, 200], [54, 60]), p("circle", [400, 330], [50, 56])]},
+    stain([p("cloud", [300, 250], [90, 200])], "grime", 0.28, clip="bow", z=9.1),
 ], "24 short bow. Horn-and-yew recurved in miniature, string gone slack and re-waxed. Child's height, adult's draw weight."))
 
 # 25 longbow
 ITEMS.append(("eq_w25_longbow", [
-    {"name": "limb", "z": 0, "material": "wood",
-     "pieces": [p("bow_and_arrow", [236, 256], [400, 460], crop=[1.5, 0.5, 14.0, 15.5])]},
-    {"name": "string", "z": 1, "kind": "flat", "material": "leather",
-     "line": False, "clip_to": "limb",
-     "pieces": [p("square", [110, 256], [7, 380])]},
-    {"name": "grip", "z": 3, "material": "leather",
-     "pieces": [p("square", [352, 226], [38, 140]),
-                p("square", [352, 300], [26, 40])]},
-    {"name": "arrow", "z": 2, "material": "wood",
-     "pieces": [p("square", [236, 256], [360, 12], rot=-42)]},
-    {"name": "arrowhead", "z": 2, "material": "iron",
-     "pieces": [p("triangle", [382, 122], [62, 62], rot=135)]},
-    {"name": "fletch", "z": 2, "kind": "flat", "material": "cloth_wine", "opacity": 0.85,
-     "line": False,
-     "pieces": [p("triangle", [102, 388], [54, 64], rot=45)]},
-    stain([p("cloud", [300, 250], [80, 260])], "grime", 0.3, clip="limb", z=9.1),
+    {"name": "bow", "z": 0, "material": "wood",
+     "pieces": [p("bow_and_arrow", [256, 256], [400, 470])]},
+    {"name": "grip", "z": 2, "material": "leather",
+     "pieces": [p("square", [172, 258], [32, 120]),
+                p("square", [172, 258], [22, 76], rot=45)]},
+    {"name": "nocks", "z": 2, "material": "iron",
+     "pieces": [p("square", [100, 60], [22, 22], rot=45),
+                p("square", [100, 452], [22, 22], rot=45)]},
+    {"name": "fletch", "z": 2, "kind": "flat", "material": "cloth_wine", "opacity": 0.8,
+     "line": False, "clip_to": "bow",
+     "pieces": [p("triangle", [124, 382], [58, 70], rot=45)]},
+    {"name": "limb_bands", "z": 2, "kind": "flat", "material": "stone_cap",
+     "opacity": 0.35, "line": False, "clip_to": "bow",
+     "pieces": [p("circle", [402, 190], [56, 64]), p("circle", [402, 340], [52, 60])]},
+    stain([p("cloud", [300, 250], [80, 260])], "grime", 0.28, clip="bow", z=9.1),
 ], "25 longbow. Two metres of yew, wrapped grip, iron nocks. The belly has been scraped and re-oiled so often it is flat."))
 
 # 26 crossbow
 ITEMS.append(("eq_w26_crossbow", [
     {"name": "stock", "z": 0, "material": "wood",
-     "pieces": [p("square", [250, 290], [380, 52], rot=8),
-                p("square", [140, 314], [80, 92], rot=8)]},
+     "pieces": [p("square", [236, 268], [400, 50], rot=7),
+                p("square", [118, 294], [86, 96], rot=7)]},
+    {"name": "post", "z": 1, "material": "iron",
+     "pieces": [p("square", [330, 224], [40, 100])]},
     {"name": "prod", "z": 1, "material": "iron",
-     "pieces": [p("bow_and_arrow", [232, 176], [360, 240], crop=[1.5, 0.5, 14.0, 15.5], rot=90)]},
+     "pieces": [p("square", [330, 178], [240, 22], rot=-11),
+                p("square", [330, 178], [240, 22], rot=11)]},
+    {"name": "prod_tips", "z": 1, "material": "iron",
+     "pieces": [p("triangle", [446, 154], [52, 48], rot=90),
+                p("triangle", [446, 202], [52, 48], rot=-90)]},
     {"name": "string", "z": 2, "kind": "flat", "material": "leather", "line": False,
-     "pieces": [p("square", [356, 176], [7, 210])]},
+     "pieces": [p("square", [450, 178], [8, 92])]},
     {"name": "nut", "z": 3, "material": "iron",
-     "pieces": [p("square", [378, 176], [26, 46]),
-                p("circle", [366, 176], [20, 20])]},
+     "pieces": [p("square", [430, 178], [30, 54]),
+                p("circle", [416, 178], [20, 20])]},
     {"name": "trigger", "z": 3, "material": "iron",
-     "pieces": [p("square", [286, 288], [26, 50], rot=22),
-                p("circle", [282, 274], [24, 24])]},
+     "pieces": [p("square", [268, 264], [26, 52], rot=22),
+                p("circle", [264, 250], [24, 24])]},
     {"name": "grip", "z": 3, "material": "leather",
-     "pieces": [p("square", [140, 314], [56, 96], rot=8)]},
-    iron_tarnish("prod", ((240, 176, 200, 90),)),
-], "26 crossbow. Boxy tiller, a prod bent slightly forward, string on a nut. Made to be carried loaded, which is why the string is not right."))
+     "pieces": [p("square", [118, 294], [58, 100], rot=7)]},
+    iron_tarnish("prod", ((330, 178, 260, 100),)),
+], "26 crossbow. Boxy tiller, a prod bent slightly forward on a short post, string on a nut. Made to be carried loaded, which is why the string is not right."))
 
 # 27 arrow bundle
 ITEMS.append(("eq_w27_arrow_bundle", [
@@ -508,17 +519,17 @@ ITEMS.append(("eq_w29_flintlock_rifle", [
 # 30 wooden staff
 ITEMS.append(("eq_w30_wooden_staff", [
     {"name": "staff", "z": 0, "material": "wood",
-     "pieces": [p("square", [256, 256], [440, 40], rot=8)]},
+     "pieces": [p("square", [256, 256], [440, 58], rot=8)]},
     {"name": "knots", "z": 1, "kind": "flat", "material": "wood", "opacity": 0.7,
      "line": {"width": 0.7}, "clip_to": "staff",
      "pieces": [p("circle", [200, 226], [34, 26], rot=8),
                 p("circle", [330, 292], [28, 22], rot=8)]},
     {"name": "thong", "z": 2, "material": "leather",
-     "pieces": [p("square", [256, 236], [54, 76], rot=8),
-                p("square", [256, 300], [40, 40], rot=8)]},
+     "pieces": [p("square", [256, 236], [66, 86], rot=8),
+                p("square", [256, 300], [48, 46], rot=8)]},
     {"name": "caps", "z": 2, "material": "bronze",
-     "pieces": [p("square", [42, 230], [26, 46], rot=8),
-                p("square", [470, 282], [26, 46], rot=8)]},
+     "pieces": [p("square", [42, 230], [34, 68], rot=8),
+                p("square", [470, 282], [34, 68], rot=8)]},
     stain([p("cloud", [256, 256], [200, 70])], "grime", 0.35, clip="staff", z=9.1),
 ], "30 wooden staff. A straight hazel rod with bronze ferrules, a leather thong wound at the middle. Knobby, unremarkable, heavy."))
 

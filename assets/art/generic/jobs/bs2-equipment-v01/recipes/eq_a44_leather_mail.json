@@ -1,0 +1,298 @@
+{
+ "asset": "eq_a44_leather_mail",
+ "status": "candidate",
+ "note": "44 leather mail. A boiled jerkin with a skirt of strips and two brass buckles. The shoulder seams have been restitched four times.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 108,
+ "forms": [
+  {
+   "name": "jerkin_edge",
+   "z": -0.5,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      346,
+      326
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "jerkin",
+   "z": 0,
+   "material": "worn",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      320,
+      300
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 3
+     }
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      150
+     ],
+     "size": [
+      260,
+      132
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "sleeves_edge",
+   "z": 0.0,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      70,
+      250
+     ],
+     "size": [
+      206,
+      256
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      442,
+      250
+     ],
+     "size": [
+      206,
+      256
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sleeves",
+   "z": 0.5,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      70,
+      250
+     ],
+     "size": [
+      180,
+      230
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      442,
+      250
+     ],
+     "size": [
+      180,
+      230
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skirt_edge",
+   "z": 0.5,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      414
+     ],
+     "size": [
+      446,
+      246
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "skirt",
+   "z": 1,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      414
+     ],
+     "size": [
+      420,
+      220
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "straps",
+   "z": 2,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.55,
+   "line": false,
+   "clip_to": "jerkin",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      254
+     ],
+     "size": [
+      310,
+      20
+     ],
+     "rot": -9
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      330
+     ],
+     "size": [
+      310,
+      20
+     ],
+     "rot": 7
+    }
+   ]
+  },
+  {
+   "name": "buckles",
+   "z": 3,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      182,
+      258
+     ],
+     "size": [
+      42,
+      28
+     ],
+     "rot": -9
+    },
+    {
+     "icon": "square",
+     "at": [
+      334,
+      336
+     ],
+     "size": [
+      42,
+      28
+     ],
+     "rot": 7
+    }
+   ]
+  },
+  {
+   "name": "stitch",
+   "z": 3,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.45,
+   "line": false,
+   "clip_to": "skirt",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      500
+     ],
+     "size": [
+      18,
+      18
+     ],
+     "repeat": {
+      "line": [
+       [
+        96,
+        486
+       ],
+       [
+        416,
+        486
+       ]
+      ],
+      "count": 9
+     }
+    }
+   ]
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      430
+     ],
+     "size": [
+      187.00000000000003,
+      82.5
+     ]
+    }
+   ],
+   "clip_to": "skirt"
+  }
+ ]
+}

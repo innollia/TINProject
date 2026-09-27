@@ -1,0 +1,154 @@
+{
+ "asset": "eq_a49_iron_glove",
+ "status": "candidate",
+ "note": "49 iron glove. Plate over the knuckles, studs along the seam, a closed cuff. Heavy as the rest of the set.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 113,
+ "forms": [
+  {
+   "name": "hand",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "hand",
+     "at": [
+      252,
+      240
+     ],
+     "size": [
+      380,
+      380
+     ],
+     "crop": [
+      1.0,
+      0.5,
+      15.0,
+      13.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knuckles",
+   "z": 1,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.55,
+   "line": false,
+   "clip_to": "hand",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      252,
+      240
+     ],
+     "size": [
+      300,
+      130
+     ]
+    }
+   ]
+  },
+  {
+   "name": "studs",
+   "z": 2,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      252,
+      240
+     ],
+     "size": [
+      24,
+      24
+     ],
+     "repeat": {
+      "line": [
+       [
+        110,
+        202
+       ],
+       [
+        394,
+        202
+       ]
+      ],
+      "count": 6
+     }
+    }
+   ]
+  },
+  {
+   "name": "cuff",
+   "z": 2,
+   "material": "worn",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      378
+     ],
+     "size": [
+      340,
+      108
+     ],
+     "slice": {
+      "border": 2,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      230,
+      200
+     ],
+     "size": [
+      110.0,
+      80.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      300,
+      310
+     ],
+     "size": [
+      80.0,
+      65.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "hand"
+  }
+ ]
+}

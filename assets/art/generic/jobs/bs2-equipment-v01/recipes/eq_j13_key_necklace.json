@@ -1,0 +1,154 @@
+{
+ "asset": "eq_j13_key_necklace",
+ "status": "candidate",
+ "note": "71 key necklace. An iron key worn on a loop around the neck. It is not for any door that still exists.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 135,
+ "forms": [
+  {
+   "name": "key",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "key",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      380,
+      380
+     ]
+    }
+   ]
+  },
+  {
+   "name": "teeth",
+   "z": 1,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.4,
+   "line": false,
+   "clip_to": "key",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      140,
+      400
+     ],
+     "size": [
+      110,
+      14
+     ],
+     "rot": 40
+    },
+    {
+     "icon": "square",
+     "at": [
+      172,
+      424
+     ],
+     "size": [
+      90,
+      12
+     ],
+     "rot": 40
+    }
+   ]
+  },
+  {
+   "name": "hole",
+   "z": 2,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "key",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      386,
+      128
+     ],
+     "size": [
+      70,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cord",
+   "z": 2,
+   "kind": "flat",
+   "material": "leather",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      386,
+      122
+     ],
+     "size": [
+      220,
+      102.66666666666667
+     ],
+     "crop": [
+      2.0,
+      3.0,
+      14.0,
+      8.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      220,
+      220
+     ],
+     "size": [
+      100.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      320,
+      320
+     ],
+     "size": [
+      90.0,
+      80.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "key"
+  }
+ ]
+}

@@ -1,0 +1,222 @@
+{
+ "asset": "eq_s01_round_wood_shield",
+ "status": "candidate",
+ "note": "53 round wood shield. Plank board, iron rim, iron boss, twelve rivets. The rim is bent in on the right from something that hit it.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 117,
+ "forms": [
+  {
+   "name": "board_edge",
+   "z": -1,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      430,
+      430
+     ]
+    }
+   ]
+  },
+  {
+   "name": "board",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      400,
+      400
+     ]
+    }
+   ]
+  },
+  {
+   "name": "planks",
+   "z": 1,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.5,
+   "line": false,
+   "clip_to": "board",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      176,
+      256
+     ],
+     "size": [
+      12,
+      400
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      12,
+      400
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      336,
+      256
+     ],
+     "size": [
+      12,
+      400
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rim",
+   "z": 2,
+   "kind": "flat",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      400,
+      400
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      340,
+      340
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "boss",
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      150,
+      150
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      90,
+      90
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rivets",
+   "z": 3,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "repeat": {
+      "ellipse": [
+       256,
+       256,
+       176,
+       176
+      ],
+      "count": 12
+     }
+    }
+   ]
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      200,
+      200
+     ],
+     "size": [
+      110.00000000000001,
+      110.00000000000001
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      340,
+      340
+     ],
+     "size": [
+      99.00000000000001,
+      99.00000000000001
+     ]
+    }
+   ],
+   "clip_to": "board"
+  }
+ ]
+}

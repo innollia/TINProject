@@ -1,0 +1,227 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_porkchop",
+  "note": "pork chop at a diagonal: pale pink-grey meat, fat edge, one pale bone sticking out at the upper right. No text.",
+  "seed": 3302,
+  "forms": [
+    {
+      "name": "cap",
+      "z": 0,
+      "material": "pork",
+      "rough": {
+        "amp": 0.3,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "cloud",
+          "at": [
+            64,
+            74
+          ],
+          "size": [
+            84,
+            68
+          ],
+          "crop": [
+            1.4,
+            2.6,
+            14.6,
+            13.4
+          ],
+          "rot": -15
+        }
+      ]
+    },
+    {
+      "name": "meat",
+      "z": 1,
+      "material": "pork",
+      "rough": {
+        "amp": 0.35,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.1,
+        "highlight_amount": 0.45
+      },
+      "grad": {
+        "to": "soot",
+        "y0": 74,
+        "y1": 118,
+        "amount": 0.3
+      },
+      "pieces": [
+        {
+          "icon": "cloud",
+          "at": [
+            58,
+            66
+          ],
+          "size": [
+            82,
+            66
+          ],
+          "crop": [
+            1.4,
+            2.6,
+            14.6,
+            13.4
+          ],
+          "rot": -15
+        }
+      ]
+    },
+    {
+      "name": "cut",
+      "z": 2,
+      "kind": "flat",
+      "material": "beef_marble",
+      "opacity": 0.55,
+      "clip_to": "meat",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            56,
+            54
+          ],
+          "size": [
+            77.89999999999999,
+            34
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": 59
+        }
+      ]
+    },
+    {
+      "name": "mottle",
+      "z": 3,
+      "kind": "flat",
+      "material": "beef_marble",
+      "opacity": 0.3,
+      "clip_to": "meat",
+      "pieces": [
+        {
+          "icon": "sponge",
+          "at": [
+            66,
+            74
+          ],
+          "size": [
+            41.0,
+            27.72
+          ],
+          "rot": -27
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 4,
+      "kind": "flat",
+      "material": "pork",
+      "opacity": 0.28,
+      "clip_to": "meat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            42,
+            46
+          ],
+          "size": [
+            32,
+            13
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -15
+        }
+      ]
+    },
+    {
+      "name": "bone",
+      "z": 5,
+      "material": "bone_white",
+      "shade": {
+        "bump": 0.9,
+        "highlight_amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "bone_horizontal",
+          "at": [
+            92,
+            40
+          ],
+          "size": [
+            50,
+            24
+          ],
+          "crop": [
+            0.4,
+            4.0,
+            15.6,
+            12.0
+          ],
+          "rot": -14
+        }
+      ]
+    },
+    {
+      "name": "bone2",
+      "z": 6,
+      "material": "bone_white",
+      "pieces": [
+        {
+          "icon": "bone",
+          "at": [
+            30,
+            88
+          ],
+          "size": [
+            30,
+            30
+          ],
+          "crop": [
+            2.5,
+            0.5,
+            13.5,
+            15.5
+          ],
+          "rot": 200
+        }
+      ]
+    }
+  ]
+}

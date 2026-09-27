@@ -1,0 +1,235 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_pumpkin_pie",
+  "note": "round pumpkin pie in a dark tin seen from the front: dull golden crust rim, dark orange filling, four pale lattice strips. No text.",
+  "seed": 3504,
+  "forms": [
+    {
+      "name": "tin",
+      "z": 0,
+      "material": "pastry_dark",
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.4
+      },
+      "grad": {
+        "to": "soot",
+        "y0": 92,
+        "y1": 118,
+        "amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "cylinder",
+          "at": [
+            64,
+            92
+          ],
+          "size": [
+            96,
+            46
+          ],
+          "crop": [
+            1.2,
+            5.0,
+            14.8,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "crust",
+      "z": 1,
+      "material": "pie_crust",
+      "rough": {
+        "amp": 0.35,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.05,
+        "highlight_amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            64
+          ],
+          "size": [
+            104,
+            58
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fill",
+      "z": 2,
+      "material": "pie_fill",
+      "clip_to": "crust",
+      "shade": {
+        "bump": 0.9,
+        "highlight_amount": 0.35
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            62
+          ],
+          "size": [
+            80,
+            40
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lattice",
+      "z": 3,
+      "kind": "flat",
+      "material": "pie_crust",
+      "clip_to": "crust",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            46,
+            62
+          ],
+          "size": [
+            72,
+            9
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": -24
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            46,
+            62
+          ],
+          "size": [
+            72,
+            9
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": 24
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            46,
+            62
+          ],
+          "size": [
+            72,
+            8
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": 0
+        }
+      ]
+    },
+    {
+      "name": "rim_gleam",
+      "z": 4,
+      "kind": "flat",
+      "material": "pie_crust",
+      "opacity": 0.5,
+      "clip_to": "crust",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            40
+          ],
+          "size": [
+            96,
+            12
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 5,
+      "kind": "flat",
+      "material": "crumb",
+      "opacity": 0.3,
+      "clip_to": "crust",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            42,
+            40
+          ],
+          "size": [
+            36,
+            12
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -14
+        }
+      ]
+    }
+  ]
+}

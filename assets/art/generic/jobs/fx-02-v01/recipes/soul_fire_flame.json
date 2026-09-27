@@ -1,0 +1,1066 @@
+{
+  "asset": "soul_fire_flame",
+  "status": "candidate",
+  "note": "soul_fire_flame (blue soul fire, idle burn). 6 frames, slow. Five thin droplet tongues that narrow as they climb (0.80x at the tip, -19 px), a pale inner tier, a white core, a wide low base glow, a dark blue haze, and two ember sets that swap at frame 3 so the rise never pops.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    384,
+    384
+  ],
+  "pivot": [
+    192,
+    316
+  ],
+  "pivot_meaning": "floor point under the flame base",
+  "seed": 1201,
+  "forms": [
+    {
+      "name": "sf_haze",
+      "z": 0,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            192.0,
+            200.0
+          ],
+          "size": [
+            250.0,
+            300.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            126.0,
+            236.0
+          ],
+          "size": [
+            128.0,
+            172.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            262.0,
+            242.0
+          ],
+          "size": [
+            116.0,
+            152.0
+          ]
+        }
+      ],
+      "material": "flame_soul_deep",
+      "opacity": 0.5,
+      "blur": 7,
+      "grad": {
+        "to": "soul_blue_dark",
+        "y0": 60,
+        "y1": 300
+      }
+    },
+    {
+      "name": "sf_base",
+      "z": 0.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            192.0,
+            290.0
+          ],
+          "size": [
+            238.0,
+            66.0
+          ]
+        }
+      ],
+      "material": "flame_soul_inner",
+      "emit": 0.4,
+      "glow": {
+        "radius": 11,
+        "opacity": 0.45,
+        "color": "soul_blue_pale"
+      }
+    },
+    {
+      "name": "sf_ta",
+      "z": 1,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": -7,
+          "at": [
+            140.0,
+            202.0
+          ],
+          "size": [
+            66.0,
+            196.0
+          ]
+        }
+      ],
+      "material": "flame_soul",
+      "emit": 0.75,
+      "glow": {
+        "radius": 4,
+        "opacity": 0.4,
+        "color": "soul_blue"
+      }
+    },
+    {
+      "name": "sf_tb",
+      "z": 1,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": 8,
+          "at": [
+            248.0,
+            214.0
+          ],
+          "size": [
+            58.0,
+            170.0
+          ]
+        }
+      ],
+      "material": "flame_soul",
+      "emit": 0.75,
+      "glow": {
+        "radius": 4,
+        "opacity": 0.4,
+        "color": "soul_blue"
+      }
+    },
+    {
+      "name": "sf_tc",
+      "z": 1,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": -1,
+          "at": [
+            192.0,
+            174.0
+          ],
+          "size": [
+            74.0,
+            250.0
+          ]
+        }
+      ],
+      "material": "flame_soul",
+      "emit": 0.8,
+      "glow": {
+        "radius": 5,
+        "opacity": 0.45,
+        "color": "soul_blue"
+      }
+    },
+    {
+      "name": "sf_td",
+      "z": 1,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": -13,
+          "at": [
+            168.0,
+            226.0
+          ],
+          "size": [
+            48.0,
+            148.0
+          ]
+        }
+      ],
+      "material": "flame_soul",
+      "emit": 0.7,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.35,
+        "color": "soul_blue"
+      }
+    },
+    {
+      "name": "sf_te",
+      "z": 1,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": 12,
+          "at": [
+            220.0,
+            236.0
+          ],
+          "size": [
+            44.0,
+            132.0
+          ]
+        }
+      ],
+      "material": "flame_soul",
+      "emit": 0.7,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.35,
+        "color": "soul_blue"
+      }
+    },
+    {
+      "name": "sf_ia",
+      "z": 2,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": -5,
+          "at": [
+            172.0,
+            246.0
+          ],
+          "size": [
+            40.0,
+            142.0
+          ]
+        }
+      ],
+      "material": "flame_soul_inner",
+      "emit": 0.9,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.5,
+        "color": "soul_blue_pale"
+      }
+    },
+    {
+      "name": "sf_ib",
+      "z": 2,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": 6,
+          "at": [
+            218.0,
+            254.0
+          ],
+          "size": [
+            32.0,
+            112.0
+          ]
+        }
+      ],
+      "material": "flame_soul_inner",
+      "emit": 0.9,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.5,
+        "color": "soul_blue_pale"
+      }
+    },
+    {
+      "name": "sf_ca",
+      "z": 3,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            196.0,
+            270.0
+          ],
+          "size": [
+            28.0,
+            96.0
+          ]
+        }
+      ],
+      "material": "flame_soul_core",
+      "emit": 1.0,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.7,
+        "color": "soul_white"
+      }
+    },
+    {
+      "name": "sf_cb",
+      "z": 3,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": -9,
+          "at": [
+            164.0,
+            280.0
+          ],
+          "size": [
+            19.0,
+            60.0
+          ]
+        }
+      ],
+      "material": "flame_soul_core",
+      "emit": 1.0,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.6,
+        "color": "soul_white"
+      }
+    },
+    {
+      "name": "sf_mA",
+      "z": 4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            128.0,
+            232.0
+          ],
+          "size": 9.0
+        },
+        {
+          "icon": "circle",
+          "at": [
+            206.0,
+            186.0
+          ],
+          "size": 7.0
+        },
+        {
+          "icon": "circle",
+          "at": [
+            252.0,
+            258.0
+          ],
+          "size": 6.0
+        }
+      ],
+      "material": "flame_soul_inner",
+      "emit": 0.95,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.6,
+        "color": "soul_white"
+      }
+    },
+    {
+      "name": "sf_mB",
+      "z": 4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            128.0,
+            188.0
+          ],
+          "size": 7.0
+        },
+        {
+          "icon": "circle",
+          "at": [
+            206.0,
+            142.0
+          ],
+          "size": 6.0
+        },
+        {
+          "icon": "circle",
+          "at": [
+            252.0,
+            214.0
+          ],
+          "size": 5.0
+        }
+      ],
+      "material": "flame_soul_inner",
+      "emit": 0.95,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.6,
+        "color": "soul_white"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "sf_base": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dy": 0,
+          "sx": 1,
+          "sy": 1
+        },
+        "sf_ta": {
+          "pivot": [
+            140,
+            300
+          ],
+          "dy": 0,
+          "sx": 1,
+          "rot": 0
+        },
+        "sf_tb": {
+          "pivot": [
+            248,
+            300
+          ],
+          "dy": 0,
+          "sx": 1,
+          "rot": 0
+        },
+        "sf_tc": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dy": 0,
+          "sx": 1
+        },
+        "sf_td": {
+          "pivot": [
+            168,
+            300
+          ],
+          "dy": 0,
+          "sx": 1
+        },
+        "sf_te": {
+          "pivot": [
+            220,
+            300
+          ],
+          "dy": 0,
+          "sx": 1
+        },
+        "sf_ia": {
+          "pivot": [
+            172,
+            300
+          ],
+          "dy": 0,
+          "sx": 1
+        },
+        "sf_ib": {
+          "pivot": [
+            218,
+            300
+          ],
+          "dy": 0,
+          "sx": 1
+        },
+        "sf_ca": {
+          "pivot": [
+            196,
+            300
+          ],
+          "dy": 0,
+          "sx": 1,
+          "sy": 1
+        },
+        "sf_cb": {
+          "pivot": [
+            164,
+            300
+          ],
+          "dy": 0
+        },
+        "sf_mA": {
+          "pivot": [
+            128,
+            300
+          ],
+          "dy": -8,
+          "sx": 1,
+          "sy": 1
+        },
+        "sf_mB": {
+          "pivot": [
+            128,
+            300
+          ],
+          "dy": -8,
+          "sx": 1,
+          "sy": 1
+        }
+      },
+      "hide": [
+        "sf_mB"
+      ]
+    },
+    {
+      "name": "f1",
+      "move": {
+        "sf_base": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dy": -3,
+          "sx": 1.05,
+          "sy": 1.05
+        },
+        "sf_ta": {
+          "pivot": [
+            140,
+            300
+          ],
+          "dy": -4,
+          "sx": 0.96,
+          "rot": -2
+        },
+        "sf_tb": {
+          "pivot": [
+            248,
+            300
+          ],
+          "dy": -3,
+          "sx": 0.97,
+          "rot": 2
+        },
+        "sf_tc": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dy": -6,
+          "sx": 0.95
+        },
+        "sf_td": {
+          "pivot": [
+            168,
+            300
+          ],
+          "dy": -3,
+          "sx": 0.96
+        },
+        "sf_te": {
+          "pivot": [
+            220,
+            300
+          ],
+          "dy": -2,
+          "sx": 0.97
+        },
+        "sf_ia": {
+          "pivot": [
+            172,
+            300
+          ],
+          "dy": -4,
+          "sx": 0.94
+        },
+        "sf_ib": {
+          "pivot": [
+            218,
+            300
+          ],
+          "dy": -3,
+          "sx": 0.95
+        },
+        "sf_ca": {
+          "pivot": [
+            196,
+            300
+          ],
+          "dy": -4,
+          "sx": 0.95,
+          "sy": 0.95
+        },
+        "sf_cb": {
+          "pivot": [
+            164,
+            300
+          ],
+          "dy": -3
+        },
+        "sf_mA": {
+          "pivot": [
+            128,
+            300
+          ],
+          "dy": -8,
+          "sx": 0.92,
+          "sy": 0.92
+        },
+        "sf_mB": {
+          "pivot": [
+            128,
+            300
+          ],
+          "dy": -8,
+          "sx": 0.92,
+          "sy": 0.92
+        }
+      },
+      "hide": [
+        "sf_mB"
+      ]
+    },
+    {
+      "name": "f2",
+      "move": {
+        "sf_base": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dy": -6,
+          "sx": 1.1,
+          "sy": 1.1
+        },
+        "sf_ta": {
+          "pivot": [
+            140,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.9,
+          "rot": 2
+        },
+        "sf_tb": {
+          "pivot": [
+            248,
+            300
+          ],
+          "dy": -7,
+          "sx": 0.92,
+          "rot": -2
+        },
+        "sf_tc": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dy": -13,
+          "sx": 0.88
+        },
+        "sf_td": {
+          "pivot": [
+            168,
+            300
+          ],
+          "dy": -7,
+          "sx": 0.9
+        },
+        "sf_te": {
+          "pivot": [
+            220,
+            300
+          ],
+          "dy": -6,
+          "sx": 0.92
+        },
+        "sf_ia": {
+          "pivot": [
+            172,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.86
+        },
+        "sf_ib": {
+          "pivot": [
+            218,
+            300
+          ],
+          "dy": -7,
+          "sx": 0.88
+        },
+        "sf_ca": {
+          "pivot": [
+            196,
+            300
+          ],
+          "dy": -8,
+          "sx": 0.88,
+          "sy": 0.88
+        },
+        "sf_cb": {
+          "pivot": [
+            164,
+            300
+          ],
+          "dy": -6
+        },
+        "sf_mA": {
+          "pivot": [
+            128,
+            300
+          ],
+          "dy": -8,
+          "sx": 0.84,
+          "sy": 0.84
+        },
+        "sf_mB": {
+          "pivot": [
+            128,
+            300
+          ],
+          "dy": -8,
+          "sx": 0.84,
+          "sy": 0.84
+        }
+      },
+      "hide": [
+        "sf_mB"
+      ]
+    },
+    {
+      "name": "f3",
+      "move": {
+        "sf_base": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dy": -8,
+          "sx": 1.13,
+          "sy": 1.13
+        },
+        "sf_ta": {
+          "pivot": [
+            140,
+            300
+          ],
+          "dy": -13,
+          "sx": 0.84,
+          "rot": 0
+        },
+        "sf_tb": {
+          "pivot": [
+            248,
+            300
+          ],
+          "dy": -11,
+          "sx": 0.86,
+          "rot": 0
+        },
+        "sf_tc": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dy": -19,
+          "sx": 0.8
+        },
+        "sf_td": {
+          "pivot": [
+            168,
+            300
+          ],
+          "dy": -10,
+          "sx": 0.85
+        },
+        "sf_te": {
+          "pivot": [
+            220,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.87
+        },
+        "sf_ia": {
+          "pivot": [
+            172,
+            300
+          ],
+          "dy": -13,
+          "sx": 0.78
+        },
+        "sf_ib": {
+          "pivot": [
+            218,
+            300
+          ],
+          "dy": -11,
+          "sx": 0.8
+        },
+        "sf_ca": {
+          "pivot": [
+            196,
+            300
+          ],
+          "dy": -12,
+          "sx": 0.8,
+          "sy": 0.8
+        },
+        "sf_cb": {
+          "pivot": [
+            164,
+            300
+          ],
+          "dy": -9
+        },
+        "sf_mA": {
+          "pivot": [
+            128,
+            300
+          ],
+          "dy": -8,
+          "sx": 0.76,
+          "sy": 0.76
+        },
+        "sf_mB": {
+          "pivot": [
+            128,
+            300
+          ],
+          "dy": -8,
+          "sx": 0.76,
+          "sy": 0.76
+        }
+      },
+      "hide": [
+        "sf_mA"
+      ],
+      "show": [
+        "sf_mB"
+      ]
+    },
+    {
+      "name": "f4",
+      "move": {
+        "sf_base": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dy": -6,
+          "sx": 1.1,
+          "sy": 1.1
+        },
+        "sf_ta": {
+          "pivot": [
+            140,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.9,
+          "rot": 2
+        },
+        "sf_tb": {
+          "pivot": [
+            248,
+            300
+          ],
+          "dy": -7,
+          "sx": 0.92,
+          "rot": -2
+        },
+        "sf_tc": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dy": -13,
+          "sx": 0.88
+        },
+        "sf_td": {
+          "pivot": [
+            168,
+            300
+          ],
+          "dy": -7,
+          "sx": 0.9
+        },
+        "sf_te": {
+          "pivot": [
+            220,
+            300
+          ],
+          "dy": -6,
+          "sx": 0.92
+        },
+        "sf_ia": {
+          "pivot": [
+            172,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.86
+        },
+        "sf_ib": {
+          "pivot": [
+            218,
+            300
+          ],
+          "dy": -7,
+          "sx": 0.88
+        },
+        "sf_ca": {
+          "pivot": [
+            196,
+            300
+          ],
+          "dy": -8,
+          "sx": 0.88,
+          "sy": 0.88
+        },
+        "sf_cb": {
+          "pivot": [
+            164,
+            300
+          ],
+          "dy": -6
+        },
+        "sf_mA": {
+          "pivot": [
+            128,
+            300
+          ],
+          "dy": -8,
+          "sx": 0.68,
+          "sy": 0.68
+        },
+        "sf_mB": {
+          "pivot": [
+            128,
+            300
+          ],
+          "dy": -8,
+          "sx": 0.68,
+          "sy": 0.68
+        }
+      },
+      "hide": [
+        "sf_mA"
+      ],
+      "show": [
+        "sf_mB"
+      ]
+    },
+    {
+      "name": "f5",
+      "move": {
+        "sf_base": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dy": -3,
+          "sx": 1.05,
+          "sy": 1.05
+        },
+        "sf_ta": {
+          "pivot": [
+            140,
+            300
+          ],
+          "dy": -4,
+          "sx": 0.96,
+          "rot": -2
+        },
+        "sf_tb": {
+          "pivot": [
+            248,
+            300
+          ],
+          "dy": -3,
+          "sx": 0.97,
+          "rot": 2
+        },
+        "sf_tc": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dy": -6,
+          "sx": 0.95
+        },
+        "sf_td": {
+          "pivot": [
+            168,
+            300
+          ],
+          "dy": -3,
+          "sx": 0.96
+        },
+        "sf_te": {
+          "pivot": [
+            220,
+            300
+          ],
+          "dy": -2,
+          "sx": 0.97
+        },
+        "sf_ia": {
+          "pivot": [
+            172,
+            300
+          ],
+          "dy": -4,
+          "sx": 0.94
+        },
+        "sf_ib": {
+          "pivot": [
+            218,
+            300
+          ],
+          "dy": -3,
+          "sx": 0.95
+        },
+        "sf_ca": {
+          "pivot": [
+            196,
+            300
+          ],
+          "dy": -4,
+          "sx": 0.95,
+          "sy": 0.95
+        },
+        "sf_cb": {
+          "pivot": [
+            164,
+            300
+          ],
+          "dy": -3
+        },
+        "sf_mA": {
+          "pivot": [
+            128,
+            300
+          ],
+          "dy": -8,
+          "sx": 0.6,
+          "sy": 0.6
+        },
+        "sf_mB": {
+          "pivot": [
+            128,
+            300
+          ],
+          "dy": -8,
+          "sx": 0.6,
+          "sy": 0.6
+        }
+      },
+      "hide": [
+        "sf_mA"
+      ],
+      "show": [
+        "sf_mB"
+      ]
+    }
+  ]
+}

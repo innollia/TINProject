@@ -1,0 +1,549 @@
+{
+  "asset": "damage_indicator",
+  "status": "candidate",
+  "note": "damage_indicator (took a hit). 4 frames, symmetric pulse so the loop is seamless. Nine tapered blood shards thrown outward on a 48 px ring, a thick ring that expands, eleven spatter drops on a wider jittered ring, and a bone-pale flash core that shrinks as the ring grows. Sharp radial silhouette, not a recoloured disc.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    192,
+    192
+  ],
+  "pivot": [
+    96,
+    160
+  ],
+  "pivot_meaning": "point under the impact, low on the body",
+  "seed": 1204,
+  "forms": [
+    {
+      "name": "dm_halo",
+      "z": 0,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            92.0
+          ],
+          "size": [
+            70.0,
+            70.0
+          ]
+        }
+      ],
+      "material": "blood_wet",
+      "opacity": 0.4,
+      "blur": 8,
+      "glow": {
+        "radius": 10,
+        "opacity": 0.35,
+        "color": "blood_wet"
+      }
+    },
+    {
+      "name": "dm_ring",
+      "z": 1,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "ring",
+          "crop": [
+            0.6,
+            4.4,
+            15.4,
+            11.6
+          ],
+          "at": [
+            96.0,
+            92.0
+          ],
+          "size": [
+            104.0,
+            100.0
+          ]
+        }
+      ],
+      "material": "blood_wet",
+      "emit": 0.4,
+      "line": false,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.4,
+        "color": "blood_wet"
+      }
+    },
+    {
+      "name": "dm_shards",
+      "z": 2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": 0.0,
+          "at": [
+            96.0,
+            44.0
+          ],
+          "size": [
+            15.0,
+            34.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 40.0,
+          "at": [
+            126.85,
+            55.23
+          ],
+          "size": [
+            15.0,
+            34.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 80.0,
+          "at": [
+            143.27,
+            83.66
+          ],
+          "size": [
+            15.0,
+            34.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 120.0,
+          "at": [
+            137.57,
+            116.0
+          ],
+          "size": [
+            15.0,
+            34.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 160.0,
+          "at": [
+            112.42,
+            137.11
+          ],
+          "size": [
+            15.0,
+            34.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 200.0,
+          "at": [
+            79.58,
+            137.11
+          ],
+          "size": [
+            15.0,
+            34.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 240.0,
+          "at": [
+            54.43,
+            116.0
+          ],
+          "size": [
+            15.0,
+            34.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 280.0,
+          "at": [
+            48.73,
+            83.66
+          ],
+          "size": [
+            15.0,
+            34.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 320.0,
+          "at": [
+            65.15,
+            55.23
+          ],
+          "size": [
+            15.0,
+            34.0
+          ]
+        }
+      ],
+      "material": "blood",
+      "emit": 0.45,
+      "line": false,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.35,
+        "color": "blood_wet"
+      }
+    },
+    {
+      "name": "dm_spit",
+      "z": 2.2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            114.02,
+            42.48
+          ],
+          "size": [
+            10.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            143.86,
+            55.58
+          ],
+          "size": [
+            10.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            163.37,
+            86.64
+          ],
+          "size": [
+            10.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            144.09,
+            117.77
+          ],
+          "size": [
+            10.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            126.14,
+            146.18
+          ],
+          "size": [
+            10.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            91.6,
+            161.3
+          ],
+          "size": [
+            10.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            62.55,
+            137.43
+          ],
+          "size": [
+            10.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            36.35,
+            114.79
+          ],
+          "size": [
+            10.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            26.21,
+            77.4
+          ],
+          "size": [
+            10.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            54.46,
+            51.12
+          ],
+          "size": [
+            10.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            81.52,
+            27.89
+          ],
+          "size": [
+            10.0,
+            12.0
+          ]
+        }
+      ],
+      "material": "blood",
+      "line": false
+    },
+    {
+      "name": "dm_core",
+      "z": 3,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            92.0
+          ],
+          "size": [
+            34.0,
+            32.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            92.0
+          ],
+          "size": [
+            20.0,
+            18.0
+          ]
+        }
+      ],
+      "material": "blood_flash",
+      "emit": 1.0,
+      "line": false,
+      "glow": {
+        "radius": 6,
+        "opacity": 0.75,
+        "color": "blood_flash"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "dm_halo": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.5,
+          "sy": 0.5
+        },
+        "dm_ring": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.5,
+          "sy": 0.5
+        },
+        "dm_shards": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.5,
+          "sy": 0.5
+        },
+        "dm_spit": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.6,
+          "sy": 0.6
+        },
+        "dm_core": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 1.15,
+          "sy": 1.15
+        }
+      }
+    },
+    {
+      "name": "f1",
+      "move": {
+        "dm_halo": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.86,
+          "sy": 0.86
+        },
+        "dm_ring": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.86,
+          "sy": 0.86
+        },
+        "dm_shards": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.86,
+          "sy": 0.86
+        },
+        "dm_spit": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 1.0,
+          "sy": 1.0
+        },
+        "dm_core": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.72,
+          "sy": 0.72
+        }
+      }
+    },
+    {
+      "name": "f2",
+      "move": {
+        "dm_halo": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 1.14,
+          "sy": 1.14
+        },
+        "dm_ring": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 1.14,
+          "sy": 1.14
+        },
+        "dm_shards": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 1.14,
+          "sy": 1.14
+        },
+        "dm_spit": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 1.2,
+          "sy": 1.2
+        },
+        "dm_core": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.34,
+          "sy": 0.34
+        }
+      }
+    },
+    {
+      "name": "f3",
+      "move": {
+        "dm_halo": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.86,
+          "sy": 0.86
+        },
+        "dm_ring": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.86,
+          "sy": 0.86
+        },
+        "dm_shards": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.86,
+          "sy": 0.86
+        },
+        "dm_spit": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 1.0,
+          "sy": 1.0
+        },
+        "dm_core": {
+          "pivot": [
+            96,
+            92
+          ],
+          "sx": 0.72,
+          "sy": 0.72
+        }
+      }
+    }
+  ]
+}

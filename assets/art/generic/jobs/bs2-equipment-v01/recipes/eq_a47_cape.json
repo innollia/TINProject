@@ -1,0 +1,182 @@
+{
+ "asset": "eq_a47_cape",
+ "status": "candidate",
+ "note": "47 cape. A wine-red cloak on a bronze ring clasp, worn through at both lower corners.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 111,
+ "forms": [
+  {
+   "name": "cloth",
+   "z": 0,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      200
+     ],
+     "size": [
+      440,
+      300
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      400
+     ],
+     "size": [
+      430,
+      300
+     ],
+     "rot": 180
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      156
+     ],
+     "size": [
+      230,
+      130
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      120,
+      480
+     ],
+     "size": [
+      96,
+      96
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      396,
+      470
+     ],
+     "size": [
+      86,
+      86
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "folds",
+   "z": 1,
+   "kind": "flat",
+   "material": "coat_seam",
+   "opacity": 0.45,
+   "line": false,
+   "clip_to": "cloth",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      186,
+      340
+     ],
+     "size": [
+      16,
+      300
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      326,
+      340
+     ],
+     "size": [
+      16,
+      300
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      350
+     ],
+     "size": [
+      14,
+      280
+     ]
+    }
+   ]
+  },
+  {
+   "name": "clasp",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      152
+     ],
+     "size": [
+      76,
+      76
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      152
+     ],
+     "size": [
+      34,
+      34
+     ],
+     "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      360
+     ],
+     "size": [
+      198.00000000000003,
+      143.0
+     ]
+    }
+   ],
+   "clip_to": "cloth"
+  }
+ ]
+}

@@ -1,0 +1,194 @@
+{
+ "asset": "eq_a40_iron_mask",
+ "status": "candidate",
+ "note": "40 iron mask. A pressed theatre face in sheet iron, eye holes cut to slits. Somebody kept the expression and lost the face.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 104,
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "tragedy_mask",
+     "at": [
+      256,
+      262
+     ],
+     "size": [
+      390,
+      390
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye_slots",
+   "z": 1,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "plate",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198,
+      222
+     ],
+     "size": [
+      76,
+      62
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      314,
+      222
+     ],
+     "size": [
+      76,
+      62
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "z": 1,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "plate",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      348
+     ],
+     "size": [
+      112,
+      18
+     ],
+     "rot": -4
+    }
+   ]
+  },
+  {
+   "name": "straps",
+   "z": 2,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      46,
+      190
+     ],
+     "size": [
+      120,
+      26
+     ],
+     "rot": -18
+    },
+    {
+     "icon": "square",
+     "at": [
+      46,
+      340
+     ],
+     "size": [
+      120,
+      26
+     ],
+     "rot": 18
+    }
+   ]
+  },
+  {
+   "name": "rivets",
+   "z": 2,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      262
+     ],
+     "size": [
+      14,
+      14
+     ],
+     "repeat": {
+      "ellipse": [
+       256,
+       262,
+       168,
+       176
+      ],
+      "count": 10,
+      "arc": [
+       20,
+       340
+      ],
+      "skip": [
+       4,
+       5,
+       6
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      200,
+      210
+     ],
+     "size": [
+      70.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      330,
+      330
+     ],
+     "size": [
+      65.0,
+      55.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "plate"
+  }
+ ]
+}

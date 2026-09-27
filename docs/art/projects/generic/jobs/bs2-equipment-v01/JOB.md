@@ -18,83 +18,83 @@
 
 ## A. 무기 (1–36)
 - [x] 1 녹슨 장검 `eq_w01_rusted_longsword`
-- [ ] 2 이 빠진 장검 `eq_w02_chipped_longsword`
-- [ ] 3 기사단 장검 `eq_w03_crusader_longsword`
-- [ ] 4 처형인 대검 `eq_w04_executioner_greatsword`
-- [ ] 5 검은 대검 `eq_w05_black_greatsword`
-- [ ] 6 곡도 `eq_w06_scimitar`
-- [ ] 7 단검 `eq_w07_dagger`
-- [ ] 8 의식용 단검 `eq_w08_rite_dagger`
-- [ ] 9 톱날 칼 `eq_w09_saw_knife`
-- [ ] 10 도살 칼 `eq_w10_butcher_knife`
-- [ ] 11 손도끼 `eq_w11_hand_axe`
-- [ ] 12 전투 도끼 `eq_w12_battle_axe`
-- [ ] 13 양날 도끼 `eq_w13_double_axe`
-- [ ] 14 철퇴 `eq_w14_iron_club`
-- [ ] 15 가시 곤봉 `eq_w15_spiked_club`
-- [ ] 16 전쟁 망치 `eq_w16_war_hammer`
-- [ ] 17 큰 쇠망치 `eq_w17_great_sledgehammer`
-- [ ] 18 곡괭이 `eq_w18_pickaxe`
-- [ ] 19 창 `eq_w19_spear`
-- [ ] 20 미늘창 `eq_w20_glaive`
-- [ ] 21 낫 `eq_w21_sickle`
-- [ ] 22 큰 낫 `eq_w22_great_scythe`
-- [ ] 23 쇠사슬 도리깨 `eq_w23_iron_flail`
-- [ ] 24 짧은 활 `eq_w24_short_bow`
-- [ ] 25 장궁 `eq_w25_longbow`
-- [ ] 26 석궁 `eq_w26_crossbow`
-- [ ] 27 화살 묶음 `eq_w27_arrow_bundle`
-- [ ] 28 부싯돌 권총 `eq_w28_flintlock_pistol`
-- [ ] 29 부싯돌 장총 `eq_w29_flintlock_rifle`
-- [ ] 30 나무 지팡이 `eq_w30_wooden_staff`
-- [ ] 31 해골 지팡이 `eq_w31_skull_staff`
-- [ ] 32 보석 지팡이 `eq_w32_gem_staff`
-- [ ] 33 마법서 `eq_w33_spellbook`
-- [ ] 34 저주받은 마법서 `eq_w34_cursed_book`
-- [ ] 35 성물 십자가 `eq_w35_relic_cross`
-- [ ] 36 흔들 향로 `eq_w36_swinging_censer`
+- [x] 이 빠진 장검 `eq_w02_chipped_longsword`
+- [x] 기사단 장검 `eq_w03_crusader_longsword`
+- [x] 처형인 대검 `eq_w04_executioner_greatsword`
+- [x] 검은 대검 `eq_w05_black_greatsword`
+- [x] 곡도 `eq_w06_scimitar`
+- [x] 단검 `eq_w07_dagger`
+- [x] 의식용 단검 `eq_w08_rite_dagger`
+- [x] 톱날 칼 `eq_w09_saw_knife`
+- [x] 도살 칼 `eq_w10_butcher_knife`
+- [x] 손도끼 `eq_w11_hand_axe`
+- [x] 전투 도끼 `eq_w12_battle_axe`
+- [x] 양날 도끼 `eq_w13_double_axe`
+- [x] 철퇴 `eq_w14_iron_club`
+- [x] 가시 곤봉 `eq_w15_spiked_club`
+- [x] 전쟁 망치 `eq_w16_war_hammer`
+- [x] 큰 쇠망치 `eq_w17_great_sledgehammer`
+- [x] 곡괭이 `eq_w18_pickaxe`
+- [x] 창 `eq_w19_spear`
+- [x] 미늘창 `eq_w20_glaive`
+- [x] 낫 `eq_w21_sickle`
+- [x] 큰 낫 `eq_w22_great_scythe`
+- [x] 쇠사슬 도리깨 `eq_w23_iron_flail`
+- [x] 짧은 활 `eq_w24_short_bow`
+- [x] 장궁 `eq_w25_longbow`
+- [x] 석궁 `eq_w26_crossbow`
+- [x] 화살 묶음 `eq_w27_arrow_bundle`
+- [x] 부싯돌 권총 `eq_w28_flintlock_pistol`
+- [x] 부싯돌 장총 `eq_w29_flintlock_rifle`
+- [x] 나무 지팡이 `eq_w30_wooden_staff`
+- [x] 해골 지팡이 `eq_w31_skull_staff`
+- [x] 보석 지팡이 `eq_w32_gem_staff`
+- [x] 마법서 `eq_w33_spellbook`
+- [x] 저주받은 마법서 `eq_w34_cursed_book`
+- [x] 성물 십자가 `eq_w35_relic_cross`
+- [x] 흔들 향로 `eq_w36_swinging_censer`
 
 ## B. 방어구 (37–52)
-- [ ] 37 녹슨 투구 `eq_a01_rusted_helm`
-- [ ] 38 기사 투구 `eq_a02_knight_helm`
-- [ ] 39 가죽 두건 `eq_a03_leather_hood`
-- [ ] 40 철가면 `eq_a04_iron_mask`
-- [ ] 41 광대 가면 `eq_a05_jester_mask`
-- [ ] 42 사슬 갑옷 `eq_a06_chainmail`
-- [ ] 43 판금 갑옷 `eq_a07_plate_mail`
-- [ ] 44 가죽 갑옷 `eq_a08_leather_mail`
-- [ ] 45 누더기 로브 `eq_a09_ragged_robe`
-- [ ] 46 교단 로브 `eq_a10_cult_robe`
-- [ ] 47 망토 `eq_a11_cape`
-- [ ] 48 가죽 장갑 `eq_a12_leather_glove`
-- [ ] 49 쇠 장갑 `eq_a13_iron_glove`
-- [ ] 50 가죽 장화 `eq_a14_leather_boot`
-- [ ] 51 쇠 장화 `eq_a15_iron_boot`
-- [ ] 52 팔 보호대 `eq_a16_bracer`
+- [x] 녹슨 투구 `eq_a01_rusted_helm`
+- [x] 기사 투구 `eq_a02_knight_helm`
+- [x] 가죽 두건 `eq_a03_leather_hood`
+- [x] 철가면 `eq_a04_iron_mask`
+- [x] 광대 가면 `eq_a05_jester_mask`
+- [x] 사슬 갑옷 `eq_a06_chainmail`
+- [x] 판금 갑옷 `eq_a07_plate_mail`
+- [x] 가죽 갑옷 `eq_a08_leather_mail`
+- [x] 누더기 로브 `eq_a09_ragged_robe`
+- [x] 교단 로브 `eq_a10_cult_robe`
+- [x] 망토 `eq_a11_cape`
+- [x] 가죽 장갑 `eq_a12_leather_glove`
+- [x] 쇠 장갑 `eq_a13_iron_glove`
+- [x] 가죽 장화 `eq_a14_leather_boot`
+- [x] 쇠 장화 `eq_a15_iron_boot`
+- [x] 팔 보호대 `eq_a16_bracer`
 
 ## C. 방패 (53–58)
-- [ ] 53 둥근 나무 방패 `eq_s01_round_wood_shield`
-- [ ] 54 연 모양 방패 `eq_s02_kite_shield`
-- [ ] 55 큰 탑 방패 `eq_s03_tower_shield`
-- [ ] 56 녹슨 작은 방패 `eq_s04_rusted_buckler`
-- [ ] 57 문장 방패 `eq_s05_heraldic_shield`
-- [ ] 58 가시 방패 `eq_s06_spiked_shield`
+- [x] 둥근 나무 방패 `eq_s01_round_wood_shield`
+- [x] 연 모양 방패 `eq_s02_kite_shield`
+- [x] 큰 탑 방패 `eq_s03_tower_shield`
+- [x] 녹슨 작은 방패 `eq_s04_rusted_buckler`
+- [x] 문장 방패 `eq_s05_heraldic_shield`
+- [x] 가시 방패 `eq_s06_spiked_shield`
 
 ## D. 장신구 (59–72)
-- [ ] 59 녹슨 반지 `eq_j01_rusted_ring`
-- [ ] 60 보석 반지 `eq_j02_gem_ring`
-- [ ] 61 해골 반지 `eq_j03_skull_ring`
-- [ ] 62 뱀 반지 `eq_j04_snake_ring`
-- [ ] 63 펜던트 목걸이 `eq_j05_pendant_necklace`
-- [ ] 64 로켓 목걸이 `eq_j06_rocket_charm`
-- [ ] 65 부적 `eq_j07_charm_tag`
-- [ ] 66 묵주 `eq_j08_prayer_beads`
-- [ ] 67 뼈 부적 `eq_j09_bone_charm`
-- [ ] 68 깃털 부적 `eq_j10_feather_charm`
-- [ ] 69 눈알 부적 `eq_j11_eye_charm`
-- [ ] 70 저주받은 보석 `eq_j12_cursed_gem`
-- [ ] 71 열쇠 목걸이 `eq_j13_key_necklace`
-- [ ] 72 달 부적 `eq_j14_moon_charm`
+- [x] 녹슨 반지 `eq_j01_rusted_ring`
+- [x] 보석 반지 `eq_j02_gem_ring`
+- [x] 해골 반지 `eq_j03_skull_ring`
+- [x] 뱀 반지 `eq_j04_snake_ring`
+- [x] 펜던트 목걸이 `eq_j05_pendant_necklace`
+- [x] 로켓 목걸이 `eq_j06_rocket_charm`
+- [x] 부적 `eq_j07_charm_tag`
+- [x] 묵주 `eq_j08_prayer_beads`
+- [x] 뼈 부적 `eq_j09_bone_charm`
+- [x] 깃털 부적 `eq_j10_feather_charm`
+- [x] 눈알 부적 `eq_j11_eye_charm`
+- [x] 저주받은 보석 `eq_j12_cursed_gem`
+- [x] 열쇠 목걸이 `eq_j13_key_necklace`
+- [x] 달 부적 `eq_j14_moon_charm`
 
 ## E. 문서·종이 (73–87, canvas 1024)
 - [ ] 73 편지 `eq_d01_letter`
@@ -252,9 +252,31 @@
 - [ ] Q 색 변형 `_v2` 세트
 
 ## 모아 보기 시트
-- `preview/sheet_1.png` … `sheet_N.png` (10개마다)
-- `output/*/**_icon128.png` (묶음마다)
+- `preview/sheet_1.png` — A 무기 1–36
+- `preview/sheet_2.png` — B 갑옷 / C 방패 / D 장신구
+- `preview/sheet_icon128_A_D.png` — 1–72 전부 128px 축소 검수
+- `output/*/**_icon128.png` (72개 생성됨)
 
 ## 로그
 - 셋업 완료, tool/palette 복사됨.
 - 예시 레시피(eq_w01) 빌드 확인 — 파이프라인 정상.
+- 레시피는 `_gen/gen_a.py`(A) `_gen/gen_bcd.py`(B/C/D)가 JSON으로 내보낸다. 좌표는 손으로 쓴 데이터.
+- 1–36 전량 빌드 → 시트 검수 → 표면 합성·손잡이·아이콘 크롭 위치 수정 후 재빌드.
+- 37–72 전량 빌드 → 갑옷/방패/장신구 시트 검수 후 재빌드.
+
+## 도구에서 확인한 사실 (다음 작업에도 적용)
+- `slice`의 `border`/`corner`는 픽셀이 아니라 0~8 아이콘 그리드 값이다. 30을 넣으면 몸통이 통째로 사라진다.
+- `crop`을 쓰면 그 조각의 `size`는 **잘라낸 영역**의 크기다. 전체 아이콘 크기가 아니다. 380x420 방패에 `crop:[2,1,14,3.4]` + `size:[380,420]`을 주면 테두리가 방패 전체를 덮는다. `size`는 잘라낸 영역에 맞게 줄이고 `at`도 그 영역의 중심으로 옮긴다.
+- `op:"sub"`는 같은 form 안에서만 동작한다. 구멍은 같은 form의 조각으로 넣는다.
+- `repeat`는 `line` / `grid` / `ellipse`(orient) / `points` 를 지원하고 `jitter`를 붙일 수 있다. 톱니·리벳·비늘·사슬에 썼다.
+- `*_emit.png`는 본체와 별도 레이어다. 모아 보기 시트 glob에 `*.png`를 쓰면 emit이 별도 칸으로 잡힌다. 본체만 모으려면 `<asset>.png`를 명시할 것.
+
+## 이 작업에서 검증한 비법
+- **halo**: 형체의 조각을 `stone_cap`(near-black)으로 pad 13~15px 키워 뒤에 깔면 실루엣이 서로 분리된다. 512px에서 어두운 배경 위의 갑옷·방패가 한 덩어리로 뭉개지는 문제의 해법이었다.头盔은 실루엣 자체를 못 만들어서 `tragedy_mask` 위에 돔·코대를 얹었다.
+- **tarnish 크기 축소**: `iron` 재질에 이미 grime 스탬프가 들어 있다. 여기에 `wash`+`multiply` 를 0.6 이상으로 올리면 갈색 구름이 겹쳐서 판독을 해친다. 스탬프를 0.5배로 줄이고 opacity 0.34 전후로 두는 편이 옳다.
+- **wash 밖의 sub**: 512px 검토 시트에서 `_emit.png`가 별도 칸으로 보여 "떠 있는 다이아몬드"처럼 보인 것이 emit 레이어였다. 실수는 아니었다.
+
+## 남은 것 (중단 지시로 시작 안 함)
+- E 문서(73–87) / F 문장(88–99) / G 보물(100–112) / H(113–121) / I(122–133) / J(134–145) / K(146–155) / L(156–167) / M(168–173) / N(174–182) / O(183–191) / P(192–199) / Q 색변형(_v2)
+- 도전 라운드 3종: ①초기 6개 재검수 ②아이콘 더 쓴 대형 버전 ③최소 아이콘 구현
+- E는 canvas 1024를 써야 하므로 위 좌표 체계를 다시 잡아야 한다.

@@ -1,0 +1,160 @@
+{
+ "asset": "eq_j14_moon_charm",
+ "status": "candidate",
+ "note": "72 moon charm. A bronze crescent with one eye and a worn face, on a thread. The hole is at the tip of the waxing moon, which is the wrong way up for a charm.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 136,
+ "forms": [
+  {
+   "name": "crescent",
+   "z": 0,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      256,
+      268
+     ],
+     "size": [
+      400,
+      400
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "z": 1,
+   "kind": "flat",
+   "material": "bronze_block",
+   "opacity": 0.7,
+   "line": false,
+   "clip_to": "crescent",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      300,
+      220
+     ],
+     "size": [
+      90,
+      90
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      276,
+      300
+     ],
+     "size": [
+      70,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye",
+   "z": 2,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "crescent",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      280,
+      214
+     ],
+     "size": [
+      30,
+      34
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hole",
+   "z": 3,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "crescent",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      372,
+      116
+     ],
+     "size": [
+      44,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cord",
+   "z": 2,
+   "kind": "flat",
+   "material": "leather",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      372,
+      112
+     ],
+     "size": [
+      210,
+      98.0
+     ],
+     "crop": [
+      2.0,
+      3.0,
+      14.0,
+      8.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.45,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      268
+     ],
+     "size": [
+      280,
+      280
+     ]
+    }
+   ]
+  }
+ ]
+}

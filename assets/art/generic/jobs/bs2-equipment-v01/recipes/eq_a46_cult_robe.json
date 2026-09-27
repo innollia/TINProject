@@ -1,0 +1,260 @@
+{
+ "asset": "eq_a46_cult_robe",
+ "status": "candidate",
+ "note": "46 cult robe. Wine-red wool, hood up and empty, a chalk cross on the chest that has been scrubbed and re-drawn many times.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 110,
+ "forms": [
+  {
+   "name": "body_edge",
+   "z": -0.5,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      296
+     ],
+     "size": [
+      326,
+      326
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 0,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      296
+     ],
+     "size": [
+      300,
+      300
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 3
+     }
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      148
+     ],
+     "size": [
+      250,
+      132
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "sleeves_edge",
+   "z": 0.5,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      72,
+      252
+     ],
+     "size": [
+      211,
+      281
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      440,
+      252
+     ],
+     "size": [
+      211,
+      281
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sleeves",
+   "z": 1,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      72,
+      252
+     ],
+     "size": [
+      185,
+      255
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      440,
+      252
+     ],
+     "size": [
+      185,
+      255
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skirt_edge",
+   "z": 0.5,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      414
+     ],
+     "size": [
+      446,
+      276
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "skirt",
+   "z": 1,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      414
+     ],
+     "size": [
+      420,
+      250
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "hood",
+   "z": 2,
+   "material": "coat",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      182
+     ],
+     "size": [
+      330,
+      250
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      218
+     ],
+     "size": [
+      176,
+      176
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "mark",
+   "z": 3,
+   "kind": "flat",
+   "material": "paper",
+   "opacity": 0.75,
+   "line": false,
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      290
+     ],
+     "size": [
+      86,
+      20
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      290
+     ],
+     "size": [
+      20,
+      86
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      400
+     ],
+     "size": [
+      187.00000000000003,
+      110.00000000000001
+     ]
+    }
+   ],
+   "clip_to": "skirt"
+  }
+ ]
+}

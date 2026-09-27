@@ -1,0 +1,343 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_suspicious_stew",
+  "note": "bowl of something unnameable seen from above-front: grey bowl, sickly green-brown liquid, pale lumps and bone fragments, foam bubbles. No text.",
+  "seed": 3604,
+  "forms": [
+    {
+      "name": "pot",
+      "z": 0,
+      "material": "ceramic",
+      "rough": {
+        "amp": 0.25,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.05,
+        "highlight_amount": 0.45
+      },
+      "grad": {
+        "to": "soot",
+        "y0": 84,
+        "y1": 118,
+        "amount": 0.35
+      },
+      "pieces": [
+        {
+          "icon": "cup",
+          "at": [
+            64,
+            74
+          ],
+          "size": [
+            90,
+            82
+          ],
+          "crop": [
+            1.4,
+            1.2,
+            12.4,
+            11.8
+          ]
+        }
+      ]
+    },
+    {
+      "name": "surface",
+      "z": 1,
+      "kind": "flat",
+      "material": "stew_green",
+      "clip_to": "pot",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            46
+          ],
+          "size": [
+            73.8,
+            30
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rim_light",
+      "z": 2,
+      "kind": "flat",
+      "material": "ceramic",
+      "opacity": 0.5,
+      "clip_to": "pot",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            40
+          ],
+          "size": [
+            81.0,
+            8
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bits",
+      "z": 3,
+      "clip_to": "surface",
+      "pieces": [
+        {
+          "icon": "cloud",
+          "at": [
+            48,
+            43
+          ],
+          "size": [
+            26,
+            14
+          ],
+          "crop": [
+            2.0,
+            3.0,
+            14.0,
+            13.0
+          ],
+          "rot": 16
+        },
+        {
+          "icon": "circle",
+          "at": [
+            76,
+            48
+          ],
+          "size": [
+            20,
+            12
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -10
+        },
+        {
+          "icon": "bone",
+          "at": [
+            64,
+            36
+          ],
+          "size": [
+            30,
+            30
+          ],
+          "crop": [
+            2.5,
+            0.5,
+            13.5,
+            15.5
+          ],
+          "rot": 200
+        }
+      ]
+    },
+    {
+      "name": "scum",
+      "z": 4,
+      "kind": "flat",
+      "material": "moldy",
+      "opacity": 0.5,
+      "clip_to": "surface",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            54
+          ],
+          "size": [
+            72.0,
+            20
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bubbles",
+      "z": 5,
+      "kind": "flat",
+      "material": "bubble",
+      "opacity": 0.55,
+      "clip_to": "surface",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            46,
+            41
+          ],
+          "size": [
+            12,
+            8
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            80,
+            48
+          ],
+          "size": [
+            10,
+            7
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            62,
+            53
+          ],
+          "size": [
+            9,
+            6
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 6,
+      "kind": "flat",
+      "material": "ceramic",
+      "opacity": 0.28,
+      "clip_to": "pot",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            38,
+            66
+          ],
+          "size": [
+            22,
+            40
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -12
+        }
+      ]
+    },
+    {
+      "name": "scrap",
+      "z": 8,
+      "material": "bone_white",
+      "opacity": 0.95,
+      "pieces": [
+        {
+          "icon": "bone",
+          "at": [
+            98,
+            30
+          ],
+          "size": [
+            34,
+            34
+          ],
+          "crop": [
+            2.5,
+            0.5,
+            13.5,
+            15.5
+          ],
+          "rot": -30
+        }
+      ]
+    },
+    {
+      "name": "eye",
+      "z": 9,
+      "kind": "flat",
+      "material": "bubble",
+      "opacity": 0.4,
+      "clip_to": "surface",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            44
+          ],
+          "size": [
+            16,
+            10
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    }
+  ]
+}

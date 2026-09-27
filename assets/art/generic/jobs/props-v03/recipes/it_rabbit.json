@@ -1,0 +1,180 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_rabbit",
+  "note": "rabbit haunch at a diagonal: very pale cream drumstick, long bone handle pointing down right, small dull fat rim. No text.",
+  "seed": 3305,
+  "forms": [
+    {
+      "name": "rim",
+      "z": 0,
+      "material": "rabbit",
+      "rough": {
+        "amp": 0.3,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "meat",
+          "at": [
+            61,
+            59
+          ],
+          "size": [
+            88,
+            78
+          ],
+          "crop": [
+            3.4,
+            0.2,
+            14.6,
+            8.4
+          ],
+          "rot": -22
+        }
+      ]
+    },
+    {
+      "name": "meat",
+      "z": 1,
+      "material": "rabbit",
+      "rough": {
+        "amp": 0.35,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.05,
+        "highlight_amount": 0.45
+      },
+      "grad": {
+        "to": "pastry_dark",
+        "y0": 56,
+        "y1": 100,
+        "amount": 0.26
+      },
+      "pieces": [
+        {
+          "icon": "meat",
+          "at": [
+            58,
+            56
+          ],
+          "size": [
+            86,
+            76
+          ],
+          "crop": [
+            3.4,
+            0.2,
+            14.6,
+            8.4
+          ],
+          "rot": -22
+        }
+      ]
+    },
+    {
+      "name": "cut",
+      "z": 2,
+      "kind": "flat",
+      "material": "bone_white",
+      "opacity": 0.38,
+      "clip_to": "meat",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            54,
+            42
+          ],
+          "size": [
+            64,
+            26
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": 52
+        }
+      ]
+    },
+    {
+      "name": "bone",
+      "z": 3,
+      "material": "bone_white",
+      "shade": {
+        "bump": 0.9,
+        "highlight_amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "meat",
+          "at": [
+            84,
+            100
+          ],
+          "size": [
+            28,
+            44
+          ],
+          "crop": [
+            0.0,
+            6.6,
+            7.0,
+            15.4
+          ],
+          "rot": -22
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 4,
+      "kind": "flat",
+      "material": "bone_white",
+      "opacity": 0.32,
+      "clip_to": "meat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            48,
+            36
+          ],
+          "size": [
+            30,
+            14
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -22
+        }
+      ]
+    }
+  ]
+}

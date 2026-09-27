@@ -1,0 +1,138 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_bowl",
+  "status": "candidate",
+  "note": "it_bowl: one empty clay bowl from slightly above, lit outer wall, dark inner basin, no text.",
+  "seed": 317,
+  "forms": [
+    {
+      "name": "rim",
+      "material": "clay",
+      "pieces": [
+        {
+          "icon": "circle",
+          "crop": [
+            1.2,
+            7.4,
+            14.8,
+            15.2
+          ],
+          "at": [
+            64,
+            76
+          ],
+          "size": [
+            106,
+            60
+          ]
+        }
+      ]
+    },
+    {
+      "name": "body",
+      "kind": "block",
+      "material": "clay",
+      "extrude": 3,
+      "ao": false,
+      "grad": {
+        "to": "well_void",
+        "y0": 58,
+        "y1": 108,
+        "amount": 0.3
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "crop": [
+            1.2,
+            7.4,
+            14.8,
+            15.2
+          ],
+          "at": [
+            64,
+            78
+          ],
+          "size": [
+            100,
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "name": "basin",
+      "kind": "flat",
+      "material": "clay_dark",
+      "clip_to": "body",
+      "opacity": 0.9,
+      "grad": {
+        "to": "worn",
+        "y0": 50,
+        "y1": 74,
+        "amount": 0.5
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "crop": [
+            3.0,
+            7.8,
+            13.0,
+            15.0
+          ],
+          "at": [
+            64,
+            72
+          ],
+          "size": [
+            86,
+            40
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lit",
+      "kind": "flat",
+      "material": "clay",
+      "clip_to": "body",
+      "opacity": 0.7,
+      "grad": {
+        "to": "floor_light",
+        "y0": 56,
+        "y1": 92,
+        "amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            3.4,
+            3.4,
+            8.0,
+            8.0
+          ],
+          "at": [
+            42,
+            84
+          ],
+          "size": [
+            28,
+            28
+          ]
+        }
+      ]
+    }
+  ]
+}

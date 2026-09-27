@@ -52,8 +52,19 @@ def patina(pieces, material="rust", opacity=0.6, clip=None, z=9.0):
     return wash("patina", pieces, material=material, opacity=opacity, clip=clip, z=z)
 
 
+def _flat(forms):
+    out = []
+    for f in forms:
+        if isinstance(f, list):
+            out.extend(_flat(f))
+        else:
+            out.append(f)
+    return out
+
+
 def write(asset, forms, note, geom=SQUARE, style="prop", seed=None):
     canvas, pivot = geom[0], geom[1]
+    forms = _flat(forms)
     if seed is None:
         _seed["n"] += 1
         seed = _seed["n"]

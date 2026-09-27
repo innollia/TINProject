@@ -1,0 +1,563 @@
+{
+  "asset": "happy_villager",
+  "status": "candidate",
+  "note": "happy_villager (pleased villager state). 4 frames. Same bust as angry_villager with an opposite silhouette: eyes are big round discs with pupils, the mouth is a wide toothless smile, the body squashes and stretches and hops (dy -10, 0.93x / 1.09y), the shadow shrinks with the hop, and three warm rings float up instead of red heat bolts.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    192,
+    192
+  ],
+  "pivot": [
+    96,
+    182
+  ],
+  "pivot_meaning": "floor point under the bust",
+  "seed": 1206,
+  "forms": [
+    {
+      "name": "hv_shadow",
+      "z": 0,
+      "kind": "shadow",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            178.0
+          ],
+          "size": [
+            124.0,
+            22.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_shadow"
+      ],
+      "color": "shadow_contact",
+      "opacity": 0.34,
+      "blur": 5
+    },
+    {
+      "name": "hv_hood",
+      "z": 1,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": 180,
+          "at": [
+            96.0,
+            106.0
+          ],
+          "size": [
+            114.0,
+            132.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_all"
+      ],
+      "material": "coat_top"
+    },
+    {
+      "name": "hv_body",
+      "z": 1.5,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "mountains",
+          "at": [
+            96.0,
+            154.0
+          ],
+          "size": [
+            150.0,
+            70.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_all"
+      ],
+      "material": "coat"
+    },
+    {
+      "name": "hv_scarf",
+      "z": 2,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "mountains",
+          "crop": [
+            1,
+            6,
+            15,
+            16
+          ],
+          "at": [
+            96.0,
+            136.0
+          ],
+          "size": [
+            122.0,
+            30.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_all"
+      ],
+      "material": "scarf"
+    },
+    {
+      "name": "hv_halo",
+      "z": 2.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            78.0
+          ],
+          "size": [
+            126.0,
+            126.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_all"
+      ],
+      "material": "lamp_amber",
+      "opacity": 0.22,
+      "blur": 9,
+      "glow": {
+        "radius": 12,
+        "opacity": 0.3,
+        "color": "lamp_glow"
+      }
+    },
+    {
+      "name": "hv_head",
+      "z": 3,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            82.0
+          ],
+          "size": [
+            94.0,
+            96.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_all"
+      ],
+      "material": "skin",
+      "shade": {
+        "highlight_amount": 0.4
+      }
+    },
+    {
+      "name": "hv_brow",
+      "z": 4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "rot": 26,
+          "at": [
+            70.0,
+            58.0
+          ],
+          "size": [
+            22.0,
+            6.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "rot": -26,
+          "at": [
+            122.0,
+            58.0
+          ],
+          "size": [
+            22.0,
+            6.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_all"
+      ],
+      "material": "coat_seam",
+      "line": false
+    },
+    {
+      "name": "hv_eye",
+      "z": 4.2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            70.0,
+            80.0
+          ],
+          "size": [
+            32.0,
+            34.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            122.0,
+            80.0
+          ],
+          "size": [
+            32.0,
+            34.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_all"
+      ],
+      "material": "paper",
+      "line": false
+    },
+    {
+      "name": "hv_pupil",
+      "z": 4.4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            70.0,
+            82.0
+          ],
+          "size": [
+            14.0,
+            16.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            122.0,
+            82.0
+          ],
+          "size": [
+            14.0,
+            16.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_all"
+      ],
+      "material": "eye",
+      "line": false
+    },
+    {
+      "name": "hv_blush",
+      "z": 4.3,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            58.0,
+            102.0
+          ],
+          "size": [
+            24.0,
+            14.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            134.0,
+            102.0
+          ],
+          "size": [
+            24.0,
+            14.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_all"
+      ],
+      "material": "heart_light",
+      "opacity": 0.55,
+      "line": false
+    },
+    {
+      "name": "hv_mouth",
+      "z": 4.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            114.0
+          ],
+          "size": [
+            58.0,
+            44.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "op": "sub",
+          "at": [
+            96.0,
+            94.0
+          ],
+          "size": [
+            68.0,
+            36.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_all"
+      ],
+      "material": "coat_seam",
+      "line": false
+    },
+    {
+      "name": "hv_tongue",
+      "z": 4.6,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            130.0
+          ],
+          "size": [
+            32.0,
+            12.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_all"
+      ],
+      "material": "heart_light",
+      "line": false,
+      "clip_to": "hv_mouth"
+    },
+    {
+      "name": "hv_spark",
+      "z": 5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "ring",
+          "crop": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "at": [
+            58.0,
+            44.0
+          ],
+          "size": [
+            26.0,
+            26.0
+          ]
+        },
+        {
+          "icon": "ring",
+          "crop": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "at": [
+            96.0,
+            24.0
+          ],
+          "size": [
+            30.0,
+            30.0
+          ]
+        },
+        {
+          "icon": "ring",
+          "crop": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "at": [
+            136.0,
+            46.0
+          ],
+          "size": [
+            24.0,
+            24.0
+          ]
+        }
+      ],
+      "tags": [
+        "hv_spark"
+      ],
+      "material": "lamp_amber",
+      "emit": 0.8,
+      "line": false,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.55,
+        "color": "lamp_glow"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "hv_all": {
+          "pivot": [
+            96,
+            178
+          ],
+          "dy": 0,
+          "sx": 1,
+          "sy": 1
+        },
+        "hv_shadow": {
+          "pivot": [
+            96,
+            178
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "hv_spark": {
+          "pivot": [
+            96,
+            70
+          ],
+          "dy": 0,
+          "sx": 1,
+          "sy": 1
+        }
+      }
+    },
+    {
+      "name": "f1",
+      "move": {
+        "hv_all": {
+          "pivot": [
+            96,
+            178
+          ],
+          "dy": -10,
+          "sx": 0.93,
+          "sy": 1.09
+        },
+        "hv_shadow": {
+          "pivot": [
+            96,
+            178
+          ],
+          "sx": 0.86,
+          "sy": 0.6
+        },
+        "hv_spark": {
+          "pivot": [
+            96,
+            70
+          ],
+          "dy": -5,
+          "sx": 1.12,
+          "sy": 1.12
+        }
+      }
+    },
+    {
+      "name": "f2",
+      "move": {
+        "hv_all": {
+          "pivot": [
+            96,
+            178
+          ],
+          "dy": -2,
+          "sx": 1.07,
+          "sy": 0.92
+        },
+        "hv_shadow": {
+          "pivot": [
+            96,
+            178
+          ],
+          "sx": 1.1,
+          "sy": 1.14
+        },
+        "hv_spark": {
+          "pivot": [
+            96,
+            70
+          ],
+          "dy": -10,
+          "sx": 1.22,
+          "sy": 1.22
+        }
+      }
+    },
+    {
+      "name": "f3",
+      "move": {
+        "hv_all": {
+          "pivot": [
+            96,
+            178
+          ],
+          "dy": 0,
+          "sx": 1,
+          "sy": 1
+        },
+        "hv_shadow": {
+          "pivot": [
+            96,
+            178
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "hv_spark": {
+          "pivot": [
+            96,
+            70
+          ],
+          "dy": -5,
+          "sx": 1.12,
+          "sy": 1.12
+        }
+      }
+    }
+  ]
+}

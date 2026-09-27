@@ -1,0 +1,1275 @@
+{
+  "asset": "infested",
+  "status": "candidate",
+  "note": "infested (taint state on the ground). 6 frames, ground-squashed. A ragged mottled olive patch breathing 0.94-1.05, eleven tapered tendrils creeping out, five dark branching veins, four flat leaves, four dim bile spots, three bomb-shaped pods that pop from 0.2 to 1.0 and two spore columns. Matte and organic, so it cannot be confused with lava's hot veined crust.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    384,
+    384
+  ],
+  "pivot": [
+    192,
+    262
+  ],
+  "pivot_meaning": "ground contact point of the patch, centre",
+  "seed": 1213,
+  "forms": [
+    {
+      "name": "in_shadow",
+      "z": -2,
+      "kind": "shadow",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 4,
+            "corner": 44
+          },
+          "at": [
+            198.0,
+            254.0
+          ],
+          "size": [
+            346.0,
+            112.0
+          ]
+        }
+      ],
+      "color": "shadow_contact",
+      "opacity": 0.4,
+      "blur": 13
+    },
+    {
+      "name": "in_halo",
+      "z": -1.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            192.0,
+            244.0
+          ],
+          "size": [
+            330.0,
+            118.0
+          ]
+        }
+      ],
+      "tags": [
+        "in_halo"
+      ],
+      "material": "rot_dark",
+      "opacity": 0.5,
+      "blur": 12
+    },
+    {
+      "name": "in_patch",
+      "z": 0,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            192.0,
+            246.0
+          ],
+          "size": [
+            306.0,
+            104.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            112.0,
+            252.0
+          ],
+          "size": [
+            112.0,
+            52.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            272.0,
+            248.0
+          ],
+          "size": [
+            104.0,
+            48.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            192.0,
+            224.0
+          ],
+          "size": [
+            132.0,
+            46.0
+          ]
+        }
+      ],
+      "tags": [
+        "in_patch"
+      ],
+      "material": "rot",
+      "rough": {
+        "amp": 0.6,
+        "soft": 3,
+        "cell": 18
+      },
+      "mottle": {
+        "cell": 40,
+        "lo": 0.55,
+        "hi": 0.86
+      }
+    },
+    {
+      "name": "in_tendrils",
+      "z": 0.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": 27.0,
+          "ground": true,
+          "at": [
+            42.0,
+            250.0
+          ],
+          "size": [
+            54.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 33.3,
+          "ground": true,
+          "at": [
+            15.1,
+            230.5
+          ],
+          "size": [
+            54.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 39.6,
+          "ground": true,
+          "at": [
+            63.4,
+            218.2
+          ],
+          "size": [
+            54.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 45.9,
+          "ground": true,
+          "at": [
+            77.4,
+            196.4
+          ],
+          "size": [
+            54.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 52.2,
+          "ground": true,
+          "at": [
+            140.1,
+            195.7
+          ],
+          "size": [
+            54.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 58.5,
+          "ground": true,
+          "at": [
+            192.0,
+            180.6
+          ],
+          "size": [
+            54.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 64.8,
+          "ground": true,
+          "at": [
+            246.7,
+            192.8
+          ],
+          "size": [
+            54.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 71.1,
+          "ground": true,
+          "at": [
+            280.2,
+            208.7
+          ],
+          "size": [
+            54.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 77.4,
+          "ground": true,
+          "at": [
+            342.5,
+            212.8
+          ],
+          "size": [
+            54.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 83.7,
+          "ground": true,
+          "at": [
+            343.2,
+            233.3
+          ],
+          "size": [
+            54.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 90.0,
+          "ground": true,
+          "at": [
+            387.0,
+            250.0
+          ],
+          "size": [
+            54.0,
+            24.0
+          ]
+        }
+      ],
+      "tags": [
+        "in_tend"
+      ],
+      "material": "rot",
+      "rough": {
+        "amp": 0.45,
+        "soft": 2,
+        "cell": 12
+      }
+    },
+    {
+      "name": "in_veins",
+      "z": 1,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "lightning_bolt",
+          "ground": true,
+          "rot": -10,
+          "at": [
+            130.0,
+            232.0
+          ],
+          "size": [
+            13.0,
+            30.0
+          ]
+        },
+        {
+          "icon": "lightning_bolt",
+          "ground": true,
+          "rot": 8,
+          "at": [
+            188.0,
+            258.0
+          ],
+          "size": [
+            12.0,
+            26.0
+          ]
+        },
+        {
+          "icon": "lightning_bolt",
+          "ground": true,
+          "rot": -6,
+          "at": [
+            246.0,
+            236.0
+          ],
+          "size": [
+            14.0,
+            28.0
+          ]
+        },
+        {
+          "icon": "lightning_bolt",
+          "ground": true,
+          "rot": 14,
+          "at": [
+            210.0,
+            274.0
+          ],
+          "size": [
+            11.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "lightning_bolt",
+          "ground": true,
+          "rot": -16,
+          "at": [
+            156.0,
+            274.0
+          ],
+          "size": [
+            12.0,
+            24.0
+          ]
+        }
+      ],
+      "tags": [
+        "in_veins"
+      ],
+      "material": "rot_dark",
+      "line": false
+    },
+    {
+      "name": "in_leaves",
+      "z": 1.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "leaf",
+          "ground": true,
+          "rot": 24,
+          "at": [
+            120.0,
+            262.0
+          ],
+          "size": [
+            34.0,
+            22.0
+          ]
+        },
+        {
+          "icon": "leaf",
+          "ground": true,
+          "rot": -20,
+          "at": [
+            232.0,
+            264.0
+          ],
+          "size": [
+            32.0,
+            20.0
+          ]
+        },
+        {
+          "icon": "leaf",
+          "ground": true,
+          "rot": 8,
+          "at": [
+            176.0,
+            226.0
+          ],
+          "size": [
+            30.0,
+            20.0
+          ]
+        },
+        {
+          "icon": "leaf",
+          "ground": true,
+          "rot": -34,
+          "at": [
+            266.0,
+            280.0
+          ],
+          "size": [
+            28.0,
+            18.0
+          ]
+        }
+      ],
+      "tags": [
+        "in_leaves"
+      ],
+      "material": "rot_dark",
+      "opacity": 0.85,
+      "line": false
+    },
+    {
+      "name": "in_bile",
+      "z": 2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            148.0,
+            246.0
+          ],
+          "size": [
+            26.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            214.0,
+            262.0
+          ],
+          "size": [
+            22.0,
+            10.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            252.0,
+            228.0
+          ],
+          "size": [
+            18.0,
+            9.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            186.0,
+            286.0
+          ],
+          "size": [
+            30.0,
+            12.0
+          ]
+        }
+      ],
+      "tags": [
+        "in_bile"
+      ],
+      "material": "bile",
+      "emit": 0.18,
+      "line": false,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.3,
+        "color": "bile"
+      }
+    },
+    {
+      "name": "in_pod0",
+      "z": 3,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "bomb",
+          "rot": -14,
+          "at": [
+            128.0,
+            236.0
+          ],
+          "size": [
+            34.0,
+            30.0
+          ]
+        }
+      ],
+      "tags": [
+        "pod0"
+      ],
+      "material": "rot_dark",
+      "pivot": [
+        128,
+        250
+      ]
+    },
+    {
+      "name": "in_pod1",
+      "z": 3,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "bomb",
+          "rot": -2,
+          "at": [
+            196.0,
+            258.0
+          ],
+          "size": [
+            34.0,
+            30.0
+          ]
+        }
+      ],
+      "tags": [
+        "pod1"
+      ],
+      "material": "rot_dark",
+      "pivot": [
+        196,
+        272
+      ]
+    },
+    {
+      "name": "in_pod2",
+      "z": 3,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "bomb",
+          "rot": 10,
+          "at": [
+            258.0,
+            240.0
+          ],
+          "size": [
+            34.0,
+            30.0
+          ]
+        }
+      ],
+      "tags": [
+        "pod2"
+      ],
+      "material": "rot_dark",
+      "pivot": [
+        258,
+        254
+      ]
+    },
+    {
+      "name": "in_spA",
+      "z": 4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            128.0,
+            196.0
+          ],
+          "size": [
+            9.0,
+            9.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            196.0,
+            196.0
+          ],
+          "size": [
+            9.0,
+            9.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            258.0,
+            196.0
+          ],
+          "size": [
+            9.0,
+            9.0
+          ]
+        }
+      ],
+      "tags": [
+        "in_spA"
+      ],
+      "material": "bile",
+      "emit": 0.4,
+      "line": false,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.4,
+        "color": "bile"
+      }
+    },
+    {
+      "name": "in_spB",
+      "z": 4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            128.0,
+            158.0
+          ],
+          "size": [
+            9.0,
+            9.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            196.0,
+            158.0
+          ],
+          "size": [
+            9.0,
+            9.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            258.0,
+            158.0
+          ],
+          "size": [
+            9.0,
+            9.0
+          ]
+        }
+      ],
+      "tags": [
+        "in_spB"
+      ],
+      "material": "bile",
+      "emit": 0.4,
+      "line": false,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.4,
+        "color": "bile"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "in_patch": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 0.94,
+          "sy": 0.94
+        },
+        "in_tend": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 0.9,
+          "sy": 0.9
+        },
+        "in_veins": {
+          "pivot": [
+            192,
+            250
+          ],
+          "dx": 0
+        },
+        "in_leaves": {
+          "pivot": [
+            192,
+            250
+          ],
+          "rot": 0
+        },
+        "in_bile": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "in_halo": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 0.96,
+          "sy": 0.96
+        },
+        "in_spA": {
+          "pivot": [
+            128,
+            250
+          ],
+          "dy": -8,
+          "sx": 1,
+          "sy": 1
+        },
+        "in_spB": {
+          "pivot": [
+            128,
+            250
+          ],
+          "dy": -8,
+          "sx": 1,
+          "sy": 1
+        },
+        "pod0": {
+          "pivot": [
+            128,
+            250
+          ],
+          "sx": 0.2,
+          "sy": 0.2
+        },
+        "pod1": {
+          "pivot": [
+            196,
+            272
+          ],
+          "sx": 0.2,
+          "sy": 0.2
+        },
+        "pod2": {
+          "pivot": [
+            258,
+            254
+          ],
+          "sx": 0.2,
+          "sy": 0.2
+        }
+      },
+      "hide": [
+        "in_spB"
+      ]
+    },
+    {
+      "name": "f1",
+      "move": {
+        "in_patch": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 0.97,
+          "sy": 0.97
+        },
+        "in_tend": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 0.94,
+          "sy": 0.94
+        },
+        "in_veins": {
+          "pivot": [
+            192,
+            250
+          ],
+          "dx": 2
+        },
+        "in_leaves": {
+          "pivot": [
+            192,
+            250
+          ],
+          "rot": 1.4
+        },
+        "in_bile": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1.04,
+          "sy": 1.04
+        },
+        "in_halo": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 0.99,
+          "sy": 0.99
+        },
+        "in_spA": {
+          "pivot": [
+            128,
+            250
+          ],
+          "dy": -8,
+          "sx": 0.86,
+          "sy": 0.86
+        },
+        "in_spB": {
+          "pivot": [
+            128,
+            250
+          ],
+          "dy": -8,
+          "sx": 0.86,
+          "sy": 0.86
+        },
+        "pod0": {
+          "pivot": [
+            128,
+            250
+          ],
+          "sx": 0.55,
+          "sy": 0.55
+        },
+        "pod1": {
+          "pivot": [
+            196,
+            272
+          ],
+          "sx": 0.55,
+          "sy": 0.55
+        },
+        "pod2": {
+          "pivot": [
+            258,
+            254
+          ],
+          "sx": 0.55,
+          "sy": 0.55
+        }
+      },
+      "hide": [
+        "in_spB"
+      ]
+    },
+    {
+      "name": "f2",
+      "move": {
+        "in_patch": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "in_tend": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 0.97,
+          "sy": 0.97
+        },
+        "in_veins": {
+          "pivot": [
+            192,
+            250
+          ],
+          "dx": 4
+        },
+        "in_leaves": {
+          "pivot": [
+            192,
+            250
+          ],
+          "rot": 2.4
+        },
+        "in_bile": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1.08,
+          "sy": 1.08
+        },
+        "in_halo": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1.02,
+          "sy": 1.02
+        },
+        "in_spA": {
+          "pivot": [
+            128,
+            250
+          ],
+          "dy": -8,
+          "sx": 0.72,
+          "sy": 0.72
+        },
+        "in_spB": {
+          "pivot": [
+            128,
+            250
+          ],
+          "dy": -8,
+          "sx": 0.72,
+          "sy": 0.72
+        },
+        "pod0": {
+          "pivot": [
+            128,
+            250
+          ],
+          "sx": 0.9,
+          "sy": 0.9
+        },
+        "pod1": {
+          "pivot": [
+            196,
+            272
+          ],
+          "sx": 0.9,
+          "sy": 0.9
+        },
+        "pod2": {
+          "pivot": [
+            258,
+            254
+          ],
+          "sx": 0.9,
+          "sy": 0.9
+        }
+      },
+      "hide": [
+        "in_spB"
+      ]
+    },
+    {
+      "name": "f3",
+      "move": {
+        "in_patch": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1.03,
+          "sy": 1.03
+        },
+        "in_tend": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "in_veins": {
+          "pivot": [
+            192,
+            250
+          ],
+          "dx": 2
+        },
+        "in_leaves": {
+          "pivot": [
+            192,
+            250
+          ],
+          "rot": 1.4
+        },
+        "in_bile": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1.04,
+          "sy": 1.04
+        },
+        "in_halo": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1.05,
+          "sy": 1.05
+        },
+        "in_spA": {
+          "pivot": [
+            128,
+            250
+          ],
+          "dy": -8,
+          "sx": 0.58,
+          "sy": 0.58
+        },
+        "in_spB": {
+          "pivot": [
+            128,
+            250
+          ],
+          "dy": -8,
+          "sx": 0.58,
+          "sy": 0.58
+        },
+        "pod0": {
+          "pivot": [
+            128,
+            250
+          ],
+          "sx": 1.0,
+          "sy": 1.0
+        },
+        "pod1": {
+          "pivot": [
+            196,
+            272
+          ],
+          "sx": 1.0,
+          "sy": 1.0
+        },
+        "pod2": {
+          "pivot": [
+            258,
+            254
+          ],
+          "sx": 1.0,
+          "sy": 1.0
+        }
+      },
+      "hide": [
+        "in_spA"
+      ],
+      "show": [
+        "in_spB"
+      ]
+    },
+    {
+      "name": "f4",
+      "move": {
+        "in_patch": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1.05,
+          "sy": 1.05
+        },
+        "in_tend": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1.02,
+          "sy": 1.02
+        },
+        "in_veins": {
+          "pivot": [
+            192,
+            250
+          ],
+          "dx": 0
+        },
+        "in_leaves": {
+          "pivot": [
+            192,
+            250
+          ],
+          "rot": 0
+        },
+        "in_bile": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "in_halo": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1.07,
+          "sy": 1.07
+        },
+        "in_spA": {
+          "pivot": [
+            128,
+            250
+          ],
+          "dy": -8,
+          "sx": 0.44,
+          "sy": 0.44
+        },
+        "in_spB": {
+          "pivot": [
+            128,
+            250
+          ],
+          "dy": -8,
+          "sx": 0.44,
+          "sy": 0.44
+        },
+        "pod0": {
+          "pivot": [
+            128,
+            250
+          ],
+          "sx": 1.06,
+          "sy": 1.06
+        },
+        "pod1": {
+          "pivot": [
+            196,
+            272
+          ],
+          "sx": 1.06,
+          "sy": 1.06
+        },
+        "pod2": {
+          "pivot": [
+            258,
+            254
+          ],
+          "sx": 1.06,
+          "sy": 1.06
+        }
+      },
+      "hide": [
+        "in_spA"
+      ],
+      "show": [
+        "in_spB"
+      ]
+    },
+    {
+      "name": "f5",
+      "move": {
+        "in_patch": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1.02,
+          "sy": 1.02
+        },
+        "in_tend": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 0.96,
+          "sy": 0.96
+        },
+        "in_veins": {
+          "pivot": [
+            192,
+            250
+          ],
+          "dx": -2
+        },
+        "in_leaves": {
+          "pivot": [
+            192,
+            250
+          ],
+          "rot": -1.2
+        },
+        "in_bile": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 0.98,
+          "sy": 0.98
+        },
+        "in_halo": {
+          "pivot": [
+            192,
+            250
+          ],
+          "sx": 1.04,
+          "sy": 1.04
+        },
+        "in_spA": {
+          "pivot": [
+            128,
+            250
+          ],
+          "dy": -8,
+          "sx": 0.3,
+          "sy": 0.3
+        },
+        "in_spB": {
+          "pivot": [
+            128,
+            250
+          ],
+          "dy": -8,
+          "sx": 0.3,
+          "sy": 0.3
+        },
+        "pod0": {
+          "pivot": [
+            128,
+            250
+          ],
+          "sx": 1.0,
+          "sy": 1.0
+        },
+        "pod1": {
+          "pivot": [
+            196,
+            272
+          ],
+          "sx": 1.0,
+          "sy": 1.0
+        },
+        "pod2": {
+          "pivot": [
+            258,
+            254
+          ],
+          "sx": 1.0,
+          "sy": 1.0
+        }
+      },
+      "hide": [
+        "in_spA"
+      ],
+      "show": [
+        "in_spB"
+      ]
+    }
+  ]
+}

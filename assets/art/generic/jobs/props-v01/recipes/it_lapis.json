@@ -1,0 +1,146 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_lapis",
+  "status": "candidate",
+  "seed": 240,
+  "note": "it_lapis: angular lapis chunk, one flat cut top face over a broken mass, dull blue, no text.",
+  "forms": [
+    {
+      "name": "body",
+      "material": "lapis",
+      "grad": {
+        "to": "well_void",
+        "y0": 76,
+        "y1": 116,
+        "amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "rocks",
+          "crop": [
+            1,
+            0.5,
+            13.5,
+            10.5
+          ],
+          "at": [
+            64,
+            70
+          ],
+          "size": [
+            94,
+            72
+          ]
+        },
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            2,
+            2,
+            14,
+            8
+          ],
+          "at": [
+            70,
+            56
+          ],
+          "size": [
+            72,
+            34
+          ]
+        },
+        {
+          "icon": "paw_print",
+          "crop": [
+            8,
+            7.5,
+            15,
+            14.5
+          ],
+          "at": [
+            98,
+            96
+          ],
+          "size": [
+            34,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "name": "face",
+      "kind": "flat",
+      "material": "lapis",
+      "clip_to": "body",
+      "opacity": 0.8,
+      "grad": {
+        "to": "floor_light",
+        "y0": 38,
+        "y1": 66,
+        "amount": 0.55
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            3,
+            3,
+            11,
+            8
+          ],
+          "at": [
+            64,
+            48
+          ],
+          "size": [
+            50,
+            22
+          ]
+        }
+      ]
+    },
+    {
+      "name": "chip",
+      "kind": "flat",
+      "material": "lapis",
+      "clip_to": "body",
+      "opacity": 0.7,
+      "grad": {
+        "to": "well_void",
+        "y0": 60,
+        "y1": 100,
+        "amount": 0.7
+      },
+      "pieces": [
+        {
+          "icon": "gem",
+          "crop": [
+            2,
+            6,
+            8,
+            13
+          ],
+          "at": [
+            44,
+            92
+          ],
+          "size": [
+            38,
+            30
+          ]
+        }
+      ]
+    }
+  ]
+}

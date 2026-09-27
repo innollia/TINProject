@@ -1,0 +1,136 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_emerald",
+  "status": "candidate",
+  "note": "it_emerald: cut emerald, one flat back plate and the same plate carrying the facet splits on top, dark green.",
+  "seed": 230,
+  "forms": [
+    {
+      "name": "body",
+      "kind": "flat",
+      "material": "emerald",
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "at": [
+            64,
+            66
+          ],
+          "size": [
+            94,
+            82
+          ]
+        }
+      ]
+    },
+    {
+      "name": "facets",
+      "material": "emerald",
+      "clip_to": "body",
+      "shade": {
+        "bump": 0.6,
+        "threshold": 0.34,
+        "highlight_amount": 0.7
+      },
+      "pieces": [
+        {
+          "icon": "gem",
+          "crop": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "at": [
+            64,
+            66
+          ],
+          "size": [
+            94,
+            82
+          ]
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "kind": "flat",
+      "material": "emerald",
+      "clip_to": "body",
+      "opacity": 0.6,
+      "grad": {
+        "to": "floor_light",
+        "y0": 41.400000000000006,
+        "y1": 74.2,
+        "amount": 0.7
+      },
+      "pieces": [
+        {
+          "icon": "gem",
+          "crop": [
+            3.4,
+            3.0,
+            9.4,
+            6.4
+          ],
+          "at": [
+            53.26,
+            46.67
+          ],
+          "size": [
+            40.29,
+            19.91
+          ]
+        }
+      ]
+    },
+    {
+      "name": "seat",
+      "kind": "flat",
+      "material": "emerald",
+      "clip_to": "body",
+      "opacity": 0.7,
+      "grad": {
+        "to": "well_void",
+        "y0": 74.2,
+        "y1": 107.0,
+        "amount": 0.7
+      },
+      "pieces": [
+        {
+          "icon": "gem",
+          "crop": [
+            3.0,
+            8.0,
+            13.0,
+            14.2
+          ],
+          "at": [
+            64.0,
+            84.16
+          ],
+          "size": [
+            67.14,
+            36.31
+          ]
+        }
+      ]
+    }
+  ]
+}

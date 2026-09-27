@@ -1,0 +1,216 @@
+{
+ "asset": "eq_s02_kite_shield",
+ "status": "candidate",
+ "note": "54 kite shield. A tall board drawn to a point at the bottom, two iron bands, one boss. Made to hide a man and not to be carried.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 118,
+ "forms": [
+  {
+   "name": "board_edge",
+   "z": -1,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      256,
+      210
+     ],
+     "size": [
+      408,
+      358
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      118
+     ],
+     "size": [
+      258,
+      108
+     ],
+     "slice": {
+      "border": 2,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      380
+     ],
+     "size": [
+      358,
+      328
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "board",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      256,
+      210
+     ],
+     "size": [
+      380,
+      330
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      118
+     ],
+     "size": [
+      230,
+      80
+     ],
+     "slice": {
+      "border": 2,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      380
+     ],
+     "size": [
+      330,
+      300
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "bands",
+   "z": 1,
+   "kind": "flat",
+   "material": "iron",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      300,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      330
+     ],
+     "size": [
+      250,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "boss",
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      200
+     ],
+     "size": [
+      120,
+      120
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      200
+     ],
+     "size": [
+      70,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "edge",
+   "z": 2,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.4,
+   "line": false,
+   "clip_to": "board",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      400
+     ],
+     "size": [
+      300,
+      16
+     ],
+     "rot": 4
+    }
+   ]
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      240
+     ],
+     "size": [
+      165.0,
+      143.0
+     ]
+    }
+   ],
+   "clip_to": "board"
+  }
+ ]
+}

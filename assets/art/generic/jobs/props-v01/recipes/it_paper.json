@@ -1,0 +1,145 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_paper",
+  "status": "candidate",
+  "note": "it_paper: one blank sheet lying flat with the top margin rolled over, a shadow band under the roll and a soft crease near the foot, no text.",
+  "seed": 319,
+  "forms": [
+    {
+      "name": "sheet",
+      "material": "paper",
+      "grad": {
+        "to": "foxing",
+        "y0": 40,
+        "y1": 116,
+        "amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "file",
+          "crop": [
+            2.6,
+            1.0,
+            12.8,
+            15.0
+          ],
+          "at": [
+            64,
+            68
+          ],
+          "size": [
+            86,
+            104
+          ],
+          "rot": -7
+        }
+      ]
+    },
+    {
+      "name": "roll",
+      "material": "paper",
+      "grad": {
+        "to": "floor_light",
+        "y0": 16,
+        "y1": 52,
+        "amount": 0.35
+      },
+      "pieces": [
+        {
+          "icon": "sticker",
+          "crop": [
+            3.0,
+            1.2,
+            15.0,
+            7.4
+          ],
+          "at": [
+            64,
+            26
+          ],
+          "size": [
+            46,
+            30
+          ],
+          "rot": -7
+        }
+      ]
+    },
+    {
+      "name": "roll_shadow",
+      "kind": "flat",
+      "material": "paper_mark",
+      "clip_to": "sheet",
+      "opacity": 0.7,
+      "grad": {
+        "to": "foxing",
+        "y0": 34,
+        "y1": 60,
+        "amount": 0.6
+      },
+      "pieces": [
+        {
+          "icon": "sticker",
+          "crop": [
+            3.0,
+            1.2,
+            15.0,
+            7.4
+          ],
+          "at": [
+            64,
+            40
+          ],
+          "size": [
+            52,
+            16
+          ],
+          "rot": -7
+        }
+      ]
+    },
+    {
+      "name": "crease",
+      "kind": "flat",
+      "material": "paper_mark",
+      "clip_to": "sheet",
+      "opacity": 0.45,
+      "grad": {
+        "to": "foxing",
+        "y0": 60,
+        "y1": 88,
+        "amount": 0.5
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            3,
+            4,
+            10,
+            7.6
+          ],
+          "at": [
+            60,
+            90
+          ],
+          "size": [
+            56,
+            18
+          ],
+          "rot": -7
+        }
+      ]
+    }
+  ]
+}

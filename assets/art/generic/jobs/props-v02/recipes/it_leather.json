@@ -1,0 +1,117 @@
+{
+  "asset": "it_leather",
+  "status": "candidate",
+  "note": "Loot leather: a torn scrap of hide with a crease and a scuffed grain.",
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the item inside the inventory cell",
+  "seed": 104,
+  "forms": [
+    {
+      "name": "scrap",
+      "z": 0,
+      "material": "leather",
+      "pieces": [
+        {
+          "icon": "square",
+          "crop": [
+            2,
+            3,
+            14,
+            13
+          ],
+          "at": [
+            64,
+            66
+          ],
+          "size": [
+            98,
+            88
+          ],
+          "rot": 9
+        },
+        {
+          "icon": "triangle",
+          "at": [
+            92,
+            34
+          ],
+          "size": [
+            30,
+            30
+          ],
+          "rot": 180,
+          "op": "sub"
+        }
+      ],
+      "rough": {
+        "amp": 0.45,
+        "soft": 2.5,
+        "cell": 12
+      }
+    },
+    {
+      "name": "grain",
+      "z": 1,
+      "material": "leather",
+      "pieces": [
+        {
+          "icon": "cloud",
+          "crop": [
+            3,
+            5,
+            13,
+            12
+          ],
+          "at": [
+            58,
+            70
+          ],
+          "size": [
+            70,
+            44
+          ],
+          "rot": 9
+        }
+      ],
+      "kind": "wash",
+      "opacity": 0.28,
+      "blend": "multiply"
+    },
+    {
+      "name": "crease",
+      "z": 2,
+      "material": "leather",
+      "pieces": [
+        {
+          "icon": "square",
+          "crop": [
+            2,
+            7,
+            14,
+            10
+          ],
+          "at": [
+            64,
+            64
+          ],
+          "size": [
+            92,
+            20
+          ],
+          "rot": 9
+        }
+      ],
+      "color": "#3a2a21",
+      "opacity": 0.6
+    }
+  ]
+}

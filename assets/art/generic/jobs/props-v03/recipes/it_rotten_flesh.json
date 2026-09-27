@@ -1,0 +1,231 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_rotten_flesh",
+  "note": "rotten flesh: a wet, dark, sagging lump with green mould patches, darker drips and a pale scrap of bone. Filthy, no text.",
+  "seed": 3306,
+  "forms": [
+    {
+      "name": "mass",
+      "z": 0,
+      "material": "rotten",
+      "rough": {
+        "amp": 0.6,
+        "soft": 1.4,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.5
+      },
+      "grad": {
+        "to": "soot",
+        "y0": 58,
+        "y1": 118,
+        "amount": 0.5
+      },
+      "pieces": [
+        {
+          "icon": "cloud",
+          "at": [
+            64,
+            68
+          ],
+          "size": [
+            96,
+            78
+          ],
+          "crop": [
+            1.4,
+            2.6,
+            14.6,
+            13.4
+          ],
+          "rot": 8
+        }
+      ]
+    },
+    {
+      "name": "mould",
+      "z": 1,
+      "kind": "flat",
+      "material": "moldy",
+      "opacity": 0.6,
+      "clip_to": "mass",
+      "pieces": [
+        {
+          "icon": "sponge",
+          "at": [
+            50,
+            54
+          ],
+          "size": [
+            48,
+            34
+          ],
+          "rot": 20
+        },
+        {
+          "icon": "sponge",
+          "at": [
+            84,
+            84
+          ],
+          "size": [
+            40,
+            30
+          ],
+          "rot": -16
+        }
+      ]
+    },
+    {
+      "name": "drips",
+      "z": 2,
+      "kind": "flat",
+      "material": "wet_dark",
+      "opacity": 0.55,
+      "clip_to": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            44,
+            78
+          ],
+          "size": [
+            16,
+            40
+          ],
+          "crop": [
+            3.4,
+            0.8,
+            12.6,
+            15.2
+          ],
+          "rot": 8
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            72,
+            88
+          ],
+          "size": [
+            14,
+            34
+          ],
+          "crop": [
+            3.4,
+            0.8,
+            12.6,
+            15.2
+          ],
+          "rot": -10
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            92,
+            62
+          ],
+          "size": [
+            12,
+            30
+          ],
+          "crop": [
+            3.4,
+            0.8,
+            12.6,
+            15.2
+          ],
+          "rot": 14
+        }
+      ]
+    },
+    {
+      "name": "wet",
+      "z": 3,
+      "kind": "flat",
+      "material": "bubble",
+      "opacity": 0.22,
+      "clip_to": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            46,
+            56
+          ],
+          "size": [
+            30,
+            16
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -12
+        },
+        {
+          "icon": "circle",
+          "at": [
+            82,
+            70
+          ],
+          "size": [
+            22,
+            12
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": 10
+        }
+      ]
+    },
+    {
+      "name": "scrap",
+      "z": 4,
+      "material": "bone_white",
+      "opacity": 0.9,
+      "pieces": [
+        {
+          "icon": "bone",
+          "at": [
+            92,
+            42
+          ],
+          "size": [
+            34,
+            34
+          ],
+          "crop": [
+            2.5,
+            0.5,
+            13.5,
+            15.5
+          ],
+          "rot": -18
+        }
+      ]
+    }
+  ]
+}

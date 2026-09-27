@@ -1,0 +1,224 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_glow_berry",
+  "note": "one round berry with a faint cold sheen: emissive body, soft pale halo, dull green sepal, thin stem, three drifting motes. No text.",
+  "seed": 3104,
+  "forms": [
+    {
+      "name": "motes",
+      "z": 0,
+      "material": "glow_berry",
+      "opacity": 0.55,
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            22,
+            48
+          ],
+          "size": [
+            8,
+            8
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            106,
+            38
+          ],
+          "size": [
+            7,
+            7
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            111,
+            68
+          ],
+          "size": [
+            6,
+            6
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sepal",
+      "z": 1,
+      "material": "kelp_pale",
+      "pieces": [
+        {
+          "icon": "sprout",
+          "at": [
+            64,
+            40
+          ],
+          "size": [
+            50,
+            24
+          ],
+          "crop": [
+            2.0,
+            0.4,
+            14.0,
+            8.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stem",
+      "z": 2,
+      "material": "wood",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            64,
+            27
+          ],
+          "size": [
+            14,
+            32
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": 8
+        }
+      ]
+    },
+    {
+      "name": "body",
+      "z": 3,
+      "material": "glow_berry",
+      "emit": 0.4,
+      "glow": {
+        "radius": 10,
+        "opacity": 0.16,
+        "color": "glow_soft"
+      },
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.5
+      },
+      "grad": {
+        "to": "soot",
+        "y0": 58,
+        "y1": 116,
+        "amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            76
+          ],
+          "size": [
+            86,
+            82
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "core",
+      "z": 4,
+      "kind": "flat",
+      "material": "chorus_pale",
+      "opacity": 0.3,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            54,
+            66
+          ],
+          "size": [
+            38,
+            36
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 5,
+      "kind": "flat",
+      "material": "glow_soft",
+      "opacity": 0.5,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            46,
+            56
+          ],
+          "size": [
+            24,
+            13
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -30
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,281 @@
+{
+ "asset": "eq_a01_rusted_helm",
+ "status": "candidate",
+ "note": "37 rusted helm. An open-faced iron skull, now one flat orange-brown patch. Rivets are the only thing still bright.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 101,
+ "forms": [
+  {
+   "name": "skull_edge",
+   "z": -1,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "tragedy_mask",
+     "at": [
+      256,
+      236
+     ],
+     "size": [
+      368,
+      388
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "tragedy_mask",
+     "at": [
+      256,
+      236
+     ],
+     "size": [
+      340,
+      360
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dome",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      116
+     ],
+     "size": [
+      330,
+      190
+     ]
+    }
+   ]
+  },
+  {
+   "name": "neck",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      400
+     ],
+     "size": [
+      420,
+      190
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "nose",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.7,
+   "line": false,
+   "clip_to": "skull",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      24,
+      190
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye_slots",
+   "z": 2,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "skull",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      200,
+      214
+     ],
+     "size": [
+      70,
+      58
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      312,
+      214
+     ],
+     "size": [
+      70,
+      58
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "z": 2,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "skull",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      322
+     ],
+     "size": [
+      96,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rivets",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      400
+     ],
+     "size": [
+      16,
+      16
+     ],
+     "repeat": {
+      "line": [
+       [
+        70,
+        372
+       ],
+       [
+        442,
+        372
+       ]
+      ],
+      "count": 9
+     }
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      200,
+      190
+     ],
+     "size": [
+      100.0,
+      75.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      330,
+      300
+     ],
+     "size": [
+      90.0,
+      75.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "skull"
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      116
+     ],
+     "size": [
+      140.0,
+      80.0
+     ]
+    }
+   ],
+   "clip_to": "dome"
+  },
+  {
+   "name": "dirt_rust",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.5,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      196,
+      250
+     ],
+     "size": [
+      26,
+      40
+     ]
+    }
+   ],
+   "clip_to": "skull"
+  }
+ ]
+}

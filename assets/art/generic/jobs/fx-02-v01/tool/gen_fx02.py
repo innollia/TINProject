@@ -126,9 +126,9 @@ def soul_fire():
           emit=1.0, glow={"radius": 2, "opacity": 0.6, "color": "soul_white"}),
     ]
     for tag, dy0, sizes in (("sf_mA", 0, (9, 7, 6)), ("sf_mB", 44, (7, 6, 5))):
-        forms.append(F(tag, [P("circle", [128, 232 - dy0], [sizes[0]]),
-                             P("circle", [206, 186 - dy0], [sizes[1]]),
-                             P("circle", [252, 258 - dy0], [sizes[2]])],
+        forms.append(F(tag, [P("circle", [128, 232 - dy0], sizes[0]),
+                             P("circle", [206, 186 - dy0], sizes[1]),
+                             P("circle", [252, 258 - dy0], sizes[2])],
                        z=4, material="flame_soul_inner", kind="flat", emit=0.95,
                        glow={"radius": 2, "opacity": 0.6, "color": "soul_white"}))
     mv = {
@@ -204,10 +204,10 @@ def copper_fire():
           glow={"radius": 4, "opacity": 0.4, "color": "copper_green"}),
     ]
     for tag, dy0, sizes in (("cf_sA", 0, (11, 9, 13, 7)), ("cf_sB", 46, (9, 8, 11, 6))):
-        forms.append(F(tag, [P("circle", [120, 168 - dy0], [sizes[0]]),
-                             P("circle", [186, 132 - dy0], [sizes[1]]),
-                             P("star", [246, 176 - dy0], [sizes[2]], rot=12),
-                             P("circle", [160, 112 - dy0], [sizes[3]])],
+        forms.append(F(tag, [P("circle", [120, 168 - dy0], sizes[0]),
+                             P("circle", [186, 132 - dy0], sizes[1]),
+                             P("star", [246, 176 - dy0], sizes[2], rot=12),
+                             P("circle", [160, 112 - dy0], sizes[3])],
                        z=3, kind="flat", material="copper_gold", emit=1.0,
                        glow={"radius": 2, "opacity": 0.65, "color": "copper_gold"}))
     mv = {

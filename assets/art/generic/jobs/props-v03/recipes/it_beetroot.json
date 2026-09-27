@@ -1,0 +1,233 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_beetroot",
+  "note": "beetroot lying on the ground: round dark red bulb, one thin root trailing to the lower left, four dull green leaves on short stems. No text.",
+  "seed": 3203,
+  "forms": [
+    {
+      "name": "root",
+      "z": 0,
+      "material": "beet",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            38,
+            100
+          ],
+          "size": [
+            13,
+            38
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": 205
+        }
+      ]
+    },
+    {
+      "name": "stems",
+      "z": 1,
+      "material": "leaf_dark",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            56,
+            40
+          ],
+          "size": [
+            10,
+            26
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": -14
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            72,
+            40
+          ],
+          "size": [
+            10,
+            26
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": 14
+        }
+      ]
+    },
+    {
+      "name": "leaves_b",
+      "z": 2,
+      "material": "leaf_dark",
+      "pieces": [
+        {
+          "icon": "sprout",
+          "at": [
+            64,
+            28
+          ],
+          "size": [
+            58,
+            26
+          ],
+          "crop": [
+            2.0,
+            0.4,
+            14.0,
+            8.0
+          ],
+          "rot": 180
+        }
+      ]
+    },
+    {
+      "name": "leaves_f",
+      "z": 3,
+      "material": "carrot_top",
+      "pieces": [
+        {
+          "icon": "sprout",
+          "at": [
+            64,
+            26
+          ],
+          "size": [
+            58,
+            26
+          ],
+          "crop": [
+            2.0,
+            0.4,
+            14.0,
+            8.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bulb",
+      "z": 4,
+      "material": "beet",
+      "rough": {
+        "amp": 0.3,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.1,
+        "highlight_amount": 0.45
+      },
+      "grad": {
+        "to": "soot",
+        "y0": 74,
+        "y1": 108,
+        "amount": 0.35
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            70
+          ],
+          "size": [
+            84,
+            74
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 5,
+      "kind": "flat",
+      "material": "beet_pale",
+      "opacity": 0.4,
+      "clip_to": "bulb",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            46,
+            54
+          ],
+          "size": [
+            30,
+            18
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -24
+        }
+      ]
+    },
+    {
+      "name": "rings",
+      "z": 6,
+      "kind": "flat",
+      "material": "beet_pale",
+      "opacity": 0.22,
+      "clip_to": "bulb",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            78,
+            86
+          ],
+          "size": [
+            10,
+            26
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": -30
+        }
+      ]
+    }
+  ]
+}

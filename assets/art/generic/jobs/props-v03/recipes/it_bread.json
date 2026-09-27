@@ -1,0 +1,207 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_bread",
+  "note": "round country loaf seen from the front: browned domed top, squared base, three diagonal score marks, darker crust along the bottom. No text.",
+  "seed": 3501,
+  "forms": [
+    {
+      "name": "base",
+      "z": 0,
+      "material": "bread",
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.35
+      },
+      "grad": {
+        "to": "pastry_dark",
+        "y0": 78,
+        "y1": 112,
+        "amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "cylinder",
+          "at": [
+            64,
+            90
+          ],
+          "size": [
+            90,
+            34
+          ],
+          "crop": [
+            1.2,
+            5.0,
+            14.8,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dome",
+      "z": 1,
+      "material": "bread",
+      "rough": {
+        "amp": 0.3,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.05,
+        "highlight_amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "cloud",
+          "at": [
+            64,
+            64
+          ],
+          "size": [
+            100,
+            76
+          ],
+          "crop": [
+            1.4,
+            2.6,
+            14.6,
+            13.4
+          ]
+        }
+      ]
+    },
+    {
+      "name": "scores",
+      "z": 2,
+      "kind": "flat",
+      "material": "bread_score",
+      "opacity": 0.8,
+      "clip_to": "dome",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            44,
+            54
+          ],
+          "size": [
+            34,
+            13
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": -38
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            64,
+            44
+          ],
+          "size": [
+            34,
+            13
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": -38
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            84,
+            54
+          ],
+          "size": [
+            34,
+            13
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": -38
+        }
+      ]
+    },
+    {
+      "name": "crust",
+      "z": 3,
+      "kind": "flat",
+      "material": "pastry_dark",
+      "opacity": 0.4,
+      "clip_to": "dome",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            100
+          ],
+          "size": [
+            92,
+            26
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 4,
+      "kind": "flat",
+      "material": "crumb",
+      "opacity": 0.3,
+      "clip_to": "dome",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            46,
+            44
+          ],
+          "size": [
+            40,
+            16
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -18
+        }
+      ]
+    }
+  ]
+}

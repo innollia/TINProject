@@ -1,0 +1,868 @@
+{
+  "asset": "copper_fire_flame",
+  "status": "candidate",
+  "note": "copper_fire_flame (green copper/bug fire). 6 frames, fast. Deliberately not the soul flame: three fat horizontal droplet plates, a dark hollow carved down the middle by a subtraction, four bronze plate seams, a loose lump that bobs, and a fast -14 px per frame sputter of gold sparks and stars.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    384,
+    384
+  ],
+  "pivot": [
+    192,
+    320
+  ],
+  "pivot_meaning": "floor point under the flame base",
+  "seed": 1202,
+  "forms": [
+    {
+      "name": "cf_halo",
+      "z": 0,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            192.0,
+            296.0
+          ],
+          "size": [
+            268.0,
+            76.0
+          ]
+        }
+      ],
+      "material": "flame_copper_deep",
+      "opacity": 0.5,
+      "blur": 9,
+      "grad": {
+        "to": "copper_green_dark",
+        "y0": 240,
+        "y1": 310
+      }
+    },
+    {
+      "name": "cf_pool",
+      "z": 0.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "crop": [
+            1.5,
+            6.5,
+            14.5,
+            16
+          ],
+          "at": [
+            192.0,
+            298.0
+          ],
+          "size": [
+            214.0,
+            60.0
+          ]
+        }
+      ],
+      "material": "flame_copper_deep",
+      "emit": 0.25,
+      "opacity": 0.95
+    },
+    {
+      "name": "cf_plate",
+      "z": 1,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": -92,
+          "at": [
+            124.0,
+            240.0
+          ],
+          "size": [
+            156.0,
+            196.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 90,
+          "at": [
+            262.0,
+            244.0
+          ],
+          "size": [
+            146.0,
+            180.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 180,
+          "at": [
+            192.0,
+            296.0
+          ],
+          "size": [
+            124.0,
+            128.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "op": "sub",
+          "at": [
+            192.0,
+            226.0
+          ],
+          "size": [
+            86.0,
+            132.0
+          ]
+        }
+      ],
+      "material": "flame_copper",
+      "emit": 0.7,
+      "glow": {
+        "radius": 6,
+        "opacity": 0.45,
+        "color": "copper_green"
+      }
+    },
+    {
+      "name": "cf_gap",
+      "z": 1.2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            192.0,
+            224.0
+          ],
+          "size": [
+            78.0,
+            128.0
+          ]
+        }
+      ],
+      "material": "flame_copper_deep",
+      "opacity": 0.92
+    },
+    {
+      "name": "cf_gap_heat",
+      "z": 1.4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            192.0,
+            246.0
+          ],
+          "size": [
+            62.0,
+            92.0
+          ]
+        }
+      ],
+      "material": "flame_copper_core",
+      "emit": 0.55,
+      "opacity": 0.5,
+      "glow": {
+        "radius": 6,
+        "opacity": 0.4,
+        "color": "copper_green_pale"
+      }
+    },
+    {
+      "name": "cf_seams",
+      "z": 2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "rot": 18,
+          "at": [
+            140.0,
+            218.0
+          ],
+          "size": [
+            6.0,
+            150.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "rot": -20,
+          "at": [
+            244.0,
+            222.0
+          ],
+          "size": [
+            6.0,
+            140.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "rot": 4,
+          "at": [
+            192.0,
+            268.0
+          ],
+          "size": [
+            112.0,
+            5.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "rot": 8,
+          "at": [
+            176.0,
+            200.0
+          ],
+          "size": [
+            5.0,
+            78.0
+          ]
+        }
+      ],
+      "material": "rewind",
+      "opacity": 0.75,
+      "line": false
+    },
+    {
+      "name": "cf_rims",
+      "z": 2.2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": -64,
+          "at": [
+            104.0,
+            206.0
+          ],
+          "size": [
+            64.0,
+            84.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 62,
+          "at": [
+            282.0,
+            214.0
+          ],
+          "size": [
+            58.0,
+            76.0
+          ]
+        }
+      ],
+      "material": "flame_copper_core",
+      "emit": 0.95,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.6,
+        "color": "copper_green_pale"
+      }
+    },
+    {
+      "name": "cf_lump",
+      "z": 2.3,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            148.0,
+            188.0
+          ],
+          "size": [
+            58.0,
+            50.0
+          ]
+        }
+      ],
+      "material": "flame_copper",
+      "emit": 0.6,
+      "glow": {
+        "radius": 4,
+        "opacity": 0.4,
+        "color": "copper_green"
+      }
+    },
+    {
+      "name": "cf_sA",
+      "z": 3,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            120.0,
+            168.0
+          ],
+          "size": 11.0
+        },
+        {
+          "icon": "circle",
+          "at": [
+            186.0,
+            132.0
+          ],
+          "size": 9.0
+        },
+        {
+          "icon": "star",
+          "rot": 12,
+          "at": [
+            246.0,
+            176.0
+          ],
+          "size": 13.0
+        },
+        {
+          "icon": "circle",
+          "at": [
+            160.0,
+            112.0
+          ],
+          "size": 7.0
+        }
+      ],
+      "material": "copper_gold",
+      "emit": 1.0,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.65,
+        "color": "copper_gold"
+      }
+    },
+    {
+      "name": "cf_sB",
+      "z": 3,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            120.0,
+            122.0
+          ],
+          "size": 9.0
+        },
+        {
+          "icon": "circle",
+          "at": [
+            186.0,
+            86.0
+          ],
+          "size": 8.0
+        },
+        {
+          "icon": "star",
+          "rot": 12,
+          "at": [
+            246.0,
+            130.0
+          ],
+          "size": 11.0
+        },
+        {
+          "icon": "circle",
+          "at": [
+            160.0,
+            66.0
+          ],
+          "size": 6.0
+        }
+      ],
+      "material": "copper_gold",
+      "emit": 1.0,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.65,
+        "color": "copper_gold"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "cf_pool": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "cf_plate": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1,
+          "sy": 1,
+          "dy": 0
+        },
+        "cf_gap": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "cf_gap_heat": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sy": 1
+        },
+        "cf_seams": {
+          "dx": 0
+        },
+        "cf_rims": {
+          "pivot": [
+            192,
+            290
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "cf_lump": {
+          "pivot": [
+            148,
+            214
+          ],
+          "dy": 0,
+          "sx": 1
+        },
+        "cf_sA": {
+          "pivot": [
+            120,
+            304
+          ],
+          "dy": -14,
+          "sx": 1,
+          "sy": 1
+        },
+        "cf_sB": {
+          "pivot": [
+            120,
+            304
+          ],
+          "dy": -14,
+          "sx": 1,
+          "sy": 1
+        }
+      },
+      "hide": [
+        "cf_sB"
+      ]
+    },
+    {
+      "name": "f1",
+      "move": {
+        "cf_pool": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1.05,
+          "sy": 1.05
+        },
+        "cf_plate": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 0.97,
+          "sy": 0.97,
+          "dy": -3
+        },
+        "cf_gap": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1.12,
+          "sy": 1.12
+        },
+        "cf_gap_heat": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sy": 1.1
+        },
+        "cf_seams": {
+          "dx": 2
+        },
+        "cf_rims": {
+          "pivot": [
+            192,
+            290
+          ],
+          "sx": 1.06,
+          "sy": 1.06
+        },
+        "cf_lump": {
+          "pivot": [
+            148,
+            214
+          ],
+          "dy": -4,
+          "sx": 0.96
+        },
+        "cf_sA": {
+          "pivot": [
+            120,
+            304
+          ],
+          "dy": -14,
+          "sx": 0.88,
+          "sy": 0.88
+        },
+        "cf_sB": {
+          "pivot": [
+            120,
+            304
+          ],
+          "dy": -14,
+          "sx": 0.88,
+          "sy": 0.88
+        }
+      },
+      "hide": [
+        "cf_sB"
+      ]
+    },
+    {
+      "name": "f2",
+      "move": {
+        "cf_pool": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1.1,
+          "sy": 1.1
+        },
+        "cf_plate": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 0.93,
+          "sy": 0.93,
+          "dy": -6
+        },
+        "cf_gap": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1.26,
+          "sy": 1.26
+        },
+        "cf_gap_heat": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sy": 1.2
+        },
+        "cf_seams": {
+          "dx": 4
+        },
+        "cf_rims": {
+          "pivot": [
+            192,
+            290
+          ],
+          "sx": 1.12,
+          "sy": 1.12
+        },
+        "cf_lump": {
+          "pivot": [
+            148,
+            214
+          ],
+          "dy": -8,
+          "sx": 0.9
+        },
+        "cf_sA": {
+          "pivot": [
+            120,
+            304
+          ],
+          "dy": -14,
+          "sx": 0.76,
+          "sy": 0.76
+        },
+        "cf_sB": {
+          "pivot": [
+            120,
+            304
+          ],
+          "dy": -14,
+          "sx": 0.76,
+          "sy": 0.76
+        }
+      },
+      "hide": [
+        "cf_sB"
+      ]
+    },
+    {
+      "name": "f3",
+      "move": {
+        "cf_pool": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1.05,
+          "sy": 1.05
+        },
+        "cf_plate": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 0.97,
+          "sy": 0.97,
+          "dy": -3
+        },
+        "cf_gap": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1.12,
+          "sy": 1.12
+        },
+        "cf_gap_heat": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sy": 1.1
+        },
+        "cf_seams": {
+          "dx": 2
+        },
+        "cf_rims": {
+          "pivot": [
+            192,
+            290
+          ],
+          "sx": 1.06,
+          "sy": 1.06
+        },
+        "cf_lump": {
+          "pivot": [
+            148,
+            214
+          ],
+          "dy": -12,
+          "sx": 0.84
+        },
+        "cf_sA": {
+          "pivot": [
+            120,
+            304
+          ],
+          "dy": -14,
+          "sx": 0.64,
+          "sy": 0.64
+        },
+        "cf_sB": {
+          "pivot": [
+            120,
+            304
+          ],
+          "dy": -14,
+          "sx": 0.64,
+          "sy": 0.64
+        }
+      },
+      "hide": [
+        "cf_sA"
+      ],
+      "show": [
+        "cf_sB"
+      ]
+    },
+    {
+      "name": "f4",
+      "move": {
+        "cf_pool": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "cf_plate": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1,
+          "sy": 1,
+          "dy": 0
+        },
+        "cf_gap": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "cf_gap_heat": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sy": 1
+        },
+        "cf_seams": {
+          "dx": 0
+        },
+        "cf_rims": {
+          "pivot": [
+            192,
+            290
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "cf_lump": {
+          "pivot": [
+            148,
+            214
+          ],
+          "dy": -8,
+          "sx": 0.9
+        },
+        "cf_sA": {
+          "pivot": [
+            120,
+            304
+          ],
+          "dy": -14,
+          "sx": 0.52,
+          "sy": 0.52
+        },
+        "cf_sB": {
+          "pivot": [
+            120,
+            304
+          ],
+          "dy": -14,
+          "sx": 0.52,
+          "sy": 0.52
+        }
+      },
+      "hide": [
+        "cf_sA"
+      ],
+      "show": [
+        "cf_sB"
+      ]
+    },
+    {
+      "name": "f5",
+      "move": {
+        "cf_pool": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 0.97,
+          "sy": 0.97
+        },
+        "cf_plate": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 1.02,
+          "sy": 1.02,
+          "dy": -2
+        },
+        "cf_gap": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sx": 0.96,
+          "sy": 0.96
+        },
+        "cf_gap_heat": {
+          "pivot": [
+            192,
+            304
+          ],
+          "sy": 0.95
+        },
+        "cf_seams": {
+          "dx": -2
+        },
+        "cf_rims": {
+          "pivot": [
+            192,
+            290
+          ],
+          "sx": 0.97,
+          "sy": 0.97
+        },
+        "cf_lump": {
+          "pivot": [
+            148,
+            214
+          ],
+          "dy": -4,
+          "sx": 0.96
+        },
+        "cf_sA": {
+          "pivot": [
+            120,
+            304
+          ],
+          "dy": -14,
+          "sx": 0.4,
+          "sy": 0.4
+        },
+        "cf_sB": {
+          "pivot": [
+            120,
+            304
+          ],
+          "dy": -14,
+          "sx": 0.4,
+          "sy": 0.4
+        }
+      },
+      "hide": [
+        "cf_sA"
+      ],
+      "show": [
+        "cf_sB"
+      ]
+    }
+  ]
+}

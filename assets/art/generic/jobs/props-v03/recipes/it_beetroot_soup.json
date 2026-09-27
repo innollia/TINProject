@@ -1,0 +1,294 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_beetroot_soup",
+  "note": "bowl of beetroot soup seen from above-front: grey bowl, dark red broth, two pale croutons, a beet slice leaning on the rim. No text.",
+  "seed": 3603,
+  "forms": [
+    {
+      "name": "pot",
+      "z": 0,
+      "material": "ceramic",
+      "rough": {
+        "amp": 0.25,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.05,
+        "highlight_amount": 0.45
+      },
+      "grad": {
+        "to": "soot",
+        "y0": 84,
+        "y1": 118,
+        "amount": 0.35
+      },
+      "pieces": [
+        {
+          "icon": "cup",
+          "at": [
+            64,
+            74
+          ],
+          "size": [
+            90,
+            82
+          ],
+          "crop": [
+            1.4,
+            1.2,
+            12.4,
+            11.8
+          ]
+        }
+      ]
+    },
+    {
+      "name": "surface",
+      "z": 1,
+      "kind": "flat",
+      "material": "stew_red",
+      "clip_to": "pot",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            46
+          ],
+          "size": [
+            73.8,
+            30
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rim_light",
+      "z": 2,
+      "kind": "flat",
+      "material": "ceramic",
+      "opacity": 0.5,
+      "clip_to": "pot",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            40
+          ],
+          "size": [
+            81.0,
+            8
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bits",
+      "z": 3,
+      "clip_to": "surface",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            50,
+            40
+          ],
+          "size": [
+            22,
+            12
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": 10
+        },
+        {
+          "icon": "circle",
+          "at": [
+            72,
+            45
+          ],
+          "size": [
+            18,
+            10
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -14
+        }
+      ]
+    },
+    {
+      "name": "scum",
+      "z": 4,
+      "kind": "flat",
+      "material": "moldy",
+      "opacity": 0.5,
+      "clip_to": "surface",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            54
+          ],
+          "size": [
+            72.0,
+            20
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 6,
+      "kind": "flat",
+      "material": "ceramic",
+      "opacity": 0.28,
+      "clip_to": "pot",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            38,
+            66
+          ],
+          "size": [
+            22,
+            40
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -12
+        }
+      ]
+    },
+    {
+      "name": "beet_slice",
+      "z": 8,
+      "material": "beet",
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            90,
+            44
+          ],
+          "size": [
+            30,
+            26
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": 16
+        }
+      ]
+    },
+    {
+      "name": "beet_ring",
+      "z": 9,
+      "kind": "flat",
+      "material": "beet_pale",
+      "opacity": 0.85,
+      "clip_to": "beet_slice",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            90,
+            44
+          ],
+          "size": [
+            20,
+            17
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "beet_core",
+      "z": 10,
+      "kind": "flat",
+      "material": "beet",
+      "opacity": 0.9,
+      "clip_to": "beet_slice",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            90,
+            44
+          ],
+          "size": [
+            9,
+            8
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    }
+  ]
+}

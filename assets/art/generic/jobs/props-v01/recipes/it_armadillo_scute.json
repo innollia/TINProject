@@ -1,0 +1,135 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_armadillo_scute",
+  "status": "candidate",
+  "note": "it_armadillo_scute: one armadillo scute, a flat horn scale tapering to a blunt point, a lit top surface and a dark growth ridge along the lower edge, no text.",
+  "seed": 321,
+  "forms": [
+    {
+      "name": "back",
+      "material": "scute",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            4.0,
+            5.4,
+            12.0,
+            14.9
+          ],
+          "at": [
+            64,
+            62
+          ],
+          "size": [
+            108,
+            80
+          ]
+        }
+      ]
+    },
+    {
+      "name": "scale",
+      "material": "scute",
+      "grad": {
+        "to": "well_void",
+        "y0": 28,
+        "y1": 100,
+        "amount": 0.42
+      },
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            4.6,
+            6.0,
+            11.4,
+            14.5
+          ],
+          "at": [
+            64,
+            62
+          ],
+          "size": [
+            98,
+            72
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dome",
+      "kind": "flat",
+      "material": "scute",
+      "clip_to": "scale",
+      "opacity": 0.75,
+      "grad": {
+        "to": "floor_light",
+        "y0": 34,
+        "y1": 62,
+        "amount": 0.5
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            3,
+            3,
+            10,
+            8
+          ],
+          "at": [
+            48,
+            52
+          ],
+          "size": [
+            44,
+            24
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ridge",
+      "kind": "flat",
+      "material": "scute",
+      "clip_to": "scale",
+      "opacity": 0.7,
+      "grad": {
+        "to": "well_void",
+        "y0": 62,
+        "y1": 92,
+        "amount": 0.6
+      },
+      "pieces": [
+        {
+          "icon": "gem",
+          "crop": [
+            2,
+            5,
+            14,
+            13
+          ],
+          "at": [
+            64,
+            72
+          ],
+          "size": [
+            72,
+            40
+          ]
+        }
+      ]
+    }
+  ]
+}

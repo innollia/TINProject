@@ -1,0 +1,144 @@
+{
+ "asset": "eq_j05_pendant_necklace",
+ "status": "candidate",
+ "note": "63 pendant necklace. A bronze link chain with a glass stone in a bronze frame. It hangs straight and level, which is unusual.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 127,
+ "forms": [
+  {
+   "name": "cord",
+   "z": 0,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "link",
+     "at": [
+      256,
+      168
+     ],
+     "size": [
+      46,
+      46
+     ],
+     "rot": 45,
+     "repeat": {
+      "ellipse": [
+       256,
+       300,
+       190,
+       190
+      ],
+      "count": 16,
+      "arc": [
+       190,
+       350
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "bail",
+   "z": 1,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256,
+      306
+     ],
+     "size": [
+      80,
+      80
+     ],
+     "crop": [
+      3.0,
+      1.0,
+      13.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pendant",
+   "z": 2,
+   "material": "glass",
+   "emit": 0.25,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.4,
+    "color": "flame_glow"
+   },
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      256,
+      386
+     ],
+     "size": [
+      180,
+      220
+     ]
+    }
+   ]
+  },
+  {
+   "name": "frame",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "bronze",
+   "opacity": 0.8,
+   "line": false,
+   "clip_to": "pendant",
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      256,
+      386
+     ],
+     "size": [
+      150,
+      186
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.3,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      380
+     ],
+     "size": [
+      220,
+      260
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,162 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_stick",
+  "status": "candidate",
+  "note": "it_stick: one trimmed branch lying horizontally, a short side twig at the upper right, two cut facets, warm dark wood, no text.",
+  "seed": 310,
+  "forms": [
+    {
+      "name": "body",
+      "material": "stick_wood",
+      "grad": {
+        "to": "well_void",
+        "y0": 48,
+        "y1": 84,
+        "amount": 0.35
+      },
+      "pieces": [
+        {
+          "icon": "bone_horizontal",
+          "crop": [
+            4.5,
+            6.5,
+            12.5,
+            9.7
+          ],
+          "at": [
+            64,
+            64
+          ],
+          "size": [
+            104,
+            34
+          ]
+        },
+        {
+          "icon": "bone_horizontal",
+          "crop": [
+            5,
+            6.5,
+            12,
+            9.7
+          ],
+          "at": [
+            90,
+            40
+          ],
+          "size": [
+            32,
+            12
+          ],
+          "rot": 40
+        }
+      ]
+    },
+    {
+      "name": "cut_a",
+      "kind": "flat",
+      "material": "stick_wood",
+      "clip_to": "body",
+      "opacity": 0.8,
+      "grad": {
+        "to": "floor_light",
+        "y0": 48,
+        "y1": 68,
+        "amount": 0.5
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            3,
+            4,
+            10,
+            8
+          ],
+          "at": [
+            40,
+            62
+          ],
+          "size": [
+            34,
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cut_b",
+      "kind": "flat",
+      "material": "stick_wood",
+      "clip_to": "body",
+      "opacity": 0.75,
+      "grad": {
+        "to": "floor_light",
+        "y0": 48,
+        "y1": 68,
+        "amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            4,
+            4,
+            9,
+            8
+          ],
+          "at": [
+            94,
+            64
+          ],
+          "size": [
+            26,
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "name": "seat",
+      "kind": "flat",
+      "material": "stick_wood",
+      "clip_to": "body",
+      "opacity": 0.55,
+      "grad": {
+        "to": "well_void",
+        "y0": 68,
+        "y1": 86,
+        "amount": 0.5
+      },
+      "pieces": [
+        {
+          "icon": "gem",
+          "crop": [
+            2,
+            6,
+            9,
+            13
+          ],
+          "at": [
+            58,
+            80
+          ],
+          "size": [
+            44,
+            14
+          ]
+        }
+      ]
+    }
+  ]
+}

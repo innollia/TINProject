@@ -1,0 +1,559 @@
+{
+  "asset": "firefly",
+  "status": "candidate",
+  "note": "firefly (wisp insect). 6 frames. One insect on a 6-point wandering path; body, head, wings, glow and abdomen core all ride the same path, and four trail dots ride it one step apart so the flight leaves a dotted wake. Wings beat on the odd frames (sy 0.42). Glow and core pulse out of phase, 0.88-1.14.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    192,
+    192
+  ],
+  "pivot": [
+    96,
+    116
+  ],
+  "pivot_meaning": "centre of the wander area (flies, no floor contact)",
+  "seed": 1211,
+  "forms": [
+    {
+      "name": "ff_glow",
+      "z": 0,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            92.0
+          ],
+          "size": [
+            50.0,
+            50.0
+          ]
+        }
+      ],
+      "material": "lamp_glow",
+      "opacity": 0.5,
+      "blur": 3,
+      "emit": 0.7,
+      "glow": {
+        "radius": 13,
+        "opacity": 0.55,
+        "color": "lamp_glow"
+      }
+    },
+    {
+      "name": "ff_body",
+      "z": 2,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            92.0
+          ],
+          "size": [
+            21.0,
+            15.0
+          ]
+        }
+      ],
+      "material": "ash"
+    },
+    {
+      "name": "ff_head",
+      "z": 2.2,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            87.0,
+            92.0
+          ],
+          "size": [
+            11.0,
+            10.0
+          ]
+        }
+      ],
+      "material": "ash_far"
+    },
+    {
+      "name": "ff_wing",
+      "z": 2.4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": -20,
+          "at": [
+            96.0,
+            86.0
+          ],
+          "size": [
+            22.0,
+            8.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 200,
+          "at": [
+            96.0,
+            97.0
+          ],
+          "size": [
+            22.0,
+            8.0
+          ]
+        }
+      ],
+      "material": "stone_cap",
+      "opacity": 0.55,
+      "line": false
+    },
+    {
+      "name": "ff_core",
+      "z": 3,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            88.0,
+            92.0
+          ],
+          "size": [
+            14.0,
+            14.0
+          ]
+        }
+      ],
+      "material": "flame",
+      "emit": 1.0,
+      "line": false,
+      "glow": {
+        "radius": 4,
+        "opacity": 0.8,
+        "color": "flame_glow"
+      }
+    },
+    {
+      "name": "ff_t1",
+      "z": 1,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            58.0,
+            84.0
+          ],
+          "size": [
+            9.2,
+            9.2
+          ]
+        }
+      ],
+      "tags": [
+        "tt1"
+      ],
+      "material": "lamp_amber",
+      "opacity": 0.41,
+      "emit": 0.41,
+      "line": false,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.4,
+        "color": "lamp_glow"
+      }
+    },
+    {
+      "name": "ff_t2",
+      "z": 1,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            66.0,
+            116.0
+          ],
+          "size": [
+            7.4,
+            7.4
+          ]
+        }
+      ],
+      "tags": [
+        "tt2"
+      ],
+      "material": "lamp_amber",
+      "opacity": 0.32,
+      "emit": 0.32,
+      "line": false,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.4,
+        "color": "lamp_glow"
+      }
+    },
+    {
+      "name": "ff_t3",
+      "z": 1,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            112.0,
+            130.0
+          ],
+          "size": [
+            5.6,
+            5.6
+          ]
+        }
+      ],
+      "tags": [
+        "tt3"
+      ],
+      "material": "lamp_amber",
+      "opacity": 0.23,
+      "emit": 0.23,
+      "line": false,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.4,
+        "color": "lamp_glow"
+      }
+    },
+    {
+      "name": "ff_t4",
+      "z": 1,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            141.0,
+            110.0
+          ],
+          "size": [
+            3.8,
+            3.8
+          ]
+        }
+      ],
+      "tags": [
+        "tt4"
+      ],
+      "material": "lamp_amber",
+      "opacity": 0.14,
+      "emit": 0.14,
+      "line": false,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.4,
+        "color": "lamp_glow"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "ff_glow": {
+          "sx": 0.9,
+          "sy": 0.9
+        },
+        "ff_core": {
+          "sx": 0.9,
+          "sy": 0.9
+        }
+      }
+    },
+    {
+      "name": "f1",
+      "move": {
+        "ff_glow": {
+          "sx": 1.14,
+          "sy": 1.14,
+          "dx": 34,
+          "dy": -18,
+          "pivot": [
+            96,
+            92
+          ]
+        },
+        "ff_body": [
+          34,
+          -18
+        ],
+        "ff_head": [
+          34,
+          -18
+        ],
+        "ff_wing": {
+          "pivot": [
+            96,
+            92
+          ],
+          "dx": 34,
+          "dy": -18,
+          "sy": 0.42
+        },
+        "ff_core": {
+          "sx": 1.14,
+          "sy": 1.14,
+          "dx": 34,
+          "dy": -18,
+          "pivot": [
+            96,
+            92
+          ]
+        },
+        "tt1": [
+          38,
+          8
+        ],
+        "tt2": [
+          -8,
+          -32
+        ],
+        "tt3": [
+          -46,
+          -14
+        ],
+        "tt4": [
+          -29,
+          20
+        ]
+      }
+    },
+    {
+      "name": "f2",
+      "move": {
+        "ff_glow": {
+          "sx": 0.95,
+          "sy": 0.95,
+          "dx": 11,
+          "dy": 36,
+          "pivot": [
+            130,
+            74
+          ]
+        },
+        "ff_body": [
+          11,
+          36
+        ],
+        "ff_head": [
+          11,
+          36
+        ],
+        "ff_wing": [
+          11,
+          36
+        ],
+        "ff_core": {
+          "sx": 0.95,
+          "sy": 0.95,
+          "dx": 11,
+          "dy": 36,
+          "pivot": [
+            130,
+            74
+          ]
+        },
+        "tt1": [
+          34,
+          -18
+        ],
+        "tt2": [
+          38,
+          8
+        ],
+        "tt3": [
+          -8,
+          -32
+        ],
+        "tt4": [
+          -46,
+          -14
+        ]
+      }
+    },
+    {
+      "name": "f3",
+      "move": {
+        "ff_glow": {
+          "sx": 1.1,
+          "sy": 1.1,
+          "dx": -29,
+          "dy": 20,
+          "pivot": [
+            141,
+            110
+          ]
+        },
+        "ff_body": [
+          -29,
+          20
+        ],
+        "ff_head": [
+          -29,
+          20
+        ],
+        "ff_wing": {
+          "pivot": [
+            141,
+            110
+          ],
+          "dx": -29,
+          "dy": 20,
+          "sy": 0.42
+        },
+        "ff_core": {
+          "sx": 1.1,
+          "sy": 1.1,
+          "dx": -29,
+          "dy": 20,
+          "pivot": [
+            141,
+            110
+          ]
+        },
+        "tt1": [
+          11,
+          36
+        ],
+        "tt2": [
+          34,
+          -18
+        ],
+        "tt3": [
+          38,
+          8
+        ],
+        "tt4": [
+          -8,
+          -32
+        ]
+      }
+    },
+    {
+      "name": "f4",
+      "move": {
+        "ff_glow": {
+          "sx": 0.88,
+          "sy": 0.88,
+          "dx": -46,
+          "dy": -14,
+          "pivot": [
+            112,
+            130
+          ]
+        },
+        "ff_body": [
+          -46,
+          -14
+        ],
+        "ff_head": [
+          -46,
+          -14
+        ],
+        "ff_wing": [
+          -46,
+          -14
+        ],
+        "ff_core": {
+          "sx": 0.88,
+          "sy": 0.88,
+          "dx": -46,
+          "dy": -14,
+          "pivot": [
+            112,
+            130
+          ]
+        },
+        "tt1": [
+          -29,
+          20
+        ],
+        "tt2": [
+          11,
+          36
+        ],
+        "tt3": [
+          34,
+          -18
+        ],
+        "tt4": [
+          38,
+          8
+        ]
+      }
+    },
+    {
+      "name": "f5",
+      "move": {
+        "ff_glow": {
+          "sx": 1.12,
+          "sy": 1.12,
+          "dx": -8,
+          "dy": -32,
+          "pivot": [
+            66,
+            116
+          ]
+        },
+        "ff_body": [
+          -8,
+          -32
+        ],
+        "ff_head": [
+          -8,
+          -32
+        ],
+        "ff_wing": {
+          "pivot": [
+            66,
+            116
+          ],
+          "dx": -8,
+          "dy": -32,
+          "sy": 0.42
+        },
+        "ff_core": {
+          "sx": 1.12,
+          "sy": 1.12,
+          "dx": -8,
+          "dy": -32,
+          "pivot": [
+            66,
+            116
+          ]
+        },
+        "tt1": [
+          -46,
+          -14
+        ],
+        "tt2": [
+          -29,
+          20
+        ],
+        "tt3": [
+          11,
+          36
+        ],
+        "tt4": [
+          34,
+          -18
+        ]
+      }
+    }
+  ]
+}

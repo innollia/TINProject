@@ -1,0 +1,122 @@
+{
+ "asset": "eq_j03_skull_ring",
+ "status": "candidate",
+ "note": "61 skull ring. A bronze band with a child's skull set on top, filed smooth where a thumb rubs it.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 125,
+ "forms": [
+  {
+   "name": "band",
+   "z": 0,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256,
+      292
+     ],
+     "size": [
+      340,
+      280
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "z": 1,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "skull",
+     "at": [
+      256,
+      148
+     ],
+     "size": [
+      220,
+      220
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye_slots",
+   "z": 2,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "skull",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      222,
+      132
+     ],
+     "size": [
+      34,
+      36
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      290,
+      132
+     ],
+     "size": [
+      34,
+      36
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      176
+     ],
+     "size": [
+      22,
+      26
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.35,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      292
+     ],
+     "size": [
+      230,
+      190
+     ]
+    }
+   ],
+   "clip_to": "band"
+  }
+ ]
+}

@@ -1,7 +1,7 @@
 {
  "asset": "eq_w15_spiked_club",
  "status": "candidate",
- "note": "15 spiked club. A studded length of wood with nails bent outward and left in. Two of the nails are teeth.",
+ "note": "15 spiked club. An iron ball of scrap on a long haft with nails driven outward and left in. Two of the nails are teeth.",
  "palette": "palette_h0_mood.json",
  "style": "prop",
  "canvas": [
@@ -16,50 +16,93 @@
  "seed": 115,
  "forms": [
   {
-   "name": "core",
+   "name": "haft",
    "z": 0,
    "material": "wood",
    "pieces": [
     {
-     "icon": "club",
+     "icon": "square",
      "at": [
-      256,
-      264
+      222,
+      366
      ],
      "size": [
       300,
-      300
+      40
+     ],
+     "rot": 40
+    },
+    {
+     "icon": "square",
+     "at": [
+      100,
+      470
+     ],
+     "size": [
+      36,
+      36
+     ],
+     "rot": 40
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      312,
+      208
+     ],
+     "size": [
+      230,
+      230
      ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      312,
+      208
+     ],
+     "size": [
+      120,
+      120
+     ],
+     "rot": 30
     }
    ]
   },
   {
    "name": "spikes",
-   "z": 1,
+   "z": 2,
    "material": "iron",
    "pieces": [
     {
      "icon": "triangle",
      "at": [
-      256,
-      150
+      312,
+      208
      ],
      "size": [
-      56,
-      80
+      54,
+      82
      ],
      "repeat": {
       "ellipse": [
-       256,
-       264,
-       128,
-       128
+       312,
+       208,
+       132,
+       132
       ],
-      "count": 9,
+      "count": 8,
       "orient": true,
       "jitter": {
-       "at": 6.0,
-       "rot": 8.0
+       "at": 5.0,
+       "rot": 7.0
       }
      }
     }
@@ -73,13 +116,14 @@
     {
      "icon": "square",
      "at": [
-      256,
-      412
+      252,
+      320
      ],
      "size": [
-      60,
-      46
-     ]
+      64,
+      44
+     ],
+     "rot": 40
     }
    ]
   },
@@ -95,38 +139,39 @@
     {
      "icon": "cloud",
      "at": [
-      300,
-      200
+      312,
+      208
      ],
      "size": [
-      80.0,
-      60.0
+      115.0,
+      115.0
      ]
     }
    ],
-   "clip_to": "spikes"
+   "clip_to": "head"
   },
   {
-   "name": "dirt_rust",
-   "z": 9.1,
+   "name": "patina",
+   "z": 9.0,
    "kind": "wash",
    "material": "rust",
    "blend": "multiply",
-   "opacity": 0.35,
+   "opacity": 0.34,
    "line": false,
    "pieces": [
     {
      "icon": "cloud",
      "at": [
-      256,
-      300
+      312,
+      208
      ],
      "size": [
-      200,
-      160
+      150.0,
+      150.0
      ]
     }
-   ]
+   ],
+   "clip_to": "spikes"
   }
  ]
 }

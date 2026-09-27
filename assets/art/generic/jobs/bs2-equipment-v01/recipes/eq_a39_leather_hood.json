@@ -1,0 +1,187 @@
+{
+ "asset": "eq_a39_leather_hood",
+ "status": "candidate",
+ "note": "39 leather hood. A boiled-leather cap with the face cut out and a shoulder cape laced along the hem. Stiff, sour, mould at the seams.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 103,
+ "forms": [
+  {
+   "name": "cap_edge",
+   "z": -1,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "tragedy_mask",
+     "at": [
+      256,
+      216
+     ],
+     "size": [
+      356,
+      376
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      396
+     ],
+     "size": [
+      456,
+      226
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "cap",
+   "z": 0,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "tragedy_mask",
+     "at": [
+      256,
+      216
+     ],
+     "size": [
+      330,
+      350
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cape_edge",
+   "z": 0.0,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      396
+     ],
+     "size": [
+      456,
+      226
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "cape",
+   "z": 0.5,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      396
+     ],
+     "size": [
+      430,
+      200
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "rim",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.6,
+   "line": false,
+   "clip_to": "cap",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      262
+     ],
+     "size": [
+      210,
+      230
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stitch",
+   "z": 3,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.5,
+   "line": false,
+   "clip_to": "cape",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      484
+     ],
+     "size": [
+      20,
+      20
+     ],
+     "repeat": {
+      "line": [
+       [
+        110,
+        470
+       ],
+       [
+        402,
+        470
+       ]
+      ],
+      "count": 9
+     }
+    }
+   ]
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      410
+     ],
+     "size": [
+      198.00000000000003,
+      99.00000000000001
+     ]
+    }
+   ],
+   "clip_to": "cape"
+  }
+ ]
+}

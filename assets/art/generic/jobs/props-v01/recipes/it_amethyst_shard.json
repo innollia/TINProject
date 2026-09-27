@@ -1,0 +1,163 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_amethyst_shard",
+  "status": "candidate",
+  "seed": 270,
+  "note": "it_amethyst_shard: three violet crystal prisms of one height rule, big one leaning 10 deg, small ones 14 deg the other way, no text.",
+  "forms": [
+    {
+      "name": "shard_a",
+      "material": "amethyst",
+      "grad": {
+        "to": "well_void",
+        "y0": 60,
+        "y1": 108,
+        "amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            4.5,
+            1.5,
+            11.5,
+            14.5
+          ],
+          "at": [
+            56,
+            60
+          ],
+          "size": [
+            56,
+            100
+          ],
+          "rot": 10
+        }
+      ]
+    },
+    {
+      "name": "shard_b",
+      "material": "amethyst",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            5,
+            3,
+            11.5,
+            14.5
+          ],
+          "at": [
+            96,
+            88
+          ],
+          "size": [
+            42,
+            62
+          ],
+          "rot": -14
+        }
+      ]
+    },
+    {
+      "name": "shard_c",
+      "material": "amethyst",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            6,
+            6,
+            11.5,
+            14.5
+          ],
+          "at": [
+            30,
+            96
+          ],
+          "size": [
+            34,
+            46
+          ],
+          "rot": 18
+        }
+      ]
+    },
+    {
+      "name": "lit",
+      "kind": "flat",
+      "material": "amethyst",
+      "clip_to": "shard_a",
+      "opacity": 0.8,
+      "grad": {
+        "to": "floor_light",
+        "y0": 16,
+        "y1": 56,
+        "amount": 0.5
+      },
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            5.2,
+            2.0,
+            8.0,
+            9.0
+          ],
+          "at": [
+            44.8,
+            40.77
+          ],
+          "size": [
+            22.4,
+            53.85
+          ],
+          "rot": 10
+        }
+      ]
+    },
+    {
+      "name": "deep",
+      "kind": "flat",
+      "material": "amethyst",
+      "clip_to": "shard_b",
+      "opacity": 0.7,
+      "grad": {
+        "to": "well_void",
+        "y0": 70,
+        "y1": 110,
+        "amount": 0.65
+      },
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            8.2,
+            8.0,
+            11.5,
+            14.5
+          ],
+          "at": [
+            106.34,
+            101.48
+          ],
+          "size": [
+            21.32,
+            35.04
+          ],
+          "rot": -14
+        }
+      ]
+    }
+  ]
+}

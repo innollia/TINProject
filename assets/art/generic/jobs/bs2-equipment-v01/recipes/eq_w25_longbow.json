@@ -16,114 +16,81 @@
  "seed": 125,
  "forms": [
   {
-   "name": "limb",
+   "name": "bow",
    "z": 0,
    "material": "wood",
    "pieces": [
     {
      "icon": "bow_and_arrow",
      "at": [
-      236,
+      256,
       256
      ],
      "size": [
       400,
-      460
-     ],
-     "crop": [
-      1.5,
-      0.5,
-      14.0,
-      15.5
-     ]
-    }
-   ]
-  },
-  {
-   "name": "string",
-   "z": 1,
-   "kind": "flat",
-   "material": "leather",
-   "line": false,
-   "clip_to": "limb",
-   "pieces": [
-    {
-     "icon": "square",
-     "at": [
-      110,
-      256
-     ],
-     "size": [
-      7,
-      380
+      470
      ]
     }
    ]
   },
   {
    "name": "grip",
-   "z": 3,
+   "z": 2,
    "material": "leather",
    "pieces": [
     {
      "icon": "square",
      "at": [
-      352,
-      226
+      172,
+      258
      ],
      "size": [
-      38,
-      140
+      32,
+      120
      ]
     },
     {
      "icon": "square",
      "at": [
-      352,
-      300
+      172,
+      258
      ],
      "size": [
-      26,
-      40
-     ]
+      22,
+      76
+     ],
+     "rot": 45
     }
    ]
   },
   {
-   "name": "arrow",
-   "z": 2,
-   "material": "wood",
-   "pieces": [
-    {
-     "icon": "square",
-     "at": [
-      236,
-      256
-     ],
-     "size": [
-      360,
-      12
-     ],
-     "rot": -42
-    }
-   ]
-  },
-  {
-   "name": "arrowhead",
+   "name": "nocks",
    "z": 2,
    "material": "iron",
    "pieces": [
     {
-     "icon": "triangle",
+     "icon": "square",
      "at": [
-      382,
-      122
+      100,
+      60
      ],
      "size": [
-      62,
-      62
+      22,
+      22
      ],
-     "rot": 135
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "at": [
+      100,
+      452
+     ],
+     "size": [
+      22,
+      22
+     ],
+     "rot": 45
     }
    ]
   },
@@ -132,20 +99,54 @@
    "z": 2,
    "kind": "flat",
    "material": "cloth_wine",
-   "opacity": 0.85,
+   "opacity": 0.8,
    "line": false,
+   "clip_to": "bow",
    "pieces": [
     {
      "icon": "triangle",
      "at": [
-      102,
-      388
+      124,
+      382
      ],
      "size": [
-      54,
-      64
+      58,
+      70
      ],
      "rot": 45
+    }
+   ]
+  },
+  {
+   "name": "limb_bands",
+   "z": 2,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.35,
+   "line": false,
+   "clip_to": "bow",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      402,
+      190
+     ],
+     "size": [
+      56,
+      64
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      402,
+      340
+     ],
+     "size": [
+      52,
+      60
+     ]
     }
    ]
   },
@@ -155,7 +156,7 @@
    "kind": "wash",
    "material": "grime",
    "blend": "multiply",
-   "opacity": 0.3,
+   "opacity": 0.28,
    "line": false,
    "pieces": [
     {
@@ -170,7 +171,7 @@
      ]
     }
    ],
-   "clip_to": "limb"
+   "clip_to": "bow"
   }
  ]
 }

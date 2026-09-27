@@ -1,0 +1,292 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_rabbit_stew",
+  "note": "cauldron of rabbit stew seen from above-front: dark pot, brown broth with pale chunks, one bone sticking out, small bubbles. No text.",
+  "seed": 3602,
+  "forms": [
+    {
+      "name": "bone",
+      "z": 0,
+      "material": "bone_white",
+      "shade": {
+        "bump": 0.9,
+        "highlight_amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "bone",
+          "at": [
+            96,
+            40
+          ],
+          "size": [
+            44,
+            44
+          ],
+          "crop": [
+            2.5,
+            0.5,
+            13.5,
+            15.5
+          ],
+          "rot": -26
+        }
+      ]
+    },
+    {
+      "name": "pot",
+      "z": 1,
+      "material": "ceramic_dark",
+      "rough": {
+        "amp": 0.25,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.05,
+        "highlight_amount": 0.45
+      },
+      "grad": {
+        "to": "soot",
+        "y0": 84,
+        "y1": 118,
+        "amount": 0.35
+      },
+      "pieces": [
+        {
+          "icon": "cauldron",
+          "at": [
+            64,
+            76
+          ],
+          "size": [
+            92,
+            84
+          ],
+          "crop": [
+            1.8,
+            6.0,
+            14.2,
+            15.8
+          ]
+        }
+      ]
+    },
+    {
+      "name": "surface",
+      "z": 2,
+      "kind": "flat",
+      "material": "stew_brown",
+      "clip_to": "pot",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            48
+          ],
+          "size": [
+            75.44,
+            30
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rim_light",
+      "z": 3,
+      "kind": "flat",
+      "material": "ceramic",
+      "opacity": 0.5,
+      "clip_to": "pot",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            42
+          ],
+          "size": [
+            82.8,
+            8
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bits",
+      "z": 4,
+      "clip_to": "surface",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            48,
+            45
+          ],
+          "size": [
+            22,
+            13
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": 14
+        },
+        {
+          "icon": "circle",
+          "at": [
+            74,
+            42
+          ],
+          "size": [
+            18,
+            11
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -12
+        },
+        {
+          "icon": "cloud",
+          "at": [
+            60,
+            53
+          ],
+          "size": [
+            26,
+            13
+          ],
+          "crop": [
+            2.0,
+            3.0,
+            14.0,
+            13.0
+          ],
+          "rot": -8
+        }
+      ]
+    },
+    {
+      "name": "bubbles",
+      "z": 6,
+      "kind": "flat",
+      "material": "bubble",
+      "opacity": 0.55,
+      "clip_to": "surface",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            46,
+            43
+          ],
+          "size": [
+            12,
+            8
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            80,
+            50
+          ],
+          "size": [
+            10,
+            7
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            62,
+            55
+          ],
+          "size": [
+            9,
+            6
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 7,
+      "kind": "flat",
+      "material": "ceramic",
+      "opacity": 0.28,
+      "clip_to": "pot",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            38,
+            66
+          ],
+          "size": [
+            22,
+            40
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -12
+        }
+      ]
+    }
+  ]
+}

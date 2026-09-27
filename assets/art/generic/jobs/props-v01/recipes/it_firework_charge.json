@@ -1,0 +1,169 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_firework_charge",
+  "status": "candidate",
+  "note": "it_firework_charge: one small firework, a paper tube lying diagonal, a dark cone at the nose, a knotted tail at the lower left, no text.",
+  "seed": 320,
+  "forms": [
+    {
+      "name": "tube",
+      "kind": "block",
+      "material": "firework_paper",
+      "extrude": 4,
+      "ao": false,
+      "grad": {
+        "to": "well_void",
+        "y0": 48,
+        "y1": 88,
+        "amount": 0.35
+      },
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            1.4,
+            4.6,
+            14.6,
+            15.0
+          ],
+          "at": [
+            56,
+            62
+          ],
+          "size": [
+            84,
+            22
+          ],
+          "rot": 18
+        },
+        {
+          "icon": "droplet",
+          "crop": [
+            3,
+            5,
+            13,
+            12.6
+          ],
+          "at": [
+            56,
+            62
+          ],
+          "size": [
+            76,
+            14
+          ],
+          "rot": 18
+        }
+      ]
+    },
+    {
+      "name": "nose",
+      "material": "iron_bar",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            4,
+            1.4,
+            12,
+            9.6
+          ],
+          "at": [
+            94,
+            52
+          ],
+          "size": [
+            26,
+            30
+          ],
+          "rot": 18
+        }
+      ]
+    },
+    {
+      "name": "tail",
+      "material": "firework_paper",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            4,
+            2,
+            12,
+            12
+          ],
+          "at": [
+            18,
+            78
+          ],
+          "size": [
+            24,
+            18
+          ],
+          "rot": -40
+        },
+        {
+          "icon": "bone_horizontal",
+          "crop": [
+            4.5,
+            6.5,
+            12.5,
+            9.7
+          ],
+          "at": [
+            20,
+            90
+          ],
+          "size": [
+            28,
+            10
+          ],
+          "rot": -16
+        }
+      ]
+    },
+    {
+      "name": "lit",
+      "kind": "flat",
+      "material": "firework_paper",
+      "clip_to": "tube",
+      "opacity": 0.8,
+      "grad": {
+        "to": "floor_light",
+        "y0": 40,
+        "y1": 70,
+        "amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            3,
+            3,
+            10,
+            8
+          ],
+          "at": [
+            50,
+            52
+          ],
+          "size": [
+            40,
+            14
+          ],
+          "rot": 18
+        }
+      ]
+    }
+  ]
+}

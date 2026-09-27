@@ -1,0 +1,130 @@
+{
+ "asset": "eq_j10_feather_charm",
+ "status": "candidate",
+ "note": "68 feather charm. A grey quill on a thread, barbs worn away on one side. The vane is symmetrical except where a thumb held it.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 132,
+ "forms": [
+  {
+   "name": "quill",
+   "z": 0,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "feather",
+     "at": [
+      256,
+      262
+     ],
+     "size": [
+      380,
+      380
+     ]
+    }
+   ]
+  },
+  {
+   "name": "barbs",
+   "z": 1,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.35,
+   "line": false,
+   "clip_to": "quill",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      262
+     ],
+     "size": [
+      12,
+      340
+     ],
+     "rot": 42
+    }
+   ]
+  },
+  {
+   "name": "hole",
+   "z": 2,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "quill",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      146,
+      372
+     ],
+     "size": [
+      42,
+      42
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cord",
+   "z": 2,
+   "kind": "flat",
+   "material": "leather",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      152,
+      392
+     ],
+     "size": [
+      200,
+      93.33333333333333
+     ],
+     "crop": [
+      2.0,
+      3.0,
+      14.0,
+      8.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dirt_grime",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "grime",
+   "blend": "multiply",
+   "opacity": 0.3,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      262
+     ],
+     "size": [
+      200,
+      200
+     ]
+    }
+   ],
+   "clip_to": "quill"
+  }
+ ]
+}

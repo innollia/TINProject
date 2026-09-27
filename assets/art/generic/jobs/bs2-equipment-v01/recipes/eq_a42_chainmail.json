@@ -1,0 +1,280 @@
+{
+ "asset": "eq_a42_chainmail",
+ "status": "candidate",
+ "note": "42 chainmail. A short shirt of iron links over a skirt, collar still lined with cloth. Rusted through in a band where a body leaned on it.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 106,
+ "forms": [
+  {
+   "name": "mail_edge",
+   "z": -0.5,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      326,
+      326
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "mail",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      300,
+      300
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 3
+     }
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      152
+     ],
+     "size": [
+      260,
+      132
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "shoulders_edge",
+   "z": 0.0,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      74,
+      232
+     ],
+     "size": [
+      196,
+      166
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      438,
+      232
+     ],
+     "size": [
+      196,
+      166
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shoulders",
+   "z": 0.5,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      74,
+      232
+     ],
+     "size": [
+      170,
+      140
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      438,
+      232
+     ],
+     "size": [
+      170,
+      140
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skirt_edge",
+   "z": 0.5,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      412
+     ],
+     "size": [
+      426,
+      236
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "skirt",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      412
+     ],
+     "size": [
+      400,
+      210
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "links",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.55,
+   "line": false,
+   "clip_to": "mail",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      150,
+      210
+     ],
+     "size": [
+      26,
+      26
+     ],
+     "repeat": {
+      "grid": [
+       6,
+       4
+      ],
+      "step": [
+       44,
+       46
+      ],
+      "at": [
+       150,
+       210
+      ],
+      "stagger": 22,
+      "skip": [
+       [
+        0,
+        0
+       ],
+       [
+        5,
+        3
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "collar",
+   "z": 2,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256,
+      160
+     ],
+     "size": [
+      250,
+      84
+     ],
+     "crop": [
+      1.0,
+      6.0,
+      15.0,
+      11.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      200,
+      300
+     ],
+     "size": [
+      105.0,
+      100.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      350,
+      400
+     ],
+     "size": [
+      90.0,
+      75.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "mail"
+  }
+ ]
+}

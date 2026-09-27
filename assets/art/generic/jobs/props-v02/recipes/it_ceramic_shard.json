@@ -1,0 +1,99 @@
+{
+  "asset": "it_ceramic_shard",
+  "status": "candidate",
+  "note": "Loot ceramic shard: a curved pale sherd from a broken pot.  The glaze band is the same cone piece clipped to the sherd, so the two edges can never drift apart.",
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the item inside the inventory cell",
+  "seed": 113,
+  "forms": [
+    {
+      "name": "sherd",
+      "z": 0,
+      "material": "ceramic",
+      "pieces": [
+        {
+          "icon": "cone",
+          "crop": [
+            2,
+            5,
+            15,
+            14
+          ],
+          "at": [
+            58,
+            68
+          ],
+          "size": [
+            92,
+            84
+          ],
+          "rot": -14
+        }
+      ]
+    },
+    {
+      "name": "glaze",
+      "z": 1,
+      "material": "ceramic",
+      "pieces": [
+        {
+          "icon": "cone",
+          "crop": [
+            2,
+            5,
+            15,
+            9
+          ],
+          "at": [
+            58,
+            68
+          ],
+          "size": [
+            92,
+            84
+          ],
+          "rot": -14
+        }
+      ],
+      "kind": "wash",
+      "color": "#87796a",
+      "opacity": 0.55,
+      "clip_to": "sherd"
+    },
+    {
+      "name": "small",
+      "z": 2,
+      "material": "ceramic",
+      "pieces": [
+        {
+          "icon": "cone",
+          "crop": [
+            6,
+            10,
+            14,
+            15
+          ],
+          "at": [
+            94,
+            98
+          ],
+          "size": [
+            44,
+            30
+          ],
+          "rot": 18
+        }
+      ],
+      "color": "#a2937f"
+    }
+  ]
+}

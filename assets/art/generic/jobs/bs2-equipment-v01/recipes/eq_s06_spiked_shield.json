@@ -1,0 +1,194 @@
+{
+ "asset": "eq_s06_spiked_shield",
+ "status": "candidate",
+ "note": "58 spiked shield. A board with nails through the edge, all of them pointing out. Meant to be held, not to be carried.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 122,
+ "forms": [
+  {
+   "name": "board_edge",
+   "z": -1,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      256,
+      258
+     ],
+     "size": [
+      348,
+      408
+     ]
+    }
+   ]
+  },
+  {
+   "name": "board",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      256,
+      258
+     ],
+     "size": [
+      320,
+      380
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spikes",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      70,
+      96
+     ],
+     "repeat": {
+      "ellipse": [
+       256,
+       250,
+       180,
+       200
+      ],
+      "count": 9,
+      "orient": true,
+      "jitter": {
+       "at": 4.0,
+       "rot": 6.0
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "bands",
+   "z": 2,
+   "kind": "flat",
+   "material": "iron",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      210
+     ],
+     "size": [
+      280,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      310
+     ],
+     "size": [
+      240,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "boss",
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      210
+     ],
+     "size": [
+      120,
+      120
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      210
+     ],
+     "size": [
+      68,
+      68
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      190.0,
+      190.0
+     ]
+    }
+   ],
+   "clip_to": "spikes"
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      280
+     ],
+     "size": [
+      154.0,
+      165.0
+     ]
+    }
+   ],
+   "clip_to": "board"
+  }
+ ]
+}

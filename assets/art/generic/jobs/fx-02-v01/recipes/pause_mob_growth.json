@@ -1,0 +1,480 @@
+{
+  "asset": "pause_mob_growth",
+  "status": "candidate",
+  "note": "pause_mob_growth (growth suspended). 4 frames. Upright and vertical on purpose: an iron slot, a frosted column that stops part way with a jagged ice crust and two hanging icicles, two snowflake frost marks creeping down the empty slot, then a chain and a frozen plaque carrying two vertical bars. Only the frost moves; the plaque never does.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    192,
+    192
+  ],
+  "pivot": [
+    96,
+    192
+  ],
+  "pivot_meaning": "floor point under the hanging plaque",
+  "seed": 1207,
+  "forms": [
+    {
+      "name": "pm_shadow",
+      "z": 0,
+      "kind": "shadow",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            186.0
+          ],
+          "size": [
+            88.0,
+            11.0
+          ]
+        }
+      ],
+      "color": "shadow_contact",
+      "opacity": 0.34,
+      "blur": 4
+    },
+    {
+      "name": "pm_track",
+      "z": 1,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 4,
+            "corner": 9
+          },
+          "at": [
+            96.0,
+            80.0
+          ],
+          "size": [
+            38.0,
+            118.0
+          ]
+        },
+        {
+          "icon": "square",
+          "slice": {
+            "border": 3,
+            "corner": 6
+          },
+          "op": "sub",
+          "at": [
+            96.0,
+            80.0
+          ],
+          "size": [
+            25.0,
+            106.0
+          ]
+        }
+      ],
+      "material": "iron"
+    },
+    {
+      "name": "pm_fill",
+      "z": 2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 3,
+            "corner": 6
+          },
+          "at": [
+            96.0,
+            120.0
+          ],
+          "size": [
+            25.0,
+            46.0
+          ]
+        }
+      ],
+      "material": "frost",
+      "grad": {
+        "to": "frost_white",
+        "y0": 145,
+        "y1": 95
+      }
+    },
+    {
+      "name": "pm_crust",
+      "z": 3,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "mountains",
+          "at": [
+            96.0,
+            90.0
+          ],
+          "size": [
+            38.0,
+            17.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 180,
+          "at": [
+            88.0,
+            103.0
+          ],
+          "size": [
+            7.0,
+            17.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 180,
+          "at": [
+            103.0,
+            105.0
+          ],
+          "size": [
+            6.0,
+            13.0
+          ]
+        }
+      ],
+      "tags": [
+        "pm_crust"
+      ],
+      "material": "frost_ice",
+      "emit": 0.22,
+      "line": false,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.35,
+        "color": "frost_white"
+      }
+    },
+    {
+      "name": "pm_ice1",
+      "z": 3.2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "snowflake",
+          "rot": 10,
+          "at": [
+            96.0,
+            58.0
+          ],
+          "size": [
+            26.0,
+            26.0
+          ]
+        }
+      ],
+      "tags": [
+        "pm_ice1"
+      ],
+      "material": "frost_ice",
+      "emit": 0.3,
+      "line": false,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.4,
+        "color": "frost_white"
+      }
+    },
+    {
+      "name": "pm_ice2",
+      "z": 3.2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "snowflake",
+          "rot": -16,
+          "at": [
+            104.0,
+            32.0
+          ],
+          "size": [
+            17.0,
+            17.0
+          ]
+        }
+      ],
+      "tags": [
+        "pm_ice2"
+      ],
+      "material": "frost_pale",
+      "emit": 0.2,
+      "line": false
+    },
+    {
+      "name": "pm_chain",
+      "z": 3.4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "link",
+          "rot": 45,
+          "crop": [
+            4,
+            4,
+            12,
+            12
+          ],
+          "at": [
+            96.0,
+            146.0
+          ],
+          "size": [
+            9.0,
+            9.0
+          ]
+        },
+        {
+          "icon": "link",
+          "rot": 45,
+          "crop": [
+            4,
+            4,
+            12,
+            12
+          ],
+          "at": [
+            96.0,
+            155.0
+          ],
+          "size": [
+            9.0,
+            9.0
+          ]
+        }
+      ],
+      "material": "iron",
+      "line": {
+        "width": 0.5,
+        "heavy": 0.3
+      }
+    },
+    {
+      "name": "pm_sign_rim",
+      "z": 3.5,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 4,
+            "corner": 9
+          },
+          "at": [
+            96.0,
+            170.0
+          ],
+          "size": [
+            72.0,
+            40.0
+          ]
+        }
+      ],
+      "material": "iron"
+    },
+    {
+      "name": "pm_sign_face",
+      "z": 3.6,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 4,
+            "corner": 8
+          },
+          "at": [
+            96.0,
+            170.0
+          ],
+          "size": [
+            64.0,
+            33.0
+          ]
+        }
+      ],
+      "material": "frost",
+      "grad": {
+        "to": "frost_deep",
+        "y0": 156,
+        "y1": 185
+      }
+    },
+    {
+      "name": "pm_bars",
+      "z": 3.7,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 3
+          },
+          "at": [
+            86.0,
+            170.0
+          ],
+          "size": [
+            11.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 3
+          },
+          "at": [
+            106.0,
+            170.0
+          ],
+          "size": [
+            11.0,
+            24.0
+          ]
+        }
+      ],
+      "material": "frost_ice",
+      "line": false,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.3,
+        "color": "frost_white"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "pm_crust": {
+          "pivot": [
+            96,
+            144
+          ],
+          "sy": 1
+        },
+        "pm_ice1": {
+          "pivot": [
+            96,
+            144
+          ],
+          "dy": 0,
+          "sx": 1,
+          "sy": 1
+        },
+        "pm_ice2": {
+          "pivot": [
+            96,
+            144
+          ],
+          "dy": 0,
+          "sx": 1,
+          "sy": 1
+        }
+      }
+    },
+    {
+      "name": "f1",
+      "move": {
+        "pm_crust": {
+          "pivot": [
+            96,
+            144
+          ],
+          "sy": 1.1
+        },
+        "pm_ice1": {
+          "pivot": [
+            96,
+            144
+          ],
+          "dy": 3,
+          "sx": 1.04,
+          "sy": 1.04
+        },
+        "pm_ice2": {
+          "pivot": [
+            96,
+            144
+          ],
+          "dy": 1.5,
+          "sx": 1.05,
+          "sy": 1.05
+        }
+      }
+    },
+    {
+      "name": "f2",
+      "move": {
+        "pm_crust": {
+          "pivot": [
+            96,
+            144
+          ],
+          "sy": 1.2
+        },
+        "pm_ice1": {
+          "pivot": [
+            96,
+            144
+          ],
+          "dy": 6,
+          "sx": 1.08,
+          "sy": 1.08
+        },
+        "pm_ice2": {
+          "pivot": [
+            96,
+            144
+          ],
+          "dy": 3,
+          "sx": 1.1,
+          "sy": 1.1
+        }
+      }
+    },
+    {
+      "name": "f3",
+      "move": {
+        "pm_crust": {
+          "pivot": [
+            96,
+            144
+          ],
+          "sy": 1.1
+        },
+        "pm_ice1": {
+          "pivot": [
+            96,
+            144
+          ],
+          "dy": 3,
+          "sx": 1.04,
+          "sy": 1.04
+        },
+        "pm_ice2": {
+          "pivot": [
+            96,
+            144
+          ],
+          "dy": 1.5,
+          "sx": 1.05,
+          "sy": 1.05
+        }
+      }
+    }
+  ]
+}

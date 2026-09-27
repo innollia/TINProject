@@ -1,0 +1,908 @@
+{
+  "asset": "reset_mob_growth",
+  "status": "candidate",
+  "note": "reset_mob_growth (growth reset). 8 frames, circular and warm instead of the frozen vertical bar. A bronze ring (ring icon minus an inner disc) carries a pointer cluster that orbits a full 360 deg in 45 deg steps, so the loop is seamless; a lit tip rides 15 px ahead of it; the spent bar on the left shrinks to 0.51x about its base while eight chips fall one per frame into the rubble pile.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    192,
+    192
+  ],
+  "pivot": [
+    82,
+    182
+  ],
+  "pivot_meaning": "floor point under the rubble pile",
+  "seed": 1208,
+  "forms": [
+    {
+      "name": "rm_shadow",
+      "z": 0,
+      "kind": "shadow",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            82.0,
+            178.0
+          ],
+          "size": [
+            128.0,
+            18.0
+          ]
+        }
+      ],
+      "color": "shadow_contact",
+      "opacity": 0.34,
+      "blur": 5
+    },
+    {
+      "name": "rm_bar",
+      "z": 1,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 4,
+            "corner": 6
+          },
+          "at": [
+            41.0,
+            138.0
+          ],
+          "size": [
+            26.0,
+            78.0
+          ]
+        },
+        {
+          "icon": "mountains",
+          "op": "sub",
+          "at": [
+            41.0,
+            108.0
+          ],
+          "size": [
+            36.0,
+            20.0
+          ]
+        }
+      ],
+      "material": "stone_dark",
+      "pivot": [
+        41,
+        176
+      ]
+    },
+    {
+      "name": "rm_bar_glass",
+      "z": 1.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 3,
+            "corner": 4
+          },
+          "at": [
+            41.0,
+            136.0
+          ],
+          "size": [
+            19.0,
+            70.0
+          ]
+        }
+      ],
+      "tags": [
+        "rm_bar"
+      ],
+      "material": "frost_deep",
+      "opacity": 0.9
+    },
+    {
+      "name": "rm_pile",
+      "z": 2,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            41.0,
+            174.0
+          ],
+          "size": [
+            46.0,
+            20.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            24.0,
+            178.0
+          ],
+          "size": [
+            26.0,
+            12.0
+          ]
+        }
+      ],
+      "material": "rubble"
+    },
+    {
+      "name": "rm_core",
+      "z": 3,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            112.0,
+            76.0
+          ],
+          "size": [
+            82.0,
+            82.0
+          ]
+        }
+      ],
+      "material": "rewind_dark",
+      "line": false
+    },
+    {
+      "name": "rm_band",
+      "z": 3.5,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "ring",
+          "at": [
+            112.0,
+            76.0
+          ],
+          "size": [
+            124.0,
+            124.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "op": "sub",
+          "at": [
+            112.0,
+            76.0
+          ],
+          "size": [
+            94.0,
+            94.0
+          ]
+        }
+      ],
+      "material": "rewind",
+      "shade": {
+        "highlight": 0.84,
+        "highlight_amount": 0.7
+      }
+    },
+    {
+      "name": "rm_head",
+      "z": 4,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "triangle",
+          "at": [
+            112.0,
+            21.0
+          ],
+          "size": [
+            20.0,
+            20.0
+          ]
+        },
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "at": [
+            86.0,
+            29.0
+          ],
+          "size": [
+            14.0,
+            7.0
+          ]
+        },
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "at": [
+            138.0,
+            29.0
+          ],
+          "size": [
+            14.0,
+            7.0
+          ]
+        },
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "at": [
+            112.0,
+            45.0
+          ],
+          "size": [
+            14.0,
+            7.0
+          ]
+        }
+      ],
+      "material": "rewind",
+      "pivot": [
+        112,
+        76
+      ],
+      "glow": {
+        "radius": 3,
+        "opacity": 0.3,
+        "color": "rewind_bright"
+      }
+    },
+    {
+      "name": "rm_tip",
+      "z": 5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            112.0,
+            6.0
+          ],
+          "size": [
+            16.0,
+            16.0
+          ]
+        }
+      ],
+      "material": "lamp_amber",
+      "emit": 0.85,
+      "line": false,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.55,
+        "color": "lamp_glow"
+      }
+    },
+    {
+      "name": "rm_chip0",
+      "z": 6,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "rot": 18,
+          "at": [
+            41.0,
+            104.0
+          ],
+          "size": [
+            14.0,
+            12.0
+          ]
+        }
+      ],
+      "tags": [
+        "chip0"
+      ],
+      "material": "rubble"
+    },
+    {
+      "name": "rm_chip1",
+      "z": 6,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "rot": 13,
+          "at": [
+            41.0,
+            104.0
+          ],
+          "size": [
+            14.0,
+            12.0
+          ]
+        }
+      ],
+      "tags": [
+        "chip1"
+      ],
+      "material": "rubble"
+    },
+    {
+      "name": "rm_chip2",
+      "z": 6,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "rot": 8,
+          "at": [
+            41.0,
+            104.0
+          ],
+          "size": [
+            14.0,
+            12.0
+          ]
+        }
+      ],
+      "tags": [
+        "chip2"
+      ],
+      "material": "rubble"
+    },
+    {
+      "name": "rm_chip3",
+      "z": 6,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "rot": 3,
+          "at": [
+            41.0,
+            104.0
+          ],
+          "size": [
+            14.0,
+            12.0
+          ]
+        }
+      ],
+      "tags": [
+        "chip3"
+      ],
+      "material": "rubble"
+    },
+    {
+      "name": "rm_chip4",
+      "z": 6,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "rot": -2,
+          "at": [
+            41.0,
+            104.0
+          ],
+          "size": [
+            14.0,
+            12.0
+          ]
+        }
+      ],
+      "tags": [
+        "chip4"
+      ],
+      "material": "rubble"
+    },
+    {
+      "name": "rm_chip5",
+      "z": 6,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "rot": -7,
+          "at": [
+            41.0,
+            104.0
+          ],
+          "size": [
+            14.0,
+            12.0
+          ]
+        }
+      ],
+      "tags": [
+        "chip5"
+      ],
+      "material": "rubble"
+    },
+    {
+      "name": "rm_chip6",
+      "z": 6,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "rot": -12,
+          "at": [
+            41.0,
+            104.0
+          ],
+          "size": [
+            14.0,
+            12.0
+          ]
+        }
+      ],
+      "tags": [
+        "chip6"
+      ],
+      "material": "rubble"
+    },
+    {
+      "name": "rm_chip7",
+      "z": 6,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "rot": -17,
+          "at": [
+            41.0,
+            104.0
+          ],
+          "size": [
+            14.0,
+            12.0
+          ]
+        }
+      ],
+      "tags": [
+        "chip7"
+      ],
+      "material": "rubble"
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "rm_bar": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 1
+        },
+        "rm_bar_glass": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 1
+        },
+        "rm_head": {
+          "pivot": [
+            112,
+            76
+          ],
+          "rot": -0.0
+        },
+        "rm_tip": {
+          "pivot": [
+            112,
+            76
+          ],
+          "dx": 0,
+          "dy": 0
+        },
+        "chip0": [
+          0,
+          0
+        ]
+      },
+      "hide": [
+        "chip1",
+        "chip2",
+        "chip3",
+        "chip4",
+        "chip5",
+        "chip6",
+        "chip7"
+      ],
+      "show": [
+        "chip0"
+      ]
+    },
+    {
+      "name": "f1",
+      "move": {
+        "rm_bar": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.93
+        },
+        "rm_bar_glass": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.93
+        },
+        "rm_head": {
+          "pivot": [
+            112,
+            76
+          ],
+          "rot": -45.0
+        },
+        "rm_tip": {
+          "pivot": [
+            112,
+            76
+          ],
+          "dx": 49.5,
+          "dy": 20.5
+        },
+        "chip1": [
+          0,
+          11
+        ]
+      },
+      "hide": [
+        "chip0",
+        "chip2",
+        "chip3",
+        "chip4",
+        "chip5",
+        "chip6",
+        "chip7"
+      ],
+      "show": [
+        "chip1"
+      ]
+    },
+    {
+      "name": "f2",
+      "move": {
+        "rm_bar": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.86
+        },
+        "rm_bar_glass": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.86
+        },
+        "rm_head": {
+          "pivot": [
+            112,
+            76
+          ],
+          "rot": -90.0
+        },
+        "rm_tip": {
+          "pivot": [
+            112,
+            76
+          ],
+          "dx": 20.5,
+          "dy": 49.5
+        },
+        "chip2": [
+          0,
+          22
+        ]
+      },
+      "hide": [
+        "chip0",
+        "chip1",
+        "chip3",
+        "chip4",
+        "chip5",
+        "chip6",
+        "chip7"
+      ],
+      "show": [
+        "chip2"
+      ]
+    },
+    {
+      "name": "f3",
+      "move": {
+        "rm_bar": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.79
+        },
+        "rm_bar_glass": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.79
+        },
+        "rm_head": {
+          "pivot": [
+            112,
+            76
+          ],
+          "rot": -135.0
+        },
+        "rm_tip": {
+          "pivot": [
+            112,
+            76
+          ],
+          "dx": -20.5,
+          "dy": 49.5
+        },
+        "chip3": [
+          0,
+          33
+        ]
+      },
+      "hide": [
+        "chip0",
+        "chip1",
+        "chip2",
+        "chip4",
+        "chip5",
+        "chip6",
+        "chip7"
+      ],
+      "show": [
+        "chip3"
+      ]
+    },
+    {
+      "name": "f4",
+      "move": {
+        "rm_bar": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.72
+        },
+        "rm_bar_glass": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.72
+        },
+        "rm_head": {
+          "pivot": [
+            112,
+            76
+          ],
+          "rot": -180.0
+        },
+        "rm_tip": {
+          "pivot": [
+            112,
+            76
+          ],
+          "dx": -49.5,
+          "dy": 20.5
+        },
+        "chip4": [
+          0,
+          44
+        ]
+      },
+      "hide": [
+        "chip0",
+        "chip1",
+        "chip2",
+        "chip3",
+        "chip5",
+        "chip6",
+        "chip7"
+      ],
+      "show": [
+        "chip4"
+      ]
+    },
+    {
+      "name": "f5",
+      "move": {
+        "rm_bar": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.65
+        },
+        "rm_bar_glass": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.65
+        },
+        "rm_head": {
+          "pivot": [
+            112,
+            76
+          ],
+          "rot": -225.0
+        },
+        "rm_tip": {
+          "pivot": [
+            112,
+            76
+          ],
+          "dx": -49.5,
+          "dy": -20.5
+        },
+        "chip5": [
+          0,
+          55
+        ]
+      },
+      "hide": [
+        "chip0",
+        "chip1",
+        "chip2",
+        "chip3",
+        "chip4",
+        "chip6",
+        "chip7"
+      ],
+      "show": [
+        "chip5"
+      ]
+    },
+    {
+      "name": "f6",
+      "move": {
+        "rm_bar": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.58
+        },
+        "rm_bar_glass": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.58
+        },
+        "rm_head": {
+          "pivot": [
+            112,
+            76
+          ],
+          "rot": -270.0
+        },
+        "rm_tip": {
+          "pivot": [
+            112,
+            76
+          ],
+          "dx": -20.5,
+          "dy": -49.5
+        },
+        "chip6": [
+          0,
+          66
+        ]
+      },
+      "hide": [
+        "chip0",
+        "chip1",
+        "chip2",
+        "chip3",
+        "chip4",
+        "chip5",
+        "chip7"
+      ],
+      "show": [
+        "chip6"
+      ]
+    },
+    {
+      "name": "f7",
+      "move": {
+        "rm_bar": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.51
+        },
+        "rm_bar_glass": {
+          "pivot": [
+            41,
+            176
+          ],
+          "sy": 0.51
+        },
+        "rm_head": {
+          "pivot": [
+            112,
+            76
+          ],
+          "rot": -315.0
+        },
+        "rm_tip": {
+          "pivot": [
+            112,
+            76
+          ],
+          "dx": 20.5,
+          "dy": -49.5
+        },
+        "chip7": [
+          0,
+          77
+        ]
+      },
+      "hide": [
+        "chip0",
+        "chip1",
+        "chip2",
+        "chip3",
+        "chip4",
+        "chip5",
+        "chip6"
+      ],
+      "show": [
+        "chip7"
+      ]
+    }
+  ]
+}

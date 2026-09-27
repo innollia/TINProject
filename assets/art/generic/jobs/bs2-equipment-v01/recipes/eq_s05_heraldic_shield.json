@@ -1,0 +1,169 @@
+{
+ "asset": "eq_s05_heraldic_shield",
+ "status": "candidate",
+ "note": "57 heraldic shield. Wine field, bronze border, a chalk cross on the front. The device has been scrubbed off and re-chalked twice.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 121,
+ "forms": [
+  {
+   "name": "board_edge",
+   "z": -1,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      410,
+      450
+     ]
+    }
+   ]
+  },
+  {
+   "name": "board",
+   "z": 0,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      380,
+      420
+     ]
+    }
+   ]
+  },
+  {
+   "name": "border",
+   "z": 1,
+   "kind": "flat",
+   "material": "bronze",
+   "opacity": 0.9,
+   "line": false,
+   "clip_to": "board",
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      256,
+      98
+     ],
+     "size": [
+      285,
+      63
+     ],
+     "crop": [
+      2.0,
+      1.0,
+      14.0,
+      3.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "device",
+   "z": 2,
+   "kind": "flat",
+   "material": "paper",
+   "opacity": 0.85,
+   "line": false,
+   "clip_to": "board",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      240
+     ],
+     "size": [
+      140,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      240
+     ],
+     "size": [
+      30,
+      140
+     ]
+    }
+   ]
+  },
+  {
+   "name": "boss",
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      96,
+      96
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      54,
+      54
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      176.0,
+      198.00000000000003
+     ]
+    }
+   ],
+   "clip_to": "board"
+  }
+ ]
+}

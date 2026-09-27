@@ -1,0 +1,1013 @@
+{
+  "asset": "lava",
+  "status": "candidate",
+  "note": "lava (molten ground splash). 6 frames, ground-squashed. Ragged mottled dark crust with holes, a breathing molten pool, seven lava veins clipped to it, four dark slabs floating on the melt, three breathing bubbles, two rising heat columns. Wide irregular pool silhouette, unique in this job.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    384,
+    384
+  ],
+  "pivot": [
+    192,
+    306
+  ],
+  "pivot_meaning": "ground contact point of the pool, centre",
+  "seed": 1203,
+  "forms": [
+    {
+      "name": "lv_shadow",
+      "z": -2,
+      "kind": "shadow",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 4,
+            "corner": 40
+          },
+          "at": [
+            198.0,
+            304.0
+          ],
+          "size": [
+            320.0,
+            108.0
+          ]
+        }
+      ],
+      "color": "shadow_contact",
+      "opacity": 0.4,
+      "blur": 11
+    },
+    {
+      "name": "lv_halo",
+      "z": -1.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            192.0,
+            294.0
+          ],
+          "size": [
+            300.0,
+            96.0
+          ]
+        }
+      ],
+      "material": "lava_mid",
+      "opacity": 0.45,
+      "glow": {
+        "radius": 16,
+        "opacity": 0.4,
+        "color": "lava_hot"
+      }
+    },
+    {
+      "name": "lv_crust",
+      "z": 0,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            192.0,
+            292.0
+          ],
+          "size": [
+            312.0,
+            112.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            96.0,
+            286.0
+          ],
+          "size": [
+            96.0,
+            56.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            286.0,
+            290.0
+          ],
+          "size": [
+            88.0,
+            52.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            192.0,
+            260.0
+          ],
+          "size": [
+            120.0,
+            44.0
+          ]
+        }
+      ],
+      "material": "lava_crust",
+      "rough": {
+        "amp": 0.5,
+        "soft": 3,
+        "cell": 16
+      },
+      "mottle": {
+        "cell": 46,
+        "lo": 0.62,
+        "hi": 0.9
+      }
+    },
+    {
+      "name": "lv_melt",
+      "z": 1,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            192.0,
+            298.0
+          ],
+          "size": [
+            246.0,
+            84.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            120.0,
+            304.0
+          ],
+          "size": [
+            70.0,
+            34.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            268.0,
+            298.0
+          ],
+          "size": [
+            66.0,
+            32.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            192.0,
+            284.0
+          ],
+          "size": [
+            120.0,
+            40.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "op": "sub",
+          "at": [
+            88.0,
+            294.0
+          ],
+          "size": [
+            46.0,
+            26.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "op": "sub",
+          "at": [
+            300.0,
+            292.0
+          ],
+          "size": [
+            44.0,
+            24.0
+          ]
+        }
+      ],
+      "material": "lava_molt",
+      "emit": 0.3,
+      "rough": {
+        "amp": 0.55,
+        "soft": 3,
+        "cell": 14
+      },
+      "glow": {
+        "radius": 7,
+        "opacity": 0.4,
+        "color": "lava_hot"
+      }
+    },
+    {
+      "name": "lv_veins",
+      "z": 2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "lightning_bolt",
+          "rot": -14,
+          "at": [
+            118.0,
+            274.0
+          ],
+          "size": [
+            13.0,
+            30.0
+          ]
+        },
+        {
+          "icon": "lightning_bolt",
+          "rot": 8,
+          "at": [
+            162.0,
+            292.0
+          ],
+          "size": [
+            13.0,
+            30.0
+          ]
+        },
+        {
+          "icon": "lightning_bolt",
+          "rot": -6,
+          "at": [
+            206.0,
+            272.0
+          ],
+          "size": [
+            13.0,
+            30.0
+          ]
+        },
+        {
+          "icon": "lightning_bolt",
+          "rot": 16,
+          "at": [
+            250.0,
+            296.0
+          ],
+          "size": [
+            13.0,
+            30.0
+          ]
+        },
+        {
+          "icon": "lightning_bolt",
+          "rot": -22,
+          "at": [
+            140.0,
+            312.0
+          ],
+          "size": [
+            13.0,
+            30.0
+          ]
+        },
+        {
+          "icon": "lightning_bolt",
+          "rot": 6,
+          "at": [
+            224.0,
+            318.0
+          ],
+          "size": [
+            13.0,
+            30.0
+          ]
+        },
+        {
+          "icon": "lightning_bolt",
+          "rot": 4,
+          "at": [
+            190.0,
+            256.0
+          ],
+          "size": [
+            13.0,
+            30.0
+          ]
+        }
+      ],
+      "material": "lava_vein",
+      "emit": 1.0,
+      "clip_to": "lv_melt",
+      "glow": {
+        "radius": 4,
+        "opacity": 0.6,
+        "color": "lava_vein"
+      }
+    },
+    {
+      "name": "lv_slabs",
+      "z": 3,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "square",
+          "ground": true,
+          "rot": 6,
+          "at": [
+            140.0,
+            268.0
+          ],
+          "size": [
+            70.0,
+            20.0
+          ]
+        },
+        {
+          "icon": "square",
+          "ground": true,
+          "rot": -8,
+          "at": [
+            232.0,
+            284.0
+          ],
+          "size": [
+            86.0,
+            22.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            186.0,
+            300.0
+          ],
+          "size": [
+            60.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "square",
+          "ground": true,
+          "rot": 14,
+          "at": [
+            272.0,
+            262.0
+          ],
+          "size": [
+            44.0,
+            16.0
+          ]
+        }
+      ],
+      "material": "lava_crust",
+      "rough": {
+        "amp": 0.4,
+        "soft": 2,
+        "cell": 12
+      }
+    },
+    {
+      "name": "lv_bubbles",
+      "z": 4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            148.0,
+            262.0
+          ],
+          "size": [
+            16.0,
+            9.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            232.0,
+            292.0
+          ],
+          "size": [
+            13.0,
+            8.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "ground": true,
+          "at": [
+            188.0,
+            274.0
+          ],
+          "size": [
+            11.0,
+            7.0
+          ]
+        }
+      ],
+      "material": "lava_vein",
+      "emit": 0.7,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.5,
+        "color": "lava_vein"
+      }
+    },
+    {
+      "name": "lv_heatA",
+      "z": 5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            108.0,
+            232.0
+          ],
+          "size": [
+            11.0,
+            15.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            168.0,
+            232.0
+          ],
+          "size": [
+            11.0,
+            15.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            238.0,
+            232.0
+          ],
+          "size": [
+            11.0,
+            15.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            288.0,
+            232.0
+          ],
+          "size": [
+            11.0,
+            15.0
+          ]
+        }
+      ],
+      "material": "lava_vein",
+      "emit": 0.9,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.55,
+        "color": "lava_vein"
+      }
+    },
+    {
+      "name": "lv_heatB",
+      "z": 5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            108.0,
+            192.0
+          ],
+          "size": [
+            11.0,
+            15.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            168.0,
+            192.0
+          ],
+          "size": [
+            11.0,
+            15.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            238.0,
+            192.0
+          ],
+          "size": [
+            11.0,
+            15.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            288.0,
+            192.0
+          ],
+          "size": [
+            11.0,
+            15.0
+          ]
+        }
+      ],
+      "material": "lava_vein",
+      "emit": 0.9,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.55,
+        "color": "lava_vein"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "lv_halo": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sy": 1,
+          "sx": 1
+        },
+        "lv_crust": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "lv_melt": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1,
+          "sy": 1,
+          "dy": 0
+        },
+        "lv_veins": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dx": 0,
+          "sx": 1
+        },
+        "lv_slabs": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1,
+          "rot": 0
+        },
+        "lv_bubbles": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sy": 1
+        },
+        "lv_heatA": {
+          "pivot": [
+            108,
+            300
+          ],
+          "dy": -9,
+          "sx": 1,
+          "sy": 1
+        },
+        "lv_heatB": {
+          "pivot": [
+            108,
+            300
+          ],
+          "dy": -9,
+          "sx": 1,
+          "sy": 1
+        }
+      },
+      "hide": [
+        "lv_heatB"
+      ]
+    },
+    {
+      "name": "f1",
+      "move": {
+        "lv_halo": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sy": 1.04,
+          "sx": 1.04
+        },
+        "lv_crust": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1.01,
+          "sy": 1.01
+        },
+        "lv_melt": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1.03,
+          "sy": 1.03,
+          "dy": -2
+        },
+        "lv_veins": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dx": 3,
+          "sx": 1.02
+        },
+        "lv_slabs": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1.01,
+          "rot": 0.8
+        },
+        "lv_bubbles": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sy": 1.12
+        },
+        "lv_heatA": {
+          "pivot": [
+            108,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.9,
+          "sy": 0.9
+        },
+        "lv_heatB": {
+          "pivot": [
+            108,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.9,
+          "sy": 0.9
+        }
+      },
+      "hide": [
+        "lv_heatB"
+      ]
+    },
+    {
+      "name": "f2",
+      "move": {
+        "lv_halo": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sy": 1.08,
+          "sx": 1.08
+        },
+        "lv_crust": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1.02,
+          "sy": 1.02
+        },
+        "lv_melt": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1.06,
+          "sy": 1.06,
+          "dy": -4
+        },
+        "lv_veins": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dx": 6,
+          "sx": 1.05
+        },
+        "lv_slabs": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1.02,
+          "rot": 1.4
+        },
+        "lv_bubbles": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sy": 1.24
+        },
+        "lv_heatA": {
+          "pivot": [
+            108,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.8,
+          "sy": 0.8
+        },
+        "lv_heatB": {
+          "pivot": [
+            108,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.8,
+          "sy": 0.8
+        }
+      },
+      "hide": [
+        "lv_heatB"
+      ]
+    },
+    {
+      "name": "f3",
+      "move": {
+        "lv_halo": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sy": 1.04,
+          "sx": 1.04
+        },
+        "lv_crust": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1.01,
+          "sy": 1.01
+        },
+        "lv_melt": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1.03,
+          "sy": 1.03,
+          "dy": -2
+        },
+        "lv_veins": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dx": 3,
+          "sx": 1.02
+        },
+        "lv_slabs": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1.01,
+          "rot": 0.8
+        },
+        "lv_bubbles": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sy": 1.12
+        },
+        "lv_heatA": {
+          "pivot": [
+            108,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.7,
+          "sy": 0.7
+        },
+        "lv_heatB": {
+          "pivot": [
+            108,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.7,
+          "sy": 0.7
+        }
+      },
+      "hide": [
+        "lv_heatA"
+      ],
+      "show": [
+        "lv_heatB"
+      ]
+    },
+    {
+      "name": "f4",
+      "move": {
+        "lv_halo": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sy": 1,
+          "sx": 1
+        },
+        "lv_crust": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "lv_melt": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1,
+          "sy": 1,
+          "dy": 0
+        },
+        "lv_veins": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dx": 0,
+          "sx": 1
+        },
+        "lv_slabs": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 1,
+          "rot": 0
+        },
+        "lv_bubbles": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sy": 1
+        },
+        "lv_heatA": {
+          "pivot": [
+            108,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.6,
+          "sy": 0.6
+        },
+        "lv_heatB": {
+          "pivot": [
+            108,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.6,
+          "sy": 0.6
+        }
+      },
+      "hide": [
+        "lv_heatA"
+      ],
+      "show": [
+        "lv_heatB"
+      ]
+    },
+    {
+      "name": "f5",
+      "move": {
+        "lv_halo": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sy": 0.98,
+          "sx": 0.98
+        },
+        "lv_crust": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 0.99,
+          "sy": 0.99
+        },
+        "lv_melt": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 0.98,
+          "sy": 0.98,
+          "dy": -1
+        },
+        "lv_veins": {
+          "pivot": [
+            192,
+            300
+          ],
+          "dx": -3,
+          "sx": 0.99
+        },
+        "lv_slabs": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sx": 0.99,
+          "rot": -0.6
+        },
+        "lv_bubbles": {
+          "pivot": [
+            192,
+            300
+          ],
+          "sy": 0.95
+        },
+        "lv_heatA": {
+          "pivot": [
+            108,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.5,
+          "sy": 0.5
+        },
+        "lv_heatB": {
+          "pivot": [
+            108,
+            300
+          ],
+          "dy": -9,
+          "sx": 0.5,
+          "sy": 0.5
+        }
+      },
+      "hide": [
+        "lv_heatA"
+      ],
+      "show": [
+        "lv_heatB"
+      ]
+    }
+  ]
+}

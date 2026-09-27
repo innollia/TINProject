@@ -1,0 +1,270 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_melon_slice",
+  "note": "watermelon wedge seen from the front: dark green rind, pale rind ring, muted red flesh, five dark seeds. No text.",
+  "seed": 3102,
+  "forms": [
+    {
+      "name": "rind",
+      "z": 0,
+      "material": "melon_rind",
+      "shade": {
+        "bump": 1.1,
+        "highlight_amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            66
+          ],
+          "size": [
+            104,
+            100
+          ],
+          "keep": [
+            [
+              8.0,
+              16.0,
+              16.0,
+              7.5
+            ],
+            [
+              0.0,
+              7.5,
+              8.0,
+              16.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ring",
+      "z": 1,
+      "material": "melon_pale",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            66
+          ],
+          "size": [
+            88,
+            84
+          ],
+          "keep": [
+            [
+              8.0,
+              16.0,
+              16.0,
+              7.5
+            ],
+            [
+              0.0,
+              7.5,
+              8.0,
+              16.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "flesh",
+      "z": 2,
+      "material": "melon_flesh",
+      "clip_to": "ring",
+      "shade": {
+        "bump": 0.9,
+        "highlight_amount": 0.35
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            66
+          ],
+          "size": [
+            74,
+            70
+          ],
+          "keep": [
+            [
+              8.0,
+              16.0,
+              16.0,
+              7.5
+            ],
+            [
+              0.0,
+              7.5,
+              8.0,
+              16.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fibres",
+      "z": 3,
+      "kind": "flat",
+      "material": "melon_pale",
+      "opacity": 0.4,
+      "clip_to": "flesh",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            46,
+            62
+          ],
+          "size": [
+            8,
+            28
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": 20
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            82,
+            64
+          ],
+          "size": [
+            8,
+            26
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": -14
+        }
+      ]
+    },
+    {
+      "name": "seeds",
+      "z": 4,
+      "material": "melon_seed",
+      "clip_to": "flesh",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            50,
+            42
+          ],
+          "size": [
+            10,
+            12
+          ],
+          "crop": [
+            3.0,
+            4.0,
+            13.0,
+            15.2
+          ],
+          "rot": 168
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            64,
+            36
+          ],
+          "size": [
+            10,
+            12
+          ],
+          "crop": [
+            3.0,
+            4.0,
+            13.0,
+            15.2
+          ],
+          "rot": 180
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            78,
+            43
+          ],
+          "size": [
+            10,
+            12
+          ],
+          "crop": [
+            3.0,
+            4.0,
+            13.0,
+            15.2
+          ],
+          "rot": 192
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            57,
+            57
+          ],
+          "size": [
+            10,
+            12
+          ],
+          "crop": [
+            3.0,
+            4.0,
+            13.0,
+            15.2
+          ],
+          "rot": 172
+        },
+        {
+          "icon": "droplet",
+          "at": [
+            71,
+            58
+          ],
+          "size": [
+            10,
+            12
+          ],
+          "crop": [
+            3.0,
+            4.0,
+            13.0,
+            15.2
+          ],
+          "rot": 188
+        }
+      ]
+    }
+  ]
+}

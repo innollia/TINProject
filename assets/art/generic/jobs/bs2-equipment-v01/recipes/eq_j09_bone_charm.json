@@ -1,0 +1,130 @@
+{
+ "asset": "eq_j09_bone_charm",
+ "status": "candidate",
+ "note": "67 bone charm. A cracked long bone on a thread, grey where it has been handled. One end is drilled for the string and the other end is not.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 131,
+ "forms": [
+  {
+   "name": "bone",
+   "z": 0,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "bone",
+     "at": [
+      256,
+      262
+     ],
+     "size": [
+      400,
+      400
+     ]
+    }
+   ]
+  },
+  {
+   "name": "crack",
+   "z": 1,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.45,
+   "line": false,
+   "clip_to": "bone",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      262
+     ],
+     "size": [
+      300,
+      12
+     ],
+     "rot": 42
+    }
+   ]
+  },
+  {
+   "name": "hole",
+   "z": 2,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140,
+      380
+     ],
+     "size": [
+      46,
+      46
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cord",
+   "z": 2,
+   "kind": "flat",
+   "material": "leather",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      150,
+      400
+     ],
+     "size": [
+      210,
+      98.0
+     ],
+     "crop": [
+      2.0,
+      3.0,
+      14.0,
+      8.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dirt_grime",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "grime",
+   "blend": "multiply",
+   "opacity": 0.35,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      300,
+      180
+     ],
+     "size": [
+      34,
+      52
+     ]
+    }
+   ],
+   "clip_to": "bone"
+  }
+ ]
+}

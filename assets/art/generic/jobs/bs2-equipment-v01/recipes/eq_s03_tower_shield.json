@@ -1,0 +1,213 @@
+{
+ "asset": "eq_s03_tower_shield",
+ "status": "candidate",
+ "note": "55 tower shield. A door on a hinge: full height, three bands, one boss. It does not leave the wall.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 119,
+ "forms": [
+  {
+   "name": "board_edge",
+   "z": -1,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      256,
+      230
+     ],
+     "size": [
+      358,
+      428
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      328,
+      228
+     ],
+     "slice": {
+      "border": 2,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "board",
+   "z": 0,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      256,
+      230
+     ],
+     "size": [
+      330,
+      400
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      300,
+      200
+     ],
+     "slice": {
+      "border": 2,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "bands",
+   "z": 1,
+   "kind": "flat",
+   "material": "iron",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      160
+     ],
+     "size": [
+      290,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      290,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      420
+     ],
+     "size": [
+      290,
+      18
+     ]
+    }
+   ]
+  },
+  {
+   "name": "boss",
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      200
+     ],
+     "size": [
+      130,
+      130
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      200
+     ],
+     "size": [
+      76,
+      76
+     ]
+    }
+   ]
+  },
+  {
+   "name": "grain",
+   "z": 2,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.35,
+   "line": false,
+   "clip_to": "board",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      206,
+      260
+     ],
+     "size": [
+      10,
+      400
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      306,
+      260
+     ],
+     "size": [
+      10,
+      400
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      143.0,
+      187.00000000000003
+     ]
+    }
+   ],
+   "clip_to": "board"
+  }
+ ]
+}

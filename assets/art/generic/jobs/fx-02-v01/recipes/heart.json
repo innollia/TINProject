@@ -1,0 +1,232 @@
+{
+  "asset": "heart",
+  "status": "candidate",
+  "note": "heart (health / regard). 4 frames, lub-dub beat 0.90 / 1.11 / 0.94 / 1.06. A dark rim under a wine-red body so all three tones read, two gloss highlights clipped to the heart, and a soft wine halo that is its own _emit layer. Muted red, no fluorescent pink.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    192,
+    192
+  ],
+  "pivot": [
+    96,
+    100
+  ],
+  "pivot_meaning": "centre of the heart (floats, no floor contact)",
+  "seed": 1209,
+  "forms": [
+    {
+      "name": "ht_halo",
+      "z": 0,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "heart",
+          "at": [
+            96.0,
+            98.0
+          ],
+          "size": [
+            156.0,
+            152.0
+          ]
+        }
+      ],
+      "tags": [
+        "ht_halo"
+      ],
+      "material": "heart_dark",
+      "opacity": 0.4,
+      "blur": 3,
+      "emit": 0.3,
+      "glow": {
+        "radius": 15,
+        "opacity": 0.32,
+        "color": "heart_wine"
+      }
+    },
+    {
+      "name": "ht_rim",
+      "z": 1,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "heart",
+          "at": [
+            96.0,
+            98.0
+          ],
+          "size": [
+            124.0,
+            120.0
+          ]
+        }
+      ],
+      "tags": [
+        "ht_body"
+      ],
+      "material": "heart_dark"
+    },
+    {
+      "name": "ht_body",
+      "z": 2,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "heart",
+          "at": [
+            96.0,
+            96.0
+          ],
+          "size": [
+            112.0,
+            108.0
+          ]
+        }
+      ],
+      "material": "heart_tissue"
+    },
+    {
+      "name": "ht_gloss",
+      "z": 3,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "rot": -32,
+          "at": [
+            76.0,
+            72.0
+          ],
+          "size": [
+            34.0,
+            22.0
+          ]
+        }
+      ],
+      "tags": [
+        "ht_body"
+      ],
+      "material": "heart_light",
+      "opacity": 0.6,
+      "clip_to": "ht_body",
+      "line": false
+    },
+    {
+      "name": "ht_gloss2",
+      "z": 3.2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "rot": -32,
+          "at": [
+            86.0,
+            80.0
+          ],
+          "size": [
+            18.0,
+            12.0
+          ]
+        }
+      ],
+      "tags": [
+        "ht_body"
+      ],
+      "material": "paper",
+      "opacity": 0.5,
+      "clip_to": "ht_body",
+      "line": false
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "ht_body": {
+          "pivot": [
+            96,
+            100
+          ],
+          "sx": 0.9,
+          "sy": 0.9,
+          "dy": 0
+        },
+        "ht_halo": {
+          "pivot": [
+            96,
+            100
+          ],
+          "sx": 1.0,
+          "sy": 1.0
+        }
+      }
+    },
+    {
+      "name": "f1",
+      "move": {
+        "ht_body": {
+          "pivot": [
+            96,
+            100
+          ],
+          "sx": 1.11,
+          "sy": 1.11,
+          "dy": -2
+        },
+        "ht_halo": {
+          "pivot": [
+            96,
+            100
+          ],
+          "sx": 1.1,
+          "sy": 1.1
+        }
+      }
+    },
+    {
+      "name": "f2",
+      "move": {
+        "ht_body": {
+          "pivot": [
+            96,
+            100
+          ],
+          "sx": 0.94,
+          "sy": 0.94,
+          "dy": 1
+        },
+        "ht_halo": {
+          "pivot": [
+            96,
+            100
+          ],
+          "sx": 1.0,
+          "sy": 1.0
+        }
+      }
+    },
+    {
+      "name": "f3",
+      "move": {
+        "ht_body": {
+          "pivot": [
+            96,
+            100
+          ],
+          "sx": 1.06,
+          "sy": 1.06,
+          "dy": -1
+        },
+        "ht_halo": {
+          "pivot": [
+            96,
+            100
+          ],
+          "sx": 1.05,
+          "sy": 1.05
+        }
+      }
+    }
+  ]
+}

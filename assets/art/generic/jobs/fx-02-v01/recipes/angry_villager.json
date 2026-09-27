@@ -1,0 +1,511 @@
+{
+  "asset": "angry_villager",
+  "status": "candidate",
+  "note": "angry_villager (hostile villager state). 4 frames. Read from the face, not from a symbol: hooded bust, brows slanted the wrong way, eyes squinted to thin slanted slits, an open mouth with two bone teeth, cheek veins, and a red heat plume that rises -12 px. The whole bust lunges forward (dy +5, 1.05x) then settles. Opposite silhouette to happy_villager.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    192,
+    192
+  ],
+  "pivot": [
+    100,
+    180
+  ],
+  "pivot_meaning": "floor point under the bust",
+  "seed": 1205,
+  "forms": [
+    {
+      "name": "av_shadow",
+      "z": 0,
+      "kind": "shadow",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            100.0,
+            176.0
+          ],
+          "size": [
+            128.0,
+            24.0
+          ]
+        }
+      ],
+      "color": "shadow_contact",
+      "opacity": 0.36,
+      "blur": 5,
+      "tags": [
+        "av_bust"
+      ]
+    },
+    {
+      "name": "av_hood",
+      "z": 1,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": 180,
+          "at": [
+            100.0,
+            100.0
+          ],
+          "size": [
+            112.0,
+            126.0
+          ]
+        }
+      ],
+      "material": "coat_dark",
+      "tags": [
+        "av_bust"
+      ]
+    },
+    {
+      "name": "av_body",
+      "z": 1.5,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "mountains",
+          "at": [
+            100.0,
+            152.0
+          ],
+          "size": [
+            146.0,
+            68.0
+          ]
+        }
+      ],
+      "material": "coat",
+      "tags": [
+        "av_bust"
+      ]
+    },
+    {
+      "name": "av_scarf",
+      "z": 2,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "mountains",
+          "crop": [
+            1,
+            6,
+            15,
+            16
+          ],
+          "at": [
+            100.0,
+            132.0
+          ],
+          "size": [
+            120.0,
+            30.0
+          ]
+        }
+      ],
+      "material": "scarf",
+      "tags": [
+        "av_bust"
+      ]
+    },
+    {
+      "name": "av_head",
+      "z": 3,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            100.0,
+            84.0
+          ],
+          "size": [
+            92.0,
+            96.0
+          ]
+        }
+      ],
+      "material": "skin",
+      "shade": {
+        "highlight_amount": 0.4
+      },
+      "tags": [
+        "av_bust"
+      ]
+    },
+    {
+      "name": "av_brow",
+      "z": 4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "rot": -20,
+          "at": [
+            78.0,
+            68.0
+          ],
+          "size": [
+            30.0,
+            8.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "rot": 20,
+          "at": [
+            122.0,
+            68.0
+          ],
+          "size": [
+            30.0,
+            8.0
+          ]
+        }
+      ],
+      "material": "coat_seam",
+      "line": false,
+      "tags": [
+        "av_bust"
+      ]
+    },
+    {
+      "name": "av_eyes",
+      "z": 4.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "rot": -15,
+          "at": [
+            80.0,
+            82.0
+          ],
+          "size": [
+            24.0,
+            5.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "rot": 15,
+          "at": [
+            120.0,
+            82.0
+          ],
+          "size": [
+            24.0,
+            5.0
+          ]
+        }
+      ],
+      "material": "eye",
+      "line": false,
+      "tags": [
+        "av_bust"
+      ]
+    },
+    {
+      "name": "av_nose",
+      "z": 4.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            100.0,
+            98.0
+          ],
+          "size": [
+            10.0,
+            8.0
+          ]
+        }
+      ],
+      "material": "skin_shadow",
+      "line": false,
+      "tags": [
+        "av_bust"
+      ]
+    },
+    {
+      "name": "av_mouth",
+      "z": 4.6,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            100.0,
+            116.0
+          ],
+          "size": [
+            60.0,
+            28.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "op": "sub",
+          "at": [
+            100.0,
+            104.0
+          ],
+          "size": [
+            70.0,
+            24.0
+          ]
+        }
+      ],
+      "material": "coat_seam",
+      "line": false,
+      "tags": [
+        "av_bust"
+      ]
+    },
+    {
+      "name": "av_teeth",
+      "z": 4.7,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "at": [
+            88.0,
+            109.0
+          ],
+          "size": [
+            13.0,
+            10.0
+          ]
+        },
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "at": [
+            112.0,
+            109.0
+          ],
+          "size": [
+            13.0,
+            10.0
+          ]
+        }
+      ],
+      "material": "paper",
+      "line": false,
+      "tags": [
+        "av_bust"
+      ]
+    },
+    {
+      "name": "av_vein",
+      "z": 4.8,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "rot": -26,
+          "at": [
+            66.0,
+            100.0
+          ],
+          "size": [
+            16.0,
+            4.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "rot": 26,
+          "at": [
+            134.0,
+            100.0
+          ],
+          "size": [
+            16.0,
+            4.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "rot": 16,
+          "at": [
+            88.0,
+            122.0
+          ],
+          "size": [
+            12.0,
+            4.0
+          ]
+        }
+      ],
+      "material": "heat_red",
+      "emit": 0.5,
+      "line": false,
+      "glow": {
+        "radius": 2,
+        "opacity": 0.4,
+        "color": "heat_red_light"
+      },
+      "tags": [
+        "av_bust"
+      ]
+    },
+    {
+      "name": "av_heat",
+      "z": 5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "lightning_bolt",
+          "rot": 8,
+          "at": [
+            70.0,
+            44.0
+          ],
+          "size": [
+            11.0,
+            28.0
+          ]
+        },
+        {
+          "icon": "lightning_bolt",
+          "rot": -6,
+          "at": [
+            100.0,
+            30.0
+          ],
+          "size": [
+            12.0,
+            32.0
+          ]
+        },
+        {
+          "icon": "lightning_bolt",
+          "rot": 12,
+          "at": [
+            130.0,
+            46.0
+          ],
+          "size": [
+            10.0,
+            26.0
+          ]
+        }
+      ],
+      "tags": [
+        "av_heat"
+      ],
+      "material": "heat_red",
+      "emit": 0.75,
+      "line": false,
+      "glow": {
+        "radius": 3,
+        "opacity": 0.5,
+        "color": "heat_red_light"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "av_bust": {
+          "pivot": [
+            100,
+            178
+          ],
+          "dy": 0,
+          "dx": 0,
+          "sx": 1,
+          "sy": 1
+        },
+        "av_heat": {
+          "pivot": [
+            100,
+            60
+          ],
+          "dy": 0
+        }
+      }
+    },
+    {
+      "name": "f1",
+      "move": {
+        "av_bust": {
+          "pivot": [
+            100,
+            178
+          ],
+          "dy": 5,
+          "dx": 3,
+          "sx": 1.05,
+          "sy": 1.04
+        },
+        "av_heat": {
+          "pivot": [
+            100,
+            60
+          ],
+          "dy": -6
+        }
+      }
+    },
+    {
+      "name": "f2",
+      "move": {
+        "av_bust": {
+          "pivot": [
+            100,
+            178
+          ],
+          "dy": 3,
+          "dx": -1,
+          "sx": 1.02,
+          "sy": 1.01
+        },
+        "av_heat": {
+          "pivot": [
+            100,
+            60
+          ],
+          "dy": -12
+        }
+      }
+    },
+    {
+      "name": "f3",
+      "move": {
+        "av_bust": {
+          "pivot": [
+            100,
+            178
+          ],
+          "dy": 0,
+          "dx": 0,
+          "sx": 1,
+          "sy": 1
+        },
+        "av_heat": {
+          "pivot": [
+            100,
+            60
+          ],
+          "dy": -6
+        }
+      }
+    }
+  ]
+}

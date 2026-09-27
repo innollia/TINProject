@@ -1,0 +1,150 @@
+{
+ "asset": "eq_j11_eye_charm",
+ "status": "candidate",
+ "note": "69 eye charm. A cast bronze eye on a thread, pupil a hole straight through. The shine is polished brass, not light.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 133,
+ "forms": [
+  {
+   "name": "eye",
+   "z": 0,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "eye",
+     "at": [
+      256,
+      260
+     ],
+     "size": [
+      400,
+      300
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pupil",
+   "z": 1,
+   "kind": "flat",
+   "material": "void",
+   "opacity": 0.9,
+   "line": false,
+   "clip_to": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      260
+     ],
+     "size": [
+      130,
+      130
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shine",
+   "z": 2,
+   "kind": "flat",
+   "material": "glass",
+   "opacity": 0.6,
+   "line": false,
+   "clip_to": "pupil",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      222,
+      228
+     ],
+     "size": [
+      40,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hole",
+   "z": 3,
+   "kind": "flat",
+   "material": "void",
+   "line": false,
+   "clip_to": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      104
+     ],
+     "size": [
+      40,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cord",
+   "z": 2,
+   "kind": "flat",
+   "material": "leather",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256,
+      104
+     ],
+     "size": [
+      210,
+      98.0
+     ],
+     "crop": [
+      2.0,
+      3.0,
+      14.0,
+      8.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.4,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      260
+     ],
+     "size": [
+      280,
+      220
+     ]
+    }
+   ]
+  }
+ ]
+}

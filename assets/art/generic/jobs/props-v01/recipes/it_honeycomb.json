@@ -1,0 +1,206 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_honeycomb",
+  "status": "candidate",
+  "note": "it_honeycomb: a broken comb, three hexagonal chunks in the same tilt, one open cell per chunk, honey running from the middle, no text.",
+  "seed": 315,
+  "forms": [
+    {
+      "name": "wax",
+      "material": "wax",
+      "grad": {
+        "to": "well_void",
+        "y0": 38,
+        "y1": 110,
+        "amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "hexagon",
+          "crop": [
+            1.6,
+            2.4,
+            14.4,
+            13.6
+          ],
+          "at": [
+            64,
+            48
+          ],
+          "size": [
+            64,
+            52
+          ],
+          "rot": -4
+        },
+        {
+          "icon": "hexagon",
+          "crop": [
+            1.6,
+            2.4,
+            14.4,
+            13.6
+          ],
+          "at": [
+            28,
+            80
+          ],
+          "size": [
+            46,
+            38
+          ],
+          "rot": -4
+        },
+        {
+          "icon": "hexagon",
+          "crop": [
+            1.6,
+            2.4,
+            14.4,
+            13.6
+          ],
+          "at": [
+            100,
+            76
+          ],
+          "size": [
+            44,
+            36
+          ],
+          "rot": -4
+        }
+      ]
+    },
+    {
+      "name": "honey",
+      "material": "honey",
+      "clip_to": "wax",
+      "opacity": 0.9,
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            4,
+            3,
+            12,
+            14.5
+          ],
+          "at": [
+            44,
+            72
+          ],
+          "size": [
+            22,
+            28
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cells",
+      "kind": "flat",
+      "material": "clay_dark",
+      "clip_to": "wax",
+      "opacity": 0.8,
+      "pieces": [
+        {
+          "icon": "hexagon",
+          "crop": [
+            4.2,
+            5.2,
+            11.8,
+            10.8
+          ],
+          "at": [
+            64,
+            46
+          ],
+          "size": [
+            30,
+            25
+          ],
+          "rot": -4
+        },
+        {
+          "icon": "hexagon",
+          "crop": [
+            4.2,
+            5.2,
+            11.8,
+            10.8
+          ],
+          "at": [
+            28,
+            79
+          ],
+          "size": [
+            21,
+            17
+          ],
+          "rot": -4
+        },
+        {
+          "icon": "hexagon",
+          "crop": [
+            4.2,
+            5.2,
+            11.8,
+            10.8
+          ],
+          "at": [
+            100,
+            75
+          ],
+          "size": [
+            20,
+            16
+          ],
+          "rot": -4
+        }
+      ]
+    },
+    {
+      "name": "lit",
+      "kind": "flat",
+      "material": "wax",
+      "clip_to": "wax",
+      "opacity": 0.8,
+      "grad": {
+        "to": "floor_light",
+        "y0": 18,
+        "y1": 50,
+        "amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            3,
+            3,
+            10,
+            8
+          ],
+          "at": [
+            46,
+            32
+          ],
+          "size": [
+            40,
+            20
+          ],
+          "rot": -4
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_pufferfish",
+  "note": "puffed pufferfish seen from the side: round spiky body, pale belly, small tail fin, dark eye with a pale ring. No text.",
+  "seed": 3404,
+  "forms": [
+    {
+      "name": "tail",
+      "z": 0,
+      "material": "puffer",
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            104,
+            66
+          ],
+          "size": [
+            24,
+            36
+          ],
+          "crop": [
+            3.0,
+            4.0,
+            13.0,
+            15.2
+          ],
+          "rot": 96
+        }
+      ]
+    },
+    {
+      "name": "spikes",
+      "z": 1,
+      "material": "puffer",
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "prism",
+          "at": [
+            60,
+            64
+          ],
+          "size": [
+            16,
+            22
+          ],
+          "crop": [
+            3.4,
+            3.0,
+            9.6,
+            13.0
+          ],
+          "repeat": {
+            "ellipse": [
+              60,
+              64,
+              40,
+              39
+            ],
+            "count": 16,
+            "orient": true,
+            "jitter": {
+              "at": 2.0,
+              "rot": 9,
+              "size": 0.16
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "body",
+      "z": 2,
+      "material": "puffer",
+      "shade": {
+        "bump": 1.05,
+        "highlight_amount": 0.45
+      },
+      "grad": {
+        "to": "mold",
+        "y0": 62,
+        "y1": 104,
+        "amount": 0.3
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            60,
+            64
+          ],
+          "size": [
+            80,
+            78
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "belly",
+      "z": 3,
+      "kind": "flat",
+      "material": "crumb",
+      "opacity": 0.42,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            60,
+            88
+          ],
+          "size": [
+            64,
+            26
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "freckles",
+      "z": 4,
+      "kind": "flat",
+      "material": "soil",
+      "opacity": 0.5,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            44,
+            58
+          ],
+          "size": [
+            9,
+            7
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            62,
+            48
+          ],
+          "size": [
+            8,
+            6
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            76,
+            62
+          ],
+          "size": [
+            9,
+            7
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            52,
+            78
+          ],
+          "size": [
+            8,
+            6
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            70,
+            84
+          ],
+          "size": [
+            7,
+            6
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "eye_ring",
+      "z": 5,
+      "kind": "flat",
+      "material": "bone_white",
+      "opacity": 0.85,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            42,
+            52
+          ],
+          "size": [
+            16,
+            15
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "eye",
+      "z": 6,
+      "material": "ink",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            42,
+            52
+          ],
+          "size": [
+            9,
+            8
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 7,
+      "kind": "flat",
+      "material": "bone_white",
+      "opacity": 0.3,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            42,
+            36
+          ],
+          "size": [
+            30,
+            13
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -20
+        }
+      ]
+    }
+  ]
+}

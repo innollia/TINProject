@@ -1,0 +1,219 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_cake",
+  "note": "wedge of cake seen from the front: pale sponge wedge, two darker sponge bands, cream filling, a thick frosting top and one dark berry. No text.",
+  "seed": 3503,
+  "forms": [
+    {
+      "name": "wedge",
+      "z": 0,
+      "material": "cake_crumb",
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            66
+          ],
+          "size": [
+            94,
+            96
+          ],
+          "keep": [
+            [
+              8.0,
+              16.0,
+              16.0,
+              5.0
+            ],
+            [
+              0.0,
+              5.0,
+              8.0,
+              16.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sponge1",
+      "z": 1,
+      "kind": "flat",
+      "material": "cake_sponge",
+      "opacity": 0.75,
+      "clip_to": "wedge",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            64,
+            48
+          ],
+          "size": [
+            88,
+            22
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cream1",
+      "z": 2,
+      "kind": "flat",
+      "material": "cake_top",
+      "opacity": 0.85,
+      "clip_to": "wedge",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            64,
+            70
+          ],
+          "size": [
+            82,
+            16
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sponge2",
+      "z": 3,
+      "kind": "flat",
+      "material": "cake_sponge",
+      "opacity": 0.6,
+      "clip_to": "wedge",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            64,
+            90
+          ],
+          "size": [
+            64,
+            16
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "frosting",
+      "z": 4,
+      "kind": "flat",
+      "material": "cake_top",
+      "clip_to": "wedge",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            34
+          ],
+          "size": [
+            88,
+            30
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "frost_edge",
+      "z": 5,
+      "kind": "flat",
+      "material": "crumb",
+      "opacity": 0.4,
+      "clip_to": "wedge",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            26
+          ],
+          "size": [
+            80,
+            12
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "berry",
+      "z": 6,
+      "material": "berry",
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.5
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            20
+          ],
+          "size": [
+            20,
+            18
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    }
+  ]
+}

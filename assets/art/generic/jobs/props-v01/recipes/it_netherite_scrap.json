@@ -1,0 +1,149 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_netherite_scrap",
+  "status": "candidate",
+  "seed": 250,
+  "note": "it_netherite_scrap: broken dark metal plate, one blunt lit facet, near black brown, no text.",
+  "forms": [
+    {
+      "name": "body",
+      "material": "netherite",
+      "grad": {
+        "to": "well_void",
+        "y0": 74,
+        "y1": 114,
+        "amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "sword",
+          "crop": [
+            3.5,
+            1.5,
+            11.5,
+            11
+          ],
+          "at": [
+            58,
+            58
+          ],
+          "size": [
+            100,
+            84
+          ],
+          "rot": -16
+        },
+        {
+          "icon": "pen_nib",
+          "crop": [
+            2,
+            2,
+            14,
+            12
+          ],
+          "at": [
+            76,
+            92
+          ],
+          "size": [
+            72,
+            50
+          ],
+          "rot": 8
+        },
+        {
+          "icon": "screw",
+          "crop": [
+            4,
+            6,
+            12,
+            15
+          ],
+          "at": [
+            98,
+            38
+          ],
+          "size": [
+            34,
+            46
+          ],
+          "rot": 24
+        }
+      ]
+    },
+    {
+      "name": "lit",
+      "kind": "flat",
+      "material": "netherite",
+      "clip_to": "body",
+      "opacity": 0.8,
+      "grad": {
+        "to": "floor_light",
+        "y0": 28,
+        "y1": 62,
+        "amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            3,
+            3,
+            10,
+            8
+          ],
+          "at": [
+            52,
+            44
+          ],
+          "size": [
+            44,
+            28
+          ]
+        }
+      ]
+    },
+    {
+      "name": "notch",
+      "kind": "flat",
+      "material": "netherite",
+      "clip_to": "body",
+      "opacity": 0.7,
+      "grad": {
+        "to": "well_void",
+        "y0": 66,
+        "y1": 104,
+        "amount": 0.7
+      },
+      "pieces": [
+        {
+          "icon": "gem",
+          "crop": [
+            2,
+            6,
+            9,
+            13
+          ],
+          "at": [
+            70,
+            92
+          ],
+          "size": [
+            46,
+            32
+          ]
+        }
+      ]
+    }
+  ]
+}

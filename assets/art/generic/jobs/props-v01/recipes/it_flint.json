@@ -1,0 +1,133 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_flint",
+  "status": "candidate",
+  "note": "it_flint: one sharp flint shard with a broken spur at the top right and a dull rind along the lower edge, no text.",
+  "seed": 311,
+  "forms": [
+    {
+      "name": "body",
+      "material": "flint",
+      "grad": {
+        "to": "well_void",
+        "y0": 74,
+        "y1": 112,
+        "amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "cutlass",
+          "crop": [
+            5.2,
+            1.4,
+            14.6,
+            9.0
+          ],
+          "at": [
+            58,
+            66
+          ],
+          "size": [
+            98,
+            86
+          ],
+          "rot": -14
+        },
+        {
+          "icon": "screw",
+          "crop": [
+            4,
+            6,
+            12,
+            15
+          ],
+          "at": [
+            98,
+            38
+          ],
+          "size": [
+            34,
+            44
+          ],
+          "rot": 26
+        }
+      ]
+    },
+    {
+      "name": "lit",
+      "kind": "flat",
+      "material": "flint",
+      "clip_to": "body",
+      "opacity": 0.9,
+      "grad": {
+        "to": "floor_light",
+        "y0": 30,
+        "y1": 66,
+        "amount": 0.6
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            3,
+            3,
+            10,
+            8
+          ],
+          "at": [
+            50,
+            50
+          ],
+          "size": [
+            44,
+            28
+          ],
+          "rot": -14
+        }
+      ]
+    },
+    {
+      "name": "rind",
+      "kind": "flat",
+      "material": "flint",
+      "clip_to": "body",
+      "opacity": 0.85,
+      "grad": {
+        "to": "well_void",
+        "y0": 66,
+        "y1": 108,
+        "amount": 0.7
+      },
+      "pieces": [
+        {
+          "icon": "gem",
+          "crop": [
+            2,
+            6,
+            9,
+            13
+          ],
+          "at": [
+            76,
+            92
+          ],
+          "size": [
+            46,
+            32
+          ],
+          "rot": -14
+        }
+      ]
+    }
+  ]
+}

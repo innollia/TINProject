@@ -1,0 +1,146 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_coal",
+  "status": "candidate",
+  "seed": 201,
+  "note": "it_coal: dull black lumpy coal chunk, two big lumps and a chipped toe, one lit facet on the top left, no text.",
+  "forms": [
+    {
+      "name": "body",
+      "material": "coal",
+      "grad": {
+        "to": "well_void",
+        "y0": 78,
+        "y1": 116,
+        "amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "rocks",
+          "crop": [
+            1,
+            0.5,
+            13.5,
+            10.5
+          ],
+          "at": [
+            66,
+            60
+          ],
+          "size": [
+            100,
+            72
+          ]
+        },
+        {
+          "icon": "metaballs",
+          "crop": [
+            0,
+            7.5,
+            7,
+            15.5
+          ],
+          "at": [
+            32,
+            88
+          ],
+          "size": [
+            48,
+            40
+          ]
+        },
+        {
+          "icon": "paw_print",
+          "crop": [
+            8,
+            7.5,
+            15,
+            14.5
+          ],
+          "at": [
+            96,
+            84
+          ],
+          "size": [
+            34,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lit",
+      "kind": "flat",
+      "material": "coal",
+      "clip_to": "body",
+      "opacity": 0.95,
+      "grad": {
+        "to": "floor_light",
+        "y0": 28,
+        "y1": 62,
+        "amount": 0.75
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            3,
+            3,
+            10,
+            8
+          ],
+          "at": [
+            58,
+            44
+          ],
+          "size": [
+            48,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fracture",
+      "kind": "flat",
+      "material": "coal",
+      "clip_to": "body",
+      "opacity": 0.75,
+      "grad": {
+        "to": "well_void",
+        "y0": 66,
+        "y1": 108,
+        "amount": 0.7
+      },
+      "pieces": [
+        {
+          "icon": "gem",
+          "crop": [
+            2,
+            6,
+            8,
+            13
+          ],
+          "at": [
+            92,
+            86
+          ],
+          "size": [
+            40,
+            34
+          ]
+        }
+      ]
+    }
+  ]
+}

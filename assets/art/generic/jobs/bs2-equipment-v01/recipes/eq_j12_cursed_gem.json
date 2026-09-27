@@ -1,0 +1,135 @@
+{
+ "asset": "eq_j12_cursed_gem",
+ "status": "candidate",
+ "note": "70 cursed gem. A green glass stone with a black core and three cracks. Held to the light it is warmer on one side.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 134,
+ "forms": [
+  {
+   "name": "stone",
+   "z": 0,
+   "material": "glass",
+   "emit": 0.2,
+   "glow": {
+    "radius": 7,
+    "opacity": 0.4,
+    "color": "flame_glow"
+   },
+   "pieces": [
+    {
+     "icon": "gem",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      400,
+      400
+     ]
+    }
+   ]
+  },
+  {
+   "name": "core",
+   "z": 1,
+   "kind": "flat",
+   "material": "void",
+   "opacity": 0.85,
+   "line": false,
+   "clip_to": "stone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      280
+     ],
+     "size": [
+      150,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cracks",
+   "z": 2,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.6,
+   "line": false,
+   "clip_to": "stone",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      330,
+      12
+     ],
+     "rot": 28
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      330,
+      12
+     ],
+     "rot": -38
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      300,
+      10
+     ],
+     "rot": 88
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.3,
+   "kind": "wash",
+   "material": "soot",
+   "blend": "multiply",
+   "opacity": 0.35,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      256
+     ],
+     "size": [
+      300,
+      300
+     ]
+    }
+   ],
+   "clip_to": "stone"
+  }
+ ]
+}

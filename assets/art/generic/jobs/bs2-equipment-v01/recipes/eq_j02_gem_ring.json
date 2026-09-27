@@ -1,0 +1,106 @@
+{
+ "asset": "eq_j02_gem_ring",
+ "status": "candidate",
+ "note": "60 gem ring. A bronze band with a green glass stone in a four-prong seat. The stone is warm and the band is not.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 124,
+ "forms": [
+  {
+   "name": "band",
+   "z": 0,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256,
+      268
+     ],
+     "size": [
+      360,
+      320
+     ]
+    }
+   ]
+  },
+  {
+   "name": "seat",
+   "z": 1,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      118
+     ],
+     "size": [
+      110,
+      46
+     ],
+     "slice": {
+      "border": 6,
+      "corner": 10
+     }
+    }
+   ]
+  },
+  {
+   "name": "gem",
+   "z": 2,
+   "material": "glass",
+   "emit": 0.25,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.4,
+    "color": "flame_glow"
+   },
+   "pieces": [
+    {
+     "icon": "gem",
+     "at": [
+      256,
+      88
+     ],
+     "size": [
+      200,
+      180
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.4,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      268
+     ],
+     "size": [
+      240,
+      200
+     ]
+    }
+   ],
+   "clip_to": "band"
+  }
+ ]
+}

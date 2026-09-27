@@ -1,0 +1,277 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_salmon",
+  "note": "whole salmon lying at a diagonal: dull red-brown body, paler belly, dark back, dorsal fin, dark eye. No text.",
+  "seed": 3402,
+  "forms": [
+    {
+      "name": "tail",
+      "z": 0,
+      "material": "fish",
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "fish",
+          "at": [
+            26,
+            66
+          ],
+          "size": [
+            28,
+            60
+          ],
+          "crop": [
+            0.0,
+            3.4,
+            3.6,
+            11.6
+          ],
+          "rot": -14
+        }
+      ]
+    },
+    {
+      "name": "body",
+      "z": 1,
+      "material": "salmon",
+      "rough": {
+        "amp": 0.25,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.05,
+        "highlight_amount": 0.45
+      },
+      "grad": {
+        "to": "soot",
+        "y0": 56,
+        "y1": 104,
+        "amount": 0.28
+      },
+      "pieces": [
+        {
+          "icon": "fish",
+          "at": [
+            70,
+            62
+          ],
+          "size": [
+            80,
+            68
+          ],
+          "crop": [
+            2.4,
+            3.2,
+            14.8,
+            11.8
+          ],
+          "rot": -14
+        }
+      ]
+    },
+    {
+      "name": "dorsal",
+      "z": 2,
+      "material": "fish",
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "prism",
+          "at": [
+            66,
+            30
+          ],
+          "size": [
+            30,
+            24
+          ],
+          "crop": [
+            3.4,
+            2.0,
+            9.6,
+            8.0
+          ],
+          "rot": 166
+        }
+      ]
+    },
+    {
+      "name": "belly",
+      "z": 3,
+      "kind": "flat",
+      "material": "crumb",
+      "opacity": 0.45,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            68,
+            86
+          ],
+          "size": [
+            70,
+            22
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -14
+        }
+      ]
+    },
+    {
+      "name": "back",
+      "z": 4,
+      "kind": "flat",
+      "material": "fish",
+      "opacity": 0.5,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            66,
+            40
+          ],
+          "size": [
+            70,
+            16
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": -14
+        }
+      ]
+    },
+    {
+      "name": "scales",
+      "z": 5,
+      "kind": "flat",
+      "material": "fish",
+      "opacity": 0.22,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "sponge",
+          "at": [
+            72,
+            66
+          ],
+          "size": [
+            50,
+            34
+          ],
+          "rot": -24
+        }
+      ]
+    },
+    {
+      "name": "gill",
+      "z": 6,
+      "kind": "flat",
+      "material": "soot",
+      "opacity": 0.5,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            44,
+            64
+          ],
+          "size": [
+            7,
+            40
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": 6
+        }
+      ]
+    },
+    {
+      "name": "eye",
+      "z": 7,
+      "material": "ink",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            94.4514523021551,
+            55.903568230888375
+          ],
+          "size": [
+            10,
+            9
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 8,
+      "kind": "flat",
+      "material": "crumb",
+      "opacity": 0.3,
+      "clip_to": "body",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            48,
+            46
+          ],
+          "size": [
+            26,
+            10
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -14
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_nether_quartz",
+  "status": "candidate",
+  "note": "it_nether_quartz: four blunt milky crystals on a pale rock base, all leaning 8 deg, pale grey lilac.",
+  "seed": 260,
+  "forms": [
+    {
+      "name": "base",
+      "kind": "block",
+      "material": "nether_quartz",
+      "extrude": 4,
+      "ao": false,
+      "grad": {
+        "to": "well_void",
+        "y0": 70,
+        "y1": 118,
+        "amount": 0.5
+      },
+      "pieces": [
+        {
+          "icon": "rocks",
+          "crop": [
+            1,
+            0.5,
+            13.5,
+            10.5
+          ],
+          "at": [
+            64,
+            86
+          ],
+          "size": [
+            86,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "name": "shard_a",
+      "material": "nether_quartz",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            4,
+            2,
+            12,
+            14.5
+          ],
+          "at": [
+            38,
+            50
+          ],
+          "size": [
+            34,
+            64
+          ],
+          "rot": -8
+        }
+      ]
+    },
+    {
+      "name": "shard_b",
+      "material": "nether_quartz",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            4,
+            2,
+            12,
+            14.5
+          ],
+          "at": [
+            62,
+            38
+          ],
+          "size": [
+            32,
+            82
+          ],
+          "rot": -8
+        }
+      ]
+    },
+    {
+      "name": "shard_c",
+      "material": "nether_quartz",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            4,
+            2,
+            12,
+            14.5
+          ],
+          "at": [
+            88,
+            54
+          ],
+          "size": [
+            30,
+            60
+          ],
+          "rot": -8
+        }
+      ]
+    },
+    {
+      "name": "shard_d",
+      "material": "nether_quartz",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            5,
+            4,
+            12,
+            14.5
+          ],
+          "at": [
+            52,
+            70
+          ],
+          "size": [
+            24,
+            44
+          ],
+          "rot": -8
+        }
+      ]
+    },
+    {
+      "name": "lit",
+      "kind": "flat",
+      "material": "nether_quartz",
+      "clip_to": "shard_b",
+      "opacity": 0.75,
+      "grad": {
+        "to": "floor_light",
+        "y0": 12,
+        "y1": 46,
+        "amount": 0.55
+      },
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            5.4,
+            2.4,
+            8.4,
+            9.0
+          ],
+          "at": [
+            57.6,
+            21.27
+          ],
+          "size": [
+            12.0,
+            43.3
+          ]
+        }
+      ]
+    },
+    {
+      "name": "deep",
+      "kind": "flat",
+      "material": "nether_quartz",
+      "clip_to": "shard_c",
+      "opacity": 0.7,
+      "grad": {
+        "to": "well_void",
+        "y0": 50,
+        "y1": 84,
+        "amount": 0.6
+      },
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            7.6,
+            8.0,
+            12.0,
+            14.5
+          ],
+          "at": [
+            94.75,
+            68.4
+          ],
+          "size": [
+            16.5,
+            31.2
+          ]
+        }
+      ]
+    }
+  ]
+}

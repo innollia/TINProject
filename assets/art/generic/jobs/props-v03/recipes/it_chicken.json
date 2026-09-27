@@ -1,0 +1,180 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_chicken",
+  "note": "chicken leg at a diagonal: pale cream-pink drumstick, bone handle pointing down right, dull fat rim on the meat. No text.",
+  "seed": 3304,
+  "forms": [
+    {
+      "name": "rim",
+      "z": 0,
+      "material": "chicken",
+      "rough": {
+        "amp": 0.3,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "poultry",
+          "at": [
+            61,
+            59
+          ],
+          "size": [
+            86,
+            78
+          ],
+          "crop": [
+            3.2,
+            0.4,
+            13.4,
+            9.4
+          ],
+          "rot": -20
+        }
+      ]
+    },
+    {
+      "name": "meat",
+      "z": 1,
+      "material": "chicken",
+      "rough": {
+        "amp": 0.3,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.05,
+        "highlight_amount": 0.45
+      },
+      "grad": {
+        "to": "pastry_dark",
+        "y0": 56,
+        "y1": 100,
+        "amount": 0.3
+      },
+      "pieces": [
+        {
+          "icon": "poultry",
+          "at": [
+            58,
+            56
+          ],
+          "size": [
+            84,
+            74
+          ],
+          "crop": [
+            3.2,
+            0.4,
+            13.4,
+            9.4
+          ],
+          "rot": -20
+        }
+      ]
+    },
+    {
+      "name": "cut",
+      "z": 2,
+      "kind": "flat",
+      "material": "crumb",
+      "opacity": 0.4,
+      "clip_to": "meat",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "at": [
+            54,
+            44
+          ],
+          "size": [
+            64,
+            28
+          ],
+          "crop": [
+            5.6,
+            1.0,
+            10.4,
+            16.0
+          ],
+          "rot": 54
+        }
+      ]
+    },
+    {
+      "name": "bone",
+      "z": 3,
+      "material": "bone_white",
+      "shade": {
+        "bump": 0.9,
+        "highlight_amount": 0.4
+      },
+      "pieces": [
+        {
+          "icon": "meat",
+          "at": [
+            82,
+            96
+          ],
+          "size": [
+            30,
+            40
+          ],
+          "crop": [
+            0.0,
+            6.6,
+            7.0,
+            15.4
+          ],
+          "rot": -20
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 4,
+      "kind": "flat",
+      "material": "bone_white",
+      "opacity": 0.32,
+      "clip_to": "meat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            48,
+            38
+          ],
+          "size": [
+            30,
+            14
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -20
+        }
+      ]
+    }
+  ]
+}

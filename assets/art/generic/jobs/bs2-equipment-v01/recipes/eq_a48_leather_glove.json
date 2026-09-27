@@ -1,0 +1,167 @@
+{
+ "asset": "eq_a48_leather_glove",
+ "status": "candidate",
+ "note": "48 leather glove. A soft glove with a gauntlet cuff, lacing snapped in two places. The index finger is stiff.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 112,
+ "forms": [
+  {
+   "name": "hand",
+   "z": 0,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "hand",
+     "at": [
+      252,
+      240
+     ],
+     "size": [
+      380,
+      380
+     ],
+     "crop": [
+      1.0,
+      0.5,
+      15.0,
+      13.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cuff",
+   "z": 1,
+   "material": "worn",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      378
+     ],
+     "size": [
+      340,
+      104
+     ],
+     "slice": {
+      "border": 2,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "fingers",
+   "z": 2,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.4,
+   "line": false,
+   "clip_to": "hand",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      240
+     ],
+     "size": [
+      310,
+      12
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      196,
+      254
+     ],
+     "size": [
+      12,
+      170
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      316,
+      254
+     ],
+     "size": [
+      12,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lacing",
+   "z": 3,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.55,
+   "line": false,
+   "clip_to": "cuff",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      378
+     ],
+     "size": [
+      22,
+      22
+     ],
+     "repeat": {
+      "line": [
+       [
+        116,
+        378
+       ],
+       [
+        396,
+        378
+       ]
+      ],
+      "count": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      270
+     ],
+     "size": [
+      165.0,
+      121.00000000000001
+     ]
+    }
+   ],
+   "clip_to": "hand"
+  }
+ ]
+}

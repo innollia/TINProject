@@ -1,0 +1,187 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_redstone",
+  "status": "candidate",
+  "note": "it_redstone: three blunt red crystals on a dark red rock base, all points leaning the same way (10 deg), brightest crystal lit.",
+  "seed": 220,
+  "forms": [
+    {
+      "name": "base",
+      "kind": "block",
+      "material": "redstone",
+      "extrude": 4,
+      "ao": false,
+      "grad": {
+        "to": "well_void",
+        "y0": 70,
+        "y1": 118,
+        "amount": 0.5
+      },
+      "pieces": [
+        {
+          "icon": "rocks",
+          "crop": [
+            1,
+            0.5,
+            13.5,
+            10.5
+          ],
+          "at": [
+            64,
+            76
+          ],
+          "size": [
+            96,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "name": "shard_a",
+      "material": "redstone",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            4,
+            2,
+            12,
+            14.5
+          ],
+          "at": [
+            42,
+            48
+          ],
+          "size": [
+            36,
+            60
+          ],
+          "rot": -8
+        }
+      ]
+    },
+    {
+      "name": "shard_b",
+      "material": "redstone",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            4,
+            2,
+            12,
+            14.5
+          ],
+          "at": [
+            80,
+            40
+          ],
+          "size": [
+            34,
+            70
+          ],
+          "rot": -8
+        }
+      ]
+    },
+    {
+      "name": "shard_c",
+      "material": "redstone",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            5,
+            4,
+            12,
+            14.5
+          ],
+          "at": [
+            62,
+            62
+          ],
+          "size": [
+            28,
+            48
+          ],
+          "rot": -8
+        }
+      ]
+    },
+    {
+      "name": "lit",
+      "kind": "flat",
+      "material": "redstone",
+      "clip_to": "shard_b",
+      "opacity": 0.7,
+      "grad": {
+        "to": "floor_light",
+        "y0": 16,
+        "y1": 48,
+        "amount": 0.5
+      },
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            5.4,
+            2.4,
+            8.4,
+            9.0
+          ],
+          "at": [
+            75.33,
+            25.72
+          ],
+          "size": [
+            12.75,
+            36.96
+          ]
+        }
+      ]
+    },
+    {
+      "name": "deep",
+      "kind": "flat",
+      "material": "redstone",
+      "clip_to": "shard_a",
+      "opacity": 0.7,
+      "grad": {
+        "to": "well_void",
+        "y0": 40,
+        "y1": 74,
+        "amount": 0.65
+      },
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            7.6,
+            8.0,
+            12.0,
+            14.5
+          ],
+          "at": [
+            50.1,
+            62.4
+          ],
+          "size": [
+            19.8,
+            31.2
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+ "asset": "eq_j08_prayer_beads",
+ "status": "candidate",
+ "note": "66 prayer beads. Eighteen dark wooden beads on a loop with two bronze markers and a cross. The beads are worn to different colours.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 130,
+ "forms": [
+  {
+   "name": "loop",
+   "z": 0,
+   "kind": "flat",
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "link",
+     "at": [
+      256,
+      240
+     ],
+     "size": [
+      44,
+      44
+     ],
+     "rot": 45,
+     "repeat": {
+      "ellipse": [
+       256,
+       250,
+       180,
+       190
+      ],
+      "count": 18,
+      "arc": [
+       0,
+       360
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "beads",
+   "z": 1,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      64,
+      64
+     ],
+     "repeat": {
+      "ellipse": [
+       256,
+       250,
+       180,
+       190
+      ],
+      "count": 18,
+      "skip": [
+       0,
+       9
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "marker",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      66
+     ],
+     "size": [
+      64,
+      64
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      434
+     ],
+     "size": [
+      64,
+      64
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cross",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      150
+     ],
+     "size": [
+      24,
+      130
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      128
+     ],
+     "size": [
+      96,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dirt_grime",
+   "z": 9.1,
+   "kind": "wash",
+   "material": "grime",
+   "blend": "multiply",
+   "opacity": 0.25,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      200,
+      200
+     ]
+    }
+   ]
+  }
+ ]
+}

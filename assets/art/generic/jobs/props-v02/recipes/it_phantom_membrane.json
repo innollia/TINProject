@@ -1,0 +1,129 @@
+{
+  "asset": "it_phantom_membrane",
+  "status": "candidate",
+  "note": "Brewing phantom membrane: a thin torn pale sheet, ragged on two edges, with one soft fold.",
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the item inside the inventory cell",
+  "seed": 132,
+  "forms": [
+    {
+      "name": "sheet",
+      "z": 0,
+      "material": "membrane",
+      "pieces": [
+        {
+          "icon": "file",
+          "crop": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "at": [
+            62,
+            64
+          ],
+          "size": [
+            92,
+            92
+          ],
+          "rot": 8
+        },
+        {
+          "icon": "triangle",
+          "at": [
+            104,
+            34
+          ],
+          "size": [
+            26,
+            26
+          ],
+          "rot": 90,
+          "op": "sub"
+        },
+        {
+          "icon": "triangle",
+          "at": [
+            30,
+            96
+          ],
+          "size": [
+            22,
+            22
+          ],
+          "rot": 270,
+          "op": "sub"
+        }
+      ],
+      "rough": {
+        "amp": 0.55,
+        "soft": 2.0,
+        "cell": 11
+      }
+    },
+    {
+      "name": "fold",
+      "z": 1,
+      "material": "membrane",
+      "pieces": [
+        {
+          "icon": "file",
+          "crop": [
+            2,
+            2,
+            8,
+            15
+          ],
+          "at": [
+            54,
+            64
+          ],
+          "size": [
+            40,
+            88
+          ],
+          "rot": 8
+        }
+      ],
+      "color": "#75756e",
+      "opacity": 0.45
+    },
+    {
+      "name": "sheen",
+      "z": 2,
+      "material": "membrane",
+      "pieces": [
+        {
+          "icon": "cloud",
+          "crop": [
+            4,
+            5,
+            11,
+            10
+          ],
+          "at": [
+            70,
+            50
+          ],
+          "size": [
+            40,
+            30
+          ]
+        }
+      ],
+      "kind": "flat",
+      "color": "#c4c4ba",
+      "opacity": 0.35
+    }
+  ]
+}

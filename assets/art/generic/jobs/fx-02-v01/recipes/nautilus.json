@@ -1,0 +1,721 @@
+{
+  "asset": "nautilus",
+  "status": "candidate",
+  "note": "nautilus (spiral shell sigil). 6 frames. Eight chambers placed on a logarithmic spiral (r = 46 * e^-0.285i) with alternating shell / shell_shadow tones, each with a subtracted inner disc that leaves a crescent septal wall; an outer whorl band, a lip arc, a siphon knob and a spiral seam line. A pale glint travels the whorl 60 deg per frame and the shell sways 10 deg. The only round asset in this job.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    192,
+    192
+  ],
+  "pivot": [
+    96,
+    104
+  ],
+  "pivot_meaning": "centre of the coil (floats)",
+  "seed": 1212,
+  "forms": [
+    {
+      "name": "nn_shadow",
+      "z": -1,
+      "kind": "shadow",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            96.0
+          ],
+          "size": [
+            152.0,
+            148.0
+          ]
+        }
+      ],
+      "tags": [
+        "nn_all"
+      ],
+      "color": "shadow_contact",
+      "opacity": 0.3,
+      "blur": 10
+    },
+    {
+      "name": "nn_halo",
+      "z": 0,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            92.0
+          ],
+          "size": [
+            176.0,
+            172.0
+          ]
+        }
+      ],
+      "tags": [
+        "nn_halo"
+      ],
+      "material": "nacre",
+      "opacity": 0.18,
+      "blur": 10
+    },
+    {
+      "name": "nn_band",
+      "z": 1,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "ring",
+          "crop": [
+            0.3,
+            3.4,
+            15.7,
+            12.6
+          ],
+          "at": [
+            96.0,
+            88.0
+          ],
+          "size": [
+            166.0,
+            158.0
+          ]
+        }
+      ],
+      "tags": [
+        "nn_all"
+      ],
+      "material": "shell"
+    },
+    {
+      "name": "nn_c0",
+      "z": 2,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            101.5,
+            54.3
+          ],
+          "size": [
+            85.6,
+            85.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "op": "sub",
+          "at": [
+            99.4,
+            67.9
+          ],
+          "size": [
+            71.9,
+            71.9
+          ]
+        }
+      ],
+      "tags": [
+        "nn_ch"
+      ],
+      "material": "shell",
+      "line": false
+    },
+    {
+      "name": "nn_c1",
+      "z": 3,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            118.3,
+            73.6
+          ],
+          "size": [
+            64.3,
+            64.3
+          ]
+        },
+        {
+          "icon": "circle",
+          "op": "sub",
+          "at": [
+            111.8,
+            81.5
+          ],
+          "size": [
+            54.0,
+            54.0
+          ]
+        }
+      ],
+      "tags": [
+        "nn_ch"
+      ],
+      "material": "shell_shadow",
+      "line": false
+    },
+    {
+      "name": "nn_c2",
+      "z": 4,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            120.9,
+            92.6
+          ],
+          "size": [
+            48.4,
+            48.4
+          ]
+        },
+        {
+          "icon": "circle",
+          "op": "sub",
+          "at": [
+            113.7,
+            95.4
+          ],
+          "size": [
+            40.6,
+            40.6
+          ]
+        }
+      ],
+      "tags": [
+        "nn_ch"
+      ],
+      "material": "shell",
+      "line": false
+    },
+    {
+      "name": "nn_c3",
+      "z": 5,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            114.7,
+            105.6
+          ],
+          "size": [
+            36.4,
+            36.4
+          ]
+        },
+        {
+          "icon": "circle",
+          "op": "sub",
+          "at": [
+            109.0,
+            104.9
+          ],
+          "size": [
+            30.6,
+            30.6
+          ]
+        }
+      ],
+      "tags": [
+        "nn_ch"
+      ],
+      "material": "shell_shadow",
+      "line": false
+    },
+    {
+      "name": "nn_c4",
+      "z": 6,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            105.5,
+            111.2
+          ],
+          "size": [
+            27.4,
+            27.4
+          ]
+        },
+        {
+          "icon": "circle",
+          "op": "sub",
+          "at": [
+            101.9,
+            108.7
+          ],
+          "size": [
+            23.0,
+            23.0
+          ]
+        }
+      ],
+      "tags": [
+        "nn_ch"
+      ],
+      "material": "shell",
+      "line": false
+    },
+    {
+      "name": "nn_c5",
+      "z": 7,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            97.3,
+            111.0
+          ],
+          "size": [
+            20.6,
+            20.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "op": "sub",
+          "at": [
+            96.1,
+            107.9
+          ],
+          "size": [
+            17.3,
+            17.3
+          ]
+        }
+      ],
+      "tags": [
+        "nn_ch"
+      ],
+      "material": "shell_shadow",
+      "line": false
+    },
+    {
+      "name": "nn_c6",
+      "z": 8,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            92.3,
+            107.5
+          ],
+          "size": [
+            15.5,
+            15.5
+          ]
+        },
+        {
+          "icon": "circle",
+          "op": "sub",
+          "at": [
+            93.2,
+            105.1
+          ],
+          "size": [
+            13.0,
+            13.0
+          ]
+        }
+      ],
+      "tags": [
+        "nn_ch"
+      ],
+      "material": "shell",
+      "line": false
+    },
+    {
+      "name": "nn_c7",
+      "z": 9,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            90.6,
+            103.2
+          ],
+          "size": [
+            11.6,
+            11.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "op": "sub",
+          "at": [
+            92.5,
+            103.1
+          ],
+          "size": [
+            9.8,
+            9.8
+          ]
+        }
+      ],
+      "tags": [
+        "nn_ch"
+      ],
+      "material": "shell_shadow",
+      "line": false
+    },
+    {
+      "name": "nn_nacre",
+      "z": 11,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "rot": -24,
+          "at": [
+            110.0,
+            68.0
+          ],
+          "size": [
+            56.0,
+            44.0
+          ]
+        }
+      ],
+      "tags": [
+        "nn_ch"
+      ],
+      "material": "nacre",
+      "opacity": 0.42,
+      "line": false,
+      "clip_to": "nn_c0"
+    },
+    {
+      "name": "nn_septa",
+      "z": 12,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "spiral",
+          "at": [
+            96.0,
+            96.0
+          ],
+          "size": [
+            148.0,
+            146.0
+          ]
+        }
+      ],
+      "tags": [
+        "nn_ch"
+      ],
+      "material": "shell_shadow",
+      "opacity": 0.7,
+      "line": false
+    },
+    {
+      "name": "nn_lip",
+      "z": 13,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "ring",
+          "crop": [
+            8,
+            3,
+            16,
+            13
+          ],
+          "at": [
+            130.0,
+            84.0
+          ],
+          "size": [
+            78.0,
+            138.0
+          ]
+        }
+      ],
+      "tags": [
+        "nn_all"
+      ],
+      "material": "shell"
+    },
+    {
+      "name": "nn_siphon",
+      "z": 14,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            136.0,
+            44.0
+          ],
+          "size": [
+            20.0,
+            18.0
+          ]
+        }
+      ],
+      "tags": [
+        "nn_all"
+      ],
+      "material": "shell"
+    },
+    {
+      "name": "nn_glint",
+      "z": 15,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "rot": -30,
+          "at": [
+            96.0,
+            30.0
+          ],
+          "size": [
+            26.0,
+            20.0
+          ]
+        }
+      ],
+      "tags": [
+        "nn_glint"
+      ],
+      "material": "shell_pale",
+      "opacity": 0.7,
+      "line": false,
+      "glow": {
+        "radius": 4,
+        "opacity": 0.45,
+        "color": "shell_pale"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "nn_all": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 0
+        },
+        "nn_ch": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 0,
+          "sx": 1,
+          "sy": 1
+        },
+        "nn_halo": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 0,
+          "sx": 1
+        }
+      }
+    },
+    {
+      "name": "f1",
+      "move": {
+        "nn_all": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 5
+        },
+        "nn_ch": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 5,
+          "sx": 1.02,
+          "sy": 1.02
+        },
+        "nn_halo": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 6,
+          "sx": 1.03
+        },
+        "nn_glint": {
+          "pivot": [
+            96,
+            100
+          ],
+          "dx": 55.43,
+          "dy": -38.0
+        }
+      }
+    },
+    {
+      "name": "f2",
+      "move": {
+        "nn_all": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 10
+        },
+        "nn_ch": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 10,
+          "sx": 1.05,
+          "sy": 1.05
+        },
+        "nn_halo": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 12,
+          "sx": 1.06
+        },
+        "nn_glint": {
+          "pivot": [
+            96,
+            100
+          ],
+          "dx": 55.43,
+          "dy": 26.0
+        }
+      }
+    },
+    {
+      "name": "f3",
+      "move": {
+        "nn_all": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 5
+        },
+        "nn_ch": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 5,
+          "sx": 1.02,
+          "sy": 1.02
+        },
+        "nn_halo": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 6,
+          "sx": 1.03
+        },
+        "nn_glint": {
+          "pivot": [
+            96,
+            100
+          ],
+          "dx": 0.0,
+          "dy": 58.0
+        }
+      }
+    },
+    {
+      "name": "f4",
+      "move": {
+        "nn_all": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 0
+        },
+        "nn_ch": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 0,
+          "sx": 1,
+          "sy": 1
+        },
+        "nn_halo": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": 0,
+          "sx": 1
+        },
+        "nn_glint": {
+          "pivot": [
+            96,
+            100
+          ],
+          "dx": -55.43,
+          "dy": 26.0
+        }
+      }
+    },
+    {
+      "name": "f5",
+      "move": {
+        "nn_all": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": -5
+        },
+        "nn_ch": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": -5,
+          "sx": 0.99,
+          "sy": 0.99
+        },
+        "nn_halo": {
+          "pivot": [
+            96,
+            100
+          ],
+          "rot": -6,
+          "sx": 0.99
+        },
+        "nn_glint": {
+          "pivot": [
+            96,
+            100
+          ],
+          "dx": -55.43,
+          "dy": -38.0
+        }
+      }
+    }
+  ]
+}

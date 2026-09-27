@@ -1,0 +1,164 @@
+{
+ "asset": "eq_j06_rocket_charm",
+ "status": "candidate",
+ "note": "64 rocket charm. An iron rocket on a leather loop, and something in it still burning. The list named a heart icon; a heart does not read as a rocket, so this is built from cone/square/triangle instead.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 128,
+ "forms": [
+  {
+   "name": "cord",
+   "z": 0,
+   "kind": "flat",
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256,
+      120
+     ],
+     "size": [
+      300,
+      240
+     ],
+     "crop": [
+      2.0,
+      3.0,
+      14.0,
+      7.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      110,
+      200
+     ],
+     "slice": {
+      "border": 6,
+      "corner": 50
+     }
+    }
+   ]
+  },
+  {
+   "name": "nose",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      128
+     ],
+     "size": [
+      110,
+      90
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "fins",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      176,
+      316
+     ],
+     "size": [
+      90,
+      110
+     ],
+     "rot": 90
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      336,
+      316
+     ],
+     "size": [
+      90,
+      110
+     ],
+     "rot": -90
+    }
+   ]
+  },
+  {
+   "name": "flame",
+   "z": 1.5,
+   "material": "ember",
+   "emit": 0.45,
+   "glow": {
+    "radius": 7,
+    "opacity": 0.45,
+    "color": "flame_glow"
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      400
+     ],
+     "size": [
+      80,
+      110
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      260
+     ],
+     "size": [
+      65.0,
+      110.0
+     ]
+    }
+   ],
+   "clip_to": "body"
+  }
+ ]
+}

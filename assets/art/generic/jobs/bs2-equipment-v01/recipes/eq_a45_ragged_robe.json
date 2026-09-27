@@ -1,0 +1,307 @@
+{
+ "asset": "eq_a45_ragged_robe",
+ "status": "candidate",
+ "note": "45 ragged robe. A grey coat worn out at the hem, belted with a bootlace. Nobody mended it and nobody threw it away.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 109,
+ "forms": [
+  {
+   "name": "body_edge",
+   "z": -0.5,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      296
+     ],
+     "size": [
+      326,
+      326
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 0,
+   "material": "coat_top",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      296
+     ],
+     "size": [
+      300,
+      300
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 3
+     }
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      148
+     ],
+     "size": [
+      250,
+      132
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "sleeves_edge",
+   "z": 0.5,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      76,
+      252
+     ],
+     "size": [
+      206,
+      276
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      436,
+      252
+     ],
+     "size": [
+      206,
+      276
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sleeves",
+   "z": 1,
+   "material": "coat_top",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      76,
+      252
+     ],
+     "size": [
+      180,
+      250
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      436,
+      252
+     ],
+     "size": [
+      180,
+      250
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skirt_edge",
+   "z": 0.5,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      412
+     ],
+     "size": [
+      446,
+      276
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "skirt",
+   "z": 1,
+   "material": "coat_top",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      412
+     ],
+     "size": [
+      420,
+      250
+     ],
+     "rot": 180
+    },
+    {
+     "icon": "circle",
+     "at": [
+      132,
+      476
+     ],
+     "size": [
+      96,
+      96
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      300,
+      492
+     ],
+     "size": [
+      86,
+      86
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      400,
+      468
+     ],
+     "size": [
+      74,
+      74
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "cord",
+   "z": 2,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      310,
+      26
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fold",
+   "z": 2,
+   "kind": "flat",
+   "material": "coat_dark",
+   "opacity": 0.7,
+   "line": false,
+   "clip_to": "skirt",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      190,
+      430
+     ],
+     "size": [
+      14,
+      200
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      330,
+      430
+     ],
+     "size": [
+      14,
+      200
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      400
+     ],
+     "size": [
+      192.50000000000003,
+      110.00000000000001
+     ]
+    }
+   ],
+   "clip_to": "skirt"
+  },
+  {
+   "name": "dirt_soot",
+   "z": 9.3,
+   "kind": "wash",
+   "material": "soot",
+   "blend": "multiply",
+   "opacity": 0.3,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      180.0,
+      156.0
+     ]
+    }
+   ],
+   "clip_to": "body"
+  }
+ ]
+}

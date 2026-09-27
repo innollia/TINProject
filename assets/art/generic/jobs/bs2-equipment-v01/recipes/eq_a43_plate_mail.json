@@ -1,0 +1,296 @@
+{
+ "asset": "eq_a43_plate_mail",
+ "status": "candidate",
+ "note": "43 plate mail. A breastplate with pauldrons and a fauld, centre seam, two buckles and nothing else. It is armour for a person who only ever stood still.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 107,
+ "forms": [
+  {
+   "name": "cuirass_edge",
+   "z": -0.5,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      346,
+      326
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 3
+     }
+    }
+   ]
+  },
+  {
+   "name": "cuirass",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      320,
+      300
+     ],
+     "slice": {
+      "border": 3,
+      "corner": 3
+     }
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      150
+     ],
+     "size": [
+      250,
+      132
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "pauldrons_edge",
+   "z": 0.0,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      76,
+      226
+     ],
+     "size": [
+      226,
+      196
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      436,
+      226
+     ],
+     "size": [
+      226,
+      196
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pauldrons",
+   "z": 0.5,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      76,
+      226
+     ],
+     "size": [
+      200,
+      170
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      436,
+      226
+     ],
+     "size": [
+      200,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fauld_edge",
+   "z": 0.5,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      414
+     ],
+     "size": [
+      406,
+      226
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "fauld",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      256,
+      414
+     ],
+     "size": [
+      380,
+      200
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "gorget",
+   "z": 2,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256,
+      156
+     ],
+     "size": [
+      256,
+      92
+     ],
+     "crop": [
+      1.0,
+      5.5,
+      15.0,
+      11.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "seam",
+   "z": 3,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.55,
+   "line": false,
+   "clip_to": "cuirass",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      330
+     ],
+     "size": [
+      14,
+      270
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      262
+     ],
+     "size": [
+      244,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "buckles",
+   "z": 3,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      266
+     ],
+     "size": [
+      38,
+      38
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      344
+     ],
+     "size": [
+      38,
+      38
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      200,
+      330
+     ],
+     "size": [
+      105.0,
+      100.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      350,
+      420
+     ],
+     "size": [
+      85.0,
+      70.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "cuirass"
+  }
+ ]
+}

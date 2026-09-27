@@ -27,11 +27,8 @@
     96,
     74
    ],
-   "opacity": 0.45,
-   "line": {
-    "width": 0.7,
-    "heavy": 0.5
-   },
+   "opacity": 0.5,
+   "line": false,
    "pieces": [
     {
      "icon": "circle",
@@ -40,19 +37,19 @@
       74.0
      ],
      "size": [
-      80.0,
-      80.0
+      82.0,
+      28.0
      ]
     },
     {
      "icon": "circle",
      "at": [
-      96,
-      74
+      96.0,
+      74.0
      ],
      "size": [
-      64,
-      26
+      64.0,
+      22.0
      ],
      "op": "sub"
     },
@@ -63,8 +60,8 @@
       74.0
      ],
      "size": [
-      40.0,
-      40.0
+      82.0,
+      28.0
      ],
      "op": "sub"
     }
@@ -82,7 +79,7 @@
     96,
     74
    ],
-   "opacity": 0.5,
+   "opacity": 0.55,
    "clip_to": "dimple",
    "line": false,
    "pieces": [
@@ -93,8 +90,8 @@
       70.0
      ],
      "size": [
-      78.0,
-      30.0
+      84.0,
+      32.0
      ]
     }
    ]
@@ -106,12 +103,12 @@
    ],
    "z": 2,
    "kind": "flat",
-   "material": "water_pale",
+   "material": "foam",
    "pivot": [
     96,
     10
    ],
-   "opacity": 0.8,
+   "opacity": 0.85,
    "line": false,
    "pieces": [
     {
@@ -121,8 +118,8 @@
       44.0
      ],
      "size": [
-      2.6,
-      72.0
+      2.8,
+      74.0
      ]
     }
    ]
@@ -140,8 +137,8 @@
     84
    ],
    "line": {
-    "width": 0.7,
-    "heavy": 0.5
+    "width": 0.8,
+    "heavy": 0.6
    },
    "pieces": [
     {
@@ -151,26 +148,65 @@
       84.0
      ],
      "size": [
-      20.0,
-      24.0
+      22.0,
+      26.0
      ],
      "rot": 180
     }
    ]
   },
   {
-   "name": "fish4608",
+   "name": "y4608",
    "tags": [
     "f"
    ],
-   "z": 3,
-   "kind": "mass",
-   "material": "water_mid",
+   "z": 3.03,
+   "kind": "flat",
+   "material": "water_deep",
    "pivot": [
     98.0,
     112.0
    ],
-   "squash_ignored": true,
+   "opacity": 0.7,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "fish",
+     "at": [
+      110.77,
+      123.1
+     ],
+     "size": [
+      77.26,
+      48.07
+     ],
+     "rot": -6,
+     "squash": 0.62,
+     "crop": [
+      3.4,
+      9.8,
+      15.6,
+      13.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "b4608",
+   "tags": [
+    "f"
+   ],
+   "z": 3.02,
+   "kind": "mass",
+   "material": "water_pale",
+   "pivot": [
+    98.0,
+    112.0
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.7
+   },
    "shade": {
     "soft": 0.34,
     "bump": 0.8,
@@ -224,27 +260,62 @@
      "squash": 0.62
     },
     {
-     "name": "_",
-     "icon": "fish",
+     "icon": "circle",
      "at": [
-      109.6,
-      120.58
+      133.05,
+      105.22
      ],
      "size": [
-      73.82,
-      42.92
+      7.0,
+      6.0
      ],
-     "rot": -6.0,
+     "rot": -6,
+     "squash": 0.62
+    }
+   ]
+  },
+  {
+   "name": "t4608",
+   "tags": [
+    "f",
+    "tl"
+   ],
+   "z": 2.99,
+   "kind": "mass",
+   "material": "water_pale",
+   "pivot": [
+    66.68,
+    112.0
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.7
+   },
+   "shade": {
+    "soft": 0.34,
+    "bump": 0.8,
+    "threshold": 0.48,
+    "highlight_amount": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "fish",
+     "at": [
+      66.68,
+      112.0
+     ],
+     "size": [
+      34.8,
+      45.24
+     ],
+     "rot": -6,
      "squash": 0.62,
      "crop": [
-      3.4,
-      7.6,
-      15.6,
-      13.6
-     ],
-     "alpha": 0.5,
-     "op": "sub",
-     "material": "water_deep"
+      0.1,
+      2.6,
+      4.4,
+      13.4
+     ]
     },
     {
      "icon": "circle",
@@ -253,25 +324,57 @@
       105.2
      ],
      "size": [
-      8.0,
-      7.0
+      10.0,
+      8.0
      ],
      "rot": -6,
-     "squash": 0.62
-    },
-    {
-     "name": "_",
-     "icon": "circle",
-     "at": [
-      122.0,
-      100.0
-     ],
-     "size": [
-      9,
-      7
-     ],
-     "rot": -6,
+     "squash": 0.62,
      "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "t4608",
+   "tags": [
+    "f",
+    "tl"
+   ],
+   "z": 2.99,
+   "kind": "mass",
+   "material": "water_pale",
+   "pivot": [
+    66.68,
+    112.0
+   ],
+   "line": {
+    "width": 0.8,
+    "heavy": 0.7
+   },
+   "shade": {
+    "soft": 0.34,
+    "bump": 0.8,
+    "threshold": 0.48,
+    "highlight_amount": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "fish",
+     "at": [
+      66.68,
+      112.0
+     ],
+     "size": [
+      34.8,
+      45.24
+     ],
+     "rot": -6,
+     "squash": 0.62,
+     "crop": [
+      0.1,
+      2.6,
+      4.4,
+      13.4
+     ]
     },
     {
      "icon": "circle",
@@ -280,97 +383,12 @@
       105.2
      ],
      "size": [
-      8.0,
-      7.0
-     ],
-     "rot": -6,
-     "squash": 0.62
-    }
-   ],
-   "_eye": [
-    133.05,
-    105.22
-   ]
-  },
-  {
-   "name": "fish4608t",
-   "tags": [
-    "f",
-    "tl"
-   ],
-   "z": 2.99,
-   "kind": "mass",
-   "material": "water_mid",
-   "pivot": [
-    66.68,
-    112.0
-   ],
-   "shade": {
-    "soft": 0.34,
-    "bump": 0.8,
-    "threshold": 0.48,
-    "highlight_amount": 0.4
-   },
-   "pieces": [
-    {
-     "icon": "fish",
-     "at": [
-      66.68,
-      112.0
-     ],
-     "size": [
-      34.8,
-      45.24
+      10.0,
+      8.0
      ],
      "rot": -6,
      "squash": 0.62,
-     "crop": [
-      0.1,
-      2.6,
-      4.4,
-      13.4
-     ]
-    }
-   ]
-  },
-  {
-   "name": "fish4608t",
-   "tags": [
-    "f",
-    "tl"
-   ],
-   "z": 2.99,
-   "kind": "mass",
-   "material": "water_mid",
-   "pivot": [
-    66.68,
-    112.0
-   ],
-   "shade": {
-    "soft": 0.34,
-    "bump": 0.8,
-    "threshold": 0.48,
-    "highlight_amount": 0.4
-   },
-   "pieces": [
-    {
-     "icon": "fish",
-     "at": [
-      66.68,
-      112.0
-     ],
-     "size": [
-      34.8,
-      45.24
-     ],
-     "rot": -6,
-     "squash": 0.62,
-     "crop": [
-      0.1,
-      2.6,
-      4.4,
-      13.4
-     ]
+     "op": "sub"
     }
    ]
   },
@@ -615,6 +633,7 @@
  ],
  "style_override": {
   "cast": false,
-  "silhouette": false
+  "silhouette": false,
+  "line": false
  }
 }

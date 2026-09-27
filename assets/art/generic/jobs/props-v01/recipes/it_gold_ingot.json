@@ -1,0 +1,109 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "canvas centre; inventory icon, no ground contact",
+  "asset": "it_gold_ingot",
+  "status": "candidate",
+  "note": "it_gold_ingot: same plate again, worn dull gold, dark chamfer. Shape identical to it_iron_ingot.",
+  "seed": 212,
+  "forms": [
+    {
+      "name": "body",
+      "kind": "block",
+      "material": "gold_bar",
+      "extrude": 8,
+      "ao": false,
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "at": [
+            64,
+            54
+          ],
+          "size": [
+            108,
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sheen",
+      "kind": "flat",
+      "material": "gold_bar",
+      "clip_to": "body",
+      "opacity": 0.85,
+      "grad": {
+        "to": "floor_light",
+        "y0": 30,
+        "y1": 56,
+        "amount": 0.55
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            3.0,
+            2.4,
+            13.0,
+            7.2
+          ],
+          "at": [
+            64.0,
+            41.2
+          ],
+          "size": [
+            77.14,
+            19.2
+          ]
+        }
+      ]
+    },
+    {
+      "name": "chamfer",
+      "kind": "flat",
+      "material": "gold_bar",
+      "clip_to": "body",
+      "opacity": 0.8,
+      "grad": {
+        "to": "well_void",
+        "y0": 58,
+        "y1": 84,
+        "amount": 0.65
+      },
+      "pieces": [
+        {
+          "icon": "diamond_shape",
+          "crop": [
+            2.6,
+            8.0,
+            13.4,
+            15.0
+          ],
+          "at": [
+            64.0,
+            68.0
+          ],
+          "size": [
+            83.31,
+            28.0
+          ]
+        }
+      ]
+    }
+  ]
+}

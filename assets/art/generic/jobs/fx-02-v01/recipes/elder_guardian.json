@@ -1,0 +1,561 @@
+{
+  "asset": "elder_guardian",
+  "status": "candidate",
+  "note": "elder_guardian (elder sentinel state). 4 frames. A vertical standing guardian, deliberately nothing like the nautilus spiral: crested iron helm, one amber eye slit that narrows and reopens like a scan, a long bone beard, a tabard on a stone footing with two root feet, dust kicked up on the return of the sway. Whole figure rocks 2.2 deg about the floor point.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    192,
+    192
+  ],
+  "pivot": [
+    96,
+    184
+  ],
+  "pivot_meaning": "floor point between the feet",
+  "seed": 1210,
+  "forms": [
+    {
+      "name": "eg_shadow",
+      "z": 0,
+      "kind": "shadow",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            180.0
+          ],
+          "size": [
+            118.0,
+            20.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_body"
+      ],
+      "color": "shadow_contact",
+      "opacity": 0.42,
+      "blur": 6
+    },
+    {
+      "name": "eg_feet",
+      "z": 1,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": 180,
+          "at": [
+            60.0,
+            172.0
+          ],
+          "size": [
+            26.0,
+            16.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 180,
+          "at": [
+            132.0,
+            172.0
+          ],
+          "size": [
+            26.0,
+            16.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_body"
+      ],
+      "material": "stone_dark"
+    },
+    {
+      "name": "eg_base",
+      "z": 1.5,
+      "kind": "block",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 4,
+            "corner": 7
+          },
+          "at": [
+            96.0,
+            164.0
+          ],
+          "size": [
+            104.0,
+            20.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_body"
+      ],
+      "material": "stone",
+      "extrude": 8
+    },
+    {
+      "name": "eg_tabard",
+      "z": 2,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 4,
+            "corner": 6
+          },
+          "at": [
+            96.0,
+            120.0
+          ],
+          "size": [
+            72.0,
+            82.0
+          ]
+        },
+        {
+          "icon": "mountains",
+          "at": [
+            96.0,
+            150.0
+          ],
+          "size": [
+            74.0,
+            22.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_body"
+      ],
+      "material": "coat"
+    },
+    {
+      "name": "eg_studs",
+      "z": 2.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            74.0,
+            126.0
+          ],
+          "size": [
+            8.0,
+            8.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            118.0,
+            126.0
+          ],
+          "size": [
+            8.0,
+            8.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_body"
+      ],
+      "material": "bronze",
+      "line": false
+    },
+    {
+      "name": "eg_hood",
+      "z": 3,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": 180,
+          "at": [
+            96.0,
+            90.0
+          ],
+          "size": [
+            98.0,
+            104.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_body"
+      ],
+      "material": "coat_dark"
+    },
+    {
+      "name": "eg_beard",
+      "z": 4,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "rot": 180,
+          "at": [
+            96.0,
+            102.0
+          ],
+          "size": [
+            50.0,
+            58.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 172,
+          "at": [
+            72.0,
+            112.0
+          ],
+          "size": [
+            22.0,
+            42.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 188,
+          "at": [
+            120.0,
+            112.0
+          ],
+          "size": [
+            22.0,
+            42.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_body"
+      ],
+      "material": "paper",
+      "shade": {
+        "highlight_amount": 0.4
+      }
+    },
+    {
+      "name": "eg_helm",
+      "z": 5,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 4,
+            "corner": 10
+          },
+          "at": [
+            96.0,
+            66.0
+          ],
+          "size": [
+            70.0,
+            46.0
+          ]
+        },
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "at": [
+            96.0,
+            74.0
+          ],
+          "size": [
+            8.0,
+            28.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_body"
+      ],
+      "material": "iron",
+      "shade": {
+        "highlight": 0.84,
+        "highlight_amount": 0.6
+      }
+    },
+    {
+      "name": "eg_crest",
+      "z": 5.5,
+      "kind": "mass",
+      "pieces": [
+        {
+          "icon": "triangle",
+          "at": [
+            96.0,
+            38.0
+          ],
+          "size": [
+            26.0,
+            30.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_body"
+      ],
+      "material": "bronze"
+    },
+    {
+      "name": "eg_crest2",
+      "z": 5.6,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "at": [
+            96.0,
+            44.0
+          ],
+          "size": [
+            40.0,
+            6.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_body"
+      ],
+      "material": "iron",
+      "line": false
+    },
+    {
+      "name": "eg_eye",
+      "z": 6,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "at": [
+            96.0,
+            64.0
+          ],
+          "size": [
+            46.0,
+            9.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_eye"
+      ],
+      "material": "lamp_eye",
+      "emit": 1.0,
+      "line": false,
+      "glow": {
+        "radius": 6,
+        "opacity": 0.65,
+        "color": "lamp_glow"
+      }
+    },
+    {
+      "name": "eg_breath",
+      "z": 6.2,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "cloud",
+          "at": [
+            96.0,
+            122.0
+          ],
+          "size": [
+            42.0,
+            18.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_breath"
+      ],
+      "material": "steam",
+      "opacity": 0.22,
+      "line": false
+    },
+    {
+      "name": "eg_dust",
+      "z": 6.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64.0,
+            174.0
+          ],
+          "size": [
+            26.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            130.0,
+            176.0
+          ],
+          "size": [
+            22.0,
+            10.0
+          ]
+        }
+      ],
+      "tags": [
+        "eg_dust"
+      ],
+      "material": "rubble",
+      "opacity": 0.55,
+      "line": false
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "eg_body": {
+          "pivot": [
+            96,
+            180
+          ],
+          "rot": 0,
+          "dy": 0
+        },
+        "eg_eye": {
+          "pivot": [
+            96,
+            64
+          ],
+          "sx": 1
+        },
+        "eg_breath": {
+          "pivot": [
+            96,
+            128
+          ],
+          "dy": 0,
+          "sx": 1
+        }
+      },
+      "hide": [
+        "eg_dust"
+      ]
+    },
+    {
+      "name": "f1",
+      "move": {
+        "eg_body": {
+          "pivot": [
+            96,
+            180
+          ],
+          "rot": 2.2,
+          "dy": 1
+        },
+        "eg_eye": {
+          "pivot": [
+            96,
+            64
+          ],
+          "sx": 0.66
+        },
+        "eg_breath": {
+          "pivot": [
+            96,
+            128
+          ],
+          "dy": -3,
+          "sx": 1.08
+        }
+      },
+      "hide": [
+        "eg_dust"
+      ]
+    },
+    {
+      "name": "f2",
+      "move": {
+        "eg_body": {
+          "pivot": [
+            96,
+            180
+          ],
+          "rot": 0,
+          "dy": 0
+        },
+        "eg_eye": {
+          "pivot": [
+            96,
+            64
+          ],
+          "sx": 1
+        },
+        "eg_breath": {
+          "pivot": [
+            96,
+            128
+          ],
+          "dy": -6,
+          "sx": 1.16
+        }
+      },
+      "show": [
+        "eg_dust"
+      ]
+    },
+    {
+      "name": "f3",
+      "move": {
+        "eg_body": {
+          "pivot": [
+            96,
+            180
+          ],
+          "rot": -2.2,
+          "dy": 1
+        },
+        "eg_eye": {
+          "pivot": [
+            96,
+            64
+          ],
+          "sx": 1
+        },
+        "eg_breath": {
+          "pivot": [
+            96,
+            128
+          ],
+          "dy": -3,
+          "sx": 1.08
+        }
+      },
+      "show": [
+        "eg_dust"
+      ]
+    }
+  ]
+}

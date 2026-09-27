@@ -1,0 +1,566 @@
+{
+  "asset": "composter",
+  "status": "candidate",
+  "note": "composter (decomposing / breaking down). 4 frames. The only box silhouette in the job: a slatted crate bin with corner posts, a rough soil heap with two pale worms, a plank lid on a hinge that creaks from -6 to -9 deg, three steam wisps that breathe, and two paper scraps that fall 9 px per frame in two alternating sets.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    192,
+    192
+  ],
+  "pivot": [
+    96,
+    182
+  ],
+  "pivot_meaning": "front-bottom centre of the bin on the floor",
+  "seed": 1214,
+  "forms": [
+    {
+      "name": "cp_shadow",
+      "z": 0,
+      "kind": "shadow",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 4,
+            "corner": 12
+          },
+          "at": [
+            96.0,
+            178.0
+          ],
+          "size": [
+            128.0,
+            26.0
+          ]
+        }
+      ],
+      "color": "shadow_contact",
+      "opacity": 0.4,
+      "blur": 5
+    },
+    {
+      "name": "cp_muck",
+      "z": 1,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "cloud",
+          "at": [
+            96.0,
+            92.0
+          ],
+          "size": [
+            98.0,
+            34.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            78.0,
+            98.0
+          ],
+          "size": [
+            46.0,
+            22.0
+          ]
+        }
+      ],
+      "tags": [
+        "cp_muck"
+      ],
+      "material": "soil",
+      "rough": {
+        "amp": 0.4,
+        "soft": 2,
+        "cell": 12
+      }
+    },
+    {
+      "name": "cp_worms",
+      "z": 1.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "hook",
+          "rot": 24,
+          "at": [
+            82.0,
+            88.0
+          ],
+          "size": [
+            26.0,
+            16.0
+          ]
+        },
+        {
+          "icon": "hook",
+          "rot": -40,
+          "at": [
+            116.0,
+            98.0
+          ],
+          "size": [
+            22.0,
+            14.0
+          ]
+        }
+      ],
+      "tags": [
+        "cp_muck"
+      ],
+      "material": "worm",
+      "opacity": 0.9,
+      "line": false
+    },
+    {
+      "name": "cp_bin",
+      "z": 2,
+      "kind": "block",
+      "pieces": [
+        {
+          "icon": "crate",
+          "at": [
+            96.0,
+            134.0
+          ],
+          "size": [
+            120.0,
+            88.0
+          ]
+        }
+      ],
+      "tags": [
+        "cp_bin"
+      ],
+      "material": "wood",
+      "extrude": 26
+    },
+    {
+      "name": "cp_slats",
+      "z": 2.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 3,
+            "corner": 3
+          },
+          "at": [
+            96.0,
+            112.0
+          ],
+          "size": [
+            118.0,
+            8.0
+          ]
+        },
+        {
+          "icon": "square",
+          "slice": {
+            "border": 3,
+            "corner": 3
+          },
+          "at": [
+            96.0,
+            134.0
+          ],
+          "size": [
+            118.0,
+            8.0
+          ]
+        },
+        {
+          "icon": "square",
+          "slice": {
+            "border": 3,
+            "corner": 3
+          },
+          "at": [
+            96.0,
+            156.0
+          ],
+          "size": [
+            118.0,
+            8.0
+          ]
+        }
+      ],
+      "tags": [
+        "cp_bin"
+      ],
+      "material": "wood",
+      "opacity": 0.75,
+      "clip_to": "cp_bin",
+      "line": false
+    },
+    {
+      "name": "cp_posts",
+      "z": 2.8,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 3,
+            "corner": 3
+          },
+          "at": [
+            40.0,
+            132.0
+          ],
+          "size": [
+            12.0,
+            84.0
+          ]
+        },
+        {
+          "icon": "square",
+          "slice": {
+            "border": 3,
+            "corner": 3
+          },
+          "at": [
+            152.0,
+            132.0
+          ],
+          "size": [
+            12.0,
+            84.0
+          ]
+        }
+      ],
+      "tags": [
+        "cp_bin"
+      ],
+      "material": "wood",
+      "opacity": 0.9,
+      "clip_to": "cp_bin",
+      "line": false
+    },
+    {
+      "name": "cp_lid",
+      "z": 3.5,
+      "kind": "block",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 4,
+            "corner": 6
+          },
+          "at": [
+            96.0,
+            72.0
+          ],
+          "size": [
+            130.0,
+            18.0
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            64.0
+          ],
+          "size": [
+            24.0,
+            9.0
+          ]
+        }
+      ],
+      "tags": [
+        "cp_lid"
+      ],
+      "material": "wood",
+      "extrude": 10,
+      "pivot": [
+        152,
+        76
+      ]
+    },
+    {
+      "name": "cp_steam",
+      "z": 4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "cloud",
+          "at": [
+            74.0,
+            42.0
+          ],
+          "size": [
+            44.0,
+            28.0
+          ]
+        },
+        {
+          "icon": "cloud",
+          "at": [
+            100.0,
+            30.0
+          ],
+          "size": [
+            38.0,
+            24.0
+          ]
+        },
+        {
+          "icon": "cloud",
+          "at": [
+            118.0,
+            44.0
+          ],
+          "size": [
+            32.0,
+            22.0
+          ]
+        }
+      ],
+      "tags": [
+        "cp_steam"
+      ],
+      "material": "steam",
+      "opacity": 0.36,
+      "blur": 2,
+      "line": false
+    },
+    {
+      "name": "cp_scrapA",
+      "z": 5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "leaf",
+          "rot": 30,
+          "at": [
+            72.0,
+            50.0
+          ],
+          "size": [
+            14.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "rot": -24,
+          "at": [
+            126.0,
+            36.0
+          ],
+          "size": [
+            11.0,
+            11.0
+          ]
+        }
+      ],
+      "tags": [
+        "scrapA"
+      ],
+      "material": "paper",
+      "opacity": 0.85,
+      "line": false
+    },
+    {
+      "name": "cp_scrapB",
+      "z": 5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "leaf",
+          "rot": 34,
+          "at": [
+            72.0,
+            74.0
+          ],
+          "size": [
+            14.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "rot": -18,
+          "at": [
+            126.0,
+            60.0
+          ],
+          "size": [
+            11.0,
+            11.0
+          ]
+        }
+      ],
+      "tags": [
+        "scrapB"
+      ],
+      "material": "paper",
+      "opacity": 0.85,
+      "line": false
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "cp_lid": {
+          "pivot": [
+            152,
+            76
+          ],
+          "rot": -6
+        },
+        "cp_muck": {
+          "pivot": [
+            96,
+            178
+          ],
+          "sy": 1
+        },
+        "cp_steam": {
+          "pivot": [
+            96,
+            70
+          ],
+          "dy": 0,
+          "sx": 1,
+          "sy": 1
+        },
+        "scrapA": {
+          "dy": 0
+        },
+        "scrapB": {
+          "dy": 0
+        }
+      },
+      "hide": [
+        "scrapB"
+      ]
+    },
+    {
+      "name": "f1",
+      "move": {
+        "cp_lid": {
+          "pivot": [
+            152,
+            76
+          ],
+          "rot": -3
+        },
+        "cp_muck": {
+          "pivot": [
+            96,
+            178
+          ],
+          "sy": 1.05
+        },
+        "cp_steam": {
+          "pivot": [
+            96,
+            70
+          ],
+          "dy": -5,
+          "sx": 1.06,
+          "sy": 1.06
+        },
+        "scrapA": {
+          "dy": 9
+        },
+        "scrapB": {
+          "dy": 0
+        }
+      },
+      "hide": [
+        "scrapB"
+      ]
+    },
+    {
+      "name": "f2",
+      "move": {
+        "cp_lid": {
+          "pivot": [
+            152,
+            76
+          ],
+          "rot": -6
+        },
+        "cp_muck": {
+          "pivot": [
+            96,
+            178
+          ],
+          "sy": 1.09
+        },
+        "cp_steam": {
+          "pivot": [
+            96,
+            70
+          ],
+          "dy": -10,
+          "sx": 1.12,
+          "sy": 1.12
+        },
+        "scrapA": {
+          "dy": 0
+        },
+        "scrapB": {
+          "dy": 9
+        }
+      },
+      "hide": [
+        "scrapA"
+      ]
+    },
+    {
+      "name": "f3",
+      "move": {
+        "cp_lid": {
+          "pivot": [
+            152,
+            76
+          ],
+          "rot": -9
+        },
+        "cp_muck": {
+          "pivot": [
+            96,
+            178
+          ],
+          "sy": 1.05
+        },
+        "cp_steam": {
+          "pivot": [
+            96,
+            70
+          ],
+          "dy": -5,
+          "sx": 1.06,
+          "sy": 1.06
+        },
+        "scrapA": {
+          "dy": 9
+        },
+        "scrapB": {
+          "dy": 18
+        }
+      },
+      "hide": [
+        "scrapA"
+      ]
+    }
+  ]
+}

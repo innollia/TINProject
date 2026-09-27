@@ -1,0 +1,94 @@
+{
+ "asset": "eq_j01_rusted_ring",
+ "status": "candidate",
+ "note": "59 rusted ring. A plain iron band, gone orange, thin on the inside from being worn. It is not jewellery any more.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 123,
+ "forms": [
+  {
+   "name": "band",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      380,
+      340
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wear",
+   "z": 1,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.5,
+   "line": false,
+   "clip_to": "band",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      250
+     ],
+     "size": [
+      380,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      200,
+      200
+     ],
+     "size": [
+      100.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      330,
+      300
+     ],
+     "size": [
+      100.0,
+      85.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "band"
+  }
+ ]
+}

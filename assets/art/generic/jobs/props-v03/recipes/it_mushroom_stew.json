@@ -1,0 +1,231 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_mushroom_stew",
+  "note": "cauldron of mushroom stew seen from above-front: dark pot, a lid tilted on top, brown broth with pale mushroom caps floating. No text.",
+  "seed": 3601,
+  "forms": [
+    {
+      "name": "lid",
+      "z": 0,
+      "material": "ceramic",
+      "shade": {
+        "bump": 1.0,
+        "highlight_amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "cauldron",
+          "at": [
+            56,
+            30
+          ],
+          "size": [
+            88,
+            20
+          ],
+          "crop": [
+            1.4,
+            4.2,
+            14.6,
+            6.4
+          ],
+          "rot": -14
+        }
+      ]
+    },
+    {
+      "name": "pot",
+      "z": 1,
+      "material": "ceramic_dark",
+      "rough": {
+        "amp": 0.25,
+        "soft": 1.0,
+        "cell": 7
+      },
+      "shade": {
+        "bump": 1.05,
+        "highlight_amount": 0.45
+      },
+      "grad": {
+        "to": "soot",
+        "y0": 84,
+        "y1": 118,
+        "amount": 0.35
+      },
+      "pieces": [
+        {
+          "icon": "cauldron",
+          "at": [
+            64,
+            76
+          ],
+          "size": [
+            92,
+            84
+          ],
+          "crop": [
+            1.8,
+            6.0,
+            14.2,
+            15.8
+          ]
+        }
+      ]
+    },
+    {
+      "name": "surface",
+      "z": 2,
+      "kind": "flat",
+      "material": "stew_brown",
+      "clip_to": "pot",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            48
+          ],
+          "size": [
+            75.44,
+            30
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rim_light",
+      "z": 3,
+      "kind": "flat",
+      "material": "ceramic",
+      "opacity": 0.5,
+      "clip_to": "pot",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            42
+          ],
+          "size": [
+            82.8,
+            8
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bits",
+      "z": 4,
+      "clip_to": "surface",
+      "pieces": [
+        {
+          "icon": "cloud",
+          "at": [
+            50,
+            42
+          ],
+          "size": [
+            26,
+            14
+          ],
+          "crop": [
+            2.0,
+            3.0,
+            14.0,
+            13.0
+          ],
+          "rot": 12
+        },
+        {
+          "icon": "cloud",
+          "at": [
+            76,
+            47
+          ],
+          "size": [
+            22,
+            12
+          ],
+          "crop": [
+            2.0,
+            3.0,
+            14.0,
+            13.0
+          ],
+          "rot": -16
+        },
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            50
+          ],
+          "size": [
+            18,
+            9
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": 0
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 7,
+      "kind": "flat",
+      "material": "ceramic",
+      "opacity": 0.28,
+      "clip_to": "pot",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            38,
+            66
+          ],
+          "size": [
+            22,
+            40
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -12
+        }
+      ]
+    }
+  ]
+}

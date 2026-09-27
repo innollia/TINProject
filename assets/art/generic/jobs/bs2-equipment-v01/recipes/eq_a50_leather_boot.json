@@ -1,0 +1,181 @@
+{
+ "asset": "eq_a50_leather_boot",
+ "status": "candidate",
+ "note": "50 leather boot. A low-cuffed work boot with the toe gone soft. Sole worn through at the ball of the foot.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 114,
+ "forms": [
+  {
+   "name": "sole",
+   "z": 0,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      250,
+      440
+     ],
+     "size": [
+      420,
+      76
+     ],
+     "slice": {
+      "border": 2,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "upper",
+   "z": 1,
+   "material": "worn",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      300,
+      336
+     ],
+     "size": [
+      230,
+      190
+     ],
+     "slice": {
+      "border": 2,
+      "corner": 2
+     }
+    },
+    {
+     "icon": "circle",
+     "at": [
+      86,
+      440
+     ],
+     "size": [
+      150,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shaft",
+   "z": 1,
+   "material": "worn",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      292,
+      200
+     ],
+     "size": [
+      200,
+      240
+     ],
+     "slice": {
+      "border": 2,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "cuff",
+   "z": 2,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      292,
+      96
+     ],
+     "size": [
+      240,
+      60
+     ],
+     "slice": {
+      "border": 2,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "buckle",
+   "z": 3,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      292,
+      130
+     ],
+     "size": [
+      70,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "seam",
+   "z": 3,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.5,
+   "line": false,
+   "clip_to": "upper",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      300,
+      336
+     ],
+     "size": [
+      12,
+      180
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dirt_damp",
+   "z": 9.2,
+   "kind": "wash",
+   "material": "damp",
+   "blend": "multiply",
+   "opacity": 0.2,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      292,
+      200
+     ],
+     "size": [
+      104.50000000000001,
+      121.00000000000001
+     ]
+    }
+   ],
+   "clip_to": "shaft"
+  }
+ ]
+}

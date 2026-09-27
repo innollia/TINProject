@@ -1,0 +1,492 @@
+{
+  "asset": "egg_crack",
+  "status": "candidate",
+  "note": "egg_crack (egg breaking). 4 frames. The egg is a cropped droplet (a solid teardrop, unlike the egg icon which has a hole). The lower shell is the egg minus everything above a jagged mountain seam with the mountains added back as teeth; the cap is the exact complement, so the two interlock on frame 0. The cap lifts -24 px and tilts -9 deg, a dark jagged gap opens under it, warm light shows from inside, the seam line is only drawn on the first two frames, and two shell chip pairs fall away.",
+  "palette": "palette_fx.json",
+  "style": "sprite",
+  "canvas": [
+    192,
+    192
+  ],
+  "pivot": [
+    96,
+    182
+  ],
+  "pivot_meaning": "floor point under the lower shell",
+  "seed": 1215,
+  "forms": [
+    {
+      "name": "ec_shadow",
+      "z": 0,
+      "kind": "shadow",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            178.0
+          ],
+          "size": [
+            96.0,
+            20.0
+          ]
+        }
+      ],
+      "tags": [
+        "ec_bottom"
+      ],
+      "color": "shadow_contact",
+      "opacity": 0.36,
+      "blur": 5
+    },
+    {
+      "name": "ec_void",
+      "z": 1,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            102.0
+          ],
+          "size": [
+            104.0,
+            128.0
+          ]
+        }
+      ],
+      "tags": [
+        "ec_bottom"
+      ],
+      "material": "void"
+    },
+    {
+      "name": "ec_inside",
+      "z": 1.5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            96.0,
+            104.0
+          ],
+          "size": [
+            62.0,
+            66.0
+          ]
+        }
+      ],
+      "tags": [
+        "ec_bottom"
+      ],
+      "material": "ember",
+      "opacity": 0.4,
+      "emit": 0.28,
+      "glow": {
+        "radius": 5,
+        "opacity": 0.35,
+        "color": "ember_glow"
+      }
+    },
+    {
+      "name": "ec_gap",
+      "z": 1.8,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "mountains",
+          "at": [
+            96.0,
+            98.0
+          ],
+          "size": [
+            160.0,
+            64.0
+          ]
+        }
+      ],
+      "tags": [
+        "ec_gap"
+      ],
+      "material": "void",
+      "opacity": 0.92,
+      "pivot": [
+        96,
+        112
+      ],
+      "line": false
+    },
+    {
+      "name": "ec_bottom",
+      "z": 2,
+      "kind": "block",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            0.4,
+            1.6,
+            15.6,
+            16
+          ],
+          "at": [
+            96.0,
+            100.0
+          ],
+          "size": [
+            108.0,
+            132.0
+          ]
+        },
+        {
+          "icon": "square",
+          "op": "sub",
+          "at": [
+            96.0,
+            62.0
+          ],
+          "size": [
+            160.0,
+            72.0
+          ]
+        },
+        {
+          "icon": "mountains",
+          "at": [
+            96.0,
+            98.0
+          ],
+          "size": [
+            160.0,
+            64.0
+          ]
+        }
+      ],
+      "tags": [
+        "ec_bottom"
+      ],
+      "material": "eggshell_mat",
+      "extrude": 9,
+      "pivot": [
+        96,
+        100
+      ]
+    },
+    {
+      "name": "ec_top",
+      "z": 3,
+      "kind": "block",
+      "pieces": [
+        {
+          "icon": "droplet",
+          "crop": [
+            0.4,
+            1.6,
+            15.6,
+            16
+          ],
+          "at": [
+            96.0,
+            100.0
+          ],
+          "size": [
+            108.0,
+            132.0
+          ]
+        },
+        {
+          "icon": "square",
+          "op": "sub",
+          "at": [
+            96.0,
+            140.0
+          ],
+          "size": [
+            160.0,
+            84.0
+          ]
+        },
+        {
+          "icon": "mountains",
+          "op": "sub",
+          "at": [
+            96.0,
+            98.0
+          ],
+          "size": [
+            160.0,
+            64.0
+          ]
+        }
+      ],
+      "tags": [
+        "ec_top"
+      ],
+      "material": "eggshell_mat",
+      "extrude": 8,
+      "pivot": [
+        96,
+        100
+      ]
+    },
+    {
+      "name": "ec_seam",
+      "z": 4,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "lightning_bolt",
+          "rot": 90,
+          "at": [
+            96.0,
+            98.0
+          ],
+          "size": [
+            104.0,
+            24.0
+          ]
+        }
+      ],
+      "tags": [
+        "ec_seam"
+      ],
+      "material": "soot",
+      "opacity": 0.85,
+      "line": false
+    },
+    {
+      "name": "ec_chipA",
+      "z": 5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "rot": 30,
+          "at": [
+            44.0,
+            126.0
+          ],
+          "size": [
+            13.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 120,
+          "at": [
+            148.0,
+            138.0
+          ],
+          "size": [
+            11.0,
+            13.0
+          ]
+        }
+      ],
+      "tags": [
+        "chipA"
+      ],
+      "material": "eggshell_mat",
+      "line": false
+    },
+    {
+      "name": "ec_chipB",
+      "z": 5,
+      "kind": "flat",
+      "pieces": [
+        {
+          "icon": "square",
+          "slice": {
+            "border": 2,
+            "corner": 2
+          },
+          "rot": 22,
+          "at": [
+            44.0,
+            150.0
+          ],
+          "size": [
+            13.0,
+            12.0
+          ]
+        },
+        {
+          "icon": "droplet",
+          "rot": 108,
+          "at": [
+            148.0,
+            162.0
+          ],
+          "size": [
+            11.0,
+            13.0
+          ]
+        }
+      ],
+      "tags": [
+        "chipB"
+      ],
+      "material": "eggshell_mat",
+      "line": false
+    }
+  ],
+  "frames": [
+    {
+      "name": "f0",
+      "move": {
+        "ec_top": {
+          "pivot": [
+            96,
+            100
+          ],
+          "dy": 0,
+          "rot": 0
+        },
+        "ec_gap": {
+          "pivot": [
+            96,
+            112
+          ],
+          "sy": 1
+        },
+        "ec_inside": {
+          "pivot": [
+            96,
+            112
+          ],
+          "sx": 1,
+          "sy": 1
+        },
+        "chipA": {
+          "dy": 0
+        },
+        "chipB": {
+          "dy": 0
+        }
+      },
+      "hide": [
+        "chipB"
+      ]
+    },
+    {
+      "name": "f1",
+      "move": {
+        "ec_top": {
+          "pivot": [
+            96,
+            100
+          ],
+          "dy": -9,
+          "rot": -4
+        },
+        "ec_gap": {
+          "pivot": [
+            96,
+            112
+          ],
+          "sy": 1.3
+        },
+        "ec_inside": {
+          "pivot": [
+            96,
+            112
+          ],
+          "sx": 1.06,
+          "sy": 1.06
+        },
+        "chipA": {
+          "dy": 11
+        },
+        "chipB": {
+          "dy": 0
+        }
+      },
+      "hide": [
+        "chipB"
+      ]
+    },
+    {
+      "name": "f2",
+      "move": {
+        "ec_top": {
+          "pivot": [
+            96,
+            100
+          ],
+          "dy": -18,
+          "rot": -7
+        },
+        "ec_gap": {
+          "pivot": [
+            96,
+            112
+          ],
+          "sy": 1.6
+        },
+        "ec_inside": {
+          "pivot": [
+            96,
+            112
+          ],
+          "sx": 1.12,
+          "sy": 1.12
+        },
+        "chipA": {
+          "dy": 22
+        },
+        "chipB": {
+          "dy": 11
+        }
+      },
+      "hide": [
+        "chipA",
+        "ec_seam"
+      ]
+    },
+    {
+      "name": "f3",
+      "move": {
+        "ec_top": {
+          "pivot": [
+            96,
+            100
+          ],
+          "dy": -24,
+          "rot": -9
+        },
+        "ec_gap": {
+          "pivot": [
+            96,
+            112
+          ],
+          "sy": 1.8
+        },
+        "ec_inside": {
+          "pivot": [
+            96,
+            112
+          ],
+          "sx": 1.06,
+          "sy": 1.06
+        },
+        "chipA": {
+          "dy": 33
+        },
+        "chipB": {
+          "dy": 22
+        }
+      },
+      "hide": [
+        "chipA",
+        "ec_seam"
+      ]
+    }
+  ]
+}

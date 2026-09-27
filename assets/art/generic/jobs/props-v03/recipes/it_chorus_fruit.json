@@ -1,0 +1,229 @@
+{
+  "palette": "palette_props.json",
+  "style": "prop",
+  "style_override": {
+    "cast": false
+  },
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    64
+  ],
+  "pivot_meaning": "centre of the 128px inventory cell",
+  "asset": "it_chorus_fruit",
+  "note": "knobbly three-lobed pale fruit, each lobe dimpled, on a short stem with a leaf. No text.",
+  "seed": 3105,
+  "forms": [
+    {
+      "name": "leaf",
+      "z": 0,
+      "material": "carrot_top",
+      "pieces": [
+        {
+          "icon": "leaf",
+          "at": [
+            90,
+            32
+          ],
+          "size": [
+            44,
+            28
+          ],
+          "crop": [
+            2.2,
+            4.4,
+            13.8,
+            11.6
+          ],
+          "rot": 16
+        }
+      ]
+    },
+    {
+      "name": "stem",
+      "z": 1,
+      "material": "wood",
+      "pieces": [
+        {
+          "icon": "apple",
+          "at": [
+            58,
+            30
+          ],
+          "size": [
+            15,
+            30
+          ],
+          "crop": [
+            7.2,
+            0.2,
+            10.8,
+            5.4
+          ],
+          "rot": 16
+        }
+      ]
+    },
+    {
+      "name": "lobe_l",
+      "z": 2,
+      "material": "chorus",
+      "shade": {
+        "bump": 1.1,
+        "highlight_amount": 0.45
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            40,
+            62
+          ],
+          "size": [
+            44,
+            42
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lobe_r",
+      "z": 3,
+      "material": "chorus",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            92,
+            60
+          ],
+          "size": [
+            38,
+            36
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "front",
+      "z": 4,
+      "material": "chorus",
+      "shade": {
+        "bump": 1.05,
+        "highlight_amount": 0.4
+      },
+      "grad": {
+        "to": "soot",
+        "y0": 76,
+        "y1": 118,
+        "amount": 0.35
+      },
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            64,
+            86
+          ],
+          "size": [
+            70,
+            62
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dimple",
+      "z": 5,
+      "kind": "flat",
+      "material": "chorus_pale",
+      "opacity": 0.6,
+      "clip_to": "front",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            52,
+            68
+          ],
+          "size": [
+            14,
+            12
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        },
+        {
+          "icon": "circle",
+          "at": [
+            78,
+            72
+          ],
+          "size": [
+            12,
+            11
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gleam",
+      "z": 6,
+      "kind": "flat",
+      "material": "chorus_pale",
+      "opacity": 0.34,
+      "clip_to": "front",
+      "pieces": [
+        {
+          "icon": "circle",
+          "at": [
+            52,
+            60
+          ],
+          "size": [
+            30,
+            15
+          ],
+          "crop": [
+            0.4,
+            0.4,
+            15.6,
+            15.6
+          ],
+          "rot": -26
+        }
+      ]
+    }
+  ]
+}

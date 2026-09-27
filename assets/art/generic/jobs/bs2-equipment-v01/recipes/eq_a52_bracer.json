@@ -1,0 +1,188 @@
+{
+ "asset": "eq_a52_bracer",
+ "status": "candidate",
+ "note": "52 bracer. A forearm shell with two leather straps and bronze buckles. The inside is polished by one arm only.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 116,
+ "forms": [
+  {
+   "name": "band",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "cylinder",
+     "at": [
+      256,
+      290
+     ],
+     "size": [
+      320,
+      340
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      290
+     ],
+     "size": [
+      312,
+      190
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      160
+     ],
+     "size": [
+      300,
+      140
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      420
+     ],
+     "size": [
+      300,
+      140
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plates",
+   "z": 1,
+   "kind": "flat",
+   "material": "stone_cap",
+   "opacity": 0.5,
+   "line": false,
+   "clip_to": "band",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      290
+     ],
+     "size": [
+      14,
+      190
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      290
+     ],
+     "size": [
+      300,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "straps",
+   "z": 2,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      256,
+      198
+     ],
+     "size": [
+      318,
+      36
+     ],
+     "rot": -6
+    },
+    {
+     "icon": "square",
+     "at": [
+      256,
+      382
+     ],
+     "size": [
+      318,
+      36
+     ],
+     "rot": 6
+    }
+   ]
+  },
+  {
+   "name": "buckles",
+   "z": 3,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      198
+     ],
+     "size": [
+      40,
+      40
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      382
+     ],
+     "size": [
+      40,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      256,
+      290
+     ],
+     "size": [
+      140.0,
+      110.0
+     ]
+    }
+   ],
+   "clip_to": "band"
+  }
+ ]
+}

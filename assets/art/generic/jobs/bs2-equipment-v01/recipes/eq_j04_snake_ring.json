@@ -1,0 +1,203 @@
+{
+ "asset": "eq_j04_snake_ring",
+ "status": "candidate",
+ "note": "62 snake ring. A band with two coils and a head with one lit eye. The scales are worn flat where it has been turned.",
+ "palette": "palette_h0_mood.json",
+ "style": "prop",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  256
+ ],
+ "pivot_meaning": "centre",
+ "seed": 126,
+ "forms": [
+  {
+   "name": "coil_edge",
+   "z": -1,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      364,
+      324
+     ]
+    }
+   ]
+  },
+  {
+   "name": "coil",
+   "z": 0,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      340,
+      300
+     ]
+    }
+   ]
+  },
+  {
+   "name": "coil2_edge",
+   "z": 0.4,
+   "material": "stone_cap",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256,
+      246
+     ],
+     "size": [
+      294,
+      264
+     ]
+    }
+   ]
+  },
+  {
+   "name": "coil2",
+   "z": 0.5,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "ring",
+     "at": [
+      256,
+      246
+     ],
+     "size": [
+      270,
+      240
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "z": 1,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      256,
+      132
+     ],
+     "size": [
+      130,
+      160
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye",
+   "z": 2,
+   "kind": "flat",
+   "material": "ember",
+   "opacity": 0.9,
+   "line": false,
+   "clip_to": "head",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      228,
+      116
+     ],
+     "size": [
+      30,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "scales",
+   "z": 2,
+   "kind": "flat",
+   "material": "worn",
+   "opacity": 0.45,
+   "line": false,
+   "clip_to": "coil",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256,
+      300
+     ],
+     "size": [
+      22,
+      22
+     ],
+     "repeat": {
+      "ellipse": [
+       256,
+       300,
+       148,
+       128
+      ],
+      "count": 14,
+      "arc": [
+       200,
+       340
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "patina",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "blend": "multiply",
+   "opacity": 0.34,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      200,
+      290
+     ],
+     "size": [
+      100.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      320,
+      330
+     ],
+     "size": [
+      90.0,
+      80.0
+     ],
+     "flip": "x"
+    }
+   ],
+   "clip_to": "coil"
+  }
+ ]
+}
