@@ -13,8 +13,8 @@
 ## 진행
 
 - [x] A 12명: df_monster_hunter, df_crusader, df_priest, df_noble_lady, mf_farmer, mf_knight, mf_mage, mf_guard, mf_soldier, ef_samurai, ef_monk, ef_ninja — 시트 `preview\sheet_a_fantasy_1.png`, `sheet_a_fantasy_2.png`, `sheet_stop_point_3people.png`
-- [ ] B 14명
-- [ ] C 17명
+- [x] B 14명(df_gentleman, df_maid, df_detective, df_plague_doctor, df_nun, mf_merchant, mf_blacksmith, mf_archer, mf_cook, mf_winter_mage, ef_shrine_maiden, ef_swordsman, ef_taoist, ef_constable) — 시트 `preview\sheet_b_fantasy_1.png`, 동양 4명은 `g02-people-modern-v01\preview\sheet_b_mixed_1.png`
+- [x] C 17명(df_gravedigger, df_witch, df_black_knight, df_executioner, df_butler, mf_thief, mf_king, mf_princess, mf_lord, mf_bard, ef_martial_artist, ef_scholar, ef_general, ef_court_lady, ef_wanderer, ef_shaman, ef_herbalist) — 시트 `preview\sheet_c_fantasy_1.png`, `sheet_c_fantasy_2.png`
 
 ## 작성자 설계 (문서에 없는 값)
 

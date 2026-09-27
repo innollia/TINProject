@@ -11,8 +11,8 @@
 ## 진행
 
 - [x] A 3명: sf_astronaut, cp_hacker, pa_survivor — 시트는 `g02-people-modern-v01\preview\sheet_a_modern_future.png`에 함께 둠
-- [ ] B
-- [ ] C
+- [x] B 4명(sf_captain, sf_scientist, cp_merc, pa_raider) — 시트 `preview\sheet_b_mixed_2.png`
+- [x] C 4명(sf_marine, cp_agent, cp_ripperdoc, pa_scout) — 시트는 `g02-people-modern-v01\preview\sheet_c_mixed.png`에 함께
 
 ## 작성자 설계·메모
 

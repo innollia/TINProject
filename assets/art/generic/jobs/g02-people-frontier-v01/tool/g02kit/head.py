@@ -149,7 +149,7 @@ def headwear(spec):
         out.append(F("hat", 12, [P("circle", 160, 88, 84, 28), P("square", 160, 98, 66, 14)], m, HT))
         out.append(F("hat_band", 12.1, [P("square", 160, 102, 68, 6)], m2, HT))
     elif t == "bicorne":
-        out.append(F("bicorne", 12, [P("moon", 160, 92, 44, 156, rot=-90, crop=[0, 0, 16, 11])], m, HT))
+        out.append(F("bicorne", 12, [P("umbrella", 160, 90, 166, 50, crop=[0.6, 2.3, 15.4, 8.7]), P("triangle", 160, 70, 60, 26)], m, HT))
         out.append(F("bicorne_trim", 12.1, [P("circle", 160, 102, 120, 6)], acc, HT))
         out.append(F("bicorne_badge", 12.2, [P("circle", 160, 90, 14, 14)], h.get("badge", "cloth_white"), HT))
     elif t == "deerstalker":

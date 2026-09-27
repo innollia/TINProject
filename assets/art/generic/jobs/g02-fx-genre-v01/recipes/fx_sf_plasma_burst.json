@@ -1,0 +1,645 @@
+{
+ "asset": "fx_sf_plasma_burst",
+ "status": "candidate",
+ "note": "플라스마 폭발 (SF·우주, tier C). 5-frame effect, 192x192 cells. centred plasma detonation",
+ "palette": "palette_g02.json",
+ "style": "sprite",
+ "style_override": {
+  "silhouette": {
+   "opacity": 0.0
+  },
+  "cast": {
+   "opacity": 0.0
+  }
+ },
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96,
+  96
+ ],
+ "pivot_meaning": "effect origin",
+ "seed": 510,
+ "forms": [
+  {
+   "name": "ball_f0",
+   "z": 1.0,
+   "tags": [
+    "f0"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      42.0,
+      42.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "plasma",
+   "opacity": 0.8,
+   "emit": 1.0,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.6,
+    "color": "plasma_glow"
+   }
+  },
+  {
+   "name": "core_f0",
+   "z": 2.0,
+   "tags": [
+    "f0"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      21.0,
+      21.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#eef7ff",
+   "opacity": 1.0,
+   "emit": 1.0
+  },
+  {
+   "name": "ball_f1",
+   "z": 1.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      96.0,
+      96.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "plasma",
+   "opacity": 0.8,
+   "emit": 1.0,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.6,
+    "color": "plasma_glow"
+   }
+  },
+  {
+   "name": "core_f1",
+   "z": 2.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      48.0,
+      48.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#eef7ff",
+   "opacity": 1.0,
+   "emit": 1.0
+  },
+  {
+   "name": "arcs_f1",
+   "z": 3.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      101.44,
+      127.53
+     ],
+     "size": [
+      16,
+      32.0
+     ],
+     "rot": 170.21409131831524
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      66.03,
+      84.77
+     ],
+     "size": [
+      16,
+      32.0
+     ],
+     "rot": 290.5352282957881
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      116.31,
+      71.27
+     ],
+     "size": [
+      16,
+      32.0
+     ],
+     "rot": 399.3972093706446
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 1.0,
+   "emit": 1.0
+  },
+  {
+   "name": "ball_f2",
+   "z": 1.002,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      120.0,
+      120.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "plasma",
+   "opacity": 0.68,
+   "emit": 1.0,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.6,
+    "color": "plasma_glow"
+   }
+  },
+  {
+   "name": "core_f2",
+   "z": 2.002,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#eef7ff",
+   "opacity": 0.85,
+   "emit": 1.0
+  },
+  {
+   "name": "arcs_f2",
+   "z": 3.002,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      66.5,
+      123.02
+     ],
+     "size": [
+      16,
+      40.0
+     ],
+     "rot": 227.50987083139756
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      87.57,
+      56.9
+     ],
+     "size": [
+      16,
+      40.0
+     ],
+     "rot": 347.8310078088705
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      135.73,
+      100.66
+     ],
+     "size": [
+      16,
+      40.0
+     ],
+     "rot": 456.6929888837269
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 0.85,
+   "emit": 1.0
+  },
+  {
+   "name": "shell_f2",
+   "z": 0.502,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      170.0,
+      170.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      162.0,
+      162.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "kind": "flat",
+   "material": "plasma",
+   "opacity": 0.51,
+   "emit": 1.0
+  },
+  {
+   "name": "ball_f3",
+   "z": 1.003,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      108.0,
+      108.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "plasma",
+   "opacity": 0.48,
+   "emit": 1.0,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.6,
+    "color": "plasma_glow"
+   }
+  },
+  {
+   "name": "core_f3",
+   "z": 2.003,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      54.0,
+      54.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#eef7ff",
+   "opacity": 0.6,
+   "emit": 1.0
+  },
+  {
+   "name": "arcs_f3",
+   "z": 3.003,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      61.2,
+      86.8
+     ],
+     "size": [
+      16,
+      36.0
+     ],
+     "rot": 284.8056503444799
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      121.51,
+      70.6
+     ],
+     "size": [
+      16,
+      36.0
+     ],
+     "rot": 405.12678732195275
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      111.79,
+      128.35
+     ],
+     "size": [
+      16,
+      36.0
+     ],
+     "rot": 513.9887683968093
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 0.6,
+   "emit": 1.0
+  },
+  {
+   "name": "shell_f3",
+   "z": 0.503,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      155.0,
+      155.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      147.0,
+      147.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "kind": "flat",
+   "material": "plasma",
+   "opacity": 0.36,
+   "emit": 1.0
+  },
+  {
+   "name": "ball_f4",
+   "z": 1.004,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      72.0,
+      72.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "plasma",
+   "opacity": 0.24,
+   "emit": 1.0,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.6,
+    "color": "plasma_glow"
+   }
+  },
+  {
+   "name": "core_f4",
+   "z": 2.004,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      36.0,
+      36.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#eef7ff",
+   "opacity": 0.3,
+   "emit": 1.0
+  },
+  {
+   "name": "arcs_f4",
+   "z": 3.004,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      88.62,
+      73.16
+     ],
+     "size": [
+      16,
+      24.0
+     ],
+     "rot": 342.10142985756227
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      119.44,
+      101.16
+     ],
+     "size": [
+      16,
+      24.0
+     ],
+     "rot": 462.4225668350351
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      83.54,
+      116.51
+     ],
+     "size": [
+      16,
+      24.0
+     ],
+     "rot": 571.2845479098916
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 0.3,
+   "emit": 1.0
+  },
+  {
+   "name": "shell_f4",
+   "z": 0.504,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      110.0,
+      110.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      102.0,
+      102.0
+     ],
+     "op": "sub"
+    }
+   ],
+   "kind": "flat",
+   "material": "plasma",
+   "opacity": 0.18,
+   "emit": 1.0
+  }
+ ],
+ "frames": [
+  {
+   "name": "f0",
+   "show": [
+    "f0"
+   ]
+  },
+  {
+   "name": "f1",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "f2",
+   "show": [
+    "f2"
+   ]
+  },
+  {
+   "name": "f3",
+   "show": [
+    "f3"
+   ]
+  },
+  {
+   "name": "f4",
+   "show": [
+    "f4"
+   ]
+  }
+ ]
+}

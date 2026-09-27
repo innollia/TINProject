@@ -11,8 +11,8 @@
 ## 진행
 
 - [x] A 3개: ui_mo_panel, ui_sf_panel, ui_we_panel — 확인 그림 `preview\<id>_stretched.png`
-- [ ] B
-- [ ] C
+- [x] B 3개: ui_ho_panel, ui_cp_panel, ui_pi_panel — `preview\sheet_b_ui.png`
+- [x] C 2개: ui_sp_panel, ui_pa_panel — `preview\sheet_c_ui.png`
 
 ## 작성자 설계·메모
 

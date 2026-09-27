@@ -98,6 +98,66 @@ def _():
 
 
 
+@ui("ui_ho_panel", "B", "호러 긁힌 창틀", "호러·오컬트", seed=404)
+def _():
+    scratch = [P("square", 150 + i * 8, 26 + i * 3, 2.2, 26, rot=32) for i in range(3)] + \
+              [P("square", 30 + i * 8, 158 + i * 3, 2.2, 22, rot=32) for i in range(3)]
+    return [F("fill", 0, [P("square", C, C, 172, 172)], None, kind="flat", color="#140f15", opacity=0.9),
+            F("rim", 1, ring("square", 184, 166), "cloth_black", shade={"bump": 0.5}),
+            F("inner_line", 2, ring("square", 160, 157), "bone", kind="flat", opacity=0.3),
+            F("filigree", 2.5, corners("leaf", 20, 18, 26, rot=45), "bone", kind="flat", opacity=0.55),
+            F("scratches", 3, scratch, "blood_dark", kind="flat", opacity=0.9),
+            F("stain", 1.5, corners("metaballs", 26, 22, 16), "grime", kind="flat", opacity=0.35, clip_to="rim")]
+
+
+@ui("ui_cp_panel", "B", "사이버펑크 네온 창틀", "사이버펑크", seed=405)
+def _():
+    notch = [[4, 1], [15, 1], [15, 12], [12, 15], [1, 15], [1, 4]]
+    return [F("fill", 0, [P("square", C, C, 178, 178, poly=notch, fit="box")], None, kind="flat", color="#0f0d14", opacity=0.88),
+            F("rim", 1, [P("square", C, C, 186, 186, poly=notch, fit="box"), P("square", C, C, 174, 174, poly=notch, fit="box", op="sub")],
+              "iron_dark"),
+            F("neon_m", 2, [P("square", C, C, 172, 172, poly=notch, fit="box"), P("square", C, C, 168, 168, poly=notch, fit="box", op="sub")],
+              "neon_magenta", kind="flat", emit=1.0, glow={"radius": 3, "opacity": 0.5, "color": "neon_glow_m"}),
+            F("neon_c", 2.1, [P("square", C, C, 160, 160, poly=notch, fit="box"), P("square", C, C, 158, 158, poly=notch, fit="box", op="sub")],
+              "neon_cyan", kind="flat", emit=0.8, opacity=0.7),
+            F("ticks", 3, [P("square", 170, 14, 14, 4), P("square", 150, 14, 6, 4), P("square", 22, 178, 14, 4), P("square", 42, 178, 6, 4)],
+              "neon_cyan", kind="flat", emit=0.9),
+            F("glitch", 3.1, [P("square", 176, 34, 8, 12), P("square", 16, 158, 8, 12)], "neon_magenta", kind="flat", emit=1.0, opacity=0.9)]
+
+
+@ui("ui_pi_panel", "B", "해적 밧줄 창틀", "해적·바다", seed=406)
+def _():
+    rope = {"stamp": "pill", "pre_rot": -45, "length": 9, "width": 2.2, "angle": 55, "jitter": 4, "density": 1.1, "strength": 0.3}
+    return [F("fill", 0, [P("square", C, C, 170, 170)], None, kind="flat", color="#1c1712", opacity=0.9),
+            F("board", 0.5, ring("square", 176, 160), "wood"),
+            F("rope", 1, ring("square", 186, 174), "rope", texture=rope),
+            F("rings", 2, corners("circle", 14, 22, 22), "brass"),
+            F("ring_holes", 2.1, corners("circle", 14, 12, 12), "void", kind="flat"),
+            F("knots", 3, corners("knot", 16, 22, 22, rot=45), "rope", texture=rope)]
+
+
+@ui("ui_sp_panel", "C", "황동 리벳 창틀", "스팀펑크", seed=407)
+def _():
+    return [F("fill", 0, [P("square", C, C, 170, 170)], None, kind="flat", color="#1b1611", opacity=0.9),
+            F("rim", 1, ring("square", 186, 166), "brass", shade={"highlight_amount": 0.7}),
+            F("inner_line", 2, ring("square", 162, 158), "bronze", kind="flat", opacity=0.9),
+            F("gears", 2.5, corners("cog", 16, 30, 30), "bronze"),
+            F("gear_holes", 2.6, corners("circle", 16, 8, 8), "void", kind="flat"),
+            F("rivets", 3, corners("circle", (38, 7), 6, 6) + corners("circle", (7, 38), 6, 6), "bronze")]
+
+
+@ui("ui_pa_panel", "C", "녹슨 철판 창틀", "포스트아포칼립스", seed=408)
+def _():
+    hazard = [P("square", 20 + i * 7, 20 - i * 7, 5, 26, rot=45) for i in range(3)]
+    return [F("fill", 0, [P("square", C, C, 170, 170)], None, kind="flat", color="#17161a", opacity=0.9),
+            F("plate", 1, ring("square", 186, 164), "iron", grime={"stamps": ["metaballs", "sponge"], "size": 14, "density": 0.35,
+                                                             "strength": 0.4, "color": "rust"}),
+            F("weld", 2, ring("square", 162, 159), "rust", kind="flat", opacity=0.7),
+            F("bolts", 3, corners("hexagon", 12, 10, 10), "steel"),
+            F("tape", 2.5, [P("square", 170, 22, 36, 11, rot=45), P("square", 22, 170, 36, 11, rot=45)], "neon_amber", opacity=0.9),
+            F("tape_stripes", 2.6, [P("square", 170, 22, 5, 12, rot=45), P("square", 22, 170, 5, 12, rot=45)], "cloth_black", kind="flat")]
+
+
 def recipe(uid, meta):
     return {"asset": uid, "status": "candidate",
             "note": f"{meta['name']} ({meta['genre']}, tier {meta['tier']}). 9-slice window frame, margins {M} px, no text.",

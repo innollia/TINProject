@@ -11,8 +11,8 @@
 ## 진행
 
 - [x] A 4개: fx_mo_muzzle_flash, fx_ho_possession, fx_sf_laser_hit, fx_sp_steam_burst — `output\<id>\<id>_sheet.png`(+ 더하기 합성용 `_sheet_emit.png`), 확인 `preview\sheet_a_fx.png`
-- [ ] B
-- [ ] C
+- [x] B 4개: fx_cp_glitch, fx_pa_radiation, fx_pi_cannon_smoke, fx_we_dust — `preview\sheet_b_fx.png`
+- [x] C 3개: fx_ho_wail, fx_sf_plasma_burst, fx_pa_shrapnel — `preview\sheet_c_fx.png`
 
 ## 작성자 설계·메모
 

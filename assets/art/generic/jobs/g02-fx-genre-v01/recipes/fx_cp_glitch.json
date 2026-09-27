@@ -1,0 +1,963 @@
+{
+ "asset": "fx_cp_glitch",
+ "status": "candidate",
+ "note": "해킹 글리치 (사이버펑크, tier B). 5-frame effect, 192x192 cells. centred on the hacked target",
+ "palette": "palette_g02.json",
+ "style": "sprite",
+ "style_override": {
+  "silhouette": {
+   "opacity": 0.0
+  },
+  "cast": {
+   "opacity": 0.0
+  }
+ },
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96,
+  96
+ ],
+ "pivot_meaning": "effect origin",
+ "seed": 505,
+ "forms": [
+  {
+   "name": "bars_m_f0",
+   "z": 1.0,
+   "tags": [
+    "f0"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      118.25,
+      77.42
+     ],
+     "size": [
+      36.82440530622395,
+      6.097101430648949
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      97.59,
+      131.94
+     ],
+     "size": [
+      19.344430449732478,
+      8.990469585601723
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_magenta",
+   "opacity": 0.8,
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "neon_glow_m"
+   }
+  },
+  {
+   "name": "bars_c_f0",
+   "z": 1.1,
+   "tags": [
+    "f0"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      132.0
+     ],
+     "size": [
+      18.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      119.03,
+      79.18
+     ],
+     "size": [
+      37.48502858157478,
+      5.802654242757412
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 0.8,
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "neon_glow_c"
+   }
+  },
+  {
+   "name": "bars_m_f1",
+   "z": 1.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      65.0,
+      136.07
+     ],
+     "size": [
+      46.99698258522831,
+      8.864171672374914
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      110.79,
+      84.95
+     ],
+     "size": [
+      31.833524488627635,
+      4.616764693665219
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      113.27,
+      66.25
+     ],
+     "size": [
+      34.151442112408134,
+      7.353760862961176
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      65.18,
+      134.84
+     ],
+     "size": [
+      46.831437964684476,
+      8.68412681184165
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_magenta",
+   "opacity": 1.0,
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "neon_glow_m"
+   }
+  },
+  {
+   "name": "bars_c_f1",
+   "z": 1.101,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      79.58,
+      82.75
+     ],
+     "size": [
+      33.36524808634631,
+      4.93973740118102
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      80.34,
+      67.89
+     ],
+     "size": [
+      32.649353982691686,
+      7.114240757513439
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      126.97,
+      135.52
+     ],
+     "size": [
+      46.96835188249274,
+      8.783335506104523
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      82.91,
+      87.19
+     ],
+     "size": [
+      30.250091407625682,
+      4.288655840311028
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 1.0,
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "neon_glow_c"
+   }
+  },
+  {
+   "name": "frame_f1",
+   "z": 2.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      90.0,
+      96.0
+     ],
+     "size": [
+      80,
+      58
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      90.0,
+      96.0
+     ],
+     "size": [
+      74,
+      52
+     ],
+     "op": "sub"
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 0.65,
+   "emit": 1.0
+  },
+  {
+   "name": "pixels_f1",
+   "z": 3.001,
+   "tags": [
+    "f1"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      46.0,
+      77.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      71.0,
+      114.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      91.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      121.0,
+      68.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      146.0,
+      105.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#f4f0ff",
+   "opacity": 0.9,
+   "emit": 1.0
+  },
+  {
+   "name": "bars_m_f2",
+   "z": 1.002,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      126.25,
+      90.68
+     ],
+     "size": [
+      48.25327641185394,
+      4.38909921860335
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.67,
+      58.09
+     ],
+     "size": [
+      49.3282289663888,
+      12.890206541062524
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      94.84,
+      136.74
+     ],
+     "size": [
+      19.16249528370738,
+      13.62870899328869
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      128.41,
+      95.85
+     ],
+     "size": [
+      50.40769936661846,
+      3.039325577295551
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      67.07,
+      55.4
+     ],
+     "size": [
+      46.9306609605394,
+      13.591970327936544
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      90.46,
+      134.08
+     ],
+     "size": [
+      23.543253029782,
+      12.934535770212893
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_magenta",
+   "opacity": 1.0,
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "neon_glow_m"
+   }
+  },
+  {
+   "name": "bars_c_f2",
+   "z": 1.102,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      128.35,
+      59.62
+     ],
+     "size": [
+      50.353491449218566,
+      12.491612542973002
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      94.96,
+      137.88
+     ],
+     "size": [
+      19.038507204996343,
+      13.925672935389597
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      64.61,
+      93.26
+     ],
+     "size": [
+      49.38915395561287,
+      3.715348659476832
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      126.19,
+      56.68
+     ],
+     "size": [
+      48.185862087396856,
+      13.257381283545072
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      99.36,
+      135.48
+     ],
+     "size": [
+      21.359152384473916,
+      13.297979717446166
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      62.69,
+      98.44
+     ],
+     "size": [
+      51.30510533915106,
+      3.6368224345682947
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 1.0,
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "neon_glow_c"
+   }
+  },
+  {
+   "name": "frame_f2",
+   "z": 2.002,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      90,
+      66
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      84,
+      60
+     ],
+     "op": "sub"
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 0.8,
+   "emit": 1.0
+  },
+  {
+   "name": "pixels_f2",
+   "z": 3.002,
+   "tags": [
+    "f2"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      46.0,
+      88.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      71.0,
+      125.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      102.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      121.0,
+      79.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      146.0,
+      116.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#f4f0ff",
+   "opacity": 0.9,
+   "emit": 1.0
+  },
+  {
+   "name": "bars_m_f3",
+   "z": 1.003,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      78.55,
+      49.97
+     ],
+     "size": [
+      36.29811862122017,
+      8.415090387662207
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      136.96,
+      136.92
+     ],
+     "size": [
+      60.9597387062152,
+      7.81416528251591
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      75.41,
+      103.8
+     ],
+     "size": [
+      39.59345512096871,
+      3.9176101362026516
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      74.16,
+      47.79
+     ],
+     "size": [
+      40.90847831104561,
+      8.671413262991098
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_magenta",
+   "opacity": 0.8,
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "neon_glow_m"
+   }
+  },
+  {
+   "name": "bars_c_f3",
+   "z": 1.103,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      55.22,
+      138.57
+     ],
+     "size": [
+      60.76576129277153,
+      8.008276709034956
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      118.72,
+      100.95
+     ],
+     "size": [
+      41.82548888981611,
+      3.5820846865390408
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      115.68,
+      48.81
+     ],
+     "size": [
+      38.641877963511305,
+      8.552070747825876
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      55.01,
+      135.14
+     ],
+     "size": [
+      60.993133334533184,
+      7.604760192622129
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 0.8,
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "neon_glow_c"
+   }
+  },
+  {
+   "name": "frame_f3",
+   "z": 2.003,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      102.0,
+      96.0
+     ],
+     "size": [
+      100,
+      74
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      102.0,
+      96.0
+     ],
+     "size": [
+      94,
+      68
+     ],
+     "op": "sub"
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 0.65,
+   "emit": 1.0
+  },
+  {
+   "name": "pixels_f3",
+   "z": 3.003,
+   "tags": [
+    "f3"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      46.0,
+      99.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      71.0,
+      76.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      113.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      121.0,
+      90.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      146.0,
+      67.0
+     ],
+     "size": [
+      6,
+      6
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#f4f0ff",
+   "opacity": 0.9,
+   "emit": 1.0
+  },
+  {
+   "name": "bars_m_f4",
+   "z": 1.004,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      90.55,
+      135.16
+     ],
+     "size": [
+      23.928590663471876,
+      7.1958340612097444
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      58.08,
+      113.1
+     ],
+     "size": [
+      59.21916566841531,
+      4.832364452543494
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_magenta",
+   "opacity": 0.5,
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "neon_glow_m"
+   }
+  },
+  {
+   "name": "bars_c_f4",
+   "z": 1.104,
+   "tags": [
+    "f4"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      132.26,
+      110.07
+     ],
+     "size": [
+      57.412603368765815,
+      4.507559055493534
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      54.09,
+      41.5
+     ],
+     "size": [
+      63.54925186559849,
+      8.839200280072964
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "neon_cyan",
+   "opacity": 0.5,
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "neon_glow_c"
+   }
+  }
+ ],
+ "frames": [
+  {
+   "name": "f0",
+   "show": [
+    "f0"
+   ]
+  },
+  {
+   "name": "f1",
+   "show": [
+    "f1"
+   ]
+  },
+  {
+   "name": "f2",
+   "show": [
+    "f2"
+   ]
+  },
+  {
+   "name": "f3",
+   "show": [
+    "f3"
+   ]
+  },
+  {
+   "name": "f4",
+   "show": [
+    "f4"
+   ]
+  }
+ ]
+}

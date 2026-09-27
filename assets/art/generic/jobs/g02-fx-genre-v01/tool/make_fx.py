@@ -151,6 +151,149 @@ def _():
     return F.forms
 
 
+# ------------------------------------------------------------------ B
+@fx("fx_cp_glitch", "B", "해킹 글리치", "사이버펑크", origin=[96, 96], seed=505, note="centred on the hacked target")
+def _():
+    F = Frames()
+    cx, cy = 96, 96
+    plan = [4, 8, 12, 8, 4]
+    for k, n in enumerate(plan):
+        a = [0.8, 1.0, 1.0, 0.8, 0.5][k]
+        bars_m, bars_c = [], []
+        for i in range(n):
+            s = math.sin(i * 7.31 + k * 3.7)
+            c = math.cos(i * 4.17 + k * 1.9)
+            w = 18 + abs(s) * (22 + 7 * k)
+            h = 3 + abs(c) * (6 if k != 2 else 12)
+            x = cx + s * (26 + 5 * k)
+            y = cy + c * (36 + 5 * k)
+            (bars_m if i % 2 else bars_c).append(P("square", x, y, w, h))
+        F.add(k, "bars_m", 1, bars_m, "neon_magenta", opacity=a, emit=1.0, glow=dict(GLOW, color="neon_glow_m", radius=2.5))
+        F.add(k, "bars_c", 1.1, bars_c, "neon_cyan", opacity=a, emit=1.0, glow=dict(GLOW, color="neon_glow_c", radius=2.5))
+        if k in (1, 2, 3):
+            F.add(k, "frame", 2, [P("square", cx + (k - 2) * 6, cy, 70 + 10 * k, 50 + 8 * k), P("square", cx + (k - 2) * 6, cy, 64 + 10 * k,
+                                                                                               44 + 8 * k, op="sub")],
+                  "neon_cyan", opacity=0.8 - 0.15 * abs(k - 2), emit=1.0)
+            F.add(k, "pixels", 3, [P("square", cx - 50 + 25 * i, cy - 30 + ((i * 37 + k * 11) % 60), 6, 6) for i in range(5)],
+                  None, color="#f4f0ff", opacity=0.9, emit=1.0)
+    return F.forms
+
+
+@fx("fx_pa_radiation", "B", "방사능 파동", "포스트아포칼립스", origin=[96, 96], seed=506, note="pulse from a contaminated source")
+def _():
+    F = Frames()
+    cx, cy = 96, 96
+    for k in range(N):
+        for j, r in enumerate((24 + 30 * k, 4 + 30 * k)):
+            if r < 10 or r > 176:
+                continue
+            a = max(0.15, 1.0 - r / 190.0) * (1.0 if j == 0 else 0.6)
+            F.add(k, f"ring{j}", 1 + j * 0.1, [P("circle", cx, cy, r, r), P("circle", cx, cy, r - 7, r - 7, op="sub")], "rad_green",
+                  opacity=a, emit=1.0, glow=dict(GLOW, color="rad_glow"))
+        F.add(k, "core", 2, [P("circle", cx, cy, 30 - 4 * k, 30 - 4 * k)], "rad_green", opacity=0.9 - 0.15 * k, emit=1.0,
+              glow=dict(GLOW, color="rad_glow", radius=6))
+        pts = ring_pts(cx, cy, 30 + 14 * k, 6, a0=k * 23, jitter=14, seed=6)
+        F.add(k, "motes", 3, [P("circle", x, y - 6 * k, 5, 5) for x, y, _ in pts], "neon_green", opacity=0.9 - 0.15 * k, emit=1.0)
+    return F.forms
+
+
+@fx("fx_pi_cannon_smoke", "B", "대포 연기", "해적·바다", origin=[20, 110], seed=507, note="cannon mouth at the left, blast toward +x")
+def _():
+    F = Frames()
+    ox, oy = 20, 110
+    for k in range(N):
+        if k <= 1:
+            F.add(k, "flash", 2, [P("star", ox + 24 + 10 * k, oy, 50 + 20 * k, 60 + 24 * k, rot=90)], "flame", opacity=1.0 - 0.3 * k, emit=1.0,
+                  glow=dict(GLOW, color="flame_glow"))
+            F.add(k, "core", 2.1, [P("circle", ox + 18 + 8 * k, oy, 26, 22)], None, color="#fff2c8", opacity=1.0 - 0.4 * k, emit=1.0)
+        g = [0.3, 0.55, 0.8, 1.0, 1.1][k]
+        a = [0.8, 0.9, 0.85, 0.7, 0.45][k]
+        puffs = [P("cloud", ox + 40 + 60 * g, oy - 4 - 10 * g, 50 + 40 * g, 36 + 28 * g),
+                 P("cloud", ox + 30 + 36 * g, oy + 16 * g, 40 + 30 * g, 30 + 22 * g),
+                 P("cloud", ox + 50 + 70 * g, oy - 26 * g, 32 + 28 * g, 26 + 20 * g)]
+        F.add(k, "smoke", 1, puffs, "ash", kind="mass", opacity=a, line={"width": 0.8, "heavy": 0.7})
+        if k in (1, 2, 3):
+            F.add(k, "embers", 3, [P("circle", ox + 60 + 30 * k, oy - 30 - 6 * k, 4, 4), P("circle", ox + 90 + 24 * k, oy + 20, 3, 3)],
+                  "ember", opacity=1.0 - 0.25 * k, emit=1.0)
+    return F.forms
+
+
+@fx("fx_we_dust", "B", "흙먼지", "서부", origin=[96, 170], seed=508, note="kicked up at ground level")
+def _():
+    F = Frames()
+    cx, base = 96, 170
+    for k in range(N):
+        g = [0.35, 0.65, 0.9, 1.0, 1.05][k]
+        a = [0.85, 0.85, 0.75, 0.55, 0.3][k]
+        puffs = [P("cloud", cx, base - 14 * g, 70 * g + 20, 36 * g + 14),
+                 P("cloud", cx - 48 * g, base - 8 * g, 46 * g + 14, 26 * g + 10),
+                 P("cloud", cx + 50 * g, base - 10 * g, 50 * g + 14, 28 * g + 10)]
+        F.add(k, "dust", 1, puffs, "cloth_tan", kind="mass", opacity=a, line={"width": 0.8, "heavy": 0.6},
+              shade={"threshold": 0.45, "highlight_amount": 0.4})
+        if k <= 3:
+            F.add(k, "pebbles", 2, [P("rocks", cx - 60 * g, base - 30 * g - 10, 9, 8), P("rocks", cx + 64 * g, base - 36 * g - 8, 8, 7),
+                                    P("rocks", cx + 20, base - 50 * g - 6, 7, 6)], "stone", kind="mass", opacity=1.0 - 0.2 * k)
+    return F.forms
+
+
+# ------------------------------------------------------------------ C
+@fx("fx_ho_wail", "C", "비명 파동", "호러·오컬트", origin=[96, 96], seed=509, note="distorted rings from the screamer's head")
+def _():
+    F = Frames()
+    cx, cy = 96, 96
+    for k in range(N):
+        for j in range(3):
+            r = 16 + 29 * k - 20 * j
+            if r < 12 or r > 172:
+                continue
+            a = max(0.2, 0.95 - r / 200.0)
+            F.add(k, f"ring{j}", 1 + 0.1 * j, [P("circle", cx, cy, r * 1.1, r * 0.82, rot=(k * 17 + j * 40) % 90),
+                                                P("circle", cx, cy, r * 1.1 - 7, r * 0.82 - 6, rot=(k * 17 + j * 40) % 90, op="sub")],
+                  None, color="#c9b6d6", opacity=a, emit=0.6, glow=dict(GLOW, color="#8f6aa8", radius=3))
+        if k <= 2:
+            F.add(k, "mouth", 2, [P("circle", cx, cy, 22 - 5 * k, 30 - 6 * k)], None, color="#1a1020", opacity=0.9 - 0.2 * k)
+    return F.forms
+
+
+@fx("fx_sf_plasma_burst", "C", "플라스마 폭발", "SF·우주", origin=[96, 96], seed=510, note="centred plasma detonation")
+def _():
+    F = Frames()
+    cx, cy = 96, 96
+    for k in range(N):
+        s = [0.35, 0.8, 1.0, 0.9, 0.6][k]
+        a = [1.0, 1.0, 0.85, 0.6, 0.3][k]
+        F.add(k, "ball", 1, [P("circle", cx, cy, 120 * s, 120 * s)], "plasma", opacity=a * 0.8, emit=1.0,
+              glow=dict(GLOW, color="plasma_glow", radius=6))
+        F.add(k, "core", 2, [P("circle", cx, cy, 60 * s, 60 * s)], None, color="#eef7ff", opacity=a, emit=1.0)
+        if k >= 1:
+            F.add(k, "arcs", 3, [P("lightning_bolt", cx + 40 * s * math.cos(t), cy + 40 * s * math.sin(t), 16, 40 * s,
+                                   rot=math.degrees(t) + 90) for t in (0.4 + k, 2.5 + k, 4.4 + k)],
+                  "neon_cyan", opacity=a, emit=1.0)
+        if k >= 2:
+            F.add(k, "shell", 0.5, [P("circle", cx, cy, 150 * s + 20, 150 * s + 20), P("circle", cx, cy, 150 * s + 12, 150 * s + 12, op="sub")],
+                  "plasma", opacity=a * 0.6, emit=1.0)
+    return F.forms
+
+
+@fx("fx_pa_shrapnel", "C", "고철 파편 튀김", "포스트아포칼립스", origin=[96, 96], seed=511, note="junk bomb burst, scrap flies outward")
+def _():
+    F = Frames()
+    cx, cy = 96, 96
+    shapes = ["nut_and_bolt", "screw", "cog", "triangle", "square", "hexagon"]
+    for k in range(N):
+        d = [8, 30, 52, 68, 78][k]
+        a = [1.0, 1.0, 1.0, 0.8, 0.5][k]
+        if k <= 1:
+            F.add(k, "flash", 1, [P("star", cx, cy, 64 + 30 * k, 64 + 30 * k, rot=k * 20), P("star", cx, cy, 44 + 20 * k, 44 + 20 * k, rot=36 + k * 20)], "flame", opacity=1.0 - 0.3 * k, emit=1.0,
+                  glow=dict(GLOW, color="flame_glow"))
+        pts = ring_pts(cx, cy, d, 8, a0=12, jitter=14, seed=11)
+        F.add(k, "scrap", 2, [P(shapes[i % len(shapes)], x, y + k * k * 1.5, 12, 12, rot=k * 50 + i * 33) for i, (x, y, _) in enumerate(pts)],
+              "iron", kind="mass", opacity=a, line={"width": 0.8, "heavy": 0.6})
+        if k >= 2:
+            F.add(k, "smoke", 0, [P("cloud", cx, cy + 10, 60 + 20 * k, 40 + 12 * k)], "ash", kind="mass", opacity=0.7 - 0.12 * k)
+    return F.forms
+
+
 # ------------------------------------------------------------------ output
 def recipe(fid, meta):
     return {"asset": fid, "status": "candidate",

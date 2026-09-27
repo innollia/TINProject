@@ -11,8 +11,8 @@
 ## 진행
 
 - [x] A 5명: sp_inventor, pi_captain, pi_pirate, we_sheriff, we_gunslinger — 시트 `preview\sheet_a_frontier.png`
-- [ ] B
-- [ ] C
+- [x] B 3명(sp_airship_captain, pi_sailor, we_cowboy) — 시트는 `g02-people-future-v01\preview\sheet_b_mixed_2.png`에 함께
+- [x] C 3명(sp_engineer, pi_navy_officer, we_bounty_hunter) — 시트는 `g02-people-modern-v01\preview\sheet_c_mixed.png`에 함께
 
 ## 작성자 설계·메모
 

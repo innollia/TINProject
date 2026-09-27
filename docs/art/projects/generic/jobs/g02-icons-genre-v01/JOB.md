@@ -11,8 +11,8 @@
 ## 진행
 
 - [x] A 10개 — 시트 `preview\sheet_a_icons.png`, 16칸 시트 `output\iconset_g02_genre.png`(+ `.json` 번호표)
-- [ ] B
-- [ ] C
+- [x] B 13개 — 시트 `preview\sheet_b_icons.png`, 16칸 시트 갱신
+- [x] C 8개 — 시트 `preview\sheet_c_icons.png`, 16칸 시트 `output\iconset_g02_genre.png` 31칸 완성
 
 ## 작성자 설계·메모
 

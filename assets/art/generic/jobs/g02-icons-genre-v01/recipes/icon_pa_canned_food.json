@@ -1,0 +1,178 @@
+{
+ "asset": "icon_pa_canned_food",
+ "status": "candidate",
+ "note": "찌그러진 통조림 (포스트아포칼립스, tier B). Handheld item icon, flat view, no text.",
+ "palette": "palette_g02.json",
+ "style": "prop",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64,
+  64
+ ],
+ "pivot_meaning": "icon centre",
+ "seed": 319,
+ "forms": [
+  {
+   "name": "can",
+   "z": 0,
+   "pieces": [
+    {
+     "icon": "cylinder",
+     "at": [
+      63.72,
+      65.98
+     ],
+     "size": [
+      70,
+      88
+     ],
+     "rot": 8.0
+    }
+   ],
+   "material": "steel"
+  },
+  {
+   "name": "dent",
+   "z": 1.4,
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      88.6,
+      61.4
+     ],
+     "size": [
+      14,
+      30
+     ],
+     "rot": 18
+    }
+   ],
+   "kind": "flat",
+   "color": "coat_seam",
+   "opacity": 0.5,
+   "clip_to": "can"
+  },
+  {
+   "name": "label",
+   "z": 1,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      59.2,
+      69.38
+     ],
+     "size": [
+      70,
+      40
+     ],
+     "rot": 8.0
+    }
+   ],
+   "material": "cloth_rust",
+   "clip_to": "can"
+  },
+  {
+   "name": "label_tear",
+   "z": 1.2,
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      80.99,
+      72.45
+     ],
+     "size": [
+      14,
+      44
+     ],
+     "rot": 8.0
+    }
+   ],
+   "material": "steel",
+   "clip_to": "label"
+  },
+  {
+   "name": "label_band",
+   "z": 1.3,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      59.2,
+      69.38
+     ],
+     "size": [
+      70,
+      6
+     ],
+     "rot": 8.0
+    }
+   ],
+   "material": "paper",
+   "kind": "flat",
+   "opacity": 0.7,
+   "clip_to": "label"
+  },
+  {
+   "name": "rust",
+   "z": 1.5,
+   "pieces": [
+    {
+     "icon": "metaballs",
+     "at": [
+      39.18,
+      96.87
+     ],
+     "size": [
+      22,
+      16
+     ],
+     "rot": 8.0
+    }
+   ],
+   "material": "rust",
+   "kind": "flat",
+   "opacity": 0.7,
+   "clip_to": "can"
+  },
+  {
+   "name": "lid_ring",
+   "z": 2,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      69.01,
+      28.35
+     ],
+     "size": [
+      58,
+      12
+     ],
+     "rot": 8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      69.01,
+      28.35
+     ],
+     "size": [
+      48,
+      7
+     ],
+     "op": "sub",
+     "rot": 8.0
+    }
+   ],
+   "material": "chrome",
+   "kind": "flat",
+   "opacity": 0.7
+  }
+ ]
+}

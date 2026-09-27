@@ -11,8 +11,8 @@
 ## 진행
 
 - [x] A 5명: mo_student, mo_police, mo_surgeon, mo_nurse, ho_cultist — 시트 `preview\sheet_a_modern_future.png`
-- [ ] B
-- [ ] C
+- [x] B 4명(mo_detective, mo_principal, ho_patient, ho_clown) — 시트 `preview\sheet_b_mixed_1.png`
+- [x] C 5명(mo_santa, mo_baby, ho_exorcist, ho_butcher, ho_medium) — 시트 `preview\sheet_c_mixed.png`
 
 ## 작성자 설계·메모
 

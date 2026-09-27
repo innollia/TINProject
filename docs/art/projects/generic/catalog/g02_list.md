@@ -86,99 +86,101 @@
 
 | ID | 이름 | 장르 | 우선순위 | 형식 | 묶음 | 상태 | 비고 |
 |---|---|---|---|---|---|---|---|
-| df_gentleman | 신사 | 다크 판타지·고딕 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | BS2 |
-| df_maid | 하녀(시종) | 다크 판타지·고딕 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | BS2 시종 |
-| df_detective | 탐정(빅토리아풍) | 다크 판타지·고딕 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | BS2 탐정 |
-| df_plague_doctor | 역병 의사 | 다크 판타지·고딕 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| df_nun | 수녀 | 다크 판타지·고딕 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| mf_merchant | 상인 | 중세 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| mf_blacksmith | 대장장이 | 중세 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| mf_archer | 궁수 | 중세 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| mf_cook | 요리사 | 중세 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | BS2 |
-| mf_winter_mage | 겨울 마법사 | 중세 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | BS2 |
-| ef_shrine_maiden | 무녀 | 동양 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| ef_swordsman | 협객(무협 검객) | 동양 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| ef_taoist | 도사 | 동양 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| ef_constable | 포졸 | 동양 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| mo_detective | 형사 | 현대·도시 | B | 초상+전투1 | g02-people-modern-v01 | 대기 | BS2 |
-| mo_principal | 교장 | 현대·도시 | B | 초상+전투1 | g02-people-modern-v01 | 대기 | BS2 |
-| ho_patient | 환자 | 호러·오컬트 | B | 초상+전투1 | g02-people-modern-v01 | 대기 | BS2 |
-| ho_clown | 광대 | 호러·오컬트 | B | 초상+전투1 | g02-people-modern-v01 | 대기 | BS2 |
-| sf_captain | 우주 함장 | SF·우주 | B | 초상+전투1 | g02-people-future-v01 | 대기 | |
-| sf_scientist | 과학자 | SF·우주 | B | 초상+전투1 | g02-people-future-v01 | 대기 | |
-| cp_merc | 사이버 용병 | 사이버펑크 | B | 초상+전투1 | g02-people-future-v01 | 대기 | |
-| pa_raider | 약탈자 | 포스트아포칼립스 | B | 초상+전투1 | g02-people-future-v01 | 대기 | |
-| sp_airship_captain | 비행선 선장 | 스팀펑크 | B | 초상+전투1 | g02-people-frontier-v01 | 대기 | |
-| pi_sailor | 선원 | 해적·바다 | B | 초상+전투1 | g02-people-frontier-v01 | 대기 | BS2 |
-| we_cowboy | 카우보이 | 서부 | B | 초상+전투1 | g02-people-frontier-v01 | 대기 | |
-| icon_mo_police_badge | 경찰 배지 | 현대·도시 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_ho_camcorder | 심령 캠코더 | 호러·오컬트 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_ho_emf | 유령 탐지기(EMF) | 호러·오컬트 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_sf_energy_cell | 에너지 셀 | SF·우주 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_sf_scanner | 휴대 스캐너 | SF·우주 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_cp_neural_chip | 신경 칩 | 사이버펑크 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_sp_goggles | 황동 고글 | 스팀펑크 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_sp_steam_pistol | 증기 권총 | 스팀펑크 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_pa_canned_food | 찌그러진 통조림 | 포스트아포칼립스 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_pa_geiger | 방사능 측정기 | 포스트아포칼립스 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_pi_spyglass | 망원경 | 해적·바다 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_pi_treasure_map | 보물 지도 | 해적·바다 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_we_lasso | 올가미 밧줄 | 서부 | B | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| ui_ho_panel | 호러 긁힌 창틀 | 호러·오컬트 | B | UI 9-slice | g02-ui-genre-v01 | 대기 | |
-| ui_cp_panel | 사이버펑크 네온 창틀 | 사이버펑크 | B | UI 9-slice | g02-ui-genre-v01 | 대기 | |
-| ui_pi_panel | 해적 밧줄 창틀 | 해적·바다 | B | UI 9-slice | g02-ui-genre-v01 | 대기 | |
-| fx_cp_glitch | 해킹 글리치 | 사이버펑크 | B | 효과 5칸 | g02-fx-genre-v01 | 대기 | |
-| fx_pa_radiation | 방사능 파동 | 포스트아포칼립스 | B | 효과 5칸 | g02-fx-genre-v01 | 대기 | |
-| fx_pi_cannon_smoke | 대포 연기 | 해적·바다 | B | 효과 5칸 | g02-fx-genre-v01 | 대기 | |
-| fx_we_dust | 흙먼지 | 서부 | B | 효과 5칸 | g02-fx-genre-v01 | 대기 | |
+| df_gentleman | 신사 | 다크 판타지·고딕 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | BS2 |
+| df_maid | 하녀(시종) | 다크 판타지·고딕 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | BS2 시종 |
+| df_detective | 탐정(빅토리아풍) | 다크 판타지·고딕 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | BS2 탐정 |
+| df_plague_doctor | 역병 의사 | 다크 판타지·고딕 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| df_nun | 수녀 | 다크 판타지·고딕 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| mf_merchant | 상인 | 중세 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| mf_blacksmith | 대장장이 | 중세 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| mf_archer | 궁수 | 중세 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| mf_cook | 요리사 | 중세 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | BS2 |
+| mf_winter_mage | 겨울 마법사 | 중세 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | BS2 |
+| ef_shrine_maiden | 무녀 | 동양 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| ef_swordsman | 협객(무협 검객) | 동양 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| ef_taoist | 도사 | 동양 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| ef_constable | 포졸 | 동양 판타지 | B | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| mo_detective | 형사 | 현대·도시 | B | 초상+전투1 | g02-people-modern-v01 | 완료 | BS2 |
+| mo_principal | 교장 | 현대·도시 | B | 초상+전투1 | g02-people-modern-v01 | 완료 | BS2 |
+| ho_patient | 환자 | 호러·오컬트 | B | 초상+전투1 | g02-people-modern-v01 | 완료 | BS2 |
+| ho_clown | 광대 | 호러·오컬트 | B | 초상+전투1 | g02-people-modern-v01 | 완료 | BS2 |
+| sf_captain | 우주 함장 | SF·우주 | B | 초상+전투1 | g02-people-future-v01 | 완료 | |
+| sf_scientist | 과학자 | SF·우주 | B | 초상+전투1 | g02-people-future-v01 | 완료 | |
+| cp_merc | 사이버 용병 | 사이버펑크 | B | 초상+전투1 | g02-people-future-v01 | 완료 | |
+| pa_raider | 약탈자 | 포스트아포칼립스 | B | 초상+전투1 | g02-people-future-v01 | 완료 | |
+| sp_airship_captain | 비행선 선장 | 스팀펑크 | B | 초상+전투1 | g02-people-frontier-v01 | 완료 | |
+| pi_sailor | 선원 | 해적·바다 | B | 초상+전투1 | g02-people-frontier-v01 | 완료 | BS2 |
+| we_cowboy | 카우보이 | 서부 | B | 초상+전투1 | g02-people-frontier-v01 | 완료 | |
+| icon_mo_police_badge | 경찰 배지 | 현대·도시 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_ho_camcorder | 심령 캠코더 | 호러·오컬트 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_ho_emf | 유령 탐지기(EMF) | 호러·오컬트 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_sf_energy_cell | 에너지 셀 | SF·우주 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_sf_scanner | 휴대 스캐너 | SF·우주 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_cp_neural_chip | 신경 칩 | 사이버펑크 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_sp_goggles | 황동 고글 | 스팀펑크 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_sp_steam_pistol | 증기 권총 | 스팀펑크 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_pa_canned_food | 찌그러진 통조림 | 포스트아포칼립스 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_pa_geiger | 방사능 측정기 | 포스트아포칼립스 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_pi_spyglass | 망원경 | 해적·바다 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_pi_treasure_map | 보물 지도 | 해적·바다 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_we_lasso | 올가미 밧줄 | 서부 | B | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| ui_ho_panel | 호러 긁힌 창틀 | 호러·오컬트 | B | UI 9-slice | g02-ui-genre-v01 | 완료 | |
+| ui_cp_panel | 사이버펑크 네온 창틀 | 사이버펑크 | B | UI 9-slice | g02-ui-genre-v01 | 완료 | |
+| ui_pi_panel | 해적 밧줄 창틀 | 해적·바다 | B | UI 9-slice | g02-ui-genre-v01 | 완료 | |
+| fx_cp_glitch | 해킹 글리치 | 사이버펑크 | B | 효과 5칸 | g02-fx-genre-v01 | 완료 | |
+| fx_pa_radiation | 방사능 파동 | 포스트아포칼립스 | B | 효과 5칸 | g02-fx-genre-v01 | 완료 | |
+| fx_pi_cannon_smoke | 대포 연기 | 해적·바다 | B | 효과 5칸 | g02-fx-genre-v01 | 완료 | |
+| fx_we_dust | 흙먼지 | 서부 | B | 효과 5칸 | g02-fx-genre-v01 | 완료 | |
 
 ## C — 있으면 좋은 것 (42)
 
 | ID | 이름 | 장르 | 우선순위 | 형식 | 묶음 | 상태 | 비고 |
 |---|---|---|---|---|---|---|---|
-| df_gravedigger | 묘지기 | 다크 판타지·고딕 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| df_witch | 마녀 | 다크 판타지·고딕 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | 사람 마녀 |
-| df_black_knight | 흑기사 | 다크 판타지·고딕 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| df_executioner | 사형 집행인 | 다크 판타지·고딕 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | 두건, 피 없음 |
-| df_butler | 집사 | 다크 판타지·고딕 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| mf_thief | 도적 | 중세 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| mf_king | 왕 | 중세 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| mf_princess | 공주 | 중세 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| mf_lord | 귀족 영주 | 중세 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| mf_bard | 음유시인 | 중세 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| ef_martial_artist | 권법가 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| ef_scholar | 선비 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| ef_general | 장군 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| ef_court_lady | 궁중 여인 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| ef_wanderer | 삿갓 나그네 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| ef_shaman | 무당 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| ef_herbalist | 약초꾼 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 대기 | |
-| mo_santa | 산타 | 현대·도시 | C | 초상+전투1 | g02-people-modern-v01 | 대기 | BS2 |
-| mo_baby | 아기 | 현대·도시 | C | 초상+전투1 | g02-people-modern-v01 | 대기 | BS2, 앉은 자세 |
-| ho_exorcist | 퇴마사 | 호러·오컬트 | C | 초상+전투1 | g02-people-modern-v01 | 대기 | |
-| ho_butcher | 도살자 | 호러·오컬트 | C | 초상+전투1 | g02-people-modern-v01 | 대기 | BS2, 피 없음 |
-| ho_medium | 영매 | 호러·오컬트 | C | 초상+전투1 | g02-people-modern-v01 | 대기 | |
-| sf_marine | 우주 해병 | SF·우주 | C | 초상+전투1 | g02-people-future-v01 | 대기 | |
-| cp_agent | 기업 요원 | 사이버펑크 | C | 초상+전투1 | g02-people-future-v01 | 대기 | |
-| cp_ripperdoc | 거리 의사 | 사이버펑크 | C | 초상+전투1 | g02-people-future-v01 | 대기 | |
-| pa_scout | 방독면 정찰병 | 포스트아포칼립스 | C | 초상+전투1 | g02-people-future-v01 | 대기 | |
-| sp_engineer | 기관사 | 스팀펑크 | C | 초상+전투1 | g02-people-frontier-v01 | 대기 | |
-| pi_navy_officer | 해군 장교 | 해적·바다 | C | 초상+전투1 | g02-people-frontier-v01 | 대기 | |
-| we_bounty_hunter | 현상금 사냥꾼 | 서부 | C | 초상+전투1 | g02-people-frontier-v01 | 대기 | |
-| icon_ho_cassette | 카세트 녹음기 | 호러·오컬트 | C | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_sf_oxygen_tank | 산소통 | SF·우주 | C | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_cp_cred_chip | 크레딧 칩 | 사이버펑크 | C | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_cp_mono_blade | 단분자 칼 | 사이버펑크 | C | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_sp_clockwork_key | 태엽 열쇠 | 스팀펑크 | C | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_pa_jerrycan | 연료통 | 포스트아포칼립스 | C | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_pi_rum | 럼주 병 | 해적·바다 | C | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| icon_we_dynamite | 다이너마이트 | 서부 | C | 아이콘 | g02-icons-genre-v01 | 대기 | |
-| ui_sp_panel | 황동 리벳 창틀 | 스팀펑크 | C | UI 9-slice | g02-ui-genre-v01 | 대기 | |
-| ui_pa_panel | 녹슨 철판 창틀 | 포스트아포칼립스 | C | UI 9-slice | g02-ui-genre-v01 | 대기 | |
-| fx_ho_wail | 비명 파동 | 호러·오컬트 | C | 효과 5칸 | g02-fx-genre-v01 | 대기 | |
-| fx_sf_plasma_burst | 플라스마 폭발 | SF·우주 | C | 효과 5칸 | g02-fx-genre-v01 | 대기 | |
-| fx_pa_shrapnel | 고철 파편 튀김 | 포스트아포칼립스 | C | 효과 5칸 | g02-fx-genre-v01 | 대기 | |
+| df_gravedigger | 묘지기 | 다크 판타지·고딕 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| df_witch | 마녀 | 다크 판타지·고딕 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | 사람 마녀 |
+| df_black_knight | 흑기사 | 다크 판타지·고딕 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| df_executioner | 사형 집행인 | 다크 판타지·고딕 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | 두건, 피 없음 |
+| df_butler | 집사 | 다크 판타지·고딕 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| mf_thief | 도적 | 중세 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| mf_king | 왕 | 중세 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| mf_princess | 공주 | 중세 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| mf_lord | 귀족 영주 | 중세 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| mf_bard | 음유시인 | 중세 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| ef_martial_artist | 권법가 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| ef_scholar | 선비 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| ef_general | 장군 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| ef_court_lady | 궁중 여인 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| ef_wanderer | 삿갓 나그네 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| ef_shaman | 무당 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| ef_herbalist | 약초꾼 | 동양 판타지 | C | 초상+전투1 | g02-people-fantasy-v01 | 완료 | |
+| mo_santa | 산타 | 현대·도시 | C | 초상+전투1 | g02-people-modern-v01 | 완료 | BS2 |
+| mo_baby | 아기 | 현대·도시 | C | 초상+전투1 | g02-people-modern-v01 | 완료 | BS2, 앉은 자세 |
+| ho_exorcist | 퇴마사 | 호러·오컬트 | C | 초상+전투1 | g02-people-modern-v01 | 완료 | |
+| ho_butcher | 도살자 | 호러·오컬트 | C | 초상+전투1 | g02-people-modern-v01 | 완료 | BS2, 피 없음 |
+| ho_medium | 영매 | 호러·오컬트 | C | 초상+전투1 | g02-people-modern-v01 | 완료 | |
+| sf_marine | 우주 해병 | SF·우주 | C | 초상+전투1 | g02-people-future-v01 | 완료 | |
+| cp_agent | 기업 요원 | 사이버펑크 | C | 초상+전투1 | g02-people-future-v01 | 완료 | |
+| cp_ripperdoc | 거리 의사 | 사이버펑크 | C | 초상+전투1 | g02-people-future-v01 | 완료 | |
+| pa_scout | 방독면 정찰병 | 포스트아포칼립스 | C | 초상+전투1 | g02-people-future-v01 | 완료 | |
+| sp_engineer | 기관사 | 스팀펑크 | C | 초상+전투1 | g02-people-frontier-v01 | 완료 | |
+| pi_navy_officer | 해군 장교 | 해적·바다 | C | 초상+전투1 | g02-people-frontier-v01 | 완료 | |
+| we_bounty_hunter | 현상금 사냥꾼 | 서부 | C | 초상+전투1 | g02-people-frontier-v01 | 완료 | |
+| icon_ho_cassette | 카세트 녹음기 | 호러·오컬트 | C | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_sf_oxygen_tank | 산소통 | SF·우주 | C | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_cp_cred_chip | 크레딧 칩 | 사이버펑크 | C | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_cp_mono_blade | 단분자 칼 | 사이버펑크 | C | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_sp_clockwork_key | 태엽 열쇠 | 스팀펑크 | C | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_pa_jerrycan | 연료통 | 포스트아포칼립스 | C | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_pi_rum | 럼주 병 | 해적·바다 | C | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| icon_we_dynamite | 다이너마이트 | 서부 | C | 아이콘 | g02-icons-genre-v01 | 완료 | |
+| ui_sp_panel | 황동 리벳 창틀 | 스팀펑크 | C | UI 9-slice | g02-ui-genre-v01 | 완료 | |
+| ui_pa_panel | 녹슨 철판 창틀 | 포스트아포칼립스 | C | UI 9-slice | g02-ui-genre-v01 | 완료 | |
+| fx_ho_wail | 비명 파동 | 호러·오컬트 | C | 효과 5칸 | g02-fx-genre-v01 | 완료 | |
+| fx_sf_plasma_burst | 플라스마 폭발 | SF·우주 | C | 효과 5칸 | g02-fx-genre-v01 | 완료 | |
+| fx_pa_shrapnel | 고철 파편 튀김 | 포스트아포칼립스 | C | 효과 5칸 | g02-fx-genre-v01 | 완료 | |
 
 ## A 뒤 추가 (g01_bs2_inventory.md 재확인)
 
 A 단계가 끝나면 `g01_bs2_inventory.md`를 다시 확인해서 새로 생긴 g02 몫을 여기에 더한다.
+
+- 2026-09-27 A 뒤 재확인: `g01_bs2_inventory.md`는 처음 커밋(acab97b) 이후 바뀌지 않았다. g02 몫 26명은 이미 위 목록에 모두 있어 더할 항목이 없다.

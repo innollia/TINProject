@@ -1,0 +1,294 @@
+{
+ "asset": "ui_pi_panel",
+ "status": "candidate",
+ "note": "해적 밧줄 창틀 (해적·바다, tier B). 9-slice window frame, margins 48 px, no text.",
+ "palette": "palette_g02.json",
+ "style": "prop",
+ "style_override": {
+  "cast": {
+   "opacity": 0.0
+  }
+ },
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  0,
+  0
+ ],
+ "pivot_meaning": "top-left; 9-slice margins in <id>_9slice.json",
+ "seed": 406,
+ "forms": [
+  {
+   "name": "fill",
+   "z": 0,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      170,
+      170
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "#1c1712",
+   "opacity": 0.9
+  },
+  {
+   "name": "board",
+   "z": 0.5,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      176,
+      176
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      160,
+      160
+     ],
+     "op": "sub"
+    }
+   ],
+   "material": "wood"
+  },
+  {
+   "name": "rope",
+   "z": 1,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      186,
+      186
+     ]
+    },
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      174,
+      174
+     ],
+     "op": "sub"
+    }
+   ],
+   "material": "rope",
+   "texture": {
+    "stamp": "pill",
+    "pre_rot": -45,
+    "length": 9,
+    "width": 2.2,
+    "angle": 55,
+    "jitter": 4,
+    "density": 1.1,
+    "strength": 0.3
+   }
+  },
+  {
+   "name": "rings",
+   "z": 2,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      14.0,
+      14.0
+     ],
+     "size": [
+      22,
+      22
+     ],
+     "flip": null
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      14.0
+     ],
+     "size": [
+      22,
+      22
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      14.0,
+      178.0
+     ],
+     "size": [
+      22,
+      22
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      178.0
+     ],
+     "size": [
+      22,
+      22
+     ],
+     "flip": "xy"
+    }
+   ],
+   "material": "brass"
+  },
+  {
+   "name": "ring_holes",
+   "z": 2.1,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      14.0,
+      14.0
+     ],
+     "size": [
+      12,
+      12
+     ],
+     "flip": null
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      14.0
+     ],
+     "size": [
+      12,
+      12
+     ],
+     "flip": "x"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      14.0,
+      178.0
+     ],
+     "size": [
+      12,
+      12
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      178.0
+     ],
+     "size": [
+      12,
+      12
+     ],
+     "flip": "xy"
+    }
+   ],
+   "material": "void",
+   "kind": "flat"
+  },
+  {
+   "name": "knots",
+   "z": 3,
+   "pieces": [
+    {
+     "icon": "knot",
+     "at": [
+      16.0,
+      16.0
+     ],
+     "size": [
+      22,
+      22
+     ],
+     "flip": null,
+     "rot": 45
+    },
+    {
+     "icon": "knot",
+     "at": [
+      176.0,
+      16.0
+     ],
+     "size": [
+      22,
+      22
+     ],
+     "flip": "x",
+     "rot": 45
+    },
+    {
+     "icon": "knot",
+     "at": [
+      16.0,
+      176.0
+     ],
+     "size": [
+      22,
+      22
+     ],
+     "flip": "y",
+     "rot": 45
+    },
+    {
+     "icon": "knot",
+     "at": [
+      176.0,
+      176.0
+     ],
+     "size": [
+      22,
+      22
+     ],
+     "flip": "xy",
+     "rot": 45
+    }
+   ],
+   "material": "rope",
+   "texture": {
+    "stamp": "pill",
+    "pre_rot": -45,
+    "length": 9,
+    "width": 2.2,
+    "angle": 55,
+    "jitter": 4,
+    "density": 1.1,
+    "strength": 0.3
+   }
+  }
+ ]
+}
