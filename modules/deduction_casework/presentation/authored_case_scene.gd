@@ -26,6 +26,10 @@ const ERROR: Color = Color("d58f84")
 const BAR_SCRIM: Color = Color(0.03, 0.04, 0.06, 0.82)
 const BADGE_FILL: Color = Color(0.03, 0.04, 0.06, 0.88)
 
+## 조사할 곳을 어떻게 배치할지: "world" = 배경 속 제자리(그림 좌표), "grid" = 번호 카드 격자(예전 방식).
+## 사용자가 나중에 되돌릴 수 있도록 값 하나로만 바꾼다. 2026-09-27 사용자 확정: world.
+const HOTSPOT_LAYOUT: String = "world"
+
 @onready var _stage_panel: PanelContainer = get_node_or_null("%StagePanel")
 @onready var _stage_index: Label = get_node_or_null("%StageIndex")
 @onready var _surface_state: Label = get_node_or_null("%SurfaceState")
@@ -37,6 +41,7 @@ const BADGE_FILL: Color = Color(0.03, 0.04, 0.06, 0.88)
 @onready var _exit_scroll: ScrollContainer = get_node_or_null("%ExitScroll")
 @onready var _exit_grid: GridContainer = get_node_or_null("%ExitGrid")
 @onready var _empty_state: Label = get_node_or_null("%EmptyState")
+@onready var _world_layer: Control = get_node_or_null("%WorldLayer")
 
 var _snapshot: Dictionary = {}
 var _content: Dictionary = {}
@@ -73,6 +78,8 @@ func _sync() -> void:
 		_rebuild()
 	_update_bar()
 	_update_boxes()
+	if HOTSPOT_LAYOUT == "world":
+		_layout_world_boxes()
 	queue_redraw()
 
 
@@ -111,34 +118,87 @@ func _contain_rect(texture_size: Vector2, target: Rect2) -> Rect2:
 
 func _rebuild() -> void:
 	_clear_boxes()
-	if _target_grid != null:
+	var use_world := HOTSPOT_LAYOUT == "world"
+	var target_container: Node = _world_layer if (use_world and _world_layer != null) else _target_grid
+	if target_container != null:
 		for value: Variant in _array(_hotspot_entries()):
 			var entry := _dictionary(value)
-			_add_box(KIND_TARGET, _id(entry.get("id", "")), _id(entry.get("focus_id", "")), _target_grid)
-	if _exit_grid != null:
+			_add_box(KIND_TARGET, _id(entry.get("id", "")), _id(entry.get("focus_id", "")), target_container)
+	var exit_container: Node = _world_layer if (use_world and _world_layer != null) else _exit_grid
+	if exit_container != null:
 		for value: Variant in _array(_dictionary(_scene_entry()).get("transitions", [])):
 			var entry := _dictionary(value)
-			_add_box(KIND_EXIT, _id(entry.get("id", "")), &"", _exit_grid)
-	var has_targets := _target_grid != null and _target_grid.get_child_count() > 0
-	var has_exits := _exit_grid != null and _exit_grid.get_child_count() > 0
+			_add_box(KIND_EXIT, _id(entry.get("id", "")), &"", exit_container)
+	var has_targets := _boxes_of_kind(KIND_TARGET).size() > 0
+	var has_exits := _boxes_of_kind(KIND_EXIT).size() > 0
 	if _target_heading != null:
-		_target_heading.visible = has_targets
+		_target_heading.visible = has_targets and not use_world
 	if _target_scroll != null:
-		_target_scroll.visible = has_targets
+		_target_scroll.visible = has_targets and not use_world
 	if _exit_heading != null:
-		_exit_heading.visible = has_exits
+		_exit_heading.visible = has_exits and not use_world
 	if _exit_scroll != null:
-		_exit_scroll.visible = has_exits
+		_exit_scroll.visible = has_exits and not use_world
 	if _empty_state != null:
 		_empty_state.visible = not has_targets and not has_exits
+	if use_world:
+		_layout_world_boxes()
 
 
-func _add_box(kind: StringName, box_id: StringName, focus_target: StringName, grid: GridContainer) -> void:
+func _boxes_of_kind(kind: StringName) -> Array[Control]:
+	return _boxes.filter(func(box: Control) -> bool: return box.get_meta(&"kind", KIND_TARGET) == kind)
+
+
+## world 모드: 조사할 곳을 배경 candidate의 그림 좌표(art_candidates.json의 box, 배경 원본 px)에서
+## 화면 좌표로 옮긴다. 배경 자체가 cover로 그려지므로 같은 변환을 물건에도 적용해야 화면과 어긋나지 않는다.
+## candidate 좌표가 없는 조사할 곳은 화면 아래 남는 띠에 격자로 모아 둔다(placeholder와 동일한 카드).
+func _layout_world_boxes() -> void:
+	if _world_layer == null:
+		return
+	var case_id := _case_id()
+	var scene_id := String(_snapshot.get("scene_id", ""))
+	var texture := DeductionArtCandidateLookup.scene_texture(case_id, scene_id)
+	var fallback_index := 0
+	var fallback_columns := 4
+	var fallback_size := Vector2(150.0, 90.0)
+	var fallback_gap := 10.0
+	var fallback_top := size.y - 108.0
+	for box: Control in _boxes:
+		var box_id := String(box.get_meta(&"box_id", ""))
+		var kind: StringName = box.get_meta(&"kind", KIND_TARGET)
+		var placed := false
+		if texture != null and kind == KIND_TARGET:
+			var world_box: Array = DeductionArtCandidateLookup.hotspot_world_box(case_id, box_id)
+			if world_box.size() == 4:
+				var region := _cover_region(texture.get_size(), size)
+				var scale_factor := size.x / region.size.x
+				var box_rect := Rect2(world_box[0], world_box[1], world_box[2], world_box[3])
+				var screen_rect := Rect2(
+					(box_rect.position - region.position) * scale_factor,
+					box_rect.size * scale_factor
+				)
+				box.position = screen_rect.position
+				box.size = screen_rect.size
+				placed = true
+		if not placed:
+			var column := fallback_index % fallback_columns
+			var row := fallback_index / fallback_columns
+			box.position = Vector2(8.0 + column * (fallback_size.x + fallback_gap), fallback_top + row * (fallback_size.y + fallback_gap))
+			box.size = fallback_size
+			fallback_index += 1
+		box.queue_redraw()
+
+
+func _add_box(kind: StringName, box_id: StringName, focus_target: StringName, container: Node) -> void:
 	if box_id.is_empty():
 		return
 	var box := Control.new()
-	box.custom_minimum_size = Vector2(160.0, 96.0)
-	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	if container == _world_layer:
+		box.size_flags_horizontal = 0
+		box.size_flags_vertical = 0
+	else:
+		box.custom_minimum_size = Vector2(160.0, 96.0)
+		box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.focus_mode = Control.FOCUS_ALL
 	box.mouse_filter = Control.MOUSE_FILTER_STOP
 	box.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
@@ -157,7 +217,7 @@ func _add_box(kind: StringName, box_id: StringName, focus_target: StringName, gr
 	box.mouse_entered.connect(_on_box_hover_changed.bind(box, true))
 	box.mouse_exited.connect(_on_box_hover_changed.bind(box, false))
 	box.resized.connect(_on_box_visual_changed.bind(box))
-	grid.add_child(box)
+	container.add_child(box)
 	_boxes.append(box)
 
 
@@ -241,23 +301,28 @@ func _draw_box(box: Control) -> void:
 	var art_texture: Texture2D = null
 	if kind == KIND_TARGET:
 		art_texture = DeductionArtCandidateLookup.hotspot_texture(_case_id(), String(box.get_meta(&"box_id", "")))
+	var world_mode := HOTSPOT_LAYOUT == "world"
 	if art_texture != null:
 		var art_rect := _contain_rect(art_texture.get_size(), rect.grow(-6.0))
 		box.draw_texture_rect(art_texture, art_rect, false, Color(1.0, 1.0, 1.0, 1.0 if enabled else 0.4))
-		box.draw_rect(Rect2(Vector2.ZERO, Vector2(30.0, 30.0)), BADGE_FILL, true)
 	else:
 		_draw_hatch(box, size, Color(ink.r, ink.g, ink.b, 0.22 if enabled else 0.1))
 	box.draw_rect(rect, ink, false, width)
 	_draw_marker(box, size, kind, ink)
-	box.draw_string(
-		_font(),
-		Vector2(9.0, 22.0),
-		str(order + 1),
-		HORIZONTAL_ALIGNMENT_LEFT,
-		-1.0,
-		13,
-		TEXT if enabled else MUTED
-	)
+	## world 모드: 번호 뱃지는 작게 두거나 포커스/hover 때만 크게 보인다(그림을 가리지 않음).
+	var badge_visible := (not world_mode) or focused or hovered or not enabled
+	var badge_size := 26.0 if (world_mode and not (focused or hovered)) else 30.0
+	if badge_visible or not world_mode:
+		box.draw_rect(Rect2(Vector2.ZERO, Vector2(badge_size, badge_size)), BADGE_FILL, true)
+		box.draw_string(
+			_font(),
+			Vector2(9.0, badge_size * 0.72),
+			str(order + 1),
+			HORIZONTAL_ALIGNMENT_LEFT,
+			-1.0,
+			13,
+			TEXT if enabled else MUTED
+		)
 
 
 func _draw_hatch(box: Control, size: Vector2, color: Color) -> void:

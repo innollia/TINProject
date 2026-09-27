@@ -8,6 +8,24 @@
 
 작성: sub-kit03 (2026-09-27)
 
+## 3차 실행 (2026-09-27 19:5x~) — world 배치로 전환, 부모 지시로 중단
+
+- 사용자 확정(부모 전달): 조사할 곳을 카드 격자 대신 배경 속 제자리에 놓는다. 카드 격자로 되돌릴 수 있게 `authored_case_scene.gd`의 `HOTSPOT_LAYOUT` 상수 하나(`"world"` / `"grid"`)로 전환한다.
+- `docs/research/deduction_casework/tools/bake_hotspot_boxes.gd` 신규: g06 `recipes/scene_s0N_*.json`의 물건 좌표(`at`)와 각 그림의 `pivot`·`size`(배경 원본 2560×1440 px 기준, compose_preview.py와 같은 산수 `pos = at - pivot`)를 읽어 `art_candidates.json`을 schema 3(핫스팟마다 `{path, box:[x,y,w,h]}`)으로 다시 쓴다. 1·2·3번 사건 56개 핫스팟 전부 box 확보(20/20, 18/18, 18/18).
+- `art_candidate_lookup.gd`에 `hotspot_world_box(case_id, hotspot_id)` 추가.
+- `authored_case_scene.gd`: world 모드에서 조사할 곳을 배경이 cover로 그려질 때 쓰는 것과 같은 변환으로 화면 좌표에 배치. candidate box가 없는 조사할 곳은 화면 하단에 격자로 모아 둠(생략 없음). 번호 뱃지는 world 모드에서 평소엔 작게, 포커스·hover 때만 커짐. 격자 모드(TargetGrid/ExitGrid, 헤딩)는 그대로 남아 있고 `HOTSPOT_LAYOUT="grid"`로 되돌리면 예전처럼 동작(코드 삭제 없음).
+- 새 GUT 테스트 2개 추가(`tests/core/test_deduction_casework_art.gd`): 56개 핫스팟 전부 world box 보유 확인, world 모드에서 9개 박스(6 핫스팟+3 출구)가 실제 배치 크기·FOCUS_ALL·MOUSE_FILTER_STOP를 갖는지 확인(키보드·마우스 모두 닿음).
+- **검증 상태(부모 지시로 이번 실행 중단, 미완):** import는 오류 0으로 확인(잠금 잡고 실행, 정상 종료). 이 Kit GUT·run_tests·180프레임 부팅·world 배치 창 모드 캡처는 **아직 못 돌렸다** — 이 지시를 받은 시점에 막 import를 마친 상태였다. Godot 새 실행은 부모 지시로 하지 않음.
+- 위 코드는 커밋했으나 **런타임으로 확인되지 않았다.** world 배치 좌표 변환(`_layout_world_boxes`)이 화면에서 실제로 맞게 나오는지, 격자 모드 회귀가 없는지 다음 세션에서 반드시 먼저 확인해야 한다.
+
+## 남은 일 (다음 세션 우선순위)
+
+1. Godot 잠금 확인 후: import(재확인) → `test_deduction_casework_art.gd`+`test_deduction_casework_skeleton.gd`(GUT) → `run_tests.gd` → 180프레임 부팅. 실패는 고친다.
+2. 창 모드로 1·2·3번 사건 대표 장면을 720p/FHD/QHD로 찍어 물건이 배경 제자리에 있는지, 포커스가 보이는지 직접 확인(캡처 도구 `docs/research/deduction_casework/tools/capture_scenes.gd`는 그대로 재사용 가능, world 배치를 반영하는지 확인 필요).
+3. 대표 캡처 6~9장을 `docs/research/deduction_casework/captures/`에 복사해 커밋(임시 작업자 폴더는 지워질 수 있음, 아직 안 함).
+4. 이전 실행에서 확인한 흰 텍스처 버그 수정은 유지되어 있음(텍스처 캐시).
+
+
 ## 2차 실행 (2026-09-27 17:4x) — 위 부모 전달 1~3 처리 완료
 
 - `art_candidates.json` schema 2: 사건별로 나눔(scene_locker·scene_service가 사건마다 겹침). 1·2·3번 사건의 장면 14개·핫스팟 전부 연결, 경로 누락 0. 핫스팟→그림 대응은 g06 `recipes/scene_s0N_*.json`의 `hotspots` 항목의 첫 물건 그림을 따랐다. 1번 사물함은 JOB.md대로 `open.png`.

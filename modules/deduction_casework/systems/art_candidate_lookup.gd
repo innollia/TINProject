@@ -54,7 +54,26 @@ static func _entry(case_id: String, group: String, entry_id: String) -> String:
 	var table: Variant = (case_entry as Dictionary).get(group, null)
 	if not table is Dictionary:
 		return ""
-	return String((table as Dictionary).get(entry_id, ""))
+	var value: Variant = (table as Dictionary).get(entry_id, null)
+	if value is Dictionary:
+		return String((value as Dictionary).get("path", ""))
+	return String(value) if value != null else ""
+
+
+## 사건·핫스팟에 해당하는 배경 캔버스 픽셀 좌표의 bbox [x, y, w, h] (top-left). 없으면 빈 배열.
+static func hotspot_world_box(case_id: String, hotspot_id: String) -> Array:
+	_ensure_loaded()
+	var case_entry: Variant = _cases.get(case_id, null)
+	if not case_entry is Dictionary:
+		return []
+	var hotspots: Variant = (case_entry as Dictionary).get("hotspots", null)
+	if not hotspots is Dictionary:
+		return []
+	var entry: Variant = (hotspots as Dictionary).get(hotspot_id, null)
+	if not entry is Dictionary:
+		return []
+	var box: Variant = (entry as Dictionary).get("box", null)
+	return box if box is Array and box.size() == 4 else []
 
 
 static func _load_texture(path: String) -> Texture2D:
