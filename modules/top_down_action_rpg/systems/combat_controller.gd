@@ -93,6 +93,13 @@ func set_category(category: String) -> bool:
 	return true
 
 
+func leave_category() -> bool:
+	if state == null or state.submode != "command_action":
+		return false
+	state.submode = "command_category"
+	return true
+
+
 func available_commands(actor_id: StringName) -> Array:
 	var actor: TopDownActionRpgCombatState.ActorState = state.find_actor(actor_id)
 	if actor == null or catalog == null:

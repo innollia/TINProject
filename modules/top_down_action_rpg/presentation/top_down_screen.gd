@@ -125,7 +125,6 @@ var _failure_active: bool = false
 var _success_active: bool = false
 var _narration_lines: PackedStringArray = PackedStringArray()
 var _rail_focus: int = 0
-var _rail_expanded: bool = false
 var _rail_token: String = ""
 var _timing_override: float = -1.0
 var _condition_overrides: Dictionary = {}
@@ -421,7 +420,7 @@ func _resolve_combat_state() -> StringName:
 	for actor: TopDownActionRpgCombatState.ActorState in combat_state.actors:
 		if actor.stance_state != "normal":
 			return STATE_GUARD_DODGE_BREAK
-	if String(combat_controller.current_category) in ["equipment", "item"]:
+	if _rail_is_expanded() and String(combat_controller.current_category) in ["equipment", "item"]:
 		return STATE_EQUIPMENT_NO_TURN
 	for intent: TopDownActionRpgCombatState.QueuedIntent in combat_controller.commands:
 		if intent.no_turn:
@@ -485,8 +484,11 @@ func _submit_command_row(row_id: StringName) -> void:
 	if text == LABEL_END_TURN:
 		_submit(INTENT_COMBAT_END_TURN, {})
 		return
-	if _rail_expanded:
+	if _rail_is_expanded():
 		_submit(INTENT_COMBAT_ACTION, {"action_id": text})
+	elif CATEGORY_ROW_TOKENS.has(text):
+		_rail_token = text
+		_submit(INTENT_COMBAT_CATEGORY, {"category": text})
 
 
 func submit_move(direction: Vector2) -> void:
@@ -501,7 +503,7 @@ func submit_focus(step: int) -> void:
 		STATE_DIALOGUE_CHOICE_FOCUS:
 			_submit(INTENT_DIALOGUE_FOCUS, {"step": step})
 		STATE_COMBAT_COMMAND, STATE_EQUIPMENT_NO_TURN, STATE_CHARGE_COUNTER, STATE_GUARD_DODGE_BREAK:
-			if _rail_expanded:
+			if _rail_is_expanded():
 				_submit(INTENT_COMBAT_ACTION_FOCUS, {"step": step})
 			else:
 				_submit(INTENT_COMBAT_CATEGORY_FOCUS, {"step": step})
@@ -537,11 +539,8 @@ func submit_cancel() -> void:
 		STATE_DOCUMENT_MAX, STATE_DOCUMENT_CORRUPTED:
 			_submit(INTENT_DIALOGUE_CANCEL, {"document_id": String(conversation_controller.document_id)})
 		STATE_COMBAT_COMMAND, STATE_EQUIPMENT_NO_TURN, STATE_GUARD_DODGE_BREAK:
-			if _rail_expanded:
-				_rail_expanded = false
-				_rail_focus = 0
+			if _rail_is_expanded():
 				_submit(INTENT_COMBAT_CANCEL, {})
-				refresh()
 			else:
 				_submit(INTENT_COMBAT_END_TURN, {})
 		STATE_TARGET_SELECT:
@@ -560,22 +559,19 @@ func _charge_stage() -> String:
 
 
 func _submit_focused_command() -> void:
-	if not _rail_expanded:
+	if not _rail_is_expanded():
+		if _rail_focus >= CATEGORY_ROW_TOKENS.size():
+			_submit(INTENT_COMBAT_END_TURN, {})
+			return
 		var token: String = CATEGORY_ROW_TOKENS[clampi(_rail_focus, 0, CATEGORY_ROW_TOKENS.size() - 1)]
-		_rail_expanded = true
 		_rail_token = token
-		_rail_focus = 0
 		_submit(INTENT_COMBAT_CATEGORY, {"category": token})
-		refresh()
 		return
 	if _command_rows_view.is_empty():
 		return
 	var row_id: StringName = _command_rows_view[clampi(_rail_focus, 0, _command_rows_view.size() - 1)].row_id
 	if row_id == LABEL_BACK:
-		_rail_expanded = false
-		_rail_focus = 0
 		_submit(INTENT_COMBAT_CANCEL, {})
-		refresh()
 	elif row_id != LABEL_END_TURN:
 		_submit(INTENT_COMBAT_ACTION, {"action_id": String(row_id)})
 
@@ -1038,8 +1034,20 @@ func _render_command_rail() -> void:
 	_set_visible(_command_rail, rows.size() > 0)
 
 
+func _rail_is_expanded() -> bool:
+	if combat_state == null:
+		return false
+	return String(combat_state.submode) in ["command_action", "target_select"]
+
+
+func rail_row_count() -> int:
+	if combat_controller == null or combat_state == null:
+		return 0
+	return _rail_row_model(_rail_category()).size()
+
+
 func _rail_category() -> String:
-	if not _rail_expanded:
+	if not _rail_is_expanded():
 		return ""
 	var current: String = String(combat_controller.current_category)
 	return current if CATEGORY_ROW_TOKENS.has(current) else _rail_token

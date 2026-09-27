@@ -22,6 +22,7 @@ const CLASS_CHANNEL_INSET: float = 18.0
 const ROW_TEXT_PAD: float = 4.0
 const WRAP_VERTICAL_PAD: float = 12.0
 const TRAILING_FONT_SIZE: int = 12
+const DOCUMENT_FONT_SIZE: int = 24
 
 const CLASS_EXTREME: String = "extreme"
 const CLASS_RESULT: String = "result"
@@ -210,6 +211,10 @@ func _sync() -> void:
 	_text_label.offset_left = left_inset + _label_offset
 	_text_label.offset_right = -right_inset + _label_offset
 	_text_label.add_theme_color_override("font_color", INK_DISABLED if disabled else INK)
+	if role == ROLE_DOCUMENT:
+		_text_label.add_theme_font_size_override("font_size", DOCUMENT_FONT_SIZE)
+	elif _text_label.has_theme_font_size_override("font_size"):
+		_text_label.remove_theme_font_size_override("font_size")
 	var wraps: bool = WRAPPING_ROLES.has(role)
 	_text_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART if wraps else TextServer.AUTOWRAP_OFF
 	var has_trailing: bool = _trailing_label != null and not _trailing_label.text.is_empty()
