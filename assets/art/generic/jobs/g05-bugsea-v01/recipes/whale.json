@@ -1,0 +1,558 @@
+{
+ "asset": "whale",
+ "status": "candidate",
+ "note": "Whale, 3/4 front view facing the lower left. Enormous slate-grey sperm-like whale breaching: huge blunt head with a long jaw line and a small dark eye, pale grooved throat, barnacle patches, a pectoral fin, the tail fluke raised high behind.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  768,
+  512
+ ],
+ "pivot": [
+  384,
+  494
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 936,
+ "g05": {
+  "name_ko": "고래",
+  "size": "거대",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      384.0,
+      472.4
+     ],
+     "size": [
+      560.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fluke",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "heart",
+     "at": [
+      640.0,
+      120.0
+     ],
+     "size": [
+      170.0,
+      110.0
+     ],
+     "rot": 160.0
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.1,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      560.0,
+      320.0
+     ],
+     "size": [
+      90.0,
+      90.0
+     ],
+     "rot": -143.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      572.8,
+      302.2
+     ],
+     "size": [
+      84.4,
+      84.4
+     ],
+     "rot": -145.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      584.7,
+      284.4
+     ],
+     "size": [
+      78.9,
+      78.9
+     ],
+     "rot": -147.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      595.6,
+      266.7
+     ],
+     "size": [
+      73.3,
+      73.3
+     ],
+     "rot": -149.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      605.4,
+      248.9
+     ],
+     "size": [
+      67.8,
+      67.8
+     ],
+     "rot": -152.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      614.3,
+      231.1
+     ],
+     "size": [
+      62.2,
+      62.2
+     ],
+     "rot": -154.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      622.2,
+      213.3
+     ],
+     "size": [
+      56.7,
+      56.7
+     ],
+     "rot": -157.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      629.1,
+      195.6
+     ],
+     "size": [
+      51.1,
+      51.1
+     ],
+     "rot": -160.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      635.1,
+      177.8
+     ],
+     "size": [
+      45.6,
+      45.6
+     ],
+     "rot": -163.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      640.0,
+      160.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "rot": -166.0
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      420.0,
+      350.0
+     ],
+     "size": [
+      400.0,
+      210.0
+     ],
+     "rot": -12.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      240.0,
+      360.0
+     ],
+     "size": [
+      330.0,
+      230.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "throat",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "eye_white",
+   "clip_to": "body",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      260.0,
+      430.0
+     ],
+     "size": [
+      330.0,
+      80.0
+     ],
+     "rot": -6.0
+    }
+   ]
+  },
+  {
+   "name": "grooves",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "kind": "flat",
+   "material": "stone_dark",
+   "clip_to": "throat",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      155.0,
+      430.0
+     ],
+     "size": [
+      3.0,
+      73.9
+     ],
+     "rot": -74.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      185.0,
+      430.0
+     ],
+     "size": [
+      3.0,
+      72.9
+     ],
+     "rot": -77.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      215.0,
+      430.0
+     ],
+     "size": [
+      3.0,
+      72.1
+     ],
+     "rot": -80.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      245.0,
+      430.0
+     ],
+     "size": [
+      3.0,
+      71.5
+     ],
+     "rot": -83.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      275.0,
+      430.0
+     ],
+     "size": [
+      3.0,
+      71.2
+     ],
+     "rot": -86.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      305.0,
+      430.0
+     ],
+     "size": [
+      3.0,
+      71.0
+     ],
+     "rot": -90.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      335.0,
+      430.0
+     ],
+     "size": [
+      3.0,
+      71.2
+     ],
+     "rot": -93.3
+    }
+   ]
+  },
+  {
+   "name": "jaw",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.3,
+   "kind": "flat",
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      195.0,
+      390.0
+     ],
+     "size": [
+      5.0,
+      212.7
+     ],
+     "rot": -95.4
+    }
+   ]
+  },
+  {
+   "name": "barnacles",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.4,
+   "material": "bone_old",
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      200.0,
+      300.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      230.0,
+      310.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      260.0,
+      290.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      290.0,
+      320.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      540.0,
+      270.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      580.0,
+      290.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fin",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "leaf",
+     "at": [
+      330.0,
+      440.0
+     ],
+     "size": [
+      140.0,
+      60.0
+     ],
+     "rot": 160.0
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.5,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      250.0,
+      356.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      250.0,
+      356.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.6,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      246.5,
+      353.4
+     ],
+     "size": [
+      4.8,
+      3.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      246.5,
+      353.4
+     ],
+     "size": [
+      4.8,
+      3.1
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

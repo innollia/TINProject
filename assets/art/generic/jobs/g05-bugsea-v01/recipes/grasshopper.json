@@ -1,0 +1,763 @@
+{
+ "asset": "grasshopper",
+ "status": "candidate",
+ "note": "Giant grasshopper, 3/4 front view facing the lower left. Dusty olive locust with a long body and folded wings, huge angled hind legs with spined shins, big shiny eyes, long antennae, chewing jaws.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  196,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 932,
+ "g05": {
+  "name_ko": "거대 메뚜기",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      358.6
+     ],
+     "size": [
+      280.0,
+      28.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hind_far",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "leaf_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      275.0,
+      255.0
+     ],
+     "size": [
+      30.0,
+      96.5
+     ],
+     "rot": -144.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      290.0,
+      285.0
+     ],
+     "size": [
+      12.0,
+      135.7
+     ],
+     "rot": 8.7
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "leaf",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      210.0,
+      290.0
+     ],
+     "size": [
+      200.0,
+      70.0
+     ],
+     "rot": -12.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      128.0,
+      290.0
+     ],
+     "size": [
+      80.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wings",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "leaf_dark",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      250.0,
+      272.0
+     ],
+     "size": [
+      40.0,
+      170.0
+     ],
+     "rot": -100.0
+    }
+   ]
+  },
+  {
+   "name": "stripes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "kind": "flat",
+   "material": "belly",
+   "clip_to": "body",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      310.0
+     ],
+     "size": [
+      3.0,
+      21.9
+     ],
+     "rot": -16.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      197.0,
+      310.0
+     ],
+     "size": [
+      3.0,
+      21.9
+     ],
+     "rot": -16.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      221.0,
+      310.0
+     ],
+     "size": [
+      3.0,
+      21.9
+     ],
+     "rot": -16.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      245.0,
+      310.0
+     ],
+     "size": [
+      3.0,
+      21.9
+     ],
+     "rot": -16.7
+    }
+   ]
+  },
+  {
+   "name": "front_0",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 2.5,
+   "material": "leaf_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      138.1,
+      313.1
+     ],
+     "size": [
+      7.0,
+      14.4
+     ],
+     "rot": 31.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      133.4,
+      322.8
+     ],
+     "size": [
+      6.2,
+      23.9
+     ],
+     "rot": 22.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      129.5,
+      335.0
+     ],
+     "size": [
+      5.5,
+      23.9
+     ],
+     "rot": 11.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      128.4,
+      346.8
+     ],
+     "size": [
+      4.8,
+      23.9
+     ],
+     "rot": -1.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      128.6,
+      353.0
+     ],
+     "size": [
+      4.0,
+      14.4
+     ],
+     "rot": -15.3
+    }
+   ]
+  },
+  {
+   "name": "front_1",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 2.5,
+   "material": "leaf_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      178.1,
+      313.1
+     ],
+     "size": [
+      7.0,
+      14.4
+     ],
+     "rot": 31.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.4,
+      322.8
+     ],
+     "size": [
+      6.2,
+      23.9
+     ],
+     "rot": 22.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      169.5,
+      335.0
+     ],
+     "size": [
+      5.5,
+      23.9
+     ],
+     "rot": 11.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      168.4,
+      346.8
+     ],
+     "size": [
+      4.8,
+      23.9
+     ],
+     "rot": -1.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      168.6,
+      353.0
+     ],
+     "size": [
+      4.0,
+      14.4
+     ],
+     "rot": -15.3
+    }
+   ]
+  },
+  {
+   "name": "hind",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3,
+   "material": "leaf",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      263.0,
+      265.0
+     ],
+     "size": [
+      38.0,
+      109.5
+     ],
+     "rot": -136.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      284.0,
+      293.0
+     ],
+     "size": [
+      14.0,
+      133.2
+     ],
+     "rot": 10.8
+    }
+   ]
+  },
+  {
+   "name": "spines",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3.1,
+   "kind": "flat",
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      290.0,
+      250.0
+     ],
+     "size": [
+      5.0,
+      10.0
+     ],
+     "rot": -160.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      285.0,
+      274.0
+     ],
+     "size": [
+      5.0,
+      10.0
+     ],
+     "rot": -160.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      280.0,
+      298.0
+     ],
+     "size": [
+      5.0,
+      10.0
+     ],
+     "rot": -160.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      275.0,
+      322.0
+     ],
+     "size": [
+      5.0,
+      10.0
+     ],
+     "rot": -160.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4,
+   "material": "leaf",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      96.0,
+      290.0
+     ],
+     "size": [
+      64.0,
+      90.0
+     ],
+     "rot": -150.0
+    }
+   ]
+  },
+  {
+   "name": "eye",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.1,
+   "material": "chitin_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      108.0,
+      270.0
+     ],
+     "size": [
+      26.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "antennae",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.2,
+   "material": "leaf_dark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      94.5,
+      246.9
+     ],
+     "size": [
+      4.0,
+      18.6
+     ],
+     "rot": 167.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      93.0,
+      237.6
+     ],
+     "size": [
+      3.8,
+      31.0
+     ],
+     "rot": 171.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      91.2,
+      221.3
+     ],
+     "size": [
+      3.6,
+      31.0
+     ],
+     "rot": 175.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      90.4,
+      205.1
+     ],
+     "size": [
+      3.3,
+      31.0
+     ],
+     "rot": 179.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      90.9,
+      189.0
+     ],
+     "size": [
+      3.1,
+      31.0
+     ],
+     "rot": -176.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      92.4,
+      173.0
+     ],
+     "size": [
+      2.9,
+      31.0
+     ],
+     "rot": -172.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      95.1,
+      157.1
+     ],
+     "size": [
+      2.7,
+      31.0
+     ],
+     "rot": -168.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      98.9,
+      141.3
+     ],
+     "size": [
+      2.4,
+      31.0
+     ],
+     "rot": -164.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      103.9,
+      125.6
+     ],
+     "size": [
+      2.2,
+      31.0
+     ],
+     "rot": -160.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      106.7,
+      117.6
+     ],
+     "size": [
+      2.0,
+      18.6
+     ],
+     "rot": -156.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      111.0,
+      249.4
+     ],
+     "size": [
+      4.0,
+      17.3
+     ],
+     "rot": -171.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      112.6,
+      241.4
+     ],
+     "size": [
+      3.8,
+      28.8
+     ],
+     "rot": -168.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      115.9,
+      227.0
+     ],
+     "size": [
+      3.6,
+      28.8
+     ],
+     "rot": -165.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      120.0,
+      212.7
+     ],
+     "size": [
+      3.3,
+      28.8
+     ],
+     "rot": -162.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      124.8,
+      198.5
+     ],
+     "size": [
+      3.1,
+      28.8
+     ],
+     "rot": -159.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      130.4,
+      184.5
+     ],
+     "size": [
+      2.9,
+      28.8
+     ],
+     "rot": -156.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.7,
+      170.7
+     ],
+     "size": [
+      2.7,
+      28.8
+     ],
+     "rot": -154.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      143.7,
+      157.0
+     ],
+     "size": [
+      2.4,
+      28.8
+     ],
+     "rot": -151.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      151.5,
+      143.4
+     ],
+     "size": [
+      2.2,
+      28.8
+     ],
+     "rot": -148.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      155.8,
+      136.4
+     ],
+     "size": [
+      2.0,
+      17.3
+     ],
+     "rot": -146.3
+    }
+   ]
+  },
+  {
+   "name": "jaws",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.3,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      70.0,
+      322.0
+     ],
+     "size": [
+      18.0,
+      12.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

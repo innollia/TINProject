@@ -1,0 +1,400 @@
+{
+ "asset": "parrot",
+ "status": "candidate",
+ "note": "Parrot, front view, standing. Faded wine-red macaw with dusty blue-green wings folded, a long tail, a heavy hooked bone-coloured beak, a pale face patch with a beady eye, grey zygodactyl feet.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 851,
+ "g05": {
+  "name_ko": "앵무새",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      364.0
+     ],
+     "size": [
+      110.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "cloth_blue",
+   "pieces": [
+    {
+     "icon": "feather",
+     "at": [
+      160.0,
+      320.0
+     ],
+     "size": [
+      30.0,
+      90.0
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.5,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      143.0,
+      303.0
+     ],
+     "size": [
+      7.0,
+      28.5
+     ],
+     "rot": 4.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      137.0,
+      321.0
+     ],
+     "size": [
+      4.0,
+      14.5
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      147.0,
+      321.0
+     ],
+     "size": [
+      4.0,
+      14.5
+     ],
+     "rot": -45.0
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.5,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      177.0,
+      303.0
+     ],
+     "size": [
+      7.0,
+      28.5
+     ],
+     "rot": -4.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      321.0
+     ],
+     "size": [
+      4.0,
+      14.5
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      183.0,
+      321.0
+     ],
+     "size": [
+      4.0,
+      14.5
+     ],
+     "rot": -45.0
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      236.0
+     ],
+     "size": [
+      100.0,
+      150.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "wing_l",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "robe_teal",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      116.0,
+      240.0
+     ],
+     "size": [
+      40.0,
+      110.0
+     ],
+     "rot": 8.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "wing_r",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "robe_teal",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      204.0,
+      240.0
+     ],
+     "size": [
+      40.0,
+      110.0
+     ],
+     "rot": -8.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      160.0
+     ],
+     "size": [
+      70.0,
+      66.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.1,
+   "material": "eye_white",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      144.0,
+      160.0
+     ],
+     "size": [
+      30.0,
+      36.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      160.0
+     ],
+     "size": [
+      30.0,
+      36.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      144.0,
+      156.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      156.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3000000000000003,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.2,
+      154.2
+     ],
+     "size": [
+      2.4,
+      2.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      174.2,
+      154.2
+     ],
+     "size": [
+      2.4,
+      2.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "beak",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      160.0,
+      186.0
+     ],
+     "size": [
+      36.0,
+      40.0
+     ],
+     "rot": 135.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      180.0
+     ],
+     "size": [
+      26.0,
+      20.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

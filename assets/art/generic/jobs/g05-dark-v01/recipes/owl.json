@@ -1,0 +1,514 @@
+{
+ "asset": "owl",
+ "status": "candidate",
+ "note": "Owl, front view, perched. Dusky brown owl with tall ear tufts, a pale facial disc, huge glowing amber eyes, small hooked beak, speckled chest, folded wings and grey talons.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 637,
+ "g05": {
+  "name_ko": "부엉이",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      363.6
+     ],
+     "size": [
+      140.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "talons_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      135.0,
+      341.0
+     ],
+     "size": [
+      6.0,
+      24.8
+     ],
+     "rot": 24.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      341.0
+     ],
+     "size": [
+      6.0,
+      22.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      145.0,
+      341.0
+     ],
+     "size": [
+      6.0,
+      24.8
+     ],
+     "rot": -24.4
+    }
+   ]
+  },
+  {
+   "name": "talons_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      175.0,
+      341.0
+     ],
+     "size": [
+      6.0,
+      24.8
+     ],
+     "rot": 24.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      341.0
+     ],
+     "size": [
+      6.0,
+      22.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      185.0,
+      341.0
+     ],
+     "size": [
+      6.0,
+      24.8
+     ],
+     "rot": -24.4
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      262.0
+     ],
+     "size": [
+      150.0,
+      170.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "chest",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "feather_pale",
+   "clip_to": "body",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      280.0
+     ],
+     "size": [
+      90.0,
+      130.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "speckles",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "kind": "flat",
+   "material": "feather_brown",
+   "clip_to": "chest",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      140.0,
+      260.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      180.0,
+      260.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      160.0,
+      284.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      136.0,
+      304.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      184.0,
+      304.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      160.0,
+      326.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ],
+     "rot": -45.0
+    }
+   ]
+  },
+  {
+   "name": "wing_l",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.5,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      96.0,
+      272.0
+     ],
+     "size": [
+      56.0,
+      150.0
+     ],
+     "rot": 8.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "wing_r",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.5,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      224.0,
+      272.0
+     ],
+     "size": [
+      56.0,
+      150.0
+     ],
+     "rot": -8.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "tufts",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.9,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      116.0,
+      126.0
+     ],
+     "size": [
+      26.0,
+      50.0
+     ],
+     "rot": -24.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      204.0,
+      126.0
+     ],
+     "size": [
+      26.0,
+      50.0
+     ],
+     "rot": 24.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      170.0
+     ],
+     "size": [
+      130.0,
+      110.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "disc",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.1,
+   "material": "feather_pale",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      132.0,
+      172.0
+     ],
+     "size": [
+      62.0,
+      66.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      188.0,
+      172.0
+     ],
+     "size": [
+      62.0,
+      66.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.6,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.35,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      132.0,
+      170.0
+     ],
+     "size": [
+      36.0,
+      36.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      188.0,
+      170.0
+     ],
+     "size": [
+      36.0,
+      36.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pupils",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.25,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      132.0,
+      170.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      188.0,
+      170.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "beak",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      196.0
+     ],
+     "size": [
+      16.0,
+      24.0
+     ],
+     "flip": "y"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

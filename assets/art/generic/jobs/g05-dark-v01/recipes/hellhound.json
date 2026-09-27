@@ -1,0 +1,814 @@
+{
+ "asset": "hellhound",
+ "status": "candidate",
+ "note": "Hellhound, 3/4 front view facing the lower left. Lean black demonic hound with glowing ember cracks along its body, a mane and tail of flame, short curved horns, burning eyes and a snarling fanged maw.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  200,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 638,
+ "g05": {
+  "name_ko": "지옥개",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      357.6
+     ],
+     "size": [
+      270.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_hind_far",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      299.0,
+      269.0
+     ],
+     "size": [
+      24.0,
+      72.0
+     ],
+     "rot": -12.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      303.0,
+      323.0
+     ],
+     "size": [
+      20.0,
+      53.4
+     ],
+     "rot": 7.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      297.2,
+      347.2
+     ],
+     "size": [
+      28.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_front_far",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      275.0
+     ],
+     "size": [
+      22.0,
+      66.0
+     ],
+     "rot": -5.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      174.0,
+      325.0
+     ],
+     "size": [
+      19.0,
+      48.8
+     ],
+     "rot": 5.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      169.2,
+      347.2
+     ],
+     "size": [
+      28.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "tail"
+   ],
+   "z": 1.5,
+   "material": "fire_outer",
+   "emit": 0.9,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "fire",
+     "at": [
+      340.0,
+      190.0
+     ],
+     "size": [
+      50.0,
+      70.0
+     ],
+     "rot": 30.0
+    },
+    {
+     "icon": "fire",
+     "at": [
+      330.0,
+      210.0
+     ],
+     "size": [
+      30.0,
+      44.0
+     ],
+     "rot": 10.0
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "ash",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      234.0,
+      222.0
+     ],
+     "size": [
+      186.0,
+      100.0
+     ],
+     "rot": -6.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      232.0
+     ],
+     "size": [
+      96.0,
+      104.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cracks",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "ember",
+   "emit": 0.9,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "ember_glow"
+   },
+   "clip_to": "body",
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      230.0,
+      216.0
+     ],
+     "size": [
+      12.0,
+      40.0
+     ],
+     "rot": 30.0
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      280.0,
+      226.0
+     ],
+     "size": [
+      10.0,
+      34.0
+     ],
+     "rot": -20.0
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      170.0,
+      240.0
+     ],
+     "size": [
+      10.0,
+      30.0
+     ],
+     "rot": 10.0
+    }
+   ]
+  },
+  {
+   "name": "leg_hind",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3,
+   "material": "ash",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      300.0,
+      272.0
+     ],
+     "size": [
+      34.0,
+      71.4
+     ],
+     "rot": -19.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      305.0,
+      326.0
+     ],
+     "size": [
+      28.0,
+      62.8
+     ],
+     "rot": 10.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      296.4,
+      353.4
+     ],
+     "size": [
+      36.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_hind_claws",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3.05,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      287.4,
+      359.7
+     ],
+     "size": [
+      5.0,
+      9.8
+     ],
+     "rot": 190.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      295.3,
+      359.7
+     ],
+     "size": [
+      5.0,
+      9.8
+     ],
+     "rot": 190.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      303.2,
+      359.7
+     ],
+     "size": [
+      5.0,
+      9.8
+     ],
+     "rot": 190.0
+    }
+   ]
+  },
+  {
+   "name": "thigh",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3.05,
+   "material": "ash",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      288.0,
+      248.0
+     ],
+     "size": [
+      70.0,
+      92.0
+     ],
+     "rot": -10.0
+    }
+   ]
+  },
+  {
+   "name": "leg_front",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3.1,
+   "material": "ash",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      129.0,
+      275.0
+     ],
+     "size": [
+      32.0,
+      69.5
+     ],
+     "rot": 5.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      125.0,
+      327.0
+     ],
+     "size": [
+      27.0,
+      55.5
+     ],
+     "rot": 2.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      120.2,
+      351.5
+     ],
+     "size": [
+      38.0,
+      15.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_front_claws",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3.15,
+   "material": "claw",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      110.7,
+      358.2
+     ],
+     "size": [
+      5.3,
+      10.5
+     ],
+     "rot": 190.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      119.1,
+      358.2
+     ],
+     "size": [
+      5.3,
+      10.5
+     ],
+     "rot": 190.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      127.4,
+      358.2
+     ],
+     "size": [
+      5.3,
+      10.5
+     ],
+     "rot": 190.0
+    }
+   ]
+  },
+  {
+   "name": "mane",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "material": "fire_outer",
+   "emit": 0.9,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "fire",
+     "at": [
+      126.0,
+      164.0
+     ],
+     "size": [
+      36.0,
+      60.0
+     ],
+     "rot": -20.0
+    },
+    {
+     "icon": "fire",
+     "at": [
+      150.0,
+      170.0
+     ],
+     "size": [
+      36.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "fire",
+     "at": [
+      174.0,
+      164.0
+     ],
+     "size": [
+      36.0,
+      60.0
+     ],
+     "rot": 20.0
+    },
+    {
+     "icon": "fire",
+     "at": [
+      198.0,
+      158.0
+     ],
+     "size": [
+      36.0,
+      60.0
+     ],
+     "rot": 40.0
+    }
+   ]
+  },
+  {
+   "name": "mane_core",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.35,
+   "material": "fire_mid",
+   "emit": 1.0,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "fire",
+     "at": [
+      136.0,
+      174.0
+     ],
+     "size": [
+      20.0,
+      34.0
+     ],
+     "rot": -20.0
+    },
+    {
+     "icon": "fire",
+     "at": [
+      160.0,
+      180.0
+     ],
+     "size": [
+      20.0,
+      34.0
+     ]
+    },
+    {
+     "icon": "fire",
+     "at": [
+      184.0,
+      174.0
+     ],
+     "size": [
+      20.0,
+      34.0
+     ],
+     "rot": 20.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4,
+   "material": "ash",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      116.0,
+      174.0
+     ],
+     "size": [
+      84.0,
+      72.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "horns",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.1,
+   "material": "horn",
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      110.0,
+      130.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": -100.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      140.0,
+      128.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ],
+     "rot": -80.0
+    }
+   ]
+  },
+  {
+   "name": "snout",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.3,
+   "material": "ash",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      86.0,
+      200.0
+     ],
+     "size": [
+      40.0,
+      70.0
+     ],
+     "rot": -128.0
+    }
+   ]
+  },
+  {
+   "name": "nose",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.5,
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      222.0
+     ],
+     "size": [
+      16.0,
+      12.0
+     ],
+     "rot": -30.0
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.4,
+   "kind": "flat",
+   "material": "ember",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "ember_glow"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      98.0,
+      170.0
+     ],
+     "size": [
+      14.0,
+      8.0
+     ],
+     "rot": 20.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      130.0,
+      166.0
+     ],
+     "size": [
+      11.0,
+      7.0
+     ],
+     "rot": 10.0
+    }
+   ]
+  },
+  {
+   "name": "maw",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.25,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      90.0,
+      232.0
+     ],
+     "size": [
+      34.0,
+      58.0
+     ],
+     "rot": -112.0
+    }
+   ]
+  },
+  {
+   "name": "fangs",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.28,
+   "kind": "flat",
+   "material": "tooth",
+   "line": {
+    "width": 0.4,
+    "heavy": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      80.0,
+      222.0
+     ],
+     "size": [
+      6.0,
+      12.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      96.0,
+      218.0
+     ],
+     "size": [
+      6.0,
+      11.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      86.0,
+      244.0
+     ],
+     "size": [
+      5.0,
+      10.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

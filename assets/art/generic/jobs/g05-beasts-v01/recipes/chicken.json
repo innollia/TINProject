@@ -1,0 +1,508 @@
+{
+ "asset": "chicken",
+ "status": "candidate",
+ "note": "Hen, front view. Plump speckled brown hen with a red-wine comb and wattles, a small yellow beak, beady eyes, fluffed wings, a tail tuft and scaly yellow legs.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 839,
+ "g05": {
+  "name_ko": "닭",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      363.6
+     ],
+     "size": [
+      140.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      143.0,
+      330.0
+     ],
+     "size": [
+      8.0,
+      42.8
+     ],
+     "rot": 2.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      355.0
+     ],
+     "size": [
+      5.0,
+      16.1
+     ],
+     "rot": 50.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      355.0
+     ],
+     "size": [
+      5.0,
+      10.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      148.0,
+      355.0
+     ],
+     "size": [
+      5.0,
+      16.1
+     ],
+     "rot": -50.2
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      177.0,
+      330.0
+     ],
+     "size": [
+      8.0,
+      42.8
+     ],
+     "rot": -2.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      355.0
+     ],
+     "size": [
+      5.0,
+      16.1
+     ],
+     "rot": 50.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      355.0
+     ],
+     "size": [
+      5.0,
+      10.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.0,
+      355.0
+     ],
+     "size": [
+      5.0,
+      16.1
+     ],
+     "rot": -50.2
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.5,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "feather",
+     "at": [
+      210.0,
+      214.0
+     ],
+     "size": [
+      30.0,
+      60.0
+     ],
+     "rot": 30.0
+    },
+    {
+     "icon": "feather",
+     "at": [
+      110.0,
+      214.0
+     ],
+     "size": [
+      30.0,
+      60.0
+     ],
+     "rot": -30.0,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      270.0
+     ],
+     "size": [
+      140.0,
+      130.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "speckle",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "feather_pale",
+   "clip_to": "body",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      130.0,
+      260.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      190.0,
+      260.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      160.0,
+      284.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      124.0,
+      300.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "rot": -45.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      196.0,
+      300.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ],
+     "rot": -45.0
+    }
+   ]
+  },
+  {
+   "name": "wing_l",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.3,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      100.0,
+      272.0
+     ],
+     "size": [
+      40.0,
+      90.0
+     ],
+     "rot": 14.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "wing_r",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.3,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      220.0,
+      272.0
+     ],
+     "size": [
+      40.0,
+      90.0
+     ],
+     "rot": -14.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "feather_brown",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      186.0
+     ],
+     "size": [
+      70.0,
+      64.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "comb",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.9,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      160.0,
+      152.0
+     ],
+     "size": [
+      44.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wattle",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      222.0
+     ],
+     "size": [
+      16.0,
+      24.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "beak",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      206.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.25,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      143.0,
+      186.0
+     ],
+     "size": [
+      8.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      177.0,
+      186.0
+     ],
+     "size": [
+      8.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.35,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141.2,
+      184.0
+     ],
+     "size": [
+      2.4,
+      2.3
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      175.2,
+      184.0
+     ],
+     "size": [
+      2.4,
+      2.3
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

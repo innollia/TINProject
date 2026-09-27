@@ -30,6 +30,6 @@ A (4, 기본·공격·피격): - [x] robot 경비 로봇  - [x] alien 외계인 
 
 B (12, 기본 1장): - [x] winged_horror 날개 달린 괴물  - [x] clown_monster 광대 괴물  - [x] jack_in_the_box 깜짝 상자  - [x] dark_matter 암흑 물질 덩어리  - [x] android 안드로이드  - [x] combat_drone 전투 드론  - [x] guard_doll 태엽 경비 인형  - [x] steam_golem 증기 골렘  - [x] mutant_rat 돌연변이 쥐  - [x] mutant_roach 돌연변이 바퀴벌레  - [x] cactus_monster 선인장 괴물  - [x] skeleton_pirate 해골 해적
 
-C (8, 기본 1장): cursed_doll, shadow_stalker, xeno_bug, cyber_dog, mech_walker, clockwork_spider, clockwork_bird, two_headed_dog — 대기
+C (8, 기본 1장): cursed_doll, shadow_stalker, xeno_bug, cyber_dog, mech_walker, clockwork_spider, clockwork_bird, two_headed_dog — 건너뜀 (2026-09-27 사용자 마무리 지시: 전체 이미지가 목표 3000장을 넘어 새 자산을 시작하지 않음)
 
 검수 시트: `preview\review_A_genre.png`, `preview\review_B_genre.png`

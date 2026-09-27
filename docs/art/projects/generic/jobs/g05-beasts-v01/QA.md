@@ -4,7 +4,7 @@
 
 ## 확인한 것 (read 도구로 직접 봄)
 
-- 5~10종마다 모아 보기 시트를 보고 고쳤다. 시트: `preview\review_A_beasts.png`, `preview\review_B_beasts.png`.
+- 5~10종마다 모아 보기 시트를 보고 고쳤다. 시트: `preview\review_A_beasts.png`, `preview\review_B_beasts.png`, `preview\review_C_beasts_1.png`, `preview\review_C_beasts_2.png`.
 - `tool\check_edges.py`: 모든 그림·그림자·발광 레이어 통과.
 - 고친 것(자산당 2번 이하):
   - 박쥐: 날개가 좌우 가장자리에서 잘려 폭을 줄이고 피격 기울기를 줄임.

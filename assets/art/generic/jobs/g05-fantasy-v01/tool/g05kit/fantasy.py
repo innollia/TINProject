@@ -6,6 +6,8 @@ idle / attack / hit, B and C items idle only.
 
 from __future__ import annotations
 
+import math
+
 from .body import Biped, rot_pt
 from .parts import bat_wing, spikes_on, wing_at
 from .kit import (E, P, Creature, brows, creature, dot_eyes, fangs, membrane, mirror, poly, row, seg, smile, std_frames,
@@ -1204,4 +1206,279 @@ def earth_spirit():
     c.flat("mouth", "void", 3.5, smile(cx, 286, 50, 14, frown=True), tags=("head",))
     std_frames(c, a_state=False)
     c.meta.update(name_ko="땅 정령", size="사람")
+    return c
+
+
+# ================================================================ C (idle only)
+@creature("cyclops", "C")
+def cyclops():
+    W, H = 512, 512
+    cx, gy = 256, 494
+    c = Creature("cyclops", (W, H), (cx, gy), seed=531,
+                 note="Cyclops, front view. Hulking tan-skinned one-eyed giant with a single huge glaring eye under a "
+                      "heavy brow, a stubby horn, wild hair, crooked tusks, hide loincloth and a boulder hefted in one hand.")
+    b = Biped(c, cx, gy, 440, build=1.3, leg=0.38, torso=0.32, head=0.19, shoulder=0.17, hip=0.1, arm_w=0.078,
+              leg_w=0.09, arm_len=0.4, stance=1.25, hunch=0.05)
+    c.shadow(cx, gy - 2, 290, 32)
+    ys, yh, hy0 = b.y_sh, b.y_hip, b.head_y
+    b.legs("snout", foot="claw", z=1, thigh=1.1, shin=1.0, foot_w=1.6)
+    c.add("torso", "snout", 3, [E(cx, ys + 50, 230, 120), E(cx, yh - 40, 170, 120)], tags=("torso",))
+    c.add("loin", "fur_brown", 3.3, [E(cx, yh + 8, 170, 44), P("bookmark", cx, yh + 50, 80, 70)], tags=("torso",))
+    b.arm_to("l", (b.sh["l"][0] - 30, ys + 170), bend=0.12)
+    b.arm_to("r", (b.sh["r"][0] + 40, ys + 30), elbow=(b.sh["r"][0] + 50, ys + 90))
+    b.arm("l", "snout", z=4, upper=1.1, fore=1.0, hand=1.3)
+    b.arm("r", "snout", z=4, upper=1.1, fore=1.0, hand=1.3)
+    hx, hy = b.hand["r"]
+    c.add("boulder_fill", "stone_cap", 3.85, [E(hx + 10, hy - 50, 100, 80)], tags=("rock",), line=False)
+    c.add("boulder", "stone", 3.9, [P("rocks", hx + 10, hy - 54, 120, 100)], tags=("rock",))
+    c.add("hair", "hair", 6.4, [P("cloud", cx, hy0 - 36, 120, 60)], tags=("head",))
+    c.add("head", "snout", 7, [E(cx, hy0, 96, 90), E(cx, hy0 + 24, 100, 54)], tags=("head",))
+    c.add("horn", "horn", 6.9, [P("cone", cx, hy0 - 56, 20, 32)], tags=("head",))
+    c.flat("eye_white", "eye_white", 7.2, [E(cx, hy0 - 6, 50, 40)], tags=("head",))
+    c.add("iris", "iris", 7.3, [E(cx, hy0 - 4, 24, 24)], tags=("head",))
+    c.flat("pupil", "eye", 7.35, [E(cx, hy0 - 4, 10, 12)], tags=("head",))
+    c.add("brow", "snout", 7.4, [E(cx, hy0 - 26, 70, 14)], tags=("head",))
+    c.add("nose", "snout", 7.45, [E(cx, hy0 + 18, 22, 16)], tags=("head",))
+    c.flat("mouth", "mouth", 7.5, smile(cx, hy0 + 36, 50, 12, frown=True), tags=("head",))
+    c.add("tusks", "tooth", 7.55, [P("triangle", cx - 16, hy0 + 30, 8, 14, rot=-10), P("triangle", cx + 18, hy0 + 32, 7, 11, rot=14)],
+          tags=("head",), line={"width": 0.5, "heavy": 0.4})
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="외눈 거인", size="큼")
+    return c
+
+
+@creature("kobold", "C")
+def kobold():
+    from .kit import held
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("kobold", (W, H), (cx, gy), seed=532,
+                 note="Kobold, front view. Small scaly rust-red reptilian miner with a doglike snout, stubby horns, "
+                      "yellow eyes, a leather miner's cap with a lit candle stub, ragged vest, a pickaxe over one shoulder "
+                      "and a thin tail.")
+    b = Biped(c, cx, gy, 250, build=0.95, leg=0.36, torso=0.28, head=0.26, shoulder=0.15, hip=0.09, arm_w=0.07,
+              leg_w=0.08, arm_len=0.36, stance=1.2, hunch=0.03)
+    c.shadow(cx, gy - 2, 140, 20)
+    ys, yh, hy0 = b.y_sh, b.y_hip, b.head_y
+    c.add("tail", "chitin_rust", 0.8, tube([(cx + 10, yh + 10), (cx + 70, yh + 50), (cx + 90, yh + 20)], 16, 5, n=8, cap=True), tags=("tail",))
+    b.legs("chitin_rust", foot="claw", z=1, thigh=1.0, shin=0.9)
+    b.torso("chitin_rust", z=3, chest=0.9, shape="slim")
+    c.add("vest", "leather", 3.2, [P("droplet", cx - 22, ys + 40, 30, 70, flip="y"), P("droplet", cx + 22, ys + 40, 30, 70, flip="y")], tags=("torso",))
+    c.add("belt", "leather", 3.4, [E(cx, yh - 4, 70, 10)], tags=("torso",))
+    b.arm_to("l", (b.sh["l"][0] - 8, ys + 80), bend=0.12)
+    b.arm_to("r", (b.sh["r"][0] + 10, ys + 40), elbow=(b.sh["r"][0] + 24, ys + 60))
+    b.arm("l", "chitin_rust", z=4, upper=1.0, fore=0.9, hand=1.2, claws=0.6)
+    b.arm("r", "chitin_rust", z=4, upper=1.0, fore=0.9, hand=1.2)
+    c.add("pickaxe", "iron", 3.9, [held("pickaxe", b.hand["r"], 100, -120, grip=0.46)], tags=("weapon",))
+    c.add("horns", "horn", 6.8, [P("cone", cx - 20, hy0 - 34, 12, 20, rot=-20), P("cone", cx + 20, hy0 - 34, 12, 20, rot=20)], tags=("head",))
+    c.add("head", "chitin_rust", 7, [E(cx, hy0, 66, 58)], tags=("head",))
+    c.add("snout", "chitin_rust", 7.2, [E(cx, hy0 + 20, 40, 30)], tags=("head",))
+    c.flat("nostrils", "mouth", 7.3, [E(cx - 6, hy0 + 14, 4, 3), E(cx + 6, hy0 + 14, 4, 3)], tags=("head",))
+    c.flat("mouth", "mouth", 7.3, [seg(cx - 12, hy0 + 28, cx + 12, hy0 + 28, 2.5)], tags=("head",))
+    c.glow("eyes", "glow_yellow", 7.3, [E(cx - 14, hy0 - 4, 12, 10, rot=10), E(cx + 14, hy0 - 4, 12, 10, rot=-10)], tags=("head",),
+           color="glow_yellow_c", strength=0.5, opacity=0.3)
+    c.flat("pupils", "eye", 7.35, [E(cx - 14, hy0 - 4, 3, 8), E(cx + 14, hy0 - 4, 3, 8)], tags=("head",))
+    c.add("cap", "leather", 7.5, [P("circle", cx, hy0 - 22, 60, 30, half="top"), E(cx, hy0 - 22, 66, 10)], tags=("head",))
+    c.add("candle", "paper", 7.6, [P("square", cx, hy0 - 44, 10, 18)], tags=("head",))
+    c.glow("flame", "flame", 7.7, [P("fire", cx, hy0 - 60, 14, 18)], tags=("head",), color="flame_glow", strength=1.0, opacity=0.6)
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="코볼트", size="작음")
+    return c
+
+
+@creature("cockatrice", "C")
+def cockatrice():
+    W, H = 384, 384
+    cx, gy = 192, 366
+    c = Creature("cockatrice", (W, H), (cx, gy), seed=533,
+                 note="Cockatrice, front view. Rooster-headed beast with a wine comb and wattles, hooked beak and glaring "
+                      "eyes, dusty green-brown feathered breast, leathery bat wings raised, scaly chicken legs, and a long "
+                      "serpent tail coiling on the ground.")
+    c.shadow(cx, gy - 2, 260, 28)
+    for s, k in (("l", -1), ("r", 1)):
+        bat_wing(c, f"wing_{s}", s, (cx + k * 26, 190), 150, 90, "membrane_green", "horn", 1, ("wings",))
+    c.add("tail", "scale_green", 1.3, tube([(cx + 20, 290), (cx + 120, 350), (cx + 170, 300), (cx + 140, 250)], 30, 8, n=14, cap=True), tags=("tail",))
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"leg_{s}", "gold", 1.5, [seg(cx + k * 22, 280, cx + k * 28, 340, 12)] + [seg(cx + k * 28, 340, cx + k * 28 + d * 14, 356, 6, ext=0.1)
+                                                                                    for d in (-1, 0, 1)], tags=("legs",))
+    c.add("body", "feather_brown", 2, [E(cx, 250, 130, 120)], tags=("body",))
+    c.add("breast", "scale_green", 2.1, [P("droplet", cx, 250, 70, 100, flip="y")], tags=("body",), clip_to="body", opacity=0.8)
+    c.add("neck", "feather_brown", 2.5, [seg(cx, 230, cx, 170, 50)], tags=("head",))
+    c.add("head", "feather_brown", 3, [E(cx, 152, 64, 58)], tags=("head",))
+    c.add("comb", "cloth_wine", 2.9, [P("cloud", cx, 118, 50, 30), P("droplet", cx - 10, 108, 16, 24, rot=-20), P("droplet", cx + 10, 106, 16, 26, rot=20)],
+          tags=("head",))
+    c.add("wattles", "cloth_wine", 3.3, [P("droplet", cx - 6, 196, 14, 26, flip="y"), P("droplet", cx + 6, 196, 14, 26, flip="y")], tags=("head",))
+    c.add("beak", "gold", 3.2, [P("droplet", cx, 178, 26, 30, flip="y")], tags=("head",))
+    c.glow("eyes", "glow_red", 3.25, [E(cx - 16, 148, 12, 10, rot=14), E(cx + 16, 148, 12, 10, rot=-14)], tags=("head",), color="glow_red_c",
+           strength=0.8, opacity=0.4)
+    c.flat("pupils", "eye", 3.3, [E(cx - 16, 148, 4, 7), E(cx + 16, 148, 4, 7)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="코카트리스", size="사람")
+    return c
+
+
+@creature("unicorn", "C")
+def unicorn():
+    W, H = 512, 512
+    gy = 494
+    c = Creature("unicorn", (W, H), (260, gy), seed=534,
+                 note="Unicorn, 3/4 front view facing the lower left. Pale grey-white horse with a long spiral bone horn, "
+                      "flowing violet-grey mane and tail, feathered fetlocks over dark hooves, calm glowing eyes.")
+    c.shadow(270, gy - 4, 360, 40)
+    legs = [((356, 330), (368, 400), (362, 470), 30, 1), ((200, 330), (206, 400), (204, 470), 28, 1),
+            ((354, 336), (378, 404), (370, 476), 38, 3), ((168, 336), (160, 404), (158, 476), 36, 3.1)]
+    from .kit import seg as _seg
+    for i, (hip, knee, foot, w, z) in enumerate(legs):
+        c.add(f"leg_{i}", "fur_white" if z >= 2 else "feather_pale", z, [_seg(hip[0], hip[1], knee[0], knee[1], w), _seg(knee[0], knee[1], foot[0], foot[1], w * 0.7)],
+              tags=("legs",))
+        c.add(f"fetlock_{i}", "fur_white", z + 0.03, [P("cloud", foot[0], foot[1] - 4, w * 1.3, w * 0.8, flip="y")], tags=("legs",))
+        c.add(f"hoof_{i}", "horn", z + 0.05, [P("cylinder", foot[0], foot[1] + 10, w * 0.9, w * 0.5)], tags=("legs",))
+    c.add("tail", "ghost", 1.4, tube([(392, 262), (440, 300), (436, 400)], 40, 14, n=10, cap=True), tags=("tail",))
+    c.add("body", "fur_white", 2, [E(290, 290, 230, 120, -6), E(196, 300, 110, 120)], tags=("body",))
+    c.add("neck", "fur_white", 3.5, tube([(190, 280), (170, 220), (156, 170)], 90, 66, n=8, cap=True), tags=("head",))
+    c.add("mane", "ghost", 3.6, tube([(214, 262), (196, 200), (180, 146)], 34, 22, n=8, cap=True) + [P("droplet", 208, 180, 26, 60, rot=160)],
+          tags=("head",))
+    c.add("head", "fur_white", 4, [E(138, 160, 76, 66), E(100, 196, 56, 58), E(84, 222, 44, 34)], tags=("head",))
+    c.add("ears", "fur_white", 3.9, [P("triangle", 158, 112, 18, 34, rot=14), P("triangle", 140, 114, 16, 30, rot=-6)], tags=("head",))
+    c.add("horn", "bone", 4.2, [P("cone", 128, 90, 22, 80, rot=-12)], tags=("head",))
+    c.flat("horn_spiral", "bone_old", 4.25, [seg(118 + i * 3, 110 - i * 14, 136 + i * 1, 104 - i * 14, 2.5) for i in range(4)], tags=("head",),
+           clip_to="horn")
+    c.glow("eyes", "glow_cyan", 4.3, [E(118, 164, 11, 8, rot=20), E(146, 158, 9, 7, rot=10)], tags=("head",), color="ghost_glow_c", strength=0.6, opacity=0.3)
+    c.flat("pupils", "eye", 4.35, [E(118, 164, 4, 5), E(146, 158, 3, 4)], tags=("head",))
+    c.flat("nostril", "mouth", 4.3, [E(74, 224, 8, 6, rot=-30)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="유니콘", size="큼")
+    return c
+
+
+@creature("giant_snake", "C")
+def giant_snake():
+    W, H = 512, 512
+    cx, gy = 256, 494
+    c = Creature("giant_snake", (W, H), (cx, gy), seed=535,
+                 note="Giant snake, front view. Huge dark crimson-banded serpent in thick coils, head reared high with jaws "
+                      "wide open showing long fangs, yellow slit eyes, pale belly scales, a heavy tail tip curling out.")
+    c.shadow(cx, gy - 2, 360, 40)
+    c.add("coil_3", "scale_red", 1, [E(cx, 450, 340, 90)], tags=("coils",))
+    c.add("coil_2", "scale_red", 1.2, [E(cx + 10, 410, 280, 80)], tags=("coils",))
+    c.add("coil_1", "scale_red", 1.4, [E(cx - 6, 374, 220, 70)], tags=("coils",))
+    c.flat("bands", "robe_black", 1.5, [seg(cx - 150 + i * 42, 420, cx - 140 + i * 42, 480, 10) for i in range(8)], tags=("coils",), clip_to="coil_3", opacity=0.45)
+    c.add("tail", "scale_red", 0.8, tube([(cx + 160, 460), (cx + 220, 440), (cx + 226, 400)], 30, 6, n=8, cap=True), tags=("coils",))
+    neck = [(cx + 10, 370), (cx + 70, 300), (cx - 30, 240), (cx, 170)]
+    c.add("neck", "scale_red", 2, tube(neck, 76, 60, n=14, cap=True), tags=("head",))
+    c.add("neck_belly", "belly", 2.1, tube(neck, 36, 30, n=14, cap=True), tags=("head",), clip_to="neck", line=False)
+    c.add("head", "scale_red", 3, [E(cx, 136, 112, 80)], tags=("head",))
+    c.flat("mouth", "mouth", 3.1, [E(cx, 170, 90, 70)], tags=("head",))
+    c.add("jaw", "scale_red", 3.05, [E(cx, 206, 80, 30)], tags=("head",))
+    c.flat("fangs", "tooth", 3.2, [P("triangle", cx - 26, 152, 9, 30, flip="y"), P("triangle", cx + 26, 152, 9, 30, flip="y")], tags=("head",),
+           line={"width": 0.5, "heavy": 0.4})
+    c.add("tongue", "tongue", 3.25, [seg(cx, 190, cx, 222, 6), seg(cx, 220, cx - 9, 236, 4), seg(cx, 220, cx + 9, 236, 4)], tags=("head",))
+    c.glow("eyes", "glow_yellow", 3.3, [E(cx - 30, 120, 20, 14, rot=16), E(cx + 30, 120, 20, 14, rot=-16)], tags=("head",), color="glow_yellow_c",
+           strength=0.7, opacity=0.4)
+    c.flat("pupils", "eye", 3.35, [E(cx - 30, 120, 4, 13), E(cx + 30, 120, 4, 13)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="거대 뱀", size="큼")
+    return c
+
+
+@creature("light_spirit", "C")
+def light_spirit():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("light_spirit", (W, H), (cx, gy), seed=536,
+                 note="Light spirit, front view, floating. A small radiant being: warm white-gold orb body with a calm "
+                      "face, a halo ring, four soft light-petal wings, a tapering wisp tail; fully emissive.")
+    c.shadow(cx, gy - 2, 80, 12, opacity=0.22, blur=7)
+    for d in range(4):
+        rot = 45 + d * 90
+        c.add(f"petal_{d}", "fire_core", 1, [P("droplet", cx + 60 * math.sin(math.radians(rot)), 180 - 60 * math.cos(math.radians(rot)), 40, 80, rot=rot)],
+              tags=("wings",), emit=0.8, opacity=0.7, line={"width": 0.6, "heavy": 0.5})
+    c.add("tail", "fire_core", 1.5, tube([(cx, 220), (cx + 10, 260), (cx - 8, 300)], 40, 6, n=8, cap=True), tags=("body",), emit=0.9, opacity=0.8, line=False)
+    c.add("orb", "glow_white", 2, [E(cx, 180, 100, 100)], tags=("body",), kind="flat", emit=1.0,
+          glow={"radius": 8, "opacity": 0.6, "color": "lamp_glow"}, line={"width": 0.8, "heavy": 0.6})
+    c.add("core", "fire_core", 2.1, [E(cx, 186, 70, 66)], tags=("body",), emit=1.0, line=False, opacity=0.8)
+    c.add("halo", "gold", 3, [E(cx, 118, 70, 18), E(cx, 116, 54, 10, op="sub")], tags=("body",), emit=0.9)
+    c.flat("eyes", "bronze", 3.1, [smile(cx - 16, 180, 14, 6)[0], smile(cx - 16, 180, 14, 6)[1]], tags=("body",))
+    c.flat("eyes_r", "bronze", 3.1, smile(cx + 16, 180, 14, 6), tags=("body",))
+    c.flat("mouth", "bronze", 3.1, smile(cx, 200, 16, 6), tags=("body",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="빛 정령", size="작음")
+    return c
+
+
+@creature("ice_spirit", "C")
+def ice_spirit():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("ice_spirit", (W, H), (cx, gy), seed=537,
+                 note="Ice spirit, front view, hovering. Figure of cold blue-grey ice shards: faceted crystal torso, a crown "
+                      "of icicle spikes around a smooth face with glowing pale eyes, shard arms, a trail of frozen mist and "
+                      "a snowflake emblem on the chest.")
+    c.shadow(cx, gy - 2, 110, 16, opacity=0.25, blur=7)
+    c.add("mist", "ghost", 0.5, [P("cloud", cx, 330, 160, 50)], tags=("body",), opacity=0.5, line=False)
+    c.add("lower", "ice", 1, [P("triangle", cx, 290, 100, 120, flip="y"), P("triangle", cx - 26, 300, 40, 70, flip="y", rot=10),
+                              P("triangle", cx + 26, 300, 40, 70, flip="y", rot=-10)], tags=("body",))
+    c.add("torso", "ice", 2, [P("diamond", cx, 214, 110, 140)], tags=("body",))
+    c.glow("emblem", "glow_cyan", 2.1, [P("snowflake", cx, 214, 40, 40)], tags=("body",), color="ghost_glow_c", strength=0.9, opacity=0.5)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"arm_{s}", "ice", 2.5, [P("triangle", cx + k * 70, 220, 30, 100, rot=k * 150), P("prism", cx + k * 60, 180, 30, 50, rot=k * 40)], tags=("arms",))
+    c.add("head", "ice", 3, [E(cx, 132, 60, 64)], tags=("head",))
+    c.add("crown", "ice", 2.9, [P("triangle", cx + d * 16, 96 - (2 - abs(d)) * 10, 12, 34 + (2 - abs(d)) * 8, rot=d * 16) for d in (-2, -1, 0, 1, 2)],
+          tags=("head",))
+    c.glow("eyes", "glow_cyan", 3.2, [E(cx - 12, 134, 10, 6), E(cx + 12, 134, 10, 6)], tags=("head",), color="ghost_glow_c", strength=1.0, opacity=0.6)
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="얼음 정령", size="사람")
+    return c
+
+
+@creature("mandrake", "C")
+def mandrake():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("mandrake", (W, H), (cx, gy), seed=538,
+                 note="Mandrake, front view. Pale knobbly root creature with a tuft of dark leaves on its head, a gaping "
+                      "screaming mouth and hollow eyes, forked root legs and twiggy root arms thrown up, soil clinging.")
+    c.shadow(cx, gy - 2, 130, 18)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"leg_{s}", "mushroom_stem", 1, tube([(cx + k * 14, 290), (cx + k * 30, 330), (cx + k * 26, 360)], 26, 8, n=8, cap=True), tags=("legs",))
+        c.add(f"arm_{s}", "mushroom_stem", 1.5, tube([(cx + k * 30, 230), (cx + k * 70, 200), (cx + k * 84, 150)], 16, 5, n=8, cap=True)
+              + tube([(cx + k * 76, 180), (cx + k * 100, 170)], 7, 3, n=4, cap=True), tags=("arms",))
+    c.add("body", "mushroom_stem", 2, [P("droplet", cx, 250, 90, 120, flip="y"), E(cx, 222, 90, 90)], tags=("body",))
+    c.add("soil", "leather", 2.1, [E(cx, 300, 60, 30), E(cx - 30, 240, 20, 14)], tags=("body",), clip_to="body", opacity=0.6, line=False)
+    c.add("leaves", "leaf_dark", 1.8, [P("leaf", cx + d * 20, 150 - (2 - abs(d)) * 12, 30, 56, rot=d * 26) for d in (-2, -1, 0, 1, 2)], tags=("head",))
+    c.flat("eyes", "void", 2.3, [E(cx - 18, 206, 16, 20, rot=10), E(cx + 18, 206, 16, 20, rot=-10)], tags=("body",))
+    c.flat("mouth", "void", 2.3, [E(cx, 244, 34, 44)], tags=("body",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="만드라고라", size="작음")
+    return c
+
+
+@creature("vine_monster", "C")
+def vine_monster():
+    W, H = 384, 384
+    cx, gy = 192, 366
+    c = Creature("vine_monster", (W, H), (cx, gy), seed=539,
+                 note="Vine monster, front view. A shambling tangle of thorny dark vines knotted into a hunched body, "
+                      "a knot of bark for a face with two glowing green eyes, lashing vine arms, leaves and a single wine "
+                      "blossom, roots spreading on the ground.")
+    c.shadow(cx, gy - 2, 280, 30)
+    for i, (x0, x1) in enumerate(((-40, -130), (40, 140), (-10, -60), (10, 70))):
+        c.add(f"root_{i}", "bark", 1, tube([(cx + x0, 330), ((cx + x0 + cx + x1) / 2, 356), (cx + x1, 362)], 16, 5, n=6, cap=True), tags=("roots",))
+    strands = [[(cx - 60, 330), (cx - 90, 250), (cx - 30, 180), (cx - 50, 120)], [(cx + 60, 330), (cx + 90, 250), (cx + 30, 180), (cx + 50, 120)],
+               [(cx - 20, 340), (cx + 40, 260), (cx - 40, 200), (cx + 10, 130)], [(cx + 20, 340), (cx - 40, 260), (cx + 40, 200), (cx - 10, 130)],
+               [(cx, 340), (cx + 70, 290), (cx - 70, 230), (cx, 160)]]
+    for i, st in enumerate(strands):
+        c.add(f"strand_{i}", "leaf_dark", 2 + i * 0.05, tube(st, 34, 20, n=12, cap=True), tags=("body",))
+    c.add("thorns", "horn", 2.4, spikes_on(strands[0], 5, 14, 9, 0.1, 0.9, side=-1) + spikes_on(strands[1], 5, 14, 9, 0.1, 0.9, side=1), tags=("body",))
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"arm_{s}", "leaf_dark", 2.6, tube([(cx + k * 40, 200), (cx + k * 120, 190), (cx + k * 150, 250), (cx + k * 130, 300)], 22, 6, n=12, cap=True),
+              tags=("arms",))
+    c.add("leaves", "leaf", 2.7, [P("leaf", cx - 90, 180, 34, 30, rot=-40), P("leaf", cx + 94, 220, 30, 28, rot=50), P("leaf", cx + 30, 110, 30, 26, rot=10)],
+          tags=("body",))
+    c.add("face", "bark", 3, [E(cx, 170, 70, 60)], tags=("head",))
+    c.glow("eyes", "glow_green", 3.1, [E(cx - 14, 166, 12, 9), E(cx + 14, 166, 12, 9)], tags=("head",), color="glow_green_c", strength=1.0, opacity=0.6)
+    c.flat("mouth", "void", 3.1, [P("mountains", cx, 188, 36, 12, flip="y")], tags=("head",))
+    c.add("blossom", "petal", 3.2, [P("flower", cx + 44, 136, 34, 34)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="덩굴 괴물", size="사람")
     return c

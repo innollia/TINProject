@@ -28,6 +28,6 @@ A (3, 기본·공격·피격): - [x] gumiho 구미호  - [x] dokkaebi 도깨비 
 
 B (4, 기본 1장): - [x] tengu 텐구  - [x] kappa 갓파  - [x] oni 오니  - [x] haetae 해태
 
-C (5, 기본 1장): imugi, lantern_ghost, umbrella_ghost, bulgasari, virgin_ghost — 대기
+C (5, 기본 1장): - [x] imugi 이무기  - [x] lantern_ghost 초롱 요괴  - [x] umbrella_ghost 우산 요괴  - [x] bulgasari 불가사리(쇠 먹는 짐승)  - [x] virgin_ghost 처녀귀신
 
-검수 시트: `preview\review_A_east.png`, `preview\review_B_east.png`
+검수 시트: `preview\review_A_east.png`, `preview\review_B_east.png`, `preview\review_C_east.png`

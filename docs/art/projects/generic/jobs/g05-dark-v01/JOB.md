@@ -30,6 +30,6 @@ A (10, 기본·공격·피격):
 
 B (7, 기본 1장): - [x] robed_skeleton 로브 입은 해골(해골 마법사)  - [x] bone_dog 뼈 개  - [x] wraith 망자(떠도는 망령)  - [x] pumpkin_ghost 호박 유령  - [x] giant_knight 거대 기사  - [x] imp 임프(작은 악마)  - [x] mimic_door 미믹(문)
 
-C (8, 기본 1장): hungry_ghost, soul_wall, bone_beast, skull_mimic, pumpkin_bat, snake_ghost, owl, hellhound — 대기
+C (8, 기본 1장): - [x] hungry_ghost 아귀  - [x] soul_wall 망자가 뭉친 벽  - [x] bone_beast 뼈 짐승  - [x] skull_mimic 해골 흉내 괴물  - [x] pumpkin_bat 호박 박쥐  - [x] snake_ghost 뱀 유령  - [x] owl 부엉이  - [x] hellhound 지옥개
 
-검수 시트: `preview\review_A_dark_1.png`(사람 크기 8종), `preview\review_A_dark_2.png`(큼 2종), `preview\review_B_dark.png`
+검수 시트: `preview\review_A_dark_1.png`(사람 크기 8종), `preview\review_A_dark_2.png`(큼 2종), `preview\review_B_dark.png`, `preview\review_C_dark.png`

@@ -50,6 +50,6 @@ A (15, 기본·공격·피격):
 
 B (10, 기본 1장): - [x] hydra 히드라  - [x] yeti 설인  - [x] giant 거인  - [x] fairy 요정  - [x] beastman 수인(짐승 인간)  - [x] snake_man 뱀 인간  - [x] man_eater_plant 식인 식물  - [x] water_spirit 물 정령  - [x] wind_spirit 바람 정령  - [x] earth_spirit 땅 정령
 
-C (9, 기본 1장): cyclops, kobold, cockatrice, unicorn, giant_snake, light_spirit, ice_spirit, mandrake, vine_monster — 대기
+C (9, 기본 1장): - [x] cyclops 외눈 거인  - [x] kobold 코볼트  - [x] cockatrice 코카트리스  - [x] unicorn 유니콘  - [x] giant_snake 거대 뱀  - [x] light_spirit 빛 정령  - [x] ice_spirit 얼음 정령  - [x] mandrake 만드라고라  - [x] vine_monster 덩굴 괴물
 
-검수 시트: `preview\review_A_fantasy_1.png`(작음·사람 크기 8종), `preview\review_A_fantasy_2.png`(큼·거대 7종), `preview\review_B_fantasy.png`
+검수 시트: `preview\review_A_fantasy_1.png`(작음·사람 크기 8종), `preview\review_A_fantasy_2.png`(큼·거대 7종), `preview\review_B_fantasy.png`, `preview\review_C_fantasy.png`

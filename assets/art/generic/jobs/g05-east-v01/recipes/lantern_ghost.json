@@ -1,0 +1,452 @@
+{
+ "asset": "lantern_ghost",
+ "status": "candidate",
+ "note": "Lantern ghost, front view, floating. An old ribbed paper lantern torn open into a grinning mouth with a long lolling tongue, one huge glowing eye, lit warmly from inside, black lacquer caps and a wire handle.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 732,
+ "g05": {
+  "name_ko": "초롱 요괴",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.25,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      360.8
+     ],
+     "size": [
+      100.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "handle",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "kind": "flat",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      100.0
+     ],
+     "size": [
+      50.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      76.0
+     ],
+     "size": [
+      60.0,
+      31.5
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "paper",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "paper",
+   "emit": 0.35,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      214.0
+     ],
+     "size": [
+      140.0,
+      180.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ribs",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "foxing",
+   "clip_to": "paper",
+   "opacity": 0.45,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      150.0
+     ],
+     "size": [
+      85.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      176.0
+     ],
+     "size": [
+      103.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      202.0
+     ],
+     "size": [
+      121.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      228.0
+     ],
+     "size": [
+      121.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      254.0
+     ],
+     "size": [
+      103.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      280.0
+     ],
+     "size": [
+      85.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cap_top",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      126.0
+     ],
+     "size": [
+      80.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cap_bot",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      302.0
+     ],
+     "size": [
+      70.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye_white",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.4,
+   "kind": "flat",
+   "material": "eye_white",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      180.0
+     ],
+     "size": [
+      56.0,
+      44.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "iris",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.5,
+   "kind": "flat",
+   "material": "glow_red",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "glow_red_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      182.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pupil",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.55,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      182.0
+     ],
+     "size": [
+      8.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.4,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      244.0
+     ],
+     "size": [
+      110.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      233.5
+     ],
+     "size": [
+      132.0,
+      31.5
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "tongue",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.6,
+   "material": "tongue",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      252.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ],
+     "rot": -22.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.8,
+      262.9
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "rot": -15.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.2,
+      273.9
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "rot": -8.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      177.1,
+      284.9
+     ],
+     "size": [
+      20.0,
+      21.9
+     ],
+     "rot": -0.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.5,
+      296.1
+     ],
+     "size": [
+      18.0,
+      21.9
+     ],
+     "rot": 6.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      174.5,
+      307.3
+     ],
+     "size": [
+      16.0,
+      21.9
+     ],
+     "rot": 13.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171.0,
+      318.6
+     ],
+     "size": [
+      14.0,
+      21.9
+     ],
+     "rot": 20.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      166.3,
+      329.5
+     ],
+     "size": [
+      12.0,
+      13.1
+     ],
+     "rot": 26.6
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

@@ -1,0 +1,584 @@
+{
+ "asset": "squirrel",
+ "status": "candidate",
+ "note": "Squirrel, front view, sitting up. Rusty-brown squirrel with a huge bushy tail curled up behind it, tufted ears, a pale belly, shiny dark eyes, holding an acorn in its paws.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 841,
+ "g05": {
+  "name_ko": "다람쥐",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      363.6
+     ],
+     "size": [
+      140.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "tail"
+   ],
+   "z": 1,
+   "material": "fur_fox",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      340.0
+     ],
+     "size": [
+      70.0,
+      70.0
+     ],
+     "rot": -114.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      196.7,
+      330.9
+     ],
+     "size": [
+      68.3,
+      68.3
+     ],
+     "rot": -123.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      210.8,
+      319.7
+     ],
+     "size": [
+      66.5,
+      66.5
+     ],
+     "rot": -133.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      222.4,
+      306.8
+     ],
+     "size": [
+      64.8,
+      64.8
+     ],
+     "rot": -142.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      231.6,
+      292.6
+     ],
+     "size": [
+      63.1,
+      63.1
+     ],
+     "rot": -151.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      238.5,
+      277.4
+     ],
+     "size": [
+      61.3,
+      61.3
+     ],
+     "rot": -159.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      243.2,
+      261.6
+     ],
+     "size": [
+      59.6,
+      59.6
+     ],
+     "rot": -167.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      245.7,
+      245.5
+     ],
+     "size": [
+      57.9,
+      57.9
+     ],
+     "rot": -174.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      246.3,
+      229.5
+     ],
+     "size": [
+      56.1,
+      56.1
+     ],
+     "rot": 178.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      244.8,
+      214.0
+     ],
+     "size": [
+      54.4,
+      54.4
+     ],
+     "rot": 171.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      241.5,
+      199.3
+     ],
+     "size": [
+      52.7,
+      52.7
+     ],
+     "rot": 163.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      236.4,
+      185.7
+     ],
+     "size": [
+      50.9,
+      50.9
+     ],
+     "rot": 155.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      229.6,
+      173.6
+     ],
+     "size": [
+      49.2,
+      49.2
+     ],
+     "rot": 145.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      221.2,
+      163.4
+     ],
+     "size": [
+      47.5,
+      47.5
+     ],
+     "rot": 135.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      211.3,
+      155.4
+     ],
+     "size": [
+      45.7,
+      45.7
+     ],
+     "rot": 122.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      200.0,
+      150.0
+     ],
+     "size": [
+      44.0,
+      44.0
+     ],
+     "rot": 108.4
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "fur_fox",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      154.0,
+      290.0
+     ],
+     "size": [
+      100.0,
+      140.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      320.0
+     ],
+     "size": [
+      110.0,
+      80.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "belly",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "fur_white",
+   "clip_to": "body",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      300.0
+     ],
+     "size": [
+      56.0,
+      80.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "feet",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "fur_fox",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      120.0,
+      356.0
+     ],
+     "size": [
+      40.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      186.0,
+      356.0
+     ],
+     "size": [
+      40.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "acorn",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.4,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      270.0
+     ],
+     "size": [
+      26.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      258.0
+     ],
+     "size": [
+      30.0,
+      16.0
+     ],
+     "half": "top"
+    }
+   ]
+  },
+  {
+   "name": "paws",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.5,
+   "material": "fur_fox",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      138.0,
+      272.0
+     ],
+     "size": [
+      18.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      272.0
+     ],
+     "size": [
+      18.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ears",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.9,
+   "material": "fur_fox",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      130.0,
+      176.0
+     ],
+     "size": [
+      20.0,
+      34.0
+     ],
+     "rot": -14.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      178.0,
+      176.0
+     ],
+     "size": [
+      20.0,
+      34.0
+     ],
+     "rot": 14.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "fur_fox",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      212.0
+     ],
+     "size": [
+      70.0,
+      62.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cheeks",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.1,
+   "material": "fur_white",
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      154.0,
+      228.0
+     ],
+     "size": [
+      50.0,
+      24.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      138.0,
+      206.0
+     ],
+     "size": [
+      10.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      206.0
+     ],
+     "size": [
+      10.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3000000000000003,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      135.8,
+      203.4
+     ],
+     "size": [
+      3.0,
+      3.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      167.8,
+      203.4
+     ],
+     "size": [
+      3.0,
+      3.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nose",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      154.0,
+      224.0
+     ],
+     "size": [
+      8.0,
+      6.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

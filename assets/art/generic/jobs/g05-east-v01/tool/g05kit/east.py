@@ -361,3 +361,139 @@ def haetae():
     std_frames(c, a_state=False)
     c.meta.update(name_ko="해태", size="큼")
     return c
+
+
+
+# ================================================================ C (idle only)
+@creature("imugi", "C")
+def imugi():
+    W, H = 640, 512
+    cx, gy = 320, 494
+    c = Creature("imugi", (W, H), (cx, gy), seed=731,
+                 note="Imugi, front view. Great legless serpent-dragon of dark river-teal scales coiling up in an S, a "
+                      "blunt dragon head with horn nubs, long drooping whiskers and a wispy beard, glowing yellow eyes, pale "
+                      "belly plates, a luminous pearl floating near its jaws.")
+    c.shadow(cx, gy - 2, 420, 44)
+    body = [(cx + 220, 460), (cx - 200, 440), (cx - 120, 300), (cx + 120, 300), (cx + 10, 170)]
+    c.add("body", "scale_teal", 1, tube(body, 40, 84, n=36, cap=True, stretch=2.3), tags=("body",))
+    c.add("belly", "belly", 1.1, tube(body, 16, 36, n=36, cap=True, stretch=2.3), tags=("body",), clip_to="body", line=False, opacity=0.8)
+    c.add("fins", "cloth_blue", 0.9, spikes_on(body, 9, 26, 16, 0.2, 0.9, side=-1), tags=("body",))
+    hx, hy = body[-1][0], body[-1][1] - 40
+    c.add("head", "scale_teal", 2, [E(hx, hy, 110, 84), E(hx, hy + 28, 84, 50)], tags=("head",))
+    c.add("horns", "horn", 1.9, [P("cone", hx - 30, hy - 50, 16, 30, rot=-20), P("cone", hx + 30, hy - 50, 16, 30, rot=20)], tags=("head",))
+    c.add("whiskers", "hair", 2.2, tube([(hx - 30, hy + 30), (hx - 70, hy + 34), (hx - 86, hy + 70)], 6, 2, n=8, cap=True)
+          + tube([(hx + 30, hy + 30), (hx + 70, hy + 34), (hx + 86, hy + 70)], 6, 2, n=8, cap=True), tags=("head",))
+    c.add("beard", "hair", 2.15, [P("droplet", hx, hy + 64, 30, 40, flip="y")], tags=("head",))
+    c.glow("eyes", "glow_yellow", 2.3, [E(hx - 26, hy - 8, 18, 11, rot=16), E(hx + 26, hy - 8, 18, 11, rot=-16)], tags=("head",), color="glow_yellow_c",
+           strength=0.8, opacity=0.45)
+    c.flat("pupils", "eye", 2.35, [E(hx - 26, hy - 8, 4, 10), E(hx + 26, hy - 8, 4, 10)], tags=("head",))
+    c.flat("nostrils", "mouth", 2.3, [E(hx - 10, hy + 24, 8, 6), E(hx + 10, hy + 24, 8, 6)], tags=("head",))
+    c.flat("mouth", "mouth", 2.3, [seg(hx - 30, hy + 42, hx + 30, hy + 42, 3)], tags=("head",))
+    c.glow("pearl", "glow_white", 3, [E(hx + 110, hy + 10, 40, 40)], tags=("fx",), color="lamp_glow", strength=1.0, opacity=0.6)
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="이무기", size="큼")
+    return c
+
+
+@creature("lantern_ghost", "C")
+def lantern_ghost():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("lantern_ghost", (W, H), (cx, gy), seed=732,
+                 note="Lantern ghost, front view, floating. An old ribbed paper lantern torn open into a grinning mouth "
+                      "with a long lolling tongue, one huge glowing eye, lit warmly from inside, black lacquer caps and a "
+                      "wire handle.")
+    c.shadow(cx, gy - 2, 100, 14, opacity=0.25, blur=7)
+    c.add("handle", "iron", 1, [smile(cx, 100, 50, 30, depth=0.8)[0], smile(cx, 100, 50, 30, depth=0.8)[1]], tags=("body",), kind="flat")
+    c.add("paper", "paper", 2, [E(cx, 214, 140, 180)], tags=("body",), emit=0.35)
+    c.flat("ribs", "foxing", 2.1, [smile(cx, 150 + i * 26, 130 - abs(i - 2.5) * 18, 10, depth=0.5)[0] for i in range(6)], tags=("body",),
+           clip_to="paper", opacity=0.45)
+    c.add("cap_top", "robe_black", 2.2, [E(cx, 126, 80, 22)], tags=("body",))
+    c.add("cap_bot", "robe_black", 2.2, [E(cx, 302, 70, 20)], tags=("body",))
+    c.flat("eye_white", "eye_white", 2.4, [E(cx, 180, 56, 44)], tags=("body",))
+    c.glow("iris", "glow_red", 2.5, [E(cx, 182, 26, 26)], tags=("body",), color="glow_red_c", strength=1.0, opacity=0.5)
+    c.flat("pupil", "eye", 2.55, [E(cx, 182, 8, 18)], tags=("body",))
+    c.flat("mouth", "mouth", 2.4, smile(cx, 244, 110, 30, depth=0.35), tags=("body",))
+    c.add("tongue", "tongue", 2.6, tube([(cx + 10, 252), (cx + 26, 290), (cx + 6, 330)], 26, 12, n=8, cap=True), tags=("body",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="초롱 요괴", size="작음")
+    return c
+
+
+@creature("umbrella_ghost", "C")
+def umbrella_ghost():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("umbrella_ghost", (W, H), (cx, gy), seed=733,
+                 note="Umbrella ghost, front view, hopping. A closed old oil-paper umbrella with ragged wine-red panels "
+                      "and bamboo ribs, one big eye, a long tongue hanging out, and a single hairy leg ending in a wooden "
+                      "geta sandal.")
+    c.shadow(cx, gy - 2, 90, 14)
+    c.add("leg", "hide_pink", 1, [seg(cx, 280, cx + 4, 336, 20)], tags=("body",))
+    c.add("geta", "wood", 1.1, [P("square", cx + 4, 346, 50, 12), P("square", cx - 10, 358, 8, 14), P("square", cx + 18, 358, 8, 14)], tags=("body",))
+    c.add("canopy", "cloth_wine", 2, [P("triangle", cx, 170, 150, 230), E(cx, 270, 110, 40)], tags=("body",))
+    c.flat("panels", "bark", 2.1, [seg(cx, 60, cx + d * 60, 280, 3) for d in (-1, -0.5, 0.5, 1)], tags=("body",), clip_to="canopy", opacity=0.6)
+    c.add("tears", "cloth_wine", 2.2, [P("mountains", cx, 286, 110, 20, flip="y")], tags=("body",))
+    c.add("tip", "bark", 1.9, [seg(cx, 70, cx, 36, 8)], tags=("body",))
+    c.flat("eye_white", "eye_white", 2.4, [E(cx, 190, 50, 40)], tags=("body",))
+    c.add("iris", "iris", 2.5, [E(cx, 192, 22, 22)], tags=("body",))
+    c.flat("pupil", "eye", 2.55, [E(cx, 192, 8, 8)], tags=("body",))
+    c.flat("mouth", "mouth", 2.4, smile(cx, 234, 50, 16), tags=("body",))
+    c.add("tongue", "tongue", 2.6, tube([(cx, 240), (cx - 18, 270), (cx - 4, 300)], 20, 10, n=8, cap=True), tags=("body",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="우산 요괴", size="작음")
+    return c
+
+
+@creature("bulgasari", "C")
+def bulgasari():
+    W, H = 512, 512
+    cx, gy = 256, 494
+    c = Creature("bulgasari", (W, H), (cx, gy), seed=734,
+                 note="Bulgasari (iron-eating beast), front view. Bulky beast of dark iron: bear-like body bristling with "
+                      "needle spikes of metal, a short elephant trunk, small rust-red glowing eyes, curved tusks, thick "
+                      "tiger-striped legs, a bent iron nail clutched in its trunk.")
+    c.shadow(cx, gy - 2, 340, 36)
+    c.add("spikes", "armor", 1, spikes_on([(cx - 180, 380), (cx - 150, 190), (cx, 140), (cx + 150, 190), (cx + 180, 380)], 14, 40, 20, 0.0, 1.0, side=-1),
+          tags=("body",))
+    c.add("body", "iron", 2, [E(cx, 330, 330, 260)], tags=("body",))
+    c.flat("stripes", "armor_dark", 2.1, [seg(cx + d * 40, 220 + abs(d) * 10, cx + d * 46, 300, 10) for d in (-3, -2, -1, 1, 2, 3)], tags=("body",),
+           clip_to="body", opacity=0.6)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"leg_{s}", "iron", 3, [seg(cx + k * 90, 400, cx + k * 100, 470, 70), E(cx + k * 100, 476, 90, 34)], tags=("legs",))
+        c.add(f"claws_{s}", "armor", 3.1, [P("triangle", cx + k * 100 + d * 22, 492, 10, 16, rot=180) for d in (-1, 0, 1)], tags=("legs",))
+    c.add("head", "iron", 4, [E(cx, 220, 150, 120)], tags=("head",))
+    c.add("ears", "iron", 3.9, [E(cx - 76, 180, 40, 50), E(cx + 76, 180, 40, 50)], tags=("head",))
+    c.glow("eyes", "glow_red", 4.1, [E(cx - 30, 206, 14, 10, rot=14), E(cx + 30, 206, 14, 10, rot=-14)], tags=("head",), color="glow_red_c", strength=0.8, opacity=0.5)
+    c.add("tusks", "bone_old", 4.2, [P("moon", cx - 40, 262, 30, 30, rot=-150), P("moon", cx + 40, 262, 30, 30, rot=150, flip="x")], tags=("head",))
+    c.add("trunk", "iron", 4.3, tube([(cx, 240), (cx + 6, 290), (cx - 20, 330), (cx - 10, 356)], 40, 22, n=12, cap=True), tags=("head",))
+    c.add("nail", "rust", 4.4, [seg(cx - 30, 356, cx + 20, 370, 7), P("square", cx - 32, 356, 16, 6, rot=20)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="불가사리", size="큼")
+    return c
+
+
+@creature("virgin_ghost", "C")
+def virgin_ghost():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("virgin_ghost", (W, H), (cx, gy), seed=735,
+                 note="Maiden ghost (cheonyeo gwishin), front view, floating. A pale spirit in a long plain white mourning "
+                      "dress, long straight black hair hanging over half her face, one dark-ringed glowing eye visible, "
+                      "grey hands hanging, the hem fading into mist.")
+    c.shadow(cx, gy - 2, 100, 14, opacity=0.25, blur=7)
+    c.add("dress", "paper", 2, [P("bell", cx, 244, 130, 230, crop=[1.6, 1.4, 14.4, 11.6]), P("mountains", cx, 356, 130, 30, op="sub")],
+          tags=("body",), opacity=0.92)
+    c.add("mist", "ghost", 1.9, [P("cloud", cx, 344, 130, 40)], tags=("body",), opacity=0.5, line=False)
+    c.add("sleeves", "paper", 2.2, [seg(cx - 40, 150, cx - 56, 230, 30), seg(cx + 40, 150, cx + 56, 230, 30)], tags=("body",), opacity=0.95)
+    c.add("hands", "corpse_grey", 2.3, [E(cx - 58, 246, 16, 22), E(cx + 58, 246, 16, 22)], tags=("body",))
+    c.add("hair_back", "hair", 2.5, [P("square", cx, 176, 90, 180), E(cx, 104, 92, 60)], tags=("head",))
+    c.add("face", "pale", 3, [E(cx, 118, 50, 60)], tags=("head",))
+    c.flat("ring", "soot", 3.1, [E(cx + 12, 114, 18, 14)], tags=("head",))
+    c.glow("eye", "glow_red", 3.2, [E(cx + 12, 114, 7, 6)], tags=("head",), color="glow_red_c", strength=1.0, opacity=0.6)
+    c.flat("mouth", "mouth", 3.1, [seg(cx + 2, 140, cx + 12, 142, 2)], tags=("head",))
+    c.add("hair_front", "hair", 3.3, [P("square", cx - 20, 150, 26, 120), P("droplet", cx + 30, 196, 16, 150, flip="y"), E(cx - 8, 92, 60, 24)],
+          tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="처녀귀신", size="사람")
+    return c

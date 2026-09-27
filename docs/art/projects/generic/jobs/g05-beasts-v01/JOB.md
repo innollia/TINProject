@@ -28,6 +28,6 @@ A (7, 기본·공격·피격): - [x] wolf 늑대  - [x] bear 곰  - [x] boar 멧
 
 B (5, 기본 1장): - [x] dog 개  - [x] cat 고양이  - [x] horse 말  - [x] giant_frog 거대 개구리  - [x] vulture 대머리수리
 
-C (22, 기본 1장): bat_swarm, frog, crocodile, coyote, small_bird, pig, goat, deer, chicken, duck, squirrel, raccoon, monkey, elephant, lizard, turtle, penguin, walrus, flamingo, bison, parrot, rattlesnake — 대기
+C (22, 기본 1장): - [x] bat_swarm 박쥐 떼  - [x] frog 개구리  - [x] crocodile 악어  - [x] coyote 코요테  - [x] small_bird 작은 새(비둘기)  - [x] pig 돼지  - [x] goat 염소  - [x] deer 사슴  - [x] chicken 닭  - [x] duck 오리  - [x] squirrel 다람쥐  - [x] raccoon 너구리  - [x] monkey 원숭이  - [x] elephant 코끼리  - [x] lizard 도마뱀  - [x] turtle 거북  - [x] penguin 펭귄  - [x] walrus 바다코끼리  - [x] flamingo 플라밍고  - [x] bison 들소  - [x] parrot 앵무새  - [x] rattlesnake 방울뱀
 
-검수 시트: `preview\review_A_beasts.png`, `preview\review_B_beasts.png`
+검수 시트: `preview\review_A_beasts.png`, `preview\review_B_beasts.png`, `preview\review_C_beasts_1.png`, `preview\review_C_beasts_2.png`

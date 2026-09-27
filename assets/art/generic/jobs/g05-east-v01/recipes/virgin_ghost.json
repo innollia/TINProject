@@ -1,0 +1,363 @@
+{
+ "asset": "virgin_ghost",
+ "status": "candidate",
+ "note": "Maiden ghost (cheonyeo gwishin), front view, floating. A pale spirit in a long plain white mourning dress, long straight black hair hanging over half her face, one dark-ringed glowing eye visible, grey hands hanging, the hem fading into mist.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 735,
+ "g05": {
+  "name_ko": "처녀귀신",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.25,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      360.8
+     ],
+     "size": [
+      100.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "dress",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "paper",
+   "opacity": 0.92,
+   "pieces": [
+    {
+     "icon": "bell",
+     "at": [
+      160.0,
+      244.0
+     ],
+     "size": [
+      130.0,
+      230.0
+     ],
+     "crop": [
+      1.6,
+      1.4,
+      14.4,
+      11.6
+     ]
+    },
+    {
+     "icon": "mountains",
+     "at": [
+      160.0,
+      356.0
+     ],
+     "size": [
+      130.0,
+      30.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "mist",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.9,
+   "material": "ghost",
+   "opacity": 0.5,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      160.0,
+      344.0
+     ],
+     "size": [
+      130.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sleeves",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "paper",
+   "opacity": 0.95,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      112.0,
+      190.0
+     ],
+     "size": [
+      30.0,
+      92.1
+     ],
+     "rot": 11.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      208.0,
+      190.0
+     ],
+     "size": [
+      30.0,
+      92.1
+     ],
+     "rot": -11.3
+    }
+   ]
+  },
+  {
+   "name": "hands",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.3,
+   "material": "corpse_grey",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      102.0,
+      246.0
+     ],
+     "size": [
+      16.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      218.0,
+      246.0
+     ],
+     "size": [
+      16.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hair_back",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.5,
+   "material": "hair",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      176.0
+     ],
+     "size": [
+      90.0,
+      180.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      104.0
+     ],
+     "size": [
+      92.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "pale",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      118.0
+     ],
+     "size": [
+      50.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ring",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.1,
+   "kind": "flat",
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      114.0
+     ],
+     "size": [
+      18.0,
+      14.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eye",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "glow_red",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "glow_red_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      172.0,
+      114.0
+     ],
+     "size": [
+      7.0,
+      6.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.1,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      167.0,
+      141.0
+     ],
+     "size": [
+      2.0,
+      10.9
+     ],
+     "rot": -78.7
+    }
+   ]
+  },
+  {
+   "name": "hair_front",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "material": "hair",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      140.0,
+      150.0
+     ],
+     "size": [
+      26.0,
+      120.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      190.0,
+      196.0
+     ],
+     "size": [
+      16.0,
+      150.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      152.0,
+      92.0
+     ],
+     "size": [
+      60.0,
+      24.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

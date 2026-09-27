@@ -11,7 +11,7 @@ import math
 from .body import Biped, rot_pt
 from .kit import (E, P, Creature, brows, creature, dot_eyes, fangs, held, membrane, mirror, poly, seg, smile, std_frames,
                   sym, tube, x_eyes)
-from .parts import bat_wing, bones_limb, claw_hand, heater_shield, spikes_on, wing_at
+from .parts import bat_wing, bones_limb, claw_hand, heater_shield, leg3, spikes_on, wing_at
 
 
 # ---------------------------------------------------------------- A: skeleton
@@ -819,4 +819,223 @@ def mimic_door():
     c.add("ring", "iron", 3, [P("ring", cx + 56, 250, 22, 22)], tags=("door",))
     std_frames(c, a_state=False)
     c.meta.update(name_ko="미믹(문)", size="사람")
+    return c
+
+
+# ================================================================ C (idle only)
+@creature("hungry_ghost", "C")
+def hungry_ghost():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("hungry_ghost", (W, H), (cx, gy), seed=631,
+                 note="Hungry ghost, front view, floating. Emaciated grey spirit with a hugely swollen belly, a needle-thin "
+                      "neck, huge sunken glowing eyes in a gaunt face, a tiny pursed mouth, stick-thin arms clutching at "
+                      "nothing, lower body fading into tattered wisps.")
+    c.shadow(cx, gy - 2, 100, 14, opacity=0.25, blur=7)
+    c.add("wisps", "ghost", 1, [P("droplet", cx - 26, 320, 30, 70, flip="y", rot=12), P("droplet", cx + 22, 326, 26, 60, flip="y", rot=-10)],
+          tags=("body",), opacity=0.6, line=False)
+    c.add("belly", "corpse_grey", 2, [E(cx, 262, 120, 110)], tags=("body",))
+    c.add("chest", "corpse_grey", 2.1, [E(cx, 196, 60, 50)], tags=("body",))
+    c.flat("ribs", "corpse_grey", 2.2, [p for i in range(3) for p in smile(cx, 190 + i * 10, 44 - i * 6, 5, depth=0.6)], tags=("body",), color="coat_seam", opacity=0.5)
+    for s, k in (("l", -1), ("r", 1)):
+        bones_limb(c, f"arm_{s}", [(cx + k * 24, 180), (cx + k * 64, 220), (cx + k * 56, 262)], 8, "corpse_grey", 2.5, ("arms",), (cx + k * 24, 180))
+        c.add(f"hand_{s}", "corpse_grey", 2.6, claw_hand(cx + k * 56, 266, 90, 16, n=4, spread=16), tags=("arms",))
+    c.add("neck", "corpse_grey", 2.3, [seg(cx, 176, cx, 146, 8)], tags=("head",))
+    c.add("head", "corpse_grey", 3, [E(cx, 118, 64, 72)], tags=("head",))
+    c.flat("sockets", "void", 3.1, [E(cx - 13, 112, 20, 24), E(cx + 13, 112, 20, 24)], tags=("head",))
+    c.glow("eyes", "glow_yellow", 3.2, [E(cx - 13, 114, 7, 8), E(cx + 13, 114, 7, 8)], tags=("head",), color="glow_yellow_c", strength=0.9, opacity=0.5)
+    c.flat("mouth", "mouth", 3.2, [E(cx, 142, 6, 6)], tags=("head",))
+    c.add("hair", "hair", 3.3, [P("droplet", cx - 20, 90, 10, 26, flip="y", rot=30), P("droplet", cx + 16, 86, 10, 22, flip="y", rot=-20)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="아귀", size="사람")
+    return c
+
+
+@creature("soul_wall", "C")
+def soul_wall():
+    W, H = 512, 512
+    cx, gy = 256, 494
+    c = Creature("soul_wall", (W, H), (cx, gy), seed=632,
+                 note="Wall of souls, front view. A heaving slab of translucent pale-blue spirit stuff packed with moaning "
+                      "ghostly faces (dark hollow eyes and mouths, a few with cold glowing pupils) and ghostly hands "
+                      "pushing out of it; no bodies or gore, only spirit shapes.")
+    c.shadow(cx, gy - 2, 400, 40, opacity=0.3)
+    c.add("slab", "ghost", 1, [P("square", cx, 290, 400, 380), P("cloud", cx, 110, 400, 80)], tags=("body",), opacity=0.88)
+    faces = [(cx - 120, 170, 1.0), (cx, 150, 1.1), (cx + 120, 170, 1.0), (cx - 160, 290, 0.9), (cx - 50, 270, 1.2), (cx + 70, 280, 1.0),
+             (cx + 160, 300, 0.9), (cx - 100, 400, 1.0), (cx + 20, 390, 1.1), (cx + 130, 410, 0.9)]
+    for i, (x, y, s) in enumerate(faces):
+        c.add(f"face_{i}", "ghost", 2 + i * 0.01, [E(x, y, 70 * s, 84 * s)], tags=("body",), opacity=0.95)
+        c.flat(f"face_{i}_holes", "void", 2.005 + i * 0.01, [E(x - 13 * s, y - 8 * s, 14 * s, 18 * s), E(x + 13 * s, y - 8 * s, 14 * s, 18 * s),
+                                                            E(x, y + 20 * s, 14 * s, 22 * s)], tags=("body",))
+        if i % 3 == 0:
+            c.glow(f"face_{i}_eyes", "glow_cyan", 2.008 + i * 0.01, [E(x - 13 * s, y - 6 * s, 5 * s, 5 * s), E(x + 13 * s, y - 6 * s, 5 * s, 5 * s)],
+                   tags=("body",), color="ghost_glow_c", strength=1.0, opacity=0.6)
+    for i, (x, y, ang) in enumerate(((cx - 200, 220, -150), (cx + 200, 240, -30), (cx - 190, 380, 160), (cx + 196, 370, 20), (cx - 20, 90, -100))):
+        c.add(f"hand_{i}", "ghost", 3, claw_hand(x, y, ang, 30, n=4, spread=18) + [seg(x - 30 * math.cos(math.radians(ang)), y - 30 * math.sin(math.radians(ang)), x, y, 18)],
+              tags=("hands",), opacity=0.9)
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="망자가 뭉친 벽", size="큼")
+    return c
+
+
+@creature("bone_beast", "C")
+def bone_beast():
+    W, H = 512, 512
+    gy = 494
+    c = Creature("bone_beast", (W, H), (262, gy), seed=633,
+                 note="Bone beast, 3/4 front view facing the lower left. A hulking skeletal ox-like beast: horned skull "
+                      "with red eye lights, thick spine with jutting spikes, heavy rib cage, massive bone legs, tattered "
+                      "hide scraps and rusty chains hanging.")
+    c.shadow(270, gy - 4, 380, 40)
+    bones_limb(c, "leg_hind_far", [(380, 320), (400, 400), (392, 470)], 18, "bone_old", 1, ("legs",), (380, 320))
+    bones_limb(c, "leg_front_far", [(210, 330), (220, 400), (214, 470)], 18, "bone_old", 1, ("legs",), (210, 330))
+    c.add("spine", "bone", 2, [E(200 + i * 22, 250 - 10 * math.sin(i / 2.4), 22, 18) for i in range(10)], tags=("body",))
+    c.add("spikes", "bone", 1.9, [P("triangle", 200 + i * 22, 226 - 10 * math.sin(i / 2.4), 12, 30, rot=-10) for i in range(1, 10, 2)], tags=("body",))
+    c.add("ribs", "bone", 2.2, [P("moon", 230 + i * 26, 290, 46, 70 - i * 5, rot=-45) for i in range(5)], tags=("body",))
+    c.add("pelvis", "bone", 2.3, [E(392, 280, 70, 50)], tags=("body",))
+    c.add("hide", "fur_brown", 2.4, [P("bookmark", 300, 330, 40, 50), P("bookmark", 350, 320, 30, 40)], tags=("body",), opacity=0.9)
+    c.add("chains", "iron", 2.5, [P("ring", 250 + i * 14, 330 + i * 10, 14, 12, rot=i * 40) for i in range(5)], tags=("body",))
+    bones_limb(c, "leg_hind", [(394, 320), (420, 404), (410, 476)], 24, "bone", 3, ("legs",), (394, 320))
+    bones_limb(c, "leg_front", [(190, 330), (176, 404), (172, 476)], 24, "bone", 3.1, ("legs",), (190, 330))
+    for x in (410, 172):
+        c.add(f"hoof_{x}", "horn", 3.2, [P("cylinder", x - 4, 480, 40, 20)], tags=("legs",))
+    c.flat("skull_void", "void", 3.9, [E(140, 240, 70, 40)], tags=("head",))
+    c.add("skull", "bone", 4, [E(160, 226, 110, 90), P("droplet", 110, 266, 60, 100, rot=-130)], tags=("head",))
+    c.add("horns", "bone_old", 4.1, tube([(180, 190), (230, 160), (250, 110)], 26, 8, n=8, cap=True) + tube([(140, 192), (100, 150), (110, 100)], 22, 7, n=8, cap=True),
+          tags=("head",))
+    c.flat("sockets", "void", 4.2, [E(140, 222, 24, 20), E(180, 214, 20, 18)], tags=("head",))
+    c.glow("eyes", "glow_red", 4.3, [E(140, 222, 9, 8), E(180, 214, 8, 7)], tags=("head",), color="glow_red_c", strength=1.0, opacity=0.6)
+    c.flat("teeth", "void", 4.25, [seg(84, 296, 130, 280, 5)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="뼈 짐승", size="큼")
+    return c
+
+
+@creature("skull_mimic", "C")
+def skull_mimic():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("skull_mimic", (W, H), (cx, gy), seed=634,
+                 note="Skull mimic, front view. What looks like a heap of old skulls is one creature: the crowning skull "
+                      "has glowing red eyes and a long tongue, bony claws creep out of the pile, the other skulls grin "
+                      "with hollow sockets.")
+    c.shadow(cx, gy - 2, 230, 26)
+    pile = [(cx - 70, 330, 64), (cx, 336, 70), (cx + 72, 330, 62), (cx - 40, 286, 64), (cx + 40, 286, 64), (cx - 90, 290, 50), (cx + 92, 292, 48)]
+    for i, (x, y, s) in enumerate(pile):
+        c.flat(f"back_{i}", "void", 1 + i * 0.01, [E(x, y - s * 0.06, s * 0.66, s * 0.44)], tags=("pile",))
+        c.add(f"skull_{i}", "bone_old", 1.005 + i * 0.01, [P("skull", x, y, s, s * 1.02)], tags=("pile",))
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"claw_{s}", "bone", 2, claw_hand(cx + k * 126, 346, 90 - k * 50, 26, n=4, spread=20) + [seg(cx + k * 100, 330, cx + k * 126, 346, 12)],
+              tags=("claws",))
+    c.flat("top_back", "void", 2.9, [E(cx, 226, 56, 38)], tags=("head",))
+    c.add("top", "bone", 3, [P("skull", cx, 230, 84, 86)], tags=("head",))
+    c.glow("eyes", "glow_red", 3.1, [E(cx - 13, 226, 10, 10), E(cx + 13, 226, 10, 10)], tags=("head",), color="glow_red_c", strength=1.0, opacity=0.6)
+    c.add("tongue", "tongue", 3.2, tube([(cx, 262), (cx + 16, 290), (cx - 6, 314)], 16, 8, n=8, cap=True), tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="해골 흉내 괴물", size="작음")
+    return c
+
+
+@creature("pumpkin_bat", "C")
+def pumpkin_bat():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("pumpkin_bat", (W, H), (cx, gy), seed=635,
+                 note="Pumpkin bat, front view, flying. A carved dull-orange pumpkin body with ember-lit eyes and a fanged "
+                      "grin, stubby bat ears, a curly stem, and dark leathery bat wings spread wide.")
+    c.shadow(cx, gy - 2, 90, 14, opacity=0.25, blur=7)
+    for s, k in (("l", -1), ("r", 1)):
+        bat_wing(c, f"wing_{s}", s, (cx + k * 40, 190), 94, 56, "membrane", "hide_bat", 1, ("wings",))
+    c.add("ears", "hide_bat", 1.5, [P("triangle", cx - 36, 144, 26, 40, rot=-20), P("triangle", cx + 36, 144, 26, 40, rot=20)], tags=("body",))
+    c.add("pumpkin", "pumpkin", 2, [E(cx, 196, 120, 100), E(cx - 36, 198, 60, 94), E(cx + 36, 198, 60, 94)], tags=("body",))
+    c.flat("ribs", "pumpkin", 2.1, [seg(cx - 20, 154, cx - 22, 240, 3), seg(cx + 20, 154, cx + 22, 240, 3)], tags=("body",), color="coat_seam", opacity=0.4)
+    c.add("stem", "bark", 1.9, [seg(cx + 2, 150, cx + 6, 128, 12), P("spiral", cx + 24, 130, 22, 20)], tags=("body",))
+    c.glow("face", "fire_mid", 2.2, [P("triangle", cx - 24, 184, 24, 22), P("triangle", cx + 24, 184, 24, 22), E(cx, 216, 70, 22),
+                                     P("mountains", cx, 208, 64, 12, op="sub")], tags=("body",), color="ember_glow", strength=1.0, opacity=0.6)
+    c.flat("fangs", "tooth", 2.3, [P("triangle", cx - 10, 214, 6, 12, flip="y"), P("triangle", cx + 10, 214, 6, 12, flip="y")], tags=("body",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="호박 박쥐", size="작음")
+    return c
+
+
+@creature("snake_ghost", "C")
+def snake_ghost():
+    W, H = 384, 384
+    cx, gy = 192, 366
+    c = Creature("snake_ghost", (W, H), (cx, gy), seed=636,
+                 note="Snake ghost, front view. A translucent pale-blue spectral serpent coiling in the air, cold glowing "
+                      "eyes and a gaping jaw, its body fraying into wisps toward the tail.")
+    c.shadow(cx, gy - 2, 150, 20, opacity=0.25, blur=7)
+    body = [(cx + 110, 330), (cx - 120, 300), (cx + 90, 230), (cx - 30, 170), (cx, 120)]
+    c.add("wisp", "ghost", 0.8, [P("wind", cx + 130, 330, 70, 40), P("wind", cx - 140, 290, 60, 36, flip="x")], tags=("body",), opacity=0.5, line=False)
+    c.add("body", "ghost", 1, tube(body, 26, 62, n=40, cap=True, stretch=2.4), tags=("body",), opacity=0.82)
+    c.add("belly", "ghost_glow", 1.1, tube(body, 10, 26, n=40, cap=True, stretch=2.4), tags=("body",), clip_to="body", opacity=0.5, line=False)
+    c.add("head", "ghost", 2, [E(cx, 104, 80, 60), E(cx, 126, 56, 40)], tags=("head",), opacity=0.88)
+    c.flat("mouth", "void", 2.1, [E(cx, 136, 44, 30)], tags=("head",))
+    c.flat("fangs", "ghost_glow", 2.2, [P("triangle", cx - 12, 126, 6, 14, flip="y"), P("triangle", cx + 12, 126, 6, 14, flip="y")], tags=("head",))
+    c.glow("eyes", "glow_cyan", 2.3, [E(cx - 20, 96, 14, 9, rot=16), E(cx + 20, 96, 14, 9, rot=-16)], tags=("head",), color="ghost_glow_c",
+           strength=1.0, opacity=0.6)
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="뱀 유령", size="사람")
+    return c
+
+
+@creature("owl", "C")
+def owl():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("owl", (W, H), (cx, gy), seed=637,
+                 note="Owl, front view, perched. Dusky brown owl with tall ear tufts, a pale facial disc, huge glowing amber "
+                      "eyes, small hooked beak, speckled chest, folded wings and grey talons.")
+    c.shadow(cx, gy - 2, 140, 18)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"talons_{s}", "horn", 1, [seg(cx + k * 20, 330, cx + k * 20 + d * 10, 352, 6, ext=0.1) for d in (-1, 0, 1)], tags=("legs",))
+    c.add("body", "feather_brown", 2, [E(cx, 262, 150, 170)], tags=("body",))
+    c.add("chest", "feather_pale", 2.1, [P("droplet", cx, 280, 90, 130, flip="y")], tags=("body",), clip_to="body", opacity=0.8)
+    c.flat("speckles", "feather_brown", 2.2, [P("moon", cx + dx, 260 + dy, 12, 12, rot=-45) for dx, dy in ((-20, 0), (20, 0), (0, 24), (-24, 44), (24, 44), (0, 66))],
+           tags=("body",), clip_to="chest", opacity=0.8)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"wing_{s}", "feather_brown", 2.5, [P("droplet", cx + k * 64, 272, 56, 150, flip="y", rot=k * -8)], tags=("body",))
+    c.add("tufts", "feather_brown", 2.9, [P("triangle", cx - 44, 126, 26, 50, rot=-24), P("triangle", cx + 44, 126, 26, 50, rot=24)], tags=("head",))
+    c.add("head", "feather_brown", 3, [E(cx, 170, 130, 110)], tags=("head",))
+    c.add("disc", "feather_pale", 3.1, [E(cx - 28, 172, 62, 66), E(cx + 28, 172, 62, 66)], tags=("head",), opacity=0.9)
+    c.glow("eyes", "glow_yellow", 3.2, [E(cx - 28, 170, 36, 36), E(cx + 28, 170, 36, 36)], tags=("head",), color="glow_yellow_c", strength=0.6, opacity=0.35)
+    c.flat("pupils", "eye", 3.25, [E(cx - 28, 170, 16, 16), E(cx + 28, 170, 16, 16)], tags=("head",))
+    c.add("beak", "horn", 3.3, [P("droplet", cx, 196, 16, 24, flip="y")], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="부엉이", size="작음")
+    return c
+
+
+@creature("hellhound", "C")
+def hellhound():
+    W, H = 384, 384
+    gy = 366
+    c = Creature("hellhound", (W, H), (200, gy), seed=638,
+                 note="Hellhound, 3/4 front view facing the lower left. Lean black demonic hound with glowing ember cracks "
+                      "along its body, a mane and tail of flame, short curved horns, burning eyes and a snarling fanged maw.")
+    c.shadow(206, gy - 4, 270, 30)
+    leg3(c, "leg_hind_far", [(292, 238), (306, 300), (300, 346)], 24, 16, "soot", 1, ("legs",), paw=(28, 12))
+    leg3(c, "leg_front_far", [(170, 246), (176, 304), (172, 346)], 22, 16, "soot", 1, ("legs",), paw=(28, 12))
+    c.add("tail", "fire_outer", 1.5, [P("fire", 340, 190, 50, 70, rot=30), P("fire", 330, 210, 30, 44, rot=10)], tags=("tail",), emit=0.9,
+          line={"width": 0.7, "heavy": 0.5})
+    c.add("body", "ash", 2, [E(234, 222, 186, 100, rot=-6), E(160, 232, 96, 104)], tags=("body",))
+    c.glow("cracks", "ember", 2.1, [P("lightning_bolt", 230, 216, 12, 40, rot=30), P("lightning_bolt", 280, 226, 10, 34, rot=-20),
+                                    P("lightning_bolt", 170, 240, 10, 30, rot=10)], tags=("body",), color="ember_glow", strength=0.9, opacity=0.5, clip_to="body")
+    leg3(c, "leg_hind", [(290, 244), (310, 300), (300, 352)], 34, 22, "ash", 3, ("legs",), paw=(36, 14), claws=3)
+    c.add("thigh", "ash", 3.05, [E(288, 248, 70, 92, rot=-10)], tags=("legs",))
+    leg3(c, "leg_front", [(132, 246), (126, 304), (124, 350)], 32, 22, "ash", 3.1, ("legs",), paw=(38, 15), claws=3)
+    c.add("mane", "fire_outer", 3.3, [P("fire", 150 + d * 24, 170 - abs(d) * 6, 36, 60, rot=d * 20) for d in (-1, 0, 1, 2)], tags=("head",), emit=0.9,
+          line={"width": 0.7, "heavy": 0.5})
+    c.add("mane_core", "fire_mid", 3.35, [P("fire", 160 + d * 24, 180 - abs(d) * 6, 20, 34, rot=d * 20) for d in (-1, 0, 1)], tags=("head",), emit=1.0, line=False)
+    c.add("head", "ash", 4, [E(116, 174, 84, 72)], tags=("head",))
+    c.add("horns", "horn", 4.1, [P("moon", 110, 130, 30, 30, rot=-100), P("moon", 140, 128, 26, 26, rot=-80)], tags=("head",))
+    c.add("snout", "ash", 4.3, [P("droplet", 86, 200, 40, 70, rot=-128)], tags=("head",))
+    c.add("nose", "eye", 4.5, [E(64, 222, 16, 12, rot=-30)], tags=("head",))
+    c.glow("eyes", "ember", 4.4, [E(98, 170, 14, 8, rot=20), E(130, 166, 11, 7, rot=10)], tags=("head",), color="ember_glow", strength=1.0, opacity=0.6)
+    c.flat("maw", "mouth", 4.25, [P("droplet", 90, 232, 34, 58, rot=-112)], tags=("head",))
+    c.flat("fangs", "tooth", 4.28, [P("triangle", 80, 222, 6, 12, flip="y"), P("triangle", 96, 218, 6, 11, flip="y"), P("triangle", 86, 244, 5, 10)],
+           tags=("head",), line={"width": 0.4, "heavy": 0.3})
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="지옥개", size="사람")
     return c

@@ -75,6 +75,27 @@ def bezier(ctrl, n: int):
             dx = 2 * u * (x1 - x0) + 2 * t * (x2 - x1)
             dy = 2 * u * (y1 - y0) + 2 * t * (y2 - y1)
         else:
+            if len(ctrl) > 4:
+                # Catmull-Rom through every point (piecewise), uniform in segment count
+                m = len(ctrl) - 1
+                f = min(m - 1e-9, t * m)
+                k = int(f)
+                u = f - k
+                p0 = ctrl[max(0, k - 1)]
+                p1 = ctrl[k]
+                p2 = ctrl[k + 1]
+                p3 = ctrl[min(m, k + 2)]
+                u2, u3 = u * u, u * u * u
+                x = 0.5 * ((2 * p1[0]) + (-p0[0] + p2[0]) * u + (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * u2
+                           + (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * u3)
+                y = 0.5 * ((2 * p1[1]) + (-p0[1] + p2[1]) * u + (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * u2
+                           + (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * u3)
+                dx = 0.5 * ((-p0[0] + p2[0]) + 2 * (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * u
+                            + 3 * (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * u2)
+                dy = 0.5 * ((-p0[1] + p2[1]) + 2 * (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * u
+                            + 3 * (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * u2)
+                out.append((x, y, dx, dy))
+                continue
             (x0, y0), (x1, y1), (x2, y2), (x3, y3) = ctrl[:4]
             u = 1 - t
             x = u ** 3 * x0 + 3 * u * u * t * x1 + 3 * u * t * t * x2 + t ** 3 * x3

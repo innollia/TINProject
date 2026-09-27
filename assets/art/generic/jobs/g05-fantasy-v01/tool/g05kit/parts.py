@@ -112,3 +112,20 @@ def pincer(x, y, size, ang, open_=0.35):
         out += tube([(x + ux * size * 0.15, y + uy * size * 0.15), ((x + fx) / 2 - uy * d * size * 0.12, (y + fy) / 2 + ux * d * size * 0.12),
                      (fx, fy)], size * 0.26, size * 0.06, n=6)
     return out
+
+
+def leg3(c, name, pts, w0, w1, mat, z, tags, paw=None, paw_mat=None, claws=0, hidden=False, pivot=None):
+    """Three-point animal leg (hip, joint, foot) tapering w0 -> w1, with a paw ellipse and optional claws."""
+    (x0, y0), (x1, y1), (x2, y2) = pts
+    pieces = [seg(x0, y0, x1, y1, w0), seg(x1, y1, x2, y2, (w0 + w1) / 2)]
+    if paw:
+        pw, ph = paw
+        pieces.append(E(x2 - pw * 0.1, y2 + ph * 0.1, pw, ph))
+    extra = {"hidden": True} if hidden else {}
+    if pivot:
+        extra["pivot"] = list(pivot)
+    c.add(name, mat, z, pieces, tags=tags, **extra)
+    if claws and paw:
+        pw, ph = paw
+        cl = [P("triangle", x2 - pw * 0.35 + i * pw * 0.22, y2 + ph * 0.55, pw * 0.14, ph * 0.7, rot=180 + 10) for i in range(claws)]
+        c.add(name + "_claws", paw_mat or "claw", z + 0.05, cl, tags=tags, **extra)

@@ -28,6 +28,6 @@ A (3, 기본·공격·피격): - [x] spider 거대 거미  - [x] scorpion 거대
 
 B (5, 기본 1장): - [x] caterpillar 거대 애벌레  - [x] kraken 크라켄(거대 문어)  - [x] giant_shark 대왕 상어  - [x] crab 거대 게  - [x] jellyfish 해파리
 
-C (9, 기본 1장): giant_wasp, grasshopper, flea, slug, bug_swarm, whale, shrimp, oyster, piranha — 대기
+C (9, 기본 1장): - [x] giant_wasp 거대 말벌  - [x] grasshopper 거대 메뚜기  - [x] flea 거대 벼룩  - [x] slug 거대 민달팽이  - [x] bug_swarm 벌레 떼  - [x] whale 고래  - [x] shrimp 거대 새우  - [x] oyster 진주 굴 괴물  - [x] piranha 이빨 물고기
 
-검수 시트: `preview\review_A_bugs.png`, `preview\review_B_bugsea.png`
+검수 시트: `preview\review_A_bugs.png`, `preview\review_B_bugsea.png`, `preview\review_C_bugsea.png`

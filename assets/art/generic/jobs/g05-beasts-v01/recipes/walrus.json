@@ -1,0 +1,509 @@
+{
+ "asset": "walrus",
+ "status": "candidate",
+ "note": "Walrus, front view. Massive wrinkled brown walrus propped on its front flippers: a bristly moustache pad, two long ivory tusks, small eyes, heavy blubber folds, rear flippers spread behind.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  494
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 848,
+ "g05": {
+  "name_ko": "바다코끼리",
+  "size": "큼",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      480.6
+     ],
+     "size": [
+      360.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rear",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "snout",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      106.0,
+      470.0
+     ],
+     "size": [
+      110.0,
+      40.0
+     ],
+     "rot": -10.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      406.0,
+      470.0
+     ],
+     "size": [
+      110.0,
+      40.0
+     ],
+     "rot": 10.0
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "snout",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      370.0
+     ],
+     "size": [
+      330.0,
+      250.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "folds",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "leather",
+   "clip_to": "body",
+   "opacity": 0.4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      330.0
+     ],
+     "size": [
+      240.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      360.0
+     ],
+     "size": [
+      220.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      390.0
+     ],
+     "size": [
+      200.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "flipper_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3,
+   "material": "snout",
+   "pieces": [
+    {
+     "icon": "leaf",
+     "at": [
+      146.0,
+      460.0
+     ],
+     "size": [
+      110.0,
+      60.0
+     ],
+     "rot": 20.0,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "flipper_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3,
+   "material": "snout",
+   "pieces": [
+    {
+     "icon": "leaf",
+     "at": [
+      366.0,
+      460.0
+     ],
+     "size": [
+      110.0,
+      60.0
+     ],
+     "rot": -20.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4,
+   "material": "snout",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      250.0
+     ],
+     "size": [
+      180.0,
+      140.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "muzzle",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.2,
+   "material": "hide_pink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      220.0,
+      280.0
+     ],
+     "size": [
+      76.0,
+      60.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      292.0,
+      280.0
+     ],
+     "size": [
+      76.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "whiskers",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.25,
+   "kind": "flat",
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      200.0,
+      270.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      200.0,
+      286.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      216.0,
+      270.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      216.0,
+      286.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      232.0,
+      270.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      232.0,
+      286.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      280.0,
+      270.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      280.0,
+      286.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      296.0,
+      270.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      296.0,
+      286.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      312.0,
+      270.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      312.0,
+      286.0
+     ],
+     "size": [
+      5.0,
+      5.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tusks",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.3,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      236.0,
+      360.0
+     ],
+     "size": [
+      18.0,
+      110.0
+     ],
+     "rot": 4.0,
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      276.0,
+      360.0
+     ],
+     "size": [
+      18.0,
+      110.0
+     ],
+     "rot": -4.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.35,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      212.0,
+      230.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      300.0,
+      230.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.449999999999999,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      209.4,
+      227.4
+     ],
+     "size": [
+      3.6,
+      3.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      297.4,
+      227.4
+     ],
+     "size": [
+      3.6,
+      3.1
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

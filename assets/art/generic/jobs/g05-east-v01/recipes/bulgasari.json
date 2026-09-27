@@ -1,0 +1,825 @@
+{
+ "asset": "bulgasari",
+ "status": "candidate",
+ "note": "Bulgasari (iron-eating beast), front view. Bulky beast of dark iron: bear-like body bristling with needle spikes of metal, a short elephant trunk, small rust-red glowing eyes, curved tusks, thick tiger-striped legs, a bent iron nail clutched in its trunk.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  512,
+  512
+ ],
+ "pivot": [
+  256,
+  494
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 734,
+ "g05": {
+  "name_ko": "불가사리",
+  "size": "큼",
+  "generator": "tool/make_recipes.py",
+  "priority": "C"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      482.6
+     ],
+     "size": [
+      340.0,
+      36.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spikes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      76.0,
+      380.0
+     ],
+     "size": [
+      15.0,
+      30.0
+     ],
+     "rot": -81.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      79.2,
+      328.9
+     ],
+     "size": [
+      15.8,
+      31.5
+     ],
+     "rot": -87.4
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      84.9,
+      257.1
+     ],
+     "size": [
+      16.5,
+      33.1
+     ],
+     "rot": -82.1
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      101.9,
+      196.2
+     ],
+     "size": [
+      17.3,
+      34.6
+     ],
+     "rot": -60.4
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      129.2,
+      168.9
+     ],
+     "size": [
+      18.1,
+      36.2
+     ],
+     "rot": -32.9
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      177.4,
+      149.0
+     ],
+     "size": [
+      18.8,
+      37.7
+     ],
+     "rot": -14.2
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      230.9,
+      140.8
+     ],
+     "size": [
+      19.6,
+      39.2
+     ],
+     "rot": -3.8
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      281.1,
+      140.8
+     ],
+     "size": [
+      19.6,
+      39.2
+     ],
+     "rot": 3.8
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      334.6,
+      149.0
+     ],
+     "size": [
+      18.8,
+      37.7
+     ],
+     "rot": 14.2
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      382.8,
+      168.9
+     ],
+     "size": [
+      18.1,
+      36.2
+     ],
+     "rot": 32.9
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      410.1,
+      196.2
+     ],
+     "size": [
+      17.3,
+      34.6
+     ],
+     "rot": 60.4
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      427.1,
+      257.1
+     ],
+     "size": [
+      16.5,
+      33.1
+     ],
+     "rot": 82.1
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      432.8,
+      328.9
+     ],
+     "size": [
+      15.8,
+      31.5
+     ],
+     "rot": 87.4
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      436.0,
+      380.0
+     ],
+     "size": [
+      15.0,
+      30.0
+     ],
+     "rot": 81.0
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      330.0
+     ],
+     "size": [
+      330.0,
+      260.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stripes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "armor_dark",
+   "clip_to": "body",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      127.0,
+      275.0
+     ],
+     "size": [
+      10.0,
+      56.6
+     ],
+     "rot": 19.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      170.0,
+      270.0
+     ],
+     "size": [
+      10.0,
+      64.7
+     ],
+     "rot": 11.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      213.0,
+      265.0
+     ],
+     "size": [
+      10.0,
+      73.8
+     ],
+     "rot": 4.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      299.0,
+      265.0
+     ],
+     "size": [
+      10.0,
+      73.8
+     ],
+     "rot": -4.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      342.0,
+      270.0
+     ],
+     "size": [
+      10.0,
+      64.7
+     ],
+     "rot": -11.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      385.0,
+      275.0
+     ],
+     "size": [
+      10.0,
+      56.6
+     ],
+     "rot": -19.8
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      161.0,
+      435.0
+     ],
+     "size": [
+      70.0,
+      95.2
+     ],
+     "rot": 8.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      156.0,
+      476.0
+     ],
+     "size": [
+      90.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "claws_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3.1,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      134.0,
+      492.0
+     ],
+     "size": [
+      10.0,
+      16.0
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      156.0,
+      492.0
+     ],
+     "size": [
+      10.0,
+      16.0
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      178.0,
+      492.0
+     ],
+     "size": [
+      10.0,
+      16.0
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      351.0,
+      435.0
+     ],
+     "size": [
+      70.0,
+      95.2
+     ],
+     "rot": -8.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      356.0,
+      476.0
+     ],
+     "size": [
+      90.0,
+      34.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "claws_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 3.1,
+   "material": "armor",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      334.0,
+      492.0
+     ],
+     "size": [
+      10.0,
+      16.0
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      356.0,
+      492.0
+     ],
+     "size": [
+      10.0,
+      16.0
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      378.0,
+      492.0
+     ],
+     "size": [
+      10.0,
+      16.0
+     ],
+     "rot": 180.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      220.0
+     ],
+     "size": [
+      150.0,
+      120.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ears",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.9,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      180.0
+     ],
+     "size": [
+      40.0,
+      50.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      332.0,
+      180.0
+     ],
+     "size": [
+      40.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.1,
+   "kind": "flat",
+   "material": "glow_red",
+   "emit": 0.8,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "glow_red_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      226.0,
+      206.0
+     ],
+     "size": [
+      14.0,
+      10.0
+     ],
+     "rot": 14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      286.0,
+      206.0
+     ],
+     "size": [
+      14.0,
+      10.0
+     ],
+     "rot": -14.0
+    }
+   ]
+  },
+  {
+   "name": "tusks",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.2,
+   "material": "bone_old",
+   "pieces": [
+    {
+     "icon": "moon",
+     "at": [
+      216.0,
+      262.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": -150.0
+    },
+    {
+     "icon": "moon",
+     "at": [
+      296.0,
+      262.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": 150.0,
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "trunk",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.3,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      240.0
+     ],
+     "size": [
+      40.0,
+      40.0
+     ],
+     "rot": -6.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.9,
+      253.4
+     ],
+     "size": [
+      38.4,
+      38.4
+     ],
+     "rot": -0.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.5,
+      266.3
+     ],
+     "size": [
+      36.7,
+      36.7
+     ],
+     "rot": 4.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      255.1,
+      278.6
+     ],
+     "size": [
+      35.1,
+      35.1
+     ],
+     "rot": 8.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      253.1,
+      290.4
+     ],
+     "size": [
+      33.5,
+      33.5
+     ],
+     "rot": 11.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      250.7,
+      301.6
+     ],
+     "size": [
+      31.8,
+      31.8
+     ],
+     "rot": 12.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      248.3,
+      312.2
+     ],
+     "size": [
+      30.2,
+      30.2
+     ],
+     "rot": 12.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      246.1,
+      322.3
+     ],
+     "size": [
+      28.5,
+      28.5
+     ],
+     "rot": 11.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      244.5,
+      331.7
+     ],
+     "size": [
+      26.9,
+      26.9
+     ],
+     "rot": 7.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      243.7,
+      340.5
+     ],
+     "size": [
+      25.3,
+      25.3
+     ],
+     "rot": 1.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      244.1,
+      348.6
+     ],
+     "size": [
+      23.6,
+      23.6
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      246.0,
+      356.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "rot": -21.0
+    }
+   ]
+  },
+  {
+   "name": "nail",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.4,
+   "material": "rust",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      251.0,
+      363.0
+     ],
+     "size": [
+      7.0,
+      54.4
+     ],
+     "rot": -74.4
+    },
+    {
+     "icon": "square",
+     "at": [
+      224.0,
+      356.0
+     ],
+     "size": [
+      16.0,
+      6.0
+     ],
+     "rot": 20.0
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

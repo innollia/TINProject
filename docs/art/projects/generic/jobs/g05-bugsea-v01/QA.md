@@ -4,7 +4,7 @@
 
 ## 확인한 것 (read 도구로 직접 봄)
 
-- 5~10종마다 모아 보기 시트를 보고 고쳤다. 시트: `preview\review_A_bugs.png`, `preview\review_B_bugsea.png`.
+- 5~10종마다 모아 보기 시트를 보고 고쳤다. 시트: `preview\review_A_bugs.png`, `preview\review_B_bugsea.png`, `preview\review_C_bugsea.png`.
 - `tool\check_edges.py`: 모든 그림·그림자·발광 레이어 통과.
 - 고친 것(자산당 2번 이하):
   - 거미: 다리가 캔버스 폭을 넘어 다리 배치를 새로 짜고 앞다리를 몸 앞으로 모음.
