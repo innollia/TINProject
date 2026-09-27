@@ -28,8 +28,8 @@ A (10, 기본·공격·피격):
 - [x] skeleton 해골 병사  - [x] zombie 좀비  - [x] ghost 유령  - [x] vampire 흡혈귀  - [x] werewolf 늑대인간
 - [x] gargoyle 가고일  - [x] living_armor 살아 있는 갑옷  - [x] demon 악마  - [x] ghoul 구울  - [x] headless_knight 머리 없는 기사
 
-B (7, 기본 1장): robed_skeleton, bone_dog, wraith, pumpkin_ghost, giant_knight, imp, mimic_door — 대기
+B (7, 기본 1장): - [x] robed_skeleton 로브 입은 해골(해골 마법사)  - [x] bone_dog 뼈 개  - [x] wraith 망자(떠도는 망령)  - [x] pumpkin_ghost 호박 유령  - [x] giant_knight 거대 기사  - [x] imp 임프(작은 악마)  - [x] mimic_door 미믹(문)
 
 C (8, 기본 1장): hungry_ghost, soul_wall, bone_beast, skull_mimic, pumpkin_bat, snake_ghost, owl, hellhound — 대기
 
-검수 시트: `preview\review_A_dark_1.png`(사람 크기 8종), `preview\review_A_dark_2.png`(큼 2종)
+검수 시트: `preview\review_A_dark_1.png`(사람 크기 8종), `preview\review_A_dark_2.png`(큼 2종), `preview\review_B_dark.png`

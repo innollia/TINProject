@@ -1,0 +1,878 @@
+{
+ "asset": "guard_doll",
+ "status": "candidate",
+ "note": "Clockwork guard doll, front view. Stiff wooden toy soldier automaton: tall wine shako with a brass plate, painted round cheeks and fixed staring eyes, wine tunic with brass buttons and cross belts, jointed wooden limbs, a bayonet musket held upright, a wind-up key turning behind its back.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 1027,
+ "g05": {
+  "name_ko": "태엽 경비 인형",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      363.6
+     ],
+     "size": [
+      140.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "key",
+   "tags": [
+    "all",
+    "key"
+   ],
+   "z": 0.5,
+   "material": "brass",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      220.0,
+      183.4
+     ],
+     "size": [
+      8.0,
+      44.0
+     ],
+     "rot": -104.0
+    },
+    {
+     "icon": "club",
+     "at": [
+      252.0,
+      174.4
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": 80.0
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      141.4,
+      257.1
+     ],
+     "size": [
+      24.1,
+      81.2
+     ],
+     "rot": 3.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      141.1,
+      324.2
+     ],
+     "size": [
+      21.9,
+      69.4
+     ],
+     "rot": -3.4
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1.1,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      139.4,
+      357.1
+     ],
+     "size": [
+      36.9,
+      16.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      142.9,
+      347.1
+     ],
+     "size": [
+      26.3,
+      18.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      178.6,
+      257.1
+     ],
+     "size": [
+      24.1,
+      81.2
+     ],
+     "rot": -3.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178.9,
+      324.2
+     ],
+     "size": [
+      21.9,
+      69.4
+     ],
+     "rot": 3.4
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1.1,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      180.6,
+      357.1
+     ],
+     "size": [
+      36.9,
+      16.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      177.1,
+      347.1
+     ],
+     "size": [
+      26.3,
+      18.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "kneejoint_l",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.2,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      139.3,
+      293.4
+     ],
+     "size": [
+      24.1,
+      24.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "kneejoint_r",
+   "tags": [
+    "all",
+    "legs"
+   ],
+   "z": 1.2,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      180.7,
+      293.4
+     ],
+     "size": [
+      24.1,
+      24.1
+     ]
+    }
+   ]
+  },
+  {
+   "name": "torso",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      176.2
+     ],
+     "size": [
+      87.8,
+      114.3
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      210.9
+     ],
+     "size": [
+      64.0,
+      52.8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "belts",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.2,
+   "material": "paper",
+   "cast": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      158.0,
+      171.6
+     ],
+     "size": [
+      7.0,
+      111.6
+     ],
+     "rot": -44.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      162.0,
+      171.6
+     ],
+     "size": [
+      7.0,
+      111.6
+     ],
+     "rot": 44.1
+    }
+   ]
+  },
+  {
+   "name": "buttons",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.3,
+   "material": "brass",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      148.4
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      170.4
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      192.4
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      214.4
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4,
+   "material": "cloth_wine",
+   "pivot": [
+    116.11,
+    128.4
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      112.2,
+      154.3
+     ],
+     "size": [
+      20.7,
+      59.5
+     ],
+     "rot": 8.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      109.2,
+      206.3
+     ],
+     "size": [
+      19.0,
+      58.9
+     ],
+     "rot": -1.9
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.2,
+   "material": "clown_white",
+   "pivot": [
+    116.11,
+    128.4
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110.1,
+      234.5
+     ],
+     "size": [
+      20.7,
+      20.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4,
+   "material": "cloth_wine",
+   "pivot": [
+    203.89,
+    128.4
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      208.9,
+      153.4
+     ],
+     "size": [
+      20.7,
+      58.2
+     ],
+     "rot": -11.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      211.9,
+      197.4
+     ],
+     "size": [
+      19.0,
+      44.8
+     ],
+     "rot": 6.0
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.2,
+   "material": "clown_white",
+   "pivot": [
+    203.89,
+    128.4
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      209.9,
+      218.5
+     ],
+     "size": [
+      20.7,
+      20.7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "epaulette_l",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 4.5,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      116.1,
+      128.4
+     ],
+     "size": [
+      30.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "epaulette_r",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 4.5,
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      203.9,
+      128.4
+     ],
+     "size": [
+      30.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "musket",
+   "tags": [
+    "all",
+    "weapon"
+   ],
+   "z": 3.9,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      216.9,
+      171.4
+     ],
+     "size": [
+      9.0,
+      213.2
+     ],
+     "rot": -179.5
+    }
+   ]
+  },
+  {
+   "name": "barrel",
+   "tags": [
+    "all",
+    "weapon"
+   ],
+   "z": 3.95,
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      217.9,
+      91.4
+     ],
+     "size": [
+      5.0,
+      71.8
+     ],
+     "rot": -180.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      217.9,
+      40.4
+     ],
+     "size": [
+      6.0,
+      26.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      101.7
+     ],
+     "size": [
+      52.0,
+      56.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shako",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.5,
+   "material": "cloth_wine",
+   "pieces": [
+    {
+     "icon": "cylinder",
+     "at": [
+      160.0,
+      57.7
+     ],
+     "size": [
+      50.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shako_plate",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.6,
+   "material": "brass",
+   "pieces": [
+    {
+     "icon": "shield",
+     "at": [
+      160.0,
+      59.7
+     ],
+     "size": [
+      20.0,
+      24.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plume",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.4,
+   "material": "clown_white",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      19.7
+     ],
+     "size": [
+      16.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "chinstrap",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.7,
+   "kind": "flat",
+   "material": "gold",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      117.7
+     ],
+     "size": [
+      48.0,
+      20.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      105.7
+     ],
+     "size": [
+      57.6,
+      21.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.8,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      149.0,
+      99.7
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171.0,
+      99.7
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.8999999999999995,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      147.0,
+      97.7
+     ],
+     "size": [
+      2.7,
+      2.3
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      169.0,
+      97.7
+     ],
+     "size": [
+      2.7,
+      2.3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cheeks",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.75,
+   "material": "cloth_wine",
+   "line": false,
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      144.0,
+      111.7
+     ],
+     "size": [
+      12.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      176.0,
+      111.7
+     ],
+     "size": [
+      12.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 6.8,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      119.7
+     ],
+     "size": [
+      2.0,
+      12.7
+     ],
+     "rot": -90.0
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

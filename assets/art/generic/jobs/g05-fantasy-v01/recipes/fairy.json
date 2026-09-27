@@ -1,0 +1,589 @@
+{
+ "asset": "fairy",
+ "status": "candidate",
+ "note": "Fairy, front view, hovering. Tiny big-headed sprite in a leaf dress with pointed ears, round dark eyes, a mischievous grin, four translucent dragonfly wings and a soft glow; sparkles around it.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 524,
+ "g05": {
+  "name_ko": "요정",
+  "size": "작음",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.25,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      363.4
+     ],
+     "size": [
+      80.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wing_up_l",
+   "tags": [
+    "all",
+    "wings"
+   ],
+   "z": 1,
+   "material": "ghost",
+   "opacity": 0.6,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "emit": 0.3,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      100.0,
+      150.0
+     ],
+     "size": [
+      40.0,
+      110.0
+     ],
+     "rot": -60.0
+    }
+   ]
+  },
+  {
+   "name": "wing_lo_l",
+   "tags": [
+    "all",
+    "wings"
+   ],
+   "z": 1.1,
+   "material": "ghost",
+   "opacity": 0.55,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "emit": 0.3,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      112.0,
+      214.0
+     ],
+     "size": [
+      30.0,
+      80.0
+     ],
+     "rot": -120.0
+    }
+   ]
+  },
+  {
+   "name": "wing_up_r",
+   "tags": [
+    "all",
+    "wings"
+   ],
+   "z": 1,
+   "material": "ghost",
+   "opacity": 0.6,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "emit": 0.3,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      220.0,
+      150.0
+     ],
+     "size": [
+      40.0,
+      110.0
+     ],
+     "rot": 60.0
+    }
+   ]
+  },
+  {
+   "name": "wing_lo_r",
+   "tags": [
+    "all",
+    "wings"
+   ],
+   "z": 1.1,
+   "material": "ghost",
+   "opacity": 0.55,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.5
+   },
+   "emit": 0.3,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      208.0,
+      214.0
+     ],
+     "size": [
+      30.0,
+      80.0
+     ],
+     "rot": 120.0
+    }
+   ]
+  },
+  {
+   "name": "aura",
+   "tags": [
+    "all",
+    "aura"
+   ],
+   "z": 0.5,
+   "kind": "flat",
+   "material": "glow_white",
+   "opacity": 0.18,
+   "blur": 10,
+   "line": false,
+   "emit": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      190.0
+     ],
+     "size": [
+      120.0,
+      140.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "legs",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.5,
+   "material": "pale",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      150.0,
+      256.0
+     ],
+     "size": [
+      9.0,
+      43.3
+     ],
+     "rot": 5.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171.0,
+      253.0
+     ],
+     "size": [
+      9.0,
+      37.7
+     ],
+     "rot": -10.0
+    }
+   ]
+  },
+  {
+   "name": "dress",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "leaf",
+   "pieces": [
+    {
+     "icon": "bell",
+     "at": [
+      160.0,
+      222.0
+     ],
+     "size": [
+      64.0,
+      60.0
+     ],
+     "crop": [
+      1.6,
+      1.4,
+      14.4,
+      11.6
+     ]
+    },
+    {
+     "icon": "leaf",
+     "at": [
+      140.0,
+      244.0
+     ],
+     "size": [
+      22.0,
+      26.0
+     ],
+     "rot": 160.0
+    },
+    {
+     "icon": "leaf",
+     "at": [
+      180.0,
+      244.0
+     ],
+     "size": [
+      22.0,
+      26.0
+     ],
+     "rot": 200.0
+    }
+   ]
+  },
+  {
+   "name": "arms",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.5,
+   "material": "pale",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      127.0,
+      214.0
+     ],
+     "size": [
+      8.0,
+      32.5
+     ],
+     "rot": 47.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      191.0,
+      194.0
+     ],
+     "size": [
+      8.0,
+      29.7
+     ],
+     "rot": -138.0
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "pale",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      170.0
+     ],
+     "size": [
+      64.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ears",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.9,
+   "material": "pale",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      124.0,
+      166.0
+     ],
+     "size": [
+      14.0,
+      24.0
+     ],
+     "rot": -70.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      196.0,
+      166.0
+     ],
+     "size": [
+      14.0,
+      24.0
+     ],
+     "rot": 70.0
+    }
+   ]
+  },
+  {
+   "name": "hair",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "material": "fur_tawny",
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      160.0,
+      148.0
+     ],
+     "size": [
+      72.0,
+      36.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      134.0,
+      170.0
+     ],
+     "size": [
+      14.0,
+      30.0
+     ],
+     "rot": 10.0,
+     "flip": "y"
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      186.0,
+      170.0
+     ],
+     "size": [
+      14.0,
+      30.0
+     ],
+     "rot": -10.0,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      147.0,
+      174.0
+     ],
+     "size": [
+      10.0,
+      13.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      173.0,
+      174.0
+     ],
+     "size": [
+      10.0,
+      13.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.4,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      144.8,
+      171.1
+     ],
+     "size": [
+      3.0,
+      3.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      170.8,
+      171.1
+     ],
+     "size": [
+      3.0,
+      3.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      188.0
+     ],
+     "size": [
+      14.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      185.5
+     ],
+     "size": [
+      16.8,
+      6.3
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "sparkles",
+   "tags": [
+    "all",
+    "fx"
+   ],
+   "z": 4,
+   "kind": "flat",
+   "material": "glow_white",
+   "emit": 0.9,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "lamp_glow"
+   },
+   "pieces": [
+    {
+     "icon": "star",
+     "at": [
+      90.0,
+      120.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "star",
+     "at": [
+      234.0,
+      250.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "star",
+     "at": [
+      220.0,
+      110.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "star",
+     "at": [
+      100.0,
+      270.0
+     ],
+     "size": [
+      10.0,
+      10.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

@@ -26,8 +26,8 @@
 
 A (3, 기본·공격·피격): - [x] gumiho 구미호  - [x] dokkaebi 도깨비  - [x] jiangshi 강시
 
-B (4, 기본 1장): tengu, kappa, oni, haetae — 대기
+B (4, 기본 1장): - [x] tengu 텐구  - [x] kappa 갓파  - [x] oni 오니  - [x] haetae 해태
 
 C (5, 기본 1장): imugi, lantern_ghost, umbrella_ghost, bulgasari, virgin_ghost — 대기
 
-검수 시트: `preview\review_A_east.png`
+검수 시트: `preview\review_A_east.png`, `preview\review_B_east.png`

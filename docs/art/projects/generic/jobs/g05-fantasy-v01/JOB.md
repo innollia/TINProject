@@ -48,8 +48,8 @@ A (15, 기본·공격·피격):
 - [x] golem 돌 골렘  - [x] harpy 하피  - [x] minotaur 미노타우로스  - [x] lizardman 리자드맨  - [x] dragon 드래곤
 - [x] wyvern 와이번  - [x] griffon 그리폰  - [x] treant 나무 괴물  - [x] mushroom 버섯 괴물  - [x] fire_spirit 불 정령
 
-B (10, 기본 1장): hydra, yeti, giant, fairy, beastman, snake_man, man_eater_plant, water_spirit, wind_spirit, earth_spirit — 대기
+B (10, 기본 1장): - [x] hydra 히드라  - [x] yeti 설인  - [x] giant 거인  - [x] fairy 요정  - [x] beastman 수인(짐승 인간)  - [x] snake_man 뱀 인간  - [x] man_eater_plant 식인 식물  - [x] water_spirit 물 정령  - [x] wind_spirit 바람 정령  - [x] earth_spirit 땅 정령
 
 C (9, 기본 1장): cyclops, kobold, cockatrice, unicorn, giant_snake, light_spirit, ice_spirit, mandrake, vine_monster — 대기
 
-검수 시트: `preview\review_A_fantasy_1.png`(작음·사람 크기 8종), `preview\review_A_fantasy_2.png`(큼·거대 7종)
+검수 시트: `preview\review_A_fantasy_1.png`(작음·사람 크기 8종), `preview\review_A_fantasy_2.png`(큼·거대 7종), `preview\review_B_fantasy.png`

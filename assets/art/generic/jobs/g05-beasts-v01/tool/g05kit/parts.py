@@ -86,3 +86,29 @@ def heater_shield(x, y, w, h):
         t = i / 8
         pts.append((x - w / 2 * (1 - 0.55 * t ** 2.2), y - h / 2 + h * 0.62 * t))
     return poly(pts)
+
+
+def arch_leg(c, name, root, knee, foot, w0, w1, mat, z, tags, pivot=None, hidden=False, tip_mat=None):
+    """Arthropod leg: root -> high knee -> foot on the ground, tapering, with a dark tip."""
+    pieces = tube([root, ((root[0] + knee[0]) / 2, knee[1] - 6), knee], w0, (w0 + w1) / 2, n=6, cap=True)
+    pieces += tube([knee, ((knee[0] + foot[0]) / 2 + (knee[0] - foot[0]) * 0.1, (knee[1] + foot[1]) / 2), foot], (w0 + w1) / 2, w1, n=6, cap=True)
+    extra = {"hidden": True} if hidden else {}
+    c.add(name, mat, z, pieces, tags=tags, pivot=list(pivot or root), **extra)
+    if tip_mat:
+        c.add(name + "_tip", tip_mat, z + 0.01, [E(foot[0], foot[1], w1 * 1.4, w1 * 1.6)], tags=tags, pivot=list(pivot or root),
+              line=False, **extra)
+
+
+def pincer(x, y, size, ang, open_=0.35):
+    """Crab / scorpion claw: a palm with two curved fingers opening toward angle ``ang`` (deg)."""
+    t = math.radians(ang)
+    ux, uy = math.cos(t), math.sin(t)
+    px, py = x - ux * size * 0.1, y - uy * size * 0.1
+    out = [E(px, py, size * 0.72, size * 0.52, ang)]
+    tipx, tipy = x + ux * size * 0.55, y + uy * size * 0.55
+    for d in (-1, 1):
+        a = t + d * open_
+        fx, fy = x + math.cos(a) * size * 0.62, y + math.sin(a) * size * 0.62
+        out += tube([(x + ux * size * 0.15, y + uy * size * 0.15), ((x + fx) / 2 - uy * d * size * 0.12, (y + fy) / 2 + ux * d * size * 0.12),
+                     (fx, fy)], size * 0.26, size * 0.06, n=6)
+    return out

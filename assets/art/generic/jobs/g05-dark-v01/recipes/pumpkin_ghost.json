@@ -1,0 +1,553 @@
+{
+ "asset": "pumpkin_ghost",
+ "status": "candidate",
+ "note": "Pumpkin ghost, front view, floating. Carved dull-orange pumpkin head with ember-lit triangle eyes and a jagged grin, curly vine stem, a tattered pale ghost cloak below with wispy arms.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 624,
+ "g05": {
+  "name_ko": "호박 유령",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.25,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      359.8
+     ],
+     "size": [
+      110.0,
+      16.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cloak",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.5,
+   "material": "ghost",
+   "opacity": 0.84,
+   "pieces": [
+    {
+     "icon": "ghost",
+     "at": [
+      160.0,
+      250.0
+     ],
+     "size": [
+      150.0,
+      170.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 1.6,
+   "material": "ghost",
+   "opacity": 0.84,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      110.0,
+      222.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ],
+     "rot": 67.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      98.2,
+      227.6
+     ],
+     "size": [
+      25.1,
+      25.1
+     ],
+     "rot": 61.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      88.0,
+      234.1
+     ],
+     "size": [
+      22.3,
+      22.3
+     ],
+     "rot": 53.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      79.3,
+      241.5
+     ],
+     "size": [
+      19.4,
+      21.8
+     ],
+     "rot": 45.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      72.1,
+      249.8
+     ],
+     "size": [
+      16.6,
+      21.8
+     ],
+     "rot": 36.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      66.5,
+      258.9
+     ],
+     "size": [
+      13.7,
+      21.8
+     ],
+     "rot": 26.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      62.5,
+      269.0
+     ],
+     "size": [
+      10.9,
+      21.8
+     ],
+     "rot": 17.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      60.4,
+      277.5
+     ],
+     "size": [
+      8.0,
+      13.1
+     ],
+     "rot": 8.5
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 1.6,
+   "material": "ghost",
+   "opacity": 0.84,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      210.0,
+      222.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ],
+     "rot": -67.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      221.8,
+      227.6
+     ],
+     "size": [
+      25.1,
+      25.1
+     ],
+     "rot": -61.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      232.0,
+      234.1
+     ],
+     "size": [
+      22.3,
+      22.3
+     ],
+     "rot": -53.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      240.7,
+      241.5
+     ],
+     "size": [
+      19.4,
+      21.8
+     ],
+     "rot": -45.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      247.9,
+      249.8
+     ],
+     "size": [
+      16.6,
+      21.8
+     ],
+     "rot": -36.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      253.5,
+      258.9
+     ],
+     "size": [
+      13.7,
+      21.8
+     ],
+     "rot": -26.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      257.5,
+      269.0
+     ],
+     "size": [
+      10.9,
+      21.8
+     ],
+     "rot": -17.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      259.6,
+      277.5
+     ],
+     "size": [
+      8.0,
+      13.1
+     ],
+     "rot": -8.5
+    }
+   ]
+  },
+  {
+   "name": "pumpkin",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "pumpkin",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      150.0
+     ],
+     "size": [
+      150.0,
+      120.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      116.0,
+      152.0
+     ],
+     "size": [
+      70.0,
+      110.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      204.0,
+      152.0
+     ],
+     "size": [
+      70.0,
+      110.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ribs",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.1,
+   "kind": "flat",
+   "material": "pumpkin",
+   "color": "coat_seam",
+   "opacity": 0.4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136.0,
+      150.0
+     ],
+     "size": [
+      3.0,
+      101.1
+     ],
+     "rot": 2.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      184.0,
+      150.0
+     ],
+     "size": [
+      3.0,
+      101.1
+     ],
+     "rot": -2.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      100.0,
+      150.0
+     ],
+     "size": [
+      3.0,
+      85.4
+     ],
+     "rot": 5.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      220.0,
+      150.0
+     ],
+     "size": [
+      3.0,
+      85.4
+     ],
+     "rot": -5.4
+    }
+   ]
+  },
+  {
+   "name": "stem",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.9,
+   "material": "bark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      165.0,
+      83.0
+     ],
+     "size": [
+      14.0,
+      31.6
+     ],
+     "rot": -167.0
+    }
+   ]
+  },
+  {
+   "name": "vine",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 2.95,
+   "material": "leaf",
+   "pieces": [
+    {
+     "icon": "spiral",
+     "at": [
+      190.0,
+      74.0
+     ],
+     "size": [
+      30.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "leaf",
+     "at": [
+      142.0,
+      84.0
+     ],
+     "size": [
+      28.0,
+      20.0
+     ],
+     "rot": -30.0
+    }
+   ]
+  },
+  {
+   "name": "face",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "fire_mid",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "ember_glow"
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      128.0,
+      136.0
+     ],
+     "size": [
+      34.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      192.0,
+      136.0
+     ],
+     "size": [
+      34.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      160.0,
+      158.0
+     ],
+     "size": [
+      14.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      186.0
+     ],
+     "size": [
+      96.0,
+      30.0
+     ]
+    },
+    {
+     "icon": "mountains",
+     "at": [
+      160.0,
+      176.0
+     ],
+     "size": [
+      90.0,
+      16.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      140.0,
+      198.0
+     ],
+     "size": [
+      12.0,
+      10.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "at": [
+      180.0,
+      198.0
+     ],
+     "size": [
+      12.0,
+      10.0
+     ],
+     "op": "sub"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

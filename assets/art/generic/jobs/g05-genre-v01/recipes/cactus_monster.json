@@ -1,0 +1,828 @@
+{
+ "asset": "cactus_monster",
+ "status": "candidate",
+ "note": "Cactus monster, front view. Saguaro-shaped cactus creature with ribbed dusty-green flesh, two raised arms, pale spines all over, a scowling carved face with glowing amber eyes, a dull wine blossom on its head, root feet dug into a clump of dry earth.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 1031,
+ "g05": {
+  "name_ko": "선인장 괴물",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      361.6
+     ],
+     "size": [
+      180.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "earth",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "rubble",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      350.0
+     ],
+     "size": [
+      150.0,
+      36.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "roots",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.1,
+   "material": "bark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      137.6,
+      341.3
+     ],
+     "size": [
+      10.0,
+      15.4
+     ],
+     "rot": 61.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      125.6,
+      347.2
+     ],
+     "size": [
+      8.5,
+      25.7
+     ],
+     "rot": 64.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      112.5,
+      353.0
+     ],
+     "size": [
+      7.0,
+      25.7
+     ],
+     "rot": 68.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      100.6,
+      357.2
+     ],
+     "size": [
+      5.5,
+      25.7
+     ],
+     "rot": 72.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      95.6,
+      358.9
+     ],
+     "size": [
+      4.0,
+      15.4
+     ],
+     "rot": 78.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      182.9,
+      341.4
+     ],
+     "size": [
+      10.0,
+      16.4
+     ],
+     "rot": -65.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194.6,
+      346.5
+     ],
+     "size": [
+      8.5,
+      27.4
+     ],
+     "rot": -67.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      208.5,
+      352.0
+     ],
+     "size": [
+      7.0,
+      27.4
+     ],
+     "rot": -69.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      221.6,
+      356.5
+     ],
+     "size": [
+      5.5,
+      27.4
+     ],
+     "rot": -72.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      228.0,
+      358.5
+     ],
+     "size": [
+      4.0,
+      16.4
+     ],
+     "rot": -76.0
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 1.5,
+   "material": "cactus",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      120.0,
+      240.0
+     ],
+     "size": [
+      34.0,
+      34.0
+     ],
+     "rot": 90.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      105.0,
+      237.9
+     ],
+     "size": [
+      33.3,
+      33.3
+     ],
+     "rot": 107.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      93.1,
+      232.0
+     ],
+     "size": [
+      32.7,
+      32.7
+     ],
+     "rot": 125.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      83.9,
+      223.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ],
+     "rot": 142.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      77.3,
+      211.5
+     ],
+     "size": [
+      31.3,
+      31.3
+     ],
+     "rot": 156.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      72.7,
+      198.2
+     ],
+     "size": [
+      30.7,
+      30.7
+     ],
+     "rot": 165.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      70.1,
+      183.7
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": 172.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      68.9,
+      168.8
+     ],
+     "size": [
+      29.3,
+      29.3
+     ],
+     "rot": 178.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      69.0,
+      154.0
+     ],
+     "size": [
+      28.7,
+      28.7
+     ],
+     "rot": -177.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      70.0,
+      140.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ],
+     "rot": -174.3
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 1.5,
+   "material": "cactus",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      200.0,
+      240.0
+     ],
+     "size": [
+      34.0,
+      34.0
+     ],
+     "rot": -90.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      215.0,
+      237.9
+     ],
+     "size": [
+      33.3,
+      33.3
+     ],
+     "rot": -107.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      226.9,
+      232.0
+     ],
+     "size": [
+      32.7,
+      32.7
+     ],
+     "rot": -125.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      236.1,
+      223.0
+     ],
+     "size": [
+      32.0,
+      32.0
+     ],
+     "rot": -142.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      242.7,
+      211.5
+     ],
+     "size": [
+      31.3,
+      31.3
+     ],
+     "rot": -156.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      247.3,
+      198.2
+     ],
+     "size": [
+      30.7,
+      30.7
+     ],
+     "rot": -165.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      249.9,
+      183.7
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": -172.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      251.1,
+      168.8
+     ],
+     "size": [
+      29.3,
+      29.3
+     ],
+     "rot": -178.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      251.0,
+      154.0
+     ],
+     "size": [
+      28.7,
+      28.7
+     ],
+     "rot": 177.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      250.0,
+      140.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ],
+     "rot": 174.3
+    }
+   ]
+  },
+  {
+   "name": "trunk",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "cactus",
+   "pieces": [
+    {
+     "icon": "pill",
+     "at": [
+      160.0,
+      230.0
+     ],
+     "size": [
+      140.0,
+      230.0
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      240.0
+     ],
+     "size": [
+      106.0,
+      220.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ribs",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "kind": "flat",
+   "material": "leaf_dark",
+   "clip_to": "trunk",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      114.0,
+      240.0
+     ],
+     "size": [
+      3.0,
+      201.1
+     ],
+     "rot": 1.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      137.0,
+      240.0
+     ],
+     "size": [
+      3.0,
+      201.1
+     ],
+     "rot": 0.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      240.0
+     ],
+     "size": [
+      3.0,
+      201.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      183.0,
+      240.0
+     ],
+     "size": [
+      3.0,
+      201.1
+     ],
+     "rot": -0.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      240.0
+     ],
+     "size": [
+      3.0,
+      201.1
+     ],
+     "rot": -1.1
+    }
+   ]
+  },
+  {
+   "name": "spines",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "kind": "flat",
+   "material": "bone_old",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      118.0,
+      166.0
+     ],
+     "size": [
+      1.4,
+      9.4
+     ],
+     "rot": 153.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      198.0,
+      186.0
+     ],
+     "size": [
+      1.4,
+      9.4
+     ],
+     "rot": -153.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      128.0,
+      296.0
+     ],
+     "size": [
+      1.4,
+      9.4
+     ],
+     "rot": 153.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      306.0
+     ],
+     "size": [
+      1.4,
+      9.4
+     ],
+     "rot": -153.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      108.0,
+      246.0
+     ],
+     "size": [
+      1.4,
+      9.4
+     ],
+     "rot": 153.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      212.0,
+      246.0
+     ],
+     "size": [
+      1.4,
+      9.4
+     ],
+     "rot": -153.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      158.0,
+      326.0
+     ],
+     "size": [
+      1.4,
+      9.4
+     ],
+     "rot": 153.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      152.0,
+      146.0
+     ],
+     "size": [
+      1.4,
+      9.4
+     ],
+     "rot": -153.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      146.0
+     ],
+     "size": [
+      1.4,
+      9.4
+     ],
+     "rot": 153.4
+    }
+   ]
+  },
+  {
+   "name": "sockets",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.4,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      206.0
+     ],
+     "size": [
+      26.0,
+      18.0
+     ],
+     "rot": 12.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      206.0
+     ],
+     "size": [
+      26.0,
+      18.0
+     ],
+     "rot": -12.0
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.5,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "ember_glow"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      207.0
+     ],
+     "size": [
+      9.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180.0,
+      207.0
+     ],
+     "size": [
+      9.0,
+      6.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.4,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      250.0
+     ],
+     "size": [
+      50.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      255.9
+     ],
+     "size": [
+      60.0,
+      14.7
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "blossom",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3,
+   "material": "petal",
+   "pieces": [
+    {
+     "icon": "flower",
+     "at": [
+      160.0,
+      124.0
+     ],
+     "size": [
+      50.0,
+      40.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

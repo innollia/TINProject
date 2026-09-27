@@ -213,3 +213,151 @@ def jiangshi():
     )
     c.meta.update(name_ko="강시", size="사람")
     return c
+
+
+
+# ================================================================ B (idle only)
+@creature("tengu", "B")
+def tengu():
+    W, H = 384, 384
+    cx, gy = 192, 366
+    c = Creature("tengu", (W, H), (cx, gy), seed=721,
+                 note="Tengu, front view. Red-faced mountain goblin with a very long nose, bristling pale brows and beard, "
+                      "a small black cap, black feathered wings, dark blue mountain-ascetic robe with pom-pom sash, tall "
+                      "one-toothed wooden sandals, feather fan in hand.")
+    b = Biped(c, cx, gy - 20, 300, build=1.0, leg=0.42, torso=0.3, head=0.19, shoulder=0.15, hip=0.09, arm_w=0.065,
+              leg_w=0.075, arm_len=0.36, stance=1.1)
+    c.shadow(cx, gy - 2, 190, 22)
+    ys, yh, hy0 = b.y_sh, b.y_hip, b.head_y
+    for s, k in (("l", -1), ("r", 1)):
+        root = (cx + k * 26, ys + 20)
+        c.add(f"wing_{s}", "feather_black", 0.5, [wing_at(root, 170, 150, s, rot=k * -30)], tags=("wings",))
+    b.legs("cloth_blue", foot_mat="wood", z=1, thigh=1.1, shin=1.0)
+    for s in "lr":
+        fx, fy = b.foot[s]
+        c.add(f"geta_{s}", "wood", 1.3, [P("square", fx, fy + 12, 40, 10), P("square", fx, fy + 22, 10, 20)], tags=("legs",))
+    c.add("robe", "cloth_blue", 3, [P("bell", cx, ys + 90, 150, 200, crop=[1.6, 1.4, 14.4, 11.6])], tags=("torso",))
+    c.add("sash", "cloth_wine", 3.3, [E(cx, yh - 8, 110, 14)], tags=("torso",))
+    c.add("pompoms", "fur_white", 3.4, [E(cx - 30 + i * 20, ys + 36, 16, 16) for i in range(4)], tags=("torso",))
+    b.arm_to("l", (b.sh["l"][0] - 10, ys + 100), bend=0.1)
+    b.arm_to("r", (b.sh["r"][0] + 30, ys + 40), elbow=(b.sh["r"][0] + 26, ys + 80))
+    b.arm("l", "cloth_blue", "oni_red", z=4, upper=1.4, fore=1.3, hand=1.1)
+    b.arm("r", "cloth_blue", "oni_red", z=4, upper=1.4, fore=1.3, hand=1.1)
+    hx, hy = b.hand["r"]
+    c.add("fan", "feather_brown", 4.5, [P("feather", hx + d * 12, hy - 34, 18, 50, rot=d * 18) for d in (-2, -1, 0, 1, 2)], tags=("fan",))
+    c.add("head", "oni_red", 7, [E(cx, hy0, 60, 64)], tags=("head",))
+    c.add("beard", "fur_white", 7.1, [P("cloud", cx, hy0 + 30, 64, 40, flip="y")], tags=("head",))
+    c.add("brows", "fur_white", 7.3, [E(cx - 16, hy0 - 12, 26, 12, rot=-14), E(cx + 16, hy0 - 12, 26, 12, rot=14)], tags=("head",))
+    dot_eyes(c, cx, hy0 - 2, 14, 9, 10, z=7.25, tags=("head",))
+    c.add("nose", "oni_red", 7.5, tube([(cx, hy0 + 2), (cx - 4, hy0 + 24), (cx - 30, hy0 + 44)], 18, 10, n=8, cap=True), tags=("head",))
+    c.add("cap", "robe_black", 7.6, [P("hexagon", cx, hy0 - 32, 26, 20)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="텐구", size="사람")
+    return c
+
+
+@creature("kappa", "B")
+def kappa():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("kappa", (W, H), (cx, gy), seed=722,
+                 note="Kappa, front view. Small green river imp crouched on webbed feet: turtle shell on its back, a water "
+                      "dish on the crown ringed with a fringe of dark hair, yellow beak, round eyes, webbed hands.")
+    c.shadow(cx, gy - 2, 160, 20)
+    c.add("shell", "horn", 1, [E(cx, 250, 150, 150)], tags=("body",))
+    c.flat("shell_plates", "chitin_amber", 1.1, [P("hexagon", cx + dx, 250 + dy, 34, 30) for dx, dy in ((-40, -30), (0, -40), (40, -30), (-44, 16), (44, 16))],
+           tags=("body",), clip_to="shell", opacity=0.5)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"leg_{s}", "frog", 1.5, [E(cx + k * 44, 318, 50, 56, rot=k * -20), E(cx + k * 52, 352, 50, 18)], tags=("legs",))
+        c.add(f"toes_{s}", "frog", 1.6, [P("triangle", cx + k * 52 + d * 12, 360, 10, 12, rot=180) for d in (-1, 0, 1)], tags=("legs",))
+    c.add("body", "frog", 2, [E(cx, 272, 100, 100)], tags=("body",))
+    c.add("belly", "belly", 2.1, [E(cx, 282, 60, 70)], tags=("body",), clip_to="body", opacity=0.7)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"arm_{s}", "frog", 2.5, [seg(cx + k * 40, 244, cx + k * 62, 290, 16), P("fan", cx + k * 66, 300, 24, 22, rot=180 + k * 20)],
+              tags=("arms",))
+    c.add("head", "frog", 3, [E(cx, 186, 96, 84)], tags=("head",))
+    c.add("hair", "hair", 3.1, [P("mountains", cx, 150, 96, 22, flip="y"), E(cx, 146, 90, 20)], tags=("head",))
+    c.add("dish", "water", 3.2, [E(cx, 142, 60, 16)], tags=("head",))
+    dot_eyes(c, cx, 184, 22, 16, 18, z=3.3, tags=("head",))
+    c.add("beak", "gold", 3.4, [P("droplet", cx, 214, 38, 30, flip="y"), E(cx, 208, 40, 16)], tags=("head",))
+    c.flat("beak_line", "mouth", 3.45, [seg(cx - 18, 212, cx + 18, 212, 2.5)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="갓파", size="작음")
+    return c
+
+
+@creature("oni", "B")
+def oni():
+    W, H = 512, 512
+    cx, gy = 256, 494
+    c = Creature("oni", (W, H), (cx, gy), seed=723,
+                 note="Oni, front view. Huge dull-red ogre with two horns, wild black mane, glaring yellow eyes, tusked "
+                      "scowl, striped tawny hide loincloth, a studded iron kanabo club held across its shoulders.")
+    b = Biped(c, cx, gy, 420, build=1.3, leg=0.37, torso=0.32, head=0.2, shoulder=0.18, hip=0.105, arm_w=0.08,
+              leg_w=0.095, arm_len=0.38, stance=1.3, hunch=0.03)
+    c.shadow(cx, gy - 2, 290, 32)
+    ys, yh, hy0 = b.y_sh, b.y_hip, b.head_y
+    b.legs("oni_red", foot="claw", z=1, thigh=1.1, shin=1.0, foot_w=1.6)
+    c.add("torso", "oni_red", 3, [E(cx, ys + 44, 230, 110), E(cx, yh - 36, 170, 120)], tags=("torso",))
+    c.add("loin", "fur_tawny", 3.3, [E(cx, yh + 10, 180, 50), P("bookmark", cx - 30, yh + 50, 60, 60), P("bookmark", cx + 32, yh + 46, 56, 56)],
+          tags=("torso",))
+    c.flat("stripes", "fur_dark", 3.4, [seg(cx - 70 + i * 28, yh - 8, cx - 62 + i * 28, yh + 44, 7) for i in range(6)], tags=("torso",),
+           clip_to="loin", opacity=0.85)
+    club_y = ys - 20
+    c.add("kanabo", "iron", 3.8, [seg(cx - 200, club_y + 10, cx + 210, club_y - 10, 34), E(cx + 206, club_y - 10, 44, 44)], tags=("club",))
+    c.add("studs", "armor", 3.85, [P("triangle", cx - 150 + i * 44, club_y + 4 - i * 2 - 22, 12, 16) for i in range(9)]
+          + [P("triangle", cx - 150 + i * 44, club_y + 4 - i * 2 + 22, 12, 16, flip="y") for i in range(9)], tags=("club",))
+    for s, k in (("l", -1), ("r", 1)):
+        b.arm_to(s, (cx + k * 150, club_y + 4), elbow=(b.sh[s][0] + k * 40, ys + 50))
+    b.arm("l", "oni_red", z=4, upper=1.1, fore=1.0, hand=1.3)
+    b.arm("r", "oni_red", z=4, upper=1.1, fore=1.0, hand=1.3)
+    c.add("mane", "hair", 6.4, [P("cloud", cx, hy0 - 20, 150, 80), P("droplet", cx - 66, hy0 + 20, 36, 70, flip="y", rot=20),
+                                P("droplet", cx + 66, hy0 + 20, 36, 70, flip="y", rot=-20)], tags=("head",))
+    c.add("horns", "horn", 6.3, [P("cone", cx - 30, hy0 - 60, 24, 50, rot=-16), P("cone", cx + 30, hy0 - 60, 24, 50, rot=16)], tags=("head",))
+    c.add("head", "oni_red", 7, [E(cx, hy0, 90, 84), E(cx, hy0 + 24, 96, 52)], tags=("head",))
+    c.add("brow", "hair", 7.2, [E(cx - 22, hy0 - 16, 36, 12, rot=18), E(cx + 22, hy0 - 16, 36, 12, rot=-18)], tags=("head",))
+    c.glow("eyes", "glow_yellow", 7.25, [E(cx - 20, hy0 - 4, 18, 12, rot=14), E(cx + 20, hy0 - 4, 18, 12, rot=-14)], tags=("head",),
+           color="glow_yellow_c", strength=0.6, opacity=0.35)
+    c.flat("pupils", "eye", 7.3, [E(cx - 20, hy0 - 4, 6, 6), E(cx + 20, hy0 - 4, 6, 6)], tags=("head",))
+    c.add("nose", "oni_red", 7.35, [E(cx, hy0 + 14, 28, 20)], tags=("head",))
+    c.flat("mouth", "mouth", 7.4, smile(cx, hy0 + 38, 56, 14, frown=True), tags=("head",))
+    c.add("tusks", "tooth", 7.5, [P("triangle", cx - 20, hy0 + 30, 9, 18), P("triangle", cx + 20, hy0 + 30, 9, 18)], tags=("head",),
+          line={"width": 0.5, "heavy": 0.4})
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="오니", size="큼")
+    return c
+
+
+@creature("haetae", "B")
+def haetae():
+    W, H = 512, 512
+    cx, gy = 256, 494
+    c = Creature("haetae", (W, H), (cx, gy), seed=724,
+                 note="Haetae, front view. Seated guardian lion-beast of weathered stone: curling spiral mane, a single "
+                      "horn, bulging round eyes, wide fanged grin, scaled chest, bronze bell on a collar, heavy paws.")
+    c.shadow(cx, gy - 2, 330, 36)
+    c.add("haunches", "stone", 1, [E(cx - 110, 420, 130, 140), E(cx + 110, 420, 130, 140)], tags=("body",))
+    c.add("tail", "stone_dark", 0.8, [P("spiral", cx + 170, 330, 80, 80), P("cloud", cx + 160, 290, 70, 40)], tags=("body",))
+    c.add("chest", "stone", 2, [E(cx, 370, 200, 200)], tags=("body",))
+    c.flat("scales", "stone_dark", 2.1, [P("moon", cx + dx, 340 + dy, 26, 26, rot=-45) for dx in (-40, 0, 40) for dy in (0, 34, 68)],
+           tags=("body",), clip_to="chest", opacity=0.5)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"leg_{s}", "stone", 3, [seg(cx + k * 60, 370, cx + k * 66, 460, 56), E(cx + k * 66, 472, 76, 40)], tags=("legs",))
+        c.add(f"toes_{s}", "stone_dark", 3.1, [E(cx + k * 66 + d * 20, 486, 18, 12) for d in (-1, 0, 1)], tags=("legs",))
+    c.add("collar", "bronze", 3.5, [E(cx, 290, 150, 26)], tags=("body",))
+    c.add("bell", "gold", 3.6, [P("bell", cx, 314, 40, 40)], tags=("body",))
+    c.add("mane", "stone_dark", 4, [P("spiral", cx + dx, 200 + dy, 50, 50, **({"flip": "x"} if dx < 0 else {})) for dx, dy in
+                                    ((-110, 30), (-120, -30), (-80, -80), (-30, -110), (30, -110), (80, -80), (120, -30), (110, 30))]
+          + [E(cx, 190, 210, 190)], tags=("head",))
+    c.add("head", "stone", 5, [E(cx, 196, 150, 130)], tags=("head",))
+    c.add("horn", "horn", 5.1, [P("cone", cx, 112, 26, 44)], tags=("head",))
+    c.flat("eye_whites", "eye_white", 5.2, [E(cx - 34, 180, 36, 36), E(cx + 34, 180, 36, 36)], tags=("head",))
+    c.flat("pupils", "eye", 5.3, [E(cx - 32, 182, 14, 14), E(cx + 32, 182, 14, 14)], tags=("head",))
+    c.add("brows", "stone_dark", 5.35, [E(cx - 36, 158, 44, 14, rot=-12), E(cx + 36, 158, 44, 14, rot=12)], tags=("head",))
+    c.add("nose", "stone", 5.4, [E(cx, 210, 50, 30)], tags=("head",))
+    c.flat("nostrils", "void", 5.45, [E(cx - 10, 212, 10, 8), E(cx + 10, 212, 10, 8)], tags=("head",))
+    c.flat("mouth", "void", 5.5, smile(cx, 244, 110, 30), tags=("head",))
+    c.add("fangs", "bone_old", 5.6, fangs(cx - 44, cx + 44, 240, 6, 12), tags=("head",), line={"width": 0.5, "heavy": 0.4})
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="해태", size="큼")
+    return c

@@ -6,33 +6,7 @@ import math
 
 from .kit import (E, P, Creature, brows, creature, dot_eyes, fangs, held, membrane, mirror, poly, seg, smile, std_frames,
                   sym, tube, x_eyes)
-from .parts import bat_wing, bones_limb, claw_hand, spikes_on, wing_at
-
-
-def arch_leg(c, name, root, knee, foot, w0, w1, mat, z, tags, pivot=None, hidden=False, tip_mat=None):
-    """Arthropod leg: root -> high knee -> foot on the ground, tapering, with a dark tip."""
-    pieces = tube([root, ((root[0] + knee[0]) / 2, knee[1] - 6), knee], w0, (w0 + w1) / 2, n=6, cap=True)
-    pieces += tube([knee, ((knee[0] + foot[0]) / 2 + (knee[0] - foot[0]) * 0.1, (knee[1] + foot[1]) / 2), foot], (w0 + w1) / 2, w1, n=6, cap=True)
-    extra = {"hidden": True} if hidden else {}
-    c.add(name, mat, z, pieces, tags=tags, pivot=list(pivot or root), **extra)
-    if tip_mat:
-        c.add(name + "_tip", tip_mat, z + 0.01, [E(foot[0], foot[1], w1 * 1.4, w1 * 1.6)], tags=tags, pivot=list(pivot or root),
-              line=False, **extra)
-
-
-def pincer(x, y, size, ang, open_=0.35):
-    """Crab / scorpion claw: a palm with two curved fingers opening toward angle ``ang`` (deg)."""
-    t = math.radians(ang)
-    ux, uy = math.cos(t), math.sin(t)
-    px, py = x - ux * size * 0.1, y - uy * size * 0.1
-    out = [E(px, py, size * 0.72, size * 0.52, ang)]
-    tipx, tipy = x + ux * size * 0.55, y + uy * size * 0.55
-    for d in (-1, 1):
-        a = t + d * open_
-        fx, fy = x + math.cos(a) * size * 0.62, y + math.sin(a) * size * 0.62
-        out += tube([(x + ux * size * 0.15, y + uy * size * 0.15), ((x + fx) / 2 - uy * d * size * 0.12, (y + fy) / 2 + ux * d * size * 0.12),
-                     (fx, fy)], size * 0.26, size * 0.06, n=6)
-    return out
+from .parts import arch_leg, bat_wing, bones_limb, claw_hand, pincer, spikes_on, wing_at
 
 
 # ---------------------------------------------------------------- A: spider
@@ -196,4 +170,178 @@ def centipede():
         hit_show=("eyes_hit",), hit_hide=("eyes",), shadow_hit_dx=0,
     )
     c.meta.update(name_ko="거대 지네", size="사람")
+    return c
+
+
+# ================================================================ B (idle only)
+@creature("caterpillar", "B")
+def caterpillar():
+    W, H = 384, 384
+    cx, gy = 192, 366
+    c = Creature("caterpillar", (W, H), (cx, gy), seed=921,
+                 note="Giant caterpillar, front view. Fat segmented green grub rearing up from the ground in an S, pale "
+                      "belly, dark spots with ochre rings along the back, stubby legs, round head with dark eyes, mandibles "
+                      "and two short horns.")
+    c.shadow(cx, gy - 2, 280, 30)
+    spine = [(cx + 120, 340), (cx - 20, 348), (cx - 90, 300), (cx - 30, 240), (cx + 10, 190)]
+    import math as _m
+    lens = [0.0]
+    for (x0, y0), (x1, y1) in zip(spine[:-1], spine[1:]):
+        lens.append(lens[-1] + _m.hypot(x1 - x0, y1 - y0))
+
+    def point(t):
+        d = t * lens[-1]
+        for i in range(len(spine) - 1):
+            if d <= lens[i + 1] or i == len(spine) - 2:
+                u = (d - lens[i]) / max(1e-6, lens[i + 1] - lens[i])
+                (x0, y0), (x1, y1) = spine[i], spine[i + 1]
+                return x0 + (x1 - x0) * u, y0 + (y1 - y0) * u
+
+    body, spots, legs = [], [], []
+    n = 11
+    for i in range(n):
+        t = i / (n - 1)
+        x, y = point(t)
+        w = 40 + 34 * t
+        body.append(E(x, y, w * 1.2, w))
+        if i % 2 == 0:
+            spots.append(E(x, y - w * 0.18, w * 0.4, w * 0.3))
+        legs.append(E(x - 6, y + w * 0.44, 10, 12))
+        legs.append(E(x + 6, y + w * 0.44, 10, 12))
+    c.add("legs", "leaf_dark", 1, legs, tags=("body",))
+    c.add("body", "leaf", 2, body, tags=("body",))
+    c.add("belly", "belly", 2.1, [E(point(t)[0], point(t)[1] + 16, 40, 18) for t in (0.2, 0.4, 0.6, 0.8)], tags=("body",), clip_to="body",
+          line=False, opacity=0.5)
+    c.flat("spots", "gold", 2.2, spots, tags=("body",), clip_to="body", opacity=0.8)
+    c.flat("spot_core", "eye", 2.3, [E(p["at"][0], p["at"][1], p["size"][0] * 0.5, p["size"][1] * 0.5) for p in spots], tags=("body",),
+           clip_to="body")
+    hx, hy = spine[-1]
+    c.add("head", "leaf", 3, [E(hx, hy - 30, 90, 80)], tags=("head",))
+    c.add("horns", "horn", 2.9, [P("cone", hx - 22, hy - 80, 12, 26, rot=-16), P("cone", hx + 22, hy - 80, 12, 26, rot=16)], tags=("head",))
+    dot_eyes(c, hx, hy - 36, 20, 18, 20, z=3.2, tags=("head",))
+    c.add("mandibles", "claw", 3.3, [P("moon", hx - 10, hy - 4, 14, 14, rot=135), P("moon", hx + 10, hy - 4, 14, 14, rot=-135, flip="x")],
+          tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="거대 애벌레", size="사람")
+    return c
+
+
+@creature("kraken", "B")
+def kraken():
+    W, H = 768, 640
+    cx, gy = 384, 620
+    c = Creature("kraken", (W, H), (cx, gy), seed=922,
+                 note="Kraken, front view. Colossal dark wine-red octopus rearing up: bulbous mantle with ridges, two huge "
+                      "golden slit-pupil eyes, a beaked mouth, eight thick suckered arms spreading and curling in every "
+                      "direction.")
+    c.shadow(cx, gy - 4, 520, 50)
+    arms = [(-1, [(cx - 90, 470), (cx - 250, 520), (cx - 330, 430), (cx - 290, 340)]),
+            (-1, [(cx - 100, 420), (cx - 250, 360), (cx - 300, 230), (cx - 230, 170)]),
+            (-1, [(cx - 60, 500), (cx - 170, 600), (cx - 300, 600), (cx - 350, 540)]),
+            (-1, [(cx - 30, 520), (cx - 60, 600), (cx - 140, 610), (cx - 160, 570)]),
+            (1, [(cx + 90, 470), (cx + 250, 520), (cx + 330, 430), (cx + 290, 340)]),
+            (1, [(cx + 100, 420), (cx + 250, 360), (cx + 300, 230), (cx + 230, 170)]),
+            (1, [(cx + 60, 500), (cx + 170, 600), (cx + 300, 600), (cx + 350, 540)]),
+            (1, [(cx + 30, 520), (cx + 60, 600), (cx + 140, 610), (cx + 160, 570)])]
+    from .kit import along
+    for i, (k, ctrl) in enumerate(arms):
+        z = 1 + (0.6 if i % 4 >= 2 else 0) + i * 0.01
+        c.add(f"arm_{i}", "cloth_wine", z, tube(ctrl, 70, 14, n=18, cap=True), tags=("arms",))
+        c.add(f"arm_{i}_s", "sucker", z + 0.005, along(ctrl, 8, lambda x, y, a, j, t: E(x + math.cos(math.radians(a + 90 * k)) * (70 - 56 * t) * 0.4,
+                                                                                         y + math.sin(math.radians(a + 90 * k)) * (70 - 56 * t) * 0.4,
+                                                                                         (70 - 56 * t) * 0.3, (70 - 56 * t) * 0.26), 0.15, 0.9),
+              tags=("arms",), clip_to=f"arm_{i}", line=False)
+    c.add("mantle", "cloth_wine", 2, [P("droplet", cx, 280, 300, 360), E(cx, 430, 260, 160)], tags=("body",))
+    c.flat("ridges", "robe_black", 2.1, [seg(cx + d * 40, 130 + abs(d) * 20, cx + d * 60, 300, 6) for d in (-2, -1, 0, 1, 2)], tags=("body",),
+           clip_to="mantle", opacity=0.35)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"eye_{s}", "cloth_wine", 2.3, [E(cx + k * 80, 400, 90, 80)], tags=("head",))
+    c.glow("eyes", "glow_yellow", 2.4, [E(cx - 80, 402, 62, 54), E(cx + 80, 402, 62, 54)], tags=("head",), color="glow_yellow_c",
+           strength=0.5, opacity=0.3)
+    c.flat("pupils", "eye", 2.45, [E(cx - 80, 404, 44, 12), E(cx + 80, 404, 44, 12)], tags=("head",))
+    c.add("beak", "claw", 2.5, [P("triangle", cx, 486, 40, 34, flip="y"), P("triangle", cx, 470, 34, 22)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="크라켄", size="거대")
+    return c
+
+
+@creature("giant_shark", "B")
+def giant_shark():
+    W, H = 640, 512
+    cx, gy = 320, 494
+    c = Creature("giant_shark", (W, H), (cx, gy), seed=923,
+                 note="Giant shark, 3/4 front view lunging toward the lower left. Scarred slate-grey shark with a pale "
+                      "belly, tall dorsal fin, pectoral fins spread, cold small eyes and a gaping jaw full of teeth.")
+    c.shadow(cx, gy - 4, 420, 40, opacity=0.3, blur=6)
+    c.add("tail", "shark", 1, [P("triangle", 540, 190, 90, 150, rot=40), P("triangle", 560, 330, 70, 120, rot=140)], tags=("body",))
+    c.add("fin_far", "shark", 1.2, [P("triangle", 300, 390, 90, 60, rot=160)], tags=("body",))
+    c.add("body", "shark", 2, [P("droplet", 330, 270, 200, 460, rot=-100), E(220, 290, 190, 170)], tags=("body",))
+    c.add("belly", "eye_white", 2.1, [E(260, 340, 300, 90, rot=-8)], tags=("body",), clip_to="body", opacity=0.55, line=False)
+    c.add("dorsal", "shark", 1.8, [P("triangle", 330, 150, 90, 120, rot=20)], tags=("body",))
+    c.add("fin", "shark", 3, [P("triangle", 230, 390, 110, 70, rot=200)], tags=("body",))
+    c.flat("gills", "robe_black", 2.2, [seg(300 + i * 16, 250, 296 + i * 16, 310, 4) for i in range(4)], tags=("body",), opacity=0.5)
+    c.flat("mouth", "mouth", 3.2, [E(150, 300, 130, 110)], tags=("head",))
+    c.add("teeth_up", "tooth", 3.3, fangs(96, 206, 254, 8, 16, jitter=0.2), tags=("head",), line={"width": 0.5, "heavy": 0.4})
+    c.add("teeth_lo", "tooth", 3.3, fangs(104, 198, 346, 7, 14, down=False, jitter=0.2), tags=("head",), line={"width": 0.5, "heavy": 0.4})
+    c.flat("scars", "eye_white", 2.3, [seg(260, 200, 300, 214, 3), seg(274, 190, 290, 226, 3)], tags=("body",), opacity=0.5)
+    dot_eyes(c, 200, 214, 32, 11, 10, z=3.4, tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="대왕 상어", size="큼")
+    return c
+
+
+@creature("crab", "B")
+def crab():
+    W, H = 384, 384
+    cx, gy = 192, 366
+    c = Creature("crab", (W, H), (cx, gy), seed=924,
+                 note="Giant crab, front view. Wide rust-red knobbly carapace, eyes on stalks, one oversized pincer raised "
+                      "and one smaller, four jointed legs per side braced on the ground, pale belly plates.")
+    c.shadow(cx, gy - 2, 320, 34)
+    for s, k in (("l", -1), ("r", 1)):
+        for i in range(4):
+            root = (cx + k * (70 + i * 8), 290 + i * 6)
+            knee = (cx + k * (120 + i * 14), 266 + i * 10)
+            foot = (cx + k * (140 + i * 10), gy - 10)
+            arch_leg(c, f"leg_{s}{i}", root, knee, foot, 18, 7, "crab", 1 + i * 0.02, ("legs",), tip_mat="claw")
+    c.add("body", "crab", 2, [E(cx, 280, 230, 130)], tags=("body",))
+    c.add("belly", "belly", 2.1, [E(cx, 320, 150, 50)], tags=("body",), clip_to="body", opacity=0.6)
+    c.flat("knobs", "chitin_rust", 2.2, [E(cx + dx, 250 + dy, 14, 10) for dx, dy in ((-60, 0), (-20, -20), (20, -20), (60, 0), (0, 10))],
+           tags=("body",), clip_to="body", opacity=0.7)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"stalk_{s}", "crab", 2.5, [seg(cx + k * 22, 230, cx + k * 30, 196, 8)], tags=("head",))
+        c.add(f"eyeball_{s}", "eye", 2.6, [E(cx + k * 30, 190, 16, 16)], tags=("head",))
+        c.flat(f"glint_{s}", "eye_white", 2.65, [E(cx + k * 30 - 3, 187, 5, 5)], tags=("head",), line=False)
+    c.add("arm_l", "crab", 3, tube([(cx - 96, 270), (cx - 136, 240), (cx - 134, 206)], 30, 22, n=6, cap=True), tags=("arms",))
+    c.add("claw_l", "crab", 3.2, pincer(cx - 130, 176, 104, -92, 0.45), tags=("arms",))
+    c.add("arm_r", "crab", 3, tube([(cx + 100, 274), (cx + 140, 260), (cx + 150, 240)], 24, 18, n=6, cap=True), tags=("arms",))
+    c.add("claw_r", "crab", 3.2, pincer(cx + 154, 220, 72, -70, 0.3), tags=("arms",))
+    c.flat("mouth", "mouth", 2.4, [E(cx, 300, 40, 10)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="거대 게", size="사람")
+    return c
+
+
+@creature("jellyfish", "B")
+def jellyfish():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("jellyfish", (W, H), (cx, gy), seed=925,
+                 note="Jellyfish, front view, drifting. Translucent violet bell with a glowing inner frill, scalloped rim, "
+                      "four frilly oral arms and many long thin trailing tentacles; faint bioluminescent spots.")
+    c.shadow(cx, gy - 2, 90, 14, opacity=0.2, blur=7)
+    for i in range(7):
+        x = cx - 60 + i * 20
+        c.add(f"tentacle_{i}", "jelly", 1, tube([(x, 170), (x + (i - 3) * 6, 240), (x - (i - 3) * 10, 320)], 5, 2, n=10, cap=True),
+              tags=("body",), opacity=0.75, line={"width": 0.5, "heavy": 0.4})
+    for i, x in enumerate((cx - 26, cx - 8, cx + 10, cx + 28)):
+        c.add(f"oral_{i}", "jelly", 1.5, tube([(x, 170), (x + 8, 220), (x - 6, 270)], 16, 6, n=10, cap=True), tags=("body",), opacity=0.8)
+    c.add("bell", "jelly", 2, [E(cx, 140, 190, 150), P("square", cx, 196, 200, 60, op="sub")] + [E(cx - 80 + i * 32, 164, 36, 22) for i in range(6)],
+          tags=("body",), opacity=0.82)
+    c.glow("frill", "glow_violet", 2.2, [E(cx, 140, 110, 50), E(cx, 130, 70, 30, op="sub")], tags=("body",), color="glow_violet_c",
+           strength=0.7, opacity=0.4)
+    c.glow("spots", "glow_cyan", 2.3, [E(cx - 50, 110, 8, 8), E(cx + 40, 96, 7, 7), E(cx + 60, 124, 6, 6), E(cx - 20, 90, 6, 6)], tags=("body",),
+           color="ghost_glow_c", strength=0.9, opacity=0.5)
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="해파리", size="작음")
     return c

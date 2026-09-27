@@ -1,0 +1,851 @@
+{
+ "asset": "giant",
+ "status": "candidate",
+ "note": "Giant, front view (twice human height). Brutish hill giant with a shaggy beard and topknot, crude hide tunic and rope belt, bone necklace, bare feet wrapped in rags, uprooted tree-trunk club resting on the ground.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  512,
+  768
+ ],
+ "pivot": [
+  256,
+  748
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 523,
+ "g05": {
+  "name_ko": "거인",
+  "size": "거대",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      736.6
+     ],
+     "size": [
+      340.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1,
+   "material": "hide_pink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      194.0,
+      522.2
+     ],
+     "size": [
+      81.8,
+      180.6
+     ],
+     "rot": 7.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      181.6,
+      658.3
+     ],
+     "size": [
+      74.4,
+      147.7
+     ],
+     "rot": 1.9
+    }
+   ]
+  },
+  {
+   "name": "foot_l",
+   "tags": [
+    "all",
+    "legs",
+    "leg_l"
+   ],
+   "z": 1.1,
+   "material": "cloth_rag",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      167.6,
+      726.2
+     ],
+     "size": [
+      125.0,
+      54.7
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      179.5,
+      692.4
+     ],
+     "size": [
+      89.3,
+      62.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1,
+   "material": "hide_pink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      318.0,
+      522.2
+     ],
+     "size": [
+      81.8,
+      180.6
+     ],
+     "rot": -7.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      330.4,
+      658.3
+     ],
+     "size": [
+      74.4,
+      147.7
+     ],
+     "rot": -1.9
+    }
+   ]
+  },
+  {
+   "name": "foot_r",
+   "tags": [
+    "all",
+    "legs",
+    "leg_r"
+   ],
+   "z": 1.1,
+   "material": "cloth_rag",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      344.4,
+      726.2
+     ],
+     "size": [
+      125.0,
+      54.7
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      332.5,
+      692.4
+     ],
+     "size": [
+      89.3,
+      62.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tunic",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3,
+   "material": "fur_brown",
+   "pieces": [
+    {
+     "icon": "bell",
+     "at": [
+      256.0,
+      401.0
+     ],
+     "size": [
+      250.0,
+      340.0
+     ],
+     "crop": [
+      1.6,
+      1.4,
+      14.4,
+      11.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      291.0
+     ],
+     "size": [
+      250.0,
+      100.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tunic_edge",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.1,
+   "material": "fur_dark",
+   "clip_to": "tunic",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "mountains",
+     "at": [
+      256.0,
+      563.0
+     ],
+     "size": [
+      240.0,
+      40.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "belt",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 3.3,
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      437.0
+     ],
+     "size": [
+      200.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4,
+   "material": "hide_pink",
+   "pivot": [
+    116.0,
+    251.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      97.4,
+      312.2
+     ],
+     "size": [
+      65.5,
+      150.8
+     ],
+     "rot": 16.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      82.4,
+      437.2
+     ],
+     "size": [
+      59.5,
+      148.7
+     ],
+     "rot": -3.2
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arm_l"
+   ],
+   "z": 4.2,
+   "material": "hide_pink",
+   "pivot": [
+    116.0,
+    251.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      86.0,
+      508.7
+     ],
+     "size": [
+      77.4,
+      77.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4,
+   "material": "hide_pink",
+   "pivot": [
+    396.0,
+    251.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      417.1,
+      310.2
+     ],
+     "size": [
+      65.5,
+      148.5
+     ],
+     "rot": -19.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      437.1,
+      432.2
+     ],
+     "size": [
+      59.5,
+      146.5
+     ],
+     "rot": 1.0
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arm_r"
+   ],
+   "z": 4.2,
+   "material": "hide_pink",
+   "pivot": [
+    396.0,
+    251.0
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      436.0,
+      502.7
+     ],
+     "size": [
+      77.4,
+      77.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "club",
+   "tags": [
+    "all",
+    "club"
+   ],
+   "z": 3.9,
+   "material": "bark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      445.0,
+      596.5
+     ],
+     "size": [
+      44.0,
+      278.6
+     ],
+     "rot": -2.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      450.0,
+      724.0
+     ],
+     "size": [
+      70.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "club_roots",
+   "tags": [
+    "all",
+    "club"
+   ],
+   "z": 3.85,
+   "material": "bark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      450.0,
+      718.0
+     ],
+     "size": [
+      14.0,
+      14.0
+     ],
+     "rot": -59.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      461.3,
+      723.8
+     ],
+     "size": [
+      12.2,
+      17.8
+     ],
+     "rot": -67.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      471.1,
+      726.6
+     ],
+     "size": [
+      10.4,
+      17.8
+     ],
+     "rot": -81.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      479.5,
+      726.6
+     ],
+     "size": [
+      8.6,
+      17.8
+     ],
+     "rot": -100.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      486.5,
+      723.8
+     ],
+     "size": [
+      6.8,
+      17.8
+     ],
+     "rot": -124.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      490.4,
+      720.4
+     ],
+     "size": [
+      5.0,
+      10.7
+     ],
+     "rot": -146.3
+    }
+   ]
+  },
+  {
+   "name": "necklace",
+   "tags": [
+    "all",
+    "torso"
+   ],
+   "z": 5.5,
+   "material": "bone",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      212.0,
+      275.0
+     ],
+     "size": [
+      10.0,
+      18.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      234.0,
+      278.0
+     ],
+     "size": [
+      10.0,
+      18.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      256.0,
+      281.0
+     ],
+     "size": [
+      10.0,
+      18.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      278.0,
+      278.0
+     ],
+     "size": [
+      10.0,
+      18.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      300.0,
+      275.0
+     ],
+     "size": [
+      10.0,
+      18.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7,
+   "material": "hide_pink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      201.4
+     ],
+     "size": [
+      90.0,
+      96.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "beard",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.2,
+   "material": "hair",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      256.0,
+      249.4
+     ],
+     "size": [
+      96.0,
+      110.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      221.4
+     ],
+     "size": [
+      96.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hair",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.1,
+   "material": "hair",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      163.4
+     ],
+     "size": [
+      92.0,
+      40.0
+     ]
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      256.0,
+      135.4
+     ],
+     "size": [
+      30.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "brow",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.3,
+   "material": "hair",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      238.0,
+      189.4
+     ],
+     "size": [
+      30.0,
+      9.0
+     ],
+     "rot": 12.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      274.0,
+      189.4
+     ],
+     "size": [
+      30.0,
+      9.0
+     ],
+     "rot": -12.0
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.25,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      238.0,
+      199.4
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      274.0,
+      199.4
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.35,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      236.0,
+      197.5
+     ],
+     "size": [
+      2.7,
+      2.3
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      272.0,
+      197.5
+     ],
+     "size": [
+      2.7,
+      2.3
+     ]
+    }
+   ]
+  },
+  {
+   "name": "nose",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.35,
+   "material": "hide_pink",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      213.4
+     ],
+     "size": [
+      22.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 7.4,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      233.4
+     ],
+     "size": [
+      30.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      236.8
+     ],
+     "size": [
+      36.0,
+      8.4
+     ],
+     "op": "sub"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

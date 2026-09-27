@@ -1,0 +1,523 @@
+{
+ "asset": "robed_skeleton",
+ "status": "candidate",
+ "note": "Robed skeleton (skeleton mage), front view. Hooded skull with violet eye lights inside a tattered black robe, bony hands, one raised with a crackle of violet light, the other gripping a gnarled staff topped with a glowing gem.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 621,
+ "g05": {
+  "name_ko": "로브 입은 해골",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      361.6
+     ],
+     "size": [
+      170.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "robe",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "bell",
+     "at": [
+      160.0,
+      250.0
+     ],
+     "size": [
+      170.0,
+      240.0
+     ],
+     "crop": [
+      1.6,
+      1.4,
+      14.4,
+      11.6
+     ]
+    },
+    {
+     "icon": "mountains",
+     "at": [
+      160.0,
+      364.0
+     ],
+     "size": [
+      170.0,
+      30.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "robe_trim",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "cloth_wine",
+   "clip_to": "robe",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      160.0,
+      250.0
+     ],
+     "size": [
+      16.0,
+      230.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rope",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "material": "bone_old",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      214.0
+     ],
+     "size": [
+      96.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "staff",
+   "tags": [
+    "all",
+    "staff"
+   ],
+   "z": 1.8,
+   "material": "bark",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      232.0,
+      225.0
+     ],
+     "size": [
+      9.0,
+      273.2
+     ],
+     "rot": -179.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      234.0,
+      86.0
+     ],
+     "size": [
+      24.0,
+      24.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gem",
+   "tags": [
+    "all",
+    "staff"
+   ],
+   "z": 1.9,
+   "kind": "flat",
+   "material": "glow_violet",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "glow_violet_c"
+   },
+   "pieces": [
+    {
+     "icon": "diamond",
+     "at": [
+      234.0,
+      76.0
+     ],
+     "size": [
+      22.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sleeve_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 3,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      213.0,
+      173.0
+     ],
+     "size": [
+      34.0,
+      64.7
+     ],
+     "rot": -29.5
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 3.1,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      232.0,
+      204.0
+     ],
+     "size": [
+      8.8,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      229.8,
+      196.3
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": 164.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      233.4,
+      196.1
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": -170.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      236.7,
+      197.5
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": -144.0
+    }
+   ]
+  },
+  {
+   "name": "sleeve_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 3,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      102.0,
+      150.0
+     ],
+     "size": [
+      34.0,
+      47.9
+     ],
+     "rot": 90.0
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 3.1,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      64.0,
+      146.0
+     ],
+     "size": [
+      8.8,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      58.2,
+      140.4
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": 134.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      61.3,
+      138.5
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": 160.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      64.8,
+      138.0
+     ],
+     "size": [
+      2.9,
+      16.3
+     ],
+     "rot": -174.0
+    }
+   ]
+  },
+  {
+   "name": "spell",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "glow_violet",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.5,
+    "color": "glow_violet_c"
+   },
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      56.0,
+      112.0
+     ],
+     "size": [
+      16.0,
+      34.0
+     ],
+     "rot": 10.0
+    },
+    {
+     "icon": "star",
+     "at": [
+      68.0,
+      124.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hood",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4,
+   "material": "robe_black",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      112.0
+     ],
+     "size": [
+      100.0,
+      120.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      140.0
+     ],
+     "size": [
+      100.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hood_in",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.1,
+   "kind": "flat",
+   "material": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      126.0
+     ],
+     "size": [
+      64.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "skull",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.2,
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "skull",
+     "at": [
+      160.0,
+      128.0
+     ],
+     "size": [
+      50.0,
+      54.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 4.3,
+   "kind": "flat",
+   "material": "glow_violet",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "glow_violet_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      151.0,
+      124.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      169.0,
+      124.0
+     ],
+     "size": [
+      6.0,
+      6.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

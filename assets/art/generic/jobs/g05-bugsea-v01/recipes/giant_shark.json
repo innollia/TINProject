@@ -1,0 +1,610 @@
+{
+ "asset": "giant_shark",
+ "status": "candidate",
+ "note": "Giant shark, 3/4 front view lunging toward the lower left. Scarred slate-grey shark with a pale belly, tall dorsal fin, pectoral fins spread, cold small eyes and a gaping jaw full of teeth.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  640,
+  512
+ ],
+ "pivot": [
+  320,
+  494
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 923,
+ "g05": {
+  "name_ko": "대왕 상어",
+  "size": "큼",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      320.0,
+      477.4
+     ],
+     "size": [
+      420.0,
+      40.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      540.0,
+      190.0
+     ],
+     "size": [
+      90.0,
+      150.0
+     ],
+     "rot": 40.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      560.0,
+      330.0
+     ],
+     "size": [
+      70.0,
+      120.0
+     ],
+     "rot": 140.0
+    }
+   ]
+  },
+  {
+   "name": "fin_far",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.2,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      300.0,
+      390.0
+     ],
+     "size": [
+      90.0,
+      60.0
+     ],
+     "rot": 160.0
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      330.0,
+      270.0
+     ],
+     "size": [
+      200.0,
+      460.0
+     ],
+     "rot": -100.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      220.0,
+      290.0
+     ],
+     "size": [
+      190.0,
+      170.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "belly",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.1,
+   "material": "eye_white",
+   "clip_to": "body",
+   "opacity": 0.55,
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      260.0,
+      340.0
+     ],
+     "size": [
+      300.0,
+      90.0
+     ],
+     "rot": -8.0
+    }
+   ]
+  },
+  {
+   "name": "dorsal",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1.8,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      330.0,
+      150.0
+     ],
+     "size": [
+      90.0,
+      120.0
+     ],
+     "rot": 20.0
+    }
+   ]
+  },
+  {
+   "name": "fin",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3,
+   "material": "shark",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      230.0,
+      390.0
+     ],
+     "size": [
+      110.0,
+      70.0
+     ],
+     "rot": 200.0
+    }
+   ]
+  },
+  {
+   "name": "gills",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.2,
+   "kind": "flat",
+   "material": "robe_black",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      298.0,
+      280.0
+     ],
+     "size": [
+      4.0,
+      61.5
+     ],
+     "rot": 3.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      314.0,
+      280.0
+     ],
+     "size": [
+      4.0,
+      61.5
+     ],
+     "rot": 3.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      330.0,
+      280.0
+     ],
+     "size": [
+      4.0,
+      61.5
+     ],
+     "rot": 3.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      346.0,
+      280.0
+     ],
+     "size": [
+      4.0,
+      61.5
+     ],
+     "rot": 3.8
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      150.0,
+      300.0
+     ],
+     "size": [
+      130.0,
+      110.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "teeth_up",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "material": "tooth",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      102.9,
+      262.0
+     ],
+     "size": [
+      12.4,
+      16.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      116.6,
+      261.4
+     ],
+     "size": [
+      12.4,
+      14.7
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      130.4,
+      260.7
+     ],
+     "size": [
+      12.4,
+      13.4
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      144.1,
+      261.7
+     ],
+     "size": [
+      12.4,
+      15.4
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      157.9,
+      261.0
+     ],
+     "size": [
+      12.4,
+      14.1
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      171.6,
+      262.0
+     ],
+     "size": [
+      12.4,
+      16.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      185.4,
+      261.4
+     ],
+     "size": [
+      12.4,
+      14.7
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      199.1,
+      260.7
+     ],
+     "size": [
+      12.4,
+      13.4
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "teeth_lo",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.3,
+   "material": "tooth",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      110.7,
+      339.0
+     ],
+     "size": [
+      12.1,
+      14.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      124.1,
+      339.6
+     ],
+     "size": [
+      12.1,
+      12.9
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      137.6,
+      340.1
+     ],
+     "size": [
+      12.1,
+      11.8
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      151.0,
+      339.3
+     ],
+     "size": [
+      12.1,
+      13.4
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      164.4,
+      339.8
+     ],
+     "size": [
+      12.1,
+      12.3
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      177.9,
+      339.0
+     ],
+     "size": [
+      12.1,
+      14.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      191.3,
+      339.6
+     ],
+     "size": [
+      12.1,
+      12.9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "scars",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2.3,
+   "kind": "flat",
+   "material": "eye_white",
+   "opacity": 0.5,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      280.0,
+      207.0
+     ],
+     "size": [
+      3.0,
+      43.4
+     ],
+     "rot": -70.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      282.0,
+      208.0
+     ],
+     "size": [
+      3.0,
+      40.4
+     ],
+     "rot": -24.0
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.4,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      168.0,
+      214.0
+     ],
+     "size": [
+      11.0,
+      10.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      232.0,
+      214.0
+     ],
+     "size": [
+      11.0,
+      10.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes_glint",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.5,
+   "kind": "flat",
+   "material": "eye_white",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      165.6,
+      211.8
+     ],
+     "size": [
+      3.3,
+      2.6
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      229.6,
+      211.8
+     ],
+     "size": [
+      3.3,
+      2.6
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

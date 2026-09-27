@@ -151,6 +151,16 @@ NEW_MATERIALS = {
     "glow_white": {"base": "#d8d0c0", "light": "#fff8e8"},
     "slime": m("#56703f", "#394d29", "#7f9a5c", "#121a0b", shade=WET),
     "slime_dark": m("#3f5530", "#2a3a1f", "#56703f", "#0c1207", shade=WET),
+    # --- added for B / C
+    "pumpkin": m("#8a4e24", "#5e3216", "#a86a34", "#1e0c04", texture={"stamp": "pill", "pre_rot": -45, "length": 30, "width": 3, "angle": 90, "jitter": 4, "density": 0.7, "strength": 0.1}),
+    "wood_door": m("#553f2c", "#38291c", "#6e5540", "#120c07", texture={"stamp": "pill", "pre_rot": -45, "length": 26, "width": 2.4, "angle": 90, "jitter": 3, "density": 0.9, "strength": 0.12},
+                   grime={"stamps": ["metaballs", "cloud"], "size": 18, "soft": 2, "density": 0.3, "strength": 0.3, "color": "grime"}),
+    "shark": m("#4e5a64", "#343d45", "#6a7782", "#0d1115", shade=GLOSS),
+    "jelly": m("#6a5a86", "#4a3e60", "#8a7aa8", "#140e22", shade=WET),
+    "crab": m("#7a3a2a", "#52251a", "#96503c", "#1c0806", shade=GLOSS),
+    "clown_white": m("#b0a89a", "#86806f", "#c8c0b0", "#35302a", shade=SKIN),
+    "cactus": m("#46603e", "#2f4129", "#5c7a52", "#0c1409", texture={"stamp": "pill", "pre_rot": -45, "length": 30, "width": 2, "angle": 90, "jitter": 2, "density": 0.8, "strength": 0.1}),
+    "flesh_mutant": m("#7a5a50", "#553d36", "#957266", "#1c110e", shade=SKIN, grime=GRIME_ROT),
 }
 
 

@@ -1,0 +1,594 @@
+{
+ "asset": "water_spirit",
+ "status": "candidate",
+ "note": "Water spirit, front view. Translucent deep-teal water body rising from a swirling pool: droplet head with glowing pale eyes, wave-crest hair, flowing arms ending in splashes, bubbles inside.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  320,
+  384
+ ],
+ "pivot": [
+  160,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 528,
+ "g05": {
+  "name_ko": "물 정령",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      360.6
+     ],
+     "size": [
+      180.0,
+      24.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pool",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 1,
+   "material": "water",
+   "opacity": 0.86,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      346.0
+     ],
+     "size": [
+      210.0,
+      44.0
+     ]
+    },
+    {
+     "icon": "wave",
+     "at": [
+      100.0,
+      340.0
+     ],
+     "size": [
+      70.0,
+      40.0
+     ]
+    },
+    {
+     "icon": "wave",
+     "at": [
+      220.0,
+      342.0
+     ],
+     "size": [
+      70.0,
+      40.0
+     ],
+     "flip": "x"
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "water",
+   "opacity": 0.86,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      250.0
+     ],
+     "size": [
+      110.0,
+      190.0
+     ],
+     "flip": "y"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      312.0
+     ],
+     "size": [
+      90.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 2.5,
+   "material": "water",
+   "opacity": 0.86,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      120.0,
+      210.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": 70.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      108.1,
+      214.8
+     ],
+     "size": [
+      28.0,
+      28.0
+     ],
+     "rot": 65.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      97.5,
+      220.4
+     ],
+     "size": [
+      26.0,
+      26.0
+     ],
+     "rot": 59.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      88.0,
+      226.7
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "rot": 53.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      79.7,
+      233.7
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "rot": 46.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      72.6,
+      241.5
+     ],
+     "size": [
+      20.0,
+      21.1
+     ],
+     "rot": 38.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      66.7,
+      250.0
+     ],
+     "size": [
+      18.0,
+      21.1
+     ],
+     "rot": 31.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      61.9,
+      259.3
+     ],
+     "size": [
+      16.0,
+      21.1
+     ],
+     "rot": 23.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      58.4,
+      269.3
+     ],
+     "size": [
+      14.0,
+      21.1
+     ],
+     "rot": 15.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      56.1,
+      279.7
+     ],
+     "size": [
+      12.0,
+      12.7
+     ],
+     "rot": 9.1
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      52.0,
+      296.0
+     ],
+     "size": [
+      26.0,
+      34.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 2.5,
+   "material": "water",
+   "opacity": 0.86,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      200.0,
+      210.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": -70.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      211.9,
+      214.8
+     ],
+     "size": [
+      28.0,
+      28.0
+     ],
+     "rot": -65.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      222.5,
+      220.4
+     ],
+     "size": [
+      26.0,
+      26.0
+     ],
+     "rot": -59.5
+    },
+    {
+     "icon": "circle",
+     "at": [
+      232.0,
+      226.7
+     ],
+     "size": [
+      24.0,
+      24.0
+     ],
+     "rot": -53.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      240.3,
+      233.7
+     ],
+     "size": [
+      22.0,
+      22.0
+     ],
+     "rot": -46.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      247.4,
+      241.5
+     ],
+     "size": [
+      20.0,
+      21.1
+     ],
+     "rot": -38.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      253.3,
+      250.0
+     ],
+     "size": [
+      18.0,
+      21.1
+     ],
+     "rot": -31.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      258.1,
+      259.3
+     ],
+     "size": [
+      16.0,
+      21.1
+     ],
+     "rot": -23.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      261.6,
+      269.3
+     ],
+     "size": [
+      14.0,
+      21.1
+     ],
+     "rot": -15.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      263.9,
+      279.7
+     ],
+     "size": [
+      12.0,
+      12.7
+     ],
+     "rot": -9.1
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      268.0,
+      296.0
+     ],
+     "size": [
+      26.0,
+      34.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3,
+   "material": "water",
+   "opacity": 0.86,
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      160.0,
+      150.0
+     ],
+     "size": [
+      90.0,
+      110.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "crest",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.2,
+   "material": "water",
+   "opacity": 0.86,
+   "pieces": [
+    {
+     "icon": "wave",
+     "at": [
+      160.0,
+      106.0
+     ],
+     "size": [
+      100.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.4,
+   "kind": "flat",
+   "material": "ghost_glow",
+   "emit": 1.0,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.6,
+    "color": "ghost_glow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      160.0
+     ],
+     "size": [
+      16.0,
+      20.0
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      160.0
+     ],
+     "size": [
+      16.0,
+      20.0
+     ],
+     "rot": 8.0
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.4,
+   "kind": "flat",
+   "material": "mouth",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      160.0,
+      186.0
+     ],
+     "size": [
+      16.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bubbles",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3.5,
+   "material": "ice",
+   "opacity": 0.7,
+   "line": {
+    "width": 0.5,
+    "heavy": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      140.0,
+      250.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      174.0,
+      280.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      164.0,
+      226.0
+     ],
+     "size": [
+      7.0,
+      7.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      152.0,
+      300.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}

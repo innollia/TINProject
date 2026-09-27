@@ -362,3 +362,172 @@ def crow():
     )
     c.meta.update(name_ko="까마귀", size="작음")
     return c
+
+
+# ================================================================ B (idle only)
+def quad_3q(c, mat, dark, light, body, head, legs, tail=None, ears=None, snout=None, eye_mat="glow_yellow", eye_c="glow_yellow_c",
+            eye_glow=0.5, nose=True, extra_z=4.0):
+    """Generic 3/4-front quadruped (facing lower left).  body=(x, y, w, h), head=(x, y, w, h),
+    legs: list of (hip, knee, foot, width, z).  Returns the head pivot."""
+    bx, by, bw, bh = body
+    for i, (hip, knee, foot, w, z) in enumerate(legs):
+        leg3(c, f"leg_{i}", [hip, knee, foot], w, w * 0.7, mat if z >= 2 else dark, z, ("legs",), paw=(w * 1.2, w * 0.5))
+    if tail:
+        c.add("tail", mat, 1.4, tube(tail, 20, 8, n=10, cap=True), tags=("tail",))
+    c.add("body", mat, 2, [E(bx, by, bw, bh, -6), E(bx - bw * 0.36, by + bh * 0.08, bw * 0.5, bh * 1.02)], tags=("body",))
+    if light:
+        c.add("belly", light, 2.1, [E(bx - bw * 0.05, by + bh * 0.36, bw * 0.7, bh * 0.24, -4)], tags=("body",), clip_to="body",
+              line=False, opacity=0.6)
+    hx, hy, hw, hh = head
+    hp = [hx + hw * 0.4, hy + hh * 0.6]
+    if ears:
+        for j, (ex, ey, ew, eh, rot) in enumerate(ears):
+            c.add(f"ear_{j}", mat if j else dark, extra_z - 0.2 + j * 0.3, [P("triangle", ex, ey, ew, eh, rot=rot)], tags=("head",))
+    c.add("head", mat, extra_z, [E(hx, hy, hw, hh)], tags=("head",))
+    if snout:
+        sx, sy, sw, sh, srot = snout
+        c.add("snout", mat, extra_z + 0.2, [P("droplet", sx, sy, sw, sh, rot=srot)], tags=("head",))
+    return hp
+
+
+@creature("dog", "B")
+def dog():
+    W, H = 320, 384
+    gy = 366
+    c = Creature("dog", (W, H), (168, gy), seed=821,
+                 note="Dog, 3/4 front view facing the lower left. Scruffy brown street dog with floppy ears, pale muzzle "
+                      "and chest, worn leather collar with a tag, tail up, alert eyes.")
+    c.shadow(172, gy - 4, 220, 26)
+    quad_3q(c, "fur_brown", "fur_dark", "fur_white", (196, 268, 150, 86), (106, 214, 70, 64),
+            [((244, 286), (256, 326), (250, 352), 20, 1), ((138, 290), (144, 328), (142, 352), 18, 1),
+             ((246, 292), (262, 330), (256, 356), 26, 3), ((116, 292), (110, 330), (108, 356), 24, 3.1)],
+            tail=[(262, 250), (292, 230), (298, 196)], extra_z=4)
+    c.add("ears", "fur_dark", 4.3, [P("droplet", 82, 206, 22, 44, flip="y", rot=30), P("droplet", 132, 196, 20, 40, flip="y", rot=-10)], tags=("head",))
+    c.add("muzzle", "fur_white", 4.25, [P("droplet", 80, 236, 34, 50, rot=-120)], tags=("head",))
+    c.add("nose", "eye", 4.4, [E(62, 250, 14, 10)], tags=("head",))
+    dot_eyes(c, 104, 206, 14, 9, 10, z=4.35, tags=("head",))
+    c.add("collar", "leather", 3.5, [E(128, 250, 60, 14, rot=-30)], tags=("head",))
+    c.add("tag", "gold", 3.6, [E(118, 262, 10, 12)], tags=("head",))
+    c.add("chest", "fur_white", 3.4, [P("cloud", 120, 274, 50, 40, rot=-20, flip="y")], tags=("body",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="개", size="작음")
+    return c
+
+
+@creature("cat", "B")
+def cat():
+    W, H = 320, 384
+    cx, gy = 160, 366
+    c = Creature("cat", (W, H), (cx, gy), seed=822,
+                 note="Cat, front view, sitting. Sleek black-grey cat with a curled tail, tall pointed ears, glowing "
+                      "yellow eyes with slit pupils, small pink nose, white whiskers, a wine ribbon with a tiny bell.")
+    c.shadow(cx, gy - 2, 150, 20)
+    c.add("tail", "fur_dark", 0.8, tube([(cx + 40, 346), (cx + 100, 340), (cx + 110, 280), (cx + 86, 250)], 22, 10, n=12, cap=True), tags=("tail",))
+    c.add("body", "fur_dark", 1, [P("droplet", cx, 290, 120, 150), E(cx, 330, 130, 70)], tags=("body",))
+    c.add("chest", "fur_grey", 1.1, [P("droplet", cx, 290, 50, 90, flip="y")], tags=("body",), clip_to="body", opacity=0.6, line=False)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"leg_{s}", "fur_dark", 1.5, [seg(cx + k * 20, 290, cx + k * 22, 352, 22), E(cx + k * 24, 356, 30, 16)], tags=("legs",))
+    c.add("ribbon", "cloth_wine", 2, [E(cx, 236, 70, 12)], tags=("head",))
+    c.add("bell", "gold", 2.1, [E(cx, 248, 14, 14)], tags=("head",))
+    c.add("ears", "fur_dark", 2.8, [P("triangle", cx - 26, 164, 30, 44, rot=-14), P("triangle", cx + 26, 164, 30, 44, rot=14)], tags=("head",))
+    c.add("ears_in", "hide_pink", 2.85, [P("triangle", cx - 25, 170, 14, 24, rot=-14), P("triangle", cx + 25, 170, 14, 24, rot=14)],
+          tags=("head",), line=False, opacity=0.5)
+    c.add("head", "fur_dark", 3, [E(cx, 200, 84, 70)], tags=("head",))
+    c.glow("eyes", "glow_yellow", 3.2, [E(cx - 17, 196, 18, 14, rot=10), E(cx + 17, 196, 18, 14, rot=-10)], tags=("head",), color="glow_yellow_c",
+           strength=0.7, opacity=0.4)
+    c.flat("pupils", "eye", 3.25, [E(cx - 17, 196, 4, 12), E(cx + 17, 196, 4, 12)], tags=("head",))
+    c.add("nose", "hide_pink", 3.3, [P("triangle", cx, 212, 10, 7, flip="y")], tags=("head",))
+    c.flat("mouth", "mouth", 3.3, [seg(cx, 216, cx - 6, 222, 1.8), seg(cx, 216, cx + 6, 222, 1.8)], tags=("head",))
+    c.flat("whiskers", "fur_white", 3.4, [seg(cx - 12, 214, cx - 50, 206, 1.4), seg(cx - 12, 218, cx - 50, 222, 1.4),
+                                          seg(cx + 12, 214, cx + 50, 206, 1.4), seg(cx + 12, 218, cx + 50, 222, 1.4)], tags=("head",), opacity=0.8)
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="고양이", size="작음")
+    return c
+
+
+@creature("horse", "B")
+def horse():
+    W, H = 512, 512
+    gy = 494
+    c = Creature("horse", (W, H), (260, gy), seed=823,
+                 note="Horse, 3/4 front view facing the lower left. Dark bay horse with black mane and tail, pale blaze on "
+                      "the face, leather bridle and a worn western saddle with a blanket, hooves.")
+    c.shadow(270, gy - 4, 360, 40)
+    legs = [((356, 330), (368, 400), (362, 470), 30, 1), ((200, 330), (206, 400), (204, 470), 28, 1),
+            ((354, 336), (378, 404), (370, 476), 38, 3), ((168, 336), (160, 404), (158, 476), 36, 3.1)]
+    for i, (hip, knee, foot, w, z) in enumerate(legs):
+        leg3(c, f"leg_{i}", [hip, knee, foot], w, w * 0.62, "fur_brown" if z >= 2 else "fur_dark", z, ("legs",))
+        c.add(f"hoof_{i}", "horn", z + 0.05, [P("cylinder", foot[0], foot[1] + 8, w * 0.9, w * 0.6)], tags=("legs",))
+    c.add("tail", "hair", 1.4, tube([(392, 262), (430, 290), (430, 380)], 36, 16, n=10, cap=True), tags=("tail",))
+    c.add("body", "fur_brown", 2, [E(290, 290, 230, 120, -6), E(196, 300, 110, 120)], tags=("body",))
+    c.add("blanket", "cloth_wine", 2.3, [P("square", 290, 280, 100, 80, rot=-6)], tags=("body",), clip_to="body")
+    c.add("saddle", "leather", 2.5, [E(290, 256, 90, 40, -6), P("square", 292, 290, 20, 60)], tags=("body",))
+    c.add("horn_s", "leather", 2.55, [E(258, 238, 16, 22)], tags=("body",))
+    c.add("neck", "fur_brown", 3.5, tube([(190, 280), (160, 220), (136, 170)], 90, 60, n=8, cap=True), tags=("head",))
+    c.add("mane", "hair", 3.6, tube([(212, 262), (184, 200), (160, 150)], 30, 20, n=8, cap=True), tags=("head",))
+    c.add("head", "fur_brown", 4, [P("droplet", 110, 184, 70, 130, rot=-150), E(132, 150, 64, 56)], tags=("head",))
+    c.add("ear", "fur_brown", 3.9, [P("triangle", 144, 108, 18, 34, rot=10), P("triangle", 126, 112, 16, 30, rot=-10)], tags=("head",))
+    c.add("blaze", "fur_white", 4.1, [P("droplet", 106, 190, 18, 80, rot=-150)], tags=("head",), clip_to="head", opacity=0.8)
+    c.add("bridle", "leather", 4.2, [seg(92, 212, 146, 180, 5), seg(120, 148, 146, 180, 5)], tags=("head",))
+    dot_eyes(c, 128, 156, 12, 9, 11, z=4.3, tags=("head",))
+    c.flat("nostril", "mouth", 4.3, [E(80, 232, 8, 6, rot=-30)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="말", size="큼")
+    return c
+
+
+@creature("giant_frog", "B")
+def giant_frog():
+    W, H = 384, 384
+    cx, gy = 192, 366
+    c = Creature("giant_frog", (W, H), (cx, gy), seed=824,
+                 note="Giant frog, front view, squatting. Warty mottled green toad with bulging golden eyes on top, a huge "
+                      "wide mouth, pale throat sac, splayed front feet and folded hind legs at the sides.")
+    c.shadow(cx, gy - 2, 300, 34)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"hind_{s}", "frog", 1, [E(cx + k * 110, 316, 110, 90, rot=k * -20), E(cx + k * 130, 352, 90, 24)], tags=("legs",))
+        c.add(f"hindtoes_{s}", "frog", 1.1, [E(cx + k * (130 + d * 20), 360, 16, 12) for d in (-1, 0, 1)], tags=("legs",))
+    c.add("body", "frog", 2, [E(cx, 280, 250, 170)], tags=("body",))
+    c.add("throat", "belly", 2.2, [E(cx, 318, 150, 70)], tags=("body",), clip_to="body")
+    c.flat("warts", "leaf_dark", 2.3, [E(cx + dx, 250 + dy, 14, 11) for dx, dy in ((-90, 0), (-60, -30), (70, -24), (96, 10), (-100, 40), (104, 46))],
+           tags=("body",), clip_to="body", opacity=0.6)
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"front_{s}", "frog", 3, [seg(cx + k * 60, 320, cx + k * 70, 352, 26)] + [E(cx + k * 70 + d * 14, 360, 16, 12) for d in (-1, 0, 1)],
+              tags=("legs",))
+    c.flat("mouth", "mouth", 3.2, smile(cx, 290, 200, 24, depth=0.35), tags=("body",))
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"eye_{s}", "frog", 3.4, [E(cx + k * 70, 196, 70, 66)], tags=("head",))
+    c.glow("eyes", "glow_yellow", 3.5, [E(cx - 70, 196, 46, 42), E(cx + 70, 196, 46, 42)], tags=("head",), color="glow_yellow_c",
+           strength=0.35, opacity=0.25)
+    c.flat("pupils", "eye", 3.55, [E(cx - 70, 198, 30, 12), E(cx + 70, 198, 30, 12)], tags=("head",))
+    c.flat("nostrils", "mouth", 3.3, [E(cx - 14, 244, 7, 5), E(cx + 14, 244, 7, 5)], tags=("body",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="거대 개구리", size="사람")
+    return c
+
+
+@creature("vulture", "B")
+def vulture():
+    W, H = 384, 384
+    cx, gy = 192, 366
+    c = Creature("vulture", (W, H), (cx, gy), seed=825,
+                 note="Vulture, front view, hunched on the ground with wings half spread. Dusty dark-brown plumage, a pale "
+                      "ruff around a bare wrinkled pink neck and head, heavy hooked beak, beady eyes, grey scaly legs.")
+    c.shadow(cx, gy - 2, 240, 26)
+    for s, k in (("l", -1), ("r", 1)):
+        root = (cx + k * 30, 190)
+        c.add(f"wing_{s}", "feather_brown", 1, [wing_at(root, 176, 150, s, rot=k * 30)], tags=("wings",))
+        c.add(f"wing_{s}_tips", "feather_black", 1.1, [wing_at(root, 176, 150, s, rot=k * 30, tips=True)], tags=("wings",), clip_to=f"wing_{s}",
+              line={"width": 0.7, "heavy": 0.5})
+    for s, k in (("l", -1), ("r", 1)):
+        c.add(f"leg_{s}", "horn", 1.5, [seg(cx + k * 20, 300, cx + k * 24, 350, 12)] + [seg(cx + k * 24, 350, cx + k * 24 + d * 14, 362, 6, ext=0.1)
+                                                                                    for d in (-1, 0, 1)], tags=("legs",))
+    c.add("body", "feather_brown", 2, [P("droplet", cx, 250, 130, 150, flip="y"), E(cx, 226, 130, 90)], tags=("body",))
+    c.add("ruff", "feather_pale", 3, [P("cloud", cx, 176, 110, 50), E(cx, 184, 100, 40)], tags=("head",))
+    c.add("neck", "hide_pink", 3.2, [seg(cx, 176, cx - 4, 130, 26)], tags=("head",))
+    c.add("head", "hide_pink", 3.4, [E(cx - 4, 118, 50, 44)], tags=("head",))
+    dot_eyes(c, cx - 4, 112, 13, 7, 8, z=3.5, tags=("head",))
+    c.add("beak", "horn", 3.6, [P("droplet", cx - 4, 140, 22, 40, flip="y"), P("moon", cx - 6, 150, 16, 16, rot=135)], tags=("head",))
+    std_frames(c, a_state=False)
+    c.meta.update(name_ko="대머리수리", size="사람")
+    return c

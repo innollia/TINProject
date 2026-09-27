@@ -1,0 +1,930 @@
+{
+ "asset": "snake_man",
+ "status": "candidate",
+ "note": "Snake-man (naga), front view. Serpent head with a wide spread hood and glowing yellow eyes on a scaled humanoid torso with bronze arm rings, lower body a thick coiled snake tail; holds a bronze-tipped trident.",
+ "palette": "palette_g05.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  384
+ ],
+ "pivot": [
+  192,
+  366
+ ],
+ "pivot_meaning": "ground point under the body centre (front-view battler; place this pixel on the battle floor)",
+ "seed": 526,
+ "g05": {
+  "name_ko": "뱀 인간",
+  "size": "사람",
+  "generator": "tool/make_recipes.py",
+  "priority": "B"
+ },
+ "forms": [
+  {
+   "name": "shadow",
+   "tags": [
+    "shadow"
+   ],
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.42,
+   "blur": 4,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      357.6
+     ],
+     "size": [
+      250.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "coil_back",
+   "tags": [
+    "all",
+    "coil"
+   ],
+   "z": 1,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      222.0,
+      330.0
+     ],
+     "size": [
+      250.0,
+      70.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail_end",
+   "tags": [
+    "all",
+    "coil"
+   ],
+   "z": 0.9,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      332.0,
+      330.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ],
+     "rot": -135.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      339.6,
+      321.4
+     ],
+     "size": [
+      26.9,
+      26.9
+     ],
+     "rot": -142.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      345.1,
+      312.9
+     ],
+     "size": [
+      23.7,
+      23.7
+     ],
+     "rot": -152.4
+    },
+    {
+     "icon": "circle",
+     "at": [
+      348.5,
+      304.3
+     ],
+     "size": [
+      20.6,
+      20.6
+     ],
+     "rot": -164.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      350.0,
+      295.7
+     ],
+     "size": [
+      17.4,
+      18.2
+     ],
+     "rot": -177.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      349.3,
+      287.1
+     ],
+     "size": [
+      14.3,
+      18.2
+     ],
+     "rot": 169.2
+    },
+    {
+     "icon": "circle",
+     "at": [
+      346.7,
+      278.6
+     ],
+     "size": [
+      11.1,
+      18.2
+     ],
+     "rot": 156.8
+    },
+    {
+     "icon": "circle",
+     "at": [
+      342.8,
+      271.2
+     ],
+     "size": [
+      8.0,
+      10.9
+     ],
+     "rot": 146.3
+    }
+   ]
+  },
+  {
+   "name": "coil_front",
+   "tags": [
+    "all",
+    "coil"
+   ],
+   "z": 1.5,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      182.0,
+      344.0
+     ],
+     "size": [
+      200.0,
+      50.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "coil_belly",
+   "tags": [
+    "all",
+    "coil"
+   ],
+   "z": 1.6,
+   "material": "belly",
+   "clip_to": "coil_front",
+   "line": false,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      182.0,
+      356.0
+     ],
+     "size": [
+      160.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "waist",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 2,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      324.0
+     ],
+     "size": [
+      70.0,
+      70.0
+     ],
+     "rot": 173.7
+    },
+    {
+     "icon": "circle",
+     "at": [
+      190.5,
+      308.8
+     ],
+     "size": [
+      68.6,
+      68.6
+     ],
+     "rot": 175.3
+    },
+    {
+     "icon": "circle",
+     "at": [
+      189.6,
+      294.0
+     ],
+     "size": [
+      67.1,
+      67.1
+     ],
+     "rot": 177.1
+    },
+    {
+     "icon": "circle",
+     "at": [
+      189.1,
+      279.6
+     ],
+     "size": [
+      65.7,
+      65.7
+     ],
+     "rot": 179.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      189.1,
+      265.6
+     ],
+     "size": [
+      64.3,
+      64.3
+     ],
+     "rot": -179.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      189.6,
+      252.0
+     ],
+     "size": [
+      62.9,
+      62.9
+     ],
+     "rot": -176.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      190.5,
+      238.8
+     ],
+     "size": [
+      61.4,
+      61.4
+     ],
+     "rot": -174.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      226.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ],
+     "rot": -172.2
+    }
+   ]
+  },
+  {
+   "name": "torso",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      190.0
+     ],
+     "size": [
+      110.0,
+      90.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      226.0
+     ],
+     "size": [
+      80.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "belly",
+   "tags": [
+    "all",
+    "body"
+   ],
+   "z": 3.1,
+   "material": "belly",
+   "clip_to": "torso",
+   "pieces": [
+    {
+     "icon": "droplet",
+     "at": [
+      192.0,
+      230.0
+     ],
+     "size": [
+      44.0,
+      110.0
+     ],
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "hood",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.5,
+   "material": "scale_teal",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      150.0,
+      128.0
+     ],
+     "size": [
+      76.0,
+      116.0
+     ],
+     "rot": -14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      234.0,
+      128.0
+     ],
+     "size": [
+      76.0,
+      116.0
+     ],
+     "rot": 14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      150.0
+     ],
+     "size": [
+      60.0,
+      60.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hood_mark",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 3.55,
+   "kind": "flat",
+   "material": "belly",
+   "clip_to": "hood",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      142.0,
+      130.0
+     ],
+     "size": [
+      22.0,
+      46.0
+     ],
+     "rot": -14.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      242.0,
+      130.0
+     ],
+     "size": [
+      22.0,
+      46.0
+     ],
+     "rot": 14.0
+    }
+   ]
+  },
+  {
+   "name": "arm_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 4,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      131.0,
+      192.0
+     ],
+     "size": [
+      22.0,
+      64.2
+     ],
+     "rot": 22.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      126.0,
+      240.0
+     ],
+     "size": [
+      18.0,
+      51.9
+     ],
+     "rot": -15.3
+    }
+   ]
+  },
+  {
+   "name": "ring_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 4.1,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      126.0,
+      236.0
+     ],
+     "size": [
+      22.0,
+      12.0
+     ],
+     "rot": -20.0
+    }
+   ]
+  },
+  {
+   "name": "hand_l",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 4.2,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      134.0,
+      268.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arm_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 4,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      253.0,
+      192.0
+     ],
+     "size": [
+      22.0,
+      64.2
+     ],
+     "rot": -22.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      258.0,
+      240.0
+     ],
+     "size": [
+      18.0,
+      51.9
+     ],
+     "rot": 15.3
+    }
+   ]
+  },
+  {
+   "name": "ring_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 4.1,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      258.0,
+      236.0
+     ],
+     "size": [
+      22.0,
+      12.0
+     ],
+     "rot": 20.0
+    }
+   ]
+  },
+  {
+   "name": "hand_r",
+   "tags": [
+    "all",
+    "arms"
+   ],
+   "z": 4.2,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      250.0,
+      268.0
+     ],
+     "size": [
+      22.0,
+      22.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "trident",
+   "tags": [
+    "all",
+    "weapon"
+   ],
+   "z": 3.9,
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      253.0,
+      215.0
+     ],
+     "size": [
+      7.0,
+      252.5
+     ],
+     "rot": -178.6
+    }
+   ]
+  },
+  {
+   "name": "trident_head",
+   "tags": [
+    "all",
+    "weapon"
+   ],
+   "z": 3.95,
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      78.0
+     ],
+     "size": [
+      6.0,
+      38.1
+     ],
+     "rot": 180.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      243.0,
+      84.0
+     ],
+     "size": [
+      5.0,
+      29.8
+     ],
+     "rot": 175.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      269.0,
+      84.0
+     ],
+     "size": [
+      5.0,
+      29.8
+     ],
+     "rot": -175.9
+    },
+    {
+     "icon": "circle",
+     "at": [
+      256.0,
+      100.0
+     ],
+     "size": [
+      6.0,
+      30.1
+     ],
+     "rot": -90.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      256.0,
+      54.0
+     ],
+     "size": [
+      9.0,
+      14.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      242.0,
+      64.0
+     ],
+     "size": [
+      7.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      270.0,
+      64.0
+     ],
+     "size": [
+      7.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5,
+   "material": "scale_olive",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      112.0
+     ],
+     "size": [
+      60.0,
+      56.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      132.0
+     ],
+     "size": [
+      44.0,
+      36.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyes",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5.2,
+   "kind": "flat",
+   "material": "glow_yellow",
+   "emit": 0.7,
+   "glow": {
+    "radius": 2.5,
+    "opacity": 0.4,
+    "color": "glow_yellow_c"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      108.0
+     ],
+     "size": [
+      13.0,
+      9.0
+     ],
+     "rot": 18.0
+    },
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      108.0
+     ],
+     "size": [
+      13.0,
+      9.0
+     ],
+     "rot": -18.0
+    }
+   ]
+  },
+  {
+   "name": "pupils",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5.25,
+   "kind": "flat",
+   "material": "eye",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      178.0,
+      108.0
+     ],
+     "size": [
+      3.0,
+      8.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      206.0,
+      108.0
+     ],
+     "size": [
+      3.0,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mouth",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5.2,
+   "kind": "flat",
+   "material": "mouth",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      140.0
+     ],
+     "size": [
+      2.5,
+      28.9
+     ],
+     "rot": -90.0
+    }
+   ]
+  },
+  {
+   "name": "tongue",
+   "tags": [
+    "all",
+    "head"
+   ],
+   "z": 5.3,
+   "material": "tongue",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192.0,
+      148.0
+     ],
+     "size": [
+      3.0,
+      17.1
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      189.5,
+      159.0
+     ],
+     "size": [
+      2.5,
+      12.1
+     ],
+     "rot": 26.6
+    },
+    {
+     "icon": "circle",
+     "at": [
+      194.5,
+      159.0
+     ],
+     "size": [
+      2.5,
+      12.1
+     ],
+     "rot": -26.6
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "idle"
+  }
+ ]
+}
