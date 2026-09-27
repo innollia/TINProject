@@ -64,7 +64,7 @@ func _player_node(module: Node) -> RigidBody2D:
 
 func _teleport(module: Node, target: Vector2) -> void:
 	var node: RigidBody2D = _player_node(module)
-	node.global_position = target
+	module.get_director().place_rigid(node, target)
 	node.linear_velocity = Vector2.ZERO
 
 
@@ -72,15 +72,6 @@ func _walk_until(module: Node, axis: float, predicate: Callable, limit: int = 24
 	assert_true(module.execute_command(&"move", {"axis": axis}), "move accepted")
 	for _frame: int in limit:
 		await wait_physics_frames(1)
-		if _frame % 20 == 0:
-			var world: RefCounted = module.get_world_state()
-			var p: RefCounted = world.player()
-			var egg: int = world.find("egg_high")
-			var egg_text: String = "none"
-			if egg >= 0:
-				var e: RefCounted = world.bodies[egg]
-				egg_text = "%s,%s d=%s s=%s" % [e.x, e.y, e.destroyed, e.sleeping]
-			gut.p("DIAG f=%d phase=%s p=(%.1f,%.1f) v=(%.1f,%.1f) grounded=%s count=%d egg=%s" % [_frame, module.get_phase(), p.x, p.y, p.vx, p.vy, module.get_director().grounded, world.objective_count, egg_text])
 		if predicate.call():
 			module.execute_command(&"move", {"axis": 0.0})
 			return true

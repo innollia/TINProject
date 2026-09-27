@@ -103,8 +103,8 @@ func _place_held(director: RefCounted, index: int, socket: Vector2) -> void:
 	var node: RigidBody2D = director.nodes[index] as RigidBody2D
 	if node == null:
 		return
-	node.global_position = socket
 	node.rotation = 0.0
+	director.place_rigid(node, socket)
 	var body: RefCounted = director.world.bodies[index]
 	body.x = socket.x
 	body.y = socket.y
@@ -167,7 +167,7 @@ func drop(director: RefCounted, index: int, socket: Vector2) -> void:
 	if node == null:
 		return
 	LevelFactory.set_held(node, false)
-	node.global_position = socket
+	director.place_rigid(node, socket)
 	node.linear_velocity = Vector2.ZERO
 	node.angular_velocity = 0.0
 	director.prev_velocity[index] = Vector2.ZERO
@@ -183,7 +183,7 @@ func _throw(director: RefCounted, index: int, socket: Vector2) -> void:
 		return
 	var charge: float = clampf(charge_time / Tuning.TOOL_CHARGE_FULL, 0.0, 1.0)
 	LevelFactory.set_held(node, false)
-	node.global_position = socket
+	director.place_rigid(node, socket)
 	var speed: float = Tuning.TOOL_THROW_IMPULSE * tool.impulse_scale * (1.0 + Tuning.TOOL_CHARGE_BONUS * charge)
 	var velocity: Vector2 = Vector2(float(director.facing) * speed, Tuning.TOOL_THROW_UP) + Vector2(player_node.linear_velocity.x * 0.5, 0.0)
 	node.linear_velocity = velocity

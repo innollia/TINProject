@@ -112,6 +112,12 @@ func _free_node(node: Variant) -> void:
 	target.free()
 
 
+func place_rigid(node: RigidBody2D, at: Vector2) -> void:
+	node.global_position = at
+	if node.is_inside_tree():
+		PhysicsServer2D.body_set_state(node.get_rid(), PhysicsServer2D.BODY_STATE_TRANSFORM, node.global_transform)
+
+
 func rift() -> RefCounted:
 	return world.bodies[_rift_index] if _rift_index >= 0 else null
 
@@ -523,7 +529,7 @@ func _control_player(input: Dictionary, delta: float) -> void:
 	var left: float = spec.bounds.position.x + player_half_width()
 	var right: float = spec.bounds.end.x - player_half_width()
 	if node.global_position.x < left or node.global_position.x > right:
-		node.global_position = Vector2(clampf(node.global_position.x, left, right), node.global_position.y)
+		place_rigid(node, Vector2(clampf(node.global_position.x, left, right), node.global_position.y))
 		node.linear_velocity = Vector2(0.0, node.linear_velocity.y)
 
 
@@ -712,8 +718,8 @@ func _restore_body(index: int, item: Dictionary) -> void:
 		var held: bool = bool(item.get("held", false)) and body.kind == BodyKind.TOOL_CARRIED
 		body.held = held
 		LevelFactory.set_held(rigid, held)
-		rigid.global_position = position
 		rigid.rotation = body.angle
+		place_rigid(rigid, position)
 		rigid.linear_velocity = body.velocity()
 		rigid.angular_velocity = body.av
 		if body.kind == BodyKind.OBJECTIVE or body.kind == BodyKind.PROP_SLEEPING:

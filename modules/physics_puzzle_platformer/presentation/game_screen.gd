@@ -189,7 +189,7 @@ func refresh(delta: float = 0.0) -> void:
 	if player != null:
 		var velocity_x: float = player_node.linear_velocity.x if player_node != null else 0.0
 		world_root.follow(player.x, velocity_x, delta)
-		var half := Vector2(Tuning.PLAYER_W, Tuning.PLAYER_H) * _director.player_scale() * 0.5
+		var half: Vector2 = Vector2(Tuning.PLAYER_W, Tuning.PLAYER_H) * _director.player_scale() * 0.5
 		parallax.advance(world_root.camera.position, player.position(), Rect2(player.position() - half, half * 2.0), delta)
 	_update_overlays(world, delta)
 
@@ -333,7 +333,7 @@ func _make_view(body: RefCounted) -> Node2D:
 	view.spec_id = body.spec_id
 	match body.kind:
 		BodyKind.PLAYER:
-			var size := Vector2(Tuning.PLAYER_W, Tuning.PLAYER_H) * _director.player_scale()
+			var size: Vector2 = Vector2(Tuning.PLAYER_W, Tuning.PLAYER_H) * _director.player_scale()
 			view.setup_texture(_shape_texture("capsule", size, PackedVector2Array(), &"player"), size)
 			view.setup_player_tool(ProceduralBridge.dot_texture(1.5, roles[&"ink"]))
 			return view

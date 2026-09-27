@@ -83,6 +83,7 @@ func enter(value: ModuleContext) -> void:
 	if bubble.active:
 		get_world_state().set_phase(PHASE_INTRO)
 	_refresh_screen()
+	requested.emit(&"input_bubble_profile", {"profile": Array(bubble.key_profile), "previous_profile": Array(bubble.previous_key_profile)})
 	for observation: Dictionary in _pending_observations:
 		requested.emit(&"observation", observation)
 	_pending_observations.clear()
