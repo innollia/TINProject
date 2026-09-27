@@ -1,0 +1,561 @@
+{
+ "asset": "obj_trapdoor",
+ "status": "candidate",
+ "note": "Floor trapdoor 1.0 x 1.0 m (secret passage entrance): plank lid with iron hinges and ring. Frames: closed (flush with the floor), open (lid standing on its hinge, dark shaft with a ladder).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 518,
+ "pivot_meaning": "front edge centre of the hatch on the floor",
+ "layer_hint": "floor",
+ "canvas": [
+  272,
+  374
+ ],
+ "pivot": [
+  136,
+  335
+ ],
+ "forms": [
+  {
+   "name": "frame",
+   "z": 1.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 5,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      136,
+      245.0
+     ],
+     "size": [
+      196,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shaft",
+   "z": 2.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "grad": {
+    "to": "well_inner",
+    "y0": -175.0,
+    "y1": -5.0,
+    "curve": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      136,
+      245.0
+     ],
+     "size": [
+      170,
+      146
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ladder",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "wood",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "opacity": 0.75,
+   "clip_to": "shaft",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      96,
+      253.0
+     ],
+     "size": [
+      8,
+      120
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      176,
+      253.0
+     ],
+     "size": [
+      8,
+      120
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      136,
+      205.0
+     ],
+     "size": [
+      80,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      136,
+      231.0
+     ],
+     "size": [
+      80,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      136,
+      257.0
+     ],
+     "size": [
+      80,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      136,
+      283.0
+     ],
+     "size": [
+      80,
+      6
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      136,
+      309.0
+     ],
+     "size": [
+      80,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lid_up",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "texture": {
+    "angle": 90
+   },
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      136,
+      100.0
+     ],
+     "size": [
+      176,
+      124
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lid_up_joints",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "opacity": 0.55,
+   "clip_to": "lid_up",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      78,
+      100.0
+     ],
+     "size": [
+      2.2,
+      118
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      118,
+      100.0
+     ],
+     "size": [
+      2.2,
+      118
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      158,
+      100.0
+     ],
+     "size": [
+      2.2,
+      118
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      198,
+      100.0
+     ],
+     "size": [
+      2.2,
+      118
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lid_up_straps",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      96,
+      130.0
+     ],
+     "size": [
+      60,
+      10
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      176,
+      130.0
+     ],
+     "size": [
+      60,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lid",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "closed"
+   ],
+   "texture": {
+    "angle": 90
+   },
+   "shade": {
+    "bump": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      136,
+      245.0
+     ],
+     "size": [
+      176,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lid_joints",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "tags": [
+    "closed"
+   ],
+   "opacity": 0.55,
+   "clip_to": "lid",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      78,
+      245.0
+     ],
+     "size": [
+      2.2,
+      144
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      118,
+      245.0
+     ],
+     "size": [
+      2.2,
+      144
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      158,
+      245.0
+     ],
+     "size": [
+      2.2,
+      144
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      198,
+      245.0
+     ],
+     "size": [
+      2.2,
+      144
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hinges",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      86,
+      176.0
+     ],
+     "size": [
+      60,
+      11
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      186,
+      176.0
+     ],
+     "size": [
+      60,
+      11
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ring",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      136,
+      304.0
+     ],
+     "size": [
+      28,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      136,
+      304.0
+     ],
+     "size": [
+      18,
+      12
+     ],
+     "op": "sub"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "closed",
+   "state": "closed"
+  },
+  {
+   "name": "open",
+   "state": "open",
+   "hide": [
+    "closed"
+   ],
+   "show": [
+    "open"
+   ]
+  }
+ ]
+}

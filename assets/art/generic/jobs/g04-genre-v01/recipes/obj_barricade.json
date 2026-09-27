@@ -1,0 +1,1369 @@
+{
+ "asset": "obj_barricade",
+ "status": "candidate",
+ "note": "Post-apocalypse barricade 2.4 m: sandbag row, crossed planks, a leaning corrugated metal sheet, an old tyre and barbed wire.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 914,
+ "pivot_meaning": "centre of the barricade's ground line",
+ "layer_hint": "world",
+ "canvas": [
+  586,
+  312
+ ],
+ "pivot": [
+  283,
+  233
+ ],
+ "footprint": [
+  53,
+  173,
+  513,
+  233
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      293,
+      209
+     ],
+     "size": [
+      450,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sheet",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "steel",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2.6,
+       2
+      ],
+      [
+       14,
+       2.96
+      ],
+      [
+       13.4,
+       14
+      ],
+      [
+       2,
+       13.04
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      373,
+      123
+     ],
+     "size": [
+      190,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sheet_ribs",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "steel_light",
+   "opacity": 0.5,
+   "clip_to": "sheet",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      293,
+      123
+     ],
+     "size": [
+      5,
+      170
+     ],
+     "rot": 4
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      311,
+      123
+     ],
+     "size": [
+      5,
+      170
+     ],
+     "rot": 4
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      329,
+      123
+     ],
+     "size": [
+      5,
+      170
+     ],
+     "rot": 4
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      347,
+      123
+     ],
+     "size": [
+      5,
+      170
+     ],
+     "rot": 4
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      365,
+      123
+     ],
+     "size": [
+      5,
+      170
+     ],
+     "rot": 4
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      383,
+      123
+     ],
+     "size": [
+      5,
+      170
+     ],
+     "rot": 4
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      401,
+      123
+     ],
+     "size": [
+      5,
+      170
+     ],
+     "rot": 4
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      419,
+      123
+     ],
+     "size": [
+      5,
+      170
+     ],
+     "rot": 4
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      437,
+      123
+     ],
+     "size": [
+      5,
+      170
+     ],
+     "rot": 4
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      455,
+      123
+     ],
+     "size": [
+      5,
+      170
+     ],
+     "rot": 4
+    }
+   ]
+  },
+  {
+   "name": "sheet_rust",
+   "z": 4.0,
+   "kind": "wash",
+   "material": "rust",
+   "opacity": 0.5,
+   "blur": 6,
+   "clip_to": "sheet",
+   "blend": "multiply",
+   "pieces": [
+    {
+     "icon": "metaballs",
+     "at": [
+      393,
+      153
+     ],
+     "size": [
+      120,
+      90
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      343,
+      83
+     ],
+     "size": [
+      80,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "planks",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "wood_pale",
+   "texture": {
+    "angle": 45
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      168.0,
+      153.0
+     ],
+     "size": [
+      205.1828452868319,
+      20
+     ],
+     "rot": -43.025065989118026
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      168.0,
+      153.0
+     ],
+     "size": [
+      205.1828452868319,
+      20
+     ],
+     "rot": 43.025065989118026
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      168.0,
+      108.0
+     ],
+     "size": [
+      190.26297590440447,
+      18
+     ],
+     "rot": -3.0127875041833403
+    }
+   ]
+  },
+  {
+   "name": "plank_nails",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      168,
+      153
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      93,
+      111
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      243,
+      107
+     ],
+     "size": [
+      5,
+      4.5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sandbags",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "cloth_ochre",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "shade": {
+    "bump": 1.1
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      113.0,
+      215
+     ],
+     "size": [
+      74,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      181.0,
+      215
+     ],
+     "size": [
+      74,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      249.0,
+      215
+     ],
+     "size": [
+      74,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      317.0,
+      215
+     ],
+     "size": [
+      74,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      385.0,
+      215
+     ],
+     "size": [
+      74,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      453.0,
+      215
+     ],
+     "size": [
+      74,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      171.0,
+      181
+     ],
+     "size": [
+      72,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      237.0,
+      181
+     ],
+     "size": [
+      72,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      303.0,
+      181
+     ],
+     "size": [
+      72,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      369.0,
+      181
+     ],
+     "size": [
+      72,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      435.0,
+      181
+     ],
+     "size": [
+      72,
+      36
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bag_ties",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "rope",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      135.0,
+      215
+     ],
+     "size": [
+      3,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      203.0,
+      215
+     ],
+     "size": [
+      3,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      271.0,
+      215
+     ],
+     "size": [
+      3,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      339.0,
+      215
+     ],
+     "size": [
+      3,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      407.0,
+      215
+     ],
+     "size": [
+      3,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      475.0,
+      215
+     ],
+     "size": [
+      3,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      193.0,
+      181
+     ],
+     "size": [
+      3,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      259.0,
+      181
+     ],
+     "size": [
+      3,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      325.0,
+      181
+     ],
+     "size": [
+      3,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      391.0,
+      181
+     ],
+     "size": [
+      3,
+      26
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      457.0,
+      181
+     ],
+     "size": [
+      3,
+      26
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tyre",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "rubber",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      453,
+      207
+     ],
+     "size": [
+      90,
+      52
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      453,
+      207
+     ],
+     "size": [
+      44,
+      24
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "wire",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "iron",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      83,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      83,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      105,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      105,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      127,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      127,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      149,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      149,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      171,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      193,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      193,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      215,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      215,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      237,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      237,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      259,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      259,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      281,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      281,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      303,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      303,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      325,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      325,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      347,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      347,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      369,
+      63
+     ],
+     "size": [
+      26,
+      20
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      369,
+      63
+     ],
+     "size": [
+      20,
+      14
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      226,
+      63
+     ],
+     "size": [
+      290,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "barbs",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "iron",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      83.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      105.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      127.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      149.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      171.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      193.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      215.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      237.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      259.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      281.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      303.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      325.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      347.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      369.0,
+      55.0
+     ],
+     "size": [
+      11.313708498984761,
+      2
+     ],
+     "rot": 45.0
+    }
+   ]
+  }
+ ]
+}

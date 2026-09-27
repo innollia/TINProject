@@ -1,0 +1,995 @@
+{
+ "asset": "obj_windmill",
+ "status": "candidate",
+ "note": "Tower windmill about 9 m: tapering whitewashed stone tower, small door and windows, conical thatched cap, four lattice sails facing south.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 815,
+ "pivot_meaning": "front-bottom centre of the foundation on the ground (door threshold line)",
+ "layer_hint": "world",
+ "canvas": [
+  636,
+  1030
+ ],
+ "pivot": [
+  309,
+  933
+ ],
+ "footprint": [
+  139,
+  633,
+  479,
+  933
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 16,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      339,
+      803
+     ],
+     "size": [
+      420,
+      280
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tower",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "plaster_pale",
+   "shade": {
+    "bump": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       4.16,
+       2.0
+      ],
+      [
+       11.84,
+       2.0
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      309,
+      633
+     ],
+     "size": [
+      340,
+      600
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tower_courses",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "floor_joint",
+   "opacity": 0.3,
+   "clip_to": "tower",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      309,
+      873
+     ],
+     "size": [
+      360,
+      2.4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      309,
+      825
+     ],
+     "size": [
+      360,
+      2.4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      309,
+      777
+     ],
+     "size": [
+      360,
+      2.4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      309,
+      729
+     ],
+     "size": [
+      360,
+      2.4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      309,
+      681
+     ],
+     "size": [
+      360,
+      2.4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      309,
+      633
+     ],
+     "size": [
+      360,
+      2.4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      309,
+      585
+     ],
+     "size": [
+      360,
+      2.4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      309,
+      537
+     ],
+     "size": [
+      360,
+      2.4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      309,
+      489
+     ],
+     "size": [
+      360,
+      2.4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      309,
+      441
+     ],
+     "size": [
+      360,
+      2.4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      309,
+      393
+     ],
+     "size": [
+      360,
+      2.4
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      309,
+      345
+     ],
+     "size": [
+      360,
+      2.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tower_shade",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "soot",
+   "opacity": 0.28,
+   "clip_to": "tower",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.6,
+       2
+      ],
+      [
+       11.84,
+       2
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       9.92,
+       14.0
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      309,
+      633
+     ],
+     "size": [
+      340,
+      600
+     ]
+    }
+   ]
+  },
+  {
+   "name": "step",
+   "z": 5.0,
+   "kind": "block",
+   "material": "stone_dark",
+   "extrude": 10,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      309,
+      922.0
+     ],
+     "size": [
+      150,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door_frame",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "bullet",
+     "at": [
+      309,
+      847
+     ],
+     "size": [
+      180,
+      110
+     ],
+     "rot": -90
+    }
+   ]
+  },
+  {
+   "name": "door",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "wood",
+   "texture": {
+    "angle": 90
+   },
+   "pieces": [
+    {
+     "icon": "bullet",
+     "at": [
+      309,
+      851
+     ],
+     "size": [
+      168,
+      96
+     ],
+     "rot": -90
+    }
+   ]
+  },
+  {
+   "name": "windows",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "glass_dark",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      259,
+      603
+     ],
+     "size": [
+      34,
+      46
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      349,
+      483
+     ],
+     "size": [
+      30,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cap",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "thatch",
+   "shade": {
+    "bump": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.0,
+       2
+      ],
+      [
+       14,
+       11.6
+      ],
+      [
+       12.8,
+       14
+      ],
+      [
+       3.2,
+       14
+      ],
+      [
+       2,
+       11.6
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      309,
+      253
+     ],
+     "size": [
+      280,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sails",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "cloth_pale",
+   "shade": {
+    "bump": 0.4
+   },
+   "opacity": 0.95,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      429.21,
+      439.37
+     ],
+     "size": [
+      250,
+      56
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      146.37,
+      401.19
+     ],
+     "size": [
+      250,
+      56
+     ],
+     "rot": 135
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      188.79,
+      146.63
+     ],
+     "size": [
+      250,
+      56
+     ],
+     "rot": 225
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      471.63,
+      184.81
+     ],
+     "size": [
+      250,
+      56
+     ],
+     "rot": 315
+    }
+   ]
+  },
+  {
+   "name": "sail_lattice",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.6,
+   "clip_to": "sails",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      358.5,
+      375.73
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      393.85,
+      407.55
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      429.21,
+      439.37
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      464.56,
+      471.19
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      499.92,
+      503.01
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 45
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      217.08,
+      337.55
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 135
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      181.72,
+      369.37
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 135
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      146.37,
+      401.19
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 135
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      111.01,
+      433.01
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 135
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      75.65,
+      464.83
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 135
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      259.5,
+      210.27
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 225
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      224.15,
+      178.45
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 225
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      188.79,
+      146.63
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 225
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      153.44,
+      114.81
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 225
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      118.08,
+      82.99
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 225
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      400.92,
+      248.45
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 315
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      436.28,
+      216.63
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 315
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      471.63,
+      184.81
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 315
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      506.99,
+      152.99
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 315
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      542.35,
+      121.17
+     ],
+     "size": [
+      3,
+      56
+     ],
+     "rot": 315
+    }
+   ]
+  },
+  {
+   "name": "stocks",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      425.67,
+      398.01
+     ],
+     "size": [
+      313.9339102422674,
+      10
+     ],
+     "rot": 41.98721249581666
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      192.33,
+      398.01
+     ],
+     "size": [
+      313.93391024226736,
+      10
+     ],
+     "rot": 138.01278750418336
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      192.33,
+      187.99
+     ],
+     "size": [
+      313.9339102422674,
+      10
+     ],
+     "rot": -138.01278750418336
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      425.67,
+      187.99
+     ],
+     "size": [
+      313.9339102422674,
+      10
+     ],
+     "rot": -41.987212495816685
+    }
+   ]
+  },
+  {
+   "name": "hub",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      309,
+      293
+     ],
+     "size": [
+      44,
+      44
+     ]
+    }
+   ]
+  }
+ ]
+}

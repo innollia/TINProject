@@ -39,7 +39,7 @@
 - `recipes\palette_g04.json` = V1 `palette_h0_mood.json` 그대로 + 새 재질(식물·바위·물·눈·금·구리·강철·고무·유리·화면·네온·신호등·천·
   지붕·벽토·벽돌·옻칠 등). V1의 윤곽선·그림자·공통 색·재질·스타일은 바꾸지 않았다. 밝기는 V1 범위(종이색이 가장 밝은 면).
 
-## 체크리스트 (10/26 완료)
+## 체크리스트 (19/26 완료)
 
 | 완료 | 단계 | 자산 ID | 이름 | 장르 | 프레임(상태) | 캔버스 | 피벗 뜻 | 빛 | 출처 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -53,15 +53,15 @@
 | [x] | A | obj_bar_door | 쇠창살 문 | 다크 | closed, open | 376×382 | bottom centre of the opening on the wall-face floor line (threshold) |  |  |
 | [x] | A | obj_lever | 바닥 레버 | 공통 | down, up | 190×216 | front-bottom centre of the base on the floor |  | BS2 스위치·레버 |
 | [x] | A | obj_door_wood | 나무 문 | 중세 | closed, open | 362×366 | bottom centre of the opening on the wall-face floor line (threshold) |  | BS2 나무 문 |
-| [ ] | B | obj_wine_cask | 큰 술통(받침대) | 중세 |  |  |  |  | BS2 술통 |
-| [ ] | B | obj_vase | 큰 꽃병 | 중세 |  |  |  |  | BS2 깨지는 꽃병 |
-| [ ] | B | obj_gift_box | 선물 상자 | 공통 |  |  |  |  | BS2 선물 상자 |
-| [ ] | B | obj_altar | 제단 | 다크 |  |  |  |  |  |
-| [ ] | B | obj_statue | 석상 | 다크 |  |  |  |  | 무너진 석상 |
-| [ ] | B | obj_gate_castle | 성문 | 중세 |  |  |  |  | BS2 성문 |
-| [ ] | B | obj_door_secret | 비밀 문(책장 문) | 고딕 |  |  |  |  | BS2 비밀 문 |
-| [ ] | B | obj_trapdoor | 비밀 통로 입구(바닥 뚜껑) | 다크 |  |  |  |  | BS2 비밀 통로 입구 |
-| [ ] | B | obj_door_balcony | 발코니 문 | 고딕 |  |  |  |  | BS2 발코니 문 |
+| [x] | B | obj_wine_cask | 큰 술통(받침대) | 중세 | obj_wine_cask | 366×412 | front-bottom centre of the base on the floor |  | BS2 술통 |
+| [x] | B | obj_vase | 큰 꽃병 | 중세 | broken, normal | 234×210 | front-bottom centre of the base on the floor |  | BS2 깨지는 꽃병 |
+| [x] | B | obj_gift_box | 선물 상자 | 공통 | closed, open | 326×306 | front-bottom centre of the base on the floor |  | BS2 선물 상자 |
+| [x] | B | obj_altar | 제단 | 다크 | off, on | 446×372 | front-bottom centre of the base on the floor | 빛 emit |  |
+| [x] | B | obj_statue | 석상 | 다크 | broken, normal | 356×408 | front-bottom centre of the base on the floor |  | 무너진 석상 |
+| [x] | B | obj_gate_castle | 성문 | 중세 | closed, open | 736×518 | bottom centre of the opening on the wall-face floor line (threshold) |  | BS2 성문 |
+| [x] | B | obj_door_secret | 비밀 문(책장 문) | 고딕 | closed, open | 396×464 | bottom centre of the opening on the wall-face floor line (threshold) |  | BS2 비밀 문 |
+| [x] | B | obj_trapdoor | 비밀 통로 입구(바닥 뚜껑) | 다크 | closed, open | 272×374 | front edge centre of the hatch on the floor |  | BS2 비밀 통로 입구 |
+| [x] | B | obj_door_balcony | 발코니 문 | 고딕 | closed, open | 536×510 | bottom centre of the opening on the wall-face floor line (threshold) |  | BS2 발코니 문 |
 | [ ] | C | obj_guillotine | 단두대 | 다크 |  |  |  |  | BS2 단두대 |
 | [ ] | C | obj_gallows | 교수대 | 다크 |  |  |  |  | BS2 교수대 |
 | [ ] | C | obj_iron_maiden | 철의 처녀 | 다크 |  |  |  |  | BS2 철의 처녀 |

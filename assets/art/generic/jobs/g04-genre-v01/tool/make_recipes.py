@@ -213,6 +213,137 @@ def obj_steam_boiler():
     return a
 
 
+# ============================================================================ B
+WALL = "centre of the back plate = attach point on the wall face"
+
+
+@asset
+def obj_traffic_light():
+    a = Asset("obj_traffic_light", "Traffic light 3.2 m (modern / city): steel pole on a base, dark signal head with "
+              "three hooded lamps. Frames: red, green, off.", seed=911)
+    ellipse_shadow(a, 6, -8, 60, 24, opacity=0.34, blur=6)
+    a.box("base", 0, 0, 34, 30, 16, "steel", corner=4)
+    a.cyl("pole", 0, -10, 14, 250, "steel", lift=16)
+    head = a.box("head", 0, -6, 52, 40, 138, "plastic", lift=250, corner=6)
+    a.flat("head_edge", [R(0, head.front_cy, 44, 130, 4)], "rubber", opacity=0.6)
+    ys = [head.front_cy - 42, head.front_cy, head.front_cy + 42]
+    lamps = {"red": ("signal_red", ys[0]), "amber": ("signal_amber", ys[1]), "green": ("signal_green", ys[2])}
+    a.flat("lamps_off", [E(0, y, 30, 30) for _, y in lamps.values()], "signal_off", line=FINE)
+    for key, (mat, y) in lamps.items():
+        a.flat(f"lamp_{key}", [E(0, y, 30, 30)], mat, tags=[key], hidden=True, emit=1.0,
+               glow={"radius": 8, "opacity": 0.6, "color": f"{mat}_glow"}, line=FINE)
+    a.flat("visors", [POLY([(0, 1), (0.1, 0), (0.9, 0), (1, 1), (0.85, 0.6), (0.15, 0.6)], 0, y - 18, 40, 14)
+                      for y in ys], "rubber", line=FINE)
+    a.frame("red", state="red", show=["red"], light={"color": "#ff6a58", "radius": 200, "at": [0, ys[0]]})
+    a.frame("green", state="green", show=["green"], light={"color": "#7af0a8", "radius": 200, "at": [0, ys[2]]})
+    a.frame("off", state="off")
+    return a
+
+
+@asset
+def obj_neon_sign():
+    a = Asset("obj_neon_sign", "Cyberpunk neon sign on a wall bracket, no text: dark backing plate with a pink ring, "
+              "cyan zigzag and bar tubes, cable and mounting bolts. Frames: off, on (tubes lit, emit).", seed=912,
+              pivot_meaning=WALL, layer_hint="wall")
+    a.shadow([R(8, 8, 190, 110, 10)], opacity=0.26, blur=8)
+    a.add("plate", [R(0, 0, 184, 104, 10)], "mass", "steel", shade={"bump": 0.4})
+    a.flat("plate_inner", [R(0, 0, 170, 90, 8)], "screen_off", opacity=0.9)
+    a.flat("bolts", rivets([(-84, -44), (84, -44), (-84, 44), (84, 44)], 6), "chrome")
+    tubes = {"pink": ("neon_pink", [E(-44, 0, 64, 64), E(-44, 0, 50, 50, op="sub")], "neon_pink_glow"),
+             "cyan": ("neon_cyan", [I("arrow_zigzag", 30, -8, 60, 40, rot=0), R(40, 26, 80, 7, 3), R(40, -34, 50, 6, 3)],
+                      "neon_cyan_glow")}
+    for key, (mat, pieces, glow) in tubes.items():
+        a.flat(f"tube_{key}_off", pieces, "glass_dark", tags=["off"], line=FINE)
+        a.flat(f"tube_{key}_on", pieces, mat, tags=["on"], hidden=True, emit=1.0,
+               glow={"radius": 9, "opacity": 0.7, "color": glow}, line=FINE)
+    a.flat("cable", [LINE(88, 30, 104, 60, 3), LINE(104, 60, 100, 90, 3)], "rubber")
+    a.frame("off", state="off")
+    a.frame("on", state="on", show=["on"], hide=["off"],
+            light=[{"color": "#ff7aa8", "radius": 260, "at": [-44, 0]}, {"color": "#7ef0f4", "radius": 240, "at": [34, 0]}])
+    return a
+
+
+@asset
+def obj_oil_drum():
+    a = Asset("obj_oil_drum", "Steel oil drum 0.58 m (post-apocalypse): faded yellow paint, two rolling hoops, bung "
+              "caps, rust. Frames: normal, dented (caved side, peeled paint, rust streaks).", seed=913)
+    dia, h = 104, 92
+    dd = dia * SQ
+    ellipse_shadow(a, 8, -dd / 2 + 4, dia + 20, dd + 10, opacity=0.38, blur=7)
+    b = a.cyl("body", 0, 0, dia, h, "hazard")
+    hoops = band_on_cyl(0, -dd / 2 - 30, dia, 6) + band_on_cyl(0, -dd / 2 - 62, dia, 6)
+    a.flat("hoops", hoops, "steel", clip_to="body", line=FINE)
+    a.flat("lid_rim", [E(0, b.top_cy, dia - 2, dd - 2), E(0, b.top_cy, dia - 12, dd - 12, op="sub")], "steel",
+           line=FINE)
+    a.flat("bungs", [E(-24, b.top_cy - 8, 14, 10), E(22, b.top_cy + 10, 10, 8)], "steel", line=FINE)
+    a.wash("rust", [I("droplet", x, -60, 12, 40, flip="y") for x in (-30, 6, 34)], "rust", opacity=0.5,
+           clip_to="body")
+    a.wash("dent", [POLY([(0.1, 0.2), (0.5, 0.0), (0.95, 0.3), (0.8, 0.8), (0.35, 1.0), (0.0, 0.7)], -16, -50, 60, 46)],
+           "soot", opacity=0.5, blur=3, clip_to="body", tags=["dented"], hidden=True)
+    a.flat("dent_creases", [LINE(-40, -60, -4, -44, 2.5), LINE(-30, -30, 8, -58, 2.2), LINE(-20, -70, -10, -26, 2)],
+           "hazard", opacity=0.9, clip_to="body", tags=["dented"], hidden=True)
+    a.wash("peeled", [I("sponge", 24, -30, 40, 30), I("metaballs", -30, -80, 36, 24)], "rust", opacity=0.75,
+           clip_to="body", tags=["dented"], hidden=True)
+    a.frame("normal", state="normal")
+    a.frame("dented", state="dented", show=["dented"])
+    return a
+
+
+@asset
+def obj_barricade():
+    a = Asset("obj_barricade", "Post-apocalypse barricade 2.4 m: sandbag row, crossed planks, a leaning corrugated metal "
+              "sheet, an old tyre and barbed wire.", seed=914, pivot_meaning="centre of the barricade's ground line")
+    a.shadow([R(10, -24, 450, 70, 16)], opacity=0.36, blur=10)
+    a.add("sheet", [POLY([(0.05, 0), (1, 0.08), (0.95, 1), (0, 0.92)], 90, -110, 190, 170)], "mass", "steel",
+          shade={"bump": 0.5})
+    a.flat("sheet_ribs", [R(x, -110, 5, 170, 2, rot=4) for x in range(10, 180, 18)], "steel_light", opacity=0.5,
+           clip_to="sheet")
+    a.wash("sheet_rust", [I("metaballs", 110, -80, 120, 90), I("cloud", 60, -150, 80, 40)], "rust", opacity=0.5,
+           blur=6, clip_to="sheet")
+    a.add("planks", [LINE(-190, -10, -40, -150, 20), LINE(-190, -150, -40, -10, 20), LINE(-210, -120, -20, -130, 18)],
+          "mass", "wood_pale", texture={"angle": 45})
+    a.flat("plank_nails", rivets([(-115, -80), (-190, -122), (-40, -126)], 5), "iron")
+    bags = []
+    for row, (y, n, w) in enumerate(((-18, 6, 74), (-52, 5, 72))):
+        x0 = -(n - 1) * (w - 6) / 2 + (row * 20)
+        for k in range(n):
+            bags.append(R(x0 + k * (w - 6), y, w, 36, 16))
+    a.add("sandbags", bags, "mass", "cloth_ochre", line=THIN, shade={"bump": 1.1})
+    a.flat("bag_ties", [R(b["at"][0] + 22, b["at"][1], 3, 26, 1) for b in bags], "rope", opacity=0.7)
+    a.add("tyre", [E(170, -26, 90, 52), E(170, -26, 44, 24, op="sub")], "mass", "rubber", shade={"bump": 1.2})
+    coils = []
+    for k in range(14):
+        x = -200 + k * 22
+        coils += [E(x, -170, 26, 20), E(x, -170, 20, 14, op="sub")]
+    a.flat("wire", coils + [R(-57, -170, 290, 2, 1)], "iron", opacity=0.9)
+    barbs = [LINE(-200 + k * 22 - 4, -182, -200 + k * 22 + 4, -174, 2) for k in range(14)]
+    a.flat("barbs", barbs, "iron", opacity=0.9)
+    a.footprint = (-230, -60, 230, 0)
+    return a
+
+
+@asset
+def obj_stone_lantern():
+    a = Asset("obj_stone_lantern", "Eastern stone lantern 1.6 m: square base, round pillar, platform, fire box with "
+              "open windows, curved roof cap with a jewel finial. Frames: off, on (fire box glowing, emit).", seed=915)
+    ellipse_shadow(a, 8, -10, 110, 40, opacity=0.36, blur=7)
+    a.box("base", 0, 0, 96, 70, 22, "rock", corner=6)
+    a.cyl("pillar", 0, -22, 36, 70, "rock", lift=22)
+    a.box("platform", 0, -8, 96, 70, 16, "rock", lift=92, corner=6)
+    fb = a.box("firebox", 0, -20, 66, 52, 50, "rock", lift=108, corner=4)
+    a.flat("window_off", [R(0, fb.front_cy, 32, 30, 3)], "hole", tags=["off"])
+    a.flat("window_on", [R(0, fb.front_cy, 32, 30, 3)], "window_lit", tags=["on"], hidden=True, emit=1.0,
+           glow={"radius": 8, "opacity": 0.6, "color": "window_glow"})
+    a.add("cap", [POLY([(0.0, 1.0), (0.12, 0.55), (0.5, 0.0), (0.88, 0.55), (1.0, 1.0), (0.5, 0.86)], 0, fb.top1 - 34,
+                       140, 76)], "mass", "rock", shade={"bump": 0.7})
+    a.add("jewel", [E(0, fb.top1 - 80, 22, 22), I("triangle", 0, fb.top1 - 94, 12, 12)], "mass", "rock", line=FINE)
+    a.wash("moss", [I("cloud", -20, fb.top1 - 30, 70, 20)], "moss", opacity=0.5, clip_to="cap")
+    a.frame("off", state="off")
+    a.frame("on", state="on", show=["on"], hide=["off"], light={"color": "#f0c27a", "radius": 240,
+                                                             "at": [0, fb.front_cy]})
+    return a
+
+
 # ============================================================================ main
 def main() -> int:
     names = sys.argv[1:] or list(ASSETS)

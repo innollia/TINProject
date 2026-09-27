@@ -39,7 +39,7 @@
 - `recipes\palette_g04.json` = V1 `palette_h0_mood.json` 그대로 + 새 재질(식물·바위·물·눈·금·구리·강철·고무·유리·화면·네온·신호등·천·
   지붕·벽토·벽돌·옻칠 등). V1의 윤곽선·그림자·공통 색·재질·스타일은 바꾸지 않았다. 밝기는 V1 범위(종이색이 가장 밝은 면).
 
-## 체크리스트 (8/18 완료)
+## 체크리스트 (18/18 완료)
 
 | 완료 | 단계 | 자산 ID | 이름 | 장르 | 프레임(상태) | 캔버스 | 피벗 뜻 | 빛 | 출처 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -51,14 +51,14 @@
 | [x] | A | obj_bench | 벤치 | 중세 | obj_bench | 424×270 | front-bottom centre of the base on the floor |  |  |
 | [x] | A | obj_gravestone | 묘비 | 다크 | arch, broken, cross | 268×292 | front-bottom centre of the base on the floor |  |  |
 | [x] | A | obj_campfire | 모닥불 | 중세 | off, on | 314×212 | centre of the fire ring on the ground | 빛 emit | BS2 화톳불 |
-| [ ] | B | obj_fountain | 분수 | 중세 |  |  |  |  | BS2 분수 |
-| [ ] | B | obj_drain_cover | 배수구 덮개 | 다크 |  |  |  |  | BS2 하수구 |
-| [ ] | B | obj_market_stall | 시장 가판대 | 중세 |  |  |  |  |  |
-| [ ] | B | obj_parasol | 파라솔 탁자 | 공통 |  |  |  |  | BS2 파라솔 |
-| [ ] | B | obj_wagon | 짐마차 | 중세 |  |  |  |  | BS2 짐마차 |
-| [ ] | B | obj_cannon | 대포 | 해적·바다 |  |  |  |  | BS2 대포 |
-| [ ] | B | obj_rowboat | 나룻배 | 해적·바다 |  |  |  |  | BS2 보트 |
-| [ ] | B | obj_signpost | 길 안내 기둥(글자 없음) | 중세 |  |  |  |  |  |
-| [ ] | B | obj_fence_iron | 고딕 쇠 울타리 | 고딕 |  |  |  |  |  |
-| [ ] | B | obj_snowman | 눈사람 | 공통 |  |  |  |  | BS2 눈사람 |
+| [x] | B | obj_fountain | 분수 | 중세 | obj_fountain | 578×520 | front-bottom centre of the base on the floor |  | BS2 분수 |
+| [x] | B | obj_drain_cover | 배수구 덮개 | 다크 | obj_drain_cover | 286×226 | front edge centre of the frame on the floor |  | BS2 하수구 |
+| [x] | B | obj_market_stall | 시장 가판대 | 중세 | obj_market_stall | 556×490 | front-bottom centre of the base on the floor |  |  |
+| [x] | B | obj_parasol | 파라솔 탁자 | 공통 | obj_parasol | 914×564 | table pole base on the ground |  | BS2 파라솔 |
+| [x] | B | obj_wagon | 짐마차 | 중세 | obj_wagon | 774×404 | centre of the wagon's near-side ground line |  | BS2 짐마차 |
+| [x] | B | obj_cannon | 대포 | 해적·바다 | obj_cannon | 466×278 | front-bottom centre of the base on the floor |  | BS2 대포 |
+| [x] | B | obj_rowboat | 나룻배 | 해적·바다 | obj_rowboat | 696×318 | centre of the hull's near-side waterline |  | BS2 보트 |
+| [x] | B | obj_signpost | 길 안내 기둥(글자 없음) | 중세 | obj_signpost | 288×344 | front-bottom centre of the base on the floor |  |  |
+| [x] | B | obj_fence_iron | 고딕 쇠 울타리 | 고딕 | broken, normal | 512×324 | centre of the segment's ground line |  |  |
+| [x] | B | obj_snowman | 눈사람 | 공통 | obj_snowman | 284×348 | centre of the bottom ball on the ground |  | BS2 눈사람 |
 

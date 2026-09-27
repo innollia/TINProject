@@ -1,0 +1,459 @@
+{
+ "asset": "obj_traffic_light",
+ "status": "candidate",
+ "note": "Traffic light 3.2 m (modern / city): steel pole on a base, dark signal head with three hooded lamps. Frames: red, green, off.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 911,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  172,
+  532
+ ],
+ "pivot": [
+  80,
+  472
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.34,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      86,
+      464
+     ],
+     "size": [
+      60,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "name": "base",
+   "z": 2.0,
+   "kind": "block",
+   "material": "steel",
+   "extrude": 16,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      80,
+      441.0
+     ],
+     "size": [
+      34,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pole",
+   "z": 3.0,
+   "kind": "block",
+   "material": "steel",
+   "extrude": 250,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      80,
+      189.94
+     ],
+     "size": [
+      14,
+      12.124
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "z": 4.0,
+   "kind": "block",
+   "material": "plastic",
+   "extrude": 138,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      80,
+      58.0
+     ],
+     "size": [
+      52,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head_edge",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "rubber",
+   "opacity": 0.6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      80,
+      147.0
+     ],
+     "size": [
+      44,
+      130
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lamps_off",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "signal_off",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      80,
+      105.0
+     ],
+     "size": [
+      30,
+      30
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      80,
+      147.0
+     ],
+     "size": [
+      30,
+      30
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      80,
+      189.0
+     ],
+     "size": [
+      30,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lamp_red",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "signal_red",
+   "tags": [
+    "red"
+   ],
+   "hidden": true,
+   "emit": 1.0,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.6,
+    "color": "signal_red_glow"
+   },
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      80,
+      105.0
+     ],
+     "size": [
+      30,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lamp_amber",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "signal_amber",
+   "tags": [
+    "amber"
+   ],
+   "hidden": true,
+   "emit": 1.0,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.6,
+    "color": "signal_amber_glow"
+   },
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      80,
+      147.0
+     ],
+     "size": [
+      30,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lamp_green",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "signal_green",
+   "tags": [
+    "green"
+   ],
+   "hidden": true,
+   "emit": 1.0,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.6,
+    "color": "signal_green_glow"
+   },
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      80,
+      189.0
+     ],
+     "size": [
+      30,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "visors",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "rubber",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       3.2,
+       2
+      ],
+      [
+       12.8,
+       2
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       12.2,
+       9.2
+      ],
+      [
+       3.8,
+       9.2
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      80,
+      87.0
+     ],
+     "size": [
+      40,
+      14
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       3.2,
+       2
+      ],
+      [
+       12.8,
+       2
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       12.2,
+       9.2
+      ],
+      [
+       3.8,
+       9.2
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      80,
+      129.0
+     ],
+     "size": [
+      40,
+      14
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       14
+      ],
+      [
+       3.2,
+       2
+      ],
+      [
+       12.8,
+       2
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       12.2,
+       9.2
+      ],
+      [
+       3.8,
+       9.2
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      80,
+      171.0
+     ],
+     "size": [
+      40,
+      14
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "red",
+   "state": "red",
+   "show": [
+    "red"
+   ],
+   "game_light": {
+    "color": "#ff6a58",
+    "radius": 200,
+    "at": [
+     80,
+     105.0
+    ]
+   }
+  },
+  {
+   "name": "green",
+   "state": "green",
+   "show": [
+    "green"
+   ],
+   "game_light": {
+    "color": "#7af0a8",
+    "radius": 200,
+    "at": [
+     80,
+     189.0
+    ]
+   }
+  },
+  {
+   "name": "off",
+   "state": "off"
+  }
+ ]
+}

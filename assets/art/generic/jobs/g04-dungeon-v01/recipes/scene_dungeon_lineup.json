@@ -1,17 +1,75 @@
 {
  "note": "g04 dungeon line-up: every built frame on a flat floor, objects only (no people, no lighting). 'light' = game-code light (colour, radius in source px, position in scene px).",
  "canvas": [
-  3540,
-  884
+  3678,
+  2470
  ],
  "background_color": "#57505c",
  "scale": 0.5,
  "items": [
   {
+   "asset": "obj_altar",
+   "frame": "off",
+   "at": [
+    255,
+    341
+   ],
+   "layer": "world",
+   "state": "off",
+   "anchors": {
+    "flame_l": [
+     137,
+     99.0
+    ],
+    "flame_r": [
+     373,
+     99.0
+    ]
+   }
+  },
+  {
+   "asset": "obj_altar",
+   "frame": "on",
+   "at": [
+    741,
+    341
+   ],
+   "layer": "world",
+   "state": "on",
+   "light": [
+    {
+     "color": "#ffb45c",
+     "radius": 200,
+     "at": [
+      623,
+      99.0
+     ]
+    },
+    {
+     "color": "#ffb45c",
+     "radius": 200,
+     "at": [
+      859,
+      99.0
+     ]
+    }
+   ],
+   "anchors": {
+    "flame_l": [
+     623,
+     99.0
+    ],
+    "flame_r": [
+     859,
+     99.0
+    ]
+   }
+  },
+  {
    "asset": "obj_bar_door",
    "frame": "closed",
    "at": [
-    222,
+    1194,
     356
    ],
    "layer": "world",
@@ -21,7 +79,7 @@
    "asset": "obj_bar_door",
    "frame": "open",
    "at": [
-    638,
+    1610,
     356
    ],
    "layer": "world",
@@ -31,7 +89,7 @@
    "asset": "obj_barrel",
    "frame": "broken",
    "at": [
-    1043,
+    2015,
     336
    ],
    "layer": "world",
@@ -41,7 +99,7 @@
    "asset": "obj_barrel",
    "frame": "normal",
    "at": [
-    1431,
+    2403,
     336
    ],
    "layer": "world",
@@ -51,14 +109,14 @@
    "asset": "obj_brazier",
    "frame": "off",
    "at": [
-    1777,
+    2749,
     341
    ],
    "layer": "world",
    "state": "off",
    "anchors": {
     "flame_anchor": [
-     1777,
+     2749,
      229
     ]
    }
@@ -67,7 +125,7 @@
    "asset": "obj_brazier",
    "frame": "on",
    "at": [
-    2091,
+    3063,
     341
    ],
    "layer": "world",
@@ -76,13 +134,13 @@
     "color": "#ffb45c",
     "radius": 380,
     "at": [
-     2091,
+     3063,
      221
     ]
    },
    "anchors": {
     "flame_anchor": [
-     2091,
+     3063,
      229
     ]
    }
@@ -91,7 +149,7 @@
    "asset": "obj_chest",
    "frame": "closed",
    "at": [
-    2421,
+    3393,
     353
    ],
    "layer": "world",
@@ -101,8 +159,8 @@
    "asset": "obj_chest",
    "frame": "open",
    "at": [
-    2767,
-    353
+    185,
+    903
    ],
    "layer": "world",
    "state": "open"
@@ -111,8 +169,8 @@
    "asset": "obj_coffin",
    "frame": "closed",
    "at": [
-    3210,
-    236
+    628,
+    786
    ],
    "layer": "world",
    "state": "closed"
@@ -121,8 +179,8 @@
    "asset": "obj_coffin",
    "frame": "open",
    "at": [
-    282,
-    658
+    1172,
+    786
    ],
    "layer": "world",
    "state": "open"
@@ -131,8 +189,8 @@
    "asset": "obj_crate",
    "frame": "broken",
    "at": [
-    765,
-    763
+    1655,
+    891
    ],
    "layer": "world",
    "state": "broken"
@@ -141,18 +199,58 @@
    "asset": "obj_crate",
    "frame": "normal",
    "at": [
-    1187,
-    763
+    2077,
+    891
    ],
    "layer": "world",
    "state": "normal"
   },
   {
+   "asset": "obj_door_balcony",
+   "frame": "closed",
+   "at": [
+    2582,
+    834
+   ],
+   "layer": "world",
+   "state": "closed"
+  },
+  {
+   "asset": "obj_door_balcony",
+   "frame": "open",
+   "at": [
+    3158,
+    834
+   ],
+   "layer": "world",
+   "state": "open"
+  },
+  {
+   "asset": "obj_door_secret",
+   "frame": "closed",
+   "at": [
+    194,
+    1373
+   ],
+   "layer": "world",
+   "state": "closed"
+  },
+  {
+   "asset": "obj_door_secret",
+   "frame": "open",
+   "at": [
+    630,
+    1373
+   ],
+   "layer": "world",
+   "state": "open"
+  },
+  {
    "asset": "obj_door_wood",
    "frame": "closed",
    "at": [
-    1605,
-    780
+    1089,
+    1466
    ],
    "layer": "world",
    "state": "closed"
@@ -161,8 +259,48 @@
    "asset": "obj_door_wood",
    "frame": "open",
    "at": [
-    2007,
-    780
+    1491,
+    1466
+   ],
+   "layer": "world",
+   "state": "open"
+  },
+  {
+   "asset": "obj_gate_castle",
+   "frame": "closed",
+   "at": [
+    2080,
+    1451
+   ],
+   "layer": "world",
+   "state": "closed"
+  },
+  {
+   "asset": "obj_gate_castle",
+   "frame": "open",
+   "at": [
+    2856,
+    1451
+   ],
+   "layer": "world",
+   "state": "open"
+  },
+  {
+   "asset": "obj_gift_box",
+   "frame": "closed",
+   "at": [
+    3385,
+    1428
+   ],
+   "layer": "world",
+   "state": "closed"
+  },
+  {
+   "asset": "obj_gift_box",
+   "frame": "open",
+   "at": [
+    157,
+    1876
    ],
    "layer": "world",
    "state": "open"
@@ -171,8 +309,8 @@
    "asset": "obj_lever",
    "frame": "down",
    "at": [
-    2321,
-    778
+    495,
+    1912
    ],
    "layer": "world",
    "state": "down"
@@ -181,25 +319,45 @@
    "asset": "obj_lever",
    "frame": "up",
    "at": [
-    2551,
-    778
+    725,
+    1912
    ],
    "layer": "world",
    "state": "up"
   },
   {
+   "asset": "obj_statue",
+   "frame": "broken",
+   "at": [
+    1037,
+    1858
+   ],
+   "layer": "world",
+   "state": "broken"
+  },
+  {
+   "asset": "obj_statue",
+   "frame": "normal",
+   "at": [
+    1433,
+    1858
+   ],
+   "layer": "world",
+   "state": "normal"
+  },
+  {
    "asset": "obj_torch_stand",
    "frame": "off",
    "at": [
-    2785,
-    776
+    1751,
+    1910
    ],
    "layer": "world",
    "state": "off",
    "anchors": {
     "flame_anchor": [
-     2785,
-     562
+     1751,
+     1696
     ]
    }
   },
@@ -207,8 +365,8 @@
    "asset": "obj_torch_stand",
    "frame": "on",
    "at": [
-    3027,
-    776
+    1993,
+    1910
    ],
    "layer": "world",
    "state": "on",
@@ -216,14 +374,14 @@
     "color": "#ffb45c",
     "radius": 320,
     "at": [
-     3027,
-     562
+     1993,
+     1696
     ]
    },
    "anchors": {
     "flame_anchor": [
-     3027,
-     562
+     1993,
+     1696
     ]
    }
   },
@@ -231,15 +389,15 @@
    "asset": "obj_torch_wall",
    "frame": "off",
    "at": [
-    3240,
-    733
+    2206,
+    1867
    ],
    "layer": "world",
    "state": "off",
    "anchors": {
     "flame_anchor": [
-     3246,
-     693
+     2212,
+     1827
     ]
    }
   },
@@ -247,8 +405,8 @@
    "asset": "obj_torch_wall",
    "frame": "on",
    "at": [
-    3422,
-    733
+    2388,
+    1867
    ],
    "layer": "world",
    "state": "on",
@@ -256,16 +414,65 @@
     "color": "#ffb45c",
     "radius": 300,
     "at": [
-     3428,
-     693
+     2394,
+     1827
     ]
    },
    "anchors": {
     "flame_anchor": [
-     3428,
-     693
+     2394,
+     1827
     ]
    }
+  },
+  {
+   "asset": "obj_trapdoor",
+   "frame": "closed",
+   "at": [
+    2642,
+    1939
+   ],
+   "layer": "floor",
+   "state": "closed"
+  },
+  {
+   "asset": "obj_trapdoor",
+   "frame": "open",
+   "at": [
+    2954,
+    1939
+   ],
+   "layer": "floor",
+   "state": "open"
+  },
+  {
+   "asset": "obj_vase",
+   "frame": "broken",
+   "at": [
+    3244,
+    1902
+   ],
+   "layer": "world",
+   "state": "broken"
+  },
+  {
+   "asset": "obj_vase",
+   "frame": "normal",
+   "at": [
+    3518,
+    1902
+   ],
+   "layer": "world",
+   "state": "normal"
+  },
+  {
+   "asset": "obj_wine_cask",
+   "frame": "obj_wine_cask",
+   "at": [
+    215,
+    2342
+   ],
+   "layer": "world"
   }
  ],
  "out": "preview/lineup_dungeon.png"

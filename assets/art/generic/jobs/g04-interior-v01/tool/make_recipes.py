@@ -11,6 +11,7 @@ where the game adds g01 / g02 flame effects.
 
 from __future__ import annotations
 
+import math
 import sys
 from pathlib import Path
 
@@ -312,6 +313,199 @@ def obj_fireplace():
     a.frame("on", state="on", show=["on"], hide=["off"], anchors=anchors,
             light={"color": "#ffb45c", "radius": 420, "at": [0, -48]})
     a.footprint = (-144, -78, 144, 0)
+    return a
+
+
+# ============================================================================ B
+OVERHEAD = "floor point directly below the fixture (drawn at its hanging height above it)"
+WALL = "centre of the wall plate = attach point on the wall face"
+LAMP = "#ffc987"
+
+
+@asset
+def obj_chandelier():
+    a = Asset("obj_chandelier", "Gothic chandelier hanging at 2.2 m: chain, gold stem and ring, six glass lamp globes. "
+              "Frames: off, on (globes lit, emit). Hangs above characters (layer_hint overhead).", seed=611,
+              pivot_meaning=OVERHEAD, layer_hint="overhead")
+    ellipse_shadow(a, 0, 0, 170, 60, opacity=0.18, blur=12)
+    y = -232
+    a.flat("chain", [E(0, y - 110 + k * 12, 7, 11) for k in range(9)], "iron", line=FINE)
+    a.add("stem", [R(0, y - 34, 12, 60, 4), E(0, y - 66, 20, 14), E(0, y + 4, 26, 16)], "mass", "gold")
+    ring = [E(0, y, 176, 62), E(0, y, 156, 48, op="sub")]
+    a.add("ring", ring, "mass", "gold", shade={"bump": 0.6})
+    pts = [(88 * math.cos(t), y + 31 * math.sin(t)) for t in [math.radians(30 + 60 * k) for k in range(6)]]
+    back = [p for p in pts if p[1] < y]
+    front = [p for p in pts if p[1] >= y]
+    for tag, sel in (("back", back), ("front", front)):
+        a.add(f"cups_{tag}", [E(x, py + 4, 20, 9) for x, py in sel], "mass", "gold", line=FINE,
+              z=None)
+        a.add(f"globes_{tag}_off", [E(x, py - 10, 18, 22) for x, py in sel], "mass", "glass_dark", tags=["off"],
+              line=FINE)
+        a.add(f"globes_{tag}_on", [E(x, py - 10, 18, 22) for x, py in sel], "mass", "glass", tags=["on"], hidden=True,
+              emit=0.95, glow={"radius": 7, "opacity": 0.55, "color": "lamp_glow"}, line=FINE)
+    a.add("finial", [I("triangle", 0, y + 22, 16, 18, flip="y")], "mass", "gold", line=FINE)
+    a.frame("off", state="off")
+    a.frame("on", state="on", show=["on"], hide=["off"], light={"color": LAMP, "radius": 520, "at": [0, y]})
+    return a
+
+
+@asset
+def obj_lamp_floor():
+    a = Asset("obj_lamp_floor", "Gothic standing lamp 1.7 m: iron tripod foot, turned pole, fringed ochre fabric shade. "
+              "Frames: off, on (shade glowing from inside, emit).", seed=612)
+    ellipse_shadow(a, 6, -4, 76, 26, opacity=0.34, blur=6)
+    a.add("foot", [LINE(0, -18, -30, 0, 7), LINE(0, -18, 30, 0, 7), LINE(0, -18, -2, 6, 6), E(0, -18, 18, 10)], "mass",
+          "iron")
+    a.add("pole", [R(0, -96, 8, 160, 3), E(0, -60, 14, 8), E(0, -120, 14, 8)], "mass", "iron")
+    shade = [(0.22, 0), (0.78, 0), (1, 1), (0, 1)]
+    a.add("shade_off", [POLY(shade, 0, -196, 84, 58)], "mass", "cloth_ochre", tags=["off"])
+    a.add("shade_on", [POLY(shade, 0, -196, 84, 58)], "mass", "window_lit", tags=["on"], hidden=True, emit=0.85,
+          glow={"radius": 9, "opacity": 0.5, "color": "lamp_glow"})
+    a.flat("fringe", [R(x, -164, 3, 8, 1) for x in range(-38, 40, 8)], "cloth_wine", line=FINE)
+    a.flat("shade_rim", [R(0, -168, 86, 4, 1), R(0, -224, 44, 4, 1)], "gold")
+    a.add("finial", [E(0, -230, 10, 10)], "mass", "gold", line=FINE)
+    a.frame("off", state="off")
+    a.frame("on", state="on", show=["on"], hide=["off"], light={"color": LAMP, "radius": 360, "at": [0, -196]})
+    return a
+
+
+@asset
+def obj_lantern_wall():
+    a = Asset("obj_lantern_wall", "Wall lantern: iron plate and scrolled bracket, hanging glass lantern with cage and "
+              "cap. Frames: off, on (lit glass, emit).", seed=613, pivot_meaning=WALL, layer_hint="wall")
+    a.shadow([R(8, 30, 34, 60, 8)], opacity=0.25, blur=6)
+    a.add("plate", [R(0, 0, 22, 36, 5)], "mass", "iron", shade={"bump": 0.5})
+    a.add("arm", [LINE(0, -6, 0, 18, 6), LINE(0, 18, 6, 26, 5), I("spiral", -10, 10, 16, rot=90)], "mass", "iron")
+    a.flat("hook", [R(6, 32, 3, 12, 1)], "iron")
+    a.add("cap", [I("triangle", 6, 44, 34, 16), E(6, 36, 8, 8)], "mass", "iron")
+    a.add("glass_off", [R(6, 66, 26, 34, 3)], "mass", "glass_dark", tags=["off"])
+    a.add("glass_on", [R(6, 66, 26, 34, 3)], "mass", "glass", tags=["on"], hidden=True, emit=0.9,
+          glow={"radius": 9, "opacity": 0.55, "color": "lamp_glow"})
+    a.flat("cage", [R(-7, 66, 3, 36, 1), R(19, 66, 3, 36, 1), R(6, 66, 3, 36, 1)], "iron")
+    a.box("base", 6, 88, 32, 16, 6, "iron", corner=2)
+    a.frame("off", state="off")
+    a.frame("on", state="on", show=["on"], hide=["off"], light={"color": LAMP, "radius": 320, "at": [6, 66]})
+    return a
+
+
+@asset
+def obj_clock_grandfather():
+    a = Asset("obj_clock_grandfather", "Grandfather clock 2.1 m against a wall: dark wood case, hood with a bone dial, "
+              "hour marks and hands (no numerals), trunk window showing the brass pendulum.", seed=614,
+              pivot_meaning=WALLFRONT)
+    a.shadow([R(6, -22, 110, 56, 8)], opacity=0.34, blur=7)
+    a.box("plinth", 0, 0, 96, 50, 34, "wood_dark", corner=3)
+    trunk = a.box("trunk", 0, -4, 78, 44, 132, "wood_dark", lift=34, corner=3)
+    a.flat("window", [R(0, trunk.front_cy + 6, 44, 96, 16)], "glass_dark", line=THIN)
+    a.flat("pendulum", [R(0, trunk.front_cy - 10, 3, 60, 1), E(0, trunk.front_cy + 30, 22, 22)], "gold", line=FINE,
+           clip_to="window")
+    hood = a.box("hood", 0, 0, 96, 52, 58, "wood_dark", lift=166, corner=4)
+    a.flat("dial", [E(0, hood.front_cy, 52, 52)], "paper", line=THIN)
+    marks = []
+    for k in range(12):
+        t = math.radians(30 * k)
+        marks.append(LINE(math.cos(t) * 19, hood.front_cy + math.sin(t) * 19, math.cos(t) * 23,
+                          hood.front_cy + math.sin(t) * 23, 2))
+    a.flat("marks", marks, "soot")
+    a.flat("hands", [LINE(0, hood.front_cy, 0, hood.front_cy - 18, 3), LINE(0, hood.front_cy, 12, hood.front_cy + 4, 3)],
+           "soot")
+    a.add("crest", [POLY([(0, 1), (0.2, 0.3), (0.5, 0), (0.8, 0.3), (1, 1)], 0, hood.top1 - 60, 90, 22)], "mass",
+          "wood_dark")
+    a.flat("finials", [E(-40, hood.top1 - 64, 10, 12), E(40, hood.top1 - 64, 10, 12), E(0, hood.top1 - 76, 10, 12)],
+           "gold", line=FINE)
+    a.footprint = (-48, -50, 48, 0)
+    return a
+
+
+@asset
+def obj_mirror_standing():
+    a = Asset("obj_mirror_standing", "Cheval mirror 1.8 m: oval glass in a carved dark frame on two posts with feet. "
+              "Frames: normal, broken (cracks, missing pieces, shards on the floor).", seed=615)
+    a.shadow([R(6, -18, 120, 44, 8)], opacity=0.32, blur=7)
+    for i, x in enumerate((-50, 50)):
+        a.box(f"foot{i}", x, 0, 18, 46, 8, "wood_dark", corner=3)
+        a.box(f"post{i}", x, -20, 10, 8, 160, "wood_dark", corner=2)
+    a.add("frame", [E(0, -104, 92, 150)], "mass", "wood_dark")
+    a.add("glass", [E(0, -104, 76, 134)], "mass", "glass_dark", shade={"bump": 0.3, "highlight_amount": 0.8})
+    a.flat("sheen", [LINE(-20, -60, 10, -150, 6), LINE(-4, -52, 20, -120, 3)], "chrome", opacity=0.35, clip_to="glass",
+           tags=["whole"])
+    cx, cy = 10, -118
+    cracks = []
+    for ang, ln in ((-100, 50), (-40, 44), (10, 38), (70, 52), (130, 46), (190, 40), (240, 34)):
+        r = math.radians(ang)
+        mx, my = cx + math.cos(r) * ln * 0.55, cy + math.sin(r) * ln * 0.55
+        cracks += [LINE(cx, cy, mx, my, 2.2), LINE(mx, my, cx + math.cos(r + 0.25) * ln, cy + math.sin(r + 0.25) * ln, 1.8)]
+    a.flat("cracks", cracks, "chrome", opacity=0.75, clip_to="glass", tags=["broken"], hidden=True)
+    a.flat("missing", [POLY([(0, 0.2), (0.6, 0), (1, 0.7), (0.3, 1)], 14, -70, 26, 30)], "hole", clip_to="glass",
+           tags=["broken"], hidden=True)
+    a.add("shards", [POLY([(0, 0.6), (0.4, 0), (1, 0.3), (0.7, 1)], x, y, w, w * 0.6, rot=r) for x, y, w, r in
+                     ((-30, 14, 20, 20), (26, 18, 16, -40), (8, 26, 12, 60))], "mass", "glass_dark", tags=["broken"],
+          hidden=True, line=FINE)
+    a.flat("pins", [E(-46, -104, 8, 8), E(46, -104, 8, 8)], "gold", line=FINE)
+    a.add("crest", [I("triangle", 0, -186, 30, 14)], "mass", "wood_dark", line=FINE)
+    a.frame("normal", state="normal", hide=["broken"])
+    a.frame("broken", state="broken", show=["broken"], hide=["whole"])
+    return a
+
+
+@asset
+def obj_counter_shop():
+    a = Asset("obj_counter_shop", "Shop counter 2.0 m wide, 1.05 m high (waist height of the player): panelled wooden "
+              "front, thick top, lift-up flap section at the east end.", seed=616)
+    a.shadow([R(8, -40, 380, 104, 14)], opacity=0.34, blur=9)
+    b = a.box("body", 0, 0, 360, 94, 100, "wood", corner=5)
+    a.flat("panels", [R(x, b.front_cy + 4, 88, 72, 4) for x in (-130, -36, 58)], "wood_dark", opacity=0.6, line=THIN)
+    a.flat("flap_gap", [R(148, b.front_cy + 4, 3, 90, 1)], "soot", opacity=0.8)
+    t = a.box("top", 0, 6, 376, 104, 11, "wood", lift=100, corner=5)
+    a.flat("top_joints", [R(0, t.top0 + 26 * k, 366, 2, 1) for k in range(1, 4)], "wood_dark", opacity=0.45)
+    a.flat("flap_hinge", [R(148, t.top_cy, 3, 96, 1)], "iron")
+    a.footprint = (-180, -94, 180, 0)
+    return a
+
+
+@asset
+def obj_sofa():
+    a = Asset("obj_sofa", "Gothic sofa 2.0 m: wine velvet seat, tall rounded back with buttons, rolled arms, three "
+              "cushions, dark wood feet.", seed=617)
+    a.shadow([R(8, -50, 380, 120, 16)], opacity=0.34, blur=10)
+    a.add("back", [R(0, -182, 332, 118, 40)], "mass", "cloth_wine", shade={"bump": 0.9})
+    a.flat("buttons", [E(x, y, 6, 6) for x in (-110, -55, 0, 55, 110) for y in (-196, -164)], "soot", opacity=0.8)
+    a.box("feet", 0, 0, 340, 100, 12, "wood_dark", corner=2,
+          top=lambda x, cy, w, d: [R(x - 160, cy, 12, d, 2), R(x + 160, cy, 12, d, 2)])
+    seat = a.box("seat", 0, -2, 330, 104, 34, "cloth_wine", lift=12, corner=16)
+    for i, x in enumerate((-106, 0, 106)):
+        a.add(f"cushion{i}", [R(x, seat.top_cy - 4, 100, 88, 24)], "mass", "cloth_wine", shade={"bump": 1.1}, line=THIN)
+    for i, x in enumerate((-172, 172)):
+        a.add(f"arm{i}", [R(x, -80, 44, 130, 20), E(x, -140, 50, 36)], "mass", "cloth_wine", shade={"bump": 1.0})
+    a.flat("trim", [R(0, seat.bottom - 4, 330, 5, 2)], "gold", line=FINE)
+    a.footprint = (-194, -110, 194, 0)
+    return a
+
+
+@asset
+def obj_piano():
+    a = Asset("obj_piano", "Upright piano 1.5 m wide, 1.3 m high against a wall: dark lacquered case, candle brackets "
+              "(unlit), keyboard shelf, pedals. Frames: closed (fallboard down), open (keys visible).", seed=618,
+              pivot_meaning=WALLFRONT)
+    a.shadow([R(8, -44, 290, 110, 14)], opacity=0.34, blur=9)
+    body = a.box("case", 0, -44, 270, 50, 136, "wood_dark", corner=4)
+    a.flat("panel", [R(0, body.front_cy - 20, 220, 70, 4)], "wood", opacity=0.5, line=THIN)
+    a.flat("brackets", [R(-110, body.front_cy - 20, 6, 20, 2), R(110, body.front_cy - 20, 6, 20, 2)], "gold",
+           line=FINE)
+    a.box("legs", 0, -2, 262, 40, 60, "wood_dark", corner=2,
+          top=lambda x, cy, w, d: [R(x - 124, cy, 14, d, 3), R(x + 124, cy, 14, d, 3)])
+    a.box("lower", 0, -40, 250, 8, 58, "wood_dark", corner=3)
+    a.flat("pedals", [R(x, -12, 12, 6, 2) for x in (-16, 0, 16)], "gold", line=FINE)
+    kb = a.box("keybed", 0, 0, 270, 48, 12, "wood_dark", lift=60, corner=3)
+    a.flat("keys_white", [R(0, kb.top_cy + 2, 250, 34, 2)], "paper", tags=["open"], hidden=True, line=FINE)
+    a.flat("keys_joints", [R(-122 + k * 10, kb.top_cy + 2, 1.2, 32, 0.6) for k in range(25)], "paper_mark",
+           tags=["open"], hidden=True)
+    a.flat("keys_black", [R(-117 + k * 10, kb.top_cy - 6, 6, 18, 1) for k in range(24) if k % 7 not in (2, 6)], "soot",
+           tags=["open"], hidden=True)
+    a.add("fallboard", [R(0, kb.top_cy, 262, 40, 6)], "mass", "wood_dark", tags=["closed"], shade={"bump": 0.6})
+    a.footprint = (-135, -94, 135, 0)
+    a.frame("closed", state="closed")
+    a.frame("open", state="open", show=["open"], hide=["closed"])
     return a
 
 

@@ -39,7 +39,7 @@
 - `recipes\palette_g04.json` = V1 `palette_h0_mood.json` 그대로 + 새 재질(식물·바위·물·눈·금·구리·강철·고무·유리·화면·네온·신호등·천·
   지붕·벽토·벽돌·옻칠 등). V1의 윤곽선·그림자·공통 색·재질·스타일은 바꾸지 않았다. 밝기는 V1 범위(종이색이 가장 밝은 면).
 
-## 체크리스트 (5/21 완료)
+## 체크리스트 (10/21 완료)
 
 | 완료 | 단계 | 자산 ID | 이름 | 장르 | 프레임(상태) | 캔버스 | 피벗 뜻 | 빛 | 출처 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -48,11 +48,11 @@
 | [x] | A | obj_sf_console | SF 조종 콘솔 | SF | off, on | 400×374 | front-bottom centre of the base on the floor | 빛 emit |  |
 | [x] | A | obj_sf_capsule | 냉동 캡슐 | SF | closed, open | 300×404 | front-bottom centre on the floor; the back face stands on the wall line | 빛 emit |  |
 | [x] | A | obj_steam_boiler | 증기 보일러 | 스팀펑크 | off, on | 588×554 | front-bottom centre of the base on the floor | 빛 emit |  |
-| [ ] | B | obj_traffic_light | 신호등 | 현대 |  |  |  |  |  |
-| [ ] | B | obj_neon_sign | 네온 간판(글자 없음) | 사이버펑크 |  |  |  |  |  |
-| [ ] | B | obj_oil_drum | 드럼통 | 포스트아포칼립스 |  |  |  |  |  |
-| [ ] | B | obj_barricade | 바리케이드 | 포스트아포칼립스 |  |  |  |  |  |
-| [ ] | B | obj_stone_lantern | 석등 | 동양 |  |  |  |  |  |
+| [x] | B | obj_traffic_light | 신호등 | 현대 | green, off, red | 172×532 | front-bottom centre of the base on the floor | 빛 emit |  |
+| [x] | B | obj_neon_sign | 네온 간판(글자 없음) | 사이버펑크 | off, on | 314×238 | centre of the back plate = attach point on the wall face | 빛 emit |  |
+| [x] | B | obj_oil_drum | 드럼통 | 포스트아포칼립스 | dented, normal | 242×290 | front-bottom centre of the base on the floor |  |  |
+| [x] | B | obj_barricade | 바리케이드 | 포스트아포칼립스 | obj_barricade | 586×312 | centre of the barricade's ground line |  |  |
+| [x] | B | obj_stone_lantern | 석등 | 동양 | off, on | 230×386 | front-bottom centre of the base on the floor | 빛 emit |  |
 | [ ] | C | obj_phone_booth | 공중전화 부스 | 현대 |  |  |  |  |  |
 | [ ] | C | obj_trash_can | 쓰레기통 | 현대 |  |  |  |  |  |
 | [ ] | C | obj_hitching_post | 말 매는 말뚝 | 서부 |  |  |  |  |  |

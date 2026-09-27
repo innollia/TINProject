@@ -1,0 +1,1378 @@
+{
+ "asset": "obj_house_east",
+ "status": "candidate",
+ "note": "Eastern tiled house (hanok / machiya style mix) 5 x 3.5 m, ridge east-west: stone base with steps, dark timber frame, lattice paper doors, curved dark-tile roof with upturned eaves. Frames: day, night (paper doors lit, emit).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 816,
+ "pivot_meaning": "front-bottom centre of the foundation on the ground (door threshold line)",
+ "layer_hint": "world",
+ "canvas": [
+  1124,
+  1024
+ ],
+ "pivot": [
+  558,
+  898
+ ],
+ "footprint": [
+  118,
+  318,
+  998,
+  918
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.38,
+   "blur": 16,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 30
+     },
+     "at": [
+      582,
+      648
+     ],
+     "size": [
+      910,
+      580
+     ]
+    }
+   ]
+  },
+  {
+   "name": "base",
+   "z": 2.0,
+   "kind": "block",
+   "material": "rock",
+   "extrude": 50,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      558,
+      568.0
+     ],
+     "size": [
+      880,
+      600
+     ]
+    }
+   ]
+  },
+  {
+   "name": "steps",
+   "z": 3.0,
+   "kind": "block",
+   "material": "stone_dark",
+   "extrude": 24,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      558,
+      898.0
+     ],
+     "size": [
+      220,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wall",
+   "z": 4.0,
+   "kind": "block",
+   "material": "plaster_pale",
+   "extrude": 210,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      558,
+      368.0
+     ],
+     "size": [
+      820,
+      540
+     ]
+    }
+   ]
+  },
+  {
+   "name": "posts",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      158,
+      743.0
+     ],
+     "size": [
+      22,
+      210
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      358,
+      743.0
+     ],
+     "size": [
+      22,
+      210
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      558,
+      743.0
+     ],
+     "size": [
+      22,
+      210
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      758,
+      743.0
+     ],
+     "size": [
+      22,
+      210
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      958,
+      743.0
+     ],
+     "size": [
+      22,
+      210
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      558,
+      648
+     ],
+     "size": [
+      820,
+      18
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      558,
+      840
+     ],
+     "size": [
+      820,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "paper0",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "cloth_pale",
+   "tags": [
+    "day"
+   ],
+   "shade": {
+    "bump": 0.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      258,
+      749.0
+     ],
+     "size": [
+      170,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "paper0_lit",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "window_lit",
+   "tags": [
+    "night"
+   ],
+   "hidden": true,
+   "emit": 0.8,
+   "glow": {
+    "radius": 10,
+    "opacity": 0.4,
+    "color": "window_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      258,
+      749.0
+     ],
+     "size": [
+      170,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lattice0",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "grid_fine",
+     "at": [
+      258,
+      749.0
+     ],
+     "size": [
+      170,
+      170
+     ],
+     "crop": [
+      1,
+      1,
+      15,
+      15
+     ]
+    }
+   ]
+  },
+  {
+   "name": "paper1",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "cloth_pale",
+   "tags": [
+    "day"
+   ],
+   "shade": {
+    "bump": 0.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      458,
+      749.0
+     ],
+     "size": [
+      170,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "paper1_lit",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "window_lit",
+   "tags": [
+    "night"
+   ],
+   "hidden": true,
+   "emit": 0.8,
+   "glow": {
+    "radius": 10,
+    "opacity": 0.4,
+    "color": "window_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      458,
+      749.0
+     ],
+     "size": [
+      170,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lattice1",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "grid_fine",
+     "at": [
+      458,
+      749.0
+     ],
+     "size": [
+      170,
+      170
+     ],
+     "crop": [
+      1,
+      1,
+      15,
+      15
+     ]
+    }
+   ]
+  },
+  {
+   "name": "paper2",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "cloth_pale",
+   "tags": [
+    "day"
+   ],
+   "shade": {
+    "bump": 0.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      658,
+      749.0
+     ],
+     "size": [
+      170,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "paper2_lit",
+   "z": 13.0,
+   "kind": "flat",
+   "material": "window_lit",
+   "tags": [
+    "night"
+   ],
+   "hidden": true,
+   "emit": 0.8,
+   "glow": {
+    "radius": 10,
+    "opacity": 0.4,
+    "color": "window_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      658,
+      749.0
+     ],
+     "size": [
+      170,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lattice2",
+   "z": 14.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "grid_fine",
+     "at": [
+      658,
+      749.0
+     ],
+     "size": [
+      170,
+      170
+     ],
+     "crop": [
+      1,
+      1,
+      15,
+      15
+     ]
+    }
+   ]
+  },
+  {
+   "name": "paper3",
+   "z": 15.0,
+   "kind": "mass",
+   "material": "cloth_pale",
+   "tags": [
+    "day"
+   ],
+   "shade": {
+    "bump": 0.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      858,
+      749.0
+     ],
+     "size": [
+      170,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "paper3_lit",
+   "z": 16.0,
+   "kind": "flat",
+   "material": "window_lit",
+   "tags": [
+    "night"
+   ],
+   "hidden": true,
+   "emit": 0.8,
+   "glow": {
+    "radius": 10,
+    "opacity": 0.4,
+    "color": "window_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      858,
+      749.0
+     ],
+     "size": [
+      170,
+      170
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lattice3",
+   "z": 17.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "grid_fine",
+     "at": [
+      858,
+      749.0
+     ],
+     "size": [
+      170,
+      170
+     ],
+     "crop": [
+      1,
+      1,
+      15,
+      15
+     ]
+    }
+   ]
+  },
+  {
+   "name": "roof_back",
+   "z": 18.0,
+   "kind": "block",
+   "material": "roof_slate",
+   "extrude": 5,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      558,
+      113.0
+     ],
+     "size": [
+      970,
+      150.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "roof",
+   "z": 19.0,
+   "kind": "block",
+   "material": "roof_slate",
+   "extrude": 12,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      558,
+      427.0
+     ],
+     "size": [
+      970,
+      478.0
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       2.48,
+       11.84
+      ],
+      [
+       3.2,
+       10.64
+      ],
+      [
+       12.8,
+       10.64
+      ],
+      [
+       13.52,
+       11.84
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       13.04,
+       13.4
+      ],
+      [
+       8.0,
+       13.64
+      ],
+      [
+       2.96,
+       13.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      558,
+      638
+     ],
+     "size": [
+      1010,
+      120
+     ]
+    }
+   ]
+  },
+  {
+   "name": "roof_tiles",
+   "z": 20.0,
+   "kind": "mass",
+   "material": "roof_slate",
+   "clip_to": "roof",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "shade": {
+    "bump": 0.9
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      93,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      119,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      145,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      171,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      197,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      223,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      249,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      275,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      301,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      327,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      353,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      379,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      405,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      431,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      457,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      483,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      509,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      535,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      561,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      587,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      613,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      639,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      665,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      691,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      717,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      743,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      769,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      795,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      821,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      847,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      873,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      899,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      925,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      951,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      977,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      1003,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      1029,
+      443.0
+     ],
+     "size": [
+      9,
+      510.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "roof_ridge",
+   "z": 21.0,
+   "kind": "block",
+   "material": "roof_slate",
+   "extrude": 26,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      558,
+      170.0
+     ],
+     "size": [
+      990,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ridge_ends",
+   "z": 22.0,
+   "kind": "mass",
+   "material": "roof_slate",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "wave",
+     "at": [
+      63.0,
+      166.0
+     ],
+     "size": [
+      50,
+      40
+     ]
+    },
+    {
+     "icon": "wave",
+     "at": [
+      1053.0,
+      166.0
+     ],
+     "size": [
+      50,
+      40
+     ],
+     "flip": "x"
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "day",
+   "state": "day"
+  },
+  {
+   "name": "night",
+   "state": "night",
+   "hide": [
+    "day"
+   ],
+   "show": [
+    "night"
+   ],
+   "game_light": [
+    {
+     "color": "#f0c27a",
+     "radius": 220,
+     "at": [
+      258,
+      749.0
+     ]
+    },
+    {
+     "color": "#f0c27a",
+     "radius": 220,
+     "at": [
+      458,
+      749.0
+     ]
+    },
+    {
+     "color": "#f0c27a",
+     "radius": 220,
+     "at": [
+      658,
+      749.0
+     ]
+    },
+    {
+     "color": "#f0c27a",
+     "radius": 220,
+     "at": [
+      858,
+      749.0
+     ]
+    }
+   ]
+  }
+ ]
+}

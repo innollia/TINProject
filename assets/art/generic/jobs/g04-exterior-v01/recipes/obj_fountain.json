@@ -1,0 +1,501 @@
+{
+ "asset": "obj_fountain",
+ "status": "candidate",
+ "note": "Round stone fountain 2.2 m: low basin with dark water, pedestal, upper bowl, finial spout and thin falling water.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 711,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  578,
+  520
+ ],
+ "pivot": [
+  277,
+  443
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 12,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      289,
+      271
+     ],
+     "size": [
+      430,
+      350
+     ]
+    }
+   ]
+  },
+  {
+   "name": "water_bed",
+   "z": 2.0,
+   "kind": "flat",
+   "material": "hole",
+   "grad": {
+    "to": "well_inner",
+    "y0": -394.936,
+    "y1": -52
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      221.53
+     ],
+     "size": [
+      360,
+      300
+     ]
+    }
+   ]
+  },
+  {
+   "name": "water",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "water",
+   "clip_to": "water_bed",
+   "shade": {
+    "bump": 0.2,
+    "highlight_amount": 0.3
+   },
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      229.53
+     ],
+     "size": [
+      356,
+      290
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ripples",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "chrome",
+   "opacity": 0.18,
+   "clip_to": "water",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      229.53
+     ],
+     "size": [
+      150,
+      110
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      229.53
+     ],
+     "size": [
+      200,
+      150
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      229.53
+     ],
+     "size": [
+      250,
+      190
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      229.53
+     ],
+     "size": [
+      146,
+      106
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      229.53
+     ],
+     "size": [
+      196,
+      146
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      229.53
+     ],
+     "size": [
+      246,
+      186
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "basin",
+   "z": 5.0,
+   "kind": "block",
+   "material": "stone",
+   "extrude": 52,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      219.53
+     ],
+     "size": [
+      396,
+      342.936
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      219.53
+     ],
+     "size": [
+      356,
+      308.296
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "basin_joints",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "floor_joint",
+   "opacity": 0.45,
+   "clip_to": "basin",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.2
+     },
+     "at": [
+      127.0,
+      357.46
+     ],
+     "size": [
+      48.0,
+      2.4
+     ],
+     "rot": 90.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.2
+     },
+     "at": [
+      197.0,
+      402.38
+     ],
+     "size": [
+      48.0,
+      2.4
+     ],
+     "rot": 90.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.2
+     },
+     "at": [
+      277.0,
+      417.0
+     ],
+     "size": [
+      48.0,
+      2.4
+     ],
+     "rot": 90.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.2
+     },
+     "at": [
+      357.0,
+      402.38
+     ],
+     "size": [
+      48.0,
+      2.4
+     ],
+     "rot": 90.0
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.2
+     },
+     "at": [
+      427.0,
+      357.46
+     ],
+     "size": [
+      48.0,
+      2.4
+     ],
+     "rot": 90.0
+    }
+   ]
+  },
+  {
+   "name": "pedestal",
+   "z": 7.0,
+   "kind": "block",
+   "material": "stone",
+   "extrude": 120,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      155.55
+     ],
+     "size": [
+      60,
+      51.96
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bowl",
+   "z": 8.0,
+   "kind": "block",
+   "material": "stone",
+   "extrude": 26,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      120.58
+     ],
+     "size": [
+      150,
+      129.9
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      120.58
+     ],
+     "size": [
+      124,
+      107.384
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "bowl_water",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "water",
+   "shade": {
+    "bump": 0.2
+   },
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      124.58
+     ],
+     "size": [
+      118,
+      92
+     ]
+    }
+   ]
+  },
+  {
+   "name": "finial",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "stone",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      277,
+      90.58
+     ],
+     "size": [
+      18,
+      50
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      277,
+      62.58
+     ],
+     "size": [
+      26,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "streams",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "chrome",
+   "opacity": 0.35,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      223,
+      261.53
+     ],
+     "size": [
+      5,
+      100
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      259,
+      261.53
+     ],
+     "size": [
+      5,
+      100
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      295,
+      261.53
+     ],
+     "size": [
+      5,
+      100
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      331,
+      261.53
+     ],
+     "size": [
+      5,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spout",
+   "z": 12.0,
+   "kind": "flat",
+   "material": "chrome",
+   "opacity": 0.4,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      277,
+      48.58
+     ],
+     "size": [
+      4,
+      20
+     ]
+    }
+   ]
+  }
+ ]
+}

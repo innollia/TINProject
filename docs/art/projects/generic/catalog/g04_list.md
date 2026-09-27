@@ -60,50 +60,50 @@
 
 | # | 이름 | 자산 ID | 장르 | 우선순위 | 형식·상태 그림 | 묶음 | 출처 | 상태 |
 |---|---|---|---|---|---|---|---|---|
-| 43 | 그루터기 | obj_stump | 중세 | B | 오브젝트 | g04-nature-v01 |  | 대기 |
-| 44 | 과일 나무 | obj_tree_fruit | 중세 | B | 오브젝트 | g04-nature-v01 | BS2 과일 나무 | 대기 |
-| 45 | 저주받은 나무(얼굴 없음) | obj_tree_cursed | 다크 | B | 오브젝트 | g04-nature-v01 | BS2 저주받은 나무 | 대기 |
-| 46 | 대나무 덤불 | obj_bamboo | 동양 | B | 오브젝트 | g04-nature-v01 |  | 대기 |
-| 47 | 선인장 | obj_cactus | 서부 | B | 오브젝트 | g04-nature-v01 |  | 대기 |
-| 48 | 야자수 | obj_palm | 해적·바다 | B | 오브젝트 | g04-nature-v01 |  | 대기 |
-| 49 | 큰 술통(받침대) | obj_wine_cask | 중세 | B | 오브젝트 | g04-dungeon-v01 | BS2 술통 | 대기 |
-| 50 | 큰 꽃병 | obj_vase | 중세 | B | 오브젝트 (보통·깨짐) | g04-dungeon-v01 | BS2 깨지는 꽃병 | 대기 |
-| 51 | 선물 상자 | obj_gift_box | 공통 | B | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 선물 상자 | 대기 |
-| 52 | 제단 | obj_altar | 다크 | B | 오브젝트 (꺼짐·켜짐(촛불 자리)) | g04-dungeon-v01 |  | 대기 |
-| 53 | 석상 | obj_statue | 다크 | B | 오브젝트 (보통·부서짐) | g04-dungeon-v01 | 무너진 석상 | 대기 |
-| 54 | 성문 | obj_gate_castle | 중세 | B | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 성문 | 대기 |
-| 55 | 비밀 문(책장 문) | obj_door_secret | 고딕 | B | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 비밀 문 | 대기 |
-| 56 | 비밀 통로 입구(바닥 뚜껑) | obj_trapdoor | 다크 | B | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 비밀 통로 입구 | 대기 |
-| 57 | 발코니 문 | obj_door_balcony | 고딕 | B | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 발코니 문 | 대기 |
-| 58 | 샹들리에 | obj_chandelier | 고딕 | B | 오브젝트 (꺼짐·켜짐) | g04-interior-v01 | BS2 샹들리에 | 대기 |
-| 59 | 스탠드 램프 | obj_lamp_floor | 고딕 | B | 오브젝트 (꺼짐·켜짐) | g04-interior-v01 | BS2 램프 | 대기 |
-| 60 | 벽 등 | obj_lantern_wall | 중세 | B | 오브젝트 (꺼짐·켜짐, 벽 피벗) | g04-interior-v01 | BS2 등 | 대기 |
-| 61 | 괘종시계 | obj_clock_grandfather | 고딕 | B | 오브젝트 | g04-interior-v01 | BS2 시계 | 대기 |
-| 62 | 전신 거울 | obj_mirror_standing | 고딕 | B | 오브젝트 (보통·깨짐) | g04-interior-v01 | BS2 거울 | 대기 |
-| 63 | 가게 계산대 | obj_counter_shop | 중세 | B | 오브젝트 | g04-interior-v01 |  | 대기 |
-| 64 | 소파 | obj_sofa | 고딕 | B | 오브젝트 | g04-interior-v01 |  | 대기 |
-| 65 | 피아노 | obj_piano | 고딕 | B | 오브젝트 (닫힘·열림(건반 뚜껑)) | g04-interior-v01 |  | 대기 |
-| 66 | 분수 | obj_fountain | 중세 | B | 오브젝트 | g04-exterior-v01 | BS2 분수 | 대기 |
-| 67 | 배수구 덮개 | obj_drain_cover | 다크 | B | 오브젝트 (바닥 레이어) | g04-exterior-v01 | BS2 하수구 | 대기 |
-| 68 | 시장 가판대 | obj_market_stall | 중세 | B | 오브젝트 | g04-exterior-v01 |  | 대기 |
-| 69 | 파라솔 탁자 | obj_parasol | 공통 | B | 오브젝트 | g04-exterior-v01 | BS2 파라솔 | 대기 |
-| 70 | 짐마차 | obj_wagon | 중세 | B | 오브젝트 | g04-exterior-v01 | BS2 짐마차 | 대기 |
-| 71 | 대포 | obj_cannon | 해적·바다 | B | 오브젝트 | g04-exterior-v01 | BS2 대포 | 대기 |
-| 72 | 나룻배 | obj_rowboat | 해적·바다 | B | 오브젝트 | g04-exterior-v01 | BS2 보트 | 대기 |
-| 73 | 길 안내 기둥(글자 없음) | obj_signpost | 중세 | B | 오브젝트 | g04-exterior-v01 |  | 대기 |
-| 74 | 고딕 쇠 울타리 | obj_fence_iron | 고딕 | B | 오브젝트 (보통·부서짐) | g04-exterior-v01 |  | 대기 |
-| 75 | 눈사람 | obj_snowman | 공통 | B | 오브젝트 | g04-exterior-v01 | BS2 눈사람 | 대기 |
-| 76 | 중세 가게 | obj_shop_medieval | 중세 | B | 오브젝트 (낮·밤) | g04-buildings-v01 |  | 대기 |
-| 77 | 마법사 탑 | obj_tower_mage | 중세 | B | 오브젝트 (낮·밤) | g04-buildings-v01 |  | 대기 |
-| 78 | 고딕 교회 | obj_church_gothic | 고딕 | B | 오브젝트 (낮·밤) | g04-buildings-v01 |  | 대기 |
-| 79 | 헛간 창고 | obj_barn | 중세 | B | 오브젝트 (닫힘·열림) | g04-buildings-v01 |  | 대기 |
-| 80 | 풍차 | obj_windmill | 중세 | B | 오브젝트 | g04-buildings-v01 | BS2 풍차 | 대기 |
-| 81 | 동양 기와집 | obj_house_east | 동양 | B | 오브젝트 (낮·밤) | g04-buildings-v01 |  | 대기 |
-| 82 | 신호등 | obj_traffic_light | 현대 | B | 오브젝트 (빨강·초록·꺼짐) | g04-genre-v01 |  | 대기 |
-| 83 | 네온 간판(글자 없음) | obj_neon_sign | 사이버펑크 | B | 오브젝트 (꺼짐·켜짐, 벽 피벗) | g04-genre-v01 |  | 대기 |
-| 84 | 드럼통 | obj_oil_drum | 포스트아포칼립스 | B | 오브젝트 (보통·찌그러짐) | g04-genre-v01 |  | 대기 |
-| 85 | 바리케이드 | obj_barricade | 포스트아포칼립스 | B | 오브젝트 | g04-genre-v01 |  | 대기 |
-| 86 | 석등 | obj_stone_lantern | 동양 | B | 오브젝트 (꺼짐·켜짐) | g04-genre-v01 |  | 대기 |
+| 43 | 그루터기 | obj_stump | 중세 | B | 오브젝트 | g04-nature-v01 |  | 완료 |
+| 44 | 과일 나무 | obj_tree_fruit | 중세 | B | 오브젝트 | g04-nature-v01 | BS2 과일 나무 | 완료 |
+| 45 | 저주받은 나무(얼굴 없음) | obj_tree_cursed | 다크 | B | 오브젝트 | g04-nature-v01 | BS2 저주받은 나무 | 완료 |
+| 46 | 대나무 덤불 | obj_bamboo | 동양 | B | 오브젝트 | g04-nature-v01 |  | 완료 |
+| 47 | 선인장 | obj_cactus | 서부 | B | 오브젝트 | g04-nature-v01 |  | 완료 |
+| 48 | 야자수 | obj_palm | 해적·바다 | B | 오브젝트 | g04-nature-v01 |  | 완료 |
+| 49 | 큰 술통(받침대) | obj_wine_cask | 중세 | B | 오브젝트 | g04-dungeon-v01 | BS2 술통 | 완료 |
+| 50 | 큰 꽃병 | obj_vase | 중세 | B | 오브젝트 (보통·깨짐) | g04-dungeon-v01 | BS2 깨지는 꽃병 | 완료 |
+| 51 | 선물 상자 | obj_gift_box | 공통 | B | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 선물 상자 | 완료 |
+| 52 | 제단 | obj_altar | 다크 | B | 오브젝트 (꺼짐·켜짐(촛불 자리)) | g04-dungeon-v01 |  | 완료 |
+| 53 | 석상 | obj_statue | 다크 | B | 오브젝트 (보통·부서짐) | g04-dungeon-v01 | 무너진 석상 | 완료 |
+| 54 | 성문 | obj_gate_castle | 중세 | B | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 성문 | 완료 |
+| 55 | 비밀 문(책장 문) | obj_door_secret | 고딕 | B | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 비밀 문 | 완료 |
+| 56 | 비밀 통로 입구(바닥 뚜껑) | obj_trapdoor | 다크 | B | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 비밀 통로 입구 | 완료 |
+| 57 | 발코니 문 | obj_door_balcony | 고딕 | B | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 발코니 문 | 완료 |
+| 58 | 샹들리에 | obj_chandelier | 고딕 | B | 오브젝트 (꺼짐·켜짐) | g04-interior-v01 | BS2 샹들리에 | 완료 |
+| 59 | 스탠드 램프 | obj_lamp_floor | 고딕 | B | 오브젝트 (꺼짐·켜짐) | g04-interior-v01 | BS2 램프 | 완료 |
+| 60 | 벽 등 | obj_lantern_wall | 중세 | B | 오브젝트 (꺼짐·켜짐, 벽 피벗) | g04-interior-v01 | BS2 등 | 완료 |
+| 61 | 괘종시계 | obj_clock_grandfather | 고딕 | B | 오브젝트 | g04-interior-v01 | BS2 시계 | 완료 |
+| 62 | 전신 거울 | obj_mirror_standing | 고딕 | B | 오브젝트 (보통·깨짐) | g04-interior-v01 | BS2 거울 | 완료 |
+| 63 | 가게 계산대 | obj_counter_shop | 중세 | B | 오브젝트 | g04-interior-v01 |  | 완료 |
+| 64 | 소파 | obj_sofa | 고딕 | B | 오브젝트 | g04-interior-v01 |  | 완료 |
+| 65 | 피아노 | obj_piano | 고딕 | B | 오브젝트 (닫힘·열림(건반 뚜껑)) | g04-interior-v01 |  | 완료 |
+| 66 | 분수 | obj_fountain | 중세 | B | 오브젝트 | g04-exterior-v01 | BS2 분수 | 완료 |
+| 67 | 배수구 덮개 | obj_drain_cover | 다크 | B | 오브젝트 (바닥 레이어) | g04-exterior-v01 | BS2 하수구 | 완료 |
+| 68 | 시장 가판대 | obj_market_stall | 중세 | B | 오브젝트 | g04-exterior-v01 |  | 완료 |
+| 69 | 파라솔 탁자 | obj_parasol | 공통 | B | 오브젝트 | g04-exterior-v01 | BS2 파라솔 | 완료 |
+| 70 | 짐마차 | obj_wagon | 중세 | B | 오브젝트 | g04-exterior-v01 | BS2 짐마차 | 완료 |
+| 71 | 대포 | obj_cannon | 해적·바다 | B | 오브젝트 | g04-exterior-v01 | BS2 대포 | 완료 |
+| 72 | 나룻배 | obj_rowboat | 해적·바다 | B | 오브젝트 | g04-exterior-v01 | BS2 보트 | 완료 |
+| 73 | 길 안내 기둥(글자 없음) | obj_signpost | 중세 | B | 오브젝트 | g04-exterior-v01 |  | 완료 |
+| 74 | 고딕 쇠 울타리 | obj_fence_iron | 고딕 | B | 오브젝트 (보통·부서짐) | g04-exterior-v01 |  | 완료 |
+| 75 | 눈사람 | obj_snowman | 공통 | B | 오브젝트 | g04-exterior-v01 | BS2 눈사람 | 완료 |
+| 76 | 중세 가게 | obj_shop_medieval | 중세 | B | 오브젝트 (낮·밤) | g04-buildings-v01 |  | 완료 |
+| 77 | 마법사 탑 | obj_tower_mage | 중세 | B | 오브젝트 (낮·밤) | g04-buildings-v01 |  | 완료 |
+| 78 | 고딕 교회 | obj_church_gothic | 고딕 | B | 오브젝트 (낮·밤) | g04-buildings-v01 |  | 완료 |
+| 79 | 헛간 창고 | obj_barn | 중세 | B | 오브젝트 (닫힘·열림) | g04-buildings-v01 |  | 완료 |
+| 80 | 풍차 | obj_windmill | 중세 | B | 오브젝트 | g04-buildings-v01 | BS2 풍차 | 완료 |
+| 81 | 동양 기와집 | obj_house_east | 동양 | B | 오브젝트 (낮·밤) | g04-buildings-v01 |  | 완료 |
+| 82 | 신호등 | obj_traffic_light | 현대 | B | 오브젝트 (빨강·초록·꺼짐) | g04-genre-v01 |  | 완료 |
+| 83 | 네온 간판(글자 없음) | obj_neon_sign | 사이버펑크 | B | 오브젝트 (꺼짐·켜짐, 벽 피벗) | g04-genre-v01 |  | 완료 |
+| 84 | 드럼통 | obj_oil_drum | 포스트아포칼립스 | B | 오브젝트 (보통·찌그러짐) | g04-genre-v01 |  | 완료 |
+| 85 | 바리케이드 | obj_barricade | 포스트아포칼립스 | B | 오브젝트 | g04-genre-v01 |  | 완료 |
+| 86 | 석등 | obj_stone_lantern | 동양 | B | 오브젝트 (꺼짐·켜짐) | g04-genre-v01 |  | 완료 |
 
 ## C — 있으면 좋은 것 (37)
 

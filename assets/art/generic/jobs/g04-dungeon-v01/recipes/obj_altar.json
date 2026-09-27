@@ -1,0 +1,566 @@
+{
+ "asset": "obj_altar",
+ "status": "candidate",
+ "note": "Stone altar 1.6 m (dark fantasy, no religious emblem): carved block, wine cloth hanging over the front, bronze offering bowl, two iron candlesticks. Frames: off, on (candle wicks glow, emit; flames not drawn: anchors.flame_l / flame_r).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 514,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  446,
+  372
+ ],
+ "pivot": [
+  215,
+  291
+ ],
+ "footprint": [
+  71,
+  167,
+  359,
+  291
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 14
+     },
+     "at": [
+      223,
+      233
+     ],
+     "size": [
+      310,
+      140
+     ]
+    }
+   ]
+  },
+  {
+   "name": "step",
+   "z": 2.0,
+   "kind": "block",
+   "material": "stone_dark",
+   "extrude": 12,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      215,
+      218.0
+     ],
+     "size": [
+      320,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "block",
+   "z": 3.0,
+   "kind": "block",
+   "material": "stone",
+   "extrude": 100,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      215,
+      129.0
+     ],
+     "size": [
+      288,
+      124
+     ]
+    }
+   ]
+  },
+  {
+   "name": "carving",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "floor_joint",
+   "opacity": 0.35,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      119,
+      247.0
+     ],
+     "size": [
+      60,
+      62
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      311,
+      247.0
+     ],
+     "size": [
+      60,
+      62
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cloth",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "cloth_wine",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      215,
+      129.0
+     ],
+     "size": [
+      110,
+      124
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      215,
+      225.0
+     ],
+     "size": [
+      110,
+      68
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cloth_hem",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "gold",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      215,
+      255.0
+     ],
+     "size": [
+      110,
+      6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bowl",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "cauldron",
+     "at": [
+      215,
+      125.0
+     ],
+     "size": [
+      56,
+      32
+     ],
+     "crop": [
+      0.8,
+      5.6,
+      15.2,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bowl_inside",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "soot",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      215,
+      113.0
+     ],
+     "size": [
+      48,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stick_l",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      97,
+      135.0
+     ],
+     "size": [
+      26,
+      12
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      97,
+      117.0
+     ],
+     "size": [
+      7,
+      34
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      97,
+      99.0
+     ],
+     "size": [
+      20,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "candle_l",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "paper",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      97,
+      79.0
+     ],
+     "size": [
+      14,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wick_l_off",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "soot",
+   "tags": [
+    "off"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      97,
+      56.0
+     ],
+     "size": [
+      3,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wick_l_on",
+   "z": 12.0,
+   "kind": "flat",
+   "material": "flame",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.7,
+    "color": "flame_glow"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      97,
+      55.0
+     ],
+     "size": [
+      7,
+      9
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stick_r",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      333,
+      135.0
+     ],
+     "size": [
+      26,
+      12
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      333,
+      117.0
+     ],
+     "size": [
+      7,
+      34
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      333,
+      99.0
+     ],
+     "size": [
+      20,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "candle_r",
+   "z": 14.0,
+   "kind": "mass",
+   "material": "paper",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      333,
+      79.0
+     ],
+     "size": [
+      14,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wick_r_off",
+   "z": 15.0,
+   "kind": "flat",
+   "material": "soot",
+   "tags": [
+    "off"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      333,
+      56.0
+     ],
+     "size": [
+      3,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wick_r_on",
+   "z": 16.0,
+   "kind": "flat",
+   "material": "flame",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 1.0,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.7,
+    "color": "flame_glow"
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      333,
+      55.0
+     ],
+     "size": [
+      7,
+      9
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off",
+   "anchors": {
+    "flame_l": [
+     97,
+     49.0
+    ],
+    "flame_r": [
+     333,
+     49.0
+    ]
+   }
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": [
+    {
+     "color": "#ffb45c",
+     "radius": 200,
+     "at": [
+      97,
+      49.0
+     ]
+    },
+    {
+     "color": "#ffb45c",
+     "radius": 200,
+     "at": [
+      333,
+      49.0
+     ]
+    }
+   ],
+   "anchors": {
+    "flame_l": [
+     97,
+     49.0
+    ],
+    "flame_r": [
+     333,
+     49.0
+    ]
+   }
+  }
+ ]
+}

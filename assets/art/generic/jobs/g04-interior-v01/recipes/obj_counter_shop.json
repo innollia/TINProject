@@ -1,0 +1,259 @@
+{
+ "asset": "obj_counter_shop",
+ "status": "candidate",
+ "note": "Shop counter 2.0 m wide, 1.05 m high (waist height of the player): panelled wooden front, thick top, lift-up flap section at the east end.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 616,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  510,
+  324
+ ],
+ "pivot": [
+  247,
+  247
+ ],
+ "footprint": [
+  67,
+  153,
+  427,
+  247
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.34,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 14
+     },
+     "at": [
+      255,
+      207
+     ],
+     "size": [
+      380,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 2.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 100,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      247,
+      100.0
+     ],
+     "size": [
+      360,
+      94
+     ]
+    }
+   ]
+  },
+  {
+   "name": "panels",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.6,
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      117,
+      201.0
+     ],
+     "size": [
+      88,
+      72
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      211,
+      201.0
+     ],
+     "size": [
+      88,
+      72
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      305,
+      201.0
+     ],
+     "size": [
+      88,
+      72
+     ]
+    }
+   ]
+  },
+  {
+   "name": "flap_gap",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "soot",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      395,
+      201.0
+     ],
+     "size": [
+      3,
+      90
+     ]
+    }
+   ]
+  },
+  {
+   "name": "top",
+   "z": 5.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 11,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      247,
+      90.0
+     ],
+     "size": [
+      376,
+      104
+     ]
+    }
+   ]
+  },
+  {
+   "name": "top_joints",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.45,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      247,
+      64
+     ],
+     "size": [
+      366,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      247,
+      90
+     ],
+     "size": [
+      366,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      247,
+      116
+     ],
+     "size": [
+      366,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "flap_hinge",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      395,
+      90.0
+     ],
+     "size": [
+      3,
+      96
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,649 @@
+{
+ "asset": "obj_statue",
+ "status": "candidate",
+ "note": "Gothic statue 2.2 m on a plinth: hooded robed figure with folded wings, weathered stone. Frames: normal, broken (upper body fallen in front, jagged break).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 515,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  356,
+  408
+ ],
+ "pivot": [
+  171,
+  288
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "at": [
+      179,
+      258
+     ],
+     "size": [
+      150,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plinth",
+   "z": 2.0,
+   "kind": "block",
+   "material": "stone_dark",
+   "extrude": 44,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      171,
+      211.0
+     ],
+     "size": [
+      132,
+      66
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plinth_cap",
+   "z": 3.0,
+   "kind": "block",
+   "material": "stone",
+   "extrude": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      171,
+      203.0
+     ],
+     "size": [
+      118,
+      58
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wings",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "marble",
+   "tags": [
+    "whole"
+   ],
+   "shade": {
+    "bump": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "wing",
+     "at": [
+      131,
+      116
+     ],
+     "size": [
+      70,
+      130
+     ],
+     "rot": 10,
+     "flip": "x"
+    },
+    {
+     "icon": "wing",
+     "at": [
+      211,
+      116
+     ],
+     "size": [
+      70,
+      130
+     ],
+     "rot": -10
+    }
+   ]
+  },
+  {
+   "name": "robe",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "marble",
+   "tags": [
+    "whole"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       5.6,
+       2.0
+      ],
+      [
+       10.4,
+       2.0
+      ],
+      [
+       11.36,
+       4.4
+      ],
+      [
+       12.32,
+       9.2
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       3.68,
+       9.2
+      ],
+      [
+       4.64,
+       4.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      171,
+      160
+     ],
+     "size": [
+      86,
+      152
+     ]
+    }
+   ]
+  },
+  {
+   "name": "folds",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "floor_joint",
+   "tags": [
+    "whole"
+   ],
+   "opacity": 0.4,
+   "clip_to": "robe",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      159.0,
+      171.0
+     ],
+     "size": [
+      90.08884503644167,
+      3
+     ],
+     "rot": -92.5448043798131
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      184.0,
+      174.0
+     ],
+     "size": [
+      84.02380615040002,
+      3
+     ],
+     "rot": -88.63607246839707
+    }
+   ]
+  },
+  {
+   "name": "arms",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "marble",
+   "tags": [
+    "whole"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      171,
+      132
+     ],
+     "size": [
+      50,
+      22
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hood",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "marble",
+   "tags": [
+    "whole"
+   ],
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      171,
+      70
+     ],
+     "size": [
+      44,
+      50
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.0,
+       2
+      ],
+      [
+       14,
+       10.4
+      ],
+      [
+       8.0,
+       14
+      ],
+      [
+       2,
+       10.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      171,
+      50
+     ],
+     "size": [
+      30,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "name": "face_shadow",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "whole"
+   ],
+   "opacity": 0.75,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      171,
+      76
+     ],
+     "size": [
+      24,
+      28
+     ]
+    }
+   ]
+  },
+  {
+   "name": "robe_stump",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "marble",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3.44,
+       14
+      ],
+      [
+       4.4,
+       4.4
+      ],
+      [
+       6.8,
+       7.4
+      ],
+      [
+       8.6,
+       2.0
+      ],
+      [
+       10.64,
+       6.8
+      ],
+      [
+       12.08,
+       3.8
+      ],
+      [
+       12.8,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      171,
+      202
+     ],
+     "size": [
+      86,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fallen",
+   "z": 11.0,
+   "kind": "mass",
+   "material": "marble",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       5.6,
+       2.0
+      ],
+      [
+       10.4,
+       2.0
+      ],
+      [
+       11.36,
+       4.4
+      ],
+      [
+       12.32,
+       9.2
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ],
+      [
+       3.68,
+       9.2
+      ],
+      [
+       4.64,
+       4.4
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      241,
+      322
+     ],
+     "size": [
+      70,
+      120
+     ],
+     "rot": -78
+    },
+    {
+     "icon": "circle",
+     "at": [
+      297,
+      318
+     ],
+     "size": [
+      40,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "fallen_wing",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "marble",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "wing",
+     "at": [
+      91,
+      314
+     ],
+     "size": [
+      60,
+      90
+     ],
+     "rot": 70
+    }
+   ]
+  },
+  {
+   "name": "rubble",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "marble",
+   "tags": [
+    "broken"
+   ],
+   "hidden": true,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       5.6,
+       2
+      ],
+      [
+       14,
+       5.6
+      ],
+      [
+       11.6,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      121,
+      302
+     ],
+     "size": [
+      20,
+      12.0
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       5.6,
+       2
+      ],
+      [
+       14,
+       5.6
+      ],
+      [
+       11.6,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      191,
+      318
+     ],
+     "size": [
+      16,
+      9.6
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       9.2
+      ],
+      [
+       5.6,
+       2
+      ],
+      [
+       14,
+       5.6
+      ],
+      [
+       11.6,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      151,
+      314
+     ],
+     "size": [
+      14,
+      8.4
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "normal",
+   "state": "normal",
+   "hide": [
+    "broken"
+   ]
+  },
+  {
+   "name": "broken",
+   "state": "broken",
+   "hide": [
+    "whole"
+   ],
+   "show": [
+    "broken"
+   ]
+  }
+ ]
+}

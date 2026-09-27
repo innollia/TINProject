@@ -1,0 +1,338 @@
+{
+ "asset": "obj_parasol",
+ "status": "candidate",
+ "note": "Round cafe table with a big striped parasol (2.2 m open): pole, cloth canopy with scalloped edge, iron table.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 714,
+ "pivot_meaning": "table pole base on the ground",
+ "layer_hint": "world",
+ "canvas": [
+  914,
+  564
+ ],
+ "pivot": [
+  457,
+  444
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.24,
+   "blur": 14,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      467,
+      404
+     ],
+     "size": [
+      330,
+      160
+     ]
+    }
+   ]
+  },
+  {
+   "name": "shadow_table",
+   "z": 2.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      463,
+      414
+     ],
+     "size": [
+      120,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "foot",
+   "z": 3.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "at": [
+      457,
+      398.0
+     ],
+     "size": [
+      44,
+      36
+     ]
+    }
+   ]
+  },
+  {
+   "name": "table_leg",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      457,
+      396
+     ],
+     "size": [
+      8,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "table",
+   "z": 5.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      457,
+      298.58
+     ],
+     "size": [
+      128,
+      110.848
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pole",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "wood",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      457,
+      248
+     ],
+     "size": [
+      8,
+      250
+     ]
+    }
+   ]
+  },
+  {
+   "name": "canopy",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "cloth_blue",
+   "shade": {
+    "bump": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "umbrella",
+     "at": [
+      457,
+      118
+     ],
+     "size": [
+      380,
+      150
+     ],
+     "crop": [
+      0.8,
+      0.8,
+      15.2,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "canopy_stripes",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "cloth_pale",
+   "opacity": 0.4,
+   "clip_to": "canopy",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.0,
+       2
+      ],
+      [
+       6.2,
+       14
+      ],
+      [
+       5.48,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      457,
+      118
+     ],
+     "size": [
+      836.0000000000001,
+      150
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.0,
+       2
+      ],
+      [
+       7.64,
+       14
+      ],
+      [
+       6.92,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      457,
+      118
+     ],
+     "size": [
+      836.0000000000001,
+      150
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.0,
+       2
+      ],
+      [
+       9.08,
+       14
+      ],
+      [
+       8.36,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      457,
+      118
+     ],
+     "size": [
+      836.0000000000001,
+      150
+     ]
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.0,
+       2
+      ],
+      [
+       10.52,
+       14
+      ],
+      [
+       9.8,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      457,
+      118
+     ],
+     "size": [
+      836.0000000000001,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tip",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "wood",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      457,
+      44
+     ],
+     "size": [
+      12,
+      12
+     ]
+    }
+   ]
+  }
+ ]
+}

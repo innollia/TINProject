@@ -39,7 +39,7 @@
 - `recipes\palette_g04.json` = V1 `palette_h0_mood.json` 그대로 + 새 재질(식물·바위·물·눈·금·구리·강철·고무·유리·화면·네온·신호등·천·
   지붕·벽토·벽돌·옻칠 등). V1의 윤곽선·그림자·공통 색·재질·스타일은 바꾸지 않았다. 밝기는 V1 범위(종이색이 가장 밝은 면).
 
-## 체크리스트 (9/26 완료)
+## 체크리스트 (17/26 완료)
 
 | 완료 | 단계 | 자산 ID | 이름 | 장르 | 프레임(상태) | 캔버스 | 피벗 뜻 | 빛 | 출처 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -52,14 +52,14 @@
 | [x] | A | obj_dining_table | 긴 식탁 | 중세 | obj_dining_table | 516×338 | front-bottom centre of the base on the floor |  |  |
 | [x] | A | obj_stove_iron | 무쇠 난로 | 중세 | off, on | 268×442 | front-bottom centre on the floor; the back face stands on the wall line | 빛 emit |  |
 | [x] | A | obj_fireplace | 벽난로 | 중세 | off, on | 460×472 | front-bottom centre on the floor; the back face stands on the wall line | 빛 emit | BS2 벽난로 |
-| [ ] | B | obj_chandelier | 샹들리에 | 고딕 |  |  |  |  | BS2 샹들리에 |
-| [ ] | B | obj_lamp_floor | 스탠드 램프 | 고딕 |  |  |  |  | BS2 램프 |
-| [ ] | B | obj_lantern_wall | 벽 등 | 중세 |  |  |  |  | BS2 등 |
-| [ ] | B | obj_clock_grandfather | 괘종시계 | 고딕 |  |  |  |  | BS2 시계 |
-| [ ] | B | obj_mirror_standing | 전신 거울 | 고딕 |  |  |  |  | BS2 거울 |
-| [ ] | B | obj_counter_shop | 가게 계산대 | 중세 |  |  |  |  |  |
-| [ ] | B | obj_sofa | 소파 | 고딕 |  |  |  |  |  |
-| [ ] | B | obj_piano | 피아노 | 고딕 |  |  |  |  |  |
+| [x] | B | obj_chandelier | 샹들리에 | 고딕 | off, on | 318×490 | floor point directly below the fixture (drawn at its hanging height above it) | 빛 emit | BS2 샹들리에 |
+| [x] | B | obj_lamp_floor | 스탠드 램프 | 고딕 | off, on | 214×356 | front-bottom centre of the base on the floor | 빛 emit | BS2 램프 |
+| [x] | B | obj_lantern_wall | 벽 등 | 중세 | off, on | 156×204 | centre of the wall plate = attach point on the wall face | 빛 emit | BS2 등 |
+| [x] | B | obj_clock_grandfather | 괘종시계 | 고딕 | obj_clock_grandfather | 228×410 | front-bottom centre on the floor; the back face stands on the wall line |  | BS2 시계 |
+| [x] | B | obj_mirror_standing | 전신 거울 | 고딕 | broken, normal | 238×302 | front-bottom centre of the base on the floor |  | BS2 거울 |
+| [x] | B | obj_counter_shop | 가게 계산대 | 중세 | obj_counter_shop | 510×324 | front-bottom centre of the base on the floor |  |  |
+| [x] | B | obj_sofa | 소파 | 고딕 | obj_sofa | 516×358 | front-bottom centre of the base on the floor |  |  |
+| [x] | B | obj_piano | 피아노 | 고딕 | closed, open | 420×344 | front-bottom centre on the floor; the back face stands on the wall line |  |  |
 | [ ] | C | obj_pendulum | 큰 진자 | 고딕 |  |  |  |  | BS2 진자 |
 | [ ] | C | obj_phonograph | 축음기 | 고딕 |  |  |  |  | BS2 축음기 |
 | [ ] | C | obj_tv_crt | 브라운관 텔레비전 | 현대 |  |  |  |  | BS2 텔레비전 |

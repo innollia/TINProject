@@ -6,6 +6,7 @@
 
 from __future__ import annotations
 
+import math
 import sys
 from pathlib import Path
 
@@ -14,6 +15,9 @@ from g04kit import (E, I, LINE, MD, MH, MW, POLY, R, Asset, ellipse_shadow)  # n
 
 JOB = Path(__file__).resolve().parents[1]
 ASSETS = {}
+
+THIN = {"width": 0.9, "heavy": 0.9, "breaks": 0.3}
+FINE_T = {"width": 0.8, "heavy": 0.9}
 
 FOLIAGE_ROUGH = {"amp": 0.45, "soft": 2.0, "cell": 9}
 NEEDLE_ROUGH = {"amp": 0.55, "soft": 1.6, "cell": 7}
@@ -191,6 +195,134 @@ def obj_log_fallen():
           "moss", clip_to="body", rough={"amp": 0.5, "soft": 1.5, "cell": 6})
     a.add("sprouts", [I("sprout", -120, -76, 26, 24, rot=-10), I("grass", 70, -18, 40, 18)], "mass", "grass",
           line={"width": 0.8, "heavy": 0.9})
+    return a
+
+
+# ============================================================================ B
+@asset
+def obj_stump():
+    a = Asset("obj_stump", "Tree stump 0.55 m wide, cut top with growth rings and a radial crack, root flare, moss.",
+              seed=411, pivot_meaning=TRUNK)
+    ellipse_shadow(a, 10, -24, 150, 70, opacity=0.38, blur=8)
+    a.add("roots", [I("triangle", -46, -10, 46, 24, rot=-28), I("triangle", 48, -8, 42, 22, rot=30),
+                    I("triangle", -8, 2, 38, 18, rot=180, flip="y")], "mass", "bark")
+    s = a.cyl("body", 0, 0, 100, 40, "bark", texture={"angle": 90})
+    a.flat("cut", [E(0, s.top_cy, 92, 78)], "wood_cut", line=THIN)
+    a.flat("rings", [I("target", 0, s.top_cy, 70, 58)], "wood_dark", opacity=0.4, clip_to="cut")
+    a.flat("crack", [LINE(0, s.top_cy, 30, s.top_cy - 20, 3), LINE(0, s.top_cy, -6, s.top_cy + 30, 2)], "floor_joint",
+           opacity=0.7, clip_to="cut")
+    a.add("moss", [I("cloud", -30, -18, 50, 20)], "mass", "moss", clip_to="body", rough={"amp": 0.5, "soft": 1.2,
+                                                                                       "cell": 5})
+    return a
+
+
+@asset
+def obj_tree_fruit():
+    a = Asset("obj_tree_fruit", "Fruit tree (apple-like), about 3.6 m: short forked trunk, round crown with red fruit, "
+              "two fallen fruits.", seed=412, pivot_meaning=TRUNK)
+    ellipse_shadow(a, 16, -4, 250, 80, opacity=0.4, blur=11)
+    canopy(a, "crown_back", [E(0, -250, 300, 220), I("cloud", -86, -286, 170, 116), I("cloud", 90, -280, 170, 120, flip="x"),
+                             E(-120, -214, 110, 96), E(120, -210, 116, 96), E(-60, -352, 90, 70), E(60, -356, 96, 72)],
+           "foliage_dark")
+    a.add("trunk", [R(0, -70, 40, 140, 14), E(0, -6, 80, 24), LINE(-4, -118, -58, -186, 15), LINE(6, -124, 60, -190, 14)],
+          "mass", "bark")
+    canopy(a, "crown_front", [E(-70, -196, 150, 110), E(74, -192, 150, 114), E(0, -276, 200, 140), E(-2, -186, 120, 80)],
+           "foliage")
+    fruit = [(-96, -210), (-40, -176), (30, -234), (86, -180), (-10, -300), (60, -290), (-78, -268), (110, -236),
+             (0, -214), (-120, -236)]
+    a.add("fruit", [E(x, y, 20, 19) for x, y in fruit], "mass", "fruit", line=FINE_T)
+    a.add("fallen", [E(46, 10, 18, 14), E(-34, 16, 17, 13)], "mass", "fruit", line=FINE_T)
+    return a
+
+
+@asset
+def obj_tree_cursed():
+    a = Asset("obj_tree_cursed", "Cursed tree (dark fantasy, no face): black twisted trunk, curling branch tips, sparse "
+              "sickly leaf clumps, hanging moss strands, exposed roots.", seed=413, pivot_meaning=TRUNK)
+    ellipse_shadow(a, 12, -4, 200, 60, opacity=0.42, blur=10)
+    a.add("roots", [LINE(-10, -12, -80, 8, 14), LINE(8, -10, 84, 4, 13), LINE(0, -6, -30, 20, 11), LINE(6, -8, 40, 22, 10),
+                    E(0, -8, 70, 22)], "mass", "bark")
+    a.add("trunk", [POLY([(0.3, 1), (0.0, 0.8), (0.28, 0.55), (0.1, 0.25), (0.42, 0.0), (0.62, 0.0), (0.5, 0.3),
+                          (0.78, 0.52), (0.62, 0.78), (0.72, 1)], 0, -120, 80, 240)], "mass", "bark",
+          texture={"angle": 80})
+    a.add("branches", [LINE(-10, -200, -96, -268, 14), LINE(-90, -264, -130, -250, 9), LINE(10, -214, 104, -290, 13),
+                       LINE(96, -284, 128, -318, 8), LINE(0, -236, -18, -330, 11),
+                       LINE(-130, -250, -150, -262, 6), LINE(-150, -262, -154, -282, 5), LINE(-154, -282, -142, -292, 4),
+                       LINE(128, -318, 146, -330, 6), LINE(146, -330, 148, -350, 5), LINE(148, -350, 136, -356, 4),
+                       LINE(-18, -330, -34, -350, 6), LINE(-34, -350, -30, -368, 5), LINE(-30, -368, -18, -372, 4)],
+          "mass", "bark")
+    hang = []
+    for x, y, w in ((-104, -262, 64), (100, -290, 60), (-14, -330, 54), (-60, -236, 44), (60, -252, 40)):
+        hang += [I("cloud", x, y - 6, w, w * 0.45), I("grass", x - w * 0.18, y + w * 0.3, w * 0.5, w * 0.5, flip="y"),
+                 I("grass", x + w * 0.2, y + w * 0.36, w * 0.44, w * 0.62, flip="xy")]
+    canopy(a, "leaves", hang, "foliage_sick", rough={"amp": 0.6, "soft": 1.5, "cell": 6})
+    a.flat("hollow", [E(10, -120, 20, 30)], "hole", opacity=0.9)
+    return a
+
+
+@asset
+def obj_bamboo():
+    a = Asset("obj_bamboo", "Bamboo clump (eastern), about 3 m: six culms with node rings, leaf sprays at the tops "
+              "and along the stems.", seed=414, pivot_meaning="clump base centre on the ground")
+    ellipse_shadow(a, 10, -4, 170, 44, opacity=0.36, blur=8)
+    culms = [(-48, 262, -4), (-20, 318, 2), (8, 290, -2), (34, 336, 3), (58, 250, 5), (-66, 220, -6)]
+    a.add("culms_back", [R(x + h * 0.03 * r, -h / 2, 13, h, 6, rot=r) for x, h, r in culms[::2]], "mass", "bamboo")
+    a.add("culms_front", [R(x + h * 0.03 * r, -h / 2, 15, h, 7, rot=r) for x, h, r in culms[1::2]], "mass", "bamboo")
+    nodes = []
+    for x, h, r in culms:
+        for k in range(1, int(h / 46)):
+            nodes.append(R(x + (k * 46 - h / 2) * 0.0 + h * 0.03 * r, -k * 46, 17, 3, 1, rot=r))
+    a.flat("nodes", nodes, "foliage_dark", opacity=0.8)
+    sprays = []
+    blade = [(0, 0.5), (0.25, 0.08), (1, 0.5), (0.25, 0.92)]
+    for i, (x, h, r) in enumerate(culms):
+        tx = x + h * 0.03 * r
+        for dx, dy, ang, ln in ((-24, 6, 200, 52), (-18, 16, 160, 46), (22, 4, -20, 54), (20, 16, 24, 46), (0, -6, -80, 44),
+                                (-20, h * 0.42, 190, 40), (20, h * 0.46, -10, 40)):
+            rr = math.radians(ang)
+            sprays.append(POLY(blade, tx + dx + math.cos(rr) * ln * 0.3, -h + dy + math.sin(rr) * ln * 0.3, ln, 11,
+                               rot=ang))
+    a.add("leaves", sprays, "mass", "foliage", line=FINE_T)
+    return a
+
+
+@asset
+def obj_cactus():
+    a = Asset("obj_cactus", "Saguaro-type cactus (western), about 2.1 m: ribbed column with two arms, pale flower, "
+              "sand mound and pebbles.", seed=415, pivot_meaning=TRUNK)
+    ellipse_shadow(a, 12, -2, 140, 36, opacity=0.38, blur=8)
+    a.add("mound", [E(0, 0, 120, 34)], "mass", "sand", shade={"bump": 0.4}, line=FINE_T)
+    a.add("column", [R(0, -104, 46, 212, 22)], "mass", "cactus")
+    a.add("arms", [R(-36, -118, 52, 22, 11), E(-54, -118, 26, 26), R(-56, -148, 24, 70, 12),
+                   R(36, -84, 50, 20, 10), E(52, -84, 24, 24), R(54, -112, 22, 62, 11)],
+          "mass", "cactus")
+    a.flat("ribs", [R(x, -104, 2, 196, 1) for x in (-12, 0, 12)] + [R(-56, -150, 2, 70, 1), R(54, -118, 2, 64, 1)],
+           "foliage_dark", opacity=0.6)
+    a.add("flower", [I("flower", 0, -212, 20, crop=[1, 1, 15, 11.4])], "mass", "petal_pale", line=FINE_T)
+    a.add("pebbles", [E(-50, 6, 16, 10), E(46, 8, 14, 9), E(34, 14, 10, 7)], "mass", "rock", line=FINE_T)
+    return a
+
+
+@asset
+def obj_palm():
+    a = Asset("obj_palm", "Palm tree (pirate / sea), about 4.2 m: leaning ringed trunk, crown of long fronds, "
+              "coconut cluster.", seed=416, pivot_meaning=TRUNK)
+    ellipse_shadow(a, 40, -6, 220, 60, opacity=0.36, blur=10)
+    pts = [(0, 0), (10, -80), (28, -160), (52, -236), (80, -300), (104, -350)]
+    seg = [LINE(pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1], 30 - i * 3) for i in range(len(pts) - 1)]
+    a.add("trunk", seg + [E(0, -4, 60, 18)], "mass", "bark_pale", texture={"angle": 70})
+    a.flat("rings", [R(pts[i][0] * 0.5 + pts[i + 1][0] * 0.5, pts[i][1] * 0.5 + pts[i + 1][1] * 0.5, 30 - i * 3, 3, 1,
+                       rot=-15) for i in range(len(pts) - 1)] +
+           [R(p[0], p[1], 26, 3, 1, rot=-18) for p in pts[1:-1]], "bark", opacity=0.7, clip_to="trunk")
+    cx, cy = 106, -356
+    fronds = []
+    for ang, ln in ((-170, 150), (-140, 130), (-100, 110), (-60, 130), (-20, 150), (10, 140), (160, 140), (200, 120)):
+        r = math.radians(ang)
+        fronds.append(I("leaf", cx + math.cos(r) * ln / 2, cy + math.sin(r) * ln / 2 * 0.7, ln, ln * 0.3, rot=ang))
+    a.add("fronds_back", fronds[:4], "mass", "foliage_dark", line=FINE_T)
+    a.add("coconuts", [E(cx - 12, cy + 14, 22, 20), E(cx + 10, cy + 16, 22, 20), E(cx, cy + 26, 20, 18)], "mass",
+          "wood", line=FINE_T)
+    a.add("fronds_front", fronds[4:], "mass", "foliage", line=FINE_T)
     return a
 
 

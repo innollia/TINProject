@@ -1,0 +1,327 @@
+{
+ "asset": "obj_stone_lantern",
+ "status": "candidate",
+ "note": "Eastern stone lantern 1.6 m: square base, round pillar, platform, fire box with open windows, curved roof cap with a jewel finial. Frames: off, on (fire box glowing, emit).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 915,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  230,
+  386
+ ],
+ "pivot": [
+  108,
+  316
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      116,
+      306
+     ],
+     "size": [
+      110,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "name": "base",
+   "z": 2.0,
+   "kind": "block",
+   "material": "rock",
+   "extrude": 22,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      108,
+      259.0
+     ],
+     "size": [
+      96,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pillar",
+   "z": 3.0,
+   "kind": "block",
+   "material": "rock",
+   "extrude": 70,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      108,
+      186.41
+     ],
+     "size": [
+      36,
+      31.176
+     ]
+    }
+   ]
+  },
+  {
+   "name": "platform",
+   "z": 4.0,
+   "kind": "block",
+   "material": "rock",
+   "extrude": 16,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 6
+     },
+     "at": [
+      108,
+      165.0
+     ],
+     "size": [
+      96,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "firebox",
+   "z": 5.0,
+   "kind": "block",
+   "material": "rock",
+   "extrude": 50,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      108,
+      112.0
+     ],
+     "size": [
+      66,
+      52
+     ]
+    }
+   ]
+  },
+  {
+   "name": "window_off",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "off"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      108,
+      163.0
+     ],
+     "size": [
+      32,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "window_on",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "window_lit",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 1.0,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.6,
+    "color": "window_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      108,
+      163.0
+     ],
+     "size": [
+      32,
+      30
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cap",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "rock",
+   "shade": {
+    "bump": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2.0,
+       14.0
+      ],
+      [
+       3.44,
+       8.6
+      ],
+      [
+       8.0,
+       2.0
+      ],
+      [
+       12.56,
+       8.6
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       8.0,
+       12.32
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      108,
+      104
+     ],
+     "size": [
+      140,
+      76
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jewel",
+   "z": 9.0,
+   "kind": "mass",
+   "material": "rock",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      108,
+      58
+     ],
+     "size": [
+      22,
+      22
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      108,
+      44
+     ],
+     "size": [
+      12,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "moss",
+   "z": 10.0,
+   "kind": "wash",
+   "material": "moss",
+   "opacity": 0.5,
+   "clip_to": "cap",
+   "blend": "multiply",
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      88,
+      108
+     ],
+     "size": [
+      70,
+      20
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off"
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#f0c27a",
+    "radius": 240,
+    "at": [
+     108,
+     163.0
+    ]
+   }
+  }
+ ]
+}

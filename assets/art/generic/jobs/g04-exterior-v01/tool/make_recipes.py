@@ -273,6 +273,238 @@ def obj_campfire():
     return a
 
 
+# ============================================================================ B
+@asset
+def obj_fountain():
+    a = Asset("obj_fountain", "Round stone fountain 2.2 m: low basin with dark water, pedestal, upper bowl, finial "
+              "spout and thin falling water.", seed=711)
+    ellipse_shadow(a, 12, -172, 430, 350, opacity=0.3, blur=12)
+    dia = 396
+    dd = dia * SQ
+    a.flat("water_bed", [E(0, -52 - dd / 2 + 2, 360, 300)], "hole", grad={"to": "well_inner", "y0": -52 - dd, "y1": -52})
+    a.add("water", [E(0, -52 - dd / 2 + 10, 356, 290)], "mass", "water", clip_to="water_bed",
+          shade={"bump": 0.2, "highlight_amount": 0.3}, line=FINE)
+    a.flat("ripples", [E(0, -52 - dd / 2 + 10, 150 + 50 * k, 110 + 40 * k) for k in range(3)] +
+           [E(0, -52 - dd / 2 + 10, 146 + 50 * k, 106 + 40 * k, op="sub") for k in range(3)], "chrome", opacity=0.18,
+           clip_to="water")
+    rim = a.cyl("basin", 0, 0, dia, 52, "stone", hole=356)
+    joints = []
+    for x in (-150, -80, 0, 80, 150):
+        yt = -52 - dd / 2 + dd / 2 * math.sqrt(max(0.0, 1 - (x / (dia / 2)) ** 2))
+        joints.append(LINE(x, yt + 2, x, yt + 50, 2.4))
+    a.flat("basin_joints", joints, "floor_joint", opacity=0.45, clip_to="basin")
+    ped = a.cyl("pedestal", 0, -dd / 2 + 30, 60, 120, "stone")
+    bowl = a.cyl("bowl", 0, -dd / 2 + 60, 150, 26, "stone", lift=120, hole=124)
+    a.add("bowl_water", [E(0, bowl.top_cy + 4, 118, 92)], "mass", "water", shade={"bump": 0.2}, line=FINE)
+    a.add("finial", [R(0, bowl.top_cy - 30, 18, 50, 6), E(0, bowl.top_cy - 58, 26, 20)], "mass", "stone")
+    streams = []
+    for x in (-54, -18, 18, 54):
+        streams.append(R(x, bowl.bottom + 50, 5, 100, 2))
+    a.flat("streams", streams, "chrome", opacity=0.35)
+    a.flat("spout", [R(0, bowl.top_cy - 72, 4, 20, 2)], "chrome", opacity=0.4)
+    return a
+
+
+@asset
+def obj_drain_cover():
+    a = Asset("obj_drain_cover", "Square iron drain grate 0.6 m in a stone frame, rusted (floor layer, no collision).",
+              seed=712, pivot_meaning="front edge centre of the frame on the floor", layer_hint="floor")
+    a.flat("frame", [R(0, -48, 124, 106, 8, ground=False)], "stone_dark", line=THIN)
+    a.flat("void", [R(0, -48, 100, 84, 5)], "hole")
+    a.flat("grate", [I("grid_fine", 0, -48, 112, 96)], "iron", line=THIN,
+           grime={"stamps": ["metaballs", "sponge"], "size": 14, "soft": 1.5, "density": 0.5, "strength": 0.45,
+                  "color": "rust"})
+    a.wash("stain", [E(20, -30, 150, 90)], "damp", opacity=0.3, blur=10)
+    return a
+
+
+@asset
+def obj_market_stall():
+    a = Asset("obj_market_stall", "Market stall 2.2 m: plank counter with produce baskets, four posts, sloped striped "
+              "wine awning with a scalloped valance.", seed=713)
+    a.shadow([R(10, -60, 420, 130, 16)], opacity=0.34, blur=10)
+    for i, x in enumerate((-190, 190)):
+        a.box(f"post_back{i}", x, -118, 12, 10, 250, "wood_dark", corner=2)
+    b = a.box("counter", 0, 0, 396, 112, 92, "wood", corner=5)
+    planks_front(a, "counter_planks", b, 3)
+    baskets, fruit = [], {"fruit": [], "petal_ochre": [], "foliage": []}
+    for i, x in enumerate((-126, -42, 42, 126)):
+        baskets += [R(x, b.top_cy + 6, 70, 34, 10), E(x, b.top_cy - 10, 70, 22)]
+        mat = ["fruit", "petal_ochre", "foliage", "fruit"][i]
+        for k in range(6):
+            fruit[mat].append(E(x - 22 + (k % 3) * 22, b.top_cy - 14 - (k // 3) * 10 + (k % 2) * 3, 20, 18))
+    a.add("baskets", baskets, "mass", "thatch", line=THIN)
+    for mat, pieces in fruit.items():
+        a.add(f"goods_{mat}", pieces, "mass", mat, line=FINE)
+    for i, x in enumerate((-190, 190)):
+        a.box(f"post_front{i}", x, -2, 12, 10, 236, "wood_dark", corner=2)
+    aw = [(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0)]
+    a.add("awning", [POLY(aw, 0, -280, 420, 110)], "block", "cloth_wine", extrude=10)
+    a.flat("stripes", [R(-189 + 42 * k, -280, 20, 120, 2) for k in range(10)], "cloth_ochre", opacity=0.35,
+           clip_to="awning")
+    a.add("valance", [I("umbrella", -150 + 60 * k, -222, 64, 20, crop=[0.8, 5.8, 15.2, 9.2]) for k in range(6)], "mass",
+          "cloth_wine", line=FINE)
+    a.wash("awning_shade", [R(0, -236, 420, 20, 4)], "soot", opacity=0.3, blur=6, clip_to="awning")
+    a.footprint = (-198, -112, 198, 0)
+    return a
+
+
+@asset
+def obj_parasol():
+    a = Asset("obj_parasol", "Round cafe table with a big striped parasol (2.2 m open): pole, cloth canopy with "
+              "scalloped edge, iron table.", seed=714, pivot_meaning="table pole base on the ground")
+    ellipse_shadow(a, 10, -40, 330, 160, opacity=0.24, blur=14)
+    ellipse_shadow(a, 6, -30, 120, 60, opacity=0.3, blur=8, name="shadow_table")
+    a.box("foot", 0, -22, 44, 36, 6, "iron", corner=8)
+    a.add("table_leg", [R(0, -48, 8, 60, 2)], "mass", "iron")
+    t = a.cyl("table", 0, -6, 128, 8, "iron", lift=76)
+    a.add("pole", [R(0, -196, 8, 250, 3)], "mass", "wood")
+    a.add("canopy", [I("umbrella", 0, -326, 380, 150, crop=[0.8, 0.8, 15.2, 9.0])], "mass", "cloth_blue",
+          shade={"bump": 0.8})
+    a.flat("canopy_stripes", [POLY([(0.5, 0), (0.5 + 0.06 * (k - 3) + 0.03, 1), (0.5 + 0.06 * (k - 3) - 0.03, 1)],
+                                   0, -326, 380 * 2.2, 150) for k in range(7) if k % 2 == 0], "cloth_pale", opacity=0.4,
+           clip_to="canopy")
+    a.add("tip", [E(0, -400, 12, 12)], "mass", "wood", line=FINE)
+    return a
+
+
+@asset
+def obj_wagon():
+    a = Asset("obj_wagon", "Covered wagon 3.2 m facing east: plank bed, four spoked wheels (near side seen), canvas "
+              "cover on hoops, tongue for a draught animal.", seed=715,
+              pivot_meaning="centre of the wagon's near-side ground line")
+    a.shadow([R(20, -70, 600, 160, 30)], opacity=0.34, blur=12)
+    for i, x in enumerate((-180, 150)):
+        a.add(f"wheel_far{i}", [E(x, -136, 112, 72)], "mass", "wood_dark")
+    a.add("tongue", [LINE(250, -62, 380, -24, 12)], "mass", "wood")
+    bed = a.box("bed", -20, -10, 470, 150, 52, "wood", lift=54, corner=5)
+    planks_front(a, "bed_planks", bed, 2)
+    cover = a.add("cover", [R(-20, -186, 440, 190, 80)], "mass", "cloth_pale", shade={"bump": 1.0})
+    a.flat("hoops", [R(x, -186, 10, 190, 4) for x in (-200, -110, -20, 70, 160)], "cloth_pale", opacity=0.9,
+           line=FINE, clip_to="cover")
+    a.wash("cover_stain", [E(60, -130, 200, 60)], "grime", opacity=0.35, blur=10, clip_to="cover")
+    a.flat("cover_opening", [E(196, -186, 44, 130)], "hole", clip_to="cover", opacity=0.9)
+    for i, x in enumerate((-180, 150)):
+        a.add(f"wheel{i}", [E(x, -40, 116, 76)], "mass", "wood_dark", shade={"bump": 0.8})
+        a.flat(f"spokes{i}", [I("wheel", x, -40, 102, 66)], "wood", line=FINE, clip_to=f"wheel{i}")
+        a.flat(f"tyre{i}", [E(x, -40, 116, 76), E(x, -40, 102, 64, op="sub")], "iron", line=FINE)
+    a.footprint = (-255, -160, 215, 0)
+    return a
+
+
+@asset
+def obj_cannon():
+    a = Asset("obj_cannon", "Naval cannon (pirate / sea) facing east on a wooden truck carriage with small wheels, "
+              "iron barrel with reinforcing rings, three-ball pile.", seed=716)
+    a.shadow([R(20, -40, 330, 100, 20)], opacity=0.36, blur=10)
+    a.add("balls_back", [E(-150, -20, 30, 28), E(-124, -22, 30, 28)], "mass", "iron", line=FINE)
+    car = a.box("carriage", -20, -6, 200, 96, 44, "wood", lift=16, corner=4)
+    for i, x in enumerate((-100, 60)):
+        a.add(f"truck{i}", [E(x, -18, 44, 34)], "mass", "wood_dark")
+        a.flat(f"axle{i}", [E(x, -18, 12, 10)], "iron", line=FINE)
+    barrel = [(0, 0.2), (0.06, 0.05), (0.2, 0.0), (1, 0.18), (1, 0.82), (0.2, 1.0), (0.06, 0.95), (0, 0.8)]
+    a.add("barrel", [POLY(barrel, 40, -100, 300, 60)], "mass", "iron", shade={"bump": 1.1})
+    a.flat("rings", [R(x, -100, 10, 60 - (x + 110) * 0.04, 3) for x in (-60, 20, 110)] + [R(182, -100, 14, 54, 3)],
+           "iron", line=FINE, clip_to="barrel")
+    a.add("muzzle", [E(186, -100, 20, 50)], "mass", "iron")
+    a.flat("bore", [E(190, -100, 8, 26)], "hole")
+    a.add("cascabel", [E(-114, -100, 22, 22)], "mass", "iron", line=FINE)
+    a.add("balls_front", [E(-138, -8, 30, 28)], "mass", "iron", line=FINE)
+    return a
+
+
+@asset
+def obj_rowboat():
+    a = Asset("obj_rowboat", "Wooden rowboat 3 m (pirate / sea) seen from above-front, bow to the east: plank hull, "
+              "two thwarts, a pair of oars laid inside, painted rim.", seed=717,
+              pivot_meaning="centre of the hull's near-side waterline")
+    hull = [(0.0, 0.3), (0.12, 0.05), (0.8, 0.0), (1.0, 0.5), (0.8, 1.0), (0.12, 0.95), (0.0, 0.7)]
+    a.shadow([POLY(hull, 10, -70, 560, 170)], opacity=0.3, blur=10)
+    b = a.box("hull", 0, 0, 540, 150, 46, "wood", corner=4, top=lambda x, cy, w, d: POLY(hull, x, cy, w, d))
+    planks_front(a, "strakes", b, 3, opacity=0.5, clip_to="hull")
+    a.flat("inside", [POLY(hull, 0, b.top_cy, 500, 120)], "wood_dark", line=THIN)
+    a.flat("ribs", [R(x, b.top_cy, 3, 110 - abs(x) * 0.12, 1) for x in range(-190, 200, 40)], "wood", opacity=0.5,
+           clip_to="inside")
+    a.box("thwart0", -70, -20, 22, 110, 6, "wood", lift=40, corner=2)
+    a.box("thwart1", 90, -26, 22, 98, 6, "wood", lift=40, corner=2)
+    a.add("oars", [LINE(-200, -110, 160, -120, 7), LINE(-190, -80, 170, -92, 7), R(176, -120, 36, 14, 6, rot=-2),
+                   R(186, -92, 36, 14, 6, rot=-2)], "mass", "wood_pale", line=FINE)
+    a.flat("rim", [POLY(hull, 0, b.top_cy, 540, 150), POLY(hull, 0, b.top_cy, 510, 126, op="sub")], "cloth_blue",
+           line=FINE)
+    return a
+
+
+@asset
+def obj_signpost():
+    a = Asset("obj_signpost", "Crossroads signpost 2.2 m: weathered post with three blank arrow boards (no text).",
+              seed=718)
+    ellipse_shadow(a, 8, -4, 70, 24, opacity=0.34, blur=6)
+    a.add("mound", [E(0, 0, 60, 18)], "mass", "earth", line=FINE)
+    a.box("post", 0, 0, 18, 16, 226, "wood_dark", corner=3)
+    arrow = [(0, 0), (0.82, 0), (1, 0.5), (0.82, 1), (0, 1)]
+    for i, (dx, y, w, flip) in enumerate(((50, -198, 120, False), (-46, -160, 110, True), (40, -122, 100, False))):
+        pts = arrow if not flip else [(1 - u, v) for u, v in arrow]
+        a.add(f"board{i}", [POLY(pts, dx, y, w, 30)], "mass", "wood", shade={"bump": 0.4}, texture={"angle": 0})
+        a.flat(f"board{i}_nail", [E(0, y, 6, 6)], "iron")
+    a.add("cap", [I("triangle", 0, -236, 22, 12)], "mass", "wood_dark", line=FINE)
+    return a
+
+
+def _iron_fence_bars(x0, x1, n, top, bottom):
+    bars, tips = [], []
+    for k in range(n):
+        x = x0 + (x1 - x0) * k / (n - 1)
+        bars.append(R(x, (top + bottom) / 2, 5, bottom - top, 2))
+        tips.append(POLY([(0.5, 0), (1, 0.7), (0.62, 0.6), (0.62, 1), (0.38, 1), (0.38, 0.6), (0, 0.7)], x, top - 8, 14,
+                         20))
+    return bars, tips
+
+
+@asset
+def obj_fence_iron():
+    a = Asset("obj_fence_iron", "Gothic wrought-iron fence segment 2 m between stone piers: spear-tipped bars, two rails, "
+              "scroll band. Frames: normal, broken (two bars bent, one missing, a bar on the ground).", seed=719,
+              pivot_meaning="centre of the segment's ground line")
+    a.shadow([R(6, -3, 400, 16, 6)], opacity=0.3, blur=6)
+    bars, tips = _iron_fence_bars(-160, 160, 13, -150, 0)
+    keep = [i for i in range(13) if i not in (8, 9, 10)]
+    a.add("bars", [bars[i] for i in keep], "mass", "iron", shade={"bump": 0.7})
+    a.add("tips", [tips[i] for i in keep], "mass", "iron", line=FINE)
+    a.add("bars_mid", [bars[i] for i in (8, 9, 10)] + [tips[i] for i in (8, 9, 10)], "mass", "iron", tags=["whole"])
+    a.add("bars_bent", [LINE(bars[8]["at"][0], -4, bars[8]["at"][0] + 30, -120, 5),
+                        LINE(bars[10]["at"][0], -4, bars[10]["at"][0] + 22, -96, 5)], "mass", "iron", tags=["broken"],
+          hidden=True)
+    a.add("bar_ground", [R(40, 16, 140, 6, 2, rot=-4, ground=True)], "block", "iron", extrude=3, tags=["broken"],
+          hidden=True)
+    a.flat("rails", [R(0, -126, 330, 7, 2), R(0, -20, 330, 7, 2)], "iron", line=FINE)
+    a.flat("scrolls", [I("spiral", x, -112, 18, rot=90 * (k % 2)) for k, x in enumerate(range(-146, 160, 26))], "iron",
+           tags=["whole"])
+    for i, x in enumerate((-186, 186)):
+        a.box(f"pier{i}", x, 2, 40, 36, 170, "stone", corner=3)
+        a.box(f"pier_cap{i}", x, 5, 50, 44, 12, "stone_dark", lift=170, corner=3)
+    a.frame("normal", state="normal", hide=["broken"])
+    a.frame("broken", state="broken", show=["broken"], hide=["whole"])
+    return a
+
+
+@asset
+def obj_snowman():
+    a = Asset("obj_snowman", "Snowman 1.4 m: three snow balls, coal eyes and buttons, carrot nose, stick arms, wine "
+              "scarf, old pail as a hat.", seed=720, pivot_meaning="centre of the bottom ball on the ground")
+    ellipse_shadow(a, 8, -4, 130, 40, opacity=0.3, blur=8)
+    a.add("base", [E(0, -48, 118, 104)], "mass", "snow", shade={"bump": 1.2})
+    a.add("arms", [LINE(-40, -110, -100, -140, 6), LINE(-86, -134, -96, -156, 4), LINE(40, -112, 96, -150, 6),
+                   LINE(84, -142, 104, -150, 4)], "mass", "bark")
+    a.add("middle", [E(0, -120, 88, 78)], "mass", "snow", shade={"bump": 1.2})
+    a.add("head", [E(0, -176, 62, 56)], "mass", "snow", shade={"bump": 1.2})
+    a.add("scarf", [R(0, -150, 70, 14, 6), R(20, -130, 14, 36, 5, rot=-8)], "mass", "cloth_wine", line=FINE)
+    a.flat("coal", [E(-12, -182, 8, 8), E(12, -182, 8, 8)] + [E(0, y, 9, 8) for y in (-126, -106, -64)], "soot")
+    a.add("nose", [I("triangle", 14, -170, 12, 26, rot=90)], "mass", "clay", line=FINE)
+    a.add("pail", [POLY([(0.1, 1), (0.0, 0), (1, 0), (0.9, 1)], 0, -212, 46, 30, rot=-6), E(-1, -226, 46, 12)], "mass",
+          "iron", line=FINE)
+    return a
+
+
 # ============================================================================ main
 def main() -> int:
     names = sys.argv[1:] or list(ASSETS)

@@ -1,0 +1,221 @@
+{
+ "asset": "obj_stump",
+ "status": "candidate",
+ "note": "Tree stump 0.55 m wide, cut top with growth rings and a radial crack, root flare, moss.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 411,
+ "pivot_meaning": "trunk base centre on the ground",
+ "layer_hint": "world",
+ "canvas": [
+  274,
+  238
+ ],
+ "pivot": [
+  127,
+  165
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.38,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      137,
+      141
+     ],
+     "size": [
+      150,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "roots",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "bark",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      81,
+      155
+     ],
+     "size": [
+      46,
+      24
+     ],
+     "rot": -28
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      175,
+      157
+     ],
+     "size": [
+      42,
+      22
+     ],
+     "rot": 30
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      119,
+      167
+     ],
+     "size": [
+      38,
+      18
+     ],
+     "rot": 180,
+     "flip": "y"
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 3.0,
+   "kind": "block",
+   "material": "bark",
+   "extrude": 40,
+   "texture": {
+    "angle": 90
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      127,
+      81.7
+     ],
+     "size": [
+      100,
+      86.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cut",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "wood_cut",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      127,
+      81.7
+     ],
+     "size": [
+      92,
+      78
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rings",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "opacity": 0.4,
+   "clip_to": "cut",
+   "pieces": [
+    {
+     "icon": "target",
+     "at": [
+      127,
+      81.7
+     ],
+     "size": [
+      70,
+      58
+     ]
+    }
+   ]
+  },
+  {
+   "name": "crack",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "floor_joint",
+   "opacity": 0.7,
+   "clip_to": "cut",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      142.0,
+      71.7
+     ],
+     "size": [
+      36.05551275463989,
+      3
+     ],
+     "rot": -33.690067525979785
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.0
+     },
+     "at": [
+      124.0,
+      96.7
+     ],
+     "size": [
+      30.59411708155671,
+      2
+     ],
+     "rot": 101.30993247402021
+    }
+   ]
+  },
+  {
+   "name": "moss",
+   "z": 7.0,
+   "kind": "mass",
+   "material": "moss",
+   "clip_to": "body",
+   "rough": {
+    "amp": 0.5,
+    "soft": 1.2,
+    "cell": 5
+   },
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      97,
+      147
+     ],
+     "size": [
+      50,
+      20
+     ]
+    }
+   ]
+  }
+ ]
+}
