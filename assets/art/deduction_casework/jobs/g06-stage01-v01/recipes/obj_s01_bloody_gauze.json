@@ -1,0 +1,185 @@
+{
+ "asset": "obj_s01_bloody_gauze",
+ "status": "candidate",
+ "note": "A4 / 0-click: Grell's blood-soaked gauze pads, low on the floor below Mira's eye level.",
+ "palette": "palette_s01_orin.json",
+ "style": "prop",
+ "canvas": [
+  273,
+  192
+ ],
+ "pivot": [
+  137.5,
+  108.1
+ ],
+ "pivot_meaning": "ground contact point",
+ "seed": 206,
+ "forms": [
+  {
+   "name": "shadow",
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 5,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.38,
+       3.0
+      ],
+      [
+       13.0,
+       7.62
+      ],
+      [
+       7.62,
+       13.0
+      ],
+      [
+       3.0,
+       8.38
+      ]
+     ],
+     "fit": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      136.25,
+      108.72
+     ],
+     "size": [
+      162.5,
+      81.25
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gauze",
+   "z": 1.0,
+   "pieces": [
+    {
+     "icon": "cloud",
+     "at": [
+      135.0,
+      82.95
+     ],
+     "size": [
+      70.0,
+      40.0
+     ],
+     "rot": 12.0
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      132.5,
+      119.2
+     ],
+     "size": [
+      64.0,
+      36.0
+     ],
+     "rot": -8.0
+    },
+    {
+     "icon": "metaballs",
+     "at": [
+      137.5,
+      95.3
+     ],
+     "size": [
+      50.0,
+      30.0
+     ]
+    }
+   ],
+   "material": "gauze",
+   "line": {
+    "width": 0.9,
+    "heavy": 1.0,
+    "breaks": 0.2
+   }
+  },
+  {
+   "name": "blood",
+   "z": 1.1,
+   "pieces": [
+    {
+     "icon": "metaballs",
+     "at": [
+      137.5,
+      83.5
+     ],
+     "size": [
+      36.0,
+      20.0
+     ],
+     "rot": 20.0
+    },
+    {
+     "icon": "droplet",
+     "at": [
+      130.0,
+      114.75
+     ],
+     "size": [
+      22.0,
+      16.0
+     ],
+     "rot": 70.0
+    },
+    {
+     "icon": "sponge",
+     "at": [
+      132.5,
+      94.6
+     ],
+     "size": [
+      26.0,
+      16.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "blood",
+   "clip_to": "gauze",
+   "opacity": 0.9
+  },
+  {
+   "name": "drops",
+   "z": 1.2,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      72.5,
+      115.6
+     ],
+     "size": [
+      8.0,
+      5.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      77.5,
+      128.1
+     ],
+     "size": [
+      6.0,
+      4.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "blood_dry"
+  }
+ ]
+}

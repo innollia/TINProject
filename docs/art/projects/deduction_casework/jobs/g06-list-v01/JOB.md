@@ -47,28 +47,28 @@
 
 | 종류 | ID | 내용 | 대체하는 핫스팟 | 상태 |
 |---|---|---|---|---|
-| 배경 | bg_s01_lab | 지역 A 주실험실, 쿼터뷰. 왼벽 관찰창·자극모니터 자리, 오른벽 과제보드 자리·복도문, 뒤 준비실문 | scene_lab | 대기 |
-| 배경 | bg_s01_booth | 지역 B 관찰부스, 사이드뷰. 두꺼운 관찰창(너머 실험실 흐리게) | scene_booth | 대기 |
-| 배경 | bg_s01_locker | 지역 C 준비실·사물함, 정면뷰. 사물함 벽, 복사실 계단문 | scene_locker | 대기 |
-| 배경 | bg_s01_corridor | 지역 D 복도 세면대·계단 아래 복사실, 연결화면 | scene_corridor | 대기 |
-| 확대(장면) | cu_s01_cctv_view | 01:34 관찰부스 카메라 화각: 실험실 벽과 과제보드(인물 없이) | VISUAL 1 | 대기 |
-| 인물 | chr_s01_mira_seated_injured | 미라, 실험대 아래 기대앉음, 양눈 붕대, 소매 소독약 자국, 왼손 렌즈집 | hotspot_lab_bench | 대기 |
-| 인물 | chr_s01_mira_cctv_0134 | 미라, 01:34 두 눈 뜬 채 보드를 손으로 더듬는 자세 | VISUAL 1 | 대기 |
-| 인물 | chr_s01_grell_tending | 그렐, 피 묻은 손으로 응급도구 정리(무릎 꿇음) | hotspot_lab_grell_gauze | 대기 |
-| 인물 | chr_s01_ed_door | 에드, 문 쪽에 서 있음, 큰 키링·손전등 | (장면 인물) | 대기 |
-| 초상화 | por_s01_mira / grell / ed / lina | 식별 5점 흉상 | identity·검토판 | 대기 |
-| 물건 | obj_s01_lab_bench | 중앙 실험대(긁힌 목재) | hotspot_lab_bench 주변 | 대기 |
-| 물건 | obj_s01_lens_case_broken | 깨진 투명 렌즈집(손에 든 방향) | hotspot_lab_lens_case | 대기 |
-| 물건 | obj_s01_stim_crt | 12칸 과제가 멈춘 CRT와 받침대 | A3 | 대기 |
-| 물건 | obj_s01_printer_two_sheets | 출력지 두 장이 나온 프린터 | stim_calibration / stim_behavior | 대기 |
-| 물건 | obj_s01_task_board | 벽의 4×4 과제보드(자석) | hotspot_lab_task_board | 대기 |
-| 물건 | obj_s01_bloody_gauze | 피 묻은 거즈(미라 눈높이 아래) | hotspot_lab_grell_gauze | 대기 |
-| 물건 | obj_s01_first_aid_open | 그렐이 정리 중인 응급상자 | A4 | 대기 |
-| 물건 | obj_s01_disinfect_floor | 미라 오른손 쪽 소독약병·솜 | 0클릭 장면 | 대기 |
-| 물건 | obj_s01_booth_desk, obj_s01_eye_card, obj_s01_recorder, obj_s01_log_sheet, obj_s01_pager, obj_s01_eeg_printout, obj_s01_cctv_monitor | 관찰부스 책상과 물건 | B1~B4, VISUAL 1 | 대기 |
-| 물건 | obj_s01_locker_mira(닫힘/열림), obj_s01_labcoat_hung, obj_s01_notebook, obj_s01_prep_table, obj_s01_elephant_model, obj_s01_name_cards, obj_s01_lens_storage, obj_s01_repair_card, obj_s01_sketchbook, obj_s01_roster_sheet | 준비실 물건 | C1~C4, VISUAL 3 | 대기 |
-| 물건 | obj_s01_sink, obj_s01_disinfect_tool, obj_s01_copier, obj_s01_guard_board | 복도·복사실 물건 | D1~D3 | 대기 |
-| 확대 | cu_s01_lens_case, cu_s01_calib_printout, cu_s01_behavior_printout, cu_s01_task_board, cu_s01_eye_card, cu_s01_log_sheet, cu_s01_pager, cu_s01_labcoat_label, cu_s01_notebook, cu_s01_repair_card, cu_s01_name_cards, cu_s01_roster, cu_s01_sketch_prev, cu_s01_sketch_day, cu_s01_tool_print, cu_s01_access_card, cu_s01_copier_log, cu_s01_guard_log | 문서·단서 확대(VISUAL 2·3, 힌지 C 지문 비교 포함) | 해당 메시지 | 대기 |
+| 배경 | bg_s01_lab | 지역 A 주실험실, 쿼터뷰. 왼벽 관찰창·자극모니터 자리, 오른벽 과제보드 자리·복도문, 뒤 준비실문 | scene_lab | 완료 |
+| 배경 | bg_s01_booth | 지역 B 관찰부스, 사이드뷰. 두꺼운 관찰창(너머 실험실 흐리게) | scene_booth | 완료 |
+| 배경 | bg_s01_locker | 지역 C 준비실·사물함, 정면뷰. 사물함 벽, 복사실 계단문 | scene_locker | 완료 |
+| 배경 | bg_s01_corridor | 지역 D 복도 세면대·계단 아래 복사실, 연결화면 | scene_corridor | 완료 |
+| 확대(장면) | cu_s01_cctv_view | 01:34 관찰부스 카메라 화각: 실험실 벽과 과제보드(인물 없이) | VISUAL 1 | 완료 |
+| 인물 | chr_s01_mira_seated_injured | 미라, 실험대 아래 기대앉음, 양눈 붕대, 소매 소독약 자국, 왼손 렌즈집 | hotspot_lab_bench | 완료 |
+| 인물 | chr_s01_mira_cctv_0134 | 미라, 01:34 두 눈 뜬 채 보드를 손으로 더듬는 자세 | VISUAL 1 | 완료 |
+| 인물 | chr_s01_grell_tending | 그렐, 피 묻은 손으로 응급도구 정리(무릎 꿇음) | hotspot_lab_grell_gauze | 완료 |
+| 인물 | chr_s01_ed_door | 에드, 문 쪽에 서 있음, 큰 키링·손전등 | (장면 인물) | 완료 |
+| 초상화 | por_s01_mira / grell / ed / lina | 식별 5점 흉상 | identity·검토판 | 완료 |
+| 물건 | obj_s01_lab_bench | 중앙 실험대(긁힌 목재) | hotspot_lab_bench 주변 | 완료 |
+| 물건 | obj_s01_lens_case_broken | 깨진 투명 렌즈집(손에 든 방향) | hotspot_lab_lens_case | 완료 |
+| 물건 | obj_s01_stim_crt | 12칸 과제가 멈춘 CRT와 받침대 | A3 | 완료 |
+| 물건 | obj_s01_printer_two_sheets | 출력지 두 장이 나온 프린터 | stim_calibration / stim_behavior | 완료 |
+| 물건 | obj_s01_task_board | 벽의 4×4 과제보드(자석) | hotspot_lab_task_board | 완료 |
+| 물건 | obj_s01_bloody_gauze | 피 묻은 거즈(미라 눈높이 아래) | hotspot_lab_grell_gauze | 완료 |
+| 물건 | obj_s01_first_aid_open | 그렐이 정리 중인 응급상자 | A4 | 완료 |
+| 물건 | obj_s01_disinfect_floor | 미라 오른손 쪽 소독약병·솜 | 0클릭 장면 | 완료 |
+| 물건 | obj_s01_booth_desk, obj_s01_booth_chair, obj_s01_eeg_rack, obj_s01_eye_card, obj_s01_recorder, obj_s01_log_sheet, obj_s01_pager, obj_s01_eeg_printout, obj_s01_cctv_monitor | 관찰부스 책상과 물건 | B1~B4, VISUAL 1 | 완료 |
+| 물건 | obj_s01_locker_mira(닫힘/열림), obj_s01_labcoat_hung, obj_s01_notebook, obj_s01_prep_table, obj_s01_elephant_model, obj_s01_name_cards, obj_s01_lens_storage, obj_s01_repair_card, obj_s01_sketchbook, obj_s01_roster_sheet | 준비실 물건 | C1~C4, VISUAL 3 | 완료 |
+| 물건 | obj_s01_sink, obj_s01_disinfect_tool, obj_s01_copier, obj_s01_guard_board | 복도·복사실 물건 | D1~D3 | 완료 |
+| 확대 | cu_s01_lens_case, cu_s01_calib_printout, cu_s01_behavior_printout, cu_s01_task_board, cu_s01_eye_card, cu_s01_log_sheet, cu_s01_pager, cu_s01_labcoat_label, cu_s01_notebook, cu_s01_repair_card, cu_s01_name_cards, cu_s01_roster, cu_s01_sketch_prev, cu_s01_sketch_day, cu_s01_tool_print, cu_s01_access_card, cu_s01_copier_log, cu_s01_guard_log | 문서·단서 확대(VISUAL 2·3, 힌지 C 지문 비교 포함) | 해당 메시지 | 완료 |
 
 ### Stage 02 — 모렌가의 빈 의자 (모렌 저택) · `g06-stage02-v01`
 

@@ -1,0 +1,120 @@
+{
+ "asset": "obj_s01_notebook_shelf",
+ "status": "candidate",
+ "note": "C1-2 Mira's personal research notebook lying on the locker shelf (black cover, red elastic band); pages in cu_s01_notebook.",
+ "palette": "palette_s01_orin.json",
+ "style": "prop",
+ "canvas": [
+  150,
+  70
+ ],
+ "pivot": [
+  75.0,
+  58.0
+ ],
+ "pivot_meaning": "ground contact point",
+ "seed": 222,
+ "forms": [
+  {
+   "name": "shadow",
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 3,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      75.0,
+      56.0
+     ],
+     "size": [
+      120.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "notebook",
+   "z": 1.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      75.0,
+      35.0
+     ],
+     "size": [
+      110.0,
+      18.0
+     ]
+    }
+   ],
+   "kind": "block",
+   "material": "leather_black",
+   "extrude": 14,
+   "line": {
+    "width": 1.2,
+    "heavy": 1.4,
+    "breaks": 0.25
+   }
+  },
+  {
+   "name": "pages",
+   "z": 1.1,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      75.0,
+      47.0
+     ],
+     "size": [
+      102.0,
+      6.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "paper_ivory"
+  },
+  {
+   "name": "band",
+   "z": 1.2,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      100.0,
+      41.0
+     ],
+     "size": [
+      8.0,
+      34.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "cloth_red"
+  }
+ ]
+}

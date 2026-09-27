@@ -1,0 +1,262 @@
+{
+ "asset": "cu_s01_tool_print",
+ "status": "candidate",
+ "note": "D1 / hinge C: the instrument handle with a bloody RIGHT-thumb whorl print. The whorl is the same shape as the inked print on cu_s01_access_card (IMAGE <-> IMAGE comparison).",
+ "palette": "palette_s01_orin.json",
+ "style": "prop",
+ "canvas": [
+  1100,
+  520
+ ],
+ "pivot": [
+  550.0,
+  260.0
+ ],
+ "pivot_meaning": "ground contact point",
+ "seed": 315,
+ "forms": [
+  {
+   "name": "shadow",
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.35,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      560.0,
+      280.0
+     ],
+     "size": [
+      900.0,
+      150.0
+     ],
+     "rot": -6.0
+    }
+   ]
+  },
+  {
+   "name": "handle",
+   "z": 1.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      470.0,
+      260.0
+     ],
+     "size": [
+      620.0,
+      170.0
+     ],
+     "rot": -6.0
+    }
+   ],
+   "material": "plastic_black",
+   "line": {
+    "width": 1.6,
+    "heavy": 1.8,
+    "breaks": 0.25
+   },
+   "shade": {
+    "highlight_amount": 0.6
+   }
+  },
+  {
+   "name": "grip_rings",
+   "z": 1.1,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      220.0,
+      290.0
+     ],
+     "size": [
+      8.0,
+      150.0
+     ],
+     "rot": -6.0
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      260.0,
+      286.0
+     ],
+     "size": [
+      8.0,
+      150.0
+     ],
+     "rot": -6.0
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      300.0,
+      282.0
+     ],
+     "size": [
+      8.0,
+      150.0
+     ],
+     "rot": -6.0
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      340.0,
+      278.0
+     ],
+     "size": [
+      8.0,
+      150.0
+     ],
+     "rot": -6.0
+    }
+   ],
+   "kind": "flat",
+   "color": "joint_dark",
+   "opacity": 0.6
+  },
+  {
+   "name": "ferrule",
+   "z": 1.2,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      810.0,
+      225.0
+     ],
+     "size": [
+      60.0,
+      110.0
+     ],
+     "rot": -6.0
+    }
+   ],
+   "material": "steel",
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   }
+  },
+  {
+   "name": "shaft",
+   "z": 1.3,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      950.0,
+      212.0
+     ],
+     "size": [
+      240.0,
+      30.0
+     ],
+     "rot": -6.0
+    }
+   ],
+   "material": "steel",
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   }
+  },
+  {
+   "name": "thumb_print",
+   "z": 1.5,
+   "pieces": [
+    {
+     "icon": "fingerprint",
+     "at": [
+      520.0,
+      250.0
+     ],
+     "size": [
+      150.0,
+      150.0
+     ],
+     "rot": -6.0
+    }
+   ],
+   "kind": "flat",
+   "material": "blood",
+   "opacity": 0.92
+  },
+  {
+   "name": "smear",
+   "z": 1.4,
+   "pieces": [
+    {
+     "icon": "metaballs",
+     "at": [
+      600.0,
+      300.0
+     ],
+     "size": [
+      80.0,
+      36.0
+     ],
+     "rot": -6.0
+    }
+   ],
+   "kind": "flat",
+   "material": "blood_dry",
+   "opacity": 0.7
+  }
+ ]
+}

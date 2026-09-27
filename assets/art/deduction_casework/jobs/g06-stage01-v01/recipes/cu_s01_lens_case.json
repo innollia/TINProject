@@ -1,0 +1,356 @@
+{
+ "asset": "cu_s01_lens_case",
+ "status": "candidate",
+ "note": "A2 close-up: transparent twin lens case, both lenses carry a centre marker dot (eye-tracking markers, power 0.00), the right one cracked with two loose shards; engraved steel plate (EYE TRACK MARKER / 0.00 = game text on the plate lines).",
+ "palette": "palette_s01_orin.json",
+ "style": "prop",
+ "canvas": [
+  900,
+  600
+ ],
+ "pivot": [
+  450.0,
+  300.0
+ ],
+ "pivot_meaning": "ground contact point",
+ "seed": 301,
+ "forms": [
+  {
+   "name": "shadow",
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.35,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      450.0,
+      330.0
+     ],
+     "size": [
+      700.0,
+      360.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "case",
+   "z": 1.0,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      300.0,
+      300.0
+     ],
+     "size": [
+      320.0,
+      320.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      600.0,
+      300.0
+     ],
+     "size": [
+      320.0,
+      320.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      450.0,
+      300.0
+     ],
+     "size": [
+      300.0,
+      160.0
+     ]
+    }
+   ],
+   "material": "glass_clear",
+   "line": {
+    "width": 1.6,
+    "heavy": 1.8,
+    "breaks": 0.25
+   },
+   "opacity": 0.95
+  },
+  {
+   "name": "lens_l",
+   "z": 1.1,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      300.0,
+      300.0
+     ],
+     "size": [
+      250.0,
+      250.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "glass_clear",
+   "color": "#b9c3c6",
+   "opacity": 0.55,
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   }
+  },
+  {
+   "name": "lens_r",
+   "z": 1.1,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      600.0,
+      300.0
+     ],
+     "size": [
+      250.0,
+      250.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "glass_clear",
+   "color": "#b9c3c6",
+   "opacity": 0.55,
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   }
+  },
+  {
+   "name": "marker_dots",
+   "z": 1.2,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      300.0,
+      300.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      600.0,
+      300.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "ink",
+   "opacity": 0.7
+  },
+  {
+   "name": "crack",
+   "z": 1.3,
+   "pieces": [
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      610.0,
+      280.0
+     ],
+     "size": [
+      40.0,
+      190.0
+     ],
+     "rot": 24.0
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      640.0,
+      330.0
+     ],
+     "size": [
+      26.0,
+      110.0
+     ],
+     "rot": -40.0
+    },
+    {
+     "icon": "lightning_bolt",
+     "at": [
+      570.0,
+      250.0
+     ],
+     "size": [
+      20.0,
+      90.0
+     ],
+     "rot": 70.0
+    }
+   ],
+   "kind": "flat",
+   "color": "ink",
+   "opacity": 0.75
+  },
+  {
+   "name": "shards",
+   "z": 1.35,
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      700.0,
+      420.0
+     ],
+     "size": [
+      30.0,
+      24.0
+     ],
+     "rot": 30.0
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      520.0,
+      430.0
+     ],
+     "size": [
+      20.0,
+      16.0
+     ],
+     "rot": -20.0
+    }
+   ],
+   "material": "glass_clear",
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   }
+  },
+  {
+   "name": "hinge",
+   "z": 1.4,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      450.0,
+      300.0
+     ],
+     "size": [
+      40.0,
+      240.0
+     ]
+    }
+   ],
+   "material": "steel",
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   }
+  },
+  {
+   "name": "plate",
+   "z": 1.5,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      450.0,
+      505.0
+     ],
+     "size": [
+      240.0,
+      70.0
+     ]
+    }
+   ],
+   "material": "steel",
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   }
+  },
+  {
+   "name": "engraving",
+   "z": 1.6,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      449.0,
+      491.0
+     ],
+     "size": [
+      198.0,
+      6.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      450.0,
+      515.0
+     ],
+     "size": [
+      120.0,
+      6.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "ink",
+   "opacity": 0.5
+  }
+ ]
+}

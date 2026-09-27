@@ -1,0 +1,136 @@
+{
+ "status": "candidate",
+ "note": "Stage 01 layout. items = objects drawn by compose_preview.py; characters = placements for the game only (never composited in review images); exits = transition hotspot polygons.",
+ "background": "output/bg_s01_locker/bg_s01_locker.png",
+ "scale": 0.5,
+ "items": [
+  {
+   "asset": "obj_s01_locker_mira",
+   "frame": "open",
+   "at": [
+    1303.3,
+    1000
+   ],
+   "id": "locker",
+   "layer": "floor",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_labcoat_hung",
+   "at": [
+    1303.3,
+    352
+   ],
+   "id": "labcoat",
+   "layer": "floor",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_notebook_shelf",
+   "at": [
+    1303.3,
+    312
+   ],
+   "id": "notebook",
+   "layer": "floor",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_roster_sheet",
+   "at": [
+    1905,
+    380
+   ],
+   "id": "roster",
+   "layer": "floor",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_prep_table",
+   "at": [
+    1180,
+    1330
+   ],
+   "id": "table"
+  },
+  {
+   "asset": "obj_s01_elephant_model",
+   "at": [
+    960,
+    1110
+   ],
+   "id": "elephant",
+   "sort_y": 1331
+  },
+  {
+   "asset": "obj_s01_name_cards",
+   "at": [
+    1110,
+    1104
+   ],
+   "id": "name_cards",
+   "interactive": true,
+   "sort_y": 1331
+  },
+  {
+   "asset": "obj_s01_lens_storage",
+   "at": [
+    1240,
+    1098
+   ],
+   "id": "lens_storage",
+   "sort_y": 1331
+  },
+  {
+   "asset": "obj_s01_repair_card",
+   "at": [
+    1330,
+    1102
+   ],
+   "id": "repair_card",
+   "interactive": true,
+   "sort_y": 1332
+  },
+  {
+   "asset": "obj_s01_sketchbook",
+   "at": [
+    1452,
+    1106
+   ],
+   "id": "sketchbook",
+   "interactive": true,
+   "sort_y": 1332
+  }
+ ],
+ "characters": [],
+ "exits": {
+  "trans_locker_to_lab": [
+   [
+    150,
+    300
+   ],
+   [
+    440,
+    300
+   ],
+   [
+    440,
+    1020
+   ],
+   [
+    150,
+    1020
+   ]
+  ]
+ },
+ "hotspots": {
+  "hotspot_locker_cabinet": "obj_s01_locker_mira (closed|open)",
+  "hotspot_locker_coat": "obj_s01_labcoat_hung",
+  "hotspot_locker_notebook": "obj_s01_notebook_shelf",
+  "hotspot_locker_sketchbook": "obj_s01_sketchbook",
+  "hotspot_locker_repair_card": "obj_s01_repair_card",
+  "hotspot_locker_name_cards": "obj_s01_name_cards",
+  "hotspot_locker_roster": "obj_s01_roster_sheet"
+ },
+ "out": "preview/scene_s01_locker_bg_objects_1280x720.png"
+}

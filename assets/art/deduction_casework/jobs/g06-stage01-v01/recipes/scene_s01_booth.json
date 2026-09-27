@@ -1,0 +1,114 @@
+{
+ "status": "candidate",
+ "note": "Stage 01 layout. items = objects drawn by compose_preview.py; characters = placements for the game only (never composited in review images); exits = transition hotspot polygons.",
+ "background": "output/bg_s01_booth/bg_s01_booth.png",
+ "scale": 0.5,
+ "items": [
+  {
+   "asset": "obj_s01_booth_desk",
+   "at": [
+    1290,
+    1330
+   ],
+   "id": "desk"
+  },
+  {
+   "asset": "obj_s01_cctv_monitor",
+   "at": [
+    1040,
+    1104
+   ],
+   "id": "cctv_monitor",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_eye_card",
+   "at": [
+    1160,
+    1102
+   ],
+   "id": "eye_card",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_recorder",
+   "at": [
+    1270,
+    1104
+   ],
+   "id": "recorder",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_log_sheet",
+   "at": [
+    1392,
+    1102
+   ],
+   "id": "log_sheet",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_pager",
+   "at": [
+    1462,
+    1104
+   ],
+   "id": "pager",
+   "interactive": true
+  },
+  {
+   "asset": "obj_s01_eeg_printout",
+   "at": [
+    1540,
+    1100
+   ],
+   "id": "eeg"
+  },
+  {
+   "asset": "obj_s01_booth_chair",
+   "at": [
+    1250,
+    1400
+   ],
+   "id": "chair"
+  },
+  {
+   "asset": "obj_s01_eeg_rack",
+   "at": [
+    2140,
+    1300
+   ],
+   "id": "eeg_rack"
+  }
+ ],
+ "characters": [],
+ "exits": {
+  "trans_booth_to_lab": [
+   [
+    110,
+    330
+   ],
+   [
+    400,
+    330
+   ],
+   [
+    400,
+    1156
+   ],
+   [
+    110,
+    1156
+   ]
+  ]
+ },
+ "hotspots": {
+  "hotspot_booth_eye_card": "obj_s01_eye_card",
+  "hotspot_booth_recorder": "obj_s01_recorder",
+  "hotspot_booth_log_sheet": "obj_s01_log_sheet",
+  "hotspot_booth_grell_pager": "obj_s01_pager",
+  "VISUAL 1 (no hotspot)": "obj_s01_cctv_monitor screen <- scene_s01_cctv_frame"
+ },
+ "out": "preview/scene_s01_booth_bg_objects_1280x720.png"
+}

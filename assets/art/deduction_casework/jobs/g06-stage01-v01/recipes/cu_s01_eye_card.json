@@ -1,0 +1,530 @@
+{
+ "asset": "cu_s01_eye_card",
+ "status": "candidate",
+ "note": "B1 eye exam card: pupil-reflex diagram and retina (fundus) diagram, both ticked normal; rows for the time (50 min before) and values = game text. No behaviour results on this card.",
+ "palette": "palette_s01_orin.json",
+ "style": "prop",
+ "canvas": [
+  920,
+  620
+ ],
+ "pivot": [
+  460.0,
+  310.0
+ ],
+ "pivot_meaning": "ground contact point",
+ "seed": 305,
+ "forms": [
+  {
+   "name": "shadow",
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.35,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3.0,
+       3.0
+      ],
+      [
+       13.0,
+       3.0
+      ],
+      [
+       13.0,
+       13.0
+      ],
+      [
+       3.0,
+       13.0
+      ]
+     ],
+     "fit": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      470.0,
+      322.0
+     ],
+     "size": [
+      820.0,
+      520.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "sheet",
+   "z": 1.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3.0,
+       3.0
+      ],
+      [
+       13.0,
+       3.0
+      ],
+      [
+       13.0,
+       13.0
+      ],
+      [
+       3.0,
+       13.0
+      ]
+     ],
+     "fit": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      460.0,
+      310.0
+     ],
+     "size": [
+      820.0,
+      520.0
+     ]
+    }
+   ],
+   "material": "paper_ivory",
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   },
+   "shade": {
+    "bump": 0.2,
+    "highlight_amount": 0.2
+   },
+   "grime": {
+    "stamps": [
+     "sponge",
+     "metaballs",
+     "cloud"
+    ],
+    "size": 34,
+    "soft": 4,
+    "density": 0.07,
+    "strength": 0.2,
+    "color": "foxing",
+    "lo": 0.25
+   }
+  },
+  {
+   "name": "band",
+   "z": 2.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      460.0,
+      98.0
+     ],
+     "size": [
+      760.0,
+      44.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "card_olive",
+   "color": "#56573f"
+  },
+  {
+   "name": "pupil_ring",
+   "z": 3.0,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      260.0,
+      300.0
+     ],
+     "size": [
+      220.0,
+      150.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "paper_white",
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   }
+  },
+  {
+   "name": "iris",
+   "z": 3.1,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      260.0,
+      300.0
+     ],
+     "size": [
+      110.0,
+      110.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ink_blue",
+   "color": "#56607a",
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   }
+  },
+  {
+   "name": "pupil",
+   "z": 3.2,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      260.0,
+      300.0
+     ],
+     "size": [
+      44.0,
+      44.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "color": "ink"
+  },
+  {
+   "name": "reflex_arrows",
+   "z": 3.3,
+   "pieces": [
+    {
+     "icon": "arrow_left",
+     "at": [
+      170.0,
+      300.0
+     ],
+     "size": [
+      40.0,
+      26.0
+     ]
+    },
+    {
+     "icon": "arrow_right",
+     "at": [
+      350.0,
+      300.0
+     ],
+     "size": [
+      40.0,
+      26.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ink_line",
+   "opacity": 0.6
+  },
+  {
+   "name": "fundus",
+   "z": 3.0,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      650.0,
+      300.0
+     ],
+     "size": [
+      210.0,
+      210.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "cloth_red",
+   "color": "#7e5147",
+   "line": {
+    "width": 1.1,
+    "heavy": 1.2,
+    "breaks": 0.2
+   }
+  },
+  {
+   "name": "disc",
+   "z": 3.1,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      610.0,
+      290.0
+     ],
+     "size": [
+      44.0,
+      44.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "paper_cream",
+   "color": "#c9ae82"
+  },
+  {
+   "name": "vessels",
+   "z": 3.2,
+   "pieces": [
+    {
+     "icon": "sprout",
+     "at": [
+      650.0,
+      300.0
+     ],
+     "size": [
+      170.0,
+      170.0
+     ],
+     "rot": 90.0
+    },
+    {
+     "icon": "git_branch",
+     "at": [
+      670.0,
+      320.0
+     ],
+     "size": [
+      120.0,
+      120.0
+     ],
+     "rot": 200.0
+    }
+   ],
+   "kind": "flat",
+   "material": "blood_dry",
+   "opacity": 0.7,
+   "clip_to": "fundus"
+  },
+  {
+   "name": "rows",
+   "z": 5.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      217.1,
+      442.0
+     ],
+     "size": [
+      254.2,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      271.63,
+      476.0
+     ],
+     "size": [
+      363.26,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      248.26,
+      510.0
+     ],
+     "size": [
+      316.52,
+      4.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ink_line",
+   "opacity": 0.5
+  },
+  {
+   "name": "rows_r",
+   "z": 5.0,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      643.7,
+      442.0
+     ],
+     "size": [
+      167.4,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      679.61,
+      476.0
+     ],
+     "size": [
+      239.22,
+      4.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      664.22,
+      510.0
+     ],
+     "size": [
+      208.44,
+      4.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ink_line",
+   "opacity": 0.5
+  },
+  {
+   "name": "check_boxes",
+   "z": 3.4,
+   "pieces": [
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      104.0,
+      194.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    },
+    {
+     "icon": "square",
+     "crop": [
+      3.0,
+      3.0,
+      13.0,
+      13.0
+     ],
+     "at": [
+      574.0,
+      194.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "paper_ivory",
+   "color": "#c2b797",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.7,
+    "breaks": 0.1
+   }
+  },
+  {
+   "name": "ticks",
+   "z": 3.5,
+   "pieces": [
+    {
+     "icon": "checkmark",
+     "at": [
+      104.0,
+      194.0
+     ],
+     "size": [
+      26.0,
+      22.0
+     ]
+    },
+    {
+     "icon": "checkmark",
+     "at": [
+      574.0,
+      194.0
+     ],
+     "size": [
+      26.0,
+      22.0
+     ]
+    }
+   ],
+   "kind": "flat",
+   "material": "ink_blue",
+   "opacity": 0.85
+  }
+ ]
+}
