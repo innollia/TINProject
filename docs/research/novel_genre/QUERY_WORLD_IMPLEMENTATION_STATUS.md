@@ -48,7 +48,7 @@ Kit 파일 전부가 한 번도 커밋되지 않은 상태(`git status` 전부 `
 | 7 | 파편 간 모순 단서 | case A JSON에 `relations`(contradicts 등) 존재 여부는 콘텐츠 파일에서 확인 필요 — **미확인, 아래 남은 일** |
 | 8 | case C, 시드 없음 | `c_no_seed_letter.json` 존재(파일명이 "시드 없음"을 명시) |
 
-case D(데이터 파일 하나만 추가해 core 무수정 증명)는 **아직 만들지 않음** — 남은 일.
+case D(데이터 파일 하나만 추가해 core 무수정 증명)를 이번 세션에서 작성함(`d_borrowed_key.json`) — content loader만 새 파일을 자동 발견하는 구조이므로 코드 변경 없음. 런타임 로드 확인은 §6 미실행(잠금 대기)에 포함.
 
 ## 5. qw_peek(hover 키보드 대응) — 이번 세션 구현 (완료)
 
@@ -58,9 +58,23 @@ case D(데이터 파일 하나만 추가해 core 무수정 증명)는 **아직 �
 
 자동 테스트는 아직 미작성(§9 남은 일).
 
-## 6. 자동 검증 (Godot 잠금 확보 후 실행)
+## 6. 자동 검증 — 미실행 (Godot 잠금 지속 점유)
 
-(잠금 확보 후 이 절을 갱신하고 실제 실행 결과로 교체한다. 잠금이 계속 점유 중이면 "미실행"으로 명시.)
+이번 세션 내내(약 35분+) `C:\projects\_locks\TINProject-godot.lock`을 다른 세션(순서대로 `sub-kit01` → `sub-kit08` → `sub-kit01`)이 계속 점유했고, 매번 갱신 시각이 신선하거나(40분 미경과) 실제 Godot 프로세스가 활성 상태였다. 규칙상 40분 초과 + 프로세스 없음 조건이 아니면 잠금을 지우지 않으므로, 이번 세션에서는 `--editor --import`, `run_tests.gd`, GUT core, smoke(`--quit-after 180`) 중 **아무것도 실행하지 못했다** — 전부 "미실행".
+
+대신 정적 코드 검토로 다음을 확인:
+- `d_borrowed_key.json`을 `query_world_content_loader.gd`의 `validate_case()` 규칙(§검토, 위 본문 참조)과 대조 — id 유일, search_tags 비어있지 않음, relations dangling 없음, required_ids ⊆ fragment ids 전부 충족.
+- `qw_peek` 코드가 참조하는 심볼(`_state.peek_hover`, `has_peekable_hovers` 등)이 `query_world_state.gd`/`query_world_screen.gd`에 실제로 존재하는 이름과 일치하는지 대조 — 일치 확인.
+
+**다음 세션 또는 잠금 확보 즉시 실행해야 할 것:**
+```powershell
+$GodotExe = 'C:\Users\fixme\Downloads\Godot_v4.7.2-stable_win64.exe\Godot_v4.7.2-stable_win64_console.exe'
+& $GodotExe --headless --path C:\Users\fixme\Desktop\TINProject --editor --import
+& $GodotExe --headless --path C:\Users\fixme\Desktop\TINProject --script res://tests/performance/query_world_input_probe.gd
+& $GodotExe --headless --path C:\Users\fixme\Desktop\TINProject --script res://tests/performance/query_world_play_probe.gd
+& $GodotExe --headless --path C:\Users\fixme\Desktop\TINProject --script addons/gut/gut_cmdln.gd -gdir=res://tests/core -gtest=test_query_world.gd -gtest=test_query_world_module.gd -gexit
+```
+qw_peek 자동 테스트(GUT)도 아직 없음 — probe 스크립트에만 체크 5·6으로 추가함(§9 남은 일).
 
 ## 7. 사용자 질문 (부모 지시에 따라 확정하지 않고 올림)
 
@@ -94,9 +108,8 @@ case D(데이터 파일 하나만 추가해 core 무수정 증명)는 **아직 �
 
 ## 9. 남은 일
 
-- Godot 잠금 확보 후 §6 자동 검증 실행(§13 목록 전부, run_tests.gd, smoke).
-- case A `relations`에 모순 단서 실존 여부 확인(§7 Q3).
-- case D(데이터 파일 하나만 추가, core 무수정 증명) 아직 미작성.
+- Godot 잠금 확보 후 §6의 실행 목록 전부(import, input/play probe, GUT core, smoke).
 - FHD/QHD 실측 대형 디스플레이 재확인 — 계획서에 이미 "실제 대형 디스플레이에서 재확인 필요"로 명시된 채 미해결.
-- `qw_peek` 자동 테스트 미작성.
-- 사용자 시각 승인(Q1) 및 후속 질문(Q2·Q3) 응답 대기.
+- `qw_peek` GUT 자동 테스트 미작성(probe 스크립트에만 체크 추가함).
+- 사용자 시각 승인(Q1) 및 후속 질문(Q2) 응답 대기(Q3은 확인 결과 이미 해결됨으로 판명, §7 참조).
+- case D(`d_borrowed_key`) 추가 후 core 무수정 증명은 아직 런타임으로 확인 못함(§6 미실행에 포함).
