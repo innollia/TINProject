@@ -462,8 +462,12 @@ func _gear_hint() -> String:
 	if int(d.get("roundness", 0)) != 0:
 		parts.append("동그라미" + _sign(int(d["roundness"])))
 	var pol: Dictionary = def.get("policy_delta", {})
-	for k in pol:
-		parts.append("정책:" + str(k))
+	if pol.has("open_with"):
+		parts.append(word(OPEN_WORDS, str(pol["open_with"])))
+	if pol.has("focus_priority"):
+		parts.append(word(FOCUS_WORDS, str(pol["focus_priority"])) + "부터")
+	if bool(pol.get("always_guard", false)):
+		parts.append("늘 방패")
 	return "  ".join(parts)
 
 
@@ -483,16 +487,19 @@ func _draw_go(txt: Color, dim: Color, acc: Color) -> void:
 	_text(Vector2(X_BODY + 8, Y_GO), "탐험을 보낸다", FS_HEAD, ink, focus != FOCUS_GO)
 
 
-## 정책/빌드/결과. 고정 좌표로 나눠 겹치지 않게 한다. (R3)
+## 정책/빌드/결과. 고정 좌표로 나눠 겹치지 않게 한다. (R3) 내부 키는 보이지 않는다. (U-3)
+const OPEN_WORDS: Dictionary = {"attack": "먼저 친다", "evade": "먼저 피한다", "ability": "먼저 주문", "guard": "먼저 막는다"}
+const FOCUS_WORDS: Dictionary = {"nearest": "가까운 적", "ranged_first": "멀리 쏘는 적", "lowest_hp": "약한 적", "boss_first": "우두머리"}
+const AFFINITY_WORDS: Dictionary = {"limbs": "다리", "surprise": "놀랍다", "wrongness": "틀림", "roundness": "동그라미"}
+
+
+static func word(table: Dictionary, key: String) -> String:
+	return str(table.get(key, "알 수 없음"))
+
+
 func _draw_side(dim: Color, txt: Color) -> void:
-	var pol: Dictionary = StoneStoryRunState.resolve_policy(state.get("player", {}), content)
-	var a: String = "정책  스탠스=%s  타깃=%s" % [str(pol.get("open_with", "attack")), str(pol.get("focus_priority", "nearest"))]
-	var b: String = "행동%+d  상주가드=%s  절대후퇴=%s" % [
-			int(pol.get("actions_per_turn_mod", 0)),
-			"예" if bool(pol.get("always_guard", false)) else "아니오",
-			"예" if bool(pol.get("never_retreat", false)) else "아니오"]
-	_text(Vector2(X_RIGHT, Y_INFO), _fit(a, MAX_INFO_W, FS_SMALL), FS_SMALL, txt)
-	_text(Vector2(X_RIGHT, Y_INFO + 22), _fit(b, MAX_INFO_W, FS_SMALL), FS_SMALL, dim)
+	_text(Vector2(X_RIGHT, Y_INFO), _fit(_policy_line(), MAX_INFO_W, FS_SMALL), FS_SMALL, txt)
+	_text(Vector2(X_RIGHT, Y_INFO + 22), _fit(_habit_line(), MAX_INFO_W, FS_SMALL), FS_SMALL, dim)
 	_text(Vector2(X_RIGHT, Y_INFO + 44), _fit(_build_line(), MAX_INFO_W, FS_SMALL), FS_SMALL, dim)
 	for i in mini(report.size(), 3):
 		_text(Vector2(X_RIGHT, Y_INFO + 76 + i * 22), _fit(str(report[i]), MAX_INFO_W, FS_SMALL), FS_SMALL, txt if i == 0 else dim)
@@ -501,21 +508,31 @@ func _draw_side(dim: Color, txt: Color) -> void:
 ## 장비가 만드는 AI 정책. 이 게임의 핵심 정보다.
 func _policy_line() -> String:
 	var pol: Dictionary = StoneStoryRunState.resolve_policy(state.get("player", {}), content)
-	return "정책 스탠스=%s 타깃=%s 행동%+d 상주가드=%s" % [
-			str(pol.get("open_with", "attack")),
-			str(pol.get("focus_priority", "nearest")),
-			int(pol.get("actions_per_turn_mod", 0)),
-			"예" if bool(pol.get("always_guard", false)) else "아니오"]
+	var line: String = "%s · %s부터" % [word(OPEN_WORDS, str(pol.get("open_with", "attack"))),
+			word(FOCUS_WORDS, str(pol.get("focus_priority", "nearest")))]
+	if bool(pol.get("always_guard", false)):
+		line += " · 늘 방패를 든다"
+	return line
+
+
+func _habit_line() -> String:
+	var pol: Dictionary = StoneStoryRunState.resolve_policy(state.get("player", {}), content)
+	var parts: Array[String] = []
+	var extra: int = int(pol.get("actions_per_turn_mod", 0))
+	if extra != 0:
+		parts.append("한 번에 %d타 더" % extra if extra > 0 else "한 번에 %d타 덜" % -extra)
+	if bool(pol.get("never_retreat", false)):
+		parts.append("물러서지 않는다")
+	return " · ".join(parts)
 
 
 func _build_line() -> String:
 	var attrs: Dictionary = StoneStoryRunState.resolve_attributes(state.get("player", {}), content)
 	var p: Dictionary = state.get("player", {})
-	return "이동체 다리%d 놀랍다%d 틀림%d 동그라미%d 상성축=%s" % [
+	return "다리%d 놀랍다%d 틀림%d 동그라미%d · 강한 쪽 %s" % [
 			int(attrs.get("limbs", 1)), int(attrs.get("surprise", 0.0)),
 			int(attrs.get("wrongness", 0.0)), int(attrs.get("roundness", 0.0)),
-			str(p.get("affinity_attr", "limbs"))]
-
+			word(AFFINITY_WORDS, str(p.get("affinity_attr", "limbs")))]
 
 func _head(at: Vector2, label: String, focused: bool, acc: Color, txt: Color, dim: Color, rows: int) -> void:
 	_text(at + Vector2(20, 0), label, FS_HEAD, txt if focused else dim)
