@@ -39,7 +39,7 @@
 - `recipes\palette_g04.json` = V1 `palette_h0_mood.json` 그대로 + 새 재질(식물·바위·물·눈·금·구리·강철·고무·유리·화면·네온·신호등·천·
   지붕·벽토·벽돌·옻칠 등). V1의 윤곽선·그림자·공통 색·재질·스타일은 바꾸지 않았다. 밝기는 V1 범위(종이색이 가장 밝은 면).
 
-## 체크리스트 (7/12 완료)
+## 체크리스트 (12/12 완료)
 
 | 완료 | 단계 | 자산 ID | 이름 | 장르 | 프레임(상태) | 캔버스 | 피벗 뜻 | 빛 | 출처 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -50,9 +50,9 @@
 | [x] | B | obj_barn | 헛간 창고 | 중세 | closed, open | 972×1392 | front-bottom centre of the foundation on the ground (door threshold line) |  |  |
 | [x] | B | obj_windmill | 풍차 | 중세 | obj_windmill | 636×1030 | front-bottom centre of the foundation on the ground (door threshold line) |  | BS2 풍차 |
 | [x] | B | obj_house_east | 동양 기와집 | 동양 | day, night | 1124×1024 | front-bottom centre of the foundation on the ground (door threshold line) | 빛 emit |  |
-| [ ] | C | obj_watermill | 물레방아 집 | 중세 |  |  |  |  | BS2 물레방아 |
-| [ ] | C | obj_saloon | 서부 술집 | 서부 |  |  |  |  |  |
-| [ ] | C | obj_shack | 폐허 판잣집 | 포스트아포칼립스 |  |  |  |  |  |
-| [ ] | C | obj_sf_habitat | SF 거주 모듈 | SF |  |  |  |  |  |
-| [ ] | C | obj_lighthouse | 등대 | 해적·바다 |  |  |  |  |  |
+| [x] | C | obj_watermill | 물레방아 집 | 중세 | obj_watermill | 912×1044 | front-bottom centre of the foundation on the ground (door threshold line) |  | BS2 물레방아 |
+| [x] | C | obj_saloon | 서부 술집 | 서부 | day, night | 1072×1034 | front-bottom centre of the foundation on the ground (door threshold line) | 빛 emit |  |
+| [x] | C | obj_shack | 폐허 판잣집 | 포스트아포칼립스 | obj_shack | 770×770 | front-bottom centre of the foundation on the ground (door threshold line) |  |  |
+| [x] | C | obj_sf_habitat | SF 거주 모듈 | SF | day, night | 992×608 | front-bottom centre of the foundation on the ground (door threshold line) | 빛 emit |  |
+| [x] | C | obj_lighthouse | 등대 | 해적·바다 | off, on | 592×1292 | front-bottom centre of the foundation on the ground (door threshold line) | 빛 emit |  |
 

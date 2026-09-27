@@ -39,7 +39,7 @@
 - `recipes\palette_g04.json` = V1 `palette_h0_mood.json` 그대로 + 새 재질(식물·바위·물·눈·금·구리·강철·고무·유리·화면·네온·신호등·천·
   지붕·벽토·벽돌·옻칠 등). V1의 윤곽선·그림자·공통 색·재질·스타일은 바꾸지 않았다. 밝기는 V1 범위(종이색이 가장 밝은 면).
 
-## 체크리스트 (15/20 완료)
+## 체크리스트 (20/20 완료)
 
 | 완료 | 단계 | 자산 ID | 이름 | 장르 | 프레임(상태) | 캔버스 | 피벗 뜻 | 빛 | 출처 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -58,9 +58,9 @@
 | [x] | B | obj_bamboo | 대나무 덤불 | 동양 | obj_bamboo | 408×496 | clump base centre on the ground |  |  |
 | [x] | B | obj_cactus | 선인장 | 서부 | obj_cactus | 264×338 | trunk base centre on the ground |  |  |
 | [x] | B | obj_palm | 야자수 | 해적·바다 | obj_palm | 432×592 | trunk base centre on the ground |  |  |
-| [ ] | C | obj_reeds | 갈대 | 중세 |  |  |  |  |  |
-| [ ] | C | obj_rocks_small | 작은 돌 무더기 | 중세 |  |  |  |  |  |
-| [ ] | C | obj_waterfall_rock | 작은 폭포 바위 | 중세 |  |  |  |  | BS2 폭포 |
-| [ ] | C | obj_tree_cherry | 벚나무 | 동양 |  |  |  |  |  |
-| [ ] | C | obj_crystal_rock | 수정 바위 | 중세 |  |  |  |  |  |
+| [x] | C | obj_reeds | 갈대 | 중세 | obj_reeds | 248×262 | clump base centre on the ground |  |  |
+| [x] | C | obj_rocks_small | 작은 돌 무더기 | 중세 | obj_rocks_small | 324×202 | centre of the pile on the ground |  |  |
+| [x] | C | obj_waterfall_rock | 작은 폭포 바위 | 중세 | obj_waterfall_rock | 466×410 | front edge centre of the pool on the ground |  | BS2 폭포 |
+| [x] | C | obj_tree_cherry | 벚나무 | 동양 | obj_tree_cherry | 560×596 | trunk base centre on the ground |  |  |
+| [x] | C | obj_crystal_rock | 수정 바위 | 중세 | off, on | 360×370 | front-bottom centre of the base on the floor | 빛 emit |  |
 

@@ -1,0 +1,355 @@
+{
+ "asset": "obj_floating_book",
+ "status": "candidate",
+ "note": "Floating open book (fantasy) hovering 1 m above the floor with two loose pages; soft floor shadow below.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 625,
+ "pivot_meaning": "floor point directly below the book",
+ "layer_hint": "world",
+ "canvas": [
+  274,
+  308
+ ],
+ "pivot": [
+  139,
+  221
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.25,
+   "blur": 10,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      139,
+      221
+     ],
+     "size": [
+      110,
+      36
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cover",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "leather",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       4.4
+      ],
+      [
+       8.0,
+       2.0
+      ],
+      [
+       14,
+       4.4
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       8.0,
+       11.84
+      ],
+      [
+       2,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      139,
+      101
+     ],
+     "size": [
+      120,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pages",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "paper",
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2.24,
+       4.16
+      ],
+      [
+       8.0,
+       2.0
+      ],
+      [
+       13.76,
+       4.16
+      ],
+      [
+       13.76,
+       12.8
+      ],
+      [
+       8.0,
+       10.88
+      ],
+      [
+       2.24,
+       12.8
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      139,
+      95
+     ],
+     "size": [
+      112,
+      62
+     ]
+    }
+   ]
+  },
+  {
+   "name": "spine",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "paper_mark",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.25
+     },
+     "at": [
+      139.0,
+      92.0
+     ],
+     "size": [
+      54.0,
+      2.5
+     ],
+     "rot": 90.0
+    }
+   ]
+  },
+  {
+   "name": "lines",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "paper_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      111,
+      85.64
+     ],
+     "size": [
+      34,
+      2
+     ],
+     "rot": 12
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      111,
+      93.64
+     ],
+     "size": [
+      34,
+      2
+     ],
+     "rot": 12
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      111,
+      101.64
+     ],
+     "size": [
+      34,
+      2
+     ],
+     "rot": 12
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      111,
+      109.64
+     ],
+     "size": [
+      34,
+      2
+     ],
+     "rot": 12
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      167,
+      85.64
+     ],
+     "size": [
+      34,
+      2
+     ],
+     "rot": -12
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      167,
+      93.64
+     ],
+     "size": [
+      34,
+      2
+     ],
+     "rot": -12
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      167,
+      101.64
+     ],
+     "size": [
+      34,
+      2
+     ],
+     "rot": -12
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      167,
+      109.64
+     ],
+     "size": [
+      34,
+      2
+     ],
+     "rot": -12
+    }
+   ]
+  },
+  {
+   "name": "loose",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "paper",
+   "shade": {
+    "bump": 0.3
+   },
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      59,
+      61
+     ],
+     "size": [
+      28,
+      36
+     ],
+     "rot": -24
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      215,
+      111
+     ],
+     "size": [
+      26,
+      34
+     ],
+     "rot": 30
+    }
+   ]
+  }
+ ]
+}

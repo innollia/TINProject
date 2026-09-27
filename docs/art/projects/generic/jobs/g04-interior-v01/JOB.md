@@ -39,7 +39,7 @@
 - `recipes\palette_g04.json` = V1 `palette_h0_mood.json` 그대로 + 새 재질(식물·바위·물·눈·금·구리·강철·고무·유리·화면·네온·신호등·천·
   지붕·벽토·벽돌·옻칠 등). V1의 윤곽선·그림자·공통 색·재질·스타일은 바꾸지 않았다. 밝기는 V1 범위(종이색이 가장 밝은 면).
 
-## 체크리스트 (17/26 완료)
+## 체크리스트 (26/26 완료)
 
 | 완료 | 단계 | 자산 ID | 이름 | 장르 | 프레임(상태) | 캔버스 | 피벗 뜻 | 빛 | 출처 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -60,13 +60,13 @@
 | [x] | B | obj_counter_shop | 가게 계산대 | 중세 | obj_counter_shop | 510×324 | front-bottom centre of the base on the floor |  |  |
 | [x] | B | obj_sofa | 소파 | 고딕 | obj_sofa | 516×358 | front-bottom centre of the base on the floor |  |  |
 | [x] | B | obj_piano | 피아노 | 고딕 | closed, open | 420×344 | front-bottom centre on the floor; the back face stands on the wall line |  |  |
-| [ ] | C | obj_pendulum | 큰 진자 | 고딕 |  |  |  |  | BS2 진자 |
-| [ ] | C | obj_phonograph | 축음기 | 고딕 |  |  |  |  | BS2 축음기 |
-| [ ] | C | obj_tv_crt | 브라운관 텔레비전 | 현대 |  |  |  |  | BS2 텔레비전 |
-| [ ] | C | obj_wheelchair | 휠체어 | 호러·오컬트 |  |  |  |  | BS2 휠체어 |
-| [ ] | C | obj_floating_book | 떠다니는 책 | 중세 |  |  |  |  | BS2 떠다니는 책 |
-| [ ] | C | obj_balloons | 풍선 다발 | 공통 |  |  |  |  | BS2 풍선 |
-| [ ] | C | obj_doll_large | 큰 인형(앉은 장식) | 호러·오컬트 |  |  |  |  | BS2 인형 |
-| [ ] | C | obj_gear_machine | 톱니바퀴 장치 | 스팀펑크 |  |  |  |  | BS2 톱니바퀴 |
-| [ ] | C | obj_lucky_cat | 복고양이 장식상 | 동양 |  |  |  |  | BS2 복고양이 장식상 |
+| [x] | C | obj_pendulum | 큰 진자 | 고딕 | obj_pendulum | 350×396 | front-bottom centre of the base on the floor |  | BS2 진자 |
+| [x] | C | obj_phonograph | 축음기 | 고딕 | obj_phonograph | 348×434 | front-bottom centre of the base on the floor |  | BS2 축음기 |
+| [x] | C | obj_tv_crt | 브라운관 텔레비전 | 현대 | off, on | 304×396 | front-bottom centre of the base on the floor | 빛 emit | BS2 텔레비전 |
+| [x] | C | obj_wheelchair | 휠체어 | 호러·오컬트 | obj_wheelchair | 294×274 | front-bottom centre of the base on the floor |  | BS2 휠체어 |
+| [x] | C | obj_floating_book | 떠다니는 책 | 중세 | obj_floating_book | 274×308 | floor point directly below the book |  | BS2 떠다니는 책 |
+| [x] | C | obj_balloons | 풍선 다발 | 공통 | obj_balloons | 204×370 | weight centre on the floor |  | BS2 풍선 |
+| [x] | C | obj_doll_large | 큰 인형(앉은 장식) | 호러·오컬트 | obj_doll_large | 248×284 | centre under the seated doll on the floor |  | BS2 인형 |
+| [x] | C | obj_gear_machine | 톱니바퀴 장치 | 스팀펑크 | obj_gear_machine | 370×358 | front-bottom centre of the base on the floor |  | BS2 톱니바퀴 |
+| [x] | C | obj_lucky_cat | 복고양이 장식상 | 동양 | obj_lucky_cat | 228×256 | front-bottom centre of the base on the floor |  | BS2 복고양이 장식상 |
 

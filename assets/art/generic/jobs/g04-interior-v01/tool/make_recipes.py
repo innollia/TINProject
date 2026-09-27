@@ -509,6 +509,182 @@ def obj_piano():
     return a
 
 
+# ============================================================================ C
+@asset
+def obj_pendulum():
+    a = Asset("obj_pendulum", "Great pendulum 2.4 m (gothic clockwork): dark wooden A-frame on a plinth, brass "
+              "suspension and a long rod with a heavy brass bob.", seed=621)
+    a.shadow([R(8, -30, 220, 80, 12)], opacity=0.34, blur=9)
+    a.box("plinth", 0, 0, 210, 70, 18, "stone_dark", corner=4)
+    a.add("frame", [LINE(-84, -18, -14, -250, 16), LINE(84, -18, 14, -250, 16), LINE(-62, -90, 62, -90, 10)], "mass",
+          "wood_dark")
+    a.add("crown", [R(0, -254, 60, 22, 5), E(0, -272, 26, 20)], "mass", "gold")
+    a.flat("rod", [R(0, -170, 5, 150, 2)], "gold")
+    a.add("bob", [E(0, -84, 64, 64)], "mass", "gold", shade={"bump": 1.2, "highlight_amount": 0.8})
+    a.flat("bob_ring", [E(0, -84, 44, 44), E(0, -84, 36, 36, op="sub")], "bronze", opacity=0.8)
+    return a
+
+
+@asset
+def obj_phonograph():
+    a = Asset("obj_phonograph", "Phonograph on a small table (gothic): wooden cabinet, black record with a bone label, "
+              "tone arm, big brass flower horn, crank.", seed=622)
+    a.shadow([R(8, -40, 170, 90, 12)], opacity=0.34, blur=8)
+    t = a.box("table", 0, 0, 150, 90, 8, "wood_dark", lift=62, corner=4)
+    for i, x in enumerate((-64, 64)):
+        a.box(f"leg{i}", x, -4, 10, 8, 62, "wood_dark", corner=2)
+    cab = a.box("cabinet", 0, -8, 116, 76, 40, "wood", lift=70, corner=4)
+    a.flat("record", [E(-6, cab.top_cy, 80, 58)], "soot", line=FINE)
+    a.flat("grooves", [E(-6, cab.top_cy, 60, 42), E(-6, cab.top_cy, 56, 38, op="sub")], "rubber", opacity=0.8)
+    a.flat("label", [E(-6, cab.top_cy, 20, 14)], "paper")
+    a.add("arm", [LINE(40, cab.top_cy - 16, 8, cab.top_cy - 6, 5)], "mass", "gold", line=FINE)
+    a.add("horn", [POLY([(0.0, 0.42), (0.7, 0.0), (1.0, 0.0), (1.0, 1.0), (0.7, 1.0), (0.0, 0.58)], 60, -220, 150, 130,
+                        rot=-30)], "mass", "gold", shade={"bump": 1.0, "highlight_amount": 0.7})
+    a.flat("horn_mouth", [E(114, -262, 60, 120, rot=-30)], "bronze", line=FINE)
+    a.flat("horn_inside", [E(116, -264, 40, 96, rot=-30)], "hole", opacity=0.8)
+    a.add("crank", [LINE(58, cab.front_cy, 76, cab.front_cy + 4, 4), E(78, cab.front_cy + 4, 8, 8)], "mass", "gold",
+          line=FINE)
+    return a
+
+
+@asset
+def obj_tv_crt():
+    a = Asset("obj_tv_crt", "Old CRT television (modern / horror) on a low cabinet: wood-grain plastic case, bulging "
+              "screen, knobs, rabbit-ear antenna. Frames: off, on (static glow, emit).", seed=623)
+    a.shadow([R(8, -40, 180, 100, 12)], opacity=0.34, blur=8)
+    a.box("cabinet", 0, 0, 170, 92, 42, "wood_dark", corner=4)
+    tv = a.box("case", 0, -8, 140, 80, 104, "wood", lift=42, corner=10)
+    a.flat("bezel", [R(-12, tv.front_cy, 106, 88, 12)], "plastic", line=THIN)
+    a.add("screen_off", [R(-12, tv.front_cy, 90, 72, 16)], "mass", "glass_dark", tags=["off"],
+          shade={"bump": 0.6, "highlight_amount": 0.7})
+    a.flat("screen_on", [R(-12, tv.front_cy, 90, 72, 16)], "screen_on", tags=["on"], hidden=True, emit=0.8,
+           glow={"radius": 8, "opacity": 0.45, "color": "screen_glow"})
+    a.flat("static", [R(-12, tv.front_cy - 30 + k * 7, 86, 2, 1) for k in range(9)], "chrome", opacity=0.35,
+           tags=["on"], hidden=True, clip_to="screen_on")
+    a.flat("knobs", [E(56, tv.front_cy - 22, 12, 12), E(56, tv.front_cy, 12, 12), R(56, tv.front_cy + 24, 12, 16, 2)],
+           "plastic", line=FINE)
+    a.flat("antenna", [LINE(10, tv.top_cy, -30, tv.top_cy - 90, 3), LINE(10, tv.top_cy, 48, tv.top_cy - 84, 3),
+                       E(10, tv.top_cy, 20, 10)], "chrome", line=FINE)
+    a.frame("off", state="off")
+    a.frame("on", state="on", show=["on"], hide=["off"], light={"color": "#7ed0c8", "radius": 240,
+                                                             "at": [-12, tv.front_cy]})
+    return a
+
+
+@asset
+def obj_wheelchair():
+    a = Asset("obj_wheelchair", "Old wheelchair facing east (horror / hospital): two big spoked wheels, stained cloth "
+              "seat and back, push handles, small front caster, footrest.", seed=624)
+    a.shadow([R(10, -40, 170, 80, 14)], opacity=0.34, blur=8)
+    a.add("wheel_far", [E(-6, -112, 118, 76), E(-6, -112, 100, 62, op="sub")], "mass", "rubber")
+    a.flat("spokes_far", [I("wheel", -6, -112, 94, 60)], "chrome", opacity=0.5)
+    a.add("frame", [LINE(-40, -150, -44, -60, 6), LINE(-44, -60, 50, -60, 6), LINE(50, -60, 70, -20, 6),
+                    LINE(-40, -150, -60, -170, 6), LINE(56, -20, 80, -18, 6)], "mass", "chrome", line=FINE)
+    a.add("seat", [R(4, -76, 96, 56, 8)], "mass", "cloth_blue", shade={"bump": 0.7})
+    a.add("back", [R(-42, -116, 22, 86, 6)], "mass", "cloth_blue", shade={"bump": 0.7})
+    a.wash("stains", [I("metaballs", 0, -80, 50, 30), I("droplet", -40, -110, 14, 30)], "grime", opacity=0.5,
+           clip_to="seat")
+    a.add("caster", [E(66, -8, 18, 16)], "mass", "rubber", line=FINE)
+    a.add("wheel", [E(-6, -44, 124, 82)], "mass", "rubber", shade={"bump": 0.9})
+    a.flat("rim", [E(-6, -44, 106, 70), E(-6, -44, 96, 62, op="sub")], "chrome", line=FINE)
+    a.flat("spokes", [I("wheel", -6, -44, 94, 60)], "chrome", opacity=0.8, clip_to="wheel")
+    return a
+
+
+@asset
+def obj_floating_book():
+    a = Asset("obj_floating_book", "Floating open book (fantasy) hovering 1 m above the floor with two loose pages; "
+              "soft floor shadow below.", seed=625, pivot_meaning="floor point directly below the book")
+    ellipse_shadow(a, 0, 0, 110, 36, opacity=0.25, blur=10)
+    y = -120
+    a.add("cover", [POLY([(0, 0.2), (0.5, 0.0), (1, 0.2), (1, 1), (0.5, 0.82), (0, 1)], 0, y, 120, 70)], "mass",
+          "leather")
+    a.add("pages", [POLY([(0.02, 0.18), (0.5, 0.0), (0.98, 0.18), (0.98, 0.9), (0.5, 0.74), (0.02, 0.9)], 0, y - 6, 112,
+                         62)], "mass", "paper", shade={"bump": 0.4})
+    a.flat("spine", [LINE(0, y - 36, 0, y + 18, 2.5)], "paper_mark")
+    a.flat("lines", [R(x, y - 12 + k * 8 + (abs(x) * -0.12), 34, 2, 1, rot=12 if x < 0 else -12)
+                     for x in (-28, 28) for k in range(4)], "paper_mark", opacity=0.8)
+    a.add("loose", [R(-80, y - 40, 28, 36, 2, rot=-24), R(76, y + 10, 26, 34, 2, rot=30)], "mass", "paper",
+          shade={"bump": 0.3}, line=FINE)
+    return a
+
+
+@asset
+def obj_balloons():
+    a = Asset("obj_balloons", "Bunch of five balloons tied to a small iron weight, strings, about 2 m high.", seed=626,
+              pivot_meaning="weight centre on the floor")
+    ellipse_shadow(a, 4, -2, 50, 16, opacity=0.34, blur=5)
+    a.add("weight", [R(0, -10, 26, 20, 5)], "mass", "iron")
+    tops = [(-40, -200, "cloth_wine"), (-6, -236, "cloth_blue"), (32, -204, "petal_ochre"), (-24, -170, "cloth_green"),
+            (16, -168, "cloth_pale")]
+    a.flat("strings", [LINE(0, -20, x, y + 34, 1.6) for x, y, _ in tops], "paper_mark")
+    for i, (x, y, mat) in enumerate(sorted(tops, key=lambda t: t[1])):
+        a.add(f"balloon{i}", [I("balloon", x, y, 56, 74, crop=[1, 0.5, 15, 13.5])], "mass", mat,
+              shade={"bump": 1.2, "highlight_amount": 0.8})
+    return a
+
+
+@asset
+def obj_doll_large():
+    a = Asset("obj_doll_large", "Large porcelain doll sitting on the floor (horror / occult), 0.8 m: pale face with "
+              "dark hollow eyes, dark hair, wine dress with lace collar, limp arms, legs forward.", seed=627,
+              pivot_meaning="centre under the seated doll on the floor")
+    ellipse_shadow(a, 6, -8, 130, 40, opacity=0.34, blur=7)
+    a.add("legs", [R(-18, 4, 22, 46, 10, rot=-8), R(18, 6, 22, 46, 10, rot=8)], "mass", "cloth_pale")
+    a.add("shoes", [E(-22, 26, 26, 16), E(24, 28, 26, 16)], "mass", "leather", line=FINE)
+    a.add("dress", [POLY([(0.3, 0), (0.7, 0), (1, 1), (0, 1)], 0, -40, 110, 84)], "mass", "cloth_wine",
+          shade={"bump": 0.8})
+    a.add("arms", [R(-52, -44, 18, 58, 8, rot=10), R(52, -44, 18, 58, 8, rot=-10)], "mass", "cloth_wine")
+    a.add("hands", [E(-56, -12, 16, 14), E(56, -12, 16, 14)], "mass", "paper", line=FINE)
+    a.flat("collar", [I("cloud", 0, -80, 60, 22)], "cloth_pale", line=FINE)
+    a.add("hair_back", [E(0, -118, 88, 84)], "mass", "hair")
+    a.add("face", [E(0, -112, 64, 66)], "mass", "paper", shade={"bump": 0.9, "highlight_amount": 0.6})
+    a.flat("eyes", [E(-13, -112, 13, 15), E(13, -112, 13, 15)], "hole")
+    a.flat("mouth", [R(0, -92, 10, 3, 1)], "cloth_wine")
+    a.flat("cracks", [LINE(16, -136, 6, -120, 1.6), LINE(6, -120, 12, -108, 1.4)], "soot", opacity=0.7, clip_to="face")
+    a.add("fringe", [I("cloud", 0, -142, 76, 30), E(-36, -100, 20, 60), E(36, -100, 20, 60)], "mass", "hair")
+    a.add("bow", [E(-18, -160, 24, 14, rot=-20), E(18, -160, 24, 14, rot=20), E(0, -158, 10, 10)], "mass", "cloth_wine",
+          line=FINE)
+    return a
+
+
+@asset
+def obj_gear_machine():
+    a = Asset("obj_gear_machine", "Clockwork gear machine (steampunk) 1.6 m: iron frame on a plinth with meshing copper "
+              "and brass gears, a flywheel, axle bolts and a lever.", seed=628)
+    a.shadow([R(8, -40, 240, 90, 14)], opacity=0.34, blur=9)
+    a.box("plinth", 0, 0, 220, 80, 22, "iron", corner=4)
+    a.add("frame", [R(-90, -110, 14, 176, 3), R(90, -110, 14, 176, 3), R(0, -196, 194, 14, 3), R(0, -30, 194, 14, 3)],
+          "mass", "iron")
+    gears = [(-40, -130, 110, "copper"), (40, -84, 70, "gold"), (44, -160, 54, "copper"), (-52, -62, 44, "gold")]
+    for i, (x, y, d, mat) in enumerate(gears):
+        a.add(f"gear{i}", [I("cog", x, y, d)], "mass", mat, shade={"bump": 0.9, "highlight_amount": 0.7})
+        a.flat(f"gear{i}_hub", [E(x, y, d * 0.28, d * 0.28)], "iron", line=FINE)
+    a.add("governor", [R(0, -214, 6, 30, 2), LINE(0, -226, -20, -240, 4), LINE(0, -226, 20, -240, 4),
+                       E(-22, -242, 14, 14), E(22, -242, 14, 14)], "mass", "gold", line=FINE)
+    a.add("lever", [LINE(92, -60, 128, -110, 6), E(130, -114, 14, 14)], "mass", "iron", line=FINE)
+    return a
+
+
+@asset
+def obj_lucky_cat():
+    a = Asset("obj_lucky_cat", "Beckoning lucky cat statue (eastern) 0.6 m: pale glazed ceramic, raised paw, wine "
+              "collar with a brass bell, gold coin, on a lacquer stand.", seed=629)
+    ellipse_shadow(a, 6, -10, 110, 36, opacity=0.34, blur=7)
+    a.box("stand", 0, 0, 100, 60, 16, "lacquer_red", corner=5)
+    a.add("body", [E(0, -56, 76, 70)], "mass", "petal_pale", shade={"bump": 1.1})
+    a.add("coin", [E(8, -52, 34, 24)], "mass", "gold", line=FINE)
+    a.flat("coin_mark", [R(8, -52, 12, 3, 1)], "bronze")
+    a.add("paw_raised", [R(-34, -106, 22, 44, 10), E(-34, -130, 26, 22)], "mass", "petal_pale")
+    a.add("head", [I("cat", 0, -118, 76, 64, crop=[0.5, 0.5, 15.5, 15.5])], "mass", "petal_pale",
+          shade={"bump": 1.0})
+    a.flat("face", [E(-12, -114, 7, 9), E(12, -114, 7, 9), R(0, -104, 4, 3, 1)], "soot")
+    a.flat("ears_in", [I("triangle", -22, -142, 10, 10), I("triangle", 22, -142, 10, 10)], "petal_wine", opacity=0.8)
+    a.flat("collar", [R(0, -90, 58, 8, 3)], "cloth_wine", line=FINE)
+    a.add("bell", [E(0, -84, 14, 14)], "mass", "gold", line=FINE)
+    return a
+
+
 # ============================================================================ main
 def main() -> int:
     names = sys.argv[1:] or list(ASSETS)

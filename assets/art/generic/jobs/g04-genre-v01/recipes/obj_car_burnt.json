@@ -1,0 +1,424 @@
+{
+ "asset": "obj_car_burnt",
+ "status": "candidate",
+ "note": "Burnt-out car wreck (post-apocalypse): charred and rusted hatchback body sitting on its rims, empty window holes, crumpled bonnet, soot.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 927,
+ "pivot_meaning": "centre of the car's near-side ground line",
+ "layer_hint": "world",
+ "canvas": [
+  860,
+  478
+ ],
+ "pivot": [
+  406,
+  390
+ ],
+ "footprint": [
+  64,
+  134,
+  748,
+  384
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.4,
+   "blur": 14,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 60
+     },
+     "at": [
+      430,
+      272
+     ],
+     "size": [
+      700,
+      250
+     ]
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "z": 2.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 58,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 46
+     },
+     "at": [
+      406,
+      191.0
+     ],
+     "size": [
+      684,
+      250
+     ]
+    }
+   ]
+  },
+  {
+   "name": "char",
+   "z": 3.0,
+   "kind": "wash",
+   "material": "soot",
+   "opacity": 0.6,
+   "clip_to": "body",
+   "blend": "multiply",
+   "pieces": [
+    {
+     "icon": "metaballs",
+     "at": [
+      306,
+      191.0
+     ],
+     "size": [
+      400,
+      200
+     ]
+    },
+    {
+     "icon": "cloud",
+     "at": [
+      606,
+      345.0
+     ],
+     "size": [
+      300,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rust",
+   "z": 4.0,
+   "kind": "wash",
+   "material": "rust",
+   "opacity": 0.65,
+   "clip_to": "body",
+   "blend": "multiply",
+   "pieces": [
+    {
+     "icon": "sponge",
+     "at": [
+      506,
+      191.0
+     ],
+     "size": [
+      300,
+      180
+     ]
+    },
+    {
+     "icon": "metaballs",
+     "at": [
+      186,
+      345.0
+     ],
+     "size": [
+      200,
+      50
+     ]
+    }
+   ]
+  },
+  {
+   "name": "arches",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "hole",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      180,
+      356
+     ],
+     "size": [
+      126,
+      84
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      620,
+      356
+     ],
+     "size": [
+      126,
+      84
+     ]
+    }
+   ]
+  },
+  {
+   "name": "glasshouse",
+   "z": 6.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 58,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 34
+     },
+     "at": [
+      380,
+      131.0
+     ],
+     "size": [
+      392,
+      186
+     ]
+    }
+   ]
+  },
+  {
+   "name": "window_holes",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "hole",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "at": [
+      266,
+      253.0
+     ],
+     "size": [
+      150,
+      44
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "at": [
+      466,
+      253.0
+     ],
+     "size": [
+      150,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "roof",
+   "z": 8.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 30
+     },
+     "at": [
+      366,
+      125.0
+     ],
+     "size": [
+      330,
+      164
+     ]
+    }
+   ]
+  },
+  {
+   "name": "roof_rust",
+   "z": 9.0,
+   "kind": "wash",
+   "material": "rust",
+   "opacity": 0.6,
+   "clip_to": "roof",
+   "blend": "multiply",
+   "pieces": [
+    {
+     "icon": "sponge",
+     "at": [
+      366,
+      125.0
+     ],
+     "size": [
+      260,
+      140
+     ]
+    }
+   ]
+  },
+  {
+   "name": "windscreen_hole",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "hole",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      556,
+      129.0
+     ],
+     "size": [
+      40,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rim0",
+   "z": 11.0,
+   "kind": "mass",
+   "material": "iron",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      180,
+      366
+     ],
+     "size": [
+      90,
+      56
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      180,
+      366
+     ],
+     "size": [
+      60,
+      36
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "rim1",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "iron",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      620,
+      366
+     ],
+     "size": [
+      90,
+      56
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      620,
+      366
+     ],
+     "size": [
+      60,
+      36
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "bonnet",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "iron",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       4.4
+      ],
+      [
+       6.8,
+       2
+      ],
+      [
+       14,
+       5.6
+      ],
+      [
+       12.8,
+       14
+      ],
+      [
+       3.2,
+       11.6
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      668,
+      181.0
+     ],
+     "size": [
+      120,
+      170
+     ]
+    }
+   ]
+  }
+ ]
+}

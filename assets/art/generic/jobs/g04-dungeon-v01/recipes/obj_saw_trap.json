@@ -1,0 +1,244 @@
+{
+ "asset": "obj_saw_trap",
+ "status": "candidate",
+ "note": "Floor saw-blade trap: riveted iron floor plate with a long slot. Frames: hidden (slot only), out (toothed blade risen from the slot).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 524,
+ "pivot_meaning": "front edge centre of the plate on the floor",
+ "layer_hint": "floor",
+ "canvas": [
+  316,
+  212
+ ],
+ "pivot": [
+  158,
+  174
+ ],
+ "forms": [
+  {
+   "name": "plate",
+   "z": 1.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 5,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      158,
+      114.0
+     ],
+     "size": [
+      240,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plate_rivets",
+   "z": 2.0,
+   "kind": "flat",
+   "material": "bronze",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      50,
+      71.0
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      50,
+      157.0
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      266,
+      71.0
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      266,
+      157.0
+     ],
+     "size": [
+      6,
+      5.4
+     ]
+    }
+   ]
+  },
+  {
+   "name": "slot",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "hole",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      158,
+      114.0
+     ],
+     "size": [
+      190,
+      10
+     ]
+    }
+   ]
+  },
+  {
+   "name": "blade",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "steel",
+   "tags": [
+    "out"
+   ],
+   "hidden": true,
+   "shade": {
+    "highlight": 0.8,
+    "highlight_amount": 0.8
+   },
+   "pieces": [
+    {
+     "icon": "cog",
+     "at": [
+      158,
+      90.0
+     ],
+     "size": [
+      160,
+      104
+     ],
+     "crop": [
+      0.3,
+      0.3,
+      15.7,
+      8.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "blade_hub",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "out"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      158,
+      112.0
+     ],
+     "size": [
+      30,
+      14
+     ],
+     "half": "top",
+     "fit": [
+      1,
+      1,
+      15,
+      15
+     ]
+    }
+   ]
+  },
+  {
+   "name": "slot_front",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "out"
+   ],
+   "hidden": true,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      158,
+      117.0
+     ],
+     "size": [
+      190,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "stain",
+   "z": 7.0,
+   "kind": "wash",
+   "material": "rust",
+   "opacity": 0.35,
+   "blur": 6,
+   "blend": "multiply",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      198,
+      124.0
+     ],
+     "size": [
+      120,
+      40
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "hidden",
+   "state": "hidden"
+  },
+  {
+   "name": "out",
+   "state": "out",
+   "show": [
+    "out"
+   ]
+  }
+ ]
+}

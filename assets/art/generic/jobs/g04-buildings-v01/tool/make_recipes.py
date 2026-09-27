@@ -460,6 +460,180 @@ def obj_house_east():
     return a
 
 
+# ============================================================================ C
+@asset
+def obj_watermill():
+    a = Asset("obj_watermill", "Watermill: small stone mill house with its gable facing south, big wooden water wheel "
+              "on the east side turning in a stone channel of dark water.", seed=821, pivot_meaning=BASE)
+    W, D = 480, 400
+    a.shadow([R(80, -200, W + 260, D + 30, 30)], opacity=0.38, blur=16)
+    a.box("channel", 320, 20, 120, 330, 30, "stone_dark", corner=4)
+    a.flat("water", [R(320, -150, 90, 300, 4)], "water", line=FINE)
+    a.flat("water_streaks", [R(320 + dx, -150, 3, 290, 1) for dx in (-30, -10, 10, 30)], "chrome", opacity=0.25,
+           clip_to="water")
+    a.box("footing", 0, 6, W + 16, D + 12, 30, "rock", corner=6)
+    wall = a.box("wall", 0, 0, W, D, 220, "stone", lift=30, corner=4)
+    a.flat("masonry", [I("brick_wall", x, wall.front_cy, 250, 230, invert=True, crop=[1.2, 1.2, 14.8, 14.8],
+                         fit=[1.2, 1.2, 14.8, 14.8]) for x in (-120, 120)], "floor_joint", opacity=0.35,
+           clip_to="wall")
+    door(a, "door", -90, 120, 180)
+    window(a, "win", 110, -150, 80, 70)
+    gable_front_roof(a, "roof", wall.top1, W, D, 190, "thatch", gable="plaster", step=20, dash=28)
+    cx, cy = 320, -170
+    a.add("wheel_back", [E(cx, cy - 20, 250, 250), E(cx, cy - 20, 206, 206, op="sub")], "mass", "wood_dark")
+    paddles = []
+    for k in range(12):
+        t = 2 * math.pi * k / 12
+        paddles.append(R(cx + math.cos(t) * 116, cy + math.sin(t) * 116, 44, 16, 3, rot=math.degrees(t)))
+    a.add("paddles", paddles, "mass", "wood")
+    a.add("wheel", [E(cx, cy, 250, 250), E(cx, cy, 210, 210, op="sub")], "mass", "wood", shade={"bump": 0.7})
+    a.flat("spokes", [LINE(cx - math.cos(math.radians(a_)) * 104, cy - math.sin(math.radians(a_)) * 104,
+                           cx + math.cos(math.radians(a_)) * 104, cy + math.sin(math.radians(a_)) * 104, 9)
+                      for a_ in (0, 45, 90, 135)], "wood_dark", line=FINE)
+    a.add("hub", [E(cx, cy, 44, 44)], "mass", "iron", line=THIN)
+    a.footprint = (-W / 2 - 8, -D - 6, 385, 20)
+    return a
+
+
+@asset
+def obj_saloon():
+    a = Asset("obj_saloon", "Western saloon 5 m wide: tall plank false front with a blank sign board, covered "
+              "boardwalk porch on posts, swinging half doors, two windows, upper balcony door. Frames: day, night.",
+              seed=822, pivot_meaning=BASE)
+    W, D = 820, 520
+    a.shadow([R(24, -240, W + 80, D + 40, 30)], opacity=0.38, blur=16)
+    a.box("body_roof", 0, -40, W - 20, D - 40, 12, "wood_dark", lift=320, corner=4)
+    wall = a.box("wall", 0, 0, W, D, 330, "wood", lift=20, corner=4)
+    a.flat("boards", [R(0, y, W, 2.4, 1) for y in range(-40, -350, -24)], "wood_dark", opacity=0.5, clip_to="wall")
+    front = [(0, 1), (0, 0.18), (0.1, 0.18), (0.1, 0.06), (0.3, 0.06), (0.3, 0.0), (0.7, 0.0), (0.7, 0.06), (0.9, 0.06),
+             (0.9, 0.18), (1, 0.18), (1, 1)]
+    a.add("false_front", [POLY(front, 0, -480, W + 20, 200)], "mass", "wood_pale", shade={"bump": 0.2},
+          texture={"angle": 0})
+    a.flat("false_front_boards", [R(0, y, W + 20, 2.4, 1) for y in range(-420, -560, -22)], "wood_dark", opacity=0.45,
+           clip_to="false_front")
+    a.flat("cornice", [R(0, -574, 0.4 * (W + 20), 10, 2), R(-0.3 * (W + 20), -562, 0.2 * (W + 20), 9, 2),
+                       R(0.3 * (W + 20), -562, 0.2 * (W + 20), 9, 2), R(-0.45 * (W + 20), -538, 0.1 * (W + 20), 8, 2),
+                       R(0.45 * (W + 20), -538, 0.1 * (W + 20), 8, 2)], "wood_dark", line=FINE)
+    a.flat("sign", [R(0, -470, 380, 70, 4)], "cloth_ochre", line=THIN)
+    a.flat("sign_frame", [R(0, -470, 380, 70, 4), R(0, -470, 360, 54, 3, op="sub")], "wood_dark")
+    lights = []
+    for i, x in enumerate((-260, 260)):
+        window(a, f"win{i}", x, -130, 110, 100, shutters=None, panes=(2, 3))
+        lights.append({"color": WINDOW, "radius": 260, "at": [x, -130]})
+    a.flat("door_void", [R(0, -110, 150, 200, 3)], "hole")
+    for i, x in enumerate((-37, 37)):
+        a.add(f"batwing{i}", [R(x, -120, 70, 90, 6)], "mass", "wood_pale", shade={"bump": 0.4})
+        a.flat(f"batwing{i}_slats", [R(x, -120 + k * 14 - 28, 60, 3, 1) for k in range(5)], "wood_dark", opacity=0.6)
+    window(a, "balcony_door", 0, -290, 90, 110, shutters=None, panes=(2, 3))
+    lights.append({"color": WINDOW, "radius": 220, "at": [0, -290]})
+    a.box("balcony", 0, 40, W - 60, 60, 10, "wood_dark", lift=224, corner=3)
+    a.flat("balcony_rail", [R(x, -262, 5, 36, 2) for x in range(-360, 380, 30)] + [R(0, -280, W - 60, 6, 2)],
+           "wood_dark")
+    a.box("porch_floor", 0, 60, W + 40, 100, 20, "wood_dark", corner=3)
+    for i, x in enumerate((-390, -130, 130, 390)):
+        a.box(f"porch_post{i}", x, 56, 16, 14, 204, "wood", lift=20, corner=2)
+    a.box("porch_roof", 0, 70, W + 60, 110, 12, "wood_dark", lift=212, corner=3)
+    night(a, lights)
+    a.footprint = (-W / 2 - 20, -D - 6, W / 2 + 20, 60)
+    return a
+
+
+@asset
+def obj_shack():
+    a = Asset("obj_shack", "Post-apocalypse shack 3 x 2.5 m: patchwork of rusty corrugated sheets and planks, lean-to "
+              "roof of metal sheets and a blue tarp, boarded window, crooked door, stove pipe, junk at the wall.",
+              seed=823, pivot_meaning=BASE)
+    W, D = 540, 390
+    a.shadow([R(24, -190, W + 70, D + 30, 24)], opacity=0.38, blur=14)
+    wall = a.box("wall", 0, 0, W, D, 230, "steel", corner=4)
+    a.flat("ribs", [R(x, wall.front_cy, 5, 230, 2) for x in range(-250, 260, 18)], "steel_light", opacity=0.4,
+           clip_to="wall")
+    a.add("patch_planks", [R(-150, -140, 150, 150, 3)], "mass", "wood_pale", texture={"angle": 90})
+    a.flat("patch_joints", [R(-150 + dx, -140, 2.2, 148, 1) for dx in (-50, -18, 14, 46)], "wood_dark", opacity=0.6)
+    a.wash("rust", [I("metaballs", 140, -120, 220, 180), I("cloud", -40, -40, 200, 60)], "rust", opacity=0.55, blur=5,
+           clip_to="wall")
+    a.flat("window_boards", [R(-150, -150, 90, 70, 3)], "hole")
+    a.add("boards_x", [LINE(-196, -186, -104, -114, 12), LINE(-196, -114, -104, -186, 12)], "mass", "wood")
+    a.add("door", [POLY([(0.05, 0), (1, 0.04), (0.95, 1), (0, 0.98)], 110, -94, 110, 188)], "mass", "wood_dark",
+          texture={"angle": 90})
+    a.flat("door_handle", [R(146, -96, 6, 16, 2)], "iron")
+    roof = [(0.0, 0.0), (1.0, 0.12), (1.0, 1.0), (0.0, 0.92)]
+    a.add("roof", [POLY(roof, 0, -230 - D / 2 - 30, W + 80, D * 0.9)], "block", "steel", extrude=10)
+    a.flat("roof_ribs", [R(x, -230 - D / 2 - 30, 5, D * 0.9, 2) for x in range(-300, 310, 22)], "steel_light",
+           opacity=0.35, clip_to="roof")
+    a.add("tarp", [POLY([(0, 0.1), (0.9, 0), (1, 0.8), (0.1, 1)], -120, -300, 260, 160)], "mass", "cloth_blue",
+          shade={"bump": 0.6})
+    a.wash("roof_rust", [I("sponge", 150, -340, 200, 120)], "rust", opacity=0.45, blur=4, clip_to="roof")
+    a.box("pipe", 190, -250, 22, 18, 120, "iron", lift=230, corner=6)
+    a.add("junk", [E(-250, -10, 70, 40), E(-250, -10, 34, 18, op="sub"), R(250, -24, 50, 48, 4)], "mass", "rubber",
+          line=THIN)
+    a.footprint = (-W / 2, -D, W / 2, 0)
+    return a
+
+
+@asset
+def obj_sf_habitat():
+    a = Asset("obj_sf_habitat", "SF habitat module 4 m: rounded pale steel capsule on landing struts, porthole band, "
+              "airlock door with ramp, antenna dish and a solar panel. Frames: day, night (portholes and door strip "
+              "lit, emit).", seed=824, pivot_meaning=BASE)
+    a.shadow([E(30, -150, 820, 320)], opacity=0.36, blur=16)
+    for x in (-270, -90, 90, 270):
+        a.add(f"strut_{x}", [LINE(x, -10, x * 0.8, -100, 12)], "mass", "steel")
+        a.add(f"foot_{x}", [E(x, -8, 36, 16)], "mass", "steel", line=FINE)
+    a.add("hull", [R(0, -230, 660, 280, 130)], "mass", "steel_light", shade={"bump": 1.1})
+    a.flat("seams", [R(x, -230, 3, 270, 1) for x in (-200, 0, 200)] + [R(0, -170, 640, 3, 1)], "soot", opacity=0.4,
+           clip_to="hull")
+    a.flat("band", [R(0, -236, 640, 40, 6)], "steel", opacity=0.9, clip_to="hull")
+    lights = []
+    for i, x in enumerate((-230, -140, 140, 230)):
+        a.flat(f"port{i}_frame", [E(x, -236, 42, 32)], "steel", line=FINE)
+        a.add(f"port{i}", [E(x, -236, 30, 22)], "mass", "glass_dark", tags=["day"])
+        a.flat(f"port{i}_lit", [E(x, -236, 30, 22)], "screen_on", tags=["night"], hidden=True, emit=0.9,
+               glow={"radius": 6, "opacity": 0.5, "color": "screen_glow"})
+        lights.append({"color": "#7ed0c8", "radius": 180, "at": [x, -236]})
+    a.flat("door_frame", [R(0, -150, 120, 170, 20)], "steel", line=THIN)
+    a.add("door", [R(0, -150, 96, 150, 16)], "mass", "steel_light", shade={"bump": 0.4})
+    a.flat("door_strip_off", [R(0, -236, 60, 6, 2)], "signal_off", tags=["day"])
+    a.flat("door_strip_on", [R(0, -236, 60, 6, 2)], "signal_amber", tags=["night"], hidden=True, emit=1.0,
+           glow={"radius": 5, "opacity": 0.6, "color": "signal_amber_glow"})
+    a.add("ramp", [POLY([(0.1, 0), (0.9, 0), (1, 1), (0, 1)], 0, -40, 130, 80)], "block", "steel", extrude=6)
+    a.add("dish", [LINE(220, -370, 240, -420, 6), E(250, -440, 80, 40, rot=-20)], "mass", "steel_light", line=THIN)
+    a.add("panel", [R(-200, -400, 180, 70, 4, skew=[10, 0])], "mass", "cloth_blue", shade={"bump": 0.3})
+    a.flat("panel_grid", [I("grid_fine", -200, -400, 170, 60, crop=[1, 1, 15, 15], skew=[10, 0])], "steel", opacity=0.7)
+    a.flat("panel_mast", [R(-200, -358, 6, 30, 2)], "steel")
+    night(a, lights)
+    a.footprint = (-330, -300, 330, 0)
+    return a
+
+
+@asset
+def obj_lighthouse():
+    a = Asset("obj_lighthouse", "Lighthouse about 14 m (pirate / sea): rock base, tapering tower with wine and bone "
+              "bands, small door and windows, gallery with railing, glazed lantern room, dark cap. Frames: off, on "
+              "(lamp lit, emit).", seed=825, pivot_meaning=BASE)
+    a.shadow([E(30, -120, 420, 260)], opacity=0.36, blur=16)
+    a.add("rocks", [POLY([(0, 0.7), (0.15, 0.2), (0.45, 0.0), (0.8, 0.1), (1, 0.6), (0.85, 1), (0.1, 1)], 0, -40, 400,
+                         110)], "mass", "rock_dark", shade={"bump": 1.0})
+    tower = [(0.24, 0.0), (0.76, 0.0), (1.0, 1.0), (0.0, 1.0)]
+    a.add("tower", [POLY(tower, 0, -520, 250, 920)], "mass", "plaster_pale", shade={"bump": 0.6})
+    a.flat("bands", [R(0, y, 300, 110, 2) for y in (-260, -520, -780)], "cloth_wine", opacity=0.9, clip_to="tower")
+    a.flat("tower_shade", [POLY([(0.55, 0.0), (0.76, 0.0), (1.0, 1.0), (0.66, 1.0)], 0, -520, 250, 920)], "soot",
+           opacity=0.28, clip_to="tower")
+    a.flat("door", [I("bullet", 0, -110, 110, 60, rot=-90)], "wood_dark", line=THIN)
+    a.flat("windows", [R(20, -420, 24, 36, 3), R(-16, -660, 22, 32, 3)], "glass_dark", line=THIN)
+    g = a.cyl("gallery", 0, -980 + 10, 190, 14, "iron", lift=0)
+    a.flat("rail", [R(x, -1000, 4, 30, 1) for x in range(-90, 100, 18)] + [R(0, -1014, 190, 5, 2)], "iron")
+    a.add("lantern_off", [R(0, -1040, 110, 80, 10)], "mass", "glass_dark", tags=["off"])
+    a.add("lantern_on", [R(0, -1040, 110, 80, 10)], "mass", "glass", tags=["on"], hidden=True, emit=0.95,
+          glow={"radius": 16, "opacity": 0.6, "color": "lamp_glow"})
+    a.flat("mullions", [R(x, -1040, 5, 80, 1) for x in (-36, 0, 36)], "iron")
+    a.add("cap", [POLY([(0.5, 0), (1, 1), (0, 1)], 0, -1110, 140, 70), E(0, -1150, 16, 16)], "mass", "iron")
+    a.frame("off", state="off")
+    a.frame("on", state="on", show=["on"], hide=["off"], light={"color": "#ffc987", "radius": 900, "at": [0, -1040]})
+    a.footprint = (-140, -60, 140, 0)
+    return a
+
+
 # ============================================================================ main
 def main() -> int:
     names = sys.argv[1:] or list(ASSETS)

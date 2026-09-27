@@ -1,0 +1,463 @@
+{
+ "asset": "obj_tv_crt",
+ "status": "candidate",
+ "note": "Old CRT television (modern / horror) on a low cabinet: wood-grain plastic case, bulging screen, knobs, rabbit-ear antenna. Frames: off, on (static glow, emit).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 623,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  304,
+  396
+ ],
+ "pivot": [
+  144,
+  323
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.34,
+   "blur": 8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "at": [
+      152,
+      283
+     ],
+     "size": [
+      180,
+      100
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cabinet",
+   "z": 2.0,
+   "kind": "block",
+   "material": "wood_dark",
+   "extrude": 42,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      144,
+      235.0
+     ],
+     "size": [
+      170,
+      92
+     ]
+    }
+   ]
+  },
+  {
+   "name": "case",
+   "z": 3.0,
+   "kind": "block",
+   "material": "wood",
+   "extrude": 104,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      144,
+      129.0
+     ],
+     "size": [
+      140,
+      80
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bezel",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "plastic",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 12
+     },
+     "at": [
+      132,
+      221.0
+     ],
+     "size": [
+      106,
+      88
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screen_off",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "off"
+   ],
+   "shade": {
+    "bump": 0.6,
+    "highlight_amount": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      132,
+      221.0
+     ],
+     "size": [
+      90,
+      72
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screen_on",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "screen_on",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.8,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.45,
+    "color": "screen_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 16
+     },
+     "at": [
+      132,
+      221.0
+     ],
+     "size": [
+      90,
+      72
+     ]
+    }
+   ]
+  },
+  {
+   "name": "static",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "chrome",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "opacity": 0.35,
+   "clip_to": "screen_on",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      132,
+      191.0
+     ],
+     "size": [
+      86,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      132,
+      198.0
+     ],
+     "size": [
+      86,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      132,
+      205.0
+     ],
+     "size": [
+      86,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      132,
+      212.0
+     ],
+     "size": [
+      86,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      132,
+      219.0
+     ],
+     "size": [
+      86,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      132,
+      226.0
+     ],
+     "size": [
+      86,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      132,
+      233.0
+     ],
+     "size": [
+      86,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      132,
+      240.0
+     ],
+     "size": [
+      86,
+      2
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      132,
+      247.0
+     ],
+     "size": [
+      86,
+      2
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knobs",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "plastic",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      200,
+      199.0
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      200,
+      221.0
+     ],
+     "size": [
+      12,
+      12
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      200,
+      245.0
+     ],
+     "size": [
+      12,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "antenna",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "chrome",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      134.0,
+      84.0
+     ],
+     "size": [
+      98.48857801796105,
+      3
+     ],
+     "rot": -113.96248897457819
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1.5
+     },
+     "at": [
+      173.0,
+      87.0
+     ],
+     "size": [
+      92.19544457292888,
+      3
+     ],
+     "rot": -65.65891006330749
+    },
+    {
+     "icon": "circle",
+     "at": [
+      154,
+      129.0
+     ],
+     "size": [
+      20,
+      10
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off"
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#7ed0c8",
+    "radius": 240,
+    "at": [
+     132,
+     221.0
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,435 @@
+{
+ "asset": "obj_gear_machine",
+ "status": "candidate",
+ "note": "Clockwork gear machine (steampunk) 1.6 m: iron frame on a plinth with meshing copper and brass gears, a flywheel, axle bolts and a lever.",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 628,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  370,
+  358
+ ],
+ "pivot": [
+  177,
+  287
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.34,
+   "blur": 9,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 14
+     },
+     "at": [
+      185,
+      247
+     ],
+     "size": [
+      240,
+      90
+     ]
+    }
+   ]
+  },
+  {
+   "name": "plinth",
+   "z": 2.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 22,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      177,
+      225.0
+     ],
+     "size": [
+      220,
+      80
+     ]
+    }
+   ]
+  },
+  {
+   "name": "frame",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      87,
+      177
+     ],
+     "size": [
+      14,
+      176
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      267,
+      177
+     ],
+     "size": [
+      14,
+      176
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      177,
+      91
+     ],
+     "size": [
+      194,
+      14
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      177,
+      257
+     ],
+     "size": [
+      194,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gear0",
+   "z": 4.0,
+   "kind": "mass",
+   "material": "copper",
+   "shade": {
+    "bump": 0.9,
+    "highlight_amount": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "cog",
+     "at": [
+      137,
+      157
+     ],
+     "size": 110
+    }
+   ]
+  },
+  {
+   "name": "gear0_hub",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      137,
+      157
+     ],
+     "size": [
+      30.800000000000004,
+      30.800000000000004
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gear1",
+   "z": 6.0,
+   "kind": "mass",
+   "material": "gold",
+   "shade": {
+    "bump": 0.9,
+    "highlight_amount": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "cog",
+     "at": [
+      217,
+      203
+     ],
+     "size": 70
+    }
+   ]
+  },
+  {
+   "name": "gear1_hub",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      217,
+      203
+     ],
+     "size": [
+      19.6,
+      19.6
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gear2",
+   "z": 8.0,
+   "kind": "mass",
+   "material": "copper",
+   "shade": {
+    "bump": 0.9,
+    "highlight_amount": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "cog",
+     "at": [
+      221,
+      127
+     ],
+     "size": 54
+    }
+   ]
+  },
+  {
+   "name": "gear2_hub",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      221,
+      127
+     ],
+     "size": [
+      15.120000000000001,
+      15.120000000000001
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gear3",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "gold",
+   "shade": {
+    "bump": 0.9,
+    "highlight_amount": 0.7
+   },
+   "pieces": [
+    {
+     "icon": "cog",
+     "at": [
+      125,
+      225
+     ],
+     "size": 44
+    }
+   ]
+  },
+  {
+   "name": "gear3_hub",
+   "z": 11.0,
+   "kind": "flat",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      125,
+      225
+     ],
+     "size": [
+      12.32,
+      12.32
+     ]
+    }
+   ]
+  },
+  {
+   "name": "governor",
+   "z": 12.0,
+   "kind": "mass",
+   "material": "gold",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      177,
+      73
+     ],
+     "size": [
+      6,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2.0
+     },
+     "at": [
+      167.0,
+      54.0
+     ],
+     "size": [
+      24.413111231467404,
+      4
+     ],
+     "rot": -145.00797980144134
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2.0
+     },
+     "at": [
+      187.0,
+      54.0
+     ],
+     "size": [
+      24.413111231467404,
+      4
+     ],
+     "rot": -34.99202019855866
+    },
+    {
+     "icon": "circle",
+     "at": [
+      155,
+      45
+     ],
+     "size": [
+      14,
+      14
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      199,
+      45
+     ],
+     "size": [
+      14,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lever",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "iron",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      287.0,
+      202.0
+     ],
+     "size": [
+      61.61168720299745,
+      6
+     ],
+     "rot": -54.24611274556325
+    },
+    {
+     "icon": "circle",
+     "at": [
+      307,
+      173
+     ],
+     "size": [
+      14,
+      14
+     ]
+    }
+   ]
+  }
+ ]
+}

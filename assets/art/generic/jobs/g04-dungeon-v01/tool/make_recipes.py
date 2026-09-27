@@ -620,6 +620,187 @@ def obj_door_balcony():
     return a
 
 
+# ============================================================================ C
+@asset
+def obj_guillotine():
+    a = Asset("obj_guillotine", "Guillotine 2.8 m (dark fantasy, empty device only): wooden platform, two grooved posts, "
+              "crossbeam, raised slanted blade on its weight block, rope, lunette boards.", seed=521)
+    a.shadow([R(10, -40, 260, 110, 12)], opacity=0.36, blur=9)
+    base = a.box("platform", 0, 0, 240, 100, 30, "wood_dark", corner=4)
+    planks_top(a, "platform_planks", base, 4, along_x=False)
+    for i, x in enumerate((-58, 58)):
+        a.box(f"post{i}", x, -40, 22, 20, 270, "wood", lift=30, corner=3)
+        a.flat(f"groove{i}", [R(x + (8 if i == 0 else -8), -190, 4, 250, 1)], "wood_dark", opacity=0.7)
+    a.box("beam", 0, -40, 160, 26, 22, "wood", lift=300, corner=3)
+    a.add("weight", [R(0, -276, 94, 30, 4)], "mass", "wood_dark")
+    a.add("blade", [POLY([(0, 0), (1, 0), (1, 0.45), (0, 1)], 0, -236, 94, 50)], "mass", "steel",
+          shade={"highlight": 0.8, "highlight_amount": 0.8})
+    a.flat("blade_edge", [LINE(-46, -212, 46, -236, 3)], "chrome", opacity=0.6)
+    a.flat("rope", [R(64, -300, 3, 140, 1), LINE(64, -370, 30, -380, 3)], "rope")
+    a.add("lunette", [R(0, -106, 110, 44, 6)], "mass", "wood", shade={"bump": 0.4})
+    a.flat("lunette_hole", [E(0, -106, 32, 30)], "hole")
+    a.flat("lunette_split", [R(0, -106, 110, 3, 1)], "wood_dark")
+    return a
+
+
+@asset
+def obj_gallows():
+    a = Asset("obj_gallows", "Gallows (dark fantasy, empty): raised plank platform on posts, side steps, upright with "
+              "a braced crossbeam and an empty noose.", seed=522)
+    a.shadow([R(20, -100, 380, 220, 20)], opacity=0.36, blur=12)
+    for i, x in enumerate((-140, 140)):
+        a.box(f"leg_back{i}", x, -186, 16, 14, 105, "wood_dark", corner=2)
+    up = a.box("upright", 100, -150, 22, 20, 340, "wood", lift=105, corner=3)
+    p = a.box("platform", 0, 0, 312, 200, 105, "wood", corner=4)
+    planks_top(a, "planks", p, 6, along_x=False)
+    a.flat("trapdoor", [R(-20, p.top_cy, 110, 90, 2)], "wood_dark", opacity=0.6, line=FINE)
+    a.box("beam", 20, -150, 190, 18, 20, "wood", lift=425, corner=3)
+    a.add("brace", [LINE(100, -600, 60, -640, 12)], "mass", "wood")
+    a.flat("noose_rope", [R(-50, -590, 3, 70, 1)], "rope")
+    a.add("noose", [E(-50, -538, 26, 36), E(-50, -538, 16, 26, op="sub"), R(-50, -560, 8, 14, 3)], "mass", "rope",
+          line=FINE)
+    steps = []
+    for k in range(4):
+        steps.append(a.box(f"step{k}", 196, -40 - k * 30, 70, 30, 25 * (k + 1), "wood", corner=3))
+    a.footprint = (-156, -200, 231, 0)
+    return a
+
+
+MAIDEN = [(0.5, 0.0), (0.82, 0.08), (0.9, 0.3), (0.84, 1.0), (0.16, 1.0), (0.1, 0.3), (0.18, 0.08)]
+
+
+@asset
+def obj_iron_maiden():
+    a = Asset("obj_iron_maiden", "Iron maiden (dark fantasy, empty): tall riveted iron cabinet on a plinth with a hooded "
+              "helm top. Frames: closed, open (doors swung aside, spikes inside, dark empty interior).", seed=523)
+    a.shadow([R(8, -30, 150, 70, 12)], opacity=0.36, blur=8, tags=["closed"])
+    a.shadow([R(8, -10, 280, 110, 12)], opacity=0.3, blur=8, name="shadow_open", tags=["open"], hidden=True)
+    a.box("plinth", 0, 0, 128, 64, 20, "stone_dark", corner=4)
+    a.add("shell", [POLY(MAIDEN, 0, -120, 116, 200)], "mass", "iron")
+    a.flat("inside", [POLY(MAIDEN, 0, -114, 92, 176)], "hole", tags=["open"], hidden=True,
+           grad={"to": "well_inner", "y0": -200, "y1": -26})
+    spikes = [I("triangle", x, y, 10, 16, rot=90 if x < 0 else -90) for x in (-28, 28) for y in range(-170, -40, 26)]
+    a.add("spikes", spikes, "mass", "steel", tags=["open"], hidden=True, line=FINE)
+    a.add("doors", [POLY(MAIDEN, 0, -114, 100, 184)], "mass", "iron", tags=["closed"], shade={"bump": 0.5})
+    a.flat("door_split", [R(0, -110, 3, 170, 1)], "soot", tags=["closed"])
+    a.flat("bands", [R(0, y, 100, 8, 2) for y in (-170, -110, -50)], "iron", line=FINE, tags=["closed"],
+           clip_to="doors")
+    a.flat("rivets", rivets([(x, y) for y in (-170, -110, -50) for x in (-36, -18, 18, 36)], 5), "bronze",
+           tags=["closed"])
+    for i, (x, pts) in enumerate(((-86, [(1, 0), (1, 0.8), (0, 1), (0, 0.2)]), (86, [(0, 0), (0, 0.8), (1, 1),
+                                                                                    (1, 0.2)]))):
+        a.add(f"door_open{i}", [POLY(pts, x, -94, 64, 210)], "mass", "iron", tags=["open"], hidden=True,
+              shade={"bump": 0.4})
+        a.add(f"door_open{i}_spikes", [I("triangle", x + (10 if i == 0 else -10), y, 10, 14,
+                                         rot=90 if i == 1 else -90) for y in range(-150, -40, 28)], "mass", "steel",
+              tags=["open"], hidden=True, line=FINE)
+    a.add("helm", [E(0, -214, 64, 44), POLY([(0.5, 0), (1, 1), (0, 1)], 0, -240, 30, 20)], "mass", "iron")
+    a.flat("helm_slit", [R(0, -212, 34, 5, 2)], "hole")
+    a.frame("closed", state="closed")
+    a.frame("open", state="open", show=["open"], hide=["closed"])
+    return a
+
+
+@asset
+def obj_saw_trap():
+    a = Asset("obj_saw_trap", "Floor saw-blade trap: riveted iron floor plate with a long slot. Frames: hidden (slot "
+              "only), out (toothed blade risen from the slot).", seed=524,
+              pivot_meaning="front edge centre of the plate on the floor", layer_hint="floor")
+    p = a.box("plate", 0, 0, 240, 110, 5, "iron", corner=5)
+    a.flat("plate_rivets", rivets([(x, y) for x in (-108, 108) for y in (p.top0 + 12, p.top1 - 12)], 6), "bronze")
+    a.flat("slot", [R(0, p.top_cy, 190, 10, 4)], "hole")
+    a.add("blade", [I("cog", 0, p.top_cy - 24, 160, 104, crop=[0.3, 0.3, 15.7, 8.0])], "mass", "steel", tags=["out"],
+          hidden=True, shade={"highlight": 0.8, "highlight_amount": 0.8})
+    a.flat("blade_hub", [E(0, p.top_cy - 2, 30, 14, half="top", fit=[1, 1, 15, 15])], "iron", tags=["out"], hidden=True)
+    a.flat("slot_front", [R(0, p.top_cy + 3, 190, 5, 2)], "hole", tags=["out"], hidden=True)
+    a.wash("stain", [E(40, p.top_cy + 10, 120, 40)], "rust", opacity=0.35, blur=6)
+    a.frame("hidden", state="hidden")
+    a.frame("out", state="out", show=["out"])
+    return a
+
+
+CROOKED = [(0.06, 0.0), (0.94, 0.06), (1.0, 1.0), (0.0, 0.96)]
+
+
+@asset
+def obj_door_strange():
+    a = Asset("obj_door_strange", "Strange door (dark fantasy): crooked frame, too-tall leaning leaf with mismatched "
+              "panels, three locks and a faintly glowing keyhole. Frames: closed, open (violet-dark void, no effect).",
+              seed=525, pivot_meaning=DOOR)
+    a.shadow([R(4, 2, 200, 12, 5)], opacity=0.3, blur=6)
+    a.add("frame", [POLY(CROOKED, 4, -140, 196, 284, rot=3)], "mass", "wood_dark", shade={"bump": 0.4})
+    a.flat("void", [POLY(CROOKED, 4, -136, 160, 260, rot=3)], "hole", tags=["open"], hidden=True,
+           grad={"to": "well_inner", "y0": -270, "y1": 0, "curve": 0.5})
+    a.wash("void_tint", [E(4, -130, 120, 200)], "petal_violet", opacity=0.45, blend="normal", blur=16, clip_to="void",
+           tags=["open"], hidden=True)
+    a.add("leaf", [POLY(CROOKED, 4, -136, 160, 260, rot=3)], "mass", "wood", tags=["closed"], shade={"bump": 0.4},
+          texture={"angle": 88})
+    a.flat("panels", [POLY([(0, 0), (1, 0.1), (0.9, 1), (0.05, 0.9)], -24, -200, 56, 70, rot=6),
+                      POLY([(0.1, 0), (1, 0), (1, 1), (0, 0.85)], 34, -150, 50, 90, rot=-4),
+                      R(-10, -70, 90, 44, 4, rot=5)], "wood_pale", opacity=0.7, line=FINE, tags=["closed"],
+           clip_to="leaf")
+    a.flat("locks", [R(56, -196, 16, 18, 3, rot=4), R(58, -150, 18, 16, 3), R(60, -104, 14, 20, 3, rot=-6)], "iron",
+           line=FINE, tags=["closed"])
+    a.flat("keyhole", [I("keyhole", 60, -104, 7, 11)], "crystal", tags=["closed"], emit=0.8,
+           glow={"radius": 4, "opacity": 0.6, "color": "crystal_glow"})
+    a.flat("knob", [E(40, -128, 16, 16)], "gold", line=FINE, tags=["closed"])
+    a.frame("closed", state="closed")
+    a.frame("open", state="open", show=["open"], hide=["closed"])
+    return a
+
+
+@asset
+def obj_wall_shackles():
+    a = Asset("obj_wall_shackles", "Wall shackles (dark fantasy): riveted iron plate with two chains ending in open "
+              "cuffs, rust.", seed=526, pivot_meaning=WALL, layer_hint="wall")
+    a.shadow([R(8, 30, 110, 110, 12)], opacity=0.22, blur=8)
+    a.add("plate", [R(0, 0, 96, 30, 5)], "mass", "iron", shade={"bump": 0.5})
+    a.flat("plate_rivets", rivets([(-38, 0), (38, 0), (0, 0)], 6), "bronze")
+    chains = []
+    for x, n, dx in ((-30, 7, -2), (30, 6, 3)):
+        for k in range(n):
+            chains.append(I("link", x + dx * k, 20 + k * 13, 16, rot=45 if k % 2 else -45))
+    a.flat("chains", chains, "iron", line=FINE)
+    a.add("cuffs", [E(-44, 120, 34, 24), E(-44, 120, 22, 14, op="sub"), E(48, 108, 34, 24), E(48, 108, 22, 14, op="sub")],
+          "mass", "iron", line=FINE, grime={"stamps": ["metaballs", "sponge"], "size": 10, "soft": 1, "density": 0.5,
+                                           "strength": 0.4, "color": "rust"})
+    return a
+
+
+@asset
+def obj_cage_large():
+    a = Asset("obj_cage_large", "Large dome-topped iron cage 1.6 m (dark fantasy, empty): base ring, vertical bars "
+              "curving to a crown ring and hook, bar door. Frames: closed, open (door swung aside).", seed=527)
+    ellipse_shadow(a, 8, -60, 190, 120, opacity=0.34, blur=9)
+    dia = 170
+    base = a.cyl("base", 0, 0, dia, 14, "iron")
+    a.flat("floor", [E(0, base.top_cy, dia - 16, (dia - 16) * SQ)], "wood_dark", line=FINE)
+    back, front = [], []
+    for k in range(16):
+        t = 2 * math.pi * k / 16
+        x = (dia / 2 - 4) * math.cos(t)
+        yb = base.top_cy + (dia / 2 - 4) * SQ * math.sin(t)
+        bar = [LINE(x, yb, x * 0.9, yb - 140, 5), LINE(x * 0.9, yb - 140, x * 0.2, -226 + (yb - base.top_cy) * 0.15, 5)]
+        (back if math.sin(t) < 0 else front).append((k, bar))
+    a.add("bars_back", [p for _, bar in back for p in bar], "mass", "iron", line=FINE)
+    a.flat("rings", [E(0, base.top_cy - 70, dia - 18, (dia - 18) * SQ), E(0, base.top_cy - 70, dia - 26, (dia - 26) * SQ,
+                                                                          op="sub")], "iron", line=FINE)
+    door_keys = {4, 5}
+    a.add("bars_front", [p for k, bar in front if k not in door_keys for p in bar], "mass", "iron", line=FINE)
+    a.add("door_bars", [p for k, bar in front if k in door_keys for p in bar], "mass", "iron", line=FINE,
+          tags=["closed"])
+    a.add("door_open", [LINE(dia / 2 + 10 + 30 * j, base.top_cy + 40 - 8 * j, dia / 2 + 16 + 30 * j,
+                             base.top_cy - 90 - 8 * j, 5) for j in range(2)] +
+          [LINE(dia / 2 + 6, base.top_cy - 20, dia / 2 + 52, base.top_cy - 36, 4),
+           LINE(dia / 2 + 8, base.top_cy - 80, dia / 2 + 54, base.top_cy - 96, 4)], "mass", "iron", line=FINE,
+          tags=["open"], hidden=True)
+    a.add("crown", [E(0, -226, 40, 18), R(0, -242, 6, 26, 2), E(0, -258, 20, 20), E(0, -258, 12, 12, op="sub")],
+          "mass", "iron", line=FINE)
+    a.frame("closed", state="closed")
+    a.frame("open", state="open", show=["open"], hide=["closed"])
+    return a
+
+
 # ============================================================================ main
 def main() -> int:
     names = sys.argv[1:] or list(ASSETS)

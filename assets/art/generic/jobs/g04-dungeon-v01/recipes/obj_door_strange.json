@@ -1,0 +1,466 @@
+{
+ "asset": "obj_door_strange",
+ "status": "candidate",
+ "note": "Strange door (dark fantasy): crooked frame, too-tall leaning leaf with mismatched panels, three locks and a faintly glowing keyhole. Frames: closed, open (violet-dark void, no effect).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 525,
+ "pivot_meaning": "bottom centre of the opening on the wall-face floor line (threshold)",
+ "layer_hint": "world",
+ "canvas": [
+  312,
+  390
+ ],
+ "pivot": [
+  152,
+  325
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.3,
+   "blur": 6,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 5
+     },
+     "at": [
+      156,
+      327
+     ],
+     "size": [
+      200,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "frame",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "wood_dark",
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2.72,
+       2.0
+      ],
+      [
+       13.28,
+       2.72
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       13.52
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      156,
+      185
+     ],
+     "size": [
+      196,
+      284
+     ],
+     "rot": 3
+    }
+   ]
+  },
+  {
+   "name": "void",
+   "z": 3.0,
+   "kind": "flat",
+   "material": "hole",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "grad": {
+    "to": "well_inner",
+    "y0": -270,
+    "y1": 0,
+    "curve": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2.72,
+       2.0
+      ],
+      [
+       13.28,
+       2.72
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       13.52
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      156,
+      189
+     ],
+     "size": [
+      160,
+      260
+     ],
+     "rot": 3
+    }
+   ]
+  },
+  {
+   "name": "void_tint",
+   "z": 4.0,
+   "kind": "wash",
+   "material": "petal_violet",
+   "tags": [
+    "open"
+   ],
+   "hidden": true,
+   "opacity": 0.45,
+   "blend": "normal",
+   "blur": 16,
+   "clip_to": "void",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      156,
+      195
+     ],
+     "size": [
+      120,
+      200
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leaf",
+   "z": 5.0,
+   "kind": "mass",
+   "material": "wood",
+   "tags": [
+    "closed"
+   ],
+   "shade": {
+    "bump": 0.4
+   },
+   "texture": {
+    "angle": 88
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2.72,
+       2.0
+      ],
+      [
+       13.28,
+       2.72
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       13.52
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      156,
+      189
+     ],
+     "size": [
+      160,
+      260
+     ],
+     "rot": 3
+    }
+   ]
+  },
+  {
+   "name": "panels",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "wood_pale",
+   "tags": [
+    "closed"
+   ],
+   "opacity": 0.7,
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "clip_to": "leaf",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       2
+      ],
+      [
+       14,
+       3.2
+      ],
+      [
+       12.8,
+       14
+      ],
+      [
+       2.6,
+       12.8
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      128,
+      125
+     ],
+     "size": [
+      56,
+      70
+     ],
+     "rot": 6
+    },
+    {
+     "icon": "square",
+     "poly": [
+      [
+       3.2,
+       2
+      ],
+      [
+       14,
+       2
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       2,
+       12.2
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      186,
+      175
+     ],
+     "size": [
+      50,
+      90
+     ],
+     "rot": -4
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      142,
+      255
+     ],
+     "size": [
+      90,
+      44
+     ],
+     "rot": 5
+    }
+   ]
+  },
+  {
+   "name": "locks",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "iron",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      208,
+      129
+     ],
+     "size": [
+      16,
+      18
+     ],
+     "rot": 4
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      210,
+      175
+     ],
+     "size": [
+      18,
+      16
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      212,
+      221
+     ],
+     "size": [
+      14,
+      20
+     ],
+     "rot": -6
+    }
+   ]
+  },
+  {
+   "name": "keyhole",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "crystal",
+   "tags": [
+    "closed"
+   ],
+   "emit": 0.8,
+   "glow": {
+    "radius": 4,
+    "opacity": 0.6,
+    "color": "crystal_glow"
+   },
+   "pieces": [
+    {
+     "icon": "keyhole",
+     "at": [
+      212,
+      221
+     ],
+     "size": [
+      7,
+      11
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knob",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "gold",
+   "tags": [
+    "closed"
+   ],
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      192,
+      197
+     ],
+     "size": [
+      16,
+      16
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "closed",
+   "state": "closed"
+  },
+  {
+   "name": "open",
+   "state": "open",
+   "hide": [
+    "closed"
+   ],
+   "show": [
+    "open"
+   ]
+  }
+ ]
+}

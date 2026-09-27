@@ -10,6 +10,7 @@ Screens, signal lamps and neon are the objects' own lit parts: they go to ``_emi
 
 from __future__ import annotations
 
+import math
 import sys
 from pathlib import Path
 
@@ -341,6 +342,251 @@ def obj_stone_lantern():
     a.frame("off", state="off")
     a.frame("on", state="on", show=["on"], hide=["off"], light={"color": "#f0c27a", "radius": 240,
                                                              "at": [0, fb.front_cy]})
+    return a
+
+
+# ============================================================================ C
+@asset
+def obj_phone_booth():
+    a = Asset("obj_phone_booth", "Public phone booth 2.4 m (modern / city): red painted frame, grid of small glass "
+              "panes, domed roof with a blank light strip, phone box inside. Frames: off, on (strip and interior "
+              "light, emit).", seed=921)
+    a.shadow([R(8, -40, 130, 100, 12)], opacity=0.36, blur=8)
+    b = a.box("body", 0, 0, 108, 92, 230, "paint_red", corner=6)
+    a.flat("inside", [R(0, b.front_cy + 6, 84, 190, 3)], "glass_dark", tags=["off"])
+    a.flat("inside_lit", [R(0, b.front_cy + 6, 84, 190, 3)], "window_lit", tags=["on"], hidden=True, emit=0.6,
+           glow={"radius": 8, "opacity": 0.4, "color": "window_glow"})
+    a.flat("phone", [R(-18, b.front_cy - 20, 26, 34, 3), R(-18, b.front_cy - 40, 30, 7, 3)], "soot", line=FINE)
+    a.flat("glazing", [R(0, b.front_cy + 6, 3, 190, 1)] + [R(0, b.front_cy + 6 + dy, 84, 3, 1)
+                                                          for dy in (-72, -36, 0, 36, 72)], "paint_red")
+    a.add("roof", [E(0, b.top_cy - 4, 116, 60), R(0, b.top1 - 6, 112, 16, 6)], "mass", "paint_red")
+    a.flat("strip_off", [R(0, b.top1 + 12, 80, 14, 3)], "signal_off", tags=["off"], line=FINE)
+    a.flat("strip_on", [R(0, b.top1 + 12, 80, 14, 3)], "paper", tags=["on"], hidden=True, emit=1.0,
+           glow={"radius": 6, "opacity": 0.5, "color": "lamp_glow"}, line=FINE)
+    a.frame("off", state="off")
+    a.frame("on", state="on", show=["on"], hide=["off"], light={"color": "#ffc987", "radius": 240,
+                                                             "at": [0, b.front_cy]})
+    a.footprint = (-54, -92, 54, 0)
+    return a
+
+
+@asset
+def obj_trash_can():
+    a = Asset("obj_trash_can", "Metal street trash can 0.95 m (modern / city): ribbed steel body, domed lid slightly "
+              "ajar with a paper bag poking out, dents and grime.", seed=922)
+    dia = 90
+    dd = dia * SQ
+    ellipse_shadow(a, 6, -dd / 2 + 4, dia + 20, dd + 8, opacity=0.36, blur=6)
+    b = a.cyl("body", 0, 0, dia, 92, "steel")
+    a.flat("ribs", [R(x, -46 - dd / 2 + 6, 3, 90, 1) for x in (-32, -16, 0, 16, 32)], "steel_light", opacity=0.4,
+           clip_to="body")
+    a.flat("bands", band_on_cyl(0, -dd / 2 - 20, dia, 6) + band_on_cyl(0, -dd / 2 - 76, dia, 6), "steel_light",
+           clip_to="body", line=FINE)
+    a.add("paper", [I("cloud", 14, b.top_cy - 10, 40, 26)], "mass", "paper", rough={"amp": 0.5, "soft": 1, "cell": 4},
+          line=FINE)
+    a.add("lid", [E(-6, b.top_cy - 8, dia + 8, dd * 0.9, rot=-8), E(-6, b.top_cy - 14, 22, 12)], "mass", "steel",
+          shade={"bump": 1.0})
+    a.wash("grime", [I("metaballs", 0, -30, 70, 40)], "grime", opacity=0.4, clip_to="body")
+    return a
+
+
+@asset
+def obj_hitching_post():
+    a = Asset("obj_hitching_post", "Western hitching rail 2 m: two weathered posts, a horizontal rail, rope knot and a "
+              "small water trough.", seed=923, pivot_meaning="centre of the rail's ground line")
+    a.shadow([R(8, -4, 390, 30, 8)], opacity=0.32, blur=6)
+    for i, x in enumerate((-160, 160)):
+        a.box(f"post{i}", x, 0, 20, 18, 108, "wood_pale", corner=3)
+    a.box("rail", 0, -2, 360, 14, 16, "wood_pale", lift=92, corner=3)
+    a.add("knot", [E(40, -104, 18, 22), LINE(40, -96, 34, -70, 4)], "mass", "rope", line=FINE)
+    t = a.box("trough", 30, 70, 180, 60, 40, "wood_dark", corner=3)
+    a.flat("trough_water", [R(30, t.top_cy, 160, 44, 3)], "water", line=FINE)
+    a.footprint = (-170, -18, 170, 70)
+    return a
+
+
+@asset
+def obj_water_tower():
+    a = Asset("obj_water_tower", "Western water tower 6 m: wooden tank with iron hoops on four braced legs, conical "
+              "roof, spout pipe with a rope pull.", seed=924, pivot_meaning="centre of the front legs' ground line")
+    a.shadow([R(30, -110, 330, 250, 30)], opacity=0.34, blur=14)
+    legs = [(-110, -200), (110, -200), (-120, 0), (120, 0)]
+    for i, (x, y) in enumerate(legs[:2]):
+        a.box(f"leg_back{i}", x, y, 20, 18, 330, "wood_dark", corner=3)
+    a.add("braces_back", [LINE(-110, -230, 110, -430, 8), LINE(110, -230, -110, -430, 8)], "mass", "wood_dark")
+    for i, (x, y) in enumerate(legs[2:]):
+        a.box(f"leg_front{i}", x, y, 22, 20, 330, "wood_dark", corner=3)
+    a.add("braces_front", [LINE(-120, -40, 120, -250, 9), LINE(120, -40, -120, -250, 9), R(0, -145, 240, 10, 3)],
+          "mass", "wood_dark")
+    tank = a.cyl("tank", 0, -10, 290, 190, "wood", lift=330)
+    a.flat("staves", [R(x, tank.front_cy + 40, 2.4, 180, 1) for x in range(-130, 140, 26)], "wood_dark", opacity=0.5,
+           clip_to="tank")
+    hoops = []
+    for t in (30, 100, 170):
+        hoops += band_on_cyl(0, -10 - 330 - 290 * SQ / 2 - t, 290, 8)
+    a.flat("hoops", hoops, "iron", clip_to="tank", line=FINE)
+    a.add("roof", [POLY([(0.5, 0), (1, 0.85), (0.5, 1), (0, 0.85)], 0, tank.top_cy - 60, 320, 200)], "mass", "wood_dark",
+          shade={"bump": 0.7})
+    a.add("spout", [LINE(120, -400, 190, -440, 14), LINE(190, -440, 200, -380, 12)], "mass", "iron")
+    a.flat("pull_rope", [R(200, -330, 3, 90, 1)], "rope")
+    return a
+
+
+@asset
+def obj_torii():
+    a = Asset("obj_torii", "Torii shrine gate 3.2 m (eastern): two red lacquer pillars on stone bases, lower tie beam, "
+              "curved black-capped top beam with upturned ends, small blank plaque.", seed=925,
+              pivot_meaning="centre between the pillars on the ground")
+    a.shadow([R(10, -4, 460, 30, 10)], opacity=0.32, blur=7)
+    for i, x in enumerate((-160, 160)):
+        a.cyl(f"base{i}", x, 0, 50, 16, "rock")
+        a.cyl(f"pillar{i}", x, -4, 34, 300, "lacquer_red", lift=16)
+    a.box("nuki", 0, -4, 420, 18, 22, "lacquer_red", lift=250, corner=3)
+    a.add("kasagi", [POLY([(0, 0.0), (0.08, 0.35), (0.5, 0.45), (0.92, 0.35), (1, 0.0), (1, 0.4), (0.92, 1),
+                           (0.5, 1.0), (0.08, 1), (0, 0.4)], 0, -350, 480, 50)], "mass", "soot", shade={"bump": 0.5})
+    a.add("kasagi_red", [R(0, -318, 420, 20, 3)], "mass", "lacquer_red")
+    a.add("plaque", [R(0, -286, 50, 50, 3)], "mass", "lacquer_red", line=THIN)
+    a.flat("plaque_face", [R(0, -286, 36, 36, 2)], "soot")
+    return a
+
+
+@asset
+def obj_anchor_large():
+    a = Asset("obj_anchor_large", "Large ship anchor (pirate / sea) leaning on its fluke, 1.8 m, rusted iron with a "
+              "coil of chain.", seed=926, pivot_meaning="fluke tip contact on the ground")
+    a.shadow([E(40, -10, 260, 70)], opacity=0.34, blur=9)
+    a.add("anchor", [I("anchor", 20, -110, 200, 220, rot=18)], "mass", "iron", shade={"bump": 1.1},
+          grime={"stamps": ["metaballs", "sponge"], "size": 16, "soft": 1.5, "density": 0.45, "strength": 0.45,
+                 "color": "rust"})
+    chain = []
+    for k in range(14):
+        t = 2 * math.pi * k / 14
+        chain.append(I("link", 90 + 44 * math.cos(t), -8 + 20 * math.sin(t), 20, rot=math.degrees(t) + 45))
+    a.flat("chain", chain, "iron", line=FINE)
+    return a
+
+
+@asset
+def obj_car_burnt():
+    a = Asset("obj_car_burnt", "Burnt-out car wreck (post-apocalypse): charred and rusted hatchback body sitting on "
+              "its rims, empty window holes, crumpled bonnet, soot.", seed=927,
+              pivot_meaning="centre of the car's near-side ground line")
+    a.shadow([R(24, -118, 700, 250, 60)], opacity=0.4, blur=14)
+    body = a.box("body", 0, -6, 684, 250, 58, "iron", lift=10, corner=46)
+    a.wash("char", [I("metaballs", -100, body.top_cy, 400, 200), I("cloud", 200, body.front_cy, 300, 60)], "soot",
+           opacity=0.6, clip_to="body")
+    a.wash("rust", [I("sponge", 100, body.top_cy, 300, 180), I("metaballs", -220, body.front_cy, 200, 50)], "rust",
+           opacity=0.65, clip_to="body")
+    a.flat("arches", [E(-226, -34, 126, 84), E(214, -34, 126, 84)], "hole")
+    g = a.box("glasshouse", -26, -40, 392, 186, 58, "iron", lift=68, corner=34)
+    a.flat("window_holes", [R(-140, g.front_cy, 150, 44, 8), R(60, g.front_cy, 150, 44, 8)], "hole")
+    roof = a.box("roof", -40, -48, 330, 164, 9, "iron", lift=126, corner=30)
+    a.wash("roof_rust", [I("sponge", -40, roof.top_cy, 260, 140)], "rust", opacity=0.6, clip_to="roof")
+    a.flat("windscreen_hole", [R(150, roof.top_cy + 4, 40, 150, 10)], "hole")
+    for i, x in enumerate((-226, 214)):
+        a.add(f"rim{i}", [E(x, -24, 90, 56), E(x, -24, 60, 36, op="sub")], "mass", "iron", line=THIN)
+    a.add("bonnet", [POLY([(0, 0.2), (0.4, 0), (1, 0.3), (0.9, 1), (0.1, 0.8)], 262, body.top_cy - 10, 120, 170)],
+          "mass", "iron", shade={"bump": 1.2})
+    a.footprint = (-342, -256, 342, -6)
+    return a
+
+
+@asset
+def obj_street_terminal():
+    a = Asset("obj_street_terminal", "Cyberpunk street terminal 1.9 m: slim dark pillar with a hood, wide screen, "
+              "keypad, card slot and cable bundle. Frames: off, on (screen and trim lit, emit).", seed=928)
+    a.shadow([R(8, -30, 110, 70, 10)], opacity=0.36, blur=7)
+    b = a.box("pillar", 0, 0, 90, 60, 190, "steel", corner=8)
+    a.add("hood", [R(0, b.top1 + 8, 110, 24, 8)], "mass", "plastic")
+    a.flat("screen_off", [R(0, -140, 72, 56, 4)], "screen_off", tags=["off"], line=THIN)
+    a.flat("screen_on", [R(0, -140, 72, 56, 4)], "screen_on", tags=["on"], hidden=True, emit=0.9,
+           glow={"radius": 8, "opacity": 0.5, "color": "screen_glow"}, line=THIN)
+    a.flat("ui_bars", [R(-12, -154 + k * 12, 40 - k * 6, 5, 2) for k in range(3)] + [E(22, -140, 16, 16)], "neon_cyan",
+           tags=["on"], hidden=True, emit=1.0, opacity=0.8)
+    a.flat("keypad", [I("grid_fine", 0, -86, 46, 34, crop=[1, 1, 15, 15])], "chrome", line=FINE)
+    a.flat("slot", [R(0, -58, 30, 5, 2)], "hole")
+    a.flat("trim_off", [R(-40, -100, 4, 150, 2), R(40, -100, 4, 150, 2)], "signal_off", tags=["off"])
+    a.flat("trim_on", [R(-40, -100, 4, 150, 2), R(40, -100, 4, 150, 2)], "neon_pink", tags=["on"], hidden=True,
+           emit=1.0, glow={"radius": 5, "opacity": 0.6, "color": "neon_pink_glow"})
+    a.add("cables", [LINE(40, -30, 70, 6, 6), LINE(30, -20, 54, 10, 5)], "mass", "rubber", line=FINE)
+    a.frame("off", state="off")
+    a.frame("on", state="on", show=["on"], hide=["off"], light=[{"color": "#7ed0c8", "radius": 220, "at": [0, -140]},
+                                                                {"color": "#ff7aa8", "radius": 160, "at": [0, -100]}])
+    return a
+
+
+@asset
+def obj_rail_signal():
+    a = Asset("obj_rail_signal", "Steampunk railway semaphore 4 m: lattice iron mast, ladder, red arm with a bone "
+              "stripe, lamp with red / green spectacle glass. Frames: red (arm level, stop), green (arm raised).",
+              seed=929)
+    a.shadow([R(10, -10, 90, 40, 8)], opacity=0.34, blur=6)
+    a.box("base", 0, 0, 60, 50, 20, "stone_dark", corner=4)
+    a.add("mast", [R(-10, -220, 6, 400, 2), R(10, -220, 6, 400, 2)], "mass", "iron")
+    a.flat("lattice", [LINE(-10, -40 - k * 40, 10, -80 - k * 40, 3) for k in range(9)] +
+           [LINE(10, -40 - k * 40, -10, -80 - k * 40, 3) for k in range(9)], "iron")
+    a.flat("ladder", [R(-30, -200, 3, 340, 1)] + [R(-24, -40 - k * 26, 14, 3, 1) for k in range(13)], "iron")
+    a.add("finial", [I("triangle", 0, -430, 20, 16), E(0, -418, 22, 10)], "mass", "iron")
+    arm = [(0, 0.15), (1, 0.0), (1, 1.0), (0, 0.85)]
+    a.add("arm_stop", [POLY(arm, 70, -380, 130, 26)], "mass", "paint_red", tags=["red"])
+    a.flat("stripe_stop", [R(100, -380, 12, 26, 2)], "paper", tags=["red"])
+    a.add("arm_go", [POLY(arm, 56, -420, 130, 26, rot=-45)], "mass", "paint_red", tags=["green"], hidden=True)
+    a.flat("stripe_go", [R(78, -442, 12, 26, 2, rot=-45)], "paper", tags=["green"], hidden=True)
+    a.add("lamp", [R(-32, -370, 26, 30, 5)], "mass", "iron")
+    a.flat("lens_red", [E(-32, -370, 14, 14)], "signal_red", tags=["red"], emit=1.0,
+           glow={"radius": 6, "opacity": 0.6, "color": "signal_red_glow"})
+    a.flat("lens_green", [E(-32, -370, 14, 14)], "signal_green", tags=["green"], hidden=True, emit=1.0,
+           glow={"radius": 6, "opacity": 0.6, "color": "signal_green_glow"})
+    a.frame("red", state="red (stop)", hide=["green"], light={"color": "#ff6a58", "radius": 200, "at": [-32, -370]})
+    a.frame("green", state="green (go)", show=["green"], hide=["red"],
+            light={"color": "#7af0a8", "radius": 200, "at": [-32, -370]})
+    return a
+
+
+@asset
+def obj_steam_chimney():
+    a = Asset("obj_steam_chimney", "Industrial brick chimney stack 6 m (steampunk): square plinth, tapering round brick "
+              "stack with iron bands, flared iron crown, soot.", seed=930)
+    a.shadow([E(30, -40, 200, 90)], opacity=0.36, blur=10)
+    a.box("plinth", 0, 0, 150, 130, 70, "stone", corner=5)
+    stack = [(0.2, 0), (0.8, 0), (1, 1), (0, 1)]
+    a.add("stack", [POLY(stack, 0, -380, 120, 600)], "mass", "brick", shade={"bump": 0.7})
+    a.flat("courses", [R(0, y, 130, 2, 1) for y in range(-100, -680, -20)], "floor_joint", opacity=0.35, clip_to="stack")
+    a.flat("bands", [R(0, y, 130, 8, 2) for y in (-220, -420, -600)], "iron", clip_to="stack", line=FINE)
+    a.wash("soot", [R(0, -640, 90, 120, 20)], "soot", opacity=0.6, blur=10, clip_to="stack")
+    a.add("crown", [POLY([(0, 0), (1, 0), (0.85, 1), (0.15, 1)], 0, -690, 110, 34), E(0, -706, 110, 26)], "mass",
+          "iron")
+    a.flat("mouth", [E(0, -706, 80, 16)], "hole")
+    return a
+
+
+@asset
+def obj_cage_lift():
+    a = Asset("obj_cage_lift", "Steampunk cage lift: iron lattice shaft 4 m with a pulley wheel and cables, barred cage "
+              "car with a lamp. Frames: down (car at floor level), up (car raised to the top).", seed=931)
+    a.shadow([R(10, -60, 230, 140, 14)], opacity=0.34, blur=9)
+    for i, x in enumerate((-100, 100)):
+        a.box(f"post_back{i}", x, -118, 14, 12, 420, "iron", corner=2)
+    for i, x in enumerate((-104, 104)):
+        a.box(f"post_front{i}", x, 0, 16, 14, 420, "iron", corner=2)
+    a.flat("braces", [LINE(-104, -60 - 100 * k, 104, -160 - 100 * k, 4) for k in range(4)], "iron", opacity=0.8)
+    a.box("top", 0, 0, 230, 130, 14, "iron", lift=420, corner=3)
+    a.add("pulley", [E(0, -560, 70, 70), E(0, -560, 50, 50, op="sub")], "mass", "copper")
+    a.flat("pulley_spokes", [I("wheel", 0, -560, 52)], "copper", opacity=0.8)
+    for key, lift in (("down", 0), ("up", 290)):
+        hid = key == "up"
+        a.flat(f"cables_{key}", [R(-20, -300 - lift / 2, 3, 520 - lift - 180, 1), R(20, -300 - lift / 2, 3,
+                                                                                  520 - lift - 180, 1)], "iron",
+               tags=[key], hidden=hid)
+        car = a.box(f"car_{key}", 0, -10, 180, 104, 10, "wood_dark", lift=lift, corner=3, tags=[key], hidden=hid)
+        a.flat(f"car_bars_{key}", [R(x, -10 - lift - 70, 4, 124, 1) for x in range(-84, 90, 21)] +
+               [R(0, -10 - lift - 132, 180, 6, 2), R(0, -10 - lift - 70, 180, 4, 1)], "iron", tags=[key], hidden=hid)
+        a.box(f"car_roof_{key}", 0, -10, 186, 108, 8, "iron", lift=lift + 132, corner=3, tags=[key], hidden=hid)
+        a.flat(f"car_lamp_{key}", [E(60, -10 - lift - 120, 12, 14)], "glass", tags=[key], hidden=hid, emit=0.9,
+               glow={"radius": 5, "opacity": 0.5, "color": "lamp_glow"})
+    a.frame("down", state="down", hide=["up"])
+    a.frame("up", state="up", show=["up"], hide=["down"])
+    a.footprint = (-115, -130, 115, 0)
     return a
 
 

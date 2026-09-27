@@ -326,6 +326,125 @@ def obj_palm():
     return a
 
 
+# ============================================================================ C
+BLADE = [(0, 0.5), (0.25, 0.08), (1, 0.5), (0.25, 0.92)]
+
+
+@asset
+def obj_reeds():
+    a = Asset("obj_reeds", "Reed / cattail clump at a water edge, about 1.4 m: thin stems, long blades, brown seed "
+              "heads.", seed=421, pivot_meaning="clump base centre on the ground")
+    ellipse_shadow(a, 6, -3, 120, 26, opacity=0.3, blur=6)
+    stems = [(-34, 130, -8), (-14, 150, -3), (4, 140, 2), (22, 156, 6), (40, 118, 10), (-46, 104, -14)]
+    a.add("blades_back", [POLY(BLADE, x * 1.2 + (12 if k % 2 else -12), -h * 0.4, h * 0.8, 10, rot=-90 + r * 2 +
+                               (18 if k % 2 else -18)) for k, (x, h, r) in enumerate(stems)], "mass", "foliage_dark",
+          line=FINE_T)
+    a.flat("stems", [LINE(x, 0, x + math.sin(math.radians(r)) * h, -h, 3) for x, h, r in stems], "grass")
+    heads = []
+    for x, h, r in stems[:5]:
+        hx, hy = x + math.sin(math.radians(r)) * h * 0.86, -h * 0.86
+        heads.append(R(hx, hy, 9, 30, 4, rot=r))
+    a.add("heads", heads, "mass", "wood", line=FINE_T)
+    a.add("blades", [POLY(BLADE, x + 10, -h * 0.3, h * 0.6, 9, rot=-90 + r * 3 + (26 if k % 2 else -26))
+                     for k, (x, h, r) in enumerate(stems)], "mass", "grass", line=FINE_T)
+    return a
+
+
+@asset
+def obj_rocks_small():
+    a = Asset("obj_rocks_small", "Pile of six small stones about 1 m across, damp stains and a moss patch.", seed=422,
+              pivot_meaning="centre of the pile on the ground")
+    ellipse_shadow(a, 10, -12, 200, 60, opacity=0.36, blur=8)
+    shapes = [[(0, 0.64), (0.16, 0.25), (0.45, 0.05), (0.78, 0.12), (1, 0.5), (0.86, 0.92), (0.4, 1), (0.1, 0.9)],
+              [(0, 0.5), (0.3, 0.05), (0.8, 0.0), (1, 0.45), (0.75, 1), (0.2, 0.95)],
+              [(0, 0.6), (0.25, 0.1), (0.7, 0.0), (1, 0.35), (0.9, 0.9), (0.35, 1)]]
+    rocks = [(-40, -30, 90, 62, 0, "rock"), (34, -24, 76, 52, 1, "rock_dark"), (-4, -58, 70, 50, 2, "rock"),
+             (74, -6, 44, 30, 2, "rock"), (-86, -6, 40, 28, 1, "rock_dark"), (10, 0, 34, 24, 0, "rock")]
+    back = [r for r in rocks if r[1] < -40]
+    front = [r for r in rocks if r[1] >= -40]
+    for tag, sel in (("back", back), ("front", front)):
+        for mat in ("rock", "rock_dark"):
+            pieces = [POLY(shapes[s], x, y, w, h) for x, y, w, h, s, m in sel if m == mat]
+            if pieces:
+                a.add(f"{tag}_{mat}", pieces, "mass", mat, shade={"bump": 1.2}, line=THIN)
+    a.add("moss", [I("cloud", -30, -60, 50, 20)], "mass", "moss", rough={"amp": 0.5, "soft": 1.0, "cell": 4},
+          clip_to="back_rock", line=FINE_T)
+    return a
+
+
+@asset
+def obj_waterfall_rock():
+    a = Asset("obj_waterfall_rock", "Small waterfall 1.8 m: mossy rock ledge with a notch, falling water sheet with "
+              "light streaks, foam and a round pool. Static (no animation).", seed=423,
+              pivot_meaning="front edge centre of the pool on the ground")
+    a.shadow([E(10, -60, 330, 150)], opacity=0.32, blur=10)
+    a.add("ledge_back", [POLY([(0, 1), (0.05, 0.3), (0.3, 0.05), (0.42, 0.18), (0.58, 0.18), (0.7, 0.0), (0.95, 0.25),
+                               (1, 1)], 0, -170, 320, 230)], "mass", "rock_dark", shade={"bump": 1.0})
+    a.add("ledge_moss", [I("cloud", -100, -268, 90, 30), I("cloud", 110, -260, 80, 26, flip="x")], "mass", "moss",
+          clip_to="ledge_back", rough={"amp": 0.5, "soft": 1.2, "cell": 5})
+    a.flat("pool_bed", [E(0, -40, 280, 110)], "hole", grad={"to": "well_inner", "y0": -95, "y1": 15})
+    a.add("pool", [E(0, -38, 272, 102)], "mass", "water", clip_to="pool_bed", shade={"bump": 0.25}, line=FINE_T)
+    a.flat("ripples", [E(0, -50, 90 + 50 * k, 30 + 18 * k) for k in range(3)] +
+           [E(0, -50, 84 + 50 * k, 26 + 18 * k, op="sub") for k in range(3)], "chrome", opacity=0.2, clip_to="pool")
+    a.add("falls", [POLY([(0.1, 0), (0.9, 0), (1, 1), (0, 1)], 0, -150, 64, 200)], "mass", "water",
+          shade={"bump": 0.5, "highlight_amount": 0.7}, texture={"angle": 90})
+    a.flat("streaks", [R(x, -150, 3, 190, 1) for x in (-18, -6, 8, 20)], "chrome", opacity=0.35, clip_to="falls")
+    a.add("foam", [I("cloud", -24, -60, 60, 30), I("cloud", 24, -56, 56, 28, flip="x"), E(0, -52, 70, 20)], "mass",
+          "snow", rough={"amp": 0.5, "soft": 1.0, "cell": 4}, opacity=0.9, line=FINE_T)
+    stones = [(-150, -10, 70, 48), (140, -16, 76, 50), (-110, 26, 48, 32), (120, 24, 44, 30)]
+    a.add("rim_stones", [POLY([(0, 0.6), (0.25, 0.1), (0.7, 0), (1, 0.4), (0.85, 1), (0.2, 0.95)], x, y, w, h)
+                         for x, y, w, h in stones], "mass", "rock", line=THIN)
+    return a
+
+
+@asset
+def obj_tree_cherry():
+    a = Asset("obj_tree_cherry", "Cherry tree in bloom (eastern), about 4 m: dark leaning trunk with spreading "
+              "branches, dusty pink blossom clouds, fallen petals.", seed=424, pivot_meaning=TRUNK)
+    ellipse_shadow(a, 20, -4, 300, 90, opacity=0.38, blur=12)
+    petals = [E(x, y, 12, 8, rot=r) for x, y, r in ((-120, 10, 20), (-80, 30, -30), (-20, 22, 40), (60, 26, 10),
+                                                    (110, 8, -20), (140, 30, 30), (-150, 34, 0), (20, 40, 60),
+                                                    (-60, 44, 15), (90, 44, -40))]
+    a.flat("petals", petals, "petal_pale", opacity=0.85)
+    canopy(a, "crown_back", [E(-40, -300, 300, 180), I("cloud", -170, -290, 170, 110), I("cloud", 120, -320, 190, 120,
+                                                                                         flip="x"),
+                             E(40, -380, 200, 110), E(-160, -350, 120, 80)], "foliage_bloom",
+           rough={"amp": 0.55, "soft": 2.0, "cell": 7})
+    a.add("trunk", [POLY([(0.3, 1), (0.1, 0.7), (0.2, 0.4), (0.5, 0.0), (0.75, 0.05), (0.5, 0.45), (0.62, 0.72),
+                          (0.72, 1)], -10, -110, 70, 220), E(0, -6, 84, 24)], "mass", "bark", texture={"angle": 70})
+    a.add("branches", [LINE(10, -200, -140, -290, 16), LINE(-80, -250, -190, -262, 10), LINE(14, -210, 130, -310, 14),
+                       LINE(20, -220, 30, -350, 12), LINE(-40, -236, -60, -330, 9)], "mass", "bark")
+    canopy(a, "crown_front", [I("cloud", -110, -250, 160, 90), I("cloud", 90, -268, 170, 100, flip="x"),
+                              E(-10, -330, 190, 110), E(-200, -268, 90, 60), E(170, -300, 90, 60)], "foliage_bloom",
+           rough={"amp": 0.55, "soft": 2.0, "cell": 7})
+    a.flat("blossom_dots", [E(x, y, 7, 6) for x, y in ((-120, -260), (-60, -300), (40, -340), (100, -280), (-10, -250),
+                                                        (150, -300), (-180, -270), (0, -372), (70, -250))],
+           "petal_pale", opacity=0.8)
+    return a
+
+
+@asset
+def obj_crystal_rock():
+    a = Asset("obj_crystal_rock", "Crystal outcrop about 1.3 m: dark rock base with a cluster of hexagonal blue-violet "
+              "crystals. Frames: off (dull), on (crystals glowing, emit).", seed=425)
+    ellipse_shadow(a, 10, -10, 220, 70, opacity=0.38, blur=9)
+    a.add("base", [POLY([(0, 0.7), (0.15, 0.25), (0.45, 0.05), (0.8, 0.1), (1, 0.55), (0.85, 1), (0.1, 0.95)],
+                        0, -40, 230, 90)], "mass", "rock_dark", shade={"bump": 1.1})
+    prism = [(0.5, 0.0), (1.0, 0.18), (1.0, 1.0), (0.0, 1.0), (0.0, 0.18)]
+    cr = [(-50, -90, 36, 110, -18), (-10, -124, 46, 170, -4), (34, -104, 38, 130, 12), (70, -70, 28, 80, 26),
+          (-78, -60, 26, 64, -32)]
+    pieces = [POLY(prism, x, y, w, h, rot=r) for x, y, w, h, r in cr]
+    a.add("crystals_off", pieces, "mass", "crystal", tags=["off"], shade={"bump": 0.5})
+    a.add("crystals_on", pieces, "mass", "crystal", tags=["on"], hidden=True, emit=0.7,
+          glow={"radius": 10, "opacity": 0.55, "color": "crystal_glow"}, shade={"bump": 0.5})
+    a.flat("facets", [LINE(x + math.sin(math.radians(r)) * h * 0.4, y - math.cos(math.radians(r)) * h * 0.4,
+                           x - math.sin(math.radians(r)) * h * 0.45, y + math.cos(math.radians(r)) * h * 0.45, 3)
+                      for x, y, w, h, r in cr], "chrome", opacity=0.35)
+    a.frame("off", state="off")
+    a.frame("on", state="on", show=["on"], hide=["off"], light={"color": "#8a9ad8", "radius": 300, "at": [0, -120]})
+    return a
+
+
 # ============================================================================ main
 def main() -> int:
     names = sys.argv[1:] or list(ASSETS)

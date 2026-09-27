@@ -39,7 +39,7 @@
 - `recipes\palette_g04.json` = V1 `palette_h0_mood.json` 그대로 + 새 재질(식물·바위·물·눈·금·구리·강철·고무·유리·화면·네온·신호등·천·
   지붕·벽토·벽돌·옻칠 등). V1의 윤곽선·그림자·공통 색·재질·스타일은 바꾸지 않았다. 밝기는 V1 범위(종이색이 가장 밝은 면).
 
-## 체크리스트 (19/26 완료)
+## 체크리스트 (26/26 완료)
 
 | 완료 | 단계 | 자산 ID | 이름 | 장르 | 프레임(상태) | 캔버스 | 피벗 뜻 | 빛 | 출처 |
 |---|---|---|---|---|---|---|---|---|---|
@@ -62,11 +62,11 @@
 | [x] | B | obj_door_secret | 비밀 문(책장 문) | 고딕 | closed, open | 396×464 | bottom centre of the opening on the wall-face floor line (threshold) |  | BS2 비밀 문 |
 | [x] | B | obj_trapdoor | 비밀 통로 입구(바닥 뚜껑) | 다크 | closed, open | 272×374 | front edge centre of the hatch on the floor |  | BS2 비밀 통로 입구 |
 | [x] | B | obj_door_balcony | 발코니 문 | 고딕 | closed, open | 536×510 | bottom centre of the opening on the wall-face floor line (threshold) |  | BS2 발코니 문 |
-| [ ] | C | obj_guillotine | 단두대 | 다크 |  |  |  |  | BS2 단두대 |
-| [ ] | C | obj_gallows | 교수대 | 다크 |  |  |  |  | BS2 교수대 |
-| [ ] | C | obj_iron_maiden | 철의 처녀 | 다크 |  |  |  |  | BS2 철의 처녀 |
-| [ ] | C | obj_saw_trap | 톱날 함정 | 다크 |  |  |  |  | BS2 톱날 함정 |
-| [ ] | C | obj_door_strange | 이상한 문 | 다크 |  |  |  |  | BS2 이상한 문 |
-| [ ] | C | obj_wall_shackles | 벽 족쇄 | 다크 |  |  |  |  |  |
-| [ ] | C | obj_cage_large | 큰 새장 | 다크 |  |  |  |  |  |
+| [x] | C | obj_guillotine | 단두대 | 다크 | obj_guillotine | 390×506 | front-bottom centre of the base on the floor |  | BS2 단두대 |
+| [x] | C | obj_gallows | 교수대 | 다크 | obj_gallows | 528×768 | front-bottom centre of the base on the floor |  | BS2 교수대 |
+| [x] | C | obj_iron_maiden | 철의 처녀 | 다크 | closed, open | 404×396 | front-bottom centre of the base on the floor |  | BS2 철의 처녀 |
+| [x] | C | obj_saw_trap | 톱날 함정 | 다크 | hidden, out | 316×212 | front edge centre of the plate on the floor |  | BS2 톱날 함정 |
+| [x] | C | obj_door_strange | 이상한 문 | 다크 | closed, open | 312×390 | bottom centre of the opening on the wall-face floor line (threshold) | emit | BS2 이상한 문 |
+| [x] | C | obj_wall_shackles | 벽 족쇄 | 다크 | obj_wall_shackles | 234×258 | centre of the wall plate = attach point on the wall face |  |  |
+| [x] | C | obj_cage_large | 큰 새장 | 다크 | closed, open | 330×402 | front-bottom centre of the base on the floor |  |  |
 

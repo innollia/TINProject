@@ -39,12 +39,12 @@
 - `recipes\palette_g04.json` = V1 `palette_h0_mood.json` 그대로 + 새 재질(식물·바위·물·눈·금·구리·강철·고무·유리·화면·네온·신호등·천·
   지붕·벽토·벽돌·옻칠 등). V1의 윤곽선·그림자·공통 색·재질·스타일은 바꾸지 않았다. 밝기는 V1 범위(종이색이 가장 밝은 면).
 
-## 체크리스트 (10/21 완료)
+## 체크리스트 (21/21 완료)
 
 | 완료 | 단계 | 자산 ID | 이름 | 장르 | 프레임(상태) | 캔버스 | 피벗 뜻 | 빛 | 출처 |
 |---|---|---|---|---|---|---|---|---|---|
 | [x] | A | obj_vending_machine | 자판기 | 현대 | off, on | 310×424 | front-bottom centre on the floor; the back face stands on the wall line | 빛 emit |  |
-| [x] | A | obj_car | 자동차 | 현대 | obj_car | 880×490 | centre of the car's near-side ground line |  |  |
+| [x] | A | obj_car | 자동차 | 현대 | obj_car, obj_car_burnt/obj_car_burnt | 880×490 | centre of the car's near-side ground line |  |  |
 | [x] | A | obj_sf_console | SF 조종 콘솔 | SF | off, on | 400×374 | front-bottom centre of the base on the floor | 빛 emit |  |
 | [x] | A | obj_sf_capsule | 냉동 캡슐 | SF | closed, open | 300×404 | front-bottom centre on the floor; the back face stands on the wall line | 빛 emit |  |
 | [x] | A | obj_steam_boiler | 증기 보일러 | 스팀펑크 | off, on | 588×554 | front-bottom centre of the base on the floor | 빛 emit |  |
@@ -53,15 +53,15 @@
 | [x] | B | obj_oil_drum | 드럼통 | 포스트아포칼립스 | dented, normal | 242×290 | front-bottom centre of the base on the floor |  |  |
 | [x] | B | obj_barricade | 바리케이드 | 포스트아포칼립스 | obj_barricade | 586×312 | centre of the barricade's ground line |  |  |
 | [x] | B | obj_stone_lantern | 석등 | 동양 | off, on | 230×386 | front-bottom centre of the base on the floor | 빛 emit |  |
-| [ ] | C | obj_phone_booth | 공중전화 부스 | 현대 |  |  |  |  |  |
-| [ ] | C | obj_trash_can | 쓰레기통 | 현대 |  |  |  |  |  |
-| [ ] | C | obj_hitching_post | 말 매는 말뚝 | 서부 |  |  |  |  |  |
-| [ ] | C | obj_water_tower | 물탱크 | 서부 |  |  |  |  |  |
-| [ ] | C | obj_torii | 도리이(신사 문) | 동양 |  |  |  |  |  |
-| [ ] | C | obj_anchor_large | 큰 닻 | 해적·바다 |  |  |  |  |  |
-| [ ] | C | obj_car_burnt | 불탄 차 | 포스트아포칼립스 |  |  |  |  |  |
-| [ ] | C | obj_street_terminal | 거리 단말기 | 사이버펑크 |  |  |  |  |  |
-| [ ] | C | obj_rail_signal | 철도 신호기 | 스팀펑크 |  |  |  |  | BS2 증기기관차 부품(신호기) |
-| [ ] | C | obj_steam_chimney | 증기 굴뚝 | 스팀펑크 |  |  |  |  | BS2 증기기관차 부품(굴뚝) |
-| [ ] | C | obj_cage_lift | 승강기(철창 리프트) | 스팀펑크 |  |  |  |  | BS2 승강기 |
+| [x] | C | obj_phone_booth | 공중전화 부스 | 현대 | off, on | 254×432 | front-bottom centre of the base on the floor | 빛 emit |  |
+| [x] | C | obj_trash_can | 쓰레기통 | 현대 | obj_trash_can | 222×284 | front-bottom centre of the base on the floor |  |  |
+| [x] | C | obj_hitching_post | 말 매는 말뚝 | 서부 | obj_hitching_post | 502×272 | centre of the rail's ground line |  |  |
+| [x] | C | obj_water_tower | 물탱크 | 서부 | obj_water_tower | 490×950 | centre of the front legs' ground line |  |  |
+| [x] | C | obj_torii | 도리이(신사 문) | 동양 | obj_torii | 578×484 | centre between the pillars on the ground |  |  |
+| [x] | C | obj_anchor_large | 큰 닻 | 해적·바다 | obj_anchor_large | 390×374 | fluke tip contact on the ground |  |  |
+| [x] | C | obj_car_burnt | 불탄 차 | 포스트아포칼립스 | obj_car_burnt | 860×478 | centre of the car's near-side ground line |  |  |
+| [x] | C | obj_street_terminal | 거리 단말기 | 사이버펑크 | off, on | 228×352 | front-bottom centre of the base on the floor | 빛 emit |  |
+| [x] | C | obj_rail_signal | 철도 신호기 | 스팀펑크 | green, red | 268×580 | front-bottom centre of the base on the floor | 빛 emit | BS2 증기기관차 부품(신호기) |
+| [x] | C | obj_steam_chimney | 증기 굴뚝 | 스팀펑크 | obj_steam_chimney | 336×842 | front-bottom centre of the base on the floor |  | BS2 증기기관차 부품(굴뚝) |
+| [x] | C | obj_cage_lift | 승강기(철창 리프트) | 스팀펑크 | down, up | 360×708 | front-bottom centre of the base on the floor | emit | BS2 승강기 |
 

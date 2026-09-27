@@ -109,42 +109,42 @@
 
 | # | 이름 | 자산 ID | 장르 | 우선순위 | 형식·상태 그림 | 묶음 | 출처 | 상태 |
 |---|---|---|---|---|---|---|---|---|
-| 87 | 갈대 | obj_reeds | 중세 | C | 오브젝트 | g04-nature-v01 |  | 대기 |
-| 88 | 작은 돌 무더기 | obj_rocks_small | 중세 | C | 오브젝트 | g04-nature-v01 |  | 대기 |
-| 89 | 작은 폭포 바위 | obj_waterfall_rock | 중세 | C | 오브젝트 | g04-nature-v01 | BS2 폭포 | 대기 |
-| 90 | 벚나무 | obj_tree_cherry | 동양 | C | 오브젝트 | g04-nature-v01 |  | 대기 |
-| 91 | 수정 바위 | obj_crystal_rock | 중세 | C | 오브젝트 (꺼짐·켜짐(빛남)) | g04-nature-v01 |  | 대기 |
-| 92 | 단두대 | obj_guillotine | 다크 | C | 오브젝트 | g04-dungeon-v01 | BS2 단두대 | 대기 |
-| 93 | 교수대 | obj_gallows | 다크 | C | 오브젝트 | g04-dungeon-v01 | BS2 교수대 | 대기 |
-| 94 | 철의 처녀 | obj_iron_maiden | 다크 | C | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 철의 처녀 | 대기 |
-| 95 | 톱날 함정 | obj_saw_trap | 다크 | C | 오브젝트 (숨음·나옴) | g04-dungeon-v01 | BS2 톱날 함정 | 대기 |
-| 96 | 이상한 문 | obj_door_strange | 다크 | C | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 이상한 문 | 대기 |
-| 97 | 벽 족쇄 | obj_wall_shackles | 다크 | C | 오브젝트 (벽 피벗) | g04-dungeon-v01 |  | 대기 |
-| 98 | 큰 새장 | obj_cage_large | 다크 | C | 오브젝트 (닫힘·열림) | g04-dungeon-v01 |  | 대기 |
-| 99 | 큰 진자 | obj_pendulum | 고딕 | C | 오브젝트 | g04-interior-v01 | BS2 진자 | 대기 |
-| 100 | 축음기 | obj_phonograph | 고딕 | C | 오브젝트 | g04-interior-v01 | BS2 축음기 | 대기 |
-| 101 | 브라운관 텔레비전 | obj_tv_crt | 현대 | C | 오브젝트 (꺼짐·켜짐) | g04-interior-v01 | BS2 텔레비전 | 대기 |
-| 102 | 휠체어 | obj_wheelchair | 호러·오컬트 | C | 오브젝트 | g04-interior-v01 | BS2 휠체어 | 대기 |
-| 103 | 떠다니는 책 | obj_floating_book | 중세 | C | 오브젝트 | g04-interior-v01 | BS2 떠다니는 책 | 대기 |
-| 104 | 풍선 다발 | obj_balloons | 공통 | C | 오브젝트 | g04-interior-v01 | BS2 풍선 | 대기 |
-| 105 | 큰 인형(앉은 장식) | obj_doll_large | 호러·오컬트 | C | 오브젝트 | g04-interior-v01 | BS2 인형 | 대기 |
-| 106 | 톱니바퀴 장치 | obj_gear_machine | 스팀펑크 | C | 오브젝트 | g04-interior-v01 | BS2 톱니바퀴 | 대기 |
-| 107 | 복고양이 장식상 | obj_lucky_cat | 동양 | C | 오브젝트 | g04-interior-v01 | BS2 복고양이 장식상 | 대기 |
-| 108 | 물레방아 집 | obj_watermill | 중세 | C | 오브젝트 | g04-buildings-v01 | BS2 물레방아 | 대기 |
-| 109 | 서부 술집 | obj_saloon | 서부 | C | 오브젝트 (낮·밤) | g04-buildings-v01 |  | 대기 |
-| 110 | 폐허 판잣집 | obj_shack | 포스트아포칼립스 | C | 오브젝트 | g04-buildings-v01 |  | 대기 |
-| 111 | SF 거주 모듈 | obj_sf_habitat | SF | C | 오브젝트 (낮·밤) | g04-buildings-v01 |  | 대기 |
-| 112 | 등대 | obj_lighthouse | 해적·바다 | C | 오브젝트 (꺼짐·켜짐) | g04-buildings-v01 |  | 대기 |
-| 113 | 공중전화 부스 | obj_phone_booth | 현대 | C | 오브젝트 (꺼짐·켜짐) | g04-genre-v01 |  | 대기 |
-| 114 | 쓰레기통 | obj_trash_can | 현대 | C | 오브젝트 | g04-genre-v01 |  | 대기 |
-| 115 | 말 매는 말뚝 | obj_hitching_post | 서부 | C | 오브젝트 | g04-genre-v01 |  | 대기 |
-| 116 | 물탱크 | obj_water_tower | 서부 | C | 오브젝트 | g04-genre-v01 |  | 대기 |
-| 117 | 도리이(신사 문) | obj_torii | 동양 | C | 오브젝트 | g04-genre-v01 |  | 대기 |
-| 118 | 큰 닻 | obj_anchor_large | 해적·바다 | C | 오브젝트 | g04-genre-v01 |  | 대기 |
-| 119 | 불탄 차 | obj_car_burnt | 포스트아포칼립스 | C | 오브젝트 | g04-genre-v01 |  | 대기 |
-| 120 | 거리 단말기 | obj_street_terminal | 사이버펑크 | C | 오브젝트 (꺼짐·켜짐) | g04-genre-v01 |  | 대기 |
-| 121 | 철도 신호기 | obj_rail_signal | 스팀펑크 | C | 오브젝트 (빨강·초록) | g04-genre-v01 | BS2 증기기관차 부품(신호기) | 대기 |
-| 122 | 증기 굴뚝 | obj_steam_chimney | 스팀펑크 | C | 오브젝트 | g04-genre-v01 | BS2 증기기관차 부품(굴뚝) | 대기 |
-| 123 | 승강기(철창 리프트) | obj_cage_lift | 스팀펑크 | C | 오브젝트 (위·아래) | g04-genre-v01 | BS2 승강기 | 대기 |
+| 87 | 갈대 | obj_reeds | 중세 | C | 오브젝트 | g04-nature-v01 |  | 완료 |
+| 88 | 작은 돌 무더기 | obj_rocks_small | 중세 | C | 오브젝트 | g04-nature-v01 |  | 완료 |
+| 89 | 작은 폭포 바위 | obj_waterfall_rock | 중세 | C | 오브젝트 | g04-nature-v01 | BS2 폭포 | 완료 |
+| 90 | 벚나무 | obj_tree_cherry | 동양 | C | 오브젝트 | g04-nature-v01 |  | 완료 |
+| 91 | 수정 바위 | obj_crystal_rock | 중세 | C | 오브젝트 (꺼짐·켜짐(빛남)) | g04-nature-v01 |  | 완료 |
+| 92 | 단두대 | obj_guillotine | 다크 | C | 오브젝트 | g04-dungeon-v01 | BS2 단두대 | 완료 |
+| 93 | 교수대 | obj_gallows | 다크 | C | 오브젝트 | g04-dungeon-v01 | BS2 교수대 | 완료 |
+| 94 | 철의 처녀 | obj_iron_maiden | 다크 | C | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 철의 처녀 | 완료 |
+| 95 | 톱날 함정 | obj_saw_trap | 다크 | C | 오브젝트 (숨음·나옴) | g04-dungeon-v01 | BS2 톱날 함정 | 완료 |
+| 96 | 이상한 문 | obj_door_strange | 다크 | C | 오브젝트 (닫힘·열림) | g04-dungeon-v01 | BS2 이상한 문 | 완료 |
+| 97 | 벽 족쇄 | obj_wall_shackles | 다크 | C | 오브젝트 (벽 피벗) | g04-dungeon-v01 |  | 완료 |
+| 98 | 큰 새장 | obj_cage_large | 다크 | C | 오브젝트 (닫힘·열림) | g04-dungeon-v01 |  | 완료 |
+| 99 | 큰 진자 | obj_pendulum | 고딕 | C | 오브젝트 | g04-interior-v01 | BS2 진자 | 완료 |
+| 100 | 축음기 | obj_phonograph | 고딕 | C | 오브젝트 | g04-interior-v01 | BS2 축음기 | 완료 |
+| 101 | 브라운관 텔레비전 | obj_tv_crt | 현대 | C | 오브젝트 (꺼짐·켜짐) | g04-interior-v01 | BS2 텔레비전 | 완료 |
+| 102 | 휠체어 | obj_wheelchair | 호러·오컬트 | C | 오브젝트 | g04-interior-v01 | BS2 휠체어 | 완료 |
+| 103 | 떠다니는 책 | obj_floating_book | 중세 | C | 오브젝트 | g04-interior-v01 | BS2 떠다니는 책 | 완료 |
+| 104 | 풍선 다발 | obj_balloons | 공통 | C | 오브젝트 | g04-interior-v01 | BS2 풍선 | 완료 |
+| 105 | 큰 인형(앉은 장식) | obj_doll_large | 호러·오컬트 | C | 오브젝트 | g04-interior-v01 | BS2 인형 | 완료 |
+| 106 | 톱니바퀴 장치 | obj_gear_machine | 스팀펑크 | C | 오브젝트 | g04-interior-v01 | BS2 톱니바퀴 | 완료 |
+| 107 | 복고양이 장식상 | obj_lucky_cat | 동양 | C | 오브젝트 | g04-interior-v01 | BS2 복고양이 장식상 | 완료 |
+| 108 | 물레방아 집 | obj_watermill | 중세 | C | 오브젝트 | g04-buildings-v01 | BS2 물레방아 | 완료 |
+| 109 | 서부 술집 | obj_saloon | 서부 | C | 오브젝트 (낮·밤) | g04-buildings-v01 |  | 완료 |
+| 110 | 폐허 판잣집 | obj_shack | 포스트아포칼립스 | C | 오브젝트 | g04-buildings-v01 |  | 완료 |
+| 111 | SF 거주 모듈 | obj_sf_habitat | SF | C | 오브젝트 (낮·밤) | g04-buildings-v01 |  | 완료 |
+| 112 | 등대 | obj_lighthouse | 해적·바다 | C | 오브젝트 (꺼짐·켜짐) | g04-buildings-v01 |  | 완료 |
+| 113 | 공중전화 부스 | obj_phone_booth | 현대 | C | 오브젝트 (꺼짐·켜짐) | g04-genre-v01 |  | 완료 |
+| 114 | 쓰레기통 | obj_trash_can | 현대 | C | 오브젝트 | g04-genre-v01 |  | 완료 |
+| 115 | 말 매는 말뚝 | obj_hitching_post | 서부 | C | 오브젝트 | g04-genre-v01 |  | 완료 |
+| 116 | 물탱크 | obj_water_tower | 서부 | C | 오브젝트 | g04-genre-v01 |  | 완료 |
+| 117 | 도리이(신사 문) | obj_torii | 동양 | C | 오브젝트 | g04-genre-v01 |  | 완료 |
+| 118 | 큰 닻 | obj_anchor_large | 해적·바다 | C | 오브젝트 | g04-genre-v01 |  | 완료 |
+| 119 | 불탄 차 | obj_car_burnt | 포스트아포칼립스 | C | 오브젝트 | g04-genre-v01 |  | 완료 |
+| 120 | 거리 단말기 | obj_street_terminal | 사이버펑크 | C | 오브젝트 (꺼짐·켜짐) | g04-genre-v01 |  | 완료 |
+| 121 | 철도 신호기 | obj_rail_signal | 스팀펑크 | C | 오브젝트 (빨강·초록) | g04-genre-v01 | BS2 증기기관차 부품(신호기) | 완료 |
+| 122 | 증기 굴뚝 | obj_steam_chimney | 스팀펑크 | C | 오브젝트 | g04-genre-v01 | BS2 증기기관차 부품(굴뚝) | 완료 |
+| 123 | 승강기(철창 리프트) | obj_cage_lift | 스팀펑크 | C | 오브젝트 (위·아래) | g04-genre-v01 | BS2 승강기 | 완료 |
 
 합계 123개 (A 42 · B 44 · C 37).

@@ -1,0 +1,452 @@
+{
+ "asset": "obj_street_terminal",
+ "status": "candidate",
+ "note": "Cyberpunk street terminal 1.9 m: slim dark pillar with a hood, wide screen, keypad, card slot and cable bundle. Frames: off, on (screen and trim lit, emit).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 928,
+ "pivot_meaning": "front-bottom centre of the base on the floor",
+ "layer_hint": "world",
+ "canvas": [
+  228,
+  352
+ ],
+ "pivot": [
+  106,
+  288
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 7,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      114,
+      258
+     ],
+     "size": [
+      110,
+      70
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pillar",
+   "z": 2.0,
+   "kind": "block",
+   "material": "steel",
+   "extrude": 190,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "at": [
+      106,
+      68.0
+     ],
+     "size": [
+      90,
+      60
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hood",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "plastic",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 8
+     },
+     "at": [
+      106,
+      106.0
+     ],
+     "size": [
+      110,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screen_off",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "screen_off",
+   "tags": [
+    "off"
+   ],
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      106,
+      148
+     ],
+     "size": [
+      72,
+      56
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screen_on",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "screen_on",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.9,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.5,
+    "color": "screen_glow"
+   },
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 4
+     },
+     "at": [
+      106,
+      148
+     ],
+     "size": [
+      72,
+      56
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ui_bars",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "neon_cyan",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 1.0,
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      94,
+      134
+     ],
+     "size": [
+      40,
+      5
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      94,
+      146
+     ],
+     "size": [
+      34,
+      5
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      94,
+      158
+     ],
+     "size": [
+      28,
+      5
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      128,
+      148
+     ],
+     "size": [
+      16,
+      16
+     ]
+    }
+   ]
+  },
+  {
+   "name": "keypad",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "chrome",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "grid_fine",
+     "at": [
+      106,
+      202
+     ],
+     "size": [
+      46,
+      34
+     ],
+     "crop": [
+      1,
+      1,
+      15,
+      15
+     ]
+    }
+   ]
+  },
+  {
+   "name": "slot",
+   "z": 8.0,
+   "kind": "flat",
+   "material": "hole",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      106,
+      230
+     ],
+     "size": [
+      30,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "trim_off",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "signal_off",
+   "tags": [
+    "off"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      66,
+      188
+     ],
+     "size": [
+      4,
+      150
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      146,
+      188
+     ],
+     "size": [
+      4,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "trim_on",
+   "z": 10.0,
+   "kind": "flat",
+   "material": "neon_pink",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 1.0,
+   "glow": {
+    "radius": 5,
+    "opacity": 0.6,
+    "color": "neon_pink_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      66,
+      188
+     ],
+     "size": [
+      4,
+      150
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      146,
+      188
+     ],
+     "size": [
+      4,
+      150
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cables",
+   "z": 11.0,
+   "kind": "mass",
+   "material": "rubber",
+   "line": {
+    "width": 0.7,
+    "heavy": 0.6,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      161.0,
+      276.0
+     ],
+     "size": [
+      46.861498055439924,
+      6
+     ],
+     "rot": 50.19442890773481
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2.5
+     },
+     "at": [
+      148.0,
+      283.0
+     ],
+     "size": [
+      38.41874542459709,
+      5
+     ],
+     "rot": 51.34019174590991
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off"
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": [
+    {
+     "color": "#7ed0c8",
+     "radius": 220,
+     "at": [
+      106,
+      148
+     ]
+    },
+    {
+     "color": "#ff7aa8",
+     "radius": 160,
+     "at": [
+      106,
+      188
+     ]
+    }
+   ]
+  }
+ ]
+}

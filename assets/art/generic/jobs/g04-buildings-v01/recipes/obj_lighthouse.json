@@ -1,0 +1,713 @@
+{
+ "asset": "obj_lighthouse",
+ "status": "candidate",
+ "note": "Lighthouse about 14 m (pirate / sea): rock base, tapering tower with wine and bone bands, small door and windows, gallery with railing, glazed lantern room, dark cap. Frames: off, on (lamp lit, emit).",
+ "palette": "palette_g04.json",
+ "style": "prop",
+ "seed": 825,
+ "pivot_meaning": "front-bottom centre of the foundation on the ground (door threshold line)",
+ "layer_hint": "world",
+ "canvas": [
+  592,
+  1292
+ ],
+ "pivot": [
+  266,
+  1196
+ ],
+ "footprint": [
+  126,
+  1136,
+  406,
+  1196
+ ],
+ "forms": [
+  {
+   "name": "shadow",
+   "z": 1.0,
+   "kind": "shadow",
+   "color": "shadow_contact",
+   "opacity": 0.36,
+   "blur": 16,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      296,
+      1076
+     ],
+     "size": [
+      420,
+      260
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rocks",
+   "z": 2.0,
+   "kind": "mass",
+   "material": "rock_dark",
+   "shade": {
+    "bump": 1.0
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       2,
+       10.4
+      ],
+      [
+       3.8,
+       4.4
+      ],
+      [
+       7.4,
+       2.0
+      ],
+      [
+       11.6,
+       3.2
+      ],
+      [
+       14,
+       9.2
+      ],
+      [
+       12.2,
+       14
+      ],
+      [
+       3.2,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      266,
+      1156
+     ],
+     "size": [
+      400,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tower",
+   "z": 3.0,
+   "kind": "mass",
+   "material": "plaster_pale",
+   "shade": {
+    "bump": 0.6
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       4.88,
+       2.0
+      ],
+      [
+       11.12,
+       2.0
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       2.0,
+       14.0
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      266,
+      676
+     ],
+     "size": [
+      250,
+      920
+     ]
+    }
+   ]
+  },
+  {
+   "name": "bands",
+   "z": 4.0,
+   "kind": "flat",
+   "material": "cloth_wine",
+   "opacity": 0.9,
+   "clip_to": "tower",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      266,
+      936
+     ],
+     "size": [
+      300,
+      110
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      266,
+      676
+     ],
+     "size": [
+      300,
+      110
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      266,
+      416
+     ],
+     "size": [
+      300,
+      110
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tower_shade",
+   "z": 5.0,
+   "kind": "flat",
+   "material": "soot",
+   "opacity": 0.28,
+   "clip_to": "tower",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.6,
+       2.0
+      ],
+      [
+       11.12,
+       2.0
+      ],
+      [
+       14.0,
+       14.0
+      ],
+      [
+       9.92,
+       14.0
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      266,
+      676
+     ],
+     "size": [
+      250,
+      920
+     ]
+    }
+   ]
+  },
+  {
+   "name": "door",
+   "z": 6.0,
+   "kind": "flat",
+   "material": "wood_dark",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "bullet",
+     "at": [
+      266,
+      1086
+     ],
+     "size": [
+      110,
+      60
+     ],
+     "rot": -90
+    }
+   ]
+  },
+  {
+   "name": "windows",
+   "z": 7.0,
+   "kind": "flat",
+   "material": "glass_dark",
+   "line": {
+    "width": 0.9,
+    "heavy": 0.9,
+    "breaks": 0.3
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      286,
+      776
+     ],
+     "size": [
+      24,
+      36
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 3
+     },
+     "at": [
+      250,
+      536
+     ],
+     "size": [
+      22,
+      32
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gallery",
+   "z": 8.0,
+   "kind": "block",
+   "material": "iron",
+   "extrude": 14,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      266,
+      129.73
+     ],
+     "size": [
+      190,
+      164.54
+     ]
+    }
+   ]
+  },
+  {
+   "name": "rail",
+   "z": 9.0,
+   "kind": "flat",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      176,
+      196
+     ],
+     "size": [
+      4,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      194,
+      196
+     ],
+     "size": [
+      4,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      212,
+      196
+     ],
+     "size": [
+      4,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      230,
+      196
+     ],
+     "size": [
+      4,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      248,
+      196
+     ],
+     "size": [
+      4,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      266,
+      196
+     ],
+     "size": [
+      4,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      284,
+      196
+     ],
+     "size": [
+      4,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      302,
+      196
+     ],
+     "size": [
+      4,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      320,
+      196
+     ],
+     "size": [
+      4,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      338,
+      196
+     ],
+     "size": [
+      4,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      356,
+      196
+     ],
+     "size": [
+      4,
+      30
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 2
+     },
+     "at": [
+      266,
+      182
+     ],
+     "size": [
+      190,
+      5
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lantern_off",
+   "z": 10.0,
+   "kind": "mass",
+   "material": "glass_dark",
+   "tags": [
+    "off"
+   ],
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      266,
+      156
+     ],
+     "size": [
+      110,
+      80
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lantern_on",
+   "z": 11.0,
+   "kind": "mass",
+   "material": "glass",
+   "tags": [
+    "on"
+   ],
+   "hidden": true,
+   "emit": 0.95,
+   "glow": {
+    "radius": 16,
+    "opacity": 0.6,
+    "color": "lamp_glow"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 10
+     },
+     "at": [
+      266,
+      156
+     ],
+     "size": [
+      110,
+      80
+     ]
+    }
+   ]
+  },
+  {
+   "name": "mullions",
+   "z": 12.0,
+   "kind": "flat",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      230,
+      156
+     ],
+     "size": [
+      5,
+      80
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      266,
+      156
+     ],
+     "size": [
+      5,
+      80
+     ]
+    },
+    {
+     "icon": "square",
+     "slice": {
+      "border": 4,
+      "corner": 1
+     },
+     "at": [
+      302,
+      156
+     ],
+     "size": [
+      5,
+      80
+     ]
+    }
+   ]
+  },
+  {
+   "name": "cap",
+   "z": 13.0,
+   "kind": "mass",
+   "material": "iron",
+   "pieces": [
+    {
+     "icon": "square",
+     "poly": [
+      [
+       8.0,
+       2
+      ],
+      [
+       14,
+       14
+      ],
+      [
+       2,
+       14
+      ]
+     ],
+     "fit": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "at": [
+      266,
+      86
+     ],
+     "size": [
+      140,
+      70
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      266,
+      46
+     ],
+     "size": [
+      16,
+      16
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "state": "off"
+  },
+  {
+   "name": "on",
+   "state": "on",
+   "hide": [
+    "off"
+   ],
+   "show": [
+    "on"
+   ],
+   "game_light": {
+    "color": "#ffc987",
+    "radius": 900,
+    "at": [
+     266,
+     156
+    ]
+   }
+  }
+ ]
+}
