@@ -1,5 +1,12 @@
 # Top-down Action-RPG Kit 04 — 구현 상태 / 인수인계
 
+> **2026-09-27 부모(통합 담당) 전달 — 사용자 지시와 부모 지시 정정. 이 파일의 다른 내용과 부모 지시문보다 우선한다.**
+> 1. 중요한 결정은 확정하지 말고 번호 질문으로 부모에게 보고한다(`AGENTS.md` '중요한 결정은 사용자에게 묻는다'). §6의 '사용자 확인 대기' 결정 중 게임 경험을 바꾸는 것(A·B·G·H)은 '이미 이렇게 진행함'을 밝혀 확인 질문으로 올린다.
+> 2. 부모 지시문의 'A: FAM↔enemy 대응표를 정본으로 새로 만든다'는 취소한다. 대응표를 지어내지 않는다. A·G·H는 현재 콘텐츠에만 걸리고, 04 콘텐츠는 새 세계(《저녁의 해안》, `plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/world_new/`)로 다시 쓰는 중이며 사용자가 검토하고 있다.
+> 3. 부모 지시문의 'visual capture 미도달 상태 해결, 720p/FHD/QHD 캡처 생성'은 이미 끝났다(§6 D·E: 16개 상태 도달, 창 모드 PNG 48장). 다시 만들지 않고, 지금 코드에서 게이트가 여전히 통과하는지만 확인한다.
+> 4. 절차적 생물을 다루면 `AGENTS.md` '절차적 생물·괴물 디자인'을 따른다(기준은 Rain World 수준의 절차 애니메이션 품질, 거미만 금지).
+
+
 작성: 2026-09-27. 갱신: 2026-09-27 05시 KST — Kit 04 코드·검증 세션 종료 기록(§8). 이 문서가 Kit 04 구현의 **현황 정본**이다.
 관련 정본: [README](../../../plans/kits/04_TOP_DOWN_ACTION_RPG_KIT/README.md) · [세계 헌장](WORLD_CONSTITUTION.md) · [계획 resolution](PLAN_RESOLUTION.md) · [아이디어 원장](IDEA_LEDGER.md)
 
@@ -8,6 +15,8 @@ Primary Reference는 **BLACK SOULS 2 하나**다. `godot-jrpg`는 파일 단위 
 ---
 
 ## 1. 현재 판정
+
+> **2026-09-27 18시 KST 갱신(sub-kit04, §9).** §8.3 수정과 §8.4-1·2를 이 세션에서 실행 검증했다. 지금 코드 기준 게이트: `run_tests.gd` 644/644, core GUT 19/19, module GUT 23/23, playthrough probe exit 0(coverage 14/14), 부팅 180f exit 0, 창 모드 capture 16/16 상태·PNG 48장·`missing_art_key` 48건만 남음. §6 A–I는 사용자 지시("답하지 않은 질문은 추천안대로 확정")에 따라 **추천안으로 확정**이다. 아래 03시 기록은 이력이다.
 
 **사용자 플레이 검토 전 단계.** Kit 04 core·module GUT와 playthrough probe는 2026-09-27 03시 실행에서 통과했다(§3). visual capture는 16개 상태 × 3개 해상도 전부에 도달하고 창 모드에서 PNG 48장을 남긴다. **승인된 그림이 하나도 없어서(missing art key 12개) capture 판정은 `failed`가 맞다.**
 
@@ -178,7 +187,9 @@ harness가 아니라 **모듈 결함**이었다. `conversation_controller.advanc
 
 ## 6. 미결 A–I
 
-### 결정 기록 — 2026-09-27, 사용자 확인 대기
+### 결정 기록 — 2026-09-27, 추천안으로 확정
+
+2026-09-27 18시 부모 전달: 사용자가 답하지 않은 질문은 추천안대로 확정한다(사용자 지시). 아래 표는 이제 확정 기록이다. G의 사람 검수용 목록은 [G_HUMAN_REVIEW_LIST_2026-09-27.md](G_HUMAN_REVIEW_LIST_2026-09-27.md)에 있다.
 
 사용자가 자리를 비우며 "중요한 질문은 네 추천대로 하라"고 지시해서 Kit 04 코드 세션이 추천안으로 처리했다. 사용자가 뒤집으면 해당 행만 다시 한다. A·G·H는 **지금 콘텐츠에만 걸린 항목**이고, 04는 새 세계(《저녁의 해안》) 재기획이 다른 세션에서 진행 중이다.
 
@@ -314,3 +325,46 @@ Godot 잠금이 04:30~05:20 KST 내내 다른 세션(kit08 → kit01)에 있어 
 2. 전체 자동 검증 4단계(`AGENTS.md`)를 한 번 돌리고 §3을 갱신한다.
 3. §8.4-1 레일 상태 정리, §8.4-2 문서 글자 크기.
 4. 캡처 PNG 사람 검수: 이 세션의 최신 창 모드 출력은 §5.3 경로.
+
+---
+
+## 9. 2026-09-27 18시 KST sub-kit04 세션
+
+쓴 경로: `modules/top_down_action_rpg/{module.gd, systems/combat_controller.gd, presentation/top_down_screen.gd, presentation/top_down_row.gd}`, `tests/core/test_top_down_action_rpg_module.gd`, `tests/performance/top_down_action_rpg_visual_capture.gd`, 이 문서, `G_HUMAN_REVIEW_LIST_2026-09-27.md`. 커밋 `6bc7d9cf`(코드) + 이 문서 커밋.
+
+### 9.1 한 것
+
+1. §8.6-1 검증: §8.3 수정이 통과했다. 창 모드 capture에서 `clipped_text` 0, `surface_overflow` 0, target_select·equipment_no_turn이 같은 픽셀 묶음에서 빠졌다.
+2. §8.4-1 전투 명령 레일 정리:
+   - 레일 단계(분류 목록 ↔ 행동 목록)는 도메인 `combat_state.submode` 하나로 판정한다. 화면의 `_rail_expanded` 변수를 없앴다.
+   - 초점은 모듈 `_rail_focus`만 바꾼다. 화면은 표시만 한다. 단계(행위자·분류)가 바뀌면 0으로 돌아간다.
+   - 위/아래는 끝에서 멈춘다(계획 `01`·`09` "wrap하지 않는다"). 행 수는 화면의 행 모델(`rail_row_count()`, Back·End Turn 포함) 하나에서 읽는다.
+   - 행동 목록에서 취소·Back하면 도메인도 `command_category`로 돌아간다(`combat_controller.leave_category()`).
+   - 분류 목록의 End Turn 행에서 확인하면 차례를 끝낸다. 분류 행을 마우스로 눌러도 분류가 열린다.
+   - 행동을 확정하면 다음 차례는 분류 목록부터 시작한다.
+   - equipment_no_turn 판정은 행동 목록이 열려 있을 때만.
+   - 회귀 테스트 `test_command_rail_stage_and_focus_follow_one_owner_without_wrapping`. 16상태 fixture 테스트의 item 단계는 `set_category("item")`로 실제 도메인 상태를 만들게 바꿨다.
+3. §8.4-2 문서 본문 24px(계획 `09` §7.1, 행 높이 32px 그대로). capture에 `small_reading_text` 차단 검사(24px와 문서 `reading.min_font_size` 중 큰 값 미만이면 실패)를 추가했다. 720p에서 글 잘림 없음.
+4. G 사람 검수용 목록 작성. 기계 확인 결과: seed 160건 모두 `local_rule`이 구조 문장 복사형이고 지연 결과가 같은 effect 하나다. effect 57건 모두 `seed_ids`가 `seed_s001` 하나뿐이다.
+
+### 9.2 실제로 돌린 게이트 (이 세션, 지금 코드)
+
+| 게이트 | 결과 |
+|---|---|
+| `run_tests.gd` | **644 / 644** |
+| Kit 04 core GUT | **19 / 19**, 7116 asserts |
+| Kit 04 module GUT | **23 / 23**, 5034 asserts |
+| playthrough probe | **exit 0**, assertions 54 / failed 0, coverage 14/14, surfaces 23/22 |
+| 부팅 `--quit-after 180 --fixed-fps 60` | exit 0 |
+| visual capture 창 모드 | 16/16 상태, PNG 48/48, state_failures 0, static 0, runtime 48(전부 `missing_art_key`) → `failed`(승인 그림 없음) |
+| import | 미실행(새 class_name 없음) |
+| 프로젝트 전체 GUT | 미실행(부모 담당) |
+
+캡처: `C:\Users\fixme\AppData\Local\Temp\kit04_visual_capture_windowed_20260927_1820\`
+
+### 9.3 남은 것
+
+- §8.4-3 input_bubble·recovery·success·esc_menu 픽셀이 field와 같다. 원인: 모듈이 `set_recovery_surface`·`set_success_active`를 한 번도 부르지 않는다(화면 플래그만 있고 호출자가 없음). 고치려면 복구 적용 뒤·상호작용으로 prop/route/NPC가 바뀐 뒤 첫 field 입력 전까지 플래그를 켜고, harness를 실제 흐름(패배→복구 확인, H0 return desk `ch_withhold_category` → Bryn route board 선택)으로 바꾼다. 비용 절감 지시로 이번에는 하지 않았다.
+- §8.4-4 전투 UI 글 대부분이 영어다(한국어는 `행동 1`뿐). UI 언어는 게임 경험 결정이라 손대지 않았다.
+- §8.5 계획 충돌 2건은 그대로 정본 반영 대기.
+- 사람만 할 수 있는 것: 직접 플레이 검토·실측 플레이타임, 캡처 PNG 눈 검수, G 목록 판정, 그림 후보 승인.
