@@ -1,0 +1,201 @@
+{
+ "asset": "ui_ctl_selector",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Three-position rotary selector (left / middle / right).",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "selector centre",
+ "seed": 73,
+ "forms": [
+  {
+   "name": "plate",
+   "z": 0,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.55
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      176.0,
+      176.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "marks",
+   "z": 1,
+   "kind": "flat",
+   "material": "enamel",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      46.5,
+      46.5
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      26.0
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      145.5,
+      46.5
+     ],
+     "size": [
+      12.0,
+      12.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "handle",
+   "z": 2,
+   "material": "plastic_dark",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      36.0,
+      126.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 16
+     }
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      96.0,
+      30.0
+     ],
+     "size": [
+      26.0,
+      20.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "handle_line",
+   "z": 2.5,
+   "kind": "flat",
+   "material": "enamel",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      58.0
+     ],
+     "size": [
+      5.0,
+      40.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "hub",
+   "z": 3,
+   "material": "steel",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      26.0,
+      26.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "pos_1",
+   "move": {
+    "handle": {
+     "rot": -45,
+     "pivot": [
+      96,
+      96
+     ]
+    },
+    "handle_line": {
+     "rot": -45,
+     "pivot": [
+      96,
+      96
+     ]
+    }
+   }
+  },
+  {
+   "name": "pos_2"
+  },
+  {
+   "name": "pos_3",
+   "move": {
+    "handle": {
+     "rot": 45,
+     "pivot": [
+      96,
+      96
+     ]
+    },
+    "handle_line": {
+     "rot": 45,
+     "pivot": [
+      96,
+      96
+     ]
+    }
+   }
+  }
+ ]
+}

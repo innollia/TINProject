@@ -1,0 +1,127 @@
+{
+ "asset": "icon_os_mail",
+ "status": "candidate",
+ "note": "g07 future-kit icon (128, flat, no text). at-icons collage, candidate. Desktop icon: mail with an unread badge (no number).",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "icon centre",
+ "seed": 65,
+ "forms": [
+  {
+   "name": "envelope",
+   "z": 0,
+   "material": "paper",
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      62.0,
+      68.0
+     ],
+     "size": [
+      100.0,
+      70.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    }
+   ]
+  },
+  {
+   "name": "flap",
+   "z": 1,
+   "kind": "flat",
+   "material": "paper_mark",
+   "opacity": 0.7,
+   "clip_to": "envelope",
+   "pieces": [
+    {
+     "icon": "triangle",
+     "at": [
+      62.0,
+      52.0
+     ],
+     "size": [
+      100.0,
+      44.0
+     ],
+     "rot": 180
+    }
+   ]
+  },
+  {
+   "name": "seal",
+   "z": 2,
+   "material": "cloth_wine",
+   "shade": {
+    "bump": 1.1
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      62.0,
+      72.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "badge",
+   "z": 3,
+   "material": "paint_red",
+   "shade": {
+    "bump": 1.1
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      104.0,
+      30.0
+     ],
+     "size": [
+      28.0,
+      28.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "badge_dot",
+   "z": 3.5,
+   "kind": "flat",
+   "material": "bone",
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      104.0,
+      30.0
+     ],
+     "size": [
+      8.0,
+      8.0
+     ]
+    }
+   ]
+  }
+ ]
+}

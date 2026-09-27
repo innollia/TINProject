@@ -103,50 +103,50 @@
 
 | # | 이름 | 자산 ID | 근거 키트 | 형식 | 묶음 | 상태 |
 |---|---|---|---|---|---|---|
-| 43 | 세로 수심계(눈금관·표시 막대 따로) | ui_ctl_gauge_depth | K5 K4 | 계기 192×384 + 192 | g07-controls-v01 | 대기 |
-| 44 | 온도 기둥 계기(유리관·채움 따로) | ui_ctl_gauge_thermo | K3 K5 | 계기 192×384 + 이음 채움 | g07-controls-v01 | 대기 |
-| 45 | 반원 잔량 계기(연료·산소) | ui_ctl_gauge_half | K5 K6 | 계기 192 | g07-controls-v01 | 대기 |
-| 46 | 기관 전령기(원판·손잡이 따로) | ui_ctl_telegraph | K6 K5 | 계기 384 | g07-controls-v01 | 대기 |
-| 47 | 주파수 눈금창 + 선 커서 | ui_ctl_tuner | K1 K2 | 384×192 + 192 | g07-controls-v01 | 대기 |
-| 48 | 신호 세기 칸 막대(0~5칸) | ui_ctl_meter | K1 K8 | 192, 6상태 | g07-controls-v01 | 대기 |
-| 49 | 기호 키패드(숫자 없음) | ui_ctl_keypad | K1 K10 | 계기 384 | g07-controls-v01 | 대기 |
-| 50 | 회전식 전화 다이얼(받침·구멍판 따로) | ui_ctl_dial | K1 | 계기 384 | g07-controls-v01 | 대기 |
-| 51 | 3단 선택 손잡이 | ui_ctl_selector | K1 K6 | 192, 3상태 | g07-controls-v01 | 대기 |
-| 52 | 계기판 바탕 판(리벳) | ui_ctl_panel | 공통 | 9칸 | g07-controls-v01 | 대기 |
-| 53 | 조회 단말 틀 + 입력칸 | ui_scr_terminal | K11 | 9칸 2종 | g07-screens-v01 | 대기 |
-| 54 | 파편 카드 틀(찢긴 가장자리) | ui_scr_fragment | K11 | 9칸 | g07-screens-v01 | 대기 |
-| 55 | 메신저 말풍선(왼쪽·오른쪽) | ui_os_bubble | K11 | 9칸 2종 | g07-screens-v01 | 대기 |
-| 56 | 잠망경 시야 틀 | ui_scr_periscope | K5 | 화면 가림 2560 | g07-screens-v01 | 대기 |
-| 57 | 방송 하단 띠 + 송출 표식 | ui_scr_broadcast | K3 | 9칸 + 192 | g07-screens-v01 | 대기 |
-| 58 | 일기도 전선 띠(온난·한랭) | ui_scr_front | K3 | 이음 띠 384×96 | g07-screens-v01 | 대기 |
-| 59 | 엑스선 판독 틀 + 훑는 선 | ui_scr_xray | K2 | 9칸 + 192 | g07-screens-v01 | 대기 |
-| 60 | 업그레이드 마디(잠김·열림·삼) + 잇는 선 | ui_upgrade_node | K12 | 192, 3상태 + 이음 띠 | g07-screens-v01 | 대기 |
-| 61 | 보드게임 카드 틀 3색 + 뒷면 | ui_bg_card | K9 | 256×384, 4종 | g07-screens-v01 | 대기 |
-| 62 | 예보 기호: 눈 | icon_fc_snow | K3 | 아이콘 | g07-icons-v01 | 대기 |
-| 63 | 예보 기호: 폭풍 | icon_fc_storm | K3 | 아이콘 | g07-icons-v01 | 대기 |
-| 64 | 예보 기호: 안개 | icon_fc_fog | K3 K4 | 아이콘 | g07-icons-v01 | 대기 |
-| 65 | 예보 기호: 실내만 눈 | icon_fc_snow_indoor | K3 | 아이콘 | g07-icons-v01 | 대기 |
-| 66 | 데스크톱 아이콘: 우편함 | icon_os_mail | K11 K2 | 아이콘 | g07-icons-v01 | 대기 |
-| 67 | 데스크톱 아이콘: 웹 둘러보기 | icon_os_web | K11 | 아이콘 | g07-icons-v01 | 대기 |
-| 68 | 데스크톱 아이콘: 설정 | icon_os_settings | K11 | 아이콘 | g07-icons-v01 | 대기 |
-| 69 | 데스크톱 아이콘: 명령창 | icon_os_terminal | K11 | 아이콘 | g07-icons-v01 | 대기 |
-| 70 | 데스크톱 아이콘: 방송 캠 | icon_os_webcam | K11 | 아이콘 | g07-icons-v01 | 대기 |
-| 71 | 전신기 책상 | obj_telegraph_desk | K1 | 오브젝트 | g07-devices-v01 | 대기 |
-| 72 | 안테나 탑(등 꺼짐·켜짐) | obj_antenna_mast | K1 K3 | 오브젝트, 2상태 | g07-devices-v01 | 대기 |
-| 73 | 소포 저울 | obj_parcel_scale | K2 K7 | 오브젝트 | g07-devices-v01 | 대기 |
-| 74 | 검문 부스(차단봉 내림·올림) | obj_checkpoint_booth | K2 | 오브젝트, 2상태 | g07-devices-v01 | 대기 |
-| 75 | 사물함 벽(닫힘·열림) | obj_locker_bank | K2 K10 | 오브젝트, 2상태 | g07-devices-v01 | 대기 |
-| 76 | 풍향·풍속계 기둥 | obj_weather_mast | K3 | 오브젝트 | g07-devices-v01 | 대기 |
-| 77 | 방송 카메라(꺼짐·켜짐) | obj_studio_camera | K3 K11 | 오브젝트, 2상태 | g07-devices-v01 | 대기 |
-| 78 | 무적(안개 나팔) | obj_fog_horn | K4 | 오브젝트 | g07-devices-v01 | 대기 |
-| 79 | 종 부표 | obj_bell_buoy | K4 K6 | 오브젝트(물 위) | g07-devices-v01 | 대기 |
-| 80 | 밸브 핸들(벽) | obj_valve_wheel | K5 K6 | 오브젝트(벽 피벗) | g07-devices-v01 | 대기 |
-| 81 | 잠망경 기둥(내림·올림) | obj_periscope | K5 | 오브젝트, 2상태 | g07-devices-v01 | 대기 |
-| 82 | 진열 유리장(빔·가득) | obj_display_case | K7 | 오브젝트, 2상태 | g07-devices-v01 | 대기 |
-| 83 | 교령회 탁자(촛불 꺼짐·켜짐) | obj_seance_table | K10 | 오브젝트, 2상태 | g07-devices-v01 | 대기 |
-| 84 | 음 종 받침대 | obj_bell_rack | K8 | 오브젝트 | g07-devices-v01 | 대기 |
-| 85 | 화물 컨테이너(닫힘·열림) | obj_container | K6 | 오브젝트, 2상태 | g07-sim-v01 | 대기 |
-| 86 | 파편 더미(작음·중간·큼) | obj_shard_pile | K12 | 오브젝트, 3단계 | g07-sim-v01 | 대기 |
+| 43 | 세로 수심계(눈금관·표시 막대 따로) | ui_ctl_gauge_depth | K5 K4 | 계기 192×384 + 192 | g07-controls-v01 | 완료 |
+| 44 | 온도 기둥 계기(유리관·채움 따로) | ui_ctl_gauge_thermo | K3 K5 | 계기 192×384 + 이음 채움 | g07-controls-v01 | 완료 |
+| 45 | 반원 잔량 계기(연료·산소) | ui_ctl_gauge_half | K5 K6 | 계기 192 | g07-controls-v01 | 완료 |
+| 46 | 기관 전령기(원판·손잡이 따로) | ui_ctl_telegraph | K6 K5 | 계기 384 | g07-controls-v01 | 완료 |
+| 47 | 주파수 눈금창 + 선 커서 | ui_ctl_tuner | K1 K2 | 384×192 + 192 | g07-controls-v01 | 완료 |
+| 48 | 신호 세기 칸 막대(0~5칸) | ui_ctl_meter | K1 K8 | 192, 6상태 | g07-controls-v01 | 완료 |
+| 49 | 기호 키패드(숫자 없음) | ui_ctl_keypad | K1 K10 | 계기 384 | g07-controls-v01 | 완료 |
+| 50 | 회전식 전화 다이얼(받침·구멍판 따로) | ui_ctl_dial | K1 | 계기 384 | g07-controls-v01 | 완료 |
+| 51 | 3단 선택 손잡이 | ui_ctl_selector | K1 K6 | 192, 3상태 | g07-controls-v01 | 완료 |
+| 52 | 계기판 바탕 판(리벳) | ui_ctl_panel | 공통 | 9칸 | g07-controls-v01 | 완료 |
+| 53 | 조회 단말 틀 + 입력칸 | ui_scr_terminal | K11 | 9칸 2종 | g07-screens-v01 | 완료 |
+| 54 | 파편 카드 틀(찢긴 가장자리) | ui_scr_fragment | K11 | 9칸 | g07-screens-v01 | 완료 |
+| 55 | 메신저 말풍선(왼쪽·오른쪽) | ui_os_bubble | K11 | 9칸 2종 | g07-screens-v01 | 완료 |
+| 56 | 잠망경 시야 틀 | ui_scr_periscope | K5 | 화면 가림 2560 | g07-screens-v01 | 완료 |
+| 57 | 방송 하단 띠 + 송출 표식 | ui_scr_broadcast | K3 | 9칸 + 192 | g07-screens-v01 | 완료 |
+| 58 | 일기도 전선 띠(온난·한랭) | ui_scr_front | K3 | 이음 띠 384×96 | g07-screens-v01 | 완료 |
+| 59 | 엑스선 판독 틀 + 훑는 선 | ui_scr_xray | K2 | 9칸 + 192 | g07-screens-v01 | 완료 |
+| 60 | 업그레이드 마디(잠김·열림·삼) + 잇는 선 | ui_upgrade_node | K12 | 192, 3상태 + 이음 띠 | g07-screens-v01 | 완료 |
+| 61 | 보드게임 카드 틀 3색 + 뒷면 | ui_bg_card | K9 | 256×384, 4종 | g07-screens-v01 | 완료 |
+| 62 | 예보 기호: 눈 | icon_fc_snow | K3 | 아이콘 | g07-icons-v01 | 완료 |
+| 63 | 예보 기호: 폭풍 | icon_fc_storm | K3 | 아이콘 | g07-icons-v01 | 완료 |
+| 64 | 예보 기호: 안개 | icon_fc_fog | K3 K4 | 아이콘 | g07-icons-v01 | 완료 |
+| 65 | 예보 기호: 실내만 눈 | icon_fc_snow_indoor | K3 | 아이콘 | g07-icons-v01 | 완료 |
+| 66 | 데스크톱 아이콘: 우편함 | icon_os_mail | K11 K2 | 아이콘 | g07-icons-v01 | 완료 |
+| 67 | 데스크톱 아이콘: 웹 둘러보기 | icon_os_web | K11 | 아이콘 | g07-icons-v01 | 완료 |
+| 68 | 데스크톱 아이콘: 설정 | icon_os_settings | K11 | 아이콘 | g07-icons-v01 | 완료 |
+| 69 | 데스크톱 아이콘: 명령창 | icon_os_terminal | K11 | 아이콘 | g07-icons-v01 | 완료 |
+| 70 | 데스크톱 아이콘: 방송 캠 | icon_os_webcam | K11 | 아이콘 | g07-icons-v01 | 완료 |
+| 71 | 전신기 책상 | obj_telegraph_desk | K1 | 오브젝트 | g07-devices-v01 | 완료 |
+| 72 | 안테나 탑(등 꺼짐·켜짐) | obj_antenna_mast | K1 K3 | 오브젝트, 2상태 | g07-devices-v01 | 완료 |
+| 73 | 소포 저울 | obj_parcel_scale | K2 K7 | 오브젝트 | g07-devices-v01 | 완료 |
+| 74 | 검문 부스(차단봉 내림·올림) | obj_checkpoint_booth | K2 | 오브젝트, 2상태 | g07-devices-v01 | 완료 |
+| 75 | 사물함 벽(닫힘·열림) | obj_locker_bank | K2 K10 | 오브젝트, 2상태 | g07-devices-v01 | 완료 |
+| 76 | 풍향·풍속계 기둥 | obj_weather_mast | K3 | 오브젝트 | g07-devices-v01 | 완료 |
+| 77 | 방송 카메라(꺼짐·켜짐) | obj_studio_camera | K3 K11 | 오브젝트, 2상태 | g07-devices-v01 | 완료 |
+| 78 | 무적(안개 나팔) | obj_fog_horn | K4 | 오브젝트 | g07-devices-v01 | 완료 |
+| 79 | 종 부표 | obj_bell_buoy | K4 K6 | 오브젝트(물 위) | g07-devices-v01 | 완료 |
+| 80 | 밸브 핸들(벽) | obj_valve_wheel | K5 K6 | 오브젝트(벽 피벗) | g07-devices-v01 | 완료 |
+| 81 | 잠망경 기둥(내림·올림) | obj_periscope | K5 | 오브젝트, 2상태 | g07-devices-v01 | 완료 |
+| 82 | 진열 유리장(빔·가득) | obj_display_case | K7 | 오브젝트, 2상태 | g07-devices-v01 | 완료 |
+| 83 | 교령회 탁자(촛불 꺼짐·켜짐) | obj_seance_table | K10 | 오브젝트, 2상태 | g07-devices-v01 | 완료 |
+| 84 | 음 종 받침대 | obj_bell_rack | K8 | 오브젝트 | g07-devices-v01 | 완료 |
+| 85 | 화물 컨테이너(닫힘·열림) | obj_container | K6 | 오브젝트, 2상태 | g07-sim-v01 | 완료 |
+| 86 | 파편 더미(작음·중간·큼) | obj_shard_pile | K12 | 오브젝트, 3단계 | g07-sim-v01 | 완료 |
 
 ## C — 있으면 좋은 것 (34)
 

@@ -15,8 +15,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from g07kit import (box, disc, floor_ellipse_shadow, form, frame, piece, recipe, rrect,  # noqa: E402
-                    variant, write)
+from g07kit import (bezier, box, cyl, disc, dots, floor_ellipse_shadow, floor_shadow, form, frame, piece,  # noqa: E402
+                    recipe, rod, rrect, variant, write)
 
 NOTE = "g07 future-kit sim object (60 deg top-down). at-icons collage, candidate."
 FLOOR = "front-bottom centre on the floor"
@@ -123,6 +123,100 @@ def stage_a():
 
 
 STAGES = {"A": stage_a}
+
+
+# ------------------------------------------------------------------ B
+def container():
+    cx, base = 320, 786
+    W, D, H = 440, 468, 273
+    top_c = base - H - D / 2.0
+    front_top = base - H
+    ribs_roof = [piece("square", [0, 0], [W - 24, 5], repeat={"line": [[cx, top_c - D / 2 + 20], [cx, top_c + D / 2 - 20]],
+                                                               "count": 17})]
+    f = [
+        floor_shadow(cx, base, W, D, opacity=0.35, blur=10),
+        box("body", 1, cx, base, W, D, H, "rust_metal", corner=4),
+        form("roof_ribs", 1.5, ribs_roof, "dial_mark", kind="flat", opacity=0.35),
+        form("corner_posts", 1.6, [rrect([cx - W / 2 + 10, front_top + H / 2], [20, H], corner=2),
+                                   rrect([cx + W / 2 - 10, front_top + H / 2], [20, H], corner=2)], "steel_dark"),
+        form("rails", 1.6, [rrect([cx, front_top + 9], [W, 18], corner=2), rrect([cx, base - 9], [W, 18], corner=2)],
+             "steel_dark"),
+        variant(form("doors", 2, [rrect([cx - 100, front_top + H / 2], [196, H - 36], corner=2),
+                                  rrect([cx + 100, front_top + H / 2], [196, H - 36], corner=2)], "rust_metal",
+                     shade={"bump": 0.4}), "closed"),
+        variant(form("door_ribs", 2.1, [piece("square", [0, 0], [5, H - 50],
+                                              repeat={"line": [[cx - 186, front_top + H / 2], [cx + 186, front_top + H / 2]],
+                                                      "count": 16})], "dial_mark", kind="flat", opacity=0.3,
+                     clip_to="doors"), "closed"),
+        variant(form("lock_bars", 2.2, [rrect([x, front_top + H / 2], [8, H - 30], corner=3)
+                                        for x in (cx - 150, cx - 50, cx + 50, cx + 150)], "steel"), "closed"),
+        variant(form("handles", 2.3, [rrect([x + 14, front_top + H / 2 + 20], [30, 8], corner=3)
+                                      for x in (cx - 150, cx - 50, cx + 50, cx + 150)], "steel_dark"), "closed"),
+        variant(form("tag_plate", 2.4, [rrect([cx + 100, front_top + 60], [70, 34], corner=3)], "enamel", kind="flat",
+                     opacity=0.85), "closed"),
+        variant(form("inside", 2, [rrect([cx, front_top + H / 2], [W - 44, H - 36], corner=2)], "void", kind="flat",
+                     grad={"to": "well_inner", "y0": front_top, "y1": base}), "open"),
+        variant(box("crate_a", 2.5, cx - 90, base - 20, 120, 60, 90, "wood"), "open"),
+        variant(box("crate_b", 2.6, cx + 70, base - 24, 100, 60, 70, "cork"), "open"),
+        variant(box("crate_c", 2.4, cx - 70, base - 110, 90, 60, 60, "wood"), "open"),
+        variant(form("door_open_l", 3, [piece("square", [cx - W / 2 - 40, front_top + H / 2 + 12], [80, H - 36],
+                                              slice={"border": 3, "corner": 2}, skew=[0, 18])], "rust_metal",
+                     shade={"bump": 0.4}), "open"),
+        variant(form("door_open_r", 3, [piece("square", [cx + W / 2 + 40, front_top + H / 2 + 12], [80, H - 36],
+                                              slice={"border": 3, "corner": 2}, skew=[0, -18])], "rust_metal",
+                     shade={"bump": 0.4}), "open"),
+    ]
+    return recipe("obj_container", [640, 820], f, pivot=[cx, base], seed=203, style="prop",
+                  frames=[frame("closed", show=["closed"]), frame("open", show=["open"])], pivot_meaning=FLOOR,
+                  note=NOTE + " Rusty 10 ft cargo container (2.4 x 3.0 x 2.6 m), doors facing the viewer. closed / open "
+                              "(doors swung out, crates inside). Blank plate, no markings.")
+
+
+def shard_pile():
+    rng = random.Random(33)
+    sizes = {"small": (60, 30, 26, 22), "medium": (104, 50, 46, 48), "large": (150, 72, 70, 90)}
+    cx, base = 160, 236
+    f = []
+    for tag, (rx, ry, h, n) in sizes.items():
+        mound = []
+        for i in range(max(8, n // 2)):
+            r, t = math.sqrt(rng.random()) * 0.8, rng.uniform(0, 2 * math.pi)
+            u, v = r * math.cos(t), r * math.sin(t)
+            lift = h * 0.85 * (1 - r * r)
+            s = rng.uniform(0.28, 0.42) * rx
+            mound.append((base - ry + v * ry * 0.7 - lift, piece(rng.choice(["rocks", "hexagon"]),
+                                                                 [cx + u * rx * 0.8, base - ry + v * ry * 0.7 - lift],
+                                                                 [s, s * 0.75], rot=rng.uniform(-30, 30))))
+        mound = [p for _, p in sorted(mound, key=lambda t: t[0])]
+        stone, glass, metal = [], [], []
+        pts = []
+        for i in range(n):
+            r, t = math.sqrt(rng.random()), rng.uniform(0, 2 * math.pi)
+            u, v = r * math.cos(t), r * math.sin(t)
+            lift = h * (1 - r * r) ** 0.9
+            pts.append((base - ry + v * ry * 0.85 - lift, cx + u * rx * 0.88))
+        for y, x in sorted(pts):
+            s = rng.uniform(14, 26)
+            p = piece(rng.choice(["diamond_shape", "triangle", "hexagon", "rocks"]), [x, y], [s, s * rng.uniform(0.6, 1.0)],
+                      rot=rng.uniform(0, 360))
+            q = rng.random()
+            (glass if q < 0.14 else metal if q < 0.24 else stone).append(p)
+        f.append(variant(floor_ellipse_shadow(cx, base, rx, ry, name=f"shadow_{tag}"), tag))
+        f.append(variant(form(f"mound_{tag}", 0.5, mound, "rubble", shade={"bump": 1.3}), tag))
+        f.append(variant(form(f"stone_{tag}", 1, stone, "stone", shade={"bump": 1.2}), tag))
+        f.append(variant(form(f"metal_{tag}", 1.1, metal, "bronze", shade={"bump": 1.2}), tag))
+        f.append(variant(form(f"glass_{tag}", 1.2, glass, "crystal", emit=0.25,
+                              glow={"radius": 3, "opacity": 0.35, "color": "glow_blue"}), tag))
+    return recipe("obj_shard_pile", [320, 256], f, pivot=[cx, base], seed=204, style="prop",
+                  frames=[frame(k, show=[k]) for k in sizes], pivot_meaning=FLOOR,
+                  note=NOTE + " Growing shard pile (stone, brass and crystal fragments): small / medium / large.")
+
+
+def stage_b():
+    return [container(), shard_pile()]
+
+
+STAGES["B"] = stage_b
 
 
 def main() -> int:

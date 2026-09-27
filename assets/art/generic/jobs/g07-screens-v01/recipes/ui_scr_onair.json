@@ -1,0 +1,136 @@
+{
+ "asset": "ui_scr_onair",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. On-air badge without words (microphone mark), off / on.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  192
+ ],
+ "pivot": [
+  96.0,
+  96.0
+ ],
+ "pivot_meaning": "badge centre",
+ "seed": 87,
+ "forms": [
+  {
+   "name": "box",
+   "z": 0,
+   "material": "plastic_dark",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      160.0,
+      76.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 14
+     }
+    }
+   ]
+  },
+  {
+   "name": "panel_off",
+   "z": 1,
+   "material": "lamp_red_off",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      136.0,
+      54.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 8
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "off"
+   ]
+  },
+  {
+   "name": "panel_on",
+   "z": 1,
+   "material": "lamp_red_on",
+   "emit": 1.0,
+   "glow": {
+    "radius": 8,
+    "opacity": 0.6,
+    "color": "glow_red"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      136.0,
+      54.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 8
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "on"
+   ]
+  },
+  {
+   "name": "mic",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "microphone",
+     "at": [
+      96.0,
+      96.0
+     ],
+     "size": [
+      26.0,
+      38.0
+     ]
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "show": [
+    "off"
+   ]
+  },
+  {
+   "name": "on",
+   "show": [
+    "on"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,120 @@
+{
+ "asset": "ui_scr_terminal_input",
+ "status": "candidate",
+ "note": "g07 future-kit screen UI (flat, no text). at-icons collage, candidate. Search input field with an amber caret at the left, 9-slice margin 24.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  192,
+  64
+ ],
+ "pivot": [
+  96.0,
+  32.0
+ ],
+ "pivot_meaning": "field centre",
+ "seed": 82,
+ "forms": [
+  {
+   "name": "field",
+   "z": 0,
+   "material": "steel_dark",
+   "shade": {
+    "bump": 0.4
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      32.0
+     ],
+     "size": [
+      188.0,
+      60.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 12
+     }
+    }
+   ]
+  },
+  {
+   "name": "well",
+   "z": 1,
+   "kind": "flat",
+   "material": "screen",
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      32.0
+     ],
+     "size": [
+      174.0,
+      42.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "well_shadow",
+   "z": 1.2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      96.0,
+      13.0
+     ],
+     "size": [
+      170.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "caret",
+   "z": 2,
+   "kind": "flat",
+   "material": "amber_screen",
+   "emit": 1.0,
+   "glow": {
+    "radius": 3,
+    "opacity": 0.5,
+    "color": "glow_amber"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      22.0,
+      32.0
+     ],
+     "size": [
+      4.0,
+      24.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -100,6 +100,25 @@ def slice9(args) -> int:
     return 0
 
 
+def edgecheck(args) -> int:
+    """List frames whose opaque pixels touch the canvas border (cut-off risk)."""
+    import numpy as np
+
+    skip = set(args.skip or [])
+    bad = []
+    for path in expand(args.files):
+        if path.parent.name in skip or "_9s_" in path.name:
+            continue
+        a = np.asarray(Image.open(path).convert("RGBA"))[..., 3]
+        m = args.margin
+        if max(a[:, :m].max(), a[:, -m:].max(), a[:m].max(), a[-m:].max()) > args.alpha:
+            bad.append(f"{path.parent.name}/{path.name}")
+    print("edge-touching:", len(bad))
+    for b in bad:
+        print("  ", b)
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -112,8 +131,13 @@ def main() -> int:
     b.add_argument("--margin", type=int, default=48)
     b.add_argument("--margin-y", type=int, default=None)
     b.add_argument("--stretch", default="3x2")
+    e = sub.add_parser("edgecheck")
+    e.add_argument("files", nargs="+")
+    e.add_argument("--margin", type=int, default=2)
+    e.add_argument("--alpha", type=int, default=40)
+    e.add_argument("--skip", nargs="*", help="asset folders that are meant to touch the edge (tiles, strips, 9-slice)")
     args = ap.parse_args()
-    return sheet16(args) if args.cmd == "sheet16" else slice9(args)
+    return {"sheet16": sheet16, "slice9": slice9, "edgecheck": edgecheck}[args.cmd](args)
 
 
 if __name__ == "__main__":

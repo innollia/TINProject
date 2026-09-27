@@ -22,6 +22,7 @@ A (10)
 - [x] icon_os_folder, icon_os_trash, icon_os_file, icon_os_chat
 - [x] icon_bg_pawn(6색), icon_bg_die(6면)
 B (9)
-- [ ] icon_fc_snow, icon_fc_storm, icon_fc_fog, icon_fc_snow_indoor, icon_os_mail, icon_os_web, icon_os_settings, icon_os_terminal, icon_os_webcam
+- [x] icon_fc_snow, icon_fc_storm, icon_fc_fog, icon_fc_snow_indoor
+- [x] icon_os_mail(숫자 없는 알림 점), icon_os_web, icon_os_settings, icon_os_terminal, icon_os_webcam(켜진 빨간 등, _emit)
 C (6)
 - [ ] icon_fc_wind, icon_fc_night, icon_os_music, icon_os_heart, icon_os_follower, icon_bg_token

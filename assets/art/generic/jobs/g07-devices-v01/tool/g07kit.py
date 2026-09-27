@@ -122,6 +122,15 @@ def dots(name, z, pts, d, material, kind="mass", icon="circle", **kw):
     return form(name, z, [p], material, kind=kind, **kw)
 
 
+def rod(p0, p1, w, corner=None, **kw):
+    """Rounded bar from p0 to p1 (a leg, strut, arm or wire) as one piece."""
+    dx, dy = p1[0] - p0[0], p1[1] - p0[1]
+    length = math.hypot(dx, dy)
+    ang = math.degrees(math.atan2(dy, dx)) - 90.0
+    return rrect([(p0[0] + p1[0]) / 2.0, (p0[1] + p1[1]) / 2.0], [w, length + w], corner=corner or w / 2.0,
+                 rot=ang, **kw)
+
+
 # ------------------------------------------------------------------ objects (60 deg top-down)
 def box(name, z, cx, base_y, w, d, h, material, corner=6, **kw):
     """Box standing on the floor: footprint w x d px ends at base_y, front face h px tall."""

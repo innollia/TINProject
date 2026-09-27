@@ -417,7 +417,254 @@ def stage_a():
     return out
 
 
-STAGES = {"A": stage_a}
+STAGES = {"A": stage_a, "B": None}
+
+
+# ------------------------------------------------------------------ B
+def terminal():
+    c = (96, 96)
+    body = [
+        form("body", 0, [rrect(c, [188, 188], corner=22)], "plastic_dark", shade={"bump": 0.45}),
+        form("recess", 1, [rrect(c, [150, 150], corner=18)], "rubber", kind="flat"),
+        form("screen", 2, [rrect(c, [140, 140], corner=16)], "screen", shade={"bump": 0.3, "highlight_amount": 0.15}),
+        form("inner_glow", 2.5, [rrect(c, [120, 120], corner=14)], "phosphor_dim", kind="flat", opacity=0.08, blur=10,
+             clip_to="screen"),
+        form("plate", 3, [rrect([40, 176], [30, 7], corner=2)], "bronze", kind="flat"),
+        form("vents", 3, [piece("square", [0, 0], [3, 10], repeat={"line": [[70, 12], [122, 12]], "count": 8})],
+             "dial_mark", kind="flat", opacity=0.6),
+    ]
+    body += lamp_pair_s("power", 3, [160, 176], 8, "amber")
+    field = [
+        form("field", 0, [rrect([96, 32], [188, 60], corner=12)], "steel_dark", shade={"bump": 0.4}),
+        form("well", 1, [rrect([96, 32], [174, 42], corner=7)], "screen", kind="flat"),
+        form("well_shadow", 1.2, [rrect([96, 13], [170, 3], corner=1)], "dial_mark", kind="flat", opacity=0.7),
+        form("caret", 2, [rrect([22, 32], [4, 24], corner=1)], "amber_screen", kind="flat", emit=1.0,
+             glow={"radius": 3, "opacity": 0.5, "color": "glow_amber"}),
+    ]
+    return [
+        recipe("ui_scr_terminal", [192, 192], body, pivot=list(c), seed=81, pivot_meaning="frame centre",
+               frames=[frame("off", show=["power_off"]), frame("on", show=["power_on"])],
+               note=NOTE + " Old record-viewer terminal frame (Query World), 9-slice margin 48; power lamp off / on."),
+        recipe("ui_scr_terminal_input", [192, 64], field, pivot=[96, 32], seed=82, pivot_meaning="field centre",
+               note=NOTE + " Search input field with an amber caret at the left, 9-slice margin 24."),
+    ]
+
+
+def lamp_pair_s(name, z, at, d, colour):
+    return [variant(form(f"{name}_off_f", z, [disc(at, d)], f"lamp_{colour}_off"), f"{name}_off"),
+            variant(form(f"{name}_on_f", z, [disc(at, d)], f"lamp_{colour}_on", emit=1.0,
+                         glow={"radius": 5, "opacity": 0.55, "color": f"glow_{colour}"}), f"{name}_on")]
+
+
+def fragment():
+    c = (96, 96)
+    f = [
+        form("card", 0, [rrect(c, [180, 176], corner=4)], "paper", rough={"amp": 0.7, "soft": 1.6, "cell": 5},
+             shade={"bump": 0.3, "highlight_amount": 0.2}),
+        form("rule", 1, [rrect(c, [150, 146], corner=2), rrect(c, [146, 142], corner=2, op="sub")], "paper_mark",
+             kind="flat", opacity=0.7),
+        form("tape", 2, [rrect([30, 22], [46, 18], corner=2, rot=-32)], "wax", opacity=0.75, shade={"bump": 0.2}),
+        form("burn", 1.5, [piece("metaballs", [170, 170], [40, 36]), piece("sponge", [20, 176], [26, 22])], "soot",
+             kind="wash", blend="multiply", opacity=0.35, clip_to="card"),
+    ]
+    return recipe("ui_scr_fragment", [192, 192], f, pivot=list(c), seed=83, pivot_meaning="card centre",
+                  note=NOTE + " Torn result-fragment card (Query World search results), 9-slice margin 40.")
+
+
+def bubble():
+    c = (96, 86)
+    f = [
+        form("body", 0, [rrect(c, [180, 152], corner=40)], "plastic_beige", tags=["bubble"], shade={"bump": 0.4},
+             grime={"strength": 0.12}),
+        variant(form("tail_l", 0, [piece("triangle", [30, 170], [30, 30], rot=200)], "plastic_beige", tags=["bubble"]),
+                "left"),
+        variant(form("tail_r", 0, [piece("triangle", [162, 170], [30, 30], rot=160)], "plastic_beige", tags=["bubble"]),
+                "right"),
+        form("sheen", 1, [rrect([96, 26], [120, 6], corner=3)], "glare", kind="flat", opacity=0.1, clip_to="body"),
+    ]
+    return recipe("ui_os_bubble", [192, 192], f, pivot=[96, 86], seed=84, pivot_meaning="bubble centre",
+                  frames=[frame("left", show=["left"], materials={"bubble": "plastic_beige"}),
+                          frame("right", show=["right"], materials={"bubble": "paint_teal"})],
+                  note=NOTE + " Messenger bubbles, 9-slice margin 48 (tail sits in a bottom corner): left = other "
+                              "person (beige), right = me (teal).")
+
+
+def periscope():
+    W, H = 2560, 1440
+    cx, cy, r = W / 2, H / 2, 600
+    f = [
+        form("mask", 0, [rrect([cx, cy], [W + 200, H + 200], corner=4), disc([cx, cy], 2 * r, op="sub")], "void",
+             kind="flat", opacity=0.97),
+        form("bezel", 1, [disc([cx, cy], 2 * r + 60), disc([cx, cy], 2 * r, op="sub")], "steel_dark",
+             shade={"bump": 0.8}),
+        form("bezel_lip", 1.5, [disc([cx, cy], 2 * r + 8), disc([cx, cy], 2 * r - 6, op="sub")], "bronze", kind="flat",
+             opacity=0.9),
+        ticks("bearing", 2, [cx, cy], r - 26, 72, 0, 360, 18, 3, "glare", opacity=0.45),
+        ticks("bearing_major", 2, [cx, cy], r - 34, 8, 0, 360, 36, 5, "glare", opacity=0.6),
+        form("cross", 2, [rrect([cx - 330, cy], [480, 4], corner=2), rrect([cx + 330, cy], [480, 4], corner=2),
+                          rrect([cx, cy - 290], [4, 360], corner=2), rrect([cx, cy + 290], [4, 360], corner=2)],
+             "glare", kind="flat", opacity=0.55),
+        form("stadia", 2, [piece("square", [0, 0], [3, 22], repeat={"line": [[cx - 450, cy], [cx + 450, cy]],
+                                                                    "count": 19})], "glare", kind="flat", opacity=0.5),
+        form("centre", 2, [disc([cx, cy], 10)], "glare", kind="flat", opacity=0.6),
+        form("north", 2.2, [piece("triangle", [cx, cy - r - 58], [44, 34], rot=180)], "paint_red", kind="flat"),
+    ]
+    return recipe("ui_scr_periscope", [W, H], f, style="prop", supersample=1, pivot=[cx, cy], seed=85,
+                  style_override={"silhouette": {"width": 2.0, "heavy": 1.0}},
+                  pivot_meaning="screen centre (view circle radius 600)",
+                  note=NOTE + " Periscope view overlay 2560x1440: dark mask with a round view, bezel, bearing ticks, "
+                              "stadia cross hair, north mark.")
+
+
+def broadcast():
+    band = [
+        form("band", 0, [rrect([96, 58], [188, 60], corner=6)], "paint_teal", shade={"bump": 0.35}),
+        form("accent", 1, [rrect([96, 30], [188, 6], corner=2)], "paint_red", kind="flat"),
+        form("logo_slot", 1, [rrect([26, 58], [34, 44], corner=4)], "cloth_wine", shade={"bump": 0.6}),
+        form("logo_mark", 1.5, [piece("signal", [26, 58], [20, 20])], "enamel", kind="flat", opacity=0.8),
+        form("sheen", 1.5, [rrect([108, 40], [160, 4], corner=2)], "glare", kind="flat", opacity=0.1),
+    ]
+    badge = [
+        form("box", 0, [rrect([96, 96], [160, 76], corner=14)], "plastic_dark", shade={"bump": 0.5}),
+        variant(form("panel_off", 1, [rrect([96, 96], [136, 54], corner=8)], "lamp_red_off"), "off"),
+        variant(form("panel_on", 1, [rrect([96, 96], [136, 54], corner=8)], "lamp_red_on", emit=1.0,
+                     glow={"radius": 8, "opacity": 0.6, "color": "glow_red"}), "on"),
+        form("mic", 2, [piece("microphone", [96, 96], [26, 38])], "dial_mark", kind="flat", opacity=0.7),
+    ]
+    return [
+        recipe("ui_scr_broadcast", [192, 96], band, pivot=[96, 58], seed=86, pivot_meaning="band centre",
+               note=NOTE + " Broadcast lower-third band (weather channel), 9-slice margin 48 x / 24 y; blank logo slot."),
+        recipe("ui_scr_onair", [192, 192], badge, pivot=[96, 96], seed=87, pivot_meaning="badge centre",
+               frames=[frame("off", show=["off"]), frame("on", show=["on"])],
+               note=NOTE + " On-air badge without words (microphone mark), off / on."),
+    ]
+
+
+def weather_fronts():
+    line = [rrect([192, 62], [420, 6], corner=3)]
+    lw = {"line": {"width": 0.8, "heavy": 0.6}}
+    f = [
+        form("line", 0, line, "paint_red", kind="flat", tags=["front"], **lw),
+        variant(form("warm", 1, [piece("circle", [0, 0], [28, 14], half="top",
+                                       repeat={"line": [[32, 52], [352, 52]], "count": 6})], "paint_red", kind="flat",
+                     tags=["front"], **lw), "warm"),
+        variant(form("cold", 1, [piece("triangle", [0, 0], [26, 20], repeat={"line": [[32, 50], [352, 50]], "count": 6})],
+                     "paint_teal", kind="flat", tags=["front"], **lw), "cold"),
+        variant(form("occ_semis", 1, [piece("circle", [0, 0], [26, 13], half="top",
+                                            repeat={"line": [[32, 52], [352, 52]], "count": 6})], "paint_violet",
+                     kind="flat", tags=["front"], **lw), "occluded"),
+        variant(form("occ_tris", 1, [piece("triangle", [0, 0], [22, 17], repeat={"line": [[64, 51], [384, 51]], "count": 6})],
+                     "paint_violet", kind="flat", tags=["front"], **lw), "occluded"),
+    ]
+    return recipe("ui_scr_front", [384, 96], f, pivot=[0, 62], seed=88, style_override=NO_SIL,
+                  frames=[frame("warm", show=["warm"], materials={"front": "paint_red"}),
+                          frame("cold", show=["cold"], materials={"front": "paint_teal"}),
+                          frame("occluded", show=["occluded"], materials={"front": "paint_violet"})],
+                  pivot_meaning="left end of the front line; seamless every 384 px (Line2D texture)",
+                  note=NOTE + " Weather-map front strips: warm (half discs), cold (triangles), occluded (both).")
+
+
+def xray():
+    c = (96, 96)
+    frame_f = [
+        form("body", 0, [rrect(c, [188, 188], corner=12)], "steel_dark", shade={"bump": 0.45}),
+        form("screen", 1, [rrect(c, [160, 160], corner=6)], "water", kind="flat"),
+        form("tint", 1.5, [rrect(c, [150, 150], corner=6)], "lamp_blue_off", kind="flat", opacity=0.35, blur=12,
+             clip_to="screen"),
+    ]
+    brackets = []
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            x, y = 96 + sx * 62, 96 + sy * 62
+            brackets += [rrect([x - sx * 8, y], [20, 3], corner=1), rrect([x, y - sy * 8], [3, 20], corner=1)]
+    frame_f.append(form("brackets", 2, brackets, "glare", kind="flat", opacity=0.55))
+    frame_f += screws("screws", 3, [[14, 14], [178, 14], [14, 178], [178, 178]], d=7)
+    scan = [
+        form("beam", 1, [rrect([96, 24], [220, 4], corner=2)], "lamp_blue_on", kind="flat", emit=1.0,
+             glow={"radius": 8, "opacity": 0.7, "color": "glow_blue"}),
+        form("haze", 0.5, [rrect([96, 24], [220, 20], corner=8)], "lamp_blue_on", kind="flat", opacity=0.18, blur=4,
+             emit=0.6),
+    ]
+    return [
+        recipe("ui_scr_xray", [192, 192], frame_f, pivot=list(c), seed=89, pivot_meaning="frame centre",
+               note=NOTE + " X-ray viewer frame (customs), 9-slice margin 48; blue-black screen with corner marks."),
+        recipe("ui_scr_xray_scan", [192, 48], scan, pivot=[96, 24], seed=90, style_override=NO_SIL,
+               pivot_meaning="scan line centre; stretch in x (9-slice margin 24 x / 16 y), move in y",
+               note=NOTE + " Scanning line for ui_scr_xray."),
+    ]
+
+
+def upgrade_node():
+    c = (96, 96)
+    f = [
+        form("plate", 0, [piece("hexagon", c, [150, 150], rot=30)], "steel_dark", shade={"bump": 0.6}),
+        form("rim", 1, [piece("hexagon", c, [132, 132], rot=30), piece("hexagon", c, [120, 120], rot=30, op="sub")],
+             "bronze", kind="flat"),
+        variant(form("core_locked", 2, [piece("hexagon", c, [118, 118], rot=30)], "plastic_dark"), "locked"),
+        variant(form("lock", 3, [piece("lock", c, [42, 50])], "steel", shade={"bump": 0.8}), "locked"),
+        variant(form("core_open", 2, [piece("hexagon", c, [118, 118], rot=30)], "paint_ochre",
+                     shade={"bump": 0.6}), "open"),
+        variant(form("plus", 3, [rrect(c, [46, 12], corner=4), rrect(c, [12, 46], corner=4)], "dial_mark", kind="flat",
+                     opacity=0.75), "open"),
+        variant(form("core_bought", 2, [piece("hexagon", c, [118, 118], rot=30)], "lamp_amber_on", emit=1.0,
+                     glow={"radius": 10, "opacity": 0.55, "color": "glow_amber"}), "bought"),
+        variant(form("check", 3, [piece("checkmark", c, [58, 46])], "dial_mark", kind="flat", opacity=0.85), "bought"),
+    ]
+    link = [
+        form("pipe", 0, [rrect([96, 24], [240, 12], corner=5)], "steel_dark", tags=["pipe"], shade={"bump": 1.0}),
+        form("bolts", 1, [piece("circle", [0, 0], [18, 18], repeat={"line": [[0, 24], [192, 24]], "count": 5})], "bronze",
+             shade={"bump": 1.1}),
+    ]
+    return [
+        recipe("ui_upgrade_node", [192, 192], f, pivot=list(c), seed=91, pivot_meaning="node centre",
+               frames=[frame("locked", show=["locked"]), frame("open", show=["open"]), frame("bought", show=["bought"])],
+               note=NOTE + " Upgrade-tree node: locked (padlock), open (plus), bought (lit, check)."),
+        recipe("ui_upgrade_link", [192, 48], link, pivot=[0, 24], seed=92, style_override=NO_SIL,
+               frames=[frame("dim"), frame("lit", materials={"pipe": "amber_screen"})],
+               pivot_meaning="left end; seamless every 192 px (48 px bolt spacing)",
+               note=NOTE + " Connector between upgrade nodes, dim / lit."),
+    ]
+
+
+def bg_card():
+    c = (128, 192)
+    col = {"suspect": "cloth_wine", "method": "paint_teal", "place": "paint_ochre"}
+    glyph = {"suspect": "human", "method": "hand", "place": "house"}
+    f = [
+        form("card", 0, [rrect(c, [244, 372], corner=18)], "bone", shade={"bump": 0.3, "highlight_amount": 0.2}),
+        form("border", 1, [rrect(c, [220, 348], corner=12), rrect(c, [210, 338], corner=9, op="sub")], "cloth_wine",
+             kind="flat", tags=["ink"]),
+    ]
+    for k in col:
+        f += [
+            variant(form(f"header_{k}", 1.5, [rrect([128, 50], [206, 42], corner=8)], col[k], shade={"bump": 0.4}), k),
+            variant(form(f"glyph_{k}", 2, [piece(glyph[k], [128, 50], [30, 30])], "bone", kind="flat", opacity=0.85), k),
+            variant(form(f"window_{k}", 1.5, [rrect([128, 168], [180, 150], corner=6)], "steel_dark", kind="flat"), k),
+            variant(form(f"lines_{k}", 1.5, [rrect([128, 270 + 20 * i], [150 - 30 * (i == 2), 6], corner=2)
+                                              for i in range(3)], "paper_mark", kind="flat", opacity=0.8), k),
+        ]
+    f += [
+        variant(form("back_field", 1.5, [rrect(c, [206, 334], corner=9)], "cloth_wine", shade={"bump": 0.3}), "back"),
+        variant(form("lattice", 2, [piece("diamond", [58, 60], [24, 24], repeat={"grid": [6, 12], "step": [28, 26]})],
+                     "bronze", kind="flat", opacity=0.22, clip_to="back_field"), "back"),
+        variant(form("emblem_ring", 3, [disc(c, 104), disc(c, 88, op="sub")], "bronze", shade={"bump": 1.0}), "back"),
+        variant(form("emblem", 3.1, [piece("eye", c, [60, 40])], "bronze", shade={"bump": 1.0}), "back"),
+    ]
+    frames = [frame(k, show=[k], materials={"ink": col[k]}) for k in col] + [frame("back", show=["back"])]
+    return recipe("ui_bg_card", [256, 384], f, pivot=list(c), seed=93, frames=frames, pivot_meaning="card centre",
+                  note=NOTE + " Board-game clue cards: suspect (wine), method (teal), place (ochre) with an empty picture "
+                              "window and blank lines, plus the card back.")
+
+
+def stage_b():
+    out = []
+    for fn in (terminal, broadcast, xray, upgrade_node):
+        out += fn()
+    out += [fragment(), bubble(), periscope(), weather_fronts(), bg_card()]
+    return out
+
+
+STAGES["B"] = stage_b
 
 
 def main() -> int:

@@ -53,8 +53,8 @@ def drops(z, pts, up=False, name="drops"):
 
 
 def fc_rain():
-    f = cloud_forms(1, dy=-8)
-    f.append(drops(0, [[40, 96], [62, 100], [84, 96], [52, 116], [74, 118]]))
+    f = cloud_forms(1, dy=-14)
+    f.append(drops(0, [[40, 88], [62, 92], [84, 88], [52, 108], [74, 110]]))
     return icon("icon_fc_rain", f, 53, "Forecast symbol: rain.")
 
 
@@ -160,6 +160,109 @@ def stage_a():
 
 
 STAGES = {"A": stage_a}
+
+
+# ------------------------------------------------------------------ B
+def flakes(z, pts, size=24, name="flakes", mat="bone"):
+    return form(name, z, [piece("snowflake", p, [size, size], rot=15 * i) for i, p in enumerate(pts)], mat,
+                shade={"bump": 0.4}, line=False)
+
+
+def fc_snow():
+    f = cloud_forms(1, dy=-14)
+    f.append(flakes(0, [[38, 90], [66, 98], [94, 88], [52, 112], [82, 112]], size=22))
+    return icon("icon_fc_snow", f, 61, "Forecast symbol: snow.")
+
+
+def fc_storm():
+    f = cloud_forms(1, dy=-10, back="stone_dark", front="ash")
+    f += [form("bolt", 2, [piece("lightning_bolt", [66, 92], [34, 48], rot=8)], "paint_ochre", shade={"bump": 1.0}),
+          drops(0, [[36, 94], [94, 96], [48, 110]])]
+    return icon("icon_fc_storm", f, 62, "Forecast symbol: thunderstorm.")
+
+
+def fc_fog():
+    f = [form("cloud", 0, [piece("cloud", [66, 40], [90, 58])], "ash", shade={"bump": 0.7})]
+    bars = [([58, 66], [96, 18]), ([72, 88], [88, 18]), ([56, 110], [80, 18])]
+    f += [form(f"bank_{i}", 1 + i * 0.1, [rrect(p, s, corner=9)], "salt", opacity=0.9 - 0.12 * i, blur=0.8,
+               shade={"bump": 0.4}) for i, (p, s) in enumerate(bars)]
+    return icon("icon_fc_fog", f, 63, "Forecast symbol: fog.")
+
+
+def fc_snow_indoor():
+    f = [
+        form("house", 0, [piece("house", [64, 66], [104, 96])], "steel_dark", shade={"bump": 0.6}),
+        form("room", 1, [rrect([64, 84], [58, 48], corner=3)], "coat_dark", kind="flat"),
+        flakes(2, [[52, 76], [76, 82], [62, 100]], size=18, name="flakes_in"),
+        form("sill", 2.5, [rrect([64, 108], [60, 6], corner=2)], "salt", kind="flat", opacity=0.8),
+    ]
+    return icon("icon_fc_snow_indoor", f, 64, "Forecast symbol: snow indoors only (sun-dry outside).")
+
+
+def os_mail():
+    f = [
+        form("envelope", 0, [rrect([62, 68], [100, 70], corner=6)], "paper", shade={"bump": 0.4}),
+        form("flap", 1, [piece("triangle", [62, 52], [100, 44], rot=180)], "paper_mark", kind="flat", opacity=0.7,
+             clip_to="envelope"),
+        form("seal", 2, [disc([62, 72], 18)], "cloth_wine", shade={"bump": 1.1}),
+        form("badge", 3, [disc([104, 30], 28)], "paint_red", shade={"bump": 1.1}),
+        form("badge_dot", 3.5, [disc([104, 30], 8)], "bone", kind="flat"),
+    ]
+    return icon("icon_os_mail", f, 65, "Desktop icon: mail with an unread badge (no number).")
+
+
+def os_web():
+    f = [
+        form("globe", 0, [disc([60, 60], 88)], "paint_teal", shade={"bump": 1.0}),
+        form("lands", 1, [piece("globe", [60, 60], [88, 88])], "paint_olive", kind="flat", opacity=0.55, clip_to="globe"),
+        form("orbit", 2, [disc([62, 62], [118, 40], rot=-20), disc([62, 60], [104, 28], rot=-20, op="sub")], "bronze",
+             kind="flat", opacity=0.9),
+        form("arrow", 3, [piece("cursor", [100, 100], [30, 40])], "bone", shade={"bump": 0.5}),
+    ]
+    return icon("icon_os_web", f, 66, "Desktop icon: web browser.")
+
+
+def os_settings():
+    f = [
+        form("cog_big", 0, [piece("cog", [56, 58], [84, 84])], "steel", shade={"bump": 1.0}),
+        form("cog_big_hole", 0.5, [disc([56, 58], 26)], "steel_dark", kind="flat"),
+        form("cog_small", 1, [piece("cog", [94, 92], [48, 48], rot=20)], "bronze", shade={"bump": 1.0}),
+        form("cog_small_hole", 1.5, [disc([94, 92], 14)], "steel_dark", kind="flat"),
+    ]
+    return icon("icon_os_settings", f, 67, "Desktop icon: settings (two gears).")
+
+
+def os_terminal():
+    f = [
+        form("window", 0, [rrect([64, 64], [108, 92], corner=8)], "plastic_dark", shade={"bump": 0.5}),
+        form("bar", 1, [rrect([64, 26], [102, 14], corner=4)], "steel", kind="flat"),
+        form("screen", 1, [rrect([64, 72], [96, 66], corner=4)], "screen", kind="flat"),
+        form("prompt", 2, [rrect([36, 62], [18, 6], corner=2, rot=35), rrect([36, 72], [18, 6], corner=2, rot=-35)],
+             "phosphor", kind="flat", emit=0.6),
+        form("block", 2, [rrect([60, 68], [16, 10], corner=1)], "phosphor", kind="flat", emit=0.6),
+    ]
+    return icon("icon_os_terminal", f, 68, "Desktop icon: command window (prompt chevron and cursor block).")
+
+
+def os_webcam():
+    f = [
+        form("stand", 0, [rrect([64, 104], [54, 12], corner=5), rrect([64, 92], [10, 20], corner=3)], "steel_dark"),
+        form("body", 1, [disc([64, 56], 76)], "plastic_dark", shade={"bump": 1.0}),
+        form("lens_ring", 2, [disc([64, 56], 46)], "steel", shade={"bump": 1.1}),
+        form("lens", 2.5, [disc([64, 56], 30)], "screen_glass", shade={"bump": 1.2}),
+        form("lens_glint", 3, [disc([58, 50], 8)], "glare", kind="flat", opacity=0.5),
+        form("tally", 3, [disc([92, 30], 12)], "lamp_red_on", emit=1.0, glow={"radius": 4, "opacity": 0.6,
+                                                                               "color": "glow_red"}),
+    ]
+    return icon("icon_os_webcam", f, 69, "Desktop icon: streaming webcam with a lit tally lamp.")
+
+
+def stage_b():
+    return [fc_snow(), fc_storm(), fc_fog(), fc_snow_indoor(), os_mail(), os_web(), os_settings(), os_terminal(),
+            os_webcam()]
+
+
+STAGES["B"] = stage_b
 
 
 def main() -> int:

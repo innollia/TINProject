@@ -43,7 +43,16 @@ A (10)
 - [x] ui_ctl_jack — empty, plugged + ui_ctl_jack_plug
 - [x] ui_ctl_cable — wine, black, teal
 B (10)
-- [ ] ui_ctl_gauge_depth, ui_ctl_gauge_thermo, ui_ctl_gauge_half, ui_ctl_telegraph, ui_ctl_tuner, ui_ctl_meter, ui_ctl_keypad, ui_ctl_dial, ui_ctl_selector, ui_ctl_panel
+- [x] ui_ctl_gauge_depth + ui_ctl_gauge_depth_marker(표시 막대, x=96에서 y 52~332 이동)
+- [x] ui_ctl_gauge_thermo + ui_ctl_gauge_thermo_fill(채움 기둥, 아래 y=316에서 위로 드러냄)
+- [x] ui_ctl_gauge_half — fuel / air / power (바늘은 ui_ctl_needle, -90°=빔 +90°=가득)
+- [x] ui_ctl_telegraph + ui_ctl_telegraph_handle(384, 위=정지, 오른쪽=전진 단계, 왼쪽=후진 단계)
+- [x] ui_ctl_tuner(off/on) + ui_ctl_tuner_cursor(y=92 선에서 x 48~336 이동). 눈금 아래 원·마름모·세모는 signal_desk의 90·100·110 채널
+- [x] ui_ctl_meter — level_0 ~ level_5
+- [x] ui_ctl_keypad — idle / accepted (숫자 대신 도형 12개)
+- [x] ui_ctl_dial — base / wheel(돌리는 구멍판)
+- [x] ui_ctl_selector — pos_1 / pos_2 / pos_3
+- [x] ui_ctl_panel — 리벳 판, 9-slice 여백 48 (`ui_ctl_panel_9s_check.png`)
 C (3)
 - [ ] ui_ctl_crank, ui_ctl_hazard, ui_ctl_speedo
 

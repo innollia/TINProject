@@ -13,6 +13,10 @@
 - `preview\review_A4_viewfinder.png`: 뷰파인더 녹화·대기. 고칠 것 없음.
 - 9-slice 늘림 확인: `preview\ui_os_window_active_9s_check.png`, `ui_rhythm_lane_9s_check.png` — 모서리가 유지되고 가운데만 늘어난다.
 
+## B 단계 확인
+- `preview\review_B1_screens.png`(단말·입력칸·파편 카드·말풍선·방송 띠·송출 표식·전선 띠·엑스선 틀·훑는 선·업그레이드 마디·잇는 선), `review_B2_screens.png`(카드 4종), `review_B3_periscope.png`(잠망경). 고칠 것 없음.
+- 9-slice 늘림 확인: `preview\*_9s_check.png`(단말 on/off, 입력칸, 파편 카드, 말풍선 좌우, 방송 띠, 엑스선 틀·훑는 선).
+
 ## 아쉬운 점
 - 리듬 레인을 세로로 많이 늘리면 재질 얼룩이 세로 줄무늬처럼 늘어난다(9-slice 가운데 칸이 늘어나는 탓). 길게 쓸 때는 가운데 칸을 늘리지 말고 반복(tile)하는 편이 낫다.
 - 뷰파인더는 밝은 장면용이라 옅은 색이다. 아주 밝은 장면에서는 윤곽선 덕에 읽히지만, 게임 쪽에서 투명도를 조절하는 게 좋다.

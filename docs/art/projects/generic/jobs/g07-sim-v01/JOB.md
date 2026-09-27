@@ -21,6 +21,7 @@
 A (2)
 - [x] obj_conveyor(x_0~2, y_0~2), obj_ore_rock(whole/crack1/crack2/broken)
 B (2)
-- [ ] obj_container, obj_shard_pile
+- [x] obj_container — closed / open, 10피트 컨테이너 2.4×3.0×2.6 m, 문이 보는 쪽(열면 상자 3개), 빈 이름판(닫힘에만)
+- [x] obj_shard_pile — small / medium / large (돌·놋쇠·수정 파편, 수정만 약한 _emit)
 C (6)
 - [ ] obj_pallet_stack, obj_freight_wagon, obj_rail_tile, obj_mine_cart, obj_conveyor_end, obj_crane_hook

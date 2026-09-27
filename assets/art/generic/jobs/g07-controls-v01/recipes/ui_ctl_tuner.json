@@ -1,0 +1,420 @@
+{
+ "asset": "ui_ctl_tuner",
+ "status": "candidate",
+ "note": "g07 future-kit part (flat front view UI). at-icons collage, candidate. Radio tuning window, off / on (warm glow). The three marks under the scale are the circle / diamond / triangle channels (signal_desk's 90 / 100 / 110).",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  384,
+  192
+ ],
+ "pivot": [
+  192.0,
+  92.0
+ ],
+ "pivot_meaning": "window centre",
+ "seed": 68,
+ "forms": [
+  {
+   "name": "bezel",
+   "z": 0,
+   "material": "plastic_dark",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      96.0
+     ],
+     "size": [
+      376.0,
+      178.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 22
+     }
+    }
+   ]
+  },
+  {
+   "name": "window_frame",
+   "z": 1,
+   "material": "bronze",
+   "shade": {
+    "bump": 1.0
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      92.0
+     ],
+     "size": [
+      334.0,
+      108.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 10
+     }
+    }
+   ]
+  },
+  {
+   "name": "window_off",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "amber_screen",
+   "opacity": 0.35,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      92.0
+     ],
+     "size": [
+      318.0,
+      92.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "off"
+   ]
+  },
+  {
+   "name": "window_on",
+   "z": 1.5,
+   "kind": "flat",
+   "material": "amber_screen",
+   "emit": 0.9,
+   "glow": {
+    "radius": 6,
+    "opacity": 0.4,
+    "color": "glow_amber"
+   },
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      92.0
+     ],
+     "size": [
+      318.0,
+      92.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 6
+     }
+    }
+   ],
+   "hidden": true,
+   "tags": [
+    "on"
+   ]
+  },
+  {
+   "name": "ticks_top",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.85,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      2.0,
+      12.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        48,
+        64
+       ],
+       [
+        336,
+        64
+       ]
+      ],
+      "count": 37
+     }
+    }
+   ]
+  },
+  {
+   "name": "ticks_major",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      0.0,
+      0.0
+     ],
+     "size": [
+      3.4,
+      22.0
+     ],
+     "repeat": {
+      "line": [
+       [
+        48,
+        69
+       ],
+       [
+        336,
+        69
+       ]
+      ],
+      "count": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "band_line",
+   "z": 2,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.7,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      192.0,
+      104.0
+     ],
+     "size": [
+      290.0,
+      3.0
+     ],
+     "slice": {
+      "border": 4,
+      "corner": 1
+     }
+    }
+   ]
+  },
+  {
+   "name": "marks",
+   "z": 2.1,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      122.0
+     ],
+     "size": [
+      16.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      96.0,
+      122.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      122.0
+     ],
+     "size": [
+      18.0,
+      18.0
+     ]
+    },
+    {
+     "icon": "diamond",
+     "at": [
+      192.0,
+      122.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ],
+     "op": "sub"
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      288.0,
+      121.0
+     ],
+     "size": [
+      18.0,
+      16.0
+     ]
+    },
+    {
+     "icon": "triangle",
+     "at": [
+      288.0,
+      123.0
+     ],
+     "size": [
+      8.0,
+      7.0
+     ],
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "knob_l",
+   "z": 3,
+   "material": "plastic_dark",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      26.0,
+      150.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "knob_r",
+   "z": 3,
+   "material": "plastic_dark",
+   "shade": {
+    "bump": 1.2
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      358.0,
+      150.0
+     ],
+     "size": [
+      30.0,
+      30.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws",
+   "z": 4,
+   "material": "steel",
+   "line": {
+    "width": 0.5,
+    "heavy": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      30.0,
+      26.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    },
+    {
+     "icon": "circle",
+     "at": [
+      354.0,
+      26.0
+     ],
+     "size": [
+      9.0,
+      9.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "screws_slot",
+   "z": 4.01,
+   "kind": "flat",
+   "material": "dial_mark",
+   "opacity": 0.8,
+   "pieces": [
+    {
+     "icon": "square",
+     "at": [
+      30.0,
+      26.0
+     ],
+     "size": [
+      7.2,
+      1.44
+     ],
+     "rot": 35.0
+    },
+    {
+     "icon": "square",
+     "at": [
+      354.0,
+      26.0
+     ],
+     "size": [
+      7.2,
+      1.44
+     ],
+     "rot": 58.0
+    }
+   ]
+  }
+ ],
+ "frames": [
+  {
+   "name": "off",
+   "show": [
+    "off"
+   ]
+  },
+  {
+   "name": "on",
+   "show": [
+    "on"
+   ]
+  }
+ ]
+}

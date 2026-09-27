@@ -1,0 +1,116 @@
+{
+ "asset": "icon_os_web",
+ "status": "candidate",
+ "note": "g07 future-kit icon (128, flat, no text). at-icons collage, candidate. Desktop icon: web browser.",
+ "palette": "palette_g07.json",
+ "style": "sprite",
+ "canvas": [
+  128,
+  128
+ ],
+ "pivot": [
+  64.0,
+  64.0
+ ],
+ "pivot_meaning": "icon centre",
+ "seed": 66,
+ "forms": [
+  {
+   "name": "globe",
+   "z": 0,
+   "material": "paint_teal",
+   "shade": {
+    "bump": 1.0
+   },
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      60.0,
+      60.0
+     ],
+     "size": [
+      88.0,
+      88.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "lands",
+   "z": 1,
+   "kind": "flat",
+   "material": "paint_olive",
+   "opacity": 0.55,
+   "clip_to": "globe",
+   "pieces": [
+    {
+     "icon": "globe",
+     "at": [
+      60.0,
+      60.0
+     ],
+     "size": [
+      88.0,
+      88.0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "orbit",
+   "z": 2,
+   "kind": "flat",
+   "material": "bronze",
+   "opacity": 0.9,
+   "pieces": [
+    {
+     "icon": "circle",
+     "at": [
+      62.0,
+      62.0
+     ],
+     "size": [
+      118.0,
+      40.0
+     ],
+     "rot": -20
+    },
+    {
+     "icon": "circle",
+     "at": [
+      62.0,
+      60.0
+     ],
+     "size": [
+      104.0,
+      28.0
+     ],
+     "rot": -20,
+     "op": "sub"
+    }
+   ]
+  },
+  {
+   "name": "arrow",
+   "z": 3,
+   "material": "bone",
+   "shade": {
+    "bump": 0.5
+   },
+   "pieces": [
+    {
+     "icon": "cursor",
+     "at": [
+      100.0,
+      100.0
+     ],
+     "size": [
+      30.0,
+      40.0
+     ]
+    }
+   ]
+  }
+ ]
+}

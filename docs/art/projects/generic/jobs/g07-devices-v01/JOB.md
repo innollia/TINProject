@@ -29,6 +29,19 @@ A (9)
 - [x] obj_switchboard(idle/active), obj_radio_desk(off/on), obj_sorting_rack(empty/full), obj_xray_scanner(off/on), obj_turnstile(locked/open)
 - [x] obj_lighthouse_lens(off/on), obj_sub_hatch(closed/open), obj_cash_register(closed/open), obj_evidence_board(empty/pinned)
 B (14)
-- [ ] obj_telegraph_desk, obj_antenna_mast, obj_parcel_scale, obj_checkpoint_booth, obj_locker_bank, obj_weather_mast, obj_studio_camera, obj_fog_horn, obj_bell_buoy, obj_valve_wheel, obj_periscope, obj_display_case, obj_seance_table, obj_bell_rack
+- [x] obj_telegraph_desk — 모스 전건, 두 코일 음향기, 종이테이프 릴, 잉크병
+- [x] obj_antenna_mast — off / on (빨간 경고등), 높이 2.6 m, 쌍극 막대·당김줄
+- [x] obj_parcel_scale — empty / loaded (소포, 바늘 75° 돌아감)
+- [x] obj_checkpoint_booth — down / up (빨강·흰 차단봉), 창 선반·창 위 등, 지붕 환기구·경광등(up에서 켜짐)
+- [x] obj_locker_bank — closed / open (가운데 문 열림: 선반, 찻잔 둘, 접힌 쪽지 = quiet_locker 장면)
+- [x] obj_weather_mast — 컵 풍속계, 풍향계, 기록 상자(녹색 등)
+- [x] obj_studio_camera — off / on (빨간 촬영 등)
+- [x] obj_fog_horn — 공기 탱크 위 쌍나팔, 밸브 바퀴
+- [x] obj_bell_buoy — dark / lit (피벗 = 물 위 앞쪽 가운데)
+- [x] obj_valve_wheel — 벽 배관 밸브(피벗 = 남쪽 벽 아래선)
+- [x] obj_periscope — down / up (기둥이 천장으로 이어지게 캔버스 위로 나감: 일부러)
+- [x] obj_display_case — empty / stocked
+- [x] obj_seance_table — unlit / lit (촛불 3개·수정구 _emit)
+- [x] obj_bell_rack — 낮은·가운데·높은 종 + 펠트 망치
 C (13)
 - [ ] obj_mail_cart, obj_parcel_chute, obj_rain_gauge, obj_onair_lamp, obj_bollard, obj_marker_buoy, obj_bulkhead_door, obj_porthole, obj_music_stand, obj_ghost_trap, obj_salt_circle, obj_heart_monitor, obj_specimen_tank
