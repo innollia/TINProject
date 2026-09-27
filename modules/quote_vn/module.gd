@@ -321,7 +321,7 @@ func _build_ui() -> void:
 
 
 # ---------------------------------------------------------------- 전환 효과
-## mode: 0 페이드 1 와이프 2 블라인드 3 조리개 4 디졸브 5 대각선
+## mode: 0 페이드 1 와이프 2 블라인드 3 조리개 4 디졸브 5 대각선 / 고급 6 잉크 7 불타는 종이 8 물결 9 픽셀화 10 시계 11 하트 12 글리치
 func transition(mode: int, mid: Callable, tint := Color.BLACK, dur := 0.45) -> void:
 	busy = true
 	var mat: ShaderMaterial = overlay.material
@@ -390,7 +390,7 @@ func start_story(s: int) -> void:
 		title_layer.visible = false
 		_apply_palette(corpora[0].id)
 		_clear_choices()
-	await transition(3, mid)
+	await transition(6, mid, Color("0d0710"), 0.9)
 	_advance()
 
 
@@ -454,7 +454,7 @@ func _show_event(e: Dictionary) -> void:
 			_show_choice(e)
 		"crossroad":
 			fx_index = (fx_index + 1) % 3
-			var modes := [2, 4, 5]
+			var modes := [7, 12, 9]
 			var mid := func():
 				text_panel.visible = false
 				name_panel.visible = false
@@ -470,7 +470,7 @@ func _show_event(e: Dictionary) -> void:
 				name_panel.visible = false
 				banner.text = "끝 — " + e.text
 				banner_sub.text = e.ratio + "\n(Enter 또는 클릭: 처음으로)"
-			await transition(0, mid2, Color.WHITE, 0.9)
+			await transition(11, mid2, Color("2a0f1c"), 1.1)
 			do_flash(Color(1, 1, 1, 0.6))
 		"end":
 			_show_title()
@@ -496,7 +496,7 @@ func _show_choice(e: Dictionary) -> void:
 			choice_box.add_child(b)
 		waiting_choice = true
 		(choice_box.get_child(1) as Button).grab_focus()
-	await transition(1 if e.kind == "talk" else 3, build, Color(0.05, 0.02, 0.05, 1), 0.25)
+	await transition(10 if e.kind == "talk" else 8, build, Color(0.05, 0.02, 0.05, 1), 0.35)
 
 
 func _on_choice(i: int) -> void:

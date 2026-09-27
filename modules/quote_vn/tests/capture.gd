@@ -78,6 +78,16 @@ func _run() -> void:
 			await _shot("log")
 			game._toggle_log()
 			got["log"] = 1
+		if t == "heroine" and not got.has("fx"):
+			got["fx"] = 1
+			var mat: ShaderMaterial = game.overlay.material
+			var names := {6: "잉크", 7: "불타는종이", 8: "물결", 9: "픽셀화", 10: "시계", 11: "하트", 12: "글리치"}
+			for m in names:
+				mat.set_shader_parameter("mode", m)
+				mat.set_shader_parameter("tint", Color("2a0f1c"))
+				mat.set_shader_parameter("progress", 0.5)
+				await _shot("fx_" + names[m])
+			mat.set_shader_parameter("progress", 0.0)
 		_finish_typing()
 		game._advance()
 		await _wait(2)
