@@ -17,15 +17,16 @@
 
 ## 남은 일 (미완료, 이유)
 
-- **테스트/부팅 실행 미실행.** `C:\projects\_locks\TINProject-godot.lock`을 다른 세션(sub-kit01)이 쥐고 있어 Godot을 실행하지 못했다. 잠금 해제 후 재시도할 것: import, `test_deduction_casework_skeleton.gd`(GUT), `--quit-after 180 --fixed-fps 60` 부팅.
+- **테스트/부팅 실행 미실행.** `C:\projects\_locks\TINProject-godot.lock`을 sub-kit01이 쥐고 있어 Godot을 실행하지 못했다. 즉시/3분/8분/13분 경과 시점 총 4회 확인했으나 계속 보유 중이었고 40분 미만이라 stale 판정 기준(godot 프로세스 없이 40분+ 방치)에 해당하지 않아 강제 해제하지 않았다. 잠금 해제 후 재시도할 것: import, `test_deduction_casework_skeleton.gd`(GUT), `--quit-after 180 --fixed-fps 60` 부팅.
 - **720p/FHD/QHD 캡처 미실행.** 위와 같은 이유로 Godot 창 모드 실행이 필요해 보류.
 - **save/load/reset, 입력 재검증** 미착수. Godot 잠금 해제 후 코드 리뷰(정적) 먼저 하고 필요 시 런타임 확인.
 - **12-stage route/solve 자동 검증** 재실행 미실행(Godot 필요).
 - **stage02/03 art candidate 자체가 없음.** g06 세션이 만든 것이 stage01뿐이라 이번 작업은 stage01(=case_01_saint_orin, 4개 scene) 연결까지만 가능했다. stage02/03 art가 나오면 같은 방식(`art_candidates.json`에 항목 추가)으로 이어서 연결 가능.
 
-## 채택한 추천안 (에이전트 추천, 사용자가 뒤집을 수 있음)
+## 채택한 추천안 (에이전트 추천 → 사용자가 확정, 2026-09-27)
 
-- candidate 그림을 "완전 교체"가 아니라 "placeholder 위에 옅게 겹쳐 보여주는" 방식으로 연결. 판정 UI(테두리/포커스/순서번호)를 가리지 않는 것을 우선했다. 다른 표현(그림만 보여주고 placeholder 요소 숨김 등)을 원하면 알려달라.
+- **사용자가 확정함:** "03 추리 화면에 g06 후보 그림을 임시로 붙이기"를 추천대로 확정. 승인/Gold Standard 승격이 아니라는 점은 그대로 유지된다. 이 절 이하의 구현(placeholder 위에 옅게 겹치는 방식)은 되돌리지 않는다.
+- candidate 그림을 "완전 교체"가 아니라 "placeholder 위에 옅게 겹쳐 보여주는" 방식으로 연결. 판정 UI(테두리/포커스/순서번호)를 가리지 않는 것을 우선했다.
 - 매핑 파일은 module-local JSON 하나(`modules/deduction_casework/content/art_candidates.json`)로, 코드에서 하드코딩하지 않았다. 이후 stage가 추가될 때 이 파일만 늘리면 된다.
 
 ## 공용 파일 변경 요청
