@@ -223,7 +223,7 @@ func test_surging_down_breaks_the_roots_throat() -> void:
 	_advance(module, 1.0 / 60.0, RunIntent.create(false, true, false, false, true))
 	_advance(module, 0.1, RunIntent.create(false, true))
 	assert_true(module.state.open_bristles.has("throat_wall"))
-	_advance(module, 3.0, RunIntent.create(false, true))
+	_advance(module, 1.5, RunIntent.create(false, true))
 	assert_gt(module.state.position.y, 640.0)
 
 
