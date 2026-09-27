@@ -38,5 +38,19 @@ func all_room_ids() -> PackedStringArray:
 	return ids
 
 
+func all_links() -> Array[Dictionary]:
+	return links.duplicate()
+
+
+func region_of(room_id: String) -> EcoRegionSpec:
+	var owner: EcoRoomSpec = room(room_id)
+	if owner == null:
+		return null
+	for region: EcoRegionSpec in regions:
+		if region.id == owner.region_id:
+			return region
+	return null
+
+
 func archetype(archetype_id: String) -> Dictionary:
 	return archetypes.get(archetype_id, {})

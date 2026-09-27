@@ -99,7 +99,7 @@ static func begin(bridge: EcoWorldstateBridge, index: EcoContentIndex, table: Ec
 		if axis.has_scale:
 			var body: EcoBodyRung = table.from_axis_value(axis.scale_value)
 			if body == null:
-				push_error("sideview_ecosystem: body.scale is not a rung this module can build")
+				push_warning("sideview_ecosystem: body.scale is not a rung this module can build")
 				result["ok"] = false
 				result["reason"] = REASON_AXIS_RUNG_FOREIGN
 				result["world"] = world

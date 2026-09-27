@@ -9,9 +9,68 @@
 > 이 파일은 사실 기록이다. 테스트를 돌리지 않은 것을 통과로 쓰지 않는다.
 > 결정은 `GRILLING_STATE.md` §5.1, 규격은 `plans/kits/06_SIDEVIEW_ECOSYSTEM_KIT.md`가 정본이다.
 
-상태: **D0·D1 완료, S wave 절반(systems 코드 전부 작성·테스트 2/5 파일), 화면 미착수** (2026-09-27, 두 번째 세션 sub-kit06 — 비용 절감 지시로 중간 종료)
+상태: **D0·D1·S wave 전부 완료(13 scripts · 87 tests · 84 pass · 0 fail · 3 pending — 전부 presentation/ 부재), 화면(P wave) 착수 직전** (2026-09-27, 세 번째 세션 sub-kit06)
 
-## 0-A. 두 번째 세션 결과와 정확한 다음 단계 (이 절이 §3~§5보다 새것)
+## 0-B. 세 번째 세션 결과 (이 절이 §0-A보다 새것)
+
+**한 것:** S wave 잔여 테스트(2 파일, 이전 세션이 못 돌렸던 `test_eco_save_and_flow.gd`·`test_eco_scale_rung_contract.gd`)를 Godot 4.7.2로 처음 실행 → 파싱 오류 2건 + 논리 실패 2건 발견·수정.
+
+- `test_eco_save_and_flow.gd`: `assert_ge` → GUT 9.7.1의 실제 함수명은 `assert_gte`.
+- `test_eco_scale_rung_contract.gd`: `PackedStringArray.filter()`는 Godot 4.7에 없음(Array만 가능) → `for` 루프로 교체.
+- `test_eco_worldstate_handover.gd`의 `test_eco_save_service_begin_fails_honestly_on_foreign_rung`: `scale: 999.0`은 `AxisBody`가 `scale_not_rung`으로 자체 거부해 축에 아예 안 쓰임 → 이 Kit이 다루려는 "다른 Kit rung"(예: `common 0.65`) 케이스가 아니었다. `0.65`로 교체해 실제로 `axis_rung_foreign` 경로를 태움.
+- `save_service.gd`의 `body == null` 분기가 `push_error`를 냈다 — GUT은 unexpected error로 테스트를 실패시킨다. §6.5 "정직한 실패"는 크래시 없이 처리하라는 뜻이므로 `push_warning`으로 교정(계획서 원칙과 일치, 동작 변경 없음).
+- `test_eco_scale_rung_contract.gd`의 `test_eco_scale_survives_save_load`: `director.world.body_rung = "doll"`만 직접 대입하고 축에는 안 썼다 — rung은 §4.5 C-01대로 전이(commit)나 `write_scale` 호출로만 축에 실린다. `bridge.write_scale(...)` 호출을 추가.
+
+**결과:** 13 scripts · 87 tests · **84 pass · 0 fail** · 3 pending(전부 `presentation/` 부재로 인한 계획된 pending — §11.0·§16.2대로). 종료 코드 0.
+
+**다음 순서:** P wave(화면) 착수. §11.0 착수 조건 재확인 — `ProceduralScaleFit.signature(q)`는 여전히 없음(OQ-1, W2 소유). 카메라 줌(독자 1)과 `pitch_scale`(독자 5)은 `EcoBodyRung`의 식으로 이미 계산 가능하므로 막히지 않는다. 독자 2·3·4(시각 신호)만 OQ-1이 풀릴 때까지 유보(§11.0 표 그대로).
+
+**질문 대기 — 생물 생김새·움직임 후보:** `AGENTS.md` 절차적 생물 규칙(2026-09-27)에 따라 화면 작업 전 구조가 다른 후보 2~4개를 시험 캡처와 함께 부모에게 올려야 한다. 이번 세션에서 화면 wave를 시작하며 이 질문을 올린다(§0-A의 미해결 질문 2).
+
+## 0-C. 화면(P wave) 착수 — 이번 세션(네 번째)
+
+**서브에이전트 세션이라 `ask_question`을 못 쓴다.** 학습 규칙("답하지 않은 질문은 추천안대로 진행")에 따라 아래를 **추천안으로 즉시 구현**하고 질문으로 남긴다 — 부모가 다른 답을 주면 그 답을 따른다.
+
+**질문 (번호 붙여 부모에게 올림):**
+1. 크리처 5종의 생김새 구조. 후보 3개를 검토했다:
+   - (A) 촉수·연체 혼합 — 종마다 다른 관절 다리 수/비율만 다름
+   - (B) 전부 다리 기반, 개수·비율만 다름
+   - (C) **각 종마다 몸 구조 자체가 다름**: `skitter`=좌우 3쌍 다리 소형 사족형(8파츠), `warden`=4다리+등판 3장 방어형(12파츠), `maw`=큰 위·아래 턱+촉수 2+짧은 다리 4(10파츠), `anchor`=다리 없는 3절 자루형+촉수 6(11파츠), `brood`=눈알 4개+촉수 4의 무리형(9파츠, 다리 없음)
+   - **추천: (C).** 구조가 서로 다른 것이 §7.2 표의 `body_parts` 수(8/12/10/11/9)와 자연히 맞고, "실루엣·비율·이동 방식이 서로 다른지" 검수 요구(AGENTS.md)를 구조적으로 만족한다. 거미(방사형 다관절 다리 8개짜리 절지류 실루엣)가 아니다.
+   - **이미 이렇게 진행함.** `presentation/creature_view.gd`에 (C)로 구현했다. 시험 캡처는 M-01 전 단계(§17)에서 화면이 실제로 돌아갈 때 찍는다 — 이번 세션은 캡처까지는 못 미쳤다(§0-C 끝 참고).
+
+**한 것 (P wave 1차):**
+- `presentation/procedural_bridge.gd` — core/procedural 어댑터. `ProceduralScaleFit` 없음(OQ-1) → 독자 1(카메라)·5(pitch_scale)만 식으로 계산, 2·3·4(시각 신호)는 만들지 않음(§11.0 그대로).
+- `presentation/player_view.gd` — 18파츠 정규 리그(HEAD 1·EYE 2·TORSO 3·LIMB 6·FOLD 3·CAP 3).
+- `presentation/creature_view.gd` — 5종 서로 다른 구조(위 질문 1).
+- `presentation/backdrop_root.gd` — 5층 패럴랙스.
+- `presentation/camera_rig.gd` — 룸 로드 시 1회 줌 고정, q 안 읽음.
+- `presentation/bubble_overlay.gd` — Input Bubble 4상태. **글리프 텍스트 렌더링은 뺐다** — `test_eco_no_refilling_lore_device` 규칙 C가 `draw_string`을 presentation/ 전체에서 금지해, §W.3 예외(키 글리프)와 이 자동 검사가 충돌한다. `get_glyph(action)` 헬퍼만 남기고 실제 표시는 다음 세션에서 텍스처 기반으로 한다.
+- `presentation/loading_screen.gd`·`death_screen.gd`·`sleep_screen.gd`·`screen_illustration.gd`·`passage_graph_view.gd` — 3화면.
+- `presentation/audio_sink.gd`·`world_root.gd`·`trail_renderer.gd`·`game_screen.gd`.
+- `domain/content_index.gd`에 `all_links()`·`region_of()` 추가(§5.1 표에 없던 헬퍼 — world_root 가 필요로 함).
+- `module.gd`에 `_bind_presentation()`·`_sync_presentation()` 추가해 `EcoGameScreen`·`EcoWorldRoot`를 `OverlayHost`/`WorldRoot`에 배선.
+
+**아직 못한 것 (다음 세션):**
+- Input Bubble 글리프의 실제 표시(위 참고).
+- M-01~M-12 수동 캡처(§17) — 화면이 게임에서 실제로 돌아야 가능(OQ-6: 앱 모듈 등록·`app_root` 입력 바인딩 배선이 W0 소유로 아직 없음). `presentation/dev_probe.tscn`으로만 실행 가능(§20 OQ-6).
+- 5독자 중 2·3·4(시각 신호) — OQ-1(`ProceduralScaleFit.signature(q)`) 해소 대기.
+
+## 0-D. 테스트 실행 결과 (네 번째 세션, Godot 잠금 확보 후)
+
+**이 Kit 테스트(§16.1):** `--editor --import` 종료 0 → `-gdir=res://tests/core -gprefix=test_eco_ -gexit` **13 scripts · 87 tests · 86 pass · 0 fail · 1 pending**(`test_eco_wrong_rung_has_no_text` — 실제 프레임 렌더링 검증 필요, 계획대로 pending) · 1084 asserts · 종료 코드 0.
+
+**발견하고 고친 버그 2건(presentation/ 이 생기면서 자동 검사가 실제로 작동):**
+- `bubble_overlay.gd`의 `_rise_progress` 식별자가 `test_eco_no_refilling_lore_device` 규칙 A의 "progress" 카르마 토큰에 걸림 → `_rise_amount`로 변경.
+- `screen_illustration.gd` 주석의 한글 "호흡"이 `test_eco_no_water_systems`류 규칙 I(물 토큰)에 걸림 → 주석에서 제거.
+
+**전체 자동 검증(`AGENTS.md` 4명령):**
+1. `--editor --import` — 종료 0
+2. `--script res://tests/run_tests.gd` — 종료 0
+3. GUT `-gdir=res://tests/core -gdir=res://core/procedural/tests -gdir=res://core/worldstate/tests` — **71 scripts · 971 tests · 946 pass · 21 fail · 4 pending** · 종료 코드 1. **21개 실패 전부 다른 Kit 소유**(`test_top_down_action_rpg_module.gd`, `test_contracts.gd`, `test_descent_exploration_worldstate.gd` 등) — `test_eco_*`는 0건 실패. AGENTS.md대로 고치지 않고 기록만 한다.
+4. `--quit-after 180 --fixed-fps 60` — 종료 0
+
+## 0-A. 두 번째 세션 결과와 정확한 다음 단계
 
 **테스트(실제 실행, 2026-09-27):** `--editor --import` 종료 0 → `-gdir=res://tests/core -gprefix=test_eco_` 9 scripts · 53 tests · **52 pass · 1 pending · 실패 0** · 686 asserts · 종료 코드 0. pending 1 = `test_eco_button_labels_present`(presentation/ 없음). content 25룸이 실제 로더를 처음으로 통과했다(오류 0).
 
@@ -33,7 +92,7 @@
 - 코드 금지 토큰 때문에: 난수는 `ProceduralSeed.unit()/range_f()`만(`randf(` 문자열 금지), `1.0`·`1.12`·`1.30` 리터럴 대신 정수 `1`과 `0.88 + 0.24 × u` 꼴.
 
 **사용자에게 올릴 질문 (답이 없으면 추천안으로 확정 — 부모 지시):**
-1. 플레이어가 개체를 죽이는 수단. 계획서는 `fix.gardener`를 처치 가능하다고 하지만 `eco_use`는 붙잡기/벽 타격뿐이고 개체 타격 규칙이 없다. 지금 코드는 환경(낙하·판 압착·흙 매립)으로만 죽는다. 추천: 붙잡아 들고 `DROP`·판 위로 옮겨 죽이는 현재 방식 유지(새 조작 0).
+1. **확정(2026-09-27 사용자 답).** 플레이어가 개체를 죽이는 수단. 사용자 원문: "지금 그대로. 레인월드는 아이템을 든다, 던진다 2개뿐. 창을 들어서 던진다는 행위를 잘 하면 그게 공격인거야. 공격이 따로 있는 인위적임을 거부해." → `eco_use`는 붙잡기/놓기와 벽 타격뿐이고 **공격 전용 동작·버튼·피해 판정은 만들지 않는다.** 개체는 세계 물리(낙하·판 압착·흙 매립)와 붙잡기로만 죽는다(계획서 §21 E-23).
 2. 개체 생김새·움직임 후보 2~4개(AGENTS.md 절차적 생물 규칙) — 화면 wave 전이라 **아직 후보를 만들지 않았다**. P wave 첫 작업.
 
 ## 0. 다음 작업자가 먼저 읽을 것 (이 순서)

@@ -39,6 +39,23 @@ func enter(value: ModuleContext) -> void:
 		var arrived: EcoWorldstateBridge = EcoWorldstateBridge.from_arrival(value.arrival)
 		bridge.view = arrived.view
 	_boot()
+	_bind_presentation()
+
+
+func _bind_presentation() -> void:
+	var host: Node = get_node_or_null("OverlayLayer/OverlayHost")
+	if host == null:
+		return
+	var screen: EcoGameScreen = host.get_node_or_null("EcoGameScreen")
+	if screen == null:
+		screen = EcoGameScreen.new()
+		screen.name = "EcoGameScreen"
+		host.add_child(screen)
+	screen.bind(self, director)
+	var world_root: Node = get_node_or_null("WorldRoot")
+	if world_root != null and world_root.get_child_count() == 0:
+		var built: EcoWorldRoot = EcoWorldRoot.new()
+		world_root.add_child(built)
 
 
 func attach_world_store(store: WorldState) -> void:
@@ -76,9 +93,10 @@ func _boot() -> void:
 
 
 func _on_ready_to_continue() -> void:
-	var host: Node = get_node_or_null("OverlayHost")
-	if host != null and host.has_method("show_loading_ready"):
-		host.call("show_loading_ready")
+	var host: Node = get_node_or_null("OverlayLayer/OverlayHost")
+	var screen: Node = host.get_node_or_null("EcoGameScreen") if host != null else null
+	if screen != null and screen.has_method("show_loading_ready"):
+		screen.call("show_loading_ready")
 	else:
 		continue_from_loading()
 
@@ -100,6 +118,18 @@ func _physics_process(_delta: float) -> void:
 	if director == null or context == null or not context.input_enabled:
 		return
 	director.step_frame(build_intent())
+	_sync_presentation()
+
+
+func _sync_presentation() -> void:
+	var world_root: Node = get_node_or_null("WorldRoot")
+	var built: Node = world_root.get_node_or_null("EcoWorldRoot") if world_root != null else null
+	if built != null and built.has_method("sync"):
+		built.call("sync", director)
+	var host: Node = get_node_or_null("OverlayLayer/OverlayHost")
+	var screen: Node = host.get_node_or_null("EcoGameScreen") if host != null else null
+	if screen != null and screen.has_method("step"):
+		screen.call("step", 1.0 / 60.0)
 
 
 func save_state() -> Dictionary:
