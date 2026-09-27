@@ -1,0 +1,26 @@
+{
+ "schema": 1, "id": "lvl_slippery_ink", "name": "미끄러운 먹", "parallax_seed": 6607,
+ "spawn": { "x": 120, "y": 470 }, "rift": { "x": 1680, "y": 452, "radius": 30 },
+ "bounds": { "min_x": -120, "max_x": 1800, "min_y": -80, "max_y": 620 },
+ "objective_needed": 3, "mutable": ["material_swap", "prop_offset"], "mutable_hazards": [], "shuffled": [5, 6],
+ "kinematics": [],
+ "bodies": [
+  { "id": "floor", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [840, 520], "size": [1920, 48] },
+  { "id": "wall_left", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [-104, 280], "size": [32, 432] },
+  { "id": "wall_right", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [1784, 280], "size": [32, 432] },
+  { "id": "ink_sheet", "kind": "tile_static", "shape": "box", "material": "glass", "pos": [800, 488], "size": [600, 16], "friction_override": 0.04 },
+  { "id": "ramp_step", "kind": "tile_static", "shape": "box", "material": "wood", "pos": [1250, 450], "size": [160, 24] },
+  { "id": "puck", "kind": "prop_dynamic", "shape": "circle", "material": "wax", "pos": [600, 462], "size": [30, 30] },
+  { "id": "cube_a", "kind": "prop_dynamic", "shape": "box", "material": "wood", "pos": [900, 462], "size": [32, 32] },
+  { "id": "cube_b", "kind": "prop_dynamic", "shape": "box", "material": "stone", "pos": [1000, 462], "size": [32, 32] },
+  { "id": "cube_c", "kind": "prop_dynamic", "shape": "box", "material": "paper", "pos": [1080, 464], "size": [28, 28] },
+  { "id": "gear_a", "kind": "decor_dynamic", "shape": "circle", "material": "clockwork", "pos": [400, 482], "size": [24, 24] },
+  { "id": "gear_b", "kind": "decor_dynamic", "shape": "circle", "material": "clockwork", "pos": [700, 466], "size": [20, 20] },
+  { "id": "gear_c", "kind": "decor_dynamic", "shape": "circle", "material": "clockwork", "pos": [1420, 482], "size": [24, 24] },
+  { "id": "egg_a", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [650, 455], "size": [22, 22] },
+  { "id": "egg_b", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [1250, 410], "size": [22, 22] },
+  { "id": "egg_c", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [1540, 480], "size": [22, 22] },
+  { "id": "egg_d", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [950, 440], "size": [22, 22] },
+  { "id": "tool_spot", "kind": "tool_placement", "shape": "circle", "material": "goal", "pos": [200, 470], "size": [24, 24], "tool": "tool_ember_lash" }
+ ]
+}

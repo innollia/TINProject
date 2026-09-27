@@ -1,0 +1,29 @@
+{
+ "schema": 1, "id": "lvl_broken_teeth", "name": "부러진 이빨", "parallax_seed": 7121,
+ "spawn": { "x": 120, "y": 470 }, "rift": { "x": 1690, "y": 452, "radius": 30 },
+ "bounds": { "min_x": -120, "max_x": 1800, "min_y": -80, "max_y": 620 },
+ "objective_needed": 5, "mutable": ["gravity_scale", "prop_size", "prop_offset"], "mutable_hazards": [], "shuffled": [],
+ "kinematics": [],
+ "bodies": [
+  { "id": "floor", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [840, 520], "size": [1920, 48] },
+  { "id": "wall_left", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [-104, 280], "size": [32, 432] },
+  { "id": "wall_right", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [1784, 280], "size": [32, 432] },
+  { "id": "gum_a", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [500, 420], "size": [120, 24] },
+  { "id": "gum_b", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [800, 360], "size": [120, 24] },
+  { "id": "gum_c", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [1100, 300], "size": [120, 24] },
+  { "id": "gum_d", "kind": "tile_static", "shape": "box", "material": "stone", "pos": [1400, 360], "size": [120, 24] },
+  { "id": "tooth_a", "kind": "prop_dynamic", "shape": "box", "material": "stone", "pos": [500, 388], "size": [28, 40], "t_max": 6.0 },
+  { "id": "tooth_b", "kind": "prop_dynamic", "shape": "box", "material": "stone", "pos": [800, 328], "size": [28, 40], "t_max": 8.0 },
+  { "id": "tooth_c", "kind": "prop_dynamic", "shape": "box", "material": "wood", "pos": [1100, 268], "size": [28, 40] },
+  { "id": "tooth_d", "kind": "prop_dynamic", "shape": "box", "material": "wood", "pos": [1400, 328], "size": [28, 40] },
+  { "id": "tooth_e", "kind": "prop_dynamic", "shape": "box", "material": "paper", "pos": [1000, 480], "size": [30, 30] },
+  { "id": "tooth_f", "kind": "prop_dynamic", "shape": "box", "material": "paper", "pos": [1200, 480], "size": [30, 30] },
+  { "id": "egg_a", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [455, 396], "size": [22, 22] },
+  { "id": "egg_b", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [845, 336], "size": [22, 22] },
+  { "id": "egg_c", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [1145, 276], "size": [22, 22] },
+  { "id": "egg_d", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [1445, 336], "size": [22, 22] },
+  { "id": "egg_e", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [650, 480], "size": [22, 22] },
+  { "id": "egg_f", "kind": "objective", "shape": "circle", "material": "clockwork", "pos": [1580, 480], "size": [22, 22] },
+  { "id": "tool_spot", "kind": "tool_placement", "shape": "circle", "material": "goal", "pos": [200, 470], "size": [24, 24], "tool": "tool_glass_rod" }
+ ]
+}
