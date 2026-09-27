@@ -1,5 +1,8 @@
 # Query World Kit — 구현 현황 (sub-qw, 2026-09-27)
 
+> **개발 중단 — 2026-09-27 사용자 지시("쿼리 월드 개발중단").** 사용자가 다시 지시하기 전까지 이 Kit을 이어서 작업하지 않는다. 아래 내용은 중단 시점 기록이다. 자동 검증(import·probe·GUT·부팅)과 창 모드 캡처는 끝내 돌리지 못했다(Godot 실행 차례를 받지 못함). 앱에는 등록되어 있지 않다.
+
+
 > 계획서: `plans/kits/05_QUERY_WORLD_KIT.md`
 > 방향 근거: `docs/research/novel_genre/QUERY_WORLD_KIT_DIRECTION_2026-09-27.md`
 

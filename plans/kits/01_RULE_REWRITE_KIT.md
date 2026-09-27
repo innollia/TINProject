@@ -1,6 +1,8 @@
 # Kit 01 — Rule Rewrite 실행 계획
 
-상태: 구현 중. 1인칭 기본 시점·격자 턴 이동·V 전환과 조건부 parser/METRIX route 회귀를 구현했고, 15번째 authored board를 데이터 확장만으로 추가했다. 남은 것은 실제 창 성능·01→16 플레이 시간·최종 비교다.
+상태: **작업 중단 — 2026-09-27 사용자 지시("퍼즐게임 그대로 두고 작업중단").** 현재 상태 그대로 두고, 사용자가 다시 지시하기 전까지 구현·보드 수정·측정·캡처를 하지 않는다. 중단 시점 상태는 [현황 문서](../../docs/research/rule_rewrite/IMPLEMENTATION_STATUS_2026-09-24.md) 맨 위에 있다.
+
+중단 전 상태: 구현 중. 1인칭 기본 시점·격자 턴 이동·V 전환과 조건부 parser/METRIX route 회귀를 구현했고, 15번째 authored board를 데이터 확장만으로 추가했다. 남은 것은 실제 창 성능·01→16 플레이 시간·최종 비교다.
 
 구현 중 방향 점검과 미해결 증거: [2026-09-24 점검 기록](../../docs/research/rule_rewrite/DIRECTION_REVIEW_2026-09-24.md). 현재 작업과 남은 검증은 [구현 현황](../../docs/research/rule_rewrite/IMPLEMENTATION_STATUS_2026-09-24.md)에 기록한다.
 Primary Reference: **Baba Is You** (Hempuli Oy).

@@ -1,5 +1,8 @@
 # Kit 05 — Query World Kit
 
+> **개발 중단 — 2026-09-27 사용자 지시("쿼리 월드 개발중단").** 사용자가 다시 지시하기 전까지 이 Kit의 구현·계획·그림·검증 작업을 하지 않는다. 코드·문서·캡처는 지우지 않고 마지막 커밋 상태로 둔다. 앱 등록(`app/app_root.gd`)은 되어 있지 않다. 열려 있던 질문(화면 다시 만들기, 키보드로 단서를 훑을 때 본문 강조)은 닫는다. 중단 시점 현황: `docs/research/novel_genre/QUERY_WORLD_IMPLEMENTATION_STATUS.md`
+
+
 > 공통 계약: `docs/KIT_WORKFLOW.md`
 > 방향 확정 근거: `docs/research/novel_genre/QUERY_WORLD_KIT_DIRECTION_2026-09-27.md`
 > 조사 정본: `docs/research/novel_genre/GENRE_INVENTION_SURVEY_2026-09-26.md`, `AWARD_IDEA_CATALOG_2026-09-26.md`
