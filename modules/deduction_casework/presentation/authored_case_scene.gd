@@ -3,6 +3,8 @@ extends Control
 
 signal intent_requested(intent: StringName, payload: Dictionary)
 
+const DeductionArtCandidateLookup = preload("res://modules/deduction_casework/systems/art_candidate_lookup.gd")
+
 const KIND_TARGET: StringName = &"target"
 const KIND_EXIT: StringName = &"exit"
 const INTENT_INTERACT: StringName = &"interact"
@@ -43,6 +45,8 @@ var _rejected: bool = false
 
 func _ready() -> void:
 	_apply_styles()
+	if _stage_panel != null and not _stage_panel.draw.is_connected(_draw_stage_backdrop):
+		_stage_panel.draw.connect(_draw_stage_backdrop)
 	_sync()
 
 
@@ -68,6 +72,17 @@ func _sync() -> void:
 		_rebuild()
 	_update_bar()
 	_update_boxes()
+	if _stage_panel != null:
+		_stage_panel.queue_redraw()
+
+
+func _draw_stage_backdrop() -> void:
+	if _stage_panel == null:
+		return
+	var texture := DeductionArtCandidateLookup.scene_texture(String(_snapshot.get("scene_id", "")))
+	if texture == null:
+		return
+	_stage_panel.draw_texture_rect(texture, Rect2(Vector2.ZERO, _stage_panel.size), false, Color(1.0, 1.0, 1.0, 0.28))
 
 
 func _rebuild() -> void:
@@ -199,7 +214,13 @@ func _draw_box(box: Control) -> void:
 		ink = FOCUS
 		width = 3.0
 	box.draw_rect(rect, fill, true)
-	_draw_hatch(box, size, Color(ink.r, ink.g, ink.b, 0.22 if enabled else 0.1))
+	var art_texture := DeductionArtCandidateLookup.hotspot_texture(String(box.get_meta(&"box_id", "")))
+	if art_texture != null:
+		var art_alpha := 1.0 if enabled else 0.45
+		box.draw_texture_rect(art_texture, rect, false, Color(1.0, 1.0, 1.0, art_alpha))
+		box.draw_rect(rect, Color(0.0, 0.0, 0.0, 0.28 if enabled else 0.45), true)
+	else:
+		_draw_hatch(box, size, Color(ink.r, ink.g, ink.b, 0.22 if enabled else 0.1))
 	box.draw_rect(rect, ink, false, width)
 	_draw_marker(box, size, kind, ink)
 	box.draw_string(
