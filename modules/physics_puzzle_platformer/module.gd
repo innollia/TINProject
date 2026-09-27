@@ -11,6 +11,8 @@ const InputBubble = preload("res://modules/physics_puzzle_platformer/systems/inp
 const Mutation = preload("res://modules/physics_puzzle_platformer/systems/mutation.gd")
 const Selector = preload("res://modules/physics_puzzle_platformer/systems/selector.gd")
 const StepDirector = preload("res://modules/physics_puzzle_platformer/systems/step_director.gd")
+const PppSave = preload("res://modules/physics_puzzle_platformer/systems/save_service.gd")
+const AxisMutation = preload("res://modules/physics_puzzle_platformer/systems/axis_mutation.gd")
 
 const MODULE_ID: StringName = &"physics_puzzle_platformer"
 const ACTIONS: Array[StringName] = [&"ppp_move_left", &"ppp_move_right", &"ppp_jump", &"ppp_grab", &"ppp_reset_level"]
@@ -35,6 +37,7 @@ var run: RefCounted
 var director: RefCounted
 var bubble: RefCounted = InputBubble.new()
 var axis: RefCounted
+var axis_writer: RefCounted = AxisMutation.new().bind(null, MODULE_ID)
 var last_events: Array[Dictionary] = []
 var event_counts: Dictionary = {}
 
@@ -107,12 +110,7 @@ func exit() -> void:
 func save_state() -> Dictionary:
 	if not _entered or run == null:
 		return _pending_state.duplicate(true)
-	run.bubble = bubble.to_save()
-	var world: RefCounted = null
-	if director != null:
-		director.sync_runtime()
-		world = director.world
-	return SaveCodec.encode(run, world)
+	return PppSave.snapshot(run, bubble, director)
 
 
 func load_state(state: Dictionary) -> void:
@@ -186,6 +184,14 @@ func set_key_profile(profile: Variant, previous_profile: Variant = null) -> bool
 	var accepted: bool = bubble.set_key_profile(profile, previous_profile)
 	_refresh_screen()
 	return accepted
+
+
+func bind_world_store(store: Object) -> void:
+	axis_writer.bind(store, MODULE_ID)
+
+
+func request_axis_mutation(axis_name: StringName, patch: Dictionary) -> Dictionary:
+	return axis_writer.request(axis_name, patch)
 
 
 func get_world_state() -> RefCounted:
@@ -289,37 +295,24 @@ func _prepare_run(state: Dictionary) -> Dictionary:
 	_pending_observations.clear()
 	var level_ids: Array = content.level_order.duplicate()
 	var tool_ids: Array = content.tool_order.duplicate()
-	var decoded: Dictionary = SaveCodec.decode(state, level_ids, tool_ids)
+	var read: Dictionary = PppSave.read(state, content)
 	var arrival: Dictionary = context.arrival if context != null else {}
-	var restored_world: Dictionary = {}
-	var previous_index: int = 0
-	if bool(decoded["rejected"]):
-		_pending_observations.append({"id": "ppp.save_rejected", "meta": {"found_version": int(decoded["found_version"])}})
-	var carried_bubble: Dictionary = {}
-	if decoded["run"] != null:
-		previous_index = decoded["run"].run_index
-		carried_bubble = decoded["run"].bubble
+	for observation: Dictionary in read["observations"]:
+		_pending_observations.append(observation)
+	var previous_index: int = int(read["previous_index"])
+	var carried_bubble: Dictionary = read["bubble"]
 	if _arrival_sequence(arrival, level_ids).size() == Tuning.LEVEL_COUNT:
 		_new_fixed_run(arrival, level_ids, tool_ids, previous_index)
 		run.bubble = carried_bubble
-		return restored_world
-	if decoded["run"] != null and not bool(decoded["resequence"]) and not decoded["run"].run_complete:
-		run = decoded["run"]
-		for slot: Variant in decoded["reassign_slots"]:
-			run.sequence[int(slot)] = Selector.reassign_level(run.run_seed, int(slot), level_ids, content.mutable_by_level())
-		for slot: Variant in decoded["reassign_tools"]:
-			run.tool_ids[int(slot)] = Selector.reassign_tool(run.run_seed, int(slot), tool_ids)
-		run.total_objectives = _sum_objectives()
-		restored_world = decoded["world"]
-		if not restored_world.is_empty() and (int(restored_world.get("slot", -1)) != run.cursor or String(restored_world.get("level_id", "")) != run.current_level_id()):
-			restored_world = {}
-		return restored_world
+		return {}
+	if read["run"] != null:
+		run = read["run"]
+		return read["world"]
 	var seed_value: Variant = arrival.get("ppp_seed", 0)
 	var chosen: int = int(seed_value) if RunState.seed_is_valid(seed_value) else Selector.new_seed()
 	_new_run(chosen, previous_index)
 	run.bubble = carried_bubble
-	return restored_world
-
+	return {}
 
 func _new_run(run_seed: int, previous_index: int = -1) -> void:
 	var prior_bubble: Dictionary = run.bubble.duplicate(true) if run != null else {}
@@ -372,12 +365,7 @@ func _arrival_sequence(arrival: Dictionary, level_ids: Array) -> Array[String]:
 
 
 func _sum_objectives() -> int:
-	var total: int = 0
-	for level_id: String in run.sequence_level_ids():
-		var level: RefCounted = content.level(level_id)
-		if level != null:
-			total += level.objective_needed
-	return total
+	return PppSave.total_objectives(run, content)
 
 
 func _previous_profile() -> Array:
@@ -421,9 +409,7 @@ func _build_level(restored_world: Dictionary) -> void:
 		director.world.tools_used = int(carried["tools_used"])
 	elif restored_world.is_empty():
 		run.note_entered(run.current_level_id(), run.current_tool_id())
-	if not restored_world.is_empty():
-		var known: Array = director.known_spec_ids()
-		director.restore(SaveCodec.filter_bodies(restored_world, known))
+	PppSave.restore_world(director, restored_world)
 	if _screen != null and _screen.has_method("bind_level"):
 		_screen.call("bind_level", director)
 
