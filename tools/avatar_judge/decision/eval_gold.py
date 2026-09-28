@@ -87,6 +87,22 @@ def options_of(e):
     return [s for s in dict.fromkeys(str(x).strip() for x in o) if s] if isinstance(o, list) else []
 
 
+SKILL_SCRIPTS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                             "skill", "avatar-jev", "scripts")
+
+
+def load_gold(n, with_options=False):
+    """봉인한 시험지에서 늘 같은 n건을 뽑는다(섞는 씨앗 7)."""
+    ev = []
+    for f in sorted(glob.glob(os.path.join(RAW, "events", "gold", "*.json"))):
+        ev += [e for e in json.load(open(f, encoding="utf-8")) if e.get("choice") and e.get("situation")]
+    random.Random(7).shuffle(ev)
+    ev = ev[:n]
+    if with_options:
+        ev = [e for e in ev if len(options_of(e)) >= 2]
+    return ev
+
+
 def rate(xs):
     xs = [x for x in xs if x is not None]
     return (sum(xs), len(xs))
@@ -116,6 +132,12 @@ def summarize(name, rows):
     for r in rows:
         by.setdefault(r["domain"], []).append(r["채점"].get("선택"))
     print("분야별 선택:", {d: pct(rate(v)) for d, v in by.items()})
+    gates = {}
+    for r in rows:
+        if r["예측"].get("gate"):
+            gates.setdefault(r["예측"]["gate"], []).append(r["채점"].get("선택"))
+    if gates:
+        print("판정 문별 선택:", {k: pct(rate(v)) for k, v in sorted(gates.items())})
 
 
 def regrade(src, grader, workers):
@@ -147,6 +169,7 @@ def main():
     ap.add_argument("--grader", choices=sorted(GRADERS), default="llm")
     ap.add_argument("--with-options", action="store_true")
     ap.add_argument("--regrade", help="저장된 채점 이름. 예측은 그대로 두고 채점만 다시 한다")
+    ap.add_argument("--candidates", help="에이전트 후보 파일(gen_candidates.py). 주면 스킬 본체(choose.py)로 Jev가 고른다")
     a = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
     if a.regrade:
@@ -154,18 +177,30 @@ def main():
         return
     if not a.name:
         ap.error("--name 또는 --regrade가 필요하다")
-    ev = []
-    for f in sorted(glob.glob(os.path.join(RAW, "events", "gold", "*.json"))):
-        ev += [e for e in json.load(open(f, encoding="utf-8")) if e.get("choice") and e.get("situation")]
-    random.Random(7).shuffle(ev)
-    ev = ev[:a.n]
-    if a.with_options:
-        ev = [e for e in ev if len(options_of(e)) >= 2]
+    ev = load_gold(a.n, a.with_options)
     grader = GRADERS[a.grader]
+    cands = None
+    if a.candidates:
+        path = a.candidates if os.path.exists(a.candidates) else os.path.join(RUNS, a.candidates + ".json")
+        with open(path, encoding="utf-8") as f:
+            cands = json.load(f)
+        sys.path.insert(0, SKILL_SCRIPTS)
+        import choose as agent_choose
+        import evidence as agent_evidence
+        agent_ev = agent_evidence.load()
+        ev = [e for e in ev if len(cands.get(e["eid"], [])) >= 2]
+
+    def predict(e):
+        if cands is None:
+            return decide(e.get("situation", ""), options_of(e))
+        r = agent_choose.run({"case": e.get("situation", ""), "candidates": cands[e["eid"]]}, ev=agent_ev)
+        return {"선택": r["answer"], "근거": r["reason"], "반대로_고를_조건": " / ".join(r["flip_if"]),
+                "확신도": r["confidence"], "gate": r["gate"], "stable": r["stable"],
+                "_engine": "agent+jev", "_probs": r["probabilities"]}
 
     def one(e):
         try:
-            p = decide(e.get("situation", ""), options_of(e))
+            p = predict(e)
             g = grader(e, p)
         except Exception as ex:  # 사건 하나가 실패해도 나머지 채점은 살린다
             p = {"선택": "(오류)", "확신도": 0.0, "_error": repr(ex)[:300]}

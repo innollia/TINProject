@@ -19,6 +19,9 @@ v1(`../taste_profile.md`)은 "형님이 어떤 사람인가"를 설명하는 규
 | - | `compare_runs.py` | 채점 두 번을 같은 사건끼리 비교한다(숫자만 낸다) |
 | - | `_bg.py`, `_pipeline.py` | 오래 걸리는 작업을 뒤에서 돌린다. 로그는 `raw/<태그>.log`·`.err`, 끝나면 `raw/<태그>.done`에 종료 코드 |
 | - | `stop_bg.py` | `_bg.py`로 띄운 작업만 골라 프로세스 트리째 끈다(kiro-cli 모델 호출 포함). 결과는 `raw/_stop.txt` |
+| - | `gen_candidates.py` | 시험지 사건마다 에이전트 답 후보를 만든다(20건을 모델 호출 한 번에 묶음). `eval_gold.py --candidates`로 스킬 본체를 채점한다 |
+| - | `verify_gate.py`, `eval_verdicts.py` | LLM 답에 Jev가 동의할 때와 아닐 때의 적중, 결과물 판정 모음으로 Jev 통과/퇴짜 측정 |
+| - | `../skill/avatar-jev/` | Kiro·Codex 어디서든 쓰는 스킬. 에이전트 후보 → Jev 선택 → 확신 낮으면 에이전트 판단 |
 | - | `test_offline.py` | 모델·네트워크 없이 판단 엔진과 Jev 경로를 시험한다 |
 
 ## 기억의 세 층

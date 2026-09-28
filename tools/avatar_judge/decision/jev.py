@@ -101,7 +101,7 @@ def ask(state, questions, timeout=30, retries=3):
             if e.code in (401, 403):
                 _rejected = True
                 return None
-            if e.code in (429, 529) and attempt + 1 < retries:
+            if (e.code in (429, 529) or e.code >= 500) and attempt + 1 < retries:
                 try:
                     wait = float(e.headers.get("retry-after") or 0) or 2 ** attempt
                 except ValueError:

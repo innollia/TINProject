@@ -18,6 +18,18 @@ STEPS = {
     "jregrade": ["eval_gold.py", "--regrade", "v2-llm", "--grader", "jev"],
     "jgold": ["eval_gold.py", "--name", "v2-jev-jg", "--n", "80", "--with-options", "--grader", "jev"],
     "jcompare": ["compare_runs.py", "v2-llm-jg", "v2-jev-jg"],
+    "acand": ["gen_candidates.py", "--n", "80"],
+    "aeval": ["eval_gold.py", "--name", "v3-agent-jg", "--n", "80", "--candidates", "candidates", "--grader", "jev"],
+    "acompare": ["compare_runs.py", "v2-llm-jg", "v3-agent-jg", "--hybrid"],
+    "acand2": ["gen_candidates.py", "--n", "80", "--out", "candidates2"],
+    "aeval2": ["eval_gold.py", "--name", "v3b-agent-jg", "--n", "80", "--candidates", "candidates2", "--grader", "jev"],
+    "acompare2": ["compare_runs.py", "v2-llm-jg", "v3b-agent-jg", "--hybrid"],
+    "acompare2j": ["compare_runs.py", "v2-jev-jg", "v3b-agent-jg"],
+    "mkcand": ["_make_cands.py"],
+    "aeval3": ["eval_gold.py", "--name", "v3c-llmopts-jg", "--n", "80", "--candidates", "candidates3", "--grader", "jev"],
+    "acompare3": ["compare_runs.py", "v2-llm-jg", "v3c-llmopts-jg", "--hybrid"],
+    "aeval4": ["eval_gold.py", "--name", "v3d-opts-jg", "--n", "80", "--candidates", "candidates4", "--grader", "jev"],
+    "acompare4": ["compare_runs.py", "v2-jev-jg", "v3d-opts-jg"],
 }
 DEFAULT = ["model", "ask", "gold", "compare"]
 ENV = {"gold": {"JEV_DISABLE": "1"}, "jgold": {"JEV_NO_FALLBACK": "1"}}
