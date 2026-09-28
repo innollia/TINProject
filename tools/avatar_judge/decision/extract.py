@@ -48,7 +48,8 @@ def call(prompt):
     os.makedirs(stray, exist_ok=True)
     out = subprocess.run(["kiro-cli", "chat", "--no-interactive", "--model", MODEL,
                           "--trust-tools=", prompt], cwd=stray,
-                         capture_output=True, timeout=400, encoding="utf-8", errors="replace")
+                         capture_output=True, timeout=400, encoding="utf-8", errors="replace",
+                         creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     raw = ANSI.sub("", (out.stdout or "") + "\n" + (out.stderr or ""))
     return "\n".join(l for l in raw.splitlines() if not l.startswith(("[warn]", "[tool]")))
 
