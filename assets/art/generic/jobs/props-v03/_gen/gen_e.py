@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import CLOUD, CYL_BODY, CYL_LID, DISC, STEM_TAPER, piece, rec, write  # noqa: E402
 
 # 72-degree circular sector, apex at the bottom centre of the icon box
-CAKE_SECTOR = [[8.0, 16.0, 16.0, 5.0], [0.0, 5.0, 8.0, 16.0]]
+CAKE_SECTOR = [[8.0, 16.0, 16.0, 6.5], [0.0, 6.5, 8.0, 16.0]]
 
 RECIPES = [
     # ----------------------------------------------------------------- it_bread
@@ -24,11 +24,11 @@ RECIPES = [
         {"name": "dome", "z": 1, "material": "bread", "rough": {"amp": 0.3, "soft": 1.0, "cell": 7},
          "shade": {"bump": 1.05, "highlight_amount": 0.45},
          "pieces": [piece("cloud", [64, 64], [100, 76], crop=CLOUD)]},
-        {"name": "scores", "z": 2, "kind": "flat", "material": "bread_score", "opacity": 0.8,
+        {"name": "scores", "z": 2, "kind": "flat", "material": "bread_score", "opacity": 0.6,
          "clip_to": "dome",
-         "pieces": [piece("droplet", [44, 54], [34, 13], crop=STEM_TAPER, rot=-38),
-                    piece("droplet", [64, 44], [34, 13], crop=STEM_TAPER, rot=-38),
-                    piece("droplet", [84, 54], [34, 13], crop=STEM_TAPER, rot=-38)]},
+         "pieces": [piece("droplet", [46, 56], [26, 7], crop=STEM_TAPER, rot=-42),
+                    piece("droplet", [64, 47], [26, 7], crop=STEM_TAPER, rot=-42),
+                    piece("droplet", [82, 56], [26, 7], crop=STEM_TAPER, rot=-42)]},
         {"name": "crust", "z": 3, "kind": "flat", "material": "pastry_dark", "opacity": 0.4,
          "clip_to": "dome",
          "pieces": [piece("circle", [64, 100], [92, 26], crop=DISC)]},
@@ -90,7 +90,7 @@ RECIPES = [
         "crust rim, dark orange filling, four pale lattice strips. No text.", 3504, [
         {"name": "tin", "z": 0, "material": "pastry_dark", "shade": {"bump": 1.0, "highlight_amount": 0.4},
          "grad": {"to": "soot", "y0": 92, "y1": 118, "amount": 0.4},
-         "pieces": [piece("cylinder", [64, 92], [96, 46], crop=CYL_BODY)]},
+         "pieces": [piece("cylinder", [64, 94], [100, 52], crop=CYL_BODY)]},
         {"name": "crust", "z": 1, "material": "pie_crust", "rough": {"amp": 0.35, "soft": 1.0, "cell": 7},
          "shade": {"bump": 1.05, "highlight_amount": 0.45},
          "pieces": [piece("circle", [64, 64], [104, 58], crop=DISC)]},

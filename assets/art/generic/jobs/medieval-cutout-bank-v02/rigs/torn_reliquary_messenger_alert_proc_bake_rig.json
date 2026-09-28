@@ -1,0 +1,770 @@
+{
+  "id": "torn_reliquary_messenger_alert",
+  "status": "candidate",
+  "animation_tool": "tools/proc_bake/procbake.rig.Rig + motion_targets",
+  "visible_pixel_source": "source cutout PNGs from CMA CC0 artwork; no proc_bake vector repaint",
+  "motion": "alert",
+  "frame_count": 30,
+  "fps": 20,
+  "cycle_seconds": 1.5,
+  "motion_targets": {
+    "torso": {
+      "mode": "bob",
+      "amp": 1.3,
+      "freq": 4.1887902047863905,
+      "rot": 2.0
+    },
+    "head": {
+      "mode": "sway",
+      "amp": 1.0,
+      "freq": 4.1887902047863905,
+      "rot": 10.0,
+      "phase": 0.8
+    },
+    "left_upper_arm": {
+      "mode": "swing",
+      "amp": 2.0,
+      "freq": 4.1887902047863905,
+      "rot": 24.0,
+      "phase": 1.2
+    },
+    "right_upper_arm": {
+      "mode": "swing",
+      "amp": 2.0,
+      "freq": 4.1887902047863905,
+      "rot": -20.0,
+      "phase": 4.4
+    },
+    "left_wing": {
+      "mode": "swing",
+      "amp": 2.0,
+      "freq": 4.1887902047863905,
+      "rot": 25.0,
+      "phase": 0.3
+    },
+    "right_wing": {
+      "mode": "swing",
+      "amp": 2.0,
+      "freq": 4.1887902047863905,
+      "rot": -24.0,
+      "phase": 3.4
+    }
+  },
+  "source_parts": [
+    {
+      "rig_id": "torso",
+      "part_id": "stgeorge_chest_armor",
+      "source_accession": "1934.337",
+      "parent": null
+    },
+    {
+      "rig_id": "neck",
+      "part_id": "stgeorge_neck_chainmail",
+      "source_accession": "1934.337",
+      "parent": "torso"
+    },
+    {
+      "rig_id": "head",
+      "part_id": "stgeorge_head_helmet",
+      "source_accession": "1934.337",
+      "parent": "neck"
+    },
+    {
+      "rig_id": "abdomen",
+      "part_id": "stgeorge_belly_plate",
+      "source_accession": "1934.337",
+      "parent": "torso"
+    },
+    {
+      "rig_id": "pelvis",
+      "part_id": "stgeorge_pelvis_skirt",
+      "source_accession": "1934.337",
+      "parent": "abdomen"
+    },
+    {
+      "rig_id": "left_upper_arm",
+      "part_id": "stgeorge_left_upper_arm",
+      "source_accession": "1934.337",
+      "parent": "torso"
+    },
+    {
+      "rig_id": "left_forearm",
+      "part_id": "stgeorge_left_forearm_hand",
+      "source_accession": "1934.337",
+      "parent": "left_upper_arm"
+    },
+    {
+      "rig_id": "left_hand",
+      "part_id": "michael_sword_hand",
+      "source_accession": "1948.457",
+      "parent": "left_forearm"
+    },
+    {
+      "rig_id": "right_upper_arm",
+      "part_id": "stgeorge_right_upper_arm",
+      "source_accession": "1934.337",
+      "parent": "torso"
+    },
+    {
+      "rig_id": "right_forearm",
+      "part_id": "stgeorge_right_forearm_hand",
+      "source_accession": "1934.337",
+      "parent": "right_upper_arm"
+    },
+    {
+      "rig_id": "right_hand",
+      "part_id": "michael_shield_hand",
+      "source_accession": "1948.457",
+      "parent": "right_forearm"
+    },
+    {
+      "rig_id": "left_thigh",
+      "part_id": "stgeorge_left_thigh",
+      "source_accession": "1934.337",
+      "parent": "pelvis"
+    },
+    {
+      "rig_id": "left_shin",
+      "part_id": "stgeorge_left_shin_boot",
+      "source_accession": "1934.337",
+      "parent": "left_thigh"
+    },
+    {
+      "rig_id": "left_foot",
+      "part_id": "stgeorge_left_boot_foot",
+      "source_accession": "1934.337",
+      "parent": "left_shin"
+    },
+    {
+      "rig_id": "right_thigh",
+      "part_id": "stgeorge_right_thigh",
+      "source_accession": "1934.337",
+      "parent": "pelvis"
+    },
+    {
+      "rig_id": "right_shin",
+      "part_id": "stgeorge_right_shin_boot",
+      "source_accession": "1934.337",
+      "parent": "right_thigh"
+    },
+    {
+      "rig_id": "right_foot",
+      "part_id": "stgeorge_right_boot_foot",
+      "source_accession": "1934.337",
+      "parent": "right_shin"
+    },
+    {
+      "rig_id": "left_wing",
+      "part_id": "michael_left_wing",
+      "source_accession": "1952.99",
+      "parent": "torso"
+    },
+    {
+      "rig_id": "right_wing",
+      "part_id": "michael_right_wing",
+      "source_accession": "1952.99",
+      "parent": "torso"
+    },
+    {
+      "rig_id": "pasted_scrap_01",
+      "part_id": "fragment_124_195299_1",
+      "source_accession": "1952.99",
+      "parent": "left_wing"
+    },
+    {
+      "rig_id": "pasted_scrap_02",
+      "part_id": "fragment_206_19229413_3",
+      "source_accession": "1922.94.13",
+      "parent": "right_wing"
+    },
+    {
+      "rig_id": "pasted_scrap_03",
+      "part_id": "fragment_145_1942635_6",
+      "source_accession": "1942.635",
+      "parent": "neck"
+    },
+    {
+      "rig_id": "pasted_scrap_04",
+      "part_id": "fragment_221_1928748_3",
+      "source_accession": "1928.748",
+      "parent": "right_thigh"
+    },
+    {
+      "rig_id": "pasted_scrap_05",
+      "part_id": "fragment_254_1937577_4",
+      "source_accession": "1937.577",
+      "parent": "head"
+    }
+  ],
+  "rest_bones": {
+    "torso": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "rotation_radians": 0.0
+    },
+    "neck": {
+      "position": [
+        0.0,
+        -225.28
+      ],
+      "rotation_radians": 0.0
+    },
+    "head": {
+      "position": [
+        -4.4,
+        -224.4
+      ],
+      "rotation_radians": 0.0
+    },
+    "abdomen": {
+      "position": [
+        -2.64,
+        -116.6
+      ],
+      "rotation_radians": 0.0
+    },
+    "pelvis": {
+      "position": [
+        0.0,
+        0.0
+      ],
+      "rotation_radians": 0.0
+    },
+    "left_upper_arm": {
+      "position": [
+        -60.5,
+        -191.4
+      ],
+      "rotation_radians": 0.0
+    },
+    "left_forearm": {
+      "position": [
+        -112.2,
+        -145.2
+      ],
+      "rotation_radians": 0.0
+    },
+    "left_hand": {
+      "position": [
+        -127.6,
+        -114.4
+      ],
+      "rotation_radians": 0.0
+    },
+    "right_upper_arm": {
+      "position": [
+        61.6,
+        -191.4
+      ],
+      "rotation_radians": 0.0
+    },
+    "right_forearm": {
+      "position": [
+        83.6,
+        -127.6
+      ],
+      "rotation_radians": 0.0
+    },
+    "right_hand": {
+      "position": [
+        129.8,
+        -84.7
+      ],
+      "rotation_radians": 0.0
+    },
+    "left_thigh": {
+      "position": [
+        -41.8,
+        39.6
+      ],
+      "rotation_radians": 0.0
+    },
+    "left_shin": {
+      "position": [
+        -46.2,
+        129.8
+      ],
+      "rotation_radians": 0.0
+    },
+    "left_foot": {
+      "position": [
+        -46.2,
+        293.7
+      ],
+      "rotation_radians": 0.0
+    },
+    "right_thigh": {
+      "position": [
+        28.6,
+        39.6
+      ],
+      "rotation_radians": 0.0
+    },
+    "right_shin": {
+      "position": [
+        28.6,
+        134.2
+      ],
+      "rotation_radians": 0.0
+    },
+    "right_foot": {
+      "position": [
+        46.2,
+        294.8
+      ],
+      "rotation_radians": 0.0
+    },
+    "left_wing": {
+      "position": [
+        -53.9,
+        -191.4
+      ],
+      "rotation_radians": 0.0
+    },
+    "right_wing": {
+      "position": [
+        56.1,
+        -191.4
+      ],
+      "rotation_radians": 0.0
+    },
+    "pasted_scrap_01": {
+      "position": [
+        -50.6,
+        -182.6
+      ],
+      "rotation_radians": 0.22689
+    },
+    "pasted_scrap_02": {
+      "position": [
+        61.6,
+        -182.6
+      ],
+      "rotation_radians": -0.20944
+    },
+    "pasted_scrap_03": {
+      "position": [
+        -2.2,
+        -211.2
+      ],
+      "rotation_radians": 0.20944
+    },
+    "pasted_scrap_04": {
+      "position": [
+        30.8,
+        55.0
+      ],
+      "rotation_radians": -0.13963
+    },
+    "pasted_scrap_05": {
+      "position": [
+        -2.2,
+        -228.8
+      ],
+      "rotation_radians": 0.17453
+    }
+  },
+  "rig_spec": {
+    "name": "CMA medieval cutout collage",
+    "size": [
+      600,
+      760
+    ],
+    "seed": 11,
+    "palette": {
+      "body": "#79634c",
+      "ink": "#211b16",
+      "shade": "#392d23"
+    },
+    "physics": {
+      "gravity": 0.0,
+      "squash_limit": 0.2
+    },
+    "parts": [
+      {
+        "id": "torso",
+        "shape": "torso_rodent",
+        "role": "body",
+        "shade": "flat",
+        "follow": "pinned",
+        "stiffness": 160.0,
+        "damping": 0.7
+      },
+      {
+        "id": "neck",
+        "shape": "frill_neck",
+        "parent": "torso",
+        "at": 0.0,
+        "angle": 8.74616226255521,
+        "offset": [
+          0.0,
+          -225.28
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "head",
+        "shape": "head_blunt",
+        "parent": "neck",
+        "at": 0.0,
+        "angle": 0.0,
+        "offset": [
+          -4.4,
+          0.8799999999999955
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "abdomen",
+        "shape": "torso_blob",
+        "parent": "torso",
+        "at": 0.0,
+        "angle": 8.74616226255521,
+        "offset": [
+          -2.64,
+          -116.6
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "pelvis",
+        "shape": "torso_rodent",
+        "parent": "abdomen",
+        "at": 0.0,
+        "angle": 7.431407971172507,
+        "offset": [
+          2.64,
+          116.6
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "left_upper_arm",
+        "shape": "limb_femur",
+        "parent": "torso",
+        "at": 0.0,
+        "angle": 8.74616226255521,
+        "offset": [
+          -60.5,
+          -191.4
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "left_forearm",
+        "shape": "limb_shin",
+        "parent": "left_upper_arm",
+        "at": 0.0,
+        "angle": 2.862405226111748,
+        "offset": [
+          -51.7,
+          46.20000000000002
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "left_hand",
+        "shape": "foot_claw",
+        "parent": "left_forearm",
+        "at": 0.0,
+        "angle": -11.888658039627975,
+        "offset": [
+          -15.399999999999991,
+          30.799999999999983
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "right_upper_arm",
+        "shape": "limb_femur",
+        "parent": "torso",
+        "at": 0.0,
+        "angle": 8.74616226255521,
+        "offset": [
+          61.6,
+          -191.4
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "right_forearm",
+        "shape": "limb_shin",
+        "parent": "right_upper_arm",
+        "at": 0.0,
+        "angle": 2.862405226111748,
+        "offset": [
+          21.999999999999993,
+          63.80000000000001
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "right_hand",
+        "shape": "foot_claw",
+        "parent": "right_forearm",
+        "at": 0.0,
+        "angle": -11.888658039627975,
+        "offset": [
+          46.20000000000002,
+          42.89999999999999
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "left_thigh",
+        "shape": "limb_femur",
+        "parent": "pelvis",
+        "at": 0.0,
+        "angle": 8.74616226255521,
+        "offset": [
+          -41.8,
+          39.6
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "left_shin",
+        "shape": "limb_shin",
+        "parent": "left_thigh",
+        "at": 0.0,
+        "angle": 2.862405226111748,
+        "offset": [
+          -4.400000000000006,
+          90.20000000000002
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "left_foot",
+        "shape": "foot_claw",
+        "parent": "left_shin",
+        "at": 0.0,
+        "angle": -11.888658039627975,
+        "offset": [
+          0.0,
+          163.89999999999998
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "right_thigh",
+        "shape": "limb_femur",
+        "parent": "pelvis",
+        "at": 0.0,
+        "angle": 8.74616226255521,
+        "offset": [
+          28.6,
+          39.6
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "right_shin",
+        "shape": "limb_shin",
+        "parent": "right_thigh",
+        "at": 0.0,
+        "angle": 2.862405226111748,
+        "offset": [
+          0.0,
+          94.6
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "right_foot",
+        "shape": "foot_claw",
+        "parent": "right_shin",
+        "at": 0.0,
+        "angle": -11.888658039627975,
+        "offset": [
+          17.6,
+          160.60000000000002
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "left_wing",
+        "shape": "limb_wingarm",
+        "parent": "torso",
+        "at": 0.0,
+        "angle": 8.74616226255521,
+        "offset": [
+          -53.9,
+          -191.4
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "right_wing",
+        "shape": "limb_wingarm",
+        "parent": "torso",
+        "at": 0.0,
+        "angle": 8.74616226255521,
+        "offset": [
+          56.1,
+          -191.4
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "soft",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "pasted_scrap_01",
+        "shape": "limb_tentacle",
+        "parent": "left_wing",
+        "at": 0.0,
+        "angle": 18.194428907734807,
+        "offset": [
+          3.299999999999997,
+          8.800000000000011
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "rigid",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "pasted_scrap_02",
+        "shape": "limb_tentacle",
+        "parent": "right_wing",
+        "at": 0.0,
+        "angle": -6.805571092265195,
+        "offset": [
+          5.5,
+          8.800000000000011
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "rigid",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "pasted_scrap_03",
+        "shape": "limb_tentacle",
+        "parent": "neck",
+        "at": 0.0,
+        "angle": 12.000000000000002,
+        "offset": [
+          -2.2,
+          14.080000000000013
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "rigid",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "pasted_scrap_04",
+        "shape": "limb_tentacle",
+        "parent": "right_thigh",
+        "at": 0.0,
+        "angle": -5.137594773888252,
+        "offset": [
+          2.1999999999999993,
+          15.399999999999999
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "rigid",
+        "stiffness": 115.0,
+        "damping": 0.58
+      },
+      {
+        "id": "pasted_scrap_05",
+        "shape": "limb_tentacle",
+        "parent": "head",
+        "at": 0.0,
+        "angle": 7.137594773888251,
+        "offset": [
+          2.2,
+          -4.400000000000006
+        ],
+        "role": "body",
+        "shade": "flat",
+        "follow": "rigid",
+        "stiffness": 115.0,
+        "damping": 0.58
+      }
+    ]
+  },
+  "outputs": [
+    "C:\\projects\\TINProject\\assets\\art\\generic\\jobs\\medieval-cutout-bank-v02\\assemblies\\candidate\\torn_reliquary_messenger_alert.gif",
+    "C:\\projects\\TINProject\\assets\\art\\generic\\jobs\\medieval-cutout-bank-v02\\assemblies\\candidate\\torn_reliquary_messenger_alert_rest.png",
+    "C:\\projects\\TINProject\\assets\\art\\generic\\jobs\\medieval-cutout-bank-v02\\assemblies\\candidate\\torn_reliquary_messenger_alert_strip.png"
+  ]
+}

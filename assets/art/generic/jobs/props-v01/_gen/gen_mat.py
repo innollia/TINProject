@@ -148,7 +148,7 @@ recipes["it_egg"] = out(
          "pieces": [piece("droplet", [64, 64], [86, 112], crop=EGG_CROP)]},
         {"name": "lit", "kind": "flat", "material": "egg_shell", "clip_to": "shell",
          "opacity": 0.5, "grad": grad(20, 60, "floor_light", 0.55),
-         "pieces": [piece("circle", [48, 48], [32, 32], crop=[2, 2, 7, 7])]},
+         "pieces": [piece("circle", [48, 50], [32, 32], crop=[1.4, 1.4, 14.6, 14.6])]},
         {"name": "foot", "kind": "flat", "material": "egg_shell", "clip_to": "shell",
          "opacity": 0.5, "grad": grad(86, 112, "worn", 0.6),
          "pieces": [piece("circle", [64, 104], [58, 20], crop=[1.4, 9.4, 14.6, 14.6])]},
@@ -256,14 +256,11 @@ recipes["it_armadillo_scute"] = out(
                           "growth ridge along the lower edge, no text.", 321, [
         {"name": "back", "material": "scute",
          "pieces": [piece("droplet", [64, 62], [108, 80], crop=SCUTE_BACK)]},
-        {"name": "scale", "material": "scute", "grad": grad(28, 100, "well_void", 0.42),
+        {"name": "scale", "material": "scute", "grad": grad(30, 100, "well_void", 0.38),
          "pieces": [piece("droplet", [64, 62], [98, 72], crop=SCUTE_CROP)]},
-        {"name": "dome", "kind": "flat", "material": "scute", "clip_to": "scale",
-         "opacity": 0.75, "grad": grad(34, 62, "floor_light", 0.5),
-         "pieces": [piece("diamond_shape", [48, 52], [44, 24], crop=[3, 3, 10, 8])]},
-        {"name": "ridge", "kind": "flat", "material": "scute", "clip_to": "scale",
-         "opacity": 0.7, "grad": grad(62, 92, "well_void", 0.6),
-         "pieces": [piece("gem", [64, 72], [72, 40], crop=[2, 5, 14, 13])]},
+        {"name": "sheen", "kind": "flat", "material": "scute", "clip_to": "scale",
+         "opacity": 0.4, "grad": grad(34, 60, "floor_light", 0.5),
+         "pieces": [piece("circle", [46, 50], [36, 36], crop=[1.4, 1.4, 14.6, 14.6])]},
     ])
 
 
@@ -277,3 +274,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

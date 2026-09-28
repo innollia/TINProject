@@ -130,7 +130,7 @@ def fx_bubble():
                     pc("circle", at_of([cx, cy], (-2, -30), 0), [8, 6], rot=-20)]},
     ]
     # three small bubbles rising through, staggered so they never jump together
-    small = [(-30, 152, 13.0, "t0"), (26, 128, 10.0, "t1"), (-6, 104, 8.0, "t2")]
+    small = [(-30, 150, 12.0, "t0"), (26, 126, 9.5, "t1"), (-6, 100, 7.5, "t2")]
     for dx, y0, rad, tag in small:
         forms.append({"name": "rise_" + tag, "tags": [tag], "z": 2, "kind": "mass",
                       "material": "bubble_shell", "pivot": [cx + dx, y0], "opacity": 0.8,
@@ -143,7 +143,7 @@ def fx_bubble():
     for k in range(6):
         mv = {"b": mvv(dx=bob(6, 3.0, math.pi / 2)[k], dy=dy[k], sx=sc[k], sy=sc[k])}
         for j, (_dx, _y0, _rad, tag) in enumerate(small):
-            mv[tag] = mvv(dy=-23.0 * k, dx=round(2.5 * math.sin(1.7 * k + j), 2))
+            mv[tag] = mvv(dy=-21.0 * k, dx=round(2.5 * math.sin(1.7 * k + j), 2))
         frames.append(fr(f"f{k}", move=mv))
     return recipe("bubble",
                   "bubble (floating shell). One large three-layer membrane (halo, shell ring, "
@@ -339,9 +339,11 @@ def fx_dolphin():
     forms.append({"name": "ripples", "tags": ["rip"], "z": 1, "kind": "mass", "material": "foam",
                   "pivot": [192, 192], "opacity": 0.4, "line": False,
                   "shade": {"soft": 0.6, "bump": 0.4, "threshold": 0.44, "highlight_amount": 0.3},
-                  "pieces": [pc("sea", [192 - d * 384, 202], [374, 44], squash=0.6) for d in (-1, 0, 1)] +
-                            [pc("wave", [198 - d * 384, 116], [330, 30], squash=0.5) for d in (-1, 0, 1)] +
-                            [pc("wave", [186 - d * 384, 292], [310, 28], squash=0.5) for d in (-1, 0, 1)]})
+                  "pieces": [pc("sea", [192, 202], [344, 42], squash=0.6),
+                            pc("wave", [196, 116], [322, 28], squash=0.5),
+                            pc("wave", [188, 288], [306, 26], squash=0.5),
+                            pc("wave", [200, 148], [250, 22], squash=0.5),
+                            pc("wave", [184, 258], [262, 22], squash=0.5)]})
     frames = []
     dx, dy = bob(6, 7.0), bob(6, 5.0, math.pi / 3)
     wag = [0, 15, 19, 0, -15, -19]
@@ -492,17 +494,17 @@ def fx_rain():
     W, H = 384, 384
     rng = random.Random(4407)
     # even columns so no side of the cell is empty, jittered so it is not a grid
-    cols, cstep, rstep = 8, 40.0, 70.0
+    cols, cstep, rstep = 7, 42.0, 70.0
     far = []
     for i in range(cols):
         for j in range(-1, 7):
-            far.append((34 + i * cstep + (rstep * 0.5 if i % 2 else 0.0) + rng.uniform(-7, 7),
+            far.append((66 + i * cstep + (rstep * 0.5 if i % 2 else 0.0) + rng.uniform(-7, 7),
                         j * rstep + rng.uniform(-12, 12),
                         rng.uniform(3.0, 4.6), rng.uniform(30, 52)))
     near = []
     for i in range(0, cols, 3):
         for j in range(-1, 4):
-            near.append((44 + i * cstep + rng.uniform(-14, 14), j * 150 + rng.uniform(-18, 18),
+            near.append((70 + i * cstep + rng.uniform(-14, 14), j * 150 + rng.uniform(-18, 18),
                          rng.uniform(5.0, 8.0), rng.uniform(84, 128)))
     dots = [(rng.uniform(50, W - 50), rng.uniform(30, H - 20)) for _ in range(4)]
 
@@ -551,13 +553,13 @@ def fx_splash():
          "shade": {"soft": 0.5, "bump": 0.6, "threshold": 0.44, "highlight_amount": 0.45},
          "pieces": [pc("wave", [cx, base], [118, 52], squash=0.55)]},
         {"name": "bowl", "tags": ["bw"], "z": 2, "kind": "mass", "material": "water_pale",
-         "pivot": [cx, base - 18], "line": False, "opacity": 0.9,
+         "pivot": [cx, base - 20], "line": False, "opacity": 0.9,
          "shade": {"soft": 0.5, "bump": 0.6, "threshold": 0.44, "highlight_amount": 0.5},
-         "pieces": [pc("ring", [cx, base - 14], [104, 58], crop=[2.4, 9.0, 13.6, 16])]},
+         "pieces": [pc("ring", [cx, base - 16], [100, 54], crop=[2.4, 9.0, 13.6, 16])]},
         {"name": "rim", "tags": ["bw"], "z": 2.05, "kind": "flat", "material": "foam",
-         "pivot": [cx, base - 18], "opacity": 0.6, "clip_to": "bowl", "line": False,
-         "pieces": [pc("ring", [cx, base - 14], [104, 58], crop=[2.4, 9.0, 13.6, 16]),
-                    pc("ring", [cx + 5, base - 20], [104, 58], crop=[2.4, 9.0, 13.6, 16], op="sub")]},
+         "pivot": [cx, base - 20], "opacity": 0.6, "clip_to": "bowl", "line": False,
+         "pieces": [pc("ring", [cx, base - 16], [100, 54], crop=[2.4, 9.0, 13.6, 16]),
+                    pc("ring", [cx + 5, base - 21], [100, 54], crop=[2.4, 9.0, 13.6, 16], op="sub")]},
         {"name": "tongues", "tags": ["tg"], "z": 3, "kind": "mass", "material": "water_pale",
          "pivot": [cx, base - 40], "line": False,
          "shade": {"soft": 0.5, "bump": 0.55, "threshold": 0.42, "highlight_amount": 0.5},
@@ -576,11 +578,11 @@ def fx_splash():
                     pc("droplet", [cx, base - 92], [8, 32], rot=180)]},
         {"name": "drops", "tags": ["dp"], "z": 4, "kind": "mass", "material": "bubble_shell",
          "pivot": [cx, base - 60], "line": False,
-         "pieces": [pc("droplet", [cx - 64, base - 92], [13, 20], rot=150),
-                    pc("droplet", [cx - 30, base - 126], [11, 18], rot=170),
-                    pc("droplet", [cx + 32, base - 122], [12, 19], rot=190),
-                    pc("droplet", [cx + 66, base - 86], [13, 20], rot=212),
-                    pc("circle", [cx - 2, base - 150], [8, 7])]},
+         "pieces": [pc("droplet", [cx - 62, base - 88], [13, 20], rot=150),
+                    pc("droplet", [cx - 30, base - 116], [11, 18], rot=170),
+                    pc("droplet", [cx + 32, base - 112], [12, 19], rot=190),
+                    pc("droplet", [cx + 64, base - 84], [13, 20], rot=212),
+                    pc("circle", [cx - 2, base - 136], [8, 7])]},
     ]
     frames = [
         fr("f0", show=["ridge"], move={"rg": mvv(sx=0.78, sy=0.7)}),
@@ -590,11 +592,11 @@ def fx_splash():
            move={"bw": mvv(sx=1.0, sy=0.9), "tg": mvv(sy=0.9), "sp": mvv(sy=0.9),
                  "dp": mvv(sx=0.7, sy=0.7)}),
         fr("f3", show=["bowl", "tongues", "spikes", "drops"],
-           move={"bw": mvv(sx=1.12, sy=1.2), "tg": mvv(sy=1.08, dx=-4),
-                 "sp": mvv(sy=1.15), "dp": mvv(sx=1.0, sy=1.0, dx=5, dy=-9)}),
+           move={"bw": mvv(sx=1.1, sy=1.1), "tg": mvv(sy=1.06, dx=-4),
+                 "sp": mvv(sy=1.12), "dp": mvv(sx=1.0, sy=1.0, dx=5, dy=-7)}),
         fr("f4", show=["bowl", "tongues", "drops"],
-           move={"bw": mvv(sx=1.24, sy=1.34), "tg": mvv(sy=1.2, dx=-9),
-                 "dp": mvv(sx=1.3, sy=1.3, dx=12, dy=-20)}),
+           move={"bw": mvv(sx=1.18, sy=1.2), "tg": mvv(sy=1.16, dx=-8),
+                 "dp": mvv(sx=1.25, sy=1.2, dx=10, dy=-14)}),
     ]
     return recipe("splash",
                   "splash (crown of water). A low wavy ridge at the surface, a shallow U cup cut from the "
@@ -689,7 +691,7 @@ def fx_cherry():
     per = {}
     for i in range(9):
         ph = i * 0.62
-        per[f"p{i}"] = (0.0, 7.0, ph, 17.0, ph + 0.5, 0.10)
+        per[f"p{i}"] = (0.0, 7.0, ph, 14.0, ph + 0.5, 0.10)
     return recipe("cherry_leaves",
                   "cherry_leaves (blossom petals). Nine small petals, each an upside-down droplet with "
                   "a notch bitten out of the rounded tip and a random skew, so no two point the same "
@@ -758,7 +760,7 @@ def fx_red_poplar():
     spec = []
     for i in range(7):
         x = 96 + [14, -18, 6, -12, 20, -5, 10][i]
-        y = 28 + i * 19
+        y = 36 + i * 17
         s = [40, 34, 42, 36, 40, 33, 37][i]
         rot = [8, 168, 22, 190, 12, 176, 26][i]
         t = f"r{i}"
@@ -810,21 +812,21 @@ def fx_flame():
          "glow": {"radius": 9, "opacity": 0.6, "color": "flame_glow"},
          "pieces": [pc("droplet", [cx, base - 78], [66, 152], rot=180)]},
         {"name": "licks", "tags": ["lk"], "z": 2.5, "kind": "mass", "material": "flame_mid",
-         "pivot": [cx, base - 286], "emit": 0.85,
+         "pivot": [cx, base - 268], "emit": 0.85,
          "rough": {"amp": 0.4, "soft": 2.0, "cell": 9},
-         "pieces": [pc("droplet", [cx - 14, base - 292], [34, 74], rot=180),
-                    pc("droplet", [cx + 24, base - 308], [24, 56], rot=180)]},
+         "pieces": [pc("droplet", [cx - 14, base - 274], [34, 74], rot=180),
+                    pc("droplet", [cx + 24, base - 290], [24, 56], rot=180)]},
         {"name": "sparks", "tags": ["sp"], "z": 4, "kind": "mass", "material": "spark",
-         "pivot": [cx, base - 300], "emit": 1.0, "line": {"width": 0.6, "heavy": 0.4},
+         "pivot": [cx, base - 288], "emit": 1.0, "line": {"width": 0.6, "heavy": 0.4},
          "glow": {"radius": 4, "opacity": 0.7, "color": "flame_glow"},
-         "pieces": [pc("circle", [cx - 58, base - 312], [9, 8]),
-                    pc("circle", [cx - 22, base - 290], [7, 6]),
-                    pc("circle", [cx + 16, base - 316], [8, 7]),
-                    pc("circle", [cx + 52, base - 282], [6, 6]),
-                    pc("circle", [cx - 40, base - 256], [5, 5]),
-                    pc("circle", [cx + 34, base - 248], [6, 5]),
-                    pc("circle", [cx + 2, base - 234], [5, 4]),
-                    pc("circle", [cx - 70, base - 222], [4, 4])]},
+         "pieces": [pc("circle", [cx - 58, base - 300], [9, 8]),
+                    pc("circle", [cx - 22, base - 278], [7, 6]),
+                    pc("circle", [cx + 16, base - 304], [8, 7]),
+                    pc("circle", [cx + 52, base - 270], [6, 6]),
+                    pc("circle", [cx - 40, base - 244], [5, 5]),
+                    pc("circle", [cx + 34, base - 236], [6, 5]),
+                    pc("circle", [cx + 2, base - 222], [5, 4]),
+                    pc("circle", [cx - 70, base - 210], [4, 4])]},
     ]
     frames = []
     for k in range(8):
@@ -833,8 +835,8 @@ def fx_flame():
               "sh": mvv(sy=1.0 + 0.11 * math.sin(ph), sx=1.0 + 0.05 * math.cos(ph)),
               "bd": mvv(sy=1.0 + 0.15 * math.sin(ph + 0.7), sx=1.0 + 0.06 * math.sin(ph + 1.4)),
               "cr": mvv(sy=1.0 + 0.20 * math.sin(ph + 1.2), dx=4 * math.sin(ph)),
-              "lk": mvv(dy=-7.0 * k, sx=1.0 - 0.08 * k, sy=1.0 - 0.06 * k),
-              "sp": mvv(dy=-6.0 * k)}
+              "lk": mvv(dy=-5.5 * k, sx=1.0 - 0.08 * k, sy=1.0 - 0.06 * k),
+              "sp": mvv(dy=-5.0 * k)}
         frames.append(fr(f"f{k}", move=mv))
     return recipe("flame",
                   "flame (tall fire). Five layers: a warm pool at the base, a ragged dark shell (three "

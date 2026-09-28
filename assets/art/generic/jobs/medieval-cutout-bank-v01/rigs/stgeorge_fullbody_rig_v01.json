@@ -1,0 +1,191 @@
+{
+  "id": "stgeorge_fullbody_rig_v01",
+  "status": "candidate",
+  "kind": "2D cutout skeleton guide; not a Godot/runtime rig",
+  "source_accession": "1934.337",
+  "source_file": "1934-337-print.jpg",
+  "coordinate_unit": "source-image pixels",
+  "bones": [
+    {
+      "name": "root",
+      "parent": null,
+      "from": [
+        1110,
+        1590
+      ],
+      "to": [
+        1110,
+        1590
+      ],
+      "part": ""
+    },
+    {
+      "name": "torso",
+      "parent": "root",
+      "from": [
+        1110,
+        1590
+      ],
+      "to": [
+        1110,
+        1110
+      ],
+      "part": "stgeorge_chest_armor"
+    },
+    {
+      "name": "neck_head",
+      "parent": "torso",
+      "from": [
+        1110,
+        1110
+      ],
+      "to": [
+        1135,
+        390
+      ],
+      "part": "stgeorge_head_helmet"
+    },
+    {
+      "name": "left_upper_arm",
+      "parent": "torso",
+      "from": [
+        835,
+        720
+      ],
+      "to": [
+        600,
+        930
+      ],
+      "part": "stgeorge_left_upper_arm"
+    },
+    {
+      "name": "left_forearm_hand",
+      "parent": "left_upper_arm",
+      "from": [
+        600,
+        930
+      ],
+      "to": [
+        530,
+        1070
+      ],
+      "part": "stgeorge_left_forearm_hand"
+    },
+    {
+      "name": "right_upper_arm",
+      "parent": "torso",
+      "from": [
+        1390,
+        720
+      ],
+      "to": [
+        1490,
+        1010
+      ],
+      "part": "stgeorge_right_upper_arm"
+    },
+    {
+      "name": "right_forearm_hand",
+      "parent": "right_upper_arm",
+      "from": [
+        1490,
+        1010
+      ],
+      "to": [
+        1700,
+        1205
+      ],
+      "part": "stgeorge_right_forearm_hand"
+    },
+    {
+      "name": "pelvis",
+      "parent": "torso",
+      "from": [
+        1110,
+        1590
+      ],
+      "to": [
+        1110,
+        1770
+      ],
+      "part": "stgeorge_pelvis_skirt"
+    },
+    {
+      "name": "left_thigh",
+      "parent": "pelvis",
+      "from": [
+        920,
+        1770
+      ],
+      "to": [
+        900,
+        2180
+      ],
+      "part": "stgeorge_left_thigh"
+    },
+    {
+      "name": "left_shin_boot",
+      "parent": "left_thigh",
+      "from": [
+        900,
+        2180
+      ],
+      "to": [
+        865,
+        2925
+      ],
+      "part": "stgeorge_left_shin_boot"
+    },
+    {
+      "name": "right_thigh",
+      "parent": "pelvis",
+      "from": [
+        1240,
+        1770
+      ],
+      "to": [
+        1240,
+        2200
+      ],
+      "part": "stgeorge_right_thigh"
+    },
+    {
+      "name": "right_shin_boot",
+      "parent": "right_thigh",
+      "from": [
+        1240,
+        2200
+      ],
+      "to": [
+        1320,
+        2930
+      ],
+      "part": "stgeorge_right_shin_boot"
+    }
+  ],
+  "attachment_points": [
+    {
+      "name": "left_wing_root",
+      "source_art": "1952.99",
+      "position": [
+        795,
+        770
+      ],
+      "bind_to": "torso"
+    },
+    {
+      "name": "right_wing_root",
+      "source_art": "1952.99",
+      "position": [
+        1501,
+        746
+      ],
+      "bind_to": "torso"
+    }
+  ],
+  "notes": [
+    "Rest-pose landmarks are hand-placed over the printed pose and require visual tuning.",
+    "Armor overlaps the joints in the source; the cutout masks need refinement before animation.",
+    "Wing attachments are reference points only; the Schongauer wings need scale and pose fitting."
+  ]
+}

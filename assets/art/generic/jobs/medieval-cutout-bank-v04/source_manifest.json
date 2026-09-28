@@ -1,0 +1,94 @@
+{
+  "batch": "medieval-cutout-bank-v04",
+  "status": "candidate",
+  "image_tool": "built-in image_gen",
+  "prior_batches_preserved": [
+    "../medieval-cutout-bank-v02/",
+    "../medieval-cutout-bank-v03/"
+  ],
+  "assets": [
+    {
+      "id": "archangel_body",
+      "category": "person",
+      "source_accession": "1952.99",
+      "source_title": "The Archangel Michael Piercing the Dragon",
+      "source_date": "c. 1475",
+      "source_image": "source_images/1952-99_print.jpg",
+      "source_page": "https://clevelandart.org/art/1952.99",
+      "license": "CC0",
+      "imagegen_original_path": "C:\\Users\\Sherum\\.codex\\generated_images\\01a0e370-ca30-7be1-81e8-249704e3717c\\exec-ada58344-fc16-4159-995d-9f9e33568ec1.png",
+      "preserved_imagegen_master": "source_cutouts/archangel_body_imagegen_original.png",
+      "candidate_copy": "candidates/cutouts/archangel_body.png",
+      "alpha_requested": true,
+      "status": "candidate",
+      "prompt_id": "PROMPTS_v01.md#archangel-body-cutout",
+      "review_notes": "The output retained visible wing surfaces despite the wingless-body prompt; use as a full winged-figure candidate, not a wing-free body."
+    },
+    {
+      "id": "archangel_left_wing",
+      "category": "rigging_piece",
+      "source_accession": "1952.99",
+      "source_title": "The Archangel Michael Piercing the Dragon",
+      "source_date": "c. 1475",
+      "source_image": "source_images/1952-99_print.jpg",
+      "source_page": "https://clevelandart.org/art/1952.99",
+      "license": "CC0",
+      "imagegen_original_path": "C:\\Users\\Sherum\\.codex\\generated_images\\01a0e370-ca30-7be1-81e8-249704e3717c\\exec-e8ea68f4-c206-407c-87ab-e4b9c0505602.png",
+      "preserved_imagegen_master": "source_cutouts/archangel_left_wing_imagegen_original.png",
+      "candidate_copy": "candidates/cutouts/archangel_left_wing.png",
+      "alpha_requested": true,
+      "status": "candidate",
+      "prompt_id": "PROMPTS_v01.md#archangel-left-wing-cutout"
+    },
+    {
+      "id": "archangel_right_wing",
+      "category": "rigging_piece",
+      "source_accession": "1952.99",
+      "source_title": "The Archangel Michael Piercing the Dragon",
+      "source_date": "c. 1475",
+      "source_image": "source_images/1952-99_print.jpg",
+      "source_page": "https://clevelandart.org/art/1952.99",
+      "license": "CC0",
+      "imagegen_original_path": "C:\\Users\\Sherum\\.codex\\generated_images\\01a0e370-ca30-7be1-81e8-249704e3717c\\exec-fad09fe3-0778-4ac5-91f8-992bacb3d836.png",
+      "preserved_imagegen_master": "source_cutouts/archangel_right_wing_imagegen_original.png",
+      "candidate_copy": "candidates/cutouts/archangel_right_wing.png",
+      "alpha_requested": true,
+      "status": "candidate",
+      "prompt_id": "PROMPTS_v01.md#archangel-right-wing-cutout"
+    }
+  ],
+  "backgrounds": [
+    {
+      "id": "landscape_penitence_no_figure",
+      "category": "background",
+      "source_accession": "1949.33",
+      "source_title": "Saint Jerome in Penitence",
+      "source_date": "c. 1480–1500",
+      "source_image": "source_images/1949-33_print.jpg",
+      "source_page": "https://clevelandart.org/art/1949.33",
+      "license": "CC0",
+      "imagegen_original_path": "C:\\Users\\Sherum\\.codex\\generated_images\\01a0e370-ca30-7be1-81e8-249704e3717c\\exec-27fdae05-c8ba-441c-9ce2-27b494699b69.png",
+      "preserved_imagegen_master": "source_backgrounds/landscape_penitence_imagegen_original.png",
+      "candidate_copy": "candidates/backgrounds/landscape_penitence_no_figure.png",
+      "alpha_requested": false,
+      "status": "candidate",
+      "prompt_id": "PROMPTS_v01.md#scenery-only-landscape-background"
+    }
+  ],
+  "assemblies": [
+    {
+      "id": "winged_archangel_patchwork_montage_v01",
+      "status": "candidate",
+      "prompt_id": "PROMPTS_v01.md#patchwork-collage-assembly",
+      "imagegen_original_path": "C:\\Users\\Sherum\\.codex\\generated_images\\01a0e370-ca30-7be1-81e8-249704e3717c\\exec-5e7ff3d5-dab7-4a3d-8528-9f5db77806c1.png",
+      "candidate_file": "assemblies/winged_archangel_patchwork_montage_v01.png",
+      "inputs": [
+        "../medieval-cutout-bank-v04/candidates/backgrounds/landscape_penitence_no_figure.png",
+        "../medieval-cutout-bank-v04/candidates/cutouts/archangel_body.png",
+        "../medieval-cutout-bank-v03/candidates/cutouts/animal_dragon.png",
+        "../medieval-cutout-bank-v03/candidates/cutouts/object_banner_pole.png"
+      ],
+      "visual_review": "Clearly pasted edges and source-print differences remain visible; candidate only."
+    }
+  ]
+}

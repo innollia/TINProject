@@ -1,0 +1,82 @@
+{
+  "batch": "medieval-cutout-bank-v03",
+  "status": "candidate",
+  "image_tool": "built-in image_gen",
+  "prior_batch_preserved": "../medieval-cutout-bank-v02/",
+  "source_rights": "Cleveland Museum of Art Open Access; CC0; source metadata and credits are in v02/sources.json",
+  "prompt_record": "docs/art/projects/generic/jobs/medieval-cutout-bank-v03/PROMPTS_v01.md",
+  "candidate_cutout_cleanup": "Only alpha values 1-5 within the outer 3 px canvas border were cleared from working copies; source_cutouts masters remain byte-for-byte copies of the original imagegen output.",
+  "assets": [
+    {
+      "id": "person_st_john_baptist",
+      "category": "person",
+      "source_accession": "1934.247",
+      "source_title": "Saint John the Baptist",
+      "source_date": "1505",
+      "source_image": "source_images/1934-247_print.jpg",
+      "source_page": "https://clevelandart.org/art/1934.247",
+      "imagegen_original_path": "C:/Users/Sherum/.codex/generated_images/01a0e370-ca30-7be1-81e8-249704e3717c/exec-73d69983-aae5-47c9-ac65-845818369f17.png",
+      "preserved_imagegen_master": "source_cutouts/person_st_john_baptist_imagegen_original.png",
+      "candidate_copy": "candidates/cutouts/person_st_john_baptist.png",
+      "alpha_requested": true,
+      "status": "candidate"
+    },
+    {
+      "id": "animal_dragon",
+      "category": "animal",
+      "source_accession": "1999.47",
+      "source_title": "Saint George Slaying the Dragon",
+      "source_date": "1510–1515",
+      "source_image": "source_images/1999-47_print.jpg",
+      "source_page": "https://clevelandart.org/art/1999.47",
+      "imagegen_original_path": "C:/Users/Sherum/.codex/generated_images/01a0e370-ca30-7be1-81e8-249704e3717c/exec-5e3c5241-1e43-4d1c-a785-58fcd2f7227e.png",
+      "preserved_imagegen_master": "source_cutouts/animal_dragon_imagegen_original.png",
+      "candidate_copy": "candidates/cutouts/animal_dragon.png",
+      "alpha_requested": true,
+      "status": "candidate"
+    },
+    {
+      "id": "object_banner_pole",
+      "category": "object",
+      "source_accession": "1934.337",
+      "source_title": "St. George on Foot",
+      "source_date": "c. 1504–5",
+      "source_image": "source_images/1934-337_print.jpg",
+      "source_page": "https://clevelandart.org/art/1934.337",
+      "imagegen_original_path": "C:/Users/Sherum/.codex/generated_images/01a0e370-ca30-7be1-81e8-249704e3717c/exec-f98f7c1f-154d-402f-beba-14a26ffd4cc5.png",
+      "preserved_imagegen_master": "source_cutouts/object_banner_pole_imagegen_original.png",
+      "candidate_copy": "candidates/cutouts/object_banner_pole.png",
+      "alpha_requested": true,
+      "status": "candidate"
+    },
+    {
+      "id": "background_landscape_no_figure",
+      "category": "background",
+      "source_accession": "1929.557",
+      "source_title": "Saint Jerome in a Landscape",
+      "source_date": "1530",
+      "source_image": "source_images/1929-557_print.jpg",
+      "source_page": "https://clevelandart.org/art/1929.557",
+      "imagegen_original_path": "C:/Users/Sherum/.codex/generated_images/01a0e370-ca30-7be1-81e8-249704e3717c/exec-d9fb07bf-8a92-406f-aedc-09ac9bb3f203.png",
+      "preserved_imagegen_master": "source_backgrounds/saint_jerome_landscape_imagegen_original.png",
+      "candidate_copy": "candidates/backgrounds/landscape_no_figure.png",
+      "alpha_requested": false,
+      "status": "candidate"
+    }
+  ],
+  "assemblies": [
+    {
+      "id": "landscape_dragon_figure_banner_montage_v01",
+      "status": "candidate",
+      "prompt_id": "PROMPTS_v01.md#assembly-four-source-cut-paper-scene",
+      "imagegen_original_path": "C:/Users/Sherum/.codex/generated_images/01a0e370-ca30-7be1-81e8-249704e3717c/exec-a612e398-724b-4c82-ac2a-aa260dd29774.png",
+      "candidate_file": "assemblies/landscape_dragon_figure_banner_montage_v01.png",
+      "inputs": [
+        "candidates/backgrounds/landscape_no_figure.png",
+        "candidates/cutouts/person_st_john_baptist.png",
+        "candidates/cutouts/animal_dragon.png",
+        "candidates/cutouts/object_banner_pole.png"
+      ]
+    }
+  ]
+}

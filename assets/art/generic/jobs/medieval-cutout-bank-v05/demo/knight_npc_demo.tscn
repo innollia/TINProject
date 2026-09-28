@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/generic/jobs/medieval-cutout-bank-v04/candidates/backgrounds/landscape_penitence_no_figure.png" id="1_landscape"]
+[ext_resource type="PackedScene" path="res://assets/art/generic/jobs/medieval-cutout-bank-v05/knight_npc.tscn" id="2_knight"]
+
+[node name="KnightNPCDemo" type="Node2D"]
+
+[node name="Landscape" type="Sprite2D" parent="."]
+position = Vector2(576, 360)
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("1_landscape")
+
+[node name="KnightNPC" parent="." instance=ExtResource("2_knight")]
+position = Vector2(576, 648)
+scale = Vector2(0.55, 0.55)

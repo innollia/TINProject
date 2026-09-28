@@ -103,6 +103,9 @@ RECIPES = [
         {"name": "gleam", "z": 4, "kind": "flat", "material": "bone_white", "opacity": 0.32,
          "clip_to": "meat",
          "pieces": [piece("circle", [48, 36], [30, 14], crop=DISC, rot=-22)]},
+        {"name": "socket", "z": 5, "kind": "flat", "material": "rabbit", "opacity": 0.95,
+         "clip_to": "meat",
+         "pieces": [piece("circle", [69, 43], [36, 27], crop=DISC, rot=-22)]},
     ]),
     # ---------------------------------------------------------- it_rotten_flesh
     rec("it_rotten_flesh", "rotten flesh: a wet, dark, sagging lump with green mould patches, "

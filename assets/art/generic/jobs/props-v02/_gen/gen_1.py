@@ -9,24 +9,24 @@ from common import MB_BIG, MB_MID, MB_SML, SEA_BAND, base, form, write_all
 
 # ---------------------------------------------------------------- shared forms
 def clot(mat: str, gloss_color=None, crust_color=None) -> list:
-    """One frozen lumpy-clot silhouette: round body + two lobes + a run-off drip (+ a gloss)."""
+    """One frozen lumpy-clot silhouette: round body + two side bumps + a run-off drip (+ a gloss)."""
     forms = [
         form("drip", mat, 0,
-             [{"icon": "circle", "at": [72, 100], "size": [30, 26]}]),
+             [{"icon": "circle", "at": [64, 100], "size": [26, 22]}]),
         form("body", mat, 1,
-             [{"icon": "metaballs", "crop": MB_BIG, "at": [64, 60], "size": [84, 76]}]),
-        form("lobe_l", mat, 2,
-             [{"icon": "metaballs", "crop": MB_MID, "at": [32, 86], "size": [46, 42]}]),
-        form("lobe_r", mat, 2,
-             [{"icon": "metaballs", "crop": MB_SML, "at": [96, 88], "size": [40, 36]}]),
+             [{"icon": "metaballs", "crop": MB_BIG, "at": [64, 62], "size": [88, 80]}]),
+        form("bump_l", mat, 2,
+             [{"icon": "metaballs", "crop": MB_SML, "at": [28, 74], "size": [30, 30]}]),
+        form("bump_r", mat, 2,
+             [{"icon": "metaballs", "crop": MB_SML, "at": [100, 76], "size": [28, 28]}]),
     ]
     if gloss_color:
         forms.append(form("gloss", mat, 3,
-                          [{"icon": "circle", "at": [46, 44], "size": [22, 20]}],
+                          [{"icon": "circle", "at": [48, 46], "size": [18, 16]}],
                           kind="flat", color=gloss_color, opacity=0.45))
     if crust_color:
         forms.append(form("crust", mat, 3,
-                          [{"icon": "cloud", "crop": [3, 4, 10, 10], "at": [50, 44], "size": [50, 40]}],
+                          [{"icon": "cloud", "at": [50, 44], "size": [48, 38]}],
                           kind="flat", color=crust_color, opacity=0.4))
     return forms
 
@@ -42,13 +42,16 @@ POWDER_POINTS = [
 
 
 def powder_heap(mat: str) -> list:
-    """One frozen powder heap: a triangular lattice of round grains plus three loose specks."""
+    """One frozen powder heap: a solid backing lump, a triangular lattice of round grains over it
+    (the backing plugs the gaps the jitter could open) and three loose specks."""
     return [
-        form("heap", mat, 0,
+        form("backing", mat, 0,
+             [{"icon": "cloud", "crop": [2, 3, 14, 13], "at": [64, 86], "size": [92, 54]}]),
+        form("heap", mat, 1,
              [{"icon": "circle", "size": 22, "at": [0, 0],
                "repeat": {"points": POWDER_POINTS,
                           "jitter": {"at": 2.0, "size": 0.12}}}]),
-        form("speck", mat, 1,
+        form("speck", mat, 2,
              [{"icon": "metaballs", "crop": MB_SML, "at": [30, 20], "size": 12},
               {"icon": "metaballs", "crop": MB_MID, "at": [100, 22], "size": 11},
               {"icon": "metaballs", "crop": MB_SML, "at": [66, 16], "size": 8}]),
@@ -76,16 +79,13 @@ r["forms"] = [
     form("ball", "thread", 0,
          [{"icon": "metaballs", "crop": MB_BIG, "at": [62, 62], "size": [88, 80]}]),
     form("wind1", "thread", 1,
-         [{"icon": "sea", "crop": SEA_BAND, "at": [64, 46], "size": [66, 15], "rot": -18}],
+         [{"icon": "sea", "crop": SEA_BAND, "at": [62, 48], "size": [76, 9], "rot": -16}],
          color="#7a6f57"),
     form("wind2", "thread", 2,
-         [{"icon": "sea", "crop": SEA_BAND, "at": [64, 66], "size": [68, 15], "rot": 14}],
+         [{"icon": "sea", "crop": SEA_BAND, "at": [62, 74], "size": [80, 9], "rot": 12}],
          color="#7a6f57"),
-    form("wind3", "thread", 3,
-         [{"icon": "sea", "crop": SEA_BAND, "at": [64, 86], "size": [62, 15], "rot": -8}],
-         color="#7a6f57"),
-    form("tail", "thread", 4,
-         [{"icon": "sea", "crop": SEA_BAND, "at": [90, 102], "size": [40, 12], "rot": 26}]),
+    form("tail", "thread", 3,
+         [{"icon": "sea", "crop": SEA_BAND, "at": [92, 104], "size": [40, 8], "rot": 26}]),
 ]
 R.append(r)
 
