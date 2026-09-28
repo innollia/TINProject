@@ -41,6 +41,7 @@ param(
     [switch]$DryRun,
     [switch]$SkipAmbient,
     [switch]$SkipAnalysis,
+    [switch]$SkipMusic,
     [string]$AmbientManifestPath = ''
 )
 
@@ -251,6 +252,7 @@ foreach ($kit in $manifest.kits) {
 $ambientRows = New-Object System.Collections.Generic.List[object]
 $ambientManifest = $null
 $analysisFailed = $false
+$musicFailed = $false
 
 if (-not $SkipAmbient) {
     if ([string]::IsNullOrWhiteSpace($AmbientManifestPath)) {
@@ -411,14 +413,111 @@ if (-not $SkipAmbient) {
             gains = $gains
         }
     }
+
+    # Music layers. music/identity.yaml plus music/states/*.yaml compile to one
+    # patch per (state, layer); the stem table is the same shape as the ambience
+    # table, so the runtime manifest and the mixer need no special case.
+    # The runtime manifest is written after this, not before: the music stems
+    # have to be in hand before the manifest is built, and an [ordered]
+    # hashtable holds the array it was given rather than a reference to it.
+    $musicRows = New-Object System.Collections.Generic.List[object]
+    $musicStems = @()
+    $musicManifest = $null
+    if (-not $SkipMusic) {
+        $musicRoot = Join-Path $PipelineRoot 'music'
+        $musicOut = Join-Path $PipelineRoot 'build\music'
+        $musicTable = Join-Path $musicOut 'stems.json'
+        $compiler = Join-Path $PipelineRoot 'tool\compile_music.py'
+        Write-Host ''
+        Write-Host '---- music (compile) ----'
+        $compileOutput = & $python $compiler --identity (Join-Path $musicRoot 'identity.yaml') `
+            --states (Join-Path $musicRoot 'states') --out $musicOut --stem-table $musicTable 2>&1
+        $compileCode = $LASTEXITCODE
+        Write-Host $compileOutput
+        if ($compileCode -ne 0) {
+            Write-Refuse 'compile_music.py failed. The music layers are not renderable and the build stops.'
+        }
+
+        $musicManifest = Get-Content -LiteralPath $musicTable -Raw -Encoding utf8 | ConvertFrom-Json
+        $musicRaw = Join-Path $musicOut 'raw'
+        New-Item -ItemType Directory -Force -Path $musicRaw | Out-Null
+        $musicDest = Join-Path $ProjectRoot ("modules\{0}\audio\music" -f [string]$ambientManifest.target)
+        New-Item -ItemType Directory -Force -Path $musicDest | Out-Null
+
+        foreach ($stem in $musicManifest.stems) {
+            $stemId = [string]$stem.id
+            $patch = Join-Path $musicOut ([string]$stem.akkado)
+            $loop = [double]$stem.loop_seconds
+            $fade = [double]$stem.fade_seconds
+            $render = $loop + $fade + 0.25
+            $raw = Join-Path $musicRaw "$stemId.wav"
+            $target = Join-Path $musicDest "$stemId.wav"
+
+            $arguments = @('render', $patch, '-o', $raw, '--seconds', ('{0:0.###}' -f $render), '--rate', $rate, '--bpm', ('{0:0.##}' -f [double]$stem.bpm), '--no-default-bank')
+            # nkido writes warnings to stderr. Under Stop that is a terminating
+            # error even when the render succeeded, so read the exit code.
+            $ErrorActionPreference = 'Continue'
+            $renderOutput = & $exe @arguments 2>&1
+            $code = $LASTEXITCODE
+            $ErrorActionPreference = 'Stop'
+            if ($code -ne 0) {
+                $musicRows.Add([pscustomobject]@{ Id = $stemId; Status = 'FAIL'; Detail = "render exit $code" })
+                continue
+            }
+            $ErrorActionPreference = 'Continue'
+            $foldOutput = & $python $loopify $raw $target --loop-seconds $loop --fade-seconds $fade 2>&1
+            $code = $LASTEXITCODE
+            $ErrorActionPreference = 'Stop'
+            $status = if ($code -eq 0) { 'PASS' } else { 'FAIL' }
+            $musicRows.Add([pscustomobject]@{ Id = $stemId; Status = $status; Detail = (($foldOutput | Select-Object -Last 1) -join '') })
+            $musicStems += [ordered]@{
+                id           = $stemId
+                file         = "res://modules/$([string]$ambientManifest.target)/audio/music/$stemId.wav"
+                bus          = [string]$stem.bus
+                volume_db    = [double]$stem.volume_db
+                role         = [string]$stem.layer
+                loop_seconds = $loop
+            }
+        }
+
+        Write-Host ''
+        Write-Host '---- music (stems) ----'
+        foreach ($row in $musicRows) {
+            if ($row.Status -eq 'PASS') {
+                Write-Host ("  PASS  {0}  {1}" -f $row.Id, $row.Detail)
+            } else {
+                Write-Host ("  FAIL  {0}  {1}" -f $row.Id, $row.Detail) -ForegroundColor Red
+                $musicFailed = $true
+            }
+        }
+        Write-Host ("  total {0} music stems" -f $musicRows.Count)
+    }
+
+    if ($musicFailed) { $analysisFailed = $true }
+
+    # One runtime manifest from both authored sources. Music layers land in the
+    # same stems list and the same profiles, so the mixer treats them as music
+    # and needs no special case.
+    foreach ($entry in $musicStems) {
+        $runtimeStems += $entry
+    }
+    if ($null -ne $musicManifest) {
+        foreach ($stateName in $musicManifest.gains.PSObject.Properties.Name) {
+            if (-not $runtimeProfiles.Contains($stateName)) { continue }
+            foreach ($gain in $musicManifest.gains.$stateName.PSObject.Properties) {
+                $runtimeProfiles[$stateName].gains[[string]$gain.Name] = [double]$gain.Value
+            }
+        }
+    }
     $runtime = [ordered]@{
         generator = 'nkido'
         target    = [string]$ambientManifest.target
         mix_trim_db = [double]$ambientManifest.mix_trim_db
-        note      = 'Generated by tools/nkido_pipeline/build_audio.ps1 from tools/nkido_pipeline/ambient.json. Do not edit by hand.'
+        note      = 'Generated by tools/nkido_pipeline/build_audio.ps1 from ambient.json and music/states. Do not edit by hand.'
         stems     = $runtimeStems
         profiles  = $runtimeProfiles
     }
+
     $runtimePath = Join-Path $ProjectRoot ("modules\{0}\ambient_stems.json" -f [string]$ambientManifest.target)
     # Windows PowerShell 5.1's `Set-Content -Encoding utf8` writes a BOM, and
     # Python's json.load rejects one. This file is machine input, so it goes out
@@ -440,6 +539,9 @@ if (-not $SkipAmbient) {
         foreach ($stem in $ambientManifest.stems) {
             $relative = (([string]$stem.res_file) -replace '^res://', '') -replace '/', '\'
             $stemGlobs += (Join-Path $ProjectRoot $relative)
+        }
+        foreach ($stem in $musicStems) {
+            $stemGlobs += (Join-Path $ProjectRoot ((([string]$stem.file) -replace '^res://', '') -replace '/', '\'))
         }
 
         # The analyzer reports findings on stderr on purpose. With

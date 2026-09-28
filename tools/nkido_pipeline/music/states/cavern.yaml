@@ -1,0 +1,26 @@
+id: cavern
+bpm: 96
+bars: 4
+motif_variation:
+  register: -1
+  density: 0.75
+layers:
+  bass:
+    gain: 0.75
+    volume_db: -26.0
+    register: -2
+    cutoff: 520
+  harmony:
+    gain: 0.75
+    volume_db: -23.0
+    voicing: [0, 3, 6, 10]   # b6 이 들어온다. 4화음쌍 축에서 벗어난다
+    cutoff_low: 350
+    cutoff_high: 2300
+  melody:
+    gain: 0.0
+  drums:
+    gain: 0.60
+    kick_every: 2
+    kick_level: 0.40
+    tick_every: 2
+    tick_level: 0.08

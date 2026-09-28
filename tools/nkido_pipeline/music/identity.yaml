@@ -1,0 +1,72 @@
+# 음악 정체성 — 게임 전체에서 바뀌지 않는 것
+#
+# §12가 요구한 "매 곡마다 자연어로 재설명하지 마라"의 정본이다. 여기 있는 것을
+# 바꾸지 않고는 어떤 상태의 음악도 쓰지 않는다. 곡마다 바뀌는 것(조성 위 레지스터,
+# 리듬, 레이어 유무)은 states/ 에 있다.
+#
+# music/PIPELINE_REVIEW.md 2절이 이 파일의 근거다. 왜 이 도구를 쓰고 왜 그 도구를
+# 쓰지 않는지는 거기 있다.
+
+project: descent_exploration
+
+tonality:
+  # D phrygian이 아니라 A phrygian. 이미 나간 stem 11개가 전부 여기서 나오고,
+  # 그 싣의 정체성이 이 코드였으므로. 새로 정하면 11개 stem을 다시 만들어야 한다.
+  root_midi: 45          # A2
+  name: A
+  mode: phrygian          # 1 b3 5 b7
+  degrees: [0, 1, 3, 5, 7, 8, 10]
+
+motif:
+  # drowned_step. 이 게임의 정체성이다. 곡마다 새로 만들지 않고 전부 여기서 유도한다.
+  id: drowned_step
+  degrees: [0, 3, 7, 10]        # 1, b3, 5, b7  — A, C, E, Bb
+  names: [a4, c5, e5, bb4]      # 미니표기용 음 이름. 같은 음을 두 표기로 적는 것은 의도적이다
+  rhythm: [1.0, 1.0, 2.0, 1.0] # 박 단위
+  note: >
+    3음짜리가 아니고 4음이다. A에서 위로 3화음(C, E)까지 갔다가 반음 위 Bb로
+    떨어진다. 해결하지 않는다. 이 낙하가 이 게임의 음악이고, 모든 변형은 이
+    움직임에서 출발해야 한다.
+
+harmony:
+  preferred: [pedal, open_fifth, tritone_above, minor_ninth, stacked_fourths]
+  avoid: [leading_tone_resolution, functional_cadence, major_iv_v_i, bright_third]
+
+rhythm:
+  # euclid(n, 8) 을 곱셈에 쓰면 조용히 무음이 된다(README B5). 그래서 이 게임의
+  # 리듬은 신호 곱셈이 아니라 envelope triggering 으로 만든다. 드럼을 다시 보면
+  # 소리가 사라질 걸 알기 때문에, 사람이 알아야 할 사실이다.
+  allowed: [sparse_pulse, sustained_hold, layered_offsets]
+  forbidden: [euclid_multiplication, sample_pattern, sixteenth_grid]
+  note: >
+    폴리메트리는 이 툴체인에서 만들 수 없다. 감속(/), 다항(v) 같은 미니표기 세분화는
+    문서에 있으나 게이트로 확인하지 않았다. 규칙에 적었다는 것은 확인했다는 뜻이
+    아니라, 무엇을 아직 확인하지 않았는지를 남긴 것이다.
+
+instrumentation:
+  # 샘플 뱅크가 꺼져 있어(sample 이름 패턴이 -60 dBFS 무음, README B5) 모든 악기는
+  # 합성이다. 이 표는 "무엇이 이 게임의 색인가"이고, 소리는 compile_music.py 가
+  # 위니보 이하로 만든다.
+  layers: [drums, bass, harmony, melody]
+  texture: ambience_stems        # patches/ambient/ 에 있다. 이 파일이 아니다
+  forbidden: [sample_bank, cloud_model, daw]
+
+sound:
+  rules:
+    - "스테레로 차이는 첫 필터 이전에, 맨 소스에서만 만든다"
+    - "어떤 필터도 스테레로 플래그가 붙은 신호를 보면 안 된다"
+    - "두 모노 체인은 컴파일이 접지 못하는 것(음파 detune, noise 시드)으로 달라야 한다"
+    - "saw() 는 이미 0-mean 이다. 0.5를 빼지 마라"
+    - "@.field 는 파이프 안에서만 쓸 수 있다. 감싸인 신호를 먼저 바인딩하고 그 다음에 wide"
+  avoid:
+    - glossy_cinematic_trailer
+    - generic_epic_orchestra
+    - anything_that_needs_a_second_engineer
+
+# 이 파이프라인이 실제로 지킨다. 계획서는 mix의 LUFS 게이트를 stem에 걸었는데
+# 그건 틀렸다 — LUFS는 프로그램 단위 지표다. 여기가 맞는 위치다.
+quality:
+  mix_lufs: [-26.0, -14.0]
+  stem_true_peak_max_db: -1.0
+  layer_share_floor_db: -40.0     # 아래면 꺼짐. 실패
+  layer_share_advisory_db: -22.0  # 여기부터는 속삭임인지 죽은 것인지 귀가 정한다

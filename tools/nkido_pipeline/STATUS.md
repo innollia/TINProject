@@ -224,18 +224,47 @@ _ambience.fade_out(2.0)         # 죽음·일시정지
 `apply_profile` 은 알 수 없는 이름을 받으면 `false` 를 돌려주고 아무것도 바꾸지 않는다.
 프로필 이름: `silence` `surface` `wade` `column` `deep` `cavern` `dread`.
 
-## 6. 음악 컴파일러 — 보류와 그 이유
+## 6. 음악 컴파일러 — 동작하지만 **음악 half 는 게이트가 막고 있다**
 
-`tool/compile_music.py` (사양 → `.akkado` × layer) 와 프로브 다섯 개를 썼다.
-문법 제약은 다 확인했다(§1 의 3·4·7·8). **레이어를 추가는 보류한다.**
+`tool/compile_music.py` (사양 → `.akkado` × layer) 와 입력 사양이 있다.
 
-거부한 이유: 레이어 레시피가 §1-5(스테레로 저역통과 DC)와 §1-6(`saw` 0-mean)을
-모르고 있었다. 실제로 그 오해로 **stem 네 개가 DC 0.57 과 상관도 1.000 으로 망가졌다가
-게이트가 잡아 되돌렸다.** 22 dB 를 모르는 상태에서 20개 stem 을 얹으면 전부 막힌다.
+```
+music/identity.yaml          A phrygian · motif drowned_step(1 b3 5 b7) · 화성 어휘 · 금지 항목
+music/states/<state>.yaml    6개. 레이어 유무·게인·레지스터·화성
+tool/compile_music.py        → stem 16개 (bass/harmony/drums × 6 상태)
+```
 
-`compile_music.py` 는 이 규칙을 **자동으로 지킬 수 있다** — wide stem 은
-`stereo()` + `out()` 1인자 형태로만 코드 생성하고, 상수 컷오프 차이는 쓰지 않으면 된다.
-그래서 컴파일러는 §7-2 다음 순서로 다시 쓴다.
+전 흐름이 동작한다: 사양 → 컴파일 → 렌더 → 루프 접기 → `res://` 설치 → 게이트.
+stem 표가 앰비언스 표와 **같은 모양**이라 런타임 매니페스트와 믹서는 특수 케이스가 없다.
+music stem 의 게인이 `ambient.json` 의 profile 에 그대로 합쳐진다.
+
+### 6.1 2026-09-28 상태 — 16개 중 10개 통과, 6개 미해결
+
+| stem | 게이트 판정 | 원인 |
+|---|---|---|
+| `m_*_bass` 6개 | **렌더 실패** | `n"[...]"` 미니표기 안에는 식을 못 넣는다. `n"[mtof(33) ~ ...]"` 가 `MP01 Expected ',' after euclidean hits` 로 죽는다. 음 **이름**이어야 한다 |
+| `m_*_drums` 6개 | `loop wrap is 15~26 dB brighter` | 틱의 어택이 루프 지점에 정확히 걸린다. envelope 가 거기서 새로 시작한다 |
+| `m_surface_harmony`, `m_wade_harmony` | `loop wrap jump ratio 22` | `ar(1, loop*0.25, loop*0.7)` release 가 두 루프에서 랩에 닿지 않는다. 16초 / 13.3초 루프에서 `loop*0.7` 는 여유가 크다 |
+| `m_deep/cavern/column/dread_harmony` | **통과** | 지속음을 envelope 로 감싸서 랩이 무음에 도달하게 한 덕분 |
+| `m_*_drums` 폭/상관도 | 통과 | |
+
+**게이트가 막는 동안 배경을 커밋하지 않는다는 뜻이 아니다.** 앰비언스 half 는
+그대로 통과한다(11/11, 믹스 7/7). 음악 half 는 초록이 아니다.
+
+첫 판은 27개 전부 막혔고 그Diagnose가 세 가지를 잡았다: **베이스가 모노**
+(detune을 `mtof` 에 반음으로 넣었는데 정수화되어 두 채널이 바이트 단위로 같아짐),
+**지속음의 루프 랩 점프 771**(루프 길이가 오실레이터 주기의 정수배가 아님),
+**베이스가 −0.6 dBFS에 저역 과다**. 셋 다 위 표에 남은 형태로 고쳐졌다.
+
+### 6.2 이미 규명한 것
+
+- 지속음(`held saw`)은 그 자체로 루프가 안 된다. ** enveloped 시켜야 한다** — 앞 판의
+  `m_deep_harmony` 처럼 `ar(1, loop*0.25, loop*0.7)` 를 걸면 랩이 무음에 닿고 점프가
+  0.39 로 떨어진다.
+- **`mtof()` 는 미니표기 안에서 쓸 수 없다.** 주파수는 `mtof(N) * 1.002` 형태로
+  식 바깥에 두어야 하고, 미니표기에는 음 이름을 써야 한다.
+- 두 채널 detune 은 **주파수 비율**로 한다. `mtof(N + 0.04)` 는 `mtof(N)` 이 된다.
+
 
 ## 7. 다음 일 — 순서대로
 

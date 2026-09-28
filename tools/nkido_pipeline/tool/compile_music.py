@@ -1,23 +1,27 @@
-"""Compile a MusicSpec into akkado patches.
+"""Compile a MusicSpec state into akkado patches.
 
-The authored source is YAML: `music/identity.yaml` holds what stays the same
-across the whole game, `music/states/<state>.yaml` holds what changes. This
-script turns one state into one patch per audible layer plus a stem table.
+`music/identity.yaml` holds what does not change; `music/states/<state>.yaml`
+holds what does. This turns one state into one patch per audible layer and a
+stem table shaped exactly like the ambience table, so the runtime manifest is
+one merged structure and the mixer needs no special case.
 
-Two things live here rather than in the spec, on purpose:
+Three things live here rather than in the spec, on purpose.
 
-  * the stereo rule. Every filter writes both channels and copies a mono input
-    to both, so a signal that has passed a filter is a duplicated pair and
-    re-widening it does not bring the difference back. Measured over 21 cases;
-    see music/PIPELINE_REVIEW.md. The compiler only ever emits
-    `stereo(...) |> filters |> out(one argument)`, so a layer cannot be born
-    mono by accident.
-  * the synthesis recipes. Drums are built from oscillators and noise because
-    the sample bank is switched off for licensing reasons, so a kick is a pitch
-    envelope, not a sample.
+  * The stereo rules. A filter duplicates a mono input into both channels, so
+    every filter here runs on a mono chain and the widening happens once, at the
+    end, in a single out() argument. The two chains differ by oscillator
+    detune, never by a constant cutoff, because a constant cutoff is folded
+    away at compile time and the two chains come out identical. Measured over
+    27 cases; see music/PIPELINE_REVIEW.md 4.1 and KNOWHOW.md B1.
+  * saw() is already zero-mean. Nothing subtracts 0.5 from it. That mistake was
+    made twice and the gate caught it twice.
+  * The synthesis recipes. The sample bank is off for licensing, so a kick is a
+    pitch envelope and a hat is filtered noise. There is no sample() call and no
+    n"sh*8" pattern, because those render silence rather than fail.
 
-Notation for the motif: degrees relative to the identity root, as integers in
-the same space `mtof` uses.
+What this deliberately does not do: use euclid() in a multiplication. It renders
+at -60 dBFS rather than erroring, which is the worst kind of failure. Rhythm is
+built from ar(trigger(n)) envelopes instead.
 """
 
 import argparse
@@ -31,189 +35,31 @@ except ImportError:
     sys.stderr.write("compile_music: PyYAML is required and is not installed\n")
     sys.exit(2)
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-LAYERS = ("drums", "bass", "harmony", "melody")
-
-# A loop has to be an exact multiple of every LFO in it, so a state's loop is
-# always N bars at a bpm that divides 60. 120 gives 0.5 s per beat: four bars is
-# 8 seconds, eight bars is 16. LFO rates are then simple fractions of 1/8 or
-# 1/16 Hz, which is why the LFO table below is written in whole/8.
-BAR_SECONDS_AT_120 = 2.0
-
-
-def bars_to_seconds(bars, bpm):
-    beats = bars * 4.0
-    return beats * 60.0 / bpm
+NOTE_NAMES = ["c", "cs", "d", "ds", "e", "f", "fs", "g", "gs", "a", "as", "b"]
+# Flat spellings, because A phrygian is a flat key. A degree that needs a
+# semitone gets a flat, never a sharp: Bb above the motif is what makes this
+# game's harmony, and spelling it A# would read as a different music.
+FLAT_SPELL = [("a", 0), ("as", 1), ("c", 3), ("d", 5), ("ds", 6), ("e", 7), ("f", 8), ("g", 10), ("as", 11)]
 
 
-def lfo(rate_hz, loop_seconds):
-    """Snap an LFO rate to a whole number of cycles per loop, and say so."""
-    cycles = max(1, round(rate_hz * loop_seconds))
-    return cycles / loop_seconds, cycles
+def degree_to_note(root_name, degree, base_octave):
+    """A scale degree as a mini-notation note name, walking up from the root.
 
-
-def apply_variation(degrees, variation):
-    """Typed motif operations. Anything unknown is an error, not a no-op.
-
-    A rule written in prose is not a rule; a rule the compiler refuses to
-    compile is.
+    Degrees arrive already transposed, so they can be negative. Fold the pitch
+    class before the lookup and floor-divide for the octave, otherwise a
+    negative degree lands outside the spelling table.
     """
-    known = {"transpose", "invert", "register", "augment", "diminution", "reverse", "drop", "density"}
-    for key in variation:
-        if key not in known:
-            raise SystemExit("compile_music: unknown motif operation '%s'" % key)
-    out = list(degrees)
-    if variation.get("invert"):
-        out = [-d for d in out]
-    if variation.get("reverse"):
-        out = list(reversed(out))
-    if variation.get("drop"):
-        keep = [i for i, _ in enumerate(out) if i not in set(variation["drop"])]
-        out = [out[i] for i in keep]
-    offset = int(variation.get("transpose", 0)) + 12 * int(variation.get("register", 0))
-    return [d + offset for d in out]
-
-
-def rhythm_of(identity, variation):
-    base = list(identity["motif"].get("rhythm", [1.0]))
-    factor = float(variation.get("augment", 1.0)) / float(variation.get("diminution", 1.0))
-    return [r * factor for r in base]
-
-
-# ---------------------------------------------------------------------------
-# layer recipes
-
-
-def header(state, layer, identity, loop_seconds):
-    return [
-        "// GENERATED by tools/nkido_pipeline/tool/compile_music.py from",
-        "//   music/identity.yaml + music/states/%s.yaml" % state["id"],
-        "// layer: %s   loop: %g s   bpm: %g" % (layer, loop_seconds, state["bpm"]),
-        "// Edit the YAML, not this file.",
-        "//",
-        "// Stereo: the field is built from bare sources with different seeds and",
-        "// handed to a single out() argument. See music/PIPELINE_REVIEW.md 4.1.",
-        "bpm = %g" % state["bpm"],
-        "",
-    ]
-
-
-def build_drums(state, identity, loop, variation, settings):
-    """No sample bank, so a kit is oscillators and noise.
-
-    A phase-offset backbeat is not available here: `trigger(n)` always fires on
-    the bar, so kick and snare cannot sit on beats 1 and 3 without a delay line
-    this toolchain does not expose. Rather than fake it, the kit stays a sparse
-    low bed, which is what a descent wants anyway.
-    """
-    kick_every = int(settings.get("kick_every", 2))
-    kick_level = float(settings.get("kick_level", 0.5))
-    hat_hits = int(settings.get("hat_hits", 5))
-    hat_level = float(settings.get("hat_level", 0.10))
-    tick_hits = int(settings.get("tick_hits", 3))
-    tick_level = float(settings.get("tick_level", 0.07))
-
-    lines = header(state, "drums", identity, loop)
-    lines += [
-        "# sparse kit: kick on every %d beats, hats and a tick on an 8-step grid" % kick_every,
-        "kick_pitch = 112 - 74 * ar(trigger(%d), 0.001, 0.06)" % kick_every,
-        "left_kick = sine(kick_pitch) * ar(trigger(%d), 0.001, 0.20) * %.3f" % (kick_every, kick_level),
-        "right_kick = sine(kick_pitch * 1.004) * ar(trigger(%d), 0.001, 0.20) * %.3f" % (kick_every, kick_level),
-        "hats = n\"sh*8\".euclid(%d, 8) * ar(trigger(1)) * %.3f" % (hat_hits, hat_level),
-        "ticks = n\"sh*8\".euclid(%d, 8) * ar(trigger(2)) * %.3f" % (tick_hits, tick_level),
-        "body = stereo(left_kick, right_kick) + stereo(hats, hats) + stereo(ticks, ticks)",
-        "out(body |> hp(@, 45, 0.7))",
-        "",
-    ]
-    return "\n".join(lines)
-
-
-def build_bass(state, identity, loop, variation, settings):
-    degrees = apply_variation(identity["motif"]["degrees"], variation)
-    root = int(identity["tonality"]["root"]) + 12 * int(settings.get("register", -1))
-    cutoff = float(settings.get("cutoff", 320))
-    level = float(settings.get("level", 0.18))
-    detune = float(settings.get("detune", 0.003))
-    notes = ", ".join("mtof(%d)" % (root + d) for d in degrees)
-    lines = header(state, "bass", identity, loop)
-    lines += [
-        "# the motif's own notes, an octave and a bit below the root, held and filtered",
-        "left_bass = tri(%s) * %.3f" % (notes, level),
-        "right_bass = tri(%s) * %.3f" % (
-            ", ".join("mtof(%d)" % (root + d + round(detune * 12)) for d in degrees), level),
-        "field = stereo(left_bass, right_bass)",
-        "out(field |> lp(@, %.0f, 1.2) |> freeverb(@, 0.7, 0.6, 0.2, 0.2))" % cutoff,
-        "",
-    ]
-    return "\n".join(lines)
-
-
-def build_harmony(state, identity, loop, variation, settings):
-    degrees = apply_variation(identity["motif"]["degrees"], variation)
-    root = int(identity["tonality"]["root"])
-    cutoff_low = float(settings.get("cutoff_low", 520))
-    cutoff_high = float(settings.get("cutoff_high", 1100))
-    level = float(settings.get("level", 0.10))
-    spread = float(settings.get("spread", 0.4))
-    arc, cycles = lfo(1.0 / loop_seconds, loop)
-    notes_left = " + ".join("saw(mtof(%d))" % (root + d) for d in degrees)
-    notes_right = " + ".join("saw(mtof(%d))" % (root + d + 1) for d in degrees)
-    lines = header(state, "harmony", identity, loop)
-    lines += [
-        "# the motif voiced as a held chord. One sweep per loop: %d cycles of %.4f Hz," % (cycles, arc),
-        "# so the filter is back where it started when the loop turns over.",
-        "sweep = sine(%.6f) * %.0f + %.0f" % (arc, (cutoff_high - cutoff_low) / 2.0, (cutoff_high + cutoff_low) / 2.0),
-        "left_chord = (%s) * %.3f" % (notes_left, level),
-        "right_chord = (%s) * %.3f" % (notes_right, level),
-        "field = stereo(left_chord, right_chord)",
-        "out(field |> lp(@, sweep, 1.3) |> freeverb(@, 0.88, 0.55, 0.3, 0.4))",
-        "",
-    ]
-    del spread
-    return "\n".join(lines)
-
-
-def build_melody(state, identity, loop, variation, settings):
-    degrees = apply_variation(identity["motif"]["degrees"], variation)
-    rhythm = rhythm_of(identity, variation)
-    root = int(identity["tonality"]["root"]) + 12 * int(settings.get("register", 1))
-    cutoff = float(settings.get("cutoff", 2200))
-    level = float(settings.get("level", 0.035))
-    seconds_per_beat = 60.0 / state["bpm"]
-    offsets = []
-    cursor = 0.0
-    for step in rhythm:
-        offsets.append(cursor)
-        cursor += step
-    lines = header(state, "melody", identity, loop)
-    lines.append("# the motif in time: %s beats per note, one hit per step" % "/".join("%.2f" % r for r in rhythm))
-    for side, seed in (("left", 0), ("right", 1)):
-        parts = []
-        for index, (degree, offset) in enumerate(zip(degrees, offsets)):
-            when = offset * seconds_per_beat
-            parts.append(
-                'mtof(%d) * ar(trigger(%d) * (clock() >= %.4f) * (clock() < %.4f), 0.012, %.3f)'
-                % (root + degree, max(1, round(when / seconds_per_beat)) or 1, when / (loop or 1), when / (loop or 1) + 0.0001, rhythm[index] * seconds_per_beat * 0.9)
-            )
-        lines.append("%s_melody = %s" % (side, " + ".join(parts)))
-    lines += [
-        "field = stereo(left_melody, right_melody)",
-        "out(field |> lp(@, %.0f, 1.1) |> freeverb(@, 0.8, 0.5, 0.3, 0.35))" % cutoff,
-        "",
-    ]
-    del seed, level
-    return "\n".join(lines)
-
-
-BUILDERS = {
-    "drums": build_drums,
-    "bass": build_bass,
-    "harmony": build_harmony,
-    "melody": build_melody,
-}
-
-
-# ---------------------------------------------------------------------------
+    root_pc = NOTE_NAMES.index(root_name.lower())
+    del root_pc  # FLAT_SPELL offsets are already relative to A.
+    deg = int(degree)
+    relative = deg % 12
+    octave = base_octave + deg // 12
+    for name, offset in FLAT_SPELL:
+        if offset == relative:
+            return "%s%d" % (name, octave)
+    raise SystemExit("compile_music: no spelling for %s + %d" % (root_name, deg))
 
 
 def load_yaml(path):
@@ -221,20 +67,214 @@ def load_yaml(path):
         return yaml.safe_load(handle)
 
 
+def bars_to_seconds(bars, bpm):
+    return bars * 4.0 * 60.0 / bpm
+
+
+def snap_lfo(rate_hz, loop_seconds):
+    """Whole number of cycles per loop, so the filter arc closes on itself."""
+    cycles = max(1, round(rate_hz * loop_seconds))
+    return cycles / loop_seconds, cycles
+
+
+def apply_variation(degrees, variation):
+    """Typed motif operations. An unknown key is an error, not a no-op."""
+    known = {"transpose", "invert", "register", "augment", "diminution", "reverse", "drop", "density"}
+    for key in variation:
+        if key not in known:
+            raise SystemExit("compile_music: unknown motif operation '%s'" % key)
+    out = list(degrees)
+    if variation.get("drop"):
+        drop = set(int(i) for i in variation["drop"])
+        out = [d for i, d in enumerate(out) if i not in drop]
+    if variation.get("invert"):
+        out = [-d for d in out]
+    if variation.get("reverse"):
+        out = list(reversed(out))
+    offset = int(variation.get("transpose", 0)) + 12 * int(variation.get("register", 0))
+    return [d + offset for d in out]
+
+
+def keep_count(total, density):
+    return max(0, min(total, int(round(total * float(density)))))
+
+
+def mini(degrees, names, density, register):
+    """Motif as a mini-notation string, with rests between the notes we keep."""
+    wanted = keep_count(len(degrees), density)
+    slots = []
+    for index, degree in enumerate(degrees):
+        if index < wanted:
+            name = names[index]
+            octave = 4 + (12 * register) // 12
+            if register > 0:
+                octave = 4 + register
+            slots.append(name + str(octave))
+        else:
+            slots.append("~")
+    return "n\"[" + " ".join(slots) + "]\""
+
+
+def header(state, layer, loop_seconds):
+    return [
+        "// GENERATED by tools/nkido_pipeline/tool/compile_music.py from",
+        "//   music/identity.yaml + music/states/%s.yaml" % state["id"],
+        "// layer: %s   loop: %g s   bpm: %g" % (layer, loop_seconds, state["bpm"]),
+        "// Edit the YAML, not this file.",
+        "//",
+        "// Stereo: filters run on mono chains, the widening happens once at the end in a",
+        "// single out() argument, and the two chains differ by oscillator detune. A",
+        "// constant cutoff difference is folded away by the compiler and the two chains",
+        "// come out identical. saw() is already zero-mean, so nothing subtracts from it.",
+        "// No sample bank: a kick is a pitch envelope, a tick is filtered noise.",
+        "bpm = %g" % state["bpm"],
+        "",
+    ]
+
+
+# ---------------------------------------------------------------------------
+# layers
+
+
+def build_bass(state, identity, loop, settings, variation):
+    """The motif as a bass line, not a drone.
+
+    A held oscillator whose period does not divide the loop lands on a phase
+    discontinuity at the wrap, and the gate measures it: the first draft came
+    back at a wrap jump ratio of 771. So the line is a four-note figure with a
+    per-note envelope, which decays to silence before the wrap and gives the
+    part rhythm instead of a hum.
+
+    The detune is a frequency ratio, not semitones through mtof. mtof of 33.04
+    is 33, so the two channels came out bit-identical and the layer was mono.
+    """
+    degrees = apply_variation(identity["motif"]["degrees"], variation)
+    root = int(identity["tonality"]["root_midi"]) + 12 * int(settings.get("register", -1))
+    level = float(settings.get("level", 0.16))
+    ratio = 1.002
+    names = " ".join("mtof(%d)" % (root + d) for d in degrees)
+    alt = " ".join("mtof(%d) * %.4f" % (root + d, ratio) for d in degrees)
+    figure = 'n"[' + " ~ ".join(names.split() + [names.split()[0]]) + ']"'
+    alt_figure = 'n"[' + " ~ ".join(alt.split() + [alt.split()[0]]) + ']"'
+    lines = header(state, "bass", loop)
+    lines += [
+        "// the motif as a four note figure, one note per beat of a bar",
+        "left_bass = %s |> tri(@.freq) * adsr(@.gate, 0.02, 0.14, 0.5, 0.30) * %.3f" % (figure, level),
+        "right_bass = %s |> tri(@.freq) * adsr(@.gate, 0.02, 0.14, 0.5, 0.30) * %.3f" % (alt_figure, level),
+        "left_voice = left_bass |> lp(@, %.0f, 1.0) |> freeverb(@, 0.7, 0.6, 0.2, 0.2)" % float(settings.get("cutoff", 340)),
+        "right_voice = right_bass |> lp(@, %.0f, 1.0) |> freeverb(@, 0.7, 0.6, 0.2, 0.2)" % float(settings.get("cutoff", 340)),
+        "out(stereo(left_voice, right_voice))",
+        "",
+    ]
+    del alt
+    return "\n".join(lines)
+
+
+def build_harmony(state, identity, loop, settings, variation):
+    """Motif voiced as a held chord. Note names, so the voicing is written down."""
+    voicing = settings.get("voicing", [0, 3, 7])
+    degrees = apply_variation(identity["motif"]["degrees"], variation)
+    pool = sorted(set(list(voicing) + degrees))
+    root = int(identity["tonality"]["root_midi"])
+    # mtof with explicit midi numbers, not a c"..." chord literal. The literal
+    # is looked up as a sample name first, so a spelling the resolver does not
+    # know comes back as "sample not found in any loaded bank" and lands on
+    # stderr. The spec keeps the readable degrees; the patch keeps the numbers.
+    left_chord = " + ".join("saw(mtof(%d))" % (root + d) for d in pool)
+    right_chord = " + ".join("saw(mtof(%d))" % (root + d + 1) for d in pool)
+    low = float(settings.get("cutoff_low", 500))
+    high = float(settings.get("cutoff_high", 1400))
+    arc, cycles = snap_lfo(1.0 / loop, loop)
+    level = float(settings.get("level", 0.09))
+    detune = 0.005
+    lines = header(state, "harmony", loop)
+    lines += [
+        "// voicing %s, in midi %s" % (pool, [root + d for d in pool]),
+        "// %d cycles of %.5f Hz per loop, so the arc is back where it started at the wrap." % (cycles, arc),
+        "// ar(1, ...) fires once and then releases, so the pad swells and is silent at the",
+        "// wrap. A plain held saw leaves a phase step there and the gate measures it.",
+        "arc = sine(%.6f) * %.0f + %.0f" % (arc, (high - low) / 2.0, (high + low) / 2.0),
+        "left_pad = (%s) * %.3f * ar(1, %.1f, %.1f)" % (left_chord, level, loop * 0.25, loop * 0.7),
+        "right_pad = (%s) * %.3f * ar(1, %.1f, %.1f)" % (right_chord, level, loop * 0.25, loop * 0.7),
+        "left_voice = left_pad |> lp(@, arc, 1.3) |> freeverb(@, 0.88, 0.55, 0.3, 0.4)",
+        "right_voice = right_pad |> lp(@, arc, 1.3) |> freeverb(@, 0.88, 0.55, 0.3, 0.4)",
+        "out(stereo(left_voice, right_voice))",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def build_melody(state, identity, loop, settings, variation):
+    """The motif, in time. This is the layer that would make the game a game."""
+    degrees = apply_variation(identity["motif"]["degrees"], variation)
+    pattern = mini(degrees, identity["motif"]["names"], variation.get("density", 1.0),
+                   int(variation.get("register", 0)))
+    register = int(settings.get("register", 1))
+    octave = 4 + register
+    names = []
+    for index, degree in enumerate(degrees):
+        names.append(identity["motif"]["names"][index])
+    pattern = mini(degrees, names, variation.get("density", 1.0), octave)
+    level = float(settings.get("level", 0.035))
+    cutoff = float(settings.get("cutoff", 2200))
+    lines = header(state, "melody", loop)
+    lines += [
+        "// # per step, with rests where the density thins it out",
+        "motif_line = %s" % pattern,
+        "left_note = motif_line |> tri(@.freq) * adsr(@.gate, 0.02, 0.18, 0.55, 0.35) * %.3f" % level,
+        "right_note = motif_line |> tri(@.freq * 1.003) * adsr(@.gate, 0.02, 0.18, 0.55, 0.35) * %.3f" % level,
+        "left_voice = left_note |> lp(@, %.0f, 1.1) |> freeverb(@, 0.8, 0.5, 0.3, 0.35)" % cutoff,
+        "right_voice = right_note |> lp(@, %.0f, 1.1) |> freeverb(@, 0.8, 0.5, 0.3, 0.35)" % cutoff,
+        "out(stereo(left_voice, right_voice))",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def build_drums(state, identity, loop, settings, variation):
+    """No sample bank, and no euclid in a multiplication: that renders silence.
+
+    The kick is a pitch envelope on a sine. The tick is filtered noise under its
+    own envelope. Both are envelopes, which is the one rhythm primitive this
+    toolchain is honest about.
+    """
+    kick_every = int(settings.get("kick_every", 2))
+    kick_level = float(settings.get("kick_level", 0.4))
+    tick_every = int(settings.get("tick_every", 2))
+    tick_level = float(settings.get("tick_level", 0.06))
+    lines = header(state, "drums", loop)
+    lines += [
+        "// kick every %d beats, tick every %d. No euclid, no sample names." % (kick_every, tick_every),
+        "kick_pitch = 108 - 68 * ar(trigger(%d), 0.004, 0.07)" % kick_every,
+        "left_kick = sine(kick_pitch) * ar(trigger(%d), 0.004, 0.22) * %.3f" % (kick_every, kick_level),
+        "right_kick = sine(kick_pitch * 1.006) * ar(trigger(%d), 0.004, 0.22) * %.3f" % (kick_every, kick_level),
+        "tick_env = ar(trigger(%d), 0.002, 0.06) * %.3f" % (tick_every, tick_level),
+        "left_tick = noise(0, 0, 401) * tick_env |> lp(@, 2200, 0.9) |> hp(@, 900, 0.7)",
+        "right_tick = noise(0, 0, 907) * tick_env |> lp(@, 2200, 0.9) |> hp(@, 900, 0.7)",
+        "left_kit = left_kick + left_tick",
+        "right_kit = right_kick + right_tick",
+        "out(stereo(left_kit, right_kit))",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+BUILDERS = {"bass": build_bass, "harmony": build_harmony, "melody": build_melody, "drums": build_drums}
+
+
+# ---------------------------------------------------------------------------
+
+
 def compile_state(identity, state, out_dir):
     loop = bars_to_seconds(state.get("bars", 4), state["bpm"])
     variation = state.get("motif_variation", {})
-    layers = state.get("layers", {})
     written = []
-
-    for layer in LAYERS:
-        settings = layers.get(layer)
-        if not settings:
+    for layer, builder in BUILDERS.items():
+        settings = state.get("layers", {}).get(layer)
+        if not settings or float(settings.get("gain", 0.0)) <= 0.0:
             continue
-        if float(settings.get("gain", 0.0)) <= 0.0:
-            continue
-        body = BUILDERS[layer](state, identity, loop, variation, settings)
-        name = "%s_%s" % (state["id"], layer)
+        body = builder(state, identity, loop, settings, variation)
+        name = "m_%s_%s" % (state["id"], layer)
         path = os.path.join(out_dir, name + ".akkado")
         with open(path, "w", encoding="utf-8") as handle:
             handle.write(body)
@@ -248,7 +288,7 @@ def compile_state(identity, state, out_dir):
             "bars": state.get("bars", 4),
             "bpm": state["bpm"],
             "gain": float(settings.get("gain", 0.0)),
-            "volume_db": float(settings.get("volume_db", -14.0)),
+            "volume_db": float(settings.get("volume_db", -20.0)),
             "bus": "Music",
         })
     return written
@@ -257,40 +297,45 @@ def compile_state(identity, state, out_dir):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--identity", required=True)
-    parser.add_argument("--states", required=True, help="directory of <state>.yaml files")
-    parser.add_argument("--out", required=True, help="directory for the generated patches")
-    parser.add_argument("--stem-table", default="", help="write the stem table here as JSON")
+    parser.add_argument("--states", required=True)
+    parser.add_argument("--out", required=True)
+    parser.add_argument("--stem-table", required=True)
     parser.add_argument("--quiet", action="store_true")
     args = parser.parse_args()
 
     identity = load_yaml(args.identity)
-    if "motif" not in identity or "tonality" not in identity:
-        sys.stderr.write("compile_music: identity needs tonality and motif\n")
+    for key in ("motif", "tonality"):
+        if key not in identity:
+            sys.stderr.write("compile_music: identity needs %s\n" % key)
+            return 2
+    if len(identity["motif"]["names"]) != len(identity["motif"]["degrees"]):
+        sys.stderr.write("compile_music: motif names and degrees must be the same length\n")
         return 2
 
     os.makedirs(args.out, exist_ok=True)
-    stems = []
-    states = sorted(name for name in os.listdir(args.states) if name.endswith(".yaml"))
-    if not states:
+    stems, gains = [], {}
+    names = sorted(n for n in os.listdir(args.states) if n.endswith(".yaml"))
+    if not names:
         sys.stderr.write("compile_music: no state specs in %s\n" % args.states)
         return 2
 
-    for name in states:
-        state = load_yaml(os.path.join(args.states, name))
+    for filename in names:
+        state = load_yaml(os.path.join(args.states, filename))
         written = compile_state(identity, state, args.out)
         stems.extend(written)
+        gains[state["id"]] = {s["id"]: s["gain"] for s in written}
         if not args.quiet:
-            print("  %-10s %d bars  %g s loop  %d layers" % (
+            print("  %-10s %2d bars %5.1f s  %d layers  %s" % (
                 state["id"], state.get("bars", 4),
-                bars_to_seconds(state.get("bars", 4), state["bpm"]), len(written)))
+                bars_to_seconds(state.get("bars", 4), state["bpm"]), len(written),
+                " ".join(s["layer"] for s in written)))
 
-    if args.stem_table:
-        os.makedirs(os.path.dirname(os.path.abspath(args.stem_table)), exist_ok=True)
-        with open(args.stem_table, "w", encoding="utf-8") as handle:
-            json.dump({"generator": "compile_music.py", "stems": stems}, handle, indent=2)
-
+    os.makedirs(os.path.dirname(os.path.abspath(args.stem_table)), exist_ok=True)
+    with open(args.stem_table, "w", encoding="utf-8") as handle:
+        json.dump({"generator": "compile_music.py", "identity": identity["project"],
+                   "stems": stems, "gains": gains}, handle, indent=2, ensure_ascii=False)
     if not args.quiet:
-        print("  %d stems from %d states" % (len(stems), len(states)))
+        print("  %d stems from %d states" % (len(stems), len(names)))
     return 0
 
 

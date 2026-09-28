@@ -1,0 +1,24 @@
+# state: surface — 얼음 위. 음악이라기보다 물속 소리와 아주 얇은 바닥 하나.
+# energy 는 목표가 아니라 결과다. 목표를 적으면 짐승이 뒤에서 올라온다.
+id: surface
+bpm: 60
+bars: 4
+motif_variation:
+  register: 0
+  density: 0.25         # motif 중 몇 음을 실제로 칠지
+layers:
+  bass:
+    gain: 0.30
+    volume_db: -26.0
+    register: -1
+    cutoff: 520
+  harmony:
+    gain: 0.45
+    volume_db: -24.0
+    voicing: [0, 3, 7]   # A C E, 열린 화성
+    cutoff_low: 600
+    cutoff_high: 1300
+  melody:
+    gain: 0.0            # 아직 없다. 들어오면 이 게임의 얼굴이 달라진다
+  drums:
+    gain: 0.0
