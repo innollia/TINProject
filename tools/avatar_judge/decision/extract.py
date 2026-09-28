@@ -66,6 +66,24 @@ def parse(raw):
     return None
 
 
+def best_list(raw, key):
+    """모델 답에서 key 칸을 가진 객체가 가장 많이 든 JSON 배열을 찾는다. 앞뒤 글과 다른 배열은 무시한다."""
+    dec = json.JSONDecoder()
+    best = []
+    i = raw.find("[")
+    while i != -1:
+        try:
+            v, _ = dec.raw_decode(raw, i)
+        except ValueError:
+            v = None
+        if isinstance(v, list):
+            items = [x for x in v if isinstance(x, dict) and x.get(key)]
+            if len(items) > len(best):
+                best = items
+        i = raw.find("[", i + 1)
+    return best
+
+
 def work(path, outdir):
     chunk = json.load(open(path, encoding="utf-8"))
     dst = os.path.join(outdir, chunk["id"] + ".json")

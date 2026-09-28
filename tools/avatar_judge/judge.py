@@ -1,87 +1,68 @@
 """형님 분신 검수관: 이미지나 글을 넣으면 한 줄 평 + 통과/퇴짜 + 점수를 낸다.
 
+새 구조(형님 제안 5번: 판단 엔진과 말투 층 분리, Jev 지원):
+  이미지/글 → (이미지면) LLM 묘사 → decide.py(Jev 있으면 Jev, 없으면 LLM 판정)
+            → voice.py 말투 한 줄
+Jev(TypeSafe System One)는 글을 못 만들므로 통과/퇴짜/점수만 맡고, 말투는 LLM이 붙인다.
+이미지는 Jev가 state로 텍스트만 받으므로, 먼저 LLM으로 그림을 묘사해 넣는다.
+
 사용 예
   python judge.py --image C:/path/shot.png --desc "07 레벨 캡처"
   python judge.py --text "새 기획안: ..."
   python judge.py --file plan.md
 """
 import argparse
-import hashlib
 import json
 import os
-import re
-import subprocess
 import sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-MODEL = os.environ.get("AVATAR_JUDGE_MODEL", "claude-sonnet-5")
-KIRO = os.environ.get("KIRO_CLI", "kiro-cli")
-ANSI = re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "decision"))
+from decide import decide          # noqa: E402  Jev 우선, 없으면 LLM
+from extract import call           # noqa: E402
+import jev                         # noqa: E402
+
+DESCRIBE = """아래 이미지를 판정용으로 객관 묘사만 해라. 좋다/나쁘다 평가는 하지 마라.
+- 무엇이 그려졌나(생물이면 몸 구조·다리 수·실루엣, 화면이면 오브젝트·배경·UI)
+- 움직임 단서(정지 캡처면 도형처럼 딱딱한지 / 관절·물리가 보이는지)
+- 색·구도·완성도
+이미지 경로(직접 열어 볼 것): {image}
+추가 설명: {desc}
+출력은 묘사 문단 하나."""
+
+VOICE = """아래 판단 결과를 innollia(형님) 말투 한 줄로 바꿔라. 판단 내용은 바꾸지 않는다.
+말투: 토큰 아끼는 반말, 짧고 직설적. 예: "배경은 좋아. 물체가 딱딱한게 문제", "흔해서 펑", "굳".
+출력은 그 한 줄만.
+판단: {choice}
+근거: {reason}"""
 
 
-def load_judgments():
-    with open(os.path.join(HERE, "judgments.jsonl"), encoding="utf-8") as f:
-        return [json.loads(line) for line in f if line.strip()]
+def voice_line(choice, reason):
+    lines = call(VOICE.format(choice=choice, reason=reason)).strip().splitlines()
+    return next((l for l in reversed(lines) if l.strip()), "")
 
 
-def is_holdout(jid):
-    return int(hashlib.sha1(jid.encode()).hexdigest(), 16) % 8 < 3
-
-
-def format_example(j):
-    word = "통과" if j["verdict"] == "pass" else "퇴짜"
-    return f"- 대상: {j['target']}\n  형님: \"{j['quote']}\" → {word} ({j['reason']})"
-
-
-def build_prompt(target, exclude_ids=()):
-    with open(os.path.join(HERE, "judge_prompt.md"), encoding="utf-8") as f:
-        template = f.read()
-    with open(os.path.join(HERE, "taste_profile.md"), encoding="utf-8") as f:
-        profile = f.read()
-    examples = [
-        format_example(j)
-        for j in load_judgments()
-        if not is_holdout(j["id"]) and j["id"] not in exclude_ids
-    ]
-    return (
-        template.replace("{{PROFILE}}", profile)
-        .replace("{{EXAMPLES}}", "\n".join(examples))
-        .replace("{{TARGET}}", target)
-    )
-
-
-def call_model(prompt, timeout=300):
-    cmd = [KIRO, "chat", "--no-interactive", "--model", MODEL,
-           "--trust-tools=fs_read,read", prompt]
-    out = subprocess.run(cmd, capture_output=True, timeout=timeout,
-                         encoding="utf-8", errors="replace")
-    return ANSI.sub("", (out.stdout or "") + "\n" + (out.stderr or ""))
-
-
-def parse(raw):
-    for m in reversed(list(re.finditer(r"\{[^{}]*\"판정\"[^{}]*\}", raw))):
-        try:
-            d = json.loads(m.group(0))
-            d["점수"] = int(d.get("점수", 0))
-            return d
-        except (ValueError, TypeError):
-            continue
-    return {"한줄평": "(해석 실패)", "판정": "퇴짜", "점수": 0, "raw": raw[-500:]}
-
-
-def judge(target_text, image=None, exclude_ids=()):
+def judge(target_text, image=None, desc=""):
     target = target_text or ""
     if image:
-        target += f"\n이미지 경로(직접 열어 볼 것): {image}"
-    prompt = build_prompt(target, exclude_ids)
-    for _ in range(2):
-        got = parse(call_model(prompt))
-        if "raw" not in got:
-            return got
-    if image:
-        got = parse(call_model(build_prompt(target_text or "", exclude_ids)))
-        got["이미지"] = "못 봄(모델 오류로 글 설명만 보고 판정)"
-    return got
+        # Jev도 LLM 판정도 이미지 자체는 텍스트 state가 필요하므로 먼저 묘사한다.
+        target = (call(DESCRIBE.format(image=image, desc=desc or target_text or "")).strip()
+                  + (f"\n(원래 설명: {target_text})" if target_text else ""))
+    d = decide(target, verdict=True)
+    verdict = "통과" if d.get("선택") == "통과" else "퇴짜"
+    score = d.get("점수")
+    if score is None:  # LLM 폴백 경로는 점수를 따로 안 냄 → 확신도로 대략 환산
+        score = int(round(d.get("확신도", 0) * 100)) if verdict == "통과" else int(round((1 - d.get("확신도", 0)) * 40))
+    return {
+        "한줄평": voice_line(d.get("선택", verdict), d.get("근거", "")),
+        "판정": verdict,
+        "점수": score,
+        "확신도": d.get("확신도"),
+        "엔진": d.get("_engine", "jev" if jev.available() else "llm"),
+        "반대로_고를_조건": d.get("반대로_고를_조건", ""),
+        "쓴_규칙": d.get("쓴_규칙", []),
+        "쓴_사건": d.get("쓴_사건", []),
+        "묘사": target if image else None,
+    }
 
 
 def main():
@@ -98,7 +79,7 @@ def main():
     if not text and not a.image:
         ap.error("--image, --text, --file 중 하나는 필요하다")
     sys.stdout.reconfigure(encoding="utf-8")
-    print(json.dumps(judge(text, a.image), ensure_ascii=False))
+    print(json.dumps(judge(text, a.image, a.desc), ensure_ascii=False))
 
 
 if __name__ == "__main__":

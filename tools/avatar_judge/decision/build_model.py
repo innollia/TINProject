@@ -1,20 +1,23 @@
 """판단 사건(train)에서 판단 규칙을 만든다. 시험지(gold)는 읽지 않는다.
 
-  python build_model.py
+  python build_model.py                  # 전 분야를 새로 만든다
+  python build_model.py --domains 그림   # 이 분야만 다시 만들어 기존 규칙에 합친다
 입력: raw/events/train/*.json, answers.jsonl(형님 A/B 답, 가장 강한 근거)
 출력:
   judgment_model.json / judgment_model.md  분야별 규칙(조건 → 경향 → 예외 → 뒤집히는 조건, 근거 사건 id)
-  raw/memory_index.json                     분야 → 사건 요약 목록(여러 해상도 기억의 중간 층)
+  raw/memory_index.json                     분야 → 사건 요약 목록(여러 해상도 기억의 중간 층, 전 분야 모드에서만 새로 쓴다)
 """
+import argparse
 import glob
 import json
 import os
 import sys
 from concurrent.futures import ThreadPoolExecutor
 
-from extract import RAW, call
+from extract import RAW, best_list, call
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(HERE, "judgment_model.json")
 BATCH = 120
 
 PROMPT = """아래는 innollia(형님)의 실제 판단 사건들이다. 분야: {domain}
@@ -28,6 +31,7 @@ PROMPT = """아래는 innollia(형님)의 실제 판단 사건들이다. 분야:
 서로 부딪히는 규칙은 하나로 뭉개지 말고 둘 다 남기고, conflicts_with에 상대 규칙 번호를 적는다.
 [형님 직접 답]으로 표시된 사건은 다른 사건보다 강한 근거다.
 말투·반복 주제·유행어는 판단 근거가 아니다. 무엇을 골랐고 왜 골랐는지만 본다.
+파일을 만들거나 도구를 쓰지 말고, 답 본문에 JSON 배열만 출력한다.
 출력은 JSON 배열 하나만: [{{"id": "{prefix}-1", "condition": "...", "tendency": "...", "exception": "...", "flip": "...", "evidence": [...], "strength": 2, "conflicts_with": []}}]
 
 [사건]
@@ -42,6 +46,8 @@ def load_events():
     ans = os.path.join(HERE, "answers.jsonl")
     if os.path.exists(ans):
         for i, line in enumerate(open(ans, encoding="utf-8")):
+            if not line.strip():
+                continue
             a = json.loads(line)
             ev.append({"eid": f"answer-{i}", "domain": a.get("domain", "기타"),
                        "situation": a["question"], "options": a.get("options", []),
@@ -56,14 +62,10 @@ def short(e):
             f"{' | 남의 해석을 바로잡음' if e.get('correction') else ''}")
 
 
-def parse_list(raw):
-    s, e = raw.find("["), raw.rfind("]")
-    while s != -1 and e > s:
-        try:
-            return json.loads(raw[s:e + 1])
-        except ValueError:
-            s = raw.find("[", s + 1)
-    return []
+def as_list(v):
+    if not v:
+        return []
+    return v if isinstance(v, list) else [v]
 
 
 def build_domain(item):
@@ -73,40 +75,58 @@ def build_domain(item):
         part = evs[b:b + BATCH]
         prefix = f"{domain}{b // BATCH + 1}"
         for _ in range(3):
-            got = parse_list(call(PROMPT.format(domain=domain, prefix=prefix,
-                                                events="\n".join(short(e) for e in part))))
+            got = best_list(call(PROMPT.format(domain=domain, prefix=prefix,
+                                               events="\n".join(short(e) for e in part))), "condition")
             if got:
                 rules += got
                 break
     return domain, rules
 
 
+def write_md(model, by, n_ev):
+    lines = ["# 형님 판단 모델 (자동 생성, build_model.py)", "",
+             f"근거: 기억용 판단 사건 {n_ev}개. 시험지 사건은 쓰지 않았다.", ""]
+    for d, rules in model.items():
+        rules = [r for r in rules if isinstance(r, dict) and r.get("condition")]
+        lines += [f"## {d} ({len(by.get(d, []))}개 사건, 규칙 {len(rules)}개)", ""]
+        for r in rules:
+            cw = ", ".join(map(str, as_list(r.get("conflicts_with"))))
+            lines += [f"- **{r.get('id')}** {r.get('condition')} → {r.get('tendency')}",
+                      f"  - 예외: {r.get('exception') or '-'}",
+                      f"  - 뒤집히는 조건: {r.get('flip') or '-'}",
+                      f"  - 강도 {r.get('strength')} · 근거 {', '.join(map(str, as_list(r.get('evidence'))))}"
+                      + (f" · 충돌 {cw}" if cw else "")]
+        lines.append("")
+    open(os.path.join(HERE, "judgment_model.md"), "w", encoding="utf-8").write("\n".join(lines))
+
+
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--domains", nargs="*", default=None, help="이 분야만 다시 만들어 기존 규칙에 합친다")
+    a = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
     ev = load_events()
     by = {}
     for e in ev:
         by.setdefault(e.get("domain") or "기타", []).append(e)
-    index = {d: [{"eid": e["eid"], "s": e.get("situation", "")[:120], "c": e.get("choice", "")[:120],
-                  "r": e.get("reason", "")[:120], "ref": e.get("ref", "")} for e in es]
-             for d, es in by.items()}
-    json.dump(index, open(os.path.join(RAW, "memory_index.json"), "w", encoding="utf-8"), ensure_ascii=False)
+    if a.domains:
+        model = json.load(open(MODEL_PATH, encoding="utf-8"))
+        todo = [(d, by.get(d, [])) for d in a.domains]
+    else:
+        index = {d: [{"eid": e["eid"], "s": e.get("situation", "")[:120], "c": e.get("choice", "")[:120],
+                      "r": e.get("reason", "")[:120], "ref": e.get("ref", "")} for e in es]
+                 for d, es in by.items()}
+        json.dump(index, open(os.path.join(RAW, "memory_index.json"), "w", encoding="utf-8"), ensure_ascii=False)
+        model = {}
+        todo = sorted(by.items())
     with ThreadPoolExecutor(6) as ex:
-        model = dict(ex.map(build_domain, sorted(by.items())))
-    json.dump(model, open(os.path.join(HERE, "judgment_model.json"), "w", encoding="utf-8"),
-              ensure_ascii=False, indent=1)
-    lines = ["# 형님 판단 모델 (자동 생성, build_model.py)", "",
-             f"근거: 기억용 판단 사건 {len(ev)}개. 시험지 사건은 쓰지 않았다.", ""]
-    for d, rules in model.items():
-        lines += [f"## {d} ({len(by[d])}개 사건, 규칙 {len(rules)}개)", ""]
-        for r in rules:
-            lines += [f"- **{r.get('id')}** {r.get('condition')} → {r.get('tendency')}",
-                      f"  - 예외: {r.get('exception') or '-'}",
-                      f"  - 뒤집히는 조건: {r.get('flip') or '-'}",
-                      f"  - 강도 {r.get('strength')} · 근거 {', '.join(map(str, r.get('evidence', [])))}"
-                      + (f" · 충돌 {', '.join(map(str, r['conflicts_with']))}" if r.get("conflicts_with") else "")]
-        lines.append("")
-    open(os.path.join(HERE, "judgment_model.md"), "w", encoding="utf-8").write("\n".join(lines))
+        for d, rules in ex.map(build_domain, todo):
+            if rules or not a.domains:
+                model[d] = rules
+            else:
+                print(f"{d}: 새 규칙을 못 받아 기존 규칙을 그대로 둠")
+    json.dump(model, open(MODEL_PATH, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    write_md(model, by, len(ev))
     print({d: len(r) for d, r in model.items()}, "사건", len(ev))
 
 

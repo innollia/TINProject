@@ -49,8 +49,12 @@ def grade(e, p):
 
 
 def one(e):
-    p = decide(e.get("situation", ""), e.get("options", []))
-    g = grade(e, p)
+    try:
+        p = decide(e.get("situation", ""), e.get("options", []))
+        g = grade(e, p)
+    except Exception as ex:  # 사건 하나가 실패해도 나머지 채점은 살린다
+        p = {"선택": "(오류)", "확신도": 0.0, "_error": repr(ex)[:300]}
+        g = {"선택": None, "이유": None, "뒤집힘": None}
     return {"eid": e["eid"], "domain": e.get("domain"), "situation": e.get("situation"),
             "실제": {"선택": e.get("choice"), "이유": e.get("reason"), "나중": e.get("aftermath")},
             "예측": p, "채점": g}

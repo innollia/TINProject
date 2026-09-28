@@ -12,10 +12,10 @@
 import argparse
 import json
 import os
-import re
 import sys
 
-from extract import call
+from decide import load_model
+from extract import best_list, call
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 QPATH = os.path.join(HERE, "questions.json")
@@ -27,6 +27,7 @@ PROMPT = """너는 innollia(형님)의 판단 모델에서 가장 불확실한 �
 - 이미 형님이 직접 답한 내용([이미 받은 답])은 다시 묻지 않는다.
 - follow_up: 답을 받은 뒤 경계를 찌를 한 줄 질문(예: "완성 가능성이 30%라면?").
 - hypotheses: 이 질문이 가르는 두 가설(규칙 id 포함).
+파일을 만들거나 도구를 쓰지 말고, 답 본문에 JSON 배열만 출력한다.
 출력은 JSON 배열 하나만:
 [{{"question": "...", "A": "...", "B": "...", "follow_up": "...", "hypotheses": ["...", "..."], "domain": "..."}}]
 
@@ -46,34 +47,33 @@ def rule_line(r):
 
 
 def make(n):
-    model = json.load(open(os.path.join(HERE, "judgment_model.json"), encoding="utf-8"))
+    model = load_model()
     all_rules = {str(r.get("id")): r for rs in model.values() for r in rs}
     conflicts, weak = [], []
     for r in all_rules.values():
-        for c in r.get("conflicts_with", []) or []:
+        for c in r["conflicts_with"]:
             if str(c) in all_rules:
                 conflicts.append(rule_line(r) + "  ⟷  " + rule_line(all_rules[str(c)]))
-        if r.get("strength", 1) <= 1:
+        if r["strength"] <= 1:
             weak.append(rule_line(r))
+    conflicts = list(dict.fromkeys(conflicts))
     ans_path = os.path.join(HERE, "answers.jsonl")
-    answered = [json.loads(l)["question"] for l in open(ans_path, encoding="utf-8")] if os.path.exists(ans_path) else []
-    raw = call(PROMPT.format(n=n, conflicts="\n".join(conflicts[:60]) or "(없음)",
-                             weak="\n".join(weak[:60]) or "(없음)", answered="\n".join(answered) or "(없음)"))
-    s, e = raw.find("["), raw.rfind("]")
+    answered = ([json.loads(l)["question"] for l in open(ans_path, encoding="utf-8") if l.strip()]
+                if os.path.exists(ans_path) else [])
     qs = []
-    while s != -1 and e > s:
-        try:
-            qs = json.loads(raw[s:e + 1])
+    for _ in range(3):
+        raw = call(PROMPT.format(n=n, conflicts="\n".join(conflicts[:60]) or "(없음)",
+                                 weak="\n".join(weak[:60]) or "(없음)", answered="\n".join(answered) or "(없음)"))
+        qs = [q for q in best_list(raw, "question") if q.get("A") and q.get("B")]
+        if qs:
             break
-        except ValueError:
-            s = raw.find("[", s + 1)
     json.dump(qs, open(QPATH, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     out = ["# 분신이 여쭙는 것", "", "번호 + A/B/상황에 따라 로 답해 주시면 됩니다. 이유는 한 줄이면 충분합니다.", ""]
     for i, q in enumerate(qs, 1):
         out += [f"{i}. {q['question']}", f"   - A: {q['A']}", f"   - B: {q['B']}",
-                f"   - 답하시면 이어서: {q['follow_up']}", ""]
+                f"   - 답하시면 이어서: {q.get('follow_up', '')}", ""]
     open(os.path.join(HERE, "questions.md"), "w", encoding="utf-8").write("\n".join(out))
-    print("\n".join(out))
+    print(f"질문 {len(qs)}개 → questions.md")
 
 
 def record(num, answer, reason, flip):
