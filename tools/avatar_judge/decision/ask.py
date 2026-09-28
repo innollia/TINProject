@@ -100,12 +100,16 @@ def main():
     ap.add_argument("--n", type=int, default=10)
     ap.add_argument("--record", nargs="+", metavar=("번호", "답"))
     ap.add_argument("--flip", default="")
+    ap.add_argument("--invent", action="store_true", help="(쓰지 않음) 규칙 충돌에서 가상 질문 만들기")
     a = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
     if a.record:
         record(int(a.record[0]), a.record[1], " ".join(a.record[2:]), a.flip)
-    else:
+    elif a.invent:
         make(a.n)
+    else:
+        print("질문 지어내기는 쓰지 않는다: 맥락이 잘려 답이 쓸모없다(2026-09-28 형님). "
+              "질문은 실제로 멈춘 결정에서 분신 확신이 낮을 때만 올린다. skill/avatar-jev/SKILL.md '계속 보완하는 법'.")
 
 
 if __name__ == "__main__":
