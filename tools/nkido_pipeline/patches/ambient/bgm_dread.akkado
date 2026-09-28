@@ -1,0 +1,11 @@
+// dsc.bgm_dread — the music at the bottom
+// Same root as the other two beds, so all three are mixable. Adds a
+// semitone cluster and a floor of noise under it. Loop 16 s at bpm 60.
+bpm = 60
+
+tones = saw(110) + saw(116.54) + saw(164.81) + saw(233.08)
+grit = noise() * 0.05 |> lp(@, 300, 1.1)
+pulsed = tones * 0.10 * (sine(0.125) * 0.25 + 0.75)
+bed = (pulsed + grit) |> lp(@, 900, 1.2) |> reverb(@, 0.92, 0.65, 0.3, 0.5)
+
+out(bed.pan(0.2), bed.pan(-0.2))

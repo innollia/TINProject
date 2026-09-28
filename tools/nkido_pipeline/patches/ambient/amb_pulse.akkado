@@ -1,0 +1,12 @@
+// dsc.amb_pulse — the thing under the ice that is breathing
+// Heard as a gunshot, not a heartbeat. The saw was the problem: a ramp
+// oscillator restarts with a step, and two of them 0.9 Hz apart give a sharp
+// attack. A pulse needs a soft onset and a long tail, so this is a sine with a
+// rounded attack and no edge, plus a second partial so it is not a test tone.
+// Mono on purpose: a sub bed that is wide only smears the centre image.
+bpm = 60
+
+body = sine(55) * 0.16 + sine(82.4) * 0.05
+hit = body * ar(trigger(2), 0.22, 0.85) |> lp(@, 180, 0.8)
+
+out(hit, hit)

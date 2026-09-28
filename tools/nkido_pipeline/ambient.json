@@ -1,0 +1,187 @@
+﻿{
+  "schema_version": 1,
+  "generator": "nkido",
+  "generator_license": "MIT",
+  "default_bank": false,
+  "sample_rate": 48000,
+  "target": "descent_exploration",
+  "note": "Dynamic ambience is layer gains, not one long track. Every stem is a seamless loop; a profile is a row of per-stem linear gains. The Kit crossfades between profiles, so the same stems read as calm water or as the bottom of the world depending on state.",
+
+  "stems": [
+    {
+      "id": "amb_air",
+      "role": "bed",
+      "description": "Open air above the water line. Broadband noise under a slow breathing lowpass.",
+      "loop_seconds": 8.0,
+      "fade_seconds": 0.5,
+      "bpm": 60,
+      "akkado": "patches/ambient/amb_air.akkado",
+      "wav": "build/wav/ambient/amb_air.wav",
+      "res_file": "res://modules/descent_exploration/audio/ambience/amb_air.wav",
+      "bus": "Music",
+      "volume_db": -22.0
+    },
+    {
+      "id": "amb_surface",
+      "role": "bed",
+      "description": "Water surface seen from below. Thin bright noise with a phaser shimmer, two decorrelated seeds.",
+      "loop_seconds": 8.0,
+      "fade_seconds": 0.5,
+      "bpm": 60,
+      "akkado": "patches/ambient/amb_surface.akkado",
+      "wav": "build/wav/ambient/amb_surface.wav",
+      "res_file": "res://modules/descent_exploration/audio/ambience/amb_surface.wav",
+      "bus": "Music",
+      "volume_db": -26.0
+    },
+    {
+      "id": "amb_column",
+      "role": "bed",
+      "description": "The mid water column. Narrow bandpassed noise drifting slowly, with a whisper of sub.",
+      "loop_seconds": 8.0,
+      "fade_seconds": 0.5,
+      "bpm": 60,
+      "akkado": "patches/ambient/amb_column.akkado",
+      "wav": "build/wav/ambient/amb_column.wav",
+      "res_file": "res://modules/descent_exploration/audio/ambience/amb_column.wav",
+      "bus": "Music",
+      "volume_db": -20.0
+    },
+    {
+      "id": "amb_pulse",
+      "role": "accent",
+      "description": "Four slow low pulses per loop, each a detuned pair so it beats against itself.",
+      "loop_seconds": 8.0,
+      "fade_seconds": 0.5,
+      "bpm": 60,
+      "akkado": "patches/ambient/amb_pulse.akkado",
+      "wav": "build/wav/ambient/amb_pulse.wav",
+      "res_file": "res://modules/descent_exploration/audio/ambience/amb_pulse.wav",
+      "bus": "Music",
+      "volume_db": -18.0
+    },
+    {
+      "id": "amb_pressure",
+      "role": "bed",
+      "description": "Deep water pressure. Two sines a semitone apart beating at 3.3 Hz, everything under 200 Hz.",
+      "loop_seconds": 16.0,
+      "fade_seconds": 0.75,
+      "bpm": 60,
+      "akkado": "patches/ambient/amb_pressure.akkado",
+      "wav": "build/wav/ambient/amb_pressure.wav",
+      "res_file": "res://modules/descent_exploration/audio/ambience/amb_pressure.wav",
+      "bus": "Music",
+      "volume_db": -18.0
+    },
+    {
+      "id": "amb_cavern",
+      "role": "bed",
+      "description": "A hollow room the size of the map. Noise into a feedback delay network, gated slow.",
+      "loop_seconds": 16.0,
+      "fade_seconds": 0.75,
+      "bpm": 60,
+      "akkado": "patches/ambient/amb_cavern.akkado",
+      "wav": "build/wav/ambient/amb_cavern.wav",
+      "res_file": "res://modules/descent_exploration/audio/ambience/amb_cavern.wav",
+      "bus": "Music",
+      "volume_db": -21.0
+    },
+    {
+      "id": "amb_drone",
+      "role": "bed",
+      "description": "The floor of the world, held. Three detuned saws lowpassed hard with a long tail.",
+      "loop_seconds": 16.0,
+      "fade_seconds": 0.75,
+      "bpm": 60,
+      "akkado": "patches/ambient/amb_drone.akkado",
+      "wav": "build/wav/ambient/amb_drone.wav",
+      "res_file": "res://modules/descent_exploration/audio/ambience/amb_drone.wav",
+      "bus": "Music",
+      "volume_db": -24.0
+    },
+    {
+      "id": "amb_dread",
+      "role": "bed",
+      "description": "The wrong kind of quiet. A tritone under a slow tremolo. Nothing resolves.",
+      "loop_seconds": 16.0,
+      "fade_seconds": 0.75,
+      "bpm": 60,
+      "akkado": "patches/ambient/amb_dread.akkado",
+      "wav": "build/wav/ambient/amb_dread.wav",
+      "res_file": "res://modules/descent_exploration/audio/ambience/amb_dread.wav",
+      "bus": "Music",
+      "volume_db": -20.0
+    },
+    {
+      "id": "bgm_descent",
+      "role": "music",
+      "description": "Calm music bed. A minor 11 voiced as a held organ, one filter arc per loop, no melody.",
+      "loop_seconds": 16.0,
+      "fade_seconds": 0.75,
+      "bpm": 60,
+      "akkado": "patches/ambient/bgm_descent.akkado",
+      "wav": "build/wav/ambient/bgm_descent.wav",
+      "res_file": "res://modules/descent_exploration/audio/ambience/bgm_descent.wav",
+      "bus": "Music",
+      "volume_db": -25.0
+    },
+    {
+      "id": "bgm_swell",
+      "role": "music",
+      "description": "Same root as bgm_descent so the two crossfade without a pitch jump. Adds a tritone and one low swell per phrase.",
+      "loop_seconds": 16.0,
+      "fade_seconds": 0.75,
+      "bpm": 60,
+      "akkado": "patches/ambient/bgm_swell.akkado",
+      "wav": "build/wav/ambient/bgm_swell.wav",
+      "res_file": "res://modules/descent_exploration/audio/ambience/bgm_swell.wav",
+      "bus": "Music",
+      "volume_db": -25.0
+    },
+    {
+      "id": "bgm_dread",
+      "role": "music",
+      "description": "Music at the bottom. Same root again, plus a semitone cluster and a floor of noise.",
+      "loop_seconds": 16.0,
+      "fade_seconds": 0.75,
+      "bpm": 60,
+      "akkado": "patches/ambient/bgm_dread.akkado",
+      "wav": "build/wav/ambient/bgm_dread.wav",
+      "res_file": "res://modules/descent_exploration/audio/ambience/bgm_dread.wav",
+      "bus": "Music",
+      "volume_db": -25.0
+    }
+  ],
+
+  "profiles": {
+    "silence": {
+      "note": "Menus, death, and the pause screen. Almost nothing, so the return reads as a change.",
+      "gains": {"amb_air": 0.0, "amb_surface": 0.0, "amb_column": 0.0, "amb_pulse": 0.0, "amb_pressure": 0.2, "amb_cavern": 0.0, "amb_drone": 0.25, "amb_dread": 0.0, "bgm_descent": 0.0, "bgm_swell": 0.0, "bgm_dread": 0.0}
+    },
+    "surface": {
+      "note": "On the ice. Air dominates, the water is a rumour.",
+      "gains": {"amb_air": 1.0, "amb_surface": 0.35, "amb_column": 0.0, "amb_pulse": 0.0, "amb_pressure": 0.0, "amb_cavern": 0.0, "amb_drone": 0.15, "amb_dread": 0.0, "bgm_descent": 0.55, "bgm_swell": 0.0, "bgm_dread": 0.0}
+    },
+    "wade": {
+      "note": "Entering. Air is still there but the surface is louder than it is.",
+      "gains": {"amb_air": 0.7, "amb_surface": 0.8, "amb_column": 0.45, "amb_pulse": 0.0, "amb_pressure": 0.1, "amb_cavern": 0.0, "amb_drone": 0.3, "amb_dread": 0.0, "bgm_descent": 0.7, "bgm_swell": 0.15, "bgm_dread": 0.0}
+    },
+    "column": {
+      "note": "Mid water. The bandpassed drift is the subject now.",
+      "gains": {"amb_air": 0.2, "amb_surface": 0.5, "amb_column": 0.9, "amb_pulse": 0.2, "amb_pressure": 0.35, "amb_cavern": 0.15, "amb_drone": 0.5, "amb_dread": 0.1, "bgm_descent": 0.5, "bgm_swell": 0.55, "bgm_dread": 0.1}
+    },
+    "deep": {
+      "note": "Past the light. Pressure up, surface almost gone, music moving to the swell bed.",
+      "gains": {"amb_air": 0.0, "amb_surface": 0.15, "amb_column": 0.35, "amb_pulse": 0.45, "amb_pressure": 0.9, "amb_cavern": 0.35, "amb_drone": 0.75, "amb_dread": 0.35, "bgm_descent": 0.15, "bgm_swell": 0.7, "bgm_dread": 0.4}
+    },
+    "cavern": {
+      "note": "Inside a hollow. The reverb bed takes the lead and the music gets out of the way.",
+      "gains": {"amb_air": 0.0, "amb_surface": 0.1, "amb_column": 0.2, "amb_pulse": 0.3, "amb_pressure": 0.5, "amb_cavern": 1.0, "amb_drone": 0.6, "amb_dread": 0.5, "bgm_descent": 0.0, "bgm_swell": 0.35, "bgm_dread": 0.6}
+    },
+    "dread": {
+      "note": "The wrong kind of quiet. Dread bed and dread music at full, pulse prominent.",
+      "gains": {"amb_air": 0.0, "amb_surface": 0.0, "amb_column": 0.1, "amb_pulse": 0.7, "amb_pressure": 0.7, "amb_cavern": 0.3, "amb_drone": 0.85, "amb_dread": 1.0, "bgm_descent": 0.0, "bgm_swell": 0.1, "bgm_dread": 0.85}
+    }
+  }
+}
+

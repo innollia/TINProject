@@ -1,0 +1,11 @@
+// dsc.bgm_descent — music bed, calm descent
+// A minor 11 voiced as a held organ and given one slow filter arc per
+// loop. No melody: this is the floor a melody would sit on. Loop 16 s at
+// bpm 60.
+bpm = 60
+
+tones = saw(110) + saw(130.81) + saw(164.81) + saw(196) + saw(220) * 0.6
+arc = sine(0.0625) * 380 + 620
+bed = tones * 0.12 |> lp(@, arc, 1.3) |> reverb(@, 0.85, 0.55, 0.3, 0.4)
+
+out(bed.pan(0.12), bed.pan(-0.12))

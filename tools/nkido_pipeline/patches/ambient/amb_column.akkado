@@ -1,0 +1,11 @@
+// dsc.amb_column — the mid water column, nothing near and nothing far
+// Heard as "flying through the air while cutting the wind", which is what
+// this layer is for. Left alone except for the stereo rule.
+bpm = 60
+
+drift = sine(0.125) * 180 + 520
+left_body = noise(0, 0, 101) * 0.09 |> bp(@, drift, 2.6)
+right_body = noise(0, 0, 977) * 0.09 |> bp(@, drift, 2.6)
+under = stereo(sine(41.2) * 0.04, sine(41.2) * 0.04)
+
+out(stereo(left_body, right_body) + under)

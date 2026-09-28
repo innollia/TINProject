@@ -1,0 +1,15 @@
+// dsc.amb_cavern — a hollow room the size of the map
+// Heard as "unidentifiable dissonance". The fdn was long enough to smear the
+// whole thing into a wash, and nothing in it had a pitch the ear could hold
+// on to, so it read as noise rather than as a room. Given a root, a shorter
+// tail, and a slower door so the entry is felt as movement instead of swell.
+// 'gate' and 'room' are akkido builtin aliases and cannot be rebound.
+bpm = 60
+
+door_open = sine(0.0625) * 0.4 + 0.6
+tone = saw(55) * 0.5 + saw(82.4) * 0.3
+left_hush = noise(0, 0, 101) * 0.05 |> lp(@, 700, 1.0) |> hp(@, 120)
+right_hush = noise(0, 0, 977) * 0.05 |> lp(@, 700, 1.0) |> hp(@, 120)
+body = stereo(left_hush, right_hush) * door_open
+
+out((body + stereo(tone * 0.05, tone * 0.05)) |> freeverb(@, 0.72, 0.5, 0.25, 0.35))

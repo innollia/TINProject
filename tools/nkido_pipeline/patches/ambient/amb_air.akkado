@@ -1,0 +1,12 @@
+// dsc.amb_air — open air above the water line
+// Heard as "blowing into your ear": too much top, too loud. Cut the level,
+// lower the floor, and keep the sweep slow enough that it never hisses.
+// Filter each mono chain, then widen once. A lowpass applied to a
+// stereo-flagged signal piles up low-band energy; see music/PIPELINE_REVIEW.md.
+bpm = 60
+
+breath = sine(0.125) * 320 + 620
+left_air = noise(0, 0, 101) * 0.10 |> lp(@, breath, 0.9) |> hp(@, 90)
+right_air = noise(0, 0, 977) * 0.10 |> lp(@, breath, 0.9) |> hp(@, 90)
+
+out(stereo(left_air, right_air))

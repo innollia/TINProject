@@ -1,0 +1,18 @@
+// dsc.amb_drone — the floor of the world, held
+// Heard as "really loud, and scary". The character is right, the level is not,
+// so the level came down in ambient.json rather than here.
+//
+// Two corrections to the previous version of this file:
+//   - saw() is already zero-mean. Subtracting 0.5 was wrong, was reverted, and
+//     was wrongly reintroduced. With freeverb downstream it reached DC -0.57.
+//   - the two channels differed only by a constant cutoff, which the compiler
+//     folds away, so they came out bit-identical. The detune now lives in the
+//     oscillators, which is something the compiler cannot fold.
+bpm = 60
+
+left_raw = saw(55) * 0.5 + saw(82.4) * 0.35
+right_raw = saw(55.6) * 0.5 + saw(83.1) * 0.35
+left_core = left_raw * 0.20 |> lp(@, 420, 1.1) |> freeverb(@, 0.9, 0.6, 0.3, 0.35)
+right_core = right_raw * 0.20 |> lp(@, 420, 1.1) |> freeverb(@, 0.9, 0.6, 0.3, 0.35)
+
+out(stereo(left_core, right_core))

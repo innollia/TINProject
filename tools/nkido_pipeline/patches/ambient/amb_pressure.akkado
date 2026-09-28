@@ -1,0 +1,15 @@
+// dsc.amb_pressure — deep water pressure
+// Heard as "cannot hear it". The 41 Hz beat was almost entirely below the
+// threshold of a laptop speaker and almost entirely inaudible on anything with
+// a small driver, so it carried no information. Lifted, given a mid component
+// that survives a small speaker, and the beat moved up an octave where it is
+// actually felt as pressure rather than skipped as rumble.
+// Mono on purpose, like amb_pulse.
+bpm = 60
+
+swell = sine(0.0625) * 0.4 + 0.6
+low = (sine(82.4) + sine(87.31) * 0.8) * 0.26 * swell
+mid = (sine(164.81) + sine(174.61) * 0.5) * 0.10 * swell
+air = (noise() * 0.05 |> lp(@, 320, 1.0)) * swell
+
+out(low + mid + air, low + mid + air)

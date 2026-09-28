@@ -1,0 +1,16 @@
+// dsc.amb_surface — the water surface seen from below
+// Heard as a high-pressure water jet, extremely strong. The highpass was at
+// 1.8 kHz, which is exactly where the hiss lives, and the phaser was adding
+// more. Dropped both; what is left is the movement without the edge.
+//
+// Stereo rule, learned the hard way twice: no filter may see a stereo-flagged
+// signal, and the two mono chains have to differ in something that survives
+// compilation. Two chains that differ only in a constant cutoff fold back into
+// the same graph and come out identical. Noise seeds do survive.
+// See music/PIPELINE_REVIEW.md.
+bpm = 60
+
+left_air = noise(0, 0, 101) * 0.055 |> lp(@, 1100, 0.9) |> hp(@, 500)
+right_air = noise(0, 0, 977) * 0.055 |> lp(@, 1150, 0.9) |> hp(@, 500)
+
+out(stereo(left_air, right_air))

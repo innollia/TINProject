@@ -1,0 +1,55 @@
+{
+  "_note": "Thresholds for tool/analyze_audio.py. A stem is judged on what is true of the stem; a mix is judged on integrated LUFS, which is a programme measure and only means something once the layers are summed. A missing key means the limit is ON, not off.",
+
+  "stem": {
+    "no_clipping": true,
+    "true_peak_max_db": -1.0,
+    "max_dc_offset": 0.002,
+    "loop_jump_ratio_max": 3.0,
+    "loop_wrap_hf_max_db": 3.0,
+    "low_band_max_db": -3.0,
+    "stereo_width_max_db": 12.0,
+    "channel_correlation_max": 0.98,
+    "mono_ok": ["amb_pressure.wav", "amb_pulse.wav"],
+    "_mono_ok_note": "Sub beds are meant to be mono. A low layer that is wide only smears the centre image and costs headroom. Naming them here says the same thing as saying it in the patch."
+  },
+
+  "mix": {
+    "integrated_lufs": [-24.0, -14.0],
+    "true_peak_max_db": -1.0
+  },
+
+  "open_findings": [
+    {
+      "file": "bgm_dread.wav",
+      "check": "dc_offset",
+      "found": "2026-09-28",
+      "why": "0.00208 against a 0.002 limit. Subtracting 0.5 from every saw voice was tried and made it far worse (DC -0.71), so the saws are already zero-mean and the offset comes from somewhere else in the chain."
+    },
+    {
+      "file": "bgm_swell.wav",
+      "check": "true_peak",
+      "found": "2026-09-28",
+      "why": "-0.94 dBFS against a -1.0 limit. Marginal, and the mix trim already sits far below it, so it is a measurement-honesty item rather than something audible."
+    }
+  ],
+
+  "resolved_findings": [
+    {
+      "file": "amb_air.wav",
+      "check": "mono",
+      "found": "2026-09-28",
+      "resolved": "2026-09-28",
+      "how": "The stereo difference has to exist before the first filter, be built from bare sources with different seeds, be wrapped in stereo(), and be handed to a single out() argument. out(field |> lp(...) |> hp(...)) gives correlation 0.00 where the old out(x.pan(0.15), x.pan(-0.15)) gave 1.000.",
+      "evidence": "tool/probe_filter_width.py, 21 cases"
+    },
+    {
+      "file": "amb_column.wav",
+      "check": "mono",
+      "found": "2026-09-28",
+      "resolved": "2026-09-28",
+      "how": "Same rule. The sub undertone is added afterwards as its own stereo pair so the bandpass cannot swallow it.",
+      "evidence": "tool/probe_filter_width.py, 21 cases"
+    }
+  ]
+}

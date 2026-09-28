@@ -38,17 +38,27 @@ param(
     [string]$ManifestPath = '',
     [string]$OutputRoot = '',
     [switch]$CheckFirst,
-    [switch]$DryRun
+    [switch]$DryRun,
+    [switch]$SkipAmbient,
+    [switch]$SkipAnalysis,
+    [string]$AmbientManifestPath = ''
 )
 
 $ErrorActionPreference = 'Stop'
 
 $PipelineRoot = $PSScriptRoot
+# <repo>/tools/nkido_pipeline -> <repo>. Every res:// path is relative to this.
+$ProjectRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 $DefaultOutputRoot = Join-Path $PipelineRoot 'build\wav'
 $SampleRoot = Join-Path $PipelineRoot 'samples'
 $CloneCandidates = @(
+    # The clang-cl build is the only working one. The MSVC build links and
+    # launches, but the akkado compiler asks malloc for 0x0102011600000037
+    # bytes on every input, so check/render die with 0xC0000409. See the
+    # README section "nkido on Windows" before moving a path around.
+    'C:\projects\_tools\nkido\build-clang\bin\nkido.exe',
+    'C:\projects\_tools\nkido\build\bin\Release\nkido.exe',
     'C:\projects\_tools\nkido\build\nkido.exe',
-    'C:\projects\_tools\nkido\build\Release\nkido.exe',
     'C:\projects\_tools\nkido\nkido.exe'
 )
 
@@ -178,16 +188,13 @@ foreach ($kit in $manifest.kits) {
             $sample = Get-OwnSamplePath -Raw ([string]$event.sample) -KitId $kitId -EventId $eventId
         }
 
-        $arguments = @()
-        if ($CheckFirst) {
-            $arguments += @('check', $patch)
-        }
-        $arguments += @('render', $patch, '-o', $output, '--seconds', ('{0:0.###}' -f $seconds), '--rate', $rate, '--bpm', ('{0:0.##}' -f $bpm), '--no-default-bank')
+        $arguments = @('render', $patch, '-o', $output, '--seconds', ('{0:0.###}' -f $seconds), '--rate', $rate, '--bpm', ('{0:0.##}' -f $bpm), '--no-default-bank')
         if ($sample -ne '') {
             $arguments += @('--sample', "name=$sample")
         }
 
         $command = Format-Command -Exe $exe -Arguments $arguments
+        $checkCommand = Format-Command -Exe $exe -Arguments @('check', $patch)
 
         if (-not (Test-Path -LiteralPath $patch -PathType Leaf)) {
             $rows.Add([pscustomobject]@{ Id = $qualified; Status = 'FAIL'; Detail = "patch not found: $($event.akkado)"; Command = $command })
@@ -198,9 +205,21 @@ foreach ($kit in $manifest.kits) {
             continue
         }
         if ($DryRun) {
+            if ($CheckFirst) { Write-Host $checkCommand }
             Write-Host $command
             $rows.Add([pscustomobject]@{ Id = $qualified; Status = 'DRY'; Detail = 'not executed'; Command = $command })
             continue
+        }
+
+        # check and render are two separate programs invocations of the same
+        # binary, not one command line. nkido takes a single mode per run.
+        if ($CheckFirst) {
+            Write-Host $checkCommand
+            $checkText = & $exe check $patch 2>&1
+            if ($LASTEXITCODE -ne 0) {
+                $rows.Add([pscustomobject]@{ Id = $qualified; Status = 'FAIL'; Detail = (($checkText | Select-Object -Last 3) -join ' / '); Command = $checkCommand })
+                continue
+            }
         }
 
         Write-Host $command
@@ -218,6 +237,230 @@ foreach ($kit in $manifest.kits) {
         }
         $status = if ($code -eq 0) { 'PASS' } else { 'FAIL' }
         $rows.Add([pscustomobject]@{ Id = $qualified; Status = $status; Detail = $detail; Command = $command })
+    }
+}
+
+# ---------------------------------------------------------------------------
+# Dynamic ambience stems.
+#
+# A stem is a seamless loop, not an event. nkido writes exactly --seconds and
+# stops, so each stem is rendered loop+fade and then folded back over its own
+# head by tool/loopify.py. Gains live in ambient.json "profiles" and are the
+# Kit's business at runtime; this script only produces the audio.
+# ---------------------------------------------------------------------------
+$ambientRows = New-Object System.Collections.Generic.List[object]
+$ambientManifest = $null
+$analysisFailed = $false
+
+if (-not $SkipAmbient) {
+    if ([string]::IsNullOrWhiteSpace($AmbientManifestPath)) {
+        $AmbientManifestPath = Join-Path $PipelineRoot 'ambient.json'
+    }
+    if (-not (Test-Path -LiteralPath $AmbientManifestPath -PathType Leaf)) {
+        Write-Refuse "ambient manifest not found: $AmbientManifestPath (pass -SkipAmbient to ignore)"
+    }
+    try {
+        $ambientManifest = Get-Content -LiteralPath $AmbientManifestPath -Raw | ConvertFrom-Json
+    } catch {
+        Write-Refuse "ambient manifest is not valid JSON: $($_.Exception.Message)"
+    }
+    if ($ambientManifest.default_bank -ne $false) {
+        Write-Refuse 'ambient manifest must declare "default_bank": false.'
+    }
+    if ($allowedBus -notcontains [string]$ambientManifest.stems[0].bus) {
+        Write-Refuse "ambient stem bus '$($ambientManifest.stems[0].bus)' is not one of $($allowedBus -join ', ')"
+    }
+    foreach ($profile in $ambientManifest.profiles.PSObject.Properties) {
+        foreach ($gain in $profile.Value.gains.PSObject.Properties) {
+            if ($null -eq ($ambientManifest.stems | Where-Object { $_.id -eq $gain.Name })) {
+                Write-Refuse "profile '$($profile.Name)' names stem '$($gain.Name)' which is not in "stems"."
+            }
+            if ([double]$gain.Value -lt 0.0 -or [double]$gain.Value -gt 1.0) {
+                Write-Refuse "profile '$($profile.Name)' stem '$($gain.Name)' gain $($gain.Value) is outside 0..1."
+            }
+        }
+    }
+    foreach ($stem in $ambientManifest.stems) {
+        $unused = $ambientManifest.profiles.PSObject.Properties | Where-Object { $null -eq $_.Value.gains.PSObject.Properties[$stem.id] }
+        if ($unused) {
+            Write-Refuse "stem '$($stem.id)' is in no profile. A stem nobody mixes is dead content."
+        }
+    }
+
+    $ambientOutput = Join-Path $OutputRoot 'ambient'
+    $rawOutput = Join-Path $ambientOutput 'raw'
+    $python = ''
+    if (-not $DryRun) {
+        New-Item -ItemType Directory -Force -Path $rawOutput | Out-Null
+        # Get-Command finds the Microsoft Store alias in WindowsApps, which is a
+        # zero-byte re-launcher, not an interpreter. Only accept a candidate
+        # that answers --version.
+        foreach ($name in @('py', 'python', 'python3')) {
+            $found = Get-Command -Name $name -CommandType Application -ErrorAction SilentlyContinue |
+                Where-Object { $_.Source -notlike '*\WindowsApps\*' } |
+                Select-Object -First 1
+            if (-not $found) { continue }
+            $version = & $found.Source --version 2>&1
+            if ($LASTEXITCODE -eq 0) {
+                $python = $found.Source
+                Write-Host ("python  : {0} ({1})" -f $python, ($version | Select-Object -First 1))
+                break
+            }
+        }
+        if (-not $python) {
+            Write-Refuse 'no usable python found. It is needed to fold the loop crossfade, and the render stops here.'
+        }
+    }
+    $loopify = Join-Path $PipelineRoot 'tool\loopify.py'
+
+    Write-Host ''
+    Write-Host "---- stems (nkido: $exe) ----"
+
+    foreach ($stem in $ambientManifest.stems) {
+        $stemId = [string]$stem.id
+        $patch = Join-Path $PipelineRoot $stem.akkado
+        $target = Join-Path $ambientOutput "$stemId.wav"
+        $raw = Join-Path $rawOutput "$stemId.wav"
+        $loop = [double]$stem.loop_seconds
+        $fade = [double]$stem.fade_seconds
+        # nkido renders whole audio blocks, so asking for exactly loop+fade can
+        # come up a fraction of a sample short. The margin is headroom only:
+        # loopify reads its crossfade tail at the loop point, not at the end of
+        # the file, so anything past loop+fade is unused.
+        $render = $loop + $fade + 0.25
+
+        if (-not (Test-Path -LiteralPath $patch -PathType Leaf)) {
+            $ambientRows.Add([pscustomobject]@{ Id = $stemId; Status = 'FAIL'; Detail = "patch not found: $($stem.akkado)" })
+            continue
+        }
+        if ($loop -le 0.0 -or $fade -le 0.0 -or $fade -ge $loop) {
+            $ambientRows.Add([pscustomobject]@{ Id = $stemId; Status = 'FAIL'; Detail = "loop/fade invalid: loop $loop fade $fade" })
+            continue
+        }
+
+        $arguments = @('render', $patch, '-o', $raw, '--seconds', ('{0:0.###}' -f $render), '--rate', $rate, '--bpm', ('{0:0.##}' -f [double]$stem.bpm), '--no-default-bank')
+
+        $command = Format-Command -Exe $exe -Arguments $arguments
+        $checkCommand = Format-Command -Exe $exe -Arguments @('check', $patch)
+        if ($DryRun) {
+            if ($CheckFirst) { Write-Host $checkCommand }
+            Write-Host $command
+            Write-Host "    loopify -> $target  loop=$loop fade=$fade"
+            $ambientRows.Add([pscustomobject]@{ Id = $stemId; Status = 'DRY'; Detail = 'not executed' })
+            continue
+        }
+
+        if ($CheckFirst) {
+            Write-Host $checkCommand
+            $checkText = & $exe check $patch 2>&1
+            if ($LASTEXITCODE -ne 0) {
+                $ambientRows.Add([pscustomobject]@{ Id = $stemId; Status = 'FAIL'; Detail = (($checkText | Select-Object -Last 3) -join ' / ') })
+                continue
+            }
+        }
+
+        Write-Host $command
+        $render_output = & $exe @arguments 2>&1
+        $code = $LASTEXITCODE
+        $detail = ''
+        if ($code -ne 0) {
+            $detail = "render exit $code " + (($render_output | Select-Object -Last 3) -join ' / ')
+            $ambientRows.Add([pscustomobject]@{ Id = $stemId; Status = 'FAIL'; Detail = $detail })
+            continue
+        }
+
+        $fold_output = & $python $loopify $raw $target --loop-seconds $loop --fade-seconds $fade 2>&1
+        $code = $LASTEXITCODE
+        $detail = (($fold_output | Select-Object -Last 1) -join '')
+        if (-not (Test-Path -LiteralPath $target -PathType Leaf)) {
+            $detail = 'loopify wrote no wav'
+            $code = 1
+        }
+        $status = if ($code -eq 0) { 'PASS' } else { 'FAIL' }
+        $ambientRows.Add([pscustomobject]@{ Id = $stemId; Status = $status; Detail = $detail })
+
+        if ($code -eq 0 -and $null -ne $stem.res_file) {
+            $resPath = ([string]$stem.res_file) -replace '^res://', ''
+            $resFull = Join-Path $ProjectRoot ($resPath -replace '/', '\')
+            New-Item -ItemType Directory -Force -Path (Split-Path -Parent $resFull) | Out-Null
+            Copy-Item -LiteralPath $target -Destination $resFull -Force
+        }
+    }
+
+    # Runtime view for the Kit. ambient.json stays the only authored source; this
+    # is derived, so a stem can never exist in the audio and be missing from the mix.
+    $runtimeStems = @()
+    foreach ($stem in $ambientManifest.stems) {
+        $runtimeStems += [ordered]@{
+            id            = [string]$stem.id
+            file          = [string]$stem.res_file
+            bus           = [string]$stem.bus
+            volume_db     = [double]$stem.volume_db
+            role          = [string]$stem.role
+            loop_seconds  = [double]$stem.loop_seconds
+        }
+    }
+    $runtimeProfiles = [ordered]@{}
+    foreach ($profile in $ambientManifest.profiles.PSObject.Properties) {
+        $gains = [ordered]@{}
+        foreach ($gain in $profile.Value.gains.PSObject.Properties) {
+            $gains[[string]$gain.Name] = [double]$gain.Value
+        }
+        $runtimeProfiles[[string]$profile.Name] = [ordered]@{
+            note  = [string]$profile.Value.note
+            gains = $gains
+        }
+    }
+    $runtime = [ordered]@{
+        generator = 'nkido'
+        target    = [string]$ambientManifest.target
+        note      = 'Generated by tools/nkido_pipeline/build_audio.ps1 from tools/nkido_pipeline/ambient.json. Do not edit by hand.'
+        stems     = $runtimeStems
+        profiles  = $runtimeProfiles
+    }
+    $runtimePath = Join-Path $ProjectRoot ("modules\{0}\ambient_stems.json" -f [string]$ambientManifest.target)
+    $runtime | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $runtimePath -Encoding utf8
+    Write-Host ("  wrote {0}" -f $runtimePath)
+
+    # Measure what was rendered. A render that succeeds is not yet a render
+    # that is right, and the person who has to listen is not the person who
+    # writes the patch. Failures print; anything already on the open list
+    # prints as KNOWN and does not stop the build.
+    if (-not $DryRun -and -not $SkipAnalysis) {
+        $analyzer = Join-Path $PipelineRoot 'tool\analyze_audio.py'
+        $targets = Join-Path $PipelineRoot 'analysis_targets.json'
+        $reportDir = Join-Path $PipelineRoot 'build\analysis'
+        New-Item -ItemType Directory -Force -Path $reportDir | Out-Null
+        $stemGlobs = @()
+        foreach ($stem in $ambientManifest.stems) {
+            $relative = (([string]$stem.res_file) -replace '^res://', '') -replace '/', '\'
+            $stemGlobs += (Join-Path $ProjectRoot $relative)
+        }
+
+        # The analyzer reports findings on stderr on purpose. With
+        # ErrorActionPreference = Stop a native command writing to stderr
+        # becomes a terminating error, so relax it around these calls and read
+        # the real exit code instead.
+        $ErrorActionPreference = 'Continue'
+
+        $selfTestText = & $python $analyzer --selftest 2>&1
+        $selfTestCode = $LASTEXITCODE
+        Write-Host ''
+        Write-Host '---- analysis (objective gate) ----'
+        Write-Host $selfTestText
+        if ($selfTestCode -ne 0) {
+            $ErrorActionPreference = 'Stop'
+            Write-Refuse 'the analyzer failed its own selftest. The gate is not trustworthy, so the build stops.'
+        }
+
+        $analysisOutput = & $python $analyzer $targets @stemGlobs --json-out (Join-Path $reportDir 'ambience.json') 2>&1
+        $analysisCode = $LASTEXITCODE
+        Write-Host $analysisOutput
+        if ($analysisCode -ne 0) {
+            $analysisFailed = $true
+        }
+
+        $ErrorActionPreference = 'Stop'
     }
 }
 
@@ -244,9 +487,29 @@ foreach ($kit in $manifest.kits) {
     Write-Host ("  {0,-5} {1,-28} {2} events  pass {3}  fail {4}" -f $kit.label, $kit.id, $kitRows.Count, $kitPass, $kitFail)
 }
 Write-Host ("  total {0} events  pass {1}  fail {2}  dry {3}" -f $rows.Count, $passed, $failed, $dry)
-Write-Host ("  exit code: {0}" -f $(if ($DryRun) { $EXIT_OK } elseif ($failed -gt 0) { $EXIT_EVENT_FAILED } else { $EXIT_OK }))
 
+if ($null -ne $ambientManifest) {
+    $stemPass = @($ambientRows | Where-Object { $_.Status -eq 'PASS' }).Count
+    $stemFail = @($ambientRows | Where-Object { $_.Status -eq 'FAIL' }).Count
+    $stemDry = @($ambientRows | Where-Object { $_.Status -eq 'DRY' }).Count
+    Write-Host ("  total {0} stems  pass {1}  fail {2}  dry {3}   target {4}" -f $ambientRows.Count, $stemPass, $stemFail, $stemDry, $ambientManifest.target)
+    Write-Host ("  profiles {0}" -f (($ambientManifest.profiles.PSObject.Properties.Name) -join ', '))
+}
+
+$totalFailed = $failed + @($ambientRows | Where-Object { $_.Status -eq 'FAIL' }).Count
+Write-Host ("  exit code: {0}" -f $(if ($DryRun) { $EXIT_OK } elseif ($totalFailed -gt 0) { $EXIT_EVENT_FAILED } else { $EXIT_OK }))
+
+$ErrorActionPreference = 'Stop'
+
+if ($analysisFailed) {
+    Write-Host '  objektive gate failed; see the analysis report above.' -ForegroundColor Red
+    $totalFailed = $totalFailed + 1
+}
 if ($DryRun) {
     exit $EXIT_OK
 }
-exit $(if ($failed -gt 0) { $EXIT_EVENT_FAILED } else { $EXIT_OK })
+exit $(if ($totalFailed -gt 0) { $EXIT_EVENT_FAILED } else { $EXIT_OK })
+
+
+
+
