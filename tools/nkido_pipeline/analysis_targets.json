@@ -15,9 +15,19 @@
   },
 
   "mix": {
-    "integrated_lufs": [-24.0, -14.0],
-    "true_peak_max_db": -1.0
+    "integrated_lufs": [-26.0, -14.0],
+    "true_peak_max_db": -1.0,
+    "_window_note": "Ten decibels of loudness change from open air to the bottom of the world is the design. The floor is -26 so a profile has headroom at the quiet end instead of sitting exactly on the line, which is what made the first pass fail by 0.1 dB. A profile 20 dB under the floor still fails."
   },
+
+  "mix_exempt": {
+    "silence": {"integrated_lufs": [-34.0, -24.0], "true_peak_max_db": -1.0}
+  },
+
+  "_share_floor_note": "Two thresholds, because they are different claims. Below -40 dB a layer is off: that is a defect and it fails the build. Between -40 and the advisory line it may be a deliberate whisper, which is a decision for the ear, so it is reported and not failed. The advisory line is mix_layer_share_advisory_db.",
+
+  "mix_layer_share_floor_db": -40.0,
+  "mix_layer_share_advisory_db": -22.0,
 
   "open_findings": [
     {

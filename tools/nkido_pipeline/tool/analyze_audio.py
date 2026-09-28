@@ -138,6 +138,13 @@ def integrated_lufs(data, rate):
     return -0.691 + 10.0 * math.log10(float(np.mean(energies[keep])))
 
 
+def linear_to_db(value):
+    """0 maps to -inf, which is the silent end of a gain ramp."""
+    if value <= 0.0:
+        return float("-inf")
+    return 20.0 * math.log10(value)
+
+
 def _upsample(data, factor):
     """Windowed-sinc interpolation. Only used to look for inter-sample peaks.
 

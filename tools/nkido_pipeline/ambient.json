@@ -1,4 +1,4 @@
-﻿{
+{
   "schema_version": 1,
   "generator": "nkido",
   "generator_license": "MIT",
@@ -6,7 +6,8 @@
   "sample_rate": 48000,
   "target": "descent_exploration",
   "note": "Dynamic ambience is layer gains, not one long track. Every stem is a seamless loop; a profile is a row of per-stem linear gains. The Kit crossfades between profiles, so the same stems read as calm water or as the bottom of the world depending on state.",
-
+  "_mix_trim_note": "A single trim on the whole mix bus, in dB. The per-stem volume_db and the per-profile gains are relative shape; this is the absolute level. It exists because multiplying the two together put every profile 10 to 25 LU under the target window, and one number is measurable where eleven guesses are not. Measured by tool/mix_profiles.py, target -24..-14 LUFS.",
+  "mix_trim_db": 13.5,
   "stems": [
     {
       "id": "amb_air",
@@ -32,7 +33,7 @@
       "wav": "build/wav/ambient/amb_surface.wav",
       "res_file": "res://modules/descent_exploration/audio/ambience/amb_surface.wav",
       "bus": "Music",
-      "volume_db": -26.0
+      "volume_db": -16.0
     },
     {
       "id": "amb_column",
@@ -45,7 +46,7 @@
       "wav": "build/wav/ambient/amb_column.wav",
       "res_file": "res://modules/descent_exploration/audio/ambience/amb_column.wav",
       "bus": "Music",
-      "volume_db": -20.0
+      "volume_db": -15.0
     },
     {
       "id": "amb_pulse",
@@ -152,36 +153,118 @@
       "volume_db": -25.0
     }
   ],
-
   "profiles": {
     "silence": {
       "note": "Menus, death, and the pause screen. Almost nothing, so the return reads as a change.",
-      "gains": {"amb_air": 0.0, "amb_surface": 0.0, "amb_column": 0.0, "amb_pulse": 0.0, "amb_pressure": 0.2, "amb_cavern": 0.0, "amb_drone": 0.25, "amb_dread": 0.0, "bgm_descent": 0.0, "bgm_swell": 0.0, "bgm_dread": 0.0}
+      "gains": {
+        "amb_air": 0.0,
+        "amb_surface": 0.0,
+        "amb_column": 0.0,
+        "amb_pulse": 0.0,
+        "amb_pressure": 0.22,
+        "amb_cavern": 0.0,
+        "amb_drone": 0.28,
+        "amb_dread": 0.0,
+        "bgm_descent": 0.0,
+        "bgm_swell": 0.0,
+        "bgm_dread": 0.0
+      }
     },
     "surface": {
       "note": "On the ice. Air dominates, the water is a rumour.",
-      "gains": {"amb_air": 1.0, "amb_surface": 0.35, "amb_column": 0.0, "amb_pulse": 0.0, "amb_pressure": 0.0, "amb_cavern": 0.0, "amb_drone": 0.15, "amb_dread": 0.0, "bgm_descent": 0.55, "bgm_swell": 0.0, "bgm_dread": 0.0}
+      "gains": {
+        "amb_air": 1.0,
+        "amb_surface": 0.739,
+        "amb_column": 0.0,
+        "amb_pulse": 0.0,
+        "amb_pressure": 0.0,
+        "amb_cavern": 0.0,
+        "amb_drone": 0.2,
+        "amb_dread": 0.0,
+        "bgm_descent": 0.55,
+        "bgm_swell": 0.0,
+        "bgm_dread": 0.0
+      }
     },
     "wade": {
       "note": "Entering. Air is still there but the surface is louder than it is.",
-      "gains": {"amb_air": 0.7, "amb_surface": 0.8, "amb_column": 0.45, "amb_pulse": 0.0, "amb_pressure": 0.1, "amb_cavern": 0.0, "amb_drone": 0.3, "amb_dread": 0.0, "bgm_descent": 0.7, "bgm_swell": 0.15, "bgm_dread": 0.0}
+      "gains": {
+        "amb_air": 1.0,
+        "amb_surface": 1.0,
+        "amb_column": 0.45,
+        "amb_pulse": 0.0,
+        "amb_pressure": 0.1,
+        "amb_cavern": 0.0,
+        "amb_drone": 0.3,
+        "amb_dread": 0.3,
+        "bgm_descent": 0.7,
+        "bgm_swell": 0.3,
+        "bgm_dread": 0.0
+      }
     },
     "column": {
       "note": "Mid water. The bandpassed drift is the subject now.",
-      "gains": {"amb_air": 0.2, "amb_surface": 0.5, "amb_column": 0.9, "amb_pulse": 0.2, "amb_pressure": 0.35, "amb_cavern": 0.15, "amb_drone": 0.5, "amb_dread": 0.1, "bgm_descent": 0.5, "bgm_swell": 0.55, "bgm_dread": 0.1}
+      "gains": {
+        "amb_air": 1.0,
+        "amb_surface": 1.0,
+        "amb_column": 0.9,
+        "amb_pulse": 0.2,
+        "amb_pressure": 0.35,
+        "amb_cavern": 0.786,
+        "amb_drone": 0.5,
+        "amb_dread": 0.358,
+        "bgm_descent": 0.5,
+        "bgm_swell": 0.55,
+        "bgm_dread": 0.3
+      }
     },
     "deep": {
       "note": "Past the light. Pressure up, surface almost gone, music moving to the swell bed.",
-      "gains": {"amb_air": 0.0, "amb_surface": 0.15, "amb_column": 0.35, "amb_pulse": 0.45, "amb_pressure": 0.9, "amb_cavern": 0.35, "amb_drone": 0.75, "amb_dread": 0.35, "bgm_descent": 0.15, "bgm_swell": 0.7, "bgm_dread": 0.4}
+      "gains": {
+        "amb_air": 0.0,
+        "amb_surface": 1.0,
+        "amb_column": 0.501,
+        "amb_pulse": 0.45,
+        "amb_pressure": 0.9,
+        "amb_cavern": 1.0,
+        "amb_drone": 0.75,
+        "amb_dread": 0.7,
+        "bgm_descent": 0.3,
+        "bgm_swell": 0.7,
+        "bgm_dread": 0.4
+      }
     },
     "cavern": {
       "note": "Inside a hollow. The reverb bed takes the lead and the music gets out of the way.",
-      "gains": {"amb_air": 0.0, "amb_surface": 0.1, "amb_column": 0.2, "amb_pulse": 0.3, "amb_pressure": 0.5, "amb_cavern": 1.0, "amb_drone": 0.6, "amb_dread": 0.5, "bgm_descent": 0.0, "bgm_swell": 0.35, "bgm_dread": 0.6}
+      "gains": {
+        "amb_air": 0.0,
+        "amb_surface": 1.0,
+        "amb_column": 0.315,
+        "amb_pulse": 0.3,
+        "amb_pressure": 0.5,
+        "amb_cavern": 1.0,
+        "amb_drone": 0.75,
+        "amb_dread": 0.7,
+        "bgm_descent": 0.0,
+        "bgm_swell": 0.3,
+        "bgm_dread": 0.6
+      }
     },
     "dread": {
       "note": "The wrong kind of quiet. Dread bed and dread music at full, pulse prominent.",
-      "gains": {"amb_air": 0.0, "amb_surface": 0.0, "amb_column": 0.1, "amb_pulse": 0.7, "amb_pressure": 0.7, "amb_cavern": 0.3, "amb_drone": 0.85, "amb_dread": 1.0, "bgm_descent": 0.0, "bgm_swell": 0.1, "bgm_dread": 0.85}
+      "gains": {
+        "amb_air": 0.0,
+        "amb_surface": 0.0,
+        "amb_column": 0.447,
+        "amb_pulse": 0.7,
+        "amb_pressure": 0.7,
+        "amb_cavern": 1.0,
+        "amb_drone": 0.85,
+        "amb_dread": 0.85,
+        "bgm_descent": 0.0,
+        "bgm_swell": 0.3,
+        "bgm_dread": 0.85
+      }
     }
   }
 }
-

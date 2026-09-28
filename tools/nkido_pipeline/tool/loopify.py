@@ -91,6 +91,25 @@ def fold(samples, channels, loop_frames, fade_frames):
     return blended
 
 
+def fold_file(source, target, loop_frames, fade_frames, quiet=False):
+    """Fold `source` into `target`, keeping exactly `loop_frames` frames.
+
+    mix_profiles.py needs the same fold the ambience build uses, so the mix
+    preview loops for the same reason the stems do and a click in the preview
+    means a click in the game.
+    """
+    samples, channels, rate = read_wav(source)
+    result = fold(samples, channels, loop_frames, fade_frames)
+    write_wav(target, result, channels, rate)
+    if not quiet:
+        peak, rms, clipped = measure(result)
+        print("  %s %dch %.3fs peak %.1f dBFS rms %.1f dBFS clipped %d" % (
+            os.path.basename(target), channels, len(result) / channels / rate,
+            20.0 * math.log10(peak / 32768.0) if peak else -99.0,
+            20.0 * math.log10(rms / 32768.0) if rms else -99.0, clipped))
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source")
