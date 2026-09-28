@@ -1,0 +1,105 @@
+{
+  "name": "03_ice_cavern",
+  "seed": 303,
+  "size": [1280, 720],
+  "light": { "angle": -104 },
+  "palette": {
+    "body": "#7ea4b8",
+    "body_dark": "#456a80",
+    "belly": "#b8d2de",
+    "shade": "#1e3646",
+    "ink": "#0d1a24",
+    "key_light": "#e8f2f6",
+    "rim": "#f2f8fa",
+    "accent": "#5d8ea6",
+    "ground": "#5d8ea6",
+    "sky_near": "#7ea4b8",
+    "sky_far": "#e8f2f6",
+    "fog": "#b8d2de"
+  },
+  "layers": [
+    {
+      "name": "sky",
+      "parallax": 0.04,
+      "fog": 0.0,
+      "plane": { "role": "sky_near", "to_role": "fog", "bias": 0.62, "spread": 2.0 },
+      "elements": [
+        { "kind": "glow", "at": [640, -60], "r": 700, "power": 2.0, "role": "sky_far", "alpha": 0.5 }
+      ]
+    },
+    {
+      "name": "far",
+      "parallax": 0.15,
+      "fog": 0.40,
+      "role": "ground",
+      "ink": 1.1,
+      "shade_depth": 4.0,
+      "elements": [
+        { "kind": "ribbon", "spine": [[500, 720], [506, 520], [496, 300], [504, 120]],
+          "widths": [150, 116, 86, 62], "resample": 24, "role": "ground" },
+        { "kind": "ribbon", "spine": [[880, 720], [874, 540], [884, 340], [876, 150]],
+          "widths": [130, 100, 76, 54], "resample": 24, "role": "ground" },
+        { "kind": "ribbon", "spine": [[-40, 596], [340, 580], [760, 602], [1120, 582], [1330, 594]],
+          "widths": [220, 196, 236, 204, 228], "resample": 30, "wiggle": 18.0,
+          "role": "ground" }
+      ]
+    },
+    {
+      "name": "mid",
+      "parallax": 0.44,
+      "fog": 0.15,
+      "role": "body_dark",
+      "ink": 2.0,
+      "elements": [
+        { "kind": "cluster", "sub": "icicle", "count": 7, "at": [640, -30], "band": "x",
+          "spread": [700, 0], "scale": [0.45, 1.25], "rotation": 5 },
+        { "kind": "ribbon", "spine": [[188, 730], [196, 540], [184, 340], [192, 150]],
+          "widths": [124, 96, 74, 54], "resample": 24 },
+        { "kind": "ribbon", "spine": [[1092, 730], [1084, 560], [1096, 380], [1088, 170]],
+          "widths": [112, 88, 68, 48], "resample": 24 },
+        { "kind": "cluster", "sub": "icicle", "count": 3, "at": [60, -20], "band": "x",
+          "spread": [90, 0], "scale": [0.9, 1.8] },
+        { "kind": "cluster", "sub": "icicle", "count": 3, "at": [1230, -20], "band": "x",
+          "spread": [90, 0], "scale": [0.9, 1.8] },
+        { "kind": "ribbon", "spine": [[-40, 700], [340, 684], [760, 706], [1120, 688], [1330, 698]],
+          "widths": [250, 224, 268, 232, 258], "resample": 30, "wiggle": 14.0,
+          "role": "body_dark" }
+      ]
+    },
+    {
+      "name": "near",
+      "parallax": 0.72,
+      "fog": 0.03,
+      "role": "shade",
+      "ink": 2.8,
+      "elements": [
+        { "kind": "slab", "w": 250, "h": 560, "n": 2.2, "at": [70, 340], "taper": 0.55,
+          "lean": 26, "role": "shade" },
+        { "kind": "slab", "w": 230, "h": 600, "n": 2.2, "at": [1220, 320], "taper": 0.5,
+          "lean": -30, "role": "shade" },
+        { "kind": "cluster", "sub": "icicle", "count": 3, "at": [330, -20], "band": "x",
+          "spread": [130, 0], "scale": [1.2, 2.2] },
+        { "kind": "cluster", "sub": "icicle", "count": 3, "at": [980, -20], "band": "x",
+          "spread": [140, 0], "scale": [1.1, 2.0] },
+        { "kind": "slab", "w": 340, "h": 130, "n": 2.6, "at": [150, 640], "bulge": 0.1 },
+        { "kind": "slab", "w": 300, "h": 120, "n": 2.6, "at": [1140, 660], "bulge": 0.1 }
+      ]
+    },
+    {
+      "name": "foreground",
+      "parallax": 1.0,
+      "fog": 0.0,
+      "role": "ink",
+      "ink": 3.4,
+      "shade_depth": 0.0,
+      "elements": [
+        { "kind": "cluster", "sub": "icicle", "count": 3, "at": [120, -20], "band": "x",
+          "spread": [140, 0], "scale": [1.6, 2.8], "role": "ink" },
+        { "kind": "cluster", "sub": "icicle", "count": 2, "at": [1180, -20], "band": "x",
+          "spread": [120, 0], "scale": [1.6, 2.6], "role": "ink" },
+        { "kind": "ribbon", "spine": [[-30, 726], [300, 712], [820, 728], [1310, 714]],
+          "widths": [50, 66, 54, 70], "resample": 30, "role": "ink" }
+      ]
+    }
+  ]
+}

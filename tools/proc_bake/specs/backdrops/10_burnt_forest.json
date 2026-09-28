@@ -1,0 +1,104 @@
+{
+  "name": "10_burnt_forest",
+  "seed": 1010,
+  "size": [1280, 720],
+  "light": { "angle": -76, "backlit": true },
+  "palette": {
+    "body": "#a97f56",
+    "body_dark": "#72553a",
+    "belly": "#d8b083",
+    "shade": "#3f3021",
+    "ink": "#191209",
+    "key_light": "#e8c79a",
+    "rim": "#f6dcae",
+    "accent": "#8a6a4a",
+    "ground": "#7d5f42",
+    "sky_near": "#a97f56",
+    "sky_far": "#e2c49a",
+    "fog": "#d3b189"
+  },
+  "layers": [
+    {
+      "name": "sky",
+      "parallax": 0.03,
+      "fog": 0.0,
+      "plane": { "role": "sky_near", "to_role": "fog", "bias": 0.62, "spread": 2.4 },
+      "elements": [
+        { "kind": "glow", "at": [760, 430], "r": 560, "power": 2.0, "role": "sky_far", "alpha": 0.6 }
+      ]
+    },
+    {
+      "name": "far",
+      "parallax": 0.15,
+      "fog": 0.40,
+      "role": "ground",
+      "ink": 1.0,
+      "shade_depth": 4.0,
+      "backlit": true,
+      "elements": [
+        { "kind": "tree", "at": [130, 620], "angle": -88, "length": 300, "width": 15,
+          "depth": 2, "spread": 30, "role": "ground" },
+        { "kind": "tree", "at": [340, 628], "angle": -92, "length": 340, "width": 17,
+          "depth": 2, "spread": 26, "role": "ground" },
+        { "kind": "tree", "at": [560, 624], "angle": -87, "length": 280, "width": 14,
+          "depth": 2, "spread": 32, "role": "ground" },
+        { "kind": "tree", "at": [790, 630], "angle": -93, "length": 320, "width": 16,
+          "depth": 2, "spread": 28, "role": "ground" },
+        { "kind": "tree", "at": [1030, 622], "angle": -89, "length": 300, "width": 15,
+          "depth": 2, "spread": 30, "role": "ground" },
+        { "kind": "tree", "at": [1200, 626], "angle": -91, "length": 330, "width": 16,
+          "depth": 2, "spread": 27, "role": "ground" }
+      ]
+    },
+    {
+      "name": "mid",
+      "parallax": 0.44,
+      "fog": 0.12,
+      "role": "body_dark",
+      "ink": 2.1,
+      "backlit": true,
+      "elements": [
+        { "kind": "tree", "at": [196, 700], "angle": -84, "length": 560, "width": 46,
+          "depth": 3, "spread": 30, "taper": 0.52, "fan": 3 },
+        { "kind": "tree", "at": [1090, 700], "angle": -96, "length": 520, "width": 42,
+          "depth": 3, "spread": 33, "taper": 0.52, "fan": 3 },
+        { "kind": "ribbon", "spine": [[-40, 690], [340, 672], [760, 698], [1120, 676], [1330, 692]],
+          "widths": [150, 136, 158, 140, 152], "resample": 30, "wiggle": 28.0,
+          "role": "body_dark" },
+        { "kind": "tree", "at": [640, 720], "angle": -90, "length": 400, "width": 30,
+          "depth": 3, "spread": 34, "fan": 3, "role": "shade", "ink": 2.2 }
+      ]
+    },
+    {
+      "name": "near",
+      "parallax": 0.70,
+      "fog": 0.02,
+      "role": "shade",
+      "ink": 2.8,
+      "backlit": true,
+      "elements": [
+        { "kind": "tree", "at": [-10, 720], "angle": -82, "length": 660, "width": 62,
+          "depth": 3, "spread": 26, "taper": 0.5, "fan": 3, "rotation": 2 },
+        { "kind": "tree", "at": [1300, 720], "angle": -98, "length": 640, "width": 58,
+          "depth": 3, "spread": 28, "taper": 0.5, "fan": 3, "rotation": -2 },
+        { "kind": "cluster", "sub": "stump", "count": 3, "at": [230, 690], "band": "x",
+          "spread": [150, 0], "scale": [0.6, 1.2] }
+      ]
+    },
+    {
+      "name": "foreground",
+      "parallax": 1.0,
+      "fog": 0.0,
+      "role": "ink",
+      "ink": 3.4,
+      "shade_depth": 0.0,
+      "backlit": true,
+      "elements": [
+        { "kind": "ribbon", "spine": [[-30, 728], [300, 708], [820, 732], [1310, 710]],
+          "widths": [66, 84, 70, 88], "resample": 30, "role": "ink" },
+        { "kind": "cluster", "sub": "root", "count": 3, "at": [420, 730], "band": "x",
+          "spread": [260, 0], "scale": [1.0, 1.8], "rotation": 12, "role": "ink" }
+      ]
+    }
+  ]
+}

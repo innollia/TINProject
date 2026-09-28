@@ -1,0 +1,270 @@
+{
+  "name": "foremouth",
+  "size": [
+    300,
+    210
+  ],
+  "seed": 71,
+  "outline_width": 3.0,
+  "shade_depth": 9.0,
+  "fusion": 4.5,
+  "stride": 22.0,
+  "lift": 13.0,
+  "palette": {
+    "body": "#b0865a",
+    "body_dark": "#6d4a2c",
+    "belly": "#e0c396",
+    "shade": "#2a1a10",
+    "ink": "#120a06",
+    "key_light": "#f2d9a8",
+    "rim": "#fff2d6",
+    "accent": "#7c2f22",
+    "sclera": "#f7ecd4",
+    "pupil": "#14100a"
+  },
+  "parts": [
+    {
+      "id": "torso",
+      "shape": "torso_blob",
+      "scale": 0.72,
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "head",
+      "shape": "head_blunt",
+      "parent": "torso",
+      "at": 0.86,
+      "angle": -18.0,
+      "scale": 0.6,
+      "offset": [
+        0,
+        -4
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "eye_far",
+      "shape": "eye_lens",
+      "parent": "head",
+      "at": 0.3,
+      "angle": 0,
+      "scale": 0.42,
+      "offset": [
+        3,
+        -5
+      ],
+      "role": "sclera",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "pupil_far",
+      "shape": "pupil",
+      "parent": "eye_far",
+      "at": 0.12,
+      "angle": 0,
+      "scale": 0.8,
+      "role": "pupil",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "eye_near",
+      "shape": "eye_lens",
+      "parent": "head",
+      "at": 0.36,
+      "angle": 0,
+      "scale": 0.5,
+      "offset": [
+        0,
+        -2
+      ],
+      "role": "sclera",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "pupil_near",
+      "shape": "pupil",
+      "parent": "eye_near",
+      "at": 0.12,
+      "angle": 0,
+      "scale": 0.8,
+      "role": "pupil",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "femur_f",
+      "shape": "limb_femur",
+      "parent": "torso",
+      "at": 0.68,
+      "angle": 63.11,
+      "scale": 1.168,
+      "offset": [
+        0,
+        12
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "fore_f",
+      "shape": "limb_shin",
+      "parent": "femur_f",
+      "at": 1.0,
+      "angle": 65.53,
+      "scale": 1.121,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "maw_f",
+      "shape": "head_maw",
+      "parent": "fore_f",
+      "at": 1.0,
+      "angle": 24.0,
+      "scale": 0.46,
+      "offset": [
+        0,
+        2
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "femur_b",
+      "shape": "limb_femur",
+      "parent": "torso",
+      "at": 0.28,
+      "angle": 122.23,
+      "scale": 1.16,
+      "offset": [
+        0,
+        12
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "shin_b",
+      "shape": "limb_shin",
+      "parent": "femur_b",
+      "at": 1.0,
+      "angle": -74.03,
+      "scale": 1.089,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "foot_b",
+      "shape": "foot_claw",
+      "parent": "shin_b",
+      "at": 1.0,
+      "angle": -88.0,
+      "scale": 0.6,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "tail",
+      "shape": "tail_tuft",
+      "parent": "torso",
+      "at": 0.0,
+      "angle": 165,
+      "scale": 0.62,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    }
+  ],
+  "legs": [
+    {
+      "chain": [
+        "femur_f",
+        "fore_f",
+        "maw_f"
+      ],
+      "bend": 1.0
+    },
+    {
+      "chain": [
+        "femur_b",
+        "shin_b",
+        "foot_b"
+      ],
+      "bend": -1.0
+    }
+  ],
+  "motion": {
+    "cycle": 0.95,
+    "walk": {
+      "torso": {
+        "mode": "bob",
+        "amp": 2.4,
+        "freq": 2.0,
+        "rot": 1.0
+      },
+      "head": {
+        "mode": "sway",
+        "amp": 1.0,
+        "freq": 2.0,
+        "rot": 2.5,
+        "phase": 0.5
+      },
+      "maw_f": {
+        "mode": "sway",
+        "amp": 1.2,
+        "freq": 2.0,
+        "rot": 9.0,
+        "phase": 0.35
+      },
+      "tail": {
+        "mode": "sway",
+        "amp": 2.0,
+        "freq": 1.5,
+        "rot": 4.5,
+        "phase": 1.2
+      }
+    },
+    "idle": {
+      "torso": {
+        "mode": "pulse",
+        "amp": 1.6,
+        "freq": 0.6,
+        "rot": 1.2
+      },
+      "head": {
+        "mode": "sway",
+        "amp": 1.0,
+        "freq": 0.6,
+        "rot": 3.0,
+        "phase": 0.4
+      },
+      "maw_f": {
+        "mode": "pulse",
+        "amp": 1.4,
+        "freq": 0.5,
+        "rot": 8.0,
+        "phase": 0.3
+      },
+      "tail": {
+        "mode": "sway",
+        "amp": 2.4,
+        "freq": 0.5,
+        "rot": 5.0,
+        "phase": 1.0
+      }
+    }
+  },
+  "known_weak": "2026-09-28: the fused silhouette encloses a hole between the belly and the legs, so it reads as a ring rather than an animal. NOT finished. Tried: moving the hip seats apart and inward, splaying and verticalising the limbs, lengthening the legs, and fusion up to 8.5. autopose also overwrites every leg angle, so leg angle is not an authoring lever - hip seat and leg length are. A later pass needs either a torso that spans the span between the hips, or legs that reach clear below the belly with room to spare."
+}

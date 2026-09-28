@@ -1,0 +1,259 @@
+{
+  "name": "mole_lurker",
+  "size": [
+    300,
+    200
+  ],
+  "seed": 37,
+  "outline_width": 3.5,
+  "shade_depth": 7.0,
+  "fusion": 3.6,
+  "palette": {
+    "body": "#6b5537",
+    "body_dark": "#4b3a21",
+    "belly": "#c2a470",
+    "shade": "#0c0805",
+    "ink": "#090603",
+    "key_light": "#e6c68c",
+    "rim": "#f0d8a0",
+    "accent": "#8c3a1e",
+    "sclera": "#c8b48a",
+    "pupil": "#0e0a04"
+  },
+  "parts": [
+    {
+      "id": "torso",
+      "shape": "torso_frog",
+      "scale": 1.05,
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "carapace",
+      "shape": "shell_dome",
+      "parent": "torso",
+      "at": 0.46,
+      "angle": -92,
+      "scale": 0.8,
+      "offset": [
+        0,
+        0
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "head",
+      "shape": "head_blunt",
+      "parent": "torso",
+      "at": 0.92,
+      "angle": -6,
+      "scale": 1.24,
+      "offset": [
+        0,
+        -2
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "snout",
+      "shape": "horn_single",
+      "parent": "head",
+      "at": 0.72,
+      "angle": -14,
+      "scale": 0.46,
+      "offset": [
+        0,
+        -3
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "eye",
+      "shape": "eye_lens",
+      "parent": "head",
+      "at": 0.22,
+      "angle": 0,
+      "scale": 0.5,
+      "offset": [
+        9,
+        -11
+      ],
+      "role": "sclera",
+      "shade": "ink",
+      "detail": true
+    },
+    {
+      "id": "pupil",
+      "shape": "pupil",
+      "parent": "eye",
+      "at": 0.1,
+      "angle": 0,
+      "scale": 0.5,
+      "role": "pupil",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "tail",
+      "shape": "tail_none",
+      "parent": "torso",
+      "at": 0.0,
+      "angle": 182,
+      "scale": 1.0,
+      "offset": [
+        0,
+        8
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "femur_f",
+      "shape": "limb_femur",
+      "parent": "torso",
+      "at": 0.72,
+      "angle": 83.49,
+      "scale": 0.426,
+      "offset": [
+        0,
+        18
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "shin_f",
+      "shape": "limb_shin",
+      "parent": "femur_f",
+      "at": 1.0,
+      "angle": 66.03,
+      "scale": 0.831,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "paw_f",
+      "shape": "foot_pad",
+      "parent": "shin_f",
+      "at": 1.0,
+      "angle": -149.74,
+      "scale": 1.935,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "femur_b",
+      "shape": "limb_femur",
+      "parent": "torso",
+      "at": 0.26,
+      "angle": 132.62,
+      "scale": 0.426,
+      "offset": [
+        0,
+        19
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "shin_b",
+      "shape": "limb_shin",
+      "parent": "femur_b",
+      "at": 1.0,
+      "angle": -78.97,
+      "scale": 0.832,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "paw_b",
+      "shape": "foot_claw",
+      "parent": "shin_b",
+      "at": 1.0,
+      "angle": -61.16,
+      "scale": 1.452,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    }
+  ],
+  "legs": [
+    {
+      "chain": [
+        "femur_f",
+        "shin_f",
+        "paw_f"
+      ],
+      "bend": 1.0
+    },
+    {
+      "chain": [
+        "femur_b",
+        "shin_b",
+        "paw_b"
+      ],
+      "bend": -1.0
+    }
+  ],
+  "stride": 21.0,
+  "lift": 11.0,
+  "motion": {
+    "cycle": 1.1,
+    "walk": {
+      "torso": {
+        "mode": "bob",
+        "amp": 2.4,
+        "freq": 2.0,
+        "rot": 1.0
+      },
+      "head": {
+        "mode": "sway",
+        "amp": 0.8,
+        "freq": 2.0,
+        "rot": 2.0,
+        "phase": 0.5
+      },
+      "tail": {
+        "mode": "sway",
+        "amp": 1.4,
+        "freq": 1.6,
+        "rot": 4.0,
+        "phase": 1.2
+      }
+    },
+    "idle": {
+      "torso": {
+        "mode": "pulse",
+        "amp": 1.6,
+        "freq": 0.55,
+        "rot": 1.0
+      },
+      "head": {
+        "mode": "sway",
+        "amp": 0.8,
+        "freq": 0.55,
+        "rot": 2.4,
+        "phase": 0.4
+      },
+      "tail": {
+        "mode": "sway",
+        "amp": 1.6,
+        "freq": 0.4,
+        "rot": 5.0,
+        "phase": 1.0
+      }
+    }
+  }
+}

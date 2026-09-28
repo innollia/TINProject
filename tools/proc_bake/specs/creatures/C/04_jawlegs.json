@@ -1,0 +1,288 @@
+{
+  "name": "jawlegs",
+  "size": [
+    300,
+    230
+  ],
+  "seed": 103,
+  "outline_width": 3.0,
+  "shade_depth": 9.0,
+  "fusion": 3.0,
+  "palette": {
+    "body": "#a04a34",
+    "body_dark": "#5e2a1c",
+    "belly": "#d99370",
+    "shade": "#2a1009",
+    "ink": "#130705",
+    "key_light": "#f0b085",
+    "rim": "#ffdcc0",
+    "accent": "#3f6f7a",
+    "sclera": "#f8e6d2",
+    "pupil": "#160b06"
+  },
+  "parts": [
+    {
+      "id": "torso",
+      "shape": "torso_frog",
+      "scale": 1.15,
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "head",
+      "shape": "head_beak",
+      "parent": "torso",
+      "at": 0.04,
+      "angle": -26,
+      "scale": 0.72,
+      "offset": [
+        0,
+        -16
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "eye_far",
+      "shape": "eye_lens",
+      "parent": "head",
+      "at": 0.3,
+      "angle": 0,
+      "scale": 0.5,
+      "offset": [
+        3,
+        -4
+      ],
+      "role": "sclera",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "pupil_far",
+      "shape": "pupil",
+      "parent": "eye_far",
+      "at": 0.12,
+      "angle": 0,
+      "scale": 0.8,
+      "role": "pupil",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "eye_near",
+      "shape": "eye_lens",
+      "parent": "head",
+      "at": 0.36,
+      "angle": 0,
+      "scale": 0.6,
+      "offset": [
+        0,
+        -1
+      ],
+      "role": "sclera",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "pupil_near",
+      "shape": "pupil",
+      "parent": "eye_near",
+      "at": 0.12,
+      "angle": 0,
+      "scale": 0.8,
+      "role": "pupil",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "maw_f",
+      "shape": "head_maw",
+      "parent": "torso",
+      "at": 0.64,
+      "angle": 40,
+      "scale": 1.3,
+      "offset": [
+        0,
+        14
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "prop_f",
+      "shape": "limb_stump",
+      "parent": "maw_f",
+      "at": 1.0,
+      "angle": 24,
+      "scale": 0.5,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "maw_b",
+      "shape": "head_maw",
+      "parent": "torso",
+      "at": 0.14,
+      "angle": 146,
+      "scale": 1.3,
+      "offset": [
+        0,
+        14
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "prop_b",
+      "shape": "limb_stump",
+      "parent": "maw_b",
+      "at": 1.0,
+      "angle": -22,
+      "scale": 0.5,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "hump",
+      "shape": "shell_dome",
+      "parent": "torso",
+      "at": 0.42,
+      "angle": -60,
+      "scale": 0.68,
+      "offset": [
+        0,
+        -20
+      ],
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "tail",
+      "shape": "tail_tuft",
+      "parent": "torso",
+      "at": 1.0,
+      "angle": 170,
+      "scale": 0.6,
+      "offset": [
+        0,
+        2
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "crown",
+      "shape": "horn_single",
+      "parent": "head",
+      "at": 0.4,
+      "angle": -92,
+      "scale": 0.5,
+      "offset": [
+        2,
+        -2
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    }
+  ],
+  "legs": [
+    {
+      "chain": [
+        "maw_f",
+        "prop_f"
+      ],
+      "bend": 1.0
+    },
+    {
+      "chain": [
+        "maw_b",
+        "prop_b"
+      ],
+      "bend": -1.0
+    }
+  ],
+  "stride": 20.0,
+  "lift": 12.0,
+  "motion": {
+    "cycle": 0.9,
+    "walk": {
+      "torso": {
+        "mode": "bob",
+        "amp": 2.2,
+        "freq": 2.0,
+        "rot": 1.0
+      },
+      "head": {
+        "mode": "sway",
+        "amp": 1.2,
+        "freq": 2.0,
+        "rot": 3.0,
+        "phase": 0.5
+      },
+      "maw_f": {
+        "mode": "sway",
+        "amp": 1.0,
+        "freq": 2.0,
+        "rot": 8.0,
+        "phase": 0.3
+      },
+      "maw_b": {
+        "mode": "sway",
+        "amp": 1.0,
+        "freq": 2.0,
+        "rot": 8.0,
+        "phase": 0.9
+      },
+      "tail": {
+        "mode": "sway",
+        "amp": 2.0,
+        "freq": 1.5,
+        "rot": 5.0,
+        "phase": 1.2
+      }
+    },
+    "idle": {
+      "torso": {
+        "mode": "pulse",
+        "amp": 1.6,
+        "freq": 0.6,
+        "rot": 1.2
+      },
+      "head": {
+        "mode": "sway",
+        "amp": 1.0,
+        "freq": 0.6,
+        "rot": 3.0,
+        "phase": 0.4
+      },
+      "maw_f": {
+        "mode": "pulse",
+        "amp": 1.8,
+        "freq": 0.5,
+        "rot": 7.0,
+        "phase": 0.3
+      },
+      "maw_b": {
+        "mode": "pulse",
+        "amp": 1.8,
+        "freq": 0.5,
+        "rot": 7.0,
+        "phase": 0.9
+      },
+      "tail": {
+        "mode": "sway",
+        "amp": 2.2,
+        "freq": 0.5,
+        "rot": 5.0,
+        "phase": 1.0
+      }
+    }
+  }
+}

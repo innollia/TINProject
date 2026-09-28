@@ -1,0 +1,110 @@
+{
+  "name": "07_wet_canyon",
+  "seed": 707,
+  "size": [1280, 720],
+  "light": { "angle": -160 },
+  "palette": {
+    "body": "#8a6a48",
+    "body_dark": "#4a3626",
+    "belly": "#e0bd8e",
+    "shade": "#241a13",
+    "ink": "#0c0907",
+    "key_light": "#f0cfa0",
+    "rim": "#ffe0b8",
+    "accent": "#6d543a",
+    "ground": "#9a7c5a",
+    "sky_near": "#3a2a1e",
+    "sky_far": "#6d543a",
+    "fog": "#c9ab84"
+  },
+  "layers": [
+    {
+      "name": "sky",
+      "parallax": 0.04,
+      "fog": 0.0,
+      "plane": { "role": "sky_near", "to_role": "accent", "bias": 0.24, "spread": 1.7 },
+      "elements": [
+        { "kind": "glow", "at": [648, 40], "r": 300, "power": 2.6, "role": "key_light", "alpha": 0.55 },
+        { "kind": "glow", "at": [648, 20], "r": 112, "power": 3.0, "role": "rim", "alpha": 0.85 }
+      ]
+    },
+    {
+      "name": "far",
+      "parallax": 0.15,
+      "fog": 0.26,
+      "role": "ground",
+      "ink": 1.0,
+      "shade_depth": 4.0,
+      "tone": 1.0,
+      "elements": [
+        { "kind": "ribbon",
+          "spine": [[652, -60], [646, 120], [652, 320], [644, 560], [640, 830], [636, 1150]],
+          "widths": [64, 122, 212, 336, 336, 336], "role": "belly" },
+        { "kind": "slab", "w": 350, "h": 820, "n": 2.8, "taper": 0.62, "lean": 30, "at": [196, 300],
+          "role": "ground" },
+        { "kind": "slab", "w": 350, "h": 820, "n": 2.8, "taper": 0.60, "lean": -34, "at": [1086, 282],
+          "role": "ground" },
+        { "kind": "ribbon", "spine": [[128, -30], [116, 200], [130, 430], [118, 640], [128, 760]],
+          "widths": [22, 34, 17, 28, 20], "role": "accent" },
+        { "kind": "ribbon", "spine": [[1156, -30], [1168, 190], [1154, 420], [1166, 620], [1156, 760]],
+          "widths": [20, 32, 16, 26, 18], "role": "accent" }
+      ]
+    },
+    {
+      "name": "mid",
+      "parallax": 0.44,
+      "fog": 0.10,
+      "role": "body_dark",
+      "ink": 2.0,
+      "elements": [
+        { "kind": "cluster2", "at": [340, 574], "rotation": -3, "role": "body_dark", "parts": [
+          { "kind": "slab", "w": 380, "h": 66, "n": 4.4, "taper": 0.9 },
+          { "kind": "slab", "w": 340, "h": 128, "n": 3.6, "at": [-8, 70] }
+        ] },
+        { "kind": "cluster2", "at": [960, 548], "rotation": 4, "role": "body_dark", "parts": [
+          { "kind": "slab", "w": 270, "h": 60, "n": 4.4, "taper": 0.9 },
+          { "kind": "slab", "w": 240, "h": 136, "n": 3.6, "at": [22, 74] }
+        ] },
+        { "kind": "ribbon",
+          "spine": [[300, 668], [440, 656], [566, 672]], "widths": [13, 24, 15], "role": "belly" },
+        { "kind": "ribbon",
+          "spine": [[730, 672], [860, 654], [988, 672]], "widths": [15, 26, 13], "role": "belly" }
+      ]
+    },
+    {
+      "name": "near",
+      "parallax": 0.70,
+      "fog": 0.02,
+      "role": "shade",
+      "ink": 2.8,
+      "elements": [
+        { "kind": "slab", "w": 320, "h": 800, "n": 2.4, "at": [120, 366], "taper": 0.60, "lean": 138,
+          "role": "shade" },
+        { "kind": "slab", "w": 320, "h": 800, "n": 2.4, "at": [1160, 344], "taper": 0.58, "lean": -142,
+          "role": "shade" },
+        { "kind": "cluster", "sub": "boulder", "count": 6, "at": [130, 400], "band": "x",
+          "spread": [190, 300], "scale": [0.4, 1.5], "rotation": 16, "role": "shade" },
+        { "kind": "cluster", "sub": "boulder", "count": 6, "at": [1150, 380], "band": "x",
+          "spread": [190, 300], "scale": [0.4, 1.5], "rotation": 16, "role": "shade" },
+        { "kind": "ribbon", "spine": [[300, -20], [288, 130], [300, 262]], "widths": [11, 9, 9],
+          "role": "ink" },
+        { "kind": "ribbon", "spine": [[1010, -20], [1022, 140], [1010, 252]], "widths": [10, 12, 9],
+          "role": "ink" }
+      ]
+    },
+    {
+      "name": "foreground",
+      "parallax": 1.0,
+      "fog": 0.0,
+      "role": "ink",
+      "ink": 3.4,
+      "shade_depth": 0.0,
+      "elements": [
+        { "kind": "slab", "w": 430, "h": 230, "n": 4.0, "at": [148, 796], "rotation": 6, "role": "ink" },
+        { "kind": "slab", "w": 470, "h": 250, "n": 4.4, "at": [1140, 800], "rotation": -5, "role": "ink" },
+        { "kind": "ribbon", "spine": [[-30, 646], [230, 700], [470, 776]], "widths": [32, 27, 27],
+          "role": "ink" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "name": "01_rain_industrial",
+  "seed": 101,
+  "size": [1280, 720],
+  "light": { "angle": -128 },
+  "palette": {
+    "body": "#565d57",
+    "body_dark": "#272d2c",
+    "belly": "#6d746c",
+    "shade": "#121414",
+    "ink": "#0a0b0b",
+    "key_light": "#9aa396",
+    "rim": "#b3bcae",
+    "accent": "#3c4a4a",
+    "ground": "#4a534e",
+    "sky_near": "#4a534e",
+    "sky_far": "#767b73",
+    "fog": "#6b7169"
+  },
+  "layers": [
+    {
+      "name": "sky",
+      "parallax": 0.04,
+      "fog": 0.0,
+      "plane": { "role": "sky_near", "to_role": "fog", "bias": 0.26, "spread": 2.2 },
+      "elements": [
+        { "kind": "glow", "at": [760, 20], "r": 640, "power": 2.2, "role": "sky_far", "alpha": 0.5 }
+      ]
+    },
+    {
+      "name": "far",
+      "parallax": 0.16,
+      "fog": 0.20,
+      "role": "ground",
+      "ink": 1.1,
+      "shade_depth": 5.0,
+      "elements": [
+        { "kind": "ribbon", "spine": [[-40, 176], [340, 166], [760, 180], [1120, 168], [1330, 178]],
+          "width": 22, "resample": 30, "wiggle": 5.0, "role": "ground" },
+        { "kind": "ribbon", "spine": [[436, 470], [442, 372], [432, 258]], "widths": [56, 44, 30],
+          "resample": 16, "role": "ground" },
+        { "kind": "ribbon", "spine": [[902, 470], [896, 380], [906, 226]], "widths": [52, 42, 28],
+          "resample": 16, "role": "ground" },
+        { "kind": "ribbon", "spine": [[-40, 604], [340, 592], [760, 610], [1120, 594], [1330, 602]],
+          "widths": [280, 250, 300, 260, 290], "resample": 34, "wiggle": 16.0, "role": "ground" }
+      ]
+    },
+    {
+      "name": "mid",
+      "parallax": 0.44,
+      "fog": 0.16,
+      "role": "body_dark",
+      "ink": 1.9,
+      "elements": [
+        { "kind": "ribbon", "spine": [[-40, 46], [320, 30], [720, 50], [1080, 32], [1330, 48]],
+          "widths": [80, 98, 86, 100, 82], "resample": 32 },
+        { "kind": "ribbon", "spine": [[-40, 676], [360, 688], [820, 672], [1330, 690]],
+          "widths": [58, 68, 60, 70], "resample": 30 },
+        { "kind": "ribbon", "spine": [[-40, 700], [340, 682], [760, 706], [1120, 684], [1330, 698]],
+          "widths": [270, 240, 290, 250, 280], "resample": 34, "wiggle": 22.0, "role": "body_dark" },
+        { "kind": "ribbon", "spine": [[166, 70], [178, 300], [164, 520], [174, 720]],
+          "widths": [44, 40, 42, 46], "resample": 28 },
+        { "kind": "ribbon", "spine": [[1126, 76], [1114, 320], [1130, 540], [1118, 720]],
+          "widths": [40, 46, 42, 44], "resample": 28 },
+        { "kind": "cluster2", "at": [258, 330], "parts": [
+          { "kind": "disc", "r": 60, "teeth": 14, "tooth_depth": 16, "bore": 15 },
+          { "kind": "ribbon", "spine": [[0, 62], [0, 200]], "widths": [20, 26], "resample": 12 }
+        ] },
+        { "kind": "disc", "at": [1036, 344], "r": 76, "bore": 45, "spokes": 6, "hub": 21,
+          "rotation": 30 },
+        { "kind": "cluster", "sub": "pipe", "count": 3, "at": [66, 300], "band": "y",
+          "spread": [46, 250], "scale": [0.7, 1.2], "rotation": 3, "role": "shade" }
+      ]
+    },
+    {
+      "name": "near",
+      "parallax": 0.74,
+      "fog": 0.04,
+      "role": "shade",
+      "ink": 2.9,
+      "elements": [
+        { "kind": "cluster2", "at": [130, 600], "parts": [
+          { "kind": "slab", "w": 300, "h": 200, "n": 2.8, "bulge": 0.06 },
+          { "kind": "ribbon", "spine": [[-140, -130], [-20, -146], [110, -138]],
+            "widths": [46, 54, 40], "resample": 16 },
+          { "kind": "ribbon", "spine": [[-160, -40], [160, -46]], "widths": [40, 36],
+            "resample": 12 },
+          { "kind": "disc", "at": [0, -196], "r": 44, "teeth": 10, "tooth_depth": 12, "bore": 11 }
+        ] },
+        { "kind": "cluster2", "at": [1178, 570], "parts": [
+          { "kind": "slab", "w": 280, "h": 240, "n": 2.6, "bulge": 0.08 },
+          { "kind": "ribbon", "spine": [[-120, -160], [10, -150], [130, -164]],
+            "widths": [40, 50, 36], "resample": 16 },
+          { "kind": "ribbon", "spine": [[-150, -70], [150, -60]], "widths": [34, 30],
+            "resample": 12 }
+        ] },
+        { "kind": "ribbon", "spine": [[690, -60], [740, 40], [700, 132], [756, 196]],
+          "widths": [130, 108, 84, 40], "resample": 26, "role": "ink" },
+        { "kind": "cluster", "sub": "drip", "count": 4, "at": [130, 40], "band": "x",
+          "spread": [150, 0], "scale": [0.7, 1.5], "role": "ink", "ink": 2.0 }
+      ]
+    },
+    {
+      "name": "foreground",
+      "parallax": 1.0,
+      "fog": 0.0,
+      "role": "ink",
+      "ink": 3.6,
+      "shade_depth": 0.0,
+      "elements": [
+        { "kind": "ribbon", "spine": [[-30, 728], [300, 706], [820, 730], [1310, 708]],
+          "widths": [56, 76, 60, 80], "resample": 32, "role": "ink" },
+        { "kind": "cluster", "sub": "drip", "count": 3, "at": [1120, 20], "band": "x",
+          "spread": [110, 0], "scale": [0.9, 1.8], "role": "ink" }
+      ]
+    }
+  ]
+}

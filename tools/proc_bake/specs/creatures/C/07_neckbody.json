@@ -1,0 +1,316 @@
+{
+  "name": "neckbody",
+  "size": [
+    260,
+    320
+  ],
+  "seed": 131,
+  "outline_width": 3.0,
+  "shade_depth": 9.0,
+  "fusion": 3.0,
+  "stride": 19.0,
+  "lift": 11.0,
+  "palette": {
+    "body": "#4a5a86",
+    "body_dark": "#2a3352",
+    "belly": "#93a4c8",
+    "shade": "#10131f",
+    "ink": "#06080e",
+    "key_light": "#a8bce8",
+    "rim": "#d6e2ff",
+    "accent": "#e0a038",
+    "sclera": "#e6ecf8",
+    "pupil": "#0a0d18"
+  },
+  "parts": [
+    {
+      "id": "b1",
+      "shape": "torso_blob",
+      "scale": 1.25,
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "b2",
+      "shape": "torso_blob",
+      "parent": "b1",
+      "at": 0.84,
+      "angle": -90,
+      "scale": 0.98,
+      "offset": [
+        0,
+        -30
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "b3",
+      "shape": "torso_blob",
+      "parent": "b2",
+      "at": 0.0,
+      "angle": -2,
+      "scale": 0.78,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "rooftail",
+      "shape": "tail_taper",
+      "parent": "b3",
+      "at": 0.0,
+      "angle": 152,
+      "scale": 0.6,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "head",
+      "shape": "head_antenna",
+      "parent": "b1",
+      "at": 0.98,
+      "angle": -4,
+      "scale": 0.95,
+      "offset": [
+        0,
+        6
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "eye_far",
+      "shape": "eye_lens",
+      "parent": "head",
+      "at": 0.3,
+      "angle": 0,
+      "scale": 0.5,
+      "offset": [
+        3,
+        -5
+      ],
+      "role": "sclera",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "pupil_far",
+      "shape": "pupil",
+      "parent": "eye_far",
+      "at": 0.12,
+      "angle": 0,
+      "scale": 0.8,
+      "role": "pupil",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "eye_near",
+      "shape": "eye_lens",
+      "parent": "head",
+      "at": 0.36,
+      "angle": 0,
+      "scale": 0.62,
+      "offset": [
+        0,
+        -2
+      ],
+      "role": "sclera",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "pupil_near",
+      "shape": "pupil",
+      "parent": "eye_near",
+      "at": 0.12,
+      "angle": 0,
+      "scale": 0.8,
+      "role": "pupil",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "femur_f",
+      "shape": "limb_femur",
+      "parent": "b1",
+      "at": 0.6,
+      "angle": 40.29,
+      "scale": 0.95,
+      "offset": [
+        0,
+        10
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "shin_f",
+      "shape": "limb_shin",
+      "parent": "femur_f",
+      "at": 1.0,
+      "angle": 48.42,
+      "scale": 0.9,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "foot_f",
+      "shape": "foot_claw",
+      "parent": "shin_f",
+      "at": 1.0,
+      "angle": -80,
+      "scale": 0.8,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "femur_b",
+      "shape": "limb_femur",
+      "parent": "b1",
+      "at": 0.16,
+      "angle": 148.0,
+      "scale": 0.95,
+      "offset": [
+        0,
+        10
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "shin_b",
+      "shape": "limb_shin",
+      "parent": "femur_b",
+      "at": 1.0,
+      "angle": -72.0,
+      "scale": 0.9,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "foot_b",
+      "shape": "foot_claw",
+      "parent": "shin_b",
+      "at": 1.0,
+      "angle": -100,
+      "scale": 0.82,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "joint",
+      "shape": "frill_neck",
+      "parent": "b2",
+      "at": 0.0,
+      "angle": -4,
+      "scale": 1.3,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    }
+  ],
+  "legs": [
+    {
+      "chain": [
+        "femur_f",
+        "shin_f",
+        "foot_f"
+      ],
+      "bend": 1.0
+    },
+    {
+      "chain": [
+        "femur_b",
+        "shin_b",
+        "foot_b"
+      ],
+      "bend": -1.0
+    }
+  ],
+  "motion": {
+    "cycle": 1.0,
+    "walk": {
+      "b1": {
+        "mode": "bob",
+        "amp": 2.2,
+        "freq": 2.0,
+        "rot": 1.0
+      },
+      "b2": {
+        "mode": "sway",
+        "amp": 1.6,
+        "freq": 1.5,
+        "rot": 3.5,
+        "phase": 0.4
+      },
+      "b3": {
+        "mode": "sway",
+        "amp": 2.2,
+        "freq": 1.5,
+        "rot": 5.0,
+        "phase": 0.9
+      },
+      "rooftail": {
+        "mode": "sway",
+        "amp": 2.0,
+        "freq": 1.2,
+        "rot": 6.0,
+        "phase": 1.4
+      },
+      "head": {
+        "mode": "sway",
+        "amp": 1.0,
+        "freq": 2.0,
+        "rot": 3.0,
+        "phase": 0.6
+      }
+    },
+    "idle": {
+      "b1": {
+        "mode": "pulse",
+        "amp": 1.6,
+        "freq": 0.6,
+        "rot": 1.2
+      },
+      "b2": {
+        "mode": "sway",
+        "amp": 1.2,
+        "freq": 0.6,
+        "rot": 3.0,
+        "phase": 0.4
+      },
+      "b3": {
+        "mode": "sway",
+        "amp": 1.6,
+        "freq": 0.6,
+        "rot": 4.0,
+        "phase": 0.9
+      },
+      "rooftail": {
+        "mode": "sway",
+        "amp": 1.8,
+        "freq": 0.5,
+        "rot": 5.0,
+        "phase": 1.4
+      },
+      "head": {
+        "mode": "sway",
+        "amp": 1.0,
+        "freq": 0.6,
+        "rot": 3.0,
+        "phase": 0.6
+      }
+    }
+  }
+}

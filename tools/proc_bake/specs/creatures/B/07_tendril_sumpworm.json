@@ -1,0 +1,291 @@
+{
+  "name": "tendril_sumpworm",
+  "size": [
+    460,
+    300
+  ],
+  "seed": 67,
+  "outline_width": 2.6,
+  "shade_depth": 6.0,
+  "palette": {
+    "body": "#1a2145",
+    "body_dark": "#080b1c",
+    "belly": "#6e8fd0",
+    "shade": "#03050f",
+    "ink": "#010208",
+    "key_light": "#9fd8ff",
+    "rim": "#d4f0ff",
+    "accent": "#7a5cff",
+    "sclera": "#c8f4ff",
+    "pupil": "#060a18"
+  },
+  "parts": [
+    {
+      "id": "s1",
+      "shape": "torso_slug",
+      "scale": 0.6,
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "s2",
+      "shape": "torso_slug",
+      "parent": "s1",
+      "at": 1.0,
+      "angle": 9,
+      "scale": 0.5,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "s3",
+      "shape": "torso_slug",
+      "parent": "s2",
+      "at": 1.0,
+      "angle": -11,
+      "scale": 0.38,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "head",
+      "shape": "head_blunt",
+      "parent": "s1",
+      "at": 0.0,
+      "angle": -8,
+      "scale": 0.84,
+      "offset": [
+        -28,
+        0
+      ],
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "feel",
+      "shape": "limb_tentacle",
+      "parent": "head",
+      "at": 0.62,
+      "angle": 104,
+      "scale": 0.46,
+      "offset": [
+        0,
+        4
+      ],
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "arm1",
+      "shape": "limb_tentacle",
+      "parent": "s1",
+      "at": 0.44,
+      "angle": 122,
+      "scale": 0.8,
+      "offset": [
+        0,
+        4
+      ],
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "arm2",
+      "shape": "limb_tentacle",
+      "parent": "s1",
+      "at": 0.6,
+      "angle": 64,
+      "scale": 0.78,
+      "offset": [
+        0,
+        4
+      ],
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "arm3",
+      "shape": "limb_tentacle",
+      "parent": "s2",
+      "at": 0.36,
+      "angle": 104,
+      "scale": 0.66,
+      "offset": [
+        0,
+        4
+      ],
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "bellyline",
+      "shape": "crest_fin",
+      "parent": "s1",
+      "at": 0.5,
+      "angle": 120,
+      "scale": 0.46,
+      "offset": [
+        0,
+        5
+      ],
+      "role": "belly",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "spark",
+      "shape": "pupil",
+      "parent": "arm2",
+      "at": 1.0,
+      "angle": 0,
+      "scale": 1.4,
+      "role": "accent",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "eye",
+      "shape": "eye_lens",
+      "parent": "head",
+      "at": 0.42,
+      "angle": 0,
+      "scale": 0.86,
+      "offset": [
+        0,
+        -10
+      ],
+      "role": "sclera",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "pupil",
+      "shape": "pupil",
+      "parent": "eye",
+      "at": 0.1,
+      "angle": 0,
+      "scale": 0.68,
+      "role": "pupil",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "tail",
+      "shape": "tail_tuft",
+      "parent": "s3",
+      "at": 1.0,
+      "angle": 16,
+      "scale": 0.7454,
+      "role": "body",
+      "shade": "volumetric"
+    }
+  ],
+  "stride": 15.0,
+  "lift": 9.0,
+  "motion": {
+    "cycle": 1.0,
+    "walk": {
+      "s1": {
+        "mode": "bob",
+        "amp": 2.0,
+        "freq": 1.8,
+        "rot": 1.0
+      },
+      "s2": {
+        "mode": "sway",
+        "amp": 2.6,
+        "freq": 1.8,
+        "rot": 6.0,
+        "phase": 0.6
+      },
+      "s3": {
+        "mode": "sway",
+        "amp": 3.2,
+        "freq": 1.8,
+        "rot": 8.0,
+        "phase": 1.2
+      },
+      "arm1": {
+        "mode": "sway",
+        "amp": 3.4,
+        "freq": 1.8,
+        "rot": 8.0,
+        "phase": 0.3
+      },
+      "arm2": {
+        "mode": "sway",
+        "amp": 3.4,
+        "freq": 1.8,
+        "rot": 8.0,
+        "phase": 1.5
+      },
+      "arm3": {
+        "mode": "sway",
+        "amp": 3.0,
+        "freq": 1.8,
+        "rot": 7.0,
+        "phase": 0.9
+      },
+      "tail": {
+        "mode": "sway",
+        "amp": 3.4,
+        "freq": 1.8,
+        "rot": 8.0,
+        "phase": 1.8
+      }
+    },
+    "idle": {
+      "s1": {
+        "mode": "pulse",
+        "amp": 1.8,
+        "freq": 0.55,
+        "rot": 0.8
+      },
+      "s2": {
+        "mode": "sway",
+        "amp": 1.4,
+        "freq": 0.55,
+        "rot": 2.6,
+        "phase": 0.7
+      },
+      "s3": {
+        "mode": "sway",
+        "amp": 1.8,
+        "freq": 0.55,
+        "rot": 3.2,
+        "phase": 1.4
+      },
+      "arm1": {
+        "mode": "sway",
+        "amp": 2.2,
+        "freq": 0.55,
+        "rot": 5.0,
+        "phase": 0.4
+      },
+      "arm2": {
+        "mode": "sway",
+        "amp": 2.2,
+        "freq": 0.55,
+        "rot": 5.0,
+        "phase": 1.6
+      },
+      "arm3": {
+        "mode": "sway",
+        "amp": 2.0,
+        "freq": 0.55,
+        "rot": 4.4,
+        "phase": 1.0
+      },
+      "tail": {
+        "mode": "sway",
+        "amp": 2.2,
+        "freq": 0.55,
+        "rot": 4.8,
+        "phase": 2.0
+      }
+    }
+  },
+  "g4_exempt": "G4-exempt: these parts are limb tips and mid-body segments on a tapering body, small by design. They carry no IK chain, so nothing structural depends on their size. Judged by eye on the contact sheet, not by scale."
+}

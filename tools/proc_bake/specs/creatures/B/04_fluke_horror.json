@@ -1,0 +1,237 @@
+{
+  "name": "fluke_horror",
+  "size": [
+    440,
+    300
+  ],
+  "seed": 41,
+  "outline_width": 2.8,
+  "shade_depth": 7.0,
+  "palette": {
+    "body": "#2f5c86",
+    "body_dark": "#12283f",
+    "belly": "#a8cbe0",
+    "shade": "#07131f",
+    "ink": "#040a12",
+    "key_light": "#e8c877",
+    "rim": "#f6e6b4",
+    "accent": "#e2703a",
+    "sclera": "#f6f1dc",
+    "pupil": "#0d1218"
+  },
+  "parts": [
+    {
+      "id": "torso",
+      "shape": "torso_bird",
+      "scale": 0.94,
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "dorsal",
+      "shape": "crest_fin",
+      "parent": "torso",
+      "at": 0.44,
+      "angle": -40,
+      "scale": 0.84,
+      "offset": [
+        0,
+        -10
+      ],
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "bellyline",
+      "shape": "crest_fin",
+      "parent": "torso",
+      "at": 0.4,
+      "angle": 128,
+      "scale": 0.5,
+      "offset": [
+        0,
+        6
+      ],
+      "role": "belly",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "head",
+      "shape": "head_beak",
+      "parent": "torso",
+      "at": 0.0,
+      "angle": -6,
+      "scale": 0.82,
+      "offset": [
+        -40,
+        2
+      ],
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "eye",
+      "shape": "eye_lens",
+      "parent": "head",
+      "at": 0.36,
+      "angle": 0,
+      "scale": 0.92,
+      "offset": [
+        0,
+        -10
+      ],
+      "role": "sclera",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "pupil",
+      "shape": "pupil",
+      "parent": "eye",
+      "at": 0.1,
+      "angle": 0,
+      "scale": 0.7,
+      "role": "pupil",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "pec_f",
+      "shape": "limb_web",
+      "parent": "torso",
+      "at": 0.26,
+      "angle": -294.0,
+      "scale": 0.129,
+      "offset": [
+        0,
+        6
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "arm_f",
+      "shape": "limb_stump",
+      "parent": "pec_f",
+      "at": 1.0,
+      "angle": 148.51,
+      "scale": 1.2199,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "pel_f",
+      "shape": "limb_web",
+      "parent": "torso",
+      "at": 0.6,
+      "angle": -275.7,
+      "scale": 0.134,
+      "offset": [
+        0,
+        6
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "arm_f2",
+      "shape": "limb_stump",
+      "parent": "pel_f",
+      "at": 1.0,
+      "angle": 149.38,
+      "scale": 1.2031,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "pel_b",
+      "shape": "limb_web",
+      "parent": "torso",
+      "at": 0.8,
+      "angle": 6.84,
+      "scale": 0.181,
+      "offset": [
+        0,
+        6
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "arm_b",
+      "shape": "limb_stump",
+      "parent": "pel_b",
+      "at": 1.0,
+      "angle": -173.87,
+      "scale": 0.87,
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "tail",
+      "shape": "tail_fluke",
+      "parent": "torso",
+      "at": 1.0,
+      "angle": 4,
+      "scale": 1.05,
+      "role": "body",
+      "shade": "volumetric"
+    }
+  ],
+  "motion": {
+    "cycle": 0.85,
+    "walk": {
+      "torso": {
+        "mode": "bob",
+        "amp": 2.4,
+        "freq": 2.0,
+        "rot": 1.2
+      },
+      "head": {
+        "mode": "sway",
+        "amp": 1.2,
+        "freq": 2.0,
+        "rot": 2.4,
+        "phase": 0.5
+      },
+      "tail": {
+        "mode": "sway",
+        "amp": 2.6,
+        "freq": 1.5,
+        "rot": 6.0,
+        "phase": 1.2
+      }
+    },
+    "idle": {
+      "torso": {
+        "mode": "pulse",
+        "amp": 2.0,
+        "freq": 0.6,
+        "rot": 1.0
+      },
+      "head": {
+        "mode": "sway",
+        "amp": 1.0,
+        "freq": 0.6,
+        "rot": 3.0,
+        "phase": 0.4
+      },
+      "tail": {
+        "mode": "sway",
+        "amp": 3.4,
+        "freq": 0.45,
+        "rot": 7.0,
+        "phase": 1.0
+      }
+    }
+  },
+  "ik_note": "no IK chains: these appendages are a limb plus a small extremity, and a two-element chain treats the extremity as a bone, so a small one makes the leg unsolvable. They are driven by motion instead.",
+  "g4_exempt": "G4-exempt: these parts are limb tips and mid-body segments on a tapering body, small by design. They carry no IK chain, so nothing structural depends on their size. Judged by eye on the contact sheet, not by scale."
+}

@@ -1,0 +1,137 @@
+{
+  "name": "09_sunken_landing_stage",
+  "seed": 909,
+  "size": [1280, 720],
+  "light": { "angle": -96, "backlit": true },
+  "palette": {
+    "body": "#4f8a90",
+    "body_dark": "#2f5a62",
+    "belly": "#7fb0b4",
+    "shade": "#1b363c",
+    "ink": "#0b1719",
+    "key_light": "#bfe4e6",
+    "rim": "#dff5f5",
+    "accent": "#3f7278",
+    "ground": "#5b9aa0",
+    "sky_near": "#7fb0b4",
+    "sky_far": "#cfeaea",
+    "fog": "#a9cfd2"
+  },
+  "layers": [
+    {
+      "name": "sky",
+      "parallax": 0.03,
+      "fog": 0.0,
+      "plane": { "role": "sky_near", "to_role": "fog", "bias": 0.02, "spread": 3.6 },
+      "elements": [
+        { "kind": "glow", "at": [640, 60], "r": 900, "power": 1.6, "role": "sky_far", "alpha": 0.6 },
+        { "kind": "glow", "at": [640, 300], "r": 300, "power": 3.2, "role": "sky_far", "alpha": 0.45 }
+      ]
+    },
+    {
+      "name": "far",
+      "parallax": 0.14,
+      "fog": 0.42,
+      "role": "ground",
+      "ink": 1.0,
+      "shade_depth": 4.0,
+      "backlit": true,
+      "elements": [
+        { "kind": "cluster2", "at": [200, 700], "parts": [
+          { "kind": "ribbon", "spine": [[-50, 0], [-44, -140], [-54, -300], [-48, -400]],
+            "widths": [58, 48, 38, 28], "resample": 18 },
+          { "kind": "ribbon", "spine": [[56, 0], [64, -130], [52, -270], [60, -350]],
+            "widths": [50, 42, 33, 24], "resample": 18 }
+        ] },
+        { "kind": "cluster2", "at": [1080, 700], "parts": [
+          { "kind": "ribbon", "spine": [[50, 0], [44, -140], [54, -290], [48, -380]],
+            "widths": [52, 44, 34, 25], "resample": 18 },
+          { "kind": "ribbon", "spine": [[-56, 0], [-64, -130], [-52, -280], [-60, -360]],
+            "widths": [56, 47, 37, 27], "resample": 18 }
+        ] },
+        { "kind": "ribbon", "spine": [[-40, 548], [340, 536], [760, 554], [1120, 538], [1330, 546]],
+          "widths": [190, 172, 200, 178, 194], "resample": 32, "wiggle": 18.0,
+          "role": "ground" },
+        { "kind": "cluster2", "at": [40, 380], "rotation": 12, "parts": [
+          { "kind": "ribbon", "spine": [[0, 0], [100, 44], [180, 54]], "widths": [26, 18, 10],
+            "resample": 14 },
+          { "kind": "slab", "w": 170, "h": 68, "n": 5.0, "at": [-30, 20] }
+        ], "role": "ground" },
+        { "kind": "cluster2", "at": [1250, 360], "rotation": -10, "parts": [
+          { "kind": "ribbon", "spine": [[0, 0], [-106, 36], [-186, 44]], "widths": [28, 19, 10],
+            "resample": 14 },
+          { "kind": "slab", "w": 180, "h": 72, "n": 5.0, "at": [30, 16] }
+        ], "role": "ground" }
+      ]
+    },
+    {
+      "name": "mid",
+      "parallax": 0.44,
+      "fog": 0.13,
+      "role": "body_dark",
+      "ink": 2.0,
+      "backlit": true,
+      "elements": [
+        { "kind": "cluster2", "at": [180, 520], "parts": [
+          { "kind": "ribbon", "spine": [[-120, 300], [0, 120], [110, -80]], "widths": [40, 30, 16],
+            "resample": 20 },
+          { "kind": "ribbon", "spine": [[-120, 350], [0, 170], [110, -30]], "widths": [12, 9, 6],
+            "resample": 20, "role": "accent" }
+        ] },
+        { "kind": "cluster2", "at": [1100, 500], "parts": [
+          { "kind": "ribbon", "spine": [[120, 320], [0, 130], [-110, -70]], "widths": [40, 30, 16],
+            "resample": 20 },
+          { "kind": "ribbon", "spine": [[120, 370], [0, 180], [-110, -20]], "widths": [12, 9, 6],
+            "resample": 20, "role": "accent" }
+        ] },
+        { "kind": "slab", "w": 1700, "h": 60, "n": 7.0, "at": [640, 592], "role": "shade" },
+        { "kind": "disc", "at": [640, 690], "r": 150, "bore": 132, "spokes": 0, "role": "shade",
+          "ink": 2.4 },
+        { "kind": "slab", "w": 1700, "h": 180, "n": 7.0, "at": [640, 672], "role": "body_dark" },
+        { "kind": "disc", "at": [300, 616], "r": 40, "bore": 26, "role": "accent" },
+        { "kind": "disc", "at": [980, 616], "r": 40, "bore": 26, "role": "accent" }
+      ]
+    },
+    {
+      "name": "near",
+      "parallax": 0.70,
+      "fog": 0.02,
+      "role": "shade",
+      "ink": 2.8,
+      "backlit": true,
+      "elements": [
+        { "kind": "cluster2", "at": [80, 470], "rotation": 7, "parts": [
+          { "kind": "slab", "w": 210, "h": 450, "n": 6.5, "taper": 0.72 },
+          { "kind": "slab", "w": 175, "h": 60, "n": 5.0, "at": [0, -250] },
+          { "kind": "ribbon", "spine": [[-70, -150], [70, -166]], "widths": [16, 13],
+            "resample": 10 }
+        ] },
+        { "kind": "cluster2", "at": [1214, 450], "rotation": -7, "parts": [
+          { "kind": "slab", "w": 220, "h": 470, "n": 6.2, "taper": 0.68 },
+          { "kind": "slab", "w": 185, "h": 60, "n": 5.0, "at": [0, -260] },
+          { "kind": "ribbon", "spine": [[-74, -160], [74, -146]], "widths": [17, 14],
+            "resample": 10 }
+        ] },
+        { "kind": "cluster", "sub": "debris", "count": 4, "at": [250, 300], "band": "y",
+          "spread": [0, 190], "scale": [0.4, 0.9], "rotation": 20 },
+        { "kind": "ribbon", "spine": [[-30, 706], [300, 692], [700, 712], [1100, 696], [1320, 708]],
+          "widths": [48, 58, 50, 62, 52], "resample": 30, "role": "ink" }
+      ]
+    },
+    {
+      "name": "foreground",
+      "parallax": 1.0,
+      "fog": 0.0,
+      "role": "ink",
+      "ink": 3.4,
+      "shade_depth": 0.0,
+      "backlit": true,
+      "elements": [
+        { "kind": "ribbon", "spine": [[-30, 730], [300, 714], [820, 732], [1310, 716]],
+          "widths": [58, 72, 62, 76], "resample": 30, "role": "ink" },
+        { "kind": "ribbon", "spine": [[1186, -30], [1200, 180], [1188, 380], [1204, 540]],
+          "widths": [9, 9, 9, 9], "resample": 26, "role": "ink" }
+      ]
+    }
+  ]
+}

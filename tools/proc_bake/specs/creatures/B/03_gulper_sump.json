@@ -1,0 +1,296 @@
+{
+  "name": "gulper_sump",
+  "size": [
+    420,
+    300
+  ],
+  "seed": 37,
+  "outline_width": 3.4,
+  "shade_depth": 10.0,
+  "fusion": 5.0,
+  "palette": {
+    "body": "#5b2f6e",
+    "body_dark": "#2a1338",
+    "belly": "#d59ae0",
+    "shade": "#150a1c",
+    "ink": "#08040c",
+    "key_light": "#e6b6ff",
+    "rim": "#f6dcff",
+    "accent": "#ff3d7f",
+    "sclera": "#ffe27a",
+    "pupil": "#1a0a16"
+  },
+  "parts": [
+    {
+      "id": "b1",
+      "shape": "torso_rodent",
+      "scale": 0.66,
+      "role": "body",
+      "shade": "volumetric"
+    },
+    {
+      "id": "head",
+      "shape": "head_maw",
+      "parent": "b1",
+      "at": 1.0,
+      "angle": -14.0,
+      "scale": 1.05,
+      "offset": [
+        0,
+        -14
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "jaw",
+      "shape": "head_fanged",
+      "parent": "head",
+      "at": 0.5,
+      "angle": 100.0,
+      "scale": 0.5,
+      "offset": [
+        4,
+        2
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "eye",
+      "shape": "eye_lens",
+      "parent": "head",
+      "at": 0.18,
+      "angle": 0,
+      "scale": 0.42,
+      "offset": [
+        6,
+        -9
+      ],
+      "role": "sclera",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "pupil",
+      "shape": "pupil",
+      "parent": "eye",
+      "at": 0.1,
+      "angle": 0,
+      "scale": 0.55,
+      "role": "pupil",
+      "shade": "flat",
+      "detail": true
+    },
+    {
+      "id": "b2",
+      "shape": "torso_fish",
+      "parent": "b1",
+      "at": 0.18,
+      "angle": 172.0,
+      "scale": 0.44,
+      "offset": [
+        0,
+        2
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "fin",
+      "shape": "tail_fluke",
+      "parent": "b2",
+      "at": 0.98,
+      "angle": 12.0,
+      "scale": 0.8,
+      "offset": [
+        0,
+        0
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "spike_a",
+      "shape": "horn_single",
+      "parent": "b1",
+      "at": 0.7,
+      "angle": -104,
+      "scale": 0.9,
+      "offset": [
+        0,
+        -10
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "spike_b",
+      "shape": "horn_single",
+      "parent": "b1",
+      "at": 0.52,
+      "angle": -99,
+      "scale": 0.7,
+      "offset": [
+        0,
+        -10
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "spike_c",
+      "shape": "horn_single",
+      "parent": "b1",
+      "at": 0.34,
+      "angle": -94,
+      "scale": 0.55,
+      "offset": [
+        0,
+        -9
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "pelvic_a",
+      "shape": "crest_fin",
+      "parent": "b1",
+      "at": 0.2,
+      "angle": 168,
+      "scale": 0.46,
+      "offset": [
+        0,
+        6
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "pelvic_b",
+      "shape": "crest_fin",
+      "parent": "b2",
+      "at": 0.34,
+      "angle": 172,
+      "scale": 0.85,
+      "offset": [
+        0,
+        2
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "rigid"
+    },
+    {
+      "id": "lure",
+      "shape": "lure_bulb",
+      "parent": "head",
+      "at": 0.38,
+      "angle": -26.0,
+      "scale": 0.45,
+      "offset": [
+        18,
+        -12
+      ],
+      "role": "body",
+      "shade": "volumetric",
+      "follow": "soft"
+    },
+    {
+      "id": "lureball",
+      "shape": "pupil",
+      "parent": "lure",
+      "at": 1.0,
+      "angle": 0,
+      "scale": 0.95,
+      "role": "accent",
+      "shade": "flat",
+      "detail": true
+    }
+  ],
+  "stride": 14.0,
+  "lift": 8.0,
+  "motion": {
+    "cycle": 1.1,
+    "walk": {
+      "b1": {
+        "mode": "pulse",
+        "amp": 3.0,
+        "freq": 1.6,
+        "rot": 1.4
+      },
+      "head": {
+        "mode": "swing",
+        "amp": 3.0,
+        "freq": 1.6,
+        "rot": 6.0,
+        "phase": 0.3
+      },
+      "b2": {
+        "mode": "sway",
+        "amp": 2.4,
+        "freq": 1.6,
+        "rot": 4.0,
+        "phase": 0.9
+      },
+      "tail": {
+        "mode": "sway",
+        "amp": 3.2,
+        "freq": 1.6,
+        "rot": 6.0,
+        "phase": 1.5
+      },
+      "fin": {
+        "mode": "sway",
+        "amp": 3.0,
+        "freq": 1.6,
+        "rot": 9.0,
+        "phase": 2.1
+      }
+    },
+    "idle": {
+      "b1": {
+        "mode": "pulse",
+        "amp": 3.4,
+        "freq": 0.5,
+        "rot": 1.0
+      },
+      "head": {
+        "mode": "swing",
+        "amp": 2.0,
+        "freq": 0.5,
+        "rot": 3.5,
+        "phase": 0.4
+      },
+      "b2": {
+        "mode": "sway",
+        "amp": 1.8,
+        "freq": 0.5,
+        "rot": 2.6,
+        "phase": 0.9
+      },
+      "tail": {
+        "mode": "sway",
+        "amp": 2.2,
+        "freq": 0.5,
+        "rot": 3.4,
+        "phase": 1.5
+      },
+      "fin": {
+        "mode": "sway",
+        "amp": 2.6,
+        "freq": 0.5,
+        "rot": 4.0,
+        "phase": 2.1
+      }
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "name": "11_mossy_grotto",
+  "seed": 1111,
+  "size": [1280, 720],
+  "light": { "angle": -132 },
+  "palette": {
+    "body": "#6b7a58",
+    "body_dark": "#333d2c",
+    "belly": "#cfd6b0",
+    "shade": "#1c2318",
+    "ink": "#0a0e09",
+    "key_light": "#c2cfa4",
+    "rim": "#e6eed0",
+    "accent": "#8b9a72",
+    "ground": "#6b6f52",
+    "sky_near": "#23291e",
+    "sky_far": "#5e6b4a",
+    "fog": "#77855f"
+  },
+  "layers": [
+    {
+      "name": "sky",
+      "parallax": 0.04,
+      "fog": 0.0,
+      "plane": { "role": "sky_near", "to_role": "sky_far", "bias": 0.34, "spread": 2.2 },
+      "elements": [
+        { "kind": "glow", "at": [1004, 288], "r": 300, "power": 2.6, "role": "belly", "alpha": 0.55 },
+        { "kind": "glow", "at": [1004, 288], "r": 104, "power": 3.0, "role": "rim", "alpha": 0.8 }
+      ]
+    },
+    {
+      "name": "far",
+      "parallax": 0.15,
+      "fog": 0.20,
+      "role": "ground",
+      "ink": 1.0,
+      "shade_depth": 4.0,
+      "tone": 1.0,
+      "elements": [
+        { "kind": "slab", "w": 230, "h": 300, "n": 2.6, "taper": 0.88, "at": [1000, 292], "role": "belly" },
+        { "kind": "slab", "w": 320, "h": 780, "n": 2.6, "taper": 0.70, "at": [280, 330], "role": "ground" },
+        { "kind": "slab", "w": 320, "h": 760, "n": 2.6, "taper": 0.66, "at": [700, 306], "role": "ground" },
+        { "kind": "ribbon",
+          "spine": [[-40, 600], [200, 578], [470, 604], [720, 620], [980, 596], [1240, 576], [1330, 590]],
+          "widths": [124, 158, 100, 142, 114, 150, 126], "role": "belly" }
+      ]
+    },
+    {
+      "name": "mid",
+      "parallax": 0.44,
+      "fog": 0.10,
+      "role": "body_dark",
+      "ink": 2.0,
+      "elements": [
+        { "kind": "slab", "w": 1760, "h": 280, "n": 4.0, "at": [640, 60], "role": "shade" },
+        { "kind": "ribbon",
+          "spine": [[-40, 470], [130, 462], [300, 486]], "widths": [104, 122, 88],
+          "role": "body_dark" },
+        { "kind": "ribbon",
+          "spine": [[-40, 418], [130, 410], [300, 434]], "widths": [40, 52, 34],
+          "role": "accent" },
+        { "kind": "ribbon",
+          "spine": [[1320, 452], [1150, 464], [980, 490]], "widths": [96, 116, 84],
+          "role": "body_dark" },
+        { "kind": "ribbon",
+          "spine": [[1320, 404], [1150, 416], [980, 440]], "widths": [36, 48, 32],
+          "role": "accent" }
+      ]
+    },
+    {
+      "name": "near",
+      "parallax": 0.70,
+      "fog": 0.02,
+      "role": "shade",
+      "ink": 2.8,
+      "elements": [
+        { "kind": "cluster2", "at": [-16, 508], "rotation": 3, "parts": [
+          { "kind": "slab", "w": 400, "h": 300, "n": 3.6, "taper": 0.84 },
+          { "kind": "slab", "w": 360, "h": 64, "n": 2.6, "at": [18, -172] }
+        ] },
+        { "kind": "cluster2", "at": [1330, 484], "rotation": -4, "parts": [
+          { "kind": "slab", "w": 384, "h": 290, "n": 3.6, "taper": 0.82 },
+          { "kind": "slab", "w": 344, "h": 60, "n": 2.6, "at": [-20, -164] }
+        ] },
+        { "kind": "ribbon",
+          "spine": [[-40, 700], [200, 676], [470, 706], [740, 722], [1000, 700], [1330, 682]],
+          "widths": [160, 196, 138, 182, 152, 190], "role": "shade" },
+        { "kind": "cluster", "sub": "root", "count": 4, "at": [280, -20], "band": "x",
+          "spread": [230, 0], "scale": [0.9, 1.8], "rotation": 10 },
+        { "kind": "cluster", "sub": "root", "count": 3, "at": [1010, -20], "band": "x",
+          "spread": [210, 0], "scale": [0.8, 1.6], "rotation": 10 }
+      ]
+    },
+    {
+      "name": "foreground",
+      "parallax": 1.0,
+      "fog": 0.0,
+      "role": "ink",
+      "ink": 3.4,
+      "shade_depth": 0.0,
+      "elements": [
+        { "kind": "slab", "w": 400, "h": 200, "n": 4.0, "at": [126, 800], "rotation": 5, "role": "ink" },
+        { "kind": "slab", "w": 430, "h": 214, "n": 4.4, "at": [1150, 806], "rotation": -6, "role": "ink" },
+        { "kind": "cluster", "sub": "frond", "count": 2, "at": [190, 700], "band": "x",
+          "spread": [200, 0], "scale": [0.9, 1.4], "rotation": 26, "role": "ink" },
+        { "kind": "cluster", "sub": "frond", "count": 2, "at": [1120, 706], "band": "x",
+          "spread": [190, 0], "scale": [0.9, 1.4], "rotation": 26, "role": "ink" }
+      ]
+    }
+  ]
+}

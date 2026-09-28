@@ -1,0 +1,105 @@
+{
+  "name": "06_city_of_tombs",
+  "seed": 606,
+  "size": [1280, 720],
+  "light": { "angle": -152 },
+  "palette": {
+    "body": "#8e7c5f",
+    "body_dark": "#5c5140",
+    "belly": "#c2ab84",
+    "shade": "#332e26",
+    "ink": "#15120e",
+    "key_light": "#d8c39a",
+    "rim": "#e8d6b0",
+    "accent": "#6f6148",
+    "ground": "#7d6d54",
+    "sky_near": "#6b5c47",
+    "sky_far": "#b9a582",
+    "fog": "#b9a582"
+  },
+  "layers": [
+    {
+      "name": "sky",
+      "parallax": 0.04,
+      "fog": 0.0,
+      "plane": { "role": "sky_near", "to_role": "fog", "bias": 0.24, "spread": 1.8 },
+      "elements": [
+        { "kind": "glow", "at": [400, 130], "r": 520, "power": 2.2, "role": "sky_far", "alpha": 0.45 }
+      ]
+    },
+    {
+      "name": "far",
+      "parallax": 0.15,
+      "fog": 0.34,
+      "role": "ground",
+      "ink": 1.0,
+      "shade_depth": 4.0,
+      "tone": 0.9,
+      "elements": [
+        { "kind": "cluster2", "at": [280, 560], "role": "ground", "parts": [
+          { "kind": "slab", "w": 460, "h": 90, "n": 6.0, "at": [0, 0] },
+          { "kind": "slab", "w": 340, "h": 80, "n": 6.0, "at": [-20, -80] },
+          { "kind": "slab", "w": 210, "h": 70, "n": 6.0, "at": [-40, -152] }
+        ] },
+        { "kind": "cluster2", "at": [1010, 566], "role": "ground", "parts": [
+          { "kind": "slab", "w": 400, "h": 84, "n": 6.0, "at": [0, 0] },
+          { "kind": "slab", "w": 280, "h": 74, "n": 6.0, "at": [24, -74] },
+          { "kind": "slab", "w": 170, "h": 64, "n": 6.0, "at": [40, -140] }
+        ] },
+        { "kind": "cluster", "sub": "tombstone", "count": 13, "at": [640, 496], "band": "x",
+          "spread": [1240, 0], "scale": [0.36, 0.58], "rotation": 3, "role": "ground" },
+        { "kind": "cluster", "sub": "tombstone", "count": 11, "at": [640, 540], "band": "x",
+          "spread": [1040, 0], "scale": [0.46, 0.7], "rotation": 3, "role": "ground" }
+      ]
+    },
+    {
+      "name": "mid",
+      "parallax": 0.44,
+      "fog": 0.15,
+      "role": "body_dark",
+      "ink": 2.0,
+      "elements": [
+        { "kind": "arch", "at": [640, 742], "span": 900, "rise": 700, "leg": 460,
+          "widths": [58, 54, 46, 46], "role": "body_dark" },
+        { "kind": "cluster", "sub": "tombstone", "count": 3, "at": [300, 690], "band": "x",
+          "spread": [190, 0], "scale": [1.1, 1.8], "rotation": 3 },
+        { "kind": "cluster", "sub": "tombstone", "count": 3, "at": [1010, 700], "band": "x",
+          "spread": [190, 0], "scale": [1.1, 1.8], "rotation": 3 },
+        { "kind": "ribbon", "spine": [[-40, 686], [340, 672], [760, 694], [1120, 676], [1330, 688]],
+          "widths": [150, 136, 158, 140, 152], "resample": 30, "wiggle": 20.0,
+          "role": "body_dark" }
+      ]
+    },
+    {
+      "name": "near",
+      "parallax": 0.70,
+      "fog": 0.03,
+      "role": "shade",
+      "ink": 2.8,
+      "elements": [
+        { "kind": "slab", "w": 190, "h": 470, "n": 4.6, "at": [58, 500], "taper": 0.80,
+          "lean": 14, "rotation": 3 },
+        { "kind": "slab", "w": 230, "h": 400, "n": 4.6, "at": [236, 540], "taper": 0.84,
+          "lean": -10, "rotation": -4 },
+        { "kind": "slab", "w": 175, "h": 490, "n": 4.6, "at": [1246, 490], "taper": 0.78,
+          "lean": -16, "rotation": 4 },
+        { "kind": "slab", "w": 200, "h": 420, "n": 4.6, "at": [1080, 530], "taper": 0.86,
+          "lean": 10, "rotation": -3 }
+      ]
+    },
+    {
+      "name": "foreground",
+      "parallax": 1.0,
+      "fog": 0.0,
+      "role": "ink",
+      "ink": 3.4,
+      "shade_depth": 0.0,
+      "elements": [
+        { "kind": "slab", "w": 250, "h": 500, "n": 4.2, "at": [-56, 470], "taper": 0.76,
+          "lean": 24, "role": "ink" },
+        { "kind": "ribbon", "spine": [[-30, 728], [300, 710], [820, 732], [1310, 714]],
+          "widths": [56, 70, 60, 74], "resample": 30, "role": "ink" }
+      ]
+    }
+  ]
+}

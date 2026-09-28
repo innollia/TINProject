@@ -1,0 +1,106 @@
+{
+  "name": "12_machine_chapel",
+  "seed": 1212,
+  "size": [1280, 720],
+  "light": { "angle": -90, "backlit": true },
+  "palette": {
+    "body": "#8d7c5c",
+    "body_dark": "#544a3a",
+    "belly": "#cbb98e",
+    "shade": "#2c2720",
+    "ink": "#100e0b",
+    "key_light": "#e0d0a8",
+    "rim": "#f2e6c4",
+    "accent": "#6a5c46",
+    "ground": "#6b5f49",
+    "sky_near": "#4a4234",
+    "sky_far": "#a8977a",
+    "fog": "#8a7d62"
+  },
+  "layers": [
+    {
+      "name": "sky",
+      "parallax": 0.04,
+      "fog": 0.0,
+      "plane": { "role": "sky_near", "to_role": "fog", "bias": 0.40, "spread": 2.2 },
+      "elements": [
+        { "kind": "glow", "at": [640, 108], "r": 260, "power": 3.0, "role": "belly", "alpha": 0.9 },
+        { "kind": "glow", "at": [640, 700], "r": 420, "power": 2.4, "role": "accent", "alpha": 0.4 }
+      ]
+    },
+    {
+      "name": "far",
+      "parallax": 0.15,
+      "fog": 0.30,
+      "role": "accent",
+      "ink": 1.2,
+      "shade_depth": 4.0,
+      "backlit": true,
+      "elements": [
+        { "kind": "cluster2", "at": [640, 108], "fuse": 0.6, "parts": [
+          { "kind": "disc", "r": 172, "bore": 158, "spokes": 14, "hub": 34,
+            "spoke_width": 9, "role": "shade" },
+          { "kind": "disc", "r": 128, "bore": 116, "spokes": 10, "hub": 30,
+            "spoke_width": 7, "spoke_phase": 0.26, "role": "shade" },
+          { "kind": "disc", "r": 76, "bore": 0, "role": "shade" }
+        ], "role": "belly" },
+        { "kind": "cluster", "sub": "post", "count": 7, "at": [640, 512], "band": "x",
+          "spread": [1060, 0], "scale": [0.26, 0.46], "rotation": 2, "up": true,
+          "role": "accent" },
+        { "kind": "ribbon", "spine": [[-40, 578], [340, 566], [760, 584], [1120, 568], [1330, 576]],
+          "widths": [18, 18, 18, 18, 18], "resample": 24, "role": "accent" }
+      ]
+    },
+    {
+      "name": "mid",
+      "parallax": 0.44,
+      "fog": 0.14,
+      "role": "body_dark",
+      "ink": 2.0,
+      "backlit": true,
+      "elements": [
+        { "kind": "cluster", "sub": "post", "count": 5, "at": [150, 600], "band": "x",
+          "spread": [200, 0], "scale": [1.4, 2.1], "rotation": 3, "up": true },
+        { "kind": "cluster", "sub": "post", "count": 5, "at": [1130, 600], "band": "x",
+          "spread": [200, 0], "scale": [1.4, 2.1], "rotation": 3, "up": true },
+        { "kind": "arch", "at": [640, 380], "span": 960, "rise": 480, "leg": 260,
+          "widths": [44, 40, 34, 34], "role": "body_dark" },
+        { "kind": "slab", "w": 1700, "h": 70, "n": 7.0, "at": [640, 566], "role": "shade" },
+        { "kind": "slab", "w": 1700, "h": 180, "n": 7.0, "at": [640, 672], "role": "body_dark" },
+        { "kind": "slab", "w": 520, "h": 90, "n": 6.0, "at": [640, 566], "role": "shade" }
+      ]
+    },
+    {
+      "name": "near",
+      "parallax": 0.70,
+      "fog": 0.02,
+      "role": "shade",
+      "ink": 2.8,
+      "backlit": true,
+      "elements": [
+        { "kind": "slab", "w": 180, "h": 720, "n": 8.0, "at": [42, 360], "role": "shade" },
+        { "kind": "slab", "w": 170, "h": 720, "n": 8.0, "at": [1240, 360], "role": "shade" },
+        { "kind": "cluster2", "at": [212, 380], "parts": [
+          { "kind": "ribbon", "spine": [[0, 0], [12, 110], [0, 210]], "widths": [9, 9, 9],
+            "resample": 16 },
+          { "kind": "disc", "r": 32, "bore": 0, "at": [0, 244] }
+        ], "role": "ink" }
+      ]
+    },
+    {
+      "name": "foreground",
+      "parallax": 1.0,
+      "fog": 0.0,
+      "role": "ink",
+      "ink": 3.4,
+      "shade_depth": 0.0,
+      "backlit": true,
+      "elements": [
+        { "kind": "ribbon", "spine": [[-30, 730], [300, 716], [820, 732], [1310, 718]],
+          "widths": [52, 66, 56, 70], "resample": 30, "role": "ink" },
+        { "kind": "slab", "w": 440, "h": 100, "n": 6.0, "at": [290, 706], "role": "ink" },
+        { "kind": "slab", "w": 440, "h": 100, "n": 6.0, "at": [1000, 706], "role": "ink" }
+      ]
+    }
+  ]
+}
