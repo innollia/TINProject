@@ -30,6 +30,10 @@ STEPS = {
     "acompare3": ["compare_runs.py", "v2-llm-jg", "v3c-llmopts-jg", "--hybrid"],
     "aeval4": ["eval_gold.py", "--name", "v3d-opts-jg", "--n", "80", "--candidates", "candidates4", "--grader", "jev"],
     "acompare4": ["compare_runs.py", "v2-jev-jg", "v3d-opts-jg"],
+    "gd_strict": ["eval_gamedev.py", "--name", "gd_strict", "--near", "0.2"],
+    "gd_nodec": ["eval_gamedev.py", "--name", "gd_nodec", "--no-decisions"],
+    "gd_blind": ["eval_gamedev.py", "--name", "gd_blind", "--blind"],
+    "gd_generic": ["eval_gamedev.py", "--name", "gd_generic", "--generic"],
 }
 DEFAULT = ["model", "ask", "gold", "compare"]
 ENV = {"gold": {"JEV_DISABLE": "1"}, "jgold": {"JEV_NO_FALLBACK": "1"}}

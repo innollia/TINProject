@@ -21,7 +21,9 @@ v1(`../taste_profile.md`)은 "형님이 어떤 사람인가"를 설명하는 규
 | - | `stop_bg.py` | `_bg.py`로 띄운 작업만 골라 프로세스 트리째 끈다(kiro-cli 모델 호출 포함). 결과는 `raw/_stop.txt` |
 | - | `gen_candidates.py` | 시험지 사건마다 에이전트 답 후보를 만든다(20건을 모델 호출 한 번에 묶음). `eval_gold.py --candidates`로 스킬 본체를 채점한다 |
 | - | `verify_gate.py`, `eval_verdicts.py` | LLM 답에 Jev가 동의할 때와 아닐 때의 적중, 결과물 판정 모음으로 Jev 통과/퇴짜 측정 |
-| - | `../skill/avatar-jev/` | Kiro·Codex 어디서든 쓰는 스킬. 에이전트 후보 → Jev 선택 → 확신 낮으면 에이전트 판단 |
+| - | `harvest_decisions.py` | TIN 문서에서 게임 개발 AI가 물은 결정과 형님 답, 형님이 AI 방향을 바로잡은 기록을 모은다 → `gamedev_decisions.jsonl`(분신의 가장 강한 근거) |
+| - | `eval_gamedev.py` | 게임 개발 결정으로 분신을 잰다. 자기 자신과 비슷한 기록은 근거에서 뺀다. `--near`, `--no-decisions`, `--blind`, `--generic` 대조군 |
+| - | `../skill/avatar-jev/` | Kiro·Codex 어디서든 쓰는 스킬. 멈춘 게임 개발 AI의 선택지 → Jev 선택 → 확신 낮을 때만 형님께 질문 |
 | - | `test_offline.py` | 모델·네트워크 없이 판단 엔진과 Jev 경로를 시험한다 |
 
 ## 기억의 세 층

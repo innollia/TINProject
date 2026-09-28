@@ -1,11 +1,14 @@
-"""에이전트가 쓴 답 후보 중에서 형님이 고를 답을 Jev가 고른다.
+"""게임 개발 AI가 '중요한 결정'이라며 멈췄을 때, 그 선택지 중 형님이 고를 것을 Jev가 고른다.
 
   python choose.py case.json     → case.result.json을 쓰고, 화면에는 영어 한 줄 요약
-입력  {"case": "상황", "mode": "choice"|"verdict",
-       "candidates": [{"answer": "고를 것 또는 형님 말투 한 줄 평", "reason": "왜"}, ...]}   후보 2~12개
-출력  pick, answer, reason, confidence, stable, gate(accept|weak|ask), probabilities,
-      applied_rules, flip_if, ask(gate가 ask일 때 형님께 물을 A/B), verdict(mode가 verdict일 때 통과 확률·점수)
-Jev는 두 번 부른다. 두 번째는 후보 순서를 뒤집어 같은 답이 나오는지 본다.
+입력  {"case": "무엇을 정하는지 + 어느 Kit·작업 중인지 + 화면·플레이가 어떻게 달라지는지",
+       "mode": "choice"|"verdict",
+       "candidates": ["선택지", ...] 또는 [{"answer": "선택지 또는 형님 말투 한 줄 평", "reason": "왜"}, ...],
+       "recommended": 멈춘 AI가 추천한 선택지 번호(0부터, 없으면 생략)}
+출력  pick(0부터 번호), answer, reason, confidence, stable, gate(accept|weak|ask), probabilities,
+      agrees_with_recommendation, applied_rules, flip_if, ask(gate가 ask일 때 형님께 물을 것),
+      evidence(gate가 accept가 아닐 때 에이전트가 읽을 형님 기록), verdict(mode가 verdict일 때)
+Jev는 두 번 부른다. 두 번째는 후보 순서를 뒤집어 같은 답이 나오는지 본다. 멈춘 AI의 추천은 Jev에게 보여 주지 않는다.
 """
 import json
 import os
@@ -19,8 +22,8 @@ HEDGE = re.compile(r"따라 (갈|달라|다르)|에 따라|경우에 따라|상�
 ACCEPT = float(os.environ.get("AVATAR_ACCEPT", 0.7))
 ASK = float(os.environ.get("AVATAR_ASK", 0.5))
 FIT = 8
-PICK = ("Which candidate would innollia himself give for `case`? Weigh `his_direct_answers` most, "
-        "then `his_rules`, `his_past_verdicts` and `similar_past_decisions`.")
+PICK = ("Which option would innollia himself pick for `case`? Weigh `his_gamedev_decisions` most, then "
+        "`his_direct_answers`, `his_past_verdicts`, `his_rules` and `similar_past_decisions`.")
 LEVELS = [
     "clear reject: common, stiff, a knockoff of a reference, or mass-produced",
     "leaning reject: only one or two parts are good",
@@ -30,14 +33,24 @@ LEVELS = [
 ]
 
 
+def _cands(inp):
+    raw = inp.get("candidates") or inp.get("options") or []
+    out = []
+    for c in raw:
+        if isinstance(c, dict) and str(c.get("answer", "")).strip():
+            out.append({"answer": str(c["answer"]).strip(), "reason": str(c.get("reason", "")).strip()})
+        elif isinstance(c, str) and c.strip():
+            out.append({"answer": c.strip(), "reason": ""})
+    return out
+
+
 def run(inp, ev=None):
     case = str(inp.get("case", "")).strip()
-    cands = [c for c in inp.get("candidates", []) if isinstance(c, dict) and str(c.get("answer", "")).strip()]
+    cands = _cands(inp)
     if not case or not 2 <= len(cands) <= 12:
-        raise ValueError("need a case and 2-12 candidates with an answer")
+        raise ValueError("need a case and 2-12 candidates")
     labels = [chr(65 + i) for i in range(len(cands))]
-    crit = {lb: str(c["answer"]).strip() + (f" — {str(c['reason']).strip()}" if str(c.get("reason", "")).strip() else "")
-            for lb, c in zip(labels, cands)}
+    crit = {lb: c["answer"] + (f" — {c['reason']}" if c["reason"] else "") for lb, c in zip(labels, cands)}
     ev = ev or evidence.load()
     sel = evidence.pick(ev, case + " " + " ".join(crit.values()))
     st = evidence.state(sel, case)
@@ -67,17 +80,20 @@ def run(inp, ev=None):
     applied = [r for p, r in fits if p >= 0.5][:3]
     top2 = sorted(labels, key=lambda lb: -probs[lb])[:2]
     i = labels.index(best)
+    rec = inp.get("recommended")
+    rec = int(rec) if isinstance(rec, (int, float)) and 0 <= int(rec) < len(cands) else None
     res = {
-        "pick": best, "answer": cands[i]["answer"], "reason": cands[i].get("reason", ""),
+        "pick": i, "label": best, "answer": cands[i]["answer"], "reason": cands[i]["reason"],
         "confidence": round(conf, 3), "stable": stable, "gate": gate, "probabilities": probs,
+        "recommended": rec, "agrees_with_recommendation": None if rec is None else rec == i,
         "candidates": crit,
         "applied_rules": [f"{r.get('condition')} → {r.get('tendency')}" for r in applied],
         "flip_if": [r.get("flip") for r in applied if r.get("flip")],
         "ask": ({"question": case, "A": crit[top2[0]], "B": crit[top2[1]],
                  "follow_up": "무엇이 바뀌면 반대로 고르시나요?"} if gate == "ask" else None),
+        "hedge_candidates": [lb for lb in labels if HEDGE.search(crit[lb])],
         "model": model,
         "evidence_used": {k: len(v) for k, v in sel.items()},
-        "hedge_candidates": [lb for lb in labels if HEDGE.search(crit[lb])],
     }
     if verdict:
         v, s = ans.get("verdict") or {}, ans.get("score") or {}
@@ -85,8 +101,8 @@ def run(inp, ev=None):
                           "score": round(float(s["score"]) / (len(LEVELS) - 1) * 100) if "score" in s else None,
                           "score_confidence": s.get("confidence")}
     if gate != "accept":  # 에이전트가 형님 기록을 읽고 직접 판단할 재료
-        res["evidence"] = {k: st[k] for k in ("his_direct_answers", "his_rules", "his_past_verdicts",
-                                              "similar_past_decisions")}
+        res["evidence"] = {k: st[k] for k in ("his_gamedev_decisions", "his_direct_answers", "his_past_verdicts",
+                                              "his_rules", "similar_past_decisions")}
     return res
 
 
@@ -102,6 +118,8 @@ def main():
     try:
         res = run(inp)
         line = f"pick={res['pick']} conf={res['confidence']} stable={res['stable']} gate={res['gate']}"
+        if res["recommended"] is not None:
+            line += f" agrees_with_recommendation={res['agrees_with_recommendation']}"
         if res.get("verdict"):
             line += f" pass_prob={res['verdict']['pass_prob']} score={res['verdict']['score']}"
     except (jevlib.JevError, ValueError) as e:
