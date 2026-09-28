@@ -1,7 +1,8 @@
 ﻿# nkido 파이프라인 — 상태와 인수인계
 
 2026-09-28. **이 문서가 이 폴더의 단일 진입점이다.** 새 세션은 여기서 읽고,
-`README.md` 는 "어떻게 도는지", `music/PIPELINE_REVIEW.md` 는 "왜 그렇게 했는지"다.
+`README.md` 는 "어떻게 도는지", `KNOWHOW.md` 는 "왜 이렇게 하고 무엇을 하면 안 되는가"다,
+`music/PIPELINE_REVIEW.md` 는 "외부 계획서를 무엇을 남기고 무엇을 버렸나"다.
 
 소유 범위: `tools/nkido_pipeline/**`, 그리고 이 파이프라인이 산출물로 선언한
 `modules/descent_exploration/audio/ambience/**`, `modules/descent_exploration/ambient_stems.json`,
@@ -133,6 +134,7 @@ tools/nkido_pipeline/
   tool/
     loopify.py              루프 크로스페이드. 표준 라이브러리만
     analyze_audio.py        객관 게이트. numpy만
+    mix_profiles.py         프로필 7개를 파일 1개씩으로 합친다. 사람에게 3개 동시 재생을 요구하지 않기 위해
     compile_music.py        MusicSpec -> .akkado (레이어 추가는 보류, §6)
     probe_*.py              계측용 프로브 5종
   patches/
@@ -140,6 +142,7 @@ tools/nkido_pipeline/
     ambient/                 stem 11
   music/
     PIPELINE_REVIEW.md      외부 계획서 판정 + 발견 기록
+  KNOWHOW.md                규칙 · 근거 · 대가. 왜 이렇게 하고 무엇을 하면 안 되는가
   build/                    렌더 결과. 커밋 대상 아님 (.gitignore)
 ```
 
