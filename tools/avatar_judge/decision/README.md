@@ -50,7 +50,14 @@ $P = 'C:\Users\fixme\AppData\Local\Programs\Python\Python312\python.exe'
 & $P -X utf8 ask.py --record 3 A "이유 한 줄" --flip "무엇이 바뀌면 반대"
 & $P -X utf8 test_offline.py
 & $P _bg.py _pipeline.py pipe    # 그림 규칙 → 질문 → 채점 → 비교를 뒤에서 차례로
+& $P _bg.py _pipeline.py jev jregrade jgold jcompare   # Jev만 쓰는 채점(LLM 토큰 0, 10초 안팎)
+& $P -X utf8 eval_gold.py --regrade v2-llm --grader jev      # 저장된 예측을 Jev로 다시 채점 → v2-llm-jg
+& $P -X utf8 compare_runs.py v2-llm-jg v2-jev-jg --hybrid    # 혼합 방식 점수까지
 ```
+
+- `eval_gold.py --grader jev`: Jev noul 질문으로 채점한다. LLM 채점기와 선택 판정이 94% 같았다(2026-09-28).
+- `--with-options`: 뽑은 사건 중 선택지가 2개 이상인 것만 남긴다(Jev가 고를 수 있는 사건).
+- `$env:JEV_NO_FALLBACK = '1'`: Jev가 못 하는 사건을 LLM에 넘기지 않고 실패로 둔다(토큰 절약).
 
 ## Jev(System One)
 

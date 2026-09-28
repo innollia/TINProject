@@ -109,13 +109,14 @@ def _decide_jev(situation, options, rules, events, verdict):
     """Jev 한 번 호출로 선택(또는 통과/점수)과 '어느 규칙이 들어맞나'를 함께 묻는다. 실패하면 None."""
     cand = rules[:FIT_RULES]
     qs = {f"fit{i}": {"type": "noul",
-                      "instructions": "이 판단 규칙이 [판정할 대상/상황]에 들어맞나? 규칙: "
+                      "instructions": "Does this decision rule apply to the case under [판정할 대상/상황]? Rule: "
                                       f"{r.get('condition')} → {r.get('tendency')}"}
           for i, r in enumerate(cand)}
     if len(options) >= 2:
         qs["pick"] = {"type": "choice",
-                      "instructions": "innollia(형님)가 [판정할 대상/상황]에서 고를 선택지. "
-                                      "[형님 판단 규칙]과 [비슷한 과거 판정]을 근거로 고른다.",
+                      "instructions": "Which option would innollia choose in the case under [판정할 대상/상황]? "
+                                      "Base it on his rules under [형님 판단 규칙] and his past decisions "
+                                      "under [비슷한 과거 판정].",
                       "criteria": {o: None for o in options}}
     else:
         qs.update(jev.VERDICT_QUESTIONS)
@@ -150,6 +151,9 @@ def decide(situation, options=(), verdict=False):
         d = _decide_jev(situation, options, rules, events, verdict)
         if d:
             return d
+    if os.environ.get("JEV_NO_FALLBACK"):  # LLM 토큰을 쓰지 않는다
+        return {"선택": "(Jev 실패)", "근거": "", "확신도": 0.0, "반대로_고를_조건": "", "쓴_규칙": [], "쓴_사건": [],
+                "_engine": "jev", "_jev_error": jev.LAST_ERROR or "Jev로 판정할 수 없는 사건"}
     prompt = PROMPT.format(
         rules="\n".join(f"{r.get('id')}: {r.get('condition')} → {r.get('tendency')} "
                         f"(예외: {r.get('exception')}; 뒤집힘: {r.get('flip')})" for r in rules),

@@ -1,7 +1,7 @@
-"""그림 분야 규칙 다시 만들기 → A/B 질문 → 시험지 채점(LLM 기준선) → v1과 비교를 차례로 돌린다.
+"""분신 작업 단계를 차례로 돌린다.
 
-  python _bg.py _pipeline.py pipe                   → 전부. 진행 로그 ../raw/pipe.log, 끝나면 ../raw/pipe.done
-  python _bg.py _pipeline.py pipe ask gold compare  → 고른 단계만
+  python _bg.py _pipeline.py pipe                           → 기본: model ask gold compare
+  python _bg.py _pipeline.py jev jregrade jgold jcompare    → Jev만 쓰는 채점(LLM 토큰 안 씀)
 단계마다 창 없는 콘솔·새 프로세스 그룹에서 돌린다. 한 단계가 Ctrl+C류 신호로 끊겨도 다음 단계는 돈다.
 """
 import os
@@ -15,11 +15,15 @@ STEPS = {
     "ask": ["ask.py", "--n", "12"],
     "gold": ["eval_gold.py", "--name", "v2-llm", "--n", "80"],
     "compare": ["compare_runs.py", "v1", "v2-llm"],
+    "jregrade": ["eval_gold.py", "--regrade", "v2-llm", "--grader", "jev"],
+    "jgold": ["eval_gold.py", "--name", "v2-jev-jg", "--n", "80", "--with-options", "--grader", "jev"],
+    "jcompare": ["compare_runs.py", "v2-llm-jg", "v2-jev-jg"],
 }
-ENV = {"gold": {"JEV_DISABLE": "1"}}
+DEFAULT = ["model", "ask", "gold", "compare"]
+ENV = {"gold": {"JEV_DISABLE": "1"}, "jgold": {"JEV_NO_FALLBACK": "1"}}
 FLAGS = (0x08000000 | 0x00000200) if os.name == "nt" else 0  # CREATE_NO_WINDOW | CREATE_NEW_PROCESS_GROUP
 
-for name in sys.argv[1:] or list(STEPS):
+for name in sys.argv[1:] or DEFAULT:
     t = time.time()
     rc = subprocess.run([sys.executable, "-u", "-X", "utf8", *STEPS[name]], cwd=HERE,
                         env=dict(os.environ, **ENV.get(name, {})), stdin=subprocess.DEVNULL,

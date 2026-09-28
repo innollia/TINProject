@@ -45,20 +45,20 @@ LAST_ERROR = ""
 _rejected = False  # 서버가 키를 거절하면(401/403) 이번 실행 동안 더 부르지 않는다.
 
 VERDICT_LEVELS = [
-    "분명한 퇴짜: 흔함·딱딱함·짝퉁·양산",
-    "퇴짜 쪽: 한두 군데만 괜찮음",
-    "애매: 통과도 퇴짜도 아님",
-    "통과 쪽: 핵심이 새롭지만 다듬을 곳이 있음",
-    "분명한 통과: 처음 보는 핵심 동사·구조, 말랑한 움직임",
+    "clear reject: common, stiff, a knockoff of a reference, or mass-produced",
+    "leaning reject: only one or two parts are good",
+    "borderline: neither a pass nor a reject",
+    "leaning pass: the core is new but needs polish",
+    "clear pass: a never-seen core verb or structure, soft and springy motion",
 ]
 VERDICT_QUESTIONS = {
     "verdict": {"type": "noul",
-                "instructions": "innollia(형님)가 [판정할 대상/상황]의 결과물을 통과시킬까? "
-                                "[형님 판단 규칙]과 [비슷한 과거 판정]을 근거로 판단한다.",
-                "criteria": {"true": "형님이 통과시킨다", "false": "형님이 퇴짜 놓는다"}},
+                "instructions": "Would innollia approve the work described under [판정할 대상/상황]? "
+                                "Base it on his rules under [형님 판단 규칙] and his past verdicts under [비슷한 과거 판정].",
+                "criteria": {"true": "he approves it", "false": "he rejects it"}},
     "score": {"type": "score",
-              "instructions": "형님 기준으로 [판정할 대상/상황]의 결과물은 어느 단계인가? "
-                              "독창성, 구조 다양성, 움직임의 말랑함, 레퍼런스 짝퉁 여부를 본다.",
+              "instructions": "Where does the work under [판정할 대상/상황] sit on innollia's scale? "
+                              "He weighs originality, structural variety, soft physical motion, and not copying a reference.",
               "criteria": VERDICT_LEVELS},
 }
 
@@ -146,3 +146,9 @@ if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     ok, info = check_key()
     print(("키 됨: " if ok else "키 안 됨: ") + info)
+    if ok:
+        a = ask("Weather report: the sky is clear and blue, no clouds.",
+                {"q": {"type": "noul", "instructions": "Is the sky clear?"},
+                 "c": {"type": "choice", "instructions": "Sky color?", "criteria": {"blue": None, "red": None}},
+                 "s": {"type": "score", "instructions": "How clear?", "criteria": ["cloudy", "mixed", "clear"]}})
+        print("판정 시험: " + (json.dumps(a, ensure_ascii=False) if a else "실패 " + LAST_ERROR))
